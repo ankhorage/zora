@@ -1,0 +1,87 @@
+{
+  "name": "@ankhorage/zora",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
+  "homepage": "https://github.com/ankhorage/zora#readme",
+  "bugs": {
+    "url": "https://github.com/ankhorage/zora/issues"
+  },
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/zora.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-web",
+    "expo",
+    "ui-kit",
+    "design-system",
+    "surface",
+    "components"
+  ],
+  "peerDependencies": {
+    "@expo/vector-icons": ">=14.0.0",
+    "expo-font": ">=14.0.4",
+    "react": ">=18.2.0",
+    "react-native": ">=0.72.0"
+  },
+  "peerDependenciesMeta": {
+    "@expo/vector-icons": {
+      "optional": true
+    },
+    "expo-font": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@ankhorage/surface": "^0.1.1"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
+    "changeset": "changeset",
+    "changeset:status": "changeset status --since=origin/main",
+    "knip": "knip",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix --max-warnings=0",
+    "format": "prettier --write .",
+    "prepack": "bun run build",
+    "test": "bun test src",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@ankhorage/devtools": "^1.0.0",
+    "@changesets/cli": "^2.30.0",
+    "@expo/vector-icons": "^15.0.3",
+    "@types/bun": "^1.3.8",
+    "@types/node": "^25.2.3",
+    "@types/react": "^19.2.14",
+    "knip": "^5.62.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "bun@1.3.11"
+}
