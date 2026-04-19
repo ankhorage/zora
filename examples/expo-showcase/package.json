@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "0.0.1",
+    "@ankhorage/zora": "^0.0.1",
     "@expo/vector-icons": "^15.0.3",
     "expo": "~54.0.33",
     "expo-font": "~14.0.11",
@@ -22,6 +22,5 @@
     "@types/react": "~19.1.0",
     "typescript": "~5.9.2"
   },
-  "private": true,
-  "packageManager": "bun@1.3.11"
+  "private": true
 }

@@ -163,16 +163,16 @@ The example uses the published package by default, so you can install and start 
 
 ```bash
 cd examples/expo-showcase
-bun install
-bun run start
+npm install
+npm run start
 ```
 
 Useful variants:
 
 ```bash
-bun run ios
-bun run android
-bun run web
+npm run ios
+npm run android
+npm run web
 ```
 
 The showcase uses all current ZORA exports:
