@@ -188,7 +188,7 @@ If you want the example to consume unpublished local repo changes instead, switc
 
 ## Status
 
-- v0.0.1 – Bootstrap phase
+- v0.0.2 – Bootstrap phase
 
 ---
 

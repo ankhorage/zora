@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.2
+
+### Patch Changes
+
+- Update the published Surface dependency to `0.1.4` and align the Expo showcase app for the web-ready package stack.
+
 ## 0.0.1
 
 ### Patch Changes
