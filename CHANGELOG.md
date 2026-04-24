@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.3
+
+### Patch Changes
+
+- Refresh the README copy so the published package overview, installation, usage, and positioning match the current messaging.
+
 ## 0.0.2
 
 ### Patch Changes
