@@ -1,32 +1,890 @@
 # zora
 
-A UI framework for React Native and Web.
+<!-- markdownlint-disable MD013 MD033 -->
 
-## 🎯 What you get
-- Build full screens, not just primitives
-- Consistent spacing and typography
-- Works out of the box with Expo + Web
+Opinionated React Native and React Native Web UI kit built on
+`@ankhorage/surface`.
 
-## ✨ Features
-- Ready-to-use UI components
-- Design consistency
-- Built on primitives
+ZORA sits above Surface. Surface provides the foundation primitives, theme system,
+and low-level controls; ZORA adds product-facing components, app layouts, and
+ready-made patterns with stronger defaults.
 
-## 🚀 Installation
+## Install
+
 ```bash
 bun add @ankhorage/zora
 ```
 
-## 📦 Usage
-```tsx
-import { Button } from '@ankhorage/zora'
+Peer dependencies:
 
-<Button>Click me</Button>
+- `react >=18.2.0`
+- `react-native >=0.72.0`
+- `@expo/vector-icons >=14.0.0` when using icon specs
+- `expo-font >=14.0.4` when using runtime font registration
+
+## Quick Start
+
+Wrap your app in `ZoraProvider`, then import components from
+`@ankhorage/zora`.
+
+```tsx
+import React from 'react';
+import { Button, Card, Page, PageHeader, ZoraProvider } from '@ankhorage/zora';
+
+export function App() {
+  return (
+    <ZoraProvider>
+      <Page header={<PageHeader title="Dashboard" description="Ready to build." />}>
+        <Card
+          actions={<Button>Continue</Button>}
+          description="ZORA provides composed UI surfaces for apps."
+          title="Welcome"
+        />
+      </Page>
+    </ZoraProvider>
+  );
+}
 ```
 
-## 🧪 Use Cases
-- Rapid app development
-- UI standardization across teams
+## Shared Types
 
-## 🧠 Why this exists
-Building UI from scratch is slow. Zora speeds up development with reusable patterns.
+These unions appear across the catalogue:
+
+- `ZoraTone` comes from Surface `ButtonProps['tone']`.
+- `ZoraEmphasis` comes from Surface `ButtonProps['variant']`.
+- `ZoraBadgeEmphasis` comes from Surface `BadgeProps['variant']`.
+- `ZoraControlSize` comes from Surface `ButtonProps['size']`.
+- `ZoraCardTone = 'default' | 'subtle' | 'outline'`.
+- `ZoraContentWidth = 'narrow' | 'default' | 'wide'`.
+
+Width presets:
+
+- Dialog widths: `narrow=420`, `default=520`, `wide=560`.
+- Page widths: `narrow=760`, `default=1040`, `wide=1280`.
+
+## Components
+
+### `Button`
+
+Action button with ZORA defaults for tone, emphasis, size, and icons.
+
+```tsx
+<Button leadingIcon={{ name: 'checkmark-circle-outline' }}>Save</Button>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Button label or content. |
+| `tone` | `ZoraTone` | `'primary'` | Passed to Surface as `tone`. |
+| `emphasis` | `ZoraEmphasis` | `'solid'` | Passed to Surface as `variant`. |
+| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
+| `leadingIcon` | `ButtonIconSpec` | - | Surface icon spec rendered before content. |
+| `trailingIcon` | `ButtonIconSpec` | - | Surface icon spec rendered after content. |
+
+Inherited props:
+
+Inherits all Surface `ButtonProps` except `children`, `size`, `tone`, and
+`variant`. This includes Surface button behavior such as `loading`,
+`fullWidth`, pressability props, disabled state, accessibility props allowed by
+Surface, and `testID`.
+
+</details>
+
+### `Badge`
+
+Small status label with ZORA tone, emphasis, and size defaults.
+
+```tsx
+<Badge tone="success">Active</Badge>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Rendered as Surface badge `content`. |
+| `tone` | `ZoraTone` | `'primary'` | Passed to Surface as `tone`. |
+| `emphasis` | `ZoraBadgeEmphasis` | `'soft'` | Passed to Surface as `variant`. |
+| `size` | `ZoraControlSize` | `'m'` | Passed to Surface as `size`. |
+
+Inherited props:
+
+Inherits all Surface `BadgeProps` except `content`, `size`, `tone`, and
+`variant`. The remaining inherited prop is `testID`.
+
+</details>
+
+### `Card`
+
+Composed content surface with optional header, actions, footer, and ZORA card
+tones.
+
+```tsx
+<Card
+  actions={<Button>Open</Button>}
+  description="A reusable product surface."
+  title="Project"
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Main card body. |
+| `title` | `React.ReactNode` | - | Header title. |
+| `description` | `React.ReactNode` | - | Header description. |
+| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
+| `actions` | `React.ReactNode` | - | Header action area. |
+| `footer` | `React.ReactNode` | - | Footer area below body content. |
+| `tone` | `ZoraCardTone` | `'default'` | Maps to Surface variants: `default -> raised`, `subtle -> subtle`, `outline -> outline`. |
+| `compact` | `boolean` | `false` | Uses tighter padding and heading scale. |
+
+Inherited props:
+
+Inherits all Surface `CardProps` except `children`, `p`, `radius`, `style`, and
+`variant`. ZORA owns spacing, radius, and variant selection for this wrapper.
+
+</details>
+
+### `Input`
+
+Text input wrapper with ZORA sizing and optional Surface icon specs.
+
+```tsx
+<Input
+  autoCapitalize="none"
+  keyboardType="email-address"
+  leadingIcon={{ name: 'mail-outline' }}
+  placeholder="you@example.com"
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
+| `leadingIcon` | `ButtonIconSpec` | - | Rendered as Surface `leadingAccessory`. |
+| `trailingIcon` | `ButtonIconSpec` | - | Rendered as Surface `trailingAccessory`. |
+
+Inherited props:
+
+Inherits all Surface `TextInputProps` except `leadingAccessory`, `size`, and
+`trailingAccessory`. Surface `TextInputProps` also inherit React Native
+`TextInputProps` except `defaultValue`, `editable`, `onChangeText`,
+`placeholderTextColor`, `style`, `testID`, and `value`; Surface re-exposes
+`value`, `defaultValue`, `onChangeText`, `placeholder`, `disabled`, `readOnly`,
+`invalid`, `style`, and `testID`.
+
+</details>
+
+### `Textarea`
+
+Multiline text input wrapper with ZORA sizing and optional Surface icon specs.
+
+```tsx
+<Textarea leadingIcon={{ name: 'document-text-outline' }} rows={5} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
+| `leadingIcon` | `ButtonIconSpec` | - | Rendered as Surface `leadingAccessory`. |
+| `trailingIcon` | `ButtonIconSpec` | - | Rendered as Surface `trailingAccessory`. |
+
+Inherited props:
+
+Inherits all Surface `TextareaProps` except `leadingAccessory`, `size`, and
+`trailingAccessory`. Surface `TextareaProps` extend Surface `TextInputProps`
+except `multiline`, so React Native text input props are available through
+Surface with the same Surface exclusions and re-exposed values listed for
+`Input`.
+
+</details>
+
+### `Modal`
+
+Centered overlay shell with optional header, body, footer, and width preset.
+
+```tsx
+<Modal
+  footer={<Button>Done</Button>}
+  onDismiss={close}
+  title="Details"
+  visible={visible}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Modal body. |
+| `title` | `React.ReactNode` | - | Header title. |
+| `description` | `React.ReactNode` | - | Header description. |
+| `footer` | `React.ReactNode` | - | Footer area. |
+| `width` | `ZoraContentWidth` | `'default'` | Resolves to `420`, `520`, or `560` pixels. |
+
+Inherited props:
+
+Picks these Surface `ModalProps`: `closeOnBackdrop`, `onDismiss`, `testID`, and
+`visible`.
+
+</details>
+
+### `Drawer`
+
+Side overlay shell with optional header, body, and footer.
+
+```tsx
+<Drawer onDismiss={close} title="Filters" visible={visible}>
+  {content}
+</Drawer>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Drawer body. |
+| `title` | `React.ReactNode` | - | Header title. |
+| `description` | `React.ReactNode` | - | Header description. |
+| `footer` | `React.ReactNode` | - | Footer area. |
+
+Inherited props:
+
+Picks these Surface `DrawerProps`: `closeOnBackdrop`, `onDismiss`, `position`,
+`testID`, and `visible`.
+
+</details>
+
+## Layouts
+
+### `Page`
+
+Constrained page container with optional header and footer slots.
+
+```tsx
+<Page header={<PageHeader title="Projects" />} width="wide">
+  {content}
+</Page>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Page body. |
+| `header` | `React.ReactNode` | - | Rendered above body content. |
+| `footer` | `React.ReactNode` | - | Rendered below body content. |
+| `width` | `ZoraContentWidth` | `'default'` | Resolves to `760`, `1040`, or `1280` pixels. |
+| `testID` | `string` | - | Forwarded to the root Surface container. |
+
+Inherited props:
+
+No inherited props. `PageProps` is declared directly by ZORA.
+
+</details>
+
+### `PageHeader`
+
+Top-level page heading with optional eyebrow, metadata, and actions.
+
+```tsx
+<PageHeader actions={<Button>New</Button>} title="Projects" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Required page title. |
+| `description` | `React.ReactNode` | - | Supporting copy below title. |
+| `eyebrow` | `React.ReactNode` | - | Small muted text above title. |
+| `actions` | `React.ReactNode` | - | Action area opposite the heading. |
+| `meta` | `React.ReactNode` | - | Extra content below description. |
+| `testID` | `string` | - | Forwarded to the root Surface stack. |
+
+Inherited props:
+
+No inherited props. `PageHeaderProps` is declared directly by ZORA.
+
+</details>
+
+### `PageSection`
+
+Section wrapper that optionally renders a `SectionHeader`.
+
+```tsx
+<PageSection actions={<Button>Refresh</Button>} title="Recent activity">
+  {content}
+</PageSection>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Section title; when absent, no header is rendered. |
+| `description` | `React.ReactNode` | - | Passed to the section header. |
+| `actions` | `React.ReactNode` | - | Passed to the section header. |
+| `children` | `React.ReactNode` | - | Section body. |
+| `testID` | `string` | - | Forwarded to the root Surface stack. |
+
+Inherited props:
+
+No inherited props. `PageSectionProps` is declared directly by ZORA.
+
+</details>
+
+### `SidebarLayout`
+
+Responsive shell with required sidebar, main content, and optional aside.
+
+```tsx
+<SidebarLayout sidebar={navigation} aside={details}>
+  {content}
+</SidebarLayout>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `sidebar` | `React.ReactNode` | - | Required left column content. |
+| `children` | `React.ReactNode` | - | Main content. |
+| `aside` | `React.ReactNode` | - | Optional right column content. |
+| `sidebarWidth` | `number` | `280` | Desktop sidebar width. |
+| `asideWidth` | `number` | `280` | Desktop aside width. |
+| `testID` | `string` | - | Forwarded to the root Surface stack. |
+
+Inherited props:
+
+No inherited props. `SidebarLayoutProps` is declared directly by ZORA.
+
+</details>
+
+### `TopbarLayout`
+
+Top navigation shell with optional sidebar composition.
+
+```tsx
+<TopbarLayout topbar={topbar} sidebar={sidebar}>
+  {content}
+</TopbarLayout>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `topbar` | `React.ReactNode` | - | Required topbar content. |
+| `children` | `React.ReactNode` | - | Main content. |
+| `sidebar` | `React.ReactNode` | - | Optional sidebar; when present, content is rendered through `SidebarLayout`. |
+| `testID` | `string` | - | Forwarded to the root Surface stack. |
+
+Inherited props:
+
+No inherited props. `TopbarLayoutProps` is declared directly by ZORA.
+
+</details>
+
+### `SettingsLayout`
+
+Reusable settings shell with page header, sidebar, and content region.
+
+```tsx
+<SettingsLayout actions={<Button>Save</Button>} sidebar={nav} title="Settings">
+  {content}
+</SettingsLayout>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Optional page title; when absent, no page header is rendered. |
+| `description` | `React.ReactNode` | - | Header description. |
+| `sidebar` | `React.ReactNode` | - | Required settings navigation or context sidebar. |
+| `children` | `React.ReactNode` | - | Settings content. |
+| `actions` | `React.ReactNode` | - | Header action area. |
+| `testID` | `string` | - | Forwarded to `Page`. |
+
+Inherited props:
+
+No inherited props. `SettingsLayoutProps` is declared directly by ZORA.
+
+</details>
+
+### `AuthLayout`
+
+Centered authentication-style shell for sign-in, onboarding, and recovery
+screens.
+
+```tsx
+<AuthLayout description="Sign in to continue" title="Welcome back">
+  {form}
+</AuthLayout>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Card title. |
+| `description` | `React.ReactNode` | - | Card description. |
+| `eyebrow` | `React.ReactNode` | - | Card eyebrow. |
+| `children` | `React.ReactNode` | - | Form or auth content. |
+| `footer` | `React.ReactNode` | - | Card footer. |
+| `testID` | `string` | - | Forwarded to the root Surface center. |
+
+Inherited props:
+
+No inherited props. `AuthLayoutProps` is declared directly by ZORA.
+
+</details>
+
+## Patterns
+
+### `FormField`
+
+Form field wrapper with rich label composition, description, helper text, and
+Surface field state.
+
+```tsx
+<FormField helperText="We only use this for sign-in." label="Email">
+  <Input keyboardType="email-address" />
+</FormField>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `label` | `React.ReactNode` | - | Required field label. |
+| `description` | `React.ReactNode` | - | Rendered under the label. |
+| `helperText` | `React.ReactNode` | - | Passed to Surface `Field` as `helperText`. |
+
+Inherited props:
+
+Picks these Surface `FieldProps`: `children`, `disabled`, `errorText`,
+`invalid`, `readOnly`, `required`, and `testID`.
+
+</details>
+
+### `Notice`
+
+Semantic notice surface with badge eyebrow, optional body, and actions.
+
+```tsx
+<Notice actions={<Button>Review</Button>} title="Publish pipeline ready" tone="success" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Required notice title. |
+| `description` | `React.ReactNode` | - | Notice description. |
+| `children` | `React.ReactNode` | - | Optional body content. |
+| `actions` | `React.ReactNode` | - | Optional action area. |
+| `tone` | `ZoraTone` | `'primary'` | Drives the badge eyebrow tone. |
+| `testID` | `string` | - | Forwarded to the underlying `Card`. |
+
+Inherited props:
+
+No inherited props. `NoticeProps` is declared directly by ZORA.
+
+</details>
+
+### `Panel`
+
+Named composition surface that currently forwards to `Card`.
+
+```tsx
+<Panel description="Release details" title="Release Candidate">
+  {content}
+</Panel>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Header title. |
+| `description` | `React.ReactNode` | - | Header description. |
+| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
+| `actions` | `React.ReactNode` | - | Header action area. |
+| `footer` | `React.ReactNode` | - | Footer area below body content. |
+| `children` | `React.ReactNode` | - | Panel body. |
+| `tone` | `ZoraCardTone` | `'default'` | Same tone behavior as `Card`. |
+| `compact` | `boolean` | `false` | Same compact behavior as `Card`. |
+| `testID` | `string` | - | Forwarded through `Card`. |
+
+Inherited props:
+
+No inherited props. `PanelProps` is declared directly by ZORA.
+
+</details>
+
+### `SectionHeader`
+
+Reusable section heading with optional eyebrow, description, and actions.
+
+```tsx
+<SectionHeader actions={<Badge>Live</Badge>} title="Activity" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Required heading title. |
+| `description` | `React.ReactNode` | - | Supporting copy. |
+| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
+| `actions` | `React.ReactNode` | - | Action area opposite the heading. |
+| `testID` | `string` | - | Forwarded to the root Surface stack. |
+
+Inherited props:
+
+No inherited props. `SectionHeaderProps` is declared directly by ZORA.
+
+</details>
+
+### `SettingsRow`
+
+Compact settings row with optional metadata, control, and press handling.
+
+```tsx
+<SettingsRow control={<Switch value={enabled} />} title="Notifications" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Required row title. |
+| `description` | `React.ReactNode` | - | Row description. |
+| `meta` | `React.ReactNode` | - | Small muted metadata below the row content. |
+| `control` | `React.ReactNode` | - | Trailing control or action content. |
+| `onPress` | `() => void` | - | Makes the underlying card pressable. |
+| `disabled` | `boolean` | `false` | Forwarded to the underlying card. |
+| `testID` | `string` | - | Forwarded to the underlying card. |
+
+Inherited props:
+
+No inherited props. `SettingsRowProps` is declared directly by ZORA.
+
+</details>
+
+### `EmptyState`
+
+No-data surface with title, optional supporting text, actions, and footer.
+
+```tsx
+<EmptyState
+  primaryAction={{ label: 'Create project', onPress: createProject }}
+  title="Nothing here yet"
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Required empty-state title. |
+| `description` | `React.ReactNode` | - | Supporting copy. |
+| `eyebrow` | `React.ReactNode` | - | Card eyebrow. |
+| `primaryAction` | `EmptyStateAction` | - | Primary action button. |
+| `secondaryAction` | `EmptyStateAction` | - | Secondary action button; defaults to `tone="neutral"` and `emphasis="soft"` when omitted on the action. |
+| `footer` | `React.ReactNode` | - | Footer content below actions. |
+| `testID` | `string` | - | Forwarded to the underlying card. |
+
+`EmptyStateAction`:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `label` | `React.ReactNode` | - | Button label. |
+| `onPress` | `() => void` | - | Button handler. |
+| `tone` | `ZoraTone` | - | Button tone. |
+| `emphasis` | `ZoraEmphasis` | - | Button emphasis. |
+
+Inherited props:
+
+No inherited props. `EmptyStateProps` and `EmptyStateAction` are declared
+directly by ZORA.
+
+</details>
+
+### `ConfirmDialog`
+
+Narrow confirmation modal for destructive or high-signal decisions.
+
+```tsx
+<ConfirmDialog
+  confirmLabel="Archive"
+  confirmTone="danger"
+  onCancel={close}
+  onConfirm={archive}
+  title="Archive project?"
+  visible={visible}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `visible` | `boolean` | - | Required modal visibility. |
+| `title` | `React.ReactNode` | - | Required dialog title. |
+| `description` | `React.ReactNode` | - | Dialog description. |
+| `children` | `React.ReactNode` | - | Dialog body. |
+| `confirmLabel` | `React.ReactNode` | `'Confirm'` | Confirm button label. |
+| `cancelLabel` | `React.ReactNode` | `'Cancel'` | Cancel button label. |
+| `confirmTone` | `ZoraTone` | `'danger'` | Confirm button tone. |
+| `confirmEmphasis` | `ZoraEmphasis` | `'solid'` | Confirm button emphasis. |
+| `busy` | `boolean` | `false` | Passed to the confirm button as `loading`. |
+| `closeOnBackdrop` | `boolean` | `true` | Passed to the underlying modal. |
+| `onConfirm` | `() => void` | - | Confirm button handler. |
+| `onCancel` | `() => void` | - | Cancel button and modal dismiss handler. |
+| `testID` | `string` | - | Forwarded to the underlying modal. |
+
+Confirm dialogs always use `Modal` with `width="narrow"`.
+
+Inherited props:
+
+No inherited props. `ConfirmDialogProps` is declared directly by ZORA.
+
+</details>
+
+## Theme
+
+### `ZoraProvider`
+
+Theme provider that creates the ZORA theme and passes it to Surface
+`ThemeProvider`.
+
+```tsx
+<ZoraProvider initialMode="dark">
+  <App />
+</ZoraProvider>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Required app content. |
+| `initialConfig` | `ZoraThemeOverride` | - | Partial Surface `ThemeConfig` override merged into `zoraTheme`. |
+| `initialMode` | `'light' \| 'dark'` | `'light'` | Initial theme mode passed to Surface. |
+
+Inherited props:
+
+No inherited props. `ZoraProviderProps` is declared directly by ZORA.
+
+</details>
+
+### `createZoraTheme`
+
+Creates a Surface `ThemeConfig` by deep-merging overrides into `zoraTheme`.
+
+```tsx
+const theme = createZoraTheme({
+  light: {
+    primaryColor: '#1d4ed8',
+  },
+});
+```
+
+<details>
+<summary>API</summary>
+
+```ts
+type ZoraThemeOverride = Partial<ThemeConfig>;
+
+function createZoraTheme(overrides?: ZoraThemeOverride): ThemeConfig;
+```
+
+The returned theme keeps `id: 'zora'` unless explicitly changed by the merge
+input.
+
+</details>
+
+### `zoraTheme`
+
+Default ZORA Surface theme preset.
+
+<details>
+<summary>Value</summary>
+
+```ts
+const zoraTheme: ThemeConfig = {
+  id: 'zora',
+  name: 'ZORA',
+  light: {
+    primaryColor: '#0f766e',
+    harmony: 'analogous',
+    systemTone: 'jewel',
+  },
+  dark: {
+    primaryColor: '#2dd4bf',
+    harmony: 'analogous',
+    systemTone: 'jewel',
+  },
+};
+```
+
+</details>
+
+## Public Exports
+
+```ts
+export {
+  AuthLayout,
+  Badge,
+  Button,
+  Card,
+  ConfirmDialog,
+  createZoraTheme,
+  Drawer,
+  EmptyState,
+  FormField,
+  Input,
+  Modal,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Panel,
+  SectionHeader,
+  SettingsLayout,
+  SettingsRow,
+  SidebarLayout,
+  Textarea,
+  TopbarLayout,
+  ZoraProvider,
+  zoraTheme,
+};
+
+export type {
+  AuthLayoutProps,
+  BadgeProps,
+  ButtonProps,
+  CardProps,
+  ConfirmDialogProps,
+  DrawerProps,
+  EmptyStateAction,
+  EmptyStateProps,
+  FormFieldProps,
+  InputProps,
+  ModalProps,
+  NoticeProps,
+  PageHeaderProps,
+  PageProps,
+  PageSectionProps,
+  PanelProps,
+  SectionHeaderProps,
+  SettingsLayoutProps,
+  SettingsRowProps,
+  SidebarLayoutProps,
+  TextareaProps,
+  TopbarLayoutProps,
+  ZoraProviderProps,
+  ZoraThemeOverride,
+};
+```
+
+## Example App
+
+A complete Expo showcase lives in `examples/expo-showcase`. It renders every
+current ZORA component, pattern, layout, and theme entry point on one screen.
+
+Run it locally:
+
+```bash
+cd examples/expo-showcase
+npm install
+npm run web
+```
+
+The example imports `@ankhorage/zora` and demonstrates the package API in
+`examples/expo-showcase/App.tsx`.
+
+## Changelog
+
+Version history is maintained in [CHANGELOG.md](./CHANGELOG.md).
+
+## License
+
+MIT

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.4
+
+### Patch Changes
+
+- Expand the README into a full public API catalogue with collapsible property details, documented inherited prop surfaces, and Expo showcase usage instructions.
+
 ## 0.0.3
 
 ### Patch Changes
