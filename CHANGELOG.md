@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0
+
+### Minor Changes
+
+- Add Studio-unblocking reusable UI elements including IconButton, Tabs, Toolbar, Select, disclosure sections, responsive panels, inspector fields, tree views, tile grids, and collection editor shells.
+
 ## 0.0.4
 
 ### Patch Changes
