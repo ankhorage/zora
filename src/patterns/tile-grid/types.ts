@@ -11,6 +11,7 @@ export interface TileGridProps {
 export interface PaletteItemProps {
   title: ReactNode;
   description?: ReactNode;
+  color?: string;
   icon?: ButtonIconSpec;
   badge?: ReactNode;
   selected?: boolean;

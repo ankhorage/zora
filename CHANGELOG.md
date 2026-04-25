@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+### Patch Changes
+
+- fix: avoid nested button structure in TreeView
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,8 +1,8 @@
 import { Box, Stack } from '@ankhorage/surface';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
+import { Pressable, Text } from 'react-native';
 
-import { IconButton } from '../../components/icon-button';
-import { SettingsRow } from '../settings-row';
 import type { TreeItemNode, TreeItemRenderProps } from './types';
 
 interface TreeItemProps<TId extends string = string> {
@@ -40,26 +40,41 @@ export function TreeItem<TId extends string = string>({
     }
 
     return (
-      <SettingsRow
-        title={node.label}
-        control={
-          <Stack direction="row" gap="xs" align="center">
-            {node.actions}
-            {hasChildren ? (
-              <IconButton
-                icon={{ name: isExpanded ? 'chevron-down-outline' : 'chevron-forward-outline' }}
-                label={isExpanded ? 'Collapse' : 'Expand'}
-                onPress={() => onToggleExpand(node.id)}
-                size="s"
-                emphasis="ghost"
-              />
-            ) : null}
-          </Stack>
-        }
-        meta={node.meta}
+      <Pressable
         onPress={() => onSelect?.(node.id)}
-        disabled={node.disabled}
-      />
+        style={({ pressed }) => ({
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: 8,
+          borderRadius: 8,
+          backgroundColor: isSelected
+            ? 'rgba(0,0,0,0.05)'
+            : pressed
+              ? 'rgba(0,0,0,0.02)'
+              : 'transparent',
+        })}
+      >
+        <Text style={{ fontWeight: isSelected ? '600' : '400', color: '#1e293b' }}>
+          {node.label}
+        </Text>
+        <Stack direction="row" gap="xs" align="center">
+          {node.actions}
+          {hasChildren ? (
+            <Pressable
+              onPress={() => onToggleExpand(node.id)}
+              style={{ padding: 4 }}
+              accessibilityLabel={isExpanded ? 'Collapse' : 'Expand'}
+            >
+              <Ionicons
+                name={isExpanded ? 'chevron-down' : 'chevron-forward'}
+                size={16}
+                color="#64748b"
+              />
+            </Pressable>
+          ) : null}
+        </Stack>
+      </Pressable>
     );
   };
 

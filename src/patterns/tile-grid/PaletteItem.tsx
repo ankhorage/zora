@@ -7,6 +7,7 @@ import type { PaletteItemProps } from './types';
 export function PaletteItem({
   title,
   description,
+  color,
   icon,
   badge,
   selected,
@@ -33,6 +34,17 @@ export function PaletteItem({
       }
     >
       <Box p="xs" style={{ alignItems: 'center' }}>
+        {color ? (
+          <Box
+            mb="xs"
+            style={{
+              width: 24,
+              height: 24,
+              borderRadius: 4,
+              backgroundColor: color,
+            }}
+          />
+        ) : null}
         {icon ? <Box pb="s">{/* Icon spec here */}</Box> : null}
         <Heading level={5} align="center">
           {title}

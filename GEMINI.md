@@ -325,6 +325,18 @@ Rules:
 * Keep APIs minimal and predictable.
 * Keep drag-and-drop behavior out of ZORA for now.
 
+## Examples Requirement
+
+When adding a public component or pattern, also add usage to the example app.
+
+Examples must:
+
+* show the default state
+* show at least one interactive state if applicable
+* avoid consumer/domain-specific imports
+* use realistic copy
+* live in the examples app, not in package source
+
 ## Final Principle
 
 ZORA is the **single source of UI truth**.

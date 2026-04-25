@@ -10,8 +10,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "^0.0.2",
+    "@ankhorage/zora": "^0.1.0",
     "@expo/vector-icons": "^15.0.3",
+    "@react-native-picker/picker": "^2.11.0",
     "expo": "~54.0.33",
     "expo-font": "~14.0.11",
     "expo-status-bar": "~3.0.9",
