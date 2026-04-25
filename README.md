@@ -95,6 +95,34 @@ Surface, and `testID`.
 
 </details>
 
+### `IconButton`
+
+Compact icon-only button for toolbars, rows, and actions.
+
+```tsx
+<IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `icon` | `ButtonIconSpec` | - | Required icon to render. |
+| `label` | `string` | - | Required for `accessibilityLabel`. |
+| `tone` | `ZoraTone` | `'neutral'` | Button tone. |
+| `emphasis` | `ZoraEmphasis` | `'ghost'` | Button emphasis. |
+| `size` | `ZoraControlSize` | `'m'` | Button size. |
+
+Inherited props:
+
+Inherits behavior from Surface `IconButton` including `disabled`, `loading`,
+`onPress`, and `testID`.
+
+</details>
+
 ### `Badge`
 
 Small status label with ZORA tone, emphasis, and size defaults.
@@ -153,8 +181,8 @@ ZORA props:
 
 Inherited props:
 
-Inherits all Surface `CardProps` except `children`, `p`, `radius`, `style`, and
-`variant`. ZORA owns spacing, radius, and variant selection for this wrapper.
+Inherits all Surface `CardProps` except `children`, `p`, `radius`, `variant`, and
+`style`. ZORA owns spacing, radius, and variant selection for this wrapper.
 
 </details>
 
@@ -219,6 +247,100 @@ Inherits all Surface `TextareaProps` except `leadingAccessory`, `size`, and
 except `multiline`, so React Native text input props are available through
 Surface with the same Surface exclusions and re-exposed values listed for
 `Input`.
+
+</details>
+
+### `Tabs`
+
+Generic controlled tabs for navigation and filtering.
+
+```tsx
+<Tabs
+  items={[
+    { value: 'all', label: 'All' },
+    { value: 'active', label: 'Active' },
+  ]}
+  onValueChange={setValue}
+  value={value}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `value` | `string` | - | Active tab value. |
+| `items` | `TabItem[]` | - | Array of tab objects. |
+| `onValueChange` | `(value: string) => void` | - | Change handler. |
+| `variant` | `'underline' \| 'pill' \| 'segmented'` | `'underline'` | Visual style. |
+| `size` | `ZoraControlSize` | `'m'` | Control size. |
+
+</details>
+
+### `Toolbar`
+
+Horizontal shell for actions and tools.
+
+```tsx
+<Toolbar>
+  <ToolbarAction icon={{ name: 'add-outline' }} label="Add" />
+  <ToolbarAction icon={{ name: 'search-outline' }} label="Search" />
+</Toolbar>
+```
+
+<details>
+<summary>Props</summary>
+
+`Toolbar` props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Toolbar content. |
+| `position` | `'top' \| 'bottom' \| 'inline'` | `'inline'` | Layout position. |
+| `floating` | `boolean` | `false` | Whether the toolbar floats with a shadow. |
+| `compact` | `boolean` | `true` | Tighter padding. |
+
+`ToolbarAction` props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `icon` | `ButtonIconSpec` | - | Required icon. |
+| `label` | `string` | - | Accessibility label. |
+| `active` | `boolean` | `false` | Highlighted state. |
+| `onPress` | `() => void` | - | Click handler. |
+
+</details>
+
+### `Select`
+
+Standard dropdown selector wrapping `@react-native-picker/picker`.
+
+```tsx
+<Select
+  onValueChange={setValue}
+  options={[
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+  ]}
+  value={value}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `value` | `string` | - | Selected value. |
+| `options` | `SelectOption[]` | - | Array of option objects. |
+| `onValueChange` | `(value: string) => void` | - | Change handler. |
+| `invalid` | `boolean` | `false` | Error state styling. |
+| `disabled` | `boolean` | `false` | Interaction state. |
 
 </details>
 
@@ -725,6 +847,189 @@ No inherited props. `ConfirmDialogProps` is declared directly by ZORA.
 
 </details>
 
+### `DisclosureSection`
+
+Collapsible section for property groups and settings.
+
+```tsx
+<DisclosureSection title="Advanced Settings">
+  {content}
+</DisclosureSection>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Section title. |
+| `description` | `React.ReactNode` | - | Subheading text. |
+| `defaultOpen` | `boolean` | `true` | Initial state. |
+| `open` | `boolean` | - | Controlled state. |
+| `onOpenChange` | `(open: boolean) => void` | - | Toggle handler. |
+| `actions` | `React.ReactNode` | - | Extra header actions. |
+
+</details>
+
+### `ResponsivePanel`
+
+Side panel that adapts to screen size (inline or overlay).
+
+```tsx
+<ResponsivePanel onOpenChange={setOpen} open={open} title="Inspector">
+  {content}
+</ResponsivePanel>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `open` | `boolean` | - | Required visibility. |
+| `onOpenChange` | `(open: boolean) => void` | - | Required change handler. |
+| `side` | `'left' \| 'right'` | `'right'` | Layout side. |
+| `desktopMode` | `'inline' \| 'floating'` | `'inline'` | Desktop rendering style. |
+| `mobileMode` | `'drawer' \| 'modal'` | `'drawer'` | Mobile rendering style. |
+
+</details>
+
+### `InspectorField`
+
+Dense form field optimized for property panels.
+
+```tsx
+<InspectorField control={<IconButton icon={{ name: 'refresh-outline' }} label="Reset" />} label="Opacity">
+  <Input value="100%" />
+</InspectorField>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `label` | `React.ReactNode` | - | Field label. |
+| `control` | `React.ReactNode` | - | Trailing control slot. |
+| `children` | `React.ReactNode` | - | Main editor content. |
+
+Inherits all `FormField` props.
+
+</details>
+
+### `SwitchField`
+
+Labeled boolean toggle row.
+
+```tsx
+<SwitchField label="Enable Notifications" onValueChange={setVal} value={val} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `label` | `React.ReactNode` | - | Required label. |
+| `description` | `React.ReactNode` | - | Subheading text. |
+| `value` | `boolean` | - | Required state. |
+| `onValueChange` | `(value: boolean) => void` | - | Required handler. |
+
+</details>
+
+### `TreeView`
+
+Hierarchical list for navigation and layers.
+
+```tsx
+<TreeView
+  nodes={[
+    { id: '1', label: 'Folder', children: [{ id: '2', label: 'File' }] }
+  ]}
+  onSelect={id => console.log(id)}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `nodes` | `TreeItemNode[]` | - | Required tree data. |
+| `selectedId` | `string` | - | Active node. |
+| `expandedIds` | `string[]` | - | Controlled expansion. |
+| `onSelect` | `(id: string) => void` | - | Click handler. |
+
+</details>
+
+### `TileGrid` / `PaletteItem`
+
+Grid-based selection for palettes and toolboxes.
+
+```tsx
+<TileGrid>
+  <PaletteItem title="Red" onPress={() => setCol('red')} />
+  <PaletteItem title="Blue" onPress={() => setCol('blue')} />
+</TileGrid>
+```
+
+<details>
+<summary>Props</summary>
+
+`TileGrid` props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `columns` | `number \| 'responsive'` | `'responsive'` | Grid layout. |
+
+`PaletteItem` props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `title` | `React.ReactNode` | - | Item title. |
+| `selected` | `boolean` | `false` | Highlighted state. |
+| `onPress` | `() => void` | - | Click handler. |
+
+</details>
+
+### `CollectionEditor`
+
+Generic visual shell for editing ordered collections.
+
+```tsx
+<CollectionEditor
+  items={items}
+  renderItem={({ item }) => <Text>{item.name}</Text>}
+  onAdd={() => add()}
+  onRemove={index => remove(index)}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `items` | `readonly T[]` | - | Required collection. |
+| `renderItem` | `(props) => ReactNode` | - | Required item renderer. |
+| `onAdd` | `() => void` | - | Add handler. |
+| `onRemove` | `(index: number) => void` | - | Remove handler. |
+| `onMove` | `(from, to) => void` | - | Reorder handler. |
+
+</details>
+
 ## Theme
 
 ### `ZoraProvider`
@@ -795,12 +1100,12 @@ const zoraTheme: ThemeConfig = {
   light: {
     primaryColor: '#0f766e',
     harmony: 'analogous',
-    systemTone: 'jewel',
+                systemTone: 'jewel',
   },
   dark: {
     primaryColor: '#2dd4bf',
     harmony: 'analogous',
-    systemTone: 'jewel',
+                systemTone: 'jewel',
   },
 };
 ```
@@ -815,24 +1120,37 @@ export {
   Badge,
   Button,
   Card,
+  CollectionEditor,
   ConfirmDialog,
   createZoraTheme,
+  DisclosureSection,
   Drawer,
   EmptyState,
   FormField,
+  IconButton,
   Input,
+  InspectorField,
   Modal,
   Notice,
   Page,
   PageHeader,
   PageSection,
+  PaletteItem,
   Panel,
+  ResponsivePanel,
   SectionHeader,
+  Select,
   SettingsLayout,
   SettingsRow,
   SidebarLayout,
+  SwitchField,
+  Tabs,
   Textarea,
+  TileGrid,
+  Toolbar,
+  ToolbarAction,
   TopbarLayout,
+  TreeView,
   ZoraProvider,
   zoraTheme,
 };
@@ -842,24 +1160,37 @@ export type {
   BadgeProps,
   ButtonProps,
   CardProps,
+  CollectionEditorProps,
   ConfirmDialogProps,
+  DisclosureSectionProps,
   DrawerProps,
   EmptyStateAction,
   EmptyStateProps,
   FormFieldProps,
+  IconButtonProps,
   InputProps,
+  InspectorFieldProps,
   ModalProps,
   NoticeProps,
   PageHeaderProps,
   PageProps,
   PageSectionProps,
+  PaletteItemProps,
   PanelProps,
+  ResponsivePanelProps,
   SectionHeaderProps,
+  SelectProps,
   SettingsLayoutProps,
   SettingsRowProps,
   SidebarLayoutProps,
+  SwitchFieldProps,
+  TabsProps,
   TextareaProps,
+  TileGridProps,
+  ToolbarProps,
+  ToolbarActionProps,
   TopbarLayoutProps,
+  TreeViewProps,
   ZoraProviderProps,
   ZoraThemeOverride,
 };

@@ -3,10 +3,7 @@ import type React from 'react';
 
 import type { ZoraCardTone } from '../../internal/recipes';
 
-export interface CardProps extends Omit<
-  SurfaceCardProps,
-  'children' | 'p' | 'radius' | 'style' | 'variant'
-> {
+export interface CardProps extends Omit<SurfaceCardProps, 'children' | 'p' | 'radius' | 'variant'> {
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
