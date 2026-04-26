@@ -163,7 +163,7 @@ export function PatternsPage() {
             />
           </View>
 
-          <CollectionEditor
+          <CollectionEditor<LayoutSection>
             items={items}
             title="Layout sections"
             description="A compact editing pattern for ordered, user-managed content."
