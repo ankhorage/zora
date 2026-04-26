@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- 14ee18b: fix(ui): prevent nested button elements in SettingsRow and Card
+
 ## 0.1.2
 
 ### Patch Changes
