@@ -3,7 +3,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 
 interface HomePageProps {
-  onNavigate: (tab: string) => void;
+  onNavigate: React.Dispatch<React.SetStateAction<'home' | 'components' | 'patterns'>>;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {

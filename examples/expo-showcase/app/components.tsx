@@ -1,3 +1,4 @@
+import { Stack } from '@ankhorage/surface';
 import {
   Badge,
   Button,
@@ -17,7 +18,7 @@ import {
   ToolbarAction,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 export function ComponentsPage() {
   const [tab, setTab] = React.useState('overview');
@@ -26,7 +27,7 @@ export function ComponentsPage() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <Page
         header={
           <PageHeader
@@ -41,7 +42,7 @@ export function ComponentsPage() {
             title="Emphasis"
             description="Use emphasis to communicate action strength."
           />
-          <View style={styles.row}>
+          <Stack direction="row" gap="s" wrap="wrap">
             <Button leadingIcon={{ name: 'add-outline' }}>Primary</Button>
             <Button emphasis="soft" tone="neutral">
               Soft neutral
@@ -50,13 +51,13 @@ export function ComponentsPage() {
               Outline danger
             </Button>
             <Button disabled>Disabled</Button>
-          </View>
+          </Stack>
 
           <SectionHeader
             title="Sizes and icons"
             description="Buttons can be compact or icon-enhanced."
           />
-          <View style={styles.row}>
+          <Stack direction="row" gap="s" wrap="wrap">
             <Button size="s" leadingIcon={{ name: 'flash-outline' }}>
               Small
             </Button>
@@ -64,7 +65,7 @@ export function ComponentsPage() {
             <Button emphasis="soft" tone="primary" leadingIcon={{ name: 'sparkles-outline' }}>
               Suggested
             </Button>
-          </View>
+          </Stack>
         </PageSection>
 
         <PageSection title="Icon buttons">
@@ -72,7 +73,7 @@ export function ComponentsPage() {
             title="Standalone actions"
             description="Use IconButton for compact toolbar, card, and row actions."
           />
-          <View style={styles.row}>
+          <Stack direction="row" gap="s" wrap="wrap">
             <IconButton icon={{ name: 'settings-outline' }} label="Settings" />
             <IconButton icon={{ name: 'share-outline' }} label="Share" emphasis="soft" />
             <IconButton
@@ -82,7 +83,7 @@ export function ComponentsPage() {
               tone="danger"
             />
             <IconButton icon={{ name: 'lock-closed-outline' }} label="Locked" disabled />
-          </View>
+          </Stack>
         </PageSection>
 
         <PageSection title="Badges">
@@ -90,7 +91,7 @@ export function ComponentsPage() {
             title="Status labels"
             description="Badges work well for state, category, and compact metadata."
           />
-          <View style={styles.row}>
+          <Stack direction="row" gap="s" wrap="wrap">
             <Badge tone="primary">Primary</Badge>
             <Badge tone="success">Success</Badge>
             <Badge tone="warning" emphasis="soft">
@@ -100,7 +101,7 @@ export function ComponentsPage() {
               Danger outline
             </Badge>
             <Badge tone="neutral">Neutral</Badge>
-          </View>
+          </Stack>
         </PageSection>
 
         <PageSection title="Tabs">
@@ -150,7 +151,7 @@ export function ComponentsPage() {
             <ToolbarAction icon={{ name: 'play-outline' }} label="Run" />
             <ToolbarAction icon={{ name: 'pause-outline' }} label="Pause" />
             <ToolbarAction icon={{ name: 'stop-outline' }} label="Stop" />
-            <View style={styles.spacer} />
+            <View style={{ flex: 1 }} />
             <ToolbarAction icon={{ name: 'download-outline' }} label="Export" />
           </Toolbar>
 
@@ -191,12 +192,12 @@ export function ComponentsPage() {
             description="A neutral card with descriptive content and a status footer."
             footer={<Badge tone="success">Active</Badge>}
           >
-            <View style={styles.row}>
+            <Stack direction="row" gap="s" wrap="wrap">
               <Badge tone="primary">Catalog</Badge>
               <Badge tone="neutral" emphasis="soft">
                 Stable
               </Badge>
-            </View>
+            </Stack>
           </Card>
 
           <Card
@@ -221,12 +222,12 @@ export function ComponentsPage() {
             title="Modal and drawer"
             description="Use overlays for focused decisions and contextual panels."
           />
-          <View style={styles.row}>
+          <Stack direction="row" gap="s" wrap="wrap">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
             <Button emphasis="soft" tone="neutral" onPress={() => setDrawerOpen(true)}>
               Open drawer
             </Button>
-          </View>
+          </Stack>
         </PageSection>
       </Page>
 
@@ -260,18 +261,3 @@ export function ComponentsPage() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 8,
-  },
-  spacer: {
-    flex: 1,
-  },
-});

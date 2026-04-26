@@ -20,6 +20,8 @@ export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
 export type { ToolbarActionProps, ToolbarProps } from './components/toolbar';
 export { Toolbar, ToolbarAction } from './components/toolbar';
+export type { AppShellProps } from './layout/app-shell';
+export { AppShell } from './layout/app-shell';
 export type { AuthLayoutProps } from './layout/auth-layout';
 export { AuthLayout } from './layout/auth-layout';
 export type { PageProps } from './layout/page';

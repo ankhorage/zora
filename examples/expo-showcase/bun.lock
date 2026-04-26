@@ -5,7 +5,7 @@
     "": {
       "name": "zora-expo-showcase",
       "dependencies": {
-        "@ankhorage/zora": "^0.1.3",
+        "@ankhorage/zora": "^0.1.4",
         "@expo/vector-icons": "^15.0.3",
         "@react-native-picker/picker": "2.11.1",
         "expo": "~54.0.33",
@@ -30,7 +30,7 @@
 
     "@ankhorage/surface": ["@ankhorage/surface@0.1.4", "", { "dependencies": { "@ankhorage/contracts": "^0.0.1", "culori": "^4.0.2" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": ">=14.0.4", "react": ">=18.2.0", "react-native": ">=0.72.0" } }, "sha512-/apqv2xhM47Clttw+ZJJO2AIRSakE+rutw2iADkK92+UZqh6vxEcrofoSAvJREXYLUoCTTCZERYG85czLhfFuA=="],
 
-    "@ankhorage/zora": ["@ankhorage/zora@0.1.3", "", { "dependencies": { "@ankhorage/surface": "^0.1.4" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "@react-native-picker/picker": ">=2.0.0", "expo-font": ">=14.0.4", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "@react-native-picker/picker", "expo-font"] }, "sha512-Ymgr8FX5dJ2Ay134K8yxkU8Q1TjwlOZzdtUg/qvJpv2IsRpdExiRsuKXzdOAfNoSK+iEiFpqW66lEEg8vtOqRQ=="],
+    "@ankhorage/zora": ["@ankhorage/zora@0.1.4", "", { "dependencies": { "@ankhorage/surface": "^0.1.4" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "@react-native-picker/picker": ">=2.0.0", "expo-font": ">=14.0.4", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "@react-native-picker/picker", "expo-font"] }, "sha512-j7w4wlctJkVleTC5zrL04j4aa3AiXBKEzbPoHJebgbFFvPd+04qW7tGn3r6MP1+oUjb3USiQxUjDM3LVsF8MIQ=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.10.4", "", { "dependencies": { "@babel/highlight": "^7.10.4" } }, ""],
 

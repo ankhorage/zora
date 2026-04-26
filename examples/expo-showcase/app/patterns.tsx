@@ -1,5 +1,6 @@
 import {
   Badge,
+  Card,
   CollectionEditor,
   DisclosureSection,
   EmptyState,
@@ -17,7 +18,7 @@ import {
   TreeView,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 interface LayoutSection {
   id: string;
@@ -68,7 +69,7 @@ export function PatternsPage() {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <Page
         header={
           <PageHeader
@@ -120,20 +121,17 @@ export function PatternsPage() {
             title="Advanced diagnostics"
             description="Developer-oriented settings for debugging rendering and logs."
           >
-            <View style={styles.stack}>
-              <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
-              <SwitchField
-                label="Verbose logging"
-                value={verboseLogging}
-                onValueChange={setVerboseLogging}
-              />
-            </View>
+            <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
+            <SwitchField
+              label="Verbose logging"
+              value={verboseLogging}
+              onValueChange={setVerboseLogging}
+            />
           </DisclosureSection>
         </PageSection>
 
         <PageSection title="Scenario: Editor sidebar">
-          <View style={styles.panel}>
-            <Text style={styles.label}>Project tree</Text>
+          <Card title="Project tree" tone="subtle">
             <TreeView
               nodes={[
                 {
@@ -161,7 +159,7 @@ export function PatternsPage() {
                 },
               ]}
             />
-          </View>
+          </Card>
 
           <CollectionEditor<LayoutSection>
             items={items}
@@ -173,10 +171,12 @@ export function PatternsPage() {
             onRemove={removeItem}
             onMove={moveItem}
             renderItem={({ item, index }) => (
-              <View style={styles.collectionItem}>
-                <Text style={styles.collectionTitle}>{item.name}</Text>
-                <Text style={styles.collectionMeta}>Section {index + 1}</Text>
-              </View>
+              <Card
+                compact
+                tone="subtle"
+                title={item.name}
+                footer={<Badge tone="neutral">Section {index + 1}</Badge>}
+              />
             )}
           />
         </PageSection>
@@ -229,38 +229,3 @@ export function PatternsPage() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  stack: {
-    gap: 12,
-  },
-  label: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#64748b',
-    textTransform: 'uppercase',
-    marginBottom: 8,
-  },
-  panel: {
-    padding: 12,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#e2e8f0',
-  },
-  collectionItem: {
-    padding: 8,
-  },
-  collectionTitle: {
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  collectionMeta: {
-    marginTop: 2,
-    fontSize: 12,
-    color: '#64748b',
-  },
-});

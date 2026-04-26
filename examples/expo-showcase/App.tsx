@@ -1,4 +1,4 @@
-import { createZoraTheme, Tabs, Toolbar, ZoraProvider } from '@ankhorage/zora';
+import { createZoraTheme, Tabs, Toolbar, ToolbarAction, ZoraProvider } from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -8,8 +8,18 @@ import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
 
+type ShowcaseTab = 'home' | 'components' | 'patterns';
+type ColorMode = 'light' | 'dark';
+
 function AppWrapper() {
-  const [activeTab, setActiveTab] = React.useState('home');
+  const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');
+  const [colorMode, setColorMode] = React.useState<ColorMode>('light');
+
+  const isDark = colorMode === 'dark';
+
+  const toggleColorMode = () => {
+    setColorMode((currentMode) => (currentMode === 'dark' ? 'light' : 'dark'));
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -25,33 +35,9 @@ function AppWrapper() {
   };
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar style="dark" />
-        <View style={styles.navHeader}>
-          <Toolbar position="inline" compact={false}>
-            <Tabs
-              variant="segmented"
-              size="s"
-              value={activeTab}
-              onValueChange={setActiveTab}
-              items={[
-                { value: 'home', label: 'Home' },
-                { value: 'components', label: 'Components' },
-                { value: 'patterns', label: 'Patterns' },
-              ]}
-            />
-          </Toolbar>
-        </View>
-        <View style={styles.content}>{renderContent()}</View>
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-}
-
-export default function App() {
-  return (
     <ZoraProvider
+      key={colorMode}
+      initialMode={colorMode}
       initialConfig={createZoraTheme({
         light: {
           primaryColor: '#0b6e99',
@@ -65,21 +51,46 @@ export default function App() {
         },
       })}
     >
-      <AppWrapper />
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.safeArea}>
+          <StatusBar style={isDark ? 'light' : 'dark'} />
+          <Toolbar position="inline" compact={false}>
+            <Tabs
+              variant="segmented"
+              size="s"
+              value={activeTab}
+              onValueChange={setActiveTab}
+              items={[
+                { value: 'home', label: 'Home' },
+                { value: 'components', label: 'Components' },
+                { value: 'patterns', label: 'Patterns' },
+              ]}
+            />
+            <View style={styles.spacer} />
+            <ToolbarAction
+              active={isDark}
+              icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+              label={isDark ? 'Use light mode' : 'Use dark mode'}
+              onPress={toggleColorMode}
+            />
+          </Toolbar>
+          <View style={styles.content}>{renderContent()}</View>
+        </SafeAreaView>
+      </SafeAreaProvider>
     </ZoraProvider>
   );
+}
+
+export default function App() {
+  return <AppWrapper />;
 }
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
   },
-  navHeader: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#e2e8f0',
-    backgroundColor: '#fff',
-    zIndex: 10,
+  spacer: {
+    flex: 1,
   },
   content: {
     flex: 1,
