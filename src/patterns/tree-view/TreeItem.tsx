@@ -57,7 +57,6 @@ export function TreeItem<TId extends string = string>({
           </Stack>
         }
         meta={node.meta}
-        onPress={() => onSelect?.(node.id)}
         disabled={node.disabled}
       />
     );

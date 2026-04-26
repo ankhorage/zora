@@ -13,13 +13,17 @@ export function SettingsRow({
   disabled = false,
   testID,
 }: SettingsRowProps) {
+  // Prevent nested interactive elements:
+  // If a control is present (likely contains buttons), the row itself must not be clickable
+  const isInteractive = Boolean(onPress) && !control;
+
   return (
     <Card
       compact
       actions={control}
       description={description}
       disabled={disabled}
-      onPress={onPress}
+      onPress={isInteractive ? onPress : undefined}
       testID={testID}
       title={title}
       tone="subtle"

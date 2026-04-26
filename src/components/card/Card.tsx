@@ -13,14 +13,22 @@ export function Card({
   footer,
   tone = 'default',
   compact = false,
+  onPress,
   ...props
 }: CardProps) {
   const hasHeader = [eyebrow, title, description, actions].some((item) => item != null);
   const hasFooter = footer !== undefined;
   const gap = compact ? 's' : 'm';
+  const isInteractive = Boolean(onPress) && !actions;
 
   return (
-    <SurfaceCard {...props} p={compact ? 'm' : 'l'} radius="l" variant={resolveCardVariant(tone)}>
+    <SurfaceCard
+      {...props}
+      onPress={isInteractive ? onPress : undefined}
+      p={compact ? 'm' : 'l'}
+      radius="l"
+      variant={resolveCardVariant(tone)}
+    >
       <Stack gap={gap}>
         {hasHeader ? (
           <Stack
