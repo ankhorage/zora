@@ -425,7 +425,7 @@ Picks these Surface `DrawerProps`: `closeOnBackdrop`, `onDismiss`, `position`,
 
 ## Layouts
 
-### AppShell
+### `AppShell`
 
 Theme-aware application root shell with optional topbar and full-height content
 area. Use it as the outer app chrome inside `ZoraProvider`.
@@ -436,7 +436,10 @@ area. Use it as the outer app chrome inside `ZoraProvider`.
 </AppShell>
 ```
 
-Props:
+<details>
+<summary>Props</summary>
+
+ZORA props:
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
@@ -444,11 +447,12 @@ Props:
 | `topbar` | `React.ReactNode` | - | Optional top app bar rendered above content. |
 | `testID` | `string` | - | Forwarded to the root Surface background container. |
 
-Notes:
+Inherited props:
 
-- Uses Surface `background` token for full viewport rendering.
-- Ensures correct light/dark mode behavior.
-- Replaces manual SafeArea background styling.
+No inherited props. `AppShellProps` is declared directly by ZORA.
+
+</details>
+
 
 ### `Page`
 
