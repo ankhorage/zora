@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- 7328ea5: Fix release pipeline (OIDC / changesets publish)
+
 ## 0.1.1
 
 ### Patch Changes
