@@ -1,8 +1,15 @@
-import { createZoraTheme, Tabs, Toolbar, ToolbarAction, ZoraProvider } from '@ankhorage/zora';
+import {
+  AppShell,
+  createZoraTheme,
+  Tabs,
+  Toolbar,
+  ToolbarAction,
+  ZoraProvider,
+} from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
@@ -52,30 +59,34 @@ function AppWrapper() {
       })}
     >
       <SafeAreaProvider>
-        <SafeAreaView style={styles.safeArea}>
-          <StatusBar style={isDark ? 'light' : 'dark'} />
-          <Toolbar position="inline" compact={false}>
-            <Tabs
-              variant="segmented"
-              size="s"
-              value={activeTab}
-              onValueChange={setActiveTab}
-              items={[
-                { value: 'home', label: 'Home' },
-                { value: 'components', label: 'Components' },
-                { value: 'patterns', label: 'Patterns' },
-              ]}
-            />
-            <View style={styles.spacer} />
-            <ToolbarAction
-              active={isDark}
-              icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
-              label={isDark ? 'Use light mode' : 'Use dark mode'}
-              onPress={toggleColorMode}
-            />
-          </Toolbar>
-          <View style={styles.content}>{renderContent()}</View>
-        </SafeAreaView>
+        <StatusBar style={isDark ? 'light' : 'dark'} />
+
+        <AppShell
+          topbar={
+            <Toolbar position="inline" compact={false}>
+              <Tabs
+                variant="segmented"
+                size="s"
+                value={activeTab}
+                onValueChange={setActiveTab}
+                items={[
+                  { value: 'home', label: 'Home' },
+                  { value: 'components', label: 'Components' },
+                  { value: 'patterns', label: 'Patterns' },
+                ]}
+              />
+              <View style={{ flex: 1 }} />
+              <ToolbarAction
+                active={isDark}
+                icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+                label={isDark ? 'Use light mode' : 'Use dark mode'}
+                onPress={toggleColorMode}
+              />
+            </Toolbar>
+          }
+        >
+          {renderContent()}
+        </AppShell>
       </SafeAreaProvider>
     </ZoraProvider>
   );
@@ -84,15 +95,3 @@ function AppWrapper() {
 export default function App() {
   return <AppWrapper />;
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  spacer: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-  },
-});
