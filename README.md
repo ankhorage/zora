@@ -1,4 +1,4 @@
-# zora
+# ZORA
 
 <!-- markdownlint-disable MD013 MD033 -->
 
@@ -29,18 +29,35 @@ Wrap your app in `ZoraProvider`, then import components from
 
 ```tsx
 import React from 'react';
-import { Button, Card, Page, PageHeader, ZoraProvider } from '@ankhorage/zora';
+import {
+  AppShell,
+  Button,
+  Card,
+  Page,
+  PageHeader,
+  Toolbar,
+  ToolbarAction,
+  ZoraProvider,
+} from '@ankhorage/zora';
 
 export function App() {
   return (
     <ZoraProvider>
-      <Page header={<PageHeader title="Dashboard" description="Ready to build." />}>
-        <Card
-          actions={<Button>Continue</Button>}
-          description="ZORA provides composed UI surfaces for apps."
-          title="Welcome"
-        />
-      </Page>
+      <AppShell
+        topbar={
+          <Toolbar position="inline">
+            <ToolbarAction icon={{ name: 'menu-outline' }} label="Menu" />
+          </Toolbar>
+        }
+      >
+        <Page header={<PageHeader title="Dashboard" description="Ready to build." />}>
+          <Card
+            actions={<Button>Continue</Button>}
+            description="ZORA provides composed UI surfaces for apps."
+            title="Welcome"
+          />
+        </Page>
+      </AppShell>
     </ZoraProvider>
   );
 }
@@ -407,6 +424,31 @@ Picks these Surface `DrawerProps`: `closeOnBackdrop`, `onDismiss`, `position`,
 </details>
 
 ## Layouts
+
+### AppShell
+
+Theme-aware application root shell with optional topbar and full-height content
+area. Use it as the outer app chrome inside `ZoraProvider`.
+
+```tsx
+<AppShell topbar={<Toolbar position="inline">{actions}</Toolbar>}>
+  <Page header={<PageHeader title="Dashboard" />}>{content}</Page>
+</AppShell>
+```
+
+Props:
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Main app content. |
+| `topbar` | `React.ReactNode` | - | Optional top app bar rendered above content. |
+| `testID` | `string` | - | Forwarded to the root Surface background container. |
+
+Notes:
+
+- Uses Surface `background` token for full viewport rendering.
+- Ensures correct light/dark mode behavior.
+- Replaces manual SafeArea background styling.
 
 ### `Page`
 
@@ -1114,8 +1156,11 @@ const zoraTheme: ThemeConfig = {
 
 ## Public Exports
 
+Add `AppShell` to the public exports:
+
 ```ts
 export {
+  AppShell,
   AuthLayout,
   Badge,
   Button,
@@ -1154,8 +1199,11 @@ export {
   ZoraProvider,
   zoraTheme,
 };
+```
 
+```ts
 export type {
+  AppShellProps,
   AuthLayoutProps,
   BadgeProps,
   ButtonProps,
@@ -1198,15 +1246,16 @@ export type {
 
 ## Example App
 
-A complete Expo showcase lives in `examples/expo-showcase`. It renders every
-current ZORA component, pattern, layout, and theme entry point on one screen.
+A complete Expo showcase lives in `examples/expo-showcase`. It renders the
+current ZORA components, layouts, patterns, and theme entry points, including
+light/dark mode through `AppShell`.
 
 Run it locally:
 
 ```bash
 cd examples/expo-showcase
-npm install
-npm run web
+bun install
+bun run web
 ```
 
 The example imports `@ankhorage/zora` and demonstrates the package API in
