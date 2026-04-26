@@ -8,5 +8,5 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default createConfig({
   tsconfigRootDir: __dirname,
   project: ['./tsconfig.eslint.json'],
-  files: ['src/**/*.{ts,tsx}'],
+  files: ['examples/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'],
 });

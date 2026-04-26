@@ -1,57 +1,51 @@
+import { createZoraTheme, Tabs, Toolbar, ZoraProvider } from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-
-import {
-  createZoraTheme,
-  ZoraProvider,
-  Tabs,
-  Toolbar,
-  ToolbarAction,
-} from '@ankhorage/zora';
+import { StyleSheet, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { ComponentsPage } from './app/components';
+import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
-import { StudioShellPage } from './app/studio-shell';
 
-function WorkbenchApp() {
-  const [activeTab, setActiveTab] = React.useState('studio');
+function AppWrapper() {
+  const [activeTab, setActiveTab] = React.useState('home');
 
   const renderContent = () => {
     switch (activeTab) {
+      case 'home':
+        return <HomePage onNavigate={setActiveTab} />;
       case 'components':
         return <ComponentsPage />;
       case 'patterns':
         return <PatternsPage />;
-      case 'studio':
-        return <StudioShellPage />;
       default:
-        return <StudioShellPage />;
+        return <HomePage onNavigate={setActiveTab} />;
     }
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="dark" />
-      <View style={styles.navHeader}>
-        <Toolbar position="inline" compact={false}>
-          <Tabs
-            variant="segmented"
-            size="s"
-            value={activeTab}
-            onValueChange={setActiveTab}
-            items={[
-              { value: 'studio', label: 'Studio Shell' },
-              { value: 'components', label: 'Components' },
-              { value: 'patterns', label: 'Patterns' },
-            ]}
-          />
-        </Toolbar>
-      </View>
-      <View style={styles.content}>
-        {renderContent()}
-      </View>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar style="dark" />
+        <View style={styles.navHeader}>
+          <Toolbar position="inline" compact={false}>
+            <Tabs
+              variant="segmented"
+              size="s"
+              value={activeTab}
+              onValueChange={setActiveTab}
+              items={[
+                { value: 'home', label: 'Home' },
+                { value: 'components', label: 'Components' },
+                { value: 'patterns', label: 'Patterns' },
+              ]}
+            />
+          </Toolbar>
+        </View>
+        <View style={styles.content}>{renderContent()}</View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -71,7 +65,7 @@ export default function App() {
         },
       })}
     >
-      <WorkbenchApp />
+      <AppWrapper />
     </ZoraProvider>
   );
 }

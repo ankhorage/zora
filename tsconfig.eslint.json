@@ -1,10 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-native",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "eslint.config.mjs", ".prettierrc.js"],
-  "exclude": ["dist", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "examples/**/*.ts",
+    "examples/**/*.tsx",
+    "eslint.config.mjs",
+    ".prettierrc.js"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "examples/**/node_modules",
+    "examples/**/dist"
+  ]
 }
