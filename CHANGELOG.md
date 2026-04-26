@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- c6b0a3b: Add AppShell Layout to wrap the whole app (and use e.g. light/dark backgrounds
+
+### Patch Changes
+
+- 61687ba: fix(ci): resolve ESLint type errors in example app
+
 ## 0.1.4
 
 ### Patch Changes
