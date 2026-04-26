@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- 6e7fd59: update zora version in the example app
+
 ## 0.2.1
 
 ### Patch Changes
