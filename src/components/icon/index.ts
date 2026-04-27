@@ -1,2 +1,2 @@
-export type { ButtonIconSpec, IconProps } from '@ankhorage/surface';
-export { Icon } from '@ankhorage/surface';
+export type { IconProps } from './Icon';
+export { Icon } from './Icon';
