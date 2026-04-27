@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+### Patch Changes
+
+- 798dc20: Add missing useZoraTheme file
+
 ## 0.3.0
 
 ### Minor Changes
