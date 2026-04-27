@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.5
+
+### Patch Changes
+
+- 176be84: Export ResponsiveProvider to Public API
+
 ## 0.3.4
 
 ### Patch Changes
