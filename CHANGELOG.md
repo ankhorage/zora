@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.4
+
+### Patch Changes
+
+- c7a5254: Export Icon and IconProps to public API
+
 ## 0.3.3
 
 ### Patch Changes
