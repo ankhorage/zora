@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3
+
+### Patch Changes
+
+- f3a3da3: Export IconProps
+
 ## 0.3.2
 
 ### Patch Changes
