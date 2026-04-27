@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@ankhorage/surface';
+import { ResponsiveProvider, ThemeProvider } from '@ankhorage/surface';
 import React from 'react';
 
 import { createZoraTheme, type ZoraThemeOverride } from './createZoraTheme';
@@ -16,7 +16,7 @@ export function ZoraProvider({
 }: ZoraProviderProps) {
   return (
     <ThemeProvider initialConfig={createZoraTheme(initialConfig)} initialMode={initialMode}>
-      {children}
+      <ResponsiveProvider>{children}</ResponsiveProvider>
     </ThemeProvider>
   );
 }
