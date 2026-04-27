@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.6
+
+### Patch Changes
+
+- 3d66c66: Zora wraps ResponsiveProvider now
+
 ## 0.3.5
 
 ### Patch Changes
