@@ -70,3 +70,4 @@ export { PaletteItem, TileGrid } from './patterns/tile-grid';
 export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';
 export { TreeItem, TreeView } from './patterns/tree-view';
 export * from './theme';
+export { ResponsiveProvider } from '@ankhorage/surface';
