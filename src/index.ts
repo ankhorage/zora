@@ -6,6 +6,8 @@ export type { CardProps } from './components/card';
 export { Card } from './components/card';
 export type { DrawerProps } from './components/drawer';
 export { Drawer } from './components/drawer';
+export type { IconProps } from './components/icon';
+export { Icon } from './components/icon';
 export type { IconButtonProps } from './components/icon-button';
 export { IconButton } from './components/icon-button';
 export type { InputProps } from './components/input';
