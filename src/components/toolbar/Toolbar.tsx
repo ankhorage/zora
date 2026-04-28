@@ -22,10 +22,9 @@ export function Toolbar({
         isFixed
           ? {
               position: 'absolute',
-              left: 0,
-              right: 0,
               [position]: 0,
               zIndex: 10,
+              alignSelf: 'center',
             }
           : undefined
       }
