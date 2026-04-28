@@ -47,12 +47,16 @@
   },
   "files": [
     "dist",
+    "src",
+    "package.json",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
   ],
   "exports": {
     ".": {
+      "react-native": "./src/index.ts",
+      "browser": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
