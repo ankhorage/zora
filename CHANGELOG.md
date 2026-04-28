@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.10
+
+### Patch Changes
+
+- ff6250e: Fixed toolbar gets width of its content
+
 ## 0.3.9
 
 ### Patch Changes
