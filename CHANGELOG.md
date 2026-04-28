@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.9
+
+### Patch Changes
+
+- edb3253: Trigger release with new @ankhorage/surface version
+
 ## 0.3.8
 
 ### Patch Changes
