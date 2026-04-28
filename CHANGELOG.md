@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.8
+
+### Patch Changes
+
+- 9657e2b: Update @ankhorage/surface version
+- Update @ankhorage/surface version to latest
+
 ## 0.3.7
 
 ### Patch Changes
