@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.7
+
+### Patch Changes
+
+- e9d563b: Export src/ for better Metro debugging
+
 ## 0.3.6
 
 ### Patch Changes
