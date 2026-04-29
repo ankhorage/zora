@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- e33b114: feat(zora): redesign AppShell as structural root layout with header/footer/overlay slots
+
 ## 0.4.1
 
 ### Patch Changes
