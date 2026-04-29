@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- e6ea86b: Add RadioGroup and CheckboxGroup components built on Surface primitives.
+
 ## 0.3.10
 
 ### Patch Changes
