@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### Patch Changes
+
+- 37681ac: Update README.md with CheckboxGroup & RadioGroup
+
 ## 0.4.0
 
 ### Minor Changes
