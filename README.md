@@ -94,14 +94,14 @@ Action button with ZORA defaults for tone, emphasis, size, and icons.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Button label or content. |
-| `tone` | `ZoraTone` | `'primary'` | Passed to Surface as `tone`. |
-| `emphasis` | `ZoraEmphasis` | `'solid'` | Passed to Surface as `variant`. |
-| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
-| `leadingIcon` | `ButtonIconSpec` | - | Surface icon spec rendered before content. |
-| `trailingIcon` | `ButtonIconSpec` | - | Surface icon spec rendered after content. |
+| Prop           | Type              | Default     | Notes                                      |
+| -------------- | ----------------- | ----------- | ------------------------------------------ |
+| `children`     | `React.ReactNode` | -           | Button label or content.                   |
+| `tone`         | `ZoraTone`        | `'primary'` | Passed to Surface as `tone`.               |
+| `emphasis`     | `ZoraEmphasis`    | `'solid'`   | Passed to Surface as `variant`.            |
+| `size`         | `ZoraControlSize` | `'l'`       | Passed to Surface as `size`.               |
+| `leadingIcon`  | `ButtonIconSpec`  | -           | Surface icon spec rendered before content. |
+| `trailingIcon` | `ButtonIconSpec`  | -           | Surface icon spec rendered after content.  |
 
 Inherited props:
 
@@ -125,13 +125,13 @@ Compact icon-only button for toolbars, rows, and actions.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `icon` | `ButtonIconSpec` | - | Required icon to render. |
-| `label` | `string` | - | Required for `accessibilityLabel`. |
-| `tone` | `ZoraTone` | `'neutral'` | Button tone. |
-| `emphasis` | `ZoraEmphasis` | `'ghost'` | Button emphasis. |
-| `size` | `ZoraControlSize` | `'m'` | Button size. |
+| Prop       | Type              | Default     | Notes                              |
+| ---------- | ----------------- | ----------- | ---------------------------------- |
+| `icon`     | `ButtonIconSpec`  | -           | Required icon to render.           |
+| `label`    | `string`          | -           | Required for `accessibilityLabel`. |
+| `tone`     | `ZoraTone`        | `'neutral'` | Button tone.                       |
+| `emphasis` | `ZoraEmphasis`    | `'ghost'`   | Button emphasis.                   |
+| `size`     | `ZoraControlSize` | `'m'`       | Button size.                       |
 
 Inherited props:
 
@@ -153,12 +153,12 @@ Small status label with ZORA tone, emphasis, and size defaults.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Rendered as Surface badge `content`. |
-| `tone` | `ZoraTone` | `'primary'` | Passed to Surface as `tone`. |
-| `emphasis` | `ZoraBadgeEmphasis` | `'soft'` | Passed to Surface as `variant`. |
-| `size` | `ZoraControlSize` | `'m'` | Passed to Surface as `size`. |
+| Prop       | Type                | Default     | Notes                                |
+| ---------- | ------------------- | ----------- | ------------------------------------ |
+| `children` | `React.ReactNode`   | -           | Rendered as Surface badge `content`. |
+| `tone`     | `ZoraTone`          | `'primary'` | Passed to Surface as `tone`.         |
+| `emphasis` | `ZoraBadgeEmphasis` | `'soft'`    | Passed to Surface as `variant`.      |
+| `size`     | `ZoraControlSize`   | `'m'`       | Passed to Surface as `size`.         |
 
 Inherited props:
 
@@ -173,11 +173,7 @@ Composed content surface with optional header, actions, footer, and ZORA card
 tones.
 
 ```tsx
-<Card
-  actions={<Button>Open</Button>}
-  description="A reusable product surface."
-  title="Project"
-/>
+<Card actions={<Button>Open</Button>} description="A reusable product surface." title="Project" />
 ```
 
 <details>
@@ -185,16 +181,16 @@ tones.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Main card body. |
-| `title` | `React.ReactNode` | - | Header title. |
-| `description` | `React.ReactNode` | - | Header description. |
-| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
-| `actions` | `React.ReactNode` | - | Header action area. |
-| `footer` | `React.ReactNode` | - | Footer area below body content. |
-| `tone` | `ZoraCardTone` | `'default'` | Maps to Surface variants: `default -> raised`, `subtle -> subtle`, `outline -> outline`. |
-| `compact` | `boolean` | `false` | Uses tighter padding and heading scale. |
+| Prop          | Type              | Default     | Notes                                                                                    |
+| ------------- | ----------------- | ----------- | ---------------------------------------------------------------------------------------- |
+| `children`    | `React.ReactNode` | -           | Main card body.                                                                          |
+| `title`       | `React.ReactNode` | -           | Header title.                                                                            |
+| `description` | `React.ReactNode` | -           | Header description.                                                                      |
+| `eyebrow`     | `React.ReactNode` | -           | Small muted text above the title.                                                        |
+| `actions`     | `React.ReactNode` | -           | Header action area.                                                                      |
+| `footer`      | `React.ReactNode` | -           | Footer area below body content.                                                          |
+| `tone`        | `ZoraCardTone`    | `'default'` | Maps to Surface variants: `default -> raised`, `subtle -> subtle`, `outline -> outline`. |
+| `compact`     | `boolean`         | `false`     | Uses tighter padding and heading scale.                                                  |
 
 Inherited props:
 
@@ -221,11 +217,11 @@ Text input wrapper with ZORA sizing and optional Surface icon specs.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
-| `leadingIcon` | `ButtonIconSpec` | - | Rendered as Surface `leadingAccessory`. |
-| `trailingIcon` | `ButtonIconSpec` | - | Rendered as Surface `trailingAccessory`. |
+| Prop           | Type              | Default | Notes                                    |
+| -------------- | ----------------- | ------- | ---------------------------------------- |
+| `size`         | `ZoraControlSize` | `'l'`   | Passed to Surface as `size`.             |
+| `leadingIcon`  | `ButtonIconSpec`  | -       | Rendered as Surface `leadingAccessory`.  |
+| `trailingIcon` | `ButtonIconSpec`  | -       | Rendered as Surface `trailingAccessory`. |
 
 Inherited props:
 
@@ -349,11 +345,11 @@ Multiline text input wrapper with ZORA sizing and optional Surface icon specs.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `size` | `ZoraControlSize` | `'l'` | Passed to Surface as `size`. |
-| `leadingIcon` | `ButtonIconSpec` | - | Rendered as Surface `leadingAccessory`. |
-| `trailingIcon` | `ButtonIconSpec` | - | Rendered as Surface `trailingAccessory`. |
+| Prop           | Type              | Default | Notes                                    |
+| -------------- | ----------------- | ------- | ---------------------------------------- |
+| `size`         | `ZoraControlSize` | `'l'`   | Passed to Surface as `size`.             |
+| `leadingIcon`  | `ButtonIconSpec`  | -       | Rendered as Surface `leadingAccessory`.  |
+| `trailingIcon` | `ButtonIconSpec`  | -       | Rendered as Surface `trailingAccessory`. |
 
 Inherited props:
 
@@ -385,13 +381,13 @@ Generic controlled tabs for navigation and filtering.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `value` | `string` | - | Active tab value. |
-| `items` | `TabItem[]` | - | Array of tab objects. |
-| `onValueChange` | `(value: string) => void` | - | Change handler. |
-| `variant` | `'underline' \| 'pill' \| 'segmented'` | `'underline'` | Visual style. |
-| `size` | `ZoraControlSize` | `'m'` | Control size. |
+| Prop            | Type                                   | Default       | Notes                 |
+| --------------- | -------------------------------------- | ------------- | --------------------- |
+| `value`         | `string`                               | -             | Active tab value.     |
+| `items`         | `TabItem[]`                            | -             | Array of tab objects. |
+| `onValueChange` | `(value: string) => void`              | -             | Change handler.       |
+| `variant`       | `'underline' \| 'pill' \| 'segmented'` | `'underline'` | Visual style.         |
+| `size`          | `ZoraControlSize`                      | `'m'`         | Control size.         |
 
 </details>
 
@@ -411,21 +407,21 @@ Horizontal shell for actions and tools.
 
 `Toolbar` props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Toolbar content. |
-| `position` | `'top' \| 'bottom' \| 'inline'` | `'inline'` | Layout position. |
-| `floating` | `boolean` | `false` | Whether the toolbar floats with a shadow. |
-| `compact` | `boolean` | `true` | Tighter padding. |
+| Prop       | Type                            | Default    | Notes                                     |
+| ---------- | ------------------------------- | ---------- | ----------------------------------------- |
+| `children` | `React.ReactNode`               | -          | Toolbar content.                          |
+| `position` | `'top' \| 'bottom' \| 'inline'` | `'inline'` | Layout position.                          |
+| `floating` | `boolean`                       | `false`    | Whether the toolbar floats with a shadow. |
+| `compact`  | `boolean`                       | `true`     | Tighter padding.                          |
 
 `ToolbarAction` props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `icon` | `ButtonIconSpec` | - | Required icon. |
-| `label` | `string` | - | Accessibility label. |
-| `active` | `boolean` | `false` | Highlighted state. |
-| `onPress` | `() => void` | - | Click handler. |
+| Prop      | Type             | Default | Notes                |
+| --------- | ---------------- | ------- | -------------------- |
+| `icon`    | `ButtonIconSpec` | -       | Required icon.       |
+| `label`   | `string`         | -       | Accessibility label. |
+| `active`  | `boolean`        | `false` | Highlighted state.   |
+| `onPress` | `() => void`     | -       | Click handler.       |
 
 </details>
 
@@ -449,13 +445,13 @@ Standard dropdown selector wrapping `@react-native-picker/picker`.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `value` | `string` | - | Selected value. |
-| `options` | `SelectOption[]` | - | Array of option objects. |
-| `onValueChange` | `(value: string) => void` | - | Change handler. |
-| `invalid` | `boolean` | `false` | Error state styling. |
-| `disabled` | `boolean` | `false` | Interaction state. |
+| Prop            | Type                      | Default | Notes                    |
+| --------------- | ------------------------- | ------- | ------------------------ |
+| `value`         | `string`                  | -       | Selected value.          |
+| `options`       | `SelectOption[]`          | -       | Array of option objects. |
+| `onValueChange` | `(value: string) => void` | -       | Change handler.          |
+| `invalid`       | `boolean`                 | `false` | Error state styling.     |
+| `disabled`      | `boolean`                 | `false` | Interaction state.       |
 
 </details>
 
@@ -464,12 +460,7 @@ ZORA props:
 Centered overlay shell with optional header, body, footer, and width preset.
 
 ```tsx
-<Modal
-  footer={<Button>Done</Button>}
-  onDismiss={close}
-  title="Details"
-  visible={visible}
-/>
+<Modal footer={<Button>Done</Button>} onDismiss={close} title="Details" visible={visible} />
 ```
 
 <details>
@@ -477,13 +468,13 @@ Centered overlay shell with optional header, body, footer, and width preset.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Modal body. |
-| `title` | `React.ReactNode` | - | Header title. |
-| `description` | `React.ReactNode` | - | Header description. |
-| `footer` | `React.ReactNode` | - | Footer area. |
-| `width` | `ZoraContentWidth` | `'default'` | Resolves to `420`, `520`, or `560` pixels. |
+| Prop          | Type               | Default     | Notes                                      |
+| ------------- | ------------------ | ----------- | ------------------------------------------ |
+| `children`    | `React.ReactNode`  | -           | Modal body.                                |
+| `title`       | `React.ReactNode`  | -           | Header title.                              |
+| `description` | `React.ReactNode`  | -           | Header description.                        |
+| `footer`      | `React.ReactNode`  | -           | Footer area.                               |
+| `width`       | `ZoraContentWidth` | `'default'` | Resolves to `420`, `520`, or `560` pixels. |
 
 Inherited props:
 
@@ -507,12 +498,12 @@ Side overlay shell with optional header, body, and footer.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Drawer body. |
-| `title` | `React.ReactNode` | - | Header title. |
-| `description` | `React.ReactNode` | - | Header description. |
-| `footer` | `React.ReactNode` | - | Footer area. |
+| Prop          | Type              | Default | Notes               |
+| ------------- | ----------------- | ------- | ------------------- |
+| `children`    | `React.ReactNode` | -       | Drawer body.        |
+| `title`       | `React.ReactNode` | -       | Header title.       |
+| `description` | `React.ReactNode` | -       | Header description. |
+| `footer`      | `React.ReactNode` | -       | Footer area.        |
 
 Inherited props:
 
@@ -533,10 +524,7 @@ Use it as the outer layout inside `ZoraProvider`. Combine it with layout
 primitives like `SidebarLayout` or `Page` to structure inner content.
 
 ```tsx
-<AppShell
-  header={<Toolbar position="inline">{actions}</Toolbar>}
-  footer={<BottomBar />}
->
+<AppShell header={<Toolbar position="inline">{actions}</Toolbar>} footer={<BottomBar />}>
   <Page header={<PageHeader title="Dashboard" />}>{content}</Page>
 </AppShell>
 ```
@@ -544,10 +532,7 @@ primitives like `SidebarLayout` or `Page` to structure inner content.
 Example with overlay (e.g. mobile panel or drawer):
 
 ```tsx
-<AppShell
-  footer={<BottomBar />}
-  overlay={isOpen ? <MyDrawer onClose={close} /> : null}
->
+<AppShell footer={<BottomBar />} overlay={isOpen ? <MyDrawer onClose={close} /> : null}>
   {content}
 </AppShell>
 ```
@@ -604,13 +589,13 @@ Constrained page container with optional header and footer slots.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Page body. |
-| `header` | `React.ReactNode` | - | Rendered above body content. |
-| `footer` | `React.ReactNode` | - | Rendered below body content. |
-| `width` | `ZoraContentWidth` | `'default'` | Resolves to `760`, `1040`, or `1280` pixels. |
-| `testID` | `string` | - | Forwarded to the root Surface container. |
+| Prop       | Type               | Default     | Notes                                        |
+| ---------- | ------------------ | ----------- | -------------------------------------------- |
+| `children` | `React.ReactNode`  | -           | Page body.                                   |
+| `header`   | `React.ReactNode`  | -           | Rendered above body content.                 |
+| `footer`   | `React.ReactNode`  | -           | Rendered below body content.                 |
+| `width`    | `ZoraContentWidth` | `'default'` | Resolves to `760`, `1040`, or `1280` pixels. |
+| `testID`   | `string`           | -           | Forwarded to the root Surface container.     |
 
 Inherited props:
 
@@ -631,14 +616,14 @@ Top-level page heading with optional eyebrow, metadata, and actions.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Required page title. |
-| `description` | `React.ReactNode` | - | Supporting copy below title. |
-| `eyebrow` | `React.ReactNode` | - | Small muted text above title. |
-| `actions` | `React.ReactNode` | - | Action area opposite the heading. |
-| `meta` | `React.ReactNode` | - | Extra content below description. |
-| `testID` | `string` | - | Forwarded to the root Surface stack. |
+| Prop          | Type              | Default | Notes                                |
+| ------------- | ----------------- | ------- | ------------------------------------ |
+| `title`       | `React.ReactNode` | -       | Required page title.                 |
+| `description` | `React.ReactNode` | -       | Supporting copy below title.         |
+| `eyebrow`     | `React.ReactNode` | -       | Small muted text above title.        |
+| `actions`     | `React.ReactNode` | -       | Action area opposite the heading.    |
+| `meta`        | `React.ReactNode` | -       | Extra content below description.     |
+| `testID`      | `string`          | -       | Forwarded to the root Surface stack. |
 
 Inherited props:
 
@@ -661,13 +646,13 @@ Section wrapper that optionally renders a `SectionHeader`.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Section title; when absent, no header is rendered. |
-| `description` | `React.ReactNode` | - | Passed to the section header. |
-| `actions` | `React.ReactNode` | - | Passed to the section header. |
-| `children` | `React.ReactNode` | - | Section body. |
-| `testID` | `string` | - | Forwarded to the root Surface stack. |
+| Prop          | Type              | Default | Notes                                              |
+| ------------- | ----------------- | ------- | -------------------------------------------------- |
+| `title`       | `React.ReactNode` | -       | Section title; when absent, no header is rendered. |
+| `description` | `React.ReactNode` | -       | Passed to the section header.                      |
+| `actions`     | `React.ReactNode` | -       | Passed to the section header.                      |
+| `children`    | `React.ReactNode` | -       | Section body.                                      |
+| `testID`      | `string`          | -       | Forwarded to the root Surface stack.               |
 
 Inherited props:
 
@@ -690,14 +675,14 @@ Responsive shell with required sidebar, main content, and optional aside.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `sidebar` | `React.ReactNode` | - | Required left column content. |
-| `children` | `React.ReactNode` | - | Main content. |
-| `aside` | `React.ReactNode` | - | Optional right column content. |
-| `sidebarWidth` | `number` | `280` | Desktop sidebar width. |
-| `asideWidth` | `number` | `280` | Desktop aside width. |
-| `testID` | `string` | - | Forwarded to the root Surface stack. |
+| Prop           | Type              | Default | Notes                                |
+| -------------- | ----------------- | ------- | ------------------------------------ |
+| `sidebar`      | `React.ReactNode` | -       | Required left column content.        |
+| `children`     | `React.ReactNode` | -       | Main content.                        |
+| `aside`        | `React.ReactNode` | -       | Optional right column content.       |
+| `sidebarWidth` | `number`          | `280`   | Desktop sidebar width.               |
+| `asideWidth`   | `number`          | `280`   | Desktop aside width.                 |
+| `testID`       | `string`          | -       | Forwarded to the root Surface stack. |
 
 Inherited props:
 
@@ -720,12 +705,12 @@ Top navigation shell with optional sidebar composition.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `topbar` | `React.ReactNode` | - | Required topbar content. |
-| `children` | `React.ReactNode` | - | Main content. |
-| `sidebar` | `React.ReactNode` | - | Optional sidebar; when present, content is rendered through `SidebarLayout`. |
-| `testID` | `string` | - | Forwarded to the root Surface stack. |
+| Prop       | Type              | Default | Notes                                                                        |
+| ---------- | ----------------- | ------- | ---------------------------------------------------------------------------- |
+| `topbar`   | `React.ReactNode` | -       | Required topbar content.                                                     |
+| `children` | `React.ReactNode` | -       | Main content.                                                                |
+| `sidebar`  | `React.ReactNode` | -       | Optional sidebar; when present, content is rendered through `SidebarLayout`. |
+| `testID`   | `string`          | -       | Forwarded to the root Surface stack.                                         |
 
 Inherited props:
 
@@ -748,14 +733,14 @@ Reusable settings shell with page header, sidebar, and content region.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Optional page title; when absent, no page header is rendered. |
-| `description` | `React.ReactNode` | - | Header description. |
-| `sidebar` | `React.ReactNode` | - | Required settings navigation or context sidebar. |
-| `children` | `React.ReactNode` | - | Settings content. |
-| `actions` | `React.ReactNode` | - | Header action area. |
-| `testID` | `string` | - | Forwarded to `Page`. |
+| Prop          | Type              | Default | Notes                                                         |
+| ------------- | ----------------- | ------- | ------------------------------------------------------------- |
+| `title`       | `React.ReactNode` | -       | Optional page title; when absent, no page header is rendered. |
+| `description` | `React.ReactNode` | -       | Header description.                                           |
+| `sidebar`     | `React.ReactNode` | -       | Required settings navigation or context sidebar.              |
+| `children`    | `React.ReactNode` | -       | Settings content.                                             |
+| `actions`     | `React.ReactNode` | -       | Header action area.                                           |
+| `testID`      | `string`          | -       | Forwarded to `Page`.                                          |
 
 Inherited props:
 
@@ -779,14 +764,14 @@ screens.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Card title. |
-| `description` | `React.ReactNode` | - | Card description. |
-| `eyebrow` | `React.ReactNode` | - | Card eyebrow. |
-| `children` | `React.ReactNode` | - | Form or auth content. |
-| `footer` | `React.ReactNode` | - | Card footer. |
-| `testID` | `string` | - | Forwarded to the root Surface center. |
+| Prop          | Type              | Default | Notes                                 |
+| ------------- | ----------------- | ------- | ------------------------------------- |
+| `title`       | `React.ReactNode` | -       | Card title.                           |
+| `description` | `React.ReactNode` | -       | Card description.                     |
+| `eyebrow`     | `React.ReactNode` | -       | Card eyebrow.                         |
+| `children`    | `React.ReactNode` | -       | Form or auth content.                 |
+| `footer`      | `React.ReactNode` | -       | Card footer.                          |
+| `testID`      | `string`          | -       | Forwarded to the root Surface center. |
 
 Inherited props:
 
@@ -812,11 +797,11 @@ Surface field state.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `label` | `React.ReactNode` | - | Required field label. |
-| `description` | `React.ReactNode` | - | Rendered under the label. |
-| `helperText` | `React.ReactNode` | - | Passed to Surface `Field` as `helperText`. |
+| Prop          | Type              | Default | Notes                                      |
+| ------------- | ----------------- | ------- | ------------------------------------------ |
+| `label`       | `React.ReactNode` | -       | Required field label.                      |
+| `description` | `React.ReactNode` | -       | Rendered under the label.                  |
+| `helperText`  | `React.ReactNode` | -       | Passed to Surface `Field` as `helperText`. |
 
 Inherited props:
 
@@ -838,14 +823,14 @@ Semantic notice surface with badge eyebrow, optional body, and actions.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Required notice title. |
-| `description` | `React.ReactNode` | - | Notice description. |
-| `children` | `React.ReactNode` | - | Optional body content. |
-| `actions` | `React.ReactNode` | - | Optional action area. |
-| `tone` | `ZoraTone` | `'primary'` | Drives the badge eyebrow tone. |
-| `testID` | `string` | - | Forwarded to the underlying `Card`. |
+| Prop          | Type              | Default     | Notes                               |
+| ------------- | ----------------- | ----------- | ----------------------------------- |
+| `title`       | `React.ReactNode` | -           | Required notice title.              |
+| `description` | `React.ReactNode` | -           | Notice description.                 |
+| `children`    | `React.ReactNode` | -           | Optional body content.              |
+| `actions`     | `React.ReactNode` | -           | Optional action area.               |
+| `tone`        | `ZoraTone`        | `'primary'` | Drives the badge eyebrow tone.      |
+| `testID`      | `string`          | -           | Forwarded to the underlying `Card`. |
 
 Inherited props:
 
@@ -868,17 +853,17 @@ Named composition surface that currently forwards to `Card`.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Header title. |
-| `description` | `React.ReactNode` | - | Header description. |
-| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
-| `actions` | `React.ReactNode` | - | Header action area. |
-| `footer` | `React.ReactNode` | - | Footer area below body content. |
-| `children` | `React.ReactNode` | - | Panel body. |
-| `tone` | `ZoraCardTone` | `'default'` | Same tone behavior as `Card`. |
-| `compact` | `boolean` | `false` | Same compact behavior as `Card`. |
-| `testID` | `string` | - | Forwarded through `Card`. |
+| Prop          | Type              | Default     | Notes                             |
+| ------------- | ----------------- | ----------- | --------------------------------- |
+| `title`       | `React.ReactNode` | -           | Header title.                     |
+| `description` | `React.ReactNode` | -           | Header description.               |
+| `eyebrow`     | `React.ReactNode` | -           | Small muted text above the title. |
+| `actions`     | `React.ReactNode` | -           | Header action area.               |
+| `footer`      | `React.ReactNode` | -           | Footer area below body content.   |
+| `children`    | `React.ReactNode` | -           | Panel body.                       |
+| `tone`        | `ZoraCardTone`    | `'default'` | Same tone behavior as `Card`.     |
+| `compact`     | `boolean`         | `false`     | Same compact behavior as `Card`.  |
+| `testID`      | `string`          | -           | Forwarded through `Card`.         |
 
 Inherited props:
 
@@ -899,13 +884,13 @@ Reusable section heading with optional eyebrow, description, and actions.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Required heading title. |
-| `description` | `React.ReactNode` | - | Supporting copy. |
-| `eyebrow` | `React.ReactNode` | - | Small muted text above the title. |
-| `actions` | `React.ReactNode` | - | Action area opposite the heading. |
-| `testID` | `string` | - | Forwarded to the root Surface stack. |
+| Prop          | Type              | Default | Notes                                |
+| ------------- | ----------------- | ------- | ------------------------------------ |
+| `title`       | `React.ReactNode` | -       | Required heading title.              |
+| `description` | `React.ReactNode` | -       | Supporting copy.                     |
+| `eyebrow`     | `React.ReactNode` | -       | Small muted text above the title.    |
+| `actions`     | `React.ReactNode` | -       | Action area opposite the heading.    |
+| `testID`      | `string`          | -       | Forwarded to the root Surface stack. |
 
 Inherited props:
 
@@ -926,15 +911,15 @@ Compact settings row with optional metadata, control, and press handling.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Required row title. |
-| `description` | `React.ReactNode` | - | Row description. |
-| `meta` | `React.ReactNode` | - | Small muted metadata below the row content. |
-| `control` | `React.ReactNode` | - | Trailing control or action content. |
-| `onPress` | `() => void` | - | Makes the underlying card pressable. |
-| `disabled` | `boolean` | `false` | Forwarded to the underlying card. |
-| `testID` | `string` | - | Forwarded to the underlying card. |
+| Prop          | Type              | Default | Notes                                       |
+| ------------- | ----------------- | ------- | ------------------------------------------- |
+| `title`       | `React.ReactNode` | -       | Required row title.                         |
+| `description` | `React.ReactNode` | -       | Row description.                            |
+| `meta`        | `React.ReactNode` | -       | Small muted metadata below the row content. |
+| `control`     | `React.ReactNode` | -       | Trailing control or action content.         |
+| `onPress`     | `() => void`      | -       | Makes the underlying card pressable.        |
+| `disabled`    | `boolean`         | `false` | Forwarded to the underlying card.           |
+| `testID`      | `string`          | -       | Forwarded to the underlying card.           |
 
 Inherited props:
 
@@ -958,24 +943,24 @@ No-data surface with title, optional supporting text, actions, and footer.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Required empty-state title. |
-| `description` | `React.ReactNode` | - | Supporting copy. |
-| `eyebrow` | `React.ReactNode` | - | Card eyebrow. |
-| `primaryAction` | `EmptyStateAction` | - | Primary action button. |
-| `secondaryAction` | `EmptyStateAction` | - | Secondary action button; defaults to `tone="neutral"` and `emphasis="soft"` when omitted on the action. |
-| `footer` | `React.ReactNode` | - | Footer content below actions. |
-| `testID` | `string` | - | Forwarded to the underlying card. |
+| Prop              | Type               | Default | Notes                                                                                                   |
+| ----------------- | ------------------ | ------- | ------------------------------------------------------------------------------------------------------- |
+| `title`           | `React.ReactNode`  | -       | Required empty-state title.                                                                             |
+| `description`     | `React.ReactNode`  | -       | Supporting copy.                                                                                        |
+| `eyebrow`         | `React.ReactNode`  | -       | Card eyebrow.                                                                                           |
+| `primaryAction`   | `EmptyStateAction` | -       | Primary action button.                                                                                  |
+| `secondaryAction` | `EmptyStateAction` | -       | Secondary action button; defaults to `tone="neutral"` and `emphasis="soft"` when omitted on the action. |
+| `footer`          | `React.ReactNode`  | -       | Footer content below actions.                                                                           |
+| `testID`          | `string`           | -       | Forwarded to the underlying card.                                                                       |
 
 `EmptyStateAction`:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `label` | `React.ReactNode` | - | Button label. |
-| `onPress` | `() => void` | - | Button handler. |
-| `tone` | `ZoraTone` | - | Button tone. |
-| `emphasis` | `ZoraEmphasis` | - | Button emphasis. |
+| Prop       | Type              | Default | Notes            |
+| ---------- | ----------------- | ------- | ---------------- |
+| `label`    | `React.ReactNode` | -       | Button label.    |
+| `onPress`  | `() => void`      | -       | Button handler.  |
+| `tone`     | `ZoraTone`        | -       | Button tone.     |
+| `emphasis` | `ZoraEmphasis`    | -       | Button emphasis. |
 
 Inherited props:
 
@@ -1004,21 +989,21 @@ Narrow confirmation modal for destructive or high-signal decisions.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `visible` | `boolean` | - | Required modal visibility. |
-| `title` | `React.ReactNode` | - | Required dialog title. |
-| `description` | `React.ReactNode` | - | Dialog description. |
-| `children` | `React.ReactNode` | - | Dialog body. |
-| `confirmLabel` | `React.ReactNode` | `'Confirm'` | Confirm button label. |
-| `cancelLabel` | `React.ReactNode` | `'Cancel'` | Cancel button label. |
-| `confirmTone` | `ZoraTone` | `'danger'` | Confirm button tone. |
-| `confirmEmphasis` | `ZoraEmphasis` | `'solid'` | Confirm button emphasis. |
-| `busy` | `boolean` | `false` | Passed to the confirm button as `loading`. |
-| `closeOnBackdrop` | `boolean` | `true` | Passed to the underlying modal. |
-| `onConfirm` | `() => void` | - | Confirm button handler. |
-| `onCancel` | `() => void` | - | Cancel button and modal dismiss handler. |
-| `testID` | `string` | - | Forwarded to the underlying modal. |
+| Prop              | Type              | Default     | Notes                                      |
+| ----------------- | ----------------- | ----------- | ------------------------------------------ |
+| `visible`         | `boolean`         | -           | Required modal visibility.                 |
+| `title`           | `React.ReactNode` | -           | Required dialog title.                     |
+| `description`     | `React.ReactNode` | -           | Dialog description.                        |
+| `children`        | `React.ReactNode` | -           | Dialog body.                               |
+| `confirmLabel`    | `React.ReactNode` | `'Confirm'` | Confirm button label.                      |
+| `cancelLabel`     | `React.ReactNode` | `'Cancel'`  | Cancel button label.                       |
+| `confirmTone`     | `ZoraTone`        | `'danger'`  | Confirm button tone.                       |
+| `confirmEmphasis` | `ZoraEmphasis`    | `'solid'`   | Confirm button emphasis.                   |
+| `busy`            | `boolean`         | `false`     | Passed to the confirm button as `loading`. |
+| `closeOnBackdrop` | `boolean`         | `true`      | Passed to the underlying modal.            |
+| `onConfirm`       | `() => void`      | -           | Confirm button handler.                    |
+| `onCancel`        | `() => void`      | -           | Cancel button and modal dismiss handler.   |
+| `testID`          | `string`          | -           | Forwarded to the underlying modal.         |
 
 Confirm dialogs always use `Modal` with `width="narrow"`.
 
@@ -1033,9 +1018,7 @@ No inherited props. `ConfirmDialogProps` is declared directly by ZORA.
 Collapsible section for property groups and settings.
 
 ```tsx
-<DisclosureSection title="Advanced Settings">
-  {content}
-</DisclosureSection>
+<DisclosureSection title="Advanced Settings">{content}</DisclosureSection>
 ```
 
 <details>
@@ -1043,14 +1026,14 @@ Collapsible section for property groups and settings.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Section title. |
-| `description` | `React.ReactNode` | - | Subheading text. |
-| `defaultOpen` | `boolean` | `true` | Initial state. |
-| `open` | `boolean` | - | Controlled state. |
-| `onOpenChange` | `(open: boolean) => void` | - | Toggle handler. |
-| `actions` | `React.ReactNode` | - | Extra header actions. |
+| Prop           | Type                      | Default | Notes                 |
+| -------------- | ------------------------- | ------- | --------------------- |
+| `title`        | `React.ReactNode`         | -       | Section title.        |
+| `description`  | `React.ReactNode`         | -       | Subheading text.      |
+| `defaultOpen`  | `boolean`                 | `true`  | Initial state.        |
+| `open`         | `boolean`                 | -       | Controlled state.     |
+| `onOpenChange` | `(open: boolean) => void` | -       | Toggle handler.       |
+| `actions`      | `React.ReactNode`         | -       | Extra header actions. |
 
 </details>
 
@@ -1069,13 +1052,13 @@ Side panel that adapts to screen size (inline or overlay).
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `open` | `boolean` | - | Required visibility. |
-| `onOpenChange` | `(open: boolean) => void` | - | Required change handler. |
-| `side` | `'left' \| 'right'` | `'right'` | Layout side. |
-| `desktopMode` | `'inline' \| 'floating'` | `'inline'` | Desktop rendering style. |
-| `mobileMode` | `'drawer' \| 'modal'` | `'drawer'` | Mobile rendering style. |
+| Prop           | Type                      | Default    | Notes                    |
+| -------------- | ------------------------- | ---------- | ------------------------ |
+| `open`         | `boolean`                 | -          | Required visibility.     |
+| `onOpenChange` | `(open: boolean) => void` | -          | Required change handler. |
+| `side`         | `'left' \| 'right'`       | `'right'`  | Layout side.             |
+| `desktopMode`  | `'inline' \| 'floating'`  | `'inline'` | Desktop rendering style. |
+| `mobileMode`   | `'drawer' \| 'modal'`     | `'drawer'` | Mobile rendering style.  |
 
 </details>
 
@@ -1084,7 +1067,10 @@ ZORA props:
 Dense form field optimized for property panels.
 
 ```tsx
-<InspectorField control={<IconButton icon={{ name: 'refresh-outline' }} label="Reset" />} label="Opacity">
+<InspectorField
+  control={<IconButton icon={{ name: 'refresh-outline' }} label="Reset" />}
+  label="Opacity"
+>
   <Input value="100%" />
 </InspectorField>
 ```
@@ -1094,11 +1080,11 @@ Dense form field optimized for property panels.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `label` | `React.ReactNode` | - | Field label. |
-| `control` | `React.ReactNode` | - | Trailing control slot. |
-| `children` | `React.ReactNode` | - | Main editor content. |
+| Prop       | Type              | Default | Notes                  |
+| ---------- | ----------------- | ------- | ---------------------- |
+| `label`    | `React.ReactNode` | -       | Field label.           |
+| `control`  | `React.ReactNode` | -       | Trailing control slot. |
+| `children` | `React.ReactNode` | -       | Main editor content.   |
 
 Inherits all `FormField` props.
 
@@ -1117,12 +1103,12 @@ Labeled boolean toggle row.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `label` | `React.ReactNode` | - | Required label. |
-| `description` | `React.ReactNode` | - | Subheading text. |
-| `value` | `boolean` | - | Required state. |
-| `onValueChange` | `(value: boolean) => void` | - | Required handler. |
+| Prop            | Type                       | Default | Notes             |
+| --------------- | -------------------------- | ------- | ----------------- |
+| `label`         | `React.ReactNode`          | -       | Required label.   |
+| `description`   | `React.ReactNode`          | -       | Subheading text.  |
+| `value`         | `boolean`                  | -       | Required state.   |
+| `onValueChange` | `(value: boolean) => void` | -       | Required handler. |
 
 </details>
 
@@ -1132,10 +1118,8 @@ Hierarchical list for navigation and layers.
 
 ```tsx
 <TreeView
-  nodes={[
-    { id: '1', label: 'Folder', children: [{ id: '2', label: 'File' }] }
-  ]}
-  onSelect={id => console.log(id)}
+  nodes={[{ id: '1', label: 'Folder', children: [{ id: '2', label: 'File' }] }]}
+  onSelect={(id) => console.log(id)}
 />
 ```
 
@@ -1144,12 +1128,12 @@ Hierarchical list for navigation and layers.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `nodes` | `TreeItemNode[]` | - | Required tree data. |
-| `selectedId` | `string` | - | Active node. |
-| `expandedIds` | `string[]` | - | Controlled expansion. |
-| `onSelect` | `(id: string) => void` | - | Click handler. |
+| Prop          | Type                   | Default | Notes                 |
+| ------------- | ---------------------- | ------- | --------------------- |
+| `nodes`       | `TreeItemNode[]`       | -       | Required tree data.   |
+| `selectedId`  | `string`               | -       | Active node.          |
+| `expandedIds` | `string[]`             | -       | Controlled expansion. |
+| `onSelect`    | `(id: string) => void` | -       | Click handler.        |
 
 </details>
 
@@ -1169,17 +1153,17 @@ Grid-based selection for palettes and toolboxes.
 
 `TileGrid` props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
+| Prop      | Type                     | Default        | Notes        |
+| --------- | ------------------------ | -------------- | ------------ |
 | `columns` | `number \| 'responsive'` | `'responsive'` | Grid layout. |
 
 `PaletteItem` props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `title` | `React.ReactNode` | - | Item title. |
-| `selected` | `boolean` | `false` | Highlighted state. |
-| `onPress` | `() => void` | - | Click handler. |
+| Prop       | Type              | Default | Notes              |
+| ---------- | ----------------- | ------- | ------------------ |
+| `title`    | `React.ReactNode` | -       | Item title.        |
+| `selected` | `boolean`         | `false` | Highlighted state. |
+| `onPress`  | `() => void`      | -       | Click handler.     |
 
 </details>
 
@@ -1192,7 +1176,7 @@ Generic visual shell for editing ordered collections.
   items={items}
   renderItem={({ item }) => <Text>{item.name}</Text>}
   onAdd={() => add()}
-  onRemove={index => remove(index)}
+  onRemove={(index) => remove(index)}
 />
 ```
 
@@ -1201,13 +1185,13 @@ Generic visual shell for editing ordered collections.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `items` | `readonly T[]` | - | Required collection. |
-| `renderItem` | `(props) => ReactNode` | - | Required item renderer. |
-| `onAdd` | `() => void` | - | Add handler. |
-| `onRemove` | `(index: number) => void` | - | Remove handler. |
-| `onMove` | `(from, to) => void` | - | Reorder handler. |
+| Prop         | Type                      | Default | Notes                   |
+| ------------ | ------------------------- | ------- | ----------------------- |
+| `items`      | `readonly T[]`            | -       | Required collection.    |
+| `renderItem` | `(props) => ReactNode`    | -       | Required item renderer. |
+| `onAdd`      | `() => void`              | -       | Add handler.            |
+| `onRemove`   | `(index: number) => void` | -       | Remove handler.         |
+| `onMove`     | `(from, to) => void`      | -       | Reorder handler.        |
 
 </details>
 
@@ -1229,11 +1213,11 @@ Theme provider that creates the ZORA theme and passes it to Surface
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Required app content. |
-| `initialConfig` | `ZoraThemeOverride` | - | Partial Surface `ThemeConfig` override merged into `zoraTheme`. |
-| `initialMode` | `'light' \| 'dark'` | `'light'` | Initial theme mode passed to Surface. |
+| Prop            | Type                | Default   | Notes                                                           |
+| --------------- | ------------------- | --------- | --------------------------------------------------------------- |
+| `children`      | `React.ReactNode`   | -         | Required app content.                                           |
+| `initialConfig` | `ZoraThemeOverride` | -         | Partial Surface `ThemeConfig` override merged into `zoraTheme`. |
+| `initialMode`   | `'light' \| 'dark'` | `'light'` | Initial theme mode passed to Surface.                           |
 
 Inherited props:
 
@@ -1281,12 +1265,12 @@ const zoraTheme: ThemeConfig = {
   light: {
     primaryColor: '#0f766e',
     harmony: 'analogous',
-                systemTone: 'jewel',
+    systemTone: 'jewel',
   },
   dark: {
     primaryColor: '#2dd4bf',
     harmony: 'analogous',
-                systemTone: 'jewel',
+    systemTone: 'jewel',
   },
 };
 ```

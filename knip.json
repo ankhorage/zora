@@ -1,10 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@latest/schema.json",
   "entry": ["eslint.config.mjs", ".prettierrc.js"],
-  "project": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    ".github/workflows/*.yml"
-  ],
+  "project": ["src/**/*.ts", "src/**/*.tsx", ".github/workflows/*.yml"],
   "ignoreBinaries": ["eslint", "prettier"]
 }
