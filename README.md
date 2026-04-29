@@ -525,12 +525,30 @@ Picks these Surface `DrawerProps`: `closeOnBackdrop`, `onDismiss`, `position`,
 
 ### `AppShell`
 
-Theme-aware application root shell with optional topbar and full-height content
-area. Use it as the outer app chrome inside `ZoraProvider`.
+Theme-aware application root shell providing the structural frame for an app.
+It defines the top-level layout slots (`header`, `body`, `footer`, `overlay`)
+and ensures a full-height, flexible container.
+
+Use it as the outer layout inside `ZoraProvider`. Combine it with layout
+primitives like `SidebarLayout` or `Page` to structure inner content.
 
 ```tsx
-<AppShell topbar={<Toolbar position="inline">{actions}</Toolbar>}>
+<AppShell
+  header={<Toolbar position="inline">{actions}</Toolbar>}
+  footer={<BottomBar />}
+>
   <Page header={<PageHeader title="Dashboard" />}>{content}</Page>
+</AppShell>
+```
+
+Example with overlay (e.g. mobile panel or drawer):
+
+```tsx
+<AppShell
+  footer={<BottomBar />}
+  overlay={isOpen ? <MyDrawer onClose={close} /> : null}
+>
+  {content}
 </AppShell>
 ```
 
@@ -539,11 +557,15 @@ area. Use it as the outer app chrome inside `ZoraProvider`.
 
 ZORA props:
 
-| Prop | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Main app content. |
-| `topbar` | `React.ReactNode` | - | Optional top app bar rendered above content. |
-| `testID` | `string` | - | Forwarded to the root Surface background container. |
+| Prop        | Type                   | Default | Notes                                                                                |
+| ----------- | ---------------------- | ------- | ------------------------------------------------------------------------------------ |
+| `children`  | `React.ReactNode`      | -       | Main application content.                                                            |
+| `header`    | `React.ReactNode`      | -       | Optional top section (e.g. toolbar or navigation).                                   |
+| `footer`    | `React.ReactNode`      | -       | Optional bottom section (e.g. tab bar or actions).                                   |
+| `overlay`   | `React.ReactNode`      | -       | Optional overlay layer rendered above content (e.g. drawer, modal, floating panels). |
+| `style`     | `StyleProp<ViewStyle>` | -       | Style applied to the root container.                                                 |
+| `bodyStyle` | `StyleProp<ViewStyle>` | -       | Style applied to the main content container.                                         |
+| `testID`    | `string`               | -       | Forwarded to the root Surface container.                                             |
 
 Inherited props:
 
@@ -551,6 +573,21 @@ No inherited props. `AppShellProps` is declared directly by ZORA.
 
 </details>
 
+---
+
+### Design notes
+
+- `AppShell` is a **structural primitive**, not a page layout.
+
+- It does **not manage sidebars or content splits** — use `SidebarLayout` for that.
+
+- It does **not provide theming** — wrap with `ZoraProvider`.
+
+- `overlay` is rendered using absolute positioning and should be used for
+  drawers, mobile panels, or floating UI.
+
+- All inner content must support flexible layouts (`flex: 1`, `minHeight: 0`)
+  to behave correctly inside the shell.
 
 ### `Page`
 
