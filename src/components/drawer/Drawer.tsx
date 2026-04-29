@@ -1,13 +1,26 @@
 import { Box, Drawer as SurfaceDrawer, Heading, Stack, Text } from '@ankhorage/surface';
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import type { DrawerProps } from './types';
 
-export function Drawer({ children, title, description, footer, ...props }: DrawerProps) {
+function useStableCallback(callback: (() => void) | undefined): (() => void) | undefined {
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
+  return useCallback(() => {
+    callbackRef.current?.();
+  }, []);
+}
+
+export function Drawer({ children, title, description, footer, onDismiss, ...props }: DrawerProps) {
   const hasHeader = title != null || description != null;
+  const stableOnDismiss = useStableCallback(onDismiss);
 
   return (
-    <SurfaceDrawer {...props}>
+    <SurfaceDrawer {...props} onDismiss={stableOnDismiss}>
       <Stack gap="m">
         {hasHeader ? (
           <Stack gap="xs">

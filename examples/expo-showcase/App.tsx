@@ -62,7 +62,7 @@ function AppWrapper() {
         <StatusBar style={isDark ? 'light' : 'dark'} />
 
         <AppShell
-          topbar={
+          header={
             <Toolbar position="inline" compact={false}>
               <Tabs
                 variant="segmented"

@@ -1,8 +1,20 @@
 import { Box, Heading, Modal as SurfaceModal, Stack, Text } from '@ankhorage/surface';
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import { resolveDialogWidth } from '../../internal/recipes';
 import type { ModalProps } from './types';
+
+function useStableCallback(callback: (() => void) | undefined): (() => void) | undefined {
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
+  return useCallback(() => {
+    callbackRef.current?.();
+  }, []);
+}
 
 export function Modal({
   children,
@@ -10,12 +22,14 @@ export function Modal({
   description,
   footer,
   width = 'default',
+  onDismiss,
   ...props
 }: ModalProps) {
   const hasHeader = title != null || description != null;
+  const stableOnDismiss = useStableCallback(onDismiss);
 
   return (
-    <SurfaceModal {...props}>
+    <SurfaceModal {...props} onDismiss={stableOnDismiss}>
       <Box maxWidth={resolveDialogWidth(width)} style={{ alignSelf: 'center', width: '100%' }}>
         <Stack gap="m">
           {hasHeader ? (

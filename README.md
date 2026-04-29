@@ -44,8 +44,8 @@ export function App() {
   return (
     <ZoraProvider>
       <AppShell
-        topbar={
-          <Toolbar position="inline">
+        header={
+          <Toolbar>
             <ToolbarAction icon={{ name: 'menu-outline' }} label="Menu" />
           </Toolbar>
         }

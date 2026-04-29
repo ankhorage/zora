@@ -3,6 +3,7 @@ import {
   Badge,
   Button,
   Card,
+  CheckboxGroup,
   Drawer,
   IconButton,
   Input,
@@ -10,6 +11,7 @@ import {
   Page,
   PageHeader,
   PageSection,
+  RadioGroup,
   SectionHeader,
   Select,
   Tabs,
@@ -23,6 +25,10 @@ import { ScrollView, View } from 'react-native';
 export function ComponentsPage() {
   const [tab, setTab] = React.useState('overview');
   const [select, setSelect] = React.useState('starter');
+  const [density, setDensity] = React.useState<'comfortable' | 'compact' | 'spacious'>(
+    'comfortable',
+  );
+  const [channels, setChannels] = React.useState<('email' | 'push' | 'sms')[]>(['email']);
   const [modalOpen, setModalOpen] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
@@ -180,6 +186,59 @@ export function ComponentsPage() {
           <Input placeholder="Search components" leadingIcon={{ name: 'search-outline' }} />
           <Input placeholder="Disabled input" disabled />
           <Textarea placeholder="Textarea multi-line" rows={3} />
+
+          <SectionHeader
+            title="Radio groups"
+            description="Use RadioGroup when exactly one option in a related set can be active."
+          />
+          <RadioGroup
+            value={density}
+            onValueChange={setDensity}
+            orientation="horizontal"
+            options={[
+              {
+                value: 'compact',
+                label: 'Compact',
+                description: 'Dense controls for power users.',
+              },
+              {
+                value: 'comfortable',
+                label: 'Comfortable',
+                description: 'Balanced spacing for most apps.',
+              },
+              {
+                value: 'spacious',
+                label: 'Spacious',
+                description: 'Larger touch targets and airy layouts.',
+              },
+            ]}
+          />
+
+          <SectionHeader
+            title="Checkbox groups"
+            description="Use CheckboxGroup when multiple values from a related set can be selected."
+          />
+          <CheckboxGroup
+            value={channels}
+            onValueChange={setChannels}
+            options={[
+              {
+                value: 'email',
+                label: 'Email',
+                description: 'Send product and account updates by email.',
+              },
+              {
+                value: 'push',
+                label: 'Push',
+                description: 'Notify active devices immediately.',
+              },
+              {
+                value: 'sms',
+                label: 'SMS',
+                description: 'Use only for important alerts.',
+              },
+            ]}
+          />
         </PageSection>
 
         <PageSection title="Cards">
