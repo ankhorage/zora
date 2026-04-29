@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.1
+
+### Patch Changes
+
+- 1f6d9a7: Fix infinite render loop in Modal and Drawer
+
+  Stabilizes onDismiss handling to prevent repeated state updates causing
+  "Maximum update depth exceeded" errors when opening overlays.
+
 ## 0.5.0
 
 ### Minor Changes
