@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2
+
+### Patch Changes
+
+- 1b6e3e1: Update SURFACE
+
 ## 0.5.1
 
 ### Patch Changes
