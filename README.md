@@ -238,6 +238,104 @@ Inherits all Surface `TextInputProps` except `leadingAccessory`, `size`, and
 
 </details>
 
+### `RadioGroup`
+
+Single-selection control built on top of Surface `Radio`, designed for use inside `FormField`.
+
+```tsx
+<FormField label="Navigator type">
+  <RadioGroup
+    value="tabs"
+    onValueChange={(value) => console.log(value)}
+    options={[
+      { value: 'tabs', label: 'Tabs' },
+      { value: 'drawer', label: 'Drawer' },
+    ]}
+  />
+</FormField>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                         | Default      | Notes                          |
+| --------------- | ---------------------------- | ------------ | ------------------------------ |
+| `value`         | `string`                     | -            | Currently selected value.      |
+| `onValueChange` | `(value: string) => void`    | -            | Called when selection changes. |
+| `options`       | `RadioGroupOption[]`         | -            | List of selectable options.    |
+| `orientation`   | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction.              |
+| `gap`           | `'xs' \| 's' \| 'm' \| 'l'`  | `'s'`        | Spacing between items.         |
+
+Option shape:
+
+```ts
+type RadioGroupOption = {
+  value: string;
+  label: React.ReactNode;
+  description?: React.ReactNode;
+  disabled?: boolean;
+};
+```
+
+Inherited props:
+
+Passes `tone`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
+to underlying Surface `Radio` components.
+
+</details>
+
+---
+
+### `CheckboxGroup`
+
+Multi-selection control built on top of Surface `Checkbox`, for selecting multiple values.
+
+```tsx
+<FormField label="Features">
+  <CheckboxGroup
+    value={['a']}
+    onValueChange={(value) => console.log(value)}
+    options={[
+      { value: 'a', label: 'Feature A' },
+      { value: 'b', label: 'Feature B' },
+    ]}
+  />
+</FormField>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                         | Default      | Notes                          |
+| --------------- | ---------------------------- | ------------ | ------------------------------ |
+| `value`         | `string[]`                   | -            | Array of selected values.      |
+| `onValueChange` | `(value: string[]) => void`  | -            | Called when selection changes. |
+| `options`       | `CheckboxGroupOption[]`      | -            | List of selectable options.    |
+| `orientation`   | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction.              |
+| `gap`           | `'xs' \| 's' \| 'm' \| 'l'`  | `'s'`        | Spacing between items.         |
+
+Option shape:
+
+```ts
+type CheckboxGroupOption = {
+  value: string;
+  label: React.ReactNode;
+  description?: React.ReactNode;
+  disabled?: boolean;
+};
+```
+
+Inherited props:
+
+Passes `tone`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
+to underlying Surface `Checkbox` components.
+
+</details>
+
 ### `Textarea`
 
 Multiline text input wrapper with ZORA sizing and optional Surface icon specs.
