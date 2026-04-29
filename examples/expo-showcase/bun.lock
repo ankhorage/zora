@@ -5,7 +5,7 @@
     "": {
       "name": "zora-expo-showcase",
       "dependencies": {
-        "@ankhorage/zora": "^0.5.0",
+        "@ankhorage/zora": "^0.5.1",
         "@expo/vector-icons": "^15.0.3",
         "@react-native-picker/picker": "2.11.1",
         "expo": "~54.0.34",
@@ -30,7 +30,7 @@
 
     "@ankhorage/surface": ["@ankhorage/surface@0.1.8", "", { "dependencies": { "@ankhorage/contracts": "^0.0.1", "culori": "^4.0.2" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-AtJ5G4lStqOfc74wS67UhssXyPLhg+1aZx0LrLkQDK/bWFQWKG1bTFcMETJ65HoGsyGjJURkAdC0yyrF48YPpQ=="],
 
-    "@ankhorage/zora": ["@ankhorage/zora@0.5.0", "", { "dependencies": { "@ankhorage/surface": "^0.1.8" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "@react-native-picker/picker": ">=2.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "@react-native-picker/picker", "expo-font"] }, "sha512-vsXvkh3mKyJI9aksTyDAgPeC3DlBZMSDX4shi/7o+u6WvrvYb7hdMlrUAswfLsiRW4VoUvGEyl+08UeQ+ktGtg=="],
+    "@ankhorage/zora": ["@ankhorage/zora@0.5.1", "", { "dependencies": { "@ankhorage/surface": "^0.1.8" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "@react-native-picker/picker": ">=2.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "@react-native-picker/picker", "expo-font"] }, "sha512-J5F5AKc7sGyLRmAComOphdJtYBbjC5GW9PlrrNjPtAA4Nwhtfv40PeVyly+DrJd0m6xVPLvW65rZ4PcRkreVWg=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.10.4", "", { "dependencies": { "@babel/highlight": "^7.10.4" } }, ""],
 
