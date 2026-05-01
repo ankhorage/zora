@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- ab9fc54: Add provider-agnostic form primitives and auth form patterns for sign-in, sign-up, password reset, and OTP flows.
+
 ## 0.5.3
 
 ### Patch Changes
