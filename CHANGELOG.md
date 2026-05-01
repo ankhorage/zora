@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.3
+
+### Patch Changes
+
+- bbc43fd: update @ankhorage/surface
+
 ## 0.5.2
 
 ### Patch Changes
