@@ -8,6 +8,35 @@ export type { CheckboxGroupOption, CheckboxGroupProps, CheckboxProps } from './c
 export { Checkbox, CheckboxGroup } from './components/checkbox';
 export type { DrawerProps } from './components/drawer';
 export { Drawer } from './components/drawer';
+export type {
+  FormActionsProps,
+  FormErrorProps,
+  FormErrors,
+  FormFieldConfig,
+  FormFieldControlProps,
+  FormFieldInputType,
+  FormFieldProps,
+  FormFieldValue,
+  FormFieldWrapperProps,
+  FormProps,
+  FormValidationErrors,
+  FormValidationResult,
+  FormValues,
+  UseFormControllerOptions,
+  UseFormControllerResult,
+  ValidationRule,
+} from './components/form';
+export {
+  Form,
+  FormActions,
+  FormError,
+  FormField,
+  hasRequiredRule,
+  useFormController,
+  validateField,
+  validateFields,
+  validateValue,
+} from './components/form';
 export type { IconProps } from './components/icon';
 export { Icon } from './components/icon';
 export type { IconButtonProps } from './components/icon-button';
@@ -43,6 +72,20 @@ export { SidebarLayout } from './layout/sidebar-layout';
 export type { TopbarLayoutProps } from './layout/topbar-layout';
 export { TopbarLayout } from './layout/topbar-layout';
 export type {
+  AuthFormBaseProps,
+  AuthIdentifierKind,
+  ForgotPasswordFormProps,
+  ForgotPasswordFormValues,
+  OtpFormProps,
+  OtpFormValues,
+  SignInFormProps,
+  SignInFormValues,
+  SignUpFormField,
+  SignUpFormProps,
+  SignUpFormValues,
+} from './patterns/auth';
+export { ForgotPasswordForm, OtpForm, SignInForm, SignUpForm } from './patterns/auth';
+export type {
   CollectionEditorProps,
   CollectionEditorRenderItemProps,
 } from './patterns/collection-editor';
@@ -53,8 +96,6 @@ export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
 export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
 export { EmptyState } from './patterns/empty-state';
-export type { FormFieldProps } from './patterns/form-field';
-export { FormField } from './patterns/form-field';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
 export type { NoticeProps } from './patterns/notice';

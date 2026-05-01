@@ -4,15 +4,19 @@ import {
   CollectionEditor,
   DisclosureSection,
   EmptyState,
+  ForgotPasswordForm,
   FormField,
   IconButton,
   Input,
   InspectorField,
   Notice,
+  OtpForm,
   Page,
   PageHeader,
   PageSection,
   PaletteItem,
+  SignInForm,
+  SignUpForm,
   SwitchField,
   TileGrid,
   TreeView,
@@ -67,6 +71,7 @@ export function PatternsPage() {
       return nextItems;
     });
   };
+  const handleMockAction = React.useCallback(() => undefined, []);
 
   return (
     <ScrollView>
@@ -128,6 +133,51 @@ export function PatternsPage() {
               onValueChange={setVerboseLogging}
             />
           </DisclosureSection>
+        </PageSection>
+
+        <PageSection title="Scenario: Auth forms">
+          <Card
+            title="Sign in"
+            description="Provider-agnostic form with validation, form-level errors, and navigation callbacks."
+            tone="subtle"
+          >
+            <SignInForm
+              error="Mock signIn error shown at form level."
+              identifiers={['email']}
+              onForgotPassword={handleMockAction}
+              onSignUp={handleMockAction}
+              onSubmit={handleMockAction}
+            />
+          </Card>
+
+          <Card
+            title="Sign up"
+            description="Loading state with configurable sign-up fields."
+            tone="subtle"
+          >
+            <SignUpForm loading onSignIn={handleMockAction} onSubmit={handleMockAction} />
+          </Card>
+
+          <Card
+            title="Forgot password"
+            description="Disabled state for identifier collection."
+            tone="subtle"
+          >
+            <ForgotPasswordForm
+              disabled
+              identifiers={['email']}
+              onSignIn={handleMockAction}
+              onSubmit={handleMockAction}
+            />
+          </Card>
+
+          <Card
+            title="OTP"
+            description="Code verification with a mock resend action."
+            tone="subtle"
+          >
+            <OtpForm length={6} onResend={handleMockAction} onSubmit={handleMockAction} />
+          </Card>
         </PageSection>
 
         <PageSection title="Scenario: Editor sidebar">
