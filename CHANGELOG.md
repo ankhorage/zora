@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.1
+
+### Patch Changes
+
+- 67b131e: Approved with amendments.
+
 ## 0.6.0
 
 ### Minor Changes
