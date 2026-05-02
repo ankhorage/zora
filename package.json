@@ -43,7 +43,7 @@
     }
   },
   "dependencies": {
-    "@ankhorage/surface": "^0.1.10"
+    "@ankhorage/surface": "^0.1.11"
   },
   "files": [
     "dist",
