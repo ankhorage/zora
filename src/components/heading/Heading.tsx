@@ -3,6 +3,7 @@ import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveHeadingRecipe, resolveHeadingSizeFromLevel } from './resolveHeadingRecipe';
 import type { HeadingProps } from './types';
 
@@ -30,7 +31,9 @@ function resolveHeadingContent({
   return i18nKey;
 }
 
-export function Heading({
+function HeadingInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   text,
   i18nKey,
@@ -84,3 +87,5 @@ export function Heading({
     </ReactNativeText>
   );
 }
+
+export const Heading = withZoraThemeScope(HeadingInner);

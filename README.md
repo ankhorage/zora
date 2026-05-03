@@ -68,6 +68,31 @@ export function App() {
 }
 ```
 
+## Scoped themes
+
+ZORA supports nested theme scopes. A component may set `mode` and, later,
+`themeId`; everything inside inherits the nearest scope.
+
+```tsx
+import React from 'react';
+import { Button, Heading, Panel, Text, ZoraProvider, type ZoraTheme } from '@ankhorage/zora';
+
+export function App({ appTheme }: { appTheme: ZoraTheme }) {
+  return (
+    <ZoraProvider theme={appTheme} initialMode="light">
+      <Panel mode="dark">
+        <Heading>Studio panel</Heading>
+        <Text>Text inherits dark mode.</Text>
+        <Button>Also scoped.</Button>
+      </Panel>
+    </ZoraProvider>
+  );
+}
+```
+
+In Plan 2, `mode` is a declarative render-scope override. Calling `setMode` from
+`useZoraTheme()` still targets the root theme provider.
+
 ## Foundation primitives
 
 ZORA re-exports selected Surface foundation primitives for app-facing layout

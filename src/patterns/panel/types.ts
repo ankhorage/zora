@@ -1,8 +1,9 @@
 import type React from 'react';
 
 import type { ZoraCardTone } from '../../internal/recipes';
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
-export interface PanelProps {
+export interface PanelProps extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;
@@ -11,5 +12,4 @@ export interface PanelProps {
   children?: React.ReactNode;
   tone?: ZoraCardTone;
   compact?: boolean;
-  testID?: string;
 }
