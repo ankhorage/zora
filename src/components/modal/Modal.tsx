@@ -1,7 +1,8 @@
-import { Box, Heading, Modal as SurfaceModal, Stack, Text } from '@ankhorage/surface';
+import { Box, Heading, Modal as SurfaceModal, Stack } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
 import { resolveDialogWidth } from '../../internal/recipes';
+import { Text } from '../text';
 import type { ModalProps } from './types';
 
 function useStableCallback(callback: (() => void) | undefined): (() => void) | undefined {

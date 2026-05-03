@@ -1,6 +1,7 @@
-import { Box, Heading, Stack, Text } from '@ankhorage/surface';
+import { Box, Heading, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Text } from '../../components/text';
 import type { SectionHeaderProps } from './types';
 
 export function SectionHeader({

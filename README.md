@@ -35,6 +35,7 @@ import {
   Card,
   Page,
   PageHeader,
+  Text,
   Toolbar,
   ToolbarAction,
   ZoraProvider,
@@ -55,7 +56,9 @@ export function App() {
             actions={<Button>Continue</Button>}
             description="ZORA provides composed UI surfaces for apps."
             title="Welcome"
-          />
+          >
+            <Text tone="muted">Structured text comes from ZORA too.</Text>
+          </Card>
         </Page>
       </AppShell>
     </ZoraProvider>
@@ -80,6 +83,46 @@ Width presets:
 - Page widths: `narrow=760`, `default=1040`, `wide=1280`.
 
 ## Components
+
+### `Text`
+
+Structured body text with ZORA typography variants, semantic tones, and
+responsive props.
+
+```tsx
+<Text variant="lead" tone="muted">
+  Build product screens with structured, theme-aware copy.
+</Text>
+
+<Text variant={{ base: 'bodySmall', md: 'body' }} align={{ base: 'center', md: 'left' }}>
+  Responsive text without raw styles.
+</Text>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                                     | Default     | Notes                                  |
+| --------------- | ---------------------------------------- | ----------- | -------------------------------------- |
+| `children`      | `React.ReactNode`                        | -           | Primary content.                       |
+| `text`          | `string`                                 | -           | Manifest-friendly content prop.        |
+| `i18nKey`       | `string`                                 | -           | Translation key fallback.              |
+| `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                     |
+| `tone`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                   |
+| `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                        |
+| `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.   |
+| `italic`        | `boolean`                                | `false`     | Italic style.                          |
+| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.      |
+| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                   |
+| `selectable`    | `boolean`                                | -           | Allows text selection where supported. |
+| `testID`        | `string`                                 | -           | Test id.                               |
+
+No inherited props. `TextProps` is declared directly by ZORA to keep text
+structured and template-safe.
+
+</details>
 
 ### `Button`
 

@@ -1,6 +1,7 @@
-import { Box, Drawer as SurfaceDrawer, Heading, Stack, Text } from '@ankhorage/surface';
+import { Box, Drawer as SurfaceDrawer, Heading, Stack } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
+import { Text } from '../text';
 import type { DrawerProps } from './types';
 
 function useStableCallback(callback: (() => void) | undefined): (() => void) | undefined {

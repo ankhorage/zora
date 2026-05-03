@@ -1,7 +1,8 @@
-import { Box, Card as SurfaceCard, Heading, Stack, Text } from '@ankhorage/surface';
+import { Box, Card as SurfaceCard, Heading, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveCardVariant } from '../../internal/recipes';
+import { Text } from '../text';
 import type { CardProps } from './types';
 
 export function Card({

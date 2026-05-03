@@ -1,12 +1,12 @@
-import type { ButtonIconSpec, TextareaProps as SurfaceTextareaProps } from '@ankhorage/surface';
+import type * as Surface from '@ankhorage/surface';
 
 import type { ZoraControlSize } from '../../internal/recipes';
 
 export interface TextareaProps extends Omit<
-  SurfaceTextareaProps,
+  Surface.TextareaProps,
   'leadingAccessory' | 'size' | 'trailingAccessory'
 > {
   size?: ZoraControlSize;
-  leadingIcon?: ButtonIconSpec;
-  trailingIcon?: ButtonIconSpec;
+  leadingIcon?: Surface.ButtonIconSpec;
+  trailingIcon?: Surface.ButtonIconSpec;
 }

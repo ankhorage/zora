@@ -51,6 +51,8 @@ export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
 export type { TabItem, TabsProps } from './components/tabs';
 export { Tabs } from './components/tabs';
+export type { TextAlign, TextProps, TextTone, TextVariant, TextWeight } from './components/text';
+export { Text } from './components/text';
 export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
 export type { ToolbarActionProps, ToolbarProps } from './components/toolbar';

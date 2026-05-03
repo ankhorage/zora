@@ -1,7 +1,8 @@
-import { Radio, Stack, Text } from '@ankhorage/surface';
+import { Radio, Stack } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { Text } from '../text';
 import type { RadioGroupOption, RadioGroupProps } from './types';
 
 export function RadioGroup<TValue extends string>({

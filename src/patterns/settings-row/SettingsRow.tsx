@@ -1,7 +1,8 @@
-import { Box, Text } from '@ankhorage/surface';
+import { Box } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
+import { Text } from '../../components/text';
 import type { SettingsRowProps } from './types';
 
 export function SettingsRow({

@@ -1,7 +1,8 @@
-import { Checkbox, Stack, Text } from '@ankhorage/surface';
+import { Checkbox, Stack } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { Text } from '../text';
 import type { CheckboxGroupOption, CheckboxGroupProps } from './types';
 
 export function CheckboxGroup<TValue extends string>({

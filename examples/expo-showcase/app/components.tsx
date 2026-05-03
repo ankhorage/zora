@@ -15,6 +15,7 @@ import {
   SectionHeader,
   Select,
   Tabs,
+  Text,
   Textarea,
   Toolbar,
   ToolbarAction,
@@ -43,6 +44,62 @@ export function ComponentsPage() {
           />
         }
       >
+        <PageSection title="Typography">
+          <SectionHeader
+            title="Text"
+            description="Structured body copy, labels, captions, and mono snippets rendered through ZORA."
+          />
+          <Card title="Variants" description="Recipes stay aligned with the active theme.">
+            <Stack gap="s">
+              <Text variant="lead" tone="muted">
+                Lead copy introduces a screen or important section with a larger measure.
+              </Text>
+              <Text variant="body">
+                Body copy is the default paragraph style for product content and supporting
+                explanations.
+              </Text>
+              <Text variant="bodySmall" tone="muted">
+                Body small works well for secondary explanations and compact rows.
+              </Text>
+              <Text variant="caption" tone="subtle">
+                Caption text is for metadata, timestamps, and helper details.
+              </Text>
+              <Text variant="label" weight="semiBold">
+                Label text
+              </Text>
+              <Text variant="eyebrow" tone="primary">
+                Eyebrow text
+              </Text>
+              <Text variant="code">zora.text.variant</Text>
+            </Stack>
+          </Card>
+
+          <Card
+            title="Tones and responsive props"
+            description="Tone and layout can adapt by breakpoint."
+          >
+            <Stack gap="s">
+              <Text tone="primary" weight="semiBold">
+                Primary tone
+              </Text>
+              <Text tone="danger" weight="semiBold">
+                Danger tone
+              </Text>
+              <Text
+                align={{ base: 'center', md: 'left' }}
+                tone="muted"
+                variant={{ base: 'bodySmall', md: 'body' }}
+              >
+                This line uses responsive variant and alignment values.
+              </Text>
+              <Text numberOfLines={1} tone="muted">
+                This intentionally long line demonstrates numberOfLines truncation for text that
+                needs to fit in constrained product surfaces without exposing raw styles.
+              </Text>
+            </Stack>
+          </Card>
+        </PageSection>
+
         <PageSection title="Buttons">
           <SectionHeader
             title="Emphasis"
