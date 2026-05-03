@@ -66,6 +66,31 @@ export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
 export type { ToolbarActionProps, ToolbarProps } from './components/toolbar';
 export { Toolbar, ToolbarAction } from './components/toolbar';
+export type {
+  BoxProps,
+  CenterProps,
+  ContainerProps,
+  DividerProps,
+  GridProps,
+  InlineProps,
+  ShowProps,
+  SpacerProps,
+  StackProps,
+  SurfaceProps,
+  SurfaceVariant,
+} from './foundation';
+export {
+  Box,
+  Center,
+  Container,
+  Divider,
+  Grid,
+  Inline,
+  Show,
+  Spacer,
+  Stack,
+  Surface,
+} from './foundation';
 export type { AppShellProps } from './layout/app-shell';
 export { AppShell } from './layout/app-shell';
 export type { AuthLayoutProps } from './layout/auth-layout';
