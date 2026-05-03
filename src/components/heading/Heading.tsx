@@ -1,4 +1,4 @@
-import { resolveResponsive, useResponsiveRuntime, useTranslationContext } from '@ankhorage/surface';
+import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
@@ -10,12 +10,10 @@ function resolveHeadingContent({
   children,
   text,
   i18nKey,
-  translate,
 }: {
   children: HeadingProps['children'];
   text: HeadingProps['text'];
   i18nKey: HeadingProps['i18nKey'];
-  translate: (key: string) => string;
 }): React.ReactNode {
   if (children !== undefined) {
     return children;
@@ -29,13 +27,7 @@ function resolveHeadingContent({
     return null;
   }
 
-  try {
-    const translated = translate(i18nKey);
-    return translated && translated !== i18nKey ? translated : i18nKey;
-  } catch (error) {
-    console.warn('[ZoraHeading] Translation error:', error);
-    return i18nKey;
-  }
+  return i18nKey;
 }
 
 export function Heading({
@@ -59,8 +51,7 @@ export function Heading({
 }: HeadingProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
-  const { t } = useTranslationContext();
-  const content = resolveHeadingContent({ children, text, i18nKey, translate: t });
+  const content = resolveHeadingContent({ children, text, i18nKey });
   const resolvedSize = resolveResponsive(size, breakpoint) ?? resolveHeadingSizeFromLevel(level);
   const resolvedTone = resolveResponsive(tone, breakpoint) ?? 'default';
   const resolvedAlign = resolveResponsive(align, breakpoint);

@@ -126,7 +126,7 @@ ZORA props:
 | --------------- | ---------------------------------------- | ----------- | -------------------------------------------- |
 | `children`      | `React.ReactNode`                        | -           | Primary content.                             |
 | `text`          | `string`                                 | -           | Manifest-friendly content prop.              |
-| `i18nKey`       | `string`                                 | -           | Translation key fallback.                    |
+| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided.                    |
 | `level`         | `HeadingLevel`                           | `2`         | Semantic heading level from `1` through `6`. |
 | `size`          | `Responsive<HeadingSize>`                | level size  | Visual scale: `display`, `h1` through `h6`.  |
 | `tone`          | `Responsive<HeadingTone>`                | `'default'` | Semantic text color.                         |
@@ -167,7 +167,7 @@ ZORA props:
 | --------------- | ---------------------------------------- | ----------- | -------------------------------------- |
 | `children`      | `React.ReactNode`                        | -           | Primary content.                       |
 | `text`          | `string`                                 | -           | Manifest-friendly content prop.        |
-| `i18nKey`       | `string`                                 | -           | Translation key fallback.              |
+| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided.              |
 | `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                     |
 | `tone`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                   |
 | `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                        |
