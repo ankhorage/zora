@@ -1,11 +1,4 @@
-import {
-  AppShell,
-  createZoraTheme,
-  Tabs,
-  Toolbar,
-  ToolbarAction,
-  ZoraProvider,
-} from '@ankhorage/zora';
+import { AppShell, Tabs, Toolbar, ToolbarAction, ZoraProvider } from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
@@ -45,18 +38,13 @@ function AppWrapper() {
     <ZoraProvider
       key={colorMode}
       initialMode={colorMode}
-      initialConfig={createZoraTheme({
-        light: {
-          primaryColor: '#0b6e99',
-          harmony: 'analogous',
-          systemTone: 'jewel',
-        },
-        dark: {
-          primaryColor: '#38bdf8',
-          harmony: 'analogous',
-          systemTone: 'jewel',
-        },
-      })}
+      theme={{
+        id: 'showcase',
+        name: 'Showcase',
+        primaryColor: '#0b6e99',
+        harmony: 'analogous',
+        tone: 'jewel',
+      }}
     >
       <SafeAreaProvider>
         <StatusBar style={isDark ? 'light' : 'dark'} />

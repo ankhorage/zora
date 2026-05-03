@@ -1,0 +1,36 @@
+import { describe, expect, test } from 'bun:test';
+
+import { createZoraThemeConfig } from './createZoraThemeConfig';
+
+describe('createZoraThemeConfig', () => {
+  test('converts the default theme seed into a surface config', () => {
+    const themeConfig = createZoraThemeConfig();
+
+    expect(themeConfig.id).toBe('zora');
+    expect(themeConfig.name).toBe('ZORA');
+    expect(themeConfig.light.primaryColor).toBe('#0f766e');
+    expect(themeConfig.light.harmony).toBe('analogous');
+    expect(themeConfig.light.systemTone).toBe('jewel');
+    expect(themeConfig.dark.primaryColor).toBe('#0f766e');
+    expect(themeConfig.dark.harmony).toBe('analogous');
+    expect(themeConfig.dark.systemTone).toBe('jewel');
+  });
+
+  test('falls back to id when name is omitted', () => {
+    const themeConfig = createZoraThemeConfig({
+      id: 'studio',
+      primaryColor: '#0f766e',
+      harmony: 'analogous',
+      tone: 'jewel',
+    });
+
+    expect(themeConfig.id).toBe('studio');
+    expect(themeConfig.name).toBe('studio');
+    expect(themeConfig.light.primaryColor).toBe('#0f766e');
+    expect(themeConfig.light.harmony).toBe('analogous');
+    expect(themeConfig.light.systemTone).toBe('jewel');
+    expect(themeConfig.dark.primaryColor).toBe('#0f766e');
+    expect(themeConfig.dark.harmony).toBe('analogous');
+    expect(themeConfig.dark.systemTone).toBe('jewel');
+  });
+});

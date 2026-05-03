@@ -1310,16 +1310,33 @@ Theme provider that creates the ZORA theme and passes it to Surface
 </ZoraProvider>
 ```
 
+Pass a theme seed to define your app theme:
+
+```tsx
+<ZoraProvider
+  initialMode="dark"
+  theme={{
+    id: 'studio',
+    name: 'Studio',
+    primaryColor: '#0f766e',
+    harmony: 'analogous',
+    tone: 'jewel',
+  }}
+>
+  <App />
+</ZoraProvider>
+```
+
 <details>
 <summary>Props</summary>
 
 ZORA props:
 
-| Prop            | Type                | Default   | Notes                                                           |
-| --------------- | ------------------- | --------- | --------------------------------------------------------------- |
-| `children`      | `React.ReactNode`   | -         | Required app content.                                           |
-| `initialConfig` | `ZoraThemeOverride` | -         | Partial Surface `ThemeConfig` override merged into `zoraTheme`. |
-| `initialMode`   | `'light' \| 'dark'` | `'light'` | Initial theme mode passed to Surface.                           |
+| Prop          | Type                 | Default            | Notes                                  |
+| ------------- | -------------------- | ------------------ | -------------------------------------- |
+| `children`    | `React.ReactNode`    | -                  | Required app content.                  |
+| `theme`       | `ZoraTheme`          | `zoraDefaultTheme` | App-facing theme seed for ZORA.        |
+| `initialMode` | `'light' \| 'dark'`  | `'light'`          | Initial theme mode passed to Surface.  |
 
 Inherited props:
 
@@ -1327,15 +1344,17 @@ No inherited props. `ZoraProviderProps` is declared directly by ZORA.
 
 </details>
 
-### `createZoraTheme`
+### `createZoraThemeConfig`
 
-Creates a Surface `ThemeConfig` by deep-merging overrides into `zoraTheme`.
+Creates a Surface-compatible `ThemeConfig` from a ZORA theme seed.
 
 ```tsx
-const theme = createZoraTheme({
-  light: {
-    primaryColor: '#1d4ed8',
-  },
+const themeConfig = createZoraThemeConfig({
+  id: 'studio',
+  name: 'Studio',
+  primaryColor: '#0f766e',
+  harmony: 'analogous',
+  tone: 'jewel',
 });
 ```
 
@@ -1343,37 +1362,25 @@ const theme = createZoraTheme({
 <summary>API</summary>
 
 ```ts
-type ZoraThemeOverride = Partial<ThemeConfig>;
-
-function createZoraTheme(overrides?: ZoraThemeOverride): ThemeConfig;
+function createZoraThemeConfig(theme?: ZoraTheme): ThemeConfig;
 ```
-
-The returned theme keeps `id: 'zora'` unless explicitly changed by the merge
-input.
 
 </details>
 
-### `zoraTheme`
+### `zoraDefaultTheme`
 
-Default ZORA Surface theme preset.
+Default ZORA theme seed.
 
 <details>
 <summary>Value</summary>
 
 ```ts
-const zoraTheme: ThemeConfig = {
+const zoraDefaultTheme: ZoraTheme = {
   id: 'zora',
   name: 'ZORA',
-  light: {
-    primaryColor: '#0f766e',
-    harmony: 'analogous',
-    systemTone: 'jewel',
-  },
-  dark: {
-    primaryColor: '#2dd4bf',
-    harmony: 'analogous',
-    systemTone: 'jewel',
-  },
+  primaryColor: '#0f766e',
+  harmony: 'analogous',
+  tone: 'jewel',
 };
 ```
 

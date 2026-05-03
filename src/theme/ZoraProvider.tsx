@@ -1,21 +1,23 @@
 import { ResponsiveProvider, ThemeProvider } from '@ankhorage/surface';
 import React from 'react';
 
-import { createZoraTheme, type ZoraThemeOverride } from './createZoraTheme';
+import { createZoraThemeConfig } from './createZoraThemeConfig';
+import type { ZoraTheme, ZoraThemeMode } from './types';
+import { zoraDefaultTheme } from './zoraDefaultTheme';
 
 export interface ZoraProviderProps {
   children: React.ReactNode;
-  initialConfig?: ZoraThemeOverride;
-  initialMode?: 'light' | 'dark';
+  theme?: ZoraTheme;
+  initialMode?: ZoraThemeMode;
 }
 
 export function ZoraProvider({
   children,
-  initialConfig,
+  theme = zoraDefaultTheme,
   initialMode = 'light',
 }: ZoraProviderProps) {
   return (
-    <ThemeProvider initialConfig={createZoraTheme(initialConfig)} initialMode={initialMode}>
+    <ThemeProvider initialConfig={createZoraThemeConfig(theme)} initialMode={initialMode}>
       <ResponsiveProvider>{children}</ResponsiveProvider>
     </ThemeProvider>
   );
