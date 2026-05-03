@@ -37,6 +37,15 @@ export {
   validateFields,
   validateValue,
 } from './components/form';
+export type {
+  HeadingAlign,
+  HeadingLevel,
+  HeadingProps,
+  HeadingSize,
+  HeadingTone,
+  HeadingWeight,
+} from './components/heading';
+export { Heading } from './components/heading';
 export type { IconProps } from './components/icon';
 export { Icon } from './components/icon';
 export type { IconButtonProps } from './components/icon-button';

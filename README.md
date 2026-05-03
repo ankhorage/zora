@@ -33,6 +33,7 @@ import {
   AppShell,
   Button,
   Card,
+  Heading,
   Page,
   PageHeader,
   Text,
@@ -57,6 +58,7 @@ export function App() {
             description="ZORA provides composed UI surfaces for apps."
             title="Welcome"
           >
+            <Heading level={3}>Next steps</Heading>
             <Text tone="muted">Structured text comes from ZORA too.</Text>
           </Card>
         </Page>
@@ -83,6 +85,50 @@ Width presets:
 - Page widths: `narrow=760`, `default=1040`, `wide=1280`.
 
 ## Components
+
+### `Heading`
+
+Structured titles with semantic levels, visual sizes, semantic tones, and
+responsive props. Use `Heading` for titles and `Text` for body copy.
+
+```tsx
+<Heading level={1} size={{ base: 'h2', md: 'h1' }}>
+  Build faster with ZORA
+</Heading>
+
+<Heading level={2} tone="primary">
+  Create consistent screens
+</Heading>
+```
+
+`level` expresses document hierarchy. `size` controls visual scale and can be
+responsive for mobile and web layouts.
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                                        | Default     | Notes                                      |
+| --------------- | ------------------------------------------- | ----------- | ------------------------------------------ |
+| `children`      | `React.ReactNode`                           | -           | Primary content.                           |
+| `text`          | `string`                                    | -           | Manifest-friendly content prop.            |
+| `i18nKey`       | `string`                                    | -           | Translation key fallback.                  |
+| `level`         | `HeadingLevel`                              | `2`         | Semantic heading level from `1` through `6`. |
+| `size`          | `Responsive<HeadingSize>`                   | level size  | Visual scale: `display`, `h1` through `h6`. |
+| `tone`          | `Responsive<HeadingTone>`                   | `'default'` | Semantic text color.                       |
+| `align`         | `Responsive<HeadingAlign>`                  | -           | Text alignment.                            |
+| `weight`        | `Responsive<HeadingWeight>`                 | recipe      | Optional structured weight override.       |
+| `italic`        | `boolean`                                   | `false`     | Italic style.                              |
+| `numberOfLines` | `number`                                    | -           | Native/web truncation line count.          |
+| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'`    | -           | Truncation behavior.                       |
+| `selectable`    | `boolean`                                   | -           | Allows text selection where supported.     |
+| `testID`        | `string`                                    | -           | Test id.                                   |
+
+No inherited props. `HeadingProps` is declared directly by ZORA to keep heading
+usage structured and template-safe.
+
+</details>
 
 ### `Text`
 
