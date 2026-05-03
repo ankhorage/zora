@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0
+
+### Minor Changes
+
+- b365cde: Add a structured `Heading` component with responsive visual sizing, semantic heading levels, and theme-aware tones.
+
 ## 0.6.3
 
 ### Patch Changes
