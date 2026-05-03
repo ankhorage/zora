@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.2
+
+### Patch Changes
+
+- 939b53e: Add a structured Text component with semantic variants, tones, and responsive props.
+
 ## 0.6.1
 
 ### Patch Changes
