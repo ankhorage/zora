@@ -3,6 +3,7 @@ import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveTextStyle } from './resolveTextRecipe';
 import type { TextProps } from './types';
 
@@ -30,7 +31,9 @@ function resolveTextContent({
   return i18nKey;
 }
 
-export function Text({
+function TextInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   text,
   i18nKey,
@@ -82,3 +85,5 @@ export function Text({
     </ReactNativeText>
   );
 }
+
+export const Text = withZoraThemeScope(TextInner);

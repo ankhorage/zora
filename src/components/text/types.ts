@@ -2,6 +2,8 @@ import type { Responsive } from '@ankhorage/surface';
 import type React from 'react';
 import type { AccessibilityRole, TextStyle } from 'react-native';
 
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
 export type TextVariant = 'body' | 'lead' | 'bodySmall' | 'caption' | 'label' | 'eyebrow' | 'code';
 
 export type TextTone =
@@ -18,7 +20,7 @@ export type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold';
 
 export type TextAlign = NonNullable<TextStyle['textAlign']>;
 
-export interface TextProps {
+export interface TextProps extends ZoraBaseProps {
   children?: React.ReactNode;
   text?: string;
   i18nKey?: string;
@@ -34,5 +36,4 @@ export interface TextProps {
   accessibilityHint?: string;
   accessibilityRole?: AccessibilityRole;
   nativeID?: string;
-  testID?: string;
 }

@@ -2,11 +2,14 @@ import { Box, Card as SurfaceCard, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveCardVariant } from '../../internal/recipes';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';
 import { Text } from '../text';
 import type { CardProps } from './types';
 
-export function Card({
+function CardInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   title,
   description,
@@ -65,3 +68,5 @@ export function Card({
     </SurfaceCard>
   );
 }
+
+export const Card = withZoraThemeScope(CardInner);

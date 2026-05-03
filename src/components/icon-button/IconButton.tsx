@@ -2,9 +2,12 @@ import { IconButton as SurfaceIconButton } from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveButtonRecipe } from '../../internal/recipes';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { IconButtonProps } from './types';
 
-export function IconButton({
+function IconButtonInner({
+  themeId: _themeId,
+  mode: _mode,
   icon,
   label,
   emphasis = 'ghost',
@@ -25,3 +28,5 @@ export function IconButton({
     />
   );
 }
+
+export const IconButton = withZoraThemeScope(IconButtonInner);
