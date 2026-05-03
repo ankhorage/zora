@@ -147,21 +147,21 @@ responsive for mobile and web layouts.
 
 ZORA props:
 
-| Prop            | Type                                     | Default     | Notes                                        |
-| --------------- | ---------------------------------------- | ----------- | -------------------------------------------- |
-| `children`      | `React.ReactNode`                        | -           | Primary content.                             |
-| `text`          | `string`                                 | -           | Manifest-friendly content prop.              |
-| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided.                    |
-| `level`         | `HeadingLevel`                           | `2`         | Semantic heading level from `1` through `6`. |
-| `size`          | `Responsive<HeadingSize>`                | level size  | Visual scale: `display`, `h1` through `h6`.  |
-| `tone`          | `Responsive<HeadingTone>`                | `'default'` | Semantic text color.                         |
-| `align`         | `Responsive<HeadingAlign>`               | -           | Text alignment.                              |
-| `weight`        | `Responsive<HeadingWeight>`              | recipe      | Optional structured weight override.         |
-| `italic`        | `boolean`                                | `false`     | Italic style.                                |
-| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.            |
-| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                         |
-| `selectable`    | `boolean`                                | -           | Allows text selection where supported.       |
-| `testID`        | `string`                                 | -           | Test id.                                     |
+| Prop            | Type                                     | Default     | Notes                                                           |
+| --------------- | ---------------------------------------- | ----------- | --------------------------------------------------------------- |
+| `children`      | `React.ReactNode`                        | -           | Primary content.                                                |
+| `text`          | `string`                                 | -           | Manifest-friendly content prop.                                 |
+| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
+| `level`         | `HeadingLevel`                           | `2`         | Semantic heading level from `1` through `6`.                    |
+| `size`          | `Responsive<HeadingSize>`                | level size  | Visual scale: `display`, `h1` through `h6`.                     |
+| `tone`          | `Responsive<HeadingTone>`                | `'default'` | Semantic text color.                                            |
+| `align`         | `Responsive<HeadingAlign>`               | -           | Text alignment.                                                 |
+| `weight`        | `Responsive<HeadingWeight>`              | recipe      | Optional structured weight override.                            |
+| `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
+| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.                               |
+| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                                            |
+| `selectable`    | `boolean`                                | -           | Allows text selection where supported.                          |
+| `testID`        | `string`                                 | -           | Test id.                                                        |
 
 No inherited props. `HeadingProps` is declared directly by ZORA to keep heading
 usage structured and template-safe.
@@ -188,20 +188,20 @@ responsive props.
 
 ZORA props:
 
-| Prop            | Type                                     | Default     | Notes                                  |
-| --------------- | ---------------------------------------- | ----------- | -------------------------------------- |
-| `children`      | `React.ReactNode`                        | -           | Primary content.                       |
-| `text`          | `string`                                 | -           | Manifest-friendly content prop.        |
-| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided.              |
-| `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                     |
-| `tone`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                   |
-| `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                        |
-| `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.   |
-| `italic`        | `boolean`                                | `false`     | Italic style.                          |
-| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.      |
-| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                   |
-| `selectable`    | `boolean`                                | -           | Allows text selection where supported. |
-| `testID`        | `string`                                 | -           | Test id.                               |
+| Prop            | Type                                     | Default     | Notes                                                           |
+| --------------- | ---------------------------------------- | ----------- | --------------------------------------------------------------- |
+| `children`      | `React.ReactNode`                        | -           | Primary content.                                                |
+| `text`          | `string`                                 | -           | Manifest-friendly content prop.                                 |
+| `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
+| `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                                              |
+| `tone`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                                            |
+| `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                                                 |
+| `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.                            |
+| `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
+| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.                               |
+| `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                                            |
+| `selectable`    | `boolean`                                | -           | Allows text selection where supported.                          |
+| `testID`        | `string`                                 | -           | Test id.                                                        |
 
 No inherited props. `TextProps` is declared directly by ZORA to keep text
 structured and template-safe.
@@ -1357,11 +1357,11 @@ Pass a theme seed to define your app theme:
 
 ZORA props:
 
-| Prop          | Type                 | Default            | Notes                                  |
-| ------------- | -------------------- | ------------------ | -------------------------------------- |
-| `children`    | `React.ReactNode`    | -                  | Required app content.                  |
-| `theme`       | `ZoraTheme`          | `zoraDefaultTheme` | App-facing theme seed for ZORA.        |
-| `initialMode` | `'light' \| 'dark'`  | `'light'`          | Initial theme mode passed to Surface.  |
+| Prop          | Type                | Default            | Notes                                 |
+| ------------- | ------------------- | ------------------ | ------------------------------------- |
+| `children`    | `React.ReactNode`   | -                  | Required app content.                 |
+| `theme`       | `ZoraTheme`         | `zoraDefaultTheme` | App-facing theme seed for ZORA.       |
+| `initialMode` | `'light' \| 'dark'` | `'light'`          | Initial theme mode passed to Surface. |
 
 Inherited props:
 
