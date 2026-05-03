@@ -5,6 +5,7 @@ import {
   Card,
   CheckboxGroup,
   Drawer,
+  Heading,
   IconButton,
   Input,
   Modal,
@@ -45,6 +46,24 @@ export function ComponentsPage() {
         }
       >
         <PageSection title="Typography">
+          <SectionHeader
+            title="Headings"
+            description="Semantic heading levels can use responsive visual sizes and tones."
+          />
+          <Card title="Heading scale" description="Titles stay theme-aware without raw styles.">
+            <Stack gap="s">
+              <Heading level={1} size={{ base: 'h2', md: 'h1' }}>
+                Dashboard overview
+              </Heading>
+              <Heading level={2} tone="primary">
+                Featured projects
+              </Heading>
+              <Heading level={3} size="h4" tone="muted">
+                Compact section title
+              </Heading>
+            </Stack>
+          </Card>
+
           <SectionHeader
             title="Text"
             description="Structured body copy, labels, captions, and mono snippets rendered through ZORA."

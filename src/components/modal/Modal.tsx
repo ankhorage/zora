@@ -1,7 +1,8 @@
-import { Box, Heading, Modal as SurfaceModal, Stack } from '@ankhorage/surface';
+import { Box, Modal as SurfaceModal, Stack } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
 import { resolveDialogWidth } from '../../internal/recipes';
+import { Heading } from '../heading';
 import { Text } from '../text';
 import type { ModalProps } from './types';
 
