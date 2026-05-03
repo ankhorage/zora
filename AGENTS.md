@@ -151,7 +151,7 @@ Public APIs should be:
 Prefer controlled APIs when state is involved:
 
 ```ts
-value + onChange
+value + onChange;
 ```
 
 Avoid hidden behavior:

@@ -104,20 +104,20 @@ responsive props.
 
 ZORA props:
 
-| Prop            | Type                                      | Default     | Notes                                  |
-| --------------- | ----------------------------------------- | ----------- | -------------------------------------- |
-| `children`      | `React.ReactNode`                         | -           | Primary content.                       |
-| `text`          | `string`                                  | -           | Manifest-friendly content prop.        |
-| `i18nKey`       | `string`                                  | -           | Translation key fallback.              |
-| `variant`       | `Responsive<TextVariant>`                 | `'body'`    | Typography recipe.                     |
-| `tone`          | `Responsive<TextTone>`                    | `'default'` | Semantic text color.                   |
-| `align`         | `Responsive<TextAlign>`                   | -           | Text alignment.                        |
-| `weight`        | `Responsive<TextWeight>`                  | recipe      | Optional structured weight override.   |
-| `italic`        | `boolean`                                 | `false`     | Italic style.                          |
-| `numberOfLines` | `number`                                  | -           | Native/web truncation line count.      |
+| Prop            | Type                                     | Default     | Notes                                  |
+| --------------- | ---------------------------------------- | ----------- | -------------------------------------- |
+| `children`      | `React.ReactNode`                        | -           | Primary content.                       |
+| `text`          | `string`                                 | -           | Manifest-friendly content prop.        |
+| `i18nKey`       | `string`                                 | -           | Translation key fallback.              |
+| `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                     |
+| `tone`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                   |
+| `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                        |
+| `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.   |
+| `italic`        | `boolean`                                | `false`     | Italic style.                          |
+| `numberOfLines` | `number`                                 | -           | Native/web truncation line count.      |
 | `ellipsizeMode` | `'head' \| 'middle' \| 'tail' \| 'clip'` | -           | Truncation behavior.                   |
-| `selectable`    | `boolean`                                 | -           | Allows text selection where supported. |
-| `testID`        | `string`                                  | -           | Test id.                               |
+| `selectable`    | `boolean`                                | -           | Allows text selection where supported. |
+| `testID`        | `string`                                 | -           | Test id.                               |
 
 No inherited props. `TextProps` is declared directly by ZORA to keep text
 structured and template-safe.
