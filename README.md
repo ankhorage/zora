@@ -68,6 +68,19 @@ export function App() {
 }
 ```
 
+## Foundation primitives
+
+ZORA re-exports selected Surface foundation primitives for app-facing layout
+code:
+
+```tsx
+import { Box, Container, Grid, Heading, Stack, Text } from '@ankhorage/zora';
+```
+
+Use ZORA `Text` and `Heading` for typography. Use `Box`, `Stack`, `Grid`, and
+`Container` for layout. Surface remains the lower-level render foundation and
+should not be required in normal app-facing UI code.
+
 ## Shared Types
 
 These unions appear across the catalogue:
