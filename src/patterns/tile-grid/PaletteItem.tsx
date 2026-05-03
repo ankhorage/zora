@@ -1,7 +1,8 @@
-import { Box, Heading, Text, useTheme } from '@ankhorage/surface';
+import { Box, Heading, useTheme } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
+import { Text } from '../../components/text';
 import type { PaletteItemProps } from './types';
 
 export function PaletteItem({

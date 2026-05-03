@@ -1,8 +1,9 @@
-import { Box, Stack, Text } from '@ankhorage/surface';
+import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../../components/button';
 import { IconButton } from '../../components/icon-button';
+import { Text } from '../../components/text';
 import { Panel } from '../panel';
 import type { CollectionEditorProps } from './types';
 

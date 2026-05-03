@@ -1,6 +1,7 @@
-import { Field, Stack, Text } from '@ankhorage/surface';
+import { Field, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Text } from '../../components/text';
 import type { FormFieldProps } from './types';
 
 export function FormField({ label, description, helperText, children, ...props }: FormFieldProps) {

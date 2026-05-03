@@ -1,6 +1,7 @@
-import { Box, Text, useTheme } from '@ankhorage/surface';
+import { Box, useTheme } from '@ankhorage/surface';
 import React from 'react';
 
+import { Text } from '../text';
 import type { FormErrorProps } from './types';
 
 export function FormError({ error, testID }: FormErrorProps) {
@@ -12,7 +13,7 @@ export function FormError({ error, testID }: FormErrorProps) {
 
   return (
     <Box borderColor={theme.colors.error} borderWidth={1} p="s" radius="m" testID={testID}>
-      <Text color={theme.colors.error} variant="bodySmall">
+      <Text tone="danger" variant="bodySmall">
         {error}
       </Text>
     </Box>

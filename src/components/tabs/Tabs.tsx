@@ -1,7 +1,8 @@
-import { Box, Stack, Text, useTheme } from '@ankhorage/surface';
+import { Box, Stack, useTheme } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../button';
+import { Text } from '../text';
 import type { TabItem, TabsProps } from './types';
 
 export function Tabs<TValue extends string = string>({
@@ -74,11 +75,7 @@ export function Tabs<TValue extends string = string>({
           leadingIcon={item.icon}
           testID={item.testID}
         >
-          <Text
-            color={isActive ? theme.colors.primary : undefined}
-            tone={isActive ? undefined : 'muted'}
-            weight={isActive ? 'semiBold' : 'regular'}
-          >
+          <Text tone={isActive ? 'primary' : 'muted'} weight={isActive ? 'semiBold' : 'regular'}>
             {item.label}
           </Text>
           {item.badge}

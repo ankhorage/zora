@@ -1,7 +1,8 @@
-import { Field, Stack, Text } from '@ankhorage/surface';
+import { Field, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Input } from '../input';
+import { Text } from '../text';
 import type { FormFieldConfig, FormFieldControlProps, FormFieldProps } from './types';
 import { hasRequiredRule } from './validation';
 

@@ -1,20 +1,20 @@
-import { Icon, Textarea as SurfaceTextarea, useTheme } from '@ankhorage/surface';
+import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveIconSize } from '../../internal/recipes';
 import type { TextareaProps } from './types';
 
 export function Textarea({ size = 'l', leadingIcon, trailingIcon, ...props }: TextareaProps) {
-  const { theme } = useTheme();
+  const { theme } = Surface.useTheme();
   const iconSize = resolveIconSize(size);
   const iconColor = theme.semantics.content.muted;
 
   return (
-    <SurfaceTextarea
+    <Surface.Textarea
       {...props}
       leadingAccessory={
         leadingIcon ? (
-          <Icon
+          <Surface.Icon
             color={iconColor}
             name={leadingIcon.name}
             provider={leadingIcon.provider}
@@ -25,7 +25,7 @@ export function Textarea({ size = 'l', leadingIcon, trailingIcon, ...props }: Te
       size={size}
       trailingAccessory={
         trailingIcon ? (
-          <Icon
+          <Surface.Icon
             color={iconColor}
             name={trailingIcon.name}
             provider={trailingIcon.provider}

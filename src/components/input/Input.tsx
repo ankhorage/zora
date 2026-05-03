@@ -1,20 +1,20 @@
-import { Icon, TextInput as SurfaceTextInput, useTheme } from '@ankhorage/surface';
+import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveIconSize } from '../../internal/recipes';
 import type { InputProps } from './types';
 
 export function Input({ size = 'l', leadingIcon, trailingIcon, ...props }: InputProps) {
-  const { theme } = useTheme();
+  const { theme } = Surface.useTheme();
   const iconSize = resolveIconSize(size);
   const iconColor = theme.semantics.content.muted;
 
   return (
-    <SurfaceTextInput
+    <Surface.TextInput
       {...props}
       leadingAccessory={
         leadingIcon ? (
-          <Icon
+          <Surface.Icon
             color={iconColor}
             name={leadingIcon.name}
             provider={leadingIcon.provider}
@@ -25,7 +25,7 @@ export function Input({ size = 'l', leadingIcon, trailingIcon, ...props }: Input
       size={size}
       trailingAccessory={
         trailingIcon ? (
-          <Icon
+          <Surface.Icon
             color={iconColor}
             name={trailingIcon.name}
             provider={trailingIcon.provider}
