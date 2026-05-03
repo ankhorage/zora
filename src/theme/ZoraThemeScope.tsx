@@ -12,14 +12,10 @@ export interface ZoraThemeScopeProps {
   mode?: ZoraThemeMode;
 }
 
-export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
+function ZoraThemeScopeInner({ children, themeId, mode }: ZoraThemeScopeProps) {
   const parentSurface = useTheme();
   const parentRuntime = useZoraThemeRuntime();
   const { activeFontId } = useFontContext();
-
-  if (mode === undefined && themeId === undefined) {
-    return children;
-  }
 
   const scopedThemeId = resolveZoraScopedThemeId({
     desiredThemeId: themeId,
@@ -62,5 +58,17 @@ export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps)
     <ZoraThemeRuntimeContext.Provider value={scopedRuntimeValue}>
       <ThemeContext.Provider value={scopedSurfaceValue}>{children}</ThemeContext.Provider>
     </ZoraThemeRuntimeContext.Provider>
+  );
+}
+
+export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
+  if (mode === undefined && themeId === undefined) {
+    return children;
+  }
+
+  return (
+    <ZoraThemeScopeInner mode={mode} themeId={themeId}>
+      {children}
+    </ZoraThemeScopeInner>
   );
 }

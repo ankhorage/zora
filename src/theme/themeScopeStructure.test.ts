@@ -3,6 +3,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'bun:test';
 
+// @todo Replace with real behavior tests.
 const themeDir = import.meta.dir;
 
 const zoraProviderSource = readFileSync(join(themeDir, 'ZoraProvider.tsx'), 'utf8');
@@ -24,6 +25,7 @@ const iconButtonSource = readFileSync(
   'utf8',
 );
 const cardSource = readFileSync(join(themeDir, '..', 'components', 'card', 'Card.tsx'), 'utf8');
+const panelSource = readFileSync(join(themeDir, '..', 'patterns', 'panel', 'Panel.tsx'), 'utf8');
 
 const textTypesSource = readFileSync(
   join(themeDir, '..', 'components', 'text', 'types.ts'),
@@ -39,24 +41,28 @@ const panelTypesSource = readFileSync(
 );
 
 describe('theme scope structure', () => {
+  // @todo Replace with real behavior tests.
   it('keeps ZoraProvider lightweight (no extra ResponsiveProvider nesting)', () => {
     expect(zoraProviderSource).toMatch(/ThemeProvider/);
     expect(zoraProviderSource).toMatch(/ZoraThemeRuntimeContext\.Provider/);
     expect(zoraProviderSource).not.toMatch(/ResponsiveProvider/);
   });
 
+  // @todo Replace with real behavior tests.
   it('implements nested scopes without nesting Surface ThemeProvider', () => {
     expect(themeScopeSource).toMatch(/ThemeContext\.Provider/);
     expect(themeScopeSource).toMatch(/createTheme\(/);
     expect(themeScopeSource).not.toMatch(/ThemeProvider/);
   });
 
+  // @todo Replace with real behavior tests.
   it('wraps components only when mode/themeId overrides are present', () => {
     expect(hocSource).toMatch(/props\.mode === undefined/);
     expect(hocSource).toMatch(/props\.themeId === undefined/);
     expect(hocSource).toMatch(/<ZoraThemeScope/);
   });
 
+  // @todo Replace with real behavior tests.
   it('adopts the inner + HOC pattern for the first component set', () => {
     expect(textSource).toMatch(/themeId: _themeId/);
     expect(textSource).toMatch(/mode: _mode/);
@@ -81,8 +87,13 @@ describe('theme scope structure', () => {
     expect(cardSource).toMatch(/themeId: _themeId/);
     expect(cardSource).toMatch(/mode: _mode/);
     expect(cardSource).toMatch(/export const Card = withZoraThemeScope/);
+
+    expect(panelSource).toMatch(/themeId: _themeId/);
+    expect(panelSource).toMatch(/mode: _mode/);
+    expect(panelSource).toMatch(/export const Panel = withZoraThemeScope/);
   });
 
+  // @todo Replace with real behavior tests.
   it('adds ZoraBaseProps to converted public prop types', () => {
     expect(textTypesSource).toMatch(/export interface TextProps extends ZoraBaseProps/);
     expect(headingTypesSource).toMatch(/export interface HeadingProps extends ZoraBaseProps/);
