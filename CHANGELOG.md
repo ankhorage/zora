@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- 3745d82: Introduces the ZORA theme seed model with `ZoraTheme`, `ZoraComputedTheme`, and
+  `zoraDefaultTheme`, replacing public override/config terminology with app-facing
+  theme terminology.
+
 ## 0.8.1
 
 ### Patch Changes
