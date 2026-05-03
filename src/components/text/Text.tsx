@@ -1,4 +1,4 @@
-import { resolveResponsive, useResponsiveRuntime, useTranslationContext } from '@ankhorage/surface';
+import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
@@ -10,12 +10,10 @@ function resolveTextContent({
   children,
   text,
   i18nKey,
-  translate,
 }: {
   children: TextProps['children'];
   text: TextProps['text'];
   i18nKey: TextProps['i18nKey'];
-  translate: (key: string) => string;
 }): React.ReactNode {
   if (children !== undefined) {
     return children;
@@ -29,13 +27,7 @@ function resolveTextContent({
     return null;
   }
 
-  try {
-    const translated = translate(i18nKey);
-    return translated && translated !== i18nKey ? translated : i18nKey;
-  } catch (error) {
-    console.warn('[ZoraText] Translation error:', error);
-    return i18nKey;
-  }
+  return i18nKey;
 }
 
 export function Text({
@@ -58,8 +50,7 @@ export function Text({
 }: TextProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
-  const { t } = useTranslationContext();
-  const content = resolveTextContent({ children, text, i18nKey, translate: t });
+  const content = resolveTextContent({ children, text, i18nKey });
   const resolvedVariant = resolveResponsive(variant, breakpoint) ?? 'body';
   const resolvedStyle = resolveTextStyle({
     theme,
