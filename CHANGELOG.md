@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- 5ff5e06: Re-export selected Surface foundation primitives such as `Box`, `Stack`,
+  `Grid`, and `Container` through the ZORA public API.
+
 ## 0.7.0
 
 ### Minor Changes
