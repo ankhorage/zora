@@ -1,13 +1,8 @@
 import type { ThemeConfig } from '@ankhorage/surface';
 
-import type { ZoraHexColor, ZoraTheme, ZoraThemeMode } from './types';
+import { resolveModePrimaryColor } from '../internal/color';
+import type { ZoraTheme } from './types';
 import { zoraDefaultTheme } from './zoraDefaultTheme';
-
-function resolveModePrimaryColor(primaryColor: ZoraHexColor, _mode: ZoraThemeMode): ZoraHexColor {
-  // Intentionally conservative in Plan 1: mode-specific primary derivation
-  // (OKLCH/lightness scale, etc.) comes in later theme-engine work.
-  return primaryColor;
-}
 
 export function createZoraThemeConfig(theme: ZoraTheme = zoraDefaultTheme): ThemeConfig {
   return {
