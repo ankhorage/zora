@@ -24,6 +24,8 @@ import {
 import React from 'react';
 import { ScrollView } from 'react-native';
 
+import { PatternGapsSection } from './sections/patternGaps';
+
 interface LayoutSection {
   id: string;
   name: string;
@@ -275,6 +277,8 @@ export function PatternsPage() {
             }}
           />
         </PageSection>
+
+        <PatternGapsSection />
       </Page>
     </ScrollView>
   );
