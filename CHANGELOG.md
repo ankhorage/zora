@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.3
+
+### Patch Changes
+
+- 2f08e20: Adds internal role color scale generation for future ZORA theme generation work.
+
 ## 0.12.2
 
 ### Patch Changes
