@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.2
+
+### Patch Changes
+
+- da31347: Adds internal hue-role assignment for future ZORA theme generation work.
+
 ## 0.12.1
 
 ### Patch Changes
