@@ -8,12 +8,12 @@ export function withZoraThemeScope<P extends ZoraBaseProps>(
 ): (props: P) => React.ReactElement | null {
   const Wrapped = (props: P) => {
     if (props.mode === undefined && props.themeId === undefined) {
-      return Component(props);
+      return React.createElement(Component, props);
     }
 
     return (
       <ZoraThemeScope mode={props.mode} themeId={props.themeId}>
-        {Component(props)}
+        {React.createElement(Component, props)}
       </ZoraThemeScope>
     );
   };
