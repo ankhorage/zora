@@ -2,7 +2,13 @@ import { describe, expect, test } from 'bun:test';
 
 import { ZORA_COLOR_HARMONIES, ZORA_COLOR_TONES } from '../../theme/types';
 import { zoraDefaultTheme } from '../../theme/zoraDefaultTheme';
-import type { ThemeComposerProps } from './types';
+import {
+  createThemeFromThemeComposerRecommendation,
+  findThemeComposerRecommendation,
+  formatThemeComposerLabel,
+  hueDegreesToZoraHexColor,
+} from './recommendations';
+import type { ThemeComposerProps, ThemeComposerRecommendation } from './types';
 
 // Validate the exported types compile correctly by asserting shape
 describe('ThemeComposerProps', () => {
@@ -37,6 +43,25 @@ describe('ThemeComposerProps', () => {
     };
     props.onSubmit?.(zoraDefaultTheme);
     expect(submitted).toBe(true);
+  });
+
+  test('accepts optional recommendation inputs', () => {
+    const recommendation: ThemeComposerRecommendation = {
+      appCategory: 'finance_money',
+      appMood: 'trustworthy',
+      suggestedColorTone: 'mineral',
+      suggestedHarmony: 'analogous',
+      suggestedPrimaryHueDegrees: 195,
+    };
+    const props: ThemeComposerProps = {
+      value: zoraDefaultTheme,
+      onChange: () => undefined,
+      appCategory: 'finance_money',
+      appMood: 'trustworthy',
+      recommendations: [recommendation],
+    };
+
+    expect(props.recommendations?.[0]?.suggestedColorTone).toBe('mineral');
   });
 });
 
@@ -74,7 +99,7 @@ describe('ZORA_COLOR_TONES coverage for ThemeComposer', () => {
 
 describe('onChange propagation contract', () => {
   test('onChange receives updated theme with new harmony', () => {
-    const received: unknown[] = [];
+    const received: typeof zoraDefaultTheme[] = [];
     const props: ThemeComposerProps = {
       value: zoraDefaultTheme,
       onChange: (t) => received.push(t),
@@ -82,16 +107,96 @@ describe('onChange propagation contract', () => {
     // Simulate what the component does internally
     props.onChange({ ...zoraDefaultTheme, harmony: 'triadic' });
     expect(received).toHaveLength(1);
-    expect((received[0] as typeof zoraDefaultTheme).harmony).toBe('triadic');
+    expect(received[0]?.harmony).toBe('triadic');
   });
 
   test('onChange receives updated theme with new colorTone', () => {
-    const received: unknown[] = [];
+    const received: typeof zoraDefaultTheme[] = [];
     const props: ThemeComposerProps = {
       value: zoraDefaultTheme,
       onChange: (t) => received.push(t),
     };
     props.onChange({ ...zoraDefaultTheme, colorTone: 'obsidian' });
-    expect((received[0] as typeof zoraDefaultTheme).colorTone).toBe('obsidian');
+    expect(received[0]?.colorTone).toBe('obsidian');
+  });
+});
+
+describe('ThemeComposer recommendation helpers', () => {
+  const recommendations: readonly ThemeComposerRecommendation[] = [
+    {
+      appCategory: 'finance_money',
+      appMood: 'trustworthy',
+      suggestedColorTone: 'mineral',
+      suggestedHarmony: 'analogous',
+      suggestedPrimaryHueDegrees: 195,
+    },
+    {
+      appCategory: 'graphics_design',
+      appMood: 'creative',
+      suggestedColorTone: 'vaporwave',
+      suggestedHarmony: 'splitComplementary',
+    },
+  ];
+
+  test('finds a recommendation by app category and mood', () => {
+    const found = findThemeComposerRecommendation({
+      appCategory: 'finance_money',
+      appMood: 'trustworthy',
+      recommendations,
+    });
+
+    expect(found?.suggestedColorTone).toBe('mineral');
+  });
+
+  test('does not find a recommendation with mismatched mood', () => {
+    const found = findThemeComposerRecommendation({
+      appCategory: 'finance_money',
+      appMood: 'creative',
+      recommendations,
+    });
+
+    expect(found).toBeUndefined();
+  });
+
+  test('creates an updated theme only when recommendation is explicitly applied', () => {
+    const recommendation = recommendations[0];
+    if (recommendation === undefined) {
+      throw new Error('Expected fixture recommendation.');
+    }
+
+    const updated = createThemeFromThemeComposerRecommendation({
+      value: zoraDefaultTheme,
+      recommendation,
+    });
+
+    expect(zoraDefaultTheme.colorTone).toBe('jewel');
+    expect(updated.colorTone).toBe('mineral');
+    expect(updated.harmony).toBe('analogous');
+    expect(updated.primaryColor).not.toBe(zoraDefaultTheme.primaryColor);
+  });
+
+  test('keeps the current primary color when recommendation has no hue', () => {
+    const recommendation = recommendations[1];
+    if (recommendation === undefined) {
+      throw new Error('Expected fixture recommendation.');
+    }
+
+    const updated = createThemeFromThemeComposerRecommendation({
+      value: zoraDefaultTheme,
+      recommendation,
+    });
+
+    expect(updated.primaryColor).toBe(zoraDefaultTheme.primaryColor);
+    expect(updated.colorTone).toBe('vaporwave');
+  });
+
+  test('formats serialized labels for display', () => {
+    expect(formatThemeComposerLabel('finance_money')).toBe('Finance money');
+    expect(formatThemeComposerLabel('splitComplementary')).toBe('Split Complementary');
+  });
+
+  test('converts hue degrees to lowercase hex', () => {
+    expect(hueDegreesToZoraHexColor(195)).toMatch(/^#[0-9a-f]{6}$/);
+    expect(hueDegreesToZoraHexColor(555)).toBe(hueDegreesToZoraHexColor(195));
   });
 });
