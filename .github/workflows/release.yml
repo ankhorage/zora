@@ -58,7 +58,7 @@ jobs:
           commit: Version Packages
           title: Version Packages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Skip release
         if: hashFiles('.changeset/config.json') == ''
