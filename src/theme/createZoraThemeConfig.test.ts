@@ -16,10 +16,10 @@ describe('createZoraThemeConfig', () => {
     expect(themeConfig.name).toBe('ZORA');
     expect(isSixDigitHexColor(themeConfig.light.primaryColor)).toBe(true);
     expect(themeConfig.light.harmony).toBe('analogous');
-    expect(themeConfig.light.systemTone).toBe('jewel');
+    expect(themeConfig.light.colorTone).toBe('jewel');
     expect(isSixDigitHexColor(themeConfig.dark.primaryColor)).toBe(true);
     expect(themeConfig.dark.harmony).toBe('analogous');
-    expect(themeConfig.dark.systemTone).toBe('jewel');
+    expect(themeConfig.dark.colorTone).toBe('jewel');
 
     expect(themeConfig.light.primaryColor).not.toBe(themeConfig.dark.primaryColor);
 
@@ -33,17 +33,17 @@ describe('createZoraThemeConfig', () => {
       id: 'studio',
       primaryColor: '#0f766e',
       harmony: 'analogous',
-      tone: 'jewel',
+      colorTone: 'jewel',
     });
 
     expect(themeConfig.id).toBe('studio');
     expect(themeConfig.name).toBe('studio');
     expect(isSixDigitHexColor(themeConfig.light.primaryColor)).toBe(true);
     expect(themeConfig.light.harmony).toBe('analogous');
-    expect(themeConfig.light.systemTone).toBe('jewel');
+    expect(themeConfig.light.colorTone).toBe('jewel');
     expect(isSixDigitHexColor(themeConfig.dark.primaryColor)).toBe(true);
     expect(themeConfig.dark.harmony).toBe('analogous');
-    expect(themeConfig.dark.systemTone).toBe('jewel');
+    expect(themeConfig.dark.colorTone).toBe('jewel');
 
     expect(themeConfig.light.primaryColor).not.toBe(themeConfig.dark.primaryColor);
   });

@@ -1,4 +1,11 @@
 export {
+  getZoraColorToneRecipe,
+  getZoraColorToneRoleChromaFactor,
+  type ZoraColorToneLaneRecipe,
+  type ZoraColorToneRecipe,
+  type ZoraColorToneRoleChromaFactors,
+} from './colorToneRecipes';
+export {
   computeZoraHarmony,
   type ZoraComputedHarmony,
   type ZoraHarmonySlot,
@@ -24,7 +31,9 @@ export {
 export {
   createZoraColorScale,
   type CreateZoraColorScaleOptions,
+  type CreateZoraHueScaleOptions,
   createZoraNeutralScale,
   createZoraPrimaryScale,
+  type ZoraHueScaleRoleId,
 } from './scales';
 export { ZORA_COLOR_SCALE_STEPS, type ZoraColorScale, type ZoraColorScaleStep } from './types';

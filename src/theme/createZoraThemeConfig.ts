@@ -11,12 +11,12 @@ export function createZoraThemeConfig(theme: ZoraTheme = zoraDefaultTheme): Them
     light: {
       primaryColor: resolveModePrimaryColor(theme.primaryColor, 'light'),
       harmony: theme.harmony,
-      systemTone: theme.tone,
+      colorTone: theme.colorTone,
     },
     dark: {
       primaryColor: resolveModePrimaryColor(theme.primaryColor, 'dark'),
       harmony: theme.harmony,
-      systemTone: theme.tone,
+      colorTone: theme.colorTone,
     },
   };
 }

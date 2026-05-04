@@ -1,4 +1,4 @@
-import type { ThemeConfig } from '@ankhorage/surface';
+import type { ColorHarmony, ColorTone, ThemeConfig } from '@ankhorage/surface';
 
 export type ZoraThemeId = string;
 
@@ -6,22 +6,38 @@ export type ZoraThemeMode = 'light' | 'dark';
 
 export type ZoraHexColor = `#${string}`;
 
-export type ZoraColorHarmony =
-  | 'monochromatic'
-  | 'analogous'
-  | 'complementary'
-  | 'splitComplementary'
-  | 'triadic'
-  | 'tetradic';
+export const ZORA_COLOR_HARMONIES = [
+  'monochromatic',
+  'analogous',
+  'complementary',
+  'splitComplementary',
+  'triadic',
+  'tetradic',
+] as const satisfies readonly ColorHarmony[];
 
-export type ZoraColorTone = 'neutral' | 'pastel' | 'earth' | 'jewel' | 'fluorescent';
+export type ZoraColorHarmony = ColorHarmony;
+
+export const ZORA_COLOR_TONES = [
+  'neutral',
+  'pastel',
+  'earth',
+  'mineral',
+  'muted',
+  'jewel',
+  'fluorescent',
+  'obsidian',
+  'vaporwave',
+  'monochromeAccent',
+] as const satisfies readonly ColorTone[];
+
+export type ZoraColorTone = ColorTone;
 
 export interface ZoraTheme {
   id: ZoraThemeId;
   name?: string;
   primaryColor: ZoraHexColor;
   harmony: ZoraColorHarmony;
-  tone: ZoraColorTone;
+  colorTone: ZoraColorTone;
 }
 
 export interface ZoraComputedTheme {

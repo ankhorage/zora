@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { ZoraHexColor } from '../../theme/types';
+import type { ZoraColorTone, ZoraHexColor } from '../../theme/types';
 import {
   assignZoraHarmonyRoleHues,
   computeZoraHarmony,
@@ -10,10 +10,8 @@ import {
   ZORA_COLOR_SCALE_ROLE_ORDER,
   ZORA_COLOR_SCALE_STEPS,
   type ZoraColorScale,
-  type ZoraColorScaleRoleId,
   type ZoraColorScaleStep,
   type ZoraComputedHueRoles,
-  type ZoraComputedRoleColorScales,
   type ZoraRoleColorScale,
 } from './index';
 
@@ -51,6 +49,24 @@ function buildHueRoles(assignments: ZoraComputedHueRoles['assignments']): ZoraCo
   };
 }
 
+function createCompleteHueRoles(): ZoraComputedHueRoles {
+  return buildHueRoles([
+    { role: 'primary', hue: 120, sourceSlotId: 'base' },
+    { role: 'secondary', hue: 200, sourceSlotId: 'a' },
+    { role: 'accent', hue: 280, sourceSlotId: 'b' },
+    { role: 'highlight', hue: 20, sourceSlotId: 'c' },
+    { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
+  ]);
+}
+
+function createScales(colorTone: ZoraColorTone = 'jewel') {
+  return createZoraRoleColorScales({
+    colorTone,
+    hueRoles: createCompleteHueRoles(),
+    seed: '#0f766e',
+  });
+}
+
 function requireHueBackedSourceHue(role: ZoraRoleColorScale): number {
   if (typeof role.sourceHue !== 'number') {
     throw new Error(`[zora] Expected "${role.role}" role scale to include a sourceHue.`);
@@ -58,47 +74,19 @@ function requireHueBackedSourceHue(role: ZoraRoleColorScale): number {
   return role.sourceHue;
 }
 
-function expectRoleOrder(
-  scales: ZoraComputedRoleColorScales,
-  expected: readonly ZoraColorScaleRoleId[],
-) {
-  expect(scales.roles.map((entry) => entry.role)).toEqual([...expected]);
-}
-
 describe('createZoraRoleColorScales', () => {
   test('returns all roles exactly once in deterministic order', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
+    const scales = createScales();
 
-    const scales: ZoraComputedRoleColorScales = createZoraRoleColorScales({
-      hueRoles,
-      seed: '#0f766e',
-    });
-
-    const expectedOrder: readonly ZoraColorScaleRoleId[] = ZORA_COLOR_SCALE_ROLE_ORDER;
-    expect(scales.roles).toHaveLength(expectedOrder.length);
-
-    expectRoleOrder(scales, expectedOrder);
+    expect(scales.roles).toHaveLength(ZORA_COLOR_SCALE_ROLE_ORDER.length);
+    expect(scales.roles.map((entry) => entry.role)).toEqual([...ZORA_COLOR_SCALE_ROLE_ORDER]);
     expect(new Set(scales.roles.map((entry) => entry.role)).size).toBe(
       ZORA_COLOR_SCALE_ROLE_ORDER.length,
     );
   });
 
   test('every scale contains exactly all 50–950 keys and valid lowercase 6-digit hex values', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
-
-    const scales = createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
+    const scales = createScales();
 
     for (const role of scales.roles) {
       assertScaleKeys(role.scale);
@@ -109,31 +97,21 @@ describe('createZoraRoleColorScales', () => {
   });
 
   test('output is deterministic for the same input', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
-
-    const seed: ZoraHexColor = '#0f766e';
-
-    expect(createZoraRoleColorScales({ hueRoles, seed })).toEqual(
-      createZoraRoleColorScales({ hueRoles, seed }),
-    );
+    expect(createScales()).toEqual(createScales());
   });
 
   test('role hue is preserved approximately for mid steps', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 115, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 210, sourceSlotId: 'a' },
-      { role: 'accent', hue: 300, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 25, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 165, sourceSlotId: 'a' },
-    ]);
-
-    const scales = createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
+    const scales = createZoraRoleColorScales({
+      colorTone: 'jewel',
+      hueRoles: buildHueRoles([
+        { role: 'primary', hue: 115, sourceSlotId: 'base' },
+        { role: 'secondary', hue: 210, sourceSlotId: 'a' },
+        { role: 'accent', hue: 300, sourceSlotId: 'b' },
+        { role: 'highlight', hue: 25, sourceSlotId: 'c' },
+        { role: 'surfaceTint', hue: 165, sourceSlotId: 'a' },
+      ]),
+      seed: '#0f766e',
+    });
 
     const midSteps: ZoraColorScaleStep[] = [400, 500, 600, 700];
     for (const roleId of ['primary', 'secondary', 'accent', 'highlight', 'surfaceTint'] as const) {
@@ -148,21 +126,11 @@ describe('createZoraRoleColorScales', () => {
   });
 
   test('surfaceTint scale has lower chroma than primary/accent/highlight for mid steps', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
-
-    const scales = createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
-
+    const scales = createScales('jewel');
     const surfaceTint = getZoraRoleColorScale(scales, 'surfaceTint').scale;
     const primary = getZoraRoleColorScale(scales, 'primary').scale;
     const accent = getZoraRoleColorScale(scales, 'accent').scale;
     const highlight = getZoraRoleColorScale(scales, 'highlight').scale;
-
     const step: ZoraColorScaleStep = 500;
     const surfaceTintChroma = parseHexToOklch(surfaceTint[step]).c;
 
@@ -171,17 +139,36 @@ describe('createZoraRoleColorScales', () => {
     expect(surfaceTintChroma).toBeLessThan(parseHexToOklch(highlight[step]).c);
   });
 
-  test('neutral scale has low chroma', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
+  test('colorTone changes role chroma behavior internally', () => {
+    const neutral = createScales('neutral');
+    const fluorescent = createScales('fluorescent');
+    const step: ZoraColorScaleStep = 500;
 
-    const scales = createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
-    const neutral = getZoraRoleColorScale(scales, 'neutral').scale;
+    const neutralPrimary = parseHexToOklch(getZoraRoleColorScale(neutral, 'primary').scale[step]).c;
+    const fluorescentPrimary = parseHexToOklch(
+      getZoraRoleColorScale(fluorescent, 'primary').scale[step],
+    ).c;
+
+    expect(fluorescentPrimary).toBeGreaterThan(neutralPrimary);
+  });
+
+  test('pastel keeps surfaceTint lower chroma than fluorescent foreground roles', () => {
+    const pastel = createScales('pastel');
+    const fluorescent = createScales('fluorescent');
+    const step: ZoraColorScaleStep = 500;
+
+    const pastelSurfaceTint = parseHexToOklch(
+      getZoraRoleColorScale(pastel, 'surfaceTint').scale[step],
+    ).c;
+    const fluorescentAccent = parseHexToOklch(
+      getZoraRoleColorScale(fluorescent, 'accent').scale[step],
+    ).c;
+
+    expect(pastelSurfaceTint).toBeLessThan(fluorescentAccent);
+  });
+
+  test('neutral scale has low chroma', () => {
+    const neutral = getZoraRoleColorScale(createScales(), 'neutral').scale;
 
     for (const { hex } of getStepValues(neutral)) {
       expect(parseHexToOklch(hex).c).toBeLessThanOrEqual(0.03);
@@ -196,19 +183,13 @@ describe('createZoraRoleColorScales', () => {
       { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
     ]);
 
-    expect(() => createZoraRoleColorScales({ hueRoles, seed: '#0f766e' })).toThrow('highlight');
+    expect(() =>
+      createZoraRoleColorScales({ colorTone: 'jewel', hueRoles, seed: '#0f766e' }),
+    ).toThrow('highlight');
   });
 
   test('no role scale contains pure black/white by default', () => {
-    const hueRoles = buildHueRoles([
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ]);
-
-    const scales = createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
+    const scales = createScales();
 
     for (const role of scales.roles) {
       assertNoPureBlackOrWhite(role.scale);
@@ -216,18 +197,10 @@ describe('createZoraRoleColorScales', () => {
   });
 
   test('does not mutate input hueRoles', () => {
-    const assignments: ZoraComputedHueRoles['assignments'] = [
-      { role: 'primary', hue: 120, sourceSlotId: 'base' },
-      { role: 'secondary', hue: 200, sourceSlotId: 'a' },
-      { role: 'accent', hue: 280, sourceSlotId: 'b' },
-      { role: 'highlight', hue: 20, sourceSlotId: 'c' },
-      { role: 'surfaceTint', hue: 160, sourceSlotId: 'a' },
-    ];
-
-    const hueRoles: ZoraComputedHueRoles = buildHueRoles(assignments);
+    const hueRoles = createCompleteHueRoles();
     const snapshot = JSON.stringify(hueRoles);
 
-    createZoraRoleColorScales({ hueRoles, seed: '#0f766e' });
+    createZoraRoleColorScales({ colorTone: 'jewel', hueRoles, seed: '#0f766e' });
 
     expect(JSON.stringify(hueRoles)).toBe(snapshot);
   });
@@ -237,7 +210,7 @@ describe('createZoraRoleColorScales', () => {
     const harmony = computeZoraHarmony(seed, 'tetradic');
     const hueRoles = assignZoraHarmonyRoleHues(harmony);
 
-    const scales = createZoraRoleColorScales({ hueRoles, seed });
+    const scales = createZoraRoleColorScales({ colorTone: 'jewel', hueRoles, seed });
 
     expect(scales.roles.map((entry) => entry.role)).toEqual([...ZORA_COLOR_SCALE_ROLE_ORDER]);
     for (const role of scales.roles) {

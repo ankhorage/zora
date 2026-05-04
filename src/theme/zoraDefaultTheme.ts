@@ -5,5 +5,5 @@ export const zoraDefaultTheme: ZoraTheme = {
   name: 'ZORA',
   primaryColor: '#0f766e',
   harmony: 'analogous',
-  tone: 'jewel',
+  colorTone: 'jewel',
 };

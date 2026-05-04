@@ -1,4 +1,5 @@
-import type { ZoraHexColor } from '../../theme/types';
+import type { ZoraColorTone, ZoraHexColor } from '../../theme/types';
+import { getZoraColorToneRecipe } from './colorToneRecipes';
 import { parseHexToOklch } from './oklch';
 import {
   getZoraHueRoleAssignment,
@@ -56,16 +57,19 @@ function resolveSeedChroma(seed: ZoraHexColor): number {
 }
 
 function createHueBackedRoleScale(options: {
+  colorTone: ZoraColorTone;
   hueRoles: ZoraComputedHueRoles;
   seedChroma: number;
   role: ZoraHueRoleId;
 }): ZoraRoleColorScale {
   const assignment = getZoraHueRoleAssignment(options.hueRoles, options.role);
+  const colorToneRecipe = getZoraColorToneRecipe(options.colorTone);
   const hueScaleRole: ZoraHueScaleRoleId = options.role;
   const hueScaleOptions: CreateZoraHueScaleOptions = {
     hue: assignment.hue,
     seedChroma: options.seedChroma,
     role: hueScaleRole,
+    colorToneRecipe,
   };
 
   return {
@@ -78,15 +82,41 @@ function createHueBackedRoleScale(options: {
 export function createZoraRoleColorScales(options: {
   hueRoles: ZoraComputedHueRoles;
   seed: ZoraHexColor;
+  colorTone: ZoraColorTone;
 }): ZoraComputedRoleColorScales {
   const seedChroma = resolveSeedChroma(options.seed);
 
   const roles: ZoraRoleColorScale[] = [
-    createHueBackedRoleScale({ hueRoles: options.hueRoles, seedChroma, role: 'primary' }),
-    createHueBackedRoleScale({ hueRoles: options.hueRoles, seedChroma, role: 'secondary' }),
-    createHueBackedRoleScale({ hueRoles: options.hueRoles, seedChroma, role: 'accent' }),
-    createHueBackedRoleScale({ hueRoles: options.hueRoles, seedChroma, role: 'highlight' }),
-    createHueBackedRoleScale({ hueRoles: options.hueRoles, seedChroma, role: 'surfaceTint' }),
+    createHueBackedRoleScale({
+      colorTone: options.colorTone,
+      hueRoles: options.hueRoles,
+      seedChroma,
+      role: 'primary',
+    }),
+    createHueBackedRoleScale({
+      colorTone: options.colorTone,
+      hueRoles: options.hueRoles,
+      seedChroma,
+      role: 'secondary',
+    }),
+    createHueBackedRoleScale({
+      colorTone: options.colorTone,
+      hueRoles: options.hueRoles,
+      seedChroma,
+      role: 'accent',
+    }),
+    createHueBackedRoleScale({
+      colorTone: options.colorTone,
+      hueRoles: options.hueRoles,
+      seedChroma,
+      role: 'highlight',
+    }),
+    createHueBackedRoleScale({
+      colorTone: options.colorTone,
+      hueRoles: options.hueRoles,
+      seedChroma,
+      role: 'surfaceTint',
+    }),
     {
       role: 'neutral',
       scale: createZoraNeutralScale(options.seed),
