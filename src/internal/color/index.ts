@@ -7,6 +7,13 @@ export {
 export { parseHexToOklch } from './oklch';
 export { resolveModePrimaryColor } from './primary';
 export {
+  assignZoraHarmonyRoleHues,
+  getZoraHueRoleAssignment,
+  type ZoraComputedHueRoles,
+  type ZoraHueRoleAssignment,
+  type ZoraHueRoleId,
+} from './roleHues';
+export {
   createZoraColorScale,
   type CreateZoraColorScaleOptions,
   createZoraNeutralScale,
