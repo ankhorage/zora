@@ -99,7 +99,7 @@ describe('ZORA_COLOR_TONES coverage for ThemeComposer', () => {
 
 describe('onChange propagation contract', () => {
   test('onChange receives updated theme with new harmony', () => {
-    const received: typeof zoraDefaultTheme[] = [];
+    const received: (typeof zoraDefaultTheme)[] = [];
     const props: ThemeComposerProps = {
       value: zoraDefaultTheme,
       onChange: (t) => received.push(t),
@@ -111,7 +111,7 @@ describe('onChange propagation contract', () => {
   });
 
   test('onChange receives updated theme with new colorTone', () => {
-    const received: typeof zoraDefaultTheme[] = [];
+    const received: (typeof zoraDefaultTheme)[] = [];
     const props: ThemeComposerProps = {
       value: zoraDefaultTheme,
       onChange: (t) => received.push(t),
@@ -159,7 +159,7 @@ describe('ThemeComposer recommendation helpers', () => {
   });
 
   test('creates an updated theme only when recommendation is explicitly applied', () => {
-    const recommendation = recommendations[0];
+    const [recommendation] = recommendations;
     if (recommendation === undefined) {
       throw new Error('Expected fixture recommendation.');
     }
@@ -176,7 +176,7 @@ describe('ThemeComposer recommendation helpers', () => {
   });
 
   test('keeps the current primary color when recommendation has no hue', () => {
-    const recommendation = recommendations[1];
+    const [, recommendation] = recommendations;
     if (recommendation === undefined) {
       throw new Error('Expected fixture recommendation.');
     }
