@@ -34,5 +34,6 @@ export {
   type CreateZoraHueScaleOptions,
   createZoraNeutralScale,
   createZoraPrimaryScale,
+  type ZoraHueScaleRoleId,
 } from './scales';
 export { ZORA_COLOR_SCALE_STEPS, type ZoraColorScale, type ZoraColorScaleStep } from './types';
