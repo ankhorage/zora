@@ -96,7 +96,8 @@ describe('resolveModePrimaryColor', () => {
 
     try {
       const resolved = resolveModePrimaryColor(invalid, 'light');
-      expect(resolved).toBe('#0f766e');
+      expect(resolved).not.toBe('#0f766e');
+      expect(resolved).toBe(resolveModePrimaryColor('#0f766e', 'light'));
     } finally {
       process.env.NODE_ENV = originalEnv;
     }

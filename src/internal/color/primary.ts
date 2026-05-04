@@ -38,7 +38,7 @@ export function resolveModePrimaryColor(
 
     if (process.env.NODE_ENV === 'production') {
       console.warn(`Invalid ZORA primaryColor '${primaryColor}'. Falling back. ${message}`);
-      return FALLBACK_PRIMARY_COLOR;
+      return resolveModePrimaryColor(FALLBACK_PRIMARY_COLOR, mode);
     }
 
     throw error instanceof Error ? error : new Error(message);
