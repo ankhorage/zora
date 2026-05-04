@@ -1,13 +1,16 @@
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { FormActions } from './FormActions';
 import { FormError } from './FormError';
 import { FormField } from './FormField';
 import type { FormProps } from './types';
 import { useFormController } from './useFormController';
 
-export function Form<TName extends string = string>({
+function FormInner<TName extends string = string>({
+  themeId: _themeId,
+  mode: _mode,
   fields,
   values,
   onChange,
@@ -59,3 +62,5 @@ export function Form<TName extends string = string>({
     </Stack>
   );
 }
+
+export const Form = withZoraThemeScope(FormInner);

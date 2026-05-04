@@ -1,10 +1,13 @@
 import { Switch } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SettingsRow } from '../settings-row';
 import type { SwitchFieldProps } from './types';
 
-export function SwitchField({
+function SwitchFieldInner({
+  themeId: _themeId,
+  mode: _mode,
   label,
   description,
   value,
@@ -22,3 +25,5 @@ export function SwitchField({
     />
   );
 }
+
+export const SwitchField = withZoraThemeScope(SwitchFieldInner);

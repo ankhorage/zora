@@ -1,12 +1,16 @@
-import { Box, useTheme } from '@ankhorage/surface';
+import { Box } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PaletteItemProps } from './types';
 
-export function PaletteItem({
+function PaletteItemInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   icon,
@@ -16,7 +20,7 @@ export function PaletteItem({
   onPress,
   testID,
 }: PaletteItemProps) {
-  const { theme } = useTheme();
+  const { theme } = useZoraTheme();
 
   return (
     <Card
@@ -49,3 +53,5 @@ export function PaletteItem({
     </Card>
   );
 }
+
+export const PaletteItem = withZoraThemeScope(PaletteItemInner);

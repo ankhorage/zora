@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SectionHeaderProps } from './types';
 
-export function SectionHeader({
+function SectionHeaderInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   eyebrow,
@@ -39,3 +42,5 @@ export function SectionHeader({
     </Stack>
   );
 }
+
+export const SectionHeader = withZoraThemeScope(SectionHeaderInner);

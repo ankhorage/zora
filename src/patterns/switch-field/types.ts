@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 
-export interface SwitchFieldProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface SwitchFieldProps extends ZoraBaseProps {
   label: ReactNode;
   description?: ReactNode;
   value: boolean;
   onValueChange: (value: boolean) => void;
   disabled?: boolean;
-  testID?: string;
 }

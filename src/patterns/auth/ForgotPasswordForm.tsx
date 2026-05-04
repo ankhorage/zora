@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ForgotPasswordFormProps } from './types';
 import {
   defaultIdentifiers,
@@ -14,7 +15,9 @@ import {
 
 type ForgotPasswordFieldName = 'identifier';
 
-export function ForgotPasswordForm({
+function ForgotPasswordFormInner({
+  themeId: _themeId,
+  mode: _mode,
   identifiers = defaultIdentifiers,
   identifierLabel,
   signInLabel = 'Sign in',
@@ -82,3 +85,5 @@ export function ForgotPasswordForm({
     />
   );
 }
+
+export const ForgotPasswordForm = withZoraThemeScope(ForgotPasswordFormInner);

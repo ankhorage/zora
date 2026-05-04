@@ -2,10 +2,13 @@ import React from 'react';
 
 import { Drawer } from '../../components/drawer';
 import { Modal } from '../../components/modal';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { ResponsivePanelProps } from './types';
 
-export function ResponsivePanel({
+function ResponsivePanelInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   actions,
@@ -68,3 +71,5 @@ export function ResponsivePanel({
     </Panel>
   );
 }
+
+export const ResponsivePanel = withZoraThemeScope(ResponsivePanelInner);

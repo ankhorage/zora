@@ -2,6 +2,7 @@ import { Box, Modal as SurfaceModal, Stack } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
 import { resolveDialogWidth } from '../../internal/recipes';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';
 import { Text } from '../text';
 import type { ModalProps } from './types';
@@ -18,7 +19,9 @@ function useStableCallback(callback: (() => void) | undefined): (() => void) | u
   }, []);
 }
 
-export function Modal({
+function ModalInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   title,
   description,
@@ -51,3 +54,5 @@ export function Modal({
     </SurfaceModal>
   );
 }
+
+export const Modal = withZoraThemeScope(ModalInner);

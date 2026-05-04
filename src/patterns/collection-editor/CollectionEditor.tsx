@@ -4,10 +4,13 @@ import React from 'react';
 import { Button } from '../../components/button';
 import { IconButton } from '../../components/icon-button';
 import { Text } from '../../components/text';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { CollectionEditorProps } from './types';
 
-export function CollectionEditor<TItem>({
+function CollectionEditorInner<TItem>({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   items,
@@ -99,3 +102,5 @@ export function CollectionEditor<TItem>({
     </Panel>
   );
 }
+
+export const CollectionEditor = withZoraThemeScope(CollectionEditorInner);

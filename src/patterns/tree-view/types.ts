@@ -1,6 +1,8 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ReactNode } from 'react';
 
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
 export interface TreeItemNode<TId extends string = string> {
   id: TId;
   label: ReactNode;
@@ -19,7 +21,7 @@ export interface TreeItemRenderProps<TId extends string = string> {
   hasChildren: boolean;
 }
 
-export interface TreeViewProps<TId extends string = string> {
+export interface TreeViewProps<TId extends string = string> extends ZoraBaseProps {
   nodes: readonly TreeItemNode<TId>[];
   selectedId?: TId;
   expandedIds?: readonly TId[];
@@ -27,5 +29,4 @@ export interface TreeViewProps<TId extends string = string> {
   onSelect?: (id: TId) => void;
   onExpandedChange?: (ids: readonly TId[]) => void;
   renderItem?: (props: TreeItemRenderProps<TId>) => ReactNode;
-  testID?: string;
 }

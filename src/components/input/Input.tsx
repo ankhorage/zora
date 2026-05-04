@@ -2,10 +2,19 @@ import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveIconSize } from '../../internal/recipes';
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { InputProps } from './types';
 
-export function Input({ size = 'l', leadingIcon, trailingIcon, ...props }: InputProps) {
-  const { theme } = Surface.useTheme();
+function InputInner({
+  themeId: _themeId,
+  mode: _mode,
+  size = 'l',
+  leadingIcon,
+  trailingIcon,
+  ...props
+}: InputProps) {
+  const { theme } = useZoraTheme();
   const iconSize = resolveIconSize(size);
   const iconColor = theme.semantics.content.muted;
 
@@ -36,3 +45,5 @@ export function Input({ size = 'l', leadingIcon, trailingIcon, ...props }: Input
     />
   );
 }
+
+export const Input = withZoraThemeScope(InputInner);

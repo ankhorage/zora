@@ -1,4 +1,3 @@
+export { Radio } from './Radio';
 export { RadioGroup } from './RadioGroup';
-export type { RadioGroupOption, RadioGroupProps } from './types';
-export type { RadioProps } from '@ankhorage/surface';
-export { Radio } from '@ankhorage/surface';
+export type { RadioGroupOption, RadioGroupProps, RadioProps } from './types';

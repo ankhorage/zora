@@ -1,10 +1,13 @@
 import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Card } from '../card';
 import type { ToolbarProps } from './types';
 
-export function Toolbar({
+function ToolbarInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   position = 'inline',
   floating = false,
@@ -35,3 +38,5 @@ export function Toolbar({
     </Card>
   );
 }
+
+export const Toolbar = withZoraThemeScope(ToolbarInner);

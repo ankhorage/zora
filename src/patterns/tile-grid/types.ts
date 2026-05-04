@@ -1,14 +1,15 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ReactNode } from 'react';
 
-export interface TileGridProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface TileGridProps extends ZoraBaseProps {
   children?: ReactNode;
   columns?: number | 'responsive';
   compact?: boolean;
-  testID?: string;
 }
 
-export interface PaletteItemProps {
+export interface PaletteItemProps extends ZoraBaseProps {
   title: ReactNode;
   description?: ReactNode;
   icon?: ButtonIconSpec;
@@ -16,5 +17,4 @@ export interface PaletteItemProps {
   selected?: boolean;
   disabled?: boolean;
   onPress?: () => void;
-  testID?: string;
 }

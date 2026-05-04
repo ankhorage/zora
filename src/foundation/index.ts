@@ -1,25 +1,20 @@
-export type {
-  BoxProps,
-  CenterProps,
-  ContainerProps,
-  DividerProps,
-  GridProps,
-  InlineProps,
-  ShowProps,
-  SpacerProps,
-  StackProps,
-  SurfaceProps,
-  SurfaceVariant,
-} from '@ankhorage/surface';
-export {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Grid,
-  Inline,
-  Show,
-  Spacer,
-  Stack,
-  Surface,
-} from '@ankhorage/surface';
+export type { BoxProps } from './Box';
+export { Box } from './Box';
+export type { CenterProps } from './Center';
+export { Center } from './Center';
+export type { ContainerProps } from './Container';
+export { Container } from './Container';
+export type { DividerProps } from './Divider';
+export { Divider } from './Divider';
+export type { GridProps } from './Grid';
+export { Grid } from './Grid';
+export type { InlineProps } from './Inline';
+export { Inline } from './Inline';
+export type { ShowProps } from './Show';
+export { Show } from './Show';
+export type { SpacerProps } from './Spacer';
+export { Spacer } from './Spacer';
+export type { StackProps } from './Stack';
+export { Stack } from './Stack';
+export type { SurfaceProps, SurfaceVariant } from './Surface';
+export { Surface } from './Surface';

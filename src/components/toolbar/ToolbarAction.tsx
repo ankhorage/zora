@@ -1,9 +1,15 @@
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { IconButton } from '../icon-button';
 import type { ToolbarActionProps } from './types';
 
-export function ToolbarAction({ active, ...props }: ToolbarActionProps) {
+function ToolbarActionInner({
+  themeId: _themeId,
+  mode: _mode,
+  active,
+  ...props
+}: ToolbarActionProps) {
   return (
     <IconButton
       {...props}
@@ -13,3 +19,5 @@ export function ToolbarAction({ active, ...props }: ToolbarActionProps) {
     />
   );
 }
+
+export const ToolbarAction = withZoraThemeScope(ToolbarActionInner);

@@ -2,10 +2,19 @@ import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveIconSize } from '../../internal/recipes';
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { TextareaProps } from './types';
 
-export function Textarea({ size = 'l', leadingIcon, trailingIcon, ...props }: TextareaProps) {
-  const { theme } = Surface.useTheme();
+function TextareaInner({
+  themeId: _themeId,
+  mode: _mode,
+  size = 'l',
+  leadingIcon,
+  trailingIcon,
+  ...props
+}: TextareaProps) {
+  const { theme } = useZoraTheme();
   const iconSize = resolveIconSize(size);
   const iconColor = theme.semantics.content.muted;
 
@@ -36,3 +45,5 @@ export function Textarea({ size = 'l', leadingIcon, trailingIcon, ...props }: Te
     />
   );
 }
+
+export const Textarea = withZoraThemeScope(TextareaInner);

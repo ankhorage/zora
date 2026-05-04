@@ -90,8 +90,29 @@ export function App({ appTheme }: { appTheme: ZoraTheme }) {
 }
 ```
 
-In Plan 2, `mode` is a declarative render-scope override. Calling `setMode` from
-`useZoraTheme()` still targets the root theme provider.
+`mode` and `themeId` are available on public ZORA components through `ZoraBaseProps`.
+Use component props for local component/subtree overrides.
+
+Use `ZoraThemeScope` when the scope is conceptual and does not belong to one specific component:
+
+```tsx
+import React from 'react';
+import { SidebarLayout, Text, ZoraProvider, ZoraThemeScope, type ZoraTheme } from '@ankhorage/zora';
+
+export function App({ appTheme }: { appTheme: ZoraTheme }) {
+  return (
+    <ZoraProvider theme={appTheme} initialMode="light">
+      <ZoraThemeScope mode="dark">
+        <SidebarLayout sidebar={<Text>Sidebar</Text>}>
+          <Text>Everything inside uses dark mode.</Text>
+        </SidebarLayout>
+      </ZoraThemeScope>
+    </ZoraProvider>
+  );
+}
+```
+
+`themeId` currently accepts the inherited theme id. Full theme registries arrive in a later phase.
 
 ## Foundation primitives
 

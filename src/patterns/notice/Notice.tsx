@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Badge } from '../../components/badge';
 import { Card } from '../../components/card';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { NoticeProps } from './types';
 
-export function Notice({
+function NoticeInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   children,
@@ -28,3 +31,5 @@ export function Notice({
     </Card>
   );
 }
+
+export const Notice = withZoraThemeScope(NoticeInner);

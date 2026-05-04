@@ -1,10 +1,13 @@
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Button } from '../button';
 import type { FormActionsProps } from './types';
 
-export function FormActions({
+function FormActionsInner({
+  themeId: _themeId,
+  mode: _mode,
   submitLabel = 'Submit',
   loading = false,
   disabled = false,
@@ -21,3 +24,5 @@ export function FormActions({
     </Stack>
   );
 }
+
+export const FormActions = withZoraThemeScope(FormActionsInner);

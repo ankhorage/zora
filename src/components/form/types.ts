@@ -1,6 +1,7 @@
 import type { FieldProps as SurfaceFieldProps } from '@ankhorage/surface';
 import type React from 'react';
 
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 import type { InputProps } from '../input';
 
 export type ValidationRule =
@@ -36,44 +37,44 @@ export interface FormFieldConfig<TName extends string = string> {
   testID?: string;
 }
 
-export interface FormFieldWrapperProps extends Pick<
-  SurfaceFieldProps,
-  'children' | 'disabled' | 'errorText' | 'invalid' | 'readOnly' | 'required' | 'testID'
-> {
+export interface FormFieldWrapperProps
+  extends
+    ZoraBaseProps,
+    Pick<
+      Omit<SurfaceFieldProps, 'mode' | 'themeId'>,
+      'children' | 'disabled' | 'errorText' | 'invalid' | 'readOnly' | 'required'
+    > {
   label: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
 }
 
-export interface FormFieldControlProps<TName extends string = string> {
+export interface FormFieldControlProps<TName extends string = string> extends ZoraBaseProps {
   field: FormFieldConfig<TName>;
   value: FormFieldValue;
   onChange: (name: TName, value: FormFieldValue) => void;
   error?: React.ReactNode;
   disabled?: boolean;
   loading?: boolean;
-  testID?: string;
 }
 
 export type FormFieldProps<TName extends string = string> =
   | FormFieldControlProps<TName>
   | FormFieldWrapperProps;
 
-export interface FormActionsProps {
+export interface FormActionsProps extends ZoraBaseProps {
   submitLabel?: React.ReactNode;
   loading?: boolean;
   disabled?: boolean;
   onSubmit?: () => void;
   children?: React.ReactNode;
-  testID?: string;
 }
 
-export interface FormErrorProps {
+export interface FormErrorProps extends ZoraBaseProps {
   error?: React.ReactNode;
-  testID?: string;
 }
 
-export interface FormProps<TName extends string = string> {
+export interface FormProps<TName extends string = string> extends ZoraBaseProps {
   fields: readonly FormFieldConfig<TName>[];
   values: FormValues<TName>;
   onChange: (values: FormValues<TName>) => void;
@@ -86,7 +87,6 @@ export interface FormProps<TName extends string = string> {
   actions?: React.ReactNode;
   footer?: React.ReactNode;
   validateOnChange?: boolean;
-  testID?: string;
 }
 
 export interface FormValidationResult<TName extends string = string> {

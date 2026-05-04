@@ -1,9 +1,12 @@
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SidebarLayoutProps } from './types';
 
-export function SidebarLayout({
+function SidebarLayoutInner({
+  themeId: _themeId,
+  mode: _mode,
   sidebar,
   children,
   aside,
@@ -21,3 +24,5 @@ export function SidebarLayout({
     </Stack>
   );
 }
+
+export const SidebarLayout = withZoraThemeScope(SidebarLayoutInner);

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SignUpFormProps } from './types';
 
 const defaultSignUpFields = [
@@ -30,7 +31,9 @@ function createValues(fields: readonly FormFieldConfig[]): FormValues {
   return values;
 }
 
-export function SignUpForm({
+function SignUpFormInner({
+  themeId: _themeId,
+  mode: _mode,
   fields = defaultSignUpFields,
   signInLabel = 'Sign in',
   loading = false,
@@ -74,3 +77,5 @@ export function SignUpForm({
     />
   );
 }
+
+export const SignUpForm = withZoraThemeScope(SignUpFormInner);

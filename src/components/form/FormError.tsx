@@ -1,11 +1,13 @@
-import { Box, useTheme } from '@ankhorage/surface';
+import { Box } from '@ankhorage/surface';
 import React from 'react';
 
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { FormErrorProps } from './types';
 
-export function FormError({ error, testID }: FormErrorProps) {
-  const { theme } = useTheme();
+function FormErrorInner({ themeId: _themeId, mode: _mode, error, testID }: FormErrorProps) {
+  const { theme } = useZoraTheme();
 
   if (!error) {
     return null;
@@ -19,3 +21,5 @@ export function FormError({ error, testID }: FormErrorProps) {
     </Box>
   );
 }
+
+export const FormError = withZoraThemeScope(FormErrorInner);

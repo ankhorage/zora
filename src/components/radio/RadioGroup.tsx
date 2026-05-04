@@ -2,10 +2,13 @@ import { Radio, Stack } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { RadioGroupOption, RadioGroupProps } from './types';
 
-export function RadioGroup<TValue extends string>({
+function RadioGroupInner<TValue extends string>({
+  themeId: _themeId,
+  mode: _mode,
   value,
   onValueChange,
   options,
@@ -51,6 +54,8 @@ export function RadioGroup<TValue extends string>({
     </View>
   );
 }
+
+export const RadioGroup = withZoraThemeScope(RadioGroupInner);
 
 function RadioGroupItem<TValue extends string>({
   option,
