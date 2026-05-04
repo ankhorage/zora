@@ -38,6 +38,8 @@ export function createZoraSemanticColorTokens(options: {
   mode: ZoraThemeMode;
   colorTone: ZoraColorTone;
 }): ZoraSemanticColorTokens {
+  // colorTone is accepted now and reserved for future per-tone step overrides
+  // (e.g. obsidian/pastel may shift surface selections differently).
   const { roleScales, mode } = options;
 
   const neutral = getZoraRoleColorScale(roleScales, 'neutral').scale;

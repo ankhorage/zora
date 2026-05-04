@@ -16,7 +16,9 @@ function isSixDigitLowercaseHex(value: string): value is ZoraHexColor {
 }
 
 function getLightness(hex: ZoraHexColor): number {
-  // simple proxy: average RGB / 255 (no culori needed – just need relative ordering)
+  // Intentionally a simple RGB average rather than OKLCH — serves as a
+  // perceptual proxy for test assertions only. The production implementation
+  // in getReadableTextColor uses OKLCH lightness via parseHexToOklch.
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;
   const b = parseInt(hex.slice(5, 7), 16) / 255;
