@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.16.1
+
+### Patch Changes
+
+- 0d09c8f: Update SURFACE
+
 ## 0.16.0
 
 ### Minor Changes
