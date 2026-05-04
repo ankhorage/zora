@@ -1,9 +1,4 @@
-import type {
-  ZoraColorHarmony,
-  ZoraColorTone,
-  ZoraTheme,
-  ZoraThemeMode,
-} from '../../theme/types';
+import type { ZoraColorHarmony, ZoraColorTone, ZoraTheme, ZoraThemeMode } from '../../theme/types';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type ThemeComposerAppCategory = string;
