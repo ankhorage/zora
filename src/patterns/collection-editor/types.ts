@@ -10,7 +10,9 @@ export interface CollectionEditorRenderItemProps<TItem> {
   canMoveDown: boolean;
 }
 
-export interface CollectionEditorProps<TItem> {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface CollectionEditorProps<TItem> extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   items: readonly TItem[];
@@ -21,5 +23,4 @@ export interface CollectionEditorProps<TItem> {
   addLabel?: React.ReactNode;
   emptyLabel?: React.ReactNode;
   disabled?: boolean;
-  testID?: string;
 }

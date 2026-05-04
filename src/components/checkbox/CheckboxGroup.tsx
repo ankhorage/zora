@@ -2,10 +2,13 @@ import { Checkbox, Stack } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { CheckboxGroupOption, CheckboxGroupProps } from './types';
 
-export function CheckboxGroup<TValue extends string>({
+function CheckboxGroupInner<TValue extends string>({
+  themeId: _themeId,
+  mode: _mode,
   value,
   onValueChange,
   options,
@@ -52,6 +55,8 @@ export function CheckboxGroup<TValue extends string>({
     </View>
   );
 }
+
+export const CheckboxGroup = withZoraThemeScope(CheckboxGroupInner);
 
 function CheckboxGroupItem<TValue extends string>({
   option,

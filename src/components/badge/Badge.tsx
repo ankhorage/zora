@@ -2,9 +2,18 @@ import { Badge as SurfaceBadge } from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveBadgeRecipe } from '../../internal/recipes';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { BadgeProps } from './types';
 
-export function Badge({ children, tone, emphasis, size, ...props }: BadgeProps) {
+function BadgeInner({
+  themeId: _themeId,
+  mode: _mode,
+  children,
+  tone,
+  emphasis,
+  size,
+  ...props
+}: BadgeProps) {
   const recipe = resolveBadgeRecipe({ tone, emphasis, size });
 
   return (
@@ -17,3 +26,5 @@ export function Badge({ children, tone, emphasis, size, ...props }: BadgeProps) 
     />
   );
 }
+
+export const Badge = withZoraThemeScope(BadgeInner);

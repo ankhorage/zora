@@ -1,7 +1,9 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ReactNode } from 'react';
 
-export interface DisclosureSectionProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface DisclosureSectionProps extends ZoraBaseProps {
   title: ReactNode;
   description?: ReactNode;
   icon?: ButtonIconSpec;
@@ -11,5 +13,4 @@ export interface DisclosureSectionProps {
   actions?: ReactNode;
   children?: ReactNode;
   disabled?: boolean;
-  testID?: string;
 }

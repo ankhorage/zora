@@ -1,6 +1,7 @@
 import { Box, Drawer as SurfaceDrawer, Stack } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';
 import { Text } from '../text';
 import type { DrawerProps } from './types';
@@ -17,7 +18,16 @@ function useStableCallback(callback: (() => void) | undefined): (() => void) | u
   }, []);
 }
 
-export function Drawer({ children, title, description, footer, onDismiss, ...props }: DrawerProps) {
+function DrawerInner({
+  themeId: _themeId,
+  mode: _mode,
+  children,
+  title,
+  description,
+  footer,
+  onDismiss,
+  ...props
+}: DrawerProps) {
   const hasHeader = title != null || description != null;
   const stableOnDismiss = useStableCallback(onDismiss);
 
@@ -40,3 +50,5 @@ export function Drawer({ children, title, description, footer, onDismiss, ...pro
     </SurfaceDrawer>
   );
 }
+
+export const Drawer = withZoraThemeScope(DrawerInner);

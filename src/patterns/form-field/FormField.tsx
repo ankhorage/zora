@@ -2,9 +2,18 @@ import { Field, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Text } from '../../components/text';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { FormFieldProps } from './types';
 
-export function FormField({ label, description, helperText, children, ...props }: FormFieldProps) {
+function FormFieldInner({
+  themeId: _themeId,
+  mode: _mode,
+  label,
+  description,
+  helperText,
+  children,
+  ...props
+}: FormFieldProps) {
   return (
     <Field
       {...props}
@@ -26,3 +35,5 @@ export function FormField({ label, description, helperText, children, ...props }
     </Field>
   );
 }
+
+export const FormField = withZoraThemeScope(FormFieldInner);

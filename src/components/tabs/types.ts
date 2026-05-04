@@ -2,6 +2,7 @@ import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ReactNode } from 'react';
 
 import type { ZoraControlSize } from '../../internal/recipes';
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface TabItem<TValue extends string = string> {
   value: TValue;
@@ -14,12 +15,11 @@ export interface TabItem<TValue extends string = string> {
 
 export type TabsVariant = 'underline' | 'pill' | 'segmented';
 
-export interface TabsProps<TValue extends string = string> {
+export interface TabsProps<TValue extends string = string> extends ZoraBaseProps {
   value: TValue;
   items: readonly TabItem<TValue>[];
   onValueChange: (value: TValue) => void;
   variant?: TabsVariant;
   size?: ZoraControlSize;
   disabled?: boolean;
-  testID?: string;
 }

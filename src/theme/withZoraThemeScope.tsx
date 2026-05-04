@@ -4,22 +4,23 @@ import type { ZoraBaseProps } from './ZoraBaseProps';
 import { ZoraThemeScope } from './ZoraThemeScope';
 
 export function withZoraThemeScope<P extends ZoraBaseProps>(
-  Component: React.ComponentType<P>,
-): React.FC<P> {
-  const Wrapped: React.FC<P> = (props) => {
+  Component: (props: P) => React.ReactElement | null,
+): (props: P) => React.ReactElement | null {
+  const Wrapped = (props: P) => {
     if (props.mode === undefined && props.themeId === undefined) {
-      return <Component {...props} />;
+      return React.createElement(Component, props);
     }
 
     return (
       <ZoraThemeScope mode={props.mode} themeId={props.themeId}>
-        <Component {...props} />
+        {React.createElement(Component, props)}
       </ZoraThemeScope>
     );
   };
 
-  const name = Component.displayName ?? (Component.name || 'Component');
-  Wrapped.displayName = `withZoraThemeScope(${name})`;
+  const name =
+    (Component as { displayName?: string }).displayName ?? (Component.name || 'Component');
+  (Wrapped as { displayName?: string }).displayName = `withZoraThemeScope(${name})`;
 
   return Wrapped;
 }

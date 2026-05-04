@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 
-export interface InspectorFieldProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface InspectorFieldProps extends ZoraBaseProps {
   label: ReactNode;
   description?: ReactNode;
   helperText?: ReactNode;
@@ -11,5 +13,4 @@ export interface InspectorFieldProps {
   readOnly?: boolean;
   control?: ReactNode;
   children?: ReactNode;
-  testID?: string;
 }

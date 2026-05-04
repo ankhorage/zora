@@ -1,5 +1,9 @@
-import type { RadioProps } from '@ankhorage/surface';
+import type { RadioProps as SurfaceRadioProps } from '@ankhorage/surface';
 import type React from 'react';
+
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface RadioProps extends ZoraBaseProps, Omit<SurfaceRadioProps, 'mode' | 'themeId'> {}
 
 export interface RadioGroupOption<TValue extends string> {
   value: TValue;
@@ -9,10 +13,13 @@ export interface RadioGroupOption<TValue extends string> {
   testID?: string;
 }
 
-export interface RadioGroupProps<TValue extends string> extends Pick<
-  RadioProps,
-  'tone' | 'size' | 'invalid' | 'readOnly' | 'disabled' | 'testID'
-> {
+export interface RadioGroupProps<TValue extends string>
+  extends
+    ZoraBaseProps,
+    Pick<
+      Omit<SurfaceRadioProps, 'mode' | 'themeId'>,
+      'tone' | 'size' | 'invalid' | 'readOnly' | 'disabled'
+    > {
   value: TValue;
   onValueChange: (value: TValue) => void;
   options: readonly RadioGroupOption<TValue>[];

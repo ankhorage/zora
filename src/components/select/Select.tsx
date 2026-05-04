@@ -1,10 +1,14 @@
-import { Box, useTheme } from '@ankhorage/surface';
+import { Box } from '@ankhorage/surface';
 import { Picker } from '@react-native-picker/picker';
 import React from 'react';
 
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SelectProps } from './types';
 
-export function Select<TValue extends string = string>({
+function SelectInner<TValue extends string = string>({
+  themeId: _themeId,
+  mode: _mode,
   value,
   options,
   onValueChange,
@@ -12,7 +16,7 @@ export function Select<TValue extends string = string>({
   invalid,
   testID,
 }: SelectProps<TValue>) {
-  const { theme } = useTheme();
+  const { theme } = useZoraTheme();
 
   return (
     <Box
@@ -47,3 +51,5 @@ export function Select<TValue extends string = string>({
     </Box>
   );
 }
+
+export const Select = withZoraThemeScope(SelectInner);

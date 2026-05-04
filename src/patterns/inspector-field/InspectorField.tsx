@@ -1,10 +1,18 @@
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { FormField } from '../form-field';
 import type { InspectorFieldProps } from './types';
 
-export function InspectorField({ label, control, children, ...props }: InspectorFieldProps) {
+function InspectorFieldInner({
+  themeId: _themeId,
+  mode: _mode,
+  label,
+  control,
+  children,
+  ...props
+}: InspectorFieldProps) {
   return (
     <FormField {...props} label={label}>
       <Stack direction="row" gap="s" align="center">
@@ -14,3 +22,5 @@ export function InspectorField({ label, control, children, ...props }: Inspector
     </FormField>
   );
 }
+
+export const InspectorField = withZoraThemeScope(InspectorFieldInner);

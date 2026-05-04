@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Page } from '../page';
 import { PageHeader } from '../page-header';
 import { SidebarLayout } from '../sidebar-layout';
 import type { SettingsLayoutProps } from './types';
 
-export function SettingsLayout({
+function SettingsLayoutInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   sidebar,
@@ -24,3 +27,5 @@ export function SettingsLayout({
     </Page>
   );
 }
+
+export const SettingsLayout = withZoraThemeScope(SettingsLayoutInner);

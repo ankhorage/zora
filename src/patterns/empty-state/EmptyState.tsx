@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Card } from '../../components/card';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { EmptyStateProps } from './types';
 
-export function EmptyState({
+function EmptyStateInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   eyebrow,
@@ -51,3 +54,5 @@ export function EmptyState({
     </Card>
   );
 }
+
+export const EmptyState = withZoraThemeScope(EmptyStateInner);

@@ -1,10 +1,11 @@
 import type React from 'react';
 
-export interface AuthLayoutProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface AuthLayoutProps extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;
   children?: React.ReactNode;
   footer?: React.ReactNode;
-  testID?: string;
 }

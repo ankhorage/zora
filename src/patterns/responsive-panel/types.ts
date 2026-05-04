@@ -4,7 +4,9 @@ export type ResponsivePanelSide = 'left' | 'right';
 export type ResponsivePanelDesktopMode = 'inline' | 'floating';
 export type ResponsivePanelMobileMode = 'drawer' | 'modal';
 
-export interface ResponsivePanelProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface ResponsivePanelProps extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   actions?: React.ReactNode;
@@ -16,5 +18,4 @@ export interface ResponsivePanelProps {
   desktopMode?: ResponsivePanelDesktopMode;
   mobileMode?: ResponsivePanelMobileMode;
   compact?: boolean;
-  testID?: string;
 }

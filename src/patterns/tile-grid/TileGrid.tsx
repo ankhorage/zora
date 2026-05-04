@@ -1,9 +1,12 @@
 import { Box } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { TileGridProps } from './types';
 
-export function TileGrid({
+function TileGridInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   columns = 'responsive',
   compact = false,
@@ -42,3 +45,5 @@ export function TileGrid({
     </Box>
   );
 }
+
+export const TileGrid = withZoraThemeScope(TileGridInner);

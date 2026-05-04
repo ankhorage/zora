@@ -1,15 +1,15 @@
 import type React from 'react';
 
 import type { FormFieldConfig, FormValues } from '../../components/form';
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type AuthIdentifierKind = 'email' | 'phone' | 'username';
 
-export interface AuthFormBaseProps {
+export interface AuthFormBaseProps extends ZoraBaseProps {
   loading?: boolean;
   disabled?: boolean;
   error?: React.ReactNode;
   submitLabel?: React.ReactNode;
-  testID?: string;
 }
 
 export interface SignInFormValues {

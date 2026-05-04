@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PageHeaderProps } from './types';
 
-export function PageHeader({
+function PageHeaderInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   eyebrow,
@@ -41,3 +44,5 @@ export function PageHeader({
     </Stack>
   );
 }
+
+export const PageHeader = withZoraThemeScope(PageHeaderInner);

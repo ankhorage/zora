@@ -4,7 +4,7 @@ import React from 'react';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
-export interface IconProps extends ZoraBaseProps, SurfaceIconProps {}
+export interface IconProps extends ZoraBaseProps, Omit<SurfaceIconProps, 'mode' | 'themeId'> {}
 
 function IconInner({ themeId: _themeId, mode: _mode, ...props }: IconProps) {
   return <SurfaceIcon {...props} />;

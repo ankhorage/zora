@@ -1,10 +1,13 @@
 import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { TreeItem } from './TreeItem';
 import type { TreeViewProps } from './types';
 
-export function TreeView<TId extends string = string>({
+function TreeViewInner<TId extends string = string>({
+  themeId: _themeId,
+  mode: _mode,
   nodes,
   selectedId,
   expandedIds: controlledExpandedIds,
@@ -48,3 +51,5 @@ export function TreeView<TId extends string = string>({
     </Stack>
   );
 }
+
+export const TreeView = withZoraThemeScope(TreeViewInner);

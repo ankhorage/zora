@@ -2,9 +2,12 @@ import { Center, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { AuthLayoutProps } from './types';
 
-export function AuthLayout({
+function AuthLayoutInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   eyebrow,
@@ -27,3 +30,5 @@ export function AuthLayout({
     </Center>
   );
 }
+
+export const AuthLayout = withZoraThemeScope(AuthLayoutInner);

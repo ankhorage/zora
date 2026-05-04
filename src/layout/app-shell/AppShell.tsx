@@ -2,9 +2,12 @@ import { Box } from '@ankhorage/surface';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { AppShellProps } from './types';
 
-export function AppShell({
+function AppShellInner({
+  themeId: _themeId,
+  mode: _mode,
   children,
   header,
   footer,
@@ -31,6 +34,8 @@ export function AppShell({
     </Box>
   );
 }
+
+export const AppShell = withZoraThemeScope(AppShellInner);
 
 const styles = StyleSheet.create({
   root: {

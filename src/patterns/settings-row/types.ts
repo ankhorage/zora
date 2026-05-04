@@ -1,11 +1,12 @@
 import type React from 'react';
 
-interface SettingsRowBaseProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+interface SettingsRowBaseProps extends ZoraBaseProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   meta?: React.ReactNode;
   disabled?: boolean;
-  testID?: string;
 }
 
 interface SettingsRowPressableProps {

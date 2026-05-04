@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Modal } from '../../components/modal';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ConfirmDialogProps } from './types';
 
-export function ConfirmDialog({
+function ConfirmDialogInner({
+  themeId: _themeId,
+  mode: _mode,
   visible,
   title,
   description,
@@ -44,3 +47,5 @@ export function ConfirmDialog({
     </Modal>
   );
 }
+
+export const ConfirmDialog = withZoraThemeScope(ConfirmDialogInner);

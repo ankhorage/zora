@@ -3,9 +3,12 @@ import React from 'react';
 
 import { Card } from '../../components/card';
 import { Text } from '../../components/text';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SettingsRowProps } from './types';
 
-export function SettingsRow({
+function SettingsRowInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   meta,
@@ -39,3 +42,5 @@ export function SettingsRow({
     </Card>
   );
 }
+
+export const SettingsRow = withZoraThemeScope(SettingsRowInner);

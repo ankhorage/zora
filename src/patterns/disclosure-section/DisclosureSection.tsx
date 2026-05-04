@@ -2,10 +2,13 @@ import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { IconButton } from '../../components/icon-button';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { DisclosureSectionProps } from './types';
 
-export function DisclosureSection({
+function DisclosureSectionInner({
+  themeId: _themeId,
+  mode: _mode,
   title,
   description,
   icon,
@@ -59,3 +62,5 @@ export function DisclosureSection({
     </Panel>
   );
 }
+
+export const DisclosureSection = withZoraThemeScope(DisclosureSectionInner);

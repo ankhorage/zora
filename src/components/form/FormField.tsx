@@ -1,6 +1,7 @@
 import { Field, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Input } from '../input';
 import { Text } from '../text';
 import type { FormFieldConfig, FormFieldControlProps, FormFieldProps } from './types';
@@ -83,9 +84,17 @@ function renderLabel(label: React.ReactNode, description: React.ReactNode | unde
   );
 }
 
-export function FormField<TName extends string = string>(props: FormFieldProps<TName>) {
+function FormFieldInner<TName extends string = string>(props: FormFieldProps<TName>) {
   if (!isControlFieldProps(props)) {
-    const { label, description, helperText, children, ...fieldProps } = props;
+    const {
+      themeId: _themeId,
+      mode: _mode,
+      label,
+      description,
+      helperText,
+      children,
+      ...fieldProps
+    } = props;
 
     return (
       <Field {...fieldProps} helperText={helperText} label={renderLabel(label, description)}>
@@ -94,7 +103,17 @@ export function FormField<TName extends string = string>(props: FormFieldProps<T
     );
   }
 
-  const { field, value, error, disabled = false, loading = false, onChange, testID } = props;
+  const {
+    themeId: _themeId,
+    mode: _mode,
+    field,
+    value,
+    error,
+    disabled = false,
+    loading = false,
+    onChange,
+    testID,
+  } = props;
   const fieldDisabled = disabled || loading || field.disabled;
   const required = field.required ?? hasRequiredRule(field.rules);
 
@@ -127,3 +146,5 @@ export function FormField<TName extends string = string>(props: FormFieldProps<T
     </Field>
   );
 }
+
+export const FormField = withZoraThemeScope(FormFieldInner);

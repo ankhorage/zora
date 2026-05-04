@@ -2,10 +2,12 @@ import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { IconButton } from '../../components/icon-button';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 import { SettingsRow } from '../settings-row';
 import type { TreeItemNode, TreeItemRenderProps } from './types';
 
-interface TreeItemProps<TId extends string = string> {
+interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
   node: TreeItemNode<TId>;
   depth: number;
   selectedId?: TId;
@@ -15,7 +17,9 @@ interface TreeItemProps<TId extends string = string> {
   renderItem?: (props: TreeItemRenderProps<TId>) => React.ReactNode;
 }
 
-export function TreeItem<TId extends string = string>({
+function TreeItemInner<TId extends string = string>({
+  themeId: _themeId,
+  mode: _mode,
   node,
   depth,
   selectedId,
@@ -23,6 +27,7 @@ export function TreeItem<TId extends string = string>({
   onSelect,
   onToggleExpand,
   renderItem,
+  testID,
 }: TreeItemProps<TId>) {
   const hasChildren = node.children !== undefined && node.children.length > 0;
   const isExpanded = expandedIds.includes(node.id);
@@ -63,7 +68,7 @@ export function TreeItem<TId extends string = string>({
   };
 
   return (
-    <Box>
+    <Box testID={testID}>
       <Box style={{ paddingLeft: depth * 16 }}>{renderContent()}</Box>
       {hasChildren && isExpanded ? (
         <Box>
@@ -84,3 +89,5 @@ export function TreeItem<TId extends string = string>({
     </Box>
   );
 }
+
+export const TreeItem = withZoraThemeScope(TreeItemInner);

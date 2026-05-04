@@ -1,11 +1,15 @@
-import { Box, Stack, useTheme } from '@ankhorage/surface';
+import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { useZoraTheme } from '../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Button } from '../button';
 import { Text } from '../text';
 import type { TabItem, TabsProps } from './types';
 
-export function Tabs<TValue extends string = string>({
+function TabsInner<TValue extends string = string>({
+  themeId: _themeId,
+  mode: _mode,
   value,
   items,
   onValueChange,
@@ -14,7 +18,7 @@ export function Tabs<TValue extends string = string>({
   disabled: tabsDisabled,
   testID,
 }: TabsProps<TValue>) {
-  const { theme } = useTheme();
+  const { theme } = useZoraTheme();
 
   const renderTab = (item: TabItem<TValue>) => {
     const isActive = item.value === value;
@@ -98,3 +102,5 @@ export function Tabs<TValue extends string = string>({
     </Stack>
   );
 }
+
+export const Tabs = withZoraThemeScope(TabsInner);

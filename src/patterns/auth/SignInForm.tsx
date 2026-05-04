@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SignInFormProps } from './types';
 import {
   defaultIdentifiers,
@@ -14,7 +15,9 @@ import {
 
 type SignInFieldName = 'identifier' | 'secret';
 
-export function SignInForm({
+function SignInFormInner({
+  themeId: _themeId,
+  mode: _mode,
   identifiers = defaultIdentifiers,
   identifierLabel,
   secretLabel = 'Password',
@@ -109,3 +112,5 @@ export function SignInForm({
     />
   );
 }
+
+export const SignInForm = withZoraThemeScope(SignInFormInner);

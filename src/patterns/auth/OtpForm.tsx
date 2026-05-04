@@ -3,11 +3,14 @@ import React from 'react';
 
 import { Button } from '../../components/button';
 import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { OtpFormProps } from './types';
 
 type OtpFieldName = 'otp';
 
-export function OtpForm({
+function OtpFormInner({
+  themeId: _themeId,
+  mode: _mode,
   length = 6,
   otpLabel = 'Code',
   resendLabel = 'Resend code',
@@ -78,3 +81,5 @@ export function OtpForm({
     />
   );
 }
+
+export const OtpForm = withZoraThemeScope(OtpFormInner);
