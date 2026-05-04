@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.16.2
+
+### Patch Changes
+
+- f47005a: Refresh Expo showcase coverage and add a policy test for app-facing ZORA imports.
+- 5765554: Add the standard package tooling baseline script and workflow files.
+
 ## 0.16.1
 
 ### Patch Changes
