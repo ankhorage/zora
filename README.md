@@ -99,12 +99,18 @@ colors for light and dark mode internally.
     id: 'studio',
     primaryColor: '#0f766e',
     harmony: 'analogous',
-    tone: 'jewel',
+    colorTone: 'jewel',
   }}
 >
   <App />
 </ZoraProvider>
 ```
+
+> **`colorTone` vs component `tone`** — `colorTone` is a theme-seed field that
+> selects the color-world / palette tone for the whole theme (e.g. `'jewel'`,
+> `'pastel'`). Component `tone` props (e.g. `<Text tone="muted" />`,
+> `<Button tone="primary" />`) express semantic color intent inside that theme
+> and are independent of `colorTone`.
 
 `mode` and `themeId` are available on public ZORA components through `ZoraBaseProps`.
 Use component props for local component/subtree overrides.
@@ -1382,7 +1388,7 @@ Pass a theme seed to define your app theme:
     name: 'Studio',
     primaryColor: '#0f766e',
     harmony: 'analogous',
-    tone: 'jewel',
+    colorTone: 'jewel',
   }}
 >
   <App />
@@ -1416,7 +1422,7 @@ const themeConfig = createZoraThemeConfig({
   name: 'Studio',
   primaryColor: '#0f766e',
   harmony: 'analogous',
-  tone: 'jewel',
+  colorTone: 'jewel',
 });
 ```
 
@@ -1442,7 +1448,7 @@ const zoraDefaultTheme: ZoraTheme = {
   name: 'ZORA',
   primaryColor: '#0f766e',
   harmony: 'analogous',
-  tone: 'jewel',
+  colorTone: 'jewel',
 };
 ```
 
