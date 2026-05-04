@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.4
+
+### Patch Changes
+
+- 32e7814: chore(release): trigger
+
 ## 0.15.3
 
 ### Patch Changes
