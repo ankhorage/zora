@@ -51,6 +51,20 @@ function buildHueRoles(assignments: ZoraComputedHueRoles['assignments']): ZoraCo
   };
 }
 
+function requireHueBackedSourceHue(role: ZoraRoleColorScale): number {
+  if (typeof role.sourceHue !== 'number') {
+    throw new Error(`[zora] Expected "${role.role}" role scale to include a sourceHue.`);
+  }
+  return role.sourceHue;
+}
+
+function expectRoleOrder(
+  scales: ZoraComputedRoleColorScales,
+  expected: readonly ZoraColorScaleRoleId[],
+) {
+  expect(scales.roles.map((entry) => entry.role)).toEqual([...expected]);
+}
+
 describe('createZoraRoleColorScales', () => {
   test('returns all roles exactly once in deterministic order', () => {
     const hueRoles = buildHueRoles([
@@ -65,12 +79,11 @@ describe('createZoraRoleColorScales', () => {
       hueRoles,
       seed: '#0f766e',
     });
-    const roleId: ZoraColorScaleRoleId = 'primary';
-    expect(roleId).toBe('primary');
-    const roles: readonly ZoraRoleColorScale[] = scales.roles;
-    expect(roles.length).toBe(ZORA_COLOR_SCALE_ROLE_ORDER.length);
 
-    expect(scales.roles.map((entry) => entry.role)).toEqual([...ZORA_COLOR_SCALE_ROLE_ORDER]);
+    const expectedOrder: readonly ZoraColorScaleRoleId[] = ZORA_COLOR_SCALE_ROLE_ORDER;
+    expect(scales.roles).toHaveLength(expectedOrder.length);
+
+    expectRoleOrder(scales, expectedOrder);
     expect(new Set(scales.roles.map((entry) => entry.role)).size).toBe(
       ZORA_COLOR_SCALE_ROLE_ORDER.length,
     );
@@ -125,12 +138,11 @@ describe('createZoraRoleColorScales', () => {
     const midSteps: ZoraColorScaleStep[] = [400, 500, 600, 700];
     for (const roleId of ['primary', 'secondary', 'accent', 'highlight', 'surfaceTint'] as const) {
       const role = getZoraRoleColorScale(scales, roleId);
-      const expectedHue = role.sourceHue;
-      expect(typeof expectedHue).toBe('number');
+      const expectedHue = requireHueBackedSourceHue(role);
 
       for (const step of midSteps) {
         const oklch = parseHexToOklch(role.scale[step]);
-        expect(hueDeltaDegrees(expectedHue ?? 0, oklch.h)).toBeLessThan(25);
+        expect(hueDeltaDegrees(expectedHue, oklch.h)).toBeLessThan(25);
       }
     }
   });
