@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.0
+
+### Minor Changes
+
+- 86c4fdd: Add `ThemeComposer` pattern for live theme seed editing. Exposes a controlled component that lets users edit `primaryColor`, `harmony`, `colorTone`, and `mode`, emitting an updated `ZoraTheme` through `onChange`. Includes a built-in preview area showing Button, Badge, and Card controls reflecting the active theme.
+
 ## 0.13.2
 
 ### Patch Changes
