@@ -1365,6 +1365,45 @@ ZORA props:
 
 </details>
 
+### `ThemeComposer`
+
+Interactive pattern for editing a `ZoraTheme` seed and previewing the result live.
+Pass your current theme as `value` and handle updates through `onChange`. Wrap both
+in a `ZoraProvider` so the preview area reflects every change immediately.
+
+```tsx
+const [theme, setTheme] = React.useState<ZoraTheme>(zoraDefaultTheme);
+const [mode, setMode] = React.useState<ZoraThemeMode>('light');
+
+return (
+  <ZoraProvider theme={theme} initialMode={mode}>
+    <ThemeComposer
+      value={theme}
+      onChange={setTheme}
+      mode={mode}
+      onModeChange={setMode}
+      onSubmit={(t) => saveTheme(t)}
+    />
+  </ZoraProvider>
+);
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop           | Type                            | Default | Notes                                                |
+| -------------- | ------------------------------- | ------- | ---------------------------------------------------- |
+| `value`        | `ZoraTheme`                     | -       | Required controlled theme seed.                      |
+| `onChange`     | `(theme: ZoraTheme) => void`    | -       | Required. Fires on every valid change.               |
+| `mode`         | `ZoraThemeMode`                 | -       | Current light/dark mode shown in the mode toggle.    |
+| `onModeChange` | `(mode: ZoraThemeMode) => void` | -       | Called when the user switches the mode toggle.       |
+| `onSubmit`     | `(theme: ZoraTheme) => void`    | -       | Optional. Renders an "Apply theme" button if set.    |
+| `testID`       | `string`                        | -       | Forwarded to the root element and child test points. |
+
+</details>
+
 ## Theme
 
 ### `ZoraProvider`

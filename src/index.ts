@@ -146,6 +146,8 @@ export type { SettingsRowProps } from './patterns/settings-row';
 export { SettingsRow } from './patterns/settings-row';
 export type { SwitchFieldProps } from './patterns/switch-field';
 export { SwitchField } from './patterns/switch-field';
+export type { ThemeComposerProps } from './patterns/theme-composer';
+export { ThemeComposer } from './patterns/theme-composer';
 export type { PaletteItemProps, TileGridProps } from './patterns/tile-grid';
 export { PaletteItem, TileGrid } from './patterns/tile-grid';
 export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';
