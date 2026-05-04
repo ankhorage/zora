@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.1
+
+### Patch Changes
+
+- 98b94df: update @ankhorage/surface
+
 ## 0.15.0
 
 ### Minor Changes
