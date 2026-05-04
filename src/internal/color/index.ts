@@ -1,3 +1,9 @@
+export {
+  computeZoraHarmony,
+  type ZoraComputedHarmony,
+  type ZoraHarmonySlot,
+  type ZoraHarmonySlotId,
+} from './harmony';
 export { parseHexToOklch } from './oklch';
 export { resolveModePrimaryColor } from './primary';
 export {

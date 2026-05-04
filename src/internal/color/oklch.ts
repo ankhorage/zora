@@ -1,15 +1,11 @@
 import { converter, formatHex, parse, toGamut } from 'culori';
 
 import type { ZoraHexColor } from '../../theme/types';
+import { normalizeHueDegrees } from './hue';
 import type { ZoraOklchColor } from './types';
 
 const toOklch = converter('oklch');
 const gamutMapToSrgb = toGamut('rgb', 'oklch');
-
-function normalizeHueDegrees(hue: number): number {
-  const normalized = ((hue % 360) + 360) % 360;
-  return normalized;
-}
 
 function isSixDigitHexColor(value: string): value is ZoraHexColor {
   return /^#[0-9a-fA-F]{6}$/.test(value);
