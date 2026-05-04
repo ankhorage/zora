@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.16.0
+
+### Minor Changes
+
+- 5f95af4: Add optional ThemeComposer recommendation props and explicit recommendation application UI.
+
 ## 0.15.4
 
 ### Patch Changes
