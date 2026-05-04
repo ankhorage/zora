@@ -6,10 +6,10 @@ import {
   type ZoraHueRoleId,
 } from './roleHues';
 import {
-  type CreateZoraHueScaleOptions,
-  type ZoraHueScaleRoleId,
   createZoraHueScale,
+  type CreateZoraHueScaleOptions,
   createZoraNeutralScale,
+  type ZoraHueScaleRoleId,
 } from './scales';
 import type { ZoraColorScale } from './types';
 
