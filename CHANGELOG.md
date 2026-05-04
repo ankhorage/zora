@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0
+
+### Minor Changes
+
+- b72b3e1: Renames the public ZORA theme seed field from `tone` to `colorTone` and adds internal color tone recipes for future theme generation work.
+
 ## 0.12.3
 
 ### Patch Changes
