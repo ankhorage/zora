@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.1
+
+### Patch Changes
+
+- 99c74b1: Update @ankhorage/zora in example app
+
 ## 0.13.0
 
 ### Minor Changes
