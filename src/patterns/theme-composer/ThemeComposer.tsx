@@ -18,6 +18,11 @@ import {
 } from '../../theme/types';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import {
+  createThemeFromThemeComposerRecommendation,
+  findThemeComposerRecommendation,
+  formatThemeComposerLabel,
+} from './recommendations';
 import type { ThemeComposerProps } from './types';
 
 const HEX_RE = /^#[0-9A-Fa-f]{6}$/;
@@ -68,6 +73,9 @@ function ThemeComposerInner({
   mode,
   onModeChange,
   onSubmit,
+  appCategory,
+  appMood,
+  recommendations,
   testID,
 }: ThemeComposerProps) {
   const { theme } = useZoraTheme();
@@ -95,9 +103,63 @@ function ThemeComposerInner({
   }
 
   const activeMode = mode ?? 'light';
+  const recommendation = findThemeComposerRecommendation({
+    appCategory,
+    appMood,
+    recommendations,
+  });
 
   return (
     <Stack gap="l" testID={testID}>
+      {recommendation ? (
+        <Card
+          title="Recommended starting point"
+          description="Use this as an optional starting point. It is only applied when you choose it."
+          actions={
+            <Button
+              size="s"
+              emphasis="soft"
+              tone="primary"
+              onPress={() =>
+                onChange(
+                  createThemeFromThemeComposerRecommendation({
+                    value,
+                    recommendation,
+                  }),
+                )
+              }
+              testID={testID ? `${testID}-apply-recommendation` : undefined}
+            >
+              Apply recommendation
+            </Button>
+          }
+        >
+          <Stack gap="s">
+            <Stack direction="row" gap="s" wrap="wrap">
+              <Badge tone="primary" emphasis="soft">
+                {formatThemeComposerLabel(recommendation.appMood)} mood
+              </Badge>
+              <Badge tone="neutral" emphasis="soft">
+                {formatThemeComposerLabel(recommendation.suggestedColorTone)} color tone
+              </Badge>
+              <Badge tone="neutral" emphasis="soft">
+                {formatThemeComposerLabel(recommendation.suggestedHarmony)} harmony
+              </Badge>
+              {recommendation.suggestedPrimaryHueDegrees === undefined ? null : (
+                <Badge tone="neutral" emphasis="soft">
+                  {recommendation.suggestedPrimaryHueDegrees}° hue
+                </Badge>
+              )}
+            </Stack>
+            <Text tone="muted" variant="bodySmall">
+              Suggested for {formatThemeComposerLabel(recommendation.appCategory)}. The color tone
+              controls palette character, harmony controls accent relationships, and hue sets the
+              starting primary color when available.
+            </Text>
+          </Stack>
+        </Card>
+      ) : null}
+
       {/* Section: Primary Color */}
       <Card title="Primary color" description="Set the seed color for your theme palette.">
         <Stack gap="m">
