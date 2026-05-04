@@ -90,6 +90,22 @@ export function App({ appTheme }: { appTheme: ZoraTheme }) {
 }
 ```
 
+ZORA themes use a single seed `primaryColor`. ZORA derives mode-specific primary
+colors for light and dark mode internally.
+
+```tsx
+<ZoraProvider
+  theme={{
+    id: 'studio',
+    primaryColor: '#0f766e',
+    harmony: 'analogous',
+    tone: 'jewel',
+  }}
+>
+  <App />
+</ZoraProvider>
+```
+
 `mode` and `themeId` are available on public ZORA components through `ZoraBaseProps`.
 Use component props for local component/subtree overrides.
 
