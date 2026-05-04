@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.0
+
+### Minor Changes
+
+- 7279fe4: Derives light and dark primary colors from a single ZORA theme seed using an internal OKLCH color boundary.
+
 ## 0.11.0
 
 ### Minor Changes
