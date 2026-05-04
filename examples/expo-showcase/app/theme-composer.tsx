@@ -16,9 +16,9 @@ import {
   ThemeComposer,
   Toolbar,
   ToolbarAction,
-  ZoraThemeScope,
   type ZoraTheme,
   type ZoraThemeMode,
+  ZoraThemeScope,
 } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView, View } from 'react-native';
@@ -187,7 +187,8 @@ export function ThemeComposerPage({
                       The active seed is {theme.colorTone} with {theme.harmony} harmony.
                     </Text>
                     <Text>
-                      Use this surface to catch contrast, tint, nested card, and action-color issues before generated apps consume the theme.
+                      Use this surface to catch contrast, tint, nested card, and action-color issues
+                      before generated apps consume the theme.
                     </Text>
                   </Stack>
                 </Card>
