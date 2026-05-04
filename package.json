@@ -75,6 +75,7 @@
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix --max-warnings=0",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepack": "bun run build",
     "test": "bun test src",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json",
