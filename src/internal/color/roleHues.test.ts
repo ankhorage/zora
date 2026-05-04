@@ -25,7 +25,7 @@ const ROLE_ORDER: readonly ZoraHueRoleId[] = [
 
 function expectEveryRoleOnce(roles: ReturnType<typeof assignZoraHarmonyRoleHues>) {
   expect(roles.assignments).toHaveLength(ROLE_ORDER.length);
-  expect(roles.assignments.map((assignment) => assignment.role)).toEqual(ROLE_ORDER);
+  expect(roles.assignments.map((assignment) => assignment.role)).toEqual([...ROLE_ORDER]);
 }
 
 describe('assignZoraHarmonyRoleHues', () => {

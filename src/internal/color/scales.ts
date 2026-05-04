@@ -7,6 +7,14 @@ export interface CreateZoraColorScaleOptions {
   role?: 'primary' | 'neutral';
 }
 
+export type ZoraHueScaleRoleId = 'primary' | 'secondary' | 'accent' | 'highlight' | 'surfaceTint';
+
+export interface CreateZoraHueScaleOptions {
+  hue: number;
+  seedChroma: number;
+  role: ZoraHueScaleRoleId;
+}
+
 const PRIMARY_LIGHTNESS_BY_STEP: Record<ZoraColorScaleStep, number> = {
   50: 0.97,
   100: 0.93,
@@ -54,6 +62,14 @@ const MIN_PRIMARY_SCALE_CHROMA = 0.04;
 const NEUTRAL_CHROMA = 0.012;
 const DEFAULT_NEUTRAL_HUE_DEGREES = 260;
 
+const ROLE_CHROMA_FACTOR = {
+  primary: 1,
+  secondary: 0.72,
+  accent: 0.85,
+  highlight: 1,
+  surfaceTint: 0.18,
+} satisfies Record<ZoraHueScaleRoleId, number>;
+
 function clampNumber(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(value, max));
 }
@@ -67,6 +83,14 @@ function resolvePrimaryScaleChroma(seedChroma: number, step: ZoraColorScaleStep)
   const shouldEnforceMin = step >= 300 && step <= 700 && seedChroma >= MIN_PRIMARY_SCALE_CHROMA;
 
   return shouldEnforceMin ? Math.max(bounded, MIN_PRIMARY_SCALE_CHROMA) : bounded;
+}
+
+function resolveHueScaleChroma(
+  options: CreateZoraHueScaleOptions,
+  step: ZoraColorScaleStep,
+): number {
+  const factor = ROLE_CHROMA_FACTOR[options.role];
+  return resolvePrimaryScaleChroma(options.seedChroma * factor, step);
 }
 
 function createScaleEntries(options: CreateZoraColorScaleOptions): ZoraColorScale {
@@ -142,4 +166,12 @@ export function createZoraPrimaryScale(seed: ZoraHexColor): ZoraColorScale {
 
 export function createZoraNeutralScale(seed: ZoraHexColor = '#94a3b8'): ZoraColorScale {
   return createZoraColorScale({ seed, role: 'neutral' });
+}
+
+export function createZoraHueScale(options: CreateZoraHueScaleOptions): ZoraColorScale {
+  return createScaleFromRamp({
+    hue: options.hue,
+    chromaByStep: (step) => resolveHueScaleChroma(options, step),
+    lightnessByStep: PRIMARY_LIGHTNESS_BY_STEP,
+  });
 }

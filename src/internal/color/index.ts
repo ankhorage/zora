@@ -14,6 +14,14 @@ export {
   type ZoraHueRoleId,
 } from './roleHues';
 export {
+  createZoraRoleColorScales,
+  getZoraRoleColorScale,
+  ZORA_COLOR_SCALE_ROLE_ORDER,
+  type ZoraColorScaleRoleId,
+  type ZoraComputedRoleColorScales,
+  type ZoraRoleColorScale,
+} from './roleScales';
+export {
   createZoraColorScale,
   type CreateZoraColorScaleOptions,
   createZoraNeutralScale,
