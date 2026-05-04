@@ -1,4 +1,6 @@
 import type { ZoraHexColor } from '../../theme/types';
+import type { ZoraColorToneRecipe } from './colorToneRecipes';
+import { getZoraColorToneRoleChromaFactor } from './colorToneRecipes';
 import { clampOklchToGamut, formatOklchAsHex, parseHexToOklch } from './oklch';
 import { type ZoraColorScale, type ZoraColorScaleStep } from './types';
 
@@ -13,6 +15,7 @@ export interface CreateZoraHueScaleOptions {
   hue: number;
   seedChroma: number;
   role: ZoraHueScaleRoleId;
+  colorToneRecipe: ZoraColorToneRecipe;
 }
 
 const PRIMARY_LIGHTNESS_BY_STEP: Record<ZoraColorScaleStep, number> = {
@@ -62,14 +65,6 @@ const MIN_PRIMARY_SCALE_CHROMA = 0.04;
 const NEUTRAL_CHROMA = 0.012;
 const DEFAULT_NEUTRAL_HUE_DEGREES = 260;
 
-const ROLE_CHROMA_FACTOR = {
-  primary: 1,
-  secondary: 0.72,
-  accent: 0.85,
-  highlight: 1,
-  surfaceTint: 0.18,
-} satisfies Record<ZoraHueScaleRoleId, number>;
-
 function clampNumber(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(value, max));
 }
@@ -85,12 +80,34 @@ function resolvePrimaryScaleChroma(seedChroma: number, step: ZoraColorScaleStep)
   return shouldEnforceMin ? Math.max(bounded, MIN_PRIMARY_SCALE_CHROMA) : bounded;
 }
 
+function resolveRoleScaleChroma(options: {
+  seedChroma: number;
+  step: ZoraColorScaleStep;
+  maxChroma: number;
+  minMidChroma: number;
+}): number {
+  const cappedSeedChroma = clampNumber(options.seedChroma, 0, options.maxChroma);
+  const multiplier = PRIMARY_CHROMA_MULTIPLIER_BY_STEP[options.step];
+  const scaled = cappedSeedChroma * multiplier;
+  const bounded = clampNumber(scaled, 0, options.maxChroma);
+  const shouldEnforceMin =
+    options.step >= 300 && options.step <= 700 && options.seedChroma >= options.minMidChroma;
+
+  return shouldEnforceMin ? Math.max(bounded, options.minMidChroma) : bounded;
+}
+
 function resolveHueScaleChroma(
   options: CreateZoraHueScaleOptions,
   step: ZoraColorScaleStep,
 ): number {
-  const factor = ROLE_CHROMA_FACTOR[options.role];
-  return resolvePrimaryScaleChroma(options.seedChroma * factor, step);
+  const factor = getZoraColorToneRoleChromaFactor(options.colorToneRecipe, options.role);
+
+  return resolveRoleScaleChroma({
+    seedChroma: options.seedChroma * factor,
+    step,
+    maxChroma: options.colorToneRecipe.maxChroma,
+    minMidChroma: options.colorToneRecipe.minMidChroma,
+  });
 }
 
 function createScaleEntries(options: CreateZoraColorScaleOptions): ZoraColorScale {
