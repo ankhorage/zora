@@ -19,7 +19,7 @@ import React from 'react';
 export function ComponentFormsSection() {
   const [standaloneChecked, setStandaloneChecked] = React.useState(false);
   const [standaloneRadioChecked, setStandaloneRadioChecked] = React.useState(true);
-  const [formValues, setFormValues] = React.useState({
+  const [formValues, setFormValues] = React.useState<Record<string, string>>({
     email: 'hello@example.com',
     project: 'Showcase refresh',
   });
@@ -52,7 +52,10 @@ export function ComponentFormsSection() {
         </Inline>
       </Card>
 
-      <Card title="Form wrapper" description="Compact coverage for Form, FormField, FormActions, and FormError.">
+      <Card
+        title="Form wrapper"
+        description="Compact coverage for Form, FormField, FormActions, and FormError."
+      >
         <Stack gap="m">
           <Form
             fields={[
