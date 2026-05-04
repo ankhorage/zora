@@ -36,4 +36,9 @@ export {
   createZoraPrimaryScale,
   type ZoraHueScaleRoleId,
 } from './scales';
+export {
+  createZoraSemanticColorTokens,
+  getReadableTextColor,
+  type ZoraSemanticColorTokens,
+} from './semanticTokens';
 export { ZORA_COLOR_SCALE_STEPS, type ZoraColorScale, type ZoraColorScaleStep } from './types';
