@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.3
+
+### Patch Changes
+
+- 4751b68: feat(theme): add internal semantic color token selection from role scales
+
 ## 0.15.2
 
 ### Patch Changes
