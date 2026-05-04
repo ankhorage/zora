@@ -16,7 +16,10 @@ import React from 'react';
 export function LayoutsShowcaseSection() {
   return (
     <PageSection title="Layouts">
-      <Card title="AuthLayout" description="Centered auth surfaces with title, description, and footer.">
+      <Card
+        title="AuthLayout"
+        description="Centered auth surfaces with title, description, and footer."
+      >
         <AuthLayout
           eyebrow="Secure area"
           title="Welcome back"
@@ -27,7 +30,10 @@ export function LayoutsShowcaseSection() {
         </AuthLayout>
       </Card>
 
-      <Card title="SettingsLayout" description="Settings pages can pair navigation with focused content.">
+      <Card
+        title="SettingsLayout"
+        description="Settings pages can pair navigation with focused content."
+      >
         <SettingsLayout
           title="Workspace settings"
           description="Compact showcase example."
@@ -63,7 +69,10 @@ export function LayoutsShowcaseSection() {
         </SidebarLayout>
       </Card>
 
-      <Card title="TopbarLayout" description="Topbar plus optional sidebar for editor-style screens.">
+      <Card
+        title="TopbarLayout"
+        description="Topbar plus optional sidebar for editor-style screens."
+      >
         <TopbarLayout
           topbar={
             <Surface variant="outline" p="s">
