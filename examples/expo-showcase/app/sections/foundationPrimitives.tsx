@@ -44,7 +44,10 @@ export function FoundationPrimitivesSection() {
         </Stack>
       </Card>
 
-      <Card title="Grid and Container" description="Responsive containers and grids keep catalog surfaces aligned.">
+      <Card
+        title="Grid and Container"
+        description="Responsive containers and grids keep catalog surfaces aligned."
+      >
         <Container maxWidth={720} px="s">
           <Grid cols={{ base: 1, md: 3 }} gap="s">
             <Surface variant="outline" p="m">
@@ -60,7 +63,10 @@ export function FoundationPrimitivesSection() {
         </Container>
       </Card>
 
-      <Card title="Center and Box" description="Box is the flexible primitive; Center aligns its children.">
+      <Card
+        title="Center and Box"
+        description="Box is the flexible primitive; Center aligns its children."
+      >
         <Center minHeight={96} p="m">
           <Box p="m" radius="m" bg="surface">
             <Text weight="semiBold">Centered Box</Text>
@@ -68,7 +74,10 @@ export function FoundationPrimitivesSection() {
         </Center>
       </Card>
 
-      <Card title="Surface variants" description="Default, subtle, raised, and outline surfaces are re-exported by ZORA.">
+      <Card
+        title="Surface variants"
+        description="Default, subtle, raised, and outline surfaces are re-exported by ZORA."
+      >
         <Grid cols={{ base: 1, md: 4 }} gap="s">
           <Surface variant="default" p="m">
             <Text>Default</Text>
@@ -85,7 +94,10 @@ export function FoundationPrimitivesSection() {
         </Grid>
       </Card>
 
-      <Card title="Divider, Spacer, and Show" description="Small layout utilities keep examples readable.">
+      <Card
+        title="Divider, Spacer, and Show"
+        description="Small layout utilities keep examples readable."
+      >
         <Stack gap="s">
           <Text>First block</Text>
           <Divider />
