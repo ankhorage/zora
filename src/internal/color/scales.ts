@@ -1,6 +1,6 @@
 import type { ZoraHexColor } from '../../theme/types';
 import { clampOklchToGamut, formatOklchAsHex, parseHexToOklch } from './oklch';
-import { ZORA_COLOR_SCALE_STEPS, type ZoraColorScale, type ZoraColorScaleStep } from './types';
+import { type ZoraColorScale, type ZoraColorScaleStep } from './types';
 
 export interface CreateZoraColorScaleOptions {
   seed: ZoraHexColor;
@@ -89,37 +89,44 @@ function createScaleEntries(options: CreateZoraColorScaleOptions): ZoraColorScal
   });
 }
 
-function createScaleFromRamp(options: {
+interface CreateScaleFromRampOptions {
   hue: number;
   chroma?: number;
   chromaByStep?: (step: ZoraColorScaleStep) => number;
   lightnessByStep: Record<ZoraColorScaleStep, number>;
-}): ZoraColorScale {
-  const output: Partial<ZoraColorScale> = {};
+}
 
-  for (const step of ZORA_COLOR_SCALE_STEPS) {
-    const lightness = options.lightnessByStep[step];
-    const chroma =
-      typeof options.chromaByStep === 'function'
-        ? options.chromaByStep(step)
-        : (options.chroma ?? 0);
+function createScaleColor(
+  options: CreateScaleFromRampOptions,
+  step: ZoraColorScaleStep,
+): ZoraHexColor {
+  const lightness = options.lightnessByStep[step];
+  const chroma =
+    typeof options.chromaByStep === 'function' ? options.chromaByStep(step) : (options.chroma ?? 0);
 
-    const clamped = clampOklchToGamut({
-      l: clampNumber(lightness, 0, 1),
-      c: clampNumber(chroma, 0, 1),
-      h: options.hue,
-    });
+  const clamped = clampOklchToGamut({
+    l: clampNumber(lightness, 0, 1),
+    c: clampNumber(chroma, 0, 1),
+    h: options.hue,
+  });
 
-    output[step] = formatOklchAsHex(clamped);
-  }
+  return formatOklchAsHex(clamped);
+}
 
-  for (const step of ZORA_COLOR_SCALE_STEPS) {
-    if (!output[step]) {
-      throw new Error(`Unable to generate ZORA color scale; missing step '${step}'.`);
-    }
-  }
-
-  return output as ZoraColorScale;
+function createScaleFromRamp(options: CreateScaleFromRampOptions): ZoraColorScale {
+  return {
+    50: createScaleColor(options, 50),
+    100: createScaleColor(options, 100),
+    200: createScaleColor(options, 200),
+    300: createScaleColor(options, 300),
+    400: createScaleColor(options, 400),
+    500: createScaleColor(options, 500),
+    600: createScaleColor(options, 600),
+    700: createScaleColor(options, 700),
+    800: createScaleColor(options, 800),
+    900: createScaleColor(options, 900),
+    950: createScaleColor(options, 950),
+  };
 }
 
 export function createZoraColorScale(options: CreateZoraColorScaleOptions): ZoraColorScale {
