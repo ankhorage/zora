@@ -44,7 +44,10 @@ export function ComponentFormsSection() {
         </Stack>
       </Card>
 
-      <Card title="Plain Icon" description="Icon is useful for metadata and decorative affordances.">
+      <Card
+        title="Plain Icon"
+        description="Icon is useful for metadata and decorative affordances."
+      >
         <Inline gap="m">
           <Icon name="sparkles-outline" size={18} />
           <Icon name="color-palette-outline" size={24} />
