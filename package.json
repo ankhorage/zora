@@ -43,7 +43,7 @@
     }
   },
   "dependencies": {
-    "@ankhorage/surface": "^0.2.1",
+    "@ankhorage/surface": "^0.2.2",
     "culori": "^4.0.2"
   },
   "files": [
