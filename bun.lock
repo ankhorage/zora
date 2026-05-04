@@ -5,7 +5,7 @@
     "": {
       "name": "@ankhorage/zora",
       "dependencies": {
-        "@ankhorage/surface": "^0.2.0",
+        "@ankhorage/surface": "^0.2.1",
         "culori": "^4.0.2",
       },
       "devDependencies": {
@@ -37,11 +37,11 @@
     },
   },
   "packages": {
-    "@ankhorage/contracts": ["@ankhorage/contracts@0.2.0", "", {}, "sha512-z11bgbkEP9s3PFrS7pQ0usEZ4J7GOVb4kz2sAveUvIe0x/Qc8/6Bbxj/qs4A7ugFjY0xZKnFWxCUZxrGoGxgIA=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@0.3.0", "", {}, "sha512-dg2haQAzfiSQhAFfPw6+mzldWc0JQur86VYJqPTGHEvfgg2Jb/3+/MgP06hroBIKx+/pkIRU4HxyaqdzCy2tUQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.0.1", "", { "dependencies": { "@eslint/js": "^10.0.1", "eslint": "^10.2.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.5", "eslint-plugin-simple-import-sort": "^12.1.1", "eslint-plugin-unused-imports": "^4.4.1", "prettier": "^3.8.1", "typescript-eslint": "^8.24.0" } }, "sha512-Qpr+TL7biJnUwIYvZtuvG/oXq43+UyBoM+Q61pVDCmTA13Uu/a/A669U9fqJprFAicJfBDWBi/NJ7WvVH+ud/Q=="],
 
-    "@ankhorage/surface": ["@ankhorage/surface@0.2.0", "", { "dependencies": { "@ankhorage/contracts": "^0.2.0", "@types/culori": "^4.0.1", "culori": "^4.0.2" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-31YLK0i4Rvur2L4U2Sa/6VvNXeHUqaxdqBHKUlsTwA7syZIbVo/7c1GfWS6LO65t/NPMr4SdgTKMNkmf7RUSSQ=="],
+    "@ankhorage/surface": ["@ankhorage/surface@0.2.1", "", { "dependencies": { "@ankhorage/contracts": "^0.3.0", "@types/culori": "^4.0.1", "culori": "^4.0.2" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-KbMtkZu+38tWKqDreWnqHP3Zz0dVskamBJG4FYQ7omBCsOU43J5QhNBt479DpTi2RMVWDlPJcTbQtPOw6KBQgA=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.29.0", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.28.5", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw=="],
 
