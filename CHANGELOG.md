@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.1
+
+### Patch Changes
+
+- 35c4046: Adds internal harmony hue-slot computation for future ZORA theme generation work.
+
 ## 0.12.0
 
 ### Minor Changes
