@@ -43,7 +43,7 @@ function AppWrapper() {
         name: 'Showcase',
         primaryColor: '#0b6e99',
         harmony: 'analogous',
-        tone: 'jewel',
+        colorTone: 'jewel',
       }}
     >
       <SafeAreaProvider>
