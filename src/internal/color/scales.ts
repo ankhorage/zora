@@ -1,0 +1,138 @@
+import type { ZoraHexColor } from '../../theme/types';
+import { clampOklchToGamut, formatOklchAsHex, parseHexToOklch } from './oklch';
+import { ZORA_COLOR_SCALE_STEPS, type ZoraColorScale, type ZoraColorScaleStep } from './types';
+
+export interface CreateZoraColorScaleOptions {
+  seed: ZoraHexColor;
+  role?: 'primary' | 'neutral';
+}
+
+const PRIMARY_LIGHTNESS_BY_STEP: Record<ZoraColorScaleStep, number> = {
+  50: 0.97,
+  100: 0.93,
+  200: 0.86,
+  300: 0.78,
+  400: 0.68,
+  500: 0.58,
+  600: 0.5,
+  700: 0.42,
+  800: 0.34,
+  900: 0.27,
+  950: 0.2,
+};
+
+const NEUTRAL_LIGHTNESS_BY_STEP: Record<ZoraColorScaleStep, number> = {
+  50: 0.98,
+  100: 0.95,
+  200: 0.89,
+  300: 0.8,
+  400: 0.68,
+  500: 0.55,
+  600: 0.44,
+  700: 0.34,
+  800: 0.25,
+  900: 0.18,
+  950: 0.12,
+};
+
+const PRIMARY_CHROMA_MULTIPLIER_BY_STEP: Record<ZoraColorScaleStep, number> = {
+  50: 0.2,
+  100: 0.3,
+  200: 0.45,
+  300: 0.7,
+  400: 0.95,
+  500: 1,
+  600: 0.95,
+  700: 0.85,
+  800: 0.65,
+  900: 0.45,
+  950: 0.3,
+};
+
+const MAX_PRIMARY_SCALE_CHROMA = 0.2;
+const MIN_PRIMARY_SCALE_CHROMA = 0.04;
+const NEUTRAL_CHROMA = 0.012;
+const DEFAULT_NEUTRAL_HUE_DEGREES = 260;
+
+function clampNumber(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(value, max));
+}
+
+function resolvePrimaryScaleChroma(seedChroma: number, step: ZoraColorScaleStep): number {
+  const cappedSeedChroma = clampNumber(seedChroma, 0, MAX_PRIMARY_SCALE_CHROMA);
+  const multiplier = PRIMARY_CHROMA_MULTIPLIER_BY_STEP[step];
+  const scaled = cappedSeedChroma * multiplier;
+
+  const bounded = clampNumber(scaled, 0, MAX_PRIMARY_SCALE_CHROMA);
+  const shouldEnforceMin = step >= 300 && step <= 700 && seedChroma >= MIN_PRIMARY_SCALE_CHROMA;
+
+  return shouldEnforceMin ? Math.max(bounded, MIN_PRIMARY_SCALE_CHROMA) : bounded;
+}
+
+function createScaleEntries(options: CreateZoraColorScaleOptions): ZoraColorScale {
+  const seed = parseHexToOklch(options.seed);
+
+  if (options.role === 'neutral') {
+    const hue = typeof seed.h === 'number' ? seed.h : DEFAULT_NEUTRAL_HUE_DEGREES;
+
+    return createScaleFromRamp({
+      hue,
+      chroma: NEUTRAL_CHROMA,
+      lightnessByStep: NEUTRAL_LIGHTNESS_BY_STEP,
+    });
+  }
+
+  return createScaleFromRamp({
+    hue: seed.h,
+    chromaByStep: (step) => resolvePrimaryScaleChroma(seed.c, step),
+    lightnessByStep: PRIMARY_LIGHTNESS_BY_STEP,
+  });
+}
+
+function createScaleFromRamp(options: {
+  hue: number;
+  chroma?: number;
+  chromaByStep?: (step: ZoraColorScaleStep) => number;
+  lightnessByStep: Record<ZoraColorScaleStep, number>;
+}): ZoraColorScale {
+  const output: Partial<ZoraColorScale> = {};
+
+  for (const step of ZORA_COLOR_SCALE_STEPS) {
+    const lightness = options.lightnessByStep[step];
+    const chroma =
+      typeof options.chromaByStep === 'function'
+        ? options.chromaByStep(step)
+        : (options.chroma ?? 0);
+
+    const clamped = clampOklchToGamut({
+      l: clampNumber(lightness, 0, 1),
+      c: clampNumber(chroma, 0, 1),
+      h: options.hue,
+    });
+
+    output[step] = formatOklchAsHex(clamped);
+  }
+
+  for (const step of ZORA_COLOR_SCALE_STEPS) {
+    if (!output[step]) {
+      throw new Error(`Unable to generate ZORA color scale; missing step '${step}'.`);
+    }
+  }
+
+  return output as ZoraColorScale;
+}
+
+export function createZoraColorScale(options: CreateZoraColorScaleOptions): ZoraColorScale {
+  return createScaleEntries({
+    seed: options.seed,
+    role: options.role,
+  });
+}
+
+export function createZoraPrimaryScale(seed: ZoraHexColor): ZoraColorScale {
+  return createZoraColorScale({ seed, role: 'primary' });
+}
+
+export function createZoraNeutralScale(seed: ZoraHexColor = '#94a3b8'): ZoraColorScale {
+  return createZoraColorScale({ seed, role: 'neutral' });
+}
