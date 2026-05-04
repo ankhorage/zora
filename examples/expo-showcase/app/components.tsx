@@ -1,4 +1,3 @@
-import { Stack } from '@ankhorage/surface';
 import {
   Badge,
   Button,
@@ -15,6 +14,7 @@ import {
   RadioGroup,
   SectionHeader,
   Select,
+  Stack,
   Tabs,
   Text,
   Textarea,
@@ -23,6 +23,10 @@ import {
 } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView, View } from 'react-native';
+
+import { ComponentFormsSection } from './sections/componentForms';
+import { FoundationPrimitivesSection } from './sections/foundationPrimitives';
+import { LayoutsShowcaseSection } from './sections/layoutsShowcase';
 
 export function ComponentsPage() {
   const [tab, setTab] = React.useState('overview');
@@ -45,6 +49,8 @@ export function ComponentsPage() {
           />
         }
       >
+        <FoundationPrimitivesSection />
+
         <PageSection title="Typography">
           <SectionHeader
             title="Headings"
@@ -317,6 +323,8 @@ export function ComponentsPage() {
           />
         </PageSection>
 
+        <ComponentFormsSection />
+
         <PageSection title="Cards">
           <SectionHeader
             title="Common card layouts"
@@ -351,6 +359,8 @@ export function ComponentsPage() {
             description="Use subtle cards for secondary content or nested regions."
           />
         </PageSection>
+
+        <LayoutsShowcaseSection />
 
         <PageSection title="Overlays">
           <SectionHeader

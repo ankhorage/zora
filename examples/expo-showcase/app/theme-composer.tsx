@@ -1,4 +1,3 @@
-import { Stack } from '@ankhorage/surface';
 import {
   Badge,
   Button,
@@ -10,6 +9,7 @@ import {
   PageHeader,
   PageSection,
   Panel,
+  Stack,
   Tabs,
   Text,
   Textarea,
