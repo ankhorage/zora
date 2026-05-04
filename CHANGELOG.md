@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.2
+
+### Patch Changes
+
+- 7ad5fab: replace stale tone with colorTone in theme seed examples
+
 ## 0.13.1
 
 ### Patch Changes
