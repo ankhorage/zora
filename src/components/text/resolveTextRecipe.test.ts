@@ -86,12 +86,12 @@ function createTestTheme(): AnkhTheme {
       light: {
         primaryColor: '#0f766e',
         harmony: 'analogous',
-        systemTone: 'jewel',
+        colorTone: 'jewel',
       },
       dark: {
         primaryColor: '#2dd4bf',
         harmony: 'analogous',
-        systemTone: 'jewel',
+        colorTone: 'jewel',
       },
     },
     radii: {
