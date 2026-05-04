@@ -27,7 +27,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.3.11'
+          bun-version: '1.3.13'
 
       - name: Setup Node for npm publishing
         uses: actions/setup-node@v4
@@ -42,9 +42,15 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build package
-        run: bun run build
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.build ? 0 : 1)"; then
+            bun run build
+          else
+            echo "No build script found; skipping."
+          fi
 
       - name: Create release pull request or publish to npm
+        if: hashFiles('.changeset/config.json') != ''
         uses: changesets/action@v1
         with:
           version: bun run version-packages
@@ -53,3 +59,7 @@ jobs:
           title: Version Packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Skip release
+        if: hashFiles('.changeset/config.json') == ''
+        run: echo "No Changesets config found; skipping release."
