@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0
+
+### Minor Changes
+
+- a600848: Expands scoped theme support across public ZORA components, layouts, patterns, and foundation primitives through shared `themeId` and `mode` base props.
+
 ## 0.10.0
 
 ### Minor Changes
