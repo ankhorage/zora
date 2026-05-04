@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.0
+
+### Minor Changes
+
+- 43ebda3: Add ThemeComposer showcase page for visual recipe testing
+
 ## 0.14.0
 
 ### Minor Changes
