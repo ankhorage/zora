@@ -1,4 +1,12 @@
-import { AppShell, Tabs, Toolbar, ToolbarAction, ZoraProvider } from '@ankhorage/zora';
+import {
+  AppShell,
+  Tabs,
+  Toolbar,
+  ToolbarAction,
+  ZoraProvider,
+  type ZoraTheme,
+  type ZoraThemeMode,
+} from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
@@ -7,13 +15,23 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
+import { ThemeComposerPage } from './app/theme-composer';
 
-type ShowcaseTab = 'home' | 'components' | 'patterns';
-type ColorMode = 'light' | 'dark';
+type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
+type ColorMode = ZoraThemeMode;
+
+const initialShowcaseTheme = {
+  id: 'showcase',
+  name: 'Showcase',
+  primaryColor: '#0b6e99',
+  harmony: 'analogous',
+  colorTone: 'jewel',
+} satisfies ZoraTheme;
 
 function AppWrapper() {
   const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');
   const [colorMode, setColorMode] = React.useState<ColorMode>('light');
+  const [showcaseTheme, setShowcaseTheme] = React.useState<ZoraTheme>(initialShowcaseTheme);
 
   const isDark = colorMode === 'dark';
 
@@ -29,23 +47,22 @@ function AppWrapper() {
         return <ComponentsPage />;
       case 'patterns':
         return <PatternsPage />;
+      case 'theme':
+        return (
+          <ThemeComposerPage
+            mode={colorMode}
+            onModeChange={setColorMode}
+            onThemeChange={setShowcaseTheme}
+            theme={showcaseTheme}
+          />
+        );
       default:
         return <HomePage onNavigate={setActiveTab} />;
     }
   };
 
   return (
-    <ZoraProvider
-      key={colorMode}
-      initialMode={colorMode}
-      theme={{
-        id: 'showcase',
-        name: 'Showcase',
-        primaryColor: '#0b6e99',
-        harmony: 'analogous',
-        colorTone: 'jewel',
-      }}
-    >
+    <ZoraProvider key={colorMode} initialMode={colorMode} theme={showcaseTheme}>
       <SafeAreaProvider>
         <StatusBar style={isDark ? 'light' : 'dark'} />
 
@@ -61,6 +78,7 @@ function AppWrapper() {
                   { value: 'home', label: 'Home' },
                   { value: 'components', label: 'Components' },
                   { value: 'patterns', label: 'Patterns' },
+                  { value: 'theme', label: 'Theme' },
                 ]}
               />
               <View style={{ flex: 1 }} />
