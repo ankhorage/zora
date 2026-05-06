@@ -17,6 +17,9 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
 
+const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color (e.g. #0f766e).';
+const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
+
 function isValidHex(value: string): boolean {
   try {
     parseHexColorOrThrow(value);
@@ -72,7 +75,7 @@ function ThemeComposerInner({
   function handleNameChange(text: string) {
     setNameInput(text);
     if (text.trim().length === 0) {
-      setNameError('Theme name cannot be empty.');
+      setNameError(NAME_ERROR_MESSAGE);
     } else {
       setNameError(undefined);
       onChange({ ...value, name: text });
@@ -88,8 +91,31 @@ function ThemeComposerInner({
       setHexError(undefined);
       onChange({ ...value, primaryColor: normalized });
     } else {
-      setHexError('Enter a valid 6-digit hex color (e.g. #0f766e).');
+      setHexError(HEX_ERROR_MESSAGE);
     }
+  }
+
+  function handleSubmit() {
+    const hasValidName = nameInput.trim().length > 0;
+    const hasValidHex = isValidHex(hexInput);
+
+    if (!hasValidName) {
+      setNameError(NAME_ERROR_MESSAGE);
+    }
+
+    if (!hasValidHex) {
+      setHexError(HEX_ERROR_MESSAGE);
+    }
+
+    if (!hasValidName || !hasValidHex) {
+      return;
+    }
+
+    onSubmit?.({
+      ...value,
+      name: nameInput,
+      primaryColor: hexInput,
+    });
   }
 
   const activeMode = mode ?? 'light';
@@ -270,13 +296,7 @@ function ThemeComposerInner({
         <Button
           tone="primary"
           emphasis="solid"
-          onPress={() => {
-            if (nameInput.trim().length > 0) {
-              onSubmit(value);
-            } else {
-              setNameError('Theme name cannot be empty.');
-            }
-          }}
+          onPress={handleSubmit}
           testID={testID ? `${testID}-submit` : undefined}
         >
           Apply theme
