@@ -1,6 +1,7 @@
-import { Box, Modal as SurfaceModal, Stack } from '@ankhorage/surface';
+import { Modal as SurfaceModal } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { resolveDialogWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';

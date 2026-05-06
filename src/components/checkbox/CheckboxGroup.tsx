@@ -1,7 +1,8 @@
-import { Checkbox, Stack } from '@ankhorage/surface';
+import { Checkbox } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { CheckboxGroupOption, CheckboxGroupProps } from './types';

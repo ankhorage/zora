@@ -1,8 +1,8 @@
-import { Box } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
 import { Text } from '../../components/text';
+import { Box } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SettingsRowProps } from './types';
 

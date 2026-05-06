@@ -1,7 +1,7 @@
-import { Center, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
+import { Center, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { AuthLayoutProps } from './types';
 

@@ -1,8 +1,8 @@
-import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../../components/button';
 import { Modal } from '../../components/modal';
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ConfirmDialogProps } from './types';
 

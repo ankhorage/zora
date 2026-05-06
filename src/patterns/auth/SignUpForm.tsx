@@ -1,8 +1,8 @@
-import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../../components/button';
 import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SignUpFormProps } from './types';
 
