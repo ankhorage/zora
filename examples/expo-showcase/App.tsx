@@ -1,3 +1,12 @@
+import {
+  AppShell,
+  Tabs,
+  Toolbar,
+  ToolbarAction,
+  ZoraProvider,
+  type ZoraTheme,
+  type ZoraThemeMode,
+} from '@ankhorage/zora';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
@@ -7,15 +16,6 @@ import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
 import { ThemeComposerPage } from './app/theme-composer';
-import {
-  AppShell,
-  Tabs,
-  Toolbar,
-  ToolbarAction,
-  ZoraProvider,
-  type ZoraTheme,
-  type ZoraThemeMode,
-} from './zora';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 type ColorMode = ZoraThemeMode;
