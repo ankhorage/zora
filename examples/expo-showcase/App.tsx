@@ -1,3 +1,8 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import {
   AppShell,
   Tabs,
@@ -6,12 +11,7 @@ import {
   ZoraProvider,
   type ZoraTheme,
   type ZoraThemeMode,
-} from '@ankhorage/zora';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+} from '../../src';
 import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
