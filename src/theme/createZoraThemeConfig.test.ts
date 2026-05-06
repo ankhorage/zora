@@ -1,4 +1,3 @@
-import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import { describe, expect, test } from 'bun:test';
 
 import { createZoraThemeConfig } from './createZoraThemeConfig';
@@ -21,7 +20,7 @@ describe('createZoraThemeConfig', () => {
       id: 'studio',
       name: 'Studio',
       appCategory: 'developer_tools',
-      primaryColor: parseHexColorOrThrow('#0f766e'),
+      primaryColor: '#0f766e',
       harmony: 'analogous',
     });
 
@@ -30,7 +29,7 @@ describe('createZoraThemeConfig', () => {
   });
 
   test('preserves the same primaryColor for both light and dark', () => {
-    const primary = parseHexColorOrThrow('#2563eb');
+    const primary = '#2563eb';
     const themeConfig = createZoraThemeConfig({
       id: 'test',
       name: 'Test',
@@ -41,6 +40,18 @@ describe('createZoraThemeConfig', () => {
 
     expect(themeConfig.light.primaryColor).toBe(primary);
     expect(themeConfig.dark.primaryColor).toBe(primary);
+  });
+
+  test('validates public primaryColor strings during config conversion', () => {
+    expect(() =>
+      createZoraThemeConfig({
+        id: 'bad-theme',
+        name: 'Bad Theme',
+        appCategory: 'utilities_tools',
+        primaryColor: 'blue',
+        harmony: 'triadic',
+      }),
+    ).toThrow();
   });
 
   test('output has no colorTone field', () => {
@@ -55,7 +66,7 @@ describe('createZoraThemeConfig', () => {
       id: 'my-theme',
       name: 'My Theme',
       appCategory: 'games',
-      primaryColor: parseHexColorOrThrow('#7c3aed'),
+      primaryColor: '#7c3aed',
       harmony: 'complementary',
     });
 
