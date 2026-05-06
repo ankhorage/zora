@@ -3,6 +3,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { ComponentsPage } from './app/components';
+import { HomePage } from './app/home';
+import { PatternsPage } from './app/patterns';
+import { ThemeComposerPage } from './app/theme-composer';
 import {
   AppShell,
   Tabs,
@@ -11,11 +15,7 @@ import {
   ZoraProvider,
   type ZoraTheme,
   type ZoraThemeMode,
-} from '../../src';
-import { ComponentsPage } from './app/components';
-import { HomePage } from './app/home';
-import { PatternsPage } from './app/patterns';
-import { ThemeComposerPage } from './app/theme-composer';
+} from './zora';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 type ColorMode = ZoraThemeMode;
