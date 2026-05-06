@@ -1,3 +1,4 @@
+import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import {
   Badge,
   Button,
@@ -9,7 +10,6 @@ import {
   PageHeader,
   PageSection,
   Panel,
-  parseHexColorOrThrow,
   Stack,
   Tabs,
   Text,
@@ -33,10 +33,10 @@ interface ThemeComposerPageProps {
 
 const recipeThemes: readonly { label: string; theme: ZoraTheme }[] = [
   {
-    label: 'Teal analogous',
+    label: 'Purple analogous',
     theme: {
-      id: 'showcase-teal-analogous',
-      name: 'Teal Analogous',
+      id: 'showcase-purple-analogous',
+      name: 'Purple Analogous',
       appCategory: 'utilities_tools',
       primaryColor: parseHexColorOrThrow('#c084fc'),
       harmony: 'analogous',
