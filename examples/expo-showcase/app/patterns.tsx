@@ -1,3 +1,6 @@
+import React from 'react';
+import { ScrollView } from 'react-native';
+
 import {
   Badge,
   Card,
@@ -20,10 +23,7 @@ import {
   SwitchField,
   TileGrid,
   TreeView,
-} from '@ankhorage/zora';
-import React from 'react';
-import { ScrollView } from 'react-native';
-
+} from '../zora';
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
@@ -121,7 +121,7 @@ export function PatternsPage() {
               <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" emphasis="soft" />
             }
           >
-            <Input value="Ocean / Jewel" />
+            <Input value="Ocean" />
           </InspectorField>
 
           <DisclosureSection
