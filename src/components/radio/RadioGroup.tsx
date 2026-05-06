@@ -1,7 +1,8 @@
-import { Radio, Stack } from '@ankhorage/surface';
+import { Radio } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { RadioGroupOption, RadioGroupProps } from './types';
