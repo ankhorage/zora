@@ -5,6 +5,16 @@ import { describe, expect, test } from 'bun:test';
 
 const SHOWCASE_ROOT = join(process.cwd(), 'examples', 'expo-showcase');
 
+const IGNORED_DIRECTORY_NAMES = new Set([
+  '.expo',
+  '.git',
+  '.turbo',
+  '.vercel',
+  'coverage',
+  'dist',
+  'node_modules',
+]);
+
 const REQUIRED_SHOWCASE_COVERAGE = {
   components: [
     'Badge',
@@ -79,6 +89,10 @@ const REQUIRED_SHOWCASE_COVERAGE = {
 
 function listFiles(root: string): string[] {
   return readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+    if (entry.isDirectory() && IGNORED_DIRECTORY_NAMES.has(entry.name)) {
+      return [];
+    }
+
     const absolutePath = join(root, entry.name);
     if (entry.isDirectory()) {
       return listFiles(absolutePath);
