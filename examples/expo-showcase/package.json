@@ -10,7 +10,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "latest",
     "@expo/vector-icons": "^15.0.3",
     "@react-native-picker/picker": "2.11.1",
     "expo": "~54.0.34",
