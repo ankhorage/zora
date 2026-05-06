@@ -1,6 +1,7 @@
-import { Badge, Button, Card, Page, PageHeader, PageSection } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView } from 'react-native';
+
+import { Badge, Button, Card, Page, PageHeader, PageSection } from '../zora';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 
@@ -45,7 +46,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <Card
             title="Theme Composer"
-            description="Edit a ZORA theme seed live and inspect how colorTone, harmony, primary color, and mode affect real UI surfaces."
+            description="Edit a ZORA theme seed live and inspect how harmony, primary color, and mode affect real UI surfaces."
             actions={
               <Button size="s" onPress={() => onNavigate('theme')}>
                 Open theme lab
