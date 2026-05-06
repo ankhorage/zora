@@ -9,7 +9,7 @@
 - `ZoraTheme.colorTone` — removed; `colorTone` is no longer part of the theme seed
 - `ZoraColorTone` type — removed
 - `ZORA_COLOR_TONES` constant — removed
-- `ZoraHexColor` type — removed; use `HexColor` from `@ankhorage/color-theory`
+- `ZoraHexColor` type — removed; ZORA themes now accept normal string hex values
 - `ZoraComputedTheme.mode` — replaced by `light` and `dark` mode objects
 - `ThemeComposerRecommendation` — removed
 - `ThemeComposerAppMood` — removed
@@ -22,7 +22,7 @@
 
 - `ZoraTheme.name` — now **required** (was optional); ZORA themes must provide a real display name
 - `ZoraTheme.appCategory` — new required field; use `AppCategory` from `@ankhorage/contracts`
-- `ZoraTheme.primaryColor` — type changed to branded `HexColor` from `@ankhorage/color-theory`; use `parseHexColorOrThrow()` to create values
+- `ZoraTheme.primaryColor` — remains a public `string`; ZORA validates it internally with `@ankhorage/color-theory`
 - `ZoraComputedTheme` — now has `light: ZoraComputedThemeMode` and `dark: ZoraComputedThemeMode` instead of a single `mode`
 - `ZoraComputedThemeMode` — new type: `{ mode, surfaceTheme, generated, swatches, semanticColors? }`
 - Primary color is now preserved identically for both light and dark `ThemeConfig` modes (no dark-mode mutation)
@@ -51,16 +51,15 @@ const theme: ZoraTheme = {
 };
 
 // After
-import { parseHexColorOrThrow } from '@ankhorage/color-theory';
-
 const theme: ZoraTheme = {
   id: 'my-theme',
   name: 'My Theme',
   appCategory: 'developer_tools',
-  primaryColor: parseHexColorOrThrow('#0f766e'),
+  primaryColor: '#0f766e',
   harmony: 'analogous',
 };
 ```
 
-The `name` field is now required. `primaryColor` is a branded `HexColor`; use
-`parseHexColorOrThrow()` to produce a validated branded value from a string.
+The `name` field is now required. `primaryColor` stays app-facing and ergonomic as
+a string, while ZORA validates it when converting the source theme to a runtime
+`ThemeConfig`.
