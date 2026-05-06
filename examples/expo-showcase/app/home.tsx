@@ -1,7 +1,6 @@
+import { Badge, Button, Card, Page, PageHeader, PageSection } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView } from 'react-native';
-
-import { Badge, Button, Card, Page, PageHeader, PageSection } from '../zora';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 
