@@ -1,4 +1,4 @@
-import type { AnkhTheme, FontWeight, RoleSemantics } from '@ankhorage/surface';
+import type { FontWeight, RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import { describe, expect, test } from 'bun:test';
 
 import { resolveHeadingRecipe, resolveHeadingSizeFromLevel } from './resolveHeadingRecipe';
@@ -30,7 +30,7 @@ function createRole(base: string): RoleSemantics {
   };
 }
 
-function createTestTheme(): AnkhTheme {
+function createTestTheme(): SurfaceTheme {
   return {
     colors: {
       primary: '#0f766e',
@@ -52,12 +52,10 @@ function createTestTheme(): AnkhTheme {
       light: {
         primaryColor: '#0f766e',
         harmony: 'analogous',
-        colorTone: 'jewel',
       },
       dark: {
         primaryColor: '#2dd4bf',
         harmony: 'analogous',
-        colorTone: 'jewel',
       },
     },
     radii: {
@@ -67,7 +65,34 @@ function createTestTheme(): AnkhTheme {
       l: 16,
       full: 9999,
     },
-    scales: {},
+    swatches: {
+      primary: {
+        50: '#f0fdfa',
+        100: '#ccfbf1',
+        200: '#99f6e4',
+        300: '#5eead4',
+        400: '#2dd4bf',
+        500: '#14b8a6',
+        600: '#0d9488',
+        700: '#0f766e',
+        800: '#115e59',
+        900: '#134e4a',
+        950: '#042f2e',
+      },
+      neutral: {
+        50: '#f9fafb',
+        100: '#f3f4f6',
+        200: '#e5e7eb',
+        300: '#d1d5db',
+        400: '#9ca3af',
+        500: '#6b7280',
+        600: '#4b5563',
+        700: '#374151',
+        800: '#1f2937',
+        900: '#111827',
+        950: '#030712',
+      },
+    },
     semantics: {
       neutral: {
         bg: '#ffffff',

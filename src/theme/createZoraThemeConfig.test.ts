@@ -1,12 +1,8 @@
+import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import { describe, expect, test } from 'bun:test';
 
-import { parseHexToOklch } from '../internal/color';
 import { createZoraThemeConfig } from './createZoraThemeConfig';
-import type { ZoraHexColor } from './types';
-
-function isSixDigitHexColor(value: string): value is ZoraHexColor {
-  return /^#[0-9a-f]{6}$/.test(value);
-}
+import { zoraDefaultTheme } from './zoraDefaultTheme';
 
 describe('createZoraThemeConfig', () => {
   test('converts the default theme seed into a surface config', () => {
@@ -14,37 +10,55 @@ describe('createZoraThemeConfig', () => {
 
     expect(themeConfig.id).toBe('zora');
     expect(themeConfig.name).toBe('ZORA');
-    expect(isSixDigitHexColor(themeConfig.light.primaryColor)).toBe(true);
+    expect(themeConfig.light.primaryColor).toBe(zoraDefaultTheme.primaryColor);
     expect(themeConfig.light.harmony).toBe('analogous');
-    expect(themeConfig.light.colorTone).toBe('jewel');
-    expect(isSixDigitHexColor(themeConfig.dark.primaryColor)).toBe(true);
+    expect(themeConfig.dark.primaryColor).toBe(zoraDefaultTheme.primaryColor);
     expect(themeConfig.dark.harmony).toBe('analogous');
-    expect(themeConfig.dark.colorTone).toBe('jewel');
-
-    expect(themeConfig.light.primaryColor).not.toBe(themeConfig.dark.primaryColor);
-
-    const lightOklch = parseHexToOklch(themeConfig.light.primaryColor);
-    const darkOklch = parseHexToOklch(themeConfig.dark.primaryColor);
-    expect(darkOklch.l).toBeGreaterThan(lightOklch.l);
   });
 
-  test('falls back to id when name is omitted', () => {
+  test('uses theme.name directly without fallback to id', () => {
     const themeConfig = createZoraThemeConfig({
       id: 'studio',
-      primaryColor: '#0f766e',
+      name: 'Studio',
+      appCategory: 'developer_tools',
+      primaryColor: parseHexColorOrThrow('#0f766e'),
       harmony: 'analogous',
-      colorTone: 'jewel',
     });
 
     expect(themeConfig.id).toBe('studio');
-    expect(themeConfig.name).toBe('studio');
-    expect(isSixDigitHexColor(themeConfig.light.primaryColor)).toBe(true);
-    expect(themeConfig.light.harmony).toBe('analogous');
-    expect(themeConfig.light.colorTone).toBe('jewel');
-    expect(isSixDigitHexColor(themeConfig.dark.primaryColor)).toBe(true);
-    expect(themeConfig.dark.harmony).toBe('analogous');
-    expect(themeConfig.dark.colorTone).toBe('jewel');
+    expect(themeConfig.name).toBe('Studio');
+  });
 
-    expect(themeConfig.light.primaryColor).not.toBe(themeConfig.dark.primaryColor);
+  test('preserves the same primaryColor for both light and dark', () => {
+    const primary = parseHexColorOrThrow('#2563eb');
+    const themeConfig = createZoraThemeConfig({
+      id: 'test',
+      name: 'Test',
+      appCategory: 'utilities_tools',
+      primaryColor: primary,
+      harmony: 'triadic',
+    });
+
+    expect(themeConfig.light.primaryColor).toBe(primary);
+    expect(themeConfig.dark.primaryColor).toBe(primary);
+  });
+
+  test('output has no colorTone field', () => {
+    const themeConfig = createZoraThemeConfig();
+
+    expect('colorTone' in themeConfig.light).toBe(false);
+    expect('colorTone' in themeConfig.dark).toBe(false);
+  });
+
+  test('surfaceConfig.name equals theme.name', () => {
+    const themeConfig = createZoraThemeConfig({
+      id: 'my-theme',
+      name: 'My Theme',
+      appCategory: 'games',
+      primaryColor: parseHexColorOrThrow('#7c3aed'),
+      harmony: 'complementary',
+    });
+
+    expect(themeConfig.name).toBe('My Theme');
   });
 });

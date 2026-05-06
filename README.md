@@ -90,27 +90,23 @@ export function App({ appTheme }: { appTheme: ZoraTheme }) {
 }
 ```
 
-ZORA themes use a single seed `primaryColor`. ZORA derives mode-specific primary
-colors for light and dark mode internally.
+ZORA themes use a single seed `primaryColor`. The selected primary color is preserved
+identically for both light and dark mode. Color generation is handled by
+`@ankhorage/color-theory` via Surface.
 
 ```tsx
 <ZoraProvider
   theme={{
     id: 'studio',
+    name: 'Studio',
+    appCategory: 'developer_tools',
     primaryColor: '#0f766e',
     harmony: 'analogous',
-    colorTone: 'jewel',
   }}
 >
   <App />
 </ZoraProvider>
 ```
-
-> **`colorTone` vs component `tone`** — `colorTone` is a theme-seed field that
-> selects the color-world / palette tone for the whole theme (e.g. `'jewel'`,
-> `'pastel'`). Component `tone` props (e.g. `<Text tone="muted" />`,
-> `<Button tone="primary" />`) express semantic color intent inside that theme
-> and are independent of `colorTone`.
 
 `mode` and `themeId` are available on public ZORA components through `ZoraBaseProps`.
 Use component props for local component/subtree overrides.
@@ -1425,9 +1421,9 @@ Pass a theme seed to define your app theme:
   theme={{
     id: 'studio',
     name: 'Studio',
+    appCategory: 'developer_tools',
     primaryColor: '#0f766e',
     harmony: 'analogous',
-    colorTone: 'jewel',
   }}
 >
   <App />
@@ -1453,15 +1449,17 @@ No inherited props. `ZoraProviderProps` is declared directly by ZORA.
 
 ### `createZoraThemeConfig`
 
-Creates a Surface-compatible `ThemeConfig` from a ZORA theme seed.
+Creates a `ThemeConfig` (from `@ankhorage/contracts`) from a ZORA theme seed.
+The primary color is preserved identically for both light and dark mode configs.
+Color generation is handled downstream by `@ankhorage/color-theory` via Surface.
 
 ```tsx
 const themeConfig = createZoraThemeConfig({
   id: 'studio',
   name: 'Studio',
+  appCategory: 'developer_tools',
   primaryColor: '#0f766e',
   harmony: 'analogous',
-  colorTone: 'jewel',
 });
 ```
 
@@ -1485,9 +1483,9 @@ Default ZORA theme seed.
 const zoraDefaultTheme: ZoraTheme = {
   id: 'zora',
   name: 'ZORA',
+  appCategory: 'developer_tools',
   primaryColor: '#0f766e',
   harmony: 'analogous',
-  colorTone: 'jewel',
 };
 ```
 

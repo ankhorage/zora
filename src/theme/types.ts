@@ -1,10 +1,17 @@
-import type { ColorHarmony, ColorTone, ThemeConfig } from '@ankhorage/surface';
+import type {
+  ColorHarmony,
+  GeneratedThemeModeColors,
+  GeneratedThemeSwatches,
+  HexColor,
+  SemanticColorToken,
+} from '@ankhorage/color-theory';
+import type { AppCategory } from '@ankhorage/contracts';
+import type { ThemeConfig } from '@ankhorage/contracts';
+import type { SurfaceTheme } from '@ankhorage/surface';
 
 export type ZoraThemeId = string;
 
 export type ZoraThemeMode = 'light' | 'dark';
-
-export type ZoraHexColor = `#${string}`;
 
 export const ZORA_COLOR_HARMONIES = [
   'monochromatic',
@@ -17,33 +24,27 @@ export const ZORA_COLOR_HARMONIES = [
 
 export type ZoraColorHarmony = ColorHarmony;
 
-export const ZORA_COLOR_TONES = [
-  'neutral',
-  'pastel',
-  'earth',
-  'mineral',
-  'muted',
-  'jewel',
-  'fluorescent',
-  'obsidian',
-  'vaporwave',
-  'monochromeAccent',
-] as const satisfies readonly ColorTone[];
-
-export type ZoraColorTone = ColorTone;
-
 export interface ZoraTheme {
   id: ZoraThemeId;
-  name?: string;
-  primaryColor: ZoraHexColor;
+  name: string;
+  appCategory: AppCategory;
+  primaryColor: HexColor;
   harmony: ZoraColorHarmony;
-  colorTone: ZoraColorTone;
+}
+
+export interface ZoraComputedThemeMode {
+  mode: ZoraThemeMode;
+  surfaceTheme: SurfaceTheme;
+  generated: GeneratedThemeModeColors;
+  swatches: GeneratedThemeSwatches;
+  semanticColors?: Record<SemanticColorToken, string>;
 }
 
 export interface ZoraComputedTheme {
   id: ZoraThemeId;
   name: string;
-  mode: ZoraThemeMode;
   source: ZoraTheme;
   surfaceConfig: ThemeConfig;
+  light: ZoraComputedThemeMode;
+  dark: ZoraComputedThemeMode;
 }

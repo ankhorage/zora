@@ -1,24 +1,11 @@
-import type { ZoraHexColor, ZoraTheme } from '../../theme/types';
-import type {
-  ThemeComposerAppCategory,
-  ThemeComposerAppMood,
-  ThemeComposerRecommendation,
-} from './types';
+import type { HexColor } from '@ankhorage/color-theory';
+import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 
-export function findThemeComposerRecommendation(options: {
-  appCategory?: ThemeComposerAppCategory;
-  appMood?: ThemeComposerAppMood;
-  recommendations?: readonly ThemeComposerRecommendation[];
-}): ThemeComposerRecommendation | undefined {
-  if (options.appCategory === undefined || options.recommendations === undefined) {
-    return undefined;
-  }
+import type { ZoraColorHarmony, ZoraTheme } from '../../theme/types';
 
-  return options.recommendations.find(
-    (recommendation) =>
-      recommendation.appCategory === options.appCategory &&
-      (options.appMood === undefined || recommendation.appMood === options.appMood),
-  );
+export interface ThemeComposerHarmonyRecommendation {
+  suggestedHarmony: ZoraColorHarmony;
+  suggestedPrimaryHueDegrees?: number;
 }
 
 export function formatThemeComposerLabel(value: string): string {
@@ -34,7 +21,7 @@ export function formatThemeComposerLabel(value: string): string {
   return `${spaced.slice(0, 1).toUpperCase()}${spaced.slice(1)}`;
 }
 
-export function hueDegreesToZoraHexColor(hueDegrees: number): ZoraHexColor {
+export function hueDegreesToHexColor(hueDegrees: number): HexColor {
   const normalizedHue = ((hueDegrees % 360) + 360) % 360;
   const chroma = 0.56;
   const lightness = 0.46;
@@ -64,22 +51,22 @@ export function hueDegreesToZoraHexColor(hueDegrees: number): ZoraHexColor {
     return value.toString(16).padStart(2, '0');
   };
 
-  return `#${toHexChannel(redPrime)}${toHexChannel(greenPrime)}${toHexChannel(bluePrime)}`;
+  const hex = `#${toHexChannel(redPrime)}${toHexChannel(greenPrime)}${toHexChannel(bluePrime)}`;
+  return parseHexColorOrThrow(hex);
 }
 
-export function createThemeFromThemeComposerRecommendation(options: {
-  value: ZoraTheme;
-  recommendation: ThemeComposerRecommendation;
-}): ZoraTheme {
+export function applyHarmonyRecommendation(
+  value: ZoraTheme,
+  recommendation: ThemeComposerHarmonyRecommendation,
+): ZoraTheme {
   const suggestedPrimaryColor =
-    options.recommendation.suggestedPrimaryHueDegrees === undefined
-      ? options.value.primaryColor
-      : hueDegreesToZoraHexColor(options.recommendation.suggestedPrimaryHueDegrees);
+    recommendation.suggestedPrimaryHueDegrees === undefined
+      ? value.primaryColor
+      : hueDegreesToHexColor(recommendation.suggestedPrimaryHueDegrees);
 
   return {
-    ...options.value,
+    ...value,
     primaryColor: suggestedPrimaryColor,
-    harmony: options.recommendation.suggestedHarmony,
-    colorTone: options.recommendation.suggestedColorTone,
+    harmony: recommendation.suggestedHarmony,
   };
 }

@@ -1,14 +1,14 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COLOR_HARMONIES, ZORA_COLOR_TONES } from '../../theme/types';
+import { ZORA_COLOR_HARMONIES } from '../../theme/types';
 import { zoraDefaultTheme } from '../../theme/zoraDefaultTheme';
 import {
-  createThemeFromThemeComposerRecommendation,
-  findThemeComposerRecommendation,
+  applyHarmonyRecommendation,
   formatThemeComposerLabel,
-  hueDegreesToZoraHexColor,
+  hueDegreesToHexColor,
+  type ThemeComposerHarmonyRecommendation,
 } from './recommendations';
-import type { ThemeComposerProps, ThemeComposerRecommendation } from './types';
+import type { ThemeComposerProps } from './types';
 
 // Validate the exported types compile correctly by asserting shape
 describe('ThemeComposerProps', () => {
@@ -17,9 +17,9 @@ describe('ThemeComposerProps', () => {
       value: zoraDefaultTheme,
       onChange: () => undefined,
     };
-    expect(props.value.primaryColor).toBe('#0f766e');
+    expect(props.value.primaryColor).toBe(zoraDefaultTheme.primaryColor);
     expect(props.value.harmony).toBe('analogous');
-    expect(props.value.colorTone).toBe('jewel');
+    expect(props.value.appCategory).toBe('developer_tools');
   });
 
   test('accepts optional mode and onModeChange', () => {
@@ -44,25 +44,6 @@ describe('ThemeComposerProps', () => {
     props.onSubmit?.(zoraDefaultTheme);
     expect(submitted).toBe(true);
   });
-
-  test('accepts optional recommendation inputs', () => {
-    const recommendation: ThemeComposerRecommendation = {
-      appCategory: 'finance_money',
-      appMood: 'trustworthy',
-      suggestedColorTone: 'mineral',
-      suggestedHarmony: 'analogous',
-      suggestedPrimaryHueDegrees: 195,
-    };
-    const props: ThemeComposerProps = {
-      value: zoraDefaultTheme,
-      onChange: () => undefined,
-      appCategory: 'finance_money',
-      appMood: 'trustworthy',
-      recommendations: [recommendation],
-    };
-
-    expect(props.recommendations?.[0]?.suggestedColorTone).toBe('mineral');
-  });
 });
 
 describe('ZORA_COLOR_HARMONIES coverage for ThemeComposer', () => {
@@ -79,24 +60,6 @@ describe('ZORA_COLOR_HARMONIES coverage for ThemeComposer', () => {
   });
 });
 
-describe('ZORA_COLOR_TONES coverage for ThemeComposer', () => {
-  test('all color tones are present for the Select options', () => {
-    const expected = [
-      'neutral',
-      'pastel',
-      'earth',
-      'mineral',
-      'muted',
-      'jewel',
-      'fluorescent',
-      'obsidian',
-      'vaporwave',
-      'monochromeAccent',
-    ] as const;
-    expect(ZORA_COLOR_TONES).toEqual(expected);
-  });
-});
-
 describe('onChange propagation contract', () => {
   test('onChange receives updated theme with new harmony', () => {
     const received: (typeof zoraDefaultTheme)[] = [];
@@ -109,68 +72,27 @@ describe('onChange propagation contract', () => {
     expect(received).toHaveLength(1);
     expect(received[0]?.harmony).toBe('triadic');
   });
-
-  test('onChange receives updated theme with new colorTone', () => {
-    const received: (typeof zoraDefaultTheme)[] = [];
-    const props: ThemeComposerProps = {
-      value: zoraDefaultTheme,
-      onChange: (t) => received.push(t),
-    };
-    props.onChange({ ...zoraDefaultTheme, colorTone: 'obsidian' });
-    expect(received[0]?.colorTone).toBe('obsidian');
-  });
 });
 
 describe('ThemeComposer recommendation helpers', () => {
-  const recommendations: readonly ThemeComposerRecommendation[] = [
+  const recommendations: readonly ThemeComposerHarmonyRecommendation[] = [
     {
-      appCategory: 'finance_money',
-      appMood: 'trustworthy',
-      suggestedColorTone: 'mineral',
       suggestedHarmony: 'analogous',
       suggestedPrimaryHueDegrees: 195,
     },
     {
-      appCategory: 'graphics_design',
-      appMood: 'creative',
-      suggestedColorTone: 'vaporwave',
       suggestedHarmony: 'splitComplementary',
     },
   ];
 
-  test('finds a recommendation by app category and mood', () => {
-    const found = findThemeComposerRecommendation({
-      appCategory: 'finance_money',
-      appMood: 'trustworthy',
-      recommendations,
-    });
-
-    expect(found?.suggestedColorTone).toBe('mineral');
-  });
-
-  test('does not find a recommendation with mismatched mood', () => {
-    const found = findThemeComposerRecommendation({
-      appCategory: 'finance_money',
-      appMood: 'creative',
-      recommendations,
-    });
-
-    expect(found).toBeUndefined();
-  });
-
-  test('creates an updated theme only when recommendation is explicitly applied', () => {
+  test('applies harmony recommendation with hue', () => {
     const [recommendation] = recommendations;
     if (recommendation === undefined) {
       throw new Error('Expected fixture recommendation.');
     }
 
-    const updated = createThemeFromThemeComposerRecommendation({
-      value: zoraDefaultTheme,
-      recommendation,
-    });
+    const updated = applyHarmonyRecommendation(zoraDefaultTheme, recommendation);
 
-    expect(zoraDefaultTheme.colorTone).toBe('jewel');
-    expect(updated.colorTone).toBe('mineral');
     expect(updated.harmony).toBe('analogous');
     expect(updated.primaryColor).not.toBe(zoraDefaultTheme.primaryColor);
   });
@@ -181,13 +103,10 @@ describe('ThemeComposer recommendation helpers', () => {
       throw new Error('Expected fixture recommendation.');
     }
 
-    const updated = createThemeFromThemeComposerRecommendation({
-      value: zoraDefaultTheme,
-      recommendation,
-    });
+    const updated = applyHarmonyRecommendation(zoraDefaultTheme, recommendation);
 
     expect(updated.primaryColor).toBe(zoraDefaultTheme.primaryColor);
-    expect(updated.colorTone).toBe('vaporwave');
+    expect(updated.harmony).toBe('splitComplementary');
   });
 
   test('formats serialized labels for display', () => {
@@ -196,7 +115,7 @@ describe('ThemeComposer recommendation helpers', () => {
   });
 
   test('converts hue degrees to lowercase hex', () => {
-    expect(hueDegreesToZoraHexColor(195)).toMatch(/^#[0-9a-f]{6}$/);
-    expect(hueDegreesToZoraHexColor(555)).toBe(hueDegreesToZoraHexColor(195));
+    expect(hueDegreesToHexColor(195)).toMatch(/^#[0-9a-f]{6}$/);
+    expect(hueDegreesToHexColor(555)).toBe(hueDegreesToHexColor(195));
   });
 });

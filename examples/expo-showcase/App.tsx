@@ -1,5 +1,6 @@
 import {
   AppShell,
+  parseHexColorOrThrow,
   Tabs,
   Toolbar,
   ToolbarAction,
@@ -20,13 +21,13 @@ import { ThemeComposerPage } from './app/theme-composer';
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 type ColorMode = ZoraThemeMode;
 
-const initialShowcaseTheme = {
+const initialShowcaseTheme: ZoraTheme = {
   id: 'showcase',
   name: 'Showcase',
-  primaryColor: '#0b6e99',
+  appCategory: 'developer_tools',
+  primaryColor: parseHexColorOrThrow('#0b6e99'),
   harmony: 'analogous',
-  colorTone: 'jewel',
-} satisfies ZoraTheme;
+};
 
 function AppWrapper() {
   const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');

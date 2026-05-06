@@ -1,9 +1,9 @@
 import {
-  type AnkhTheme,
   type Breakpoint,
   type FontWeight,
   resolveResponsive,
   type Responsive,
+  type SurfaceTheme,
 } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
@@ -18,7 +18,7 @@ interface VariantRecipe {
 }
 
 interface ResolveTextStyleOptions {
-  theme: AnkhTheme;
+  theme: SurfaceTheme;
   breakpoint: Breakpoint;
   variant?: Responsive<TextVariant>;
   tone?: Responsive<TextTone>;
@@ -31,7 +31,7 @@ function isMediumBreakpointOrLarger(breakpoint: Breakpoint): boolean {
   return breakpoint === 'md' || breakpoint === 'lg' || breakpoint === 'xl';
 }
 
-function resolveWeight(theme: AnkhTheme, weight: TextWeight): FontWeight {
+function resolveWeight(theme: SurfaceTheme, weight: TextWeight): FontWeight {
   return theme.typography.weights[weight];
 }
 
@@ -41,7 +41,7 @@ function resolveFontFamily({
   weight,
   italic,
 }: {
-  theme: AnkhTheme;
+  theme: SurfaceTheme;
   variant: TextVariant;
   weight: FontWeight;
   italic: boolean;
@@ -54,7 +54,7 @@ function resolveFontFamily({
 }
 
 function resolveVariantRecipe(
-  theme: AnkhTheme,
+  theme: SurfaceTheme,
   variant: TextVariant,
   breakpoint: Breakpoint,
 ): VariantRecipe {
@@ -109,7 +109,7 @@ function resolveVariantRecipe(
   }
 }
 
-function resolveToneColor(theme: AnkhTheme, tone: TextTone): string {
+function resolveToneColor(theme: SurfaceTheme, tone: TextTone): string {
   switch (tone) {
     case 'muted':
       return theme.semantics.content.muted;

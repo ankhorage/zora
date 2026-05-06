@@ -1,7 +1,2 @@
 export { ThemeComposer } from './ThemeComposer';
-export type {
-  ThemeComposerAppCategory,
-  ThemeComposerAppMood,
-  ThemeComposerProps,
-  ThemeComposerRecommendation,
-} from './types';
+export type { ThemeComposerProps } from './types';
