@@ -17,7 +17,8 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
 
-const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color (e.g. #0f766e).';
+const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color.';
+const HEX_INPUT_PLACEHOLDER = 'Enter hex color';
 const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
 
 function isValidHex(value: string): boolean {
@@ -179,7 +180,7 @@ function ThemeComposerInner({
               <Input
                 value={hexInput}
                 onChangeText={handleHexChange}
-                placeholder="#0f766e"
+                placeholder={HEX_INPUT_PLACEHOLDER}
                 autoCapitalize="none"
                 autoCorrect={false}
                 maxLength={7}
