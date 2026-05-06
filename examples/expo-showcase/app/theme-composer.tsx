@@ -184,7 +184,10 @@ export function ThemeComposerPage({
                 >
                   <Stack gap="s">
                     <Text variant="lead" tone="muted">
-                      Active harmony: {theme.harmony}. Primary: {theme.primaryColor}.
+                      Theme: {theme.name} · Category: {theme.appCategory}
+                    </Text>
+                    <Text variant="lead" tone="muted">
+                      Harmony: {theme.harmony} · Primary: {theme.primaryColor}
                     </Text>
                     <Text>
                       Use this surface to catch contrast, tint, nested card, and action-color issues
