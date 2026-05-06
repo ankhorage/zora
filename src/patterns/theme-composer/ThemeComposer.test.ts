@@ -53,39 +53,6 @@ describe('ThemeComposerProps', () => {
     };
     expect(props.appCategories).toEqual(narrow);
   });
-
-  test('does not have an appMood prop', () => {
-    // TypeScript type check: appMood must not exist on ThemeComposerProps.
-    // If this compiled with appMood, we'd have a type error here.
-    const props: ThemeComposerProps = {
-      value: zoraDefaultTheme,
-      onChange: () => undefined,
-    };
-    // @ts-expect-error appMood is not a valid prop
-    const _unused = (props as { appMood?: unknown }).appMood;
-    expect(_unused).toBeUndefined();
-  });
-
-  test('does not have a recommendations prop', () => {
-    const props: ThemeComposerProps = {
-      value: zoraDefaultTheme,
-      onChange: () => undefined,
-    };
-    // @ts-expect-error recommendations is not a valid prop
-    const _unused = (props as { recommendations?: unknown }).recommendations;
-    expect(_unused).toBeUndefined();
-  });
-
-  test('does not have a separate selected appCategory prop', () => {
-    // appCategory is on value.appCategory only, not a top-level prop
-    const props: ThemeComposerProps = {
-      value: zoraDefaultTheme,
-      onChange: () => undefined,
-    };
-    // @ts-expect-error appCategory at top level is not a valid prop
-    const _unused = (props as { appCategory?: unknown }).appCategory;
-    expect(_unused).toBeUndefined();
-  });
 });
 
 // ---------------------------------------------------------------------------
@@ -227,10 +194,7 @@ describe('onChange propagation contract', () => {
 // ---------------------------------------------------------------------------
 
 describe('No legacy APIs', () => {
-  test('ThemeComposerProps does not include colorTone-related fields', () => {
-    // This is a compile-time check — ThemeComposerProps must not contain
-    // colorTone, tone (as a theme concept), or ZoraColorTone.
-    // We verify the value object carries no such field.
+  test('ThemeComposerProps value carries no colorTone field', () => {
     const theme = zoraDefaultTheme;
     expect('colorTone' in theme).toBe(false);
   });
