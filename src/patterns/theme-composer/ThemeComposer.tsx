@@ -1,4 +1,4 @@
-import { parseHexColorOrThrow } from '@ankhorage/color-theory';
+import { COLOR_HARMONIES, parseHexColorOrThrow } from '@ankhorage/color-theory';
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
@@ -10,7 +10,7 @@ import { Input } from '../../components/input';
 import { Select } from '../../components/select';
 import { Tabs } from '../../components/tabs';
 import { Text } from '../../components/text';
-import { ZORA_COLOR_HARMONIES, type ZoraThemeMode } from '../../theme/types';
+import type { ZoraThemeMode } from '../../theme/types';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
@@ -21,7 +21,7 @@ function isValidHex(value: string): boolean {
   return HEX_RE.test(value);
 }
 
-const HARMONY_OPTIONS = ZORA_COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
+const HARMONY_OPTIONS = COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
 
 const MODE_TABS = [
   { value: 'light' as ZoraThemeMode, label: 'Light' },
