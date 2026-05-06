@@ -2,7 +2,6 @@ import type {
   ColorHarmony,
   GeneratedThemeModeColors,
   GeneratedThemeSwatches,
-  HexColor,
   SemanticColorToken,
 } from '@ankhorage/color-theory';
 import type { AppCategory, ThemeConfig } from '@ankhorage/contracts';
@@ -16,7 +15,7 @@ export interface ZoraTheme {
   id: ZoraThemeId;
   name: string;
   appCategory: AppCategory;
-  primaryColor: HexColor;
+  primaryColor: string;
   harmony: ColorHarmony;
 }
 
