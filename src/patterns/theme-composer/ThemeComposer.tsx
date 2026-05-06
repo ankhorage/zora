@@ -15,10 +15,13 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
 
-const HEX_RE = /^#[0-9A-Fa-f]{6}$/;
-
 function isValidHex(value: string): boolean {
-  return HEX_RE.test(value);
+  try {
+    parseHexColorOrThrow(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 const HARMONY_OPTIONS = COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
@@ -55,7 +58,7 @@ function ThemeComposerInner({
 
     if (isValidHex(normalized)) {
       setHexError(undefined);
-      onChange({ ...value, primaryColor: parseHexColorOrThrow(normalized) });
+      onChange({ ...value, primaryColor: normalized });
     } else {
       setHexError('Enter a valid 6-digit hex color (e.g. #0f766e).');
     }
