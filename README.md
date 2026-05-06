@@ -1368,7 +1368,13 @@ Pass your current theme as `value` and handle updates through `onChange`. Wrap b
 in a `ZoraProvider` so the preview area reflects every change immediately.
 
 ```tsx
-const [theme, setTheme] = React.useState<ZoraTheme>(zoraDefaultTheme);
+const [theme, setTheme] = React.useState<ZoraTheme>({
+  id: 'my-app',
+  name: 'My App',
+  appCategory: 'developer_tools',
+  primaryColor: '#0f766e',
+  harmony: 'analogous',
+});
 const [mode, setMode] = React.useState<ZoraThemeMode>('light');
 
 return (
@@ -1389,14 +1395,15 @@ return (
 
 ZORA props:
 
-| Prop           | Type                            | Default | Notes                                                |
-| -------------- | ------------------------------- | ------- | ---------------------------------------------------- |
-| `value`        | `ZoraTheme`                     | -       | Required controlled theme seed.                      |
-| `onChange`     | `(theme: ZoraTheme) => void`    | -       | Required. Fires on every valid change.               |
-| `mode`         | `ZoraThemeMode`                 | -       | Current light/dark mode shown in the mode toggle.    |
-| `onModeChange` | `(mode: ZoraThemeMode) => void` | -       | Called when the user switches the mode toggle.       |
-| `onSubmit`     | `(theme: ZoraTheme) => void`    | -       | Optional. Renders an "Apply theme" button if set.    |
-| `testID`       | `string`                        | -       | Forwarded to the root element and child test points. |
+| Prop            | Type                            | Default          | Notes                                                |
+| --------------- | ------------------------------- | ---------------- | ---------------------------------------------------- |
+| `value`         | `ZoraTheme`                     | -                | Required controlled theme seed.                      |
+| `onChange`      | `(theme: ZoraTheme) => void`    | -                | Required. Fires on every valid change.               |
+| `mode`          | `ZoraThemeMode`                 | -                | Current light/dark mode shown in the mode toggle.    |
+| `onModeChange`  | `(mode: ZoraThemeMode) => void` | -                | Called when the user switches the mode toggle.       |
+| `onSubmit`      | `(theme: ZoraTheme) => void`    | -                | Optional. Renders an "Apply theme" button if set.    |
+| `appCategories` | `readonly AppCategory[]`        | `APP_CATEGORIES` | Optional override for the app category options list. |
+| `testID`        | `string`                        | -                | Forwarded to the root element and child test points. |
 
 </details>
 

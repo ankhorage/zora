@@ -1,4 +1,6 @@
 import { COLOR_HARMONIES, parseHexColorOrThrow } from '@ankhorage/color-theory';
+import type { AppCategory } from '@ankhorage/contracts';
+import { APP_CATEGORIES } from '@ankhorage/contracts';
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
@@ -15,6 +17,9 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
 
+const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color (e.g. #0f766e).';
+const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
+
 function isValidHex(value: string): boolean {
   try {
     parseHexColorOrThrow(value);
@@ -22,6 +27,13 @@ function isValidHex(value: string): boolean {
   } catch {
     return false;
   }
+}
+
+function formatAppCategoryLabel(category: AppCategory): string {
+  return category
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
 }
 
 const HARMONY_OPTIONS = COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
@@ -38,6 +50,7 @@ function ThemeComposerInner({
   mode,
   onModeChange,
   onSubmit,
+  appCategories,
   testID,
 }: ThemeComposerProps) {
   const { theme } = useZoraTheme();
@@ -45,11 +58,29 @@ function ThemeComposerInner({
   const [hexInput, setHexInput] = React.useState<string>(value.primaryColor);
   const [hexError, setHexError] = React.useState<string | undefined>(undefined);
 
-  // Keep local hex input in sync when value.primaryColor changes externally
+  const [nameInput, setNameInput] = React.useState<string>(value.name);
+  const [nameError, setNameError] = React.useState<string | undefined>(undefined);
+
+  // Keep local inputs in sync when value changes externally
   React.useEffect(() => {
     setHexInput(value.primaryColor);
     setHexError(undefined);
   }, [value.primaryColor]);
+
+  React.useEffect(() => {
+    setNameInput(value.name);
+    setNameError(undefined);
+  }, [value.name]);
+
+  function handleNameChange(text: string) {
+    setNameInput(text);
+    if (text.trim().length === 0) {
+      setNameError(NAME_ERROR_MESSAGE);
+    } else {
+      setNameError(undefined);
+      onChange({ ...value, name: text });
+    }
+  }
 
   function handleHexChange(text: string) {
     // Ensure leading hash
@@ -60,14 +91,86 @@ function ThemeComposerInner({
       setHexError(undefined);
       onChange({ ...value, primaryColor: normalized });
     } else {
-      setHexError('Enter a valid 6-digit hex color (e.g. #0f766e).');
+      setHexError(HEX_ERROR_MESSAGE);
     }
   }
 
+  function handleSubmit() {
+    const hasValidName = nameInput.trim().length > 0;
+    const hasValidHex = isValidHex(hexInput);
+
+    if (!hasValidName) {
+      setNameError(NAME_ERROR_MESSAGE);
+    }
+
+    if (!hasValidHex) {
+      setHexError(HEX_ERROR_MESSAGE);
+    }
+
+    if (!hasValidName || !hasValidHex) {
+      return;
+    }
+
+    onSubmit?.({
+      ...value,
+      name: nameInput,
+      primaryColor: hexInput,
+    });
+  }
+
   const activeMode = mode ?? 'light';
+  const categoryOptions = (appCategories ?? APP_CATEGORIES).map((c) => ({
+    value: c,
+    label: formatAppCategoryLabel(c),
+  }));
 
   return (
     <Stack gap="l" testID={testID}>
+      {/* Section: Theme identity */}
+      <Card
+        title="Theme identity"
+        description="Name your theme. The ID is assigned automatically and shown for reference."
+      >
+        <Stack gap="m">
+          <Stack gap="xs">
+            <Text variant="label">Name</Text>
+            <Input
+              value={nameInput}
+              onChangeText={handleNameChange}
+              placeholder="My theme"
+              autoCorrect={false}
+              invalid={nameError !== undefined}
+              testID={testID ? `${testID}-name-input` : undefined}
+            />
+            {nameError ? (
+              <Text tone="danger" variant="bodySmall">
+                {nameError}
+              </Text>
+            ) : null}
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">ID</Text>
+            <Text
+              tone="muted"
+              variant="bodySmall"
+              testID={testID ? `${testID}-id-display` : undefined}
+            >
+              {value.id}
+            </Text>
+          </Stack>
+        </Stack>
+      </Card>
+
+      {/* Section: App category */}
+      <Card title="App category" description="Choose the category that best describes this app.">
+        <Select
+          value={value.appCategory}
+          options={categoryOptions}
+          onValueChange={(c) => onChange({ ...value, appCategory: c })}
+          testID={testID ? `${testID}-category-select` : undefined}
+        />
+      </Card>
+
       {/* Section: Primary Color */}
       <Card title="Primary color" description="Set the seed color for your theme palette.">
         <Stack gap="m">
@@ -131,6 +234,26 @@ function ThemeComposerInner({
       {/* Section: Preview */}
       <Card title="Preview" description="A quick look at how your theme renders common controls.">
         <Stack gap="m">
+          <Stack gap="xs">
+            <Text variant="label">Name</Text>
+            <Text>{value.name}</Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Category</Text>
+            <Text>{formatAppCategoryLabel(value.appCategory)}</Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Primary color</Text>
+            <Text tone="muted" variant="bodySmall">
+              {value.primaryColor}
+            </Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Harmony</Text>
+            <Text tone="muted" variant="bodySmall">
+              {value.harmony}
+            </Text>
+          </Stack>
           <Heading level={4}>Heading</Heading>
           <Text>Body text — this shows default text color and weight.</Text>
           <Text tone="muted" variant="bodySmall">
@@ -173,7 +296,7 @@ function ThemeComposerInner({
         <Button
           tone="primary"
           emphasis="solid"
-          onPress={() => onSubmit(value)}
+          onPress={handleSubmit}
           testID={testID ? `${testID}-submit` : undefined}
         >
           Apply theme
