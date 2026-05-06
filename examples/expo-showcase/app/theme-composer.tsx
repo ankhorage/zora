@@ -30,58 +30,58 @@ interface ThemeComposerPageProps {
   onModeChange: (mode: ZoraThemeMode) => void;
 }
 
-const recipeThemes = [
+const recipeThemes: readonly { label: string; theme: ZoraTheme }[] = [
   {
-    label: 'Pastel + jewel',
+    label: 'Purple analogous',
     theme: {
-      id: 'showcase-pastel-jewel',
-      name: 'Pastel jewel',
+      id: 'showcase-purple-analogous',
+      name: 'Purple Analogous',
+      appCategory: 'utilities_tools',
       primaryColor: '#c084fc',
       harmony: 'analogous',
-      colorTone: 'pastel',
-    } satisfies ZoraTheme,
+    },
   },
   {
-    label: 'Obsidian + fluorescent',
+    label: 'Cyan split-complementary',
     theme: {
-      id: 'showcase-obsidian-fluorescent',
-      name: 'Obsidian fluorescent',
+      id: 'showcase-cyan-split',
+      name: 'Cyan Split',
+      appCategory: 'entertainment_media',
       primaryColor: '#22d3ee',
       harmony: 'splitComplementary',
-      colorTone: 'obsidian',
-    } satisfies ZoraTheme,
+    },
   },
   {
-    label: 'Earth + mineral',
+    label: 'Stone analogous',
     theme: {
-      id: 'showcase-earth-mineral',
-      name: 'Earth mineral',
+      id: 'showcase-stone-analogous',
+      name: 'Stone Analogous',
+      appCategory: 'business_productivity',
       primaryColor: '#78716c',
       harmony: 'analogous',
-      colorTone: 'earth',
-    } satisfies ZoraTheme,
+    },
   },
   {
-    label: 'Vaporwave + fluorescent',
+    label: 'Pink split-complementary',
     theme: {
-      id: 'showcase-vaporwave-fluorescent',
-      name: 'Vaporwave fluorescent',
+      id: 'showcase-pink-split',
+      name: 'Pink Split',
+      appCategory: 'lifestyle',
       primaryColor: '#ec4899',
       harmony: 'splitComplementary',
-      colorTone: 'vaporwave',
-    } satisfies ZoraTheme,
+    },
   },
   {
-    label: 'Neutral + jewel',
+    label: 'Blue triadic',
     theme: {
-      id: 'showcase-neutral-jewel',
-      name: 'Neutral jewel',
+      id: 'showcase-blue-triadic',
+      name: 'Blue Triadic',
+      appCategory: 'developer_tools',
       primaryColor: '#2563eb',
       harmony: 'triadic',
-      colorTone: 'jewel',
-    } satisfies ZoraTheme,
+    },
   },
-] as const;
+];
 
 export function ThemeComposerPage({
   theme,
@@ -98,7 +98,7 @@ export function ThemeComposerPage({
           <PageHeader
             eyebrow="Theme lab"
             title="Theme Composer"
-            description="Edit the active ZORA theme seed and inspect how primary color, harmony, color tone, and mode affect real UI surfaces."
+            description="Edit the active ZORA theme seed and inspect how primary color, harmony, and mode affect real UI surfaces."
           />
         }
       >
@@ -184,7 +184,7 @@ export function ThemeComposerPage({
                 >
                   <Stack gap="s">
                     <Text variant="lead" tone="muted">
-                      The active seed is {theme.colorTone} with {theme.harmony} harmony.
+                      Active harmony: {theme.harmony}. Primary: {theme.primaryColor}.
                     </Text>
                     <Text>
                       Use this surface to catch contrast, tint, nested card, and action-color issues

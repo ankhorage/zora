@@ -1,4 +1,4 @@
-import type { AnkhTheme, FontWeight } from '@ankhorage/surface';
+import type { FontWeight, SurfaceTheme } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
 import type { HeadingAlign, HeadingLevel, HeadingSize, HeadingTone, HeadingWeight } from './types';
@@ -52,7 +52,7 @@ function resolveHeadingLevelFromSize(size: Exclude<HeadingSize, 'display'>): Hea
   }
 }
 
-function resolveSizeRecipe(theme: AnkhTheme, size: HeadingSize): HeadingRecipe {
+function resolveSizeRecipe(theme: SurfaceTheme, size: HeadingSize): HeadingRecipe {
   if (size === 'display') {
     const fontSize = theme.typography.sizes['3xl'];
 
@@ -72,7 +72,7 @@ function resolveSizeRecipe(theme: AnkhTheme, size: HeadingSize): HeadingRecipe {
   };
 }
 
-function resolveToneColor(theme: AnkhTheme, tone: HeadingTone): string {
+function resolveToneColor(theme: SurfaceTheme, tone: HeadingTone): string {
   switch (tone) {
     case 'muted':
       return theme.semantics.content.muted;
@@ -94,7 +94,7 @@ function resolveToneColor(theme: AnkhTheme, tone: HeadingTone): string {
   }
 }
 
-function resolveWeight(theme: AnkhTheme, weight: HeadingWeight): FontWeight {
+function resolveWeight(theme: SurfaceTheme, weight: HeadingWeight): FontWeight {
   return theme.typography.weights[weight];
 }
 
@@ -103,7 +103,7 @@ function resolveFontFamily({
   weight,
   italic,
 }: {
-  theme: AnkhTheme;
+  theme: SurfaceTheme;
   weight: FontWeight;
   italic: boolean;
 }): string | undefined {
@@ -111,7 +111,7 @@ function resolveFontFamily({
 }
 
 export function resolveHeadingRecipe(
-  theme: AnkhTheme,
+  theme: SurfaceTheme,
   { align, italic = false, level, size, tone = 'default', weight }: ResolveHeadingRecipeOptions,
 ): TextStyle {
   const recipe = resolveSizeRecipe(theme, size ?? resolveHeadingSizeFromLevel(level));

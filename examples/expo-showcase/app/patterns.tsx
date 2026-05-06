@@ -121,7 +121,7 @@ export function PatternsPage() {
               <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" emphasis="soft" />
             }
           >
-            <Input value="Ocean / Jewel" />
+            <Input value="Ocean" />
           </InspectorField>
 
           <DisclosureSection

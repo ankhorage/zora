@@ -45,7 +45,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <Card
             title="Theme Composer"
-            description="Edit a ZORA theme seed live and inspect how colorTone, harmony, primary color, and mode affect real UI surfaces."
+            description="Edit a ZORA theme seed live and inspect how harmony, primary color, and mode affect real UI surfaces."
             actions={
               <Button size="s" onPress={() => onNavigate('theme')}>
                 Open theme lab

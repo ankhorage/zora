@@ -43,8 +43,9 @@
     }
   },
   "dependencies": {
-    "@ankhorage/surface": "^0.2.3",
-    "culori": "^4.0.2"
+    "@ankhorage/color-theory": "^0.0.2",
+    "@ankhorage/contracts": "^1.1.0",
+    "@ankhorage/surface": "^1.0.0"
   },
   "files": [
     "dist",
@@ -86,7 +87,6 @@
     "@changesets/cli": "^2.31.0",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-picker/picker": "^2.11.4",
-    "@types/culori": "^4.0.1",
     "@types/bun": "^1.3.13",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",

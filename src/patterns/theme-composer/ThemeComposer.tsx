@@ -1,3 +1,4 @@
+import { COLOR_HARMONIES, parseHexColorOrThrow } from '@ankhorage/color-theory';
 import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
@@ -9,62 +10,26 @@ import { Input } from '../../components/input';
 import { Select } from '../../components/select';
 import { Tabs } from '../../components/tabs';
 import { Text } from '../../components/text';
-import {
-  ZORA_COLOR_HARMONIES,
-  ZORA_COLOR_TONES,
-  type ZoraColorTone,
-  type ZoraTheme,
-  type ZoraThemeMode,
-} from '../../theme/types';
+import type { ZoraThemeMode } from '../../theme/types';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import {
-  createThemeFromThemeComposerRecommendation,
-  findThemeComposerRecommendation,
-  formatThemeComposerLabel,
-} from './recommendations';
 import type { ThemeComposerProps } from './types';
 
-const HEX_RE = /^#[0-9A-Fa-f]{6}$/;
-
 function isValidHex(value: string): boolean {
-  return HEX_RE.test(value);
+  try {
+    parseHexColorOrThrow(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
-const HARMONY_OPTIONS = ZORA_COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
-
-const TONE_OPTIONS = ZORA_COLOR_TONES.map((t) => ({ value: t, label: t }));
+const HARMONY_OPTIONS = COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
 
 const MODE_TABS = [
   { value: 'light' as ZoraThemeMode, label: 'Light' },
   { value: 'dark' as ZoraThemeMode, label: 'Dark' },
 ];
-
-const COLOR_TONE_BACKGROUND_TONE: Record<ZoraColorTone, string> = {
-  neutral: 'Neutral',
-  pastel: 'Pastel',
-  earth: 'Earth',
-  mineral: 'Mineral',
-  muted: 'Muted',
-  jewel: 'Neutral',
-  fluorescent: 'Obsidian',
-  obsidian: 'Obsidian',
-  vaporwave: 'Pastel',
-  monochromeAccent: 'Neutral',
-};
-
-const COLOR_TONE_FOREGROUND_TONE: Record<ZoraColorTone, string> = {
-  neutral: 'Jewel',
-  pastel: 'Jewel',
-  earth: 'Mineral',
-  mineral: 'Jewel',
-  muted: 'Jewel',
-  jewel: 'Jewel',
-  fluorescent: 'Fluorescent',
-  obsidian: 'Fluorescent',
-  vaporwave: 'Fluorescent',
-  monochromeAccent: 'Jewel',
-};
 
 function ThemeComposerInner({
   themeId: _themeId,
@@ -73,9 +38,6 @@ function ThemeComposerInner({
   mode,
   onModeChange,
   onSubmit,
-  appCategory,
-  appMood,
-  recommendations,
   testID,
 }: ThemeComposerProps) {
   const { theme } = useZoraTheme();
@@ -96,70 +58,16 @@ function ThemeComposerInner({
 
     if (isValidHex(normalized)) {
       setHexError(undefined);
-      onChange({ ...value, primaryColor: normalized as ZoraTheme['primaryColor'] });
+      onChange({ ...value, primaryColor: normalized });
     } else {
       setHexError('Enter a valid 6-digit hex color (e.g. #0f766e).');
     }
   }
 
   const activeMode = mode ?? 'light';
-  const recommendation = findThemeComposerRecommendation({
-    appCategory,
-    appMood,
-    recommendations,
-  });
 
   return (
     <Stack gap="l" testID={testID}>
-      {recommendation ? (
-        <Card
-          title="Recommended starting point"
-          description="Use this as an optional starting point. It is only applied when you choose it."
-          actions={
-            <Button
-              size="s"
-              emphasis="soft"
-              tone="primary"
-              onPress={() =>
-                onChange(
-                  createThemeFromThemeComposerRecommendation({
-                    value,
-                    recommendation,
-                  }),
-                )
-              }
-              testID={testID ? `${testID}-apply-recommendation` : undefined}
-            >
-              Apply recommendation
-            </Button>
-          }
-        >
-          <Stack gap="s">
-            <Stack direction="row" gap="s" wrap="wrap">
-              <Badge tone="primary" emphasis="soft">
-                {formatThemeComposerLabel(recommendation.appMood)} mood
-              </Badge>
-              <Badge tone="neutral" emphasis="soft">
-                {formatThemeComposerLabel(recommendation.suggestedColorTone)} color tone
-              </Badge>
-              <Badge tone="neutral" emphasis="soft">
-                {formatThemeComposerLabel(recommendation.suggestedHarmony)} harmony
-              </Badge>
-              {recommendation.suggestedPrimaryHueDegrees === undefined ? null : (
-                <Badge tone="neutral" emphasis="soft">
-                  {recommendation.suggestedPrimaryHueDegrees}° hue
-                </Badge>
-              )}
-            </Stack>
-            <Text tone="muted" variant="bodySmall">
-              Suggested for {formatThemeComposerLabel(recommendation.appCategory)}. The color tone
-              controls palette character, harmony controls accent relationships, and hue sets the
-              starting primary color when available.
-            </Text>
-          </Stack>
-        </Card>
-      ) : null}
-
       {/* Section: Primary Color */}
       <Card title="Primary color" description="Set the seed color for your theme palette.">
         <Stack gap="m">
@@ -207,35 +115,6 @@ function ThemeComposerInner({
           onValueChange={(h) => onChange({ ...value, harmony: h })}
           testID={testID ? `${testID}-harmony-select` : undefined}
         />
-      </Card>
-
-      {/* Section: Color tone */}
-      <Card
-        title="Color tone"
-        description="Controls the vibrancy and saturation style of the palette."
-      >
-        <Stack gap="s">
-          <Select
-            value={value.colorTone}
-            options={TONE_OPTIONS}
-            onValueChange={(t) => onChange({ ...value, colorTone: t })}
-            testID={testID ? `${testID}-tone-select` : undefined}
-          />
-          <Stack direction="row" gap="s" align="center">
-            <Text tone="muted" variant="caption">
-              Background:
-            </Text>
-            <Badge tone="neutral" emphasis="soft">
-              {COLOR_TONE_BACKGROUND_TONE[value.colorTone]}
-            </Badge>
-            <Text tone="muted" variant="caption">
-              Foreground:
-            </Text>
-            <Badge tone="neutral" emphasis="soft">
-              {COLOR_TONE_FOREGROUND_TONE[value.colorTone]}
-            </Badge>
-          </Stack>
-        </Stack>
       </Card>
 
       {/* Section: Mode */}
