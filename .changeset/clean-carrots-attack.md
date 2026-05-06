@@ -62,6 +62,5 @@ const theme: ZoraTheme = {
 };
 ```
 
-The `name` field is now required. Passing a raw string hex literal as `primaryColor`
-still works if it satisfies the branded `HexColor` type; use `parseHexColorOrThrow()`
-to produce a validated branded value from an unknown string.
+The `name` field is now required. `primaryColor` is a branded `HexColor`; use
+`parseHexColorOrThrow()` to produce a validated branded value from a string.
