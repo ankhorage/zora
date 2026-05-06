@@ -1,6 +1,5 @@
 export { createZoraThemeConfig } from './createZoraThemeConfig';
 export type {
-  ZoraColorHarmony,
   ZoraComputedTheme,
   ZoraComputedThemeMode,
   ZoraTheme,
