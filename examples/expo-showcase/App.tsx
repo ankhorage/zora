@@ -1,6 +1,6 @@
+import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import {
   AppShell,
-  parseHexColorOrThrow,
   Tabs,
   Toolbar,
   ToolbarAction,
