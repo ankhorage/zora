@@ -1,4 +1,3 @@
-import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import {
   AppShell,
   Tabs,
@@ -25,7 +24,7 @@ const initialShowcaseTheme: ZoraTheme = {
   id: 'showcase',
   name: 'Showcase',
   appCategory: 'developer_tools',
-  primaryColor: parseHexColorOrThrow('#0b6e99'),
+  primaryColor: '#0b6e99',
   harmony: 'analogous',
 };
 
