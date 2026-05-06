@@ -1395,15 +1395,15 @@ return (
 
 ZORA props:
 
-| Prop             | Type                              | Default         | Notes                                                           |
-| ---------------- | --------------------------------- | --------------- | --------------------------------------------------------------- |
-| `value`          | `ZoraTheme`                       | -               | Required controlled theme seed.                                 |
-| `onChange`       | `(theme: ZoraTheme) => void`      | -               | Required. Fires on every valid change.                          |
-| `mode`           | `ZoraThemeMode`                   | -               | Current light/dark mode shown in the mode toggle.               |
-| `onModeChange`   | `(mode: ZoraThemeMode) => void`   | -               | Called when the user switches the mode toggle.                  |
-| `onSubmit`       | `(theme: ZoraTheme) => void`      | -               | Optional. Renders an "Apply theme" button if set.               |
-| `appCategories`  | `readonly AppCategory[]`          | `APP_CATEGORIES`| Optional override for the app category options list.            |
-| `testID`         | `string`                          | -               | Forwarded to the root element and child test points.            |
+| Prop            | Type                            | Default          | Notes                                                |
+| --------------- | ------------------------------- | ---------------- | ---------------------------------------------------- |
+| `value`         | `ZoraTheme`                     | -                | Required controlled theme seed.                      |
+| `onChange`      | `(theme: ZoraTheme) => void`    | -                | Required. Fires on every valid change.               |
+| `mode`          | `ZoraThemeMode`                 | -                | Current light/dark mode shown in the mode toggle.    |
+| `onModeChange`  | `(mode: ZoraThemeMode) => void` | -                | Called when the user switches the mode toggle.       |
+| `onSubmit`      | `(theme: ZoraTheme) => void`    | -                | Optional. Renders an "Apply theme" button if set.    |
+| `appCategories` | `readonly AppCategory[]`        | `APP_CATEGORIES` | Optional override for the app category options list. |
+| `testID`        | `string`                        | -                | Forwarded to the root element and child test points. |
 
 </details>
 
