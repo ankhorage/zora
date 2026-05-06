@@ -55,6 +55,10 @@ function readSource(root: string, excludeTests = false): string {
     .join('\n');
 }
 
+function isPathWithin(filePath: string, directoryPath: string): boolean {
+  return filePath === directoryPath || filePath.startsWith(`${directoryPath}/`);
+}
+
 const srcSource = readSource(SRC_ROOT, true); // exclude test files from stale-API scan
 const examplesSource = readSource(EXAMPLES_ROOT);
 const readmeSource = readFileSync(README_PATH, 'utf8');
@@ -116,52 +120,44 @@ describe('Plan 5 audit — no showcase bridge or direct Surface imports in examp
 
 describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surface directly', () => {
   /**
-   * Layout, pattern, and component files that compose ZORA primitives should
-   * import Box / Stack / Center / Container / Stack from the local ZORA
-   * foundation layer, not directly from @ankhorage/surface.
+   * Components, layouts, and patterns that compose ZORA primitives should import
+   * foundation primitives from the local ZORA foundation layer, not directly
+   * from @ankhorage/surface.
    *
-   * Foundation wrappers, theme infrastructure, and Surface-wrapping components
-   * (e.g. Checkbox.tsx, Modal.tsx, IconButton.tsx) are exempt because they ARE
-   * the boundary layer.
+   * Foundation wrappers, theme infrastructure, internal recipes, and explicit
+   * Surface-wrapping boundary components are exempt.
    */
   const EXEMPT_PATHS = new Set([
-    // Foundation wrappers — they ARE the Surface abstraction layer
+    // Foundation wrappers — they ARE the Surface abstraction layer.
     join(SRC_ROOT, 'foundation'),
-    // Theme infrastructure
+    // Theme infrastructure legitimately integrates with Surface theme/runtime types.
     join(SRC_ROOT, 'theme'),
-    // Internal recipe type imports
+    // Internal recipes may consume SurfaceTheme types as the typed recipe boundary.
     join(SRC_ROOT, 'internal'),
-    // Components that explicitly wrap a Surface primitive (need the real import)
+    // Explicit Surface primitive wrappers.
     join(SRC_ROOT, 'components', 'checkbox', 'Checkbox.tsx'),
-    join(SRC_ROOT, 'components', 'checkbox', 'CheckboxGroup.tsx'),
     join(SRC_ROOT, 'components', 'icon', 'Icon.tsx'),
     join(SRC_ROOT, 'components', 'icon-button', 'IconButton.tsx'),
-    join(SRC_ROOT, 'components', 'textarea', 'Textarea.tsx'),
-    join(SRC_ROOT, 'components', 'textarea', 'types.ts'),
-    join(SRC_ROOT, 'components', 'checkbox', 'types.ts'),
-    join(SRC_ROOT, 'components', 'tabs', 'types.ts'),
-    join(SRC_ROOT, 'components', 'icon-button', 'types.ts'),
-    join(SRC_ROOT, 'components', 'toolbar', 'types.ts'),
-    join(SRC_ROOT, 'components', 'form', 'types.ts'),
-    join(SRC_ROOT, 'components', 'text', 'types.ts'),
-    // FormField uses Surface's `Field` component (no ZORA wrapper exists)
-    join(SRC_ROOT, 'components', 'form', 'FormField.tsx'),
-    join(SRC_ROOT, 'patterns', 'form-field', 'types.ts'),
-    join(SRC_ROOT, 'patterns', 'form-field', 'FormField.tsx'),
-    // Modal wraps SurfaceModal directly
     join(SRC_ROOT, 'components', 'modal', 'Modal.tsx'),
-    // Text resolver imports Surface theme types
-    join(SRC_ROOT, 'components', 'text', 'resolveTextRecipe.ts'),
+    join(SRC_ROOT, 'components', 'textarea', 'Textarea.tsx'),
     join(SRC_ROOT, 'components', 'text', 'Text.tsx'),
-    // Heading resolver imports Surface theme types
-    join(SRC_ROOT, 'components', 'heading'),
-    // Tile-grid types use Surface ButtonIconSpec
+    join(SRC_ROOT, 'components', 'form', 'FormField.tsx'),
+    join(SRC_ROOT, 'patterns', 'form-field', 'FormField.tsx'),
+    // Type-only imports that intentionally expose Surface-compatible prop specs.
+    join(SRC_ROOT, 'components', 'checkbox', 'types.ts'),
+    join(SRC_ROOT, 'components', 'form', 'types.ts'),
+    join(SRC_ROOT, 'components', 'icon-button', 'types.ts'),
+    join(SRC_ROOT, 'components', 'tabs', 'types.ts'),
+    join(SRC_ROOT, 'components', 'text', 'types.ts'),
+    join(SRC_ROOT, 'components', 'textarea', 'types.ts'),
+    join(SRC_ROOT, 'components', 'toolbar', 'types.ts'),
+    join(SRC_ROOT, 'patterns', 'form-field', 'types.ts'),
     join(SRC_ROOT, 'patterns', 'tile-grid', 'types.ts'),
   ]);
 
   function isExempt(filePath: string): boolean {
     for (const exemptPath of EXEMPT_PATHS) {
-      if (filePath.startsWith(exemptPath)) {
+      if (isPathWithin(filePath, exemptPath)) {
         return true;
       }
     }
@@ -169,13 +165,17 @@ describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surfa
     return false;
   }
 
-  const LAYOUT_AND_PATTERN_DIRS = [join(SRC_ROOT, 'layout'), join(SRC_ROOT, 'patterns')];
+  const PRODUCT_FACING_DIRS = [
+    join(SRC_ROOT, 'components'),
+    join(SRC_ROOT, 'layout'),
+    join(SRC_ROOT, 'patterns'),
+  ];
 
   const FOUNDATION_PRIMITIVES_PATTERN =
     /import \{[^}]*\b(Box|Stack|Center|Container|Grid|Inline|Spacer|Divider)\b[^}]*\} from '@ankhorage\/surface'/;
 
-  test('layout files do not import foundation primitives directly from @ankhorage/surface', () => {
-    for (const dir of LAYOUT_AND_PATTERN_DIRS) {
+  test('component, layout, and pattern files do not import foundation primitives directly from @ankhorage/surface', () => {
+    for (const dir of PRODUCT_FACING_DIRS) {
       for (const filePath of listFiles(dir)) {
         if (isExempt(filePath)) continue;
 
@@ -190,24 +190,20 @@ describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surfa
       }
     }
   });
+});
 
-  const COMPONENT_FOUNDATION_FILES = [
-    join(SRC_ROOT, 'components', 'form', 'Form.tsx'),
-    join(SRC_ROOT, 'components', 'form', 'FormActions.tsx'),
-    join(SRC_ROOT, 'components', 'form', 'FormError.tsx'),
-    join(SRC_ROOT, 'components', 'tabs', 'Tabs.tsx'),
-    join(SRC_ROOT, 'components', 'toolbar', 'Toolbar.tsx'),
-  ];
+describe('Plan 5 audit — no hard-coded runtime colors', () => {
+  const RUNTIME_COLOR_LITERAL_PATTERN = /#[0-9A-Fa-f]{3,8}|rgba?\(|hsla?\(/;
 
-  test('component files that compose ZORA primitives do not import them from @ankhorage/surface', () => {
-    for (const filePath of COMPONENT_FOUNDATION_FILES) {
+  test('non-test src files do not contain raw runtime color literals', () => {
+    for (const filePath of listFiles(SRC_ROOT, true)) {
       const source = readFileSync(filePath, 'utf8');
-      const match = FOUNDATION_PRIMITIVES_PATTERN.exec(source);
+      const match = RUNTIME_COLOR_LITERAL_PATTERN.exec(source);
 
       expect(
         match,
-        `${filePath} imports Surface foundation primitive '${match?.[1]}' directly. ` +
-          `Use the ZORA foundation import ('../../foundation') instead.`,
+        `${filePath} contains raw runtime color literal '${match?.[0]}'. ` +
+          'Use a theme token, recipe, or explicit documented exemption instead.',
       ).toBeNull();
     }
   });
