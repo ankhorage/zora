@@ -5,31 +5,19 @@ import type {
   HexColor,
   SemanticColorToken,
 } from '@ankhorage/color-theory';
-import type { AppCategory } from '@ankhorage/contracts';
-import type { ThemeConfig } from '@ankhorage/contracts';
+import type { AppCategory, ThemeConfig } from '@ankhorage/contracts';
 import type { SurfaceTheme } from '@ankhorage/surface';
 
 export type ZoraThemeId = string;
 
 export type ZoraThemeMode = 'light' | 'dark';
 
-export const ZORA_COLOR_HARMONIES = [
-  'monochromatic',
-  'analogous',
-  'complementary',
-  'splitComplementary',
-  'triadic',
-  'tetradic',
-] as const satisfies readonly ColorHarmony[];
-
-export type ZoraColorHarmony = ColorHarmony;
-
 export interface ZoraTheme {
   id: ZoraThemeId;
   name: string;
   appCategory: AppCategory;
   primaryColor: HexColor;
-  harmony: ZoraColorHarmony;
+  harmony: ColorHarmony;
 }
 
 export interface ZoraComputedThemeMode {
