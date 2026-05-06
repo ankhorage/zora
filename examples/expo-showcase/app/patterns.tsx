@@ -1,6 +1,3 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
-
 import {
   Badge,
   Card,
@@ -23,7 +20,10 @@ import {
   SwitchField,
   TileGrid,
   TreeView,
-} from '../zora';
+} from '@ankhorage/zora';
+import React from 'react';
+import { ScrollView } from 'react-native';
+
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
