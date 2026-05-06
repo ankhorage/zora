@@ -1,9 +1,9 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../../components/button';
 import { IconButton } from '../../components/icon-button';
 import { Text } from '../../components/text';
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { CollectionEditorProps } from './types';

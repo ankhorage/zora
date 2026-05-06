@@ -1,6 +1,7 @@
-import { Box, Drawer as SurfaceDrawer, Stack } from '@ankhorage/surface';
+import { Drawer as SurfaceDrawer } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';
 import { Text } from '../text';

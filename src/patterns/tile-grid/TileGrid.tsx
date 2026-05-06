@@ -1,6 +1,6 @@
-import { Box } from '@ankhorage/surface';
 import React from 'react';
 
+import { Box } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { TileGridProps } from './types';
 

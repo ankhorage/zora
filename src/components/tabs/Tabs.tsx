@@ -1,6 +1,6 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Button } from '../button';

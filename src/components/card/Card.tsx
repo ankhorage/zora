@@ -1,6 +1,7 @@
-import { Box, Card as SurfaceCard, Stack } from '@ankhorage/surface';
+import { Card as SurfaceCard } from '@ankhorage/surface';
 import React from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { resolveCardVariant } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';

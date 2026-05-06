@@ -1,6 +1,6 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SidebarLayout } from '../sidebar-layout';
 import type { TopbarLayoutProps } from './types';

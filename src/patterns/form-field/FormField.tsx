@@ -1,7 +1,8 @@
-import { Field, Stack } from '@ankhorage/surface';
+import { Field } from '@ankhorage/surface';
 import React from 'react';
 
 import { Text } from '../../components/text';
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { FormFieldProps } from './types';
 

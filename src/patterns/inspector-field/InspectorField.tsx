@@ -1,6 +1,6 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { FormField } from '../form-field';
 import type { InspectorFieldProps } from './types';

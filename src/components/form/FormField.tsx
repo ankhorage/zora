@@ -1,6 +1,7 @@
-import { Field, Stack } from '@ankhorage/surface';
+import { Field } from '@ankhorage/surface';
 import React from 'react';
 
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Input } from '../input';
 import { Text } from '../text';

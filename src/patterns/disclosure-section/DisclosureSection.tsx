@@ -1,7 +1,7 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { IconButton } from '../../components/icon-button';
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { DisclosureSectionProps } from './types';

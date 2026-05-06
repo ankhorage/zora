@@ -1,6 +1,6 @@
-import { Container, Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Container, Stack } from '../../foundation';
 import { resolvePageMaxWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PageProps } from './types';

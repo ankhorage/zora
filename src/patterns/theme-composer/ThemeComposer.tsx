@@ -1,7 +1,6 @@
 import { COLOR_HARMONIES, parseHexColorOrThrow } from '@ankhorage/color-theory';
 import type { AppCategory } from '@ankhorage/contracts';
 import { APP_CATEGORIES } from '@ankhorage/contracts';
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Badge } from '../../components/badge';
@@ -12,12 +11,14 @@ import { Input } from '../../components/input';
 import { Select } from '../../components/select';
 import { Tabs } from '../../components/tabs';
 import { Text } from '../../components/text';
+import { Box, Stack } from '../../foundation';
 import type { ZoraThemeMode } from '../../theme/types';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ThemeComposerProps } from './types';
 
-const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color (e.g. #0f766e).';
+const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color.';
+const HEX_INPUT_PLACEHOLDER = 'Enter hex color';
 const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
 
 function isValidHex(value: string): boolean {
@@ -179,7 +180,7 @@ function ThemeComposerInner({
               <Input
                 value={hexInput}
                 onChangeText={handleHexChange}
-                placeholder="#0f766e"
+                placeholder={HEX_INPUT_PLACEHOLDER}
                 autoCapitalize="none"
                 autoCorrect={false}
                 maxLength={7}

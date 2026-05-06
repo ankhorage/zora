@@ -1,8 +1,8 @@
-import { Box, Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SectionHeaderProps } from './types';
 

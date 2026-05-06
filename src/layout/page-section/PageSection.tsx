@@ -1,6 +1,6 @@
-import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
+import { Stack } from '../../foundation';
 import { SectionHeader } from '../../patterns/section-header';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PageSectionProps } from './types';

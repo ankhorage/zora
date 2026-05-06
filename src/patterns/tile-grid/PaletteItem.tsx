@@ -1,9 +1,9 @@
-import { Box } from '@ankhorage/surface';
 import React from 'react';
 
 import { Card } from '../../components/card';
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
+import { Box } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PaletteItemProps } from './types';

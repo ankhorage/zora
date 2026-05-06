@@ -1,8 +1,8 @@
-import { Stack } from '@ankhorage/surface';
 import React from 'react';
 
 import { Button } from '../../components/button';
 import { Card } from '../../components/card';
+import { Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { EmptyStateProps } from './types';
 
