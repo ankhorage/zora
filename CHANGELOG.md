@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.6
+
+### Patch Changes
+
+- 9d9f997: Add common UI primitives: `Avatar`, `AvatarGroup`, `Chip`, `ChipGroup`, `SearchBar`, and `FilterBar`. Add list building blocks: `List`, `ListRow`, and `ListSection`. Also add `InputTrailingAction` / `trailingAction` support to `Input`.
+
 ## 1.0.5
 
 ### Patch Changes
