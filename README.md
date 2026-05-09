@@ -320,17 +320,17 @@ User/profile image with name-based initials and optional icon fallback.
 
 ZORA props:
 
-| Prop           | Type            | Default     | Notes                                          |
-| -------------- | --------------- | ----------- | ---------------------------------------------- |
-| `source`       | `ImageSourcePropType` | -     | React Native `Image` source for the avatar.    |
-| `name`         | `string`        | -           | Used to derive initials when `initials` absent.|
-| `initials`     | `string`        | -           | Explicit initials override.                    |
-| `iconFallback` | `ButtonIconSpec`| -           | Optional icon spec when no source/initials.    |
-| `label`        | `string`        | -           | Accessibility label for the rendered content.  |
-| `size`         | `AvatarSize`    | `'m'`       | `xs`..`xl` size preset.                        |
-| `shape`        | `AvatarShape`   | `'circle'`  | `circle` or `rounded`.                         |
-| `tone`         | `ZoraTone`      | `'neutral'` | Drives background and fallback content tone.   |
-| `testID`       | `string`        | -           | Test id.                                       |
+| Prop           | Type                  | Default     | Notes                                           |
+| -------------- | --------------------- | ----------- | ----------------------------------------------- |
+| `source`       | `ImageSourcePropType` | -           | React Native `Image` source for the avatar.     |
+| `name`         | `string`              | -           | Used to derive initials when `initials` absent. |
+| `initials`     | `string`              | -           | Explicit initials override.                     |
+| `iconFallback` | `ButtonIconSpec`      | -           | Optional icon spec when no source/initials.     |
+| `label`        | `string`              | -           | Accessibility label for the rendered content.   |
+| `size`         | `AvatarSize`          | `'m'`       | `xs`..`xl` size preset.                         |
+| `shape`        | `AvatarShape`         | `'circle'`  | `circle` or `rounded`.                          |
+| `tone`         | `ZoraTone`            | `'neutral'` | Drives background and fallback content tone.    |
+| `testID`       | `string`              | -           | Test id.                                        |
 
 Inherited props:
 
@@ -344,7 +344,10 @@ Overlapping avatar stack with optional overflow label.
 
 ```tsx
 <AvatarGroup
-  items={[{ id: '1', name: 'Ada Lovelace' }, { id: '2', name: 'Grace Hopper', tone: 'success' }]}
+  items={[
+    { id: '1', name: 'Ada Lovelace' },
+    { id: '2', name: 'Grace Hopper', tone: 'success' },
+  ]}
 />
 ```
 
@@ -353,26 +356,26 @@ Overlapping avatar stack with optional overflow label.
 
 ZORA props:
 
-| Prop            | Type                         | Default     | Notes                                |
-| --------------- | ---------------------------- | ----------- | ------------------------------------ |
-| `items`         | `AvatarGroupItem[]`          | -           | Avatar sources and fallback fields.  |
-| `max`           | `number`                     | `4`         | Max visible avatars before overflow. |
-| `size`          | `AvatarSize`                 | `'s'`       | Avatar size preset.                  |
-| `shape`         | `AvatarShape`                | `'circle'`  | Avatar shape preset.                 |
-| `overflowLabel` | `(overflowCount) => string`  | `+N`        | Overflow label formatter.            |
-| `testID`        | `string`                     | -           | Test id.                              |
+| Prop            | Type                        | Default    | Notes                                |
+| --------------- | --------------------------- | ---------- | ------------------------------------ |
+| `items`         | `AvatarGroupItem[]`         | -          | Avatar sources and fallback fields.  |
+| `max`           | `number`                    | `4`        | Max visible avatars before overflow. |
+| `size`          | `AvatarSize`                | `'s'`      | Avatar size preset.                  |
+| `shape`         | `AvatarShape`               | `'circle'` | Avatar shape preset.                 |
+| `overflowLabel` | `(overflowCount) => string` | `+N`       | Overflow label formatter.            |
+| `testID`        | `string`                    | -          | Test id.                             |
 
 `AvatarGroupItem`:
 
-| Prop           | Type            | Notes                              |
-| -------------- | --------------- | ---------------------------------- |
-| `id`           | `string`        | Optional stable key.               |
-| `source`       | `ImageSourcePropType` | Image source for the avatar. |
-| `name`         | `string`        | Used to derive initials.           |
-| `initials`     | `string`        | Explicit initials override.        |
-| `iconFallback` | `ButtonIconSpec`| Optional icon fallback.            |
-| `label`        | `string`        | Accessibility label.               |
-| `tone`         | `ZoraTone`      | Overrides avatar tone per item.    |
+| Prop           | Type                  | Notes                           |
+| -------------- | --------------------- | ------------------------------- |
+| `id`           | `string`              | Optional stable key.            |
+| `source`       | `ImageSourcePropType` | Image source for the avatar.    |
+| `name`         | `string`              | Used to derive initials.        |
+| `initials`     | `string`              | Explicit initials override.     |
+| `iconFallback` | `ButtonIconSpec`      | Optional icon fallback.         |
+| `label`        | `string`              | Accessibility label.            |
+| `tone`         | `ZoraTone`            | Overrides avatar tone per item. |
 
 Inherited props:
 
@@ -457,12 +460,12 @@ Text input wrapper with ZORA sizing and optional Surface icon specs.
 
 ZORA props:
 
-| Prop           | Type              | Default | Notes                                    |
-| -------------- | ----------------- | ------- | ---------------------------------------- |
-| `size`         | `ZoraControlSize` | `'l'`   | Passed to Surface as `size`.             |
-| `leadingIcon`  | `ButtonIconSpec`  | -       | Rendered as Surface `leadingAccessory`.  |
-| `trailingIcon` | `ButtonIconSpec`  | -       | Rendered as Surface `trailingAccessory`. |
-| `trailingAction` | `InputTrailingAction` | -   | Renders an icon-only trailing action (mutually exclusive with `trailingIcon`). |
+| Prop             | Type                  | Default | Notes                                                                          |
+| ---------------- | --------------------- | ------- | ------------------------------------------------------------------------------ |
+| `size`           | `ZoraControlSize`     | `'l'`   | Passed to Surface as `size`.                                                   |
+| `leadingIcon`    | `ButtonIconSpec`      | -       | Rendered as Surface `leadingAccessory`.                                        |
+| `trailingIcon`   | `ButtonIconSpec`      | -       | Rendered as Surface `trailingAccessory`.                                       |
+| `trailingAction` | `InputTrailingAction` | -       | Renders an icon-only trailing action (mutually exclusive with `trailingIcon`). |
 
 Inherited props:
 
@@ -488,18 +491,18 @@ Controlled search input with leading search icon and optional clear action.
 
 ZORA props:
 
-| Prop            | Type                       | Default    | Notes                                               |
-| --------------- | -------------------------- | ---------- | --------------------------------------------------- |
-| `value`         | `string`                   | -          | Current search query.                               |
-| `onValueChange` | `(value: string) => void`  | -          | Called when the query changes.                      |
-| `placeholder`   | `string`                   | `'Search'` | Placeholder text.                                   |
-| `onSubmit`      | `(value: string) => void`  | -          | Called on submit (`returnKeyType="search"`).        |
-| `onClear`       | `() => void`               | -          | Called after clearing the query.                    |
-| `clearable`     | `boolean`                  | `true`     | Shows clear action when `value` is non-empty.       |
-| `size`          | `ZoraControlSize`          | `'l'`      | Passed to the underlying `Input`.                   |
-| `disabled`      | `boolean`                  | -          | Disables the underlying `Input`.                    |
-| `readOnly`      | `boolean`                  | -          | Makes the underlying `Input` read-only.             |
-| `testID`        | `string`                   | -          | Test id.                                            |
+| Prop            | Type                      | Default    | Notes                                         |
+| --------------- | ------------------------- | ---------- | --------------------------------------------- |
+| `value`         | `string`                  | -          | Current search query.                         |
+| `onValueChange` | `(value: string) => void` | -          | Called when the query changes.                |
+| `placeholder`   | `string`                  | `'Search'` | Placeholder text.                             |
+| `onSubmit`      | `(value: string) => void` | -          | Called on submit (`returnKeyType="search"`).  |
+| `onClear`       | `() => void`              | -          | Called after clearing the query.              |
+| `clearable`     | `boolean`                 | `true`     | Shows clear action when `value` is non-empty. |
+| `size`          | `ZoraControlSize`         | `'l'`      | Passed to the underlying `Input`.             |
+| `disabled`      | `boolean`                 | -          | Disables the underlying `Input`.              |
+| `readOnly`      | `boolean`                 | -          | Makes the underlying `Input` read-only.       |
+| `testID`        | `string`                  | -          | Test id.                                      |
 
 Inherited props:
 
@@ -620,16 +623,16 @@ Compact filter/action token with optional icon and selected state.
 
 ZORA props:
 
-| Prop       | Type              | Default     | Notes                               |
-| ---------- | ----------------- | ----------- | ----------------------------------- |
-| `children` | `React.ReactNode` | -           | Chip label content.                 |
-| `icon`     | `ButtonIconSpec`  | -           | Optional leading icon spec.         |
-| `selected` | `boolean`         | `false`     | Selected styling state.             |
-| `tone`     | `ZoraTone`        | `'neutral'` | Selected tone.                      |
-| `size`     | `ZoraControlSize` | `'s'`       | Padding and icon sizing.            |
-| `disabled` | `boolean`         | `false`     | Disables interaction and mutes tone.|
-| `onPress`  | `() => void`      | -           | Optional press handler.             |
-| `testID`   | `string`          | -           | Test id.                            |
+| Prop       | Type              | Default     | Notes                                |
+| ---------- | ----------------- | ----------- | ------------------------------------ |
+| `children` | `React.ReactNode` | -           | Chip label content.                  |
+| `icon`     | `ButtonIconSpec`  | -           | Optional leading icon spec.          |
+| `selected` | `boolean`         | `false`     | Selected styling state.              |
+| `tone`     | `ZoraTone`        | `'neutral'` | Selected tone.                       |
+| `size`     | `ZoraControlSize` | `'s'`       | Padding and icon sizing.             |
+| `disabled` | `boolean`         | `false`     | Disables interaction and mutes tone. |
+| `onPress`  | `() => void`      | -           | Optional press handler.              |
+| `testID`   | `string`          | -           | Test id.                             |
 
 Inherited props:
 
@@ -645,7 +648,10 @@ Controlled single- or multi-select chip set for filters and facets.
 <ChipGroup
   value="all"
   onValueChange={setValue}
-  items={[{ value: 'all', label: 'All' }, { value: 'favorites', label: 'Favorites' }]}
+  items={[
+    { value: 'all', label: 'All' },
+    { value: 'favorites', label: 'Favorites' },
+  ]}
 />
 ```
 
@@ -654,17 +660,17 @@ Controlled single- or multi-select chip set for filters and facets.
 
 ZORA props:
 
-| Prop            | Type                        | Default     | Notes                               |
-| --------------- | --------------------------- | ----------- | ----------------------------------- |
-| `items`         | `ChipGroupItem[]`           | -           | Rendered chips.                     |
-| `value`         | `string \| string[]`        | -           | Selected value(s).                  |
-| `onValueChange` | `(value) => void`           | -           | Selection change handler.           |
-| `multiple`      | `boolean`                   | `false`     | Enables multi-select mode.          |
-| `tone`          | `ZoraTone`                  | `'neutral'` | Tone for selected chips.            |
-| `size`          | `ZoraControlSize`           | `'s'`       | Chip size.                          |
-| `wrap`          | `boolean`                   | `true`      | Wrap chips on smaller screens.      |
-| `disabled`      | `boolean`                   | -           | Disables all chips.                 |
-| `testID`        | `string`                    | -           | Test id.                            |
+| Prop            | Type                 | Default     | Notes                          |
+| --------------- | -------------------- | ----------- | ------------------------------ |
+| `items`         | `ChipGroupItem[]`    | -           | Rendered chips.                |
+| `value`         | `string \| string[]` | -           | Selected value(s).             |
+| `onValueChange` | `(value) => void`    | -           | Selection change handler.      |
+| `multiple`      | `boolean`            | `false`     | Enables multi-select mode.     |
+| `tone`          | `ZoraTone`           | `'neutral'` | Tone for selected chips.       |
+| `size`          | `ZoraControlSize`    | `'s'`       | Chip size.                     |
+| `wrap`          | `boolean`            | `true`      | Wrap chips on smaller screens. |
+| `disabled`      | `boolean`            | -           | Disables all chips.            |
+| `testID`        | `string`             | -           | Test id.                       |
 
 Inherited props:
 
@@ -1253,13 +1259,13 @@ Composable row for search + chips + trailing actions.
 
 ZORA props:
 
-| Prop       | Type              | Default | Notes                       |
-| ---------- | ----------------- | ------- | --------------------------- |
-| `leading`  | `React.ReactNode` | -       | Optional leading content.   |
-| `children` | `React.ReactNode` | -       | Main filter controls.       |
-| `trailing` | `React.ReactNode` | -       | Optional trailing content.  |
+| Prop       | Type              | Default | Notes                          |
+| ---------- | ----------------- | ------- | ------------------------------ |
+| `leading`  | `React.ReactNode` | -       | Optional leading content.      |
+| `children` | `React.ReactNode` | -       | Main filter controls.          |
+| `trailing` | `React.ReactNode` | -       | Optional trailing content.     |
 | `wrap`     | `boolean`         | `true`  | Wraps content on small widths. |
-| `testID`   | `string`          | -       | Test id.                    |
+| `testID`   | `string`          | -       | Test id.                       |
 
 Inherited props:
 
