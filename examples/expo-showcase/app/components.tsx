@@ -11,15 +11,20 @@ import {
   Heading,
   IconButton,
   Input,
+  MediaCard,
+  MetricCard,
   Modal,
   Page,
   PageHeader,
   PageSection,
+  Progress,
   RadioGroup,
+  Rating,
   SearchBar,
   SectionHeader,
   Select,
   Stack,
+  Surface,
   Tabs,
   Text,
   Textarea,
@@ -396,6 +401,66 @@ export function ComponentsPage() {
             title="Subtle card"
             description="Use subtle cards for secondary content or nested regions."
           />
+
+          <SectionHeader
+            title="Media and metrics"
+            description="Media cards and metric cards are ready-made product surfaces for listings and dashboards."
+          />
+          <MediaCard
+            badges={
+              <Stack direction="row" gap="s" wrap="wrap">
+                <Badge tone="primary">Featured</Badge>
+                <Badge tone="neutral" emphasis="soft">
+                  Cross-platform
+                </Badge>
+              </Stack>
+            }
+            description="Compose an image slot, title/description, badges, actions, footer metadata, and optional children."
+            footer={
+              <Stack direction="row" gap="s" wrap="wrap">
+                <Rating value={4.5} />
+                <Badge tone="success">Open</Badge>
+              </Stack>
+            }
+            image={
+              <Surface
+                variant="subtle"
+                p="m"
+                style={{ aspectRatio: 16 / 9, alignItems: 'center', justifyContent: 'center' }}
+              >
+                <Avatar initials="Z" size="l" tone="primary" />
+              </Surface>
+            }
+            onPress={() => undefined}
+            title="MediaCard"
+          />
+
+          <Stack direction={{ base: 'column', md: 'row' }} gap="m" wrap="wrap">
+            <MetricCard
+              delta="+4.1%"
+              deltaTone="success"
+              description="Last 30 days"
+              icon={{ name: 'trending-up-outline' }}
+              label="Monthly active users"
+              value="14.2k"
+            />
+            <MetricCard
+              delta="-2.3%"
+              deltaTone="danger"
+              description="Compared to last week"
+              icon={{ name: 'pulse-outline' }}
+              label="Conversion"
+              value="3.7%"
+            />
+          </Stack>
+
+          <Card title="Progress" description="Linear progress v1 using semantic tones.">
+            <Stack gap="m">
+              <Progress value={72} />
+              <Progress tone="success" value={38} />
+              <Progress tone="warning" value={55} />
+            </Stack>
+          </Card>
         </PageSection>
 
         <LayoutsShowcaseSection />

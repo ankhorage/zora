@@ -442,6 +442,145 @@ Inherits all Surface `CardProps` except `children`, `p`, `radius`, `variant`, an
 
 </details>
 
+### `MediaCard`
+
+Media-first card surface for listings, content previews, and catalog items.
+
+```tsx
+<MediaCard
+  imageSource={require('./cover.png')}
+  imageLabel="Cover image"
+  title="MediaCard"
+  description="Composes an image slot, header content, badges, actions, and footer metadata."
+  badges={<Badge tone="primary">Featured</Badge>}
+  footer={<Rating value={4.5} />}
+  onPress={() => undefined}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop               | Type                                    | Default     | Notes                                                     |
+| ------------------ | --------------------------------------- | ----------- | --------------------------------------------------------- |
+| `imageSource`      | `ImageSourcePropType`                   | -           | Image source (mutually exclusive with `image`).           |
+| `imageLabel`       | `string`                                | -           | Accessibility label for `imageSource`.                    |
+| `image`            | `React.ReactNode`                       | -           | Custom image slot (mutually exclusive with `imageSource`).|
+| `imageAspectRatio` | `number`                                | `16 / 9`    | Aspect ratio used when rendering `imageSource`.           |
+| `title`            | `React.ReactNode`                       | -           | Required title.                                           |
+| `description`      | `React.ReactNode`                       | -           | Optional description under the title.                     |
+| `eyebrow`          | `React.ReactNode`                       | -           | Optional caption above the title.                         |
+| `badges`           | `React.ReactNode`                       | -           | Optional badge/tags region near the title.                |
+| `actions`          | `React.ReactNode`                       | -           | Optional trailing action area; disables `onPress`.        |
+| `footer`           | `React.ReactNode`                       | -           | Optional footer content under the body.                   |
+| `children`         | `React.ReactNode`                       | -           | Optional body content.                                    |
+| `tone`             | `ZoraCardTone`                          | `'default'` | Passed to the underlying `Card`.                          |
+| `compact`          | `boolean`                               | `false`     | Uses tighter spacing.                                     |
+| `onPress`          | `() => void`                            | -           | Makes the card pressable when no `actions` are present.   |
+| `testID`           | `string`                                | -           | Forwarded to the underlying `Card`.                       |
+
+Inherited props:
+
+No inherited props. `MediaCardProps` is declared directly by ZORA.
+
+</details>
+
+### `MetricCard`
+
+Compact metric surface for dashboards, stats, and summary cards.
+
+```tsx
+<MetricCard
+  label="Monthly active users"
+  value="14.2k"
+  delta="+4.1%"
+  deltaTone="success"
+  description="Last 30 days"
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop         | Type              | Default     | Notes                                                   |
+| ------------ | ----------------- | ----------- | ------------------------------------------------------- |
+| `label`      | `React.ReactNode` | -           | Required label above the value.                         |
+| `value`      | `React.ReactNode` | -           | Required metric value.                                  |
+| `description`| `React.ReactNode` | -           | Optional supporting copy.                               |
+| `icon`       | `ButtonIconSpec`  | -           | Optional icon shown next to the label.                  |
+| `delta`      | `React.ReactNode` | -           | Optional delta badge content.                           |
+| `deltaTone`  | `ZoraTone`        | `'neutral'` | Tone used for the delta `Badge`.                        |
+| `actions`    | `React.ReactNode` | -           | Optional trailing action area; disables `onPress`.      |
+| `tone`       | `ZoraCardTone`    | `'default'` | Passed to the underlying `Card`.                        |
+| `compact`    | `boolean`         | `false`     | Uses tighter spacing.                                   |
+| `onPress`    | `() => void`      | -           | Makes the card pressable when no `actions` are present. |
+| `testID`     | `string`          | -           | Forwarded to the underlying `Card`.                     |
+
+Inherited props:
+
+No inherited props. `MetricCardProps` is declared directly by ZORA.
+
+</details>
+
+### `Progress`
+
+Linear progress bar with semantic tone.
+
+```tsx
+<Progress value={72} />
+<Progress tone="success" value={38} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop     | Type              | Default     | Notes                        |
+| -------- | ----------------- | ----------- | ---------------------------- |
+| `value`  | `number`          | -           | Current progress value.      |
+| `max`    | `number`          | `100`       | Maximum value for completion.|
+| `tone`   | `ZoraTone`        | `'primary'` | Fill tone.                   |
+| `size`   | `ZoraControlSize` | `'m'`       | Controls bar height.         |
+| `testID` | `string`          | -           | Test id.                     |
+
+Inherited props:
+
+No inherited props. `ProgressProps` is declared directly by ZORA.
+
+</details>
+
+### `Rating`
+
+Readonly rating display rendered as star icons.
+
+```tsx
+<Rating value={4.5} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop     | Type              | Default     | Notes                    |
+| -------- | ----------------- | ----------- | ------------------------ |
+| `value`  | `number`          | -           | Current rating value.    |
+| `max`    | `number`          | `5`         | Maximum rating value.    |
+| `tone`   | `ZoraTone`        | `'warning'` | Tone for filled icons.   |
+| `size`   | `ZoraControlSize` | `'m'`       | Icon sizing preset.      |
+| `testID` | `string`          | -           | Test id.                 |
+
+Inherited props:
+
+No inherited props. `RatingProps` is declared directly by ZORA.
+
+</details>
+
 ### `Input`
 
 Text input wrapper with ZORA sizing and optional Surface icon specs.
@@ -1371,6 +1510,50 @@ ZORA props:
 Inherited props:
 
 No inherited props. `ListSectionProps` is declared directly by ZORA.
+
+</details>
+
+### `Timeline`
+
+Vertical-only timeline pattern for onboarding steps, order tracking, and activity sequences.
+
+```tsx
+<Timeline
+  items={[
+    { id: '1', title: 'Order placed', meta: '09:15', status: 'success' },
+    { id: '2', title: 'In transit', meta: '11:42', status: 'primary' },
+    { id: '3', title: 'Requires attention', meta: 'Today', status: 'warning' },
+  ]}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop      | Type             | Default | Notes                                           |
+| --------- | ---------------- | ------- | ----------------------------------------------- |
+| `items`   | `TimelineItem[]` | -       | Ordered timeline items (vertical-only in v1).   |
+| `compact` | `boolean`        | `false` | Uses tighter spacing between items.             |
+| `testID`  | `string`         | -       | Test id.                                        |
+
+Item shape:
+
+```ts
+type TimelineItem = {
+  id: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  meta?: React.ReactNode;
+  status?: ZoraTone;
+  icon?: ButtonIconSpec;
+};
+```
+
+Inherited props:
+
+No inherited props. `TimelineProps` is declared directly by ZORA.
 
 </details>
 

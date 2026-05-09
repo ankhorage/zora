@@ -26,6 +26,7 @@ import {
   SignUpForm,
   SwitchField,
   TileGrid,
+  Timeline,
   TreeView,
 } from '@ankhorage/zora';
 import React from 'react';
@@ -182,6 +183,37 @@ export function PatternsPage() {
               variant="card"
             />
           </List>
+        </PageSection>
+
+        <PageSection title="Scenario: Timeline">
+          <Timeline
+            items={[
+              {
+                id: '1',
+                title: 'Order placed',
+                description: 'We have received your request.',
+                meta: '09:15',
+                status: 'success',
+                icon: { name: 'checkmark-outline' },
+              },
+              {
+                id: '2',
+                title: 'In transit',
+                description: 'Carrier pickup and routing updates.',
+                meta: '11:42',
+                status: 'primary',
+                icon: { name: 'car-outline' },
+              },
+              {
+                id: '3',
+                title: 'Requires attention',
+                description: 'Address verification failed. Update delivery details.',
+                meta: 'Today',
+                status: 'warning',
+                icon: { name: 'alert-circle-outline' },
+              },
+            ]}
+          />
         </PageSection>
 
         <PageSection title="Scenario: App settings">
