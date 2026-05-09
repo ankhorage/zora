@@ -1273,6 +1273,107 @@ No inherited props. `FilterBarProps` is declared directly by ZORA.
 
 </details>
 
+### `List`
+
+List wrapper that renders `ListRow` items with dividers or spacing, or accepts custom children.
+
+```tsx
+<List
+  items={[
+    { title: 'Account', description: 'Profile and security', onPress: () => undefined },
+    { title: 'Notifications', trailing: <Badge>On</Badge> },
+  ]}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop         | Type              | Default     | Notes                                                 |
+| ------------ | ----------------- | ----------- | ----------------------------------------------------- |
+| `items`      | `ListRowProps[]`  | -           | Items mode. Mutually exclusive with `children`.       |
+| `children`   | `React.ReactNode` | -           | Custom children mode.                                 |
+| `rowVariant` | `ListRowVariant`  | `'divider'` | Default variant applied when an item omits `variant`. |
+| `compact`    | `boolean`         | `false`     | Default compact value applied to rows.                |
+| `testID`     | `string`          | -           | Test id.                                              |
+
+Behavior notes:
+
+- In items mode, ZORA inserts `Divider` between `variant="divider"` rows and `Spacer` between `variant="card"` rows.
+
+Inherited props:
+
+No inherited props. `ListProps` is declared directly by ZORA.
+
+</details>
+
+### `ListRow`
+
+Single list row with leading/trailing slots, optional metadata, and a structured action model.
+
+```tsx
+<ListRow title="Profile" description="Update your details" onPress={() => undefined} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop          | Type              | Default     | Notes                                                            |
+| ------------- | ----------------- | ----------- | ---------------------------------------------------------------- |
+| `title`       | `React.ReactNode` | -           | Required row title.                                              |
+| `description` | `React.ReactNode` | -           | Supporting description.                                          |
+| `meta`        | `React.ReactNode` | -           | Small secondary metadata below description.                      |
+| `leading`     | `React.ReactNode` | -           | Leading slot (icon/avatar/media).                                |
+| `trailing`    | `React.ReactNode` | -           | Trailing slot (badges/meta).                                     |
+| `variant`     | `ListRowVariant`  | `'divider'` | `divider` or `card`.                                             |
+| `compact`     | `boolean`         | `false`     | Uses tighter padding and typography spacing.                     |
+| `selected`    | `boolean`         | `false`     | Selected styling state.                                          |
+| `disabled`    | `boolean`         | `false`     | Disables interaction and mutes presentation.                     |
+| `onPress`     | `() => void`      | -           | Makes the row pressable. Mutually exclusive with `action`.       |
+| `action`      | `React.ReactNode` | -           | Trailing interactive content. Mutually exclusive with `onPress`. |
+| `testID`      | `string`          | -           | Test id.                                                         |
+
+Inherited props:
+
+No inherited props. `ListRowProps` is declared directly by ZORA.
+
+</details>
+
+### `ListSection`
+
+Section wrapper for list content with an optional `SectionHeader`.
+
+```tsx
+<ListSection title="Settings" items={[{ title: 'Account' }]} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop          | Type              | Default     | Notes                                                 |
+| ------------- | ----------------- | ----------- | ----------------------------------------------------- |
+| `title`       | `React.ReactNode` | -           | Optional section title (renders `SectionHeader`).     |
+| `description` | `React.ReactNode` | -           | Optional section description.                         |
+| `eyebrow`     | `React.ReactNode` | -           | Optional eyebrow above the title.                     |
+| `actions`     | `React.ReactNode` | -           | Optional trailing header actions.                     |
+| `items`       | `ListRowProps[]`  | -           | Items mode list content.                              |
+| `children`    | `React.ReactNode` | -           | Custom children mode list content.                    |
+| `rowVariant`  | `ListRowVariant`  | `'divider'` | Default variant applied when an item omits `variant`. |
+| `compact`     | `boolean`         | `false`     | Default compact value applied to rows.                |
+| `testID`      | `string`          | -           | Test id.                                              |
+
+Inherited props:
+
+No inherited props. `ListSectionProps` is declared directly by ZORA.
+
+</details>
+
 ### `SettingsRow`
 
 Compact settings row with optional metadata, control, and press handling.

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Badge,
   Card,
   ChipGroup,
@@ -11,6 +12,9 @@ import {
   IconButton,
   Input,
   InspectorField,
+  List,
+  ListRow,
+  ListSection,
   Notice,
   OtpForm,
   Page,
@@ -106,6 +110,78 @@ export function PatternsPage() {
               ]}
             />
           </FilterBar>
+        </PageSection>
+
+        <PageSection title="Scenario: Lists">
+          <ListSection
+            title="Inbox"
+            description="Divider rows work well for dense settings and feed-style lists."
+            items={[
+              {
+                title: 'Ada Lovelace',
+                description: 'Commented on your proposal.',
+                meta: '2 minutes ago',
+                leading: <Avatar name="Ada Lovelace" size="s" />,
+                trailing: (
+                  <Badge tone="neutral" emphasis="soft">
+                    New
+                  </Badge>
+                ),
+                onPress: () => undefined,
+              },
+              {
+                title: 'Build pipeline',
+                description: 'Main branch build succeeded.',
+                meta: 'Today',
+                leading: <Avatar initials="CI" size="s" tone="primary" />,
+                action: (
+                  <IconButton icon={{ name: 'download-outline' }} label="Download artifacts" />
+                ),
+              },
+              {
+                title: 'Grace Hopper',
+                description: 'Invited you to review a draft.',
+                meta: 'Yesterday',
+                leading: <Avatar name="Grace Hopper" size="s" tone="success" />,
+                disabled: true,
+                trailing: (
+                  <Badge tone="neutral" emphasis="soft">
+                    Archived
+                  </Badge>
+                ),
+              },
+            ]}
+          />
+
+          <ListSection
+            title="Card rows"
+            description="Card rows work well for dashboard-style lists."
+            rowVariant="card"
+            items={[
+              {
+                title: 'Revenue',
+                description: 'Monthly recurring revenue snapshot.',
+                leading: <Avatar initials="MRR" size="s" tone="warning" />,
+                trailing: <Badge tone="success">Up</Badge>,
+                onPress: () => undefined,
+              },
+              {
+                title: 'New users',
+                description: 'Signups across mobile and web.',
+                leading: <Avatar initials="NU" size="s" tone="primary" />,
+                trailing: <Badge tone="neutral">Today</Badge>,
+              },
+            ]}
+          />
+
+          <List>
+            <ListRow
+              title="Children mode"
+              description="List can also render custom children."
+              leading={<Avatar initials="Z" size="s" />}
+              variant="card"
+            />
+          </List>
         </PageSection>
 
         <PageSection title="Scenario: App settings">
