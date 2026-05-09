@@ -463,23 +463,23 @@ Media-first card surface for listings, content previews, and catalog items.
 
 ZORA props:
 
-| Prop               | Type                                    | Default     | Notes                                                     |
-| ------------------ | --------------------------------------- | ----------- | --------------------------------------------------------- |
-| `imageSource`      | `ImageSourcePropType`                   | -           | Image source (mutually exclusive with `image`).           |
-| `imageLabel`       | `string`                                | -           | Accessibility label for `imageSource`.                    |
-| `image`            | `React.ReactNode`                       | -           | Custom image slot (mutually exclusive with `imageSource`).|
-| `imageAspectRatio` | `number`                                | `16 / 9`    | Aspect ratio used when rendering `imageSource`.           |
-| `title`            | `React.ReactNode`                       | -           | Required title.                                           |
-| `description`      | `React.ReactNode`                       | -           | Optional description under the title.                     |
-| `eyebrow`          | `React.ReactNode`                       | -           | Optional caption above the title.                         |
-| `badges`           | `React.ReactNode`                       | -           | Optional badge/tags region near the title.                |
-| `actions`          | `React.ReactNode`                       | -           | Optional trailing action area; disables `onPress`.        |
-| `footer`           | `React.ReactNode`                       | -           | Optional footer content under the body.                   |
-| `children`         | `React.ReactNode`                       | -           | Optional body content.                                    |
-| `tone`             | `ZoraCardTone`                          | `'default'` | Passed to the underlying `Card`.                          |
-| `compact`          | `boolean`                               | `false`     | Uses tighter spacing.                                     |
-| `onPress`          | `() => void`                            | -           | Makes the card pressable when no `actions` are present.   |
-| `testID`           | `string`                                | -           | Forwarded to the underlying `Card`.                       |
+| Prop               | Type                  | Default     | Notes                                                      |
+| ------------------ | --------------------- | ----------- | ---------------------------------------------------------- |
+| `imageSource`      | `ImageSourcePropType` | -           | Image source (mutually exclusive with `image`).            |
+| `imageLabel`       | `string`              | -           | Accessibility label for `imageSource`.                     |
+| `image`            | `React.ReactNode`     | -           | Custom image slot (mutually exclusive with `imageSource`). |
+| `imageAspectRatio` | `number`              | `16 / 9`    | Aspect ratio used when rendering `imageSource`.            |
+| `title`            | `React.ReactNode`     | -           | Required title.                                            |
+| `description`      | `React.ReactNode`     | -           | Optional description under the title.                      |
+| `eyebrow`          | `React.ReactNode`     | -           | Optional caption above the title.                          |
+| `badges`           | `React.ReactNode`     | -           | Optional badge/tags region near the title.                 |
+| `actions`          | `React.ReactNode`     | -           | Optional trailing action area; disables `onPress`.         |
+| `footer`           | `React.ReactNode`     | -           | Optional footer content under the body.                    |
+| `children`         | `React.ReactNode`     | -           | Optional body content.                                     |
+| `tone`             | `ZoraCardTone`        | `'default'` | Passed to the underlying `Card`.                           |
+| `compact`          | `boolean`             | `false`     | Uses tighter spacing.                                      |
+| `onPress`          | `() => void`          | -           | Makes the card pressable when no `actions` are present.    |
+| `testID`           | `string`              | -           | Forwarded to the underlying `Card`.                        |
 
 Inherited props:
 
@@ -506,19 +506,19 @@ Compact metric surface for dashboards, stats, and summary cards.
 
 ZORA props:
 
-| Prop         | Type              | Default     | Notes                                                   |
-| ------------ | ----------------- | ----------- | ------------------------------------------------------- |
-| `label`      | `React.ReactNode` | -           | Required label above the value.                         |
-| `value`      | `React.ReactNode` | -           | Required metric value.                                  |
-| `description`| `React.ReactNode` | -           | Optional supporting copy.                               |
-| `icon`       | `ButtonIconSpec`  | -           | Optional icon shown next to the label.                  |
-| `delta`      | `React.ReactNode` | -           | Optional delta badge content.                           |
-| `deltaTone`  | `ZoraTone`        | `'neutral'` | Tone used for the delta `Badge`.                        |
-| `actions`    | `React.ReactNode` | -           | Optional trailing action area; disables `onPress`.      |
-| `tone`       | `ZoraCardTone`    | `'default'` | Passed to the underlying `Card`.                        |
-| `compact`    | `boolean`         | `false`     | Uses tighter spacing.                                   |
-| `onPress`    | `() => void`      | -           | Makes the card pressable when no `actions` are present. |
-| `testID`     | `string`          | -           | Forwarded to the underlying `Card`.                     |
+| Prop          | Type              | Default     | Notes                                                   |
+| ------------- | ----------------- | ----------- | ------------------------------------------------------- |
+| `label`       | `React.ReactNode` | -           | Required label above the value.                         |
+| `value`       | `React.ReactNode` | -           | Required metric value.                                  |
+| `description` | `React.ReactNode` | -           | Optional supporting copy.                               |
+| `icon`        | `ButtonIconSpec`  | -           | Optional icon shown next to the label.                  |
+| `delta`       | `React.ReactNode` | -           | Optional delta badge content.                           |
+| `deltaTone`   | `ZoraTone`        | `'neutral'` | Tone used for the delta `Badge`.                        |
+| `actions`     | `React.ReactNode` | -           | Optional trailing action area; disables `onPress`.      |
+| `tone`        | `ZoraCardTone`    | `'default'` | Passed to the underlying `Card`.                        |
+| `compact`     | `boolean`         | `false`     | Uses tighter spacing.                                   |
+| `onPress`     | `() => void`      | -           | Makes the card pressable when no `actions` are present. |
+| `testID`      | `string`          | -           | Forwarded to the underlying `Card`.                     |
 
 Inherited props:
 
@@ -540,13 +540,13 @@ Linear progress bar with semantic tone.
 
 ZORA props:
 
-| Prop     | Type              | Default     | Notes                        |
-| -------- | ----------------- | ----------- | ---------------------------- |
-| `value`  | `number`          | -           | Current progress value.      |
-| `max`    | `number`          | `100`       | Maximum value for completion.|
-| `tone`   | `ZoraTone`        | `'primary'` | Fill tone.                   |
-| `size`   | `ZoraControlSize` | `'m'`       | Controls bar height.         |
-| `testID` | `string`          | -           | Test id.                     |
+| Prop     | Type              | Default     | Notes                         |
+| -------- | ----------------- | ----------- | ----------------------------- |
+| `value`  | `number`          | -           | Current progress value.       |
+| `max`    | `number`          | `100`       | Maximum value for completion. |
+| `tone`   | `ZoraTone`        | `'primary'` | Fill tone.                    |
+| `size`   | `ZoraControlSize` | `'m'`       | Controls bar height.          |
+| `testID` | `string`          | -           | Test id.                      |
 
 Inherited props:
 
@@ -567,13 +567,13 @@ Readonly rating display rendered as star icons.
 
 ZORA props:
 
-| Prop     | Type              | Default     | Notes                    |
-| -------- | ----------------- | ----------- | ------------------------ |
-| `value`  | `number`          | -           | Current rating value.    |
-| `max`    | `number`          | `5`         | Maximum rating value.    |
-| `tone`   | `ZoraTone`        | `'warning'` | Tone for filled icons.   |
-| `size`   | `ZoraControlSize` | `'m'`       | Icon sizing preset.      |
-| `testID` | `string`          | -           | Test id.                 |
+| Prop     | Type              | Default     | Notes                  |
+| -------- | ----------------- | ----------- | ---------------------- |
+| `value`  | `number`          | -           | Current rating value.  |
+| `max`    | `number`          | `5`         | Maximum rating value.  |
+| `tone`   | `ZoraTone`        | `'warning'` | Tone for filled icons. |
+| `size`   | `ZoraControlSize` | `'m'`       | Icon sizing preset.    |
+| `testID` | `string`          | -           | Test id.               |
 
 Inherited props:
 
@@ -1532,11 +1532,11 @@ Vertical-only timeline pattern for onboarding steps, order tracking, and activit
 
 ZORA props:
 
-| Prop      | Type             | Default | Notes                                           |
-| --------- | ---------------- | ------- | ----------------------------------------------- |
-| `items`   | `TimelineItem[]` | -       | Ordered timeline items (vertical-only in v1).   |
-| `compact` | `boolean`        | `false` | Uses tighter spacing between items.             |
-| `testID`  | `string`         | -       | Test id.                                        |
+| Prop      | Type             | Default | Notes                                         |
+| --------- | ---------------- | ------- | --------------------------------------------- |
+| `items`   | `TimelineItem[]` | -       | Ordered timeline items (vertical-only in v1). |
+| `compact` | `boolean`        | `false` | Uses tighter spacing between items.           |
+| `testID`  | `string`         | -       | Test id.                                      |
 
 Item shape:
 
