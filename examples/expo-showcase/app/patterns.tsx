@@ -1,9 +1,11 @@
 import {
   Badge,
   Card,
+  ChipGroup,
   CollectionEditor,
   DisclosureSection,
   EmptyState,
+  FilterBar,
   ForgotPasswordForm,
   FormField,
   IconButton,
@@ -15,6 +17,7 @@ import {
   PageHeader,
   PageSection,
   PaletteItem,
+  SearchBar,
   SignInForm,
   SignUpForm,
   SwitchField,
@@ -36,6 +39,8 @@ export function PatternsPage() {
   const [analyticsEnabled, setAnalyticsEnabled] = React.useState(false);
   const [debugMode, setDebugMode] = React.useState(false);
   const [verboseLogging, setVerboseLogging] = React.useState(true);
+  const [filters, setFilters] = React.useState<'all' | 'favorites'>('all');
+  const [query, setQuery] = React.useState('');
   const [items, setItems] = React.useState<LayoutSection[]>([
     { id: '1', name: 'Header section' },
     { id: '2', name: 'Main content' },
@@ -86,6 +91,23 @@ export function PatternsPage() {
           />
         }
       >
+        <PageSection title="Scenario: Search and filters">
+          <FilterBar
+            leading={
+              <SearchBar placeholder="Search items" value={query} onValueChange={setQuery} />
+            }
+          >
+            <ChipGroup
+              value={filters}
+              onValueChange={setFilters}
+              items={[
+                { value: 'all', label: 'All' },
+                { value: 'favorites', label: 'Favorites' },
+              ]}
+            />
+          </FilterBar>
+        </PageSection>
+
         <PageSection title="Scenario: App settings">
           <Notice
             title="Settings saved locally"

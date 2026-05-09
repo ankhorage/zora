@@ -4,6 +4,7 @@ import React from 'react';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { IconButton } from '../icon-button';
 import type { InputProps } from './types';
 
 function InputInner({
@@ -12,6 +13,9 @@ function InputInner({
   size = 'l',
   leadingIcon,
   trailingIcon,
+  trailingAction,
+  disabled,
+  readOnly,
   ...props
 }: InputProps) {
   const { theme } = useZoraTheme();
@@ -21,6 +25,7 @@ function InputInner({
   return (
     <Surface.TextInput
       {...props}
+      disabled={disabled}
       leadingAccessory={
         leadingIcon ? (
           <Surface.Icon
@@ -31,9 +36,20 @@ function InputInner({
           />
         ) : undefined
       }
+      readOnly={readOnly}
       size={size}
       trailingAccessory={
-        trailingIcon ? (
+        trailingAction ? (
+          <IconButton
+            icon={trailingAction.icon}
+            label={trailingAction.label}
+            disabled={disabled ?? readOnly}
+            emphasis="ghost"
+            size={size === 'l' ? 'm' : size}
+            tone="neutral"
+            onPress={trailingAction.onPress}
+          />
+        ) : trailingIcon ? (
           <Surface.Icon
             color={iconColor}
             name={trailingIcon.name}

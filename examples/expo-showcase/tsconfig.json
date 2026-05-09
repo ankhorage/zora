@@ -1,7 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@ankhorage/zora": ["../../dist/index.d.ts"]
+    },
+    "skipLibCheck": true,
     "strict": true,
     "module": "esnext"
   }

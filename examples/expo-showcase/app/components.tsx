@@ -1,8 +1,12 @@
 import {
+  Avatar,
+  AvatarGroup,
   Badge,
   Button,
   Card,
   CheckboxGroup,
+  Chip,
+  ChipGroup,
   Drawer,
   Heading,
   IconButton,
@@ -12,6 +16,7 @@ import {
   PageHeader,
   PageSection,
   RadioGroup,
+  SearchBar,
   SectionHeader,
   Select,
   Stack,
@@ -31,9 +36,11 @@ import { LayoutsShowcaseSection } from './sections/layoutsShowcase';
 export function ComponentsPage() {
   const [tab, setTab] = React.useState('overview');
   const [select, setSelect] = React.useState('starter');
+  const [search, setSearch] = React.useState('');
   const [density, setDensity] = React.useState<'comfortable' | 'compact' | 'spacious'>(
     'comfortable',
   );
+  const [chipFilter, setChipFilter] = React.useState<'all' | 'popular' | 'recent'>('all');
   const [channels, setChannels] = React.useState<('email' | 'push' | 'sms')[]>(['email']);
   const [modalOpen, setModalOpen] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -231,6 +238,25 @@ export function ComponentsPage() {
               { value: 'settings', label: 'Settings' },
             ]}
           />
+
+          <SectionHeader title="Chips" description="Compact filters and segments." />
+          <Stack gap="s">
+            <ChipGroup
+              value={chipFilter}
+              onValueChange={setChipFilter}
+              items={[
+                { value: 'all', label: 'All' },
+                { value: 'popular', label: 'Popular' },
+                { value: 'recent', label: 'Recent' },
+              ]}
+            />
+            <Stack direction="row" gap="s" wrap="wrap">
+              <Chip selected tone="primary">
+                Selected chip
+              </Chip>
+              <Chip>Static chip</Chip>
+            </Stack>
+          </Stack>
         </PageSection>
 
         <PageSection title="Toolbars">
@@ -265,7 +291,7 @@ export function ComponentsPage() {
               { value: 'enterprise', label: 'Enterprise' },
             ]}
           />
-          <Input placeholder="Search components" leadingIcon={{ name: 'search-outline' }} />
+          <SearchBar placeholder="Search components" value={search} onValueChange={setSearch} />
           <Input placeholder="Disabled input" disabled />
           <Textarea placeholder="Textarea multi-line" rows={3} />
 
@@ -335,6 +361,18 @@ export function ComponentsPage() {
             description="A neutral card with descriptive content and a status footer."
             footer={<Badge tone="success">Active</Badge>}
           >
+            <Stack direction="row" gap="s" wrap="wrap" align="center">
+              <Avatar name="Zora Kit" />
+              <AvatarGroup
+                items={[
+                  { id: '1', name: 'Fabio Gartenmann' },
+                  { id: '2', name: 'Ada Lovelace', tone: 'primary' },
+                  { id: '3', name: 'Grace Hopper', tone: 'success' },
+                  { id: '4', name: 'Linus Torvalds', tone: 'warning' },
+                  { id: '5', name: 'Lynn Conway', tone: 'danger' },
+                ]}
+              />
+            </Stack>
             <Stack direction="row" gap="s" wrap="wrap">
               <Badge tone="primary">Catalog</Badge>
               <Badge tone="neutral" emphasis="soft">

@@ -1,2 +1,2 @@
 export { Input } from './Input';
-export type { InputProps } from './types';
+export type { InputProps, InputTrailingAction } from './types';
