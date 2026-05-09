@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.7
+
+### Patch Changes
+
+- 8795a20: Add common product-facing primitives: `MediaCard`, `MetricCard`, `Progress` (linear v1), `Rating` (readonly v1), and the `Timeline` pattern (vertical-only v1).
+
 ## 1.0.6
 
 ### Patch Changes
