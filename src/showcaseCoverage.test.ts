@@ -17,11 +17,15 @@ const IGNORED_DIRECTORY_NAMES = new Set([
 
 const REQUIRED_SHOWCASE_COVERAGE = {
   components: [
+    'Avatar',
+    'AvatarGroup',
     'Badge',
     'Button',
     'Card',
     'Checkbox',
     'CheckboxGroup',
+    'Chip',
+    'ChipGroup',
     'Drawer',
     'Form',
     'FormActions',
@@ -34,6 +38,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'Modal',
     'Radio',
     'RadioGroup',
+    'SearchBar',
     'Select',
     'Tabs',
     'Text',
@@ -72,6 +77,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'ConfirmDialog',
     'DisclosureSection',
     'EmptyState',
+    'FilterBar',
     'InspectorField',
     'Notice',
     'Panel',

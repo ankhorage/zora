@@ -306,6 +306,80 @@ Inherits behavior from Surface `IconButton` including `disabled`, `loading`,
 
 </details>
 
+### `Avatar`
+
+User/profile image with name-based initials and optional icon fallback.
+
+```tsx
+<Avatar name="Zora Kit" />
+<Avatar size="l" tone="primary" name="Fabio Gartenmann" />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop           | Type            | Default     | Notes                                          |
+| -------------- | --------------- | ----------- | ---------------------------------------------- |
+| `source`       | `ImageSourcePropType` | -     | React Native `Image` source for the avatar.    |
+| `name`         | `string`        | -           | Used to derive initials when `initials` absent.|
+| `initials`     | `string`        | -           | Explicit initials override.                    |
+| `iconFallback` | `ButtonIconSpec`| -           | Optional icon spec when no source/initials.    |
+| `label`        | `string`        | -           | Accessibility label for the rendered content.  |
+| `size`         | `AvatarSize`    | `'m'`       | `xs`..`xl` size preset.                        |
+| `shape`        | `AvatarShape`   | `'circle'`  | `circle` or `rounded`.                         |
+| `tone`         | `ZoraTone`      | `'neutral'` | Drives background and fallback content tone.   |
+| `testID`       | `string`        | -           | Test id.                                       |
+
+Inherited props:
+
+No inherited props. `AvatarProps` is declared directly by ZORA.
+
+</details>
+
+### `AvatarGroup`
+
+Overlapping avatar stack with optional overflow label.
+
+```tsx
+<AvatarGroup
+  items={[{ id: '1', name: 'Ada Lovelace' }, { id: '2', name: 'Grace Hopper', tone: 'success' }]}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                         | Default     | Notes                                |
+| --------------- | ---------------------------- | ----------- | ------------------------------------ |
+| `items`         | `AvatarGroupItem[]`          | -           | Avatar sources and fallback fields.  |
+| `max`           | `number`                     | `4`         | Max visible avatars before overflow. |
+| `size`          | `AvatarSize`                 | `'s'`       | Avatar size preset.                  |
+| `shape`         | `AvatarShape`                | `'circle'`  | Avatar shape preset.                 |
+| `overflowLabel` | `(overflowCount) => string`  | `+N`        | Overflow label formatter.            |
+| `testID`        | `string`                     | -           | Test id.                              |
+
+`AvatarGroupItem`:
+
+| Prop           | Type            | Notes                              |
+| -------------- | --------------- | ---------------------------------- |
+| `id`           | `string`        | Optional stable key.               |
+| `source`       | `ImageSourcePropType` | Image source for the avatar. |
+| `name`         | `string`        | Used to derive initials.           |
+| `initials`     | `string`        | Explicit initials override.        |
+| `iconFallback` | `ButtonIconSpec`| Optional icon fallback.            |
+| `label`        | `string`        | Accessibility label.               |
+| `tone`         | `ZoraTone`      | Overrides avatar tone per item.    |
+
+Inherited props:
+
+No inherited props. `AvatarGroupProps` is declared directly by ZORA.
+
+</details>
+
 ### `Badge`
 
 Small status label with ZORA tone, emphasis, and size defaults.
@@ -388,6 +462,7 @@ ZORA props:
 | `size`         | `ZoraControlSize` | `'l'`   | Passed to Surface as `size`.             |
 | `leadingIcon`  | `ButtonIconSpec`  | -       | Rendered as Surface `leadingAccessory`.  |
 | `trailingIcon` | `ButtonIconSpec`  | -       | Rendered as Surface `trailingAccessory`. |
+| `trailingAction` | `InputTrailingAction` | -   | Renders an icon-only trailing action (mutually exclusive with `trailingIcon`). |
 
 Inherited props:
 
@@ -397,6 +472,38 @@ Inherits all Surface `TextInputProps` except `leadingAccessory`, `size`, and
 `placeholderTextColor`, `style`, `testID`, and `value`; Surface re-exposes
 `value`, `defaultValue`, `onChangeText`, `placeholder`, `disabled`, `readOnly`,
 `invalid`, `style`, and `testID`.
+
+</details>
+
+### `SearchBar`
+
+Controlled search input with leading search icon and optional clear action.
+
+```tsx
+<SearchBar value={query} onValueChange={setQuery} onSubmit={(value) => console.log(value)} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                       | Default    | Notes                                               |
+| --------------- | -------------------------- | ---------- | --------------------------------------------------- |
+| `value`         | `string`                   | -          | Current search query.                               |
+| `onValueChange` | `(value: string) => void`  | -          | Called when the query changes.                      |
+| `placeholder`   | `string`                   | `'Search'` | Placeholder text.                                   |
+| `onSubmit`      | `(value: string) => void`  | -          | Called on submit (`returnKeyType="search"`).        |
+| `onClear`       | `() => void`               | -          | Called after clearing the query.                    |
+| `clearable`     | `boolean`                  | `true`     | Shows clear action when `value` is non-empty.       |
+| `size`          | `ZoraControlSize`          | `'l'`      | Passed to the underlying `Input`.                   |
+| `disabled`      | `boolean`                  | -          | Disables the underlying `Input`.                    |
+| `readOnly`      | `boolean`                  | -          | Makes the underlying `Input` read-only.             |
+| `testID`        | `string`                   | -          | Test id.                                            |
+
+Inherited props:
+
+No inherited props. `SearchBarProps` is declared directly by ZORA.
 
 </details>
 
@@ -495,6 +602,73 @@ Inherited props:
 
 Passes `tone`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
 to underlying Surface `Checkbox` components.
+
+</details>
+
+### `Chip`
+
+Compact filter/action token with optional icon and selected state.
+
+```tsx
+<Chip selected tone="primary" onPress={() => undefined}>
+  Selected
+</Chip>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop       | Type              | Default     | Notes                               |
+| ---------- | ----------------- | ----------- | ----------------------------------- |
+| `children` | `React.ReactNode` | -           | Chip label content.                 |
+| `icon`     | `ButtonIconSpec`  | -           | Optional leading icon spec.         |
+| `selected` | `boolean`         | `false`     | Selected styling state.             |
+| `tone`     | `ZoraTone`        | `'neutral'` | Selected tone.                      |
+| `size`     | `ZoraControlSize` | `'s'`       | Padding and icon sizing.            |
+| `disabled` | `boolean`         | `false`     | Disables interaction and mutes tone.|
+| `onPress`  | `() => void`      | -           | Optional press handler.             |
+| `testID`   | `string`          | -           | Test id.                            |
+
+Inherited props:
+
+No inherited props. `ChipProps` is declared directly by ZORA.
+
+</details>
+
+### `ChipGroup`
+
+Controlled single- or multi-select chip set for filters and facets.
+
+```tsx
+<ChipGroup
+  value="all"
+  onValueChange={setValue}
+  items={[{ value: 'all', label: 'All' }, { value: 'favorites', label: 'Favorites' }]}
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop            | Type                        | Default     | Notes                               |
+| --------------- | --------------------------- | ----------- | ----------------------------------- |
+| `items`         | `ChipGroupItem[]`           | -           | Rendered chips.                     |
+| `value`         | `string \| string[]`        | -           | Selected value(s).                  |
+| `onValueChange` | `(value) => void`           | -           | Selection change handler.           |
+| `multiple`      | `boolean`                   | `false`     | Enables multi-select mode.          |
+| `tone`          | `ZoraTone`                  | `'neutral'` | Tone for selected chips.            |
+| `size`          | `ZoraControlSize`           | `'s'`       | Chip size.                          |
+| `wrap`          | `boolean`                   | `true`      | Wrap chips on smaller screens.      |
+| `disabled`      | `boolean`                   | -           | Disables all chips.                 |
+| `testID`        | `string`                    | -           | Test id.                            |
+
+Inherited props:
+
+No inherited props. `ChipGroupProps` is declared directly by ZORA.
 
 </details>
 
@@ -1061,6 +1235,35 @@ ZORA props:
 Inherited props:
 
 No inherited props. `SectionHeaderProps` is declared directly by ZORA.
+
+</details>
+
+### `FilterBar`
+
+Composable row for search + chips + trailing actions.
+
+```tsx
+<FilterBar leading={<SearchBar value={query} onValueChange={setQuery} />}>
+  <ChipGroup value="all" onValueChange={setFilter} items={[{ value: 'all', label: 'All' }]} />
+</FilterBar>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop       | Type              | Default | Notes                       |
+| ---------- | ----------------- | ------- | --------------------------- |
+| `leading`  | `React.ReactNode` | -       | Optional leading content.   |
+| `children` | `React.ReactNode` | -       | Main filter controls.       |
+| `trailing` | `React.ReactNode` | -       | Optional trailing content.  |
+| `wrap`     | `boolean`         | `true`  | Wraps content on small widths. |
+| `testID`   | `string`          | -       | Test id.                    |
+
+Inherited props:
+
+No inherited props. `FilterBarProps` is declared directly by ZORA.
 
 </details>
 

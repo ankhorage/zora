@@ -19,7 +19,7 @@ import React from 'react';
 export function ComponentFormsSection() {
   const [standaloneChecked, setStandaloneChecked] = React.useState(false);
   const [standaloneRadioChecked, setStandaloneRadioChecked] = React.useState(true);
-  const [formValues, setFormValues] = React.useState<Record<string, string>>({
+  const [formValues, setFormValues] = React.useState<{ email: string; project: string }>({
     email: 'hello@example.com',
     project: 'Showcase refresh',
   });
