@@ -1,0 +1,36 @@
+import React from 'react';
+
+import { Stack } from '../../foundation';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { SectionHeader } from '../section-header';
+import { List } from './List';
+import type { ListSectionProps } from './types';
+
+function ListSectionInner({
+  themeId: _themeId,
+  mode: _mode,
+  testID,
+  title,
+  description,
+  eyebrow,
+  actions,
+  ...props
+}: ListSectionProps) {
+  const hasHeader = title !== undefined;
+
+  return (
+    <Stack gap="s" testID={testID}>
+      {hasHeader ? (
+        <SectionHeader
+          actions={actions}
+          description={description}
+          eyebrow={eyebrow}
+          title={title}
+        />
+      ) : null}
+      <List {...props} />
+    </Stack>
+  );
+}
+
+export const ListSection = withZoraThemeScope(ListSectionInner);

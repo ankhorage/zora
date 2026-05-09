@@ -146,6 +146,15 @@ export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
+export type {
+  ListChildrenProps,
+  ListItemsProps,
+  ListProps,
+  ListRowProps,
+  ListRowVariant,
+  ListSectionProps,
+} from './patterns/list';
+export { List, ListRow, ListSection } from './patterns/list';
 export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';
