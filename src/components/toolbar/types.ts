@@ -1,9 +1,9 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-export type ToolbarPosition = 'top' | 'bottom' | 'inline';
-
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export type ToolbarPosition = 'top' | 'bottom' | 'inline';
 
 export interface ToolbarProps extends ZoraBaseProps {
   children?: React.ReactNode;
