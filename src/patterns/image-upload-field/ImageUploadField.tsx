@@ -91,7 +91,14 @@ function ImageUploadFieldInner({
     if (actionsDisabled || uploading || removing) return;
 
     setInternalError(undefined);
-    const picked = await onPick();
+    let picked;
+    try {
+      picked = await onPick();
+    } catch (error) {
+      if (!isMountedRef.current) return;
+      setInternalError(formatUnknownError(error));
+      return;
+    }
     if (!picked) return;
 
     const validationError = validatePickedImage({
