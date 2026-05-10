@@ -528,6 +528,35 @@ No inherited props. `MediaCardProps` is declared directly by ZORA.
 
 </details>
 
+### `Image`
+
+ZORA wrapper around the Surface `Image` primitive. Use this for theme-scoped image rendering in React Native and React Native Web.
+
+```tsx
+<Image
+  alt="Example cover"
+  aspectRatio={16 / 9}
+  fit="cover"
+  radius="l"
+  source="https://example.com/cover.png"
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop     | Type     | Default | Notes    |
+| -------- | -------- | ------- | -------- |
+| `testID` | `string` | -       | Test id. |
+
+Inherited props:
+
+Inherits all Surface `ImageProps` except `mode` and `themeId`. `source` accepts Surface `SurfaceImageSource` (string URL/uri or a React Native image source).
+
+</details>
+
 ### `MetricCard`
 
 Compact metric surface for dashboards, stats, and summary cards.
@@ -1333,6 +1362,84 @@ Inherited props:
 
 Picks these Surface `FieldProps`: `children`, `disabled`, `errorText`,
 `invalid`, `readOnly`, `required`, and `testID`.
+
+</details>
+
+### `ImagePreview`
+
+Provider-neutral image preview surface that renders `ZoraImageAsset` values.
+
+- `kind: 'url'` renders directly from `url`.
+- `kind: 'storage'` renders only when `publicUrl` is provided (ZORA never resolves storage URLs).
+
+```tsx
+<ImagePreview asset={{ kind: 'url', url: 'https://example.com/photo.jpg', alt: 'Photo' }} />
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop               | Type                     | Default   | Notes                                   |
+| ------------------ | ------------------------ | --------- | --------------------------------------- |
+| `asset`            | `ZoraImageAsset \| null` | -         | Rendered asset reference.               |
+| `aspectRatio`      | `number`                 | `1`       | Aspect ratio for the preview container. |
+| `fit`              | `ImageFit`               | `'cover'` | Surface resize mode.                    |
+| `emptyTitle`       | `React.ReactNode`        | -         | Empty state title.                      |
+| `emptyDescription` | `React.ReactNode`        | -         | Empty state description.                |
+| `testID`           | `string`                 | -         | Test id.                                |
+
+Inherited props:
+
+No inherited props. `ImagePreviewProps` is declared directly by ZORA.
+
+</details>
+
+### `ImageUploadField`
+
+Field UX for selecting, previewing, uploading, replacing, and removing images. All picking/upload/removal behavior is injected via callbacks.
+
+```tsx
+const [asset, setAsset] = React.useState<ZoraImageAsset | null>(null);
+
+<ImageUploadField
+  label="Project image"
+  accept="image/*"
+  maxSizeBytes={5_000_000}
+  value={asset}
+  onChange={setAsset}
+  onPick={pickImage}
+  onUpload={uploadImage}
+/>;
+```
+
+Upload progress is transient UI state reported through `onUpload(picked, { setProgress })`.
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop           | Type                                     | Default | Notes                                            |
+| -------------- | ---------------------------------------- | ------- | ------------------------------------------------ |
+| `value`        | `ZoraImageAsset \| null`                 | -       | Controlled asset value.                          |
+| `onChange`     | `(next: ZoraImageAsset \| null) => void` | -       | Controlled value updater.                        |
+| `label`        | `React.ReactNode`                        | -       | Field label (required).                          |
+| `description`  | `React.ReactNode`                        | -       | Description under the label.                     |
+| `helperText`   | `React.ReactNode`                        | -       | Helper text under the field.                     |
+| `errorText`    | `React.ReactNode`                        | -       | External error; overrides internal errors.       |
+| `disabled`     | `boolean`                                | `false` | Disables replace/remove (preview stays).         |
+| `readOnly`     | `boolean`                                | `false` | Disables replace/remove (preview stays).         |
+| `accept`       | `string`                                 | -       | Accepted media hint + best-effort validation.    |
+| `maxSizeBytes` | `number`                                 | -       | Best-effort size validation.                     |
+| `onPick`       | `() => Promise<ZoraPickedImage \| null>` | -       | Picker callback (required).                      |
+| `onUpload`     | Upload callback                          | -       | Optional upload; if omitted, pick becomes value. |
+| `onRemove`     | Remove callback                          | -       | Optional removal hook before clearing.           |
+
+Inherited props:
+
+No inherited props. `ImageUploadFieldProps` is declared directly by ZORA.
 
 </details>
 
