@@ -51,6 +51,14 @@ jobs:
             echo "No format:check script found; skipping."
           fi
 
+      - name: Run Knip
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.knip ? 0 : 1)"; then
+            bun run knip
+          else
+            echo "No knip script found; skipping."
+          fi
+
       - name: Run tests
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.test ? 0 : 1)"; then
