@@ -1,3 +1,5 @@
 import { createKnipConfig } from '@ankhorage/devtools/knip';
 
-export default createKnipConfig();
+export default createKnipConfig({
+  ignoreDependencies: ['expo-font'],
+});
