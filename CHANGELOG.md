@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.10
+
+### Patch Changes
+
+- aa0daf3: Add Surface-backed navigation chrome building blocks and Expo Router renderer adapters (`NavigationItem`, `NavigationList`, `ZoraTabBar`, `ZoraDrawerContent`).
+
 ## 1.0.9
 
 ### Patch Changes
