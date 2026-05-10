@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- 7cec2db: Add provider-neutral image and media upload UI components.
+
 ## 1.0.10
 
 ### Patch Changes
