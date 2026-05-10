@@ -1,6 +1,7 @@
 import {
   Avatar,
   Badge,
+  Button,
   Card,
   ChipGroup,
   CollectionEditor,
@@ -10,6 +11,8 @@ import {
   ForgotPasswordForm,
   FormField,
   IconButton,
+  ImagePreview,
+  ImageUploadField,
   Input,
   InspectorField,
   List,
@@ -33,11 +36,14 @@ import {
   Timeline,
   TreeView,
   ZoraDrawerContent,
+  type ZoraImageAsset,
+  type ZoraPickedImage,
   ZoraTabBar,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { Image as ReactNativeImage, ScrollView } from 'react-native';
 
+import iconPng from '../assets/icon.png';
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
@@ -54,6 +60,8 @@ export function PatternsPage() {
   const [query, setQuery] = React.useState('');
   const [activeNavIndex, setActiveNavIndex] = React.useState(0);
   const [drawerStatus, setDrawerStatus] = React.useState('closed');
+  const [imageAsset, setImageAsset] = React.useState<ZoraImageAsset | null>(null);
+  const [simulateUploadError, setSimulateUploadError] = React.useState(false);
   const [items, setItems] = React.useState<LayoutSection[]>([
     { id: '1', name: 'Header section' },
     { id: '2', name: 'Main content' },
@@ -156,6 +164,66 @@ export function PatternsPage() {
   };
   const handleMockAction = React.useCallback(() => undefined, []);
 
+  const pickImage = React.useCallback((): Promise<ZoraPickedImage | null> => {
+    const resolved = ReactNativeImage.resolveAssetSource(iconPng);
+    const { uri } = resolved;
+
+    if (!uri) {
+      return Promise.resolve(null);
+    }
+
+    return Promise.resolve({
+      uri,
+      fileName: 'icon.png',
+      contentType: 'image/png',
+      sizeBytes: 180_000,
+    });
+  }, []);
+
+  const uploadImage = React.useCallback(
+    async (
+      picked: ZoraPickedImage,
+      { setProgress }: { setProgress: (progress: number | null) => void },
+    ): Promise<ZoraImageAsset> => {
+      const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+      setProgress(0);
+      await delay(180);
+      setProgress(0.2);
+      await delay(220);
+      setProgress(0.55);
+      await delay(260);
+      setProgress(0.85);
+      await delay(180);
+      setProgress(1);
+
+      if (simulateUploadError) {
+        throw new Error('Simulated upload failure (showcase)');
+      }
+
+      return {
+        kind: 'storage',
+        storageId: 'local-dev',
+        bucket: 'showcase',
+        path: `images/${Date.now()}-${picked.fileName ?? 'upload'}`,
+        publicUrl: picked.uri,
+        contentType: picked.contentType,
+        width: picked.width,
+        height: picked.height,
+        metadata: {
+          fileName: picked.fileName,
+          sizeBytes: picked.sizeBytes,
+        },
+      };
+    },
+    [simulateUploadError],
+  );
+
+  const removeImage = React.useCallback(async () => {
+    const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+    await delay(250);
+  }, []);
+
   return (
     <ScrollView>
       <Page
@@ -182,6 +250,95 @@ export function PatternsPage() {
               ]}
             />
           </FilterBar>
+        </PageSection>
+
+        <PageSection title="Scenario: Image upload field">
+          <Card
+            title="Provider-neutral upload"
+            description="Picking, uploading, and removal are injected via callbacks; ZORA owns only the UI."
+            footer={
+              <Stack direction={{ base: 'column', md: 'row' }} gap="s">
+                <Button
+                  emphasis="soft"
+                  tone="neutral"
+                  onPress={() => setSimulateUploadError((current) => !current)}
+                >
+                  Simulate upload error: {simulateUploadError ? 'On' : 'Off'}
+                </Button>
+                <Button
+                  emphasis="soft"
+                  tone="neutral"
+                  onPress={() => {
+                    setImageAsset(null);
+                  }}
+                >
+                  Reset value
+                </Button>
+              </Stack>
+            }
+          >
+            <ImageUploadField
+              accept="image/*"
+              label="Project image"
+              helperText="Showcase uses a local image asset and a fake upload function."
+              maxSizeBytes={5_000_000}
+              value={imageAsset}
+              onChange={setImageAsset}
+              onPick={pickImage}
+              onUpload={uploadImage}
+              onRemove={removeImage}
+            />
+          </Card>
+
+          <Card
+            title="Storage render rule"
+            description="Storage assets render only once a publicUrl is provided."
+          >
+            <Stack gap="m">
+              <ImagePreview
+                asset={{
+                  kind: 'storage',
+                  bucket: 'showcase',
+                  path: 'pending/example.png',
+                }}
+              />
+              <Text tone="muted" variant="caption">
+                Consumers are responsible for resolving storage references into public URLs.
+              </Text>
+            </Stack>
+          </Card>
+
+          <Card title="Disabled and read-only">
+            <Stack gap="m">
+              <ImageUploadField
+                label="Disabled field"
+                value={imageAsset}
+                onChange={setImageAsset}
+                onPick={pickImage}
+                onUpload={uploadImage}
+                disabled
+              />
+              <ImageUploadField
+                label="Read-only field"
+                value={imageAsset}
+                onChange={setImageAsset}
+                onPick={pickImage}
+                onUpload={uploadImage}
+                readOnly
+              />
+            </Stack>
+          </Card>
+
+          <Card title="External errorText wins">
+            <ImageUploadField
+              label="Externally invalid"
+              value={imageAsset}
+              onChange={setImageAsset}
+              onPick={pickImage}
+              onUpload={uploadImage}
+              errorText="External errorText overrides internal validation and upload errors."
+            />
+          </Card>
         </PageSection>
 
         <PageSection title="Scenario: Lists">

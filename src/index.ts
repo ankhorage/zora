@@ -58,6 +58,8 @@ export type { IconProps } from './components/icon';
 export { Icon } from './components/icon';
 export type { IconButtonProps } from './components/icon-button';
 export { IconButton } from './components/icon-button';
+export type { ImageFit, ImageProps, SurfaceImageSource } from './components/image';
+export { Image } from './components/image';
 export type { InputProps, InputTrailingAction } from './components/input';
 export { Input } from './components/input';
 export type { MediaCardImageProps, MediaCardProps } from './components/media-card';
@@ -160,6 +162,18 @@ export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
 export { EmptyState } from './patterns/empty-state';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
+export type {
+  ImagePreviewProps,
+  ZoraImageAsset,
+  ZoraImageMetadata,
+} from './patterns/image-preview';
+export { ImagePreview } from './patterns/image-preview';
+export type {
+  ImageUploadFieldProps,
+  ImageUploadProgressContext,
+  ZoraPickedImage,
+} from './patterns/image-upload-field';
+export { ImageUploadField } from './patterns/image-upload-field';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
 export type {
