@@ -1,5 +1,3 @@
-import type React from 'react';
-
 import type { ZoraNavigationRouteMap } from '../../components/navigation-list';
 import type {
   ZoraNavigationDescriptors,
@@ -17,5 +15,4 @@ export interface ZoraTabBarProps extends ZoraBaseProps {
   compact?: boolean;
   chrome?: 'none' | 'raised';
   testID?: string;
-  labelPrefix?: React.ReactNode;
 }
