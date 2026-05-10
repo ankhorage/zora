@@ -46,7 +46,7 @@ export interface ListChildrenProps extends ZoraBaseProps {
 
 export type ListProps = ListItemsProps | ListChildrenProps;
 
-export interface ListSectionItemsProps extends ZoraBaseProps {
+interface ListSectionItemsProps extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;
@@ -56,7 +56,7 @@ export interface ListSectionItemsProps extends ZoraBaseProps {
   compact?: boolean;
 }
 
-export interface ListSectionChildrenProps extends ZoraBaseProps {
+interface ListSectionChildrenProps extends ZoraBaseProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;

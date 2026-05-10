@@ -1,10 +1,10 @@
 import type React from 'react';
 
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
 export type ResponsivePanelSide = 'left' | 'right';
 export type ResponsivePanelDesktopMode = 'inline' | 'floating';
 export type ResponsivePanelMobileMode = 'drawer' | 'modal';
-
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ResponsivePanelProps extends ZoraBaseProps {
   title?: React.ReactNode;

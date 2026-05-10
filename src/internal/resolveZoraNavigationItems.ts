@@ -6,7 +6,7 @@ import type {
 } from '../components/navigation-item';
 import type { ZoraNavigationRouteMap } from '../components/navigation-list';
 
-export interface ZoraNavigationDescriptorOptions {
+interface ZoraNavigationDescriptorOptions {
   title?: string;
   tabBarLabel?: string | React.ReactNode;
   drawerLabel?: string | React.ReactNode;
@@ -25,13 +25,13 @@ export interface ZoraNavigationState {
   routes: readonly ZoraNavigationRouteState[];
 }
 
-export interface ZoraTabPressEvent {
+interface ZoraTabPressEvent {
   type: 'tabPress';
   target: string;
   canPreventDefault: true;
 }
 
-export interface ZoraTabPressEventResult {
+interface ZoraTabPressEventResult {
   defaultPrevented: boolean;
 }
 
