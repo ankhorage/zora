@@ -38,6 +38,8 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'MediaCard',
     'MetricCard',
     'Modal',
+    'NavigationItem',
+    'NavigationList',
     'Progress',
     'Radio',
     'RadioGroup',
@@ -98,6 +100,8 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'TileGrid',
     'TreeItem',
     'TreeView',
+    'ZoraDrawerContent',
+    'ZoraTabBar',
   ],
 } as const;
 

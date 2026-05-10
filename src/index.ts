@@ -66,6 +66,14 @@ export type { MetricCardProps } from './components/metric-card';
 export { MetricCard } from './components/metric-card';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
+export type {
+  NavigationItemProps,
+  ZoraNavigationRouteMetadata,
+  ZoraNavigationRouteState,
+} from './components/navigation-item';
+export { NavigationItem } from './components/navigation-item';
+export type { NavigationListProps, ZoraNavigationRouteMap } from './components/navigation-list';
+export { NavigationList } from './components/navigation-list';
 export type { ProgressProps } from './components/progress';
 export { Progress } from './components/progress';
 export type { RadioGroupOption, RadioGroupProps, RadioProps } from './components/radio';
@@ -183,4 +191,8 @@ export type { TimelineItem, TimelineProps } from './patterns/timeline';
 export { Timeline } from './patterns/timeline';
 export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';
 export { TreeItem, TreeView } from './patterns/tree-view';
+export type { ZoraDrawerContentProps } from './patterns/zora-drawer-content';
+export { ZoraDrawerContent } from './patterns/zora-drawer-content';
+export type { ZoraTabBarProps } from './patterns/zora-tab-bar';
+export { ZoraTabBar } from './patterns/zora-tab-bar';
 export * from './theme';
