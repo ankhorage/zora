@@ -19,7 +19,7 @@ type InputTrailingProps =
       trailingAction?: InputTrailingAction;
     };
 
-export interface InputBaseProps
+interface InputBaseProps
   extends
     ZoraBaseProps,
     Omit<
