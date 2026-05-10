@@ -86,13 +86,13 @@ export type { SearchBarProps } from './components/search-bar';
 export { SearchBar } from './components/search-bar';
 export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
-export type { TabItem, TabsProps } from './components/tabs';
+export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
 export type { TextAlign, TextProps, TextTone, TextVariant, TextWeight } from './components/text';
 export { Text } from './components/text';
 export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
-export type { ToolbarActionProps, ToolbarProps } from './components/toolbar';
+export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
 export { Toolbar, ToolbarAction } from './components/toolbar';
 export type {
   BoxProps,
@@ -189,7 +189,12 @@ export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';
 export { Panel } from './patterns/panel';
-export type { ResponsivePanelProps } from './patterns/responsive-panel';
+export type {
+  ResponsivePanelDesktopMode,
+  ResponsivePanelMobileMode,
+  ResponsivePanelProps,
+  ResponsivePanelSide,
+} from './patterns/responsive-panel';
 export { ResponsivePanel } from './patterns/responsive-panel';
 export type { SectionHeaderProps } from './patterns/section-header';
 export { SectionHeader } from './patterns/section-header';
