@@ -83,7 +83,7 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^1.0.3",
+    "@ankhorage/devtools": "^1.0.5",
     "@changesets/cli": "^2.31.0",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-picker/picker": "^2.11.4",
