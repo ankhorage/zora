@@ -240,3 +240,32 @@ describe('Plan 5 audit — public exports carry no legacy types', () => {
     expect(indexSource).not.toContain('AnkhTheme');
   });
 });
+
+describe('navigation chrome policy', () => {
+  const NAVIGATION_PATHS = [
+    join(SRC_ROOT, 'components', 'navigation-item'),
+    join(SRC_ROOT, 'components', 'navigation-list'),
+    join(SRC_ROOT, 'patterns', 'zora-tab-bar'),
+    join(SRC_ROOT, 'patterns', 'zora-drawer-content'),
+    join(SRC_ROOT, 'internal', 'resolveZoraNavigationItems.ts'),
+  ];
+
+  test('does not import expo-router, react-navigation, or Surface internals', () => {
+    const sources = NAVIGATION_PATHS.flatMap((path) => {
+      if (path.endsWith('.ts')) {
+        return [readFileSync(path, 'utf8')];
+      }
+
+      if (!path.includes(`${SRC_ROOT}/`)) {
+        return [];
+      }
+
+      return listFiles(path).map((filePath) => readFileSync(filePath, 'utf8'));
+    }).join('\n');
+
+    expect(sources).not.toMatch(/expo-router/);
+    expect(sources).not.toMatch(/@react-navigation\//);
+    expect(sources).not.toMatch(/@ankhorage\/surface\/src\//);
+    expect(sources).not.toMatch(/@ankhorage\/surface\/dist\//);
+  });
+});

@@ -145,6 +145,47 @@ Use ZORA `Text` and `Heading` for typography. Use `Box`, `Stack`, `Grid`, and
 `Container` for layout. Surface remains the lower-level render foundation and
 should not be required in normal app-facing UI code.
 
+## Navigation chrome (Expo Router)
+
+ZORA provides product-facing navigation chrome that can be plugged into real
+Expo Router / React Navigation navigators. Expo Router owns navigation mechanics
+(state, linking, gestures); ZORA only renders the tab bar and drawer content.
+
+`routeMap` is the primary source for icons, badges, disabled state, and explicit
+labels. Navigator descriptor options are used as a label/title fallback only.
+
+### Tabs
+
+```tsx
+import { Tabs } from 'expo-router';
+import { ZoraTabBar, type ZoraNavigationRouteMap } from '@ankhorage/zora';
+
+const routeMap: ZoraNavigationRouteMap = {
+  index: { label: 'Home', icon: { name: 'home-outline' } },
+  settings: { label: 'Settings', icon: { name: 'settings-outline' }, badge: '3' },
+};
+
+export default function Layout() {
+  return <Tabs tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />} />;
+}
+```
+
+### Drawer
+
+```tsx
+import { Drawer } from 'expo-router/drawer';
+import { ZoraDrawerContent, type ZoraNavigationRouteMap } from '@ankhorage/zora';
+
+const routeMap: ZoraNavigationRouteMap = {
+  home: { label: 'Home', icon: { name: 'home-outline' } },
+  account: { label: 'Account', icon: { name: 'person-outline' }, disabled: true },
+};
+
+export default function Layout() {
+  return <Drawer drawerContent={(props) => <ZoraDrawerContent {...props} routeMap={routeMap} />} />;
+}
+```
+
 ## Shared Types
 
 These unions appear across the catalogue:
