@@ -203,6 +203,141 @@ Width presets:
 - Dialog widths: `narrow=420`, `default=520`, `wide=560`.
 - Page widths: `narrow=760`, `default=1040`, `wide=1280`.
 
+## Component metadata
+
+ZORA exports component metadata for tooling consumers. Authoring tools (including Studio) consume this metadata; ZORA is the canonical source of rules for ZORA UI components.
+
+Usage example:
+
+```ts
+import { ZORA_COMPONENT_META } from '@ankhorage/zora';
+
+const parent = ZORA_COMPONENT_META.PageSection;
+const childKey = 'Button';
+
+if (!parent.allowedChildren.includes(childKey)) {
+  throw new Error(`Cannot drop ${childKey} into ${parent.name}.`);
+}
+```
+
+Metadata model overview:
+
+- `category`: which ZORA UI layer owns the component (`foundation`, `component`, `layout`, `pattern`).
+- `directManifestNode`: whether the component is represented directly as a manifest node in v1.
+- `allowedChildren`: which direct manifest nodes are valid nested children (composition / drop validation).
+- `props`: serializable prop schema for authoring property panels.
+- `blueprint`: insertion label/icon and manifest-friendly default props.
+- `i18n`: metadata describing which props are i18n keys vs default text props.
+
+<details>
+<summary>Foundation</summary>
+
+- `Box`
+- `Center`
+- `Container`
+- `Divider`
+- `Grid`
+- `Inline`
+- `Show`
+- `Spacer`
+- `Stack`
+- `Surface`
+
+</details>
+
+<details>
+<summary>Components</summary>
+
+- `AppBar`
+- `Avatar`
+- `AvatarGroup`
+- `Badge`
+- `Button`
+- `Card`
+- `Checkbox`
+- `CheckboxGroup`
+- `Chip`
+- `ChipGroup`
+- `Drawer`
+- `Form`
+- `FormActions`
+- `FormError`
+- `FormField`
+- `Heading`
+- `Icon`
+- `IconButton`
+- `Image`
+- `Input`
+- `MediaCard`
+- `MetricCard`
+- `Modal`
+- `NavigationItem`
+- `NavigationList`
+- `Progress`
+- `Radio`
+- `RadioGroup`
+- `Rating`
+- `SearchBar`
+- `Select`
+- `Tabs`
+- `Text`
+- `Textarea`
+- `Toolbar`
+- `ToolbarAction`
+
+</details>
+
+<details>
+<summary>Layouts</summary>
+
+- `AppShell`
+- `AuthLayout`
+- `Page`
+- `PageHeader`
+- `PageSection`
+- `SettingsLayout`
+- `SidebarLayout`
+- `TopbarLayout`
+
+</details>
+
+<details>
+<summary>Patterns</summary>
+
+- `CollectionEditor`
+- `ConfirmDialog`
+- `DisclosureSection`
+- `EmptyState`
+- `FilterBar`
+- `ForgotPasswordForm`
+- `ImagePreview`
+- `ImageUploadField`
+- `InspectorField`
+- `List`
+- `ListRow`
+- `ListSection`
+- `Notice`
+- `OtpForm`
+- `PaletteItem`
+- `Panel`
+- `ResponsivePanel`
+- `SectionHeader`
+- `SelectableItem`
+- `SelectionProvider`
+- `SettingsRow`
+- `SignInForm`
+- `SignUpForm`
+- `SwitchField`
+- `ThemeComposer`
+- `TileGrid`
+- `Timeline`
+- `TreeItem`
+- `TreeView`
+- `ZoraDrawerContent`
+- `ZoraTabBar`
+
+</details>
+
 ## Components
 
 ### `Heading`

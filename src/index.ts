@@ -138,6 +138,19 @@ export { SidebarLayout } from './layout/sidebar-layout';
 export type { TopbarLayoutProps } from './layout/topbar-layout';
 export { TopbarLayout } from './layout/topbar-layout';
 export type {
+  ZoraComponentBlueprint,
+  ZoraComponentCategory,
+  ZoraComponentI18nMeta,
+  ZoraComponentMeta,
+  ZoraComponentMetaRegistry,
+  ZoraComponentPropArrayItemSchema,
+  ZoraComponentPropSchema,
+  ZoraComponentPropType,
+  ZoraComponentPropValue,
+  ZoraComponentSlotMeta,
+} from './metadata';
+export { ZORA_COMPONENT_META } from './metadata';
+export type {
   AuthFormBaseProps,
   AuthIdentifierKind,
   ForgotPasswordFormProps,
