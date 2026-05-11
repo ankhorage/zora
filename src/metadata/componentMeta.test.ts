@@ -178,6 +178,17 @@ describe('ZORA_COMPONENT_META invariants', () => {
     }
   });
 
+  test('non-direct manifest nodes include an explicit note', () => {
+    for (const [key, meta] of Object.entries(ZORA_COMPONENT_META)) {
+      if (meta.directManifestNode) continue;
+
+      expect(
+        typeof meta.note === 'string' && meta.note.trim().length > 0,
+        `${key} must include a note when directManifestNode is false`,
+      ).toBe(true);
+    }
+  });
+
   test('registry and blueprints are JSON serializable', () => {
     expect(() => JSON.stringify(ZORA_COMPONENT_META)).not.toThrow();
 
