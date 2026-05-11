@@ -1612,6 +1612,78 @@ No inherited props. `FilterBarProps` is declared directly by ZORA.
 
 </details>
 
+### `SelectionProvider` / `useSelection` / `SelectableItem`
+
+Scoped selection state for contextual app bar workflows. Selection state is local interaction state and must not live in `ZoraProvider`.
+
+Basic usage (selection mode for `AppBar` stays prop-driven):
+
+```tsx
+function SelectionHeader() {
+  const selection = useSelection();
+
+  return (
+    <AppBar
+      title={selection.hasSelection ? undefined : 'Inbox'}
+      appMode={
+        selection.hasSelection
+          ? {
+              type: 'selection',
+              label: 'Selected',
+              count: selection.selectedCount,
+              onCancel: selection.clear,
+            }
+          : undefined
+      }
+    />
+  );
+}
+
+<SelectionProvider mode="single">
+  <SelectionHeader />
+  <SelectableItem id="message-1" trigger="press">
+    {({ selected }) => <Card compact title={selected ? 'Selected' : 'Tap to select'} />}
+  </SelectableItem>
+</SelectionProvider>;
+```
+
+Trigger strategies:
+
+- `trigger="press"` selects on press.
+- `trigger="longPress"` selects on long press.
+- `trigger="manual"` does not bind automatic triggers; consumers call `select`, `toggle`, or `clear` explicitly.
+
+Nested providers are isolated by default: `useSelection()` always reads the nearest `SelectionProvider`.
+
+<details>
+<summary>Props</summary>
+
+`SelectionProvider` props:
+
+| Prop                 | Type                               | Default    | Notes                                        |
+| -------------------- | ---------------------------------- | ---------- | -------------------------------------------- |
+| `children`           | `React.ReactNode`                  | -          | Required region subtree.                     |
+| `selectedIds`        | `readonly string[]`                | -          | Controlled selected ids (string ids).        |
+| `defaultSelectedIds` | `readonly string[]`                | -          | Uncontrolled initial selected ids.           |
+| `mode`               | `'single' \| 'multi'`              | `'single'` | Selection mode.                              |
+| `disabled`           | `boolean`                          | `false`    | Disables selection updates.                  |
+| `onSelectionChange`  | `(ids: readonly string[]) => void` | -          | Called on selection changes (no-op ignored). |
+
+`SelectableItem` props:
+
+| Prop       | Type                                                     | Default    | Notes                                             |
+| ---------- | -------------------------------------------------------- | ---------- | ------------------------------------------------- |
+| `id`       | `string`                                                 | -          | Required item id.                                 |
+| `trigger`  | `'press' \| 'longPress' \| 'manual'`                     | `'manual'` | Automatic selection trigger strategy.             |
+| `disabled` | `boolean`                                                | `false`    | Disables selection updates for this item.         |
+| `children` | `ReactNode \| (state: SelectableItemState) => ReactNode` | -          | Render-prop receives selection state and helpers. |
+
+Accessibility note:
+
+- For `trigger="manual"`, `SelectableItem` renders no interactive wrapper and does not apply accessibility props automatically. Consumers are responsible for `accessibilityState`, roles, and handlers.
+
+</details>
+
 ### `List`
 
 List wrapper that renders `ListRow` items with dividers or spacing, or accepts custom children.

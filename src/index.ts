@@ -200,6 +200,15 @@ export type {
 export { ResponsivePanel } from './patterns/responsive-panel';
 export type { SectionHeaderProps } from './patterns/section-header';
 export { SectionHeader } from './patterns/section-header';
+export type {
+  SelectableItemProps,
+  SelectableItemState,
+  SelectionMode,
+  SelectionProviderProps,
+  SelectionTrigger,
+  UseSelectionResult,
+} from './patterns/selection';
+export { SelectableItem, SelectionProvider, useSelection } from './patterns/selection';
 export type { SettingsRowProps } from './patterns/settings-row';
 export { SettingsRow } from './patterns/settings-row';
 export type { SwitchFieldProps } from './patterns/switch-field';
