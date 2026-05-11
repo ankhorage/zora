@@ -27,6 +27,8 @@ import {
   PageSection,
   PaletteItem,
   SearchBar,
+  SelectableItem,
+  SelectionProvider,
   SignInForm,
   SignUpForm,
   Stack,
@@ -35,6 +37,7 @@ import {
   TileGrid,
   Timeline,
   TreeView,
+  useSelection,
   ZoraDrawerContent,
   type ZoraImageAsset,
   type ZoraPickedImage,
@@ -49,6 +52,86 @@ import { PatternGapsSection } from './sections/patternGaps';
 interface LayoutSection {
   id: string;
   name: string;
+}
+
+function SelectionScenario() {
+  const selection = useSelection();
+
+  return (
+    <Stack gap="m">
+      <AppBar
+        appMode={
+          selection.hasSelection
+            ? {
+                type: 'selection',
+                label: 'Selected',
+                count: selection.selectedCount,
+                onCancel: selection.clear,
+              }
+            : undefined
+        }
+        overflow={{ label: 'More selection actions', onPress: () => undefined }}
+        title={selection.hasSelection ? undefined : 'Selection region'}
+        subtitle={
+          selection.hasSelection ? undefined : 'Press/longPress/manual triggers are opt-in.'
+        }
+      />
+
+      <Stack gap="s">
+        <SelectableItem id="press-item" trigger="press">
+          {({ selected }) => (
+            <Card
+              compact
+              description="Trigger: press"
+              title={selected ? 'Selected (press)' : 'Press to select'}
+            />
+          )}
+        </SelectableItem>
+
+        <SelectableItem id="longpress-item" trigger="longPress">
+          {({ selected }) => (
+            <Card
+              compact
+              description="Trigger: longPress"
+              title={selected ? 'Selected (longPress)' : 'Long press to select'}
+            />
+          )}
+        </SelectableItem>
+
+        <SelectableItem id="manual-item" trigger="manual">
+          {({ selected, toggle, clear }) => (
+            <Card
+              compact
+              description="Trigger: manual (consumer-owned interactions)"
+              title={selected ? 'Selected (manual)' : 'Manual selection'}
+              actions={
+                <Stack direction="row" gap="s" align="center">
+                  <IconButton
+                    icon={{ name: selected ? 'checkbox-outline' : 'square-outline' }}
+                    label={selected ? 'Deselect item' : 'Select item'}
+                    onPress={toggle}
+                    emphasis="ghost"
+                  />
+                  {selection.hasSelection ? (
+                    <IconButton
+                      icon={{ name: 'close-outline' }}
+                      label="Clear selection"
+                      onPress={clear}
+                      emphasis="ghost"
+                    />
+                  ) : null}
+                </Stack>
+              }
+            >
+              <Text tone="muted" variant="bodySmall">
+                Consumers own accessibility props and handler wiring in manual mode.
+              </Text>
+            </Card>
+          )}
+        </SelectableItem>
+      </Stack>
+    </Stack>
+  );
 }
 
 export function PatternsPage() {
@@ -411,6 +494,17 @@ export function PatternsPage() {
               variant="card"
             />
           </List>
+        </PageSection>
+
+        <PageSection title="Scenario: Selection mode">
+          <Card
+            title="Contextual selection primitives"
+            description="SelectionProvider scopes selection state to a region. SelectableItem supports press, longPress, and manual triggers."
+          >
+            <SelectionProvider mode="single">
+              <SelectionScenario />
+            </SelectionProvider>
+          </Card>
         </PageSection>
 
         <PageSection title="Scenario: Navigation chrome (simulation)">
