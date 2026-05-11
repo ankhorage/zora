@@ -1,4 +1,5 @@
 import {
+  AppBar,
   Avatar,
   AvatarGroup,
   Badge,
@@ -262,6 +263,59 @@ export function ComponentsPage() {
               <Chip>Static chip</Chip>
             </Stack>
           </Stack>
+        </PageSection>
+
+        <PageSection title="App bars">
+          <SectionHeader
+            title="Default"
+            description="Product-facing screen chrome built on the Surface AppBar primitive."
+          />
+          <AppBar
+            actions={
+              <>
+                <IconButton
+                  icon={{ name: 'search-outline' }}
+                  label="Search"
+                  onPress={() => undefined}
+                />
+              </>
+            }
+            leading={
+              <IconButton
+                icon={{ name: 'menu-outline' }}
+                label="Open menu"
+                onPress={() => undefined}
+              />
+            }
+            overflow={{ label: 'More actions', onPress: () => undefined }}
+            subtitle="All conversations"
+            title="Inbox"
+          />
+
+          <SectionHeader
+            title="Selection mode"
+            description="Generic selection-mode rendering stays prop-driven and reusable."
+          />
+          <AppBar
+            actions={
+              <>
+                <IconButton
+                  emphasis="ghost"
+                  icon={{ name: 'trash-outline' }}
+                  label="Delete"
+                  tone="danger"
+                  onPress={() => undefined}
+                />
+              </>
+            }
+            appMode={{
+              type: 'selection',
+              label: 'Selected',
+              count: 3,
+              onCancel: () => undefined,
+            }}
+            overflow={{ label: 'More selection actions', onPress: () => undefined }}
+          />
         </PageSection>
 
         <PageSection title="Toolbars">

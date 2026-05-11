@@ -30,15 +30,15 @@ Wrap your app in `ZoraProvider`, then import components from
 ```tsx
 import React from 'react';
 import {
+  AppBar,
   AppShell,
   Button,
   Card,
   Heading,
+  IconButton,
   Page,
   PageHeader,
   Text,
-  Toolbar,
-  ToolbarAction,
   ZoraProvider,
 } from '@ankhorage/zora';
 
@@ -47,9 +47,10 @@ export function App() {
     <ZoraProvider>
       <AppShell
         header={
-          <Toolbar>
-            <ToolbarAction icon={{ name: 'menu-outline' }} label="Menu" />
-          </Toolbar>
+          <AppBar
+            leading={<IconButton icon={{ name: 'menu-outline' }} label="Menu" onPress={() => {}} />}
+            title="Dashboard"
+          />
         }
       >
         <Page header={<PageHeader title="Dashboard" description="Ready to build." />}>
@@ -943,6 +944,57 @@ ZORA props:
 | `onValueChange` | `(value: string) => void`              | -             | Change handler.       |
 | `variant`       | `'underline' \| 'pill' \| 'segmented'` | `'underline'` | Visual style.         |
 | `size`          | `ZoraControlSize`                      | `'m'`         | Control size.         |
+
+</details>
+
+### `AppBar`
+
+Product-facing top app bar backed by the Surface `AppBar` primitive.
+
+Use it for screen-level chrome (title/subtitle + leading/trailing actions).
+The optional overflow entrypoint is trigger-only: consumers decide whether to
+open a menu, sheet, modal, or something else.
+
+```tsx
+<AppBar
+  title="Inbox"
+  subtitle="All conversations"
+  leading={<IconButton icon={{ name: 'menu-outline' }} label="Open menu" onPress={openMenu} />}
+  actions={<IconButton icon={{ name: 'search-outline' }} label="Search" onPress={openSearch} />}
+  overflow={{ onPress: openOverflow, label: 'More actions' }}
+/>
+```
+
+Selection mode is generic and prop-driven:
+
+```tsx
+<AppBar
+  appMode={{ type: 'selection', label: 'Selected', count: 3, onCancel: exitSelection }}
+  actions={
+    <IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" onPress={del} />
+  }
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop          | Type                   | Default | Notes                                                             |
+| ------------- | ---------------------- | ------- | ----------------------------------------------------------------- |
+| `title`       | `React.ReactNode`      | -       | Primary title content.                                            |
+| `subtitle`    | `React.ReactNode`      | -       | Optional secondary line.                                          |
+| `leading`     | `React.ReactNode`      | -       | Optional leading content (e.g. back/menu button).                 |
+| `actions`     | `React.ReactNode`      | -       | Optional trailing actions content.                                |
+| `overflow`    | `AppBarOverflowAction` | -       | Optional overflow trigger entrypoint (no built-in menu behavior). |
+| `appMode`     | `AppBarMode`           | -       | Default or selection-mode rendering.                              |
+| `safeAreaTop` | `boolean`              | `true`  | Adds top safe-area padding when `SafeAreaProvider` is present.    |
+| `divider`     | `boolean`              | `true`  | Whether to render a divider under the bar.                        |
+
+Inherited props:
+
+None. ZORA composes Surface internally and exposes a product API.
 
 </details>
 
