@@ -17,6 +17,7 @@ const IGNORED_DIRECTORY_NAMES = new Set([
 
 const REQUIRED_SHOWCASE_COVERAGE = {
   components: [
+    'AppBar',
     'Avatar',
     'AvatarGroup',
     'Badge',

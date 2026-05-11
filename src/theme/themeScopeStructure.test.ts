@@ -53,6 +53,7 @@ const scopeGuardDirs = [
 const scopeGuardFiles = scopeGuardDirs.flatMap(collectSourceFiles);
 
 const scopedComponentFiles = [
+  join(srcDir, 'components', 'app-bar', 'AppBar.tsx'),
   join(srcDir, 'components', 'badge', 'Badge.tsx'),
   join(srcDir, 'components', 'button', 'Button.tsx'),
   join(srcDir, 'components', 'card', 'Card.tsx'),
@@ -128,6 +129,7 @@ const scopedComponentFiles = [
 ] as const;
 
 const scopedPropTypeFiles = [
+  join(srcDir, 'components', 'app-bar', 'types.ts'),
   join(srcDir, 'components', 'badge', 'types.ts'),
   join(srcDir, 'components', 'button', 'types.ts'),
   join(srcDir, 'components', 'card', 'types.ts'),
