@@ -970,7 +970,9 @@ Selection mode is generic and prop-driven:
 ```tsx
 <AppBar
   appMode={{ type: 'selection', label: 'Selected', count: 3, onCancel: exitSelection }}
-  actions={<IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" onPress={del} />}
+  actions={
+    <IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" onPress={del} />
+  }
 />
 ```
 
@@ -979,16 +981,16 @@ Selection mode is generic and prop-driven:
 
 ZORA props:
 
-| Prop        | Type               | Default | Notes                                                                 |
-| ----------- | ------------------ | ------- | --------------------------------------------------------------------- |
-| `title`     | `React.ReactNode`  | -       | Primary title content.                                                |
-| `subtitle`  | `React.ReactNode`  | -       | Optional secondary line.                                              |
-| `leading`   | `React.ReactNode`  | -       | Optional leading content (e.g. back/menu button).                     |
-| `actions`   | `React.ReactNode`  | -       | Optional trailing actions content.                                    |
-| `overflow`  | `AppBarOverflowAction` | -   | Optional overflow trigger entrypoint (no built-in menu behavior).     |
-| `appMode`   | `AppBarMode`       | -       | Default or selection-mode rendering.                                  |
-| `safeAreaTop` | `boolean`        | `true`  | Adds top safe-area padding when `SafeAreaProvider` is present.        |
-| `divider`   | `boolean`          | `true`  | Whether to render a divider under the bar.                            |
+| Prop          | Type                   | Default | Notes                                                             |
+| ------------- | ---------------------- | ------- | ----------------------------------------------------------------- |
+| `title`       | `React.ReactNode`      | -       | Primary title content.                                            |
+| `subtitle`    | `React.ReactNode`      | -       | Optional secondary line.                                          |
+| `leading`     | `React.ReactNode`      | -       | Optional leading content (e.g. back/menu button).                 |
+| `actions`     | `React.ReactNode`      | -       | Optional trailing actions content.                                |
+| `overflow`    | `AppBarOverflowAction` | -       | Optional overflow trigger entrypoint (no built-in menu behavior). |
+| `appMode`     | `AppBarMode`           | -       | Default or selection-mode rendering.                              |
+| `safeAreaTop` | `boolean`              | `true`  | Adds top safe-area padding when `SafeAreaProvider` is present.    |
+| `divider`     | `boolean`              | `true`  | Whether to render a divider under the bar.                        |
 
 Inherited props:
 
