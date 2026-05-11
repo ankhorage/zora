@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- 1241325: Add `ZORA_COMPONENT_META`, a ZORA-owned component metadata registry for authoring tools.
+
 ## 1.3.0
 
 ### Minor Changes
