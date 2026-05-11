@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+### Minor Changes
+
+- 93791a4: Add `SelectionProvider`, `useSelection`, and `SelectableItem` primitives for contextual selection workflows.
+
 ## 1.2.0
 
 ### Minor Changes
