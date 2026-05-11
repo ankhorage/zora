@@ -32,9 +32,9 @@ export function SelectableItem({ id, trigger, disabled = false, children }: Sele
   }, [id, resolvedDisabled, selection]);
 
   const clear = React.useCallback(() => {
-    if (resolvedDisabled) return;
+    if (selection.disabled) return;
     selection.clear();
-  }, [resolvedDisabled, selection]);
+  }, [selection]);
 
   const itemState = React.useMemo<SelectableItemState>(() => {
     return {

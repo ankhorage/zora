@@ -1660,23 +1660,23 @@ Nested providers are isolated by default: `useSelection()` always reads the near
 
 `SelectionProvider` props:
 
-| Prop                 | Type                               | Default    | Notes                                        |
-| -------------------- | ---------------------------------- | ---------- | -------------------------------------------- |
-| `children`           | `React.ReactNode`                  | -          | Required region subtree.                     |
-| `selectedIds`        | `readonly string[]`                | -          | Controlled selected ids (string ids).        |
-| `defaultSelectedIds` | `readonly string[]`                | -          | Uncontrolled initial selected ids.           |
-| `mode`               | `'single' \| 'multi'`              | `'single'` | Selection mode.                              |
-| `disabled`           | `boolean`                          | `false`    | Disables selection updates.                  |
-| `onSelectionChange`  | `(ids: readonly string[]) => void` | -          | Called on selection changes (no-op ignored). |
+| Prop                 | Type                               | Default    | Notes                                             |
+| -------------------- | ---------------------------------- | ---------- | ------------------------------------------------- |
+| `children`           | `React.ReactNode`                  | -          | Required region subtree.                          |
+| `selectedIds`        | `readonly string[]`                | -          | Controlled selected ids (string ids).             |
+| `defaultSelectedIds` | `readonly string[]`                | -          | Uncontrolled initial selected ids.                |
+| `mode`               | `'single' \| 'multi'`              | `'single'` | Selection mode.                                   |
+| `disabled`           | `boolean`                          | `false`    | Disables selection updates (select/toggle/clear). |
+| `onSelectionChange`  | `(ids: readonly string[]) => void` | -          | Called on selection changes (no-op ignored).      |
 
 `SelectableItem` props:
 
-| Prop       | Type                                                     | Default    | Notes                                             |
-| ---------- | -------------------------------------------------------- | ---------- | ------------------------------------------------- |
-| `id`       | `string`                                                 | -          | Required item id.                                 |
-| `trigger`  | `'press' \| 'longPress' \| 'manual'`                     | `'manual'` | Automatic selection trigger strategy.             |
-| `disabled` | `boolean`                                                | `false`    | Disables selection updates for this item.         |
-| `children` | `ReactNode \| (state: SelectableItemState) => ReactNode` | -          | Render-prop receives selection state and helpers. |
+| Prop       | Type                                                     | Default    | Notes                                                                                                                   |
+| ---------- | -------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `id`       | `string`                                                 | -          | Required item id.                                                                                                       |
+| `trigger`  | `'press' \| 'longPress' \| 'manual'`                     | `'manual'` | Automatic selection trigger strategy.                                                                                   |
+| `disabled` | `boolean`                                                | `false`    | Disables item `select`/`toggle` and automatic triggers (render-prop `clear()` still works unless provider is disabled). |
+| `children` | `ReactNode \| (state: SelectableItemState) => ReactNode` | -          | Render-prop receives selection state and helpers.                                                                       |
 
 Accessibility note:
 
