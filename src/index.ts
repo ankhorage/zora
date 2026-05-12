@@ -166,6 +166,14 @@ export { ForgotPasswordForm, OtpForm, SignInForm, SignUpForm } from './patterns/
 export type { ChatListAvatar, ChatListItemProps } from './patterns/chat-list-item';
 export { ChatListItem } from './patterns/chat-list-item';
 export type {
+  MessageBubbleAuthor,
+  MessageBubbleAvatar,
+  MessageBubbleDirection,
+  MessageBubbleProps,
+  MessageBubbleStatus,
+} from './patterns/message-bubble';
+export { MessageBubble } from './patterns/message-bubble';
+export type {
   CollectionEditorProps,
   CollectionEditorRenderItemProps,
 } from './patterns/collection-editor';
