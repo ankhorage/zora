@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import { Badge, Button, Card, Hero, Page, PageSection, Text } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView } from 'react-native';
 
@@ -13,10 +13,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <ScrollView>
       <Page
         header={
-          <PageHeader
+          <Hero
             eyebrow="ZORA Showcase"
             title="Build polished Expo and React Native Web interfaces"
             description="Explore ZORA components, scenario-based patterns, and live theme recipes in one small showcase app."
+            primaryAction={{ label: 'View patterns', onPress: () => onNavigate('patterns') }}
+            secondaryAction={{ label: 'Browse components', onPress: () => onNavigate('components') }}
+            media={
+              <Card title="Theme-aware by default" tone="outline">
+                <Text tone="muted">
+                  Hero composes ZORA typography, actions, layout, and card surfaces into one
+                  responsive pattern.
+                </Text>
+              </Card>
+            }
           />
         }
       >
