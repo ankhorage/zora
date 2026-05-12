@@ -105,7 +105,8 @@ const defaultRoutes = [
     title: 'Home',
     description: 'A real Expo Router tab backed by ZORA components.',
     primaryCardTitle: 'Welcome',
-    primaryCardDescription: 'This starter proves the app shell, routing, and ZORA provider are connected.',
+    primaryCardDescription:
+      'This starter proves the app shell, routing, and ZORA provider are connected.',
   },
   {
     name: 'explore',
@@ -114,7 +115,8 @@ const defaultRoutes = [
     title: 'Explore',
     description: 'A second route for validating navigation and screen composition.',
     primaryCardTitle: 'Explore content',
-    primaryCardDescription: 'Replace this card with realistic content for the selected app archetype.',
+    primaryCardDescription:
+      'Replace this card with realistic content for the selected app archetype.',
   },
   {
     name: 'profile',
@@ -198,7 +200,9 @@ function run(command: string, args: readonly string[], cwd: string): void {
   }
 
   if (result.status !== 0) {
-    throw new Error(`${command} ${args.join(' ')} failed with status ${result.status ?? 'unknown'}.`);
+    throw new Error(
+      `${command} ${args.join(' ')} failed with status ${result.status ?? 'unknown'}.`,
+    );
   }
 }
 

@@ -1,4 +1,13 @@
-import { AvatarGroup, Badge, Card, ListSection, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Card,
+  ListSection,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 const groupRows = [
   {
@@ -32,7 +41,10 @@ export default function GroupsScreen() {
         />
       }
     >
-      <PageSection title="Featured room" description="A composed ZORA card for the most active group.">
+      <PageSection
+        title="Featured room"
+        description="A composed ZORA card for the most active group."
+      >
         <Card
           title="Design systems circle"
           description="128 members · 14 new posts · weekly critique on Friday."
@@ -50,7 +62,11 @@ export default function GroupsScreen() {
         </Card>
       </PageSection>
 
-      <ListSection title="Your groups" description="Static data now, template data binding later." items={groupRows} />
+      <ListSection
+        title="Your groups"
+        description="Static data now, template data binding later."
+        items={groupRows}
+      />
     </Page>
   );
 }

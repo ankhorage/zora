@@ -1,4 +1,13 @@
-import { Avatar, Badge, ListSection, Page, PageHeader, PageSection, Panel, Text } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  ListSection,
+  Page,
+  PageHeader,
+  PageSection,
+  Panel,
+  Text,
+} from '@ankhorage/zora';
 
 const conversations = [
   {
@@ -35,15 +44,23 @@ export default function MessagesScreen() {
         />
       }
     >
-      <PageSection title="Pinned" description="The first message preview uses a reusable ZORA panel.">
+      <PageSection
+        title="Pinned"
+        description="The first message preview uses a reusable ZORA panel."
+      >
         <Panel title="Mia Chen" description="Sent feedback on the onboarding flow two minutes ago.">
           <Text tone="muted">
-            The next iteration can replace this with a dedicated ChatList pattern when the app needs richer message states.
+            The next iteration can replace this with a dedicated ChatList pattern when the app needs
+            richer message states.
           </Text>
         </Panel>
       </PageSection>
 
-      <ListSection title="Inbox" description="Real list rows, not fake navigation state." items={conversations} />
+      <ListSection
+        title="Inbox"
+        description="Real list rows, not fake navigation state."
+        items={conversations}
+      />
     </Page>
   );
 }
