@@ -153,6 +153,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Panel',
       'Notice',
       'PostCard',
+      'MessageBubble',
       'Box',
       'Stack',
       'Grid',
