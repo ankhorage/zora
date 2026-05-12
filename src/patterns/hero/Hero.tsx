@@ -25,8 +25,10 @@ function HeroInner({
   testID,
 }: HeroProps) {
   const hasActions = primaryAction !== undefined || secondaryAction !== undefined;
-  const direction = resolveDirection(layout, media !== undefined);
+  const hasMedia = media !== undefined;
+  const direction = resolveDirection(layout, hasMedia);
   const contentAlign = resolveContentAlign(align);
+  const textAlign = align === 'center' ? 'center' : undefined;
   const mediaFirst = layout === 'mediaFirst';
 
   const content = (
@@ -34,23 +36,19 @@ function HeroInner({
       <Stack align={contentAlign} gap={compact ? 's' : 'm'}>
         <Stack align={contentAlign} gap="xs">
           {eyebrow !== undefined ? (
-            <Text align={align === 'center' ? 'center' : undefined} tone="primary" variant="eyebrow">
+            <Text align={textAlign} tone="primary" variant="eyebrow">
               {eyebrow}
             </Text>
           ) : null}
           <Heading
-            align={align === 'center' ? 'center' : undefined}
+            align={textAlign}
             level={1}
             size={{ base: 'h2', md: compact ? 'h2' : 'display' }}
           >
             {title}
           </Heading>
           {description !== undefined ? (
-            <Text
-              align={align === 'center' ? 'center' : undefined}
-              tone="muted"
-              variant={{ base: 'body', md: compact ? 'body' : 'lead' }}
-            >
+            <Text tone="muted" align={textAlign} variant={{ base: 'body', md: compact ? 'body' : 'lead' }}>
               {description}
             </Text>
           ) : null}
@@ -73,13 +71,13 @@ function HeroInner({
     </Box>
   );
 
-  const mediaSlot = media !== undefined ? <Box flex={1}>{media}</Box> : null;
-  const children = mediaFirst ? [mediaSlot, content] : [content, mediaSlot];
+  const mediaSlot = hasMedia ? <Box flex={1}>{media}</Box> : null;
 
   return (
     <Card compact={compact} testID={testID} tone={tone}>
       <Stack align="center" direction={direction} gap={compact ? 'm' : 'l'}>
-        {children}
+        {mediaFirst ? mediaSlot : content}
+        {mediaFirst ? content : mediaSlot}
       </Stack>
     </Card>
   );
