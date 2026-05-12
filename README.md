@@ -304,6 +304,7 @@ Metadata model overview:
 <details>
 <summary>Patterns</summary>
 
+- `ChatListItem`
 - `CollectionEditor`
 - `ConfirmDialog`
 - `DisclosureSection`
@@ -1524,6 +1525,124 @@ No inherited props. `AuthLayoutProps` is declared directly by ZORA.
 </details>
 
 ## Patterns
+
+### `ChatListItem`
+
+Reusable conversation preview row with avatar, title, preview text, timestamp,
+unread state, selected/open state, and optional trailing content.
+
+`ChatListItem` owns the anatomy of one conversation row. It does not own chat
+list rendering, virtualization, pagination, pull-to-refresh, search/filter state,
+data fetching, realtime behavior, message bubbles, or composer UI. Compose
+multiple rows with `Stack` for short/static groups, or use an app-owned
+`FlatList` for long dynamic chat lists.
+
+```tsx
+import { ChatListItem, Stack } from '@ankhorage/zora';
+
+export function ChatsPreview() {
+  return (
+    <Stack gap="none">
+      <ChatListItem
+        accessibilityLabel="Ada Lovelace, unread, 3 new messages, Can you review the new PostCard API?, 2 minutes ago"
+        avatar={{ name: 'Ada Lovelace', tone: 'primary' }}
+        preview="Can you review the new PostCard API?"
+        timestamp="2m"
+        title="Ada Lovelace"
+        unread
+        unreadCount={3}
+        onPress={() => undefined}
+      />
+
+      <ChatListItem
+        avatar={{ name: 'Grace Hopper', tone: 'success' }}
+        preview="The build is green."
+        timestamp="1h"
+        title="Grace Hopper"
+        onPress={() => undefined}
+      />
+
+      <ChatListItem
+        avatar={{ initials: 'CI', label: 'Build system', tone: 'neutral' }}
+        compact
+        meta="Release automation"
+        preview="Version packages completed for @ankhorage/zora."
+        timestamp="Today"
+        title="Build system"
+      />
+    </Stack>
+  );
+}
+```
+
+For long dynamic chat lists, use an app-owned list renderer:
+
+```tsx
+import { ChatListItem } from '@ankhorage/zora';
+import { FlatList } from 'react-native';
+
+export function ThreadList({ threads }: { threads: Thread[] }) {
+  return (
+    <FlatList
+      data={threads}
+      keyExtractor={(thread) => thread.id}
+      renderItem={({ item }) => (
+        <ChatListItem
+          avatar={{ name: item.title, source: item.avatar }}
+          preview={item.preview}
+          timestamp={item.timestamp}
+          title={item.title}
+          unread={item.unread}
+          unreadCount={item.unreadCount}
+          onPress={() => openThread(item.id)}
+        />
+      )}
+    />
+  );
+}
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop                 | Type              | Default | Notes                                                                |
+| -------------------- | ----------------- | ------- | -------------------------------------------------------------------- |
+| `title`              | `React.ReactNode` | -       | Required row title, usually the person, group, or conversation name. |
+| `preview`            | `React.ReactNode` | -       | Optional last message or conversation preview.                       |
+| `meta`               | `React.ReactNode` | -       | Optional secondary metadata under the preview.                       |
+| `timestamp`          | `React.ReactNode` | -       | Optional trailing timestamp/meta in the title row.                   |
+| `avatar`             | `ChatListAvatar`  | -       | Optional avatar configuration.                                       |
+| `leading`            | `React.ReactNode` | -       | Optional custom leading slot. Overrides the generated avatar.        |
+| `trailing`           | `React.ReactNode` | -       | Optional trailing slot in the secondary row.                         |
+| `unread`             | `boolean`         | `false` | Emphasizes title/preview/timestamp as unread.                        |
+| `unreadCount`        | `React.ReactNode` | -       | Optional unread count badge content.                                 |
+| `selected`           | `boolean`         | `false` | Marks the row as selected/open.                                      |
+| `disabled`           | `boolean`         | `false` | Disables press handling and renders muted row state.                 |
+| `compact`            | `boolean`         | `false` | Uses tighter vertical padding and smaller avatar defaults.           |
+| `accessibilityLabel` | `string`          | -       | Optional explicit label for interactive rows.                        |
+| `onPress`            | `() => void`      | -       | Makes the row pressable.                                             |
+| `testID`             | `string`          | -       | Test id forwarded to the root row/pressable.                         |
+
+`ChatListAvatar`:
+
+| Prop       | Type                  | Notes                                      |
+| ---------- | --------------------- | ------------------------------------------ |
+| `source`   | `ImageSourcePropType` | Optional avatar image source.              |
+| `name`     | `string`              | Used for fallback initials when available. |
+| `initials` | `string`              | Explicit fallback initials.                |
+| `label`    | `string`              | Accessibility label.                       |
+| `size`     | `AvatarSize`          | Optional avatar size override.             |
+| `shape`    | `AvatarShape`         | Optional avatar shape override.            |
+| `tone`     | `ZoraTone`            | Optional fallback tone.                    |
+
+Inherited props:
+
+No raw style escape hatch is exposed by `ChatListItem`. It uses the underlying
+ZORA `Avatar`, `Badge`, `Text`, and layout primitives internally.
+
+</details>
 
 ### `FormField`
 
