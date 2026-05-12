@@ -154,8 +154,10 @@ function MessageBubbleInner({
   const isOutgoing = direction === 'outgoing';
   const isSystem = direction === 'system';
   const renderedStatus = resolveStatus(status);
-  const hasAuthorName = author?.name != null && !isOutgoing && !isSystem;
-  const hasAvatar = author?.avatar != null && !isOutgoing && !isSystem;
+  const authorName = author?.name;
+  const authorAvatar = author?.avatar;
+  const hasAuthorName = authorName != null && !isOutgoing && !isSystem;
+  const hasAvatar = authorAvatar != null && !isOutgoing && !isSystem;
   const hasMetaRow = timestamp != null || meta != null || renderedStatus != null;
 
   const renderBubble = ({ pressed, hovered }: { pressed: boolean; hovered: boolean }) => {
@@ -174,7 +176,7 @@ function MessageBubbleInner({
         <Stack align={isSystem ? 'center' : 'flex-start'} gap={compact ? 'xxs' : 'xs'}>
           {hasAuthorName ? (
             <Text tone="muted" variant="caption" weight="semiBold">
-              {author?.name}
+              {authorName}
             </Text>
           ) : null}
           {text != null ? (
@@ -239,8 +241,8 @@ function MessageBubbleInner({
         {!isOutgoing && !isSystem ? (
           <Box>
             {leading ??
-              (hasAvatar && author?.avatar ? (
-                <MessageAvatar avatar={author.avatar} authorName={author.name} compact={compact} />
+              (hasAvatar ? (
+                <MessageAvatar avatar={authorAvatar} authorName={authorName} compact={compact} />
               ) : null)}
           </Box>
         ) : null}
