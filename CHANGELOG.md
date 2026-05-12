@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.3
+
+### Patch Changes
+
+- 7be4b90: Fix mobile layout, as content was not visible
+
 ## 1.4.2
 
 ### Patch Changes
