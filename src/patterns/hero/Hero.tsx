@@ -75,7 +75,11 @@ function HeroInner({
     </Box>
   );
 
-  const mediaSlot = hasMedia ? <Box flex={1}>{media}</Box> : null;
+  const mediaSlot = hasMedia ? (
+    <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
+      {media}
+    </Box>
+  ) : null;
 
   return (
     <Card compact={compact} testID={testID} tone={tone}>
