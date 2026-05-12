@@ -65,7 +65,12 @@ export function ChatsPage() {
               selected
               timestamp="Yesterday"
               title="Maya Chen"
-              trailing={<IconButton icon={{ name: 'ellipsis-horizontal-outline' }} label="More chat actions" />}
+              trailing={
+                <IconButton
+                  icon={{ name: 'ellipsis-horizontal-outline' }}
+                  label="More chat actions"
+                />
+              }
               onPress={noop}
             />
 

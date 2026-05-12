@@ -98,13 +98,7 @@ function ChatListItemInner({
   const hasUnreadCount = unreadCount != null;
   const hasSecondaryRow = hasPreview || hasMeta || hasUnreadCount || hasTrailing;
 
-  const content = ({
-    pressed,
-    hovered,
-  }: {
-    pressed: boolean;
-    hovered: boolean;
-  }) => {
+  const content = ({ pressed, hovered }: { pressed: boolean; hovered: boolean }) => {
     const styles = resolveContainerStyles({
       theme,
       selected,
@@ -199,11 +193,7 @@ function ChatListItemInner({
   };
 
   if (!isInteractive) {
-    return (
-      <Box testID={testID}>
-        {content({ pressed: false, hovered: false })}
-      </Box>
-    );
+    return <Box testID={testID}>{content({ pressed: false, hovered: false })}</Box>;
   }
 
   return (

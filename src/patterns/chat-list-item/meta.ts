@@ -3,7 +3,8 @@ import type { ZoraComponentMeta } from '../../metadata';
 export const chatListItemMeta = {
   name: 'ChatListItem',
   category: 'pattern',
-  description: 'Conversation preview row with avatar, title, preview text, timestamp, and unread state.',
+  description:
+    'Conversation preview row with avatar, title, preview text, timestamp, and unread state.',
   directManifestNode: true,
   allowedChildren: [],
   blueprint: {
