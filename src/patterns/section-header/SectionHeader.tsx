@@ -23,7 +23,7 @@ function SectionHeaderInner({
       justify="space-between"
       testID={testID}
     >
-      <Box flex={1}>
+      <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
         <Stack gap="xs">
           {eyebrow ? (
             <Text tone="muted" variant="caption" weight="semiBold">

@@ -12,13 +12,15 @@
       "backgroundColor": "#020617"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.faebster.zoraexposhowcase"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#020617"
-      }
+      },
+      "package": "com.faebster.zoraexposhowcase"
     },
     "web": {
       "favicon": "./assets/favicon.png"
