@@ -32,7 +32,7 @@ function HeroInner({
   const mediaFirst = layout === 'mediaFirst';
 
   const content = (
-    <Box flex={1}>
+    <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
       <Stack align={contentAlign} gap={compact ? 's' : 'm'}>
         <Stack align={contentAlign} gap="xs">
           {eyebrow !== undefined ? (
