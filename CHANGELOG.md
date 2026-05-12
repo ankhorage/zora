@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.11
+
+### Patch Changes
+
+- 6996354: Update packages
+
 ## 1.4.10
 
 ### Patch Changes
