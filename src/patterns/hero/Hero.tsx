@@ -4,9 +4,9 @@ import { Button } from '../../components/button';
 import { Card } from '../../components/card';
 import { Heading } from '../../components/heading';
 import { Text } from '../../components/text';
-import { Box, Stack } from '../../foundation';
+import { Box, Grid, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { HeroAction, HeroAlign, HeroLayout, HeroProps } from './types';
+import type { HeroAction, HeroAlign, HeroProps } from './types';
 
 function HeroInner({
   themeId: _themeId,
@@ -26,13 +26,12 @@ function HeroInner({
 }: HeroProps) {
   const hasActions = primaryAction !== undefined || secondaryAction !== undefined;
   const hasMedia = media !== undefined;
-  const direction = resolveDirection(layout, hasMedia);
   const contentAlign = resolveContentAlign(align);
   const textAlign = align === 'center' ? 'center' : undefined;
   const mediaFirst = layout === 'mediaFirst';
 
   const content = (
-    <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
+    <Box width="100%">
       <Stack align={contentAlign} gap={compact ? 's' : 'm'}>
         <Stack align={contentAlign} gap="xs">
           {eyebrow !== undefined ? (
@@ -49,8 +48,8 @@ function HeroInner({
           </Heading>
           {description !== undefined ? (
             <Text
-              tone="muted"
               align={textAlign}
+              tone="muted"
               variant={{ base: 'body', md: compact ? 'body' : 'lead' }}
             >
               {description}
@@ -75,18 +74,24 @@ function HeroInner({
     </Box>
   );
 
-  const mediaSlot = hasMedia ? (
-    <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
-      {media}
-    </Box>
-  ) : null;
+  const mediaSlot = hasMedia ? <Box width="100%">{media}</Box> : null;
 
-  return (
-    <Card compact={compact} testID={testID} tone={tone}>
-      <Stack align="center" direction={direction} gap={compact ? 'm' : 'l'}>
+  const body =
+    hasMedia && layout !== 'stack' ? (
+      <Grid cols={{ base: 1, md: 2 }} gap={compact ? 'm' : 'l'}>
+        {mediaFirst ? mediaSlot : content}
+        {mediaFirst ? content : mediaSlot}
+      </Grid>
+    ) : (
+      <Stack align="center" direction="column" gap={compact ? 'm' : 'l'}>
         {mediaFirst ? mediaSlot : content}
         {mediaFirst ? content : mediaSlot}
       </Stack>
+    );
+
+  return (
+    <Card compact={compact} testID={testID} tone={tone}>
+      {body}
     </Card>
   );
 }
@@ -106,11 +111,6 @@ function renderAction(action: HeroAction, role: 'primary' | 'secondary') {
 
 function resolveContentAlign(align: HeroAlign) {
   return align === 'center' ? 'center' : 'flex-start';
-}
-
-function resolveDirection(layout: HeroLayout, hasMedia: boolean) {
-  if (!hasMedia || layout === 'stack') return 'column' as const;
-  return { base: 'column', md: 'row' } as const;
 }
 
 export const Hero = withZoraThemeScope(HeroInner);
