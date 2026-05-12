@@ -37,7 +37,7 @@ export interface FormFieldConfig<TName extends string = string> {
   testID?: string;
 }
 
-export interface FormFieldWrapperProps
+interface FormFieldWrapperProps
   extends
     ZoraBaseProps,
     Pick<
