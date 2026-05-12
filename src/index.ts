@@ -206,6 +206,15 @@ export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';
 export { Panel } from './patterns/panel';
 export type {
+  PostAction,
+  PostAuthor,
+  PostAuthorAvatar,
+  PostCardMedia,
+  PostCardProps,
+  PostCommentPreview,
+} from './patterns/post-card';
+export { PostCard } from './patterns/post-card';
+export type {
   ResponsivePanelDesktopMode,
   ResponsivePanelMobileMode,
   ResponsivePanelProps,
