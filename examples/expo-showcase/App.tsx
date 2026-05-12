@@ -15,9 +15,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
+import { PostsPage } from './app/posts';
 import { ThemeComposerPage } from './app/theme-composer';
 
-type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
+type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'theme';
 type ColorMode = ZoraThemeMode;
 
 const initialShowcaseTheme: ZoraTheme = {
@@ -47,6 +48,8 @@ function AppWrapper() {
         return <ComponentsPage />;
       case 'patterns':
         return <PatternsPage />;
+      case 'posts':
+        return <PostsPage />;
       case 'theme':
         return (
           <ThemeComposerPage
@@ -78,6 +81,7 @@ function AppWrapper() {
                   { value: 'home', label: 'Home' },
                   { value: 'components', label: 'Components' },
                   { value: 'patterns', label: 'Patterns' },
+                  { value: 'posts', label: 'Posts' },
                   { value: 'theme', label: 'Theme' },
                 ]}
               />
