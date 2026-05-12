@@ -1,4 +1,13 @@
-import { Badge, IconButton, Page, PageHeader, PageSection, PostCard, Stack, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  IconButton,
+  Page,
+  PageHeader,
+  PageSection,
+  PostCard,
+  Stack,
+  Text,
+} from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView } from 'react-native';
 
@@ -29,11 +38,22 @@ export function PostsPage() {
                 subtitle: '@ada · 2h',
                 avatar: { name: 'Ada Lovelace', tone: 'primary' },
               }}
-              headerAction={<IconButton icon={{ name: 'ellipsis-horizontal-outline' }} label="More post options" />}
+              headerAction={
+                <IconButton
+                  icon={{ name: 'ellipsis-horizontal-outline' }}
+                  label="More post options"
+                />
+              }
               text="Working on a reusable social pattern for ZORA. The card owns the post anatomy; the surrounding screen owns list behavior."
               media={{ source: iconPng, label: 'ZORA showcase icon', aspectRatio: 16 / 9 }}
               actions={[
-                { id: 'like', label: 'Like', icon: { name: 'heart-outline' }, count: 24, onPress: noop },
+                {
+                  id: 'like',
+                  label: 'Like',
+                  icon: { name: 'heart-outline' },
+                  count: 24,
+                  onPress: noop,
+                },
                 {
                   id: 'comment',
                   label: 'Comment',
@@ -66,7 +86,12 @@ export function PostsPage() {
               }}
               text="PostCard also supports compact density for system updates and notification-style content."
               actions={[
-                { id: 'ack', label: 'Acknowledge', icon: { name: 'checkmark-outline' }, onPress: noop },
+                {
+                  id: 'ack',
+                  label: 'Acknowledge',
+                  icon: { name: 'checkmark-outline' },
+                  onPress: noop,
+                },
               ]}
               footer={
                 <Text tone="subtle" variant="caption">
@@ -95,7 +120,12 @@ export function PostsPage() {
               }}
               actions={[
                 { id: 'like', label: 'Like', icon: { name: 'heart-outline' }, onPress: noop },
-                { id: 'comment', label: 'Comment', icon: { name: 'chatbubble-outline' }, onPress: noop },
+                {
+                  id: 'comment',
+                  label: 'Comment',
+                  icon: { name: 'chatbubble-outline' },
+                  onPress: noop,
+                },
               ]}
             />
           </Stack>

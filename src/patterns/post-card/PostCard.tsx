@@ -38,7 +38,7 @@ function normalizeMedia(media: PostCardProps['media']): readonly PostCardMedia[]
 
 function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compact?: boolean }) {
   const avatarName = resolveAuthorName(author);
-  const avatar = author.avatar;
+  const { avatar } = author;
 
   return (
     <Inline align="center" gap="s" wrap="nowrap">
@@ -184,7 +184,12 @@ function PostCardInner({
   const hasEngagement = actions.length > 0 || comments.length > 0;
 
   return (
-    <Card compact={compact} onPress={isInteractive ? onPress : undefined} testID={testID} tone={tone}>
+    <Card
+      compact={compact}
+      onPress={isInteractive ? onPress : undefined}
+      testID={testID}
+      tone={tone}
+    >
       <Stack gap={gap}>
         <Inline align="center" gap="m" justify="space-between" wrap="nowrap">
           <Box flex={1}>

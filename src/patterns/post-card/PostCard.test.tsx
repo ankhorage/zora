@@ -1,5 +1,5 @@
-import React from 'react';
 import { describe, expect, test } from 'bun:test';
+import React from 'react';
 
 import { ZORA_COMPONENT_META } from '../../metadata';
 import { PostCard } from './PostCard';

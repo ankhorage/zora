@@ -4,7 +4,8 @@ import { CONTAINER_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 export const postCardMeta = {
   name: 'PostCard',
   category: 'pattern',
-  description: 'Social/content post card with author identity, body, media, actions, and comment previews.',
+  description:
+    'Social/content post card with author identity, body, media, actions, and comment previews.',
   directManifestNode: true,
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   blueprint: {
