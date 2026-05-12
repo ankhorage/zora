@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.4
+
+### Patch Changes
+
+- 0b43efc: Fix mobile layout
+
 ## 1.4.3
 
 ### Patch Changes
