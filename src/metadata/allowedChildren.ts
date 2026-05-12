@@ -18,6 +18,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'SettingsRow',
   'PostCard',
   'ChatListItem',
+  'MessageBubble',
 ] as const;
 
 export const PAGE_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;
