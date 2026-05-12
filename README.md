@@ -2491,6 +2491,109 @@ Inherits all `FormField` props.
 
 </details>
 
+### `MessageBubble`
+
+Reusable chat/message bubble for rendering one message. Use `MessageBubble` for
+message anatomy only; the surrounding screen owns scrolling, keyboard handling,
+pagination, realtime updates, data fetching, and composer behavior.
+
+```tsx
+import { MessageBubble, Stack } from '@ankhorage/zora';
+
+<Stack gap="s">
+  <MessageBubble
+    direction="incoming"
+    author={{
+      name: 'Ada Lovelace',
+      avatar: { name: 'Ada Lovelace', tone: 'primary' },
+    }}
+    text="Can you review the new ChatListItem API?"
+    timestamp="10:41"
+  />
+
+  <MessageBubble
+    direction="outgoing"
+    text="Yes, the row/list boundary looks correct."
+    timestamp="10:42"
+    status="read"
+  />
+
+  <MessageBubble direction="system" compact text="Today" />
+</Stack>;
+```
+
+For long conversations, render `MessageBubble` inside an app-owned list renderer:
+
+```tsx
+import { FlatList } from 'react-native';
+import { MessageBubble } from '@ankhorage/zora';
+
+<FlatList
+  data={messages}
+  keyExtractor={(message) => message.id}
+  renderItem={({ item }) => <MessageBubble {...item} />}
+/>;
+```
+
+Do not use `MessageBubble` as a chat screen, thread manager, composer, or data
+adapter. Future chat/thread abstractions can compose it without changing the
+bubble API.
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop                 | Type                                     | Default      | Notes                                                                  |
+| -------------------- | ---------------------------------------- | ------------ | ---------------------------------------------------------------------- |
+| `direction`          | `'incoming' \| 'outgoing' \| 'system'`   | `'incoming'` | Controls alignment and visual treatment.                               |
+| `text`               | `React.ReactNode`                        | -            | Main message text.                                                     |
+| `children`           | `React.ReactNode`                        | -            | Custom body slot inside the bubble.                                    |
+| `author`             | `MessageBubbleAuthor`                    | -            | Optional author label/avatar for incoming/group messages.              |
+| `timestamp`          | `React.ReactNode`                        | -            | Optional timestamp rendered in the bubble meta row.                    |
+| `meta`               | `React.ReactNode`                        | -            | Additional meta text.                                                  |
+| `status`             | `MessageBubbleStatus \| React.ReactNode` | -            | Delivery/read status presentation only; no delivery logic is included. |
+| `leading`            | `React.ReactNode`                        | -            | Optional leading slot.                                                 |
+| `trailing`           | `React.ReactNode`                        | -            | Optional trailing slot.                                                |
+| `footer`             | `React.ReactNode`                        | -            | Optional footer below the bubble.                                      |
+| `selected`           | `boolean`                                | `false`      | Highlight/selection state for previews and authoring.                  |
+| `disabled`           | `boolean`                                | `false`      | Muted/disabled presentation and disabled press handling.               |
+| `compact`            | `boolean`                                | `false`      | Uses tighter spacing and a smaller max width.                          |
+| `accessibilityLabel` | `string`                                 | -            | Accessible label used when the bubble is pressable.                    |
+| `onPress`            | `() => void`                             | -            | Makes the bubble pressable.                                            |
+| `testID`             | `string`                                 | -            | Test id.                                                               |
+
+`MessageBubbleStatus`:
+
+```ts
+type MessageBubbleStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed';
+```
+
+`MessageBubbleAuthor`:
+
+| Prop     | Type                  | Notes                                       |
+| -------- | --------------------- | ------------------------------------------- |
+| `name`   | `React.ReactNode`     | Optional author label.                      |
+| `avatar` | `MessageBubbleAvatar` | Optional avatar for incoming/group bubbles. |
+
+`MessageBubbleAvatar`:
+
+| Prop       | Type                  | Notes                                           |
+| ---------- | --------------------- | ----------------------------------------------- |
+| `source`   | `ImageSourcePropType` | React Native image source for the avatar.       |
+| `name`     | `string`              | Used to derive initials when `initials` absent. |
+| `initials` | `string`              | Explicit initials override.                     |
+| `label`    | `string`              | Accessibility label.                            |
+| `size`     | `AvatarSize`          | Optional avatar size override.                  |
+| `shape`    | `AvatarShape`         | Optional avatar shape override.                 |
+| `tone`     | `ZoraTone`            | Optional avatar tone.                           |
+
+Inherited props:
+
+No inherited props. `MessageBubbleProps` is declared directly by ZORA.
+
+</details>
+
 ### `SwitchField`
 
 Labeled boolean toggle row.

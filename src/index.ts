@@ -203,6 +203,14 @@ export type {
   ListSectionProps,
 } from './patterns/list';
 export { List, ListRow, ListSection } from './patterns/list';
+export type {
+  MessageBubbleAuthor,
+  MessageBubbleAvatar,
+  MessageBubbleDirection,
+  MessageBubbleProps,
+  MessageBubbleStatus,
+} from './patterns/message-bubble';
+export { MessageBubble } from './patterns/message-bubble';
 export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';
