@@ -2,6 +2,7 @@ import {
   Badge,
   ChatListItem,
   IconButton,
+  MessageBubble,
   Page,
   PageHeader,
   PageSection,
@@ -19,9 +20,9 @@ export function ChatsPage() {
       <Page
         header={
           <PageHeader
-            eyebrow="ChatListItem pattern"
+            eyebrow="Chat patterns"
             title="Chats"
-            description="Reusable conversation preview rows composed in a plain Stack. ChatList, Collection, and FlatList wrappers are intentionally out of scope for this example."
+            description="Reusable chat preview rows and message bubbles composed in plain Stack containers. ChatThread, MessageComposer, Collection, and FlatList wrappers are intentionally out of scope for this example."
           />
         }
       >
@@ -85,10 +86,66 @@ export function ChatsPage() {
           </Stack>
         </PageSection>
 
+        <PageSection
+          title="Stacked message bubbles"
+          description="MessageBubble owns one message. The surrounding screen owns scrolling, keyboard handling, realtime updates, pagination, and composer behavior."
+        >
+          <Stack gap="s">
+            <MessageBubble
+              author={{
+                name: 'Ada Lovelace',
+                avatar: { name: 'Ada Lovelace', tone: 'primary' },
+              }}
+              direction="incoming"
+              text="Can you review the new ChatListItem API?"
+              timestamp="10:41"
+              onPress={noop}
+            />
+
+            <MessageBubble
+              direction="outgoing"
+              status="read"
+              text="Yes, the row/list boundary looks correct. MessageBubble should stay independent from the thread renderer too."
+              timestamp="10:42"
+              onPress={noop}
+            />
+
+            <MessageBubble direction="system" compact text="Today" />
+
+            <MessageBubble
+              author={{
+                name: 'Grace Hopper',
+                avatar: { name: 'Grace Hopper', tone: 'success' },
+              }}
+              direction="incoming"
+              meta="Edited"
+              text="Agreed. The bubble can render inside Stack now and inside an app-owned FlatList later."
+              timestamp="10:44"
+            />
+
+            <MessageBubble
+              direction="outgoing"
+              selected
+              status="delivered"
+              text="Selected state is useful for authoring previews and future message selection work."
+              timestamp="10:45"
+            />
+
+            <MessageBubble
+              compact
+              direction="outgoing"
+              disabled
+              status="failed"
+              text="Disabled and failed states can be previewed without adding delivery logic."
+              timestamp="10:46"
+            />
+          </Stack>
+        </PageSection>
+
         <PageSection title="Usage note">
           <Text tone="muted" variant="bodySmall">
-            ChatListItem owns one row. Real long chat lists should use an app-owned FlatList,
-            pagination, refresh, and data loading strategy.
+            ChatListItem and MessageBubble own presentation only. Real long chat lists should use an
+            app-owned FlatList, pagination, refresh, keyboard handling, and data loading strategy.
           </Text>
         </PageSection>
       </Page>
