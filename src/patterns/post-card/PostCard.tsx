@@ -71,7 +71,7 @@ function PostCardMediaItem({ media }: { media: PostCardMedia }) {
   const { theme } = useZoraTheme();
   const aspectRatio = resolveMediaAspectRatio(media.aspectRatio);
 
-  if (media.children) {
+  if (!('source' in media)) {
     return (
       <Box radius="m" style={{ overflow: 'hidden' }}>
         {media.children}
@@ -92,6 +92,18 @@ function PostCardMediaItem({ media }: { media: PostCardMedia }) {
   );
 }
 
+function PostActionLabel({ action }: { action: PostAction }) {
+  if (!action.count) {
+    return <>{action.label}</>;
+  }
+
+  return (
+    <>
+      {action.label} {action.count}
+    </>
+  );
+}
+
 function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
   if (actions.length === 0) {
     return null;
@@ -109,7 +121,7 @@ function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
           size="s"
           tone={action.selected ? 'primary' : 'neutral'}
         >
-          {action.count ? `${action.label} ${String(action.count)}` : action.label}
+          <PostActionLabel action={action} />
         </Button>
       ))}
     </Inline>
