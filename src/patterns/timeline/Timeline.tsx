@@ -36,6 +36,7 @@ function TimelineInner({
 }: TimelineProps) {
   const { theme } = useZoraTheme();
   const gap = compact ? 'm' : 'l';
+  const connectorHeight = compact ? 20 : 36;
 
   const renderItem = (item: TimelineItem, index: number) => {
     const status = item.status ?? 'neutral';
@@ -68,9 +69,9 @@ function TimelineInner({
           {showConnector ? (
             <Box
               bg={theme.semantics.neutral.divider}
-              flex={1}
+              height={connectorHeight}
               radius="full"
-              style={{ minHeight: 16, width: 2 }}
+              style={{ width: 2 }}
             />
           ) : null}
         </Stack>
