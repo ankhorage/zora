@@ -43,6 +43,7 @@ import {
   signInFormMeta,
   signUpFormMeta,
 } from '../patterns/auth/meta';
+import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
 import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
@@ -119,6 +120,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   OtpForm: otpFormMeta,
   SignInForm: signInFormMeta,
   SignUpForm: signUpFormMeta,
+  ChatListItem: chatListItemMeta,
   CollectionEditor: collectionEditorMeta,
   ConfirmDialog: confirmDialogMeta,
   DisclosureSection: disclosureSectionMeta,

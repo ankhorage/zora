@@ -12,13 +12,14 @@ import React from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { ChatsPage } from './app/chats';
 import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
 import { PostsPage } from './app/posts';
 import { ThemeComposerPage } from './app/theme-composer';
 
-type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'theme';
+type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'chats' | 'theme';
 type ColorMode = ZoraThemeMode;
 
 const initialShowcaseTheme: ZoraTheme = {
@@ -50,6 +51,8 @@ function AppWrapper() {
         return <PatternsPage />;
       case 'posts':
         return <PostsPage />;
+      case 'chats':
+        return <ChatsPage />;
       case 'theme':
         return (
           <ThemeComposerPage
@@ -82,6 +85,7 @@ function AppWrapper() {
                   { value: 'components', label: 'Components' },
                   { value: 'patterns', label: 'Patterns' },
                   { value: 'posts', label: 'Posts' },
+                  { value: 'chats', label: 'Chats' },
                   { value: 'theme', label: 'Theme' },
                 ]}
               />
