@@ -141,6 +141,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Text',
       'Heading',
       'Divider',
+      'ChatListItem',
     ]);
 
     const expectedContainerNodes = new Set([
