@@ -28,12 +28,22 @@ function resolveMediaAspectRatio(aspectRatio: number | undefined): number {
   return aspectRatio;
 }
 
+function isPostCardMediaList(
+  media: NonNullable<PostCardProps['media']>,
+): media is readonly PostCardMedia[] {
+  return Array.isArray(media);
+}
+
 function normalizeMedia(media: PostCardProps['media']): readonly PostCardMedia[] {
   if (!media) {
     return [];
   }
 
-  return Array.isArray(media) ? media : [media];
+  if (isPostCardMediaList(media)) {
+    return media;
+  }
+
+  return [media];
 }
 
 function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compact?: boolean }) {
@@ -180,7 +190,7 @@ function PostCardInner({
   const mediaItems = normalizeMedia(media);
   const gap = compact ? 's' : 'm';
   const isInteractive = Boolean(onPress) && !headerAction;
-  const hasBody = text || children || mediaItems.length > 0;
+  const hasBody = text != null || children != null || mediaItems.length > 0;
   const hasEngagement = actions.length > 0 || comments.length > 0;
 
   return (
