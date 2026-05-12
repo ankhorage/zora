@@ -7,6 +7,7 @@ import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type MessageBubbleDirection = 'incoming' | 'outgoing' | 'system';
 export type MessageBubbleStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed';
+export type MessageBubbleStatusContent = MessageBubbleStatus | Exclude<React.ReactNode, string>;
 
 export interface MessageBubbleAvatar {
   source?: ImageSourcePropType;
@@ -30,7 +31,7 @@ export interface MessageBubbleProps extends ZoraBaseProps {
   author?: MessageBubbleAuthor;
   timestamp?: React.ReactNode;
   meta?: React.ReactNode;
-  status?: MessageBubbleStatus | React.ReactNode;
+  status?: MessageBubbleStatusContent;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   footer?: React.ReactNode;
