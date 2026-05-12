@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1
+
+### Patch Changes
+
+- 38648df: Add a first-class Hero pattern with structured content, actions, optional media, responsive layout behavior, metadata, and showcase coverage.
+
 ## 1.4.0
 
 ### Minor Changes
