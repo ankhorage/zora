@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.8
+
+### Patch Changes
+
+- 66a035d: Add a reusable PostCard pattern with showcase coverage.
+
 ## 1.4.7
 
 ### Patch Changes
