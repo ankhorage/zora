@@ -4,7 +4,7 @@ import React from 'react';
 import { Avatar } from '../../components/avatar';
 import { Badge } from '../../components/badge';
 import { Text } from '../../components/text';
-import { Box, Inline, Spacer, Stack } from '../../foundation';
+import { Box, Inline, Stack } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ChatListAvatar, ChatListItemProps } from './types';
@@ -91,6 +91,12 @@ function ChatListItemInner({
   const padding = resolvePadding(compact);
   const avatarName = resolveAvatarName({ avatar, title });
   const isInteractive = Boolean(onPress);
+  const hasTimestamp = timestamp != null;
+  const hasPreview = preview != null;
+  const hasMeta = meta != null;
+  const hasTrailing = trailing != null;
+  const hasUnreadCount = unreadCount != null;
+  const hasSecondaryRow = hasPreview || hasMeta || hasUnreadCount || hasTrailing;
 
   const content = ({
     pressed,
@@ -143,7 +149,7 @@ function ChatListItemInner({
                     {title}
                   </Text>
                 </Box>
-                {timestamp ? (
+                {hasTimestamp ? (
                   <Text
                     numberOfLines={1}
                     tone={unread ? 'primary' : 'subtle'}
@@ -155,11 +161,11 @@ function ChatListItemInner({
                 ) : null}
               </Inline>
 
-              {preview || meta || unreadCount != null || trailing ? (
+              {hasSecondaryRow ? (
                 <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
                   <Box flex={1}>
                     <Stack gap="xxs">
-                      {preview ? (
+                      {hasPreview ? (
                         <Text
                           numberOfLines={1}
                           tone={unread ? 'default' : 'muted'}
@@ -169,7 +175,7 @@ function ChatListItemInner({
                           {preview}
                         </Text>
                       ) : null}
-                      {meta ? (
+                      {hasMeta ? (
                         <Text numberOfLines={1} tone="subtle" variant="caption">
                           {meta}
                         </Text>
@@ -177,7 +183,7 @@ function ChatListItemInner({
                     </Stack>
                   </Box>
 
-                  {unreadCount != null || trailing ? (
+                  {hasUnreadCount || hasTrailing ? (
                     <Inline align="center" gap="s" wrap="nowrap">
                       {renderUnreadCount(unreadCount)}
                       {trailing}
@@ -210,15 +216,12 @@ function ChatListItemInner({
       radius="m"
       testID={testID}
     >
-      {(state) => (
-        <>
-          {content({
-            pressed: state.pressed,
-            hovered: state.hovered,
-          })}
-          <Spacer size="none" />
-        </>
-      )}
+      {(state) =>
+        content({
+          pressed: state.pressed,
+          hovered: state.hovered,
+        })
+      }
     </ButtonBase>
   );
 }
