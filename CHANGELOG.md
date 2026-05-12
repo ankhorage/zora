@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.10
+
+### Patch Changes
+
+- 59de5b0: Add a reusable MessageBubble pattern with metadata, exports, and showcase coverage.
+
 ## 1.4.9
 
 ### Patch Changes
