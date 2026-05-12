@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.7
+
+### Patch Changes
+
+- 9c99aaa: Fix Hero desktop layout
+
 ## 1.4.6
 
 ### Patch Changes
