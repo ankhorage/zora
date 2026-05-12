@@ -48,7 +48,11 @@ function HeroInner({
             {title}
           </Heading>
           {description !== undefined ? (
-            <Text tone="muted" align={textAlign} variant={{ base: 'body', md: compact ? 'body' : 'lead' }}>
+            <Text
+              tone="muted"
+              align={textAlign}
+              variant={{ base: 'body', md: compact ? 'body' : 'lead' }}
+            >
               {description}
             </Text>
           ) : null}

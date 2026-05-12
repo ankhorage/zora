@@ -18,7 +18,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
             title="Build polished Expo and React Native Web interfaces"
             description="Explore ZORA components, scenario-based patterns, and live theme recipes in one small showcase app."
             primaryAction={{ label: 'View patterns', onPress: () => onNavigate('patterns') }}
-            secondaryAction={{ label: 'Browse components', onPress: () => onNavigate('components') }}
+            secondaryAction={{
+              label: 'Browse components',
+              onPress: () => onNavigate('components'),
+            }}
             media={
               <Card title="Theme-aware by default" tone="outline">
                 <Text tone="muted">
