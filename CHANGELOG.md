@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.9
+
+### Patch Changes
+
+- 7089849: Add a reusable ChatListItem pattern with showcase coverage.
+
 ## 1.4.8
 
 ### Patch Changes
