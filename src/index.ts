@@ -27,7 +27,6 @@ export type {
   FormFieldInputType,
   FormFieldProps,
   FormFieldValue,
-  FormFieldWrapperProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,
@@ -177,6 +176,8 @@ export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
 export { EmptyState } from './patterns/empty-state';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
+export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';
+export { Hero } from './patterns/hero';
 export type {
   ImagePreviewProps,
   ZoraImageAsset,
