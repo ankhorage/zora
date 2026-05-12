@@ -45,7 +45,9 @@ function resolveStatusLabel(status: MessageBubbleStatus): string {
   }
 }
 
-function isMessageBubbleStatus(status: MessageBubbleProps['status']): status is MessageBubbleStatus {
+function isMessageBubbleStatus(
+  status: MessageBubbleProps['status'],
+): status is MessageBubbleStatus {
   return (
     status === 'sending' ||
     status === 'sent' ||
@@ -188,8 +190,16 @@ function MessageBubbleInner({
               justify={isOutgoing ? 'flex-end' : isSystem ? 'center' : 'flex-start'}
               wrap="wrap"
             >
-              {timestamp != null ? <Text tone="subtle" variant="caption">{timestamp}</Text> : null}
-              {meta != null ? <Text tone="subtle" variant="caption">{meta}</Text> : null}
+              {timestamp != null ? (
+                <Text tone="subtle" variant="caption">
+                  {timestamp}
+                </Text>
+              ) : null}
+              {meta != null ? (
+                <Text tone="subtle" variant="caption">
+                  {meta}
+                </Text>
+              ) : null}
               {renderedStatus != null ? (
                 <Text tone={status === 'failed' ? 'danger' : 'subtle'} variant="caption">
                   {renderedStatus}

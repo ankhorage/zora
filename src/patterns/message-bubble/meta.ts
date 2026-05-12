@@ -4,7 +4,8 @@ import { CONTAINER_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 export const messageBubbleMeta = {
   name: 'MessageBubble',
   category: 'pattern',
-  description: 'Chat/message bubble with direction, author, text, meta, and delivery status presentation.',
+  description:
+    'Chat/message bubble with direction, author, text, meta, and delivery status presentation.',
   directManifestNode: true,
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   blueprint: {
