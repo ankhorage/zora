@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.2
+
+### Patch Changes
+
+- db19750: Hotfix examples/ app: AppBar import
+
 ## 1.4.1
 
 ### Patch Changes
