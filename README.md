@@ -321,6 +321,7 @@ Metadata model overview:
 - `OtpForm`
 - `PaletteItem`
 - `Panel`
+- `PostCard`
 - `ResponsivePanel`
 - `SectionHeader`
 - `SelectableItem`
@@ -1761,6 +1762,148 @@ ZORA props:
 Inherited props:
 
 No inherited props. `PanelProps` is declared directly by ZORA.
+
+</details>
+
+### `PostCard`
+
+Reusable social/content post surface with author identity, optional media,
+interaction actions, and lightweight comment previews.
+
+`PostCard` owns the anatomy of one post. It does not own feed rendering,
+virtualization, pagination, pull-to-refresh, search/filter state, data fetching,
+or realtime behavior. Compose multiple posts with `Stack` for short/static
+groups, or use an app-owned `FlatList` for long dynamic feeds.
+
+```tsx
+import { IconButton, PostCard, Stack } from '@ankhorage/zora';
+
+export function PostsPreview() {
+  return (
+    <Stack gap="m">
+      <PostCard
+        author={{
+          name: 'Ada Lovelace',
+          subtitle: '@ada · 2h',
+          avatar: { name: 'Ada Lovelace', tone: 'primary' },
+        }}
+        headerAction={
+          <IconButton icon={{ name: 'ellipsis-horizontal-outline' }} label="More post options" />
+        }
+        text="Working on a reusable social pattern for ZORA."
+        actions={[
+          { id: 'like', label: 'Like', icon: { name: 'heart-outline' }, count: 24 },
+          {
+            id: 'comment',
+            label: 'Comment',
+            icon: { name: 'chatbubble-outline' },
+            count: 5,
+          },
+          { id: 'share', label: 'Share', icon: { name: 'share-outline' } },
+        ]}
+        comments={[
+          {
+            id: 'comment-1',
+            author: {
+              name: 'Grace Hopper',
+              subtitle: '1h',
+              avatar: { name: 'Grace Hopper', tone: 'success' },
+            },
+            text: 'The card/list boundary feels right.',
+          },
+        ]}
+      />
+
+      <PostCard
+        compact
+        tone="subtle"
+        author={{
+          name: 'Build system',
+          subtitle: 'Today · release notes',
+          avatar: { initials: 'CI', label: 'Build system', tone: 'neutral' },
+        }}
+        text="Compact density works well for notification-style posts."
+      />
+    </Stack>
+  );
+}
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop           | Type                               | Default     | Notes                                                              |
+| -------------- | ---------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `author`       | `PostAuthor`                       | -           | Required author identity with name, optional subtitle, and avatar. |
+| `text`         | `React.ReactNode`                  | -           | Main post copy.                                                    |
+| `children`     | `React.ReactNode`                  | -           | Optional custom body content rendered after `text`.                |
+| `media`        | `PostCardMedia \| PostCardMedia[]` | -           | Optional source-backed media or custom media slot.                 |
+| `actions`      | `PostAction[]`                     | `[]`        | Optional interaction row actions such as like/comment/share.       |
+| `comments`     | `PostCommentPreview[]`             | `[]`        | Optional lightweight comment preview rows.                         |
+| `headerAction` | `React.ReactNode`                  | -           | Optional trailing header action; disables card-level `onPress`.    |
+| `footer`       | `React.ReactNode`                  | -           | Optional footer content below actions/comments.                    |
+| `tone`         | `ZoraCardTone`                     | `'default'` | Passed to the underlying `Card`.                                   |
+| `compact`      | `boolean`                          | `false`     | Uses tighter spacing and smaller avatar defaults.                  |
+| `onPress`      | `() => void`                       | -           | Makes the card pressable when no `headerAction` is present.        |
+| `testID`       | `string`                           | -           | Forwarded to the underlying card.                                  |
+
+`PostAuthor`:
+
+| Prop       | Type               | Notes                                     |
+| ---------- | ------------------ | ----------------------------------------- |
+| `name`     | `React.ReactNode`  | Display name.                             |
+| `subtitle` | `React.ReactNode`  | Optional handle, timestamp, or meta text. |
+| `avatar`   | `PostAuthorAvatar` | Optional avatar configuration.            |
+
+`PostAuthorAvatar`:
+
+| Prop       | Type                  | Notes                                      |
+| ---------- | --------------------- | ------------------------------------------ |
+| `source`   | `ImageSourcePropType` | Optional avatar image source.              |
+| `name`     | `string`              | Used for fallback initials when available. |
+| `initials` | `string`              | Explicit fallback initials.                |
+| `label`    | `string`              | Accessibility label.                       |
+| `size`     | `AvatarSize`          | Optional avatar size override.             |
+| `shape`    | `AvatarShape`         | Optional avatar shape override.            |
+| `tone`     | `ZoraTone`            | Optional fallback tone.                    |
+
+`PostCardMedia`:
+
+| Prop          | Type                  | Notes                                                |
+| ------------- | --------------------- | ---------------------------------------------------- |
+| `source`      | `ImageSourcePropType` | Source-backed media. Requires `label`.               |
+| `label`       | `string`              | Accessibility label for source-backed media.         |
+| `aspectRatio` | `number`              | Optional aspect ratio. Defaults to `16 / 9`.         |
+| `children`    | `React.ReactNode`     | Custom media slot, mutually exclusive with `source`. |
+
+`PostAction`:
+
+| Prop       | Type              | Notes                                    |
+| ---------- | ----------------- | ---------------------------------------- |
+| `id`       | `string`          | Stable action key.                       |
+| `label`    | `string`          | Action label.                            |
+| `icon`     | `ButtonIconSpec`  | Optional leading icon.                   |
+| `count`    | `React.ReactNode` | Optional count rendered after the label. |
+| `selected` | `boolean`         | Uses primary/soft action styling.        |
+| `disabled` | `boolean`         | Disables the action.                     |
+| `onPress`  | `() => void`      | Optional press handler.                  |
+
+`PostCommentPreview`:
+
+| Prop     | Type              | Notes                                   |
+| -------- | ----------------- | --------------------------------------- |
+| `id`     | `string`          | Stable comment key.                     |
+| `author` | `PostAuthor`      | Optional comment author.                |
+| `text`   | `React.ReactNode` | Comment preview text.                   |
+| `meta`   | `React.ReactNode` | Optional timestamp or comment metadata. |
+| `action` | `React.ReactNode` | Optional custom comment action.         |
+
+Inherited props:
+
+No raw style escape hatch is exposed by `PostCard`. It uses the underlying ZORA
+`Card`, `Avatar`, `Text`, `Button`, and layout primitives internally.
 
 </details>
 
