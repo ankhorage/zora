@@ -11,7 +11,6 @@ export type {
   FormFieldInputType,
   FormFieldProps,
   FormFieldValue,
-  FormFieldWrapperProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,

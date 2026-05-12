@@ -48,6 +48,7 @@ import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
 import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { emptyStateMeta } from '../patterns/empty-state/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
+import { heroMeta } from '../patterns/hero/meta';
 import { imagePreviewMeta } from '../patterns/image-preview/meta';
 import { imageUploadFieldMeta } from '../patterns/image-upload-field/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
@@ -122,6 +123,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   DisclosureSection: disclosureSectionMeta,
   EmptyState: emptyStateMeta,
   FilterBar: filterBarMeta,
+  Hero: heroMeta,
   ImagePreview: imagePreviewMeta,
   ImageUploadField: imageUploadFieldMeta,
   InspectorField: inspectorFieldMeta,

@@ -310,6 +310,7 @@ Metadata model overview:
 - `EmptyState`
 - `FilterBar`
 - `ForgotPasswordForm`
+- `Hero`
 - `ImagePreview`
 - `ImageUploadField`
 - `InspectorField`
@@ -1549,6 +1550,78 @@ Inherited props:
 
 Picks these Surface `FieldProps`: `children`, `disabled`, `errorText`,
 `invalid`, `readOnly`, `required`, and `testID`.
+
+</details>
+
+### `Hero`
+
+Landing-page and section hero pattern with structured title copy, actions,
+optional media, and responsive layout behavior.
+
+```tsx
+<Hero
+  eyebrow="New release"
+  title="Build product screens faster"
+  description="Use a responsive hero pattern with strong defaults for landing pages, dashboards, and app sections."
+  primaryAction={{ label: 'Get started', onPress: () => undefined }}
+  secondaryAction={{ label: 'View docs', onPress: () => undefined }}
+/>
+```
+
+With media:
+
+```tsx
+<Hero
+  eyebrow="ZORA Pattern"
+  title="Compose responsive product introductions"
+  description="Hero combines ZORA typography, actions, layout, and card surfaces into one app-facing pattern."
+  layout="split"
+  primaryAction={{ label: 'Start building', onPress: () => undefined }}
+  secondaryAction={{ label: 'Browse patterns', onPress: () => undefined }}
+  media={
+    <Card title="Theme-aware by default" tone="outline">
+      <Text tone="muted">
+        Use the media slot for previews, screenshots, metrics, or illustration cards.
+      </Text>
+    </Card>
+  }
+/>
+```
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop              | Type              | Default    | Notes                                                     |
+| ----------------- | ----------------- | ---------- | --------------------------------------------------------- |
+| `title`           | `React.ReactNode` | -          | Required main hero title.                                 |
+| `description`     | `React.ReactNode` | -          | Supporting copy below the title.                          |
+| `eyebrow`         | `React.ReactNode` | -          | Small label above the title.                              |
+| `primaryAction`   | `HeroAction`      | -          | Primary CTA rendered as a ZORA `Button`.                  |
+| `secondaryAction` | `HeroAction`      | -          | Secondary CTA rendered as a softer ZORA `Button`.         |
+| `media`           | `React.ReactNode` | -          | Optional media slot rendered beside or above the content. |
+| `footer`          | `React.ReactNode` | -          | Optional supporting footer content below the actions.     |
+| `align`           | `HeroAlign`       | `'start'`  | Content alignment: `'start'` or `'center'`.               |
+| `layout`          | `HeroLayout`      | `'split'`  | Layout strategy: `'stack'`, `'split'`, or `'mediaFirst'`. |
+| `tone`            | `HeroTone`        | `'subtle'` | Card tone: `'default'`, `'subtle'`, or `'outline'`.       |
+| `compact`         | `boolean`         | `false`    | Uses tighter spacing and a smaller desktop title size.    |
+| `testID`          | `string`          | -          | Test id forwarded to the underlying card surface.         |
+
+`HeroAction`:
+
+| Prop       | Type              | Default                   | Notes                              |
+| ---------- | ----------------- | ------------------------- | ---------------------------------- |
+| `label`    | `React.ReactNode` | -                         | Button label/content.              |
+| `onPress`  | `() => void`      | -                         | Press handler.                     |
+| `tone`     | `ZoraTone`        | primary / neutral by role | Optional button tone override.     |
+| `emphasis` | `ZoraEmphasis`    | solid / soft by role      | Optional button emphasis override. |
+| `disabled` | `boolean`         | `false`                   | Disables the rendered action.      |
+
+Inherited props:
+
+No inherited props. `HeroProps` is declared directly by ZORA to keep the
+pattern structured, theme-aware, and template-safe.
 
 </details>
 

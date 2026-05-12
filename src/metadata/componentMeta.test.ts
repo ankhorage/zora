@@ -134,6 +134,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'SectionHeader',
       'SettingsRow',
       'EmptyState',
+      'Hero',
       'Button',
       'Input',
       'Textarea',
