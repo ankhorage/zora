@@ -224,32 +224,35 @@ function createRouteMapSource(routes: readonly RouteSpec[]): string {
 }
 
 function createScreenSource(route: RouteSpec): string {
-  return `import { Badge, Button, Card, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+  return `import { AppBar, Badge, Button, Card, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 export default function ${route.name === 'index' ? 'Index' : toPascalCase(route.name)}Screen() {
   return (
-    <Page header={<PageHeader title=${JSON.stringify(route.title)} description=${JSON.stringify(route.description)} />}>
-      <PageSection
-        title="Highlights"
-        description="This screen uses real Expo Router navigation and ZORA-only UI."
-      >
-        <Card
-          title=${JSON.stringify(route.primaryCardTitle)}
-          description=${JSON.stringify(route.primaryCardDescription)}
-          actions={<Badge tone="success">Live route</Badge>}
+    <>
+      <AppBar title=${JSON.stringify(route.title)} subtitle=${JSON.stringify(route.description)} />
+      <Screen>
+        <ScreenSection
+          title="Highlights"
+          description="This screen uses real Expo Router navigation and ZORA-only UI."
         >
-          <Text tone="muted">
-            Replace this starter content with realistic static data for the selected app archetype.
-          </Text>
-        </Card>
-        <Card
-          title="Next useful action"
-          description="The scaffold keeps layout decisions inside ZORA components instead of local styles."
-          actions={<Button>Continue</Button>}
-          tone="subtle"
-        />
-      </PageSection>
-    </Page>
+          <Card
+            title=${JSON.stringify(route.primaryCardTitle)}
+            description=${JSON.stringify(route.primaryCardDescription)}
+            actions={<Badge tone="success">Live route</Badge>}
+          >
+            <Text tone="muted">
+              Replace this starter content with realistic static data for the selected app archetype.
+            </Text>
+          </Card>
+          <Card
+            title="Next useful action"
+            description="The scaffold keeps layout decisions inside ZORA components instead of local styles."
+            actions={<Button>Continue</Button>}
+            tone="subtle"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
 `;
