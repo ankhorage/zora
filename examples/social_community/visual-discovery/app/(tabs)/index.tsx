@@ -3,11 +3,13 @@ import {
   Button,
   MediaCard,
   Notice,
-  Page,
-  PageHeader,
+  Screen,
+  ScreenSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const pins = [
   {
@@ -38,42 +40,41 @@ const pins = [
 
 export default function DiscoverScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Visual discovery"
-          description="A Pinterest-style starter built with real Expo Router tabs and ZORA-only UI."
-          actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>Create board</Button>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Search"
-        description="Visual discovery starts with a broad idea or mood."
-      >
-        <SearchBar value="" placeholder="Search ideas, boards, products, places" />
-      </ScreenSection>
+    <>
+      <ExampleAppBar
+        title="Visual discovery"
+        subtitle="A Pinterest-style starter built with real Expo Router tabs and ZORA-only UI."
+        actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>Create board</Button>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Search"
+          description="Visual discovery starts with a broad idea or mood."
+        >
+          <SearchBar value="" placeholder="Search ideas, boards, products, places" />
+        </ScreenSection>
 
-      <ScreenSection
-        title="For you"
-        description="Existing ZORA media cards stand in for a future Wall/Grid pattern."
-        actions={<Badge tone="primary">Personalized</Badge>}
-      >
-        {pins.map((pin) => (
-          <MediaCard key={pin.title} {...pin} badges={<Badge tone="neutral">Pin</Badge>} />
-        ))}
-      </ScreenSection>
+        <ScreenSection
+          title="For you"
+          description="Existing ZORA media cards stand in for a future Wall/Grid pattern."
+          actions={<Badge tone="primary">Personalized</Badge>}
+        >
+          {pins.map((pin) => (
+            <MediaCard key={pin.title} {...pin} badges={<Badge tone="neutral">Pin</Badge>} />
+          ))}
+        </ScreenSection>
 
-      <ScreenSection title="ZORA pressure point">
-        <Notice
-          title="Needs a visual wall pattern"
-          description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
-          tone="warning"
-        />
-        <Text tone="muted">
-          This example captures the product need without adding local layout tricks.
-        </Text>
-      </ScreenSection>
-    </Page>
+        <ScreenSection title="ZORA pressure point">
+          <Notice
+            title="Needs a visual wall pattern"
+            description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
+            tone="warning"
+          />
+          <Text tone="muted">
+            This example captures the product need without adding local layout tricks.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
