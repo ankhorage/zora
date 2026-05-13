@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Page, PageHeader, SearchBar, Text } from '@ankhorage/zora';
 
 const collections = [
   {
@@ -38,14 +38,14 @@ export default function ExploreScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Search"
         description="The search control is part of the ZORA component surface."
       >
         <SearchBar value="" placeholder="Search creators, places, styles" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Collections"
         description="A simple grid-like flow using existing ZORA cards."
       >
@@ -60,7 +60,7 @@ export default function ExploreScreen() {
           A richer visual discovery template should probably introduce a dedicated Wall/Grid pattern
           later.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

@@ -1,13 +1,4 @@
-import {
-  AvatarGroup,
-  Badge,
-  Card,
-  ListSection,
-  Page,
-  PageHeader,
-  PageSection,
-  Text,
-} from '@ankhorage/zora';
+import { AvatarGroup, Badge, Card, ListSection, Page, PageHeader, Text } from '@ankhorage/zora';
 
 const boardRows = [
   {
@@ -41,7 +32,7 @@ export default function BoardsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Shared board"
         description="A collaborative board preview composed from ZORA primitives."
       >
@@ -62,7 +53,7 @@ export default function BoardsScreen() {
             Shared boards are static here; permissions and collaboration belong later.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Your boards"

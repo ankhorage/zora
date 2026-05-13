@@ -1,12 +1,12 @@
 import {
+  AppBar,
   Avatar,
   Badge,
   Card,
   ListSection,
   MetricCard,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -33,47 +33,46 @@ const sellerRows = [
 
 export default function ProfileScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Marketplace profile"
-          description="Buyer, seller, saved searches, and trust signals."
-          actions={<Avatar name="Nora Frei" tone="primary" />}
-        />
-      }
-    >
-      <PageSection
-        title="Seller card"
-        description="A commerce profile composed from existing ZORA cards."
-      >
-        <Card
-          title="Nora Frei"
-          description="Zürich · 4.9 seller rating · replies within one hour"
-          actions={<Badge tone="success">Verified</Badge>}
-        >
-          <Text tone="muted">
-            Local pickup preferred. Furniture, ceramics, and camera equipment.
-          </Text>
-        </Card>
-      </PageSection>
-
-      <PageSection title="Stats">
-        <MetricCard label="Rating" value="4.9" description="42 reviews" />
-        <MetricCard
-          label="Sold"
-          value="128"
-          delta="+12"
-          deltaTone="success"
-          description="Last 90 days"
-        />
-        <MetricCard label="Saved" value="36" description="Products and searches" />
-      </PageSection>
-
-      <ListSection
-        title="Account"
-        description="Profile actions stay in structured ZORA rows."
-        items={sellerRows}
+    <>
+      <AppBar
+        title="Marketplace profile"
+        subtitle="Buyer, seller, saved searches, and trust signals."
+        actions={<Avatar name="Nora Frei" tone="primary" />}
       />
-    </Page>
+      <Screen>
+        <ScreenSection
+          title="Seller card"
+          description="A commerce profile composed from existing ZORA cards."
+        >
+          <Card
+            title="Nora Frei"
+            description="Zürich · 4.9 seller rating · replies within one hour"
+            actions={<Badge tone="success">Verified</Badge>}
+          >
+            <Text tone="muted">
+              Local pickup preferred. Furniture, ceramics, and camera equipment.
+            </Text>
+          </Card>
+        </ScreenSection>
+
+        <ScreenSection title="Stats">
+          <MetricCard label="Rating" value="4.9" description="42 reviews" />
+          <MetricCard
+            label="Sold"
+            value="128"
+            delta="+12"
+            deltaTone="success"
+            description="Last 90 days"
+          />
+          <MetricCard label="Saved" value="36" description="Products and searches" />
+        </ScreenSection>
+
+        <ListSection
+          title="Account"
+          description="Profile actions stay in structured ZORA rows."
+          items={sellerRows}
+        />
+      </Screen>
+    </>
   );
 }

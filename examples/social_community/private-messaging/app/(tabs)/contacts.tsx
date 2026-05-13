@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  ListSection,
-  Page,
-  PageHeader,
-  PageSection,
-  SearchBar,
-} from '@ankhorage/zora';
+import { Avatar, Badge, Button, ListSection, Page, PageHeader, SearchBar } from '@ankhorage/zora';
 
 const contactRows = [
   {
@@ -59,12 +50,12 @@ export default function ContactsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Find people"
         description="A searchable contact directory without local input styling."
       >
         <SearchBar value="" placeholder="Search contacts" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Favorites"

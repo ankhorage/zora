@@ -6,7 +6,6 @@ import {
   Notice,
   Page,
   PageHeader,
-  PageSection,
   Textarea,
 } from '@ankhorage/zora';
 
@@ -21,7 +20,7 @@ export default function CreateScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Image"
         description="The upload field is a ZORA pattern, not a local wrapper."
       >
@@ -30,9 +29,9 @@ export default function CreateScreen() {
           description="Choose a photo for the next visual story."
           actionLabel="Choose image"
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Caption" description="Structured inputs keep the app theme-aware.">
+      <ScreenSection title="Caption" description="Structured inputs keep the app theme-aware.">
         <Textarea placeholder="Write a caption..." />
         <Card
           title="Draft quality"
@@ -40,15 +39,15 @@ export default function CreateScreen() {
           actions={<Badge tone="warning">Draft</Badge>}
           tone="subtle"
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Guidance">
+      <ScreenSection title="Guidance">
         <Notice
           title="Static example only"
           description="This route demonstrates the composition surface. Upload persistence belongs in app/backend examples later."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

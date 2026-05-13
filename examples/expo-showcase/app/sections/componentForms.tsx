@@ -9,8 +9,8 @@ import {
   Icon,
   Inline,
   Input,
-  PageSection,
   Radio,
+  ScreenSection,
   Stack,
   Text,
 } from '@ankhorage/zora';
@@ -25,7 +25,7 @@ export function ComponentFormsSection() {
   });
 
   return (
-    <PageSection title="Component coverage additions">
+    <ScreenSection title="Component coverage additions">
       <Card
         title="Standalone Checkbox and Radio"
         description="Single controls are available outside grouped inputs."
@@ -99,6 +99,6 @@ export function ComponentFormsSection() {
           </Text>
         </Stack>
       </Card>
-    </PageSection>
+    </ScreenSection>
   );
 }

@@ -1,12 +1,4 @@
-import {
-  Button,
-  ListSection,
-  MetricCard,
-  Notice,
-  Page,
-  PageHeader,
-  PageSection,
-} from '@ankhorage/zora';
+import { ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
 
 const orderRows = [
   {
@@ -31,16 +23,8 @@ const orderRows = [
 
 export default function OrdersScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Orders"
-          description="Dining orders, takeaway, vouchers, and visit history."
-          actions={<Button leadingIcon={{ name: 'receipt-outline' }}>Receipt</Button>}
-        />
-      }
-    >
-      <PageSection title="Today">
+    <Screen>
+      <ScreenSection title="Today">
         <MetricCard label="Open orders" value="2" description="Dining and takeaway" />
         <MetricCard
           label="Ready soon"
@@ -50,7 +34,7 @@ export default function OrdersScreen() {
           description="Kitchen estimate"
         />
         <MetricCard label="Vouchers" value="1" description="Email delivery" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Order activity"
@@ -58,13 +42,13 @@ export default function OrdersScreen() {
         items={orderRows}
       />
 
-      <PageSection title="Operations note">
+      <ScreenSection title="Operations note">
         <Notice
           title="No kitchen integration"
           description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
           tone="primary"
         />
-      </PageSection>
-    </Page>
+      </ScreenSection>
+    </Screen>
   );
 }

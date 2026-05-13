@@ -31,9 +31,8 @@ import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
 import { authLayoutMeta } from '../layout/auth-layout/meta';
-import { pageMeta } from '../layout/page/meta';
-import { pageHeaderMeta } from '../layout/page-header/meta';
-import { pageSectionMeta } from '../layout/page-section/meta';
+import { screenMeta } from '../layout/screen/meta';
+import { screenSectionMeta } from '../layout/screen-section/meta';
 import { settingsLayoutMeta } from '../layout/settings-layout/meta';
 import { sidebarLayoutMeta } from '../layout/sidebar-layout/meta';
 import { topbarLayoutMeta } from '../layout/topbar-layout/meta';
@@ -111,9 +110,8 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ToolbarAction: toolbarActionMeta,
   AppShell: appShellMeta,
   AuthLayout: authLayoutMeta,
-  Page: pageMeta,
-  PageHeader: pageHeaderMeta,
-  PageSection: pageSectionMeta,
+  Screen: screenMeta,
+  ScreenSection: screenSectionMeta,
   SettingsLayout: settingsLayoutMeta,
   SidebarLayout: sidebarLayoutMeta,
   TopbarLayout: topbarLayoutMeta,

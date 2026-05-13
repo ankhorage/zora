@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import { AppBar, Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
 
 const products = [
   {
@@ -29,38 +29,37 @@ const products = [
 
 export default function ProductsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Products"
-          description="A catalog route for browsing product cards and collections."
-          actions={<Badge tone="primary">42 items</Badge>}
-        />
-      }
-    >
-      <PageSection
-        title="Search"
-        description="Filtering is static for now, but the UI surface is real."
-      >
-        <SearchBar value="" placeholder="Search products" />
-      </PageSection>
+    <>
+      <AppBar
+        title="Products"
+        subtitle="A catalog route for browsing product cards and collections."
+        actions={<Badge tone="primary">42 items</Badge>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Search"
+          description="Filtering is static for now, but the UI surface is real."
+        >
+          <SearchBar value="" placeholder="Search products" />
+        </ScreenSection>
 
-      <PageSection
-        title="Catalog"
-        description="Media cards stand in for future ProductCard/ProductGrid patterns."
-      >
-        {products.map((product) => (
-          <MediaCard
-            key={product.title}
-            {...product}
-            badges={<Badge tone="success">Available</Badge>}
-          />
-        ))}
-        <Text tone="muted">
-          Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns
-          later.
-        </Text>
-      </PageSection>
-    </Page>
+        <ScreenSection
+          title="Catalog"
+          description="Media cards stand in for future ProductCard/ProductGrid patterns."
+        >
+          {products.map((product) => (
+            <MediaCard
+              key={product.title}
+              {...product}
+              badges={<Badge tone="success">Available</Badge>}
+            />
+          ))}
+          <Text tone="muted">
+            Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns
+            later.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }

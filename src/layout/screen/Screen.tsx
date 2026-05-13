@@ -1,28 +1,34 @@
+import { ScrollArea } from '@ankhorage/surface';
 import React from 'react';
 
 import { Container, Stack } from '../../foundation';
 import { resolvePageMaxWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { PageProps } from './types';
+import type { ScreenProps } from './types';
 
-function PageInner({
+function ScreenInner({
   themeId: _themeId,
   mode: _mode,
   children,
-  header,
   footer,
+  scroll = true,
   width = 'default',
   testID,
-}: PageProps) {
-  return (
+}: ScreenProps) {
+  const content = (
     <Container maxWidth={resolvePageMaxWidth(width)} py="xl" testID={testID}>
       <Stack gap="l">
-        {header}
         {children}
         {footer}
       </Stack>
     </Container>
   );
+
+  if (!scroll) {
+    return content;
+  }
+
+  return <ScrollArea>{content}</ScrollArea>;
 }
 
-export const Page = withZoraThemeScope(PageInner);
+export const Screen = withZoraThemeScope(ScreenInner);

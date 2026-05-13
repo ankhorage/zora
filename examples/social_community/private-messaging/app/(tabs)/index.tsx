@@ -5,7 +5,6 @@ import {
   ChatListItem,
   Page,
   PageHeader,
-  PageSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
@@ -45,14 +44,14 @@ export default function ChatsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Search"
         description="Search is a first-class ZORA component, not local input glue."
       >
         <SearchBar value="" placeholder="Search chats" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Pinned"
         description="ChatListItem carries the main inbox interaction shape."
         actions={<Badge tone="primary">3 chats</Badge>}
@@ -60,9 +59,9 @@ export default function ChatsScreen() {
         {chats.map((chat) => (
           <ChatListItem key={chat.title} {...chat} />
         ))}
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Messaging gap">
+      <ScreenSection title="Messaging gap">
         <Card
           title="Next ZORA pressure point"
           description="A full ChatScreen pattern should handle message bubbles, composer, date separators, and attachments."
@@ -73,7 +72,7 @@ export default function ChatsScreen() {
             This example intentionally stays static until ZORA owns the missing chat primitives.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

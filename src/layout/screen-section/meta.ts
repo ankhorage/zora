@@ -1,13 +1,13 @@
 import type { ZoraComponentMeta } from '../../metadata';
-import { PAGE_SECTION_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
+import { SCREEN_SECTION_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 
-export const pageSectionMeta = {
-  name: 'PageSection',
+export const screenSectionMeta = {
+  name: 'ScreenSection',
   category: 'layout',
   directManifestNode: true,
-  allowedChildren: [...PAGE_SECTION_ALLOWED_CHILDREN],
+  allowedChildren: [...SCREEN_SECTION_ALLOWED_CHILDREN],
   blueprint: {
-    label: 'Page section',
+    label: 'Screen section',
     defaultProps: {
       title: 'Section',
       description: 'Section description.',

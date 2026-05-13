@@ -1,12 +1,12 @@
 import {
+  AppBar,
   Avatar,
   Badge,
   Card,
   ListSection,
   MetricCard,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -33,44 +33,43 @@ const accountRows = [
 
 export default function ProfileScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Customer profile"
-          description="Account, preferences, loyalty status, and saved products."
-          actions={<Avatar name="Nora Frei" tone="primary" />}
-        />
-      }
-    >
-      <PageSection title="Customer card">
-        <Card
-          title="Nora Frei"
-          description="Studio customer · Zürich · member since 2024"
-          actions={<Badge tone="success">Gold member</Badge>}
-        >
-          <Text tone="muted">
-            Prefers natural materials, ceramic sets, and quiet tableware collections.
-          </Text>
-        </Card>
-      </PageSection>
-
-      <PageSection title="Loyalty">
-        <MetricCard
-          label="Points"
-          value="4,280"
-          delta="+320"
-          deltaTone="success"
-          description="This month"
-        />
-        <MetricCard label="Orders" value="13" description="Lifetime purchases" />
-        <MetricCard label="Wishlist" value="18" description="Saved products" />
-      </PageSection>
-
-      <ListSection
-        title="Account"
-        description="Storefront account settings as structured ZORA rows."
-        items={accountRows}
+    <>
+      <AppBar
+        title="Customer profile"
+        subtitle="Account, preferences, loyalty status, and saved products."
+        actions={<Avatar name="Nora Frei" tone="primary" />}
       />
-    </Page>
+      <Screen>
+        <ScreenSection title="Customer card">
+          <Card
+            title="Nora Frei"
+            description="Studio customer · Zürich · member since 2024"
+            actions={<Badge tone="success">Gold member</Badge>}
+          >
+            <Text tone="muted">
+              Prefers natural materials, ceramic sets, and quiet tableware collections.
+            </Text>
+          </Card>
+        </ScreenSection>
+
+        <ScreenSection title="Loyalty">
+          <MetricCard
+            label="Points"
+            value="4,280"
+            delta="+320"
+            deltaTone="success"
+            description="This month"
+          />
+          <MetricCard label="Orders" value="13" description="Lifetime purchases" />
+          <MetricCard label="Wishlist" value="18" description="Saved products" />
+        </ScreenSection>
+
+        <ListSection
+          title="Account"
+          description="Storefront account settings as structured ZORA rows."
+          items={accountRows}
+        />
+      </Screen>
+    </>
   );
 }

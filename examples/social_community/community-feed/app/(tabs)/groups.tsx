@@ -1,11 +1,11 @@
 import {
+  AppBar,
   AvatarGroup,
   Badge,
   Card,
   ListSection,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -32,41 +32,40 @@ const groupRows = [
 
 export default function GroupsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Groups"
-          description="Follow active spaces, upcoming events, and moderation needs."
-          actions={<Badge tone="primary">3 active</Badge>}
-        />
-      }
-    >
-      <PageSection
-        title="Featured room"
-        description="A composed ZORA card for the most active group."
-      >
-        <Card
-          title="Design systems circle"
-          description="128 members · 14 new posts · weekly critique on Friday."
-          actions={
-            <AvatarGroup
-              items={[
-                { id: 'mia', name: 'Mia Chen' },
-                { id: 'noah', name: 'Noah Keller', tone: 'success' },
-                { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
-              ]}
-            />
-          }
-        >
-          <Text tone="muted">The screen stays realistic without local layout wrappers.</Text>
-        </Card>
-      </PageSection>
-
-      <ListSection
-        title="Your groups"
-        description="Static data now, template data binding later."
-        items={groupRows}
+    <>
+      <AppBar
+        title="Groups"
+        subtitle="Follow active spaces, upcoming events, and moderation needs."
+        actions={<Badge tone="primary">3 active</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection
+          title="Featured room"
+          description="A composed ZORA card for the most active group."
+        >
+          <Card
+            title="Design systems circle"
+            description="128 members · 14 new posts · weekly critique on Friday."
+            actions={
+              <AvatarGroup
+                items={[
+                  { id: 'mia', name: 'Mia Chen' },
+                  { id: 'noah', name: 'Noah Keller', tone: 'success' },
+                  { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+                ]}
+              />
+            }
+          >
+            <Text tone="muted">The screen stays realistic without local layout wrappers.</Text>
+          </Card>
+        </ScreenSection>
+
+        <ListSection
+          title="Your groups"
+          description="Static data now, template data binding later."
+          items={groupRows}
+        />
+      </Screen>
+    </>
   );
 }

@@ -5,7 +5,6 @@ import {
   MediaCard,
   Page,
   PageHeader,
-  PageSection,
   PostCard,
   Text,
 } from '@ankhorage/zora';
@@ -42,7 +41,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Stories"
         description="Avatar groups and badges give the feed a social rhythm without custom styles."
         actions={<Badge tone="success">Live feed</Badge>}
@@ -65,9 +64,9 @@ export default function HomeScreen() {
             />
           }
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Following"
         description="A realistic image-first feed using the ZORA PostCard pattern."
       >
@@ -75,7 +74,7 @@ export default function HomeScreen() {
         <Text tone="muted">
           The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

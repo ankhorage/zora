@@ -1,13 +1,13 @@
 import type { ZoraComponentMeta } from '../../metadata';
-import { PAGE_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
+import { SCREEN_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 
-export const pageMeta = {
-  name: 'Page',
+export const screenMeta = {
+  name: 'Screen',
   category: 'layout',
   directManifestNode: true,
-  allowedChildren: [...PAGE_ALLOWED_CHILDREN],
+  allowedChildren: [...SCREEN_ALLOWED_CHILDREN],
   blueprint: {
-    label: 'Page',
+    label: 'Screen',
   },
   props: {
     width: {
@@ -16,6 +16,12 @@ export const pageMeta = {
       label: 'Width',
       enum: ['narrow', 'default', 'wide'],
       default: 'default',
+    },
+    scroll: {
+      type: 'boolean',
+      category: 'Layout',
+      label: 'Scroll',
+      default: true,
     },
   },
 } as const satisfies ZoraComponentMeta;

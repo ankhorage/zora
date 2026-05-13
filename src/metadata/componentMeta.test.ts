@@ -130,7 +130,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
   test('direct manifest node leaf/container rules', () => {
     const expectedLeafNodes = new Set([
-      'PageHeader',
       'SectionHeader',
       'SettingsRow',
       'EmptyState',
@@ -146,8 +145,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
     const expectedContainerNodes = new Set([
       'FormField',
-      'Page',
-      'PageSection',
+      'Screen',
+      'ScreenSection',
       'AuthLayout',
       'Card',
       'Panel',

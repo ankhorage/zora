@@ -3,9 +3,9 @@ import React from 'react';
 import { Stack } from '../../foundation';
 import { SectionHeader } from '../../patterns/section-header';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { PageSectionProps } from './types';
+import type { ScreenSectionProps } from './types';
 
-function PageSectionInner({
+function ScreenSectionInner({
   themeId: _themeId,
   mode: _mode,
   title,
@@ -13,7 +13,7 @@ function PageSectionInner({
   actions,
   children,
   testID,
-}: PageSectionProps) {
+}: ScreenSectionProps) {
   return (
     <Stack gap="m" testID={testID}>
       {title ? <SectionHeader actions={actions} description={description} title={title} /> : null}
@@ -22,4 +22,4 @@ function PageSectionInner({
   );
 }
 
-export const PageSection = withZoraThemeScope(PageSectionInner);
+export const ScreenSection = withZoraThemeScope(ScreenSectionInner);

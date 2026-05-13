@@ -7,7 +7,7 @@ import {
   Divider,
   Grid,
   Inline,
-  PageSection,
+  ScreenSection,
   Show,
   Spacer,
   Stack,
@@ -18,7 +18,7 @@ import React from 'react';
 
 export function FoundationPrimitivesSection() {
   return (
-    <PageSection title="Foundation primitives">
+    <ScreenSection title="Foundation primitives">
       <Card
         title="Stack and Inline"
         description="Use Stack for vertical rhythm and Inline for wrapped horizontal groups."
@@ -113,6 +113,6 @@ export function FoundationPrimitivesSection() {
           </Show>
         </Stack>
       </Card>
-    </PageSection>
+    </ScreenSection>
   );
 }

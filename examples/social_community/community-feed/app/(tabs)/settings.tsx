@@ -1,4 +1,4 @@
-import { Badge, Card, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import { AppBar, Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
 
 const settingsRows = [
   {
@@ -14,8 +14,8 @@ const settingsRows = [
     variant: 'card' as const,
   },
   {
-    title: 'Moderation',
-    description: 'Review queue, blocked words, and group role defaults.',
+    title: 'Review tools',
+    description: 'Queue, blocked words, and group role defaults.',
     meta: '3 open',
     variant: 'card' as const,
   },
@@ -23,37 +23,36 @@ const settingsRows = [
 
 export default function SettingsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Settings"
-          description="Account, privacy, notifications, and moderation preferences."
-          actions={<Badge tone="neutral">Starter</Badge>}
-        />
-      }
-    >
-      <PageSection title="Status">
-        <Notice
-          title="Template-ready settings"
-          description="This route is intentionally static. Data binding belongs in a later template/runtime step."
-          tone="primary"
-        />
-      </PageSection>
-
-      <ListSection
-        title="Preferences"
-        description="Structured rows with no local styling layer."
-        items={settingsRows}
+    <>
+      <AppBar
+        title="Settings"
+        subtitle="Account, privacy, notifications, and community preferences."
+        actions={<Badge tone="neutral">Starter</Badge>}
       />
+      <Screen>
+        <ScreenSection title="Status">
+          <Notice
+            title="Template-ready settings"
+            description="This route is intentionally static. Data binding belongs in a later template/runtime step."
+            tone="primary"
+          />
+        </ScreenSection>
 
-      <PageSection title="Account">
-        <Card
-          title="Community Feed example"
-          description="Real Expo Router app, ZORA-only UI, category-based location."
-          actions={<Badge tone="success">Verified shape</Badge>}
-          tone="subtle"
+        <ListSection
+          title="Preferences"
+          description="Structured rows with no local styling layer."
+          items={settingsRows}
         />
-      </PageSection>
-    </Page>
+
+        <ScreenSection title="Account">
+          <Card
+            title="Community Feed example"
+            description="Real Expo Router app, ZORA-only UI, category-based location."
+            actions={<Badge tone="success">Verified shape</Badge>}
+            tone="subtle"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }

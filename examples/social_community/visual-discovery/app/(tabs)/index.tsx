@@ -5,7 +5,6 @@ import {
   Notice,
   Page,
   PageHeader,
-  PageSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
@@ -48,11 +47,14 @@ export default function DiscoverScreen() {
         />
       }
     >
-      <PageSection title="Search" description="Visual discovery starts with a broad idea or mood.">
+      <ScreenSection
+        title="Search"
+        description="Visual discovery starts with a broad idea or mood."
+      >
         <SearchBar value="" placeholder="Search ideas, boards, products, places" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="For you"
         description="Existing ZORA media cards stand in for a future Wall/Grid pattern."
         actions={<Badge tone="primary">Personalized</Badge>}
@@ -60,9 +62,9 @@ export default function DiscoverScreen() {
         {pins.map((pin) => (
           <MediaCard key={pin.title} {...pin} badges={<Badge tone="neutral">Pin</Badge>} />
         ))}
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="ZORA pressure point">
+      <ScreenSection title="ZORA pressure point">
         <Notice
           title="Needs a visual wall pattern"
           description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
@@ -71,7 +73,7 @@ export default function DiscoverScreen() {
         <Text tone="muted">
           This example captures the product need without adding local layout tricks.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

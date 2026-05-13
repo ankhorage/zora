@@ -1,4 +1,4 @@
-import { Badge, Card, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const settingsRows = [
   {
@@ -32,13 +32,13 @@ export default function SettingsScreen() {
         />
       }
     >
-      <PageSection title="Security">
+      <ScreenSection title="Security">
         <Notice
           title="End-to-end encryption placeholder"
           description="The example models the UI, not cryptography or messaging infrastructure."
           tone="success"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Preferences"
@@ -46,14 +46,14 @@ export default function SettingsScreen() {
         items={settingsRows}
       />
 
-      <PageSection title="Template note">
+      <ScreenSection title="Template note">
         <Card
           title="Private Messaging example"
           description="Real Expo Router app, ZORA-only UI, and no local styling workaround layer."
           actions={<Badge tone="success">Verified shape</Badge>}
           tone="subtle"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

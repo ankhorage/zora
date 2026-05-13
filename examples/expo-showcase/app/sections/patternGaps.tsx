@@ -5,9 +5,9 @@ import {
   ConfirmDialog,
   IconButton,
   Notice,
-  PageSection,
   Panel,
   ResponsivePanel,
+  ScreenSection,
   SectionHeader,
   SettingsRow,
   Stack,
@@ -23,7 +23,7 @@ export function PatternGapsSection() {
   const [syncEnabled, setSyncEnabled] = React.useState(true);
 
   return (
-    <PageSection title="Additional patterns">
+    <ScreenSection title="Additional patterns">
       <SectionHeader
         title="Dialogs and panels"
         description="Focused confirmation and contextual panel patterns."
@@ -133,6 +133,6 @@ export function PatternGapsSection() {
         onCancel={() => setConfirmOpen(false)}
         onConfirm={() => setConfirmOpen(false)}
       />
-    </PageSection>
+    </ScreenSection>
   );
 }

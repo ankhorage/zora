@@ -1,11 +1,11 @@
 import {
+  AppBar,
   Avatar,
   Badge,
   ListSection,
-  Page,
-  PageHeader,
-  PageSection,
   Panel,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -35,32 +35,34 @@ const conversations = [
 
 export default function MessagesScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Messages"
-          description="A lightweight social inbox screen for the starter app."
-          actions={<Badge tone="primary">3 unread</Badge>}
-        />
-      }
-    >
-      <PageSection
-        title="Pinned"
-        description="The first message preview uses a reusable ZORA panel."
-      >
-        <Panel title="Mia Chen" description="Sent feedback on the onboarding flow two minutes ago.">
-          <Text tone="muted">
-            The next iteration can replace this with a dedicated ChatList pattern when the app needs
-            richer message states.
-          </Text>
-        </Panel>
-      </PageSection>
-
-      <ListSection
-        title="Inbox"
-        description="Real list rows, not fake navigation state."
-        items={conversations}
+    <>
+      <AppBar
+        title="Messages"
+        subtitle="A lightweight social inbox screen for the starter app."
+        actions={<Badge tone="primary">3 unread</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection
+          title="Pinned"
+          description="The first message preview uses a reusable ZORA panel."
+        >
+          <Panel
+            title="Mia Chen"
+            description="Sent feedback on the onboarding flow two minutes ago."
+          >
+            <Text tone="muted">
+              The next iteration can replace this with a dedicated ChatList pattern when the app
+              needs richer message states.
+            </Text>
+          </Panel>
+        </ScreenSection>
+
+        <ListSection
+          title="Inbox"
+          description="Real list rows, not fake navigation state."
+          items={conversations}
+        />
+      </Screen>
+    </>
   );
 }

@@ -2,9 +2,8 @@ import {
   Badge,
   ListSection,
   MediaCard,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
@@ -32,20 +31,18 @@ const menuRows = [
 
 export default function MenuScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Menu"
-          description="Seasonal dishes, tasting menus, dietary notes, and specials."
-          actions={<Badge tone="primary">Seasonal</Badge>}
+    <Screen>
+      <ScreenSection title="Search" description="Search dishes and dietary options.">
+        <SearchBar
+          onValueChange={() => {
+            /* no-op */
+          }}
+          value=""
+          placeholder="Search menu"
         />
-      }
-    >
-      <PageSection title="Search" description="Search dishes and dietary options.">
-        <SearchBar value="" placeholder="Search menu" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Featured dish"
         description="A rich menu item using the existing media card pattern."
       >
@@ -58,7 +55,7 @@ export default function MenuScreen() {
           imageLabel="Fresh pasta and burrata dish"
           badges={<Badge tone="success">Vegetarian</Badge>}
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Dinner menu"
@@ -68,6 +65,6 @@ export default function MenuScreen() {
       <Text tone="muted">
         Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow patterns.
       </Text>
-    </Page>
+    </Screen>
   );
 }

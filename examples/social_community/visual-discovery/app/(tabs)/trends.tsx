@@ -1,12 +1,4 @@
-import {
-  Badge,
-  ListSection,
-  MetricCard,
-  Notice,
-  Page,
-  PageHeader,
-  PageSection,
-} from '@ankhorage/zora';
+import { Badge, ListSection, MetricCard, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const trendRows = [
   {
@@ -40,7 +32,7 @@ export default function TrendsScreen() {
         />
       }
     >
-      <PageSection title="Signals">
+      <ScreenSection title="Signals">
         <MetricCard
           label="Pins saved"
           value="42k"
@@ -60,7 +52,7 @@ export default function TrendsScreen() {
           value="Warm minimalism"
           description="Fastest-growing collection"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Trending topics"
@@ -68,13 +60,13 @@ export default function TrendsScreen() {
         items={trendRows}
       />
 
-      <PageSection title="Product note">
+      <ScreenSection title="Product note">
         <Notice
           title="Trend cards are a future pattern"
           description="A real visual discovery product likely needs richer trend cards with thumbnails, stats, and related boards."
           tone="warning"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }
