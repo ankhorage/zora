@@ -40,7 +40,7 @@ export default function ProfileScreen() {
           </Card>
         </ScreenSection>
 
-        <ScreenSection title="Guest stats">
+        <ScreenSection title="Guest stats" columns={{ base: 1, md: 3 }}>
           <MetricCard label="Visits" value="18" description="Lifetime reservations" />
           <MetricCard
             label="Upcoming"
