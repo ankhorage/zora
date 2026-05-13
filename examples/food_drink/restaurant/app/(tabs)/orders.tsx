@@ -1,0 +1,52 @@
+import { Badge, Button, Card, ListSection, MetricCard, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+
+const orderRows = [
+  {
+    title: 'Table 12 · tasting menu',
+    description: 'Two tasting menus, one vegetarian, wine pairing pending.',
+    meta: 'CHF 196',
+    variant: 'card' as const,
+  },
+  {
+    title: 'Takeaway · handmade pasta',
+    description: 'Lemon tagliatelle and market salad, ready at 19:10.',
+    meta: 'CHF 48',
+    variant: 'card' as const,
+  },
+  {
+    title: 'Gift voucher',
+    description: 'Dinner voucher for two, sent by email.',
+    meta: 'CHF 150',
+    variant: 'card' as const,
+  },
+] as const;
+
+export default function OrdersScreen() {
+  return (
+    <Page
+      header={
+        <PageHeader
+          title="Orders"
+          description="Dining orders, takeaway, vouchers, and visit history."
+          actions={<Button leadingIcon={{ name: 'receipt-outline' }}>Receipt</Button>}
+        />
+      }
+    >
+      <PageSection title="Today">
+        <MetricCard label="Open orders" value="2" description="Dining and takeaway" />
+        <MetricCard label="Ready soon" value="19:10" delta="Takeaway" deltaTone="primary" description="Kitchen estimate" />
+        <MetricCard label="Vouchers" value="1" description="Email delivery" />
+      </PageSection>
+
+      <ListSection title="Order activity" description="Order rows are static until restaurant-specific order patterns exist." items={orderRows} />
+
+      <PageSection title="Operations note">
+        <Notice
+          title="No kitchen integration"
+          description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
+          tone="primary"
+        />
+      </PageSection>
+    </Page>
+  );
+}
