@@ -49,7 +49,7 @@ export default function ProfileScreen() {
           </Card>
         </ScreenSection>
 
-        <ScreenSection title="Loyalty">
+        <ScreenSection title="Loyalty" columns={{ base: 1, md: 3 }}>
           <MetricCard
             label="Points"
             value="4,280"
