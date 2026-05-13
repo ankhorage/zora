@@ -38,14 +38,14 @@ export default function ProductsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Search"
         description="Filtering is static for now, but the UI surface is real."
       >
         <SearchBar value="" placeholder="Search products" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Catalog"
         description="Media cards stand in for future ProductCard/ProductGrid patterns."
       >
@@ -60,7 +60,7 @@ export default function ProductsScreen() {
           Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns
           later.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

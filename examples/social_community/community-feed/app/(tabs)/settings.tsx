@@ -32,13 +32,13 @@ export default function SettingsScreen() {
         />
       }
     >
-      <PageSection title="Status">
+      <ScreenSection title="Status">
         <Notice
           title="Template-ready settings"
           description="This route is intentionally static. Data binding belongs in a later template/runtime step."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Preferences"
@@ -46,14 +46,14 @@ export default function SettingsScreen() {
         items={settingsRows}
       />
 
-      <PageSection title="Account">
+      <ScreenSection title="Account">
         <Card
           title="Community Feed example"
           description="Real Expo Router app, ZORA-only UI, category-based location."
           actions={<Badge tone="success">Verified shape</Badge>}
           tone="subtle"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

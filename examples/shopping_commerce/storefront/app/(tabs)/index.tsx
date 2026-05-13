@@ -40,7 +40,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="New collection"
         description="A shop homepage composed from ZORA sections and media cards."
         actions={<Badge tone="primary">Spring edit</Badge>}
@@ -52,9 +52,9 @@ export default function HomeScreen() {
             badges={<Badge tone="success">In stock</Badge>}
           />
         ))}
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Social proof">
+      <ScreenSection title="Social proof">
         <Notice
           title="1,248 happy customers"
           description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."
@@ -70,7 +70,7 @@ export default function HomeScreen() {
         <Text tone="muted">
           A future StorefrontHero or ProductFeature pattern would make this screen stronger.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

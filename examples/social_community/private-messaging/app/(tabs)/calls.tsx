@@ -59,13 +59,13 @@ export default function CallsScreen() {
         />
       }
     >
-      <PageSection title="Availability">
+      <ScreenSection title="Availability">
         <Notice
           title="Call history only"
           description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Recent calls"

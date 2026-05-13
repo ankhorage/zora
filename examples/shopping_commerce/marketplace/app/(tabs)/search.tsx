@@ -32,9 +32,9 @@ export default function SearchScreen() {
         />
       }
     >
-      <PageSection title="Query" description="Search stays inside the ZORA component surface.">
+      <ScreenSection title="Query" description="Search stays inside the ZORA component surface.">
         <SearchBar value="" placeholder="Search marketplace" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Popular categories"

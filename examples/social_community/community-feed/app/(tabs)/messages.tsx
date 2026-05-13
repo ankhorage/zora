@@ -44,7 +44,7 @@ export default function MessagesScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Pinned"
         description="The first message preview uses a reusable ZORA panel."
       >
@@ -54,7 +54,7 @@ export default function MessagesScreen() {
             richer message states.
           </Text>
         </Panel>
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Inbox"

@@ -42,7 +42,7 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Seller card"
         description="A commerce profile composed from existing ZORA cards."
       >
@@ -55,9 +55,9 @@ export default function ProfileScreen() {
             Local pickup preferred. Furniture, ceramics, and camera equipment.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Stats">
+      <ScreenSection title="Stats">
         <MetricCard label="Rating" value="4.9" description="42 reviews" />
         <MetricCard
           label="Sold"
@@ -67,7 +67,7 @@ export default function ProfileScreen() {
           description="Last 90 days"
         />
         <MetricCard label="Saved" value="36" description="Products and searches" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Account"

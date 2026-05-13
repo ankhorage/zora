@@ -39,8 +39,7 @@ import {
   Card,
   Heading,
   IconButton,
-  Page,
-  PageHeader,
+  Screen,
   Text,
   ZoraProvider,
 } from '@ankhorage/zora';
@@ -56,7 +55,7 @@ export function App() {
           />
         }
       >
-        <Page header={<PageHeader title="Dashboard" description="Ready to build." />}>
+        <Screen>
           <Card
             actions={<Button>Continue</Button>}
             description="ZORA provides composed UI surfaces for apps."
@@ -65,7 +64,7 @@ export function App() {
             <Heading level={3}>Next steps</Heading>
             <Text tone="muted">Structured text comes from ZORA too.</Text>
           </Card>
-        </Page>
+        </Screen>
       </AppShell>
     </ZoraProvider>
   );
@@ -1307,11 +1306,13 @@ It defines the top-level layout slots (`header`, `body`, `footer`, `overlay`)
 and ensures a full-height, flexible container.
 
 Use it as the outer layout inside `ZoraProvider`. Combine it with layout
-primitives like `SidebarLayout` or `Page` to structure inner content.
+primitives like `SidebarLayout` or `Screen` to structure inner content.
 
 ```tsx
 <AppShell header={<Toolbar position="inline">{actions}</Toolbar>} footer={<BottomBar />}>
-  <Page header={<PageHeader title="Dashboard" />}>{content}</Page>
+  <Screen>
+    {content}
+  </Screen>
 </AppShell>
 ```
 
@@ -1422,9 +1423,9 @@ No inherited props. `PageHeaderProps` is declared directly by ZORA.
 Section wrapper that optionally renders a `SectionHeader`.
 
 ```tsx
-<PageSection actions={<Button>Refresh</Button>} title="Recent activity">
+<ScreenSection actions={<Button>Refresh</Button>} title="Recent activity">
   {content}
-</PageSection>
+</ScreenSection>
 ```
 
 <details>

@@ -50,7 +50,7 @@ export default function FeedScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Today"
         description="The example uses ZORA components only: no StyleSheet, no Surface imports, no fake tabs."
         actions={<Badge tone="success">Real route</Badge>}
@@ -58,9 +58,9 @@ export default function FeedScreen() {
         {posts.map((post) => (
           <PostCard key={post.id} author={post.author} text={post.text} actions={post.actions} />
         ))}
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Community pulse"
         description="Quick summary cards compose the rest of the feed."
       >
@@ -77,7 +77,7 @@ export default function FeedScreen() {
           actions={<Badge tone="warning">Needs review</Badge>}
           tone="subtle"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

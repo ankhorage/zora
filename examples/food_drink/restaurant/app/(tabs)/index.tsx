@@ -1,27 +1,17 @@
 import {
   AvatarGroup,
   Badge,
-  Button,
   MediaCard,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
 export default function HomeScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Casa Verde"
-          description="A neighborhood restaurant starter for menu discovery, reservations, orders, and guest profile."
-          actions={<Button leadingIcon={{ name: 'calendar-outline' }}>Reserve</Button>}
-        />
-      }
-    >
-      <PageSection
+    <Screen>
+      <ScreenSection
         title="Tonight's feature"
         description="Restaurant home content composed from ZORA media cards and badges."
         actions={<Badge tone="success">Open now</Badge>}
@@ -44,9 +34,9 @@ export default function HomeScreen() {
             />
           }
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Guest note">
+      <ScreenSection title="Guest note">
         <Notice
           title="Reservations available"
           description="Tables are open from 18:00. Booking persistence is intentionally outside this static UI example."
@@ -55,7 +45,7 @@ export default function HomeScreen() {
         <Text tone="muted">
           A dedicated RestaurantHero or MenuFeature pattern would make this app stronger later.
         </Text>
-      </PageSection>
-    </Page>
+      </ScreenSection>
+    </Screen>
   );
 }

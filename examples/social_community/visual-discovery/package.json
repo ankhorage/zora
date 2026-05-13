@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "latest",
+    "@ankhorage/zora": "^1.4.12",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-picker/picker": "2.11.1",
     "expo": "~54.0.34",

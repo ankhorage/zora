@@ -42,7 +42,7 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection title="Customer card">
+      <ScreenSection title="Customer card">
         <Card
           title="Nora Frei"
           description="Studio customer · Zürich · member since 2024"
@@ -52,9 +52,9 @@ export default function ProfileScreen() {
             Prefers natural materials, ceramic sets, and quiet tableware collections.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Loyalty">
+      <ScreenSection title="Loyalty">
         <MetricCard
           label="Points"
           value="4,280"
@@ -64,7 +64,7 @@ export default function ProfileScreen() {
         />
         <MetricCard label="Orders" value="13" description="Lifetime purchases" />
         <MetricCard label="Wishlist" value="18" description="Saved products" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Account"

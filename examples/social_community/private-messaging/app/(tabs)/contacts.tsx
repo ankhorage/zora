@@ -59,12 +59,12 @@ export default function ContactsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Find people"
         description="A searchable contact directory without local input styling."
       >
         <SearchBar value="" placeholder="Search contacts" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Favorites"

@@ -22,7 +22,7 @@ export default function SellScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Photos"
         description="Upload is represented by the ZORA image upload field."
       >
@@ -31,18 +31,18 @@ export default function SellScreen() {
           description="Add clear photos from multiple angles."
           actionLabel="Choose photos"
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Details"
         description="A minimal listing form without local style objects."
       >
         <Input label="Title" placeholder="Walnut lounge chair" />
         <Input label="Price" placeholder="CHF 420" />
         <Textarea placeholder="Describe condition, pickup details, and what is included..." />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Readiness">
+      <ScreenSection title="Readiness">
         <Card
           title="Draft listing"
           description="Add photos, price, and pickup location before publishing."
@@ -54,7 +54,7 @@ export default function SellScreen() {
           description="Payments, checkout, and seller verification belong outside this ZORA UI example."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

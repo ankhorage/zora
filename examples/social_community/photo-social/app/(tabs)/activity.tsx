@@ -35,13 +35,13 @@ export default function ActivityScreen() {
         />
       }
     >
-      <PageSection title="Highlights">
+      <ScreenSection title="Highlights">
         <Notice
           title="Audience is active"
           description="Your last photo story is driving more saves than comments today."
           tone="success"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Recent activity"

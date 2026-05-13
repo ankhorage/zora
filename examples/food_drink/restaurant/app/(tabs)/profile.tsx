@@ -1,14 +1,4 @@
-import {
-  Avatar,
-  Badge,
-  Card,
-  ListSection,
-  MetricCard,
-  Page,
-  PageHeader,
-  PageSection,
-  Text,
-} from '@ankhorage/zora';
+import { Badge, Card, ListSection, MetricCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 const preferenceRows = [
   {
@@ -33,16 +23,8 @@ const preferenceRows = [
 
 export default function ProfileScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Guest profile"
-          description="Preferences, loyalty, reservations, and saved dining notes."
-          actions={<Avatar name="Nora Frei" tone="primary" />}
-        />
-      }
-    >
-      <PageSection title="Guest card">
+    <Screen>
+      <ScreenSection title="Guest card">
         <Card
           title="Nora Frei"
           description="Regular guest · Zürich · last visit two weeks ago"
@@ -52,9 +34,9 @@ export default function ProfileScreen() {
             Prefers early dinner slots, vegetarian tasting menus, and quiet tables.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Guest stats">
+      <ScreenSection title="Guest stats">
         <MetricCard label="Visits" value="18" description="Lifetime reservations" />
         <MetricCard
           label="Upcoming"
@@ -70,13 +52,13 @@ export default function ProfileScreen() {
           deltaTone="success"
           description="Loyalty balance"
         />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Preferences"
         description="Guest profile rows remain structured and theme-aware."
         items={preferenceRows}
       />
-    </Page>
+    </Screen>
   );
 }

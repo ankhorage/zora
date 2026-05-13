@@ -41,7 +41,7 @@ export default function GroupsScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Featured room"
         description="A composed ZORA card for the most active group."
       >
@@ -60,7 +60,7 @@ export default function GroupsScreen() {
         >
           <Text tone="muted">The screen stays realistic without local layout wrappers.</Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Your groups"

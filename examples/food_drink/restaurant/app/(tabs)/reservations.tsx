@@ -1,28 +1,18 @@
 import {
   Badge,
-  Button,
   Card,
   Input,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Select,
   Textarea,
 } from '@ankhorage/zora';
 
 export default function ReservationsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Reservations"
-          description="Reserve a table, choose party size, and share visit notes."
-          actions={<Button>Request table</Button>}
-        />
-      }
-    >
-      <PageSection
+    <Screen>
+      <ScreenSection
         title="Booking details"
         description="A reservation form composed from ZORA inputs."
       >
@@ -38,9 +28,9 @@ export default function ReservationsScreen() {
           ]}
         />
         <Textarea placeholder="Dietary notes, stroller, celebration, or seating preference..." />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Availability">
+      <ScreenSection title="Availability">
         <Card
           title="Tonight"
           description="Tables available at 18:00, 19:30, and 21:00."
@@ -51,7 +41,7 @@ export default function ReservationsScreen() {
           description="Calendar availability, confirmation emails, and table management belong in a later backend example."
           tone="primary"
         />
-      </PageSection>
-    </Page>
+      </ScreenSection>
+    </Screen>
   );
 }

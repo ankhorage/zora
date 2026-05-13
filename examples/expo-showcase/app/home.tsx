@@ -33,7 +33,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           />
         }
       >
-        <PageSection title="Explore the catalog">
+        <ScreenSection title="Explore the catalog">
           <Card
             title="Components"
             description="Buttons, cards, inputs, tabs, toolbars, overlays, badges, and other reusable building blocks."
@@ -70,7 +70,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </Badge>
             }
           />
-        </PageSection>
+        </ScreenSection>
       </Page>
     </ScrollView>
   );

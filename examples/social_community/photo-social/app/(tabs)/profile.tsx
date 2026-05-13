@@ -21,7 +21,7 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Creator profile"
         description="Profile surfaces should feel app-like without custom styles."
       >
@@ -32,9 +32,9 @@ export default function ProfileScreen() {
         >
           <Text tone="muted">Golden hour, street signs, and calm interior details.</Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Stats">
+      <ScreenSection title="Stats">
         <MetricCard
           label="Followers"
           value="24.8k"
@@ -44,9 +44,9 @@ export default function ProfileScreen() {
         />
         <MetricCard label="Saves" value="8.4k" description="Across all posts" />
         <MetricCard label="Collections" value="14" description="Public boards" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Featured post">
+      <ScreenSection title="Featured post">
         <MediaCard
           title="Terrace light"
           description="A warm, quiet frame from the latest city walk."
@@ -56,7 +56,7 @@ export default function ProfileScreen() {
           imageLabel="Warm city terrace at golden hour"
           badges={<Badge tone="primary">Featured</Badge>}
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

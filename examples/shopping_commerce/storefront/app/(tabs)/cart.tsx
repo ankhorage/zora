@@ -47,7 +47,7 @@ export default function CartScreen() {
         items={cartRows}
       />
 
-      <PageSection title="Summary">
+      <ScreenSection title="Summary">
         <Card
           title="Order total"
           description="CHF 201 · shipping calculated later"
@@ -58,7 +58,7 @@ export default function CartScreen() {
           description="The UI is static. Payments, taxes, shipping, and inventory reservation belong in app/backend examples later."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

@@ -20,7 +20,7 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Creator profile"
         description="A profile route composed from public ZORA exports."
       >
@@ -31,9 +31,9 @@ export default function ProfileScreen() {
         >
           <Text tone="muted">1.8k followers · 243 saved posts · 32 active conversations.</Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Audience">
+      <ScreenSection title="Audience">
         <MetricCard
           label="Followers"
           value="1.8k"
@@ -49,7 +49,7 @@ export default function ProfileScreen() {
           deltaTone="primary"
           description="This month"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

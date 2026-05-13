@@ -15,7 +15,7 @@ import React from 'react';
 
 export function LayoutsShowcaseSection() {
   return (
-    <PageSection title="Layouts">
+    <ScreenSection title="Layouts">
       <Card
         title="AuthLayout"
         description="Centered auth surfaces with title, description, and footer."
@@ -86,6 +86,6 @@ export function LayoutsShowcaseSection() {
           </Surface>
         </TopbarLayout>
       </Card>
-    </PageSection>
+    </ScreenSection>
   );
 }

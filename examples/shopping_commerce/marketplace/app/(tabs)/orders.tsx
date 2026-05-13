@@ -40,7 +40,7 @@ export default function OrdersScreen() {
         />
       }
     >
-      <PageSection title="Summary">
+      <ScreenSection title="Summary">
         <MetricCard label="Active orders" value="3" description="Purchases and offers" />
         <MetricCard
           label="Pending pickup"
@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           description="Next appointment"
         />
         <MetricCard label="Open offers" value="2" description="Awaiting seller reply" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Order activity"
@@ -58,13 +58,13 @@ export default function OrdersScreen() {
         items={orderRows}
       />
 
-      <PageSection title="Product note">
+      <ScreenSection title="Product note">
         <Notice
           title="Order lifecycle is static"
           description="Checkout, payment state, shipping, and dispute flows belong in later app/backend examples."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

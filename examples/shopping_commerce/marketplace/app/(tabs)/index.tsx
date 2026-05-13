@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Button,
-  MediaCard,
-  Notice,
-  Page,
-  PageHeader,
-  PageSection,
-  Text,
-} from '@ankhorage/zora';
+import { Badge, MediaCard, Notice, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 const listings = [
   {
@@ -38,16 +29,8 @@ const listings = [
 
 export default function BrowseScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Marketplace"
-          description="A commerce starter for browsing local listings and seller activity."
-          actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>Sell item</Button>}
-        />
-      }
-    >
-      <PageSection
+    <Screen>
+      <ScreenSection
         title="Recommended"
         description="Existing ZORA media cards stand in for future product listing cards."
         actions={<Badge tone="primary">Nearby</Badge>}
@@ -59,9 +42,9 @@ export default function BrowseScreen() {
             badges={<Badge tone="success">Available</Badge>}
           />
         ))}
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="ZORA pressure point">
+      <ScreenSection title="ZORA pressure point">
         <Notice
           title="Needs commerce-specific cards"
           description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
@@ -70,7 +53,7 @@ export default function BrowseScreen() {
         <Text tone="muted">
           This example records the product need without adding local card wrappers.
         </Text>
-      </PageSection>
-    </Page>
+      </ScreenSection>
+    </Screen>
   );
 }

@@ -20,7 +20,7 @@ export default function StatusScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="My status"
         description="A simple preview card for the current user's update."
       >
@@ -33,9 +33,9 @@ export default function StatusScreen() {
           imageLabel="People at a small gathering"
           badges={<Badge tone="success">Ready</Badge>}
         />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection
+      <ScreenSection
         title="Recent updates"
         description="Status previews compose existing ZORA cards and media surfaces."
       >
@@ -56,7 +56,7 @@ export default function StatusScreen() {
             A future Status pattern could model rings, expiry, and grouped story states.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

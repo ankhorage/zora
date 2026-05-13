@@ -5,10 +5,9 @@ import {
   EmptyState,
   Input,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
   Panel,
+  Screen,
+  ScreenSection,
   Stack,
   Tabs,
   Text,
@@ -21,7 +20,7 @@ import {
   ZoraThemeScope,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 
 interface ThemeComposerPageProps {
   theme: ZoraTheme;
@@ -92,146 +91,136 @@ export function ThemeComposerPage({
   const [previewTab, setPreviewTab] = React.useState('overview');
 
   return (
-    <ScrollView>
-      <Page
-        header={
-          <PageHeader
-            eyebrow="Theme lab"
-            title="Theme Composer"
-            description="Edit the active ZORA theme seed and inspect how primary color, harmony, and mode affect real UI surfaces."
-          />
-        }
-      >
-        <PageSection title="Composer">
-          <ThemeComposer
-            value={theme}
-            onChange={onThemeChange}
-            mode={mode}
-            onModeChange={onModeChange}
-          />
-        </PageSection>
+    <Screen>
+      <ScreenSection title="Composer">
+        <ThemeComposer
+          value={theme}
+          onChange={onThemeChange}
+          mode={mode}
+          onModeChange={onModeChange}
+        />
+      </ScreenSection>
 
-        <PageSection title="Recipe presets">
-          <Stack direction="row" gap="s" wrap="wrap">
-            {recipeThemes.map((preset) => (
-              <Button
-                key={preset.theme.id}
-                emphasis={theme.id === preset.theme.id ? 'solid' : 'soft'}
-                size="s"
-                tone="primary"
-                onPress={() => onThemeChange(preset.theme)}
-              >
-                {preset.label}
-              </Button>
-            ))}
-          </Stack>
-        </PageSection>
-
-        <ZoraThemeScope mode={mode}>
-          <PageSection title="Live preview">
-            <Notice
-              title="Preview follows the active theme"
-              description="The whole showcase app receives the edited theme seed. This preview also scopes light and dark mode without relying on provider remounts."
+      <ScreenSection title="Recipe presets">
+        <Stack direction="row" gap="s" wrap="wrap">
+          {recipeThemes.map((preset) => (
+            <Button
+              key={preset.theme.id}
+              emphasis={theme.id === preset.theme.id ? 'solid' : 'soft'}
+              size="s"
               tone="primary"
-            />
-
-            <Panel
-              title="Surface area"
-              description="Panel, toolbar, cards, badges, form controls, and navigation should remain legible across the target recipe combinations."
+              onPress={() => onThemeChange(preset.theme)}
             >
-              <Stack gap="m">
-                <Toolbar position="inline">
-                  <ToolbarAction active icon={{ name: 'color-palette-outline' }} label="Design" />
-                  <ToolbarAction icon={{ name: 'sparkles-outline' }} label="Generate" />
-                  <ToolbarAction icon={{ name: 'eye-outline' }} label="Preview" />
-                  <View style={{ flex: 1 }} />
-                  <ToolbarAction icon={{ name: 'save-outline' }} label="Save" />
-                </Toolbar>
+              {preset.label}
+            </Button>
+          ))}
+        </Stack>
+      </ScreenSection>
 
-                <Tabs
-                  value={previewTab}
-                  onValueChange={setPreviewTab}
-                  variant="segmented"
-                  items={[
-                    { value: 'overview', label: 'Overview' },
-                    { value: 'inputs', label: 'Inputs' },
-                    { value: 'states', label: 'States' },
-                  ]}
-                />
+      <ZoraThemeScope mode={mode}>
+        <ScreenSection title="Live preview">
+          <Notice
+            title="Preview follows the active theme"
+            description="The whole showcase app receives the edited theme seed. This preview also scopes light and dark mode without relying on provider remounts."
+            tone="primary"
+          />
 
-                <Card
-                  title="App dashboard"
-                  description="A representative content card with actions and mixed badge tones."
-                  actions={
-                    <Button size="s" trailingIcon={{ name: 'arrow-forward-outline' }}>
-                      Continue
+          <Panel
+            title="Surface area"
+            description="Panel, toolbar, cards, badges, form controls, and navigation should remain legible across the target recipe combinations."
+          >
+            <Stack gap="m">
+              <Toolbar position="inline">
+                <ToolbarAction active icon={{ name: 'color-palette-outline' }} label="Design" />
+                <ToolbarAction icon={{ name: 'sparkles-outline' }} label="Generate" />
+                <ToolbarAction icon={{ name: 'eye-outline' }} label="Preview" />
+                <View style={{ flex: 1 }} />
+                <ToolbarAction icon={{ name: 'save-outline' }} label="Save" />
+              </Toolbar>
+
+              <Tabs
+                value={previewTab}
+                onValueChange={setPreviewTab}
+                variant="segmented"
+                items={[
+                  { value: 'overview', label: 'Overview' },
+                  { value: 'inputs', label: 'Inputs' },
+                  { value: 'states', label: 'States' },
+                ]}
+              />
+
+              <Card
+                title="App dashboard"
+                description="A representative content card with actions and mixed badge tones."
+                actions={
+                  <Button size="s" trailingIcon={{ name: 'arrow-forward-outline' }}>
+                    Continue
+                  </Button>
+                }
+                footer={
+                  <Stack direction="row" gap="s" wrap="wrap">
+                    <Badge tone="primary">Primary</Badge>
+                    <Badge tone="success" emphasis="soft">
+                      Success
+                    </Badge>
+                    <Badge tone="warning" emphasis="soft">
+                      Warning
+                    </Badge>
+                    <Badge tone="danger" emphasis="outline">
+                      Danger
+                    </Badge>
+                  </Stack>
+                }
+              >
+                <Stack gap="s">
+                  <Text variant="lead" tone="muted">
+                    Theme: {theme.name} · Category: {theme.appCategory}
+                  </Text>
+                  <Text variant="lead" tone="muted">
+                    Harmony: {theme.harmony} · Primary: {theme.primaryColor}
+                  </Text>
+                  <Text>
+                    Use this surface to catch contrast, tint, nested card, and action-color issues
+                    before generated apps consume the theme.
+                  </Text>
+                </Stack>
+              </Card>
+
+              <Card
+                title="Form controls"
+                description="Inputs and textareas should stay readable on themed surfaces."
+                tone="subtle"
+              >
+                <Stack gap="s">
+                  <Input value={theme.primaryColor} />
+                  <Textarea
+                    value="Theme notes, accessibility observations, and recipe QA details."
+                    rows={3}
+                  />
+                  <Stack direction="row" gap="s" wrap="wrap">
+                    <Button tone="primary">Primary action</Button>
+                    <Button tone="neutral" emphasis="soft">
+                      Secondary
                     </Button>
-                  }
-                  footer={
-                    <Stack direction="row" gap="s" wrap="wrap">
-                      <Badge tone="primary">Primary</Badge>
-                      <Badge tone="success" emphasis="soft">
-                        Success
-                      </Badge>
-                      <Badge tone="warning" emphasis="soft">
-                        Warning
-                      </Badge>
-                      <Badge tone="danger" emphasis="outline">
-                        Danger
-                      </Badge>
-                    </Stack>
-                  }
-                >
-                  <Stack gap="s">
-                    <Text variant="lead" tone="muted">
-                      Theme: {theme.name} · Category: {theme.appCategory}
-                    </Text>
-                    <Text variant="lead" tone="muted">
-                      Harmony: {theme.harmony} · Primary: {theme.primaryColor}
-                    </Text>
-                    <Text>
-                      Use this surface to catch contrast, tint, nested card, and action-color issues
-                      before generated apps consume the theme.
-                    </Text>
+                    <Button tone="danger" emphasis="ghost">
+                      Danger ghost
+                    </Button>
                   </Stack>
-                </Card>
+                </Stack>
+              </Card>
+            </Stack>
+          </Panel>
+        </ScreenSection>
 
-                <Card
-                  title="Form controls"
-                  description="Inputs and textareas should stay readable on themed surfaces."
-                  tone="subtle"
-                >
-                  <Stack gap="s">
-                    <Input value={theme.primaryColor} />
-                    <Textarea
-                      value="Theme notes, accessibility observations, and recipe QA details."
-                      rows={3}
-                    />
-                    <Stack direction="row" gap="s" wrap="wrap">
-                      <Button tone="primary">Primary action</Button>
-                      <Button tone="neutral" emphasis="soft">
-                        Secondary
-                      </Button>
-                      <Button tone="danger" emphasis="ghost">
-                        Danger ghost
-                      </Button>
-                    </Stack>
-                  </Stack>
-                </Card>
-              </Stack>
-            </Panel>
-          </PageSection>
-
-          <PageSection title="Empty state preview">
-            <EmptyState
-              title="No generated screens yet"
-              description="Empty states should use subtle theme tinting without losing text contrast or action clarity."
-              primaryAction={{ label: 'Generate screen', onPress: () => undefined }}
-              secondaryAction={{ label: 'Import template', onPress: () => undefined }}
-            />
-          </PageSection>
-        </ZoraThemeScope>
-      </Page>
-    </ScrollView>
+        <ScreenSection title="Empty state preview">
+          <EmptyState
+            title="No generated screens yet"
+            description="Empty states should use subtle theme tinting without losing text contrast or action clarity."
+            primaryAction={{ label: 'Generate screen', onPress: () => undefined }}
+            secondaryAction={{ label: 'Import template', onPress: () => undefined }}
+          />
+        </ScreenSection>
+      </ZoraThemeScope>
+    </Screen>
   );
 }

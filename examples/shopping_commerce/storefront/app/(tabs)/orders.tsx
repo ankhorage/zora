@@ -40,7 +40,7 @@ export default function OrdersScreen() {
         />
       }
     >
-      <PageSection title="Order health">
+      <ScreenSection title="Order health">
         <MetricCard label="Open orders" value="1" description="Preparing shipment" />
         <MetricCard
           label="Delivered"
@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           description="Last 90 days"
         />
         <MetricCard label="Returns" value="0" description="No active return requests" />
-      </PageSection>
+      </ScreenSection>
 
       <ListSection
         title="Order history"
@@ -58,13 +58,13 @@ export default function OrdersScreen() {
         items={orderRows}
       />
 
-      <PageSection title="Product note">
+      <ScreenSection title="Product note">
         <Notice
           title="Fulfillment is static"
           description="Tracking, refunds, returns, and notifications belong in later app/backend examples."
           tone="primary"
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

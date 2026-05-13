@@ -30,7 +30,7 @@ export default function SavedScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Recent saves"
         description="A simple saved-items flow using existing media cards."
       >
@@ -40,7 +40,7 @@ export default function SavedScreen() {
         <Text tone="muted">
           Saved collections will become stronger once ZORA has a dedicated visual grid pattern.
         </Text>
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }

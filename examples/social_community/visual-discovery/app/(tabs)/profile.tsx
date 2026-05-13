@@ -21,7 +21,7 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection
+      <ScreenSection
         title="Curator profile"
         description="A Pinterest-style profile built without custom styling."
       >
@@ -34,9 +34,9 @@ export default function ProfileScreen() {
             Collecting calm spaces, food stories, and practical inspiration boards.
           </Text>
         </Card>
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Stats">
+      <ScreenSection title="Stats">
         <MetricCard
           label="Followers"
           value="2.4k"
@@ -46,9 +46,9 @@ export default function ProfileScreen() {
         />
         <MetricCard label="Pins" value="684" description="Across public boards" />
         <MetricCard label="Boards" value="18" description="12 public · 6 private" />
-      </PageSection>
+      </ScreenSection>
 
-      <PageSection title="Featured board">
+      <ScreenSection title="Featured board">
         <MediaCard
           title="Warm studio corners"
           description="Small workspaces, shelves, and layered creative tools."
@@ -58,7 +58,7 @@ export default function ProfileScreen() {
           imageLabel="Warm studio workspace with design objects"
           badges={<Badge tone="primary">Featured board</Badge>}
         />
-      </PageSection>
+      </ScreenSection>
     </Page>
   );
 }
