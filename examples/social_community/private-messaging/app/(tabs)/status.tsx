@@ -15,7 +15,9 @@ export default function StatusScreen() {
         <MediaCard
           title="Share an update"
           description="Post a photo, note, or quick availability update."
-          imageSource="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"
+          imageSource={{
+            uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+          }}
           imageLabel="People at a small gathering"
           badges={<Badge tone="success">Ready</Badge>}
         />
