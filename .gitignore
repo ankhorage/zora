@@ -2,3 +2,5 @@ dist
 node_modules
 tsconfig.tsbuildinfo
 .DS_Store
+.expo/
+examples/*/*/bun.lock

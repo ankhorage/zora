@@ -27,6 +27,9 @@ Peer dependencies:
 Wrap your app in `ZoraProvider`, then import components from
 `@ankhorage/zora`.
 
+<details>
+<summary>Toggle code</summary>
+
 ```tsx
 import React from 'react';
 import {
@@ -67,6 +70,44 @@ export function App() {
     </ZoraProvider>
   );
 }
+```
+
+</details>
+
+## Example apps
+
+ZORA has two example layers:
+
+- `examples/expo-showcase` is the component catalogue.
+- `examples/<app-category>/<example-id>/` contains realistic product-shaped apps.
+
+The realistic examples are real Expo Router + React Native Web apps. They use
+public `@ankhorage/zora` exports, real route files, real navigation chrome, and
+static product data to prove that ZORA can build believable apps without
+consumer-side styling hacks.
+
+Implemented realistic examples:
+
+- `social_community/community-feed`
+- `social_community/photo-social`
+- `social_community/private-messaging`
+- `social_community/visual-discovery`
+- `shopping_commerce/marketplace`
+- `shopping_commerce/storefront`
+- `food_drink/restaurant`
+
+Scaffold a new realistic example from the repository root:
+
+```bash
+bun run scripts/scaffold-zora-example-app.ts social_community/community-feed "Community Feed"
+```
+
+Run one example:
+
+```bash
+cd examples/social_community/community-feed
+bun install
+bunx expo start
 ```
 
 ## Scoped themes
@@ -2835,23 +2876,6 @@ const zoraDefaultTheme: ZoraTheme = {
 ```
 
 </details>
-
-## Example App
-
-A complete Expo showcase lives in `examples/expo-showcase`. It renders the
-current ZORA components, layouts, patterns, and theme entry points, including
-light/dark mode through `AppShell`.
-
-Run it locally:
-
-```bash
-cd examples/expo-showcase
-bun install
-bun run web
-```
-
-The example imports `@ankhorage/zora` and demonstrates the package API in
-`examples/expo-showcase/App.tsx`.
 
 ## Changelog
 
