@@ -57,8 +57,8 @@ export default function ExploreScreen() {
             />
           ))}
           <Text tone="muted">
-            A richer visual discovery template should probably introduce a dedicated Wall/Grid pattern
-            later.
+            A richer visual discovery template should probably introduce a dedicated Wall/Grid
+            pattern later.
           </Text>
         </ScreenSection>
       </Screen>

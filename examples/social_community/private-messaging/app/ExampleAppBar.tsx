@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  IconButton,
-  Inline,
-  type AppBarProps,
-  useZoraTheme,
-} from '@ankhorage/zora';
+import { AppBar, type AppBarProps, IconButton, Inline, useZoraTheme } from '@ankhorage/zora';
 
 export type ExampleAppBarProps = AppBarProps;
 

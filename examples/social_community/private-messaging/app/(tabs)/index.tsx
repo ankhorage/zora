@@ -1,4 +1,13 @@
-import { Badge, Button, Card, ChatListItem, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  ChatListItem,
+  Screen,
+  ScreenSection,
+  SearchBar,
+  Text,
+} from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../ExampleAppBar';
 
