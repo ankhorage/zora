@@ -1,4 +1,6 @@
-import { Badge, Card, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const settingsRows = [
   {
@@ -23,37 +25,36 @@ const settingsRows = [
 
 export default function SettingsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Settings"
-          description="Messaging preferences, privacy, and account controls."
-          actions={<Badge tone="neutral">Starter</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Security">
-        <Notice
-          title="End-to-end encryption placeholder"
-          description="The example models the UI, not cryptography or messaging infrastructure."
-          tone="success"
-        />
-      </ScreenSection>
-
-      <ListSection
-        title="Preferences"
-        description="Settings rows stay within ZORA list/card patterns."
-        items={settingsRows}
+    <>
+      <ExampleAppBar
+        title="Settings"
+        subtitle="Messaging preferences, privacy, and account controls."
+        actions={<Badge tone="neutral">Starter</Badge>}
       />
+      <Screen>
+        <ScreenSection title="Security">
+          <Notice
+            title="End-to-end encryption placeholder"
+            description="The example models the UI, not cryptography or messaging infrastructure."
+            tone="success"
+          />
+        </ScreenSection>
 
-      <ScreenSection title="Template note">
-        <Card
-          title="Private Messaging example"
-          description="Real Expo Router app, ZORA-only UI, and no local styling workaround layer."
-          actions={<Badge tone="success">Verified shape</Badge>}
-          tone="subtle"
+        <ListSection
+          title="Preferences"
+          description="Settings rows stay within ZORA list/card patterns."
+          items={settingsRows}
         />
-      </ScreenSection>
-    </Page>
+
+        <ScreenSection title="Template note">
+          <Card
+            title="Private Messaging example"
+            description="Real Expo Router app, ZORA-only UI, and no local styling workaround layer."
+            actions={<Badge tone="success">Verified shape</Badge>}
+            tone="subtle"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
