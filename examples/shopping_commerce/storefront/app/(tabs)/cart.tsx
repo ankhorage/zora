@@ -1,12 +1,12 @@
 import {
+  AppBar,
   Badge,
   Button,
   Card,
   ListSection,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
 } from '@ankhorage/zora';
 
 const cartRows = [
@@ -32,33 +32,32 @@ const cartRows = [
 
 export default function CartScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Cart"
-          description="Selected products, order summary, and checkout placeholder."
-          actions={<Button>Checkout</Button>}
-        />
-      }
-    >
-      <ListSection
-        title="Items"
-        description="Cart rows use structured ZORA list semantics."
-        items={cartRows}
+    <>
+      <AppBar
+        title="Cart"
+        subtitle="Selected products, order summary, and checkout placeholder."
+        actions={<Button>Checkout</Button>}
       />
+      <Screen>
+        <ListSection
+          title="Items"
+          description="Cart rows use structured ZORA list semantics."
+          items={cartRows}
+        />
 
-      <ScreenSection title="Summary">
-        <Card
-          title="Order total"
-          description="CHF 201 · shipping calculated later"
-          actions={<Badge tone="primary">3 items</Badge>}
-        />
-        <Notice
-          title="Checkout is out of scope"
-          description="The UI is static. Payments, taxes, shipping, and inventory reservation belong in app/backend examples later."
-          tone="primary"
-        />
-      </ScreenSection>
-    </Page>
+        <ScreenSection title="Summary">
+          <Card
+            title="Order total"
+            description="CHF 201 · shipping calculated later"
+            actions={<Badge tone="primary">3 items</Badge>}
+          />
+          <Notice
+            title="Checkout is out of scope"
+            description="The UI is static. Payments, taxes, shipping, and inventory reservation belong in app/backend examples later."
+            tone="primary"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
