@@ -1,8 +1,15 @@
 import type React from 'react';
 
+import type { GridProps } from '../../foundation';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type ListRowVariant = 'divider' | 'card';
+
+export interface ListGridProps {
+  columns?: GridProps['cols'];
+  gap?: GridProps['gap'];
+  minItemWidth?: GridProps['minItemWidth'];
+}
 
 interface ListRowBaseProps extends ZoraBaseProps {
   title: React.ReactNode;
@@ -34,7 +41,7 @@ interface ListRowStaticProps {
 export type ListRowProps = ListRowBaseProps &
   (ListRowPressableProps | ListRowActionProps | ListRowStaticProps);
 
-export interface ListItemsProps extends ZoraBaseProps {
+export interface ListItemsProps extends ZoraBaseProps, ListGridProps {
   items: readonly ListRowProps[];
   rowVariant?: ListRowVariant;
   compact?: boolean;
@@ -46,7 +53,7 @@ export interface ListChildrenProps extends ZoraBaseProps {
 
 export type ListProps = ListItemsProps | ListChildrenProps;
 
-interface ListSectionItemsProps extends ZoraBaseProps {
+interface ListSectionItemsProps extends ZoraBaseProps, ListGridProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;
