@@ -31,6 +31,12 @@ examples/
   expo-showcase/
 ```
 
+## Implemented examples
+
+- `social_community/community-feed`: Facebook-style community feed app.
+- `social_community/photo-social`: Instagram-style visual social app.
+- `social_community/private-messaging`: WhatsApp-style private messaging app.
+
 ## Scaffold a new app
 
 From the ZORA repository root:
