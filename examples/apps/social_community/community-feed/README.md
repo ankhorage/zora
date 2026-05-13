@@ -25,4 +25,4 @@ bunx expo start
 - Uses public `@ankhorage/zora` exports for UI.
 - Does not use `StyleSheet`.
 - Does not import `@ankhorage/surface`.
-- Uses the local ZORA package through `file:../../../../`.
+- Installs the published `@ankhorage/zora` package.
