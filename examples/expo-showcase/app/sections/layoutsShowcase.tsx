@@ -3,7 +3,7 @@ import {
   Badge,
   Button,
   Card,
-  PageSection,
+  ScreenSection,
   SettingsLayout,
   SidebarLayout,
   Stack,
