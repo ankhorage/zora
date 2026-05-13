@@ -39,6 +39,7 @@ examples/
 - `social_community/visual-discovery`: Pinterest-style visual discovery app.
 - `shopping_commerce/marketplace`: marketplace browse/search/sell/orders/profile app.
 - `shopping_commerce/storefront`: small shop catalog/cart/orders/profile app.
+- `food_drink/restaurant`: restaurant menu/reservations/orders/profile app.
 
 ## Scaffold a new app
 
