@@ -84,9 +84,8 @@ const scopedComponentFiles = [
 
   join(srcDir, 'layout', 'app-shell', 'AppShell.tsx'),
   join(srcDir, 'layout', 'auth-layout', 'AuthLayout.tsx'),
-  join(srcDir, 'layout', 'page', 'Page.tsx'),
-  join(srcDir, 'layout', 'page-header', 'PageHeader.tsx'),
-  join(srcDir, 'layout', 'page-section', 'PageSection.tsx'),
+  join(srcDir, 'layout', 'screen', 'Screen.tsx'),
+  join(srcDir, 'layout', 'screen-section', 'ScreenSection.tsx'),
   join(srcDir, 'layout', 'settings-layout', 'SettingsLayout.tsx'),
   join(srcDir, 'layout', 'sidebar-layout', 'SidebarLayout.tsx'),
   join(srcDir, 'layout', 'topbar-layout', 'TopbarLayout.tsx'),
@@ -154,9 +153,8 @@ const scopedPropTypeFiles = [
 
   join(srcDir, 'layout', 'app-shell', 'types.ts'),
   join(srcDir, 'layout', 'auth-layout', 'types.ts'),
-  join(srcDir, 'layout', 'page', 'types.ts'),
-  join(srcDir, 'layout', 'page-header', 'types.ts'),
-  join(srcDir, 'layout', 'page-section', 'types.ts'),
+  join(srcDir, 'layout', 'screen', 'types.ts'),
+  join(srcDir, 'layout', 'screen-section', 'types.ts'),
   join(srcDir, 'layout', 'settings-layout', 'types.ts'),
   join(srcDir, 'layout', 'sidebar-layout', 'types.ts'),
   join(srcDir, 'layout', 'topbar-layout', 'types.ts'),
