@@ -1,4 +1,4 @@
-import { Badge, ListSection, Page, PageHeader, PageSection, SearchBar } from '@ankhorage/zora';
+import { AppBar, Badge, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
 
 const categories = [
   {
@@ -23,24 +23,23 @@ const categories = [
 
 export default function SearchScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Search"
-          description="Find products, categories, sellers, and local listings."
-          actions={<Badge tone="neutral">Filters later</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Query" description="Search stays inside the ZORA component surface.">
-        <SearchBar value="" placeholder="Search marketplace" />
-      </ScreenSection>
-
-      <ListSection
-        title="Popular categories"
-        description="Category browsing works with structured list rows for now."
-        items={categories}
+    <>
+      <AppBar
+        title="Search"
+        subtitle="Find products, categories, sellers, and local listings."
+        actions={<Badge tone="neutral">Filters later</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection title="Query" description="Search stays inside the ZORA component surface.">
+          <SearchBar value="" placeholder="Search marketplace" />
+        </ScreenSection>
+
+        <ListSection
+          title="Popular categories"
+          description="Category browsing works with structured list rows for now."
+          items={categories}
+        />
+      </Screen>
+    </>
   );
 }
