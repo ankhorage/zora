@@ -1,4 +1,6 @@
-import { Badge, MediaCard, Page, PageHeader, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const collections = [
   {
@@ -29,38 +31,37 @@ const collections = [
 
 export default function ExploreScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Explore"
-          description="Discover visual collections and creator-led image themes."
-          actions={<Badge tone="primary">Trending</Badge>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Search"
-        description="The search control is part of the ZORA component surface."
-      >
-        <SearchBar value="" placeholder="Search creators, places, styles" />
-      </ScreenSection>
+    <>
+      <ExampleAppBar
+        title="Explore"
+        subtitle="Discover visual collections and creator-led image themes."
+        actions={<Badge tone="primary">Trending</Badge>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Search"
+          description="The search control is part of the ZORA component surface."
+        >
+          <SearchBar value="" placeholder="Search creators, places, styles" />
+        </ScreenSection>
 
-      <ScreenSection
-        title="Collections"
-        description="A simple grid-like flow using existing ZORA cards."
-      >
-        {collections.map((collection) => (
-          <MediaCard
-            key={collection.title}
-            {...collection}
-            badges={<Badge tone="neutral">Featured</Badge>}
-          />
-        ))}
-        <Text tone="muted">
-          A richer visual discovery template should probably introduce a dedicated Wall/Grid pattern
-          later.
-        </Text>
-      </ScreenSection>
-    </Page>
+        <ScreenSection
+          title="Collections"
+          description="A simple grid-like flow using existing ZORA cards."
+        >
+          {collections.map((collection) => (
+            <MediaCard
+              key={collection.title}
+              {...collection}
+              badges={<Badge tone="neutral">Featured</Badge>}
+            />
+          ))}
+          <Text tone="muted">
+            A richer visual discovery template should probably introduce a dedicated Wall/Grid pattern
+            later.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
