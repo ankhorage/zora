@@ -396,7 +396,7 @@ bunx expo start
 
 function scaffold(options: ScaffoldOptions): void {
   const repoRoot = process.cwd();
-  const targetDir = resolve(repoRoot, 'examples', 'apps', options.category, options.exampleId);
+  const targetDir = resolve(repoRoot, 'examples', options.category, options.exampleId);
 
   if (existsSync(targetDir)) {
     throw new Error(`Target already exists: ${targetDir}`);
