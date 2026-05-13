@@ -34,6 +34,16 @@ function resolveCardGridGap(gap: ListItemsProps['gap']): ListItemsProps['gap'] {
   return gap ?? 's';
 }
 
+function shouldRenderGrid({
+  items,
+  rowVariant,
+}: {
+  items: readonly ListRowProps[];
+  rowVariant: ListRowVariant;
+}): boolean {
+  return items.every((item) => resolveRowVariant({ item, defaultVariant: rowVariant }) === 'card');
+}
+
 function ListItemsInner({
   themeId: _themeId,
   mode: _mode,
@@ -45,7 +55,7 @@ function ListItemsInner({
   gap,
   minItemWidth,
 }: ListItemsProps) {
-  if (rowVariant === 'card') {
+  if (shouldRenderGrid({ items, rowVariant })) {
     return (
       <Grid
         cols={resolveCardGridColumns(columns)}
