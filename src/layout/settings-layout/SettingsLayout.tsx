@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { AppBar } from '../../components/app-bar';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Page } from '../page';
-import { PageHeader } from '../page-header';
+import { Screen } from '../screen';
 import { SidebarLayout } from '../sidebar-layout';
 import type { SettingsLayoutProps } from './types';
 
@@ -17,14 +17,12 @@ function SettingsLayoutInner({
   testID,
 }: SettingsLayoutProps) {
   return (
-    <Page
-      header={
-        title ? <PageHeader actions={actions} description={description} title={title} /> : null
-      }
-      testID={testID}
-    >
-      <SidebarLayout sidebar={sidebar}>{children}</SidebarLayout>
-    </Page>
+    <>
+      {title ? <AppBar actions={actions} subtitle={description} title={title} /> : null}
+      <Screen testID={testID}>
+        <SidebarLayout sidebar={sidebar}>{children}</SidebarLayout>
+      </Screen>
+    </>
   );
 }
 
