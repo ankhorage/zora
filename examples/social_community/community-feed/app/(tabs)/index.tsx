@@ -1,13 +1,6 @@
-import {
-  AppBar,
-  Badge,
-  Button,
-  Card,
-  PostCard,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { Badge, Button, Card, PostCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const posts = [
   {
@@ -42,16 +35,12 @@ const posts = [
 export default function FeedScreen() {
   return (
     <>
-      <AppBar
-        title="Community feed"
-        subtitle="A real Expo Router tab backed by ZORA surfaces and realistic static content."
-        actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>New post</Button>}
-      />
+      <ExampleAppBar title="Community feed" />
       <Screen>
         <ScreenSection
           title="Today"
           description="The example uses ZORA components only: no StyleSheet, no Surface imports, no fake tabs."
-          actions={<Badge tone="success">Real route</Badge>}
+          actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>New post</Button>}
         >
           {posts.map((post) => (
             <PostCard key={post.id} author={post.author} text={post.text} actions={post.actions} />
@@ -61,6 +50,7 @@ export default function FeedScreen() {
         <ScreenSection
           title="Community pulse"
           description="Quick summary cards compose the rest of the feed."
+          actions={<Badge tone="success">Real route</Badge>}
         >
           <Card
             title="Design critique room"
