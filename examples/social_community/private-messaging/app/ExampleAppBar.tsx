@@ -1,7 +1,4 @@
-import { AppBar, type AppBarProps, IconButton } from '@ankhorage/zora';
-import { useZoraTheme } from '@ankhorage/zora';
-
-type ExampleAppBarChromeProps = Pick<AppBarProps, 'testID' | 'title'>;
+import { AppBar, type AppBarProps, IconButton, useZoraTheme } from '@ankhorage/zora';
 
 export type ExampleAppBarProps = AppBarProps;
 
