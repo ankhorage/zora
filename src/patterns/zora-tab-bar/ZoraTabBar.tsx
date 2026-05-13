@@ -1,9 +1,8 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, Text as ReactNativeText } from 'react-native';
 
-import { Box, Surface } from '../../foundation';
 import { Icon } from '../../components/icon';
-import { Text } from '../../components/text';
+import { Box, Surface } from '../../foundation';
 import {
   createTabBarItemPressHandler,
   resolveNavigationItems,
@@ -34,6 +33,8 @@ function ZoraTabBarInner({
 
   const bottomInset = insets?.bottom ?? 0;
   const minHeight = compact ? 56 : 64;
+  const labelSize = compact ? theme.typography.sizes.xs : theme.typography.sizes.s;
+  const labelWeight = theme.typography.weights.medium;
   const content = (
     <Box
       bg="surface"
@@ -86,14 +87,19 @@ function ZoraTabBarInner({
                 size={compact ? theme.spacing.m : theme.spacing.l}
               />
             ) : null}
-            <Text
-              color={contentColor}
+            <ReactNativeText
               numberOfLines={1}
-              variant={compact ? 'caption' : 'label'}
-              weight="medium"
+              style={{
+                color: contentColor,
+                fontSize: labelSize,
+                fontWeight: labelWeight,
+                lineHeight: compact ? 16 : 20,
+                marginTop: item.metadata?.icon ? theme.spacing.xs : 0,
+                textAlign: 'center',
+              }}
             >
               {item.label}
-            </Text>
+            </ReactNativeText>
           </Pressable>
         );
       })}
