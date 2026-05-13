@@ -38,6 +38,7 @@ examples/
 - `social_community/private-messaging`: WhatsApp-style private messaging app.
 - `social_community/visual-discovery`: Pinterest-style visual discovery app.
 - `shopping_commerce/marketplace`: marketplace browse/search/sell/orders/profile app.
+- `shopping_commerce/storefront`: small shop catalog/cart/orders/profile app.
 
 ## Scaffold a new app
 
