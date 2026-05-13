@@ -23,7 +23,4 @@ export const CONTAINER_ALLOWED_CHILDREN = [
 
 export const SCREEN_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;
 
-export const SCREEN_ALLOWED_CHILDREN = [
-  'ScreenSection',
-  ...CONTAINER_ALLOWED_CHILDREN,
-] as const;
+export const SCREEN_ALLOWED_CHILDREN = ['ScreenSection', ...CONTAINER_ALLOWED_CHILDREN] as const;

@@ -1,11 +1,11 @@
 import type { ZoraComponentMeta } from '../../metadata';
-import { PAGE_SECTION_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
+import { SCREEN_SECTION_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 
 export const authLayoutMeta = {
   name: 'AuthLayout',
   category: 'layout',
   directManifestNode: true,
-  allowedChildren: [...PAGE_SECTION_ALLOWED_CHILDREN],
+  allowedChildren: [...SCREEN_SECTION_ALLOWED_CHILDREN],
   blueprint: {
     label: 'Auth layout',
     defaultProps: {
