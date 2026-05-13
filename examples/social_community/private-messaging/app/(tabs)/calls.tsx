@@ -1,4 +1,6 @@
-import { Avatar, Badge, Button, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
+import { Avatar, Badge, Button, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const callRows = [
   {
@@ -41,28 +43,27 @@ const callRows = [
 
 export default function CallsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Calls"
-          description="Recent voice and video interactions for a private messaging app."
-          actions={<Badge tone="neutral">Static</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Availability">
-        <Notice
-          title="Call history only"
-          description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
-          tone="primary"
-        />
-      </ScreenSection>
-
-      <ListSection
-        title="Recent calls"
-        description="ZORA rows with avatars and structured actions."
-        items={callRows}
+    <>
+      <ExampleAppBar
+        title="Calls"
+        subtitle="Recent voice and video interactions for a private messaging app."
+        actions={<Badge tone="neutral">Static</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection title="Availability">
+          <Notice
+            title="Call history only"
+            description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
+            tone="primary"
+          />
+        </ScreenSection>
+
+        <ListSection
+          title="Recent calls"
+          description="ZORA rows with avatars and structured actions."
+          items={callRows}
+        />
+      </Screen>
+    </>
   );
 }
