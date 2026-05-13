@@ -1,5 +1,5 @@
+import { ScrollArea } from '@ankhorage/surface';
 import React from 'react';
-import { ScrollView } from 'react-native';
 
 import { Container, Stack } from '../../foundation';
 import { resolvePageMaxWidth } from '../../internal/recipes';
@@ -28,7 +28,7 @@ function ScreenInner({
     return content;
   }
 
-  return <ScrollView>{content}</ScrollView>;
+  return <ScrollArea>{content}</ScrollArea>;
 }
 
 export const Screen = withZoraThemeScope(ScreenInner);
