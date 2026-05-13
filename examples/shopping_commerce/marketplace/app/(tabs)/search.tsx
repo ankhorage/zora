@@ -1,4 +1,6 @@
-import { AppBar, Badge, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
+import { Badge, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const categories = [
   {
@@ -24,13 +26,13 @@ const categories = [
 export default function SearchScreen() {
   return (
     <>
-      <AppBar
-        title="Search"
-        subtitle="Find products, categories, sellers, and local listings."
-        actions={<Badge tone="neutral">Filters later</Badge>}
-      />
+      <ExampleAppBar title="Search" />
       <Screen>
-        <ScreenSection title="Query" description="Search stays inside the ZORA component surface.">
+        <ScreenSection
+          title="Query"
+          description="Search stays inside the ZORA component surface."
+          actions={<Badge tone="neutral">Filters later</Badge>}
+        >
           <SearchBar value="" placeholder="Search marketplace" />
         </ScreenSection>
 
