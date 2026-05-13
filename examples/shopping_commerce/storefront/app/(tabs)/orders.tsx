@@ -1,11 +1,11 @@
 import {
+  AppBar,
   Badge,
   ListSection,
   MetricCard,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
 } from '@ankhorage/zora';
 
 const orderRows = [
@@ -31,40 +31,39 @@ const orderRows = [
 
 export default function OrdersScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Orders"
-          description="Customer order history and fulfillment status."
-          actions={<Badge tone="primary">1 active</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Order health">
-        <MetricCard label="Open orders" value="1" description="Preparing shipment" />
-        <MetricCard
-          label="Delivered"
-          value="12"
-          delta="+3"
-          deltaTone="success"
-          description="Last 90 days"
-        />
-        <MetricCard label="Returns" value="0" description="No active return requests" />
-      </ScreenSection>
-
-      <ListSection
-        title="Order history"
-        description="Structured rows until ZORA has dedicated order cards."
-        items={orderRows}
+    <>
+      <AppBar
+        title="Orders"
+        subtitle="Customer order history and fulfillment status."
+        actions={<Badge tone="primary">1 active</Badge>}
       />
+      <Screen>
+        <ScreenSection title="Order health">
+          <MetricCard label="Open orders" value="1" description="Preparing shipment" />
+          <MetricCard
+            label="Delivered"
+            value="12"
+            delta="+3"
+            deltaTone="success"
+            description="Last 90 days"
+          />
+          <MetricCard label="Returns" value="0" description="No active return requests" />
+        </ScreenSection>
 
-      <ScreenSection title="Product note">
-        <Notice
-          title="Fulfillment is static"
-          description="Tracking, refunds, returns, and notifications belong in later app/backend examples."
-          tone="primary"
+        <ListSection
+          title="Order history"
+          description="Structured rows until ZORA has dedicated order cards."
+          items={orderRows}
         />
-      </ScreenSection>
-    </Page>
+
+        <ScreenSection title="Product note">
+          <Notice
+            title="Fulfillment is static"
+            description="Tracking, refunds, returns, and notifications belong in later app/backend examples."
+            tone="primary"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
