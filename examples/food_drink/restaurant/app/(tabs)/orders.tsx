@@ -28,7 +28,7 @@ export default function OrdersScreen() {
     <>
       <ExampleAppBar title="Orders" />
       <Screen>
-        <ScreenSection title="Today">
+        <ScreenSection title="Today" columns={{ base: 1, md: 3 }}>
           <MetricCard label="Open orders" value="2" description="Dining and takeaway" />
           <MetricCard
             label="Ready soon"
