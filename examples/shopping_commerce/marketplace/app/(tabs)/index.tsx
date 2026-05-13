@@ -1,5 +1,7 @@
 import { Badge, MediaCard, Notice, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
+import { ExampleAppBar } from '../ExampleAppBar';
+
 const listings = [
   {
     title: 'Walnut lounge chair',
@@ -29,31 +31,37 @@ const listings = [
 
 export default function BrowseScreen() {
   return (
-    <Screen>
-      <ScreenSection
-        title="Recommended"
-        description="Existing ZORA media cards stand in for future product listing cards."
+    <>
+      <ExampleAppBar
+        title="Browse"
+        subtitle="Recommended marketplace listings from nearby sellers."
         actions={<Badge tone="primary">Nearby</Badge>}
-      >
-        {listings.map((listing) => (
-          <MediaCard
-            key={listing.title}
-            {...listing}
-            badges={<Badge tone="success">Available</Badge>}
-          />
-        ))}
-      </ScreenSection>
+      />
+      <Screen>
+        <ScreenSection
+          title="Recommended"
+          description="Existing ZORA media cards stand in for future product listing cards."
+        >
+          {listings.map((listing) => (
+            <MediaCard
+              key={listing.title}
+              {...listing}
+              badges={<Badge tone="success">Available</Badge>}
+            />
+          ))}
+        </ScreenSection>
 
-      <ScreenSection title="ZORA pressure point">
-        <Notice
-          title="Needs commerce-specific cards"
-          description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
-          tone="warning"
-        />
-        <Text tone="muted">
-          This example records the product need without adding local card wrappers.
-        </Text>
-      </ScreenSection>
-    </Screen>
+        <ScreenSection title="ZORA pressure point">
+          <Notice
+            title="Needs commerce-specific cards"
+            description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
+            tone="warning"
+          />
+          <Text tone="muted">
+            This example records the product need without adding local card wrappers.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
