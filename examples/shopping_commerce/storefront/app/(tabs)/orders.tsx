@@ -28,7 +28,11 @@ export default function OrdersScreen() {
     <>
       <ExampleAppBar title="Orders" />
       <Screen>
-        <ScreenSection title="Order health" actions={<Badge tone="primary">1 active</Badge>}>
+        <ScreenSection
+          title="Order health"
+          actions={<Badge tone="primary">1 active</Badge>}
+          columns={{ base: 1, md: 3 }}
+        >
           <MetricCard label="Open orders" value="1" description="Preparing shipment" />
           <MetricCard
             label="Delivered"
