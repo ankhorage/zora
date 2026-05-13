@@ -1,14 +1,6 @@
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Card,
-  ListSection,
-  MetricCard,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { Avatar, Badge, Card, ListSection, MetricCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const accountRows = [
   {
@@ -34,13 +26,9 @@ const accountRows = [
 export default function ProfileScreen() {
   return (
     <>
-      <AppBar
-        title="Customer profile"
-        subtitle="Account, preferences, loyalty status, and saved products."
-        actions={<Avatar name="Nora Frei" tone="primary" />}
-      />
+      <ExampleAppBar title="Customer profile" />
       <Screen>
-        <ScreenSection title="Customer card">
+        <ScreenSection title="Customer card" actions={<Avatar name="Nora Frei" tone="primary" />}>
           <Card
             title="Nora Frei"
             description="Studio customer · Zürich · member since 2024"
