@@ -18,8 +18,9 @@ const featuredPost = {
   },
   text: 'Golden hour does most of the work, but framing the negative space made the whole carousel feel calmer.',
   media: {
-    source:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    source: {
+      uri: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    },
     label: 'Warm city terrace at golden hour',
     aspectRatio: 4 / 5,
   },
@@ -49,7 +50,9 @@ export default function HomeScreen() {
         <MediaCard
           title="Weekend makers"
           description="New visual notes from people you follow."
-          imageSource="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"
+          imageSource={{
+            uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+          }}
           imageLabel="People at a creative event"
           badges={<Badge tone="primary">12 updates</Badge>}
           footer={
