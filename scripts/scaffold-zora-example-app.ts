@@ -46,7 +46,6 @@ interface ScaffoldOptions {
   readonly category: AppCategory;
   readonly exampleId: string;
   readonly title: string;
-  readonly packageSource: 'local' | 'published';
 }
 
 const communityFeedRoutes = [
@@ -137,14 +136,14 @@ function printUsage(): never {
   console.error(
     [
       'Usage:',
-      '  bun run scripts/scaffold-zora-example-app.ts <app-category>/<example-id> "Example Title" [--published]',
+      '  bun run scripts/scaffold-zora-example-app.ts <app-category>/<example-id> "Example Title"',
       '',
       'Examples:',
       '  bun run scripts/scaffold-zora-example-app.ts social_community/community-feed "Community Feed"',
-      '  bun run scripts/scaffold-zora-example-app.ts shopping_commerce/marketplace "Marketplace" --published',
+      '  bun run scripts/scaffold-zora-example-app.ts shopping_commerce/marketplace "Marketplace"',
       '',
-      'By default, examples use the local ZORA package via file:../../../../.',
-      'Use --published to scaffold a consumer-style app that installs @ankhorage/zora from npm.',
+      'The generated app installs @ankhorage/zora from npm so it behaves like a real consumer app.',
+      'Do not point the example dependency at the repository root; Metro will recursively crawl the repo.',
     ].join('\n'),
   );
   process.exit(1);
@@ -161,7 +160,6 @@ function isExampleId(value: string): boolean {
 function parseArgs(argv: readonly string[]): ScaffoldOptions {
   const target = argv[0];
   const title = argv[1];
-  const packageSource = argv.includes('--published') ? 'published' : 'local';
 
   if (!target || !title) {
     printUsage();
@@ -185,7 +183,6 @@ function parseArgs(argv: readonly string[]): ScaffoldOptions {
     category,
     exampleId,
     title,
-    packageSource,
   };
 }
 
@@ -309,9 +306,9 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string): void {
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": ${JSON.stringify(options.packageSource === 'local' ? 'file:../../../../' : 'latest')},
+    "@ankhorage/zora": "latest",
     "@expo/vector-icons": "^15.1.1",
-    "@react-native-picker/picker": "^2.11.4",
+    "@react-native-picker/picker": "2.11.1",
     "expo": "~54.0.34",
     "expo-font": "~14.0.11",
     "expo-router": "~6.0.20",
@@ -392,7 +389,7 @@ bunx expo start
 - Uses real Expo Router route files.
 - Uses ZORA public exports for UI.
 - Does not use \`StyleSheet\` or direct Surface imports.
-- Uses ${options.packageSource === 'local' ? 'the local ZORA package via `file:../../../../`' : 'the published `@ankhorage/zora` package'}.
+- Installs the published \`@ankhorage/zora\` package.
 `,
   );
 }
@@ -408,10 +405,8 @@ function scaffold(options: ScaffoldOptions): void {
   mkdirSync(dirname(targetDir), { recursive: true });
 
   run('bunx', ['create-expo-app@latest', targetDir, '--template', 'default', '--yes'], repoRoot);
-  run('bunx', ['expo', 'install', 'react-native-web', 'react-dom'], targetDir);
-  run('bun', ['install'], targetDir);
-
   createAppFiles(options, targetDir);
+  run('bun', ['install'], targetDir);
 
   console.log(`Created ${targetDir}`);
 }
