@@ -67,7 +67,8 @@ export default function MenuScreen() {
           items={menuRows}
         />
         <Text tone="muted">
-          Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow patterns.
+          Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow
+          patterns.
         </Text>
       </Screen>
     </>

@@ -1,4 +1,12 @@
-import { AvatarGroup, Badge, Card, ListSection, Screen, ScreenSection, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Card,
+  ListSection,
+  Screen,
+  ScreenSection,
+  Text,
+} from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../ExampleAppBar';
 
