@@ -1,14 +1,6 @@
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Card,
-  ListSection,
-  MetricCard,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { Avatar, Badge, Card, ListSection, MetricCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const sellerRows = [
   {
@@ -34,15 +26,12 @@ const sellerRows = [
 export default function ProfileScreen() {
   return (
     <>
-      <AppBar
-        title="Marketplace profile"
-        subtitle="Buyer, seller, saved searches, and trust signals."
-        actions={<Avatar name="Nora Frei" tone="primary" />}
-      />
+      <ExampleAppBar title="Marketplace profile" />
       <Screen>
         <ScreenSection
           title="Seller card"
           description="A commerce profile composed from existing ZORA cards."
+          actions={<Avatar name="Nora Frei" tone="primary" />}
         >
           <Card
             title="Nora Frei"
