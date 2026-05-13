@@ -194,6 +194,7 @@ export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
 export type {
   ListChildrenProps,
+  ListGridProps,
   ListItemsProps,
   ListProps,
   ListRowProps,
