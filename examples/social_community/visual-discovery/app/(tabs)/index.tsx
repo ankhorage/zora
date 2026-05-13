@@ -1,4 +1,14 @@
-import { Badge, Button, MediaCard, Notice, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  MediaCard,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  SearchBar,
+  Text,
+} from '@ankhorage/zora';
 
 const pins = [
   {
@@ -58,7 +68,9 @@ export default function DiscoverScreen() {
           description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
           tone="warning"
         />
-        <Text tone="muted">This example captures the product need without adding local layout tricks.</Text>
+        <Text tone="muted">
+          This example captures the product need without adding local layout tricks.
+        </Text>
       </PageSection>
     </Page>
   );

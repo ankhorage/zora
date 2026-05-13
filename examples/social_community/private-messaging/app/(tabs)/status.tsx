@@ -1,4 +1,13 @@
-import { AvatarGroup, Badge, Card, MediaCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Card,
+  MediaCard,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 export default function StatusScreen() {
   return (
@@ -11,7 +20,10 @@ export default function StatusScreen() {
         />
       }
     >
-      <PageSection title="My status" description="A simple preview card for the current user's update.">
+      <PageSection
+        title="My status"
+        description="A simple preview card for the current user's update."
+      >
         <MediaCard
           title="Share an update"
           description="Post a photo, note, or quick availability update."
@@ -23,7 +35,10 @@ export default function StatusScreen() {
         />
       </PageSection>
 
-      <PageSection title="Recent updates" description="Status previews compose existing ZORA cards and media surfaces.">
+      <PageSection
+        title="Recent updates"
+        description="Status previews compose existing ZORA cards and media surfaces."
+      >
         <Card
           title="Design Systems Circle"
           description="Noah shared three critique snapshots from the workshop."
@@ -37,7 +52,9 @@ export default function StatusScreen() {
             />
           }
         >
-          <Text tone="muted">A future Status pattern could model rings, expiry, and grouped story states.</Text>
+          <Text tone="muted">
+            A future Status pattern could model rings, expiry, and grouped story states.
+          </Text>
         </Card>
       </PageSection>
     </Page>

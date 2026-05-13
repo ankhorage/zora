@@ -1,4 +1,14 @@
-import { Avatar, Badge, Card, MediaCard, MetricCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Card,
+  MediaCard,
+  MetricCard,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 export default function ProfileScreen() {
   return (
@@ -11,18 +21,29 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection title="Curator profile" description="A Pinterest-style profile built without custom styling.">
+      <PageSection
+        title="Curator profile"
+        description="A Pinterest-style profile built without custom styling."
+      >
         <Card
           title="@mirastone"
           description="18 public boards · 2.4k followers · weekly visual notes"
           actions={<Badge tone="success">Curator</Badge>}
         >
-          <Text tone="muted">Collecting calm spaces, food stories, and practical inspiration boards.</Text>
+          <Text tone="muted">
+            Collecting calm spaces, food stories, and practical inspiration boards.
+          </Text>
         </Card>
       </PageSection>
 
       <PageSection title="Stats">
-        <MetricCard label="Followers" value="2.4k" delta="+11%" deltaTone="success" description="Last 30 days" />
+        <MetricCard
+          label="Followers"
+          value="2.4k"
+          delta="+11%"
+          deltaTone="success"
+          description="Last 30 days"
+        />
         <MetricCard label="Pins" value="684" description="Across public boards" />
         <MetricCard label="Boards" value="18" description="12 public · 6 private" />
       </PageSection>

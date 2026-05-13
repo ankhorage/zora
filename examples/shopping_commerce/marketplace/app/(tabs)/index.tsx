@@ -1,4 +1,13 @@
-import { Badge, Button, MediaCard, Notice, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  MediaCard,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 const listings = [
   {
@@ -44,7 +53,11 @@ export default function BrowseScreen() {
         actions={<Badge tone="primary">Nearby</Badge>}
       >
         {listings.map((listing) => (
-          <MediaCard key={listing.title} {...listing} badges={<Badge tone="success">Available</Badge>} />
+          <MediaCard
+            key={listing.title}
+            {...listing}
+            badges={<Badge tone="success">Available</Badge>}
+          />
         ))}
       </PageSection>
 
@@ -54,7 +67,9 @@ export default function BrowseScreen() {
           description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
           tone="warning"
         />
-        <Text tone="muted">This example records the product need without adding local card wrappers.</Text>
+        <Text tone="muted">
+          This example records the product need without adding local card wrappers.
+        </Text>
       </PageSection>
     </Page>
   );

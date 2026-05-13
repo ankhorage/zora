@@ -1,4 +1,13 @@
-import { Badge, Button, Card, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  ListSection,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+} from '@ankhorage/zora';
 
 const cartRows = [
   {
@@ -32,7 +41,11 @@ export default function CartScreen() {
         />
       }
     >
-      <ListSection title="Items" description="Cart rows use structured ZORA list semantics." items={cartRows} />
+      <ListSection
+        title="Items"
+        description="Cart rows use structured ZORA list semantics."
+        items={cartRows}
+      />
 
       <PageSection title="Summary">
         <Card

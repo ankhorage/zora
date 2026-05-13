@@ -38,15 +38,28 @@ export default function ProductsScreen() {
         />
       }
     >
-      <PageSection title="Search" description="Filtering is static for now, but the UI surface is real.">
+      <PageSection
+        title="Search"
+        description="Filtering is static for now, but the UI surface is real."
+      >
         <SearchBar value="" placeholder="Search products" />
       </PageSection>
 
-      <PageSection title="Catalog" description="Media cards stand in for future ProductCard/ProductGrid patterns.">
+      <PageSection
+        title="Catalog"
+        description="Media cards stand in for future ProductCard/ProductGrid patterns."
+      >
         {products.map((product) => (
-          <MediaCard key={product.title} {...product} badges={<Badge tone="success">Available</Badge>} />
+          <MediaCard
+            key={product.title}
+            {...product}
+            badges={<Badge tone="success">Available</Badge>}
+          />
         ))}
-        <Text tone="muted">Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns later.</Text>
+        <Text tone="muted">
+          Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns
+          later.
+        </Text>
       </PageSection>
     </Page>
   );

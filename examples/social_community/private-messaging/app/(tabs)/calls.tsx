@@ -1,4 +1,13 @@
-import { Avatar, Badge, Button, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Button,
+  ListSection,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+} from '@ankhorage/zora';
 
 const callRows = [
   {
@@ -6,7 +15,11 @@ const callRows = [
     description: 'Missed voice call',
     meta: 'Today · 09:12',
     leading: <Avatar name="Mia Chen" tone="primary" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>Call</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
+        Call
+      </Button>
+    ),
     variant: 'card' as const,
   },
   {
@@ -14,7 +27,11 @@ const callRows = [
     description: 'Outgoing video call',
     meta: 'Yesterday · 18:44',
     leading: <Avatar name="Noah Keller" tone="success" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'videocam-outline' }}>Video</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'videocam-outline' }}>
+        Video
+      </Button>
+    ),
     variant: 'card' as const,
   },
   {
@@ -22,7 +39,11 @@ const callRows = [
     description: 'Incoming voice call',
     meta: 'Monday · 14:05',
     leading: <Avatar name="Lea Meyer" tone="warning" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>Call</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
+        Call
+      </Button>
+    ),
     variant: 'card' as const,
   },
 ] as const;

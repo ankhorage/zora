@@ -1,4 +1,15 @@
-import { Badge, Button, Card, Input, Notice, Page, PageHeader, PageSection, Select, Textarea } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Select,
+  Textarea,
+} from '@ankhorage/zora';
 
 export default function ReservationsScreen() {
   return (
@@ -11,7 +22,10 @@ export default function ReservationsScreen() {
         />
       }
     >
-      <PageSection title="Booking details" description="A reservation form composed from ZORA inputs.">
+      <PageSection
+        title="Booking details"
+        description="A reservation form composed from ZORA inputs."
+      >
         <Input label="Date" placeholder="Friday, 24 May" />
         <Input label="Time" placeholder="19:30" />
         <Select

@@ -1,4 +1,14 @@
-import { AvatarGroup, Badge, Button, MediaCard, Notice, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Button,
+  MediaCard,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 export default function HomeScreen() {
   return (
@@ -42,7 +52,9 @@ export default function HomeScreen() {
           description="Tables are open from 18:00. Booking persistence is intentionally outside this static UI example."
           tone="primary"
         />
-        <Text tone="muted">A dedicated RestaurantHero or MenuFeature pattern would make this app stronger later.</Text>
+        <Text tone="muted">
+          A dedicated RestaurantHero or MenuFeature pattern would make this app stronger later.
+        </Text>
       </PageSection>
     </Page>
   );

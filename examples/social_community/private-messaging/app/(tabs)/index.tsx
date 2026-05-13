@@ -1,4 +1,14 @@
-import { Badge, Button, Card, ChatListItem, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  ChatListItem,
+  Page,
+  PageHeader,
+  PageSection,
+  SearchBar,
+  Text,
+} from '@ankhorage/zora';
 
 const chats = [
   {
@@ -35,7 +45,10 @@ export default function ChatsScreen() {
         />
       }
     >
-      <PageSection title="Search" description="Search is a first-class ZORA component, not local input glue.">
+      <PageSection
+        title="Search"
+        description="Search is a first-class ZORA component, not local input glue."
+      >
         <SearchBar value="" placeholder="Search chats" />
       </PageSection>
 
@@ -56,7 +69,9 @@ export default function ChatsScreen() {
           actions={<Badge tone="warning">Follow-up</Badge>}
           tone="subtle"
         >
-          <Text tone="muted">This example intentionally stays static until ZORA owns the missing chat primitives.</Text>
+          <Text tone="muted">
+            This example intentionally stays static until ZORA owns the missing chat primitives.
+          </Text>
         </Card>
       </PageSection>
     </Page>

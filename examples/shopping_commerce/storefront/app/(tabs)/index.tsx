@@ -1,4 +1,14 @@
-import { AvatarGroup, Badge, Button, MediaCard, Notice, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Button,
+  MediaCard,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 const featured = [
   {
@@ -36,7 +46,11 @@ export default function HomeScreen() {
         actions={<Badge tone="primary">Spring edit</Badge>}
       >
         {featured.map((product) => (
-          <MediaCard key={product.title} {...product} badges={<Badge tone="success">In stock</Badge>} />
+          <MediaCard
+            key={product.title}
+            {...product}
+            badges={<Badge tone="success">In stock</Badge>}
+          />
         ))}
       </PageSection>
 
@@ -53,7 +67,9 @@ export default function HomeScreen() {
             { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
           ]}
         />
-        <Text tone="muted">A future StorefrontHero or ProductFeature pattern would make this screen stronger.</Text>
+        <Text tone="muted">
+          A future StorefrontHero or ProductFeature pattern would make this screen stronger.
+        </Text>
       </PageSection>
     </Page>
   );

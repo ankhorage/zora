@@ -1,4 +1,14 @@
-import { Avatar, Badge, Card, ListSection, MetricCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Card,
+  ListSection,
+  MetricCard,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 const accountRows = [
   {
@@ -38,17 +48,29 @@ export default function ProfileScreen() {
           description="Studio customer · Zürich · member since 2024"
           actions={<Badge tone="success">Gold member</Badge>}
         >
-          <Text tone="muted">Prefers natural materials, ceramic sets, and quiet tableware collections.</Text>
+          <Text tone="muted">
+            Prefers natural materials, ceramic sets, and quiet tableware collections.
+          </Text>
         </Card>
       </PageSection>
 
       <PageSection title="Loyalty">
-        <MetricCard label="Points" value="4,280" delta="+320" deltaTone="success" description="This month" />
+        <MetricCard
+          label="Points"
+          value="4,280"
+          delta="+320"
+          deltaTone="success"
+          description="This month"
+        />
         <MetricCard label="Orders" value="13" description="Lifetime purchases" />
         <MetricCard label="Wishlist" value="18" description="Saved products" />
       </PageSection>
 
-      <ListSection title="Account" description="Storefront account settings as structured ZORA rows." items={accountRows} />
+      <ListSection
+        title="Account"
+        description="Storefront account settings as structured ZORA rows."
+        items={accountRows}
+      />
     </Page>
   );
 }

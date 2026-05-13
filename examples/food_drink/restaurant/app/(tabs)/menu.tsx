@@ -1,4 +1,13 @@
-import { Badge, ListSection, MediaCard, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  ListSection,
+  MediaCard,
+  Page,
+  PageHeader,
+  PageSection,
+  SearchBar,
+  Text,
+} from '@ankhorage/zora';
 
 const menuRows = [
   {
@@ -36,7 +45,10 @@ export default function MenuScreen() {
         <SearchBar value="" placeholder="Search menu" />
       </PageSection>
 
-      <PageSection title="Featured dish" description="A rich menu item using the existing media card pattern.">
+      <PageSection
+        title="Featured dish"
+        description="A rich menu item using the existing media card pattern."
+      >
         <MediaCard
           title="Burrata with spring peas"
           description="CHF 21 · mint, lemon zest, toasted focaccia."
@@ -48,8 +60,14 @@ export default function MenuScreen() {
         />
       </PageSection>
 
-      <ListSection title="Dinner menu" description="Structured menu rows until ZORA has dedicated menu item cards." items={menuRows} />
-      <Text tone="muted">Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow patterns.</Text>
+      <ListSection
+        title="Dinner menu"
+        description="Structured menu rows until ZORA has dedicated menu item cards."
+        items={menuRows}
+      />
+      <Text tone="muted">
+        Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow patterns.
+      </Text>
     </Page>
   );
 }

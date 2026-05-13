@@ -1,4 +1,14 @@
-import { Avatar, Badge, Card, ListSection, MetricCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Card,
+  ListSection,
+  MetricCard,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 const preferenceRows = [
   {
@@ -38,17 +48,35 @@ export default function ProfileScreen() {
           description="Regular guest · Zürich · last visit two weeks ago"
           actions={<Badge tone="success">VIP</Badge>}
         >
-          <Text tone="muted">Prefers early dinner slots, vegetarian tasting menus, and quiet tables.</Text>
+          <Text tone="muted">
+            Prefers early dinner slots, vegetarian tasting menus, and quiet tables.
+          </Text>
         </Card>
       </PageSection>
 
       <PageSection title="Guest stats">
         <MetricCard label="Visits" value="18" description="Lifetime reservations" />
-        <MetricCard label="Upcoming" value="1" delta="Friday" deltaTone="primary" description="Next booking" />
-        <MetricCard label="Points" value="2,840" delta="+180" deltaTone="success" description="Loyalty balance" />
+        <MetricCard
+          label="Upcoming"
+          value="1"
+          delta="Friday"
+          deltaTone="primary"
+          description="Next booking"
+        />
+        <MetricCard
+          label="Points"
+          value="2,840"
+          delta="+180"
+          deltaTone="success"
+          description="Loyalty balance"
+        />
       </PageSection>
 
-      <ListSection title="Preferences" description="Guest profile rows remain structured and theme-aware." items={preferenceRows} />
+      <ListSection
+        title="Preferences"
+        description="Guest profile rows remain structured and theme-aware."
+        items={preferenceRows}
+      />
     </Page>
   );
 }

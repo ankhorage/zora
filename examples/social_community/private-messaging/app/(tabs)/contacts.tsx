@@ -1,4 +1,13 @@
-import { Avatar, Badge, Button, ListSection, Page, PageHeader, PageSection, SearchBar } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Button,
+  ListSection,
+  Page,
+  PageHeader,
+  PageSection,
+  SearchBar,
+} from '@ankhorage/zora';
 
 const contactRows = [
   {
@@ -6,7 +15,11 @@ const contactRows = [
     description: 'Product designer · Available',
     meta: 'Online',
     leading: <Avatar name="Mia Chen" tone="primary" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>Message</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
+        Message
+      </Button>
+    ),
     variant: 'card' as const,
   },
   {
@@ -14,7 +27,11 @@ const contactRows = [
     description: 'Community operations · Busy until 14:00',
     meta: 'Busy',
     leading: <Avatar name="Noah Keller" tone="success" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>Message</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
+        Message
+      </Button>
+    ),
     variant: 'card' as const,
   },
   {
@@ -22,7 +39,11 @@ const contactRows = [
     description: 'Frontend engineer · Usually replies in an hour',
     meta: 'Away',
     leading: <Avatar name="Lea Meyer" tone="warning" />,
-    action: <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>Message</Button>,
+    action: (
+      <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
+        Message
+      </Button>
+    ),
     variant: 'card' as const,
   },
 ] as const;
@@ -38,7 +59,10 @@ export default function ContactsScreen() {
         />
       }
     >
-      <PageSection title="Find people" description="A searchable contact directory without local input styling.">
+      <PageSection
+        title="Find people"
+        description="A searchable contact directory without local input styling."
+      >
         <SearchBar value="" placeholder="Search contacts" />
       </PageSection>
 

@@ -1,4 +1,12 @@
-import { Badge, ListSection, MetricCard, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import {
+  Badge,
+  ListSection,
+  MetricCard,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+} from '@ankhorage/zora';
 
 const orderRows = [
   {
@@ -34,11 +42,21 @@ export default function OrdersScreen() {
     >
       <PageSection title="Order health">
         <MetricCard label="Open orders" value="1" description="Preparing shipment" />
-        <MetricCard label="Delivered" value="12" delta="+3" deltaTone="success" description="Last 90 days" />
+        <MetricCard
+          label="Delivered"
+          value="12"
+          delta="+3"
+          deltaTone="success"
+          description="Last 90 days"
+        />
         <MetricCard label="Returns" value="0" description="No active return requests" />
       </PageSection>
 
-      <ListSection title="Order history" description="Structured rows until ZORA has dedicated order cards." items={orderRows} />
+      <ListSection
+        title="Order history"
+        description="Structured rows until ZORA has dedicated order cards."
+        items={orderRows}
+      />
 
       <PageSection title="Product note">
         <Notice

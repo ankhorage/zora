@@ -1,5 +1,5 @@
+import { type ZoraNavigationRouteMap, ZoraTabBar } from '@ankhorage/zora';
 import { Tabs } from 'expo-router';
-import { ZoraTabBar, type ZoraNavigationRouteMap } from '@ankhorage/zora';
 
 const routeMap: ZoraNavigationRouteMap = {
   index: { label: 'Discover', icon: { name: 'sparkles-outline' } },

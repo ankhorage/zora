@@ -30,11 +30,16 @@ export default function SavedScreen() {
         />
       }
     >
-      <PageSection title="Recent saves" description="A simple saved-items flow using existing media cards.">
+      <PageSection
+        title="Recent saves"
+        description="A simple saved-items flow using existing media cards."
+      >
         {savedItems.map((item) => (
           <MediaCard key={item.title} {...item} badges={<Badge tone="primary">Saved</Badge>} />
         ))}
-        <Text tone="muted">Saved collections will become stronger once ZORA has a dedicated visual grid pattern.</Text>
+        <Text tone="muted">
+          Saved collections will become stronger once ZORA has a dedicated visual grid pattern.
+        </Text>
       </PageSection>
     </Page>
   );

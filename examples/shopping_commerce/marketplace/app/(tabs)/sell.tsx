@@ -1,4 +1,15 @@
-import { Badge, Button, Card, ImageUploadField, Input, Notice, Page, PageHeader, PageSection, Textarea } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  ImageUploadField,
+  Input,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Textarea,
+} from '@ankhorage/zora';
 
 export default function SellScreen() {
   return (
@@ -11,7 +22,10 @@ export default function SellScreen() {
         />
       }
     >
-      <PageSection title="Photos" description="Upload is represented by the ZORA image upload field.">
+      <PageSection
+        title="Photos"
+        description="Upload is represented by the ZORA image upload field."
+      >
         <ImageUploadField
           label="Listing photos"
           description="Add clear photos from multiple angles."
@@ -19,7 +33,10 @@ export default function SellScreen() {
         />
       </PageSection>
 
-      <PageSection title="Details" description="A minimal listing form without local style objects.">
+      <PageSection
+        title="Details"
+        description="A minimal listing form without local style objects."
+      >
         <Input label="Title" placeholder="Walnut lounge chair" />
         <Input label="Price" placeholder="CHF 420" />
         <Textarea placeholder="Describe condition, pickup details, and what is included..." />
