@@ -3,6 +3,7 @@ export { ListRow } from './ListRow';
 export { ListSection } from './ListSection';
 export type {
   ListChildrenProps,
+  ListGridProps,
   ListItemsProps,
   ListProps,
   ListRowProps,
