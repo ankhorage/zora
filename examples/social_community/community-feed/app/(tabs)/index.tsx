@@ -1,11 +1,11 @@
 import {
+  AppBar,
   Badge,
   Button,
   Card,
-  Page,
-  PageHeader,
-  PageSection,
   PostCard,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -41,43 +41,42 @@ const posts = [
 
 export default function FeedScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Community feed"
-          description="A real Expo Router tab backed by ZORA surfaces and realistic static content."
-          actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>New post</Button>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Today"
-        description="The example uses ZORA components only: no StyleSheet, no Surface imports, no fake tabs."
-        actions={<Badge tone="success">Real route</Badge>}
-      >
-        {posts.map((post) => (
-          <PostCard key={post.id} author={post.author} text={post.text} actions={post.actions} />
-        ))}
-      </ScreenSection>
-
-      <ScreenSection
-        title="Community pulse"
-        description="Quick summary cards compose the rest of the feed."
-      >
-        <Card
-          title="Design critique room"
-          description="14 people are reviewing mobile profile cards right now."
-          actions={<Button emphasis="outline">Join</Button>}
+    <>
+      <AppBar
+        title="Community feed"
+        subtitle="A real Expo Router tab backed by ZORA surfaces and realistic static content."
+        actions={<Button leadingIcon={{ name: 'add-circle-outline' }}>New post</Button>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Today"
+          description="The example uses ZORA components only: no StyleSheet, no Surface imports, no fake tabs."
+          actions={<Badge tone="success">Real route</Badge>}
         >
-          <Text tone="muted">Best fit for later: live rooms and group activity patterns.</Text>
-        </Card>
-        <Card
-          title="Moderation queue"
-          description="3 flagged replies need a decision before the weekly digest goes out."
-          actions={<Badge tone="warning">Needs review</Badge>}
-          tone="subtle"
-        />
-      </ScreenSection>
-    </Page>
+          {posts.map((post) => (
+            <PostCard key={post.id} author={post.author} text={post.text} actions={post.actions} />
+          ))}
+        </ScreenSection>
+
+        <ScreenSection
+          title="Community pulse"
+          description="Quick summary cards compose the rest of the feed."
+        >
+          <Card
+            title="Design critique room"
+            description="14 people are reviewing mobile profile cards right now."
+            actions={<Button emphasis="outline">Join</Button>}
+          >
+            <Text tone="muted">Best fit for later: live rooms and group activity patterns.</Text>
+          </Card>
+          <Card
+            title="Review queue"
+            description="3 replies need a decision before the weekly digest goes out."
+            actions={<Badge tone="warning">Needs review</Badge>}
+            tone="subtle"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
