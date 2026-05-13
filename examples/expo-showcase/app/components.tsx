@@ -15,12 +15,11 @@ import {
   MediaCard,
   MetricCard,
   Modal,
-  Page,
-  PageHeader,
-  PageSection,
   Progress,
   RadioGroup,
   Rating,
+  Screen,
+  ScreenSection,
   SearchBar,
   SectionHeader,
   Select,
@@ -33,7 +32,7 @@ import {
   ToolbarAction,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 
 import { ComponentFormsSection } from './sections/componentForms';
 import { FoundationPrimitivesSection } from './sections/foundationPrimitives';
@@ -52,19 +51,15 @@ export function ComponentsPage() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   return (
-    <ScrollView>
-      <Page
-        header={
-          <PageHeader
-            eyebrow="Component catalog"
-            title="Components"
-            description="A visual overview of ZORA building blocks across variants, states, and common compositions."
-          />
-        }
-      >
+    <>
+      <AppBar
+        subtitle="A visual overview of ZORA building blocks across variants, states, and common compositions."
+        title="Components"
+      />
+      <Screen>
         <FoundationPrimitivesSection />
 
-        <PageSection title="Typography">
+        <ScreenSection title="Typography">
           <SectionHeader
             title="Headings"
             description="Semantic heading levels can use responsive visual sizes and tones."
@@ -136,9 +131,9 @@ export function ComponentsPage() {
               </Text>
             </Stack>
           </Card>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Buttons">
+        <ScreenSection title="Buttons">
           <SectionHeader
             title="Emphasis"
             description="Use emphasis to communicate action strength."
@@ -167,9 +162,9 @@ export function ComponentsPage() {
               Suggested
             </Button>
           </Stack>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Icon buttons">
+        <ScreenSection title="Icon buttons">
           <SectionHeader
             title="Standalone actions"
             description="Use IconButton for compact toolbar, card, and row actions."
@@ -185,9 +180,9 @@ export function ComponentsPage() {
             />
             <IconButton icon={{ name: 'lock-closed-outline' }} label="Locked" disabled />
           </Stack>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Badges">
+        <ScreenSection title="Badges">
           <SectionHeader
             title="Status labels"
             description="Badges work well for state, category, and compact metadata."
@@ -203,9 +198,9 @@ export function ComponentsPage() {
             </Badge>
             <Badge tone="neutral">Neutral</Badge>
           </Stack>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Tabs">
+        <ScreenSection title="Tabs">
           <SectionHeader
             title="Underline"
             description="Default tab style for page-level navigation."
@@ -263,9 +258,9 @@ export function ComponentsPage() {
               <Chip>Static chip</Chip>
             </Stack>
           </Stack>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="App bars">
+        <ScreenSection title="App bars">
           <SectionHeader
             title="Default"
             description="Product-facing screen chrome built on the Surface AppBar primitive."
@@ -316,9 +311,9 @@ export function ComponentsPage() {
             }}
             overflow={{ label: 'More selection actions', onPress: () => undefined }}
           />
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Toolbars">
+        <ScreenSection title="Toolbars">
           <SectionHeader title="Inline toolbar" description="Useful for local page actions." />
           <Toolbar position="inline">
             <ToolbarAction icon={{ name: 'play-outline' }} label="Run" />
@@ -334,9 +329,9 @@ export function ComponentsPage() {
             <ToolbarAction icon={{ name: 'code-outline' }} label="Code" />
             <ToolbarAction icon={{ name: 'eye-outline' }} label="Preview" />
           </Toolbar>
-        </PageSection>
+        </ScreenSection>
 
-        <PageSection title="Forms">
+        <ScreenSection title="Forms">
           <SectionHeader
             title="Inputs"
             description="Basic form controls for search, selection, and text entry."
@@ -406,11 +401,11 @@ export function ComponentsPage() {
               },
             ]}
           />
-        </PageSection>
+        </ScreenSection>
 
         <ComponentFormsSection />
 
-        <PageSection title="Cards">
+        <ScreenSection title="Cards">
           <SectionHeader
             title="Common card layouts"
             description="Cards combine title, description, actions, content, and footer metadata."
@@ -515,11 +510,11 @@ export function ComponentsPage() {
               <Progress tone="warning" value={55} />
             </Stack>
           </Card>
-        </PageSection>
+        </ScreenSection>
 
         <LayoutsShowcaseSection />
 
-        <PageSection title="Overlays">
+        <ScreenSection title="Overlays">
           <SectionHeader
             title="Modal and drawer"
             description="Use overlays for focused decisions and contextual panels."
@@ -530,8 +525,8 @@ export function ComponentsPage() {
               Open drawer
             </Button>
           </Stack>
-        </PageSection>
-      </Page>
+        </ScreenSection>
+      </Screen>
 
       <Modal
         visible={modalOpen}
@@ -560,6 +555,6 @@ export function ComponentsPage() {
           ]}
         />
       </Drawer>
-    </ScrollView>
+    </>
   );
 }
