@@ -1,11 +1,11 @@
 import {
+  AppBar,
   Badge,
   ListSection,
   MetricCard,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
 } from '@ankhorage/zora';
 
 const orderRows = [
@@ -31,40 +31,39 @@ const orderRows = [
 
 export default function OrdersScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Orders"
-          description="Purchases, offers, pickups, and seller conversations."
-          actions={<Badge tone="primary">3 active</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Summary">
-        <MetricCard label="Active orders" value="3" description="Purchases and offers" />
-        <MetricCard
-          label="Pending pickup"
-          value="1"
-          delta="Friday"
-          deltaTone="primary"
-          description="Next appointment"
-        />
-        <MetricCard label="Open offers" value="2" description="Awaiting seller reply" />
-      </ScreenSection>
-
-      <ListSection
-        title="Order activity"
-        description="Structured order rows until commerce-specific order cards exist."
-        items={orderRows}
+    <>
+      <AppBar
+        title="Orders"
+        subtitle="Purchases, offers, pickups, and seller conversations."
+        actions={<Badge tone="primary">3 active</Badge>}
       />
+      <Screen>
+        <ScreenSection title="Summary">
+          <MetricCard label="Active orders" value="3" description="Purchases and offers" />
+          <MetricCard
+            label="Pending pickup"
+            value="1"
+            delta="Friday"
+            deltaTone="primary"
+            description="Next appointment"
+          />
+          <MetricCard label="Open offers" value="2" description="Awaiting seller reply" />
+        </ScreenSection>
 
-      <ScreenSection title="Product note">
-        <Notice
-          title="Order lifecycle is static"
-          description="Checkout, payment state, shipping, and dispute flows belong in later app/backend examples."
-          tone="primary"
+        <ListSection
+          title="Order activity"
+          description="Structured order rows until commerce-specific order cards exist."
+          items={orderRows}
         />
-      </ScreenSection>
-    </Page>
+
+        <ScreenSection title="Product note">
+          <Notice
+            title="Order lifecycle is static"
+            description="Checkout, payment state, shipping, and dispute flows belong in later app/backend examples."
+            tone="primary"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
