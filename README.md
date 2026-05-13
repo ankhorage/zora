@@ -96,6 +96,12 @@ Implemented realistic examples:
 - `shopping_commerce/storefront`
 - `food_drink/restaurant`
 
+Scaffold a new realistic example from the repository root:
+
+```bash
+bun run scripts/scaffold-zora-example-app.ts social_community/community-feed "Community Feed"
+```
+
 Run one example:
 
 ```bash
