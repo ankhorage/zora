@@ -32,7 +32,7 @@ import {
   ToolbarAction,
 } from '@ankhorage/zora';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 
 import { ComponentFormsSection } from './sections/componentForms';
 import { FoundationPrimitivesSection } from './sections/foundationPrimitives';
@@ -51,7 +51,11 @@ export function ComponentsPage() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   return (
-    <ScrollView>
+    <>
+      <AppBar
+        subtitle="A visual overview of ZORA building blocks across variants, states, and common compositions."
+        title="Components"
+      />
       <Screen>
         <FoundationPrimitivesSection />
 
@@ -551,6 +555,6 @@ export function ComponentsPage() {
           ]}
         />
       </Drawer>
-    </ScrollView>
+    </>
   );
 }
