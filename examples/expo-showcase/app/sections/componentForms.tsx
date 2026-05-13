@@ -9,8 +9,8 @@ import {
   Icon,
   Inline,
   Input,
-  PageSection,
   Radio,
+  ScreenSection,
   Stack,
   Text,
 } from '@ankhorage/zora';
