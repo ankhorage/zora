@@ -21,10 +21,9 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'MessageBubble',
 ] as const;
 
-export const PAGE_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;
+export const SCREEN_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;
 
-export const PAGE_ALLOWED_CHILDREN = [
-  'PageHeader',
-  'PageSection',
+export const SCREEN_ALLOWED_CHILDREN = [
+  'ScreenSection',
   ...CONTAINER_ALLOWED_CHILDREN,
 ] as const;
