@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.1
+
+### Patch Changes
+
+- 07e9d96: Improve realistic example app chrome by adding compact AppBars with dark-mode toggles, applying semantic Screen backgrounds, and fixing native ZoraTabBar icon/label rendering.
+
 ## 1.5.0
 
 ### Minor Changes
