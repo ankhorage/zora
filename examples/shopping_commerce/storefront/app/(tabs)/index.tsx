@@ -1,12 +1,12 @@
 import {
+  AppBar,
   AvatarGroup,
   Badge,
   Button,
   MediaCard,
   Notice,
-  Page,
-  PageHeader,
-  PageSection,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
 
@@ -31,46 +31,45 @@ const featured = [
 
 export default function HomeScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Studio Store"
-          description="A small storefront starter for product discovery, cart, orders, and customer profile."
-          actions={<Button leadingIcon={{ name: 'cart-outline' }}>View cart</Button>}
-        />
-      }
-    >
-      <ScreenSection
-        title="New collection"
-        description="A shop homepage composed from ZORA sections and media cards."
-        actions={<Badge tone="primary">Spring edit</Badge>}
-      >
-        {featured.map((product) => (
-          <MediaCard
-            key={product.title}
-            {...product}
-            badges={<Badge tone="success">In stock</Badge>}
-          />
-        ))}
-      </ScreenSection>
+    <>
+      <AppBar
+        title="Studio Store"
+        subtitle="A small storefront starter for product discovery, cart, orders, and customer profile."
+        actions={<Button leadingIcon={{ name: 'cart-outline' }}>View cart</Button>}
+      />
+      <Screen>
+        <ScreenSection
+          title="New collection"
+          description="A shop homepage composed from ZORA sections and media cards."
+          actions={<Badge tone="primary">Spring edit</Badge>}
+        >
+          {featured.map((product) => (
+            <MediaCard
+              key={product.title}
+              {...product}
+              badges={<Badge tone="success">In stock</Badge>}
+            />
+          ))}
+        </ScreenSection>
 
-      <ScreenSection title="Social proof">
-        <Notice
-          title="1,248 happy customers"
-          description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."
-          tone="success"
-        />
-        <AvatarGroup
-          items={[
-            { id: 'nora', name: 'Nora Frei', tone: 'primary' },
-            { id: 'mia', name: 'Mia Chen', tone: 'success' },
-            { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
-          ]}
-        />
-        <Text tone="muted">
-          A future StorefrontHero or ProductFeature pattern would make this screen stronger.
-        </Text>
-      </ScreenSection>
-    </Page>
+        <ScreenSection title="Social proof">
+          <Notice
+            title="1,248 happy customers"
+            description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."
+            tone="success"
+          />
+          <AvatarGroup
+            items={[
+              { id: 'nora', name: 'Nora Frei', tone: 'primary' },
+              { id: 'mia', name: 'Mia Chen', tone: 'success' },
+              { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+            ]}
+          />
+          <Text tone="muted">
+            A future StorefrontHero or ProductFeature pattern would make this screen stronger.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
