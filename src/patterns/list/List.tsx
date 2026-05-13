@@ -6,6 +6,8 @@ import { ListRow } from './ListRow';
 import { resolveListSeparator } from './resolveListSeparator';
 import type { ListItemsProps, ListProps, ListRowProps, ListRowVariant } from './types';
 
+type ListGridColumns = NonNullable<ListItemsProps['columns']>;
+
 function resolveRowVariant({
   item,
   defaultVariant,
@@ -26,7 +28,7 @@ function resolveRowCompact({
   return item.compact ?? compact ?? false;
 }
 
-function resolveCardGridColumns(cols: ListItemsProps['columns']): ListItemsProps['columns'] {
+function resolveCardGridColumns(cols: ListItemsProps['columns']): ListGridColumns {
   return cols ?? { base: 1, md: 2, xl: 3 };
 }
 
