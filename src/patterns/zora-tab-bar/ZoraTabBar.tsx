@@ -11,6 +11,22 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraTabBarProps } from './types';
 
+function resolveAccessibilityLabel(label: React.ReactNode, explicitLabel?: string): string | undefined {
+  if (explicitLabel !== undefined) {
+    return explicitLabel;
+  }
+
+  if (typeof label === 'string') {
+    return label;
+  }
+
+  if (typeof label === 'number') {
+    return String(label);
+  }
+
+  return undefined;
+}
+
 function ZoraTabBarInner({
   themeId: _themeId,
   mode: _mode,
@@ -61,7 +77,10 @@ function ZoraTabBarInner({
 
         return (
           <Pressable
-            accessibilityLabel={item.metadata?.accessibilityLabel ?? item.label}
+            accessibilityLabel={resolveAccessibilityLabel(
+              item.label,
+              item.metadata?.accessibilityLabel,
+            )}
             accessibilityRole="tab"
             accessibilityState={{ selected: active, disabled }}
             disabled={disabled}
