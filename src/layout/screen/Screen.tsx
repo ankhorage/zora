@@ -1,7 +1,7 @@
 import { ScrollArea } from '@ankhorage/surface';
 import React from 'react';
 
-import { Container, Stack } from '../../foundation';
+import { Box, Container, Stack } from '../../foundation';
 import { resolvePageMaxWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScreenProps } from './types';
@@ -25,10 +25,18 @@ function ScreenInner({
   );
 
   if (!scroll) {
-    return content;
+    return (
+      <Box bg="background" flex={1}>
+        {content}
+      </Box>
+    );
   }
 
-  return <ScrollArea>{content}</ScrollArea>;
+  return (
+    <ScrollArea bg="background" style={{ flex: 1 }}>
+      {content}
+    </ScrollArea>
+  );
 }
 
 export const Screen = withZoraThemeScope(ScreenInner);
