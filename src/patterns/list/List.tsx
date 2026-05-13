@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Divider, Spacer, Stack } from '../../foundation';
+import { Divider, Grid, Spacer, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { ListRow } from './ListRow';
 import { resolveListSeparator } from './resolveListSeparator';
@@ -26,6 +26,14 @@ function resolveRowCompact({
   return item.compact ?? compact ?? false;
 }
 
+function resolveCardGridColumns(cols: ListItemsProps['columns']): ListItemsProps['columns'] {
+  return cols ?? { base: 1, md: 2, xl: 3 };
+}
+
+function resolveCardGridGap(gap: ListItemsProps['gap']): ListItemsProps['gap'] {
+  return gap ?? 's';
+}
+
 function ListItemsInner({
   themeId: _themeId,
   mode: _mode,
@@ -33,7 +41,30 @@ function ListItemsInner({
   items,
   rowVariant = 'divider',
   compact,
+  columns,
+  gap,
+  minItemWidth,
 }: ListItemsProps) {
+  if (rowVariant === 'card') {
+    return (
+      <Grid
+        cols={resolveCardGridColumns(columns)}
+        gap={resolveCardGridGap(gap)}
+        minItemWidth={minItemWidth}
+        testID={testID}
+      >
+        {items.map((item, index) => (
+          <ListRow
+            {...item}
+            compact={resolveRowCompact({ item, compact })}
+            key={`${index}`}
+            variant={resolveRowVariant({ item, defaultVariant: rowVariant })}
+          />
+        ))}
+      </Grid>
+    );
+  }
+
   return (
     <Stack gap="none" testID={testID}>
       {items.map((item, index) => {
