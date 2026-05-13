@@ -7,7 +7,7 @@ import {
   Divider,
   Grid,
   Inline,
-  PageSection,
+  ScreenSection,
   Show,
   Spacer,
   Stack,
