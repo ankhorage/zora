@@ -11,7 +11,10 @@ import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraTabBarProps } from './types';
 
-function resolveAccessibilityLabel(label: React.ReactNode, explicitLabel?: string): string | undefined {
+function resolveAccessibilityLabel(
+  label: React.ReactNode,
+  explicitLabel?: string,
+): string | undefined {
   if (explicitLabel !== undefined) {
     return explicitLabel;
   }
@@ -64,8 +67,8 @@ function ZoraTabBarInner({
       testID={testID}
     >
       {resolved.map((item) => {
-        const active = item.active;
-        const disabled = item.disabled;
+        const { active } = item;
+        const { disabled } = item;
         const contentColor = disabled
           ? theme.semantics.content.subtle
           : active
@@ -96,7 +99,9 @@ function ZoraTabBarInner({
               paddingHorizontal: theme.spacing.s,
               paddingVertical: compact ? theme.spacing.xs : theme.spacing.s,
             }}
-            testID={item.metadata?.testID ?? (testID ? `${testID}-item-${item.route.key}` : undefined)}
+            testID={
+              item.metadata?.testID ?? (testID ? `${testID}-item-${item.route.key}` : undefined)
+            }
           >
             {item.metadata?.icon ? (
               <Icon
