@@ -1,4 +1,6 @@
-import { AppBar, Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const settingsRows = [
   {
@@ -15,7 +17,7 @@ const settingsRows = [
   },
   {
     title: 'Review tools',
-    description: 'Queue, blocked words, and group role defaults.',
+    description: 'Queue and group role defaults.',
     meta: '3 open',
     variant: 'card' as const,
   },
@@ -24,11 +26,7 @@ const settingsRows = [
 export default function SettingsScreen() {
   return (
     <>
-      <AppBar
-        title="Settings"
-        subtitle="Account, privacy, notifications, and community preferences."
-        actions={<Badge tone="neutral">Starter</Badge>}
-      />
+      <ExampleAppBar title="Settings" />
       <Screen>
         <ScreenSection title="Status">
           <Notice
@@ -44,7 +42,7 @@ export default function SettingsScreen() {
           items={settingsRows}
         />
 
-        <ScreenSection title="Account">
+        <ScreenSection title="Account" actions={<Badge tone="neutral">Starter</Badge>}>
           <Card
             title="Community Feed example"
             description="Real Expo Router app, ZORA-only UI, category-based location."
