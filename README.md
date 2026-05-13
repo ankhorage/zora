@@ -1310,9 +1310,7 @@ primitives like `SidebarLayout` or `Screen` to structure inner content.
 
 ```tsx
 <AppShell header={<Toolbar position="inline">{actions}</Toolbar>} footer={<BottomBar />}>
-  <Screen>
-    {content}
-  </Screen>
+  <Screen>{content}</Screen>
 </AppShell>
 ```
 

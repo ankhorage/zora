@@ -5,7 +5,6 @@ import {
   MediaCard,
   Page,
   PageHeader,
-  PageSection,
   PostCard,
   Text,
 } from '@ankhorage/zora';

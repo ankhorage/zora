@@ -1,4 +1,4 @@
-import { Badge, Card, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const settingsRows = [
   {

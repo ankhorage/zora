@@ -5,7 +5,6 @@ import {
   Notice,
   Page,
   PageHeader,
-  PageSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
@@ -48,7 +47,10 @@ export default function DiscoverScreen() {
         />
       }
     >
-      <ScreenSection title="Search" description="Visual discovery starts with a broad idea or mood.">
+      <ScreenSection
+        title="Search"
+        description="Visual discovery starts with a broad idea or mood."
+      >
         <SearchBar value="" placeholder="Search ideas, boards, products, places" />
       </ScreenSection>
 

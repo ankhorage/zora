@@ -5,7 +5,6 @@ import {
   ChatListItem,
   Page,
   PageHeader,
-  PageSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';

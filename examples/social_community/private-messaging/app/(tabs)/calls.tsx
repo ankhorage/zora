@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  ListSection,
-  Notice,
-  Page,
-  PageHeader,
-  PageSection,
-} from '@ankhorage/zora';
+import { Avatar, Badge, Button, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const callRows = [
   {

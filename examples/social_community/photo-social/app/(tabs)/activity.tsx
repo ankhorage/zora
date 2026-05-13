@@ -1,4 +1,4 @@
-import { Avatar, Badge, ListSection, Notice, Page, PageHeader, PageSection } from '@ankhorage/zora';
+import { Avatar, Badge, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const activityRows = [
   {

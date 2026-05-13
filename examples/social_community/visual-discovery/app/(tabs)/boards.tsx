@@ -1,13 +1,4 @@
-import {
-  AvatarGroup,
-  Badge,
-  Card,
-  ListSection,
-  Page,
-  PageHeader,
-  PageSection,
-  Text,
-} from '@ankhorage/zora';
+import { AvatarGroup, Badge, Card, ListSection, Page, PageHeader, Text } from '@ankhorage/zora';
 
 const boardRows = [
   {

@@ -1,12 +1,4 @@
-import {
-  Badge,
-  ListSection,
-  MetricCard,
-  Notice,
-  Page,
-  PageHeader,
-  PageSection,
-} from '@ankhorage/zora';
+import { Badge, ListSection, MetricCard, Notice, Page, PageHeader } from '@ankhorage/zora';
 
 const trendRows = [
   {

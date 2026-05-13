@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Page, PageHeader, Text } from '@ankhorage/zora';
 
 const savedItems = [
   {

@@ -46,10 +46,13 @@ export default function MessagesScreen() {
           title="Pinned"
           description="The first message preview uses a reusable ZORA panel."
         >
-          <Panel title="Mia Chen" description="Sent feedback on the onboarding flow two minutes ago.">
+          <Panel
+            title="Mia Chen"
+            description="Sent feedback on the onboarding flow two minutes ago."
+          >
             <Text tone="muted">
-              The next iteration can replace this with a dedicated ChatList pattern when the app needs
-              richer message states.
+              The next iteration can replace this with a dedicated ChatList pattern when the app
+              needs richer message states.
             </Text>
           </Panel>
         </ScreenSection>

@@ -6,7 +6,6 @@ import {
   MetricCard,
   Page,
   PageHeader,
-  PageSection,
   Text,
 } from '@ankhorage/zora';
 

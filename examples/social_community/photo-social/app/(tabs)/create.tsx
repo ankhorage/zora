@@ -6,7 +6,6 @@ import {
   Notice,
   Page,
   PageHeader,
-  PageSection,
   Textarea,
 } from '@ankhorage/zora';
 

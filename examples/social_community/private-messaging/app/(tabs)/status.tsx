@@ -1,13 +1,4 @@
-import {
-  AvatarGroup,
-  Badge,
-  Card,
-  MediaCard,
-  Page,
-  PageHeader,
-  PageSection,
-  Text,
-} from '@ankhorage/zora';
+import { AvatarGroup, Badge, Card, MediaCard, Page, PageHeader, Text } from '@ankhorage/zora';
 
 export default function StatusScreen() {
   return (

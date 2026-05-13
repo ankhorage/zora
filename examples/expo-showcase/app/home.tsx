@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Hero, Page, PageSection, Text } from '@ankhorage/zora';
+import { Badge, Button, Card, Hero, Page, Text } from '@ankhorage/zora';
 import React from 'react';
 import { ScrollView } from 'react-native';
 

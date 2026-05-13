@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Page, PageHeader, PageSection, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Page, PageHeader, SearchBar, Text } from '@ankhorage/zora';
 
 const collections = [
   {
