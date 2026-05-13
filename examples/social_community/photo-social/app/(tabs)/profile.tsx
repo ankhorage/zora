@@ -50,7 +50,9 @@ export default function ProfileScreen() {
         <MediaCard
           title="Terrace light"
           description="A warm, quiet frame from the latest city walk."
-          imageSource="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+          imageSource={{
+            uri: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+          }}
           imageLabel="Warm city terrace at golden hour"
           badges={<Badge tone="primary">Featured</Badge>}
         />
