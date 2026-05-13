@@ -40,7 +40,11 @@ export default function SettingsScreen() {
         />
       </PageSection>
 
-      <ListSection title="Preferences" description="Structured rows with no local styling layer." items={settingsRows} />
+      <ListSection
+        title="Preferences"
+        description="Structured rows with no local styling layer."
+        items={settingsRows}
+      />
 
       <PageSection title="Account">
         <Card

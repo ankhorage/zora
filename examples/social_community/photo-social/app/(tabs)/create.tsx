@@ -1,4 +1,14 @@
-import { Badge, Button, Card, ImageUploadField, Notice, Page, PageHeader, PageSection, Textarea } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  ImageUploadField,
+  Notice,
+  Page,
+  PageHeader,
+  PageSection,
+  Textarea,
+} from '@ankhorage/zora';
 
 export default function CreateScreen() {
   return (
@@ -11,7 +21,10 @@ export default function CreateScreen() {
         />
       }
     >
-      <PageSection title="Image" description="The upload field is a ZORA pattern, not a local wrapper.">
+      <PageSection
+        title="Image"
+        description="The upload field is a ZORA pattern, not a local wrapper."
+      >
         <ImageUploadField
           label="Cover image"
           description="Choose a photo for the next visual story."

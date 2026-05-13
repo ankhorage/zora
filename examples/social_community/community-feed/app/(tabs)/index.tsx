@@ -1,4 +1,13 @@
-import { Badge, Button, Card, Page, PageHeader, PageSection, PostCard, Text } from '@ankhorage/zora';
+import {
+  Badge,
+  Button,
+  Card,
+  Page,
+  PageHeader,
+  PageSection,
+  PostCard,
+  Text,
+} from '@ankhorage/zora';
 
 const posts = [
   {
@@ -51,7 +60,10 @@ export default function FeedScreen() {
         ))}
       </PageSection>
 
-      <PageSection title="Community pulse" description="Quick summary cards compose the rest of the feed.">
+      <PageSection
+        title="Community pulse"
+        description="Quick summary cards compose the rest of the feed."
+      >
         <Card
           title="Design critique room"
           description="14 people are reviewing mobile profile cards right now."

@@ -1,4 +1,14 @@
-import { Avatar, Badge, Card, MediaCard, MetricCard, Page, PageHeader, PageSection, Text } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Card,
+  MediaCard,
+  MetricCard,
+  Page,
+  PageHeader,
+  PageSection,
+  Text,
+} from '@ankhorage/zora';
 
 export default function ProfileScreen() {
   return (
@@ -11,7 +21,10 @@ export default function ProfileScreen() {
         />
       }
     >
-      <PageSection title="Creator profile" description="Profile surfaces should feel app-like without custom styles.">
+      <PageSection
+        title="Creator profile"
+        description="Profile surfaces should feel app-like without custom styles."
+      >
         <Card
           title="@linabrooks"
           description="Photographer · Zürich · 128 posts"
@@ -22,7 +35,13 @@ export default function ProfileScreen() {
       </PageSection>
 
       <PageSection title="Stats">
-        <MetricCard label="Followers" value="24.8k" delta="+3.2%" deltaTone="success" description="Last 30 days" />
+        <MetricCard
+          label="Followers"
+          value="24.8k"
+          delta="+3.2%"
+          deltaTone="success"
+          description="Last 30 days"
+        />
         <MetricCard label="Saves" value="8.4k" description="Across all posts" />
         <MetricCard label="Collections" value="14" description="Public boards" />
       </PageSection>

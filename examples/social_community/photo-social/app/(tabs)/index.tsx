@@ -1,4 +1,14 @@
-import { AvatarGroup, Badge, Button, MediaCard, Page, PageHeader, PageSection, PostCard, Text } from '@ankhorage/zora';
+import {
+  AvatarGroup,
+  Badge,
+  Button,
+  MediaCard,
+  Page,
+  PageHeader,
+  PageSection,
+  PostCard,
+  Text,
+} from '@ankhorage/zora';
 
 const featuredPost = {
   author: {
@@ -8,7 +18,8 @@ const featuredPost = {
   },
   text: 'Golden hour does most of the work, but framing the negative space made the whole carousel feel calmer.',
   media: {
-    source: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    source:
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
     label: 'Warm city terrace at golden hour',
     aspectRatio: 4 / 5,
   },
@@ -53,9 +64,14 @@ export default function HomeScreen() {
         />
       </PageSection>
 
-      <PageSection title="Following" description="A realistic image-first feed using the ZORA PostCard pattern.">
+      <PageSection
+        title="Following"
+        description="A realistic image-first feed using the ZORA PostCard pattern."
+      >
         <PostCard {...featuredPost} />
-        <Text tone="muted">The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.</Text>
+        <Text tone="muted">
+          The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.
+        </Text>
       </PageSection>
     </Page>
   );
