@@ -3,11 +3,13 @@ import {
   Badge,
   Button,
   MediaCard,
-  Page,
-  PageHeader,
   PostCard,
+  Screen,
+  ScreenSection,
   Text,
 } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const featuredPost = {
   author: {
@@ -32,49 +34,48 @@ const featuredPost = {
 
 export default function HomeScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Photo Social"
-          description="A visual social app built with real Expo Router tabs and ZORA-only UI."
-          actions={<Button leadingIcon={{ name: 'camera-outline' }}>Capture</Button>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Stories"
-        description="Avatar groups and badges give the feed a social rhythm without custom styles."
-        actions={<Badge tone="success">Live feed</Badge>}
-      >
-        <MediaCard
-          title="Weekend makers"
-          description="New visual notes from people you follow."
-          imageSource={{
-            uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
-          }}
-          imageLabel="People at a creative event"
-          badges={<Badge tone="primary">12 updates</Badge>}
-          footer={
-            <AvatarGroup
-              items={[
-                { id: 'lina', name: 'Lina Brooks' },
-                { id: 'marco', name: 'Marco Silva', tone: 'success' },
-                { id: 'aya', name: 'Aya Novak', tone: 'warning' },
-              ]}
-            />
-          }
-        />
-      </ScreenSection>
+    <>
+      <ExampleAppBar
+        title="Photo Social"
+        subtitle="A visual social app built with real Expo Router tabs and ZORA-only UI."
+        actions={<Button leadingIcon={{ name: 'camera-outline' }}>Capture</Button>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Stories"
+          description="Avatar groups and badges give the feed a social rhythm without custom styles."
+          actions={<Badge tone="success">Live feed</Badge>}
+        >
+          <MediaCard
+            title="Weekend makers"
+            description="New visual notes from people you follow."
+            imageSource={{
+              uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+            }}
+            imageLabel="People at a creative event"
+            badges={<Badge tone="primary">12 updates</Badge>}
+            footer={
+              <AvatarGroup
+                items={[
+                  { id: 'lina', name: 'Lina Brooks' },
+                  { id: 'marco', name: 'Marco Silva', tone: 'success' },
+                  { id: 'aya', name: 'Aya Novak', tone: 'warning' },
+                ]}
+              />
+            }
+          />
+        </ScreenSection>
 
-      <ScreenSection
-        title="Following"
-        description="A realistic image-first feed using the ZORA PostCard pattern."
-      >
-        <PostCard {...featuredPost} />
-        <Text tone="muted">
-          The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.
-        </Text>
-      </ScreenSection>
-    </Page>
+        <ScreenSection
+          title="Following"
+          description="A realistic image-first feed using the ZORA PostCard pattern."
+        >
+          <PostCard {...featuredPost} />
+          <Text tone="muted">
+            The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.
+          </Text>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }
