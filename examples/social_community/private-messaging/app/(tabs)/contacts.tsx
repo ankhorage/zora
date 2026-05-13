@@ -1,4 +1,14 @@
-import { Avatar, Badge, Button, ListSection, Page, PageHeader, SearchBar } from '@ankhorage/zora';
+import {
+  Avatar,
+  Badge,
+  Button,
+  ListSection,
+  Screen,
+  ScreenSection,
+  SearchBar,
+} from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const contactRows = [
   {
@@ -41,27 +51,26 @@ const contactRows = [
 
 export default function ContactsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Contacts"
-          description="People and groups available for direct messages."
-          actions={<Badge tone="primary">128 contacts</Badge>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Find people"
-        description="A searchable contact directory without local input styling."
-      >
-        <SearchBar value="" placeholder="Search contacts" />
-      </ScreenSection>
-
-      <ListSection
-        title="Favorites"
-        description="Contact rows use ZORA avatars, buttons, and list semantics."
-        items={contactRows}
+    <>
+      <ExampleAppBar
+        title="Contacts"
+        subtitle="People and groups available for direct messages."
+        actions={<Badge tone="primary">128 contacts</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection
+          title="Find people"
+          description="A searchable contact directory without local input styling."
+        >
+          <SearchBar value="" placeholder="Search contacts" />
+        </ScreenSection>
+
+        <ListSection
+          title="Favorites"
+          description="Contact rows use ZORA avatars, buttons, and list semantics."
+          items={contactRows}
+        />
+      </Screen>
+    </>
   );
 }

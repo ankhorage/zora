@@ -1,5 +1,4 @@
 import {
-  AppBar,
   AvatarGroup,
   Badge,
   Card,
@@ -8,6 +7,8 @@ import {
   ScreenSection,
   Text,
 } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const groupRows = [
   {
@@ -33,15 +34,12 @@ const groupRows = [
 export default function GroupsScreen() {
   return (
     <>
-      <AppBar
-        title="Groups"
-        subtitle="Follow active spaces, upcoming events, and moderation needs."
-        actions={<Badge tone="primary">3 active</Badge>}
-      />
+      <ExampleAppBar title="Groups" />
       <Screen>
         <ScreenSection
           title="Featured room"
           description="A composed ZORA card for the most active group."
+          actions={<Badge tone="primary">3 active</Badge>}
         >
           <Card
             title="Design systems circle"

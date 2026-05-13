@@ -1,5 +1,7 @@
 import { ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
 
+import { ExampleAppBar } from '../ExampleAppBar';
+
 const orderRows = [
   {
     title: 'Table 12 · tasting menu',
@@ -23,32 +25,35 @@ const orderRows = [
 
 export default function OrdersScreen() {
   return (
-    <Screen>
-      <ScreenSection title="Today">
-        <MetricCard label="Open orders" value="2" description="Dining and takeaway" />
-        <MetricCard
-          label="Ready soon"
-          value="19:10"
-          delta="Takeaway"
-          deltaTone="primary"
-          description="Kitchen estimate"
-        />
-        <MetricCard label="Vouchers" value="1" description="Email delivery" />
-      </ScreenSection>
+    <>
+      <ExampleAppBar title="Orders" />
+      <Screen>
+        <ScreenSection title="Today">
+          <MetricCard label="Open orders" value="2" description="Dining and takeaway" />
+          <MetricCard
+            label="Ready soon"
+            value="19:10"
+            delta="Takeaway"
+            deltaTone="primary"
+            description="Kitchen estimate"
+          />
+          <MetricCard label="Vouchers" value="1" description="Email delivery" />
+        </ScreenSection>
 
-      <ListSection
-        title="Order activity"
-        description="Order rows are static until restaurant-specific order patterns exist."
-        items={orderRows}
-      />
-
-      <ScreenSection title="Operations note">
-        <Notice
-          title="No kitchen integration"
-          description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
-          tone="primary"
+        <ListSection
+          title="Order activity"
+          description="Order rows are static until restaurant-specific order patterns exist."
+          items={orderRows}
         />
-      </ScreenSection>
-    </Screen>
+
+        <ScreenSection title="Operations note">
+          <Notice
+            title="No kitchen integration"
+            description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
+            tone="primary"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }

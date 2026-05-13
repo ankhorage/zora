@@ -1,12 +1,6 @@
-import {
-  AppBar,
-  Badge,
-  ListSection,
-  MetricCard,
-  Notice,
-  Screen,
-  ScreenSection,
-} from '@ankhorage/zora';
+import { Badge, ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const orderRows = [
   {
@@ -32,13 +26,9 @@ const orderRows = [
 export default function OrdersScreen() {
   return (
     <>
-      <AppBar
-        title="Orders"
-        subtitle="Customer order history and fulfillment status."
-        actions={<Badge tone="primary">1 active</Badge>}
-      />
+      <ExampleAppBar title="Orders" />
       <Screen>
-        <ScreenSection title="Order health">
+        <ScreenSection title="Order health" actions={<Badge tone="primary">1 active</Badge>}>
           <MetricCard label="Open orders" value="1" description="Preparing shipment" />
           <MetricCard
             label="Delivered"

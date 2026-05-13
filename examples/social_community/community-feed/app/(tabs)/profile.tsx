@@ -1,26 +1,16 @@
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Card,
-  MetricCard,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { Avatar, Badge, Card, MetricCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 export default function ProfileScreen() {
   return (
     <>
-      <AppBar
-        title="Profile"
-        subtitle="Profile summary, audience health, and personal activity."
-        actions={<Avatar name="Ava Studio" tone="primary" />}
-      />
+      <ExampleAppBar title="Profile" />
       <Screen>
         <ScreenSection
           title="Creator profile"
           description="A profile route composed from public ZORA exports."
+          actions={<Avatar name="Ava Studio" tone="primary" />}
         >
           <Card
             title="Ava Studio"

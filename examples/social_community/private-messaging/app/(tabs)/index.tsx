@@ -3,11 +3,13 @@ import {
   Button,
   Card,
   ChatListItem,
-  Page,
-  PageHeader,
+  Screen,
+  ScreenSection,
   SearchBar,
   Text,
 } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const chats = [
   {
@@ -35,44 +37,43 @@ const chats = [
 
 export default function ChatsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Chats"
-          description="A WhatsApp-style private messaging starter built with real Expo Router tabs."
-          actions={<Button leadingIcon={{ name: 'create-outline' }}>New chat</Button>}
-        />
-      }
-    >
-      <ScreenSection
-        title="Search"
-        description="Search is a first-class ZORA component, not local input glue."
-      >
-        <SearchBar value="" placeholder="Search chats" />
-      </ScreenSection>
-
-      <ScreenSection
-        title="Pinned"
-        description="ChatListItem carries the main inbox interaction shape."
-        actions={<Badge tone="primary">3 chats</Badge>}
-      >
-        {chats.map((chat) => (
-          <ChatListItem key={chat.title} {...chat} />
-        ))}
-      </ScreenSection>
-
-      <ScreenSection title="Messaging gap">
-        <Card
-          title="Next ZORA pressure point"
-          description="A full ChatScreen pattern should handle message bubbles, composer, date separators, and attachments."
-          actions={<Badge tone="warning">Follow-up</Badge>}
-          tone="subtle"
+    <>
+      <ExampleAppBar
+        title="Chats"
+        subtitle="A WhatsApp-style private messaging starter built with real Expo Router tabs."
+        actions={<Button leadingIcon={{ name: 'create-outline' }}>New chat</Button>}
+      />
+      <Screen>
+        <ScreenSection
+          title="Search"
+          description="Search is a first-class ZORA component, not local input glue."
         >
-          <Text tone="muted">
-            This example intentionally stays static until ZORA owns the missing chat primitives.
-          </Text>
-        </Card>
-      </ScreenSection>
-    </Page>
+          <SearchBar value="" placeholder="Search chats" />
+        </ScreenSection>
+
+        <ScreenSection
+          title="Pinned"
+          description="ChatListItem carries the main inbox interaction shape."
+          actions={<Badge tone="primary">3 chats</Badge>}
+        >
+          {chats.map((chat) => (
+            <ChatListItem key={chat.title} {...chat} />
+          ))}
+        </ScreenSection>
+
+        <ScreenSection title="Messaging gap">
+          <Card
+            title="Next ZORA pressure point"
+            description="A full ChatScreen pattern should handle message bubbles, composer, date separators, and attachments."
+            actions={<Badge tone="warning">Follow-up</Badge>}
+            tone="subtle"
+          >
+            <Text tone="muted">
+              This example intentionally stays static until ZORA owns the missing chat primitives.
+            </Text>
+          </Card>
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }

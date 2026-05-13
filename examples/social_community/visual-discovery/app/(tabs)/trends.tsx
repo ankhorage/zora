@@ -1,4 +1,6 @@
-import { Badge, ListSection, MetricCard, Notice, Page, PageHeader } from '@ankhorage/zora';
+import { Badge, ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const trendRows = [
   {
@@ -23,50 +25,49 @@ const trendRows = [
 
 export default function TrendsScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Trends"
-          description="Signals that help creators decide what to save, organize, and publish next."
-          actions={<Badge tone="primary">Weekly</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Signals">
-        <MetricCard
-          label="Pins saved"
-          value="42k"
-          delta="+18%"
-          deltaTone="success"
-          description="This week"
-        />
-        <MetricCard
-          label="Boards created"
-          value="8.7k"
-          delta="+6%"
-          deltaTone="primary"
-          description="Across visual topics"
-        />
-        <MetricCard
-          label="Top theme"
-          value="Warm minimalism"
-          description="Fastest-growing collection"
-        />
-      </ScreenSection>
-
-      <ListSection
-        title="Trending topics"
-        description="Structured rows work until richer trend cards exist."
-        items={trendRows}
+    <>
+      <ExampleAppBar
+        title="Trends"
+        subtitle="Signals that help creators decide what to save, organize, and publish next."
+        actions={<Badge tone="primary">Weekly</Badge>}
       />
+      <Screen>
+        <ScreenSection title="Signals">
+          <MetricCard
+            label="Pins saved"
+            value="42k"
+            delta="+18%"
+            deltaTone="success"
+            description="This week"
+          />
+          <MetricCard
+            label="Boards created"
+            value="8.7k"
+            delta="+6%"
+            deltaTone="primary"
+            description="Across visual topics"
+          />
+          <MetricCard
+            label="Top theme"
+            value="Warm minimalism"
+            description="Fastest-growing collection"
+          />
+        </ScreenSection>
 
-      <ScreenSection title="Product note">
-        <Notice
-          title="Trend cards are a future pattern"
-          description="A real visual discovery product likely needs richer trend cards with thumbnails, stats, and related boards."
-          tone="warning"
+        <ListSection
+          title="Trending topics"
+          description="Structured rows work until richer trend cards exist."
+          items={trendRows}
         />
-      </ScreenSection>
-    </Page>
+
+        <ScreenSection title="Product note">
+          <Notice
+            title="Trend cards are a future pattern"
+            description="A real visual discovery product likely needs richer trend cards with thumbnails, stats, and related boards."
+            tone="warning"
+          />
+        </ScreenSection>
+      </Screen>
+    </>
   );
 }

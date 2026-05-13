@@ -1,4 +1,6 @@
-import { Avatar, Badge, ListSection, Notice, Page, PageHeader } from '@ankhorage/zora';
+import { Avatar, Badge, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const activityRows = [
   {
@@ -26,28 +28,27 @@ const activityRows = [
 
 export default function ActivityScreen() {
   return (
-    <Page
-      header={
-        <PageHeader
-          title="Activity"
-          description="Likes, saves, comments, follows, and creator updates."
-          actions={<Badge tone="primary">3 new</Badge>}
-        />
-      }
-    >
-      <ScreenSection title="Highlights">
-        <Notice
-          title="Audience is active"
-          description="Your last photo story is driving more saves than comments today."
-          tone="success"
-        />
-      </ScreenSection>
-
-      <ListSection
-        title="Recent activity"
-        description="Social notification rows using ZORA list and avatar components."
-        items={activityRows}
+    <>
+      <ExampleAppBar
+        title="Activity"
+        subtitle="Likes, saves, comments, follows, and creator updates."
+        actions={<Badge tone="primary">3 new</Badge>}
       />
-    </Page>
+      <Screen>
+        <ScreenSection title="Highlights">
+          <Notice
+            title="Audience is active"
+            description="Your last photo story is driving more saves than comments today."
+            tone="success"
+          />
+        </ScreenSection>
+
+        <ListSection
+          title="Recent activity"
+          description="Social notification rows using ZORA list and avatar components."
+          items={activityRows}
+        />
+      </Screen>
+    </>
   );
 }

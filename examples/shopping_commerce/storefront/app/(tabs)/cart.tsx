@@ -1,13 +1,6 @@
-import {
-  AppBar,
-  Badge,
-  Button,
-  Card,
-  ListSection,
-  Notice,
-  Screen,
-  ScreenSection,
-} from '@ankhorage/zora';
+import { Badge, Button, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const cartRows = [
   {
@@ -33,11 +26,7 @@ const cartRows = [
 export default function CartScreen() {
   return (
     <>
-      <AppBar
-        title="Cart"
-        subtitle="Selected products, order summary, and checkout placeholder."
-        actions={<Button>Checkout</Button>}
-      />
+      <ExampleAppBar title="Cart" />
       <Screen>
         <ListSection
           title="Items"
@@ -45,7 +34,7 @@ export default function CartScreen() {
           items={cartRows}
         />
 
-        <ScreenSection title="Summary">
+        <ScreenSection title="Summary" actions={<Button>Checkout</Button>}>
           <Card
             title="Order total"
             description="CHF 201 · shipping calculated later"

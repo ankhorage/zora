@@ -1,5 +1,4 @@
 import {
-  AppBar,
   Badge,
   Button,
   Card,
@@ -11,18 +10,17 @@ import {
   Textarea,
 } from '@ankhorage/zora';
 
+import { ExampleAppBar } from '../ExampleAppBar';
+
 export default function SellScreen() {
   return (
     <>
-      <AppBar
-        title="Sell"
-        subtitle="Create a listing with structured ZORA form and media components."
-        actions={<Button>Publish</Button>}
-      />
+      <ExampleAppBar title="Sell" />
       <Screen>
         <ScreenSection
           title="Photos"
           description="Upload is represented by the ZORA image upload field."
+          actions={<Button>Publish</Button>}
         >
           <ImageUploadField
             label="Listing photos"

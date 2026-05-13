@@ -1,13 +1,6 @@
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  ListSection,
-  Panel,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { Avatar, Badge, ListSection, Panel, Screen, ScreenSection, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const conversations = [
   {
@@ -36,15 +29,12 @@ const conversations = [
 export default function MessagesScreen() {
   return (
     <>
-      <AppBar
-        title="Messages"
-        subtitle="A lightweight social inbox screen for the starter app."
-        actions={<Badge tone="primary">3 unread</Badge>}
-      />
+      <ExampleAppBar title="Messages" />
       <Screen>
         <ScreenSection
           title="Pinned"
           description="The first message preview uses a reusable ZORA panel."
+          actions={<Badge tone="primary">3 unread</Badge>}
         >
           <Panel
             title="Mia Chen"

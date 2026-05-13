@@ -1,5 +1,4 @@
 import {
-  AppBar,
   AvatarGroup,
   Badge,
   Button,
@@ -9,6 +8,8 @@ import {
   ScreenSection,
   Text,
 } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const featured = [
   {
@@ -32,16 +33,12 @@ const featured = [
 export default function HomeScreen() {
   return (
     <>
-      <AppBar
-        title="Studio Store"
-        subtitle="A small storefront starter for product discovery, cart, orders, and customer profile."
-        actions={<Button leadingIcon={{ name: 'cart-outline' }}>View cart</Button>}
-      />
+      <ExampleAppBar title="Studio Store" />
       <Screen>
         <ScreenSection
           title="New collection"
           description="A shop homepage composed from ZORA sections and media cards."
-          actions={<Badge tone="primary">Spring edit</Badge>}
+          actions={<Button leadingIcon={{ name: 'cart-outline' }}>View cart</Button>}
         >
           {featured.map((product) => (
             <MediaCard
@@ -52,7 +49,7 @@ export default function HomeScreen() {
           ))}
         </ScreenSection>
 
-        <ScreenSection title="Social proof">
+        <ScreenSection title="Social proof" actions={<Badge tone="primary">Spring edit</Badge>}>
           <Notice
             title="1,248 happy customers"
             description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."

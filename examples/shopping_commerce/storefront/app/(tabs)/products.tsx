@@ -1,4 +1,6 @@
-import { AppBar, Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+
+import { ExampleAppBar } from '../ExampleAppBar';
 
 const products = [
   {
@@ -30,15 +32,12 @@ const products = [
 export default function ProductsScreen() {
   return (
     <>
-      <AppBar
-        title="Products"
-        subtitle="A catalog route for browsing product cards and collections."
-        actions={<Badge tone="primary">42 items</Badge>}
-      />
+      <ExampleAppBar title="Products" />
       <Screen>
         <ScreenSection
           title="Search"
           description="Filtering is static for now, but the UI surface is real."
+          actions={<Badge tone="primary">42 items</Badge>}
         >
           <SearchBar value="" placeholder="Search products" />
         </ScreenSection>
