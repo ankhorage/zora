@@ -108,7 +108,7 @@ export function ThemeComposerPage({
               key={preset.theme.id}
               emphasis={theme.id === preset.theme.id ? 'solid' : 'soft'}
               size="s"
-              tone="primary"
+              color="primary"
               onPress={() => onThemeChange(preset.theme)}
             >
               {preset.label}
@@ -122,7 +122,7 @@ export function ThemeComposerPage({
           <Notice
             title="Preview follows the active theme"
             description="The whole showcase app receives the edited theme seed. This preview also scopes light and dark mode without relying on provider remounts."
-            tone="primary"
+            color="primary"
           />
 
           <Panel
@@ -159,24 +159,24 @@ export function ThemeComposerPage({
                 }
                 footer={
                   <Stack direction="row" gap="s" wrap="wrap">
-                    <Badge tone="primary">Primary</Badge>
-                    <Badge tone="success" emphasis="soft">
+                    <Badge color="primary">Primary</Badge>
+                    <Badge color="success" emphasis="soft">
                       Success
                     </Badge>
-                    <Badge tone="warning" emphasis="soft">
+                    <Badge color="warning" emphasis="soft">
                       Warning
                     </Badge>
-                    <Badge tone="danger" emphasis="outline">
+                    <Badge color="danger" emphasis="outline">
                       Danger
                     </Badge>
                   </Stack>
                 }
               >
                 <Stack gap="s">
-                  <Text variant="lead" tone="muted">
+                  <Text variant="lead" color="muted">
                     Theme: {theme.name} · Category: {theme.appCategory}
                   </Text>
-                  <Text variant="lead" tone="muted">
+                  <Text variant="lead" color="muted">
                     Harmony: {theme.harmony} · Primary: {theme.primaryColor}
                   </Text>
                   <Text>
@@ -198,11 +198,11 @@ export function ThemeComposerPage({
                     rows={3}
                   />
                   <Stack direction="row" gap="s" wrap="wrap">
-                    <Button tone="primary">Primary action</Button>
-                    <Button tone="neutral" emphasis="soft">
+                    <Button color="primary">Primary action</Button>
+                    <Button color="neutral" emphasis="soft">
                       Secondary
                     </Button>
-                    <Button tone="danger" emphasis="ghost">
+                    <Button color="danger" emphasis="ghost">
                       Danger ghost
                     </Button>
                   </Stack>

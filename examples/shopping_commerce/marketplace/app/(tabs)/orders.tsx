@@ -28,7 +28,7 @@ export default function OrdersScreen() {
     <>
       <ExampleAppBar title="Orders" />
       <Screen>
-        <ScreenSection title="Summary" actions={<Badge tone="primary">3 active</Badge>}>
+        <ScreenSection title="Summary" actions={<Badge color="primary">3 active</Badge>}>
           <MetricCard label="Active orders" value="3" description="Purchases and offers" />
           <MetricCard
             label="Pending pickup"
@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           <Notice
             title="Order lifecycle is static"
             description="Checkout, payment state, shipping, and dispute flows belong in later app/backend examples."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>

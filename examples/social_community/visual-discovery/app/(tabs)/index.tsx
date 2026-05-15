@@ -57,10 +57,10 @@ export default function DiscoverScreen() {
         <ScreenSection
           title="For you"
           description="Existing ZORA media cards stand in for a future Wall/Grid pattern."
-          actions={<Badge tone="primary">Personalized</Badge>}
+          actions={<Badge color="primary">Personalized</Badge>}
         >
           {pins.map((pin) => (
-            <MediaCard key={pin.title} {...pin} badges={<Badge tone="neutral">Pin</Badge>} />
+            <MediaCard key={pin.title} {...pin} badges={<Badge color="neutral">Pin</Badge>} />
           ))}
         </ScreenSection>
 
@@ -68,9 +68,9 @@ export default function DiscoverScreen() {
           <Notice
             title="Needs a visual wall pattern"
             description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
-            tone="warning"
+            color="warning"
           />
-          <Text tone="muted">
+          <Text color="muted">
             This example captures the product need without adding local layout tricks.
           </Text>
         </ScreenSection>

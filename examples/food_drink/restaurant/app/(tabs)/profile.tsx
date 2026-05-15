@@ -32,9 +32,9 @@ export default function ProfileScreen() {
           <Card
             title="Nora Frei"
             description="Regular guest · Zürich · last visit two weeks ago"
-            actions={<Badge tone="success">VIP</Badge>}
+            actions={<Badge color="success">VIP</Badge>}
           >
-            <Text tone="muted">
+            <Text color="muted">
               Prefers early dinner slots, vegetarian tasting menus, and quiet tables.
             </Text>
           </Card>

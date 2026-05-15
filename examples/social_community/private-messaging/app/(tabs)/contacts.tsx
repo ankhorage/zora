@@ -15,7 +15,7 @@ const contactRows = [
     title: 'Mia Chen',
     description: 'Product designer · Available',
     meta: 'Online',
-    leading: <Avatar name="Mia Chen" tone="primary" />,
+    leading: <Avatar name="Mia Chen" color="primary" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
         Message
@@ -27,7 +27,7 @@ const contactRows = [
     title: 'Noah Keller',
     description: 'Community operations · Busy until 14:00',
     meta: 'Busy',
-    leading: <Avatar name="Noah Keller" tone="success" />,
+    leading: <Avatar name="Noah Keller" color="success" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
         Message
@@ -39,7 +39,7 @@ const contactRows = [
     title: 'Lea Meyer',
     description: 'Frontend engineer · Usually replies in an hour',
     meta: 'Away',
-    leading: <Avatar name="Lea Meyer" tone="warning" />,
+    leading: <Avatar name="Lea Meyer" color="warning" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'chatbubble-outline' }}>
         Message
@@ -55,7 +55,7 @@ export default function ContactsScreen() {
       <ExampleAppBar
         title="Contacts"
         subtitle="People and groups available for direct messages."
-        actions={<Badge tone="primary">128 contacts</Badge>}
+        actions={<Badge color="primary">128 contacts</Badge>}
       />
       <Screen>
         <ScreenSection

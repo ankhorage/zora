@@ -40,14 +40,14 @@ export default function ProfileScreen() {
         <ScreenSection
           title="Seller card"
           description="A commerce profile composed from existing ZORA cards."
-          actions={<Avatar name="Nora Frei" tone="primary" />}
+          actions={<Avatar name="Nora Frei" color="primary" />}
         >
           <Card
             title="Nora Frei"
             description="Zürich · 4.9 seller rating · replies within one hour"
-            actions={<Badge tone="success">Verified</Badge>}
+            actions={<Badge color="success">Verified</Badge>}
           >
-            <Text tone="muted">
+            <Text color="muted">
               Local pickup preferred. Furniture, ceramics, and camera equipment.
             </Text>
           </Card>

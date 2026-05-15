@@ -44,7 +44,7 @@ export default function HomeScreen() {
         <ScreenSection
           title="Stories"
           description="Avatar groups and badges give the feed a social rhythm without custom styles."
-          actions={<Badge tone="success">Live feed</Badge>}
+          actions={<Badge color="success">Live feed</Badge>}
         >
           <MediaCard
             title="Weekend makers"
@@ -53,7 +53,7 @@ export default function HomeScreen() {
               uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="People at a creative event"
-            badges={<Badge tone="primary">12 updates</Badge>}
+            badges={<Badge color="primary">12 updates</Badge>}
             footer={
               <AvatarGroup
                 items={[
@@ -71,7 +71,7 @@ export default function HomeScreen() {
           description="A realistic image-first feed using the ZORA PostCard pattern."
         >
           <PostCard {...featuredPost} />
-          <Text tone="muted">
+          <Text color="muted">
             The first missing ZORA gap will probably be a dedicated visual grid/masonry pattern.
           </Text>
         </ScreenSection>

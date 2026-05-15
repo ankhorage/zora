@@ -1,12 +1,12 @@
 import type { FontWeight, SurfaceTheme } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
-import type { HeadingAlign, HeadingLevel, HeadingSize, HeadingTone, HeadingWeight } from './types';
+import type { HeadingAlign, HeadingColor, HeadingLevel, HeadingSize, HeadingWeight } from './types';
 
 interface ResolveHeadingRecipeOptions {
   level: HeadingLevel;
   size?: HeadingSize;
-  tone?: HeadingTone;
+  color?: HeadingColor;
   align?: HeadingAlign;
   weight?: HeadingWeight;
   italic?: boolean;
@@ -72,8 +72,8 @@ function resolveSizeRecipe(theme: SurfaceTheme, size: HeadingSize): HeadingRecip
   };
 }
 
-function resolveToneColor(theme: SurfaceTheme, tone: HeadingTone): string {
-  switch (tone) {
+function resolveColorValue(theme: SurfaceTheme, color: HeadingColor): string {
+  switch (color) {
     case 'muted':
       return theme.semantics.content.muted;
     case 'subtle':
@@ -82,12 +82,23 @@ function resolveToneColor(theme: SurfaceTheme, tone: HeadingTone): string {
       return theme.semantics.content.inverse;
     case 'primary':
       return theme.semantics.brand.base;
+    case 'secondary':
+      return theme.semantics.secondary.base;
+    case 'tertiary':
+      return theme.semantics.accent.base;
+    case 'quaternary':
+      return theme.semantics.highlight.base;
+    case 'neutral':
+      return theme.semantics.content.default;
     case 'danger':
+    case 'error':
       return theme.semantics.danger.base;
     case 'success':
       return theme.semantics.success.base;
     case 'warning':
       return theme.semantics.warning.base;
+    case 'info':
+      return theme.semantics.secondary.base;
     case 'default':
     default:
       return theme.semantics.content.default;
@@ -112,13 +123,13 @@ function resolveFontFamily({
 
 export function resolveHeadingRecipe(
   theme: SurfaceTheme,
-  { align, italic = false, level, size, tone = 'default', weight }: ResolveHeadingRecipeOptions,
+  { align, italic = false, level, size, color = 'default', weight }: ResolveHeadingRecipeOptions,
 ): TextStyle {
   const recipe = resolveSizeRecipe(theme, size ?? resolveHeadingSizeFromLevel(level));
   const resolvedWeight = resolveWeight(theme, weight ?? recipe.weight);
 
   return {
-    color: resolveToneColor(theme, tone),
+    color: resolveColorValue(theme, color),
     elevation: 0,
     fontFamily: resolveFontFamily({ theme, weight: resolvedWeight, italic }),
     fontSize: recipe.fontSize,

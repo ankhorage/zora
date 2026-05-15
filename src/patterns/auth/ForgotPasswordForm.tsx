@@ -66,7 +66,7 @@ function ForgotPasswordFormInner({
                 void onSignIn();
               }}
               size="s"
-              tone="neutral"
+              color="neutral"
             >
               {signInLabel}
             </Button>

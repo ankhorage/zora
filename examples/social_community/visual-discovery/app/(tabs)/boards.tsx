@@ -37,7 +37,7 @@ export default function BoardsScreen() {
       <ExampleAppBar
         title="Boards"
         subtitle="Organize saved ideas into reusable visual collections."
-        actions={<Badge tone="primary">12 boards</Badge>}
+        actions={<Badge color="primary">12 boards</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -57,7 +57,7 @@ export default function BoardsScreen() {
               />
             }
           >
-            <Text tone="muted">
+            <Text color="muted">
               Shared boards are static here; collaboration features belong later.
             </Text>
           </Card>

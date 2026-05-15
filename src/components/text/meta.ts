@@ -9,7 +9,7 @@ export const textMeta = {
     label: 'Text',
     defaultProps: {
       text: 'Text',
-      tone: 'default',
+      color: 'default',
       variant: 'body',
     },
   },
@@ -35,11 +35,26 @@ export const textMeta = {
       enum: ['body', 'lead', 'bodySmall', 'caption', 'label', 'eyebrow', 'code'],
       default: 'body',
     },
-    tone: {
+    color: {
       type: 'enum',
       category: 'Style',
-      label: 'Tone',
-      enum: ['default', 'muted', 'subtle', 'inverse', 'primary', 'danger', 'success', 'warning'],
+      label: 'Color',
+      enum: [
+        'default',
+        'muted',
+        'subtle',
+        'inverse',
+        'primary',
+        'secondary',
+        'tertiary',
+        'quaternary',
+        'neutral',
+        'success',
+        'warning',
+        'error',
+        'info',
+        'danger',
+      ],
       default: 'default',
     },
     align: {

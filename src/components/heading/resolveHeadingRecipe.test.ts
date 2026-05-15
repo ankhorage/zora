@@ -231,25 +231,25 @@ describe('resolveHeadingRecipe', () => {
   });
 
   test('maps semantic tones to theme colors', () => {
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'primary' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'primary' }).color).toBe(
       theme.semantics.brand.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'muted' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'muted' }).color).toBe(
       theme.semantics.content.muted,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'subtle' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'subtle' }).color).toBe(
       theme.semantics.content.subtle,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'inverse' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'inverse' }).color).toBe(
       theme.semantics.content.inverse,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'danger' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'danger' }).color).toBe(
       theme.semantics.danger.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'success' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'success' }).color).toBe(
       theme.semantics.success.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'warning' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'warning' }).color).toBe(
       theme.semantics.warning.base,
     );
   });

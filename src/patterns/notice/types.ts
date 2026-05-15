@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ZoraTone } from '../../internal/recipes';
+import type { ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface NoticeProps extends ZoraBaseProps {
@@ -8,5 +8,5 @@ export interface NoticeProps extends ZoraBaseProps {
   description?: React.ReactNode;
   children?: React.ReactNode;
   actions?: React.ReactNode;
-  tone?: ZoraTone;
+  color?: ZoraColor;
 }

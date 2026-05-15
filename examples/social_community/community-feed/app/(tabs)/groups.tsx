@@ -39,7 +39,7 @@ export default function GroupsScreen() {
         <ScreenSection
           title="Featured room"
           description="A composed ZORA card for the most active group."
-          actions={<Badge tone="primary">3 active</Badge>}
+          actions={<Badge color="primary">3 active</Badge>}
         >
           <Card
             title="Design systems circle"
@@ -54,7 +54,7 @@ export default function GroupsScreen() {
               />
             }
           >
-            <Text tone="muted">The screen stays realistic without local layout wrappers.</Text>
+            <Text color="muted">The screen stays realistic without local layout wrappers.</Text>
           </Card>
         </ScreenSection>
 

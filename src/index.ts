@@ -48,10 +48,10 @@ export {
 } from './components/form';
 export type {
   HeadingAlign,
+  HeadingColor,
   HeadingLevel,
   HeadingProps,
   HeadingSize,
-  HeadingTone,
   HeadingWeight,
 } from './components/heading';
 export { Heading } from './components/heading';
@@ -89,7 +89,7 @@ export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type { TextAlign, TextProps, TextTone, TextVariant, TextWeight } from './components/text';
+export type { TextAlign, TextColor, TextProps, TextVariant, TextWeight } from './components/text';
 export { Text } from './components/text';
 export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
@@ -120,6 +120,16 @@ export {
   Stack,
   Surface,
 } from './foundation';
+export type {
+  ZoraBadgeEmphasis,
+  ZoraCardTone,
+  ZoraColor,
+  ZoraContentWidth,
+  ZoraControlSize,
+  ZoraEmphasis,
+  ZoraPaletteColor,
+  ZoraStatusColor,
+} from './internal/recipes';
 export type { AppShellProps } from './layout/app-shell';
 export { AppShell } from './layout/app-shell';
 export type { AuthLayoutProps } from './layout/auth-layout';

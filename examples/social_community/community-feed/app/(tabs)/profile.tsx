@@ -10,14 +10,14 @@ export default function ProfileScreen() {
         <ScreenSection
           title="Creator profile"
           description="A profile route composed from public ZORA exports."
-          actions={<Avatar name="Ava Studio" tone="primary" />}
+          actions={<Avatar name="Ava Studio" color="primary" />}
         >
           <Card
             title="Ava Studio"
             description="Community host · Product design · Mobile UX"
-            actions={<Badge tone="success">Active</Badge>}
+            actions={<Badge color="success">Active</Badge>}
           >
-            <Text tone="muted">1.8k followers · 243 saved posts · 32 active conversations.</Text>
+            <Text color="muted">1.8k followers · 243 saved posts · 32 active conversations.</Text>
           </Card>
         </ScreenSection>
 

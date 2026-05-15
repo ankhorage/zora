@@ -62,7 +62,7 @@ function renderUnreadCount(unreadCount: React.ReactNode) {
   }
 
   return (
-    <Badge size="s" tone="primary">
+    <Badge size="s" color="primary">
       {unreadCount}
     </Badge>
   );
@@ -126,7 +126,7 @@ function ChatListItemInner({
               shape={avatar?.shape}
               size={avatar?.size ?? (compact ? 's' : 'm')}
               source={avatar?.source}
-              tone={avatar?.tone}
+              color={avatar?.color}
             />
           )}
 
@@ -136,7 +136,7 @@ function ChatListItemInner({
                 <Box flex={1}>
                   <Text
                     numberOfLines={1}
-                    tone={disabled ? 'muted' : 'default'}
+                    color={disabled ? 'muted' : 'default'}
                     variant="bodySmall"
                     weight={unread || selected ? 'semiBold' : 'medium'}
                   >
@@ -146,7 +146,7 @@ function ChatListItemInner({
                 {hasTimestamp ? (
                   <Text
                     numberOfLines={1}
-                    tone={unread ? 'primary' : 'subtle'}
+                    color={unread ? 'primary' : 'subtle'}
                     variant="caption"
                     weight={unread ? 'semiBold' : 'regular'}
                   >
@@ -162,7 +162,7 @@ function ChatListItemInner({
                       {hasPreview ? (
                         <Text
                           numberOfLines={1}
-                          tone={unread ? 'default' : 'muted'}
+                          color={unread ? 'default' : 'muted'}
                           variant="bodySmall"
                           weight={unread ? 'medium' : 'regular'}
                         >
@@ -170,7 +170,7 @@ function ChatListItemInner({
                         </Text>
                       ) : null}
                       {hasMeta ? (
-                        <Text numberOfLines={1} tone="subtle" variant="caption">
+                        <Text numberOfLines={1} color="subtle" variant="caption">
                           {meta}
                         </Text>
                       ) : null}

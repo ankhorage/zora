@@ -99,12 +99,12 @@ function ListRowInner({
             {title}
           </Text>
           {description ? (
-            <Text tone="muted" variant="bodySmall">
+            <Text color="muted" variant="bodySmall">
               {description}
             </Text>
           ) : null}
           {meta ? (
-            <Text tone="subtle" variant="caption">
+            <Text color="subtle" variant="caption">
               {meta}
             </Text>
           ) : null}

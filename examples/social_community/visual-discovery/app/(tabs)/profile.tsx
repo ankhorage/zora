@@ -17,7 +17,7 @@ export default function ProfileScreen() {
       <ExampleAppBar
         title="Mira Stone"
         subtitle="Curator of interiors, market colors, and compact travel boards."
-        actions={<Avatar name="Mira Stone" tone="primary" />}
+        actions={<Avatar name="Mira Stone" color="primary" />}
       />
       <Screen>
         <ScreenSection
@@ -27,9 +27,9 @@ export default function ProfileScreen() {
           <Card
             title="@mirastone"
             description="18 public boards · 2.4k followers · weekly visual notes"
-            actions={<Badge tone="success">Curator</Badge>}
+            actions={<Badge color="success">Curator</Badge>}
           >
-            <Text tone="muted">
+            <Text color="muted">
               Collecting calm spaces, food stories, and practical inspiration boards.
             </Text>
           </Card>
@@ -55,7 +55,7 @@ export default function ProfileScreen() {
               uri: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="Warm studio workspace with design objects"
-            badges={<Badge tone="primary">Featured board</Badge>}
+            badges={<Badge color="primary">Featured board</Badge>}
           />
         </ScreenSection>
       </Screen>

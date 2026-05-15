@@ -27,7 +27,7 @@ export default function SavedScreen() {
       <ExampleAppBar
         title="Saved"
         subtitle="Recently saved pins, boards, and visual references."
-        actions={<Badge tone="success">230 saved</Badge>}
+        actions={<Badge color="success">230 saved</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -35,9 +35,9 @@ export default function SavedScreen() {
           description="A simple saved-items flow using existing media cards."
         >
           {savedItems.map((item) => (
-            <MediaCard key={item.title} {...item} badges={<Badge tone="primary">Saved</Badge>} />
+            <MediaCard key={item.title} {...item} badges={<Badge color="primary">Saved</Badge>} />
           ))}
-          <Text tone="muted">
+          <Text color="muted">
             Saved collections will become stronger once ZORA has a dedicated visual grid pattern.
           </Text>
         </ScreenSection>

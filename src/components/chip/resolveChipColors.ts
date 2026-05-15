@@ -1,18 +1,27 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import type { ZoraTone } from '../../internal/recipes';
+import type { ZoraColor } from '../../internal/recipes';
 import type { ChipColors, ChipInteractionState } from './types';
 
-function resolveChipRole(theme: SurfaceTheme, tone: ZoraTone): RoleSemantics {
-  switch (tone) {
+function resolveChipRole(theme: SurfaceTheme, color: ZoraColor): RoleSemantics {
+  switch (color) {
     case 'primary':
       return theme.semantics.action.primary;
+    case 'secondary':
+      return theme.semantics.secondary;
+    case 'tertiary':
+      return theme.semantics.accent;
+    case 'quaternary':
+      return theme.semantics.highlight;
     case 'danger':
+    case 'error':
       return theme.semantics.action.danger;
     case 'success':
       return theme.semantics.success;
     case 'warning':
       return theme.semantics.warning;
+    case 'info':
+      return theme.semantics.secondary;
     case 'neutral':
     default:
       return theme.semantics.action.neutral;
@@ -21,12 +30,12 @@ function resolveChipRole(theme: SurfaceTheme, tone: ZoraTone): RoleSemantics {
 
 export function resolveChipColors({
   theme,
-  tone,
+  color,
   selected,
   state,
 }: {
   theme: SurfaceTheme;
-  tone: ZoraTone;
+  color: ZoraColor;
   selected: boolean;
   state: ChipInteractionState;
 }): ChipColors {
@@ -39,7 +48,7 @@ export function resolveChipColors({
     };
   }
 
-  const role = resolveChipRole(theme, tone);
+  const role = resolveChipRole(theme, color);
 
   if (selected) {
     return {

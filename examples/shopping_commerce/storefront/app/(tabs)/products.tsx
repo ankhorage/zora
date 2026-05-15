@@ -37,7 +37,7 @@ export default function ProductsScreen() {
         <ScreenSection
           title="Search"
           description="Filtering is static for now, but the UI surface is real."
-          actions={<Badge tone="primary">42 items</Badge>}
+          actions={<Badge color="primary">42 items</Badge>}
         >
           <SearchBar value="" placeholder="Search products" />
         </ScreenSection>
@@ -50,10 +50,10 @@ export default function ProductsScreen() {
             <MediaCard
               key={product.title}
               {...product}
-              badges={<Badge tone="success">Available</Badge>}
+              badges={<Badge color="success">Available</Badge>}
             />
           ))}
-          <Text tone="muted">
+          <Text color="muted">
             Storefront needs ProductCard, ProductGrid, price, sale, and inventory-aware patterns
             later.
           </Text>

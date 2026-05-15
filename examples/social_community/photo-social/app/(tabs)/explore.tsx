@@ -35,7 +35,7 @@ export default function ExploreScreen() {
       <ExampleAppBar
         title="Explore"
         subtitle="Discover visual collections and creator-led image themes."
-        actions={<Badge tone="primary">Trending</Badge>}
+        actions={<Badge color="primary">Trending</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -53,10 +53,10 @@ export default function ExploreScreen() {
             <MediaCard
               key={collection.title}
               {...collection}
-              badges={<Badge tone="neutral">Featured</Badge>}
+              badges={<Badge color="neutral">Featured</Badge>}
             />
           ))}
-          <Text tone="muted">
+          <Text color="muted">
             A richer visual discovery template should probably introduce a dedicated Wall/Grid
             pattern later.
           </Text>

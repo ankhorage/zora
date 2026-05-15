@@ -239,6 +239,17 @@ describe('Plan 5 audit — public exports carry no legacy types', () => {
 
     expect(indexSource).not.toContain('AnkhTheme');
   });
+
+  test('no ZoraTone references in source', () => {
+    expect(allSource).not.toMatch(/\bZoraTone\b/);
+  });
+
+  test('no public tone props that select semantic color roles (ZoraTone bannned)', () => {
+    // Spot-check: no ButtonProps, BadgeProps, NoticeProps, TextProps, HeadingProps should have a
+    // `tone` prop that is ZoraTone (they should use `color` instead).
+    // We test by verifying ZoraTone is absent from the entire source tree.
+    expect(allSource).not.toMatch(/\bZoraTone\b/);
+  });
 });
 
 describe('navigation chrome policy', () => {

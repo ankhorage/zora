@@ -17,7 +17,7 @@ export default function ProfileScreen() {
       <ExampleAppBar
         title="Lina Brooks"
         subtitle="Street color studies, interiors, and quiet city frames."
-        actions={<Avatar name="Lina Brooks" tone="primary" />}
+        actions={<Avatar name="Lina Brooks" color="primary" />}
       />
       <Screen>
         <ScreenSection
@@ -27,9 +27,9 @@ export default function ProfileScreen() {
           <Card
             title="@linabrooks"
             description="Photographer · Zürich · 128 posts"
-            actions={<Badge tone="success">Following</Badge>}
+            actions={<Badge color="success">Following</Badge>}
           >
-            <Text tone="muted">Golden hour, street signs, and calm interior details.</Text>
+            <Text color="muted">Golden hour, street signs, and calm interior details.</Text>
           </Card>
         </ScreenSection>
 
@@ -53,7 +53,7 @@ export default function ProfileScreen() {
               uri: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="Warm city terrace at golden hour"
-            badges={<Badge tone="primary">Featured</Badge>}
+            badges={<Badge color="primary">Featured</Badge>}
           />
         </ScreenSection>
       </Screen>

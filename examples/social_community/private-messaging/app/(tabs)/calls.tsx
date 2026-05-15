@@ -7,7 +7,7 @@ const callRows = [
     title: 'Mia Chen',
     description: 'Missed voice call',
     meta: 'Today · 09:12',
-    leading: <Avatar name="Mia Chen" tone="primary" />,
+    leading: <Avatar name="Mia Chen" color="primary" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
         Call
@@ -19,7 +19,7 @@ const callRows = [
     title: 'Noah Keller',
     description: 'Outgoing video call',
     meta: 'Yesterday · 18:44',
-    leading: <Avatar name="Noah Keller" tone="success" />,
+    leading: <Avatar name="Noah Keller" color="success" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'videocam-outline' }}>
         Video
@@ -31,7 +31,7 @@ const callRows = [
     title: 'Lea Meyer',
     description: 'Incoming voice call',
     meta: 'Monday · 14:05',
-    leading: <Avatar name="Lea Meyer" tone="warning" />,
+    leading: <Avatar name="Lea Meyer" color="warning" />,
     action: (
       <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
         Call
@@ -47,14 +47,14 @@ export default function CallsScreen() {
       <ExampleAppBar
         title="Calls"
         subtitle="Recent voice and video interactions for a private messaging app."
-        actions={<Badge tone="neutral">Static</Badge>}
+        actions={<Badge color="neutral">Static</Badge>}
       />
       <Screen>
         <ScreenSection title="Availability">
           <Notice
             title="Call history only"
             description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
 

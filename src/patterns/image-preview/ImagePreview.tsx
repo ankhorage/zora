@@ -63,7 +63,7 @@ function ImagePreviewInner({
             <Text variant="label" weight="semiBold">
               {emptyTitle}
             </Text>
-            <Text tone="muted" variant="bodySmall">
+            <Text color="muted" variant="bodySmall">
               {emptyDescription}
             </Text>
           </Stack>

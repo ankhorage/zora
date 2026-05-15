@@ -91,7 +91,7 @@ function MediaCardInner({
             <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
               <Stack gap="xs">
                 {eyebrow ? (
-                  <Text tone="muted" variant="caption" weight="semiBold">
+                  <Text color="muted" variant="caption" weight="semiBold">
                     {eyebrow}
                   </Text>
                 ) : null}
@@ -100,7 +100,7 @@ function MediaCardInner({
                   {badges ? <Box>{badges}</Box> : null}
                 </Stack>
                 {description ? (
-                  <Text tone="muted" variant="bodySmall">
+                  <Text color="muted" variant="bodySmall">
                     {description}
                   </Text>
                 ) : null}

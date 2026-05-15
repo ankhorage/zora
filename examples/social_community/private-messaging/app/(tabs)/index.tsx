@@ -54,7 +54,7 @@ export default function ChatsScreen() {
         <ScreenSection
           title="Pinned"
           description="ChatListItem carries the main inbox interaction shape."
-          actions={<Badge tone="primary">3 chats</Badge>}
+          actions={<Badge color="primary">3 chats</Badge>}
         >
           {chats.map((chat) => (
             <ChatListItem key={chat.title} {...chat} />
@@ -65,10 +65,10 @@ export default function ChatsScreen() {
           <Card
             title="Next ZORA pressure point"
             description="A full ChatScreen pattern should handle message bubbles, composer, date separators, and attachments."
-            actions={<Badge tone="warning">Follow-up</Badge>}
+            actions={<Badge color="warning">Follow-up</Badge>}
             tone="subtle"
           >
-            <Text tone="muted">
+            <Text color="muted">
               This example intentionally stays static until ZORA owns the missing chat primitives.
             </Text>
           </Card>

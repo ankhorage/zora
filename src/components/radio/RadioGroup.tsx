@@ -3,6 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Stack } from '../../foundation';
+import { resolveZoraColorToSurfaceTone, type ZoraColor } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { RadioGroupOption, RadioGroupProps } from './types';
@@ -15,7 +16,7 @@ function RadioGroupInner<TValue extends string>({
   options,
   orientation = 'vertical',
   gap = 's',
-  tone = 'primary',
+  color = 'primary',
   size = 'm',
   invalid = false,
   readOnly = false,
@@ -47,7 +48,7 @@ function RadioGroupInner<TValue extends string>({
             invalid={invalid}
             readOnly={readOnly}
             size={size}
-            tone={tone}
+            color={color}
             onSelect={onValueChange}
           />
         ))}
@@ -65,7 +66,7 @@ function RadioGroupItem<TValue extends string>({
   invalid,
   readOnly,
   size,
-  tone,
+  color,
   onSelect,
 }: {
   option: RadioGroupOption<TValue>;
@@ -74,7 +75,7 @@ function RadioGroupItem<TValue extends string>({
   invalid: boolean;
   readOnly: boolean;
   size: NonNullable<RadioGroupProps<TValue>['size']>;
-  tone: NonNullable<RadioGroupProps<TValue>['tone']>;
+  color: ZoraColor;
   onSelect: (value: TValue) => void;
 }) {
   return (
@@ -84,7 +85,7 @@ function RadioGroupItem<TValue extends string>({
       invalid={invalid}
       readOnly={readOnly}
       size={size}
-      tone={tone}
+      tone={resolveZoraColorToSurfaceTone(color)}
       testID={option.testID}
       onCheckedChange={(nextChecked) => {
         if (nextChecked) onSelect(option.value);
@@ -93,7 +94,7 @@ function RadioGroupItem<TValue extends string>({
       <Stack gap="xs">
         <Text>{option.label}</Text>
         {option.description ? (
-          <Text variant="caption" tone="muted">
+          <Text variant="caption" color="muted">
             {option.description}
           </Text>
         ) : null}

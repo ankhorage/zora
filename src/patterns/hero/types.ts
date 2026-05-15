@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ZoraEmphasis, ZoraTone } from '../../internal/recipes';
+import type { ZoraColor, ZoraEmphasis } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type HeroAlign = 'start' | 'center';
@@ -10,7 +10,7 @@ export type HeroTone = 'default' | 'subtle' | 'outline';
 export interface HeroAction {
   label: React.ReactNode;
   onPress: () => void;
-  tone?: ZoraTone;
+  color?: ZoraColor;
   emphasis?: ZoraEmphasis;
   disabled?: boolean;
 }

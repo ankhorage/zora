@@ -25,7 +25,7 @@ function FormFieldInner({
             {label}
           </Text>
           {description ? (
-            <Text tone="muted" variant="bodySmall">
+            <Text color="muted" variant="bodySmall">
               {description}
             </Text>
           ) : null}

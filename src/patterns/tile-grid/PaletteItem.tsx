@@ -44,7 +44,7 @@ function PaletteItemInner({
           {title}
         </Heading>
         {description ? (
-          <Text align="center" tone="muted" variant="caption">
+          <Text align="center" color="muted" variant="caption">
             {description}
           </Text>
         ) : null}

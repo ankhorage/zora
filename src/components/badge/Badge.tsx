@@ -9,12 +9,12 @@ function BadgeInner({
   themeId: _themeId,
   mode: _mode,
   children,
-  tone,
+  color,
   emphasis,
   size,
   ...props
 }: BadgeProps) {
-  const recipe = resolveBadgeRecipe({ tone, emphasis, size });
+  const recipe = resolveBadgeRecipe({ color, emphasis, size });
 
   return (
     <SurfaceBadge

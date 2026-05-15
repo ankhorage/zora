@@ -1,6 +1,7 @@
 import type { RadioProps as SurfaceRadioProps } from '@ankhorage/surface';
 import type React from 'react';
 
+import type { ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface RadioProps extends ZoraBaseProps, Omit<SurfaceRadioProps, 'mode' | 'themeId'> {}
@@ -18,11 +19,12 @@ export interface RadioGroupProps<TValue extends string>
     ZoraBaseProps,
     Pick<
       Omit<SurfaceRadioProps, 'mode' | 'themeId'>,
-      'tone' | 'size' | 'invalid' | 'readOnly' | 'disabled'
+      'size' | 'invalid' | 'readOnly' | 'disabled'
     > {
   value: TValue;
   onValueChange: (value: TValue) => void;
   options: readonly RadioGroupOption<TValue>[];
+  color?: ZoraColor;
   orientation?: 'horizontal' | 'vertical';
   gap?: 'xs' | 's' | 'm' | 'l';
 }

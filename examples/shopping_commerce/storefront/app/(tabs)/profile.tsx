@@ -37,13 +37,13 @@ export default function ProfileScreen() {
     <>
       <ExampleAppBar title="Customer profile" />
       <Screen>
-        <ScreenSection title="Customer card" actions={<Avatar name="Nora Frei" tone="primary" />}>
+        <ScreenSection title="Customer card" actions={<Avatar name="Nora Frei" color="primary" />}>
           <Card
             title="Nora Frei"
             description="Studio customer · Zürich · member since 2024"
-            actions={<Badge tone="success">Gold member</Badge>}
+            actions={<Badge color="success">Gold member</Badge>}
           >
-            <Text tone="muted">
+            <Text color="muted">
               Prefers natural materials, ceramic sets, and quiet tableware collections.
             </Text>
           </Card>

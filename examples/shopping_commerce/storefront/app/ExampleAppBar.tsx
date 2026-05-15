@@ -16,7 +16,7 @@ export function ExampleAppBar({ testID, title }: ExampleAppBarProps) {
           label={mode === 'dark' ? 'Use light mode' : 'Use dark mode'}
           emphasis="ghost"
           size="m"
-          tone="neutral"
+          color="neutral"
           onPress={() => setMode(nextMode)}
         />
       }

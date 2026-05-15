@@ -79,7 +79,7 @@ function SignInFormInner({
                   void onForgotPassword();
                 }}
                 size="s"
-                tone="neutral"
+                color="neutral"
               >
                 {forgotPasswordLabel}
               </Button>
@@ -92,7 +92,7 @@ function SignInFormInner({
                   void onSignUp();
                 }}
                 size="s"
-                tone="neutral"
+                color="neutral"
               >
                 {signUpLabel}
               </Button>

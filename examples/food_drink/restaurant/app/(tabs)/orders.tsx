@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           <Notice
             title="No kitchen integration"
             description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>

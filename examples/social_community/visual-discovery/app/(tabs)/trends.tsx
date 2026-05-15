@@ -29,7 +29,7 @@ export default function TrendsScreen() {
       <ExampleAppBar
         title="Trends"
         subtitle="Signals that help creators decide what to save, organize, and publish next."
-        actions={<Badge tone="primary">Weekly</Badge>}
+        actions={<Badge color="primary">Weekly</Badge>}
       />
       <Screen>
         <ScreenSection title="Signals">
@@ -64,7 +64,7 @@ export default function TrendsScreen() {
           <Notice
             title="Trend cards are a future pattern"
             description="A real visual discovery product likely needs richer trend cards with thumbnails, stats, and related boards."
-            tone="warning"
+            color="warning"
           />
         </ScreenSection>
       </Screen>

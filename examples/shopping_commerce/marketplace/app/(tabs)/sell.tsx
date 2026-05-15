@@ -42,13 +42,13 @@ export default function SellScreen() {
           <Card
             title="Draft listing"
             description="Add photos, price, and pickup location before publishing."
-            actions={<Badge tone="warning">Draft</Badge>}
+            actions={<Badge color="warning">Draft</Badge>}
             tone="subtle"
           />
           <Notice
             title="Static commerce example"
             description="Payments, checkout, and seller verification belong outside this ZORA UI example."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>

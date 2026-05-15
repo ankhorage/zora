@@ -287,28 +287,28 @@ describe('resolveTextStyle', () => {
   });
 
   test('maps tones to semantic colors', () => {
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'default' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'default' }).color).toBe(
       theme.semantics.content.default,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'muted' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'muted' }).color).toBe(
       theme.semantics.content.muted,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'subtle' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'subtle' }).color).toBe(
       theme.semantics.content.subtle,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'inverse' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'inverse' }).color).toBe(
       theme.semantics.content.inverse,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'primary' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'primary' }).color).toBe(
       theme.semantics.brand.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'danger' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'danger' }).color).toBe(
       theme.semantics.danger.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'success' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'success' }).color).toBe(
       theme.semantics.success.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'warning' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'warning' }).color).toBe(
       theme.semantics.warning.base,
     );
   });
@@ -344,7 +344,7 @@ describe('resolveTextStyle', () => {
       theme,
       breakpoint: 'md',
       variant: { base: 'bodySmall', md: 'lead' },
-      tone: { base: 'muted', md: 'primary' },
+      color: { base: 'muted', md: 'primary' },
       align: { base: 'center', md: 'left' },
       weight: { base: 'regular', md: 'semiBold' },
     });

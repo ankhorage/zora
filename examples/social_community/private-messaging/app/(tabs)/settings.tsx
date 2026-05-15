@@ -29,14 +29,14 @@ export default function SettingsScreen() {
       <ExampleAppBar
         title="Settings"
         subtitle="Messaging preferences, privacy, and account controls."
-        actions={<Badge tone="neutral">Starter</Badge>}
+        actions={<Badge color="neutral">Starter</Badge>}
       />
       <Screen>
         <ScreenSection title="Security">
           <Notice
             title="End-to-end encryption placeholder"
             description="The example models the UI, not cryptography or messaging infrastructure."
-            tone="success"
+            color="success"
           />
         </ScreenSection>
 
@@ -50,7 +50,7 @@ export default function SettingsScreen() {
           <Card
             title="Private Messaging example"
             description="Real Expo Router app, ZORA-only UI, and no local styling workaround layer."
-            actions={<Badge tone="success">Verified shape</Badge>}
+            actions={<Badge color="success">Verified shape</Badge>}
             tone="subtle"
           />
         </ScreenSection>

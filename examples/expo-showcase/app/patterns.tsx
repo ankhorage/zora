@@ -123,7 +123,7 @@ function SelectionScenario() {
                 </Stack>
               }
             >
-              <Text tone="muted" variant="bodySmall">
+              <Text color="muted" variant="bodySmall">
                 Consumers own accessibility props and handler wiring in manual mode.
               </Text>
             </Card>
@@ -179,7 +179,7 @@ export function PatternsPage() {
         label: 'Inbox',
         icon: { name: 'mail-unread-outline' as const },
         badge: (
-          <Badge tone="primary" emphasis="soft">
+          <Badge color="primary" emphasis="soft">
             3
           </Badge>
         ),
@@ -332,14 +332,14 @@ export function PatternsPage() {
             <Stack direction={{ base: 'column', md: 'row' }} gap="s">
               <Button
                 emphasis="soft"
-                tone="neutral"
+                color="neutral"
                 onPress={() => setSimulateUploadError((current) => !current)}
               >
                 Simulate upload error: {simulateUploadError ? 'On' : 'Off'}
               </Button>
               <Button
                 emphasis="soft"
-                tone="neutral"
+                color="neutral"
                 onPress={() => {
                   setImageAsset(null);
                 }}
@@ -374,7 +374,7 @@ export function PatternsPage() {
                 path: 'pending/example.png',
               }}
             />
-            <Text tone="muted" variant="caption">
+            <Text color="muted" variant="caption">
               Consumers are responsible for resolving storage references into public URLs.
             </Text>
           </Stack>
@@ -424,7 +424,7 @@ export function PatternsPage() {
               meta: '2 minutes ago',
               leading: <Avatar name="Ada Lovelace" size="s" />,
               trailing: (
-                <Badge tone="neutral" emphasis="soft">
+                <Badge color="neutral" emphasis="soft">
                   New
                 </Badge>
               ),
@@ -434,17 +434,17 @@ export function PatternsPage() {
               title: 'Build pipeline',
               description: 'Main branch build succeeded.',
               meta: 'Today',
-              leading: <Avatar initials="CI" size="s" tone="primary" />,
+              leading: <Avatar initials="CI" size="s" color="primary" />,
               action: <IconButton icon={{ name: 'download-outline' }} label="Download artifacts" />,
             },
             {
               title: 'Grace Hopper',
               description: 'Invited you to review a draft.',
               meta: 'Yesterday',
-              leading: <Avatar name="Grace Hopper" size="s" tone="success" />,
+              leading: <Avatar name="Grace Hopper" size="s" color="success" />,
               disabled: true,
               trailing: (
-                <Badge tone="neutral" emphasis="soft">
+                <Badge color="neutral" emphasis="soft">
                   Archived
                 </Badge>
               ),
@@ -460,15 +460,15 @@ export function PatternsPage() {
             {
               title: 'Revenue',
               description: 'Monthly recurring revenue snapshot.',
-              leading: <Avatar initials="MRR" size="s" tone="warning" />,
-              trailing: <Badge tone="success">Up</Badge>,
+              leading: <Avatar initials="MRR" size="s" color="warning" />,
+              trailing: <Badge color="success">Up</Badge>,
               onPress: () => undefined,
             },
             {
               title: 'New users',
               description: 'Signups across mobile and web.',
-              leading: <Avatar initials="NU" size="s" tone="primary" />,
-              trailing: <Badge tone="neutral">Today</Badge>,
+              leading: <Avatar initials="NU" size="s" color="primary" />,
+              trailing: <Badge color="neutral">Today</Badge>,
             },
           ]}
         />
@@ -500,7 +500,7 @@ export function PatternsPage() {
           description="This section simulates navigator renderer props to demonstrate ZORA tab/drawer chrome. It is not real Expo Router navigation."
         >
           <Stack gap="m">
-            <Text tone="muted" variant="bodySmall">
+            <Text color="muted" variant="bodySmall">
               Active tab: {navigationState.routes[navigationState.index]?.name}
             </Text>
             <ZoraTabBar
@@ -510,18 +510,18 @@ export function PatternsPage() {
               state={navigationState}
               testID="showcase-tabbar"
             />
-            <Text tone="muted" variant="bodySmall">
+            <Text color="muted" variant="bodySmall">
               Drawer status: {drawerStatus}
             </Text>
             <ZoraDrawerContent
               descriptors={navigationDescriptors}
               footer={
-                <Text tone="subtle" variant="caption">
+                <Text color="subtle" variant="caption">
                   Footer slot
                 </Text>
               }
               header={
-                <Text tone="subtle" variant="caption">
+                <Text color="subtle" variant="caption">
                   Header slot
                 </Text>
               }
@@ -591,7 +591,7 @@ export function PatternsPage() {
         <Notice
           title="Settings saved locally"
           description="This scenario combines form fields, switches, inspector-style controls, and disclosure sections."
-          tone="primary"
+          color="primary"
         />
 
         <FormField
@@ -724,7 +724,7 @@ export function PatternsPage() {
               compact
               tone="subtle"
               title={item.name}
-              footer={<Badge tone="neutral">Section {index + 1}</Badge>}
+              footer={<Badge color="neutral">Section {index + 1}</Badge>}
             />
           )}
         />
@@ -735,14 +735,14 @@ export function PatternsPage() {
           <PaletteItem
             title="Ocean"
             description="Blue primary"
-            badge={<Badge tone="primary">Active</Badge>}
+            badge={<Badge color="primary">Active</Badge>}
             selected
           />
           <PaletteItem
             title="Rose"
             description="Warm accent"
             badge={
-              <Badge tone="danger" emphasis="soft">
+              <Badge color="danger" emphasis="soft">
                 Preview
               </Badge>
             }
@@ -750,13 +750,13 @@ export function PatternsPage() {
           <PaletteItem
             title="Forest"
             description="Green system"
-            badge={<Badge tone="success">Ready</Badge>}
+            badge={<Badge color="success">Ready</Badge>}
           />
           <PaletteItem
             title="Amber"
             description="Warning tone"
             badge={
-              <Badge tone="warning" emphasis="soft">
+              <Badge color="warning" emphasis="soft">
                 New
               </Badge>
             }

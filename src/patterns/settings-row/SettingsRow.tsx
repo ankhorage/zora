@@ -34,7 +34,7 @@ function SettingsRowInner({
     >
       {meta ? (
         <Box pt="xs">
-          <Text tone="muted" variant="caption">
+          <Text color="muted" variant="caption">
             {meta}
           </Text>
         </Box>

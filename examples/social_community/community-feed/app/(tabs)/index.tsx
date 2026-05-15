@@ -50,19 +50,19 @@ export default function FeedScreen() {
         <ScreenSection
           title="Community pulse"
           description="Quick summary cards compose the rest of the feed."
-          actions={<Badge tone="success">Real route</Badge>}
+          actions={<Badge color="success">Real route</Badge>}
         >
           <Card
             title="Design critique room"
             description="14 people are reviewing mobile profile cards right now."
             actions={<Button emphasis="outline">Join</Button>}
           >
-            <Text tone="muted">Best fit for later: live rooms and group activity patterns.</Text>
+            <Text color="muted">Best fit for later: live rooms and group activity patterns.</Text>
           </Card>
           <Card
             title="Review queue"
             description="3 replies need a decision before the weekly digest goes out."
-            actions={<Badge tone="warning">Needs review</Badge>}
+            actions={<Badge color="warning">Needs review</Badge>}
             tone="subtle"
           />
         </ScreenSection>

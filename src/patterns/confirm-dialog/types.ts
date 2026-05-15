@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ZoraEmphasis, ZoraTone } from '../../internal/recipes';
+import type { ZoraColor, ZoraEmphasis } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ConfirmDialogProps extends ZoraBaseProps {
@@ -10,7 +10,7 @@ export interface ConfirmDialogProps extends ZoraBaseProps {
   children?: React.ReactNode;
   confirmLabel?: React.ReactNode;
   cancelLabel?: React.ReactNode;
-  confirmTone?: ZoraTone;
+  confirmColor?: ZoraColor;
   confirmEmphasis?: ZoraEmphasis;
   busy?: boolean;
   closeOnBackdrop?: boolean;

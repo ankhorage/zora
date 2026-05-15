@@ -46,7 +46,7 @@ export function ChatsPage() {
             preview="Version packages completed for @ankhorage/zora."
             timestamp="Today"
             title="Build system"
-            trailing={<Badge tone="success">Done</Badge>}
+            trailing={<Badge color="success">Done</Badge>}
           />
 
           <ChatListItem
@@ -132,7 +132,7 @@ export function ChatsPage() {
       </ScreenSection>
 
       <ScreenSection title="Usage note">
-        <Text tone="muted" variant="bodySmall">
+        <Text color="muted" variant="bodySmall">
           ChatListItem and MessageBubble own presentation only. Real long chat lists should use an
           app-owned FlatList, pagination, refresh, keyboard handling, and data loading strategy.
         </Text>

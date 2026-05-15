@@ -57,7 +57,7 @@ export default function MenuScreen() {
               uri: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="Fresh pasta and burrata dish"
-            badges={<Badge tone="success">Vegetarian</Badge>}
+            badges={<Badge color="success">Vegetarian</Badge>}
           />
         </ScreenSection>
 
@@ -66,7 +66,7 @@ export default function MenuScreen() {
           description="Structured menu rows until ZORA has dedicated menu item cards."
           items={menuRows}
         />
-        <Text tone="muted">
+        <Text color="muted">
           Restaurant examples reveal a future need for MenuItem, DietaryBadge, and PriceRow
           patterns.
         </Text>

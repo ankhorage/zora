@@ -33,7 +33,7 @@ function EmptyStateInner({
               <Button
                 emphasis={primaryAction.emphasis}
                 onPress={primaryAction.onPress}
-                tone={primaryAction.tone}
+                color={primaryAction.color}
               >
                 {primaryAction.label}
               </Button>
@@ -42,7 +42,7 @@ function EmptyStateInner({
               <Button
                 emphasis={secondaryAction.emphasis ?? 'soft'}
                 onPress={secondaryAction.onPress}
-                tone={secondaryAction.tone ?? 'neutral'}
+                color={secondaryAction.color ?? 'neutral'}
               >
                 {secondaryAction.label}
               </Button>

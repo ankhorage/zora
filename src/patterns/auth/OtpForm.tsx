@@ -62,7 +62,7 @@ function OtpFormInner({
                 void onResend();
               }}
               size="s"
-              tone="neutral"
+              color="neutral"
             >
               {resendLabel}
             </Button>

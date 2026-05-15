@@ -9,7 +9,7 @@ export const buttonMeta = {
     label: 'Button',
     defaultProps: {
       children: 'Continue',
-      tone: 'primary',
+      color: 'primary',
       emphasis: 'solid',
       size: 'm',
     },
@@ -21,11 +21,22 @@ export const buttonMeta = {
       label: 'Label',
       default: 'Continue',
     },
-    tone: {
+    color: {
       type: 'enum',
       category: 'Style',
-      label: 'Tone',
-      enum: ['primary', 'neutral', 'danger', 'success', 'warning'],
+      label: 'Color',
+      enum: [
+        'primary',
+        'secondary',
+        'tertiary',
+        'quaternary',
+        'neutral',
+        'success',
+        'warning',
+        'error',
+        'info',
+        'danger',
+      ],
       default: 'primary',
     },
     emphasis: {

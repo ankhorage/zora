@@ -28,7 +28,7 @@ export default function OrdersScreen() {
     <>
       <ExampleAppBar title="Orders" />
       <Screen>
-        <ScreenSection title="Order health" actions={<Badge tone="primary">1 active</Badge>}>
+        <ScreenSection title="Order health" actions={<Badge color="primary">1 active</Badge>}>
           <MetricCard label="Open orders" value="1" description="Preparing shipment" />
           <MetricCard
             label="Delivered"
@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           <Notice
             title="Fulfillment is static"
             description="Tracking, refunds, returns, and notifications belong in later app/backend examples."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>
