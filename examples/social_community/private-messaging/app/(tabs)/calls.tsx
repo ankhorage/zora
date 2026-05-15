@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Avatar, Badge, Icon, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../ExampleAppBar';
 
@@ -8,36 +8,35 @@ const callRows = [
     description: 'Missed voice call',
     meta: 'Today · 09:12',
     leading: <Avatar name="Mia Chen" tone="primary" />,
-    action: (
-      <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
-        Call
-      </Button>
-    ),
-    variant: 'card' as const,
+    trailing: <Icon name="call-outline" size={22} />,
   },
   {
     title: 'Noah Keller',
     description: 'Outgoing video call',
     meta: 'Yesterday · 18:44',
     leading: <Avatar name="Noah Keller" tone="success" />,
-    action: (
-      <Button emphasis="ghost" leadingIcon={{ name: 'videocam-outline' }}>
-        Video
-      </Button>
-    ),
-    variant: 'card' as const,
+    trailing: <Icon name="call-outline" size={22} />,
   },
   {
     title: 'Lea Meyer',
     description: 'Incoming voice call',
     meta: 'Monday · 14:05',
     leading: <Avatar name="Lea Meyer" tone="warning" />,
-    action: (
-      <Button emphasis="ghost" leadingIcon={{ name: 'call-outline' }}>
-        Call
-      </Button>
-    ),
-    variant: 'card' as const,
+    trailing: <Icon name="call-outline" size={22} />,
+  },
+  {
+    title: 'Product Crew',
+    description: 'Missed group voice call',
+    meta: 'Sunday · 20:17',
+    leading: <Avatar name="Product Crew" tone="neutral" />,
+    trailing: <Icon name="call-outline" size={22} />,
+  },
+  {
+    title: 'Aline Roth',
+    description: 'Outgoing voice call',
+    meta: 'Friday · 11:28',
+    leading: <Avatar name="Aline Roth" tone="primary" />,
+    trailing: <Icon name="call-outline" size={22} />,
   },
 ] as const;
 
@@ -50,19 +49,11 @@ export default function CallsScreen() {
         actions={<Badge tone="neutral">Static</Badge>}
       />
       <Screen>
-        <ScreenSection title="Availability">
-          <Notice
-            title="Call history only"
-            description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
-            tone="primary"
-          />
+        <ScreenSection>
+          <SearchBar value="" placeholder="Search calls" />
         </ScreenSection>
 
-        <ListSection
-          title="Recent calls"
-          description="ZORA rows with avatars and structured actions."
-          items={callRows}
-        />
+        <ListSection items={callRows} />
       </Screen>
     </>
   );
