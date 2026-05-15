@@ -1,5 +1,5 @@
 ---
-"@ankhorage/zora": major
+'@ankhorage/zora': major
 ---
 
 **BREAKING:** Replace `ZoraTone` / `tone` semantic color API with `ZoraColor` / `color` everywhere.
