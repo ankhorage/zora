@@ -1,11 +1,17 @@
 import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
-import { Text as ReactNativeText } from 'react-native';
+import { Text as ReactNativeText, type TextStyle } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveTextStyle } from './resolveTextRecipe';
 import type { TextProps } from './types';
+
+const textLayoutStyle: TextStyle = {
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+};
 
 function resolveTextContent({
   children,
@@ -79,7 +85,7 @@ function TextInner({
       numberOfLines={numberOfLines}
       selectable={selectable}
       testID={testID}
-      style={resolvedStyle}
+      style={[resolvedStyle, textLayoutStyle]}
     >
       {content}
     </ReactNativeText>
