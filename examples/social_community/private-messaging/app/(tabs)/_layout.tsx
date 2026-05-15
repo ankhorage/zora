@@ -5,7 +5,6 @@ const routeMap: ZoraNavigationRouteMap = {
   index: { label: 'Chats', icon: { name: 'chatbubbles-outline' } },
   calls: { label: 'Calls', icon: { name: 'call-outline' } },
   status: { label: 'Status', icon: { name: 'ellipse-outline' } },
-  contacts: { label: 'Contacts', icon: { name: 'people-outline' } },
   settings: { label: 'Settings', icon: { name: 'settings-outline' } },
 };
 
