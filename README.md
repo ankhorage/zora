@@ -413,7 +413,7 @@ ZORA props:
 | `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
 | `level`         | `HeadingLevel`                           | `2`         | Semantic heading level from `1` through `6`.                    |
 | `size`          | `Responsive<HeadingSize>`                | level size  | Visual scale: `display`, `h1` through `h6`.                     |
-| `color`          | `Responsive<HeadingTone>`                | `'default'` | Semantic text color.                                            |
+| `color`          | `Responsive<HeadingColor>`                | `'default'` | Semantic text color.                                            |
 | `align`         | `Responsive<HeadingAlign>`               | -           | Text alignment.                                                 |
 | `weight`        | `Responsive<HeadingWeight>`              | recipe      | Optional structured weight override.                            |
 | `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
@@ -453,7 +453,7 @@ ZORA props:
 | `text`          | `string`                                 | -           | Manifest-friendly content prop.                                 |
 | `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
 | `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                                              |
-| `color`          | `Responsive<TextTone>`                   | `'default'` | Semantic text color.                                            |
+| `color`          | `Responsive<TextColor>`                   | `'default'` | Semantic text color.                                            |
 | `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                                                 |
 | `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.                            |
 | `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
@@ -483,7 +483,7 @@ ZORA props:
 | Prop           | Type              | Default     | Notes                                      |
 | -------------- | ----------------- | ----------- | ------------------------------------------ |
 | `children`     | `React.ReactNode` | -           | Button label or content.                   |
-| `color`   | `ZoraColor`        | `'primary'` | Passed to Surface as `color`.               |
+| `color`   | `ZoraColor`        | `'primary'` | Mapped to Surface `tone` via recipe.        |
 | `emphasis`     | `ZoraEmphasis`    | `'solid'`   | Passed to Surface as `variant`.            |
 | `size`         | `ZoraControlSize` | `'l'`       | Passed to Surface as `size`.               |
 | `leadingIcon`  | `ButtonIconSpec`  | -           | Surface icon spec rendered before content. |

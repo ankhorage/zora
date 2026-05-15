@@ -244,7 +244,7 @@ describe('Plan 5 audit — public exports carry no legacy types', () => {
     expect(allSource).not.toMatch(/\bZoraTone\b/);
   });
 
-  test('no public tone props that select semantic color roles (ZoraTone bannned)', () => {
+  test('no public tone props that select semantic color roles (ZoraTone banned)', () => {
     // Spot-check: no ButtonProps, BadgeProps, NoticeProps, TextProps, HeadingProps should have a
     // `tone` prop that is ZoraTone (they should use `color` instead).
     // We test by verifying ZoraTone is absent from the entire source tree.
