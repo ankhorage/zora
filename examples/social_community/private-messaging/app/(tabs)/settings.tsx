@@ -7,19 +7,16 @@ const settingsRows = [
     title: 'Privacy',
     description: 'Last seen, read receipts, profile visibility, and blocked contacts.',
     meta: 'Custom',
-    variant: 'card' as const,
   },
   {
     title: 'Notifications',
     description: 'Message previews, group alerts, mentions, and call sounds.',
     meta: 'Enabled',
-    variant: 'card' as const,
   },
   {
     title: 'Storage',
     description: 'Media auto-downloads, cached attachments, and backup status.',
     meta: '2.4 GB',
-    variant: 'card' as const,
   },
 ] as const;
 
@@ -42,7 +39,7 @@ export default function SettingsScreen() {
 
         <ListSection
           title="Preferences"
-          description="Settings rows stay within ZORA list/card patterns."
+          description="Settings rows stay constrained inside the ZORA list section layout."
           items={settingsRows}
         />
 
