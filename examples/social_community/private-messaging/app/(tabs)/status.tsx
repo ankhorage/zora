@@ -22,7 +22,6 @@ export default function StatusScreen() {
               uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="People at a small gathering"
-            badges={<Badge tone="success">Ready</Badge>}
           />
         </ScreenSection>
 
