@@ -115,25 +115,32 @@ function ChatListItemInner({
         px={padding.px}
         py={padding.py}
         radius="m"
-        style={{ opacity: styles.opacity }}
+        style={{ minWidth: 0, opacity: styles.opacity, width: '100%' }}
       >
-        <Inline align="center" gap="m" wrap="nowrap">
-          {leading ?? (
-            <Avatar
-              initials={avatar?.initials}
-              label={avatar?.label ?? avatarName}
-              name={avatarName}
-              shape={avatar?.shape}
-              size={avatar?.size ?? (compact ? 's' : 'm')}
-              source={avatar?.source}
-              tone={avatar?.tone}
-            />
-          )}
+        <Stack
+          align="center"
+          direction="row"
+          gap="m"
+          style={{ minWidth: 0, width: '100%' }}
+        >
+          <Box style={{ flexShrink: 0 }}>
+            {leading ?? (
+              <Avatar
+                initials={avatar?.initials}
+                label={avatar?.label ?? avatarName}
+                name={avatarName}
+                shape={avatar?.shape}
+                size={avatar?.size ?? (compact ? 's' : 'm')}
+                source={avatar?.source}
+                tone={avatar?.tone}
+              />
+            )}
+          </Box>
 
-          <Box flex={1}>
+          <Box flex={1} style={{ minWidth: 0 }}>
             <Stack gap="xxs">
               <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
-                <Box flex={1}>
+                <Box flex={1} style={{ minWidth: 0 }}>
                   <Text
                     numberOfLines={1}
                     tone={disabled ? 'muted' : 'default'}
@@ -157,7 +164,7 @@ function ChatListItemInner({
 
               {hasSecondaryRow ? (
                 <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
-                  <Box flex={1}>
+                  <Box flex={1} style={{ minWidth: 0 }}>
                     <Stack gap="xxs">
                       {hasPreview ? (
                         <Text
@@ -178,7 +185,7 @@ function ChatListItemInner({
                   </Box>
 
                   {hasUnreadCount || hasTrailing ? (
-                    <Inline align="center" gap="s" wrap="nowrap">
+                    <Inline align="center" gap="s" wrap="nowrap" style={{ flexShrink: 0 }}>
                       {renderUnreadCount(unreadCount)}
                       {trailing}
                     </Inline>
@@ -187,7 +194,7 @@ function ChatListItemInner({
               ) : null}
             </Stack>
           </Box>
-        </Inline>
+        </Stack>
       </Box>
     );
   };
