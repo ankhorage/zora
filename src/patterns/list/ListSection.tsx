@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SectionHeader } from '../section-header';
 import { List } from './List';
@@ -19,16 +19,20 @@ function ListSectionInner({
   const hasHeader = title !== undefined;
 
   return (
-    <Stack gap="s" testID={testID}>
+    <Stack gap="s" testID={testID} style={{ minWidth: 0, width: '100%' }}>
       {hasHeader ? (
-        <SectionHeader
-          actions={actions}
-          description={description}
-          eyebrow={eyebrow}
-          title={title}
-        />
+        <Box style={{ minWidth: 0, width: '100%' }}>
+          <SectionHeader
+            actions={actions}
+            description={description}
+            eyebrow={eyebrow}
+            title={title}
+          />
+        </Box>
       ) : null}
-      <List {...props} />
+      <Box style={{ minWidth: 0, width: '100%' }}>
+        <List {...props} />
+      </Box>
     </Stack>
   );
 }
