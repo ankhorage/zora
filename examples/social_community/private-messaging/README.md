@@ -2,14 +2,13 @@
 
 Real Expo Router + React Native Web example app for ZORA.
 
-This app proves a WhatsApp-style `social_community` starter shape with chat lists, calls, status updates, contacts, and settings.
+This app proves a WhatsApp-style `social_community` starter shape with chat lists, calls, status updates, and settings.
 
 ## Routes
 
 - Chats
 - Calls
 - Status
-- Contacts
 - Settings
 
 ## Run
