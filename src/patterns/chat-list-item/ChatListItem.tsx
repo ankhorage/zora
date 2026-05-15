@@ -115,13 +115,13 @@ function ChatListItemInner({
         px={padding.px}
         py={padding.py}
         radius="m"
-        style={{ minWidth: 0, opacity: styles.opacity, width: '100%' }}
+        style={{ alignSelf: 'stretch', maxWidth: '100%', minWidth: 0, opacity: styles.opacity }}
       >
         <Stack
           align="center"
           direction="row"
           gap="m"
-          style={{ minWidth: 0, width: '100%' }}
+          style={{ alignSelf: 'stretch', maxWidth: '100%', minWidth: 0 }}
         >
           <Box style={{ flexShrink: 0 }}>
             {leading ?? (
@@ -138,8 +138,8 @@ function ChatListItemInner({
           </Box>
 
           <Box flex={1} style={{ minWidth: 0 }}>
-            <Stack gap="xxs">
-              <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
+            <Stack gap="xxs" style={{ minWidth: 0 }}>
+              <Inline align="center" gap="s" justify="space-between" wrap="nowrap" style={{ minWidth: 0 }}>
                 <Box flex={1} style={{ minWidth: 0 }}>
                   <Text
                     numberOfLines={1}
@@ -151,21 +151,23 @@ function ChatListItemInner({
                   </Text>
                 </Box>
                 {hasTimestamp ? (
-                  <Text
-                    numberOfLines={1}
-                    tone={unread ? 'primary' : 'subtle'}
-                    variant="caption"
-                    weight={unread ? 'semiBold' : 'regular'}
-                  >
-                    {timestamp}
-                  </Text>
+                  <Box style={{ flexShrink: 0 }}>
+                    <Text
+                      numberOfLines={1}
+                      tone={unread ? 'primary' : 'subtle'}
+                      variant="caption"
+                      weight={unread ? 'semiBold' : 'regular'}
+                    >
+                      {timestamp}
+                    </Text>
+                  </Box>
                 ) : null}
               </Inline>
 
               {hasSecondaryRow ? (
-                <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
+                <Inline align="center" gap="s" justify="space-between" wrap="nowrap" style={{ minWidth: 0 }}>
                   <Box flex={1} style={{ minWidth: 0 }}>
-                    <Stack gap="xxs">
+                    <Stack gap="xxs" style={{ minWidth: 0 }}>
                       {hasPreview ? (
                         <Text
                           numberOfLines={1}
