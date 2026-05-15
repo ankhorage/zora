@@ -1,12 +1,13 @@
+import React from 'react';
+
 import {
-  Badge,
   Button,
-  Card,
   ChatListItem,
+  Divider,
   Screen,
   ScreenSection,
   SearchBar,
-  Text,
+  Stack,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../ExampleAppBar';
@@ -33,7 +34,69 @@ const chats = [
     timestamp: 'Yesterday',
     avatar: { name: 'Lea Meyer', tone: 'warning' as const },
   },
+  {
+    title: 'Product Crew',
+    preview: 'Sam: I moved the launch checklist into the shared board.',
+    meta: '6 members active',
+    timestamp: 'Yesterday',
+    avatar: { name: 'Product Crew', tone: 'neutral' as const },
+    unread: true,
+    unreadCount: '5',
+  },
+  {
+    title: 'Noah Keller',
+    preview: 'Let us keep the icon-only variant for compact toolbars.',
+    timestamp: 'Mon',
+    avatar: { name: 'Noah Keller', tone: 'success' as const },
+  },
+  {
+    title: 'Aline Roth',
+    preview: 'Two reports mention the same notification edge case.',
+    timestamp: 'Mon',
+    avatar: { name: 'Aline Roth', tone: 'primary' as const },
+  },
+  {
+    title: 'Jonas Weber',
+    preview: 'The build is green again.',
+    timestamp: 'Sun',
+    avatar: { name: 'Jonas Weber', tone: 'neutral' as const },
+  },
+  {
+    title: 'Research Notes',
+    preview: 'Mira: I added the transcript summary and the open questions.',
+    meta: '3 members active',
+    timestamp: 'Sat',
+    avatar: { name: 'Research Notes', tone: 'warning' as const },
+  },
+  {
+    title: 'Anna Frei',
+    preview: 'Photo',
+    timestamp: 'Fri',
+    avatar: { name: 'Anna Frei', tone: 'success' as const },
+  },
+  {
+    title: 'Launch Room',
+    preview: 'Tom: Final copy pass is ready for review.',
+    meta: '9 members active',
+    timestamp: 'Thu',
+    avatar: { name: 'Launch Room', tone: 'primary' as const },
+  },
 ] as const;
+
+function ChatList({ children }: { children: React.ReactNode }) {
+  const rows = React.Children.toArray(children);
+
+  return (
+    <Stack gap="none" style={{ minWidth: 0, width: '100%' }}>
+      {rows.map((row, index) => (
+        <React.Fragment key={`${index}`}>
+          {index > 0 ? <Divider /> : null}
+          {row}
+        </React.Fragment>
+      ))}
+    </Stack>
+  );
+}
 
 export default function ChatsScreen() {
   return (
@@ -44,35 +107,15 @@ export default function ChatsScreen() {
         actions={<Button leadingIcon={{ name: 'create-outline' }}>New chat</Button>}
       />
       <Screen>
-        <ScreenSection
-          title="Search"
-          description="Search is a first-class ZORA component, not local input glue."
-        >
+        <ScreenSection>
           <SearchBar value="" placeholder="Search chats" />
         </ScreenSection>
 
-        <ScreenSection
-          title="Pinned"
-          description="ChatListItem carries the main inbox interaction shape."
-          actions={<Badge tone="primary">3 chats</Badge>}
-        >
+        <ChatList>
           {chats.map((chat) => (
             <ChatListItem key={chat.title} {...chat} />
           ))}
-        </ScreenSection>
-
-        <ScreenSection title="Messaging gap">
-          <Card
-            title="Next ZORA pressure point"
-            description="A full ChatScreen pattern should handle message bubbles, composer, date separators, and attachments."
-            actions={<Badge tone="warning">Follow-up</Badge>}
-            tone="subtle"
-          >
-            <Text tone="muted">
-              This example intentionally stays static until ZORA owns the missing chat primitives.
-            </Text>
-          </Card>
-        </ScreenSection>
+        </ChatList>
       </Screen>
     </>
   );
