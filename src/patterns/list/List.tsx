@@ -35,7 +35,7 @@ function ListItemsInner({
   compact,
 }: ListItemsProps) {
   return (
-    <Stack gap="none" testID={testID}>
+    <Stack gap="none" testID={testID} style={{ minWidth: 0, width: '100%' }}>
       {items.map((item, index) => {
         const effectiveVariant = resolveRowVariant({ item, defaultVariant: rowVariant });
         const separator = resolveListSeparator(effectiveVariant, index);
@@ -63,7 +63,7 @@ function ListInner(props: ListProps) {
 
   const { themeId: _themeId, mode: _mode, children, testID } = props;
   return (
-    <Stack gap="none" testID={testID}>
+    <Stack gap="none" testID={testID} style={{ minWidth: 0, width: '100%' }}>
       {children}
     </Stack>
   );
