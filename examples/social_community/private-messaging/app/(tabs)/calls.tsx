@@ -1,44 +1,65 @@
-import { Avatar, Badge, Icon, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
+import React from 'react';
+
+import {
+  Badge,
+  ChatListItem,
+  Divider,
+  Icon,
+  Screen,
+  ScreenSection,
+  SearchBar,
+  Stack,
+} from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../ExampleAppBar';
 
-const callRows = [
+const calls = [
   {
     title: 'Mia Chen',
-    description: 'Missed voice call',
+    preview: 'Missed voice call',
     meta: 'Today · 09:12',
-    leading: <Avatar name="Mia Chen" tone="primary" />,
-    trailing: <Icon name="call-outline" size={22} />,
+    avatar: { name: 'Mia Chen', tone: 'primary' as const },
   },
   {
     title: 'Noah Keller',
-    description: 'Outgoing video call',
+    preview: 'Outgoing video call',
     meta: 'Yesterday · 18:44',
-    leading: <Avatar name="Noah Keller" tone="success" />,
-    trailing: <Icon name="call-outline" size={22} />,
+    avatar: { name: 'Noah Keller', tone: 'success' as const },
   },
   {
     title: 'Lea Meyer',
-    description: 'Incoming voice call',
+    preview: 'Incoming voice call',
     meta: 'Monday · 14:05',
-    leading: <Avatar name="Lea Meyer" tone="warning" />,
-    trailing: <Icon name="call-outline" size={22} />,
+    avatar: { name: 'Lea Meyer', tone: 'warning' as const },
   },
   {
     title: 'Product Crew',
-    description: 'Missed group voice call',
+    preview: 'Missed group voice call',
     meta: 'Sunday · 20:17',
-    leading: <Avatar name="Product Crew" tone="neutral" />,
-    trailing: <Icon name="call-outline" size={22} />,
+    avatar: { name: 'Product Crew', tone: 'neutral' as const },
   },
   {
     title: 'Aline Roth',
-    description: 'Outgoing voice call',
+    preview: 'Outgoing voice call',
     meta: 'Friday · 11:28',
-    leading: <Avatar name="Aline Roth" tone="primary" />,
-    trailing: <Icon name="call-outline" size={22} />,
+    avatar: { name: 'Aline Roth', tone: 'primary' as const },
   },
 ] as const;
+
+function CallList({ children }: { children: React.ReactNode }) {
+  const rows = React.Children.toArray(children);
+
+  return (
+    <Stack gap="none" style={{ minWidth: 0, width: '100%' }}>
+      {rows.map((row, index) => (
+        <React.Fragment key={`${index}`}>
+          {index > 0 ? <Divider /> : null}
+          {row}
+        </React.Fragment>
+      ))}
+    </Stack>
+  );
+}
 
 export default function CallsScreen() {
   return (
@@ -53,7 +74,15 @@ export default function CallsScreen() {
           <SearchBar value="" placeholder="Search calls" />
         </ScreenSection>
 
-        <ListSection items={callRows} />
+        <CallList>
+          {calls.map((call) => (
+            <ChatListItem
+              key={call.title}
+              {...call}
+              trailing={<Icon name="call-outline" size={22} />}
+            />
+          ))}
+        </CallList>
       </Screen>
     </>
   );
