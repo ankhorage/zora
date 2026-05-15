@@ -84,6 +84,7 @@ function ListRowInner({
       direction="row"
       style={{
         flex: 1,
+        minWidth: 0,
       }}
     >
       {leading ? (
@@ -93,7 +94,7 @@ function ListRowInner({
         </>
       ) : null}
 
-      <Box flex={1}>
+      <Box flex={1} style={{ minWidth: 0 }}>
         <Stack gap="xxs">
           <Text variant="body" weight={selected ? 'semiBold' : 'medium'}>
             {title}
@@ -104,7 +105,7 @@ function ListRowInner({
             </Text>
           ) : null}
           {meta ? (
-            <Text tone="subtle" variant="caption">
+            <Text numberOfLines={1} tone="subtle" variant="caption">
               {meta}
             </Text>
           ) : null}
@@ -114,7 +115,7 @@ function ListRowInner({
       {trailing || action ? (
         <>
           <Spacer axis="horizontal" size="m" />
-          <Inline align="center" gap="s" wrap="nowrap">
+          <Inline align="center" gap="s" wrap="nowrap" style={{ flexShrink: 0 }}>
             {trailing}
             {action}
           </Inline>
@@ -143,7 +144,9 @@ function ListRowInner({
         radius={styles.radius}
         testID={testID}
         style={{
+          minWidth: 0,
           opacity: styles.opacity,
+          width: '100%',
         }}
       >
         {content}
@@ -179,7 +182,9 @@ function ListRowInner({
             py={padding.py}
             radius={styles.radius}
             style={{
+              minWidth: 0,
               opacity: styles.opacity,
+              width: '100%',
             }}
           >
             {content}
