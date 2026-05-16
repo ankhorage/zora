@@ -22,6 +22,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'AvatarGroup',
     'Badge',
     'Button',
+    'ButtonGroup',
     'Card',
     'Checkbox',
     'CheckboxGroup',
