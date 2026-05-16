@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.3
+
+### Patch Changes
+
+- 2c47d0b: Align Notice metadata with its public color prop.
+
 ## 2.4.2
 
 ### Patch Changes
