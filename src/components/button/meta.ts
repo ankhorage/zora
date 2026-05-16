@@ -15,6 +15,14 @@ export const buttonMeta = {
       size: 'm',
     },
   },
+  events: {
+    press: {
+      label: 'Press',
+      eventType: 'button.press',
+      description: 'Emitted when the button action runs.',
+      payloadFields: [],
+    },
+  },
   props: {
     children: {
       type: 'string',
