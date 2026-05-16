@@ -1390,8 +1390,6 @@ ZORA props:
 | `header`    | `React.ReactNode`      | -       | Optional top section (e.g. toolbar or navigation).                                   |
 | `footer`    | `React.ReactNode`      | -       | Optional bottom section (e.g. tab bar or actions).                                   |
 | `overlay`   | `React.ReactNode`      | -       | Optional overlay layer rendered above content (e.g. drawer, modal, floating panels). |
-| `style`     | `StyleProp<ViewStyle>` | -       | Style applied to the root container.                                                 |
-| `bodyStyle` | `StyleProp<ViewStyle>` | -       | Style applied to the main content container.                                         |
 | `testID`    | `string`               | -       | Forwarded to the root Surface container.                                             |
 
 Inherited props:

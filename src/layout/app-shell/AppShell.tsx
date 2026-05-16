@@ -12,16 +12,14 @@ function AppShellInner({
   header,
   footer,
   overlay,
-  style,
-  bodyStyle,
   testID,
 }: AppShellProps) {
   return (
-    <Box bg="background" flex={1} style={style} testID={testID}>
+    <Box bg="background" flex={1} testID={testID}>
       <View style={styles.root}>
         {header ? <View style={styles.slot}>{header}</View> : null}
 
-        <View style={[styles.body, bodyStyle]}>{children}</View>
+        <View style={styles.body}>{children}</View>
 
         {footer ? <View style={styles.slot}>{footer}</View> : null}
 
