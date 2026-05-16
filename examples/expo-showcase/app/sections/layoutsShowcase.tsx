@@ -1,8 +1,8 @@
 import {
-  AuthLayout,
   Badge,
   Button,
   Card,
+  Center,
   ScreenSection,
   SettingsLayout,
   SidebarLayout,
@@ -17,17 +17,22 @@ export function LayoutsShowcaseSection() {
   return (
     <ScreenSection title="Layouts">
       <Card
-        title="AuthLayout"
-        description="Centered auth surfaces with title, description, and footer."
+        title="Focused composition"
+        description="Use Center, Card, and Stack directly for compact focused flows."
       >
-        <AuthLayout
-          eyebrow="Secure area"
-          title="Welcome back"
-          description="AuthLayout keeps sign-in flows visually focused."
-          footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
-        >
-          <Button size="s">Continue</Button>
-        </AuthLayout>
+        <Center px="m" py="xl">
+          <Card
+            compact
+            eyebrow="Secure area"
+            title="Welcome back"
+            description="Focused auth flows can be composed with primitives."
+            footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
+          >
+            <Stack gap="m">
+              <Button size="s">Continue</Button>
+            </Stack>
+          </Card>
+        </Center>
       </Card>
 
       <Card

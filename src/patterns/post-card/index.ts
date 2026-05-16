@@ -5,5 +5,4 @@ export type {
   PostAuthorAvatar,
   PostCardMedia,
   PostCardProps,
-  PostCommentPreview,
 } from './types';

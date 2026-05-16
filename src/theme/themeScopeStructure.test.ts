@@ -83,7 +83,6 @@ const scopedComponentFiles = [
   join(srcDir, 'components', 'toolbar', 'ToolbarAction.tsx'),
 
   join(srcDir, 'layout', 'app-shell', 'AppShell.tsx'),
-  join(srcDir, 'layout', 'auth-layout', 'AuthLayout.tsx'),
   join(srcDir, 'layout', 'screen', 'Screen.tsx'),
   join(srcDir, 'layout', 'screen-section', 'ScreenSection.tsx'),
   join(srcDir, 'layout', 'settings-layout', 'SettingsLayout.tsx'),
@@ -152,7 +151,6 @@ const scopedPropTypeFiles = [
   join(srcDir, 'components', 'toolbar', 'types.ts'),
 
   join(srcDir, 'layout', 'app-shell', 'types.ts'),
-  join(srcDir, 'layout', 'auth-layout', 'types.ts'),
   join(srcDir, 'layout', 'screen', 'types.ts'),
   join(srcDir, 'layout', 'screen-section', 'types.ts'),
   join(srcDir, 'layout', 'settings-layout', 'types.ts'),

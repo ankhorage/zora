@@ -30,7 +30,6 @@ import { textareaMeta } from '../components/textarea/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
-import { authLayoutMeta } from '../layout/auth-layout/meta';
 import { screenMeta } from '../layout/screen/meta';
 import { screenSectionMeta } from '../layout/screen-section/meta';
 import { settingsLayoutMeta } from '../layout/settings-layout/meta';
@@ -109,7 +108,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Toolbar: toolbarMeta,
   ToolbarAction: toolbarActionMeta,
   AppShell: appShellMeta,
-  AuthLayout: authLayoutMeta,
   Screen: screenMeta,
   ScreenSection: screenSectionMeta,
   SettingsLayout: settingsLayoutMeta,

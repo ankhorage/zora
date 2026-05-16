@@ -183,7 +183,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'FormField',
       'Screen',
       'ScreenSection',
-      'AuthLayout',
       'Card',
       'Panel',
       'Notice',
