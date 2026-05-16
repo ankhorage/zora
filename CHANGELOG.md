@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0
+
+### Minor Changes
+
+- cc3d18a: Add component event metadata types and initial event descriptors for form submit, button press, and collection item press events.
+
 ## 2.0.0
 
 ### Major Changes
