@@ -1591,37 +1591,6 @@ No inherited props. `SettingsLayoutProps` is declared directly by ZORA.
 
 </details>
 
-### `AuthLayout`
-
-Centered authentication-style shell for sign-in, onboarding, and recovery
-screens.
-
-```tsx
-<AuthLayout description="Sign in to continue" title="Welcome back">
-  {form}
-</AuthLayout>
-```
-
-<details>
-<summary>Props</summary>
-
-ZORA props:
-
-| Prop          | Type              | Default | Notes                                 |
-| ------------- | ----------------- | ------- | ------------------------------------- |
-| `title`       | `React.ReactNode` | -       | Card title.                           |
-| `description` | `React.ReactNode` | -       | Card description.                     |
-| `eyebrow`     | `React.ReactNode` | -       | Card eyebrow.                         |
-| `children`    | `React.ReactNode` | -       | Form or auth content.                 |
-| `footer`      | `React.ReactNode` | -       | Card footer.                          |
-| `testID`      | `string`          | -       | Forwarded to the root Surface center. |
-
-Inherited props:
-
-No inherited props. `AuthLayoutProps` is declared directly by ZORA.
-
-</details>
-
 ## Patterns
 
 ### `ChatListItem`
