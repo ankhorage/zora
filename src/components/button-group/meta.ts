@@ -4,7 +4,7 @@ export const buttonGroupMeta = {
   name: 'ButtonGroup',
   category: 'component',
   directManifestNode: true,
-  allowedChildren: ['Button', 'IconButton'],
+  allowedChildren: ['Button'],
   blueprint: {
     label: 'Button group',
     defaultProps: {
