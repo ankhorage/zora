@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.0
+
+### Minor Changes
+
+- 8810525: Add `ButtonGroup` for grouped action layouts such as dialog footers, form actions, card footers, and responsive mobile action stacks.
+
 ## 2.2.0
 
 ### Minor Changes
