@@ -24,7 +24,7 @@ export function LayoutsShowcaseSection() {
           eyebrow="Secure area"
           title="Welcome back"
           description="AuthLayout keeps sign-in flows visually focused."
-          footer={<Text tone="muted">Need access? Contact an admin.</Text>}
+          footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
         >
           <Button size="s">Continue</Button>
         </AuthLayout>
@@ -39,8 +39,8 @@ export function LayoutsShowcaseSection() {
           description="Compact showcase example."
           sidebar={
             <Stack gap="s">
-              <Badge tone="primary">General</Badge>
-              <Badge tone="neutral" emphasis="soft">
+              <Badge color="primary">General</Badge>
+              <Badge color="neutral" emphasis="soft">
                 Members
               </Badge>
             </Stack>
@@ -58,10 +58,10 @@ export function LayoutsShowcaseSection() {
           sidebar={
             <Stack gap="s">
               <Text weight="semiBold">Sidebar</Text>
-              <Badge tone="neutral">Navigation</Badge>
+              <Badge color="neutral">Navigation</Badge>
             </Stack>
           }
-          aside={<Text tone="muted">Aside</Text>}
+          aside={<Text emphasis="muted">Aside</Text>}
         >
           <Surface variant="subtle" p="m">
             <Text>Main content</Text>
@@ -79,7 +79,7 @@ export function LayoutsShowcaseSection() {
               <Text weight="semiBold">Topbar</Text>
             </Surface>
           }
-          sidebar={<Badge tone="primary">Tools</Badge>}
+          sidebar={<Badge color="primary">Tools</Badge>}
         >
           <Surface variant="subtle" p="m">
             <Text>Topbar content area</Text>

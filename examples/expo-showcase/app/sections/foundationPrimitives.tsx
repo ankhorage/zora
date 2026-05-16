@@ -33,11 +33,11 @@ export function FoundationPrimitivesSection() {
             </Surface>
           </Stack>
           <Inline gap="s">
-            <Badge tone="primary">Inline</Badge>
-            <Badge tone="success" emphasis="soft">
+            <Badge color="primary">Inline</Badge>
+            <Badge color="success" emphasis="soft">
               Wrapped
             </Badge>
-            <Badge tone="warning" emphasis="soft">
+            <Badge color="warning" emphasis="soft">
               Metadata
             </Badge>
           </Inline>
@@ -105,9 +105,9 @@ export function FoundationPrimitivesSection() {
           <Text>Second block after a spacer</Text>
           <Show
             when={{ base: true, md: false }}
-            fallback={<Badge tone="neutral">Desktop fallback</Badge>}
+            fallback={<Badge color="neutral">Desktop fallback</Badge>}
           >
-            <Badge tone="primary" emphasis="soft">
+            <Badge color="primary" emphasis="soft">
               Visible on base breakpoint
             </Badge>
           </Show>

@@ -62,7 +62,7 @@ export function App() {
             title="Welcome"
           >
             <Heading level={3}>Next steps</Heading>
-            <Text tone="muted">Structured text comes from ZORA too.</Text>
+            <Text emphasis="muted">Structured text comes from ZORA too.</Text>
           </Card>
         </Screen>
       </AppShell>
@@ -393,7 +393,7 @@ responsive props. Use `Heading` for titles and `Text` for body copy.
   Build faster with ZORA
 </Heading>
 
-<Heading level={2} tone="primary">
+<Heading level={2} color="primary">
   Create consistent screens
 </Heading>
 ```
@@ -433,7 +433,7 @@ Structured body text with ZORA typography variants, semantic tones, and
 responsive props.
 
 ```tsx
-<Text variant="lead" tone="muted">
+<Text variant="lead" emphasis="muted">
   Build product screens with structured, theme-aware copy.
 </Text>
 
@@ -503,7 +503,7 @@ Surface, and `testID`.
 Compact icon-only button for toolbars, rows, and actions.
 
 ```tsx
-<IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" />
+<IconButton icon={{ name: 'trash-outline' }} label="Delete" color="danger" />
 ```
 
 <details>
@@ -532,7 +532,7 @@ User/profile image with name-based initials and optional icon fallback.
 
 ```tsx
 <Avatar name="Zora Kit" />
-<Avatar size="l" tone="primary" name="Fabio Gartenmann" />
+<Avatar size="l" color="primary" name="Fabio Gartenmann" />
 ```
 
 <details>
@@ -608,7 +608,7 @@ No inherited props. `AvatarGroupProps` is declared directly by ZORA.
 Small status label with ZORA tone, emphasis, and size defaults.
 
 ```tsx
-<Badge tone="success">Active</Badge>
+<Badge color="success">Active</Badge>
 ```
 
 <details>
@@ -672,7 +672,7 @@ Media-first card surface for listings, content previews, and catalog items.
   imageLabel="Cover image"
   title="MediaCard"
   description="Composes an image slot, header content, badges, actions, and footer metadata."
-  badges={<Badge tone="primary">Featured</Badge>}
+  badges={<Badge color="primary">Featured</Badge>}
   footer={<Rating value={4.5} />}
   onPress={() => undefined}
 />
@@ -745,7 +745,7 @@ Compact metric surface for dashboards, stats, and summary cards.
   label="Monthly active users"
   value="14.2k"
   delta="+4.1%"
-  deltaTone="success"
+  deltaColor="success"
   description="Last 30 days"
 />
 ```
@@ -762,7 +762,7 @@ ZORA props:
 | `description` | `React.ReactNode` | -           | Optional supporting copy.                               |
 | `icon`        | `ButtonIconSpec`  | -           | Optional icon shown next to the label.                  |
 | `delta`       | `React.ReactNode` | -           | Optional delta badge content.                           |
-| `deltaTone`   | `ZoraTone`        | `'neutral'` | Tone used for the delta `Badge`.                        |
+| `deltaColor`   | `ZoraTone`        | `'neutral'` | Tone used for the delta `Badge`.                        |
 | `actions`     | `React.ReactNode` | -           | Optional trailing action area; disables `onPress`.      |
 | `tone`        | `ZoraCardTone`    | `'default'` | Passed to the underlying `Card`.                        |
 | `compact`     | `boolean`         | `false`     | Uses tighter spacing.                                   |
@@ -781,7 +781,7 @@ Linear progress bar with semantic tone.
 
 ```tsx
 <Progress value={72} />
-<Progress tone="success" value={38} />
+<Progress color="success" value={38} />
 ```
 
 <details>
@@ -1001,7 +1001,7 @@ to underlying Surface `Checkbox` components.
 Compact filter/action token with optional icon and selected state.
 
 ```tsx
-<Chip selected tone="primary" onPress={() => undefined}>
+<Chip selected color="primary" onPress={() => undefined}>
   Selected
 </Chip>
 ```
@@ -1149,7 +1149,7 @@ Selection mode is generic and prop-driven:
 <AppBar
   appMode={{ type: 'selection', label: 'Selected', count: 3, onCancel: exitSelection }}
   actions={
-    <IconButton icon={{ name: 'trash-outline' }} label="Delete" tone="danger" onPress={del} />
+    <IconButton icon={{ name: 'trash-outline' }} label="Delete" color="danger" onPress={del} />
   }
 />
 ```
@@ -1740,7 +1740,7 @@ With media:
   secondaryAction={{ label: 'Browse patterns', onPress: () => undefined }}
   media={
     <Card title="Theme-aware by default" tone="outline">
-      <Text tone="muted">
+      <Text emphasis="muted">
         Use the media slot for previews, screenshots, metrics, or illustration cards.
       </Text>
     </Card>
@@ -2417,7 +2417,7 @@ Narrow confirmation modal for destructive or high-signal decisions.
 ```tsx
 <ConfirmDialog
   confirmLabel="Archive"
-  confirmTone="danger"
+  confirmColor="danger"
   onCancel={close}
   onConfirm={archive}
   title="Archive project?"
@@ -2438,7 +2438,7 @@ ZORA props:
 | `children`        | `React.ReactNode` | -           | Dialog body.                               |
 | `confirmLabel`    | `React.ReactNode` | `'Confirm'` | Confirm button label.                      |
 | `cancelLabel`     | `React.ReactNode` | `'Cancel'`  | Cancel button label.                       |
-| `confirmTone`     | `ZoraTone`        | `'danger'`  | Confirm button tone.                       |
+| `confirmColor`     | `ZoraTone`        | `'danger'`  | Confirm button tone.                       |
 | `confirmEmphasis` | `ZoraEmphasis`    | `'solid'`   | Confirm button emphasis.                   |
 | `busy`            | `boolean`         | `false`     | Passed to the confirm button as `loading`. |
 | `closeOnBackdrop` | `boolean`         | `true`      | Passed to the underlying modal.            |

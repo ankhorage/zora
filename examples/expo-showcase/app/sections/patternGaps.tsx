@@ -33,12 +33,12 @@ export function PatternGapsSection() {
         title="ConfirmDialog"
         description="Use confirm dialogs for destructive or important decisions."
         actions={
-          <Button size="s" tone="danger" emphasis="soft" onPress={() => setConfirmOpen(true)}>
+          <Button size="s" color="danger" emphasis="soft" onPress={() => setConfirmOpen(true)}>
             Open confirm
           </Button>
         }
       >
-        <Text tone="muted" variant="bodySmall">
+        <Text emphasis="muted" variant="bodySmall">
           Opens a mock confirmation dialog without performing a real action.
         </Text>
       </Card>
@@ -47,10 +47,10 @@ export function PatternGapsSection() {
         title="Panel"
         description="Panels compose title, description, actions, footer, and content."
         actions={<IconButton icon={{ name: 'settings-outline' }} label="Panel settings" size="s" />}
-        footer={<Badge tone="success">Ready</Badge>}
+        footer={<Badge color="success">Ready</Badge>}
       >
         <Notice
-          tone="primary"
+          color="primary"
           title="Panel content"
           description="This is a compact panel example inside the pattern catalog."
         />
@@ -89,7 +89,7 @@ export function PatternGapsSection() {
           <SettingsRow
             title="Account plan"
             description="Static metadata row."
-            meta={<Badge tone="primary">Pro</Badge>}
+            meta={<Badge color="primary">Pro</Badge>}
           />
           <SettingsRow
             title="Open billing"
@@ -129,7 +129,7 @@ export function PatternGapsSection() {
         title="Delete showcase item?"
         description="This is a mock confirmation dialog for visual coverage."
         confirmLabel="Delete"
-        confirmTone="danger"
+        confirmColor="danger"
         onCancel={() => setConfirmOpen(false)}
         onConfirm={() => setConfirmOpen(false)}
       />
