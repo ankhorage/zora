@@ -38,12 +38,12 @@ export default function CartScreen() {
           <Card
             title="Order total"
             description="CHF 201 · shipping calculated later"
-            actions={<Badge tone="primary">3 items</Badge>}
+            actions={<Badge color="primary">3 items</Badge>}
           />
           <Notice
             title="Checkout is out of scope"
             description="The UI is static. Payments, taxes, shipping, and inventory reservation belong in app/backend examples later."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>
