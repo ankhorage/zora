@@ -1,3 +1,5 @@
+import type { ComponentEventDtoKind } from '@ankhorage/contracts';
+
 export type ZoraComponentCategory = 'foundation' | 'component' | 'pattern' | 'layout';
 
 export type ZoraComponentPropType =
@@ -53,6 +55,30 @@ export interface ZoraComponentI18nMeta {
   }[];
 }
 
+export type ZoraComponentEventPayloadKind = ComponentEventDtoKind | (string & {});
+
+export type ZoraComponentEventPayloadFieldType =
+  | 'boolean'
+  | 'number'
+  | 'object'
+  | 'record'
+  | 'string'
+  | 'unknown';
+
+export interface ZoraComponentEventPayloadFieldMeta {
+  readonly path: string;
+  readonly type: ZoraComponentEventPayloadFieldType;
+  readonly label?: string;
+  readonly description?: string;
+}
+
+export interface ZoraComponentEventMeta {
+  readonly label: string;
+  readonly eventType: ZoraComponentEventPayloadKind;
+  readonly description?: string;
+  readonly payloadFields?: readonly ZoraComponentEventPayloadFieldMeta[];
+}
+
 export interface ZoraComponentSlotMeta {
   label?: string;
   allowedChildren?: readonly string[];
@@ -65,6 +91,7 @@ export interface ZoraComponentMeta {
   directManifestNode: boolean;
   allowedChildren: readonly string[];
   blueprint?: ZoraComponentBlueprint;
+  events?: Readonly<Record<string, ZoraComponentEventMeta>>;
   i18n?: ZoraComponentI18nMeta;
   slots?: Readonly<Record<string, ZoraComponentSlotMeta>>;
   note?: string;
