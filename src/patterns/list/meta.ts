@@ -17,6 +17,25 @@ export const listRowMeta = {
   directManifestNode: false,
   allowedChildren: [],
   note: LIST_NOTE,
+  events: {
+    itemPress: {
+      label: 'Item press',
+      eventType: 'collection.itemPress',
+      description: 'Emitted when a collection item row is selected.',
+      payloadFields: [
+        {
+          path: 'payload.itemId',
+          type: 'string',
+          label: 'Item ID',
+        },
+        {
+          path: 'payload.item',
+          type: 'record',
+          label: 'Item',
+        },
+      ],
+    },
+  },
   props: {},
 } as const satisfies ZoraComponentMeta;
 
