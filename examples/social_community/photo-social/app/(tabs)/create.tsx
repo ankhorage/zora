@@ -36,7 +36,7 @@ export default function CreateScreen() {
           <Card
             title="Draft quality"
             description="Add a location, topic, and short caption before publishing."
-            actions={<Badge tone="warning">Draft</Badge>}
+            actions={<Badge color="warning">Draft</Badge>}
             tone="subtle"
           />
         </ScreenSection>
@@ -45,7 +45,7 @@ export default function CreateScreen() {
           <Notice
             title="Static example only"
             description="This route demonstrates the composition surface. Upload persistence belongs in app/backend examples later."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>
