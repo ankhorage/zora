@@ -17,7 +17,9 @@ export default function ProfileScreen() {
             description="Community host · Product design · Mobile UX"
             actions={<Badge color="success">Active</Badge>}
           >
-            <Text emphasis="muted">1.8k followers · 243 saved posts · 32 active conversations.</Text>
+            <Text emphasis="muted">
+              1.8k followers · 243 saved posts · 32 active conversations.
+            </Text>
           </Card>
         </ScreenSection>
 
