@@ -3,6 +3,7 @@ import { avatarMeta } from '../components/avatar/meta';
 import { avatarGroupMeta } from '../components/avatar-group/meta';
 import { badgeMeta } from '../components/badge/meta';
 import { buttonMeta } from '../components/button/meta';
+import { buttonGroupMeta } from '../components/button-group/meta';
 import { cardMeta } from '../components/card/meta';
 import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
 import { chipMeta } from '../components/chip/meta';
@@ -76,6 +77,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   AvatarGroup: avatarGroupMeta,
   Badge: badgeMeta,
   Button: buttonMeta,
+  ButtonGroup: buttonGroupMeta,
   Card: cardMeta,
   Checkbox: checkboxMeta,
   CheckboxGroup: checkboxGroupMeta,
