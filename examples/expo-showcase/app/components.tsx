@@ -4,6 +4,7 @@ import {
   AvatarGroup,
   Badge,
   Button,
+  ButtonGroup,
   Card,
   CheckboxGroup,
   Chip,
@@ -162,6 +163,29 @@ export function ComponentsPage() {
               Suggested
             </Button>
           </Stack>
+
+          <SectionHeader
+            title="Button groups"
+            description="Group related actions for dialogs, forms, card footers, and responsive mobile stacks."
+          />
+          <Card
+            title="Responsive action footer"
+            description="Stacks vertically on small screens and aligns actions at the end on wider screens."
+            footer={
+              <ButtonGroup orientation="responsive" align="end">
+                <Button variant="soft" color="neutral">
+                  Cancel
+                </Button>
+                <Button>Save changes</Button>
+              </ButtonGroup>
+            }
+          />
+          <ButtonGroup align="between">
+            <Button variant="ghost" color="neutral">
+              Back
+            </Button>
+            <Button trailingIcon={{ name: 'arrow-forward-outline' }}>Continue</Button>
+          </ButtonGroup>
         </ScreenSection>
 
         <ScreenSection title="Icon buttons">
@@ -519,12 +543,12 @@ export function ComponentsPage() {
             title="Modal and drawer"
             description="Use overlays for focused decisions and contextual panels."
           />
-          <Stack direction="row" gap="s" wrap="wrap">
+          <ButtonGroup align="start">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
             <Button variant="soft" color="neutral" onPress={() => setDrawerOpen(true)}>
               Open drawer
             </Button>
-          </Stack>
+          </ButtonGroup>
         </ScreenSection>
       </Screen>
 
