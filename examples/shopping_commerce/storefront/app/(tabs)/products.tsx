@@ -39,7 +39,13 @@ export default function ProductsScreen() {
           description="Filtering is static for now, but the UI surface is real."
           actions={<Badge tone="primary">42 items</Badge>}
         >
-          <SearchBar value="" placeholder="Search products" />
+          <SearchBar
+            onValueChange={() => {
+              /* noop */
+            }}
+            value=""
+            placeholder="Search products"
+          />
         </ScreenSection>
 
         <ScreenSection
