@@ -10,7 +10,7 @@ export const noticeMeta = {
     label: 'Notice',
     defaultProps: {
       title: 'Notice',
-      tone: 'primary',
+      color: 'primary',
     },
   },
   props: {
@@ -25,10 +25,10 @@ export const noticeMeta = {
       category: 'Content',
       label: 'Description',
     },
-    tone: {
+    color: {
       type: 'enum',
       category: 'Style',
-      label: 'Tone',
+      label: 'Color',
       enum: ['primary', 'neutral', 'danger', 'success', 'warning'],
       default: 'primary',
     },
