@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'bun:test';
 
 import { ZORA_COMPONENT_META } from './componentMeta';
+import type { ZoraComponentEventPayloadKind } from './types';
 
 const ROOT = process.cwd();
 const SRC_ROOT = join(ROOT, 'src');
@@ -62,6 +63,12 @@ describe('ZORA_COMPONENT_META public API', () => {
     const indexSource = readSource(INDEX_PATH);
     expect(indexSource).toContain('ZORA_COMPONENT_META');
   });
+
+  test('src/index.ts re-exports component event metadata types', () => {
+    const indexSource = readSource(INDEX_PATH);
+    expect(indexSource).toContain('ZoraComponentEventMeta');
+    expect(indexSource).toContain('ZoraComponentEventPayloadKind');
+  });
 });
 
 describe('ZORA_COMPONENT_META registry coverage', () => {
@@ -105,6 +112,35 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       expect(themeValueExports.has(providerExport)).toBe(true);
       expect(Object.prototype.hasOwnProperty.call(ZORA_COMPONENT_META, providerExport)).toBe(false);
     }
+  });
+});
+
+describe('ZORA_COMPONENT_META event metadata', () => {
+  test('declares form submit metadata', () => {
+    const event = ZORA_COMPONENT_META.Form.events?.submit;
+    const eventType: ZoraComponentEventPayloadKind = event?.eventType ?? 'form.submit';
+
+    expect(eventType).toBe('form.submit');
+    expect(event?.payloadFields?.map((field) => field.path)).toEqual(['payload.values']);
+  });
+
+  test('declares button event metadata', () => {
+    const event = ZORA_COMPONENT_META.Button.events?.press;
+    const eventType: ZoraComponentEventPayloadKind = event?.eventType ?? 'button.press';
+
+    expect(eventType).toBe('button.press');
+    expect(event?.payloadFields).toEqual([]);
+  });
+
+  test('declares collection item metadata for list rows', () => {
+    const event = ZORA_COMPONENT_META.ListRow.events?.itemPress;
+    const eventType: ZoraComponentEventPayloadKind = event?.eventType ?? 'collection.itemPress';
+
+    expect(eventType).toBe('collection.itemPress');
+    expect(event?.payloadFields?.map((field) => field.path)).toEqual([
+      'payload.itemId',
+      'payload.item',
+    ]);
   });
 });
 
