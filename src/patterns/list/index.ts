@@ -7,5 +7,4 @@ export type {
   ListProps,
   ListRowProps,
   ListRowVariant,
-  ListSectionProps,
 } from './types';
