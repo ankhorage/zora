@@ -38,12 +38,12 @@ export default function ReservationsScreen() {
           <Card
             title="Tonight"
             description="Tables available at 18:00, 19:30, and 21:00."
-            actions={<Badge tone="success">Open slots</Badge>}
+            actions={<Badge color="success">Open slots</Badge>}
           />
           <Notice
             title="Static reservation flow"
             description="Calendar availability, confirmation emails, and table management belong in a later backend example."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>
