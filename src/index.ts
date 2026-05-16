@@ -142,8 +142,6 @@ export {
 } from './internal/colorModel';
 export type { AppShellProps } from './layout/app-shell';
 export { AppShell } from './layout/app-shell';
-export type { AuthLayoutProps } from './layout/auth-layout';
-export { AuthLayout } from './layout/auth-layout';
 export type { ScreenProps } from './layout/screen';
 export { Screen } from './layout/screen';
 export type { ScreenSectionProps } from './layout/screen-section';
@@ -222,7 +220,6 @@ export type {
   ListProps,
   ListRowProps,
   ListRowVariant,
-  ListSectionProps,
 } from './patterns/list';
 export { List, ListRow, ListSection } from './patterns/list';
 export type {
@@ -243,7 +240,6 @@ export type {
   PostAuthorAvatar,
   PostCardMedia,
   PostCardProps,
-  PostCommentPreview,
 } from './patterns/post-card';
 export { PostCard } from './patterns/post-card';
 export type {
