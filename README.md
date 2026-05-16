@@ -1384,13 +1384,13 @@ Example with overlay (e.g. mobile panel or drawer):
 
 ZORA props:
 
-| Prop        | Type                   | Default | Notes                                                                                |
-| ----------- | ---------------------- | ------- | ------------------------------------------------------------------------------------ |
-| `children`  | `React.ReactNode`      | -       | Main application content.                                                            |
-| `header`    | `React.ReactNode`      | -       | Optional top section (e.g. toolbar or navigation).                                   |
-| `footer`    | `React.ReactNode`      | -       | Optional bottom section (e.g. tab bar or actions).                                   |
-| `overlay`   | `React.ReactNode`      | -       | Optional overlay layer rendered above content (e.g. drawer, modal, floating panels). |
-| `testID`    | `string`               | -       | Forwarded to the root Surface container.                                             |
+| Prop       | Type              | Default | Notes                                                                                |
+| ---------- | ----------------- | ------- | ------------------------------------------------------------------------------------ |
+| `children` | `React.ReactNode` | -       | Main application content.                                                            |
+| `header`   | `React.ReactNode` | -       | Optional top section (e.g. toolbar or navigation).                                   |
+| `footer`   | `React.ReactNode` | -       | Optional bottom section (e.g. tab bar or actions).                                   |
+| `overlay`  | `React.ReactNode` | -       | Optional overlay layer rendered above content (e.g. drawer, modal, floating panels). |
+| `testID`   | `string`          | -       | Forwarded to the root Surface container.                                             |
 
 Inherited props:
 
