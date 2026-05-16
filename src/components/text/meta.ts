@@ -1,3 +1,4 @@
+import { ZORA_COLORS, ZORA_EMPHASES } from '../../internal/colorModel';
 import type { ZoraComponentMeta } from '../../metadata';
 
 export const textMeta = {
@@ -39,24 +40,13 @@ export const textMeta = {
       type: 'enum',
       category: 'Style',
       label: 'Color',
-      enum: [
-        'primary',
-        'secondary',
-        'tertiary',
-        'quaternary',
-        'neutral',
-        'success',
-        'warning',
-        'error',
-        'info',
-        'danger',
-      ],
+      enum: ZORA_COLORS,
     },
     emphasis: {
       type: 'enum',
       category: 'Style',
       label: 'Emphasis',
-      enum: ['default', 'muted', 'subtle', 'inverse'],
+      enum: ZORA_EMPHASES,
       default: 'default',
     },
     align: {
