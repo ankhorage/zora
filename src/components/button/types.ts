@@ -8,7 +8,7 @@ export interface ButtonProps
   extends ZoraBaseProps, Omit<SurfaceButtonProps, 'children' | 'size' | 'color' | 'variant'> {
   children?: React.ReactNode;
   color?: ZoraColor;
-  emphasis?: ZoraButtonVariant;
+  variant?: ZoraButtonVariant;
   size?: ZoraControlSize;
   leadingIcon?: ButtonIconSpec;
   trailingIcon?: ButtonIconSpec;
