@@ -38,11 +38,10 @@ function SkeletonListInner({
   compact = false,
 }: SkeletonListProps) {
   const rowCount = clampRows(rows);
-  const leading = renderLeading({ avatar, media });
   const items: ListRowProps[] = Array.from({ length: rowCount }).map(() => ({
     compact,
     description: <SkeletonText lines={lines} />,
-    leading,
+    leading: renderLeading({ avatar, media }),
     title: <Skeleton height={16} radius="full" width="48%" />,
     variant,
   }));
