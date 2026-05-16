@@ -7,6 +7,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'Text',
   'Heading',
   'Button',
+  'ButtonGroup',
   'Input',
   'Textarea',
   'FormField',
