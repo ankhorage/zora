@@ -94,6 +94,16 @@ export type { SearchBarProps } from './components/search-bar';
 export { SearchBar } from './components/search-bar';
 export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
+export type {
+  SkeletonCardProps,
+  SkeletonDimension,
+  SkeletonListProps,
+  SkeletonListVariant,
+  SkeletonProps,
+  SkeletonRadius,
+  SkeletonTextProps,
+} from './components/skeleton';
+export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
 export type {

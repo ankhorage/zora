@@ -320,6 +320,10 @@ Metadata model overview:
 - `Rating`
 - `SearchBar`
 - `Select`
+- `Skeleton`
+- `SkeletonCard`
+- `SkeletonList`
+- `SkeletonText`
 - `Tabs`
 - `Text`
 - `Textarea`
@@ -1318,6 +1322,96 @@ ZORA props:
 Inherited props:
 
 None. ZORA composes Surface internally and exposes a product API.
+
+</details>
+
+### `Skeleton` / `SkeletonText` / `SkeletonCard` / `SkeletonList`
+
+Static loading placeholders for screens, cards, lists, feeds, dashboards, media
+previews, and form/detail loading states.
+
+Use `Skeleton` for a single placeholder block, `SkeletonText` for text-line
+placeholders, `SkeletonCard` for card-shaped loading states, and `SkeletonList`
+for list/feed loading states.
+
+```tsx
+<Skeleton width="60%" height={16} radius="s" />
+
+<SkeletonText lines={3} />
+
+<SkeletonCard media actions />
+
+<SkeletonList rows={5} avatar />
+```
+
+`Skeleton` components are static and dependency-free in v1. They do not own data
+fetching, Suspense, shimmer animation, or provider-level loading state.
+
+<details>
+<summary>Props</summary>
+
+`Skeleton` props:
+
+| Prop      | Type                 | Default  | Notes                                |
+| --------- | -------------------- | -------- | ------------------------------------ |
+| `width`   | `SkeletonDimension`  | `'100%'` | Placeholder width.                   |
+| `height`  | `BoxProps['height']` | `16`     | Placeholder height.                  |
+| `radius`  | `SkeletonRadius`     | `'m'`    | Border radius token.                 |
+| `testID`  | `string`             | -        | Test id.                             |
+| `mode`    | `ZoraThemeMode`      | -        | Optional scoped theme mode override. |
+| `themeId` | `ZoraThemeId`        | -        | Optional scoped theme id override.   |
+
+`SkeletonText` props:
+
+| Prop            | Type                | Default  | Notes                                      |
+| --------------- | ------------------- | -------- | ------------------------------------------ |
+| `lines`         | `number`            | `3`      | Number of placeholder text lines.          |
+| `lineHeight`    | `number`            | `12`     | Height of each placeholder line.           |
+| `gap`           | `StackProps['gap']` | `'xs'`   | Spacing between placeholder lines.         |
+| `width`         | `SkeletonDimension` | `'100%'` | Width for normal lines.                    |
+| `lastLineWidth` | `SkeletonDimension` | `'70%'`  | Width for the final line when `lines > 1`. |
+| `testID`        | `string`            | -        | Test id.                                   |
+| `mode`          | `ZoraThemeMode`     | -        | Optional scoped theme mode override.       |
+| `themeId`       | `ZoraThemeId`       | -        | Optional scoped theme id override.         |
+
+`SkeletonCard` props:
+
+| Prop      | Type            | Default | Notes                                  |
+| --------- | --------------- | ------- | -------------------------------------- |
+| `media`   | `boolean`       | `false` | Adds a media placeholder area.         |
+| `actions` | `boolean`       | `false` | Adds placeholder action buttons.       |
+| `lines`   | `number`        | `3`     | Number of body text placeholder lines. |
+| `compact` | `boolean`       | `false` | Uses tighter card spacing.             |
+| `testID`  | `string`        | -       | Test id.                               |
+| `mode`    | `ZoraThemeMode` | -       | Optional scoped theme mode override.   |
+| `themeId` | `ZoraThemeId`   | -       | Optional scoped theme id override.     |
+
+`SkeletonList` props:
+
+| Prop      | Type                  | Default     | Notes                                     |
+| --------- | --------------------- | ----------- | ----------------------------------------- |
+| `rows`    | `number`              | `5`         | Number of placeholder rows.               |
+| `avatar`  | `boolean`             | `false`     | Adds circular leading placeholders.       |
+| `media`   | `boolean`             | `false`     | Adds rectangular leading placeholders.    |
+| `lines`   | `number`              | `2`         | Number of text lines per row description. |
+| `variant` | `SkeletonListVariant` | `'divider'` | List row variant: `divider` or `card`.    |
+| `compact` | `boolean`             | `false`     | Uses tighter row spacing.                 |
+| `testID`  | `string`              | -           | Test id.                                  |
+| `mode`    | `ZoraThemeMode`       | -           | Optional scoped theme mode override.      |
+| `themeId` | `ZoraThemeId`         | -           | Optional scoped theme id override.        |
+
+Type aliases:
+
+```ts
+type SkeletonListVariant = 'divider' | 'card';
+type SkeletonDimension = BoxProps['width'];
+type SkeletonRadius = BoxProps['radius'];
+```
+
+Inherited props:
+
+No inherited props. Skeleton components are declared directly by ZORA and expose
+semantic loading-state options instead of raw style props.
 
 </details>
 
