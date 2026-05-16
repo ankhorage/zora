@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.2
+
+### Patch Changes
+
+- a1934d8: Add Skeleton loading primitives for placeholder card, list, and text states.
+
 ## 2.4.1
 
 ### Patch Changes
