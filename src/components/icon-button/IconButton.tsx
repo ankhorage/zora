@@ -11,19 +11,19 @@ function IconButtonInner({
   icon,
   label,
   emphasis = 'ghost',
-  tone = 'neutral',
+  color = 'neutral',
   size = 'm',
   ...props
 }: IconButtonProps) {
-  const recipe = resolveButtonRecipe({ emphasis, tone, size });
+  const recipe = resolveButtonRecipe({ color, variant: emphasis, size });
 
   return (
     <SurfaceIconButton
       {...props}
       icon={icon}
       accessibilityLabel={label}
+      color={recipe.color}
       size={recipe.size}
-      tone={recipe.tone}
       variant={recipe.variant}
     />
   );

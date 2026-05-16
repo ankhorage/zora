@@ -13,7 +13,7 @@ describe('recipes', () => {
   test('maps button defaults to a more opinionated large solid primary button', () => {
     expect(resolveButtonRecipe({})).toEqual({
       size: 'l',
-      tone: 'primary',
+      color: 'primary',
       variant: 'solid',
     });
   });
@@ -21,7 +21,7 @@ describe('recipes', () => {
   test('maps badge defaults to a soft medium primary badge', () => {
     expect(resolveBadgeRecipe({})).toEqual({
       size: 'm',
-      tone: 'primary',
+      color: 'primary',
       variant: 'soft',
     });
   });

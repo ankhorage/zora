@@ -29,7 +29,7 @@ function TabsInner<TValue extends string = string>({
         <Button
           key={item.value}
           emphasis={isActive ? 'solid' : 'ghost'}
-          tone="neutral"
+          color="neutral"
           size={size}
           disabled={isDisabled}
           onPress={() => onValueChange(item.value)}
@@ -47,7 +47,7 @@ function TabsInner<TValue extends string = string>({
         <Button
           key={item.value}
           emphasis={isActive ? 'soft' : 'ghost'}
-          tone={isActive ? 'primary' : 'neutral'}
+          color={isActive ? 'primary' : 'neutral'}
           size={size}
           disabled={isDisabled}
           onPress={() => onValueChange(item.value)}
@@ -72,14 +72,18 @@ function TabsInner<TValue extends string = string>({
       >
         <Button
           emphasis="ghost"
-          tone="neutral"
+          color="neutral"
           size={size}
           disabled={isDisabled}
           onPress={() => onValueChange(item.value)}
           leadingIcon={item.icon}
           testID={item.testID}
         >
-          <Text tone={isActive ? 'primary' : 'muted'} weight={isActive ? 'semiBold' : 'regular'}>
+          <Text
+            color={isActive ? 'primary' : undefined}
+            emphasis={isActive ? 'default' : 'muted'}
+            weight={isActive ? 'semiBold' : 'regular'}
+          >
             {item.label}
           </Text>
           {item.badge}

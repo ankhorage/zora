@@ -286,31 +286,34 @@ describe('resolveTextStyle', () => {
     );
   });
 
-  test('maps tones to semantic colors', () => {
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'default' }).color).toBe(
+  test('maps emphasis and color to semantic colors', () => {
+    expect(resolveTextStyle({ theme, breakpoint: 'base', emphasis: 'default' }).color).toBe(
       theme.semantics.content.default,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'muted' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', emphasis: 'muted' }).color).toBe(
       theme.semantics.content.muted,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'subtle' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', emphasis: 'subtle' }).color).toBe(
       theme.semantics.content.subtle,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'inverse' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', emphasis: 'inverse' }).color).toBe(
       theme.semantics.content.inverse,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'primary' }).color).toBe(
-      theme.semantics.brand.base,
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'primary' }).color).toBe(
+      theme.semantics.action.primary.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'danger' }).color).toBe(
-      theme.semantics.danger.base,
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'danger' }).color).toBe(
+      theme.semantics.action.danger.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'success' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'success' }).color).toBe(
       theme.semantics.success.base,
     );
-    expect(resolveTextStyle({ theme, breakpoint: 'base', tone: 'warning' }).color).toBe(
+    expect(resolveTextStyle({ theme, breakpoint: 'base', color: 'warning' }).color).toBe(
       theme.semantics.warning.base,
     );
+    expect(
+      resolveTextStyle({ theme, breakpoint: 'base', color: 'primary', emphasis: 'inverse' }).color,
+    ).toBe(theme.semantics.action.primary.onSolidText);
   });
 
   test('allows explicit weight to override the recipe weight', () => {
@@ -339,19 +342,20 @@ describe('resolveTextStyle', () => {
     expect(style.fontFamily).toBe('ZoraMediumItalic');
   });
 
-  test('resolves responsive variant, tone, align, and weight values', () => {
+  test('resolves responsive variant, color, emphasis, align, and weight values', () => {
     const style = resolveTextStyle({
       theme,
       breakpoint: 'md',
       variant: { base: 'bodySmall', md: 'lead' },
-      tone: { base: 'muted', md: 'primary' },
+      emphasis: { base: 'muted', md: 'default' },
+      color: { base: 'neutral', md: 'primary' },
       align: { base: 'center', md: 'left' },
       weight: { base: 'regular', md: 'semiBold' },
     });
 
     expect(style.fontSize).toBe(theme.typography.sizes.l);
     expect(style.lineHeight).toBe(28);
-    expect(style.color).toBe(theme.semantics.brand.base);
+    expect(style.color).toBe(theme.semantics.action.primary.base);
     expect(style.textAlign).toBe('left');
     expect(style.fontWeight).toBe(theme.typography.weights.semiBold);
   });

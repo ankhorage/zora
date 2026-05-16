@@ -35,7 +35,7 @@ function HeroInner({
       <Stack align={contentAlign} gap={compact ? 's' : 'm'}>
         <Stack align={contentAlign} gap="xs">
           {eyebrow !== undefined ? (
-            <Text align={textAlign} tone="primary" variant="eyebrow">
+            <Text align={textAlign} color="primary" variant="eyebrow">
               {eyebrow}
             </Text>
           ) : null}
@@ -49,7 +49,7 @@ function HeroInner({
           {description !== undefined ? (
             <Text
               align={textAlign}
-              tone="muted"
+              emphasis="muted"
               variant={{ base: 'body', md: compact ? 'body' : 'lead' }}
             >
               {description}
@@ -102,7 +102,7 @@ function renderAction(action: HeroAction, role: 'primary' | 'secondary') {
       disabled={action.disabled}
       emphasis={action.emphasis ?? (role === 'primary' ? 'solid' : 'soft')}
       onPress={action.onPress}
-      tone={action.tone ?? (role === 'primary' ? 'primary' : 'neutral')}
+      color={action.color ?? (role === 'primary' ? 'primary' : 'neutral')}
     >
       {action.label}
     </Button>

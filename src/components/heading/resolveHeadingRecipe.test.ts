@@ -230,28 +230,31 @@ describe('resolveHeadingRecipe', () => {
     expect(style.fontWeight).toBe(theme.typography.weights.bold);
   });
 
-  test('maps semantic tones to theme colors', () => {
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'primary' }).color).toBe(
-      theme.semantics.brand.base,
+  test('maps semantic emphasis and colors to theme colors', () => {
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'primary' }).color).toBe(
+      theme.semantics.action.primary.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'muted' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, emphasis: 'muted' }).color).toBe(
       theme.semantics.content.muted,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'subtle' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, emphasis: 'subtle' }).color).toBe(
       theme.semantics.content.subtle,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'inverse' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, emphasis: 'inverse' }).color).toBe(
       theme.semantics.content.inverse,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'danger' }).color).toBe(
-      theme.semantics.danger.base,
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'danger' }).color).toBe(
+      theme.semantics.action.danger.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'success' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'success' }).color).toBe(
       theme.semantics.success.base,
     );
-    expect(resolveHeadingRecipe(theme, { level: 2, tone: 'warning' }).color).toBe(
+    expect(resolveHeadingRecipe(theme, { level: 2, color: 'warning' }).color).toBe(
       theme.semantics.warning.base,
     );
+    expect(
+      resolveHeadingRecipe(theme, { level: 2, color: 'primary', emphasis: 'inverse' }).color,
+    ).toBe(theme.semantics.action.primary.onSolidText);
   });
 
   test('applies alignment', () => {

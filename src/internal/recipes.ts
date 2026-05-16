@@ -3,43 +3,43 @@ import type {
   ButtonProps as SurfaceButtonProps,
   CardProps as SurfaceCardProps,
 } from '@ankhorage/surface';
-
-export type ZoraTone = NonNullable<SurfaceButtonProps['tone']>;
-export type ZoraEmphasis = NonNullable<SurfaceButtonProps['variant']>;
+export type { ZoraColor, ZoraEmphasis } from './colorModel';
+import type { ZoraColor } from './colorModel';
+export type ZoraButtonVariant = NonNullable<SurfaceButtonProps['variant']>;
 export type ZoraControlSize = NonNullable<SurfaceButtonProps['size']>;
-export type ZoraBadgeEmphasis = NonNullable<SurfaceBadgeProps['variant']>;
+export type ZoraBadgeVariant = NonNullable<SurfaceBadgeProps['variant']>;
 export type ZoraCardTone = 'default' | 'subtle' | 'outline';
 export type ZoraContentWidth = 'narrow' | 'default' | 'wide';
 
 export function resolveButtonRecipe({
-  tone = 'primary',
-  emphasis = 'solid',
+  color = 'primary',
+  variant = 'solid',
   size = 'l',
 }: {
-  tone?: ZoraTone;
-  emphasis?: ZoraEmphasis;
+  color?: ZoraColor;
+  variant?: ZoraButtonVariant;
   size?: ZoraControlSize;
-}): Pick<SurfaceButtonProps, 'size' | 'tone' | 'variant'> {
+}): Pick<SurfaceButtonProps, 'size' | 'color' | 'variant'> {
   return {
     size,
-    tone,
-    variant: emphasis,
+    color,
+    variant,
   };
 }
 
 export function resolveBadgeRecipe({
-  tone = 'primary',
-  emphasis = 'soft',
+  color = 'primary',
+  variant = 'soft',
   size = 'm',
 }: {
-  tone?: ZoraTone;
-  emphasis?: ZoraBadgeEmphasis;
+  color?: ZoraColor;
+  variant?: ZoraBadgeVariant;
   size?: ZoraControlSize;
-}): Pick<SurfaceBadgeProps, 'size' | 'tone' | 'variant'> {
+}): Pick<SurfaceBadgeProps, 'size' | 'color' | 'variant'> {
   return {
     size,
-    tone,
-    variant: emphasis,
+    color,
+    variant,
   };
 }
 

@@ -44,7 +44,7 @@ function AvatarGroupInner({
         shape={shape}
         size={size}
         source={item.source}
-        tone={item.tone}
+        color={item.color}
       />
     </Box>
   );
@@ -63,7 +63,7 @@ function AvatarGroupInner({
             initials={overflowLabel(overflowCount)}
             size={size}
             shape={shape}
-            tone="neutral"
+            color="neutral"
           />
         </Box>
       ) : null}

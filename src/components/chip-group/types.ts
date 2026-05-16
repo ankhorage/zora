@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraControlSize, ZoraTone } from '../../internal/recipes';
+import type { ZoraColor, ZoraControlSize } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ChipGroupItem<TValue extends string = string> {
@@ -14,7 +14,7 @@ export interface ChipGroupItem<TValue extends string = string> {
 
 interface ChipGroupBaseProps<TValue extends string> extends ZoraBaseProps {
   items: readonly ChipGroupItem<TValue>[];
-  tone?: ZoraTone;
+  color?: ZoraColor;
   size?: ZoraControlSize;
   wrap?: boolean;
   disabled?: boolean;

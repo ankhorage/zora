@@ -1,2 +1,9 @@
 export { Text } from './Text';
-export type { TextAlign, TextProps, TextTone, TextVariant, TextWeight } from './types';
+export type {
+  TextAlign,
+  TextColor,
+  TextEmphasis,
+  TextProps,
+  TextVariant,
+  TextWeight,
+} from './types';

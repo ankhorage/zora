@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ImageSourcePropType } from 'react-native';
 
-import type { ZoraTone } from '../../internal/recipes';
+import type { ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type AvatarSize = 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -16,5 +16,5 @@ export interface AvatarProps extends ZoraBaseProps {
   label?: string;
   size?: AvatarSize;
   shape?: AvatarShape;
-  tone?: ZoraTone;
+  color?: ZoraColor;
 }

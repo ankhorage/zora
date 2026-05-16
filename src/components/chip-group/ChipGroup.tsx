@@ -21,7 +21,7 @@ function ChipGroupInner<TValue extends string = string>({
   value,
   onValueChange,
   multiple,
-  tone = 'neutral',
+  color = 'neutral',
   size = 's',
   wrap = true,
   disabled,
@@ -49,7 +49,7 @@ function ChipGroupInner<TValue extends string = string>({
         selected={isSelected}
         size={size}
         testID={item.testID}
-        tone={tone}
+        color={color}
       >
         {item.label}
       </Chip>

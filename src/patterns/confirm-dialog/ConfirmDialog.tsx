@@ -15,7 +15,7 @@ function ConfirmDialogInner({
   children,
   confirmLabel = 'Confirm',
   cancelLabel = 'Cancel',
-  confirmTone = 'danger',
+  confirmColor = 'danger',
   confirmEmphasis = 'solid',
   busy = false,
   closeOnBackdrop = true,
@@ -29,10 +29,15 @@ function ConfirmDialogInner({
       description={description}
       footer={
         <Stack direction={{ base: 'column', md: 'row' }} gap="s" justify="flex-end">
-          <Button emphasis="soft" onPress={onCancel} tone="neutral">
+          <Button emphasis="soft" onPress={onCancel} color="neutral">
             {cancelLabel}
           </Button>
-          <Button emphasis={confirmEmphasis} loading={busy} onPress={onConfirm} tone={confirmTone}>
+          <Button
+            emphasis={confirmEmphasis}
+            loading={busy}
+            onPress={onConfirm}
+            color={confirmColor}
+          >
             {confirmLabel}
           </Button>
         </Stack>

@@ -1,13 +1,13 @@
 import type React from 'react';
 
-import type { ZoraEmphasis, ZoraTone } from '../../internal/recipes';
+import type { ZoraButtonVariant, ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface EmptyStateAction {
   label: React.ReactNode;
   onPress: () => void;
-  tone?: ZoraTone;
-  emphasis?: ZoraEmphasis;
+  color?: ZoraColor;
+  emphasis?: ZoraButtonVariant;
 }
 
 export interface EmptyStateProps extends ZoraBaseProps {

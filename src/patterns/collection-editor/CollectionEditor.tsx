@@ -42,7 +42,7 @@ function CollectionEditorInner<TItem>({
       <Stack gap="s">
         {isEmpty ? (
           <Box py="m">
-            <Text align="center" tone="muted">
+            <Text align="center" emphasis="muted">
               {emptyLabel}
             </Text>
           </Box>
@@ -86,7 +86,7 @@ function CollectionEditorInner<TItem>({
                     <IconButton
                       icon={{ name: 'trash-outline' }}
                       label="Remove"
-                      tone="danger"
+                      color="danger"
                       disabled={disabled}
                       onPress={() => onRemove(index)}
                       size="s"

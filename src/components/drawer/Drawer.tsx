@@ -39,7 +39,7 @@ function DrawerInner({
           <Stack gap="xs">
             {title ? <Heading level={3}>{title}</Heading> : null}
             {description ? (
-              <Text tone="muted" variant="bodySmall">
+              <Text emphasis="muted" variant="bodySmall">
                 {description}
               </Text>
             ) : null}

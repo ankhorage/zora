@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraControlSize, ZoraTone } from '../../internal/recipes';
+import type { ZoraColor, ZoraControlSize } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ChipProps extends ZoraBaseProps {
@@ -9,7 +9,7 @@ export interface ChipProps extends ZoraBaseProps {
   icon?: ButtonIconSpec;
   selected?: boolean;
   disabled?: boolean;
-  tone?: ZoraTone;
+  color?: ZoraColor;
   size?: ZoraControlSize;
   onPress?: () => void;
 }

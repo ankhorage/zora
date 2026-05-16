@@ -9,19 +9,19 @@ function BadgeInner({
   themeId: _themeId,
   mode: _mode,
   children,
-  tone,
+  color,
   emphasis,
   size,
   ...props
 }: BadgeProps) {
-  const recipe = resolveBadgeRecipe({ tone, emphasis, size });
+  const recipe = resolveBadgeRecipe({ color, variant: emphasis, size });
 
   return (
     <SurfaceBadge
       {...props}
       content={children}
+      color={recipe.color}
       size={recipe.size}
-      tone={recipe.tone}
       variant={recipe.variant}
     />
   );

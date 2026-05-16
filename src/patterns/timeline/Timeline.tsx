@@ -5,14 +5,24 @@ import { Heading } from '../../components/heading';
 import { Icon } from '../../components/icon';
 import { Text } from '../../components/text';
 import { Box, Inline, Stack } from '../../foundation';
-import type { ZoraTone } from '../../internal/recipes';
+import type { ZoraColor } from '../../internal/recipes';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { TimelineItem, TimelineProps } from './types';
 
-function resolveRoleSemantics(theme: SurfaceTheme, tone: ZoraTone): RoleSemantics {
-  switch (tone) {
+function resolveRoleSemantics(theme: SurfaceTheme, color: ZoraColor): RoleSemantics {
+  switch (color) {
+    case 'secondary':
+      return theme.semantics.secondary;
+    case 'tertiary':
+      return theme.semantics.accent;
+    case 'quaternary':
+      return theme.semantics.highlight;
+    case 'error':
+      return theme.semantics.error;
+    case 'info':
+      return theme.semantics.info;
     case 'primary':
       return theme.semantics.action.primary;
     case 'danger':
@@ -80,13 +90,13 @@ function TimelineInner({
           <Inline align="flex-start" gap="s" justify="space-between" wrap="wrap">
             <Heading level={compact ? 4 : 3}>{item.title}</Heading>
             {item.meta ? (
-              <Text tone="muted" variant="caption">
+              <Text emphasis="muted" variant="caption">
                 {item.meta}
               </Text>
             ) : null}
           </Inline>
           {item.description ? (
-            <Text tone="muted" variant="bodySmall">
+            <Text emphasis="muted" variant="bodySmall">
               {item.description}
             </Text>
           ) : null}

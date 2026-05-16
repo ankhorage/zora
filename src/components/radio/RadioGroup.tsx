@@ -15,7 +15,7 @@ function RadioGroupInner<TValue extends string>({
   options,
   orientation = 'vertical',
   gap = 's',
-  tone = 'primary',
+  color = 'primary',
   size = 'm',
   invalid = false,
   readOnly = false,
@@ -47,7 +47,7 @@ function RadioGroupInner<TValue extends string>({
             invalid={invalid}
             readOnly={readOnly}
             size={size}
-            tone={tone}
+            color={color}
             onSelect={onValueChange}
           />
         ))}
@@ -65,7 +65,7 @@ function RadioGroupItem<TValue extends string>({
   invalid,
   readOnly,
   size,
-  tone,
+  color,
   onSelect,
 }: {
   option: RadioGroupOption<TValue>;
@@ -74,7 +74,7 @@ function RadioGroupItem<TValue extends string>({
   invalid: boolean;
   readOnly: boolean;
   size: NonNullable<RadioGroupProps<TValue>['size']>;
-  tone: NonNullable<RadioGroupProps<TValue>['tone']>;
+  color: NonNullable<RadioGroupProps<TValue>['color']>;
   onSelect: (value: TValue) => void;
 }) {
   return (
@@ -84,7 +84,7 @@ function RadioGroupItem<TValue extends string>({
       invalid={invalid}
       readOnly={readOnly}
       size={size}
-      tone={tone}
+      color={color}
       testID={option.testID}
       onCheckedChange={(nextChecked) => {
         if (nextChecked) onSelect(option.value);
@@ -93,7 +93,7 @@ function RadioGroupItem<TValue extends string>({
       <Stack gap="xs">
         <Text>{option.label}</Text>
         {option.description ? (
-          <Text variant="caption" tone="muted">
+          <Text emphasis="muted" variant="caption">
             {option.description}
           </Text>
         ) : null}

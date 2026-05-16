@@ -15,7 +15,7 @@ function CheckboxGroupInner<TValue extends string>({
   options,
   orientation = 'vertical',
   gap = 's',
-  tone = 'primary',
+  color = 'primary',
   size = 'm',
   invalid = false,
   readOnly = false,
@@ -47,7 +47,7 @@ function CheckboxGroupInner<TValue extends string>({
             invalid={invalid}
             readOnly={readOnly}
             size={size}
-            tone={tone}
+            color={color}
             value={value}
             onValueChange={onValueChange}
           />
@@ -66,7 +66,7 @@ function CheckboxGroupItem<TValue extends string>({
   invalid,
   readOnly,
   size,
-  tone,
+  color,
   value,
   onValueChange,
 }: {
@@ -76,7 +76,7 @@ function CheckboxGroupItem<TValue extends string>({
   invalid: boolean;
   readOnly: boolean;
   size: NonNullable<CheckboxGroupProps<TValue>['size']>;
-  tone: NonNullable<CheckboxGroupProps<TValue>['tone']>;
+  color: NonNullable<CheckboxGroupProps<TValue>['color']>;
   value: readonly TValue[];
   onValueChange: (value: TValue[]) => void;
 }) {
@@ -87,7 +87,7 @@ function CheckboxGroupItem<TValue extends string>({
       invalid={invalid}
       readOnly={readOnly}
       size={size}
-      tone={tone}
+      color={color}
       testID={option.testID}
       onCheckedChange={(nextChecked) => {
         const nextValue = nextChecked
@@ -100,7 +100,7 @@ function CheckboxGroupItem<TValue extends string>({
       <Stack gap="xs">
         <Text>{option.label}</Text>
         {option.description ? (
-          <Text variant="caption" tone="muted">
+          <Text emphasis="muted" variant="caption">
             {option.description}
           </Text>
         ) : null}

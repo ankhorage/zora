@@ -18,7 +18,7 @@ export interface RadioGroupProps<TValue extends string>
     ZoraBaseProps,
     Pick<
       Omit<SurfaceRadioProps, 'mode' | 'themeId'>,
-      'tone' | 'size' | 'invalid' | 'readOnly' | 'disabled'
+      'color' | 'size' | 'invalid' | 'readOnly' | 'disabled'
     > {
   value: TValue;
   onValueChange: (value: TValue) => void;
