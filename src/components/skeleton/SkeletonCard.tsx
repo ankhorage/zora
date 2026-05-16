@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Card } from '../card';
-import { ButtonGroup } from '../button-group';
 import { Stack } from '../../foundation';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { ButtonGroup } from '../button-group';
+import { Card } from '../card';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 import type { SkeletonCardProps } from './types';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 
 function SkeletonCardInner({
   themeId: _themeId,
