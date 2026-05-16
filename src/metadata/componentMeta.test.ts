@@ -181,6 +181,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
     const expectedContainerNodes = new Set([
       'FormField',
+      'ButtonGroup',
       'Screen',
       'ScreenSection',
       'Card',
