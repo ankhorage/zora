@@ -35,14 +35,20 @@ export default function ExploreScreen() {
       <ExampleAppBar
         title="Explore"
         subtitle="Discover visual collections and creator-led image themes."
-        actions={<Badge tone="primary">Trending</Badge>}
+        actions={<Badge color="primary">Trending</Badge>}
       />
       <Screen>
         <ScreenSection
           title="Search"
           description="The search control is part of the ZORA component surface."
         >
-          <SearchBar value="" placeholder="Search creators, places, styles" />
+          <SearchBar
+            onValueChange={() => {
+              /* no-op */
+            }}
+            value=""
+            placeholder="Search creators, places, styles"
+          />
         </ScreenSection>
 
         <ScreenSection
@@ -53,10 +59,10 @@ export default function ExploreScreen() {
             <MediaCard
               key={collection.title}
               {...collection}
-              badges={<Badge tone="neutral">Featured</Badge>}
+              badges={<Badge color="neutral">Featured</Badge>}
             />
           ))}
-          <Text tone="muted">
+          <Text emphasis="muted">
             A richer visual discovery template should probably introduce a dedicated Wall/Grid
             pattern later.
           </Text>

@@ -8,7 +8,7 @@ export default function StatusScreen() {
       <ExampleAppBar
         title="Status"
         subtitle="Short-lived updates from contacts and groups."
-        actions={<Badge tone="primary">4 updates</Badge>}
+        actions={<Badge color="primary">4 updates</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -22,7 +22,7 @@ export default function StatusScreen() {
               uri: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
             }}
             imageLabel="People at a small gathering"
-            badges={<Badge tone="success">Ready</Badge>}
+            badges={<Badge color="success">Ready</Badge>}
           />
         </ScreenSection>
 
@@ -36,14 +36,14 @@ export default function StatusScreen() {
             actions={
               <AvatarGroup
                 items={[
-                  { id: 'noah', name: 'Noah Keller', tone: 'success' },
-                  { id: 'mia', name: 'Mia Chen', tone: 'primary' },
-                  { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+                  { id: 'noah', name: 'Noah Keller', color: 'success' },
+                  { id: 'mia', name: 'Mia Chen', color: 'primary' },
+                  { id: 'lea', name: 'Lea Meyer', color: 'warning' },
                 ]}
               />
             }
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               A future Status pattern could model rings, expiry, and grouped story states.
             </Text>
           </Card>

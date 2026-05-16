@@ -7,21 +7,21 @@ const activityRows = [
     title: 'Mia liked your carousel',
     description: 'Golden hour terrace received a new reaction.',
     meta: '2m',
-    leading: <Avatar name="Mia Chen" tone="primary" />,
+    leading: <Avatar name="Mia Chen" color="primary" />,
     variant: 'card' as const,
   },
   {
     title: 'Marco saved your post',
     description: 'City textures was added to his inspiration board.',
     meta: '18m',
-    leading: <Avatar name="Marco Silva" tone="success" />,
+    leading: <Avatar name="Marco Silva" color="success" />,
     variant: 'card' as const,
   },
   {
     title: 'Aya commented',
     description: 'Asked which lens you used for the night market photo.',
     meta: '1h',
-    leading: <Avatar name="Aya Novak" tone="warning" />,
+    leading: <Avatar name="Aya Novak" color="warning" />,
     variant: 'card' as const,
   },
 ] as const;
@@ -32,14 +32,14 @@ export default function ActivityScreen() {
       <ExampleAppBar
         title="Activity"
         subtitle="Likes, saves, comments, follows, and creator updates."
-        actions={<Badge tone="primary">3 new</Badge>}
+        actions={<Badge color="primary">3 new</Badge>}
       />
       <Screen>
         <ScreenSection title="Highlights">
           <Notice
             title="Audience is active"
             description="Your last photo story is driving more saves than comments today."
-            tone="success"
+            color="success"
           />
         </ScreenSection>
 

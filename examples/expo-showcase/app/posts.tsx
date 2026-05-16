@@ -17,7 +17,7 @@ export function PostsPage() {
             author={{
               name: 'Ada Lovelace',
               subtitle: '@ada · 2h',
-              avatar: { name: 'Ada Lovelace', tone: 'primary' },
+              avatar: { name: 'Ada Lovelace', color: 'primary' },
             }}
             headerAction={
               <IconButton
@@ -50,7 +50,7 @@ export function PostsPage() {
                 author: {
                   name: 'Grace Hopper',
                   subtitle: '1h',
-                  avatar: { name: 'Grace Hopper', tone: 'success' },
+                  avatar: { name: 'Grace Hopper', color: 'success' },
                 },
                 text: 'The boundary between card anatomy and feed rendering feels right.',
               },
@@ -63,7 +63,7 @@ export function PostsPage() {
             author={{
               name: 'Build system',
               subtitle: 'Today · release notes',
-              avatar: { initials: 'CI', label: 'Build system', tone: 'neutral' },
+              avatar: { initials: 'CI', label: 'Build system', color: 'neutral' },
             }}
             text="PostCard also supports compact density for system updates and notification-style content."
             actions={[
@@ -85,7 +85,7 @@ export function PostsPage() {
             author={{
               name: 'Maya Chen',
               subtitle: 'Product design · Yesterday',
-              avatar: { name: 'Maya Chen', tone: 'warning' },
+              avatar: { name: 'Maya Chen', color: 'warning' },
             }}
             text="Custom media slots stay possible without making PostCard own uploads, storage, or provider logic."
             media={{

@@ -444,10 +444,10 @@ export function ComponentsPage() {
               <AvatarGroup
                 items={[
                   { id: '1', name: 'Fabio Gartenmann' },
-                  { id: '2', name: 'Ada Lovelace', tone: 'primary' },
-                  { id: '3', name: 'Grace Hopper', tone: 'success' },
-                  { id: '4', name: 'Linus Torvalds', tone: 'warning' },
-                  { id: '5', name: 'Lynn Conway', tone: 'danger' },
+                  { id: '2', name: 'Ada Lovelace', color: 'primary' },
+                  { id: '3', name: 'Grace Hopper', color: 'success' },
+                  { id: '4', name: 'Linus Torvalds', color: 'warning' },
+                  { id: '5', name: 'Lynn Conway', color: 'danger' },
                 ]}
               />
             </Stack>

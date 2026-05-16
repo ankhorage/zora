@@ -35,7 +35,7 @@ export default function BrowseScreen() {
       <ExampleAppBar
         title="Browse"
         subtitle="Recommended marketplace listings from nearby sellers."
-        actions={<Badge tone="primary">Nearby</Badge>}
+        actions={<Badge color="primary">Nearby</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -46,7 +46,7 @@ export default function BrowseScreen() {
             <MediaCard
               key={listing.title}
               {...listing}
-              badges={<Badge tone="success">Available</Badge>}
+              badges={<Badge color="success">Available</Badge>}
             />
           ))}
         </ScreenSection>
@@ -55,9 +55,9 @@ export default function BrowseScreen() {
           <Notice
             title="Needs commerce-specific cards"
             description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
-            tone="warning"
+            color="warning"
           />
-          <Text tone="muted">
+          <Text emphasis="muted">
             This example records the product need without adding local card wrappers.
           </Text>
         </ScreenSection>
