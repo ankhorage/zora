@@ -157,6 +157,10 @@ export { TopbarLayout } from './layout/topbar-layout';
 export type {
   ZoraComponentBlueprint,
   ZoraComponentCategory,
+  ZoraComponentEventMeta,
+  ZoraComponentEventPayloadFieldMeta,
+  ZoraComponentEventPayloadFieldType,
+  ZoraComponentEventPayloadKind,
   ZoraComponentI18nMeta,
   ZoraComponentMeta,
   ZoraComponentMetaRegistry,
