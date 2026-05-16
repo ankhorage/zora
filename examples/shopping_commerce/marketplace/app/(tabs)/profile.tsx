@@ -40,14 +40,14 @@ export default function ProfileScreen() {
         <ScreenSection
           title="Seller card"
           description="A commerce profile composed from existing ZORA cards."
-          actions={<Avatar name="Nora Frei" tone="primary" />}
+          actions={<Avatar name="Nora Frei" color="primary" />}
         >
           <Card
             title="Nora Frei"
             description="Zürich · 4.9 seller rating · replies within one hour"
-            actions={<Badge tone="success">Verified</Badge>}
+            actions={<Badge color="success">Verified</Badge>}
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               Local pickup preferred. Furniture, ceramics, and camera equipment.
             </Text>
           </Card>
@@ -59,7 +59,7 @@ export default function ProfileScreen() {
             label="Sold"
             value="128"
             delta="+12"
-            deltaTone="success"
+            deltaColor="success"
             description="Last 90 days"
           />
           <MetricCard label="Saved" value="36" description="Products and searches" />
