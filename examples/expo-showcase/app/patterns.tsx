@@ -110,14 +110,14 @@ function SelectionScenario() {
                     icon={{ name: selected ? 'checkbox-outline' : 'square-outline' }}
                     label={selected ? 'Deselect item' : 'Select item'}
                     onPress={toggle}
-                    emphasis="ghost"
+                    variant="ghost"
                   />
                   {selection.hasSelection ? (
                     <IconButton
                       icon={{ name: 'close-outline' }}
                       label="Clear selection"
                       onPress={clear}
-                      emphasis="ghost"
+                      variant="ghost"
                     />
                   ) : null}
                 </Stack>
@@ -179,7 +179,7 @@ export function PatternsPage() {
         label: 'Inbox',
         icon: { name: 'mail-unread-outline' as const },
         badge: (
-          <Badge color="primary" emphasis="soft">
+          <Badge color="primary" variant="soft">
             3
           </Badge>
         ),
@@ -331,14 +331,14 @@ export function PatternsPage() {
           footer={
             <Stack direction={{ base: 'column', md: 'row' }} gap="s">
               <Button
-                emphasis="soft"
+                variant="soft"
                 color="neutral"
                 onPress={() => setSimulateUploadError((current) => !current)}
               >
                 Simulate upload error: {simulateUploadError ? 'On' : 'Off'}
               </Button>
               <Button
-                emphasis="soft"
+                variant="soft"
                 color="neutral"
                 onPress={() => {
                   setImageAsset(null);
@@ -424,7 +424,7 @@ export function PatternsPage() {
               meta: '2 minutes ago',
               leading: <Avatar name="Ada Lovelace" size="s" />,
               trailing: (
-                <Badge color="neutral" emphasis="soft">
+                <Badge color="neutral" variant="soft">
                   New
                 </Badge>
               ),
@@ -444,7 +444,7 @@ export function PatternsPage() {
               leading: <Avatar name="Grace Hopper" size="s" color="success" />,
               disabled: true,
               trailing: (
-                <Badge color="neutral" emphasis="soft">
+                <Badge color="neutral" variant="soft">
                   Archived
                 </Badge>
               ),
@@ -619,7 +619,7 @@ export function PatternsPage() {
         <InspectorField
           label="Theme preset"
           control={
-            <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" emphasis="soft" />
+            <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
           }
         >
           <Input value="Ocean" />
@@ -742,7 +742,7 @@ export function PatternsPage() {
             title="Rose"
             description="Warm accent"
             badge={
-              <Badge color="danger" emphasis="soft">
+              <Badge color="danger" variant="soft">
                 Preview
               </Badge>
             }
@@ -756,7 +756,7 @@ export function PatternsPage() {
             title="Amber"
             description="Warning tone"
             badge={
-              <Badge color="warning" emphasis="soft">
+              <Badge color="warning" variant="soft">
                 New
               </Badge>
             }

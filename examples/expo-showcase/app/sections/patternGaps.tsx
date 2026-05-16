@@ -33,7 +33,7 @@ export function PatternGapsSection() {
         title="ConfirmDialog"
         description="Use confirm dialogs for destructive or important decisions."
         actions={
-          <Button size="s" color="danger" emphasis="soft" onPress={() => setConfirmOpen(true)}>
+          <Button size="s" color="danger" variant="soft" onPress={() => setConfirmOpen(true)}>
             Open confirm
           </Button>
         }
@@ -62,20 +62,20 @@ export function PatternGapsSection() {
         open={panelOpen}
         onOpenChange={setPanelOpen}
         actions={
-          <Button size="s" emphasis="soft" onPress={() => setPanelOpen(false)}>
+          <Button size="s" variant="soft" onPress={() => setPanelOpen(false)}>
             Hide
           </Button>
         }
       >
         <Stack gap="s">
           <Text>Inline responsive panel content.</Text>
-          <Button size="s" emphasis="soft" onPress={() => setPanelOpen(true)}>
+          <Button size="s" variant="soft" onPress={() => setPanelOpen(true)}>
             Reopen
           </Button>
         </Stack>
       </ResponsivePanel>
       {panelOpen ? null : (
-        <Button size="s" emphasis="soft" onPress={() => setPanelOpen(true)}>
+        <Button size="s" variant="soft" onPress={() => setPanelOpen(true)}>
           Show responsive panel
         </Button>
       )}

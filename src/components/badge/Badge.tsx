@@ -10,11 +10,11 @@ function BadgeInner({
   mode: _mode,
   children,
   color,
-  emphasis,
+  variant,
   size,
   ...props
 }: BadgeProps) {
-  const recipe = resolveBadgeRecipe({ color, variant: emphasis, size });
+  const recipe = resolveBadgeRecipe({ color, variant, size });
 
   return (
     <SurfaceBadge

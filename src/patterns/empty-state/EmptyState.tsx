@@ -31,7 +31,7 @@ function EmptyStateInner({
           <Stack direction={{ base: 'column', md: 'row' }} gap="s">
             {primaryAction ? (
               <Button
-                emphasis={primaryAction.emphasis}
+                variant={primaryAction.variant}
                 onPress={primaryAction.onPress}
                 color={primaryAction.color}
               >
@@ -40,7 +40,7 @@ function EmptyStateInner({
             ) : null}
             {secondaryAction ? (
               <Button
-                emphasis={secondaryAction.emphasis ?? 'soft'}
+                variant={secondaryAction.variant ?? 'soft'}
                 onPress={secondaryAction.onPress}
                 color={secondaryAction.color ?? 'neutral'}
               >

@@ -6,7 +6,7 @@ import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 export interface IconButtonProps extends ZoraBaseProps {
   icon: ButtonIconSpec;
   label: string;
-  emphasis?: ZoraButtonVariant;
+  variant?: ZoraButtonVariant;
   color?: ZoraColor;
   size?: ZoraControlSize;
   disabled?: boolean;

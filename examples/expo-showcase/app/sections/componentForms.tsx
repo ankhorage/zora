@@ -89,7 +89,7 @@ export function ComponentFormsSection() {
           <FormError error="Standalone FormError coverage" />
 
           <FormActions submitLabel="Save manually" onSubmit={() => undefined}>
-            <Button emphasis="ghost" color="neutral">
+            <Button variant="ghost" color="neutral">
               Cancel
             </Button>
           </FormActions>

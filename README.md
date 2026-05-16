@@ -232,8 +232,8 @@ export default function Layout() {
 These unions appear across the catalogue:
 
 - `ZoraColor` comes from Surface `ButtonProps['color']`.
-- `ZoraEmphasis` comes from Surface `ButtonProps['variant']`.
-- `ZoraBadgeEmphasis` comes from Surface `BadgeProps['variant']`.
+- `ZoraEmphasis` comes from Surface `SurfaceEmphasis` (`default | muted | subtle | inverse`).
+- `ButtonProps['variant']` and `BadgeProps['variant']` control visual treatment.
 - `ZoraControlSize` comes from Surface `ButtonProps['size']`.
 - `ZoraCardTone = 'default' | 'subtle' | 'outline'`.
 - `ZoraContentWidth = 'narrow' | 'default' | 'wide'`.
@@ -385,7 +385,7 @@ Metadata model overview:
 
 ### `Heading`
 
-Structured titles with semantic levels, visual sizes, semantic tones, and
+Structured titles with semantic levels, visual sizes, semantic color, and
 responsive props. Use `Heading` for titles and `Text` for body copy.
 
 ```tsx
@@ -413,7 +413,8 @@ ZORA props:
 | `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
 | `level`         | `HeadingLevel`                           | `2`         | Semantic heading level from `1` through `6`.                    |
 | `size`          | `Responsive<HeadingSize>`                | level size  | Visual scale: `display`, `h1` through `h6`.                     |
-| `color`         | `Responsive<HeadingColor>`               | `'default'` | Semantic text color.                                            |
+| `color`         | `Responsive<HeadingColor>`               | -           | Semantic text color role.                                       |
+| `emphasis`      | `Responsive<HeadingEmphasis>`            | `'default'` | Content emphasis / contrast.                                    |
 | `align`         | `Responsive<HeadingAlign>`               | -           | Text alignment.                                                 |
 | `weight`        | `Responsive<HeadingWeight>`              | recipe      | Optional structured weight override.                            |
 | `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
@@ -429,7 +430,7 @@ usage structured and template-safe.
 
 ### `Text`
 
-Structured body text with ZORA typography variants, semantic tones, and
+Structured body text with ZORA typography variants, semantic color, and
 responsive props.
 
 ```tsx
@@ -453,7 +454,8 @@ ZORA props:
 | `text`          | `string`                                 | -           | Manifest-friendly content prop.                                 |
 | `i18nKey`       | `string`                                 | -           | Runtime-resolved fallback key when no content prop is provided. |
 | `variant`       | `Responsive<TextVariant>`                | `'body'`    | Typography recipe.                                              |
-| `color`         | `Responsive<TextColor>`                  | `'default'` | Semantic text color.                                            |
+| `color`         | `Responsive<TextColor>`                  | -           | Semantic text color role.                                       |
+| `emphasis`      | `Responsive<TextEmphasis>`               | `'default'` | Content emphasis / contrast.                                    |
 | `align`         | `Responsive<TextAlign>`                  | -           | Text alignment.                                                 |
 | `weight`        | `Responsive<TextWeight>`                 | recipe      | Optional structured weight override.                            |
 | `italic`        | `boolean`                                | `false`     | Italic style.                                                   |
@@ -469,7 +471,7 @@ structured and template-safe.
 
 ### `Button`
 
-Action button with ZORA defaults for tone, emphasis, size, and icons.
+Action button with ZORA defaults for color, variant, size, and icons.
 
 ```tsx
 <Button leadingIcon={{ name: 'checkmark-circle-outline' }}>Save</Button>
@@ -480,18 +482,18 @@ Action button with ZORA defaults for tone, emphasis, size, and icons.
 
 ZORA props:
 
-| Prop           | Type              | Default     | Notes                                      |
-| -------------- | ----------------- | ----------- | ------------------------------------------ |
-| `children`     | `React.ReactNode` | -           | Button label or content.                   |
-| `color`        | `ZoraColor`       | `'primary'` | Passed to Surface as `tone`.               |
-| `emphasis`     | `ZoraEmphasis`    | `'solid'`   | Passed to Surface as `variant`.            |
-| `size`         | `ZoraControlSize` | `'l'`       | Passed to Surface as `size`.               |
-| `leadingIcon`  | `ButtonIconSpec`  | -           | Surface icon spec rendered before content. |
-| `trailingIcon` | `ButtonIconSpec`  | -           | Surface icon spec rendered after content.  |
+| Prop           | Type                     | Default     | Notes                                      |
+| -------------- | ------------------------ | ----------- | ------------------------------------------ |
+| `children`     | `React.ReactNode`        | -           | Button label or content.                   |
+| `color`        | `ZoraColor`              | `'primary'` | Passed to Surface as `color`.              |
+| `variant`      | `ButtonProps['variant']` | `'solid'`   | Visual treatment variant.                  |
+| `size`         | `ZoraControlSize`        | `'l'`       | Passed to Surface as `size`.               |
+| `leadingIcon`  | `ButtonIconSpec`         | -           | Surface icon spec rendered before content. |
+| `trailingIcon` | `ButtonIconSpec`         | -           | Surface icon spec rendered after content.  |
 
 Inherited props:
 
-Inherits all Surface `ButtonProps` except `children`, `size`, `tone`, and
+Inherits all Surface `ButtonProps` except `children`, `size`, `color`, and
 `variant`. This includes Surface button behavior such as `loading`,
 `fullWidth`, pressability props, disabled state, accessibility props allowed by
 Surface, and `testID`.
@@ -511,13 +513,13 @@ Compact icon-only button for toolbars, rows, and actions.
 
 ZORA props:
 
-| Prop       | Type              | Default     | Notes                              |
-| ---------- | ----------------- | ----------- | ---------------------------------- |
-| `icon`     | `ButtonIconSpec`  | -           | Required icon to render.           |
-| `label`    | `string`          | -           | Required for `accessibilityLabel`. |
-| `color`    | `ZoraColor`       | `'neutral'` | Button tone.                       |
-| `emphasis` | `ZoraEmphasis`    | `'ghost'`   | Button emphasis.                   |
-| `size`     | `ZoraControlSize` | `'m'`       | Button size.                       |
+| Prop      | Type                         | Default     | Notes                              |
+| --------- | ---------------------------- | ----------- | ---------------------------------- |
+| `icon`    | `ButtonIconSpec`             | -           | Required icon to render.           |
+| `label`   | `string`                     | -           | Required for `accessibilityLabel`. |
+| `color`   | `ZoraColor`                  | `'neutral'` | Button color role.                 |
+| `variant` | `IconButtonProps['variant']` | `'ghost'`   | Visual treatment variant.          |
+| `size`    | `ZoraControlSize`            | `'m'`       | Button size.                       |
 
 Inherited props:
 
@@ -549,7 +551,7 @@ ZORA props:
 | `label`        | `string`              | -           | Accessibility label for the rendered content.   |
 | `size`         | `AvatarSize`          | `'m'`       | `xs`..`xl` size preset.                         |
 | `shape`        | `AvatarShape`         | `'circle'`  | `circle` or `rounded`.                          |
-| `tone`         | `ZoraColor`           | `'neutral'` | Drives background and fallback content tone.    |
+| `color`        | `ZoraColor`           | `'neutral'` | Drives background and fallback content color.   |
 | `testID`       | `string`              | -           | Test id.                                        |
 
 Inherited props:
@@ -566,7 +568,7 @@ Overlapping avatar stack with optional overflow label.
 <AvatarGroup
   items={[
     { id: '1', name: 'Ada Lovelace' },
-    { id: '2', name: 'Grace Hopper', tone: 'success' },
+    { id: '2', name: 'Grace Hopper', color: 'success' },
   ]}
 />
 ```
@@ -587,15 +589,15 @@ ZORA props:
 
 `AvatarGroupItem`:
 
-| Prop           | Type                  | Notes                           |
-| -------------- | --------------------- | ------------------------------- |
-| `id`           | `string`              | Optional stable key.            |
-| `source`       | `ImageSourcePropType` | Image source for the avatar.    |
-| `name`         | `string`              | Used to derive initials.        |
-| `initials`     | `string`              | Explicit initials override.     |
-| `iconFallback` | `ButtonIconSpec`      | Optional icon fallback.         |
-| `label`        | `string`              | Accessibility label.            |
-| `tone`         | `ZoraColor`           | Overrides avatar tone per item. |
+| Prop           | Type                  | Notes                            |
+| -------------- | --------------------- | -------------------------------- |
+| `id`           | `string`              | Optional stable key.             |
+| `source`       | `ImageSourcePropType` | Image source for the avatar.     |
+| `name`         | `string`              | Used to derive initials.         |
+| `initials`     | `string`              | Explicit initials override.      |
+| `iconFallback` | `ButtonIconSpec`      | Optional icon fallback.          |
+| `label`        | `string`              | Accessibility label.             |
+| `color`        | `ZoraColor`           | Overrides avatar color per item. |
 
 Inherited props:
 
@@ -605,7 +607,7 @@ No inherited props. `AvatarGroupProps` is declared directly by ZORA.
 
 ### `Badge`
 
-Small status label with ZORA tone, emphasis, and size defaults.
+Small status label with ZORA color, variant, and size defaults.
 
 ```tsx
 <Badge color="success">Active</Badge>
@@ -616,16 +618,16 @@ Small status label with ZORA tone, emphasis, and size defaults.
 
 ZORA props:
 
-| Prop       | Type                | Default     | Notes                                |
-| ---------- | ------------------- | ----------- | ------------------------------------ |
-| `children` | `React.ReactNode`   | -           | Rendered as Surface badge `content`. |
-| `tone`     | `ZoraColor`         | `'primary'` | Passed to Surface as `tone`.         |
-| `emphasis` | `ZoraBadgeEmphasis` | `'soft'`    | Passed to Surface as `variant`.      |
-| `size`     | `ZoraControlSize`   | `'m'`       | Passed to Surface as `size`.         |
+| Prop       | Type                    | Default     | Notes                                |
+| ---------- | ----------------------- | ----------- | ------------------------------------ |
+| `children` | `React.ReactNode`       | -           | Rendered as Surface badge `content`. |
+| `color`    | `ZoraColor`             | `'primary'` | Passed to Surface as `color`.        |
+| `variant`  | `BadgeProps['variant']` | `'soft'`    | Visual treatment variant.            |
+| `size`     | `ZoraControlSize`       | `'m'`       | Passed to Surface as `size`.         |
 
 Inherited props:
 
-Inherits all Surface `BadgeProps` except `content`, `size`, `tone`, and
+Inherits all Surface `BadgeProps` except `content`, `size`, `color`, and
 `variant`. The remaining inherited prop is `testID`.
 
 </details>
@@ -762,7 +764,7 @@ ZORA props:
 | `description` | `React.ReactNode` | -           | Optional supporting copy.                               |
 | `icon`        | `ButtonIconSpec`  | -           | Optional icon shown next to the label.                  |
 | `delta`       | `React.ReactNode` | -           | Optional delta badge content.                           |
-| `deltaColor`  | `ZoraColor`       | `'neutral'` | Tone used for the delta `Badge`.                        |
+| `deltaColor`  | `ZoraColor`       | `'neutral'` | Color used for the delta `Badge`.                       |
 | `actions`     | `React.ReactNode` | -           | Optional trailing action area; disables `onPress`.      |
 | `tone`        | `ZoraCardTone`    | `'default'` | Passed to the underlying `Card`.                        |
 | `compact`     | `boolean`         | `false`     | Uses tighter spacing.                                   |
@@ -777,7 +779,7 @@ No inherited props. `MetricCardProps` is declared directly by ZORA.
 
 ### `Progress`
 
-Linear progress bar with semantic tone.
+Linear progress bar with semantic color.
 
 ```tsx
 <Progress value={72} />
@@ -793,7 +795,7 @@ ZORA props:
 | -------- | ----------------- | ----------- | ----------------------------- |
 | `value`  | `number`          | -           | Current progress value.       |
 | `max`    | `number`          | `100`       | Maximum value for completion. |
-| `color`  | `ZoraColor`       | `'primary'` | Fill tone.                    |
+| `color`  | `ZoraColor`       | `'primary'` | Fill color role.              |
 | `size`   | `ZoraControlSize` | `'m'`       | Controls bar height.          |
 | `testID` | `string`          | -           | Test id.                      |
 
@@ -941,7 +943,7 @@ type RadioGroupOption = {
 
 Inherited props:
 
-Passes `tone`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
+Passes `color`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
 to underlying Surface `Radio` components.
 
 </details>
@@ -991,7 +993,7 @@ type CheckboxGroupOption = {
 
 Inherited props:
 
-Passes `tone`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
+Passes `color`, `size`, `invalid`, `readOnly`, `disabled`, and `testID`
 to underlying Surface `Checkbox` components.
 
 </details>
@@ -1011,16 +1013,16 @@ Compact filter/action token with optional icon and selected state.
 
 ZORA props:
 
-| Prop       | Type              | Default     | Notes                                |
-| ---------- | ----------------- | ----------- | ------------------------------------ |
-| `children` | `React.ReactNode` | -           | Chip label content.                  |
-| `icon`     | `ButtonIconSpec`  | -           | Optional leading icon spec.          |
-| `selected` | `boolean`         | `false`     | Selected styling state.              |
-| `color`    | `ZoraColor`       | `'neutral'` | Selected tone.                       |
-| `size`     | `ZoraControlSize` | `'s'`       | Padding and icon sizing.             |
-| `disabled` | `boolean`         | `false`     | Disables interaction and mutes tone. |
-| `onPress`  | `() => void`      | -           | Optional press handler.              |
-| `testID`   | `string`          | -           | Test id.                             |
+| Prop       | Type              | Default     | Notes                                 |
+| ---------- | ----------------- | ----------- | ------------------------------------- |
+| `children` | `React.ReactNode` | -           | Chip label content.                   |
+| `icon`     | `ButtonIconSpec`  | -           | Optional leading icon spec.           |
+| `selected` | `boolean`         | `false`     | Selected styling state.               |
+| `color`    | `ZoraColor`       | `'neutral'` | Selected color.                       |
+| `size`     | `ZoraControlSize` | `'s'`       | Padding and icon sizing.              |
+| `disabled` | `boolean`         | `false`     | Disables interaction and mutes color. |
+| `onPress`  | `() => void`      | -           | Optional press handler.               |
+| `testID`   | `string`          | -           | Test id.                              |
 
 Inherited props:
 
@@ -1054,7 +1056,7 @@ ZORA props:
 | `value`         | `string \| string[]` | -           | Selected value(s).             |
 | `onValueChange` | `(value) => void`    | -           | Selection change handler.      |
 | `multiple`      | `boolean`            | `false`     | Enables multi-select mode.     |
-| `tone`          | `ZoraColor`          | `'neutral'` | Tone for selected chips.       |
+| `color`         | `ZoraColor`          | `'neutral'` | Color for selected chips.      |
 | `size`          | `ZoraControlSize`    | `'s'`       | Chip size.                     |
 | `wrap`          | `boolean`            | `true`      | Wrap chips on smaller screens. |
 | `disabled`      | `boolean`            | -           | Disables all chips.            |
@@ -1585,7 +1587,7 @@ export function ChatsPreview() {
     <Stack gap="none">
       <ChatListItem
         accessibilityLabel="Ada Lovelace, unread, 3 new messages, Can you review the new PostCard API?, 2 minutes ago"
-        avatar={{ name: 'Ada Lovelace', tone: 'primary' }}
+        avatar={{ name: 'Ada Lovelace', color: 'primary' }}
         preview="Can you review the new PostCard API?"
         timestamp="2m"
         title="Ada Lovelace"
@@ -1595,7 +1597,7 @@ export function ChatsPreview() {
       />
 
       <ChatListItem
-        avatar={{ name: 'Grace Hopper', tone: 'success' }}
+        avatar={{ name: 'Grace Hopper', color: 'success' }}
         preview="The build is green."
         timestamp="1h"
         title="Grace Hopper"
@@ -1603,7 +1605,7 @@ export function ChatsPreview() {
       />
 
       <ChatListItem
-        avatar={{ initials: 'CI', label: 'Build system', tone: 'neutral' }}
+        avatar={{ initials: 'CI', label: 'Build system', color: 'neutral' }}
         compact
         meta="Release automation"
         preview="Version packages completed for @ankhorage/zora."
@@ -1675,7 +1677,7 @@ ZORA props:
 | `label`    | `string`              | Accessibility label.                       |
 | `size`     | `AvatarSize`          | Optional avatar size override.             |
 | `shape`    | `AvatarShape`         | Optional avatar shape override.            |
-| `color`    | `ZoraColor`           | Optional fallback tone.                    |
+| `color`    | `ZoraColor`           | Optional fallback color.                   |
 
 Inherited props:
 
@@ -1770,13 +1772,13 @@ ZORA props:
 
 `HeroAction`:
 
-| Prop       | Type              | Default                   | Notes                              |
-| ---------- | ----------------- | ------------------------- | ---------------------------------- |
-| `label`    | `React.ReactNode` | -                         | Button label/content.              |
-| `onPress`  | `() => void`      | -                         | Press handler.                     |
-| `color`    | `ZoraColor`       | primary / neutral by role | Optional button tone override.     |
-| `emphasis` | `ZoraEmphasis`    | solid / soft by role      | Optional button emphasis override. |
-| `disabled` | `boolean`         | `false`                   | Disables the rendered action.      |
+| Prop       | Type                     | Default                   | Notes                             |
+| ---------- | ------------------------ | ------------------------- | --------------------------------- |
+| `label`    | `React.ReactNode`        | -                         | Button label/content.             |
+| `onPress`  | `() => void`             | -                         | Press handler.                    |
+| `color`    | `ZoraColor`              | primary / neutral by role | Optional button color override.   |
+| `variant`  | `ButtonProps['variant']` | solid / soft by role      | Optional button variant override. |
+| `disabled` | `boolean`                | `false`                   | Disables the rendered action.     |
 
 Inherited props:
 
@@ -1882,7 +1884,7 @@ ZORA props:
 | `description` | `React.ReactNode` | -           | Notice description.                 |
 | `children`    | `React.ReactNode` | -           | Optional body content.              |
 | `actions`     | `React.ReactNode` | -           | Optional action area.               |
-| `color`       | `ZoraColor`       | `'primary'` | Drives the badge eyebrow tone.      |
+| `color`       | `ZoraColor`       | `'primary'` | Drives the badge eyebrow color.     |
 | `testID`      | `string`          | -           | Forwarded to the underlying `Card`. |
 
 Inherited props:
@@ -1944,7 +1946,7 @@ export function PostsPreview() {
         author={{
           name: 'Ada Lovelace',
           subtitle: '@ada · 2h',
-          avatar: { name: 'Ada Lovelace', tone: 'primary' },
+          avatar: { name: 'Ada Lovelace', color: 'primary' },
         }}
         headerAction={
           <IconButton icon={{ name: 'ellipsis-horizontal-outline' }} label="More post options" />
@@ -1966,7 +1968,7 @@ export function PostsPreview() {
             author: {
               name: 'Grace Hopper',
               subtitle: '1h',
-              avatar: { name: 'Grace Hopper', tone: 'success' },
+              avatar: { name: 'Grace Hopper', color: 'success' },
             },
             text: 'The card/list boundary feels right.',
           },
@@ -1979,7 +1981,7 @@ export function PostsPreview() {
         author={{
           name: 'Build system',
           subtitle: 'Today · release notes',
-          avatar: { initials: 'CI', label: 'Build system', tone: 'neutral' },
+          avatar: { initials: 'CI', label: 'Build system', color: 'neutral' },
         }}
         text="Compact density works well for notification-style posts."
       />
@@ -2026,7 +2028,7 @@ ZORA props:
 | `label`    | `string`              | Accessibility label.                       |
 | `size`     | `AvatarSize`          | Optional avatar size override.             |
 | `shape`    | `AvatarShape`         | Optional avatar shape override.            |
-| `color`    | `ZoraColor`           | Optional fallback tone.                    |
+| `color`    | `ZoraColor`           | Optional fallback color.                   |
 
 `PostCardMedia`:
 
@@ -2396,12 +2398,12 @@ ZORA props:
 
 `EmptyStateAction`:
 
-| Prop       | Type              | Default | Notes            |
-| ---------- | ----------------- | ------- | ---------------- |
-| `label`    | `React.ReactNode` | -       | Button label.    |
-| `onPress`  | `() => void`      | -       | Button handler.  |
-| `color`    | `ZoraColor`       | -       | Button tone.     |
-| `emphasis` | `ZoraEmphasis`    | -       | Button emphasis. |
+| Prop      | Type                     | Default | Notes           |
+| --------- | ------------------------ | ------- | --------------- |
+| `label`   | `React.ReactNode`        | -       | Button label.   |
+| `onPress` | `() => void`             | -       | Button handler. |
+| `color`   | `ZoraColor`              | -       | Button color.   |
+| `variant` | `ButtonProps['variant']` | -       | Button variant. |
 
 Inherited props:
 
@@ -2430,21 +2432,21 @@ Narrow confirmation modal for destructive or high-signal decisions.
 
 ZORA props:
 
-| Prop              | Type              | Default     | Notes                                      |
-| ----------------- | ----------------- | ----------- | ------------------------------------------ |
-| `visible`         | `boolean`         | -           | Required modal visibility.                 |
-| `title`           | `React.ReactNode` | -           | Required dialog title.                     |
-| `description`     | `React.ReactNode` | -           | Dialog description.                        |
-| `children`        | `React.ReactNode` | -           | Dialog body.                               |
-| `confirmLabel`    | `React.ReactNode` | `'Confirm'` | Confirm button label.                      |
-| `cancelLabel`     | `React.ReactNode` | `'Cancel'`  | Cancel button label.                       |
-| `confirmColor`    | `ZoraColor`       | `'danger'`  | Confirm button tone.                       |
-| `confirmEmphasis` | `ZoraEmphasis`    | `'solid'`   | Confirm button emphasis.                   |
-| `busy`            | `boolean`         | `false`     | Passed to the confirm button as `loading`. |
-| `closeOnBackdrop` | `boolean`         | `true`      | Passed to the underlying modal.            |
-| `onConfirm`       | `() => void`      | -           | Confirm button handler.                    |
-| `onCancel`        | `() => void`      | -           | Cancel button and modal dismiss handler.   |
-| `testID`          | `string`          | -           | Forwarded to the underlying modal.         |
+| Prop              | Type                     | Default     | Notes                                      |
+| ----------------- | ------------------------ | ----------- | ------------------------------------------ |
+| `visible`         | `boolean`                | -           | Required modal visibility.                 |
+| `title`           | `React.ReactNode`        | -           | Required dialog title.                     |
+| `description`     | `React.ReactNode`        | -           | Dialog description.                        |
+| `children`        | `React.ReactNode`        | -           | Dialog body.                               |
+| `confirmLabel`    | `React.ReactNode`        | `'Confirm'` | Confirm button label.                      |
+| `cancelLabel`     | `React.ReactNode`        | `'Cancel'`  | Cancel button label.                       |
+| `confirmColor`    | `ZoraColor`              | `'danger'`  | Confirm button color.                      |
+| `confirmVariant`  | `ButtonProps['variant']` | `'solid'`   | Confirm button variant.                    |
+| `busy`            | `boolean`                | `false`     | Passed to the confirm button as `loading`. |
+| `closeOnBackdrop` | `boolean`                | `true`      | Passed to the underlying modal.            |
+| `onConfirm`       | `() => void`             | -           | Confirm button handler.                    |
+| `onCancel`        | `() => void`             | -           | Cancel button and modal dismiss handler.   |
+| `testID`          | `string`                 | -           | Forwarded to the underlying modal.         |
 
 Confirm dialogs always use `Modal` with `width="narrow"`.
 
@@ -2545,7 +2547,7 @@ import { MessageBubble, Stack } from '@ankhorage/zora';
     direction="incoming"
     author={{
       name: 'Ada Lovelace',
-      avatar: { name: 'Ada Lovelace', tone: 'primary' },
+      avatar: { name: 'Ada Lovelace', color: 'primary' },
     }}
     text="Can you review the new ChatListItem API?"
     timestamp="10:41"
@@ -2626,7 +2628,7 @@ type MessageBubbleStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed';
 | `label`    | `string`              | Accessibility label.                            |
 | `size`     | `AvatarSize`          | Optional avatar size override.                  |
 | `shape`    | `AvatarShape`         | Optional avatar shape override.                 |
-| `color`    | `ZoraColor`           | Optional avatar tone.                           |
+| `color`    | `ZoraColor`           | Optional avatar color.                          |
 
 Inherited props:
 

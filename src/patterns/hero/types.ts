@@ -11,7 +11,7 @@ export interface HeroAction {
   label: React.ReactNode;
   onPress: () => void;
   color?: ZoraColor;
-  emphasis?: ZoraButtonVariant;
+  variant?: ZoraButtonVariant;
   disabled?: boolean;
 }
 

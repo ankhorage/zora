@@ -61,7 +61,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </Button>
           }
           footer={
-            <Badge color="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Theme lab
             </Badge>
           }

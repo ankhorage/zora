@@ -240,7 +240,7 @@ function ImageUploadFieldInner({
             {value ? (
               <Button
                 disabled={actionsDisabled || uploading || removing}
-                emphasis="outline"
+                variant="outline"
                 loading={removing}
                 color="danger"
                 onPress={() => {
@@ -252,7 +252,7 @@ function ImageUploadFieldInner({
             ) : null}
 
             {isRenderable ? (
-              <Button disabled={false} emphasis="soft" color="neutral" onPress={handlePreview}>
+              <Button disabled={false} variant="soft" color="neutral" onPress={handlePreview}>
                 Preview
               </Button>
             ) : null}
@@ -279,7 +279,7 @@ function ImageUploadFieldInner({
           <Stack gap="m">
             <ImagePreview asset={value} aspectRatio={aspectRatio} />
             <Stack direction="row" justify="flex-end">
-              <Button emphasis="soft" color="neutral" onPress={closePreview}>
+              <Button variant="soft" color="neutral" onPress={closePreview}>
                 Close
               </Button>
             </Stack>

@@ -34,10 +34,10 @@ export function FoundationPrimitivesSection() {
           </Stack>
           <Inline gap="s">
             <Badge color="primary">Inline</Badge>
-            <Badge color="success" emphasis="soft">
+            <Badge color="success" variant="soft">
               Wrapped
             </Badge>
-            <Badge color="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Metadata
             </Badge>
           </Inline>
@@ -107,7 +107,7 @@ export function FoundationPrimitivesSection() {
             when={{ base: true, md: false }}
             fallback={<Badge color="neutral">Desktop fallback</Badge>}
           >
-            <Badge color="primary" emphasis="soft">
+            <Badge color="primary" variant="soft">
               Visible on base breakpoint
             </Badge>
           </Show>

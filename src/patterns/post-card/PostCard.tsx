@@ -125,7 +125,7 @@ function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
         <Button
           key={action.id}
           disabled={action.disabled}
-          emphasis={action.selected ? 'soft' : 'ghost'}
+          variant={action.selected ? 'soft' : 'ghost'}
           leadingIcon={action.icon}
           onPress={action.onPress}
           size="s"

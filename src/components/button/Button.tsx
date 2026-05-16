@@ -9,11 +9,11 @@ function ButtonInner({
   themeId: _themeId,
   mode: _mode,
   color,
-  emphasis,
+  variant,
   size,
   ...props
 }: ButtonProps) {
-  const recipe = resolveButtonRecipe({ color, variant: emphasis, size });
+  const recipe = resolveButtonRecipe({ color, variant, size });
 
   return (
     <SurfaceButton {...props} color={recipe.color} size={recipe.size} variant={recipe.variant} />

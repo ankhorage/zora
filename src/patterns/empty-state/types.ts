@@ -7,7 +7,7 @@ export interface EmptyStateAction {
   label: React.ReactNode;
   onPress: () => void;
   color?: ZoraColor;
-  emphasis?: ZoraButtonVariant;
+  variant?: ZoraButtonVariant;
 }
 
 export interface EmptyStateProps extends ZoraBaseProps {

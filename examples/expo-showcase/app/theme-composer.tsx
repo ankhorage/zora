@@ -106,7 +106,7 @@ export function ThemeComposerPage({
           {recipeThemes.map((preset) => (
             <Button
               key={preset.theme.id}
-              emphasis={theme.id === preset.theme.id ? 'solid' : 'soft'}
+              variant={theme.id === preset.theme.id ? 'solid' : 'soft'}
               size="s"
               color="primary"
               onPress={() => onThemeChange(preset.theme)}
@@ -160,13 +160,13 @@ export function ThemeComposerPage({
                 footer={
                   <Stack direction="row" gap="s" wrap="wrap">
                     <Badge color="primary">Primary</Badge>
-                    <Badge color="success" emphasis="soft">
+                    <Badge color="success" variant="soft">
                       Success
                     </Badge>
-                    <Badge color="warning" emphasis="soft">
+                    <Badge color="warning" variant="soft">
                       Warning
                     </Badge>
-                    <Badge color="danger" emphasis="outline">
+                    <Badge color="danger" variant="outline">
                       Danger
                     </Badge>
                   </Stack>
@@ -199,10 +199,10 @@ export function ThemeComposerPage({
                   />
                   <Stack direction="row" gap="s" wrap="wrap">
                     <Button color="primary">Primary action</Button>
-                    <Button color="neutral" emphasis="soft">
+                    <Button color="neutral" variant="soft">
                       Secondary
                     </Button>
-                    <Button color="danger" emphasis="ghost">
+                    <Button color="danger" variant="ghost">
                       Danger ghost
                     </Button>
                   </Stack>

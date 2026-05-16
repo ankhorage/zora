@@ -56,7 +56,7 @@ function MetricCardInner({
               </Text>
               {delta != null ? (
                 <Badge
-                  emphasis={badgeRecipe.variant}
+                  variant={badgeRecipe.variant}
                   size={badgeRecipe.size}
                   color={badgeRecipe.color}
                 >

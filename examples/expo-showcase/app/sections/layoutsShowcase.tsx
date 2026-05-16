@@ -40,7 +40,7 @@ export function LayoutsShowcaseSection() {
           sidebar={
             <Stack gap="s">
               <Badge color="primary">General</Badge>
-              <Badge color="neutral" emphasis="soft">
+              <Badge color="neutral" variant="soft">
                 Members
               </Badge>
             </Stack>

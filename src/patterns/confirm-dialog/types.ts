@@ -11,7 +11,7 @@ export interface ConfirmDialogProps extends ZoraBaseProps {
   confirmLabel?: React.ReactNode;
   cancelLabel?: React.ReactNode;
   confirmColor?: ZoraColor;
-  confirmEmphasis?: ZoraButtonVariant;
+  confirmVariant?: ZoraButtonVariant;
   busy?: boolean;
   closeOnBackdrop?: boolean;
   onConfirm?: () => void;

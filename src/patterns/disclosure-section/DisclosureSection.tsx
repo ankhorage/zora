@@ -49,7 +49,7 @@ function DisclosureSectionInner({
           <IconButton
             icon={{ name: isOpen ? 'chevron-up-outline' : 'chevron-down-outline' }}
             label={isOpen ? 'Collapse' : 'Expand'}
-            emphasis="ghost"
+            variant="ghost"
             color="neutral"
             size="s"
             disabled={disabled}

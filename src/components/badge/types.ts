@@ -10,6 +10,6 @@ export interface BadgeProps
     Omit<SurfaceBadgeProps, 'content' | 'size' | 'color' | 'variant' | 'mode' | 'themeId'> {
   children?: React.ReactNode;
   color?: ZoraColor;
-  emphasis?: ZoraBadgeVariant;
+  variant?: ZoraBadgeVariant;
   size?: ZoraControlSize;
 }

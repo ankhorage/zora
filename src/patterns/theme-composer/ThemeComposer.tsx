@@ -261,25 +261,25 @@ function ThemeComposerInner({
             Muted caption text.
           </Text>
           <Stack direction="row" gap="s" align="center">
-            <Button color="primary" emphasis="solid" size="m">
+            <Button color="primary" variant="solid" size="m">
               Primary
             </Button>
-            <Button color="neutral" emphasis="soft" size="m">
+            <Button color="neutral" variant="soft" size="m">
               Neutral
             </Button>
-            <Button color="danger" emphasis="ghost" size="m">
+            <Button color="danger" variant="ghost" size="m">
               Danger
             </Button>
           </Stack>
           <Stack direction="row" gap="s" align="center">
             <Badge color="primary">Primary</Badge>
-            <Badge color="success" emphasis="soft">
+            <Badge color="success" variant="soft">
               Success
             </Badge>
-            <Badge color="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Warning
             </Badge>
-            <Badge color="danger" emphasis="soft">
+            <Badge color="danger" variant="soft">
               Danger
             </Badge>
           </Stack>
@@ -296,7 +296,7 @@ function ThemeComposerInner({
       {onSubmit ? (
         <Button
           color="primary"
-          emphasis="solid"
+          variant="solid"
           onPress={handleSubmit}
           testID={testID ? `${testID}-submit` : undefined}
         >

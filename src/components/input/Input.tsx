@@ -44,7 +44,7 @@ function InputInner({
             icon={trailingAction.icon}
             label={trailingAction.label}
             disabled={disabled ?? readOnly}
-            emphasis="ghost"
+            variant="ghost"
             size={size === 'l' ? 'm' : size}
             color="neutral"
             onPress={trailingAction.onPress}

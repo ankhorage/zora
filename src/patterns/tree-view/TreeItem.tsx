@@ -56,7 +56,7 @@ function TreeItemInner<TId extends string = string>({
                 label={isExpanded ? 'Collapse' : 'Expand'}
                 onPress={() => onToggleExpand(node.id)}
                 size="s"
-                emphasis="ghost"
+                variant="ghost"
               />
             ) : null}
           </Stack>

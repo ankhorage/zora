@@ -28,7 +28,7 @@ function TabsInner<TValue extends string = string>({
       return (
         <Button
           key={item.value}
-          emphasis={isActive ? 'solid' : 'ghost'}
+          variant={isActive ? 'solid' : 'ghost'}
           color="neutral"
           size={size}
           disabled={isDisabled}
@@ -46,7 +46,7 @@ function TabsInner<TValue extends string = string>({
       return (
         <Button
           key={item.value}
-          emphasis={isActive ? 'soft' : 'ghost'}
+          variant={isActive ? 'soft' : 'ghost'}
           color={isActive ? 'primary' : 'neutral'}
           size={size}
           disabled={isDisabled}
@@ -71,7 +71,7 @@ function TabsInner<TValue extends string = string>({
         }}
       >
         <Button
-          emphasis="ghost"
+          variant="ghost"
           color="neutral"
           size={size}
           disabled={isDisabled}

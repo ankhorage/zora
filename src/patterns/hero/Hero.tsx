@@ -100,7 +100,7 @@ function renderAction(action: HeroAction, role: 'primary' | 'secondary') {
   return (
     <Button
       disabled={action.disabled}
-      emphasis={action.emphasis ?? (role === 'primary' ? 'solid' : 'soft')}
+      variant={action.variant ?? (role === 'primary' ? 'solid' : 'soft')}
       onPress={action.onPress}
       color={action.color ?? (role === 'primary' ? 'primary' : 'neutral')}
     >

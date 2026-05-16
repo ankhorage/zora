@@ -74,7 +74,7 @@ function SignInFormInner({
             {onForgotPassword ? (
               <Button
                 disabled={disabled || loading}
-                emphasis="ghost"
+                variant="ghost"
                 onPress={() => {
                   void onForgotPassword();
                 }}
@@ -87,7 +87,7 @@ function SignInFormInner({
             {onSignUp ? (
               <Button
                 disabled={disabled || loading}
-                emphasis="ghost"
+                variant="ghost"
                 onPress={() => {
                   void onSignUp();
                 }}

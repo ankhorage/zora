@@ -56,7 +56,7 @@ function AppBarInner({
       <IconButton
         icon={resolvedMode.cancelIcon ?? DEFAULT_CANCEL_ICON}
         label={resolveCancelLabel(resolvedMode)}
-        emphasis="ghost"
+        variant="ghost"
         size="m"
         color="neutral"
         onPress={resolvedMode.onCancel}
@@ -68,7 +68,7 @@ function AppBarInner({
       disabled={overflow.disabled}
       icon={overflow.icon ?? DEFAULT_OVERFLOW_ICON}
       label={resolveOverflowLabel(overflow)}
-      emphasis="ghost"
+      variant="ghost"
       size="m"
       color="neutral"
       onPress={overflow.onPress}

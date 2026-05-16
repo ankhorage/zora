@@ -13,7 +13,7 @@ function ToolbarActionInner({
   return (
     <IconButton
       {...props}
-      emphasis={active ? 'soft' : 'ghost'}
+      variant={active ? 'soft' : 'ghost'}
       color={active ? 'primary' : 'neutral'}
       size="m"
     />

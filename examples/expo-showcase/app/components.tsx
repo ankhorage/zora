@@ -140,10 +140,10 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <Button leadingIcon={{ name: 'add-outline' }}>Primary</Button>
-            <Button emphasis="soft" color="neutral">
+            <Button variant="soft" color="neutral">
               Soft neutral
             </Button>
-            <Button emphasis="outline" color="danger">
+            <Button variant="outline" color="danger">
               Outline danger
             </Button>
             <Button disabled>Disabled</Button>
@@ -158,7 +158,7 @@ export function ComponentsPage() {
               Small
             </Button>
             <Button trailingIcon={{ name: 'arrow-forward-outline' }}>Continue</Button>
-            <Button emphasis="soft" color="primary" leadingIcon={{ name: 'sparkles-outline' }}>
+            <Button variant="soft" color="primary" leadingIcon={{ name: 'sparkles-outline' }}>
               Suggested
             </Button>
           </Stack>
@@ -171,11 +171,11 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <IconButton icon={{ name: 'settings-outline' }} label="Settings" />
-            <IconButton icon={{ name: 'share-outline' }} label="Share" emphasis="soft" />
+            <IconButton icon={{ name: 'share-outline' }} label="Share" variant="soft" />
             <IconButton
               icon={{ name: 'trash-outline' }}
               label="Delete"
-              emphasis="outline"
+              variant="outline"
               color="danger"
             />
             <IconButton icon={{ name: 'lock-closed-outline' }} label="Locked" disabled />
@@ -190,10 +190,10 @@ export function ComponentsPage() {
           <Stack direction="row" gap="s" wrap="wrap">
             <Badge color="primary">Primary</Badge>
             <Badge color="success">Success</Badge>
-            <Badge color="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Warning soft
             </Badge>
-            <Badge color="danger" emphasis="outline">
+            <Badge color="danger" variant="outline">
               Danger outline
             </Badge>
             <Badge color="neutral">Neutral</Badge>
@@ -295,7 +295,7 @@ export function ComponentsPage() {
             actions={
               <>
                 <IconButton
-                  emphasis="ghost"
+                  variant="ghost"
                   icon={{ name: 'trash-outline' }}
                   label="Delete"
                   color="danger"
@@ -429,7 +429,7 @@ export function ComponentsPage() {
             </Stack>
             <Stack direction="row" gap="s" wrap="wrap">
               <Badge color="primary">Catalog</Badge>
-              <Badge color="neutral" emphasis="soft">
+              <Badge color="neutral" variant="soft">
                 Stable
               </Badge>
             </Stack>
@@ -439,7 +439,7 @@ export function ComponentsPage() {
             title="Card with action"
             description="Actions are rendered as trailing controls without making the card itself a nested button."
             actions={
-              <Button size="s" emphasis="soft" color="primary">
+              <Button size="s" variant="soft" color="primary">
                 Configure
               </Button>
             }
@@ -459,7 +459,7 @@ export function ComponentsPage() {
             badges={
               <Stack direction="row" gap="s" wrap="wrap">
                 <Badge color="primary">Featured</Badge>
-                <Badge color="neutral" emphasis="soft">
+                <Badge color="neutral" variant="soft">
                   Cross-platform
                 </Badge>
               </Stack>
@@ -521,7 +521,7 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
-            <Button emphasis="soft" color="neutral" onPress={() => setDrawerOpen(true)}>
+            <Button variant="soft" color="neutral" onPress={() => setDrawerOpen(true)}>
               Open drawer
             </Button>
           </Stack>
