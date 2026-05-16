@@ -28,6 +28,7 @@ import { selectMeta } from '../components/select/meta';
 import { tabsMeta } from '../components/tabs/meta';
 import { textMeta } from '../components/text/meta';
 import { textareaMeta } from '../components/textarea/meta';
+import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
@@ -107,6 +108,8 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Tabs: tabsMeta,
   Text: textMeta,
   Textarea: textareaMeta,
+  Toast: toastMeta,
+  ToastProvider: toastProviderMeta,
   Toolbar: toolbarMeta,
   ToolbarAction: toolbarActionMeta,
   AppShell: appShellMeta,
