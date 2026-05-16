@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0
+
+### Minor Changes
+
+- f4d075b: Remove `AuthLayout` from the public API. Compose focused auth or onboarding screens directly with existing layout primitives such as `Center`, `Card`, and `Stack`.
+
 ## 2.1.0
 
 ### Minor Changes
