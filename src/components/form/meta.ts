@@ -6,6 +6,21 @@ export const formMeta = {
   directManifestNode: false,
   allowedChildren: [],
   note: 'Form orchestration component; not represented as a manifest node in v1.',
+  events: {
+    submit: {
+      label: 'Submit',
+      eventType: 'form.submit',
+      description: 'Emitted when the form submits its current values.',
+      payloadFields: [
+        {
+          path: 'payload.values',
+          type: 'record',
+          label: 'Values',
+          description: 'Submitted form values keyed by field name.',
+        },
+      ],
+    },
+  },
   props: {},
 } as const satisfies ZoraComponentMeta;
 
