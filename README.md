@@ -323,6 +323,7 @@ Metadata model overview:
 - `Tabs`
 - `Text`
 - `Textarea`
+- `Toast`
 - `Toolbar`
 - `ToolbarAction`
 
@@ -1179,6 +1180,93 @@ ZORA props:
 | `onValueChange` | `(value: string) => void`              | -             | Change handler.       |
 | `variant`       | `'underline' \| 'pill' \| 'segmented'` | `'underline'` | Visual style.         |
 | `size`          | `ZoraControlSize`                      | `'m'`         | Control size.         |
+
+</details>
+
+### `Toast` / `ToastProvider`
+
+Transient app feedback backed by Surface Toast. Use `ToastProvider` once near
+the app root, then call `useToast()` from child components.
+
+```tsx
+import React from 'react';
+import { Button, ToastProvider, useToast, ZoraProvider } from '@ankhorage/zora';
+
+function SaveButton() {
+  const { showToast } = useToast();
+
+  return (
+    <Button
+      onPress={() => {
+        showToast({
+          title: 'Saved',
+          description: 'Your changes were saved.',
+          status: 'success',
+        });
+      }}
+    >
+      Save
+    </Button>
+  );
+}
+
+export function App() {
+  return (
+    <ZoraProvider>
+      <ToastProvider>
+        <SaveButton />
+      </ToastProvider>
+    </ZoraProvider>
+  );
+}
+```
+
+Use `Toast` directly only for explicit inline rendering or component previews.
+Most app code should use `ToastProvider` and `useToast()` so transient feedback
+is managed from one provider boundary.
+
+<details>
+<summary>Props</summary>
+
+`Toast` props:
+
+| Prop          | Type              | Default     | Notes                     |
+| ------------- | ----------------- | ----------- | ------------------------- |
+| `title`       | `React.ReactNode` | -           | Primary toast message.    |
+| `description` | `React.ReactNode` | -           | Supporting toast message. |
+| `status`      | `ToastStatus`     | `'default'` | Semantic status color.    |
+| `onDismiss`   | `() => void`      | -           | Dismiss handler.          |
+| `testID`      | `string`          | -           | Test id.                  |
+
+`ToastProvider` props:
+
+| Prop              | Type              | Default | Notes                          |
+| ----------------- | ----------------- | ------- | ------------------------------ |
+| `children`        | `React.ReactNode` | -       | App subtree with toast access. |
+| `defaultDuration` | `number`          | `4000`  | Default auto-dismiss duration. |
+
+Hook API:
+
+| API            | Type                                | Notes                             |
+| -------------- | ----------------------------------- | --------------------------------- |
+| `showToast`    | `(options: ToastOptions) => string` | Shows a toast and returns its id. |
+| `dismissToast` | `(id: string) => void`              | Dismisses a toast by id.          |
+
+`ToastOptions`:
+
+| Prop          | Type              | Default     | Notes                                      |
+| ------------- | ----------------- | ----------- | ------------------------------------------ |
+| `id`          | `string`          | generated   | Optional stable id for replacing/tracking. |
+| `title`       | `React.ReactNode` | -           | Primary toast message.                     |
+| `description` | `React.ReactNode` | -           | Supporting toast message.                  |
+| `status`      | `ToastStatus`     | `'default'` | Semantic status color.                     |
+| `duration`    | `number`          | provider    | Auto-dismiss duration in milliseconds.     |
+| `testID`      | `string`          | -           | Test id forwarded to the toast.            |
+
+Inherited props:
+
+ZORA reuses the existing Surface Toast implementation. No separate ZORA toast
+state machine is introduced.
 
 </details>
 
