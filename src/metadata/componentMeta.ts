@@ -25,6 +25,12 @@ import { radioGroupMeta, radioMeta } from '../components/radio/meta';
 import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
 import { selectMeta } from '../components/select/meta';
+import {
+  skeletonCardMeta,
+  skeletonListMeta,
+  skeletonMeta,
+  skeletonTextMeta,
+} from '../components/skeleton/meta';
 import { tabsMeta } from '../components/tabs/meta';
 import { textMeta } from '../components/text/meta';
 import { textareaMeta } from '../components/textarea/meta';
@@ -105,6 +111,10 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Rating: ratingMeta,
   SearchBar: searchBarMeta,
   Select: selectMeta,
+  Skeleton: skeletonMeta,
+  SkeletonCard: skeletonCardMeta,
+  SkeletonList: skeletonListMeta,
+  SkeletonText: skeletonTextMeta,
   Tabs: tabsMeta,
   Text: textMeta,
   Textarea: textareaMeta,
