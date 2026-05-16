@@ -8,6 +8,12 @@ export type { BadgeProps } from './components/badge';
 export { Badge } from './components/badge';
 export type { ButtonProps } from './components/button';
 export { Button } from './components/button';
+export type {
+  ButtonGroupAlign,
+  ButtonGroupOrientation,
+  ButtonGroupProps,
+} from './components/button-group';
+export { ButtonGroup } from './components/button-group';
 export type { CardProps } from './components/card';
 export { Card } from './components/card';
 export type { CheckboxGroupOption, CheckboxGroupProps, CheckboxProps } from './components/checkbox';
