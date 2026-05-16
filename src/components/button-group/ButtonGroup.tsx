@@ -16,23 +16,64 @@ function resolveDirection(orientation: ButtonGroupOrientation) {
   return 'row';
 }
 
-function resolveAlign(align: ButtonGroupAlign) {
+function resolveHorizontalJustify(align: ButtonGroupAlign) {
   switch (align) {
-    case 'end':
-      return 'flex-end';
     case 'start':
       return 'flex-start';
-    case 'stretch':
-      return 'stretch';
-    case 'between':
     case 'center':
-    default:
       return 'center';
+    case 'between':
+      return 'space-between';
+    case 'stretch':
+    case 'end':
+    default:
+      return 'flex-end';
   }
 }
 
-function resolveJustify(align: ButtonGroupAlign) {
-  return align === 'between' ? 'space-between' : undefined;
+function resolveVerticalAlign(align: ButtonGroupAlign) {
+  switch (align) {
+    case 'start':
+      return 'flex-start';
+    case 'center':
+    case 'between':
+      return 'center';
+    case 'stretch':
+      return 'stretch';
+    case 'end':
+    default:
+      return 'flex-end';
+  }
+}
+
+function resolveStackAlign(align: ButtonGroupAlign, orientation: ButtonGroupOrientation) {
+  if (orientation === 'horizontal') {
+    return align === 'stretch' ? 'stretch' : 'center';
+  }
+
+  if (orientation === 'responsive') {
+    return {
+      base: resolveVerticalAlign(align),
+      md: align === 'stretch' ? 'stretch' : 'center',
+    } as const;
+  }
+
+  return resolveVerticalAlign(align);
+}
+
+function resolveStackJustify(align: ButtonGroupAlign, orientation: ButtonGroupOrientation) {
+  if (orientation === 'horizontal') {
+    return resolveHorizontalJustify(align);
+  }
+
+  if (orientation === 'responsive') {
+    return {
+      base: align === 'between' ? 'space-between' : 'flex-start',
+      md: resolveHorizontalJustify(align),
+    } as const;
+  }
+
+  return align === 'between' ? 'space-between' : 'flex-start';
 }
 
 function ButtonGroupInner({
@@ -50,10 +91,10 @@ function ButtonGroupInner({
 
   return (
     <Stack
-      align={resolveAlign(align)}
+      align={resolveStackAlign(align, orientation)}
       direction={resolveDirection(orientation)}
       gap={gap}
-      justify={resolveJustify(align)}
+      justify={resolveStackJustify(align, orientation)}
       testID={testID}
     >
       {orderedItems}
