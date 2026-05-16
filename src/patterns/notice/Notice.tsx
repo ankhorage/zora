@@ -13,13 +13,13 @@ function NoticeInner({
   description,
   children,
   actions,
-  tone = 'primary',
+  color = 'primary',
   testID,
 }: NoticeProps) {
   return (
     <Card
       description={description}
-      eyebrow={<Badge tone={tone}>{String(tone).toUpperCase()}</Badge>}
+      eyebrow={<Badge color={color}>{String(color).toUpperCase()}</Badge>}
       testID={testID}
       title={title}
       tone="subtle"

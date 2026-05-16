@@ -1,12 +1,20 @@
-import type { FontWeight, SurfaceTheme } from '@ankhorage/surface';
+import type { FontWeight, RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
-import type { HeadingAlign, HeadingLevel, HeadingSize, HeadingTone, HeadingWeight } from './types';
+import type {
+  HeadingAlign,
+  HeadingColor,
+  HeadingEmphasis,
+  HeadingLevel,
+  HeadingSize,
+  HeadingWeight,
+} from './types';
 
 interface ResolveHeadingRecipeOptions {
   level: HeadingLevel;
   size?: HeadingSize;
-  tone?: HeadingTone;
+  color?: HeadingColor;
+  emphasis?: HeadingEmphasis;
   align?: HeadingAlign;
   weight?: HeadingWeight;
   italic?: boolean;
@@ -72,22 +80,49 @@ function resolveSizeRecipe(theme: SurfaceTheme, size: HeadingSize): HeadingRecip
   };
 }
 
-function resolveToneColor(theme: SurfaceTheme, tone: HeadingTone): string {
-  switch (tone) {
+function resolveRoleSemantics(theme: SurfaceTheme, color: HeadingColor): RoleSemantics {
+  switch (color) {
+    case 'secondary':
+      return theme.semantics.secondary;
+    case 'tertiary':
+      return theme.semantics.accent;
+    case 'quaternary':
+      return theme.semantics.highlight;
+    case 'neutral':
+      return theme.semantics.action.neutral;
+    case 'error':
+      return theme.semantics.error;
+    case 'info':
+      return theme.semantics.info;
+    case 'danger':
+      return theme.semantics.action.danger;
+    case 'success':
+      return theme.semantics.success;
+    case 'warning':
+      return theme.semantics.warning;
+    case 'primary':
+    default:
+      return theme.semantics.action.primary;
+  }
+}
+
+function resolveHeadingColor(
+  theme: SurfaceTheme,
+  emphasis: HeadingEmphasis,
+  color?: HeadingColor,
+): string {
+  if (color) {
+    const role = resolveRoleSemantics(theme, color);
+    return emphasis === 'inverse' ? role.onSolidText : role.base;
+  }
+
+  switch (emphasis) {
     case 'muted':
       return theme.semantics.content.muted;
     case 'subtle':
       return theme.semantics.content.subtle;
     case 'inverse':
       return theme.semantics.content.inverse;
-    case 'primary':
-      return theme.semantics.brand.base;
-    case 'danger':
-      return theme.semantics.danger.base;
-    case 'success':
-      return theme.semantics.success.base;
-    case 'warning':
-      return theme.semantics.warning.base;
     case 'default':
     default:
       return theme.semantics.content.default;
@@ -112,13 +147,21 @@ function resolveFontFamily({
 
 export function resolveHeadingRecipe(
   theme: SurfaceTheme,
-  { align, italic = false, level, size, tone = 'default', weight }: ResolveHeadingRecipeOptions,
+  {
+    align,
+    color,
+    emphasis = 'default',
+    italic = false,
+    level,
+    size,
+    weight,
+  }: ResolveHeadingRecipeOptions,
 ): TextStyle {
   const recipe = resolveSizeRecipe(theme, size ?? resolveHeadingSizeFromLevel(level));
   const resolvedWeight = resolveWeight(theme, weight ?? recipe.weight);
 
   return {
-    color: resolveToneColor(theme, tone),
+    color: resolveHeadingColor(theme, emphasis, color),
     elevation: 0,
     fontFamily: resolveFontFamily({ theme, weight: resolvedWeight, italic }),
     fontSize: recipe.fontSize,

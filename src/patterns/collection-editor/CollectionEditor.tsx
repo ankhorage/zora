@@ -33,7 +33,7 @@ function CollectionEditorInner<TItem>({
       title={title}
       actions={
         onAdd ? (
-          <Button emphasis="soft" size="s" disabled={disabled} onPress={onAdd}>
+          <Button variant="soft" size="s" disabled={disabled} onPress={onAdd}>
             {addLabel}
           </Button>
         ) : null
@@ -42,7 +42,7 @@ function CollectionEditorInner<TItem>({
       <Stack gap="s">
         {isEmpty ? (
           <Box py="m">
-            <Text align="center" tone="muted">
+            <Text align="center" emphasis="muted">
               {emptyLabel}
             </Text>
           </Box>
@@ -70,7 +70,7 @@ function CollectionEditorInner<TItem>({
                         disabled={disabled ?? index === 0}
                         onPress={() => onMove(index, index - 1)}
                         size="s"
-                        emphasis="ghost"
+                        variant="ghost"
                       />
                       <IconButton
                         icon={{ name: 'arrow-down-outline' }}
@@ -78,7 +78,7 @@ function CollectionEditorInner<TItem>({
                         disabled={disabled ?? index === items.length - 1}
                         onPress={() => onMove(index, index + 1)}
                         size="s"
-                        emphasis="ghost"
+                        variant="ghost"
                       />
                     </>
                   ) : null}
@@ -86,11 +86,11 @@ function CollectionEditorInner<TItem>({
                     <IconButton
                       icon={{ name: 'trash-outline' }}
                       label="Remove"
-                      tone="danger"
+                      color="danger"
                       disabled={disabled}
                       onPress={() => onRemove(index)}
                       size="s"
-                      emphasis="ghost"
+                      variant="ghost"
                     />
                   ) : null}
                 </Stack>

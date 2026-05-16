@@ -206,12 +206,12 @@ function ImageUploadFieldInner({
           {acceptHint || maxSizeHint ? (
             <Stack gap="xs">
               {acceptHint ? (
-                <Text tone="muted" variant="caption">
+                <Text emphasis="muted" variant="caption">
                   {acceptHint}
                 </Text>
               ) : null}
               {maxSizeHint ? (
-                <Text tone="muted" variant="caption">
+                <Text emphasis="muted" variant="caption">
                   {maxSizeHint}
                 </Text>
               ) : null}
@@ -220,7 +220,7 @@ function ImageUploadFieldInner({
 
           {uploading ? (
             <Stack gap="xs">
-              <Text tone="muted" variant="caption">
+              <Text emphasis="muted" variant="caption">
                 Uploading…
               </Text>
               {progress !== null ? <Progress max={1} value={progress} /> : null}
@@ -240,9 +240,9 @@ function ImageUploadFieldInner({
             {value ? (
               <Button
                 disabled={actionsDisabled || uploading || removing}
-                emphasis="outline"
+                variant="outline"
                 loading={removing}
-                tone="danger"
+                color="danger"
                 onPress={() => {
                   void handleRemove();
                 }}
@@ -252,7 +252,7 @@ function ImageUploadFieldInner({
             ) : null}
 
             {isRenderable ? (
-              <Button disabled={false} emphasis="soft" tone="neutral" onPress={handlePreview}>
+              <Button disabled={false} variant="soft" color="neutral" onPress={handlePreview}>
                 Preview
               </Button>
             ) : null}
@@ -260,7 +260,7 @@ function ImageUploadFieldInner({
 
           {!isRenderable && value?.kind === 'storage' && value.publicUrl === undefined ? (
             <Box>
-              <Text tone="muted" variant="caption">
+              <Text emphasis="muted" variant="caption">
                 This image is stored, but no preview URL is available yet.
               </Text>
             </Box>
@@ -279,7 +279,7 @@ function ImageUploadFieldInner({
           <Stack gap="m">
             <ImagePreview asset={value} aspectRatio={aspectRatio} />
             <Stack direction="row" justify="flex-end">
-              <Button emphasis="soft" tone="neutral" onPress={closePreview}>
+              <Button variant="soft" color="neutral" onPress={closePreview}>
                 Close
               </Button>
             </Stack>

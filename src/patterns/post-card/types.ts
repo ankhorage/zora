@@ -3,7 +3,7 @@ import type React from 'react';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { AvatarShape, AvatarSize } from '../../components/avatar';
-import type { ZoraCardTone, ZoraTone } from '../../internal/recipes';
+import type { ZoraCardTone, ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface PostAuthorAvatar {
@@ -13,7 +13,7 @@ export interface PostAuthorAvatar {
   label?: string;
   size?: AvatarSize;
   shape?: AvatarShape;
-  tone?: ZoraTone;
+  color?: ZoraColor;
 }
 
 export interface PostAuthor {

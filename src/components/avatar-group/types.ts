@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ImageSourcePropType } from 'react-native';
 
-import type { ZoraTone } from '../../internal/recipes';
+import type { ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 import type { AvatarShape, AvatarSize } from '../avatar';
 
@@ -12,7 +12,7 @@ export interface AvatarGroupItem {
   initials?: string;
   iconFallback?: ButtonIconSpec;
   label?: string;
-  tone?: ZoraTone;
+  color?: ZoraColor;
 }
 
 export interface AvatarGroupProps extends ZoraBaseProps {

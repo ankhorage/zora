@@ -33,7 +33,7 @@ function ChipInner({
   icon,
   selected = false,
   disabled = false,
-  tone = 'neutral',
+  color = 'neutral',
   size = 's',
   onPress,
 }: ChipProps) {
@@ -42,14 +42,13 @@ function ChipInner({
   const iconSize = resolveIconSize(size);
 
   const renderContent = (state: ChipInteractionState) => {
-    const colors = resolveChipColors({ theme, tone, selected, state });
-    const textTone = state.disabled
-      ? 'muted'
-      : selected
-        ? tone === 'neutral'
-          ? 'default'
-          : tone
-        : 'default';
+    const colors = resolveChipColors({ theme, color, selected, state });
+    const textColor = state.disabled
+      ? undefined
+      : selected && color !== 'neutral'
+        ? color
+        : undefined;
+    const textEmphasis = state.disabled ? 'muted' : 'default';
 
     return (
       <Box
@@ -73,7 +72,7 @@ function ChipInner({
               size={iconSize}
             />
           ) : null}
-          <Text tone={textTone} variant="label">
+          <Text color={textColor} emphasis={textEmphasis} variant="label">
             {children}
           </Text>
         </Inline>

@@ -39,7 +39,8 @@ function HeadingInner({
   i18nKey,
   level = 2,
   size,
-  tone = 'default',
+  color,
+  emphasis = 'default',
   align,
   weight,
   italic = false,
@@ -56,7 +57,8 @@ function HeadingInner({
   const { breakpoint } = useResponsiveRuntime();
   const content = resolveHeadingContent({ children, text, i18nKey });
   const resolvedSize = resolveResponsive(size, breakpoint) ?? resolveHeadingSizeFromLevel(level);
-  const resolvedTone = resolveResponsive(tone, breakpoint) ?? 'default';
+  const resolvedColor = resolveResponsive(color, breakpoint);
+  const resolvedEmphasis = resolveResponsive(emphasis, breakpoint) ?? 'default';
   const resolvedAlign = resolveResponsive(align, breakpoint);
   const resolvedWeight = resolveResponsive(weight, breakpoint);
 
@@ -79,7 +81,8 @@ function HeadingInner({
         italic,
         level,
         size: resolvedSize,
-        tone: resolvedTone,
+        color: resolvedColor,
+        emphasis: resolvedEmphasis,
         weight: resolvedWeight,
       })}
     >

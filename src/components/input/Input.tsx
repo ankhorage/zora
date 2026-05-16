@@ -44,9 +44,9 @@ function InputInner({
             icon={trailingAction.icon}
             label={trailingAction.label}
             disabled={disabled ?? readOnly}
-            emphasis="ghost"
+            variant="ghost"
             size={size === 'l' ? 'm' : size}
-            tone="neutral"
+            color="neutral"
             onPress={trailingAction.onPress}
           />
         ) : trailingIcon ? (

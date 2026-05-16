@@ -75,7 +75,7 @@ export function PostsPage() {
               },
             ]}
             footer={
-              <Text tone="subtle" variant="caption">
+              <Text emphasis="subtle" variant="caption">
                 Rendered as a standalone card inside Stack.
               </Text>
             }
@@ -92,8 +92,8 @@ export function PostsPage() {
               label: 'Custom media placeholder',
               children: (
                 <Stack gap="s">
-                  <Badge tone="primary">Custom media slot</Badge>
-                  <Text tone="muted" variant="bodySmall">
+                  <Badge color="primary">Custom media slot</Badge>
+                  <Text emphasis="muted" variant="bodySmall">
                     Consumers can render any ZORA-safe media preview here.
                   </Text>
                 </Stack>

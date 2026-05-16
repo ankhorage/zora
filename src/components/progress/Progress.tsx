@@ -24,13 +24,13 @@ function ProgressInner({
   testID,
   value,
   max = 100,
-  tone = 'primary',
+  color = 'primary',
   size = 'm',
 }: ProgressProps) {
   const { theme } = useZoraTheme();
   const fraction = resolveProgressFraction({ value, max });
   const height = resolveProgressHeight(size);
-  const role = resolveProgressRole(theme, tone);
+  const role = resolveProgressRole(theme, color);
 
   return (
     <Box

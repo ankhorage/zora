@@ -20,7 +20,7 @@ function MetricCardInner({
   description,
   icon,
   delta,
-  deltaTone = 'neutral',
+  deltaColor = 'neutral',
   actions,
   tone = 'default',
   compact = false,
@@ -29,7 +29,7 @@ function MetricCardInner({
   const { theme } = useZoraTheme();
   const isInteractive = Boolean(onPress) && !actions;
 
-  const badgeRecipe = resolveBadgeRecipe({ tone: deltaTone, emphasis: 'soft', size: 's' });
+  const badgeRecipe = resolveBadgeRecipe({ color: deltaColor, variant: 'soft', size: 's' });
   const iconColor = theme.semantics.content.muted;
 
   return (
@@ -51,14 +51,14 @@ function MetricCardInner({
                   size={resolveIconSize('s')}
                 />
               ) : null}
-              <Text tone="muted" variant="caption" weight="semiBold">
+              <Text emphasis="muted" variant="caption" weight="semiBold">
                 {label}
               </Text>
               {delta != null ? (
                 <Badge
-                  emphasis={badgeRecipe.variant}
+                  variant={badgeRecipe.variant}
                   size={badgeRecipe.size}
-                  tone={badgeRecipe.tone}
+                  color={badgeRecipe.color}
                 >
                   {delta}
                 </Badge>
@@ -68,7 +68,7 @@ function MetricCardInner({
             <Heading level={compact ? 3 : 2}>{value}</Heading>
 
             {description ? (
-              <Text tone="muted" variant="bodySmall">
+              <Text emphasis="muted" variant="bodySmall">
                 {description}
               </Text>
             ) : null}

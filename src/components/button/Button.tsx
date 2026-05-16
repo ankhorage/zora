@@ -8,15 +8,15 @@ import type { ButtonProps } from './types';
 function ButtonInner({
   themeId: _themeId,
   mode: _mode,
-  tone,
-  emphasis,
+  color,
+  variant,
   size,
   ...props
 }: ButtonProps) {
-  const recipe = resolveButtonRecipe({ tone, emphasis, size });
+  const recipe = resolveButtonRecipe({ color, variant, size });
 
   return (
-    <SurfaceButton {...props} size={recipe.size} tone={recipe.tone} variant={recipe.variant} />
+    <SurfaceButton {...props} color={recipe.color} size={recipe.size} variant={recipe.variant} />
   );
 }
 

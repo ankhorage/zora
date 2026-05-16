@@ -1,3 +1,4 @@
+import { ZORA_COLORS } from '../../internal/colorModel';
 import type { ZoraComponentMeta } from '../../metadata';
 
 export const buttonMeta = {
@@ -9,8 +10,8 @@ export const buttonMeta = {
     label: 'Button',
     defaultProps: {
       children: 'Continue',
-      tone: 'primary',
-      emphasis: 'solid',
+      color: 'primary',
+      variant: 'solid',
       size: 'm',
     },
   },
@@ -21,17 +22,17 @@ export const buttonMeta = {
       label: 'Label',
       default: 'Continue',
     },
-    tone: {
+    color: {
       type: 'enum',
       category: 'Style',
-      label: 'Tone',
-      enum: ['primary', 'neutral', 'danger', 'success', 'warning'],
+      label: 'Color',
+      enum: [...ZORA_COLORS],
       default: 'primary',
     },
-    emphasis: {
+    variant: {
       type: 'enum',
       category: 'Style',
-      label: 'Emphasis',
+      label: 'Variant',
       enum: ['solid', 'outline', 'ghost', 'soft'],
       default: 'solid',
     },

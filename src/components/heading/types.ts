@@ -2,21 +2,15 @@ import type { Responsive } from '@ankhorage/surface';
 import type React from 'react';
 import type { AccessibilityRole, TextStyle } from 'react-native';
 
+import type { ZoraColor, ZoraEmphasis } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type HeadingSize = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export type HeadingTone =
-  | 'default'
-  | 'muted'
-  | 'subtle'
-  | 'inverse'
-  | 'primary'
-  | 'danger'
-  | 'success'
-  | 'warning';
+export type HeadingColor = ZoraColor;
+export type HeadingEmphasis = ZoraEmphasis;
 
 export type HeadingAlign = NonNullable<TextStyle['textAlign']>;
 
@@ -28,7 +22,8 @@ export interface HeadingProps extends ZoraBaseProps {
   i18nKey?: string;
   level?: HeadingLevel;
   size?: Responsive<HeadingSize>;
-  tone?: Responsive<HeadingTone>;
+  color?: Responsive<HeadingColor>;
+  emphasis?: Responsive<HeadingEmphasis>;
   align?: Responsive<HeadingAlign>;
   weight?: Responsive<HeadingWeight>;
   italic?: boolean;

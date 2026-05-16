@@ -3,11 +3,12 @@ import {
   type FontWeight,
   resolveResponsive,
   type Responsive,
+  type RoleSemantics,
   type SurfaceTheme,
 } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
-import type { TextAlign, TextTone, TextVariant, TextWeight } from './types';
+import type { TextAlign, TextColor, TextEmphasis, TextVariant, TextWeight } from './types';
 
 interface VariantRecipe {
   fontSize: number;
@@ -21,7 +22,8 @@ interface ResolveTextStyleOptions {
   theme: SurfaceTheme;
   breakpoint: Breakpoint;
   variant?: Responsive<TextVariant>;
-  tone?: Responsive<TextTone>;
+  color?: Responsive<TextColor>;
+  emphasis?: Responsive<TextEmphasis>;
   weight?: Responsive<TextWeight>;
   align?: Responsive<TextAlign>;
   italic?: boolean;
@@ -109,22 +111,45 @@ function resolveVariantRecipe(
   }
 }
 
-function resolveToneColor(theme: SurfaceTheme, tone: TextTone): string {
-  switch (tone) {
+function resolveRoleSemantics(theme: SurfaceTheme, color: TextColor): RoleSemantics {
+  switch (color) {
+    case 'secondary':
+      return theme.semantics.secondary;
+    case 'tertiary':
+      return theme.semantics.accent;
+    case 'quaternary':
+      return theme.semantics.highlight;
+    case 'neutral':
+      return theme.semantics.action.neutral;
+    case 'error':
+      return theme.semantics.error;
+    case 'info':
+      return theme.semantics.info;
+    case 'danger':
+      return theme.semantics.action.danger;
+    case 'success':
+      return theme.semantics.success;
+    case 'warning':
+      return theme.semantics.warning;
+    case 'primary':
+    default:
+      return theme.semantics.action.primary;
+  }
+}
+
+function resolveTextColor(theme: SurfaceTheme, emphasis: TextEmphasis, color?: TextColor): string {
+  if (color) {
+    const role = resolveRoleSemantics(theme, color);
+    return emphasis === 'inverse' ? role.onSolidText : role.base;
+  }
+
+  switch (emphasis) {
     case 'muted':
       return theme.semantics.content.muted;
     case 'subtle':
       return theme.semantics.content.subtle;
     case 'inverse':
       return theme.semantics.content.inverse;
-    case 'primary':
-      return theme.semantics.brand.base;
-    case 'danger':
-      return theme.semantics.danger.base;
-    case 'success':
-      return theme.semantics.success.base;
-    case 'warning':
-      return theme.semantics.warning.base;
     case 'default':
     default:
       return theme.semantics.content.default;
@@ -135,13 +160,15 @@ export function resolveTextStyle({
   theme,
   breakpoint,
   variant,
-  tone,
+  color,
+  emphasis,
   weight,
   align,
   italic = false,
 }: ResolveTextStyleOptions): TextStyle {
   const resolvedVariant = resolveResponsive(variant, breakpoint) ?? 'body';
-  const resolvedTone = resolveResponsive(tone, breakpoint) ?? 'default';
+  const resolvedEmphasis = resolveResponsive(emphasis, breakpoint) ?? 'default';
+  const resolvedColor = resolveResponsive(color, breakpoint);
   const resolvedAlign = resolveResponsive(align, breakpoint);
   const recipe = resolveVariantRecipe(theme, resolvedVariant, breakpoint);
   const resolvedWeight = resolveWeight(
@@ -150,7 +177,7 @@ export function resolveTextStyle({
   );
 
   return {
-    color: resolveToneColor(theme, resolvedTone),
+    color: resolveTextColor(theme, resolvedEmphasis, resolvedColor),
     elevation: 0,
     fontFamily: resolveFontFamily({
       theme,

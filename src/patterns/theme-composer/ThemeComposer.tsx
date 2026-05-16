@@ -144,7 +144,7 @@ function ThemeComposerInner({
               testID={testID ? `${testID}-name-input` : undefined}
             />
             {nameError ? (
-              <Text tone="danger" variant="bodySmall">
+              <Text color="danger" variant="bodySmall">
                 {nameError}
               </Text>
             ) : null}
@@ -152,7 +152,7 @@ function ThemeComposerInner({
           <Stack gap="xs">
             <Text variant="label">ID</Text>
             <Text
-              tone="muted"
+              emphasis="muted"
               variant="bodySmall"
               testID={testID ? `${testID}-id-display` : undefined}
             >
@@ -201,7 +201,7 @@ function ThemeComposerInner({
             />
           </Stack>
           {hexError ? (
-            <Text tone="danger" variant="bodySmall">
+            <Text color="danger" variant="bodySmall">
               {hexError}
             </Text>
           ) : null}
@@ -245,41 +245,41 @@ function ThemeComposerInner({
           </Stack>
           <Stack gap="xs">
             <Text variant="label">Primary color</Text>
-            <Text tone="muted" variant="bodySmall">
+            <Text emphasis="muted" variant="bodySmall">
               {value.primaryColor}
             </Text>
           </Stack>
           <Stack gap="xs">
             <Text variant="label">Harmony</Text>
-            <Text tone="muted" variant="bodySmall">
+            <Text emphasis="muted" variant="bodySmall">
               {value.harmony}
             </Text>
           </Stack>
           <Heading level={4}>Heading</Heading>
           <Text>Body text — this shows default text color and weight.</Text>
-          <Text tone="muted" variant="bodySmall">
+          <Text emphasis="muted" variant="bodySmall">
             Muted caption text.
           </Text>
           <Stack direction="row" gap="s" align="center">
-            <Button tone="primary" emphasis="solid" size="m">
+            <Button color="primary" variant="solid" size="m">
               Primary
             </Button>
-            <Button tone="neutral" emphasis="soft" size="m">
+            <Button color="neutral" variant="soft" size="m">
               Neutral
             </Button>
-            <Button tone="danger" emphasis="ghost" size="m">
+            <Button color="danger" variant="ghost" size="m">
               Danger
             </Button>
           </Stack>
           <Stack direction="row" gap="s" align="center">
-            <Badge tone="primary">Primary</Badge>
-            <Badge tone="success" emphasis="soft">
+            <Badge color="primary">Primary</Badge>
+            <Badge color="success" variant="soft">
               Success
             </Badge>
-            <Badge tone="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Warning
             </Badge>
-            <Badge tone="danger" emphasis="soft">
+            <Badge color="danger" variant="soft">
               Danger
             </Badge>
           </Stack>
@@ -295,8 +295,8 @@ function ThemeComposerInner({
       {/* Submit */}
       {onSubmit ? (
         <Button
-          tone="primary"
-          emphasis="solid"
+          color="primary"
+          variant="solid"
           onPress={handleSubmit}
           testID={testID ? `${testID}-submit` : undefined}
         >

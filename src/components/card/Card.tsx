@@ -46,13 +46,13 @@ function CardInner({
             <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
               <Stack gap="xs">
                 {eyebrow ? (
-                  <Text tone="muted" variant="caption" weight="semiBold">
+                  <Text emphasis="muted" variant="caption" weight="semiBold">
                     {eyebrow}
                   </Text>
                 ) : null}
                 {title ? <Heading level={compact ? 4 : 3}>{title}</Heading> : null}
                 {description ? (
-                  <Text tone="muted" variant="bodySmall">
+                  <Text emphasis="muted" variant="bodySmall">
                     {description}
                   </Text>
                 ) : null}

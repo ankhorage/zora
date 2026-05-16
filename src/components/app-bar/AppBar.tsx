@@ -56,9 +56,9 @@ function AppBarInner({
       <IconButton
         icon={resolvedMode.cancelIcon ?? DEFAULT_CANCEL_ICON}
         label={resolveCancelLabel(resolvedMode)}
-        emphasis="ghost"
+        variant="ghost"
         size="m"
-        tone="neutral"
+        color="neutral"
         onPress={resolvedMode.onCancel}
       />
     ) : undefined);
@@ -68,9 +68,9 @@ function AppBarInner({
       disabled={overflow.disabled}
       icon={overflow.icon ?? DEFAULT_OVERFLOW_ICON}
       label={resolveOverflowLabel(overflow)}
-      emphasis="ghost"
+      variant="ghost"
       size="m"
-      tone="neutral"
+      color="neutral"
       onPress={overflow.onPress}
     />
   ) : null;
@@ -90,7 +90,7 @@ function AppBarInner({
 
     if (isSelectionMode) {
       return (
-        <Text numberOfLines={1} tone="default" variant="label" weight="semiBold">
+        <Text numberOfLines={1} emphasis="default" variant="label" weight="semiBold">
           {resolveSelectionLabel(resolvedMode)}
         </Text>
       );
@@ -108,7 +108,7 @@ function AppBarInner({
           </Heading>
         ) : null}
         {subtitle != null ? (
-          <Text ellipsizeMode="tail" numberOfLines={1} tone="muted" variant="bodySmall">
+          <Text ellipsizeMode="tail" numberOfLines={1} emphasis="muted" variant="bodySmall">
             {subtitle}
           </Text>
         ) : null}

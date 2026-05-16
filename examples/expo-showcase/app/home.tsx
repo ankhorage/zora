@@ -21,7 +21,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         }}
         media={
           <Card title="Theme-aware by default" tone="outline">
-            <Text tone="muted">
+            <Text emphasis="muted">
               Hero composes ZORA typography, actions, layout, and card surfaces into one responsive
               pattern.
             </Text>
@@ -38,7 +38,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               View components
             </Button>
           }
-          footer={<Badge tone="primary">Core UI</Badge>}
+          footer={<Badge color="primary">Core UI</Badge>}
         />
 
         <Card
@@ -49,7 +49,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               View patterns
             </Button>
           }
-          footer={<Badge tone="success">Composed UI</Badge>}
+          footer={<Badge color="success">Composed UI</Badge>}
         />
 
         <Card
@@ -61,7 +61,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </Button>
           }
           footer={
-            <Badge tone="warning" emphasis="soft">
+            <Badge color="warning" variant="soft">
               Theme lab
             </Badge>
           }

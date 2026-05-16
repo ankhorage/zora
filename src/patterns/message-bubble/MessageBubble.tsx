@@ -123,7 +123,7 @@ function MessageAvatar({
       shape={avatar.shape}
       size={avatar.size ?? (compact ? 'xs' : 's')}
       source={avatar.source}
-      tone={avatar.tone}
+      color={avatar.color}
     />
   );
 }
@@ -175,12 +175,12 @@ function MessageBubbleInner({
       >
         <Stack align={isSystem ? 'center' : 'flex-start'} gap={compact ? 'xxs' : 'xs'}>
           {hasAuthorName ? (
-            <Text tone="muted" variant="caption" weight="semiBold">
+            <Text emphasis="muted" variant="caption" weight="semiBold">
               {authorName}
             </Text>
           ) : null}
           {text != null ? (
-            <Text align={isSystem ? 'center' : undefined} tone={disabled ? 'muted' : 'default'}>
+            <Text align={isSystem ? 'center' : undefined} emphasis={disabled ? 'muted' : 'default'}>
               {text}
             </Text>
           ) : null}
@@ -193,17 +193,21 @@ function MessageBubbleInner({
               wrap="wrap"
             >
               {timestamp != null ? (
-                <Text tone="subtle" variant="caption">
+                <Text emphasis="subtle" variant="caption">
                   {timestamp}
                 </Text>
               ) : null}
               {meta != null ? (
-                <Text tone="subtle" variant="caption">
+                <Text emphasis="subtle" variant="caption">
                   {meta}
                 </Text>
               ) : null}
               {renderedStatus != null ? (
-                <Text tone={status === 'failed' ? 'danger' : 'subtle'} variant="caption">
+                <Text
+                  color={status === 'failed' ? 'danger' : undefined}
+                  emphasis={status === 'failed' ? 'default' : 'subtle'}
+                  variant="caption"
+                >
                   {renderedStatus}
                 </Text>
               ) : null}

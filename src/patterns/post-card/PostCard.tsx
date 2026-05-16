@@ -59,7 +59,7 @@ function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compa
         shape={avatar?.shape}
         size={avatar?.size ?? (compact ? 's' : 'm')}
         source={avatar?.source}
-        tone={avatar?.tone}
+        color={avatar?.color}
       />
       <Box flex={1}>
         <Stack gap="xxs">
@@ -67,7 +67,7 @@ function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compa
             {author.name}
           </Text>
           {author.subtitle ? (
-            <Text tone="muted" variant="caption">
+            <Text emphasis="muted" variant="caption">
               {author.subtitle}
             </Text>
           ) : null}
@@ -125,11 +125,11 @@ function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
         <Button
           key={action.id}
           disabled={action.disabled}
-          emphasis={action.selected ? 'soft' : 'ghost'}
+          variant={action.selected ? 'soft' : 'ghost'}
           leadingIcon={action.icon}
           onPress={action.onPress}
           size="s"
-          tone={action.selected ? 'primary' : 'neutral'}
+          color={action.selected ? 'primary' : 'neutral'}
         >
           <PostActionLabel action={action} />
         </Button>
@@ -146,7 +146,7 @@ function PostCommentPreviewItem({ comment }: { comment: PostCommentPreview }) {
         <Stack gap="xxs">
           <Text variant="bodySmall">{comment.text}</Text>
           {comment.meta ? (
-            <Text tone="subtle" variant="caption">
+            <Text emphasis="subtle" variant="caption">
               {comment.meta}
             </Text>
           ) : null}

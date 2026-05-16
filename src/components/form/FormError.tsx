@@ -15,7 +15,7 @@ function FormErrorInner({ themeId: _themeId, mode: _mode, error, testID }: FormE
 
   return (
     <Box borderColor={theme.colors.error} borderWidth={1} p="s" radius="m" testID={testID}>
-      <Text tone="danger" variant="bodySmall">
+      <Text color="error" variant="bodySmall">
         {error}
       </Text>
     </Box>

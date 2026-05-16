@@ -56,13 +56,13 @@ function OtpFormInner({
           <Stack direction="row" gap="s" wrap="wrap">
             <Button
               disabled={disabled || loading || resendDisabled}
-              emphasis="ghost"
+              variant="ghost"
               loading={resendLoading}
               onPress={() => {
                 void onResend();
               }}
               size="s"
-              tone="neutral"
+              color="neutral"
             >
               {resendLabel}
             </Button>

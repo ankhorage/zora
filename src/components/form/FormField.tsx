@@ -77,7 +77,7 @@ function renderLabel(label: React.ReactNode, description: React.ReactNode | unde
         {label}
       </Text>
       {description ? (
-        <Text tone="muted" variant="bodySmall">
+        <Text emphasis="muted" variant="bodySmall">
           {description}
         </Text>
       ) : null}

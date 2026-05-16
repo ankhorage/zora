@@ -1,14 +1,14 @@
 import type { ButtonIconSpec, ButtonProps as SurfaceButtonProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraControlSize, ZoraEmphasis, ZoraTone } from '../../internal/recipes';
+import type { ZoraButtonVariant, ZoraColor, ZoraControlSize } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ButtonProps
-  extends ZoraBaseProps, Omit<SurfaceButtonProps, 'children' | 'size' | 'tone' | 'variant'> {
+  extends ZoraBaseProps, Omit<SurfaceButtonProps, 'children' | 'size' | 'color' | 'variant'> {
   children?: React.ReactNode;
-  tone?: ZoraTone;
-  emphasis?: ZoraEmphasis;
+  color?: ZoraColor;
+  variant?: ZoraButtonVariant;
   size?: ZoraControlSize;
   leadingIcon?: ButtonIconSpec;
   trailingIcon?: ButtonIconSpec;

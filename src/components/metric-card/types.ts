@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraCardTone, ZoraTone } from '../../internal/recipes';
+import type { ZoraCardTone, ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface MetricCardProps extends ZoraBaseProps {
@@ -10,7 +10,7 @@ export interface MetricCardProps extends ZoraBaseProps {
   description?: React.ReactNode;
   icon?: ButtonIconSpec;
   delta?: React.ReactNode;
-  deltaTone?: ZoraTone;
+  deltaColor?: ZoraColor;
   actions?: React.ReactNode;
   tone?: ZoraCardTone;
   compact?: boolean;

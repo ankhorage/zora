@@ -61,12 +61,12 @@ function ForgotPasswordFormInner({
           <Stack direction="row" gap="s" wrap="wrap">
             <Button
               disabled={disabled || loading}
-              emphasis="ghost"
+              variant="ghost"
               onPress={() => {
                 void onSignIn();
               }}
               size="s"
-              tone="neutral"
+              color="neutral"
             >
               {signInLabel}
             </Button>

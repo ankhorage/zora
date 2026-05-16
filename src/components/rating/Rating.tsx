@@ -14,11 +14,11 @@ function RatingInner({
   testID,
   value,
   max = 5,
-  tone = 'warning',
+  color = 'warning',
   size = 'm',
 }: RatingProps) {
   const { theme } = useZoraTheme();
-  const role = resolveRatingRole(theme, tone);
+  const role = resolveRatingRole(theme, color);
   const segments = resolveRatingSegments({ value, max });
   const iconSize = resolveIconSize(size);
 

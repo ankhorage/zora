@@ -31,18 +31,18 @@ function EmptyStateInner({
           <Stack direction={{ base: 'column', md: 'row' }} gap="s">
             {primaryAction ? (
               <Button
-                emphasis={primaryAction.emphasis}
+                variant={primaryAction.variant}
                 onPress={primaryAction.onPress}
-                tone={primaryAction.tone}
+                color={primaryAction.color}
               >
                 {primaryAction.label}
               </Button>
             ) : null}
             {secondaryAction ? (
               <Button
-                emphasis={secondaryAction.emphasis ?? 'soft'}
+                variant={secondaryAction.variant ?? 'soft'}
                 onPress={secondaryAction.onPress}
-                tone={secondaryAction.tone ?? 'neutral'}
+                color={secondaryAction.color ?? 'neutral'}
               >
                 {secondaryAction.label}
               </Button>

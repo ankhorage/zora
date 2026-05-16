@@ -89,12 +89,12 @@ export function ComponentFormsSection() {
           <FormError error="Standalone FormError coverage" />
 
           <FormActions submitLabel="Save manually" onSubmit={() => undefined}>
-            <Button emphasis="ghost" tone="neutral">
+            <Button variant="ghost" color="neutral">
               Cancel
             </Button>
           </FormActions>
 
-          <Text tone="muted" variant="bodySmall">
+          <Text emphasis="muted" variant="bodySmall">
             Form values: {formValues.email} / {formValues.project}
           </Text>
         </Stack>

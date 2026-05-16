@@ -69,10 +69,10 @@ export function ComponentsPage() {
               <Heading level={1} size={{ base: 'h2', md: 'h1' }}>
                 Dashboard overview
               </Heading>
-              <Heading level={2} tone="primary">
+              <Heading level={2} color="primary">
                 Featured projects
               </Heading>
-              <Heading level={3} size="h4" tone="muted">
+              <Heading level={3} size="h4" emphasis="muted">
                 Compact section title
               </Heading>
             </Stack>
@@ -84,23 +84,23 @@ export function ComponentsPage() {
           />
           <Card title="Variants" description="Recipes stay aligned with the active theme.">
             <Stack gap="s">
-              <Text variant="lead" tone="muted">
+              <Text variant="lead" emphasis="muted">
                 Lead copy introduces a screen or important section with a larger measure.
               </Text>
               <Text variant="body">
                 Body copy is the default paragraph style for product content and supporting
                 explanations.
               </Text>
-              <Text variant="bodySmall" tone="muted">
+              <Text variant="bodySmall" emphasis="muted">
                 Body small works well for secondary explanations and compact rows.
               </Text>
-              <Text variant="caption" tone="subtle">
+              <Text variant="caption" emphasis="subtle">
                 Caption text is for metadata, timestamps, and helper details.
               </Text>
               <Text variant="label" weight="semiBold">
                 Label text
               </Text>
-              <Text variant="eyebrow" tone="primary">
+              <Text variant="eyebrow" color="primary">
                 Eyebrow text
               </Text>
               <Text variant="code">zora.text.variant</Text>
@@ -112,20 +112,20 @@ export function ComponentsPage() {
             description="Tone and layout can adapt by breakpoint."
           >
             <Stack gap="s">
-              <Text tone="primary" weight="semiBold">
+              <Text color="primary" weight="semiBold">
                 Primary tone
               </Text>
-              <Text tone="danger" weight="semiBold">
+              <Text color="danger" weight="semiBold">
                 Danger tone
               </Text>
               <Text
                 align={{ base: 'center', md: 'left' }}
-                tone="muted"
+                emphasis="muted"
                 variant={{ base: 'bodySmall', md: 'body' }}
               >
                 This line uses responsive variant and alignment values.
               </Text>
-              <Text numberOfLines={1} tone="muted">
+              <Text numberOfLines={1} emphasis="muted">
                 This intentionally long line demonstrates numberOfLines truncation for text that
                 needs to fit in constrained product surfaces without exposing raw styles.
               </Text>
@@ -140,10 +140,10 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <Button leadingIcon={{ name: 'add-outline' }}>Primary</Button>
-            <Button emphasis="soft" tone="neutral">
+            <Button variant="soft" color="neutral">
               Soft neutral
             </Button>
-            <Button emphasis="outline" tone="danger">
+            <Button variant="outline" color="danger">
               Outline danger
             </Button>
             <Button disabled>Disabled</Button>
@@ -158,7 +158,7 @@ export function ComponentsPage() {
               Small
             </Button>
             <Button trailingIcon={{ name: 'arrow-forward-outline' }}>Continue</Button>
-            <Button emphasis="soft" tone="primary" leadingIcon={{ name: 'sparkles-outline' }}>
+            <Button variant="soft" color="primary" leadingIcon={{ name: 'sparkles-outline' }}>
               Suggested
             </Button>
           </Stack>
@@ -171,12 +171,12 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <IconButton icon={{ name: 'settings-outline' }} label="Settings" />
-            <IconButton icon={{ name: 'share-outline' }} label="Share" emphasis="soft" />
+            <IconButton icon={{ name: 'share-outline' }} label="Share" variant="soft" />
             <IconButton
               icon={{ name: 'trash-outline' }}
               label="Delete"
-              emphasis="outline"
-              tone="danger"
+              variant="outline"
+              color="danger"
             />
             <IconButton icon={{ name: 'lock-closed-outline' }} label="Locked" disabled />
           </Stack>
@@ -188,15 +188,15 @@ export function ComponentsPage() {
             description="Badges work well for state, category, and compact metadata."
           />
           <Stack direction="row" gap="s" wrap="wrap">
-            <Badge tone="primary">Primary</Badge>
-            <Badge tone="success">Success</Badge>
-            <Badge tone="warning" emphasis="soft">
+            <Badge color="primary">Primary</Badge>
+            <Badge color="success">Success</Badge>
+            <Badge color="warning" variant="soft">
               Warning soft
             </Badge>
-            <Badge tone="danger" emphasis="outline">
+            <Badge color="danger" variant="outline">
               Danger outline
             </Badge>
-            <Badge tone="neutral">Neutral</Badge>
+            <Badge color="neutral">Neutral</Badge>
           </Stack>
         </ScreenSection>
 
@@ -252,7 +252,7 @@ export function ComponentsPage() {
               ]}
             />
             <Stack direction="row" gap="s" wrap="wrap">
-              <Chip selected tone="primary">
+              <Chip selected color="primary">
                 Selected chip
               </Chip>
               <Chip>Static chip</Chip>
@@ -295,10 +295,10 @@ export function ComponentsPage() {
             actions={
               <>
                 <IconButton
-                  emphasis="ghost"
+                  variant="ghost"
                   icon={{ name: 'trash-outline' }}
                   label="Delete"
-                  tone="danger"
+                  color="danger"
                   onPress={() => undefined}
                 />
               </>
@@ -413,7 +413,7 @@ export function ComponentsPage() {
           <Card
             title="Standard card"
             description="A neutral card with descriptive content and a status footer."
-            footer={<Badge tone="success">Active</Badge>}
+            footer={<Badge color="success">Active</Badge>}
           >
             <Stack direction="row" gap="s" wrap="wrap" align="center">
               <Avatar name="Zora Kit" />
@@ -428,8 +428,8 @@ export function ComponentsPage() {
               />
             </Stack>
             <Stack direction="row" gap="s" wrap="wrap">
-              <Badge tone="primary">Catalog</Badge>
-              <Badge tone="neutral" emphasis="soft">
+              <Badge color="primary">Catalog</Badge>
+              <Badge color="neutral" variant="soft">
                 Stable
               </Badge>
             </Stack>
@@ -439,7 +439,7 @@ export function ComponentsPage() {
             title="Card with action"
             description="Actions are rendered as trailing controls without making the card itself a nested button."
             actions={
-              <Button size="s" emphasis="soft" tone="primary">
+              <Button size="s" variant="soft" color="primary">
                 Configure
               </Button>
             }
@@ -458,8 +458,8 @@ export function ComponentsPage() {
           <MediaCard
             badges={
               <Stack direction="row" gap="s" wrap="wrap">
-                <Badge tone="primary">Featured</Badge>
-                <Badge tone="neutral" emphasis="soft">
+                <Badge color="primary">Featured</Badge>
+                <Badge color="neutral" variant="soft">
                   Cross-platform
                 </Badge>
               </Stack>
@@ -468,7 +468,7 @@ export function ComponentsPage() {
             footer={
               <Stack direction="row" gap="s" wrap="wrap">
                 <Rating value={4.5} />
-                <Badge tone="success">Open</Badge>
+                <Badge color="success">Open</Badge>
               </Stack>
             }
             image={
@@ -477,7 +477,7 @@ export function ComponentsPage() {
                 p="m"
                 style={{ aspectRatio: 16 / 9, alignItems: 'center', justifyContent: 'center' }}
               >
-                <Avatar initials="Z" size="l" tone="primary" />
+                <Avatar initials="Z" size="l" color="primary" />
               </Surface>
             }
             onPress={() => undefined}
@@ -487,7 +487,7 @@ export function ComponentsPage() {
           <Stack direction={{ base: 'column', md: 'row' }} gap="m" wrap="wrap">
             <MetricCard
               delta="+4.1%"
-              deltaTone="success"
+              deltaColor="success"
               description="Last 30 days"
               icon={{ name: 'trending-up-outline' }}
               label="Monthly active users"
@@ -495,7 +495,7 @@ export function ComponentsPage() {
             />
             <MetricCard
               delta="-2.3%"
-              deltaTone="danger"
+              deltaColor="danger"
               description="Compared to last week"
               icon={{ name: 'pulse-outline' }}
               label="Conversion"
@@ -506,8 +506,8 @@ export function ComponentsPage() {
           <Card title="Progress" description="Linear progress v1 using semantic tones.">
             <Stack gap="m">
               <Progress value={72} />
-              <Progress tone="success" value={38} />
-              <Progress tone="warning" value={55} />
+              <Progress color="success" value={38} />
+              <Progress color="warning" value={55} />
             </Stack>
           </Card>
         </ScreenSection>
@@ -521,7 +521,7 @@ export function ComponentsPage() {
           />
           <Stack direction="row" gap="s" wrap="wrap">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
-            <Button emphasis="soft" tone="neutral" onPress={() => setDrawerOpen(true)}>
+            <Button variant="soft" color="neutral" onPress={() => setDrawerOpen(true)}>
               Open drawer
             </Button>
           </Stack>

@@ -19,7 +19,7 @@ export interface CheckboxGroupProps<TValue extends string>
     ZoraBaseProps,
     Pick<
       Omit<SurfaceCheckboxProps, 'mode' | 'themeId'>,
-      'tone' | 'size' | 'invalid' | 'readOnly' | 'disabled'
+      'color' | 'size' | 'invalid' | 'readOnly' | 'disabled'
     > {
   value: readonly TValue[];
   onValueChange: (value: TValue[]) => void;
