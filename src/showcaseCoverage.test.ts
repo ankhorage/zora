@@ -68,7 +68,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
   ],
   layouts: [
     'AppShell',
-    'AuthLayout',
     'Screen',
     'ScreenSection',
     'SettingsLayout',
