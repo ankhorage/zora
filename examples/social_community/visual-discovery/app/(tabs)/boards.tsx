@@ -37,7 +37,7 @@ export default function BoardsScreen() {
       <ExampleAppBar
         title="Boards"
         subtitle="Organize saved ideas into reusable visual collections."
-        actions={<Badge tone="primary">12 boards</Badge>}
+        actions={<Badge color="primary">12 boards</Badge>}
       />
       <Screen>
         <ScreenSection
@@ -50,14 +50,14 @@ export default function BoardsScreen() {
             actions={
               <AvatarGroup
                 items={[
-                  { id: 'mia', name: 'Mia Chen', tone: 'primary' },
-                  { id: 'noah', name: 'Noah Keller', tone: 'success' },
-                  { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+                  { id: 'mia', name: 'Mia Chen', color: 'primary' },
+                  { id: 'noah', name: 'Noah Keller', color: 'success' },
+                  { id: 'lea', name: 'Lea Meyer', color: 'warning' },
                 ]}
               />
             }
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               Shared boards are static here; collaboration features belong later.
             </Text>
           </Card>

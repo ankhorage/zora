@@ -39,7 +39,7 @@ export default function GroupsScreen() {
         <ScreenSection
           title="Featured room"
           description="A composed ZORA card for the most active group."
-          actions={<Badge tone="primary">3 active</Badge>}
+          actions={<Badge color="primary">3 active</Badge>}
         >
           <Card
             title="Design systems circle"
@@ -48,13 +48,13 @@ export default function GroupsScreen() {
               <AvatarGroup
                 items={[
                   { id: 'mia', name: 'Mia Chen' },
-                  { id: 'noah', name: 'Noah Keller', tone: 'success' },
-                  { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+                  { id: 'noah', name: 'Noah Keller', color: 'success' },
+                  { id: 'lea', name: 'Lea Meyer', color: 'warning' },
                 ]}
               />
             }
           >
-            <Text tone="muted">The screen stays realistic without local layout wrappers.</Text>
+            <Text emphasis="muted">The screen stays realistic without local layout wrappers.</Text>
           </Card>
         </ScreenSection>
 

@@ -10,14 +10,16 @@ export default function ProfileScreen() {
         <ScreenSection
           title="Creator profile"
           description="A profile route composed from public ZORA exports."
-          actions={<Avatar name="Ava Studio" tone="primary" />}
+          actions={<Avatar name="Ava Studio" color="primary" />}
         >
           <Card
             title="Ava Studio"
             description="Community host · Product design · Mobile UX"
-            actions={<Badge tone="success">Active</Badge>}
+            actions={<Badge color="success">Active</Badge>}
           >
-            <Text tone="muted">1.8k followers · 243 saved posts · 32 active conversations.</Text>
+            <Text emphasis="muted">
+              1.8k followers · 243 saved posts · 32 active conversations.
+            </Text>
           </Card>
         </ScreenSection>
 
@@ -26,7 +28,7 @@ export default function ProfileScreen() {
             label="Followers"
             value="1.8k"
             delta="+8%"
-            deltaTone="success"
+            deltaColor="success"
             description="Last 30 days"
           />
           <MetricCard label="Saved posts" value="243" description="Across public groups" />
@@ -34,7 +36,7 @@ export default function ProfileScreen() {
             label="Replies"
             value="612"
             delta="+14"
-            deltaTone="primary"
+            deltaColor="primary"
             description="This month"
           />
         </ScreenSection>

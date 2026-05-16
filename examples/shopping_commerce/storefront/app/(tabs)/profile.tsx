@@ -37,13 +37,13 @@ export default function ProfileScreen() {
     <>
       <ExampleAppBar title="Customer profile" />
       <Screen>
-        <ScreenSection title="Customer card" actions={<Avatar name="Nora Frei" tone="primary" />}>
+        <ScreenSection title="Customer card" actions={<Avatar name="Nora Frei" color="primary" />}>
           <Card
             title="Nora Frei"
             description="Studio customer · Zürich · member since 2024"
-            actions={<Badge tone="success">Gold member</Badge>}
+            actions={<Badge color="success">Gold member</Badge>}
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               Prefers natural materials, ceramic sets, and quiet tableware collections.
             </Text>
           </Card>
@@ -54,7 +54,7 @@ export default function ProfileScreen() {
             label="Points"
             value="4,280"
             delta="+320"
-            deltaTone="success"
+            deltaColor="success"
             description="This month"
           />
           <MetricCard label="Orders" value="13" description="Lifetime purchases" />

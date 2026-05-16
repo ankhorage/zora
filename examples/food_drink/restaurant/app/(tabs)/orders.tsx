@@ -34,7 +34,7 @@ export default function OrdersScreen() {
             label="Ready soon"
             value="19:10"
             delta="Takeaway"
-            deltaTone="primary"
+            deltaColor="primary"
             description="Kitchen estimate"
           />
           <MetricCard label="Vouchers" value="1" description="Email delivery" />
@@ -50,7 +50,7 @@ export default function OrdersScreen() {
           <Notice
             title="No kitchen integration"
             description="Kitchen display, payment, voucher fulfillment, and live order status belong in later app/backend examples."
-            tone="primary"
+            color="primary"
           />
         </ScreenSection>
       </Screen>

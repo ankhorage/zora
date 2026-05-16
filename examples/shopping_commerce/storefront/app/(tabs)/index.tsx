@@ -44,25 +44,25 @@ export default function HomeScreen() {
             <MediaCard
               key={product.title}
               {...product}
-              badges={<Badge tone="success">In stock</Badge>}
+              badges={<Badge color="success">In stock</Badge>}
             />
           ))}
         </ScreenSection>
 
-        <ScreenSection title="Social proof" actions={<Badge tone="primary">Spring edit</Badge>}>
+        <ScreenSection title="Social proof" actions={<Badge color="primary">Spring edit</Badge>}>
           <Notice
             title="1,248 happy customers"
             description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."
-            tone="success"
+            color="success"
           />
           <AvatarGroup
             items={[
-              { id: 'nora', name: 'Nora Frei', tone: 'primary' },
-              { id: 'mia', name: 'Mia Chen', tone: 'success' },
-              { id: 'lea', name: 'Lea Meyer', tone: 'warning' },
+              { id: 'nora', name: 'Nora Frei', color: 'primary' },
+              { id: 'mia', name: 'Mia Chen', color: 'success' },
+              { id: 'lea', name: 'Lea Meyer', color: 'warning' },
             ]}
           />
-          <Text tone="muted">
+          <Text emphasis="muted">
             A future StorefrontHero or ProductFeature pattern would make this screen stronger.
           </Text>
         </ScreenSection>

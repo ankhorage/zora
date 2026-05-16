@@ -22,7 +22,7 @@ export function ChatsPage() {
         <Stack gap="none">
           <ChatListItem
             accessibilityLabel="Ada Lovelace, unread, 3 new messages, Can you review the new PostCard API?, 2 minutes ago"
-            avatar={{ name: 'Ada Lovelace', tone: 'primary' }}
+            avatar={{ name: 'Ada Lovelace', color: 'primary' }}
             preview="Can you review the new PostCard API?"
             timestamp="2m"
             title="Ada Lovelace"
@@ -32,7 +32,7 @@ export function ChatsPage() {
           />
 
           <ChatListItem
-            avatar={{ name: 'Grace Hopper', tone: 'success' }}
+            avatar={{ name: 'Grace Hopper', color: 'success' }}
             preview="The build is green."
             timestamp="1h"
             title="Grace Hopper"
@@ -40,7 +40,7 @@ export function ChatsPage() {
           />
 
           <ChatListItem
-            avatar={{ initials: 'CI', label: 'Build system', tone: 'neutral' }}
+            avatar={{ initials: 'CI', label: 'Build system', color: 'neutral' }}
             compact
             meta="Release automation"
             preview="Version packages completed for @ankhorage/zora."
@@ -50,7 +50,7 @@ export function ChatsPage() {
           />
 
           <ChatListItem
-            avatar={{ name: 'Maya Chen', tone: 'warning' }}
+            avatar={{ name: 'Maya Chen', color: 'warning' }}
             preview="Let's revisit the mobile layout before the next pass."
             selected
             timestamp="Yesterday"
@@ -65,7 +65,7 @@ export function ChatsPage() {
           />
 
           <ChatListItem
-            avatar={{ name: 'Archived thread', tone: 'neutral' }}
+            avatar={{ name: 'Archived thread', color: 'neutral' }}
             disabled
             meta="Archived"
             preview="This row shows the disabled state."
@@ -83,7 +83,7 @@ export function ChatsPage() {
           <MessageBubble
             author={{
               name: 'Ada Lovelace',
-              avatar: { name: 'Ada Lovelace', tone: 'primary' },
+              avatar: { name: 'Ada Lovelace', color: 'primary' },
             }}
             direction="incoming"
             text="Can you review the new ChatListItem API?"
@@ -104,7 +104,7 @@ export function ChatsPage() {
           <MessageBubble
             author={{
               name: 'Grace Hopper',
-              avatar: { name: 'Grace Hopper', tone: 'success' },
+              avatar: { name: 'Grace Hopper', color: 'success' },
             }}
             direction="incoming"
             meta="Edited"

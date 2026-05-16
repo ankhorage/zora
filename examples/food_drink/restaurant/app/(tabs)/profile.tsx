@@ -32,9 +32,9 @@ export default function ProfileScreen() {
           <Card
             title="Nora Frei"
             description="Regular guest · Zürich · last visit two weeks ago"
-            actions={<Badge tone="success">VIP</Badge>}
+            actions={<Badge color="success">VIP</Badge>}
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               Prefers early dinner slots, vegetarian tasting menus, and quiet tables.
             </Text>
           </Card>
@@ -46,14 +46,14 @@ export default function ProfileScreen() {
             label="Upcoming"
             value="1"
             delta="Friday"
-            deltaTone="primary"
+            deltaColor="primary"
             description="Next booking"
           />
           <MetricCard
             label="Points"
             value="2,840"
             delta="+180"
-            deltaTone="success"
+            deltaColor="success"
             description="Loyalty balance"
           />
         </ScreenSection>
