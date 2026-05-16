@@ -293,6 +293,7 @@ Metadata model overview:
 - `AvatarGroup`
 - `Badge`
 - `Button`
+- `ButtonGroup`
 - `Card`
 - `Checkbox`
 - `CheckboxGroup`
@@ -497,6 +498,61 @@ Inherits all Surface `ButtonProps` except `children`, `size`, `color`, and
 `variant`. This includes Surface button behavior such as `loading`,
 `fullWidth`, pressability props, disabled state, accessibility props allowed by
 Surface, and `testID`.
+
+</details>
+
+### `ButtonGroup`
+
+Action-layout component for grouping related buttons in dialogs, forms, card
+footers, onboarding steps, and compact action rows.
+
+Use `ButtonGroup` when the buttons belong to one decision or action area:
+
+```tsx
+<ButtonGroup align="end">
+  <Button variant="soft" color="neutral">
+    Cancel
+  </Button>
+  <Button>Save changes</Button>
+</ButtonGroup>
+```
+
+Responsive action rows can stack vertically on small screens and switch to a
+horizontal row on wider screens:
+
+```tsx
+<ButtonGroup orientation="responsive" align="end">
+  <Button variant="soft" color="neutral">
+    Cancel
+  </Button>
+  <Button>Continue</Button>
+</ButtonGroup>
+```
+
+`ButtonGroup` is not a segmented control and not a toolbar:
+
+- use `ButtonGroup` for related actions
+- use `Tabs` with `variant="segmented"` for segmented selection
+- use `Toolbar` for mixed editor/page actions, icon buttons, menus, and controls
+
+<details>
+<summary>Props</summary>
+
+ZORA props:
+
+| Prop          | Type                                                     | Default        | Notes                                                            |
+| ------------- | -------------------------------------------------------- | -------------- | ---------------------------------------------------------------- |
+| `children`    | `React.ReactNode`                                        | -              | Related action buttons or custom action children.                |
+| `align`       | `'start' \| 'center' \| 'end' \| 'stretch' \| 'between'` | `'end'`        | Main action alignment for rows; cross-axis alignment for stacks. |
+| `orientation` | `'horizontal' \| 'vertical' \| 'responsive'`             | `'horizontal'` | `responsive` stacks on base and uses a row from `md` upward.     |
+| `gap`         | `StackProps['gap']`                                      | `'s'`          | Tokenized spacing between actions.                               |
+| `reverse`     | `boolean`                                                | `false`        | Reverses rendered action order.                                  |
+| `testID`      | `string`                                                 | -              | Test id.                                                         |
+
+Inherited props:
+
+No inherited props. `ButtonGroupProps` is declared directly by ZORA and exposes
+semantic action-layout options instead of raw style props.
 
 </details>
 
