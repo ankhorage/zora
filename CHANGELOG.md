@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.1
+
+### Patch Changes
+
+- 2fdb077: Expose a ZORA Toast API backed by the existing Surface Toast implementation.
+
 ## 2.4.0
 
 ### Minor Changes
