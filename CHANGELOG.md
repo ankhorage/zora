@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.5
+
+### Patch Changes
+
+- 9db4949: Add DataTable for typed app-facing tabular data with row actions, sorting state, loading, empty, and responsive layouts.
+
 ## 2.4.4
 
 ### Patch Changes
