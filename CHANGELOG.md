@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.4
+
+### Patch Changes
+
+- 50c9679: Expose Surface-backed Menu, DropdownMenu, ActionSheet, and ActionSheetItem components.
+
 ## 2.4.3
 
 ### Patch Changes
