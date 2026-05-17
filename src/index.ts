@@ -74,17 +74,12 @@ export type { InputProps, InputTrailingAction } from './components/input';
 export { Input } from './components/input';
 export type { MediaCardImageProps, MediaCardProps } from './components/media-card';
 export { MediaCard } from './components/media-card';
+export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
+export { DropdownMenu, Menu } from './components/menu';
 export type { MetricCardProps } from './components/metric-card';
 export { MetricCard } from './components/metric-card';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
-export type {
-  DropdownMenuProps,
-  MenuAction,
-  MenuActionIntent,
-  MenuProps,
-} from './components/menu';
-export { DropdownMenu, Menu } from './components/menu';
 export type {
   NavigationItemProps,
   ZoraNavigationRouteMetadata,

@@ -17,7 +17,7 @@ import { iconButtonMeta } from '../components/icon-button/meta';
 import { imageMeta } from '../components/image/meta';
 import { inputMeta } from '../components/input/meta';
 import { mediaCardMeta } from '../components/media-card/meta';
-import { menuMeta, dropdownMenuMeta } from '../components/menu/meta';
+import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { metricCardMeta } from '../components/metric-card/meta';
 import { modalMeta } from '../components/modal/meta';
 import { navigationItemMeta } from '../components/navigation-item/meta';

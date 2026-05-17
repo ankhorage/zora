@@ -49,13 +49,7 @@ function toSurfaceAction(action: MenuAction, iconColor: string): SurfaceMenuActi
   };
 }
 
-function MenuInner({
-  themeId: _themeId,
-  mode: _mode,
-  actions,
-  onDismiss,
-  ...props
-}: MenuProps) {
+function MenuInner({ themeId: _themeId, mode: _mode, actions, onDismiss, ...props }: MenuProps) {
   const { theme } = useZoraTheme();
   const iconColor = theme.semantics.content.muted;
   const surfaceActions = useMemo(

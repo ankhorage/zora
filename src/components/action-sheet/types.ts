@@ -9,13 +9,13 @@ import type { ZoraColor } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface ActionSheetProps
-  extends ZoraBaseProps,
-    Omit<SurfaceActionSheetProps, 'children' | 'mode' | 'themeId'> {
+  extends ZoraBaseProps, Omit<SurfaceActionSheetProps, 'children' | 'mode' | 'themeId'> {
   children?: React.ReactNode;
 }
 
 export interface ActionSheetItemProps
-  extends ZoraBaseProps,
+  extends
+    ZoraBaseProps,
     Omit<SurfaceActionSheetItemProps, 'color' | 'leading' | 'mode' | 'themeId'> {
   color?: ZoraColor;
   icon?: ButtonIconSpec;

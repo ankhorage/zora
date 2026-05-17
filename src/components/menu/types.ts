@@ -23,8 +23,7 @@ export interface MenuAction {
 }
 
 export interface MenuProps
-  extends ZoraBaseProps,
-    Omit<SurfaceMenuProps, 'actions' | 'dismiss' | 'mode' | 'themeId'> {
+  extends ZoraBaseProps, Omit<SurfaceMenuProps, 'actions' | 'dismiss' | 'mode' | 'themeId'> {
   actions: readonly MenuAction[];
   onDismiss?: () => void;
 }

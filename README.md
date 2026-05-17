@@ -288,6 +288,8 @@ Metadata model overview:
 <details>
 <summary>Components</summary>
 
+- `ActionSheet`
+- `ActionSheetItem`
 - `AppBar`
 - `Avatar`
 - `AvatarGroup`
@@ -299,6 +301,7 @@ Metadata model overview:
 - `CheckboxGroup`
 - `Chip`
 - `ChipGroup`
+- `DropdownMenu`
 - `Drawer`
 - `Form`
 - `FormActions`
@@ -1154,6 +1157,158 @@ Inherits all Surface `TextareaProps` except `leadingAccessory`, `size`, and
 except `multiline`, so React Native text input props are available through
 Surface with the same Surface exclusions and re-exposed values listed for
 `Input`.
+
+</details>
+
+### `Menu` / `DropdownMenu` / `ActionSheet`
+
+Action-surface components for overflow actions, row actions, card actions, toolbar
+menus, profile actions, destructive entry points, and mobile-friendly contextual
+action sheets.
+
+`Menu` and `DropdownMenu` expose app-facing action specs while delegating the
+low-level trigger, portal, focus, keyboard, and dismissal behavior to Surface.
+`ActionSheet` and `ActionSheetItem` expose a mobile-friendly contextual action
+surface backed by Surface.
+
+```tsx
+<Menu
+  trigger={<IconButton icon={{ name: 'ellipsis-horizontal' }} label="More actions" />}
+  actions={[
+    {
+      id: 'edit',
+      title: 'Edit',
+      icon: { name: 'create-outline' },
+      onPress: edit,
+    },
+    {
+      id: 'duplicate',
+      title: 'Duplicate',
+      icon: { name: 'copy-outline' },
+      onPress: duplicate,
+    },
+    {
+      id: 'delete',
+      title: 'Delete',
+      description: 'Remove this item permanently.',
+      icon: { name: 'trash-outline' },
+      intent: 'danger',
+      onPress: remove,
+    },
+  ]}
+/>
+```
+
+`DropdownMenu` is an app-facing alias for the same trigger/actions composition:
+
+```tsx
+<DropdownMenu
+  trigger={<Button variant="outline">Sort</Button>}
+  actions={[
+    { id: 'newest', title: 'Newest first', selected: true, onPress: sortNewest },
+    { id: 'oldest', title: 'Oldest first', onPress: sortOldest },
+  ]}
+/>
+```
+
+Use `ActionSheet` for a modal contextual action surface:
+
+```tsx
+<ActionSheet
+  visible={sheetVisible}
+  onDismiss={() => setSheetVisible(false)}
+  title="Project actions"
+  description="Choose what to do with this project."
+>
+  <ActionSheetItem label="Edit" icon={{ name: 'create-outline' }} onPress={edit} />
+  <ActionSheetItem label="Duplicate" icon={{ name: 'copy-outline' }} onPress={duplicate} />
+  <ActionSheetItem
+    color="danger"
+    label="Delete"
+    icon={{ name: 'trash-outline' }}
+    onPress={remove}
+  />
+</ActionSheet>
+```
+
+These components do not own command-palette behavior, nested menus, data-table
+row logic, or global shortcut handling.
+
+<details>
+<summary>Props</summary>
+
+`Menu` / `DropdownMenu` props:
+
+| Prop            | Type                    | Default | Notes                                      |
+| --------------- | ----------------------- | ------- | ------------------------------------------ |
+| `trigger`       | `React.ReactNode`       | -       | Element used to open/close the menu.       |
+| `actions`       | `readonly MenuAction[]` | -       | Structured action rows.                    |
+| `onDismiss`     | `() => void`            | -       | Called when the menu is dismissed.         |
+| `closeOnSelect` | `boolean`               | `true`  | Closes the menu after an action activates. |
+| `testID`        | `string`                | -       | Test id.                                   |
+| `mode`          | `ZoraThemeMode`         | -       | Optional scoped theme mode override.       |
+| `themeId`       | `ZoraThemeId`           | -       | Optional scoped theme id override.         |
+
+`MenuAction` fields:
+
+| Field         | Type               | Default | Notes                                        |
+| ------------- | ------------------ | ------- | -------------------------------------------- |
+| `id`          | `string`           | -       | Stable action id.                            |
+| `title`       | `React.ReactNode`  | -       | Main action label.                           |
+| `description` | `React.ReactNode`  | -       | Optional secondary text.                     |
+| `icon`        | `ButtonIconSpec`   | -       | Convenience icon shortcut.                   |
+| `leading`     | `React.ReactNode`  | -       | Custom leading content. Overrides `icon`.    |
+| `trailing`    | `React.ReactNode`  | -       | Custom trailing content.                     |
+| `intent`      | `MenuActionIntent` | -       | Action intent, currently `default`/`danger`. |
+| `disabled`    | `boolean`          | `false` | Disables the action.                         |
+| `selected`    | `boolean`          | `false` | Marks the action as selected.                |
+| `onPress`     | `() => void`       | -       | Called when the action is selected.          |
+
+`ActionSheet` props:
+
+| Prop              | Type              | Default    | Notes                                      |
+| ----------------- | ----------------- | ---------- | ------------------------------------------ |
+| `visible`         | `boolean`         | -          | Controls sheet visibility.                 |
+| `onDismiss`       | `() => void`      | -          | Called when the sheet is dismissed.        |
+| `title`           | `React.ReactNode` | -          | Optional sheet title.                      |
+| `description`     | `React.ReactNode` | -          | Optional sheet description.                |
+| `children`        | `React.ReactNode` | -          | Usually `ActionSheetItem` children.        |
+| `cancelLabel`     | `React.ReactNode` | `'Cancel'` | Label for the cancel action.               |
+| `closeOnBackdrop` | `boolean`         | `true`     | Dismisses the sheet when backdrop pressed. |
+| `testID`          | `string`          | -          | Test id.                                   |
+| `mode`            | `ZoraThemeMode`   | -          | Optional scoped theme mode override.       |
+| `themeId`         | `ZoraThemeId`     | -          | Optional scoped theme id override.         |
+
+`ActionSheetItem` props:
+
+| Prop          | Type              | Default | Notes                                     |
+| ------------- | ----------------- | ------- | ----------------------------------------- |
+| `label`       | `React.ReactNode` | -       | Main action label.                        |
+| `description` | `React.ReactNode` | -       | Optional secondary text.                  |
+| `icon`        | `ButtonIconSpec`  | -       | Convenience icon shortcut.                |
+| `leading`     | `React.ReactNode` | -       | Custom leading content. Overrides `icon`. |
+| `trailing`    | `React.ReactNode` | -       | Custom trailing content.                  |
+| `color`       | `ZoraColor`       | -       | Semantic action color.                    |
+| `disabled`    | `boolean`         | `false` | Disables the action.                      |
+| `selected`    | `boolean`         | `false` | Marks the action as selected.             |
+| `onPress`     | `() => void`      | -       | Called when the item is pressed.          |
+| `testID`      | `string`          | -       | Test id.                                  |
+| `mode`        | `ZoraThemeMode`   | -       | Optional scoped theme mode override.      |
+| `themeId`     | `ZoraThemeId`     | -       | Optional scoped theme id override.        |
+
+Type aliases:
+
+```ts
+type DropdownMenuProps = MenuProps;
+type MenuActionIntent = 'default' | 'danger';
+```
+
+Inherited behavior:
+
+- `Menu` / `DropdownMenu` are backed by Surface `Menu`.
+- `ActionSheet` / `ActionSheetItem` are backed by Surface `ActionSheet`.
+- ZORA adds app-facing naming, icon shortcuts, public exports, metadata, and
+  theme scoping.
 
 </details>
 
