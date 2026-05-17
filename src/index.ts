@@ -1,3 +1,5 @@
+export type { ActionSheetItemProps, ActionSheetProps } from './components/action-sheet';
+export { ActionSheet, ActionSheetItem } from './components/action-sheet';
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
 export type { AvatarProps, AvatarShape, AvatarSize } from './components/avatar';
@@ -72,6 +74,8 @@ export type { InputProps, InputTrailingAction } from './components/input';
 export { Input } from './components/input';
 export type { MediaCardImageProps, MediaCardProps } from './components/media-card';
 export { MediaCard } from './components/media-card';
+export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
+export { DropdownMenu, Menu } from './components/menu';
 export type { MetricCardProps } from './components/metric-card';
 export { MetricCard } from './components/metric-card';
 export type { ModalProps } from './components/modal';
