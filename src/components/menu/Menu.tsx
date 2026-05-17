@@ -61,4 +61,3 @@ function MenuInner({ themeId: _themeId, mode: _mode, actions, onDismiss, ...prop
 }
 
 export const Menu = withZoraThemeScope(MenuInner);
-export const DropdownMenu = Menu;
