@@ -24,6 +24,17 @@ export type { ChipProps } from './components/chip';
 export { Chip } from './components/chip';
 export type { ChipGroupItem, ChipGroupProps } from './components/chip-group';
 export { ChipGroup } from './components/chip-group';
+export type {
+  DataTableCellContext,
+  DataTableColumn,
+  DataTableColumnAlign,
+  DataTableDensity,
+  DataTableProps,
+  DataTableRowAction,
+  DataTableSortDirection,
+  DataTableSortState,
+} from './components/data-table';
+export { DataTable } from './components/data-table';
 export type { DrawerProps } from './components/drawer';
 export { Drawer } from './components/drawer';
 export type {

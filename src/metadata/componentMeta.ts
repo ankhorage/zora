@@ -9,6 +9,7 @@ import { cardMeta } from '../components/card/meta';
 import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
 import { chipMeta } from '../components/chip/meta';
 import { chipGroupMeta } from '../components/chip-group/meta';
+import { dataTableMeta } from '../components/data-table/meta';
 import { drawerMeta } from '../components/drawer/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { headingMeta } from '../components/heading/meta';
@@ -94,6 +95,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   CheckboxGroup: checkboxGroupMeta,
   Chip: chipMeta,
   ChipGroup: chipGroupMeta,
+  DataTable: dataTableMeta,
   Drawer: drawerMeta,
   DropdownMenu: dropdownMenuMeta,
   Form: formMeta,
