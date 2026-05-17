@@ -1,18 +1,20 @@
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 
+import { Box, Show, Stack } from '../../foundation';
+import { EmptyState } from '../../patterns/empty-state';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { Button } from '../button';
 import { Card } from '../card';
 import { IconButton } from '../icon-button';
 import { DropdownMenu, type MenuAction } from '../menu';
 import { SkeletonList } from '../skeleton';
 import { Text, type TextAlign } from '../text';
-import { Box, Show, Stack } from '../../foundation';
-import { EmptyState } from '../../patterns/empty-state';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type {
   DataTableCellContext,
   DataTableColumn,
   DataTableColumnAlign,
+  DataTableDensity,
   DataTableProps,
   DataTableRowAction,
   DataTableSortDirection,
@@ -52,7 +54,7 @@ function resolveCellStyle<TRow extends object>(column: DataTableColumn<TRow>): V
   };
 }
 
-function resolveRowPadding(density: NonNullable<DataTableProps<object>['density']>) {
+function resolveRowPadding(density: DataTableDensity) {
   return density === 'compact' ? { px: 'm' as const, py: 's' as const } : { px: 'm' as const, py: 'm' as const };
 }
 
@@ -80,20 +82,42 @@ function renderDefaultCell(value: unknown): React.ReactNode {
   return String(value);
 }
 
+function createCellContext<TRow extends object>(
+  column: DataTableColumn<TRow>,
+  row: TRow,
+  rowIndex: number,
+): DataTableCellContext<TRow> {
+  return {
+    column,
+    row,
+    rowIndex,
+    value: resolveAccessorValue(row, column),
+  };
+}
+
 function renderCell<TRow extends object>(
   column: DataTableColumn<TRow>,
   row: TRow,
   rowIndex: number,
 ) {
-  const value = resolveAccessorValue(row, column);
-  const context: DataTableCellContext<TRow> = {
-    column,
-    row,
-    rowIndex,
-    value,
-  };
+  const context = createCellContext(column, row, rowIndex);
+  return column.renderCell ? column.renderCell(context) : renderDefaultCell(context.value);
+}
 
-  return column.renderCell ? column.renderCell(context) : renderDefaultCell(value);
+function renderTableCell<TRow extends object>(
+  column: DataTableColumn<TRow>,
+  row: TRow,
+  rowIndex: number,
+) {
+  if (column.renderCell) {
+    return column.renderCell(createCellContext(column, row, rowIndex));
+  }
+
+  return (
+    <Text align={resolveTextAlign(column.align)} variant="bodySmall">
+      {renderDefaultCell(resolveAccessorValue(row, column))}
+    </Text>
+  );
 }
 
 function resolveNextSortDirection(
@@ -164,14 +188,12 @@ function DataTableHeader<TRow extends object>({
         {columns.map((column) => {
           const currentDirection = sort?.columnId === column.id ? sort.direction : undefined;
           const sortable = Boolean(column.sortable && onSortChange);
-          const label = currentDirection ? `${column.header} ${currentDirection === 'asc' ? '↑' : '↓'}` : column.header;
+          const directionLabel = currentDirection === undefined ? '' : currentDirection === 'asc' ? ' ↑' : ' ↓';
 
           return (
             <Box key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
               {sortable ? (
-                <Text
-                  accessibilityRole="button"
-                  align={resolveTextAlign(column.align)}
+                <Button
                   color="primary"
                   onPress={() =>
                     onSortChange?.({
@@ -179,11 +201,12 @@ function DataTableHeader<TRow extends object>({
                       direction: resolveNextSortDirection(currentDirection),
                     })
                   }
-                  variant="caption"
-                  weight="semiBold"
+                  size="s"
+                  variant="ghost"
                 >
-                  {label}
-                </Text>
+                  {column.header}
+                  {directionLabel}
+                </Button>
               ) : (
                 <Text align={resolveTextAlign(column.align)} emphasis="muted" variant="caption" weight="semiBold">
                   {column.header}
@@ -232,9 +255,7 @@ function DataTableDesktop<TRow extends object>({
                 <Stack direction="row" align="center">
                   {columns.map((column) => (
                     <Box key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
-                      <Text align={resolveTextAlign(column.align)} variant="bodySmall">
-                        {renderCell(column, row, rowIndex)}
-                      </Text>
+                      {renderTableCell(column, row, rowIndex)}
                     </Box>
                   ))}
                   <Box px={padding.px} py={padding.py} style={{ alignItems: 'flex-end', minWidth: 56, width: 56 }}>
@@ -279,7 +300,11 @@ function DataTableMobile<TRow extends object>({
                   <Text emphasis="muted" variant="caption" weight="semiBold">
                     {column.header}
                   </Text>
-                  <Text variant="bodySmall">{renderCell(column, row, rowIndex)}</Text>
+                  {column.renderCell ? (
+                    renderCell(column, row, rowIndex)
+                  ) : (
+                    <Text variant="bodySmall">{renderDefaultCell(resolveAccessorValue(row, column))}</Text>
+                  )}
                 </Stack>
               ))}
             </Stack>
@@ -307,7 +332,7 @@ function DataTableInner<TRow extends object>({
   }
 
   if (rows.length === 0) {
-    return <EmptyState compact title={emptyTitle} description={emptyDescription} testID={testID} />;
+    return <EmptyState title={emptyTitle} description={emptyDescription} />;
   }
 
   const tableProps: DataTableProps<TRow> = {
