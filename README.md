@@ -301,6 +301,7 @@ Metadata model overview:
 - `CheckboxGroup`
 - `Chip`
 - `ChipGroup`
+- `DataTable`
 - `DropdownMenu`
 - `Drawer`
 - `Form`
@@ -1128,6 +1129,193 @@ ZORA props:
 Inherited props:
 
 No inherited props. `ChipGroupProps` is declared directly by ZORA.
+
+</details>
+
+### `DataTable`
+
+Typed, app-facing tabular data display for admin lists, dashboards, commerce
+orders, transactions, inventory, reports, moderation queues, bookings, and other
+structured app screens.
+
+`DataTable` is intentionally a ZORA component, not a Surface primitive. Surface
+provides the render foundation. ZORA owns the app-facing table behavior:
+columns, rows, sorting UI, row actions, loading/empty states, and responsive
+mobile fallback.
+
+```tsx
+type Order = {
+  id: string;
+  customer: string;
+  status: 'paid' | 'pending' | 'failed';
+  total: string;
+};
+
+const orders: Order[] = [
+  { id: 'ord-1001', customer: 'Nora Frei', status: 'paid', total: 'CHF 128' },
+  { id: 'ord-1002', customer: 'Mika Baumann', status: 'pending', total: 'CHF 64' },
+];
+
+<DataTable
+  columns={[
+    { id: 'customer', header: 'Customer', accessor: 'customer', sortable: true },
+    {
+      id: 'status',
+      header: 'Status',
+      renderCell: ({ row }) => (
+        <Badge color={row.status === 'paid' ? 'success' : 'warning'}>{row.status}</Badge>
+      ),
+    },
+    { id: 'total', header: 'Total', accessor: 'total', align: 'end' },
+  ]}
+  rows={orders}
+  rowId={(row) => row.id}
+/>;
+```
+
+Use `rowActions` to attach contextual actions. Row actions are rendered through
+ZORA `DropdownMenu`, so `DataTable` does not invent its own overflow behavior.
+
+```tsx
+<DataTable
+  columns={[
+    { id: 'customer', header: 'Customer', accessor: 'customer' },
+    { id: 'total', header: 'Total', accessor: 'total', align: 'end' },
+  ]}
+  rows={orders}
+  rowId={(row) => row.id}
+  rowActions={(row) => [
+    {
+      id: 'view',
+      title: 'View',
+      icon: { name: 'eye-outline' },
+      onPress: () => viewOrder(row),
+    },
+    {
+      id: 'refund',
+      title: 'Refund',
+      description: 'Start a refund workflow.',
+      icon: { name: 'return-down-back-outline' },
+      intent: 'danger',
+      onPress: () => refundOrder(row),
+    },
+  ]}
+/>
+```
+
+Use controlled sort state when a screen owns sorting:
+
+```tsx
+const [sort, setSort] = React.useState<DataTableSortState>({
+  columnId: 'customer',
+  direction: 'asc',
+});
+
+<DataTable
+  columns={[
+    { id: 'customer', header: 'Customer', accessor: 'customer', sortable: true },
+    { id: 'total', header: 'Total', accessor: 'total', align: 'end', sortable: true },
+  ]}
+  rows={orders}
+  rowId={(row) => row.id}
+  sort={sort}
+  onSortChange={setSort}
+/>;
+```
+
+`DataTable` renders a table-like layout on wider screens and a card/list fallback
+on narrow screens. It supports loading and empty states out of the box:
+
+```tsx
+<DataTable
+  columns={columns}
+  rows={orders}
+  rowId={(row) => row.id}
+  loading={isLoading}
+  loadingRows={6}
+  emptyTitle="No orders"
+  emptyDescription="Orders will appear here when customers check out."
+/>
+```
+
+V1 is intentionally not a spreadsheet or data grid. It does not include
+virtualization, column resizing, column pinning, inline editing, grouped rows,
+nested rows, server-side pagination controllers, or export features.
+
+<details>
+<summary>Props</summary>
+
+`DataTable` props:
+
+| Prop               | Type                                   | Default                           | Notes                                       |
+| ------------------ | -------------------------------------- | --------------------------------- | ------------------------------------------- |
+| `columns`          | `readonly DataTableColumn<TRow>[]`     | -                                 | Column definitions.                         |
+| `rows`             | `readonly TRow[]`                      | -                                 | Row data.                                   |
+| `rowId`            | `(row: TRow, index: number) => string` | -                                 | Stable row id resolver.                     |
+| `rowActions`       | `(row, index) => DataTableRowAction[]` | -                                 | Optional contextual row actions.            |
+| `sort`             | `DataTableSortState`                   | -                                 | Controlled sort state.                      |
+| `onSortChange`     | `(sort: DataTableSortState) => void`   | -                                 | Called when a sortable header is activated. |
+| `loading`          | `boolean`                              | `false`                           | Shows loading placeholders.                 |
+| `loadingRows`      | `number`                               | `5`                               | Placeholder row count while loading.        |
+| `emptyTitle`       | `React.ReactNode`                      | `'No data'`                       | Empty-state title.                          |
+| `emptyDescription` | `React.ReactNode`                      | `'There are no rows to display.'` | Empty-state description.                    |
+| `density`          | `DataTableDensity`                     | `'comfortable'`                   | Row density: `comfortable` or `compact`.    |
+| `testID`           | `string`                               | -                                 | Test id.                                    |
+| `mode`             | `ZoraThemeMode`                        | -                                 | Optional scoped theme mode override.        |
+| `themeId`          | `ZoraThemeId`                          | -                                 | Optional scoped theme id override.          |
+
+`DataTableColumn<TRow>` fields:
+
+| Field        | Type                                                       | Default | Notes                                      |
+| ------------ | ---------------------------------------------------------- | ------- | ------------------------------------------ |
+| `id`         | `string`                                                   | -       | Stable column id.                          |
+| `header`     | `React.ReactNode`                                          | -       | Header label.                              |
+| `accessor`   | `keyof TRow`                                               | -       | Reads a primitive/date value from the row. |
+| `align`      | `DataTableColumnAlign`                                     | `start` | Cell alignment.                            |
+| `width`      | `number`                                                   | -       | Fixed column width.                        |
+| `minWidth`   | `number`                                                   | `140`   | Minimum column width.                      |
+| `sortable`   | `boolean`                                                  | `false` | Enables sort header behavior.              |
+| `renderCell` | `(context: DataTableCellContext<TRow>) => React.ReactNode` | -       | Custom cell rendering.                     |
+
+`DataTableCellContext<TRow>` fields:
+
+| Field      | Type                    | Notes                         |
+| ---------- | ----------------------- | ----------------------------- |
+| `row`      | `TRow`                  | Current row.                  |
+| `rowIndex` | `number`                | Current row index.            |
+| `column`   | `DataTableColumn<TRow>` | Current column.               |
+| `value`    | `unknown`               | Accessor value, when present. |
+
+`DataTableRowAction<TRow>` fields:
+
+| Field         | Type                  | Default | Notes                                        |
+| ------------- | --------------------- | ------- | -------------------------------------------- |
+| `id`          | `string`              | -       | Stable action id.                            |
+| `title`       | `React.ReactNode`     | -       | Action label.                                |
+| `description` | `React.ReactNode`     | -       | Optional secondary text.                     |
+| `icon`        | `ButtonIconSpec`      | -       | Optional action icon.                        |
+| `intent`      | `MenuActionIntent`    | -       | Action intent, currently `default`/`danger`. |
+| `disabled`    | `boolean`             | `false` | Disables the action.                         |
+| `onPress`     | `(row: TRow) => void` | -       | Called with the row when selected.           |
+
+Type aliases:
+
+```ts
+type DataTableColumnAlign = 'start' | 'center' | 'end';
+type DataTableDensity = 'comfortable' | 'compact';
+type DataTableSortDirection = 'asc' | 'desc';
+
+interface DataTableSortState {
+  columnId: string;
+  direction: DataTableSortDirection;
+}
+```
+
+Default cell rendering:
+
+- `string`, `number`, `boolean`, `bigint`, and `Date` values render automatically.
+- `null` / `undefined` render as `—`.
+- Structured values render as `—` unless `renderCell` is provided.
 
 </details>
 
