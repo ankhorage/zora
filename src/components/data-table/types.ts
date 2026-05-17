@@ -1,8 +1,8 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { MenuActionIntent } from '../menu';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { MenuActionIntent } from '../menu';
 
 export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableDensity = 'comfortable' | 'compact';

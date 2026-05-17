@@ -55,7 +55,9 @@ function resolveCellStyle<TRow extends object>(column: DataTableColumn<TRow>): V
 }
 
 function resolveRowPadding(density: DataTableDensity) {
-  return density === 'compact' ? { px: 'm' as const, py: 's' as const } : { px: 'm' as const, py: 'm' as const };
+  return density === 'compact'
+    ? { px: 'm' as const, py: 's' as const }
+    : { px: 'm' as const, py: 'm' as const };
 }
 
 function resolveAccessorValue<TRow extends object>(row: TRow, column: DataTableColumn<TRow>) {
@@ -188,7 +190,8 @@ function DataTableHeader<TRow extends object>({
         {columns.map((column) => {
           const currentDirection = sort?.columnId === column.id ? sort.direction : undefined;
           const sortable = Boolean(column.sortable && onSortChange);
-          const directionLabel = currentDirection === undefined ? '' : currentDirection === 'asc' ? ' ↑' : ' ↓';
+          const directionLabel =
+            currentDirection === undefined ? '' : currentDirection === 'asc' ? ' ↑' : ' ↓';
 
           return (
             <Box key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
@@ -208,7 +211,12 @@ function DataTableHeader<TRow extends object>({
                   {directionLabel}
                 </Button>
               ) : (
-                <Text align={resolveTextAlign(column.align)} emphasis="muted" variant="caption" weight="semiBold">
+                <Text
+                  align={resolveTextAlign(column.align)}
+                  emphasis="muted"
+                  variant="caption"
+                  weight="semiBold"
+                >
                   {column.header}
                 </Text>
               )}
@@ -241,7 +249,12 @@ function DataTableDesktop<TRow extends object>({
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <Box minWidth={720} style={{ width: '100%' }}>
         <Stack gap="xs">
-          <DataTableHeader columns={columns} density={density} onSortChange={onSortChange} sort={sort} />
+          <DataTableHeader
+            columns={columns}
+            density={density}
+            onSortChange={onSortChange}
+            sort={sort}
+          />
           <Stack gap="xs">
             {rows.map((row, rowIndex) => (
               <Box
@@ -254,11 +267,20 @@ function DataTableDesktop<TRow extends object>({
               >
                 <Stack direction="row" align="center">
                   {columns.map((column) => (
-                    <Box key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
+                    <Box
+                      key={column.id}
+                      px={padding.px}
+                      py={padding.py}
+                      style={resolveCellStyle(column)}
+                    >
                       {renderTableCell(column, row, rowIndex)}
                     </Box>
                   ))}
-                  <Box px={padding.px} py={padding.py} style={{ alignItems: 'flex-end', minWidth: 56, width: 56 }}>
+                  <Box
+                    px={padding.px}
+                    py={padding.py}
+                    style={{ alignItems: 'flex-end', minWidth: 56, width: 56 }}
+                  >
                     {renderRowActions({ row, rowActions, rowIndex, testID })}
                   </Box>
                 </Stack>
@@ -283,7 +305,9 @@ function DataTableMobile<TRow extends object>({
   return (
     <Stack gap="s">
       {rows.map((row, rowIndex) => {
-        const title = primaryColumn ? renderCell(primaryColumn, row, rowIndex) : `Row ${rowIndex + 1}`;
+        const title = primaryColumn
+          ? renderCell(primaryColumn, row, rowIndex)
+          : `Row ${rowIndex + 1}`;
         const actions = renderRowActions({ row, rowActions, rowIndex, testID });
 
         return (
@@ -303,7 +327,9 @@ function DataTableMobile<TRow extends object>({
                   {column.renderCell ? (
                     renderCell(column, row, rowIndex)
                   ) : (
-                    <Text variant="bodySmall">{renderDefaultCell(resolveAccessorValue(row, column))}</Text>
+                    <Text variant="bodySmall">
+                      {renderDefaultCell(resolveAccessorValue(row, column))}
+                    </Text>
                   )}
                 </Stack>
               ))}
