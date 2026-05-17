@@ -1,12 +1,11 @@
 import { Menu as SurfaceMenu, type MenuAction as SurfaceMenuAction } from '@ankhorage/surface';
 import React, { useMemo } from 'react';
 
-import { Box, Inline, Stack } from '../../foundation';
+import { Box } from '../../foundation';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Icon } from '../icon';
-import { Text } from '../text';
 import type { MenuAction, MenuProps } from './types';
 
 function renderActionLeading(action: MenuAction, iconColor: string) {
@@ -28,21 +27,6 @@ function renderActionLeading(action: MenuAction, iconColor: string) {
   );
 }
 
-function renderActionTitle(action: MenuAction) {
-  return (
-    <Stack gap="xxs">
-      <Text variant="bodySmall" weight={action.selected ? 'semiBold' : 'medium'}>
-        {action.title}
-      </Text>
-      {action.description ? (
-        <Text emphasis="muted" variant="caption">
-          {action.description}
-        </Text>
-      ) : null}
-    </Stack>
-  );
-}
-
 function renderActionTrailing(action: MenuAction) {
   if (!action.trailing) {
     return undefined;
@@ -54,13 +38,13 @@ function renderActionTrailing(action: MenuAction) {
 function toSurfaceAction(action: MenuAction, iconColor: string): SurfaceMenuAction {
   return {
     activate: action.onPress,
-    description: undefined,
+    description: action.description,
     disabled: action.disabled,
     id: action.id,
     intent: action.intent,
     leading: renderActionLeading(action, iconColor),
     selected: action.selected,
-    title: renderActionTitle(action),
+    title: action.title,
     trailing: renderActionTrailing(action),
   };
 }
