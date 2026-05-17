@@ -77,11 +77,15 @@ function renderDefaultCell(value: unknown): React.ReactNode {
     return String(value);
   }
 
+  if (typeof value === 'bigint') {
+    return value.toString();
+  }
+
   if (value instanceof Date) {
     return value.toLocaleDateString();
   }
 
-  return String(value);
+  return '—';
 }
 
 function createCellContext<TRow extends object>(
