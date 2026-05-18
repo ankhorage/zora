@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.7
+
+### Patch Changes
+
+- f27ce51: Add a controlled Pagination component for paged app data screens.
+
 ## 2.4.6
 
 ### Patch Changes
