@@ -186,6 +186,23 @@ Export paths: `src/index.ts`
 | width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
 | zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 
+## Breadcrumbs
+
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:143:14`
+
+Export paths: `src/index.ts`
+
+| Prop      | Type                         | Required | Default | Description |
+| --------- | ---------------------------- | -------- | ------- | ----------- |
+| compact   | `boolean \| undefined`       | no       | —       |             |
+| disabled  | `boolean \| undefined`       | no       | —       |             |
+| items     | `readonly BreadcrumbItem[]`  | yes      | —       |             |
+| maxItems  | `number \| undefined`        | no       | —       |             |
+| mode      | `ZoraThemeMode \| undefined` | no       | —       |             |
+| separator | `React.ReactNode`            | no       | —       |             |
+| testID    | `string \| undefined`        | no       | —       |             |
+| themeId   | `string \| undefined`        | no       | —       |             |
+
 ## Button
 
 Source: `src/components/button/Button.tsx:23:14`

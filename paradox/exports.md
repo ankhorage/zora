@@ -325,6 +325,47 @@ Source: `src/foundation/Box.tsx:7:1`
 | width              | property | `Responsive<string \| number> \| undefined`                                                                                      | no       |             |
 | zIndex             | property | `Responsive<number> \| undefined`                                                                                                | no       |             |
 
+## BreadcrumbItem
+
+Kind: `type`
+Module: `src/components/breadcrumbs/types.ts`
+Source: `src/components/breadcrumbs/types.ts:6:1`
+
+### Members
+
+| Name     | Kind     | Type                          | Required | Description |
+| -------- | -------- | ----------------------------- | -------- | ----------- |
+| disabled | property | `boolean \| undefined`        | no       |             |
+| icon     | property | `ButtonIconSpec \| undefined` | no       |             |
+| id       | property | `string`                      | yes      |             |
+| label    | property | `React.ReactNode`             | yes      |             |
+| onPress  | property | `(() => void) \| undefined`   | no       |             |
+
+## Breadcrumbs
+
+Kind: `value`
+Module: `src/components/breadcrumbs/Breadcrumbs.tsx`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:143:14`
+
+## BreadcrumbsProps
+
+Kind: `type`
+Module: `src/components/breadcrumbs/types.ts`
+Source: `src/components/breadcrumbs/types.ts:14:1`
+
+### Members
+
+| Name      | Kind     | Type                         | Required | Description |
+| --------- | -------- | ---------------------------- | -------- | ----------- |
+| compact   | property | `boolean \| undefined`       | no       |             |
+| disabled  | property | `boolean \| undefined`       | no       |             |
+| items     | property | `readonly BreadcrumbItem[]`  | yes      |             |
+| maxItems  | property | `number \| undefined`        | no       |             |
+| mode      | property | `ZoraThemeMode \| undefined` | no       |             |
+| separator | property | `React.ReactNode`            | no       |             |
+| testID    | property | `string \| undefined`        | no       |             |
+| themeId   | property | `string \| undefined`        | no       |             |
+
 ## Button
 
 Kind: `value`
@@ -4351,7 +4392,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:86:14`
+Source: `src/metadata/componentMeta.ts:87:14`
 
 ## ZORA_EMPHASES
 
