@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.6
+
+### Patch Changes
+
+- 884095d: Add DatePicker and TimePicker components backed by existing ZORA ActionSheet primitives.
+
 ## 2.4.5
 
 ### Patch Changes
