@@ -9,10 +9,14 @@ import { Icon } from '../icon';
 import { Text } from '../text';
 import type { BreadcrumbItem, BreadcrumbsProps } from './types';
 
-interface BreadcrumbRenderItem {
-  item?: BreadcrumbItem;
-  type: 'item' | 'ellipsis';
-}
+type BreadcrumbRenderItem =
+  | {
+      item: BreadcrumbItem;
+      type: 'item';
+    }
+  | {
+      type: 'ellipsis';
+    };
 
 function normalizeMaxItems(value: number | undefined): number | undefined {
   if (value === undefined || !Number.isFinite(value)) {
@@ -104,10 +108,6 @@ function BreadcrumbsInner({
         }
 
         const item = renderItem.item;
-        if (!item) {
-          return null;
-        }
-
         const current = item.id === currentItemId;
         const interactive = !current && !disabled && !item.disabled && Boolean(item.onPress);
 
