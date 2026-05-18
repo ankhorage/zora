@@ -3,6 +3,7 @@ import { appBarMeta } from '../components/app-bar/meta';
 import { avatarMeta } from '../components/avatar/meta';
 import { avatarGroupMeta } from '../components/avatar-group/meta';
 import { badgeMeta } from '../components/badge/meta';
+import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
 import { buttonMeta } from '../components/button/meta';
 import { buttonGroupMeta } from '../components/button-group/meta';
 import { cardMeta } from '../components/card/meta';
@@ -91,6 +92,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Avatar: avatarMeta,
   AvatarGroup: avatarGroupMeta,
   Badge: badgeMeta,
+  Breadcrumbs: breadcrumbsMeta,
   Button: buttonMeta,
   ButtonGroup: buttonGroupMeta,
   Card: cardMeta,
