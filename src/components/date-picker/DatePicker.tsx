@@ -46,7 +46,11 @@ function isAfterLocalDay(left: Date, right: Date): boolean {
   return startOfLocalDay(left).getTime() > startOfLocalDay(right).getTime();
 }
 
-function isDateDisabled(value: Date, minDate: Date | undefined, maxDate: Date | undefined): boolean {
+function isDateDisabled(
+  value: Date,
+  minDate: Date | undefined,
+  maxDate: Date | undefined,
+): boolean {
   if (minDate && isBeforeLocalDay(value, minDate)) {
     return true;
   }
@@ -91,7 +95,11 @@ function resolveInitialMonth(value: Date | null, minDate: Date | undefined): Dat
   return new Date(base.getFullYear(), base.getMonth(), 1);
 }
 
-function canNavigateToMonth(month: Date, minDate: Date | undefined, maxDate: Date | undefined): boolean {
+function canNavigateToMonth(
+  month: Date,
+  minDate: Date | undefined,
+  maxDate: Date | undefined,
+): boolean {
   const firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
   const lastDay = new Date(month.getFullYear(), month.getMonth() + 1, 0);
 
@@ -127,7 +135,11 @@ function DatePickerInner({
   const monthDays = React.useMemo(() => createMonthDays(displayMonth), [displayMonth]);
   const previousMonth = new Date(displayMonth.getFullYear(), displayMonth.getMonth() - 1, 1);
   const nextMonth = new Date(displayMonth.getFullYear(), displayMonth.getMonth() + 1, 1);
-  const displayValue = value ? (formatDate ? formatDate(value) : formatDefaultDate(value)) : placeholder;
+  const displayValue = value
+    ? formatDate
+      ? formatDate(value)
+      : formatDefaultDate(value)
+    : placeholder;
 
   React.useEffect(() => {
     if (visible) {
