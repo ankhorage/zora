@@ -35,6 +35,8 @@ export type {
   DataTableSortState,
 } from './components/data-table';
 export { DataTable } from './components/data-table';
+export type { DatePickerProps, DatePickerValue } from './components/date-picker';
+export { DatePicker } from './components/date-picker';
 export type { DrawerProps } from './components/drawer';
 export { Drawer } from './components/drawer';
 export type {
@@ -132,6 +134,8 @@ export type {
 export { Text } from './components/text';
 export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
+export type { TimePickerProps, TimePickerValue } from './components/time-picker';
+export { TimePicker } from './components/time-picker';
 export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';
 export { Toast, ToastProvider, useToast } from './components/toast';
 export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
