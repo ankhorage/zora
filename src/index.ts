@@ -101,6 +101,8 @@ export type {
 export { NavigationItem } from './components/navigation-item';
 export type { NavigationListProps, ZoraNavigationRouteMap } from './components/navigation-list';
 export { NavigationList } from './components/navigation-list';
+export type { PaginationProps } from './components/pagination';
+export { Pagination } from './components/pagination';
 export type { ProgressProps } from './components/progress';
 export { Progress } from './components/progress';
 export type { RadioGroupOption, RadioGroupProps, RadioProps } from './components/radio';

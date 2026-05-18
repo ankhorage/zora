@@ -24,6 +24,7 @@ import { metricCardMeta } from '../components/metric-card/meta';
 import { modalMeta } from '../components/modal/meta';
 import { navigationItemMeta } from '../components/navigation-item/meta';
 import { navigationListMeta } from '../components/navigation-list/meta';
+import { paginationMeta } from '../components/pagination/meta';
 import { progressMeta } from '../components/progress/meta';
 import { radioGroupMeta, radioMeta } from '../components/radio/meta';
 import { ratingMeta } from '../components/rating/meta';
@@ -116,6 +117,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Modal: modalMeta,
   NavigationItem: navigationItemMeta,
   NavigationList: navigationListMeta,
+  Pagination: paginationMeta,
   Progress: progressMeta,
   Radio: radioMeta,
   RadioGroup: radioGroupMeta,
