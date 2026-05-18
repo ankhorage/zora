@@ -8,5 +8,6 @@ export default createKnipConfig({
     'eslint.config.mjs',
     'examples/expo-showcase/**',
     'examples/*/*/**',
+    'paradox.config.ts'
   ],
 });
