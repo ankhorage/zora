@@ -34,11 +34,16 @@ function createRenderItems(
     return items.map((item) => ({ item, type: 'item' }));
   }
 
+  const [firstItem] = items;
+  if (firstItem === undefined) {
+    return [];
+  }
+
   const trailingCount = maxItems - 2;
   const trailingItems = items.slice(items.length - trailingCount);
 
   return [
-    { item: items[0], type: 'item' },
+    { item: firstItem, type: 'item' },
     { type: 'ellipsis' },
     ...trailingItems.map((item) => ({ item, type: 'item' }) satisfies BreadcrumbRenderItem),
   ];
