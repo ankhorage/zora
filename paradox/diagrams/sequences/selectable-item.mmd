@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant participant_children as children
+  participant participant_isRenderProp as isRenderProp
+  participant participant_isSelected as isSelected
+  participant participant_resolveTrigger as resolveTrigger
+  participant participant_SelectableItem as SelectableItem
+  participant participant_useSelection as useSelection
+  participant_SelectableItem->>participant_useSelection: useSelection()
+  participant_useSelection-->>participant_SelectableItem: return
+  participant_SelectableItem->>participant_resolveTrigger: resolveTrigger()
+  participant_resolveTrigger-->>participant_SelectableItem: return
+  participant_SelectableItem->>participant_isSelected: selection.isSelected()
+  participant_isSelected-->>participant_SelectableItem: return
+  participant_SelectableItem->>participant_isRenderProp: isRenderProp()
+  participant_isRenderProp-->>participant_SelectableItem: return
+  participant_SelectableItem->>participant_children: children()
+  participant_children-->>participant_SelectableItem: return

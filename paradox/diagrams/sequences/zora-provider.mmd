@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_createZoraThemeConfig as createZoraThemeConfig
+  participant participant_parseHexColorOrThrow as parseHexColorOrThrow
+  participant participant_ZoraProvider as ZoraProvider
+  participant_ZoraProvider->>participant_createZoraThemeConfig: createZoraThemeConfig()
+  participant_createZoraThemeConfig->>participant_parseHexColorOrThrow: parseHexColorOrThrow()
+  participant_parseHexColorOrThrow-->>participant_createZoraThemeConfig: return
+  participant_createZoraThemeConfig-->>participant_ZoraProvider: return

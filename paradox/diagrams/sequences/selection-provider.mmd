@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_normalizeIds as normalizeIds
+  participant participant_resolveDisabled as resolveDisabled
+  participant participant_resolveMode as resolveMode
+  participant participant_SelectionProvider as SelectionProvider
+  participant_SelectionProvider->>participant_resolveMode: resolveMode()
+  participant_resolveMode-->>participant_SelectionProvider: return
+  participant_SelectionProvider->>participant_resolveDisabled: resolveDisabled()
+  participant_resolveDisabled-->>participant_SelectionProvider: return
+  participant_SelectionProvider->>participant_normalizeIds: normalizeIds()
+  participant_normalizeIds-->>participant_SelectionProvider: return

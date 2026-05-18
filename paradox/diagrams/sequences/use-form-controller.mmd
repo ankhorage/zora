@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createInitialValues as createInitialValues
+  participant participant_useFormController as useFormController
+  participant_useFormController->>participant_createInitialValues: createInitialValues()
+  participant_createInitialValues-->>participant_useFormController: return

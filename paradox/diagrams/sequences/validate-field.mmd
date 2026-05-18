@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_validateField as validateField
+  participant participant_validateValue as validateValue
+  participant_validateField->>participant_validateValue: validateValue()
+  participant_validateValue-->>participant_validateField: return

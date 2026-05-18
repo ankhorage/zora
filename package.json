@@ -72,6 +72,7 @@
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "changeset": "changeset",
     "changeset:status": "changeset status --since=origin/main",
+    "docs": "paradox",
     "knip": "ankhorage-knip",
     "lint": "ankhorage-eslint . --max-warnings=0",
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
@@ -84,6 +85,7 @@
   },
   "devDependencies": {
     "@ankhorage/devtools": "^1.0.6",
+    "@ankhorage/paradox": "^0.1.7",
     "@changesets/cli": "^2.31.0",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-picker/picker": "^2.11.4",

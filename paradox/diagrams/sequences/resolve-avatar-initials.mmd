@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_resolveAvatarInitials as resolveAvatarInitials
+  participant participant_takeFirstCharacter as takeFirstCharacter
+  participant participant_takeFirstTwoCharacters as takeFirstTwoCharacters
+  participant_resolveAvatarInitials->>participant_takeFirstTwoCharacters: takeFirstTwoCharacters()
+  participant_takeFirstTwoCharacters-->>participant_resolveAvatarInitials: return
+  participant_resolveAvatarInitials->>participant_takeFirstCharacter: takeFirstCharacter()
+  participant_takeFirstCharacter-->>participant_resolveAvatarInitials: return
