@@ -107,7 +107,7 @@ function BreadcrumbsInner({
           );
         }
 
-        const item = renderItem.item;
+        const { item } = renderItem;
         const current = item.id === currentItemId;
         const interactive = !current && !disabled && !item.disabled && Boolean(item.onPress);
 
@@ -116,7 +116,6 @@ function BreadcrumbsInner({
             {interactive ? (
               <Button
                 color="neutral"
-                disabled={disabled || item.disabled}
                 leadingIcon={item.icon}
                 onPress={item.onPress}
                 size={compact ? 's' : 'm'}
