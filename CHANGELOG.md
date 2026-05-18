@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.8
+
+### Patch Changes
+
+- 56ab2a9: Add a Breadcrumbs component for app-facing route hierarchy and navigation context.
+
 ## 2.4.7
 
 ### Patch Changes
