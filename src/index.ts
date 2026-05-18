@@ -8,6 +8,8 @@ export type { AvatarGroupItem, AvatarGroupProps } from './components/avatar-grou
 export { AvatarGroup } from './components/avatar-group';
 export type { BadgeProps } from './components/badge';
 export { Badge } from './components/badge';
+export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
+export { Breadcrumbs } from './components/breadcrumbs';
 export type { ButtonProps } from './components/button';
 export { Button } from './components/button';
 export type {
