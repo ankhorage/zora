@@ -124,6 +124,24 @@ graph TD
   package__ankhorage_zora -.-> module_src_components_badge_types_ts
   module_src_components_badge_types_ts --> module_src_internal_recipes_ts
   module_src_components_badge_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx["src/components/breadcrumbs/Breadcrumbs.tsx"]
+  package__ankhorage_zora -.-> module_src_components_breadcrumbs_Breadcrumbs_tsx
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_components_breadcrumbs_types_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_components_button_index_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_components_icon_index_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_components_text_index_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_foundation_index_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_internal_recipes_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_breadcrumbs_index_ts["src/components/breadcrumbs/index.ts"]
+  package__ankhorage_zora -.-> module_src_components_breadcrumbs_index_ts
+  module_src_components_breadcrumbs_meta_ts["src/components/breadcrumbs/meta.ts"]
+  package__ankhorage_zora -.-> module_src_components_breadcrumbs_meta_ts
+  module_src_components_breadcrumbs_meta_ts --> module_src_metadata_index_ts
+  module_src_components_breadcrumbs_types_ts["src/components/breadcrumbs/types.ts"]
+  package__ankhorage_zora -.-> module_src_components_breadcrumbs_types_ts
+  module_src_components_breadcrumbs_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_button_group_ButtonGroup_tsx["src/components/button-group/ButtonGroup.tsx"]
   package__ankhorage_zora -.-> module_src_components_button_group_ButtonGroup_tsx
   module_src_components_button_group_ButtonGroup_tsx --> module_src_components_button_group_types_ts
@@ -884,6 +902,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_group_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_badge_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_button_group_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_button_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_card_meta_ts

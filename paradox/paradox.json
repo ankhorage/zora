@@ -232,6 +232,39 @@
       "exports": ["BadgeProps"]
     },
     {
+      "path": "src/components/breadcrumbs/Breadcrumbs.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/breadcrumbs/types.ts",
+        "src/components/button/index.ts",
+        "src/components/icon/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/internal/recipes.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["Breadcrumbs"]
+    },
+    {
+      "path": "src/components/breadcrumbs/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["BreadcrumbItem", "Breadcrumbs", "BreadcrumbsProps"]
+    },
+    {
+      "path": "src/components/breadcrumbs/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["breadcrumbsMeta"]
+    },
+    {
+      "path": "src/components/breadcrumbs/types.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["BreadcrumbItem", "BreadcrumbsProps"]
+    },
+    {
       "path": "src/components/button-group/ButtonGroup.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -1644,6 +1677,9 @@
         "BadgeProps",
         "Box",
         "BoxProps",
+        "BreadcrumbItem",
+        "Breadcrumbs",
+        "BreadcrumbsProps",
         "Button",
         "ButtonGroup",
         "ButtonGroupAlign",
@@ -2217,6 +2253,7 @@
         "src/components/avatar-group/meta.ts",
         "src/components/avatar/meta.ts",
         "src/components/badge/meta.ts",
+        "src/components/breadcrumbs/meta.ts",
         "src/components/button-group/meta.ts",
         "src/components/button/meta.ts",
         "src/components/card/meta.ts",
@@ -4882,6 +4919,153 @@
           "name": "zIndex",
           "kind": "property",
           "type": "Responsive<number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "BreadcrumbItem",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/breadcrumbs/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "kind": "property",
+          "type": "ButtonIconSpec | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "label",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "Breadcrumbs",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 143,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "BreadcrumbsProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/breadcrumbs/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/types.ts",
+        "line": 14,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["BreadcrumbItem", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "compact",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "items",
+          "kind": "property",
+          "type": "readonly BreadcrumbItem[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "maxItems",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "separator",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
           "required": false,
           "description": null
         }
@@ -21716,7 +21900,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 86,
+        "line": 87,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -24006,6 +24190,69 @@
         {
           "name": "zIndex",
           "type": "Responsive<number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Breadcrumbs",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 143,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "compact",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "items",
+          "type": "readonly BreadcrumbItem[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "maxItems",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "separator",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
           "required": false,
           "description": null
         }
@@ -35855,6 +36102,51 @@
       }
     },
     {
+      "name": "normalizeMaxItems",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRenderItems",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 29,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderSeparator",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 52,
+        "column": 1
+      }
+    },
+    {
+      "name": "BreadcrumbLabel",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 60,
+        "column": 1
+      }
+    },
+    {
+      "name": "BreadcrumbsInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "line": 80,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveDirection",
       "description": null,
       "sourceLocation": {
@@ -38578,6 +38870,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/components/breadcrumbs/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/components/button/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -39129,6 +39426,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/badge/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/components/breadcrumbs/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -39895,6 +40197,66 @@
         "fromPath": "src/components/badge/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/badge/types.ts"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/internal/recipes.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/components/icon/index.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toPath": "src/components/breadcrumbs/types.ts",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/index.ts",
+        "toPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "sourcePath": "src/components/breadcrumbs/index.ts"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/index.ts",
+        "toPath": "src/components/breadcrumbs/types.ts",
+        "sourcePath": "src/components/breadcrumbs/index.ts"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/components/breadcrumbs/meta.ts"
+      },
+      {
+        "fromPath": "src/components/breadcrumbs/types.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
       },
       {
         "fromPath": "src/components/button/Button.tsx",
@@ -44081,6 +44443,42 @@
         "sourcePath": "src/components/badge/Badge.tsx"
       },
       {
+        "fromSymbol": "BreadcrumbLabel",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbLabel",
+        "toSymbol": "resolveIconSize",
+        "callExpression": "resolveIconSize",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbsInner",
+        "toSymbol": "normalizeMaxItems",
+        "callExpression": "normalizeMaxItems",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbsInner",
+        "toSymbol": "createRenderItems",
+        "callExpression": "createRenderItems",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toSymbol": "renderSeparator",
+        "callExpression": "renderSeparator",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "src/components/breadcrumbs/Breadcrumbs.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
+      },
+      {
         "fromSymbol": "ButtonInner",
         "toSymbol": "resolveButtonRecipe",
         "callExpression": "resolveButtonRecipe",
@@ -46644,6 +47042,41 @@
         "fromSymbol": "BadgeProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/badge/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbItem",
+        "toType": "ButtonIconSpec",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbItem",
+        "toType": "React",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbItem",
+        "toType": "ReactNode",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "BreadcrumbItem",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "React",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/components/breadcrumbs/types.ts"
       },
       {
         "fromSymbol": "ButtonProps",

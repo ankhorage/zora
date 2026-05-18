@@ -21,6 +21,10 @@ graph LR
   module_src_components_badge_index_ts["src/components/badge/index.ts"]
   module_src_components_badge_meta_ts["src/components/badge/meta.ts"]
   module_src_components_badge_types_ts["src/components/badge/types.ts"]
+  module_src_components_breadcrumbs_Breadcrumbs_tsx["src/components/breadcrumbs/Breadcrumbs.tsx"]
+  module_src_components_breadcrumbs_index_ts["src/components/breadcrumbs/index.ts"]
+  module_src_components_breadcrumbs_meta_ts["src/components/breadcrumbs/meta.ts"]
+  module_src_components_breadcrumbs_types_ts["src/components/breadcrumbs/types.ts"]
   module_src_components_button_group_ButtonGroup_tsx["src/components/button-group/ButtonGroup.tsx"]
   module_src_components_button_group_index_ts["src/components/button-group/index.ts"]
   module_src_components_button_group_meta_ts["src/components/button-group/meta.ts"]
@@ -414,6 +418,14 @@ graph LR
   export_BoxProps["BoxProps"]
   module_src_foundation_Box_tsx --> export_BoxProps
   export_BoxProps -.-> export_ZoraThemeMode
+  export_BreadcrumbItem["BreadcrumbItem"]
+  module_src_components_breadcrumbs_types_ts --> export_BreadcrumbItem
+  export_Breadcrumbs["Breadcrumbs"]
+  module_src_components_breadcrumbs_Breadcrumbs_tsx --> export_Breadcrumbs
+  export_BreadcrumbsProps["BreadcrumbsProps"]
+  module_src_components_breadcrumbs_types_ts --> export_BreadcrumbsProps
+  export_BreadcrumbsProps -.-> export_BreadcrumbItem
+  export_BreadcrumbsProps -.-> export_ZoraThemeMode
   export_Button["Button"]
   module_src_components_button_Button_tsx --> export_Button
   export_ButtonGroup["ButtonGroup"]
