@@ -10,6 +10,7 @@ import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
 import { chipMeta } from '../components/chip/meta';
 import { chipGroupMeta } from '../components/chip-group/meta';
 import { dataTableMeta } from '../components/data-table/meta';
+import { datePickerMeta } from '../components/date-picker/meta';
 import { drawerMeta } from '../components/drawer/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { headingMeta } from '../components/heading/meta';
@@ -37,6 +38,7 @@ import {
 import { tabsMeta } from '../components/tabs/meta';
 import { textMeta } from '../components/text/meta';
 import { textareaMeta } from '../components/textarea/meta';
+import { timePickerMeta } from '../components/time-picker/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { foundationMetas } from '../foundation/meta';
@@ -96,6 +98,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Chip: chipMeta,
   ChipGroup: chipGroupMeta,
   DataTable: dataTableMeta,
+  DatePicker: datePickerMeta,
   Drawer: drawerMeta,
   DropdownMenu: dropdownMenuMeta,
   Form: formMeta,
@@ -126,6 +129,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Tabs: tabsMeta,
   Text: textMeta,
   Textarea: textareaMeta,
+  TimePicker: timePickerMeta,
   Toast: toastMeta,
   ToastProvider: toastProviderMeta,
   Toolbar: toolbarMeta,
