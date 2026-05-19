@@ -194,6 +194,7 @@ export { SidebarLayout } from './layout/sidebar-layout';
 export type { TopbarLayoutProps } from './layout/topbar-layout';
 export { TopbarLayout } from './layout/topbar-layout';
 export type {
+  ZoraBindableComponentType,
   ZoraComponentBlueprint,
   ZoraComponentCategory,
   ZoraComponentEventMeta,
@@ -209,7 +210,7 @@ export type {
   ZoraComponentPropValue,
   ZoraComponentSlotMeta,
 } from './metadata';
-export { ZORA_COMPONENT_META } from './metadata';
+export { ZORA_BINDABLE_COMPONENT_META, ZORA_COMPONENT_META } from './metadata';
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,
