@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.0.7",
-    "@ankhorage/contracts": "^1.7.0",
+    "@ankhorage/contracts": "^1.12.0",
     "@ankhorage/surface": "^2.0.2"
   },
   "files": [
@@ -62,6 +62,13 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./metadata": {
+      "react-native": "./src/metadata/index.ts",
+      "browser": "./src/metadata/index.ts",
+      "types": "./dist/metadata/index.d.ts",
+      "import": "./dist/metadata/index.js",
+      "default": "./dist/metadata/index.js"
     },
     "./package.json": "./package.json"
   },
