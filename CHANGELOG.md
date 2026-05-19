@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.0
+
+### Minor Changes
+
+- a61d3ea: Add serializable bindable component metadata exports for core ZORA components using shared UI metadata contracts.
+
 ## 2.4.8
 
 ### Patch Changes
