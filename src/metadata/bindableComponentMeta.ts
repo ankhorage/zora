@@ -168,7 +168,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           description: 'Runs when the input value changes.',
           payload: {
             eventType: 'input.changeText',
-            fields: [{ path: 'value', type: 'string', label: 'Value', required: true }],
+            fields: [{ path: 'value', type: 'string', label: 'Value' }],
           },
         },
       },
@@ -223,7 +223,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           description: 'Runs when the textarea value changes.',
           payload: {
             eventType: 'textarea.changeText',
-            fields: [{ path: 'value', type: 'string', label: 'Value', required: true }],
+            fields: [{ path: 'value', type: 'string', label: 'Value' }],
           },
         },
       },
@@ -278,7 +278,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           description: 'Runs when the selected value changes.',
           payload: {
             eventType: 'select.valueChange',
-            fields: [{ path: 'value', type: 'string', label: 'Value', required: true }],
+            fields: [{ path: 'value', type: 'string', label: 'Value' }],
           },
         },
       },
@@ -334,7 +334,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           description: 'Runs when checked state changes.',
           payload: {
             eventType: 'checkbox.checkedChange',
-            fields: [{ path: 'checked', type: 'boolean', label: 'Checked', required: true }],
+            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
           },
         },
       },
@@ -389,7 +389,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           description: 'Runs when the switch value changes.',
           payload: {
             eventType: 'switchField.valueChange',
-            fields: [{ path: 'value', type: 'boolean', label: 'Value', required: true }],
+            fields: [{ path: 'value', type: 'boolean', label: 'Value' }],
           },
         },
       },
