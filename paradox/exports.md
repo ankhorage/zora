@@ -4322,8 +4322,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
@@ -4382,6 +4382,12 @@ Source: `src/theme/withZoraThemeScope.tsx:6:1`
   - Component: `(props: P) => React.ReactElement | null`
   - returns: `(props: P) => React.ReactElement | null`
 
+## ZORA_BINDABLE_COMPONENT_META
+
+Kind: `value`
+Module: `src/metadata/bindableComponentMeta.ts`
+Source: `src/metadata/bindableComponentMeta.ts:3:14`
+
 ## ZORA_COLORS
 
 Kind: `value`
@@ -4425,6 +4431,12 @@ Source: `src/theme/ZoraBaseProps.ts:3:1`
 | mode    | property | `ZoraThemeMode \| undefined` | no       |             |
 | testID  | property | `string \| undefined`        | no       |             |
 | themeId | property | `string \| undefined`        | no       |             |
+
+## ZoraBindableComponentType
+
+Kind: `unknown`
+Module: `src/metadata/bindableComponentMeta.ts`
+Source: `src/metadata/bindableComponentMeta.ts:476:1`
 
 ## ZoraColor
 

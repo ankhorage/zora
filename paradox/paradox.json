@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.4.7",
+      "value": "v2.4.8",
       "color": "cb3837"
     },
     {
@@ -1959,12 +1959,14 @@
         "validateValue",
         "ValidationRule",
         "withZoraThemeScope",
+        "ZORA_BINDABLE_COMPONENT_META",
         "ZORA_COLORS",
         "ZORA_COMPONENT_META",
         "ZORA_EMPHASES",
         "ZORA_PALETTE_COLORS",
         "ZORA_STATUS_COLORS",
         "ZoraBaseProps",
+        "ZoraBindableComponentType",
         "ZoraColor",
         "ZoraComponentBlueprint",
         "ZoraComponentCategory",
@@ -2245,6 +2247,12 @@
       ]
     },
     {
+      "path": "src/metadata/bindableComponentMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["ZORA_BINDABLE_COMPONENT_META", "ZoraBindableComponentType"]
+    },
+    {
       "path": "src/metadata/componentMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -2331,7 +2339,9 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": [
+        "ZORA_BINDABLE_COMPONENT_META",
         "ZORA_COMPONENT_META",
+        "ZoraBindableComponentType",
         "ZoraComponentBlueprint",
         "ZoraComponentCategory",
         "ZoraComponentEventMeta",
@@ -21700,9 +21710,9 @@
       "relatedSymbols": [],
       "signatures": [
         {
-          "label": "() => { theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "label": "() => { theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "parameters": [],
-          "returnType": "{ theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "returnType": "{ theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "returnDescription": null
         }
       ],
@@ -21874,6 +21884,24 @@
       "structuredRows": []
     },
     {
+      "name": "ZORA_BINDABLE_COMPONENT_META",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/metadata/bindableComponentMeta.ts",
+      "sourceLocation": {
+        "filePath": "src/metadata/bindableComponentMeta.ts",
+        "line": 3,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "ZORA_COLORS",
       "description": null,
       "isReadme": false,
@@ -22001,6 +22029,24 @@
           "description": null
         }
       ],
+      "structuredRows": []
+    },
+    {
+      "name": "ZoraBindableComponentType",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/metadata/bindableComponentMeta.ts",
+      "sourceLocation": {
+        "filePath": "src/metadata/bindableComponentMeta.ts",
+        "line": 476,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
       "structuredRows": []
     },
     {
@@ -39777,6 +39823,11 @@
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/metadata/types.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/index.ts",
+        "toPath": "src/metadata/bindableComponentMeta.ts",
+        "sourcePath": "src/metadata/index.ts"
       },
       {
         "fromPath": "src/metadata/index.ts",

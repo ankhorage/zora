@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'bun:test';
-
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
+import { describe, expect, it } from 'bun:test';
 
 import { ZORA_BINDABLE_COMPONENT_META } from './bindableComponentMeta';
 
