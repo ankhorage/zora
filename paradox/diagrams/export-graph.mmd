@@ -219,6 +219,7 @@ graph LR
   module_src_layout_topbar_layout_TopbarLayout_tsx["src/layout/topbar-layout/TopbarLayout.tsx"]
   module_src_layout_topbar_layout_types_ts["src/layout/topbar-layout/types.ts"]
   module_src_metadata_allowedChildren_ts["src/metadata/allowedChildren.ts"]
+  module_src_metadata_bindableComponentMeta_ts["src/metadata/bindableComponentMeta.ts"]
   module_src_metadata_componentMeta_ts["src/metadata/componentMeta.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
   module_src_metadata_types_ts["src/metadata/types.ts"]
@@ -1177,6 +1178,8 @@ graph LR
   module_src_components_form_types_ts --> export_ValidationRule
   export_withZoraThemeScope["withZoraThemeScope"]
   module_src_theme_withZoraThemeScope_tsx --> export_withZoraThemeScope
+  export_ZORA_BINDABLE_COMPONENT_META["ZORA_BINDABLE_COMPONENT_META"]
+  module_src_metadata_bindableComponentMeta_ts --> export_ZORA_BINDABLE_COMPONENT_META
   export_ZORA_COLORS["ZORA_COLORS"]
   module_src_internal_colorModel_ts --> export_ZORA_COLORS
   export_ZORA_COMPONENT_META["ZORA_COMPONENT_META"]
@@ -1190,6 +1193,8 @@ graph LR
   export_ZoraBaseProps["ZoraBaseProps"]
   module_src_theme_ZoraBaseProps_ts --> export_ZoraBaseProps
   export_ZoraBaseProps -.-> export_ZoraThemeMode
+  export_ZoraBindableComponentType["ZoraBindableComponentType"]
+  module_src_metadata_bindableComponentMeta_ts --> export_ZoraBindableComponentType
   export_ZoraColor["ZoraColor"]
   module_src_internal_colorModel_ts --> export_ZoraColor
   export_ZoraComponentBlueprint["ZoraComponentBlueprint"]
