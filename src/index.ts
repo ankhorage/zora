@@ -288,7 +288,9 @@ export type {
   ResponsivePanelDesktopMode,
   ResponsivePanelMobileMode,
   ResponsivePanelProps,
+  ResponsivePanelScroll,
   ResponsivePanelSide,
+  ResponsivePanelSize,
 } from './patterns/responsive-panel';
 export { ResponsivePanel } from './patterns/responsive-panel';
 export type { SectionHeaderProps } from './patterns/section-header';
