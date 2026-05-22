@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.1
+
+### Patch Changes
+
+- 900e0d0: Add semantic `size` and `scroll` props to `ResponsivePanel` for wider and scrollable panel use cases.
+
 ## 2.5.0
 
 ### Minor Changes
