@@ -1,4 +1,5 @@
 import {
+  AppBar,
   AppShell,
   Tabs,
   Toolbar,
@@ -74,29 +75,31 @@ function AppWrapper() {
 
         <AppShell
           header={
-            <Toolbar position="inline" compact={false}>
-              <Tabs
-                variant="segmented"
-                size="s"
-                value={activeTab}
-                onValueChange={setActiveTab}
-                items={[
-                  { value: 'home', label: 'Home' },
-                  { value: 'components', label: 'Components' },
-                  { value: 'patterns', label: 'Patterns' },
-                  { value: 'posts', label: 'Posts' },
-                  { value: 'chats', label: 'Chats' },
-                  { value: 'theme', label: 'Theme' },
-                ]}
-              />
-              <View style={{ flex: 1 }} />
-              <ToolbarAction
-                active={isDark}
-                icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
-                label={isDark ? 'Use light mode' : 'Use dark mode'}
-                onPress={toggleColorMode}
-              />
-            </Toolbar>
+            <AppBar>
+              <Toolbar position="inline" compact={false}>
+                <Tabs
+                  variant="segmented"
+                  size="s"
+                  value={activeTab}
+                  onValueChange={setActiveTab}
+                  items={[
+                    { value: 'home', label: 'Home' },
+                    { value: 'components', label: 'Components' },
+                    { value: 'patterns', label: 'Patterns' },
+                    { value: 'posts', label: 'Posts' },
+                    { value: 'chats', label: 'Chats' },
+                    { value: 'theme', label: 'Theme' },
+                  ]}
+                />
+                <View style={{ flex: 1 }} />
+                <ToolbarAction
+                  active={isDark}
+                  icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+                  label={isDark ? 'Use light mode' : 'Use dark mode'}
+                  onPress={toggleColorMode}
+                />
+              </Toolbar>
+            </AppBar>
           }
         >
           {renderContent()}

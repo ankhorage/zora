@@ -1,0 +1,21 @@
+{
+  "name": "zora-basic-app-example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ankhorage/zora": "latest",
+    "@expo/vector-icons": "^15.1.1",
+    "@react-native-picker/picker": "^2.11.4",
+    "expo-font": "^55.0.6",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
+  }
+}
