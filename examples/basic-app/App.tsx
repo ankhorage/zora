@@ -7,7 +7,6 @@ import {
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
-import React from 'react';
 
 const basicTheme: ZoraTheme = {
   id: 'basic-app',
