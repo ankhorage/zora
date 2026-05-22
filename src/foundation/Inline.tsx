@@ -13,4 +13,9 @@ function InlineInner({ themeId: _themeId, mode: _mode, ...props }: InlineProps) 
   return <SurfaceInline {...props} />;
 }
 
+/***
+ * Arranges children inline with spacing and wrapping behavior.
+ *
+ * @readme
+ */
 export const Inline = withZoraThemeScope(InlineInner);
