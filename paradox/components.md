@@ -2,7 +2,7 @@
 
 ## ActionSheet
 
-Source: `src/components/action-sheet/ActionSheet.tsx:16:14`
+Source: `src/components/action-sheet/ActionSheet.tsx:14:14`
 
 Presents a modal bottom sheet with a list of actions.
 
@@ -23,7 +23,7 @@ Export paths: `src/index.ts`
 
 ## ActionSheetItem
 
-Source: `src/components/action-sheet/ActionSheetItem.tsx:37:14`
+Source: `src/components/action-sheet/ActionSheetItem.tsx:35:14`
 
 Renders a single selectable action row within an `ActionSheet`.
 
@@ -46,7 +46,7 @@ Export paths: `src/index.ts`
 
 ## AppBar
 
-Source: `src/components/app-bar/AppBar.tsx:138:14`
+Source: `src/components/app-bar/AppBar.tsx:136:14`
 
 Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
@@ -90,7 +90,7 @@ Export paths: `src/index.ts`
 
 ## Avatar
 
-Source: `src/components/avatar/Avatar.tsx:148:14`
+Source: `src/components/avatar/Avatar.tsx:146:14`
 
 Displays a user or entity avatar with image support and initials fallback.
 
@@ -112,7 +112,7 @@ Export paths: `src/index.ts`
 
 ## AvatarGroup
 
-Source: `src/components/avatar-group/AvatarGroup.tsx:79:14`
+Source: `src/components/avatar-group/AvatarGroup.tsx:77:14`
 
 Renders a compact group of avatars with optional overflow handling.
 
@@ -131,7 +131,7 @@ Export paths: `src/index.ts`
 
 ## Badge
 
-Source: `src/components/badge/Badge.tsx:35:14`
+Source: `src/components/badge/Badge.tsx:33:14`
 
 Shows a small status, label, or count indicator.
 
@@ -207,7 +207,7 @@ Export paths: `src/index.ts`
 
 ## Breadcrumbs
 
-Source: `src/components/breadcrumbs/Breadcrumbs.tsx:148:14`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:146:14`
 
 Renders a breadcrumb trail for hierarchical navigation.
 
@@ -226,7 +226,7 @@ Export paths: `src/index.ts`
 
 ## Button
 
-Source: `src/components/button/Button.tsx:35:14`
+Source: `src/components/button/Button.tsx:34:14`
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
 
@@ -294,7 +294,7 @@ Export paths: `src/index.ts`
 
 ## ButtonGroup
 
-Source: `src/components/button-group/ButtonGroup.tsx:110:14`
+Source: `src/components/button-group/ButtonGroup.tsx:108:14`
 
 Groups multiple `Button` elements with consistent spacing and alignment.
 
@@ -313,7 +313,7 @@ Export paths: `src/index.ts`
 
 ## Card
 
-Source: `src/components/card/Card.tsx:85:14`
+Source: `src/components/card/Card.tsx:84:14`
 
 Structured content container with built-in heading, description, actions, and footer slots.
 
@@ -528,7 +528,7 @@ Export paths: `src/index.ts`
 
 ## CheckboxGroup
 
-Source: `src/components/checkbox/CheckboxGroup.tsx:65:14`
+Source: `src/components/checkbox/CheckboxGroup.tsx:63:14`
 
 Renders a group of checkboxes for multi-select values.
 
@@ -552,7 +552,7 @@ Export paths: `src/index.ts`
 
 ## Chip
 
-Source: `src/components/chip/Chip.tsx:99:14`
+Source: `src/components/chip/Chip.tsx:97:14`
 
 Compact pill-like control for filters, tags, and quick selections.
 
@@ -573,7 +573,7 @@ Export paths: `src/index.ts`
 
 ## ChipGroup
 
-Source: `src/components/chip-group/ChipGroup.tsx:71:14`
+Source: `src/components/chip-group/ChipGroup.tsx:69:14`
 
 Renders a row or wrap layout of `Chip` items.
 
@@ -703,7 +703,7 @@ Export paths: `src/index.ts`
 
 ## DataTable
 
-Source: `src/components/data-table/DataTable.tsx:393:14`
+Source: `src/components/data-table/DataTable.tsx:391:14`
 
 Displays structured tabular data with responsive desktop/mobile layouts.
 
@@ -728,7 +728,7 @@ Export paths: `src/index.ts`
 
 ## DatePicker
 
-Source: `src/components/date-picker/DatePicker.tsx:247:14`
+Source: `src/components/date-picker/DatePicker.tsx:245:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -834,7 +834,7 @@ Export paths: `src/index.ts`
 
 ## Drawer
 
-Source: `src/components/drawer/Drawer.tsx:60:14`
+Source: `src/components/drawer/Drawer.tsx:58:14`
 
 Side panel overlay for navigation, settings, and secondary content.
 
@@ -856,7 +856,7 @@ Export paths: `src/index.ts`
 
 ## DropdownMenu
 
-Source: `src/components/menu/DropdownMenu.tsx:11:1`
+Source: `src/components/menu/DropdownMenu.tsx:9:1`
 
 Convenience wrapper for rendering a `Menu` as a dropdown.
 
@@ -938,7 +938,7 @@ Export paths: `src/index.ts`
 
 ## Form
 
-Source: `src/components/form/Form.tsx:71:14`
+Source: `src/components/form/Form.tsx:69:14`
 
 Composes fields and actions into a validated form layout.
 
@@ -964,7 +964,7 @@ Export paths: `src/index.ts`
 
 ## FormActions
 
-Source: `src/components/form/FormActions.tsx:33:14`
+Source: `src/components/form/FormActions.tsx:31:14`
 
 Standard submit/action area for forms.
 
@@ -983,7 +983,7 @@ Export paths: `src/index.ts`
 
 ## FormError
 
-Source: `src/components/form/FormError.tsx:30:14`
+Source: `src/components/form/FormError.tsx:28:14`
 
 Displays a form-level validation or submission error message.
 
@@ -998,7 +998,7 @@ Export paths: `src/index.ts`
 
 ## FormField
 
-Source: `src/components/form/FormField.tsx:156:14`
+Source: `src/components/form/FormField.tsx:154:14`
 
 Connects a controlled form value to a labeled input field with error handling.
 
@@ -1076,7 +1076,7 @@ Export paths: `src/index.ts`
 
 ## Heading
 
-Source: `src/components/heading/Heading.tsx:106:14`
+Source: `src/components/heading/Heading.tsx:105:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -1135,7 +1135,7 @@ Export paths: `src/index.ts`
 
 ## Icon
 
-Source: `src/components/icon/Icon.tsx:18:14`
+Source: `src/components/icon/Icon.tsx:16:14`
 
 Renders an icon from a configured icon provider with theme-aware defaults.
 
@@ -1154,7 +1154,7 @@ Export paths: `src/index.ts`
 
 ## IconButton
 
-Source: `src/components/icon-button/IconButton.tsx:37:14`
+Source: `src/components/icon-button/IconButton.tsx:35:14`
 
 Icon-only button for compact actions; requires an accessible `label`.
 
@@ -1315,7 +1315,7 @@ Export paths: `src/index.ts`
 
 ## Input
 
-Source: `src/components/input/Input.tsx:77:14`
+Source: `src/components/input/Input.tsx:76:14`
 
 Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
 
@@ -1574,7 +1574,7 @@ Export paths: `src/index.ts`
 
 ## MediaCard
 
-Source: `src/components/media-card/MediaCard.tsx:125:14`
+Source: `src/components/media-card/MediaCard.tsx:123:14`
 
 Card layout with an optional media/header region and structured content slots.
 
@@ -1602,7 +1602,7 @@ Export paths: `src/index.ts`
 
 ## Menu
 
-Source: `src/components/menu/Menu.tsx:68:14`
+Source: `src/components/menu/Menu.tsx:66:14`
 
 Presents a list of actions as a menu with optional icons and intent styling.
 
@@ -1649,7 +1649,7 @@ Export paths: `src/index.ts`
 
 ## MetricCard
 
-Source: `src/components/metric-card/MetricCard.tsx:89:14`
+Source: `src/components/metric-card/MetricCard.tsx:87:14`
 
 Highlights a key metric with label, value, and optional trend/actions.
 
@@ -1673,7 +1673,7 @@ Export paths: `src/index.ts`
 
 ## Modal
 
-Source: `src/components/modal/Modal.tsx:64:14`
+Source: `src/components/modal/Modal.tsx:62:14`
 
 Modal dialog surface with header/content/footer slots.
 
@@ -1695,7 +1695,7 @@ Export paths: `src/index.ts`
 
 ## NavigationItem
 
-Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
+Source: `src/components/navigation-item/NavigationItem.tsx:39:14`
 
 Renders a single navigation entry with active/disabled state support.
 
@@ -1714,7 +1714,7 @@ Export paths: `src/index.ts`
 
 ## NavigationList
 
-Source: `src/components/navigation-list/NavigationList.tsx:67:14`
+Source: `src/components/navigation-list/NavigationList.tsx:65:14`
 
 Renders a navigation list from route metadata with active state mapping.
 
@@ -1780,7 +1780,7 @@ Export paths: `src/index.ts`
 
 ## Pagination
 
-Source: `src/components/pagination/Pagination.tsx:194:14`
+Source: `src/components/pagination/Pagination.tsx:192:14`
 
 Pagination control for navigating between pages of results.
 
@@ -1874,7 +1874,7 @@ Export paths: `src/index.ts`
 
 ## Progress
 
-Source: `src/components/progress/Progress.tsx:55:14`
+Source: `src/components/progress/Progress.tsx:53:14`
 
 Progress indicator for determinate and indeterminate loading states.
 
@@ -1892,7 +1892,7 @@ Export paths: `src/index.ts`
 
 ## Radio
 
-Source: `src/components/radio/Radio.tsx:16:14`
+Source: `src/components/radio/Radio.tsx:14:14`
 
 Single-choice selection control used within a radio group.
 
@@ -1955,7 +1955,7 @@ Export paths: `src/index.ts`
 
 ## RadioGroup
 
-Source: `src/components/radio/RadioGroup.tsx:64:14`
+Source: `src/components/radio/RadioGroup.tsx:62:14`
 
 Renders a group of radio options for selecting a single value.
 
@@ -1979,7 +1979,7 @@ Export paths: `src/index.ts`
 
 ## Rating
 
-Source: `src/components/rating/Rating.tsx:43:14`
+Source: `src/components/rating/Rating.tsx:41:14`
 
 Displays a star-based rating value with optional half steps.
 
@@ -2063,7 +2063,7 @@ Export paths: `src/index.ts`
 
 ## SearchBar
 
-Source: `src/components/search-bar/SearchBar.tsx:55:14`
+Source: `src/components/search-bar/SearchBar.tsx:53:14`
 
 Search input with leading icon and optional trailing action.
 
@@ -2104,7 +2104,7 @@ Export paths: `src/index.ts`
 
 ## Select
 
-Source: `src/components/select/Select.tsx:60:14`
+Source: `src/components/select/Select.tsx:58:14`
 
 Select control for choosing a value from a list of options.
 
@@ -2278,7 +2278,7 @@ Export paths: `src/index.ts`
 
 ## Skeleton
 
-Source: `src/components/skeleton/Skeleton.tsx:37:14`
+Source: `src/components/skeleton/Skeleton.tsx:35:14`
 
 Generic skeleton placeholder for loading states.
 
@@ -2295,7 +2295,7 @@ Export paths: `src/index.ts`
 
 ## SkeletonCard
 
-Source: `src/components/skeleton/SkeletonCard.tsx:44:14`
+Source: `src/components/skeleton/SkeletonCard.tsx:42:14`
 
 Skeleton placeholder that matches the structure of a `Card`.
 

@@ -4,7 +4,7 @@
 
 Kind: `value`
 Module: `src/components/action-sheet/ActionSheet.tsx`
-Source: `src/components/action-sheet/ActionSheet.tsx:16:14`
+Source: `src/components/action-sheet/ActionSheet.tsx:14:14`
 
 Presents a modal bottom sheet with a list of actions.
 
@@ -12,7 +12,7 @@ Presents a modal bottom sheet with a list of actions.
 
 Kind: `value`
 Module: `src/components/action-sheet/ActionSheetItem.tsx`
-Source: `src/components/action-sheet/ActionSheetItem.tsx:37:14`
+Source: `src/components/action-sheet/ActionSheetItem.tsx:35:14`
 
 Renders a single selectable action row within an `ActionSheet`.
 
@@ -64,7 +64,7 @@ Source: `src/components/action-sheet/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/app-bar/AppBar.tsx`
-Source: `src/components/app-bar/AppBar.tsx:138:14`
+Source: `src/components/app-bar/AppBar.tsx:136:14`
 
 Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
@@ -169,7 +169,7 @@ Source: `src/patterns/auth/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/avatar/Avatar.tsx`
-Source: `src/components/avatar/Avatar.tsx:148:14`
+Source: `src/components/avatar/Avatar.tsx:146:14`
 
 Displays a user or entity avatar with image support and initials fallback.
 
@@ -177,7 +177,7 @@ Displays a user or entity avatar with image support and initials fallback.
 
 Kind: `value`
 Module: `src/components/avatar-group/AvatarGroup.tsx`
-Source: `src/components/avatar-group/AvatarGroup.tsx:79:14`
+Source: `src/components/avatar-group/AvatarGroup.tsx:77:14`
 
 Renders a compact group of avatars with optional overflow handling.
 
@@ -256,7 +256,7 @@ Source: `src/components/avatar/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/badge/Badge.tsx`
-Source: `src/components/badge/Badge.tsx:35:14`
+Source: `src/components/badge/Badge.tsx:33:14`
 
 Shows a small status, label, or count indicator.
 
@@ -364,7 +364,7 @@ Source: `src/components/breadcrumbs/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/breadcrumbs/Breadcrumbs.tsx`
-Source: `src/components/breadcrumbs/Breadcrumbs.tsx:148:14`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:146:14`
 
 Renders a breadcrumb trail for hierarchical navigation.
 
@@ -391,7 +391,7 @@ Source: `src/components/breadcrumbs/types.ts:14:1`
 
 Kind: `value`
 Module: `src/components/button/Button.tsx`
-Source: `src/components/button/Button.tsx:35:14`
+Source: `src/components/button/Button.tsx:34:14`
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
 
@@ -402,7 +402,7 @@ variant, and size recipes across React Native and React Native Web.
 
 Kind: `value`
 Module: `src/components/button-group/ButtonGroup.tsx`
-Source: `src/components/button-group/ButtonGroup.tsx:110:14`
+Source: `src/components/button-group/ButtonGroup.tsx:108:14`
 
 Groups multiple `Button` elements with consistent spacing and alignment.
 
@@ -506,7 +506,7 @@ Source: `src/components/button/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/card/Card.tsx`
-Source: `src/components/card/Card.tsx:85:14`
+Source: `src/components/card/Card.tsx:84:14`
 
 Structured content container with built-in heading, description, actions, and footer slots.
 
@@ -708,7 +708,7 @@ Binary selection control for toggling a value on or off.
 
 Kind: `value`
 Module: `src/components/checkbox/CheckboxGroup.tsx`
-Source: `src/components/checkbox/CheckboxGroup.tsx:65:14`
+Source: `src/components/checkbox/CheckboxGroup.tsx:63:14`
 
 Renders a group of checkboxes for multi-select values.
 
@@ -819,7 +819,7 @@ Source: `src/components/checkbox/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/chip/Chip.tsx`
-Source: `src/components/chip/Chip.tsx:99:14`
+Source: `src/components/chip/Chip.tsx:97:14`
 
 Compact pill-like control for filters, tags, and quick selections.
 
@@ -827,7 +827,7 @@ Compact pill-like control for filters, tags, and quick selections.
 
 Kind: `value`
 Module: `src/components/chip-group/ChipGroup.tsx`
-Source: `src/components/chip-group/ChipGroup.tsx:71:14`
+Source: `src/components/chip-group/ChipGroup.tsx:69:14`
 
 Renders a row or wrap layout of `Chip` items.
 
@@ -1040,7 +1040,7 @@ Source: `src/theme/createZoraThemeConfig.ts:7:1`
 
 Kind: `value`
 Module: `src/components/data-table/DataTable.tsx`
-Source: `src/components/data-table/DataTable.tsx:393:14`
+Source: `src/components/data-table/DataTable.tsx:391:14`
 
 Displays structured tabular data with responsive desktop/mobile layouts.
 
@@ -1156,7 +1156,7 @@ Source: `src/components/data-table/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/date-picker/DatePicker.tsx`
-Source: `src/components/date-picker/DatePicker.tsx:247:14`
+Source: `src/components/date-picker/DatePicker.tsx:245:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -1292,7 +1292,7 @@ Source: `src/foundation/Divider.tsx:10:1`
 
 Kind: `value`
 Module: `src/components/drawer/Drawer.tsx`
-Source: `src/components/drawer/Drawer.tsx:60:14`
+Source: `src/components/drawer/Drawer.tsx:58:14`
 
 Side panel overlay for navigation, settings, and secondary content.
 
@@ -1322,7 +1322,7 @@ Source: `src/components/drawer/types.ts:6:1`
 
 Kind: `function`
 Module: `src/components/menu/DropdownMenu.tsx`
-Source: `src/components/menu/DropdownMenu.tsx:11:1`
+Source: `src/components/menu/DropdownMenu.tsx:9:1`
 
 Convenience wrapper for rendering a `Menu` as a dropdown.
 
@@ -1458,7 +1458,7 @@ Source: `src/patterns/auth/types.ts:42:1`
 
 Kind: `value`
 Module: `src/components/form/Form.tsx`
-Source: `src/components/form/Form.tsx:71:14`
+Source: `src/components/form/Form.tsx:69:14`
 
 Composes fields and actions into a validated form layout.
 
@@ -1466,7 +1466,7 @@ Composes fields and actions into a validated form layout.
 
 Kind: `value`
 Module: `src/components/form/FormActions.tsx`
-Source: `src/components/form/FormActions.tsx:33:14`
+Source: `src/components/form/FormActions.tsx:31:14`
 
 Standard submit/action area for forms.
 
@@ -1493,7 +1493,7 @@ Source: `src/components/form/types.ts:65:1`
 
 Kind: `value`
 Module: `src/components/form/FormError.tsx`
-Source: `src/components/form/FormError.tsx:30:14`
+Source: `src/components/form/FormError.tsx:28:14`
 
 Displays a form-level validation or submission error message.
 
@@ -1522,7 +1522,7 @@ Source: `src/components/form/types.ts:15:1`
 
 Kind: `value`
 Module: `src/components/form/FormField.tsx`
-Source: `src/components/form/FormField.tsx:156:14`
+Source: `src/components/form/FormField.tsx:154:14`
 
 Connects a controlled form value to a labeled input field with error handling.
 
@@ -1724,7 +1724,7 @@ Source: `src/components/form/validation.ts:11:1`
 
 Kind: `value`
 Module: `src/components/heading/Heading.tsx`
-Source: `src/components/heading/Heading.tsx:106:14`
+Source: `src/components/heading/Heading.tsx:105:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -1869,7 +1869,7 @@ Source: `src/patterns/hero/types.ts:8:1`
 
 Kind: `value`
 Module: `src/components/icon/Icon.tsx`
-Source: `src/components/icon/Icon.tsx:18:14`
+Source: `src/components/icon/Icon.tsx:16:14`
 
 Renders an icon from a configured icon provider with theme-aware defaults.
 
@@ -1877,7 +1877,7 @@ Renders an icon from a configured icon provider with theme-aware defaults.
 
 Kind: `value`
 Module: `src/components/icon-button/IconButton.tsx`
-Source: `src/components/icon-button/IconButton.tsx:37:14`
+Source: `src/components/icon-button/IconButton.tsx:35:14`
 
 Icon-only button for compact actions; requires an accessible `label`.
 
@@ -2115,7 +2115,7 @@ Source: `src/foundation/Inline.tsx:10:1`
 
 Kind: `value`
 Module: `src/components/input/Input.tsx`
-Source: `src/components/input/Input.tsx:77:14`
+Source: `src/components/input/Input.tsx:76:14`
 
 Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
 
@@ -2252,7 +2252,7 @@ Section wrapper for lists with optional title and description.
 
 Kind: `value`
 Module: `src/components/media-card/MediaCard.tsx`
-Source: `src/components/media-card/MediaCard.tsx:125:14`
+Source: `src/components/media-card/MediaCard.tsx:123:14`
 
 Card layout with an optional media/header region and structured content slots.
 
@@ -2272,7 +2272,7 @@ Source: `src/components/media-card/types.ts:44:1`
 
 Kind: `value`
 Module: `src/components/menu/Menu.tsx`
-Source: `src/components/menu/Menu.tsx:68:14`
+Source: `src/components/menu/Menu.tsx:66:14`
 
 Presents a list of actions as a menu with optional icons and intent styling.
 
@@ -2405,7 +2405,7 @@ Source: `src/patterns/message-bubble/types.ts:9:1`
 
 Kind: `value`
 Module: `src/components/metric-card/MetricCard.tsx`
-Source: `src/components/metric-card/MetricCard.tsx:89:14`
+Source: `src/components/metric-card/MetricCard.tsx:87:14`
 
 Highlights a key metric with label, value, and optional trend/actions.
 
@@ -2437,7 +2437,7 @@ Source: `src/components/metric-card/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/modal/Modal.tsx`
-Source: `src/components/modal/Modal.tsx:64:14`
+Source: `src/components/modal/Modal.tsx:62:14`
 
 Modal dialog surface with header/content/footer slots.
 
@@ -2467,7 +2467,7 @@ Source: `src/components/modal/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/navigation-item/NavigationItem.tsx`
-Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
+Source: `src/components/navigation-item/NavigationItem.tsx:39:14`
 
 Renders a single navigation entry with active/disabled state support.
 
@@ -2494,7 +2494,7 @@ Source: `src/components/navigation-item/types.ts:20:1`
 
 Kind: `value`
 Module: `src/components/navigation-list/NavigationList.tsx`
-Source: `src/components/navigation-list/NavigationList.tsx:67:14`
+Source: `src/components/navigation-list/NavigationList.tsx:65:14`
 
 Renders a navigation list from route metadata with active state mapping.
 
@@ -2596,7 +2596,7 @@ Source: `src/patterns/auth/types.ts:55:1`
 
 Kind: `value`
 Module: `src/components/pagination/Pagination.tsx`
-Source: `src/components/pagination/Pagination.tsx:194:14`
+Source: `src/components/pagination/Pagination.tsx:192:14`
 
 Pagination control for navigating between pages of results.
 
@@ -2778,7 +2778,7 @@ Source: `src/patterns/post-card/types.ts:59:1`
 
 Kind: `value`
 Module: `src/components/progress/Progress.tsx`
-Source: `src/components/progress/Progress.tsx:55:14`
+Source: `src/components/progress/Progress.tsx:53:14`
 
 Progress indicator for determinate and indeterminate loading states.
 
@@ -2804,7 +2804,7 @@ Source: `src/components/progress/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/radio/Radio.tsx`
-Source: `src/components/radio/Radio.tsx:16:14`
+Source: `src/components/radio/Radio.tsx:14:14`
 
 Single-choice selection control used within a radio group.
 
@@ -2812,7 +2812,7 @@ Single-choice selection control used within a radio group.
 
 Kind: `value`
 Module: `src/components/radio/RadioGroup.tsx`
-Source: `src/components/radio/RadioGroup.tsx:64:14`
+Source: `src/components/radio/RadioGroup.tsx:62:14`
 
 Renders a group of radio options for selecting a single value.
 
@@ -2923,7 +2923,7 @@ Source: `src/components/radio/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/rating/Rating.tsx`
-Source: `src/components/rating/Rating.tsx:43:14`
+Source: `src/components/rating/Rating.tsx:41:14`
 
 Displays a star-based rating value with optional half steps.
 
@@ -3081,7 +3081,7 @@ Source: `src/layout/screen-section/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/search-bar/SearchBar.tsx`
-Source: `src/components/search-bar/SearchBar.tsx:55:14`
+Source: `src/components/search-bar/SearchBar.tsx:53:14`
 
 Search input with leading icon and optional trailing action.
 
@@ -3138,7 +3138,7 @@ Source: `src/patterns/section-header/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/select/Select.tsx`
-Source: `src/components/select/Select.tsx:60:14`
+Source: `src/components/select/Select.tsx:58:14`
 
 Select control for choosing a value from a list of options.
 
@@ -3466,7 +3466,7 @@ Source: `src/patterns/auth/types.ts:32:1`
 
 Kind: `value`
 Module: `src/components/skeleton/Skeleton.tsx`
-Source: `src/components/skeleton/Skeleton.tsx:37:14`
+Source: `src/components/skeleton/Skeleton.tsx:35:14`
 
 Generic skeleton placeholder for loading states.
 
@@ -3474,7 +3474,7 @@ Generic skeleton placeholder for loading states.
 
 Kind: `value`
 Module: `src/components/skeleton/SkeletonCard.tsx`
-Source: `src/components/skeleton/SkeletonCard.tsx:44:14`
+Source: `src/components/skeleton/SkeletonCard.tsx:42:14`
 
 Skeleton placeholder that matches the structure of a `Card`.
 

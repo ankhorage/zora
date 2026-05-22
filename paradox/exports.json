@@ -2,13 +2,13 @@
   {
     "name": "ActionSheet",
     "description": "Presents a modal bottom sheet with a list of actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/action-sheet/ActionSheet.tsx",
     "sourceLocation": {
       "filePath": "src/components/action-sheet/ActionSheet.tsx",
-      "line": 16,
+      "line": 14,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20,13 +20,13 @@
   {
     "name": "ActionSheetItem",
     "description": "Renders a single selectable action row within an `ActionSheet`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/action-sheet/ActionSheetItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/action-sheet/ActionSheetItem.tsx",
-      "line": 37,
+      "line": 35,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -230,13 +230,13 @@
   {
     "name": "AppBar",
     "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/app-bar/AppBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/app-bar/AppBar.tsx",
-      "line": 138,
+      "line": 136,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -416,7 +416,7 @@
   {
     "name": "AppShell",
     "description": "Root application shell with stable header, content, footer, and overlay slots.\n\n`AppShell` provides the top-level layout frame for cross-platform apps while\nleaving navigation, toolbars, and overlays composable through explicit slots.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "App frame",
@@ -594,13 +594,13 @@
   {
     "name": "Avatar",
     "description": "Displays a user or entity avatar with image support and initials fallback.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/avatar/Avatar.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar/Avatar.tsx",
-      "line": 148,
+      "line": 146,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -612,13 +612,13 @@
   {
     "name": "AvatarGroup",
     "description": "Renders a compact group of avatars with optional overflow handling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/avatar-group/AvatarGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar-group/AvatarGroup.tsx",
-      "line": 79,
+      "line": 77,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -905,13 +905,13 @@
   {
     "name": "Badge",
     "description": "Shows a small status, label, or count indicator.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/badge/Badge.tsx",
     "sourceLocation": {
       "filePath": "src/components/badge/Badge.tsx",
-      "line": 35,
+      "line": 33,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -991,7 +991,7 @@
   {
     "name": "Box",
     "description": "Base layout primitive for themed spacing, color, border, flex, and responsive props.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Box.tsx",
@@ -1411,13 +1411,13 @@
   {
     "name": "Breadcrumbs",
     "description": "Renders a breadcrumb trail for hierarchical navigation.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
     "sourceLocation": {
       "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-      "line": 148,
+      "line": 146,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1504,7 +1504,7 @@
   {
     "name": "Button",
     "description": "Theme-aware action control for primary, secondary, destructive, and neutral actions.\n\nUse `Button` for explicit user actions that should follow ZORA's semantic color,\nvariant, and size recipes across React Native and React Native Web.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Basic action",
@@ -1516,7 +1516,7 @@
     "modulePath": "src/components/button/Button.tsx",
     "sourceLocation": {
       "filePath": "src/components/button/Button.tsx",
-      "line": 35,
+      "line": 34,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1528,13 +1528,13 @@
   {
     "name": "ButtonGroup",
     "description": "Groups multiple `Button` elements with consistent spacing and alignment.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/button-group/ButtonGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/button-group/ButtonGroup.tsx",
-      "line": 110,
+      "line": 108,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2054,7 +2054,7 @@
   {
     "name": "Card",
     "description": "Structured content container with built-in heading, description, actions, and footer slots.\n\nUse `Card` for reusable content blocks that should inherit ZORA spacing,\nradius, tone, and responsive header layout without hand-assembling primitives.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Content card",
@@ -2066,7 +2066,7 @@
     "modulePath": "src/components/card/Card.tsx",
     "sourceLocation": {
       "filePath": "src/components/card/Card.tsx",
-      "line": 85,
+      "line": 84,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2454,7 +2454,7 @@
   {
     "name": "Center",
     "description": "Centers children horizontally and vertically within the available space.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Center.tsx",
@@ -2895,7 +2895,7 @@
   {
     "name": "ChatListItem",
     "description": "Chat-style list row with avatar, title, preview text, and unread indicators.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/chat-list-item/ChatListItem.tsx",
@@ -3051,7 +3051,7 @@
   {
     "name": "Checkbox",
     "description": "Binary selection control for toggling a value on or off.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/checkbox/Checkbox.tsx",
@@ -3069,13 +3069,13 @@
   {
     "name": "CheckboxGroup",
     "description": "Renders a group of checkboxes for multi-select values.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/checkbox/CheckboxGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/checkbox/CheckboxGroup.tsx",
-      "line": 65,
+      "line": 63,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3634,13 +3634,13 @@
   {
     "name": "Chip",
     "description": "Compact pill-like control for filters, tags, and quick selections.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/chip/Chip.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip/Chip.tsx",
-      "line": 99,
+      "line": 97,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3652,13 +3652,13 @@
   {
     "name": "ChipGroup",
     "description": "Renders a row or wrap layout of `Chip` items.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/chip-group/ChipGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip-group/ChipGroup.tsx",
-      "line": 71,
+      "line": 69,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3831,7 +3831,7 @@
   {
     "name": "CollectionEditor",
     "description": "Editor pattern for adding, removing, and reordering a collection of items.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/collection-editor/CollectionEditor.tsx",
@@ -4027,7 +4027,7 @@
   {
     "name": "ConfirmDialog",
     "description": "Confirmation dialog pattern with cancel/confirm actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
@@ -4169,7 +4169,7 @@
   {
     "name": "Container",
     "description": "Constrains page content to semantic widths with responsive padding.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Container.tsx",
@@ -4567,13 +4567,13 @@
   {
     "name": "DataTable",
     "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/data-table/DataTable.tsx",
     "sourceLocation": {
       "filePath": "src/components/data-table/DataTable.tsx",
-      "line": 393,
+      "line": 391,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4985,13 +4985,13 @@
   {
     "name": "DatePicker",
     "description": "Date input control with calendar selection and formatted display value.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 247,
+      "line": 245,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5138,7 +5138,7 @@
   {
     "name": "DisclosureSection",
     "description": "Expandable section pattern with a summary header and collapsible content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
@@ -5259,7 +5259,7 @@
   {
     "name": "Divider",
     "description": "Renders a themed visual separator between content sections.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Divider.tsx",
@@ -5625,13 +5625,13 @@
   {
     "name": "Drawer",
     "description": "Side panel overlay for navigation, settings, and secondary content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/drawer/Drawer.tsx",
     "sourceLocation": {
       "filePath": "src/components/drawer/Drawer.tsx",
-      "line": 60,
+      "line": 58,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5739,13 +5739,13 @@
   {
     "name": "DropdownMenu",
     "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/components/menu/DropdownMenu.tsx",
     "sourceLocation": {
       "filePath": "src/components/menu/DropdownMenu.tsx",
-      "line": 11,
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -5789,7 +5789,7 @@
   {
     "name": "EmptyState",
     "description": "Reusable fallback state for empty lists, missing data, or first-run experiences.\n\n`EmptyState` combines concise copy with optional primary and secondary actions\nso apps can guide users without custom card and button wiring.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Empty project list",
@@ -5942,7 +5942,7 @@
   {
     "name": "FilterBar",
     "description": "Horizontal filter/action bar layout with leading/trailing slots.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/filter-bar/FilterBar.tsx",
@@ -6028,7 +6028,7 @@
   {
     "name": "ForgotPasswordForm",
     "description": "Password reset form pattern with validation and submit actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/ForgotPasswordForm.tsx",
@@ -6182,13 +6182,13 @@
   {
     "name": "Form",
     "description": "Composes fields and actions into a validated form layout.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/Form.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/Form.tsx",
-      "line": 71,
+      "line": 69,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6200,13 +6200,13 @@
   {
     "name": "FormActions",
     "description": "Standard submit/action area for forms.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormActions.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormActions.tsx",
-      "line": 33,
+      "line": 31,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6293,13 +6293,13 @@
   {
     "name": "FormError",
     "description": "Displays a form-level validation or submission error message.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormError.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormError.tsx",
-      "line": 30,
+      "line": 28,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6376,13 +6376,13 @@
   {
     "name": "FormField",
     "description": "Connects a controlled form value to a labeled input field with error handling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormField.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormField.tsx",
-      "line": 156,
+      "line": 154,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6843,7 +6843,7 @@
   {
     "name": "Grid",
     "description": "Creates responsive grid layouts for cards, tiles, and dashboard content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Grid.tsx",
@@ -7276,7 +7276,7 @@
   {
     "name": "Heading",
     "description": "Structured title primitive for accessible page, section, and card headings.\n\n`Heading` gives consumers a ZORA-owned title API with semantic levels,\nresponsive sizes, and theme-aware emphasis while preserving header semantics.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Section title",
@@ -7288,7 +7288,7 @@
     "modulePath": "src/components/heading/Heading.tsx",
     "sourceLocation": {
       "filePath": "src/components/heading/Heading.tsx",
-      "line": 106,
+      "line": 105,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7573,7 +7573,7 @@
   {
     "name": "Hero",
     "description": "Hero section pattern for prominent page introductions with actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/hero/Hero.tsx",
@@ -7816,13 +7816,13 @@
   {
     "name": "Icon",
     "description": "Renders an icon from a configured icon provider with theme-aware defaults.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/icon/Icon.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon/Icon.tsx",
-      "line": 18,
+      "line": 16,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7834,13 +7834,13 @@
   {
     "name": "IconButton",
     "description": "Icon-only button for compact actions; requires an accessible `label`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/icon-button/IconButton.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon-button/IconButton.tsx",
-      "line": 37,
+      "line": 35,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8023,7 +8023,7 @@
   {
     "name": "Image",
     "description": "Displays an image with cross-platform source and fit handling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/image/Image.tsx",
@@ -8059,7 +8059,7 @@
   {
     "name": "ImagePreview",
     "description": "Preview pattern for showing an image with optional metadata and actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/image-preview/ImagePreview.tsx",
@@ -8276,7 +8276,7 @@
   {
     "name": "ImageUploadField",
     "description": "Form field pattern for picking, previewing, and uploading an image.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
@@ -8491,7 +8491,7 @@
   {
     "name": "Inline",
     "description": "Arranges children inline with spacing and wrapping behavior.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Inline.tsx",
@@ -8885,7 +8885,7 @@
   {
     "name": "Input",
     "description": "Theme-aware text input with semantic sizing and optional leading/trailing icon slots.\n\nUse `Input` for single-line form controls that need ZORA styling, disabled/read-only\nhandling, and accessible trailing actions without dropping into Surface directly.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Search input",
@@ -8897,7 +8897,7 @@
     "modulePath": "src/components/input/Input.tsx",
     "sourceLocation": {
       "filePath": "src/components/input/Input.tsx",
-      "line": 77,
+      "line": 76,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8967,7 +8967,7 @@
   {
     "name": "InspectorField",
     "description": "Inspector row pattern with label, description, and control slot.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/inspector-field/InspectorField.tsx",
@@ -9095,7 +9095,7 @@
   {
     "name": "List",
     "description": "List container pattern for composing `ListRow` and `ListSection`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/List.tsx",
@@ -9239,7 +9239,7 @@
   {
     "name": "ListRow",
     "description": "Row pattern for lists with leading/trailing slots and optional press behavior.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/ListRow.tsx",
@@ -9293,7 +9293,7 @@
   {
     "name": "ListSection",
     "description": "Section wrapper for lists with optional title and description.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/ListSection.tsx",
@@ -9311,13 +9311,13 @@
   {
     "name": "MediaCard",
     "description": "Card layout with an optional media/header region and structured content slots.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/media-card/MediaCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/media-card/MediaCard.tsx",
-      "line": 125,
+      "line": 123,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9365,13 +9365,13 @@
   {
     "name": "Menu",
     "description": "Presents a list of actions as a menu with optional icons and intent styling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/menu/Menu.tsx",
     "sourceLocation": {
       "filePath": "src/components/menu/Menu.tsx",
-      "line": 68,
+      "line": 66,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9558,7 +9558,7 @@
   {
     "name": "MessageBubble",
     "description": "Message bubble pattern for chat UIs with direction and status styling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/message-bubble/MessageBubble.tsx",
@@ -9858,13 +9858,13 @@
   {
     "name": "MetricCard",
     "description": "Highlights a key metric with label, value, and optional trend/actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/metric-card/MetricCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/metric-card/MetricCard.tsx",
-      "line": 89,
+      "line": 87,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9986,13 +9986,13 @@
   {
     "name": "Modal",
     "description": "Modal dialog surface with header/content/footer slots.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/modal/Modal.tsx",
     "sourceLocation": {
       "filePath": "src/components/modal/Modal.tsx",
-      "line": 64,
+      "line": 62,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10100,13 +10100,13 @@
   {
     "name": "NavigationItem",
     "description": "Renders a single navigation entry with active/disabled state support.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/navigation-item/NavigationItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-item/NavigationItem.tsx",
-      "line": 41,
+      "line": 39,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10193,13 +10193,13 @@
   {
     "name": "NavigationList",
     "description": "Renders a navigation list from route metadata with active state mapping.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/navigation-list/NavigationList.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-list/NavigationList.tsx",
-      "line": 67,
+      "line": 65,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10307,7 +10307,7 @@
   {
     "name": "Notice",
     "description": "Notice pattern for inline feedback with tone, title, and actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/notice/Notice.tsx",
@@ -10400,7 +10400,7 @@
   {
     "name": "OtpForm",
     "description": "One-time passcode form pattern with digit input and submit actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/OtpForm.tsx",
@@ -10561,13 +10561,13 @@
   {
     "name": "Pagination",
     "description": "Pagination control for navigating between pages of results.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/pagination/Pagination.tsx",
     "sourceLocation": {
       "filePath": "src/components/pagination/Pagination.tsx",
-      "line": 194,
+      "line": 192,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10703,7 +10703,7 @@
   {
     "name": "PaletteItem",
     "description": "Tile item pattern for palettes and option grids.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tile-grid/PaletteItem.tsx",
@@ -10810,7 +10810,7 @@
   {
     "name": "Panel",
     "description": "Semantic wrapper around `Card` for panel-style page sections.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/panel/Panel.tsx",
@@ -11100,7 +11100,7 @@
   {
     "name": "PostCard",
     "description": "Social-style post card pattern with author, content, media, and actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/post-card/PostCard.tsx",
@@ -11253,13 +11253,13 @@
   {
     "name": "Progress",
     "description": "Progress indicator for determinate and indeterminate loading states.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/progress/Progress.tsx",
     "sourceLocation": {
       "filePath": "src/components/progress/Progress.tsx",
-      "line": 55,
+      "line": 53,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11339,13 +11339,13 @@
   {
     "name": "Radio",
     "description": "Single-choice selection control used within a radio group.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/radio/Radio.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/Radio.tsx",
-      "line": 16,
+      "line": 14,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11357,13 +11357,13 @@
   {
     "name": "RadioGroup",
     "description": "Renders a group of radio options for selecting a single value.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/radio/RadioGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/RadioGroup.tsx",
-      "line": 64,
+      "line": 62,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11922,13 +11922,13 @@
   {
     "name": "Rating",
     "description": "Displays a star-based rating value with optional half steps.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/rating/Rating.tsx",
     "sourceLocation": {
       "filePath": "src/components/rating/Rating.tsx",
-      "line": 43,
+      "line": 41,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12040,7 +12040,7 @@
   {
     "name": "ResponsivePanel",
     "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Scrollable wide panel",
@@ -12292,7 +12292,7 @@
   {
     "name": "Screen",
     "description": "Page-level container with standard background and optional scroll behavior.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/screen/Screen.tsx",
@@ -12378,7 +12378,7 @@
   {
     "name": "ScreenSection",
     "description": "Screen section layout with optional title, description, and actions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/screen-section/ScreenSection.tsx",
@@ -12464,13 +12464,13 @@
   {
     "name": "SearchBar",
     "description": "Search input with leading icon and optional trailing action.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/search-bar/SearchBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/search-bar/SearchBar.tsx",
-      "line": 55,
+      "line": 53,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12585,7 +12585,7 @@
   {
     "name": "SectionHeader",
     "description": "Section heading pattern with optional description and action slot.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/section-header/SectionHeader.tsx",
@@ -12671,13 +12671,13 @@
   {
     "name": "Select",
     "description": "Select control for choosing a value from a list of options.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/select/Select.tsx",
     "sourceLocation": {
       "filePath": "src/components/select/Select.tsx",
-      "line": 60,
+      "line": 58,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12689,7 +12689,7 @@
   {
     "name": "SelectableItem",
     "description": "Adds selection behavior to arbitrary child content via render props.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectableItem.tsx",
@@ -12854,7 +12854,7 @@
   {
     "name": "SelectionProvider",
     "description": "Provides selection state for building selectable lists and grids.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectionProvider.tsx",
@@ -13080,7 +13080,7 @@
   {
     "name": "SettingsLayout",
     "description": "Settings page layout with app bar, sidebar, and scrollable content area.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
@@ -13173,7 +13173,7 @@
   {
     "name": "SettingsRow",
     "description": "Settings row pattern with title, description/meta, and optional trailing content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/settings-row/SettingsRow.tsx",
@@ -13209,7 +13209,7 @@
   {
     "name": "Show",
     "description": "Conditionally renders children for responsive display and breakpoint-based visibility.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Show.tsx",
@@ -13288,7 +13288,7 @@
   {
     "name": "SidebarLayout",
     "description": "Responsive layout with a sidebar and main content area (and optional aside).",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
@@ -13381,7 +13381,7 @@
   {
     "name": "SignInForm",
     "description": "Sign-in form pattern with identifier and password fields.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/SignInForm.tsx",
@@ -13563,7 +13563,7 @@
   {
     "name": "SignUpForm",
     "description": "Sign-up form pattern with structured fields and validation.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/SignUpForm.tsx",
@@ -13713,13 +13713,13 @@
   {
     "name": "Skeleton",
     "description": "Generic skeleton placeholder for loading states.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/Skeleton.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/Skeleton.tsx",
-      "line": 37,
+      "line": 35,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13731,13 +13731,13 @@
   {
     "name": "SkeletonCard",
     "description": "Skeleton placeholder that matches the structure of a `Card`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/SkeletonCard.tsx",
-      "line": 44,
+      "line": 42,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13835,7 +13835,7 @@
   {
     "name": "SkeletonList",
     "description": "Skeleton placeholder list for loading states in list views.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonList.tsx",
@@ -14032,7 +14032,7 @@
   {
     "name": "SkeletonText",
     "description": "Multi-line skeleton placeholder for text content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonText.tsx",
@@ -14125,7 +14125,7 @@
   {
     "name": "Spacer",
     "description": "Adds flexible or fixed empty space in layout compositions.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Spacer.tsx",
@@ -14197,7 +14197,7 @@
   {
     "name": "Stack",
     "description": "Arranges layout items in one direction with theme spacing.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Stack.tsx",
@@ -14598,7 +14598,7 @@
   {
     "name": "Surface",
     "description": "Provides a semantic themed region for elevated, subtle, or bordered content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Surface.tsx",
@@ -14986,7 +14986,7 @@
   {
     "name": "SwitchField",
     "description": "Labeled switch field pattern built on `SettingsRow`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/switch-field/SwitchField.tsx",
@@ -15140,7 +15140,7 @@
   {
     "name": "Tabs",
     "description": "Tab navigation for switching between views or content sections.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/tabs/Tabs.tsx",
@@ -15258,7 +15258,7 @@
   {
     "name": "Text",
     "description": "Structured copy primitive for theme-aware app text.\n\n`Text` owns normal body, caption, label, code, and supporting-copy variants so\nconsumers do not need to import lower-level Surface typography directly.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "Muted supporting copy",
@@ -15300,7 +15300,7 @@
   {
     "name": "Textarea",
     "description": "Multi-line text input with consistent ZORA field styling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/textarea/Textarea.tsx",
@@ -16702,7 +16702,7 @@
   {
     "name": "ThemeComposer",
     "description": "UI for composing and applying a theme via structured controls.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
@@ -16795,7 +16795,7 @@
   {
     "name": "TileGrid",
     "description": "Responsive grid layout for arranging tile content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tile-grid/TileGrid.tsx",
@@ -16874,7 +16874,7 @@
   {
     "name": "Timeline",
     "description": "Timeline pattern for displaying a sequence of events.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/timeline/Timeline.tsx",
@@ -17014,7 +17014,7 @@
   {
     "name": "TimePicker",
     "description": "Time input control with wheel selection and formatted display value.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/time-picker/TimePicker.tsx",
@@ -17174,7 +17174,7 @@
   {
     "name": "Toast",
     "description": "Renders a toast notification message.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toast/Toast.tsx",
@@ -17278,7 +17278,7 @@
   {
     "name": "ToastProvider",
     "description": "Provides toast state and rendering context for `useToast` and `Toast`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/components/toast/ToastProvider.tsx",
@@ -17361,7 +17361,7 @@
   {
     "name": "Toolbar",
     "description": "Horizontal toolbar surface for grouping actions and controls.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toolbar/Toolbar.tsx",
@@ -17379,7 +17379,7 @@
   {
     "name": "ToolbarAction",
     "description": "Convenience icon action for toolbars with active state styling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toolbar/ToolbarAction.tsx",
@@ -17558,7 +17558,7 @@
   {
     "name": "TopbarLayout",
     "description": "Layout that composes a top bar with optional sidebar and content.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/topbar-layout/TopbarLayout.tsx",
@@ -17637,7 +17637,7 @@
   {
     "name": "TreeItem",
     "description": "Single tree node row used within `TreeView`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tree-view/TreeItem.tsx",
@@ -17777,7 +17777,7 @@
   {
     "name": "TreeView",
     "description": "Tree view pattern for hierarchical navigation and expandable lists.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tree-view/TreeView.tsx",
@@ -18052,7 +18052,7 @@
   {
     "name": "useSelection",
     "description": "Accesses selection state provided by `SelectionProvider`.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectionProvider.tsx",
@@ -19192,7 +19192,7 @@
   {
     "name": "ZoraDrawerContent",
     "description": "Standard drawer content pattern for ZORA navigation lists.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
@@ -19566,7 +19566,7 @@
   {
     "name": "ZoraProvider",
     "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [
       {
         "title": "App provider",
@@ -19662,7 +19662,7 @@
   {
     "name": "ZoraTabBar",
     "description": "Bottom tab bar pattern with badge support and active state styling.",
-    "isReadme": true,
+    "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
