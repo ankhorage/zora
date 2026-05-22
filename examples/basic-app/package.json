@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "file:../..",
+    "@ankhorage/zora": "latest",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-picker/picker": "^2.11.4",
     "expo-font": "^55.0.6",
