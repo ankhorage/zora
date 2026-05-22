@@ -886,10 +886,16 @@ graph LR
   module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelProps
   export_ResponsivePanelProps -.-> export_ResponsivePanelDesktopMode
   export_ResponsivePanelProps -.-> export_ResponsivePanelMobileMode
+  export_ResponsivePanelProps -.-> export_ResponsivePanelScroll
   export_ResponsivePanelProps -.-> export_ResponsivePanelSide
+  export_ResponsivePanelProps -.-> export_ResponsivePanelSize
   export_ResponsivePanelProps -.-> export_ZoraThemeMode
+  export_ResponsivePanelScroll["ResponsivePanelScroll"]
+  module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelScroll
   export_ResponsivePanelSide["ResponsivePanelSide"]
   module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelSide
+  export_ResponsivePanelSize["ResponsivePanelSize"]
+  module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelSize
   export_Screen["Screen"]
   module_src_layout_screen_Screen_tsx --> export_Screen
   export_ScreenProps["ScreenProps"]

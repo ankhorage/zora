@@ -55,4 +55,16 @@ function EmptyStateInner({
   );
 }
 
+/***
+ * Reusable fallback state for empty lists, missing data, or first-run experiences.
+ *
+ * `EmptyState` combines concise copy with optional primary and secondary actions
+ * so apps can guide users without custom card and button wiring.
+ *
+ * @readme
+ * @example Empty project list
+ * ```tsx
+ * <EmptyState title="No projects yet" primaryAction={{ label: 'Create project', onPress }} />
+ * ```
+ */
 export const EmptyState = withZoraThemeScope(EmptyStateInner);

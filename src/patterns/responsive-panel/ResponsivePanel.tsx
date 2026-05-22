@@ -144,4 +144,16 @@ const styles = StyleSheet.create({
   },
 });
 
+/***
+ * Adaptive secondary surface that can render as an inline panel, drawer, or modal.
+ *
+ * Use `ResponsivePanel` for tool panes and admin/detail flows that need the same
+ * content to work across compact mobile screens and wider desktop layouts.
+ *
+ * @readme
+ * @example Scrollable wide panel
+ * ```tsx
+ * <ResponsivePanel open title="APIs" size="wide" scroll="content">...</ResponsivePanel>
+ * ```
+ */
 export const ResponsivePanel = withZoraThemeScope(ResponsivePanelInner);

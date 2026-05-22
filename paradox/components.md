@@ -63,7 +63,12 @@ Export paths: `src/index.ts`
 
 ## AppShell
 
-Source: `src/layout/app-shell/AppShell.tsx:36:14`
+Source: `src/layout/app-shell/AppShell.tsx:48:14`
+
+Root application shell with stable header, content, footer, and overlay slots.
+
+`AppShell` provides the top-level layout frame for cross-platform apps while
+leaving navigation, toolbars, and overlays composable through explicit slots.
 
 Export paths: `src/index.ts`
 
@@ -205,7 +210,12 @@ Export paths: `src/index.ts`
 
 ## Button
 
-Source: `src/components/button/Button.tsx:23:14`
+Source: `src/components/button/Button.tsx:35:14`
+
+Theme-aware action control for primary, secondary, destructive, and neutral actions.
+
+Use `Button` for explicit user actions that should follow ZORA's semantic color,
+variant, and size recipes across React Native and React Native Web.
 
 Export paths: `src/index.ts`
 
@@ -285,7 +295,12 @@ Export paths: `src/index.ts`
 
 ## Card
 
-Source: `src/components/card/Card.tsx:73:14`
+Source: `src/components/card/Card.tsx:85:14`
+
+Structured content container with built-in heading, description, actions, and footer slots.
+
+Use `Card` for reusable content blocks that should inherit ZORA spacing,
+radius, tone, and responsive header layout without hand-assembling primitives.
 
 Export paths: `src/index.ts`
 
@@ -811,7 +826,12 @@ Export paths: `src/index.ts`
 
 ## EmptyState
 
-Source: `src/patterns/empty-state/EmptyState.tsx:58:14`
+Source: `src/patterns/empty-state/EmptyState.tsx:70:14`
+
+Reusable fallback state for empty lists, missing data, or first-run experiences.
+
+`EmptyState` combines concise copy with optional primary and secondary actions
+so apps can guide users without custom card and button wiring.
 
 Export paths: `src/index.ts`
 
@@ -994,7 +1014,12 @@ Export paths: `src/index.ts`
 
 ## Heading
 
-Source: `src/components/heading/Heading.tsx:94:14`
+Source: `src/components/heading/Heading.tsx:106:14`
+
+Structured title primitive for accessible page, section, and card headings.
+
+`Heading` gives consumers a ZORA-owned title API with semantic levels,
+responsive sizes, and theme-aware emphasis while preserving header semantics.
 
 Export paths: `src/index.ts`
 
@@ -1214,7 +1239,12 @@ Export paths: `src/index.ts`
 
 ## Input
 
-Source: `src/components/input/Input.tsx:65:14`
+Source: `src/components/input/Input.tsx:77:14`
+
+Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
+
+Use `Input` for single-line form controls that need ZORA styling, disabled/read-only
+handling, and accessible trailing actions without dropping into Surface directly.
 
 Export paths: `src/index.ts`
 
@@ -1849,7 +1879,12 @@ Export paths: `src/index.ts`
 
 ## ResponsivePanel
 
-Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:75:14`
+Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:159:14`
+
+Adaptive secondary surface that can render as an inline panel, drawer, or modal.
+
+Use `ResponsivePanel` for tool panes and admin/detail flows that need the same
+content to work across compact mobile screens and wider desktop layouts.
 
 Export paths: `src/index.ts`
 
@@ -1865,7 +1900,9 @@ Export paths: `src/index.ts`
 | mode         | `ZoraThemeMode \| undefined`              | no       | —       |             |
 | onOpenChange | `(open: boolean) => void`                 | yes      | —       |             |
 | open         | `boolean`                                 | yes      | —       |             |
+| scroll       | `ResponsivePanelScroll \| undefined`      | no       | —       |             |
 | side         | `ResponsivePanelSide \| undefined`        | no       | —       |             |
+| size         | `ResponsivePanelSize \| undefined`        | no       | —       |             |
 | testID       | `string \| undefined`                     | no       | —       |             |
 | themeId      | `string \| undefined`                     | no       | —       |             |
 | title        | `React.ReactNode`                         | no       | —       |             |
@@ -2327,7 +2364,12 @@ Export paths: `src/index.ts`
 
 ## Text
 
-Source: `src/components/text/Text.tsx:91:14`
+Source: `src/components/text/Text.tsx:103:14`
+
+Structured copy primitive for theme-aware app text.
+
+`Text` owns normal body, caption, label, code, and supporting-copy variants so
+consumers do not need to import lower-level Surface typography directly.
 
 Export paths: `src/index.ts`
 
@@ -2729,7 +2771,12 @@ Export paths: `src/index.ts`
 
 ## ZoraProvider
 
-Source: `src/theme/ZoraProvider.tsx:15:1`
+Source: `src/theme/ZoraProvider.tsx:27:1`
+
+Installs the ZORA theme runtime and underlying Surface theme provider.
+
+Wrap an app with `ZoraProvider` once near the root so components, patterns,
+layouts, and theme hooks resolve the same design tokens and color mode.
 
 Export paths: `src/index.ts`
 

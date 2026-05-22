@@ -415,14 +415,20 @@
   },
   {
     "name": "AppShell",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Root application shell with stable header, content, footer, and overlay slots.\n\n`AppShell` provides the top-level layout frame for cross-platform apps while\nleaving navigation, toolbars, and overlays composable through explicit slots.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "App frame",
+        "language": "tsx",
+        "code": "<AppShell header={<AppBar title=\"Dashboard\" />}>...</AppShell>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/layout/app-shell/AppShell.tsx",
     "sourceLocation": {
       "filePath": "src/layout/app-shell/AppShell.tsx",
-      "line": 36,
+      "line": 48,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1497,14 +1503,20 @@
   },
   {
     "name": "Button",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Theme-aware action control for primary, secondary, destructive, and neutral actions.\n\nUse `Button` for explicit user actions that should follow ZORA's semantic color,\nvariant, and size recipes across React Native and React Native Web.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Basic action",
+        "language": "tsx",
+        "code": "<Button color=\"primary\" variant=\"solid\" onPress={save}>Save</Button>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/components/button/Button.tsx",
     "sourceLocation": {
       "filePath": "src/components/button/Button.tsx",
-      "line": 23,
+      "line": 35,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2041,14 +2053,20 @@
   },
   {
     "name": "Card",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Structured content container with built-in heading, description, actions, and footer slots.\n\nUse `Card` for reusable content blocks that should inherit ZORA spacing,\nradius, tone, and responsive header layout without hand-assembling primitives.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Content card",
+        "language": "tsx",
+        "code": "<Card title=\"Project\" description=\"Latest activity\">...</Card>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/components/card/Card.tsx",
     "sourceLocation": {
       "filePath": "src/components/card/Card.tsx",
-      "line": 73,
+      "line": 85,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5770,14 +5788,20 @@
   },
   {
     "name": "EmptyState",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Reusable fallback state for empty lists, missing data, or first-run experiences.\n\n`EmptyState` combines concise copy with optional primary and secondary actions\nso apps can guide users without custom card and button wiring.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Empty project list",
+        "language": "tsx",
+        "code": "<EmptyState title=\"No projects yet\" primaryAction={{ label: 'Create project', onPress }} />"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/patterns/empty-state/EmptyState.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/empty-state/EmptyState.tsx",
-      "line": 58,
+      "line": 70,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7269,14 +7293,20 @@
   },
   {
     "name": "Heading",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Structured title primitive for accessible page, section, and card headings.\n\n`Heading` gives consumers a ZORA-owned title API with semantic levels,\nresponsive sizes, and theme-aware emphasis while preserving header semantics.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Section title",
+        "language": "tsx",
+        "code": "<Heading level={2} size=\"xl\">Account settings</Heading>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/components/heading/Heading.tsx",
     "sourceLocation": {
       "filePath": "src/components/heading/Heading.tsx",
-      "line": 94,
+      "line": 106,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8872,14 +8902,20 @@
   },
   {
     "name": "Input",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Theme-aware text input with semantic sizing and optional leading/trailing icon slots.\n\nUse `Input` for single-line form controls that need ZORA styling, disabled/read-only\nhandling, and accessible trailing actions without dropping into Surface directly.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Search input",
+        "language": "tsx",
+        "code": "<Input placeholder=\"Search\" leadingIcon={{ name: 'search-outline' }} />"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/components/input/Input.tsx",
     "sourceLocation": {
       "filePath": "src/components/input/Input.tsx",
-      "line": 65,
+      "line": 77,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12021,14 +12057,20 @@
   },
   {
     "name": "ResponsivePanel",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Scrollable wide panel",
+        "language": "tsx",
+        "code": "<ResponsivePanel open title=\"APIs\" size=\"wide\" scroll=\"content\">...</ResponsivePanel>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "line": 75,
+      "line": 159,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12082,14 +12124,16 @@
     "modulePath": "src/patterns/responsive-panel/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 9,
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [
       "ResponsivePanelDesktopMode",
       "ResponsivePanelMobileMode",
+      "ResponsivePanelScroll",
       "ResponsivePanelSide",
+      "ResponsivePanelSize",
       "ZoraThemeMode"
     ],
     "signatures": [],
@@ -12165,9 +12209,23 @@
         "description": null
       },
       {
+        "name": "scroll",
+        "kind": "property",
+        "type": "ResponsivePanelScroll | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "side",
         "kind": "property",
         "type": "ResponsivePanelSide | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "ResponsivePanelSize | undefined",
         "required": false,
         "description": null
       },
@@ -12196,6 +12254,24 @@
     "structuredRows": []
   },
   {
+    "name": "ResponsivePanelScroll",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/responsive-panel/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/responsive-panel/types.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ResponsivePanelSide",
     "description": null,
     "isReadme": false,
@@ -12205,6 +12281,24 @@
     "sourceLocation": {
       "filePath": "src/patterns/responsive-panel/types.ts",
       "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ResponsivePanelSize",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/responsive-panel/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/responsive-panel/types.ts",
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15181,14 +15275,20 @@
   },
   {
     "name": "Text",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Structured copy primitive for theme-aware app text.\n\n`Text` owns normal body, caption, label, code, and supporting-copy variants so\nconsumers do not need to import lower-level Surface typography directly.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "Muted supporting copy",
+        "language": "tsx",
+        "code": "<Text variant=\"bodySmall\" emphasis=\"muted\">Updated just now</Text>"
+      }
+    ],
     "kind": "value",
     "modulePath": "src/components/text/Text.tsx",
     "sourceLocation": {
       "filePath": "src/components/text/Text.tsx",
-      "line": 91,
+      "line": 103,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -19483,14 +19583,20 @@
   },
   {
     "name": "ZoraProvider",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
+    "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
+    "isReadme": true,
+    "examples": [
+      {
+        "title": "App provider",
+        "language": "tsx",
+        "code": "<ZoraProvider initialMode=\"light\"><App /></ZoraProvider>"
+      }
+    ],
     "kind": "function",
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 15,
+      "line": 27,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

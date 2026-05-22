@@ -91,4 +91,16 @@ function HeadingInner({
   );
 }
 
+/***
+ * Structured title primitive for accessible page, section, and card headings.
+ *
+ * `Heading` gives consumers a ZORA-owned title API with semantic levels,
+ * responsive sizes, and theme-aware emphasis while preserving header semantics.
+ *
+ * @readme
+ * @example Section title
+ * ```tsx
+ * <Heading level={2} size="xl">Account settings</Heading>
+ * ```
+ */
 export const Heading = withZoraThemeScope(HeadingInner);
