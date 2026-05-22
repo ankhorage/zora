@@ -70,4 +70,16 @@ function CardInner({
   );
 }
 
+/***
+ * Structured content container with built-in heading, description, actions, and footer slots.
+ *
+ * Use `Card` for reusable content blocks that should inherit ZORA spacing,
+ * radius, tone, and responsive header layout without hand-assembling primitives.
+ *
+ * @readme
+ * @example Content card
+ * ```tsx
+ * <Card title="Project" description="Latest activity">...</Card>
+ * ```
+ */
 export const Card = withZoraThemeScope(CardInner);
