@@ -49,7 +49,5 @@ function ProgressInner({
 
 /***
  * Progress indicator for determinate and indeterminate loading states.
- *
- * @readme
  */
 export const Progress = withZoraThemeScope(ProgressInner);

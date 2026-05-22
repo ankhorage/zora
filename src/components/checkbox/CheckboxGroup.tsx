@@ -59,8 +59,6 @@ function CheckboxGroupInner<TValue extends string>({
 
 /***
  * Renders a group of checkboxes for multi-select values.
- *
- * @readme
  */
 export const CheckboxGroup = withZoraThemeScope(CheckboxGroupInner);
 

@@ -11,6 +11,6 @@ function ToastInner({ mode: _mode, themeId: _themeId, ...props }: ToastProps) {
 /***
  * Renders a toast notification message.
  *
- * @readme
+ 
  */
 export const Toast = withZoraThemeScope(ToastInner);

@@ -27,7 +27,5 @@ function FormActionsInner({
 
 /***
  * Standard submit/action area for forms.
- *
- * @readme
  */
 export const FormActions = withZoraThemeScope(FormActionsInner);

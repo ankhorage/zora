@@ -93,7 +93,5 @@ function ChipInner({
 
 /***
  * Compact pill-like control for filters, tags, and quick selections.
- *
- * @readme
  */
 export const Chip = withZoraThemeScope(ChipInner);

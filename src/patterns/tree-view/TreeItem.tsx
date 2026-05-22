@@ -93,6 +93,6 @@ function TreeItemInner<TId extends string = string>({
 /***
  * Single tree node row used within `TreeView`.
  *
- * @readme
+ 
  */
 export const TreeItem = withZoraThemeScope(TreeItemInner);

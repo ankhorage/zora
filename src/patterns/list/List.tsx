@@ -72,6 +72,6 @@ function ListInner(props: ListProps) {
 /***
  * List container pattern for composing `ListRow` and `ListSection`.
  *
- * @readme
+ 
  */
 export const List = withZoraThemeScope(ListInner);

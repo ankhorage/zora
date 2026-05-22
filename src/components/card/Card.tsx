@@ -76,7 +76,6 @@ function CardInner({
  * Use `Card` for reusable content blocks that should inherit ZORA spacing,
  * radius, tone, and responsive header layout without hand-assembling primitives.
  *
- * @readme
  * @example Content card
  * ```tsx
  * <Card title="Project" description="Latest activity">...</Card>

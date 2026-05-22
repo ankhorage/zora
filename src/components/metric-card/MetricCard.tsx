@@ -83,7 +83,5 @@ function MetricCardInner({
 
 /***
  * Highlights a key metric with label, value, and optional trend/actions.
- *
- * @readme
  */
 export const MetricCard = withZoraThemeScope(MetricCardInner);

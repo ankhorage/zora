@@ -13,6 +13,6 @@ function GridInner({ themeId: _themeId, mode: _mode, ...props }: GridProps) {
 /***
  * Creates responsive grid layouts for cards, tiles, and dashboard content.
  *
- * @readme
+ 
  */
 export const Grid = withZoraThemeScope(GridInner);

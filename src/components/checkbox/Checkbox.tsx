@@ -11,6 +11,6 @@ function CheckboxInner({ themeId: _themeId, mode: _mode, ...props }: CheckboxPro
 /***
  * Binary selection control for toggling a value on or off.
  *
- * @readme
+ 
  */
 export const Checkbox = withZoraThemeScope(CheckboxInner);

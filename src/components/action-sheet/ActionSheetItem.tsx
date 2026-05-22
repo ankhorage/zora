@@ -31,7 +31,5 @@ function ActionSheetItemInner({
 
 /***
  * Renders a single selectable action row within an `ActionSheet`.
- *
- * @readme
  */
 export const ActionSheetItem = withZoraThemeScope(ActionSheetItemInner);

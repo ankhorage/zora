@@ -42,6 +42,6 @@ function ToolbarInner({
 /***
  * Horizontal toolbar surface for grouping actions and controls.
  *
- * @readme
+ 
  */
 export const Toolbar = withZoraThemeScope(ToolbarInner);

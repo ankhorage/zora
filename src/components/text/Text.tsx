@@ -94,7 +94,7 @@ function TextInner({
  * `Text` owns normal body, caption, label, code, and supporting-copy variants so
  * consumers do not need to import lower-level Surface typography directly.
  *
- * @readme
+ 
  * @example Muted supporting copy
  * ```tsx
  * <Text variant="bodySmall" emphasis="muted">Updated just now</Text>

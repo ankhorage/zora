@@ -65,7 +65,5 @@ function FormInner<TName extends string = string>({
 
 /***
  * Composes fields and actions into a validated form layout.
- *
- * @readme
  */
 export const Form = withZoraThemeScope(FormInner);

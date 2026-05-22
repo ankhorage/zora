@@ -17,6 +17,6 @@ function ContainerInner({ themeId: _themeId, mode: _mode, ...props }: ContainerP
 /***
  * Constrains page content to semantic widths with responsive padding.
  *
- * @readme
+ 
  */
 export const Container = withZoraThemeScope(ContainerInner);

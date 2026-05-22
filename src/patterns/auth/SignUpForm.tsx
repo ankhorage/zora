@@ -81,6 +81,6 @@ function SignUpFormInner({
 /***
  * Sign-up form pattern with structured fields and validation.
  *
- * @readme
+ 
  */
 export const SignUpForm = withZoraThemeScope(SignUpFormInner);

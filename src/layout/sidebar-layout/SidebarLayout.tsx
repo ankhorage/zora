@@ -28,6 +28,6 @@ function SidebarLayoutInner({
 /***
  * Responsive layout with a sidebar and main content area (and optional aside).
  *
- * @readme
+ 
  */
 export const SidebarLayout = withZoraThemeScope(SidebarLayoutInner);

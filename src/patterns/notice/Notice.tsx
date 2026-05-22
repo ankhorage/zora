@@ -35,6 +35,6 @@ function NoticeInner({
 /***
  * Notice pattern for inline feedback with tone, title, and actions.
  *
- * @readme
+ 
  */
 export const Notice = withZoraThemeScope(NoticeInner);

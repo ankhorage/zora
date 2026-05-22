@@ -132,7 +132,5 @@ function AppBarInner({
 
 /***
  * Renders a top app bar with title/subtitle and optional leading/trailing actions.
- *
- * @readme
  */
 export const AppBar = withZoraThemeScope(AppBarInner);

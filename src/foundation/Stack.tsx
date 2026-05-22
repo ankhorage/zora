@@ -13,6 +13,6 @@ function StackInner({ themeId: _themeId, mode: _mode, ...props }: StackProps) {
 /***
  * Arranges layout items in one direction with theme spacing.
  *
- * @readme
+ 
  */
 export const Stack = withZoraThemeScope(StackInner);

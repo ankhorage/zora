@@ -65,7 +65,5 @@ function ChipGroupInner<TValue extends string = string>({
 
 /***
  * Renders a row or wrap layout of `Chip` items.
- *
- * @readme
  */
 export const ChipGroup = withZoraThemeScope(ChipGroupInner);

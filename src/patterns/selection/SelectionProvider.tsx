@@ -21,7 +21,7 @@ function resolveDisabled(disabled: boolean | undefined): boolean {
 /***
  * Accesses selection state provided by `SelectionProvider`.
  *
- * @readme
+ 
  */
 export function useSelection(): UseSelectionResult {
   const value = React.useContext(SelectionContext);
@@ -35,7 +35,7 @@ export function useSelection(): UseSelectionResult {
 /***
  * Provides selection state for building selectable lists and grids.
  *
- * @readme
+ 
  */
 export function SelectionProvider({
   children,

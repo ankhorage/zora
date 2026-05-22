@@ -23,6 +23,6 @@ function ToolbarActionInner({
 /***
  * Convenience icon action for toolbars with active state styling.
  *
- * @readme
+ 
  */
 export const ToolbarAction = withZoraThemeScope(ToolbarActionInner);

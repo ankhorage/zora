@@ -51,6 +51,6 @@ function ConfirmDialogInner({
 /***
  * Confirmation dialog pattern with cancel/confirm actions.
  *
- * @readme
+ 
  */
 export const ConfirmDialog = withZoraThemeScope(ConfirmDialogInner);

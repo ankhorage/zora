@@ -241,7 +241,5 @@ function DatePickerInner({
 
 /***
  * Date input control with calendar selection and formatted display value.
- *
- * @readme
  */
 export const DatePicker = withZoraThemeScope(DatePickerInner);

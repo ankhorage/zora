@@ -6,7 +6,7 @@ import type { ToastProviderProps } from './types';
 /***
  * Provides toast state and rendering context for `useToast` and `Toast`.
  *
- * @readme
+ 
  */
 export function ToastProvider({ children, defaultDuration }: ToastProviderProps) {
   if (defaultDuration === undefined) {

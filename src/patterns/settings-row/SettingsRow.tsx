@@ -46,6 +46,6 @@ function SettingsRowInner({
 /***
  * Settings row pattern with title, description/meta, and optional trailing content.
  *
- * @readme
+ 
  */
 export const SettingsRow = withZoraThemeScope(SettingsRowInner);

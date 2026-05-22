@@ -66,6 +66,6 @@ function DisclosureSectionInner({
 /***
  * Expandable section pattern with a summary header and collapsible content.
  *
- * @readme
+ 
  */
 export const DisclosureSection = withZoraThemeScope(DisclosureSectionInner);

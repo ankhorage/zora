@@ -25,6 +25,6 @@ function FilterBarInner({
 /***
  * Horizontal filter/action bar layout with leading/trailing slots.
  *
- * @readme
+ 
  */
 export const FilterBar = withZoraThemeScope(FilterBarInner);

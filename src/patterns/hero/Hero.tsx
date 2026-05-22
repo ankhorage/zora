@@ -116,6 +116,6 @@ function resolveContentAlign(align: HeroAlign) {
 /***
  * Hero section pattern for prominent page introductions with actions.
  *
- * @readme
+ 
  */
 export const Hero = withZoraThemeScope(HeroInner);

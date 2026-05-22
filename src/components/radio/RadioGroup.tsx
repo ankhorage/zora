@@ -58,8 +58,6 @@ function RadioGroupInner<TValue extends string>({
 
 /***
  * Renders a group of radio options for selecting a single value.
- *
- * @readme
  */
 export const RadioGroup = withZoraThemeScope(RadioGroupInner);
 

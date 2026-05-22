@@ -10,7 +10,5 @@ function ActionSheetInner({ mode: _mode, themeId: _themeId, ...props }: ActionSh
 
 /***
  * Presents a modal bottom sheet with a list of actions.
- *
- * @readme
  */
 export const ActionSheet = withZoraThemeScope(ActionSheetInner);

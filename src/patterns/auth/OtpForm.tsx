@@ -85,6 +85,6 @@ function OtpFormInner({
 /***
  * One-time passcode form pattern with digit input and submit actions.
  *
- * @readme
+ 
  */
 export const OtpForm = withZoraThemeScope(OtpFormInner);

@@ -52,6 +52,6 @@ function SkeletonListInner({
 /***
  * Skeleton placeholder list for loading states in list views.
  *
- * @readme
+ 
  */
 export const SkeletonList = withZoraThemeScope(SkeletonListInner);

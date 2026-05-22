@@ -53,6 +53,6 @@ function ZoraDrawerContentInner({
 /***
  * Standard drawer content pattern for ZORA navigation lists.
  *
- * @readme
+ 
  */
 export const ZoraDrawerContent = withZoraThemeScope(ZoraDrawerContentInner);

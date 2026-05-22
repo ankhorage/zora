@@ -110,6 +110,6 @@ function TabsInner<TValue extends string = string>({
 /***
  * Tab navigation for switching between views or content sections.
  *
- * @readme
+ 
  */
 export const Tabs = withZoraThemeScope(TabsInner);

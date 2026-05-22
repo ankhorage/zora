@@ -26,7 +26,6 @@ function ButtonInner({
  * Use `Button` for explicit user actions that should follow ZORA's semantic color,
  * variant, and size recipes across React Native and React Native Web.
  *
- * @readme
  * @example Basic action
  * ```tsx
  * <Button color="primary" variant="solid" onPress={save}>Save</Button>

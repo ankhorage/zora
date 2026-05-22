@@ -49,6 +49,6 @@ function TextareaInner({
 /***
  * Multi-line text input with consistent ZORA field styling.
  *
- * @readme
+ 
  */
 export const Textarea = withZoraThemeScope(TextareaInner);

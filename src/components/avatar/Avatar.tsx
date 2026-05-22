@@ -142,7 +142,5 @@ function AvatarInner({
 
 /***
  * Displays a user or entity avatar with image support and initials fallback.
- *
- * @readme
  */
 export const Avatar = withZoraThemeScope(AvatarInner);

@@ -265,6 +265,6 @@ function MessageBubbleInner({
 /***
  * Message bubble pattern for chat UIs with direction and status styling.
  *
- * @readme
+ 
  */
 export const MessageBubble = withZoraThemeScope(MessageBubbleInner);

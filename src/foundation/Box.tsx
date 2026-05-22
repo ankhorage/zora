@@ -13,6 +13,6 @@ function BoxInner({ themeId: _themeId, mode: _mode, ...props }: BoxProps) {
 /***
  * Base layout primitive for themed spacing, color, border, flex, and responsive props.
  *
- * @readme
+ 
  */
 export const Box = withZoraThemeScope(BoxInner);

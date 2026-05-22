@@ -39,7 +39,7 @@ function AppShellInner({
  * `AppShell` provides the top-level layout frame for cross-platform apps while
  * leaving navigation, toolbars, and overlays composable through explicit slots.
  *
- * @readme
+ 
  * @example App frame
  * ```tsx
  * <AppShell header={<AppBar title="Dashboard" />}>...</AppShell>

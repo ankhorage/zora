@@ -152,6 +152,6 @@ function TimePickerInner({
 /***
  * Time input control with wheel selection and formatted display value.
  *
- * @readme
+ 
  */
 export const TimePicker = withZoraThemeScope(TimePickerInner);

@@ -54,7 +54,5 @@ function SelectInner<TValue extends string = string>({
 
 /***
  * Select control for choosing a value from a list of options.
- *
- * @readme
  */
 export const Select = withZoraThemeScope(SelectInner);

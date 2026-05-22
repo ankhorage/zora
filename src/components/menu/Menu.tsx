@@ -62,7 +62,5 @@ function MenuInner({ themeId: _themeId, mode: _mode, actions, onDismiss, ...prop
 
 /***
  * Presents a list of actions as a menu with optional icons and intent styling.
- *
- * @readme
  */
 export const Menu = withZoraThemeScope(MenuInner);

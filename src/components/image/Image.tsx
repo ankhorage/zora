@@ -11,6 +11,6 @@ function ImageInner({ themeId: _themeId, mode: _mode, ...props }: ImageProps) {
 /***
  * Displays an image with cross-platform source and fit handling.
  *
- * @readme
+ 
  */
 export const Image = withZoraThemeScope(ImageInner);

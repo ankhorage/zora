@@ -37,7 +37,5 @@ function RatingInner({
 
 /***
  * Displays a star-based rating value with optional half steps.
- *
- * @readme
  */
 export const Rating = withZoraThemeScope(RatingInner);

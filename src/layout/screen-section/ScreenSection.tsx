@@ -25,6 +25,6 @@ function ScreenSectionInner({
 /***
  * Screen section layout with optional title, description, and actions.
  *
- * @readme
+ 
  */
 export const ScreenSection = withZoraThemeScope(ScreenSectionInner);

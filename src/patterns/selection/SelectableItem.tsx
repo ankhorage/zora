@@ -18,7 +18,7 @@ function isRenderProp(
 /***
  * Adds selection behavior to arbitrary child content via render props.
  *
- * @readme
+ 
  */
 export function SelectableItem({ id, trigger, disabled = false, children }: SelectableItemProps) {
   const selection = useSelection();

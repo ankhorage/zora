@@ -55,6 +55,6 @@ function TreeViewInner<TId extends string = string>({
 /***
  * Tree view pattern for hierarchical navigation and expandable lists.
  *
- * @readme
+ 
  */
 export const TreeView = withZoraThemeScope(TreeViewInner);

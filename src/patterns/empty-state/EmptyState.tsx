@@ -61,7 +61,7 @@ function EmptyStateInner({
  * `EmptyState` combines concise copy with optional primary and secondary actions
  * so apps can guide users without custom card and button wiring.
  *
- * @readme
+ 
  * @example Empty project list
  * ```tsx
  * <EmptyState title="No projects yet" primaryAction={{ label: 'Create project', onPress }} />

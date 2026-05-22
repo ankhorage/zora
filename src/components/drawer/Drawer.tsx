@@ -54,7 +54,5 @@ function DrawerInner({
 
 /***
  * Side panel overlay for navigation, settings, and secondary content.
- *
- * @readme
  */
 export const Drawer = withZoraThemeScope(DrawerInner);

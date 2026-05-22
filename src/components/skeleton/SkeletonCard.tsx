@@ -38,7 +38,5 @@ function SkeletonCardInner({
 
 /***
  * Skeleton placeholder that matches the structure of a `Card`.
- *
- * @readme
  */
 export const SkeletonCard = withZoraThemeScope(SkeletonCardInner);

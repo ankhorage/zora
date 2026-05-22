@@ -68,7 +68,6 @@ function InputInner({
  * Use `Input` for single-line form controls that need ZORA styling, disabled/read-only
  * handling, and accessible trailing actions without dropping into Surface directly.
  *
- * @readme
  * @example Search input
  * ```tsx
  * <Input placeholder="Search" leadingIcon={{ name: 'search-outline' }} />

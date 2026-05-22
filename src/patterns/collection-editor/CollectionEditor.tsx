@@ -106,6 +106,6 @@ function CollectionEditorInner<TItem>({
 /***
  * Editor pattern for adding, removing, and reordering a collection of items.
  *
- * @readme
+ 
  */
 export const CollectionEditor = withZoraThemeScope(CollectionEditorInner);

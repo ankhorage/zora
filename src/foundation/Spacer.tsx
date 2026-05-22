@@ -16,6 +16,6 @@ function SpacerInner({ themeId: _themeId, mode: _mode, ...props }: SpacerProps) 
 /***
  * Adds flexible or fixed empty space in layout compositions.
  *
- * @readme
+ 
  */
 export const Spacer = withZoraThemeScope(SpacerInner);

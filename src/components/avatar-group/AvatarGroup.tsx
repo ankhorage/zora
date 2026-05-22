@@ -73,7 +73,5 @@ function AvatarGroupInner({
 
 /***
  * Renders a compact group of avatars with optional overflow handling.
- *
- * @readme
  */
 export const AvatarGroup = withZoraThemeScope(AvatarGroupInner);

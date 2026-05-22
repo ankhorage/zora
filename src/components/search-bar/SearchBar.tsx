@@ -49,7 +49,5 @@ function SearchBarInner({
 
 /***
  * Search input with leading icon and optional trailing action.
- *
- * @readme
  */
 export const SearchBar = withZoraThemeScope(SearchBarInner);

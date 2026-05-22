@@ -31,7 +31,5 @@ function SkeletonInner({
 
 /***
  * Generic skeleton placeholder for loading states.
- *
- * @readme
  */
 export const Skeleton = withZoraThemeScope(SkeletonInner);
