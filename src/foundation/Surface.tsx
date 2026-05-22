@@ -17,4 +17,9 @@ function SurfaceInner({ themeId: _themeId, mode: _mode, ...props }: SurfaceProps
   return <SurfaceSurface {...props} />;
 }
 
+/***
+ * Provides a semantic themed region for elevated, subtle, or bordered content.
+ *
+ * @readme
+ */
 export const Surface = withZoraThemeScope(SurfaceInner);
