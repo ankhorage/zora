@@ -14,4 +14,9 @@ function DividerInner({ themeId: _themeId, mode: _mode, ...props }: DividerProps
   return <SurfaceDivider {...props} />;
 }
 
+/***
+ * Renders a themed visual separator between content sections.
+ *
+ * @readme
+ */
 export const Divider = withZoraThemeScope(DividerInner);
