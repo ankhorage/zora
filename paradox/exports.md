@@ -4994,7 +4994,7 @@ Source: `src/patterns/image-upload-field/types.ts:6:1`
 
 Kind: `function`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:27:1`
+Source: `src/theme/ZoraProvider.tsx:26:1`
 
 Installs the ZORA theme runtime and underlying Surface theme provider.
 

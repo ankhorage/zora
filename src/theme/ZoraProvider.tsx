@@ -18,7 +18,6 @@ export interface ZoraProviderProps {
  * Wrap an app with `ZoraProvider` once near the root so components, patterns,
  * layouts, and theme hooks resolve the same design tokens and color mode.
  *
- 
  * @example App provider
  * ```tsx
  * <ZoraProvider initialMode="light"><App /></ZoraProvider>

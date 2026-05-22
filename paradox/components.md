@@ -2959,7 +2959,7 @@ Export paths: `src/index.ts`
 
 ## ZoraProvider
 
-Source: `src/theme/ZoraProvider.tsx:27:1`
+Source: `src/theme/ZoraProvider.tsx:26:1`
 
 Installs the ZORA theme runtime and underlying Surface theme provider.
 

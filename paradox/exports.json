@@ -19578,7 +19578,7 @@
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 27,
+      "line": 26,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

@@ -59,6 +59,7 @@
     }
   ],
   "usage": null,
+  "readmeUsage": [],
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
@@ -23178,7 +23179,7 @@
       "modulePath": "src/theme/ZoraProvider.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 27,
+        "line": 26,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -35989,7 +35990,7 @@
       "modulePath": "src/theme/ZoraProvider.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 27,
+        "line": 26,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -38903,7 +38904,7 @@
       "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 27,
+        "line": 26,
         "column": 1
       }
     },
