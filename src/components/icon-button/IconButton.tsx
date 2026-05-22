@@ -29,4 +29,9 @@ function IconButtonInner({
   );
 }
 
+/***
+ * Icon-only button for compact actions; requires an accessible `label`.
+ *
+ * @readme
+ */
 export const IconButton = withZoraThemeScope(IconButtonInner);

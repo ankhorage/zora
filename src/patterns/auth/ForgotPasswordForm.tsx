@@ -86,4 +86,9 @@ function ForgotPasswordFormInner({
   );
 }
 
+/***
+ * Password reset form pattern with validation and submit actions.
+ *
+ * @readme
+ */
 export const ForgotPasswordForm = withZoraThemeScope(ForgotPasswordFormInner);

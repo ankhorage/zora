@@ -56,4 +56,9 @@ function ModalInner({
   );
 }
 
+/***
+ * Modal dialog surface with header/content/footer slots.
+ *
+ * @readme
+ */
 export const Modal = withZoraThemeScope(ModalInner);

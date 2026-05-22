@@ -1,17 +1,19 @@
 [
   {
     "name": "ActionSheet",
-    "description": null,
-    "isReadme": false,
+    "description": "Presents a modal bottom sheet with a list of actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/action-sheet/ActionSheet.tsx",
     "sourceLocation": {
       "filePath": "src/components/action-sheet/ActionSheet.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19,17 +21,19 @@
   },
   {
     "name": "ActionSheetItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a single selectable action row within an `ActionSheet`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/action-sheet/ActionSheetItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/action-sheet/ActionSheetItem.tsx",
-      "line": 32,
+      "line": 37,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -47,8 +51,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -150,8 +158,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -229,17 +241,19 @@
   },
   {
     "name": "AppBar",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/app-bar/AppBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/app-bar/AppBar.tsx",
-      "line": 133,
+      "line": 138,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -257,7 +271,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -275,7 +291,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -322,8 +340,14 @@
       "line": 26,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AppBarMode", "AppBarOverflowAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AppBarMode",
+      "AppBarOverflowAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -431,7 +455,9 @@
       "line": 48,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -449,8 +475,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -517,8 +547,12 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -585,7 +619,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -593,17 +629,19 @@
   },
   {
     "name": "Avatar",
-    "description": null,
-    "isReadme": false,
+    "description": "Displays a user or entity avatar with image support and initials fallback.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/avatar/Avatar.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar/Avatar.tsx",
-      "line": 143,
+      "line": 148,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -611,17 +649,19 @@
   },
   {
     "name": "AvatarGroup",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a compact group of avatars with optional overflow handling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/avatar-group/AvatarGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar-group/AvatarGroup.tsx",
-      "line": 74,
+      "line": 79,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -639,7 +679,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -707,8 +749,15 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarGroupItem", "AvatarShape", "AvatarSize", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarGroupItem",
+      "AvatarShape",
+      "AvatarSize",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -782,8 +831,14 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -878,7 +933,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -896,7 +953,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -904,17 +963,19 @@
   },
   {
     "name": "Badge",
-    "description": null,
-    "isReadme": false,
+    "description": "Shows a small status, label, or count indicator.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/badge/Badge.tsx",
     "sourceLocation": {
       "filePath": "src/components/badge/Badge.tsx",
-      "line": 30,
+      "line": 35,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -932,8 +993,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -990,17 +1055,19 @@
   },
   {
     "name": "Box",
-    "description": null,
-    "isReadme": false,
+    "description": "Base layout primitive for themed spacing, color, border, flex, and responsive props.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Box.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Box.tsx",
-      "line": 13,
+      "line": 18,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1018,8 +1085,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1366,7 +1437,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -1410,17 +1483,19 @@
   },
   {
     "name": "Breadcrumbs",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a breadcrumb trail for hierarchical navigation.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
     "sourceLocation": {
       "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-      "line": 143,
+      "line": 148,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1438,8 +1513,13 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["BreadcrumbItem", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "BreadcrumbItem",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1519,7 +1599,9 @@
       "line": 35,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1527,17 +1609,19 @@
   },
   {
     "name": "ButtonGroup",
-    "description": null,
-    "isReadme": false,
+    "description": "Groups multiple `Button` elements with consistent spacing and alignment.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/button-group/ButtonGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/button-group/ButtonGroup.tsx",
-      "line": 105,
+      "line": 110,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1555,7 +1639,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1573,7 +1659,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1591,8 +1679,14 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ButtonGroupAlign", "ButtonGroupOrientation", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ButtonGroupAlign",
+      "ButtonGroupOrientation",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1666,8 +1760,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2069,7 +2167,9 @@
       "line": 85,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2087,8 +2187,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2453,17 +2557,19 @@
   },
   {
     "name": "Center",
-    "description": null,
-    "isReadme": false,
+    "description": "Centers children horizontally and vertically within the available space.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Center.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Center.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2481,8 +2587,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2836,8 +2946,13 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2894,17 +3009,19 @@
   },
   {
     "name": "ChatListItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Chat-style list row with avatar, title, preview text, and unread indicators.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/chat-list-item/ChatListItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/chat-list-item/ChatListItem.tsx",
-      "line": 220,
+      "line": 225,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2922,8 +3039,13 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ChatListAvatar", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChatListAvatar",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3050,17 +3172,19 @@
   },
   {
     "name": "Checkbox",
-    "description": null,
-    "isReadme": false,
+    "description": "Binary selection control for toggling a value on or off.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/checkbox/Checkbox.tsx",
     "sourceLocation": {
       "filePath": "src/components/checkbox/Checkbox.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3068,17 +3192,19 @@
   },
   {
     "name": "CheckboxGroup",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a group of checkboxes for multi-select values.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/checkbox/CheckboxGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/checkbox/CheckboxGroup.tsx",
-      "line": 60,
+      "line": 65,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3096,7 +3222,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -3150,8 +3278,13 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["CheckboxGroupOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CheckboxGroupOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3260,8 +3393,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3633,17 +3770,19 @@
   },
   {
     "name": "Chip",
-    "description": null,
-    "isReadme": false,
+    "description": "Compact pill-like control for filters, tags, and quick selections.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/chip/Chip.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip/Chip.tsx",
-      "line": 94,
+      "line": 99,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3651,17 +3790,19 @@
   },
   {
     "name": "ChipGroup",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a row or wrap layout of `Chip` items.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/chip-group/ChipGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip-group/ChipGroup.tsx",
-      "line": 66,
+      "line": 71,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3679,7 +3820,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -3733,7 +3876,9 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3751,8 +3896,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3830,17 +3979,19 @@
   },
   {
     "name": "CollectionEditor",
-    "description": null,
-    "isReadme": false,
+    "description": "Editor pattern for adding, removing, and reordering a collection of items.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/collection-editor/CollectionEditor.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/collection-editor/CollectionEditor.tsx",
-      "line": 106,
+      "line": 111,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3858,8 +4009,13 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["CollectionEditorRenderItemProps", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CollectionEditorRenderItemProps",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3968,7 +4124,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -4026,17 +4184,19 @@
   },
   {
     "name": "ConfirmDialog",
-    "description": null,
-    "isReadme": false,
+    "description": "Confirmation dialog pattern with cancel/confirm actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
-      "line": 51,
+      "line": 56,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4054,8 +4214,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4168,17 +4332,19 @@
   },
   {
     "name": "Container",
-    "description": null,
-    "isReadme": false,
+    "description": "Constrains page content to semantic widths with responsive padding.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Container.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Container.tsx",
-      "line": 17,
+      "line": 22,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4196,8 +4362,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4544,8 +4714,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme"
+    ],
     "signatures": [
       {
         "label": "(theme?: ZoraTheme) => ThemeConfig",
@@ -4566,17 +4740,19 @@
   },
   {
     "name": "DataTable",
-    "description": null,
-    "isReadme": false,
+    "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/data-table/DataTable.tsx",
     "sourceLocation": {
       "filePath": "src/components/data-table/DataTable.tsx",
-      "line": 388,
+      "line": 393,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4594,8 +4770,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableColumn"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableColumn"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4641,8 +4821,13 @@
       "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableCellContext", "DataTableColumnAlign"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableCellContext",
+      "DataTableColumnAlign"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4716,7 +4901,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4734,7 +4921,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4752,7 +4941,9 @@
       "line": 44,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "DataTableColumn",
       "DataTableDensity",
@@ -4875,8 +5066,12 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuActionIntent"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuActionIntent"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4943,7 +5138,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4961,8 +5158,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableSortDirection"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableSortDirection"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4984,17 +5185,19 @@
   },
   {
     "name": "DatePicker",
-    "description": null,
-    "isReadme": false,
+    "description": "Date input control with calendar selection and formatted display value.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 242,
+      "line": 247,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5012,8 +5215,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DatePickerValue", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DatePickerValue",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5129,7 +5337,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5137,17 +5347,19 @@
   },
   {
     "name": "DisclosureSection",
-    "description": null,
-    "isReadme": false,
+    "description": "Expandable section pattern with a summary header and collapsible content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "line": 66,
+      "line": 71,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5165,8 +5377,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5258,17 +5474,19 @@
   },
   {
     "name": "Divider",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a themed visual separator between content sections.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Divider.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Divider.tsx",
-      "line": 17,
+      "line": 22,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5286,8 +5504,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5624,17 +5846,19 @@
   },
   {
     "name": "Drawer",
-    "description": null,
-    "isReadme": false,
+    "description": "Side panel overlay for navigation, settings, and secondary content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/drawer/Drawer.tsx",
     "sourceLocation": {
       "filePath": "src/components/drawer/Drawer.tsx",
-      "line": 55,
+      "line": 60,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5652,8 +5876,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5738,18 +5966,22 @@
   },
   {
     "name": "DropdownMenu",
-    "description": null,
-    "isReadme": false,
+    "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/components/menu/DropdownMenu.tsx",
     "sourceLocation": {
       "filePath": "src/components/menu/DropdownMenu.tsx",
-      "line": 6,
+      "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuProps"
+    ],
     "signatures": [
       {
         "label": "(props: import(\"/Users/a_rtiphishl_e/git/zora/src/index\").MenuProps) => React.JSX.Element",
@@ -5780,7 +6012,9 @@
       "line": 31,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5804,7 +6038,9 @@
       "line": 70,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5822,7 +6058,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -5869,8 +6107,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["EmptyStateAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "EmptyStateAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5941,17 +6184,19 @@
   },
   {
     "name": "FilterBar",
-    "description": null,
-    "isReadme": false,
+    "description": "Horizontal filter/action bar layout with leading/trailing slots.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/filter-bar/FilterBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/filter-bar/FilterBar.tsx",
-      "line": 25,
+      "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5969,8 +6214,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6027,17 +6276,19 @@
   },
   {
     "name": "ForgotPasswordForm",
-    "description": null,
-    "isReadme": false,
+    "description": "Password reset form pattern with validation and submit actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/ForgotPasswordForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/ForgotPasswordForm.tsx",
-      "line": 89,
+      "line": 94,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6055,8 +6306,14 @@
       "line": 47,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind", "ForgotPasswordFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind",
+      "ForgotPasswordFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6158,8 +6415,12 @@
       "line": 42,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6181,17 +6442,19 @@
   },
   {
     "name": "Form",
-    "description": null,
-    "isReadme": false,
+    "description": "Composes fields and actions into a validated form layout.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/Form.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/Form.tsx",
-      "line": 66,
+      "line": 71,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6199,17 +6462,19 @@
   },
   {
     "name": "FormActions",
-    "description": null,
-    "isReadme": false,
+    "description": "Standard submit/action area for forms.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormActions.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormActions.tsx",
-      "line": 28,
+      "line": 33,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6227,8 +6492,12 @@
       "line": 65,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6292,17 +6561,19 @@
   },
   {
     "name": "FormError",
-    "description": null,
-    "isReadme": false,
+    "description": "Displays a form-level validation or submission error message.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormError.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormError.tsx",
-      "line": 25,
+      "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6320,8 +6591,12 @@
       "line": 73,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6367,7 +6642,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6375,17 +6652,19 @@
   },
   {
     "name": "FormField",
-    "description": null,
-    "isReadme": false,
+    "description": "Connects a controlled form value to a labeled input field with error handling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/form/FormField.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormField.tsx",
-      "line": 151,
+      "line": 156,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6403,8 +6682,13 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldInputType", "ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldInputType",
+      "ValidationRule"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6541,8 +6825,13 @@
       "line": 52,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormFieldValue", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6623,7 +6912,9 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6641,25 +6932,9 @@
       "line": 61,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "FormFieldValue",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/components/form/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/form/types.ts",
-      "line": 13,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6677,8 +6952,14 @@
       "line": 77,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6801,7 +7082,9 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6819,7 +7102,9 @@
       "line": 92,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -6852,7 +7137,9 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6860,17 +7147,19 @@
   },
   {
     "name": "Grid",
-    "description": null,
-    "isReadme": false,
+    "description": "Creates responsive grid layouts for cards, tiles, and dashboard content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Grid.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Grid.tsx",
-      "line": 13,
+      "line": 18,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6888,8 +7177,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7271,8 +7564,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ValidationRule"
+    ],
     "signatures": [
       {
         "label": "(rules: readonly ValidationRule[] | undefined) => boolean",
@@ -7309,7 +7606,9 @@
       "line": 106,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7327,7 +7626,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7345,7 +7646,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7363,7 +7666,9 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7381,7 +7686,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7399,7 +7706,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "HeadingAlign",
       "HeadingLevel",
@@ -7564,7 +7873,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7582,7 +7893,9 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7590,17 +7903,19 @@
   },
   {
     "name": "Hero",
-    "description": null,
-    "isReadme": false,
+    "description": "Hero section pattern for prominent page introductions with actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/hero/Hero.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/hero/Hero.tsx",
-      "line": 116,
+      "line": 121,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7618,7 +7933,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -7672,7 +7989,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7690,7 +8009,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7708,8 +8029,16 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["HeroAction", "HeroAlign", "HeroLayout", "HeroTone", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "HeroAction",
+      "HeroAlign",
+      "HeroLayout",
+      "HeroTone",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7825,7 +8154,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7833,17 +8164,19 @@
   },
   {
     "name": "Icon",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders an icon from a configured icon provider with theme-aware defaults.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/icon/Icon.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon/Icon.tsx",
-      "line": 13,
+      "line": 18,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7851,17 +8184,19 @@
   },
   {
     "name": "IconButton",
-    "description": null,
-    "isReadme": false,
+    "description": "Icon-only button for compact actions; requires an accessible `label`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/icon-button/IconButton.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon-button/IconButton.tsx",
-      "line": 32,
+      "line": 37,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7879,8 +8214,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7975,8 +8314,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8040,17 +8383,19 @@
   },
   {
     "name": "Image",
-    "description": null,
-    "isReadme": false,
+    "description": "Displays an image with cross-platform source and fit handling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/image/Image.tsx",
     "sourceLocation": {
       "filePath": "src/components/image/Image.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8068,7 +8413,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8076,17 +8423,19 @@
   },
   {
     "name": "ImagePreview",
-    "description": null,
-    "isReadme": false,
+    "description": "Preview pattern for showing an image with optional metadata and actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/image-preview/ImagePreview.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/image-preview/ImagePreview.tsx",
-      "line": 76,
+      "line": 81,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8104,8 +8453,13 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraImageAsset", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraImageAsset",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8179,8 +8533,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceImageSource", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SurfaceImageSource",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8293,17 +8652,19 @@
   },
   {
     "name": "ImageUploadField",
-    "description": null,
-    "isReadme": false,
+    "description": "Form field pattern for picking, previewing, and uploading an image.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-      "line": 293,
+      "line": 298,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8321,7 +8682,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ImageUploadProgressContext",
       "ZoraImageAsset",
@@ -8492,7 +8855,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -8508,17 +8873,19 @@
   },
   {
     "name": "Inline",
-    "description": null,
-    "isReadme": false,
+    "description": "Arranges children inline with spacing and wrapping behavior.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Inline.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Inline.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8536,8 +8903,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8918,7 +9289,9 @@
       "line": 77,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8936,7 +9309,9 @@
       "line": 33,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8954,8 +9329,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["Surface"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "Surface"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8984,17 +9363,19 @@
   },
   {
     "name": "InspectorField",
-    "description": null,
-    "isReadme": false,
+    "description": "Inspector row pattern with label, description, and control slot.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/inspector-field/InspectorField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/inspector-field/InspectorField.tsx",
-      "line": 26,
+      "line": 31,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9012,8 +9393,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9112,17 +9497,19 @@
   },
   {
     "name": "List",
-    "description": null,
-    "isReadme": false,
+    "description": "List container pattern for composing `ListRow` and `ListSection`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/List.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/list/List.tsx",
-      "line": 72,
+      "line": 77,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9140,8 +9527,12 @@
       "line": 43,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9187,8 +9578,14 @@
       "line": 37,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ListRowProps", "ListRowVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ListRowProps",
+      "ListRowVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9248,7 +9645,9 @@
       "line": 47,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9256,17 +9655,19 @@
   },
   {
     "name": "ListRow",
-    "description": null,
-    "isReadme": false,
+    "description": "Row pattern for lists with leading/trailing slots and optional press behavior.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/ListRow.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/list/ListRow.tsx",
-      "line": 193,
+      "line": 198,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9284,7 +9685,9 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9302,7 +9705,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9310,17 +9715,19 @@
   },
   {
     "name": "ListSection",
-    "description": null,
-    "isReadme": false,
+    "description": "Section wrapper for lists with optional title and description.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/list/ListSection.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/list/ListSection.tsx",
-      "line": 36,
+      "line": 41,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9328,17 +9735,19 @@
   },
   {
     "name": "MediaCard",
-    "description": null,
-    "isReadme": false,
+    "description": "Card layout with an optional media/header region and structured content slots.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/media-card/MediaCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/media-card/MediaCard.tsx",
-      "line": 120,
+      "line": 125,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9356,7 +9765,9 @@
       "line": 25,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9374,7 +9785,9 @@
       "line": 44,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9382,17 +9795,19 @@
   },
   {
     "name": "Menu",
-    "description": null,
-    "isReadme": false,
+    "description": "Presents a list of actions as a menu with optional icons and intent styling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/menu/Menu.tsx",
     "sourceLocation": {
       "filePath": "src/components/menu/Menu.tsx",
-      "line": 63,
+      "line": 68,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9410,7 +9825,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -9499,7 +9916,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9517,8 +9936,13 @@
       "line": 25,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9575,17 +9999,19 @@
   },
   {
     "name": "MessageBubble",
-    "description": null,
-    "isReadme": false,
+    "description": "Message bubble pattern for chat UIs with direction and status styling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/message-bubble/MessageBubble.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/message-bubble/MessageBubble.tsx",
-      "line": 265,
+      "line": 270,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9603,8 +10029,12 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MessageBubbleAvatar"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MessageBubbleAvatar"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9636,8 +10066,13 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9704,7 +10139,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9722,8 +10159,14 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MessageBubbleAuthor", "MessageBubbleDirection", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MessageBubbleAuthor",
+      "MessageBubbleDirection",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9867,7 +10310,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9875,17 +10320,19 @@
   },
   {
     "name": "MetricCard",
-    "description": null,
-    "isReadme": false,
+    "description": "Highlights a key metric with label, value, and optional trend/actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/metric-card/MetricCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/metric-card/MetricCard.tsx",
-      "line": 84,
+      "line": 89,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9903,8 +10350,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10003,17 +10454,19 @@
   },
   {
     "name": "Modal",
-    "description": null,
-    "isReadme": false,
+    "description": "Modal dialog surface with header/content/footer slots.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/modal/Modal.tsx",
     "sourceLocation": {
       "filePath": "src/components/modal/Modal.tsx",
-      "line": 59,
+      "line": 64,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10031,8 +10484,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10117,17 +10574,19 @@
   },
   {
     "name": "NavigationItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a single navigation entry with active/disabled state support.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/navigation-item/NavigationItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-item/NavigationItem.tsx",
-      "line": 36,
+      "line": 41,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10145,8 +10604,14 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraNavigationRouteState",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10210,17 +10675,19 @@
   },
   {
     "name": "NavigationList",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a navigation list from route metadata with active state mapping.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/navigation-list/NavigationList.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-list/NavigationList.tsx",
-      "line": 62,
+      "line": 67,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10238,8 +10705,14 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraNavigationRouteState",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10324,17 +10797,19 @@
   },
   {
     "name": "Notice",
-    "description": null,
-    "isReadme": false,
+    "description": "Notice pattern for inline feedback with tone, title, and actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/notice/Notice.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/notice/Notice.tsx",
-      "line": 35,
+      "line": 40,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10352,8 +10827,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10417,17 +10896,19 @@
   },
   {
     "name": "OtpForm",
-    "description": null,
-    "isReadme": false,
+    "description": "One-time passcode form pattern with digit input and submit actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/OtpForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/OtpForm.tsx",
-      "line": 85,
+      "line": 90,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10445,8 +10926,13 @@
       "line": 59,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OtpFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "OtpFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10562,7 +11048,9 @@
       "line": 55,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -10578,17 +11066,19 @@
   },
   {
     "name": "Pagination",
-    "description": null,
-    "isReadme": false,
+    "description": "Pagination control for navigating between pages of results.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/pagination/Pagination.tsx",
     "sourceLocation": {
       "filePath": "src/components/pagination/Pagination.tsx",
-      "line": 189,
+      "line": 194,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10606,8 +11096,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10720,17 +11214,19 @@
   },
   {
     "name": "PaletteItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Tile item pattern for palettes and option grids.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tile-grid/PaletteItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tile-grid/PaletteItem.tsx",
-      "line": 57,
+      "line": 62,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10748,8 +11244,12 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10827,17 +11327,19 @@
   },
   {
     "name": "Panel",
-    "description": null,
-    "isReadme": false,
+    "description": "Semantic wrapper around `Card` for panel-style page sections.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/panel/Panel.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/panel/Panel.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10855,8 +11357,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10951,7 +11457,9 @@
       "line": 41,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -11019,8 +11527,12 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["PostAuthorAvatar"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PostAuthorAvatar"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11059,8 +11571,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11117,17 +11634,19 @@
   },
   {
     "name": "PostCard",
-    "description": null,
-    "isReadme": false,
+    "description": "Social-style post card pattern with author, content, media, and actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/post-card/PostCard.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/post-card/PostCard.tsx",
-      "line": 234,
+      "line": 239,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11145,7 +11664,9 @@
       "line": 39,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11163,8 +11684,15 @@
       "line": 59,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["PostAction", "PostAuthor", "PostCardMedia", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PostAction",
+      "PostAuthor",
+      "PostCardMedia",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11270,17 +11798,19 @@
   },
   {
     "name": "Progress",
-    "description": null,
-    "isReadme": false,
+    "description": "Progress indicator for determinate and indeterminate loading states.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/progress/Progress.tsx",
     "sourceLocation": {
       "filePath": "src/components/progress/Progress.tsx",
-      "line": 50,
+      "line": 55,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11298,8 +11828,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11356,17 +11890,19 @@
   },
   {
     "name": "Radio",
-    "description": null,
-    "isReadme": false,
+    "description": "Single-choice selection control used within a radio group.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/radio/Radio.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/Radio.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11374,17 +11910,19 @@
   },
   {
     "name": "RadioGroup",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a group of radio options for selecting a single value.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/radio/RadioGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/RadioGroup.tsx",
-      "line": 59,
+      "line": 64,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11402,7 +11940,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -11456,8 +11996,13 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["RadioGroupOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "RadioGroupOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11566,8 +12111,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11939,17 +12488,19 @@
   },
   {
     "name": "Rating",
-    "description": null,
-    "isReadme": false,
+    "description": "Displays a star-based rating value with optional half steps.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/rating/Rating.tsx",
     "sourceLocation": {
       "filePath": "src/components/rating/Rating.tsx",
-      "line": 38,
+      "line": 43,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11967,8 +12518,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12035,7 +12590,9 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -12073,7 +12630,9 @@
       "line": 159,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12091,7 +12650,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12109,7 +12670,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12127,7 +12690,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ResponsivePanelDesktopMode",
       "ResponsivePanelMobileMode",
@@ -12265,7 +12830,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12283,7 +12850,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12301,7 +12870,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12309,17 +12880,19 @@
   },
   {
     "name": "Screen",
-    "description": null,
-    "isReadme": false,
+    "description": "Page-level container with standard background and optional scroll behavior.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/screen/Screen.tsx",
     "sourceLocation": {
       "filePath": "src/layout/screen/Screen.tsx",
-      "line": 42,
+      "line": 47,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12337,8 +12910,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12395,17 +12972,19 @@
   },
   {
     "name": "ScreenSection",
-    "description": null,
-    "isReadme": false,
+    "description": "Screen section layout with optional title, description, and actions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/screen-section/ScreenSection.tsx",
     "sourceLocation": {
       "filePath": "src/layout/screen-section/ScreenSection.tsx",
-      "line": 25,
+      "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12423,8 +13002,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12481,17 +13064,19 @@
   },
   {
     "name": "SearchBar",
-    "description": null,
-    "isReadme": false,
+    "description": "Search input with leading icon and optional trailing action.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/search-bar/SearchBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/search-bar/SearchBar.tsx",
-      "line": 50,
+      "line": 55,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12509,8 +13094,12 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12602,17 +13191,19 @@
   },
   {
     "name": "SectionHeader",
-    "description": null,
-    "isReadme": false,
+    "description": "Section heading pattern with optional description and action slot.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/section-header/SectionHeader.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/section-header/SectionHeader.tsx",
-      "line": 46,
+      "line": 51,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12630,8 +13221,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12688,17 +13283,19 @@
   },
   {
     "name": "Select",
-    "description": null,
-    "isReadme": false,
+    "description": "Select control for choosing a value from a list of options.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/select/Select.tsx",
     "sourceLocation": {
       "filePath": "src/components/select/Select.tsx",
-      "line": 55,
+      "line": 60,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12706,18 +13303,22 @@
   },
   {
     "name": "SelectableItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Adds selection behavior to arbitrary child content via render props.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectableItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/selection/SelectableItem.tsx",
-      "line": 18,
+      "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectableItemProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectableItemProps"
+    ],
     "signatures": [
       {
         "label": "({ id, trigger, disabled = false, children }: SelectableItemProps) => React.JSX.Element",
@@ -12748,8 +13349,13 @@
       "line": 38,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectableItemState", "SelectionTrigger"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectableItemState",
+      "SelectionTrigger"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12795,8 +13401,12 @@
       "line": 28,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12863,7 +13473,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12871,18 +13483,22 @@
   },
   {
     "name": "SelectionProvider",
-    "description": null,
-    "isReadme": false,
+    "description": "Provides selection state for building selectable lists and grids.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectionProvider.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/selection/SelectionProvider.tsx",
-      "line": 30,
+      "line": 40,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionProviderProps"
+    ],
     "signatures": [
       {
         "label": "({\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n}: SelectionProviderProps) => React.JSX.Element",
@@ -12913,8 +13529,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12974,7 +13594,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12992,7 +13614,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -13032,8 +13656,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13097,17 +13726,19 @@
   },
   {
     "name": "SettingsLayout",
-    "description": null,
-    "isReadme": false,
+    "description": "Settings page layout with app bar, sidebar, and scrollable content area.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-      "line": 29,
+      "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13125,8 +13756,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13190,17 +13825,19 @@
   },
   {
     "name": "SettingsRow",
-    "description": null,
-    "isReadme": false,
+    "description": "Settings row pattern with title, description/meta, and optional trailing content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/settings-row/SettingsRow.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/settings-row/SettingsRow.tsx",
-      "line": 46,
+      "line": 51,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13218,7 +13855,9 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13226,17 +13865,19 @@
   },
   {
     "name": "Show",
-    "description": null,
-    "isReadme": false,
+    "description": "Conditionally renders children for responsive display and breakpoint-based visibility.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Show.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Show.tsx",
-      "line": 13,
+      "line": 18,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13254,8 +13895,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13305,17 +13950,19 @@
   },
   {
     "name": "SidebarLayout",
-    "description": null,
-    "isReadme": false,
+    "description": "Responsive layout with a sidebar and main content area (and optional aside).",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
-      "line": 28,
+      "line": 33,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13333,8 +13980,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13398,17 +14049,19 @@
   },
   {
     "name": "SignInForm",
-    "description": null,
-    "isReadme": false,
+    "description": "Sign-in form pattern with identifier and password fields.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/SignInForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/SignInForm.tsx",
-      "line": 116,
+      "line": 121,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13426,8 +14079,14 @@
       "line": 21,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind", "SignInFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind",
+      "SignInFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13550,8 +14209,12 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13580,17 +14243,19 @@
   },
   {
     "name": "SignUpForm",
-    "description": null,
-    "isReadme": false,
+    "description": "Sign-up form pattern with structured fields and validation.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/auth/SignUpForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/SignUpForm.tsx",
-      "line": 81,
+      "line": 86,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13608,7 +14273,9 @@
       "line": 33,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13626,8 +14293,14 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SignUpFormField", "SignUpFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SignUpFormField",
+      "SignUpFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13722,7 +14395,9 @@
       "line": 32,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13730,17 +14405,19 @@
   },
   {
     "name": "Skeleton",
-    "description": null,
-    "isReadme": false,
+    "description": "Generic skeleton placeholder for loading states.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/Skeleton.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/Skeleton.tsx",
-      "line": 32,
+      "line": 37,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13748,17 +14425,19 @@
   },
   {
     "name": "SkeletonCard",
-    "description": null,
-    "isReadme": false,
+    "description": "Skeleton placeholder that matches the structure of a `Card`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/SkeletonCard.tsx",
-      "line": 39,
+      "line": 44,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13776,8 +14455,12 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13844,7 +14527,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13852,17 +14537,19 @@
   },
   {
     "name": "SkeletonList",
-    "description": null,
-    "isReadme": false,
+    "description": "Skeleton placeholder list for loading states in list views.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonList.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/SkeletonList.tsx",
-      "line": 52,
+      "line": 57,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13880,8 +14567,13 @@
       "line": 29,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SkeletonListVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SkeletonListVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13962,7 +14654,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13980,8 +14674,12 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14041,7 +14739,9 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14049,17 +14749,19 @@
   },
   {
     "name": "SkeletonText",
-    "description": null,
-    "isReadme": false,
+    "description": "Multi-line skeleton placeholder for text content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/skeleton/SkeletonText.tsx",
     "sourceLocation": {
       "filePath": "src/components/skeleton/SkeletonText.tsx",
-      "line": 45,
+      "line": 50,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14077,8 +14779,12 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14142,17 +14848,19 @@
   },
   {
     "name": "Spacer",
-    "description": null,
-    "isReadme": false,
+    "description": "Adds flexible or fixed empty space in layout compositions.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Spacer.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Spacer.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14170,8 +14878,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14214,17 +14926,19 @@
   },
   {
     "name": "Stack",
-    "description": null,
-    "isReadme": false,
+    "description": "Arranges layout items in one direction with theme spacing.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Stack.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Stack.tsx",
-      "line": 13,
+      "line": 18,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14242,8 +14956,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14615,17 +15333,19 @@
   },
   {
     "name": "Surface",
-    "description": null,
-    "isReadme": false,
+    "description": "Provides a semantic themed region for elevated, subtle, or bordered content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/foundation/Surface.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Surface.tsx",
-      "line": 20,
+      "line": 25,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14643,7 +15363,9 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14661,8 +15383,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SurfaceVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14995,7 +15722,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15003,17 +15732,19 @@
   },
   {
     "name": "SwitchField",
-    "description": null,
-    "isReadme": false,
+    "description": "Labeled switch field pattern built on `SettingsRow`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/switch-field/SwitchField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/switch-field/SwitchField.tsx",
-      "line": 29,
+      "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15031,8 +15762,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15106,7 +15841,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -15157,17 +15894,19 @@
   },
   {
     "name": "Tabs",
-    "description": null,
-    "isReadme": false,
+    "description": "Tab navigation for switching between views or content sections.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/tabs/Tabs.tsx",
     "sourceLocation": {
       "filePath": "src/components/tabs/Tabs.tsx",
-      "line": 110,
+      "line": 115,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15185,8 +15924,14 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TabItem", "TabsVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabItem",
+      "TabsVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15267,7 +16012,9 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15291,7 +16038,9 @@
       "line": 103,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15309,7 +16058,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15317,17 +16068,19 @@
   },
   {
     "name": "Textarea",
-    "description": null,
-    "isReadme": false,
+    "description": "Multi-line text input with consistent ZORA field styling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/textarea/Textarea.tsx",
     "sourceLocation": {
       "filePath": "src/components/textarea/Textarea.tsx",
-      "line": 49,
+      "line": 54,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15345,8 +16098,13 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["Surface", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "Surface",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16505,7 +17263,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16523,7 +17283,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16541,8 +17303,15 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TextAlign", "TextVariant", "TextWeight", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TextAlign",
+      "TextVariant",
+      "TextWeight",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16693,7 +17462,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16711,7 +17482,9 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16719,17 +17492,19 @@
   },
   {
     "name": "ThemeComposer",
-    "description": null,
-    "isReadme": false,
+    "description": "UI for composing and applying a theme via structured controls.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-      "line": 310,
+      "line": 315,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16747,8 +17522,13 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16812,17 +17592,19 @@
   },
   {
     "name": "TileGrid",
-    "description": null,
-    "isReadme": false,
+    "description": "Responsive grid layout for arranging tile content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tile-grid/TileGrid.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tile-grid/TileGrid.tsx",
-      "line": 49,
+      "line": 54,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16840,8 +17622,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16891,17 +17677,19 @@
   },
   {
     "name": "Timeline",
-    "description": null,
-    "isReadme": false,
+    "description": "Timeline pattern for displaying a sequence of events.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/timeline/Timeline.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/timeline/Timeline.tsx",
-      "line": 115,
+      "line": 120,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16919,7 +17707,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -16987,8 +17777,13 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TimelineItem", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimelineItem",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17031,17 +17826,19 @@
   },
   {
     "name": "TimePicker",
-    "description": null,
-    "isReadme": false,
+    "description": "Time input control with wheel selection and formatted display value.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/time-picker/TimePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/time-picker/TimePicker.tsx",
-      "line": 152,
+      "line": 157,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17059,8 +17856,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TimePickerValue", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimePickerValue",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17183,7 +17985,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17191,17 +17995,19 @@
   },
   {
     "name": "Toast",
-    "description": null,
-    "isReadme": false,
+    "description": "Renders a toast notification message.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toast/Toast.tsx",
     "sourceLocation": {
       "filePath": "src/components/toast/Toast.tsx",
-      "line": 11,
+      "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17219,7 +18025,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17237,8 +18045,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToastStatus", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToastStatus",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17295,18 +18108,22 @@
   },
   {
     "name": "ToastProvider",
-    "description": null,
-    "isReadme": false,
+    "description": "Provides toast state and rendering context for `useToast` and `Toast`.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/components/toast/ToastProvider.tsx",
     "sourceLocation": {
       "filePath": "src/components/toast/ToastProvider.tsx",
-      "line": 6,
+      "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToastProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToastProviderProps"
+    ],
     "signatures": [
       {
         "label": "({ children, defaultDuration }: ToastProviderProps) => React.JSX.Element",
@@ -17337,7 +18154,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -17370,7 +18189,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17378,17 +18199,19 @@
   },
   {
     "name": "Toolbar",
-    "description": null,
-    "isReadme": false,
+    "description": "Horizontal toolbar surface for grouping actions and controls.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toolbar/Toolbar.tsx",
     "sourceLocation": {
       "filePath": "src/components/toolbar/Toolbar.tsx",
-      "line": 42,
+      "line": 47,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17396,17 +18219,19 @@
   },
   {
     "name": "ToolbarAction",
-    "description": null,
-    "isReadme": false,
+    "description": "Convenience icon action for toolbars with active state styling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/toolbar/ToolbarAction.tsx",
     "sourceLocation": {
       "filePath": "src/components/toolbar/ToolbarAction.tsx",
-      "line": 23,
+      "line": 28,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17424,8 +18249,12 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17499,7 +18328,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17517,8 +18348,13 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToolbarPosition", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToolbarPosition",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17575,17 +18411,19 @@
   },
   {
     "name": "TopbarLayout",
-    "description": null,
-    "isReadme": false,
+    "description": "Layout that composes a top bar with optional sidebar and content.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/topbar-layout/TopbarLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/topbar-layout/TopbarLayout.tsx",
-      "line": 24,
+      "line": 29,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17603,8 +18441,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17654,17 +18496,19 @@
   },
   {
     "name": "TreeItem",
-    "description": null,
-    "isReadme": false,
+    "description": "Single tree node row used within `TreeView`.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tree-view/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tree-view/TreeItem.tsx",
-      "line": 93,
+      "line": 98,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17682,7 +18526,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -17750,8 +18596,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TreeItemNode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TreeItemNode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17794,17 +18644,19 @@
   },
   {
     "name": "TreeView",
-    "description": null,
-    "isReadme": false,
+    "description": "Tree view pattern for hierarchical navigation and expandable lists.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/tree-view/TreeView.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tree-view/TreeView.tsx",
-      "line": 55,
+      "line": 60,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17822,8 +18674,14 @@
       "line": 24,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TreeItemNode", "TreeItemRenderProps", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TreeItemNode",
+      "TreeItemRenderProps",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17908,11 +18766,16 @@
     "modulePath": "src/components/form/useFormController.ts",
     "sourceLocation": {
       "filePath": "src/components/form/useFormController.ts",
-      "line": 23,
+      "line": 24,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["UseFormControllerOptions", "UseFormControllerResult"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "UseFormControllerOptions",
+      "UseFormControllerResult"
+    ],
     "signatures": [
       {
         "label": "({\n  fields,\n  initialValues,\n  values: controlledValues,\n  errors: externalErrors,\n  onChange,\n  onSubmit,\n  validateOnChange = false,\n}: UseFormControllerOptions<TName>) => UseFormControllerResult<TName>",
@@ -17943,8 +18806,13 @@
       "line": 97,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18011,8 +18879,13 @@
       "line": 107,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldValue", "FormValidationResult", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormValidationResult",
+      "FormValues"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18069,18 +18942,22 @@
   },
   {
     "name": "useSelection",
-    "description": null,
-    "isReadme": false,
+    "description": "Accesses selection state provided by `SelectionProvider`.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/patterns/selection/SelectionProvider.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/selection/SelectionProvider.tsx",
-      "line": 21,
+      "line": 26,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["UseSelectionResult"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "UseSelectionResult"
+    ],
     "signatures": [
       {
         "label": "() => UseSelectionResult",
@@ -18104,8 +18981,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18186,7 +19067,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -18211,7 +19094,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -18236,8 +19121,13 @@
       "line": 58,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues"
+    ],
     "signatures": [
       {
         "label": "(field: FormFieldConfig<TName>, values: FormValues<TName>) => string | undefined",
@@ -18274,8 +19164,14 @@
       "line": 65,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValidationResult", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValidationResult",
+      "FormValues"
+    ],
     "signatures": [
       {
         "label": "(fields: readonly FormFieldConfig<TName>[], values: FormValues<TName>) => FormValidationResult<TName>",
@@ -18312,8 +19208,12 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ValidationRule"
+    ],
     "signatures": [
       {
         "label": "(value: string, rules: readonly ValidationRule[] | undefined) => string | undefined",
@@ -18350,7 +19250,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18368,7 +19270,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -18400,7 +19304,9 @@
       "line": 3,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18418,7 +19324,9 @@
       "line": 28,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18436,7 +19344,9 @@
       "line": 87,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18454,7 +19364,9 @@
       "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18472,7 +19384,9 @@
       "line": 13,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18490,7 +19404,9 @@
       "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18508,8 +19424,12 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18548,7 +19468,9 @@
       "line": 476,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18566,7 +19488,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18584,8 +19508,12 @@
       "line": 42,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentPropValue"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentPropValue"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18624,7 +19552,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18642,8 +19572,13 @@
       "line": 75,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentEventPayloadFieldMeta", "ZoraComponentEventPayloadKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentEventPayloadFieldMeta",
+      "ZoraComponentEventPayloadKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18689,8 +19624,12 @@
       "line": 68,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentEventPayloadFieldType"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentEventPayloadFieldType"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18736,7 +19675,9 @@
       "line": 60,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18754,7 +19695,9 @@
       "line": 58,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18772,7 +19715,9 @@
       "line": 51,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -18798,7 +19743,9 @@
       "line": 87,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ZoraComponentBlueprint",
       "ZoraComponentCategory",
@@ -18901,7 +19848,9 @@
       "line": 101,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18919,8 +19868,12 @@
       "line": 28,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentPropSchema"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentPropSchema"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18952,7 +19905,9 @@
       "line": 33,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ZoraComponentPropArrayItemSchema",
       "ZoraComponentPropType",
@@ -19017,7 +19972,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19035,7 +19992,9 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19053,7 +20012,9 @@
       "line": 82,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19086,8 +20047,13 @@
       "line": 30,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComputedThemeMode", "ZoraTheme"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComputedThemeMode",
+      "ZoraTheme"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19147,8 +20113,12 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19201,7 +20171,9 @@
       "line": 3,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19209,17 +20181,19 @@
   },
   {
     "name": "ZoraDrawerContent",
-    "description": null,
-    "isReadme": false,
+    "description": "Standard drawer content pattern for ZORA navigation lists.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "line": 53,
+      "line": 58,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19237,8 +20211,13 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19326,7 +20305,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19344,7 +20325,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19362,7 +20345,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19402,7 +20387,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19420,7 +20407,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19481,7 +20470,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19514,7 +20505,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19532,7 +20525,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19599,8 +20594,12 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraProviderProps"
+    ],
     "signatures": [
       {
         "label": "({\n  children,\n  theme = zoraDefaultTheme,\n  initialMode = 'light',\n}: ZoraProviderProps) => React.JSX.Element",
@@ -19631,8 +20630,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19671,7 +20675,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19679,17 +20685,19 @@
   },
   {
     "name": "ZoraTabBar",
-    "description": null,
-    "isReadme": false,
+    "description": "Bottom tab bar pattern with badge support and active state styling.",
+    "isReadme": true,
     "examples": [],
     "kind": "value",
     "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "line": 144,
+      "line": 149,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19707,8 +20715,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19796,7 +20809,9 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -19850,7 +20865,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19868,7 +20885,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19886,8 +20905,12 @@
       "line": 64,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeScopeProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeScopeProps"
+    ],
     "signatures": [
       {
         "label": "({ children, themeId, mode }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined",
@@ -19918,8 +20941,12 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {

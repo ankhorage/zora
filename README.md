@@ -3,7 +3,7 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v2.5.1](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v2.5.2](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 ZORA — an opinionated UI kit for React Native + Web built on top of @ankhorage/surface.
 
@@ -1551,6 +1551,179 @@ graph TD
 ### Components
 
 <details>
+<summary>ActionSheet</summary>
+
+Presents a modal bottom sheet with a list of actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| cancelLabel | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| closeOnBackdrop | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+| visible | `boolean` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ActionSheetItem</summary>
+
+Renders a single selectable action row within an `ActionSheet`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec \| undefined` | no | — |  |
+| label | `React.ReactNode` | yes | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| trailing | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>AppBar</summary>
+
+Renders a top app bar with title/subtitle and optional leading/trailing actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| appMode | `AppBarMode \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| divider | `boolean \| undefined` | no | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| overflow | `AppBarOverflowAction \| undefined` | no | — |  |
+| safeAreaTop | `boolean \| undefined` | no | — |  |
+| subtitle | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Avatar</summary>
+
+Displays a user or entity avatar with image support and initials fallback.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| iconFallback | `ButtonIconSpec \| undefined` | no | — |  |
+| initials | `string \| undefined` | no | — |  |
+| label | `string \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| name | `string \| undefined` | no | — |  |
+| shape | `AvatarShape \| undefined` | no | — |  |
+| size | `AvatarSize \| undefined` | no | — |  |
+| source | `ImageSourcePropType \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>AvatarGroup</summary>
+
+Renders a compact group of avatars with optional overflow handling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| items | `readonly AvatarGroupItem[]` | yes | — |  |
+| max | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| overflowLabel | `((overflowCount: number) => string) \| undefined` | no | — |  |
+| shape | `AvatarShape \| undefined` | no | — |  |
+| size | `AvatarSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Badge</summary>
+
+Shows a small status, label, or count indicator.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| variant | `ZoraBadgeVariant \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Breadcrumbs</summary>
+
+Renders a breadcrumb trail for hierarchical navigation.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| compact | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| items | `readonly BreadcrumbItem[]` | yes | — |  |
+| maxItems | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| separator | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
 <summary>Button</summary>
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
@@ -1561,70 +1734,91 @@ variant, and size recipes across React Native and React Native Web.
 #### Basic action
 
 ```tsx
-<Button color="primary" variant="solid" onPress={save}>
-  Save
-</Button>
+<Button color="primary" variant="solid" onPress={save}>Save</Button>
 ```
 
 <details>
 <summary>Props</summary>
 
-| Prop               | Type                                                                                                                                          | Required | Default | Description |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityRole  | `AccessibilityRole \| undefined`                                                                                                              | no       | —       |             |
-| accessibilityState | `AccessibilityState \| undefined`                                                                                                             | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`              | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| color              | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| fullWidth          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| leadingIcon        | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| loading            | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| onLongPress        | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       | —       |             |
-| onPress            | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                                  | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                               | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                                        | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| size               | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                                         | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
-| trailingIcon       | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| variant            | `ZoraButtonVariant \| undefined`                                                                                                              | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| fullWidth | `boolean \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| leadingIcon | `ButtonIconSpec \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| trailingIcon | `ButtonIconSpec \| undefined` | no | — |  |
+| variant | `ZoraButtonVariant \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ButtonGroup</summary>
+
+Groups multiple `Button` elements with consistent spacing and alignment.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| align | `ButtonGroupAlign \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| gap | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| orientation | `ButtonGroupOrientation \| undefined` | no | — |  |
+| reverse | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
 
 </details>
 
@@ -1641,67 +1835,414 @@ radius, tone, and responsive header layout without hand-assembling primitives.
 #### Content card
 
 ```tsx
-<Card title="Project" description="Latest activity">
-  ...
-</Card>
+<Card title="Project" description="Latest activity">...</Card>
 ```
 
 <details>
 <summary>Props</summary>
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| actions            | `React.ReactNode`                                                                                                                | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| compact            | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| description        | `React.ReactNode`                                                                                                                | no       | —       |             |
-| disabled           | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| eyebrow            | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| footer             | `React.ReactNode`                                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| onPress            | `(() => void) \| undefined`                                                                                                      | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| title              | `React.ReactNode`                                                                                                                | no       | —       |             |
-| tone               | `ZoraCardTone \| undefined`                                                                                                      | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| actions | `React.ReactNode` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+| tone | `ZoraCardTone \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Checkbox</summary>
+
+Binary selection control for toggling a value on or off.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| checked | `boolean \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| defaultChecked | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| onCheckedChange | `((checked: boolean) => void) \| undefined` | no | — |  |
+| onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| size | `ControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>CheckboxGroup</summary>
+
+Renders a group of checkboxes for multi-select values.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| gap | `"xs" \| "s" \| "m" \| "l" \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `(value: TValue[]) => void` | yes | — |  |
+| options | `readonly CheckboxGroupOption<TValue>[]` | yes | — |  |
+| orientation | `"horizontal" \| "vertical" \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| size | `ControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `readonly TValue[]` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Chip</summary>
+
+Compact pill-like control for filters, tags, and quick selections.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | yes | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ChipGroup</summary>
+
+Renders a row or wrap layout of `Chip` items.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| items | `readonly ChipGroupItem<TValue>[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| multiple | `boolean \| undefined` | no | — |  |
+| onValueChange | `((value: TValue) => void) \| ((value: TValue[]) => void)` | yes | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `TValue \| readonly TValue[]` | yes | — |  |
+| wrap | `boolean \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>DataTable</summary>
+
+Displays structured tabular data with responsive desktop/mobile layouts.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| columns | `readonly DataTableColumn<TRow>[]` | yes | — |  |
+| density | `DataTableDensity \| undefined` | no | — |  |
+| emptyDescription | `React.ReactNode` | no | — |  |
+| emptyTitle | `React.ReactNode` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| loadingRows | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSortChange | `((sort: DataTableSortState) => void) \| undefined` | no | — |  |
+| rowActions | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no | — |  |
+| rowId | `(row: TRow, index: number) => string` | yes | — |  |
+| rows | `readonly TRow[]` | yes | — |  |
+| sort | `DataTableSortState \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>DatePicker</summary>
+
+Date input control with calendar selection and formatted display value.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| formatDate | `((value: Date) => React.ReactNode) \| undefined` | no | — |  |
+| label | `React.ReactNode` | no | — |  |
+| maxDate | `Date \| undefined` | no | — |  |
+| minDate | `Date \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `((value: DatePickerValue) => void) \| undefined` | no | — |  |
+| placeholder | `React.ReactNode` | no | — |  |
+| required | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `DatePickerValue` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Drawer</summary>
+
+Side panel overlay for navigation, settings, and secondary content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| closeOnBackdrop | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
+| position | `"left" \| "right" \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+| visible | `boolean` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>DropdownMenu</summary>
+
+```ts
+DropdownMenu(props: import("/Users/a_rtiphishl_e/git/zora/src/index").MenuProps) => React.JSX.Element
+```
+
+Convenience wrapper for rendering a `Menu` as a dropdown.
+
+Related types: `MenuProps`
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `readonly MenuAction[]` | yes | — |  |
+| closeOnSelect | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `() => void \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `ZoraThemeId \| undefined` | no | — |  |
+| trigger | `React.ReactNode \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Form</summary>
+
+Composes fields and actions into a validated form layout.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| errors | `Partial<Record<TName, React.ReactNode>> \| undefined` | no | — |  |
+| fields | `readonly FormFieldConfig<TName>[]` | yes | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onChange | `(values: FormValues<TName>) => void` | yes | — |  |
+| onSubmit | `(values: FormValues<TName>) => void \| Promise<void>` | yes | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| validateOnChange | `boolean \| undefined` | no | — |  |
+| values | `FormValues<TName>` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>FormActions</summary>
+
+Standard submit/action area for forms.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSubmit | `(() => void) \| undefined` | no | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>FormError</summary>
+
+Displays a form-level validation or submission error message.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| error | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>FormField</summary>
+
+Connects a controlled form value to a labeled input field with error handling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
 
 </details>
 
@@ -1718,36 +2259,113 @@ responsive sizes, and theme-aware emphasis while preserving header semantics.
 #### Section title
 
 ```tsx
-<Heading level={2} size="xl">
-  Account settings
-</Heading>
+<Heading level={2} size="xl">Account settings</Heading>
 ```
 
 <details>
 <summary>Props</summary>
 
-| Prop               | Type                                                                                                                                                      | Required | Default | Description |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityHint  | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| accessibilityLabel | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| accessibilityRole  | `AccessibilityRole \| undefined`                                                                                                                          | no       | —       |             |
-| align              | `Responsive<HeadingAlign> \| undefined`                                                                                                                   | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                                         | no       | —       |             |
-| color              | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no       | —       |             |
-| ellipsizeMode      | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       | —       |             |
-| emphasis           | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       | —       |             |
-| i18nKey            | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| italic             | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
-| level              | `HeadingLevel \| undefined`                                                                                                                               | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                                              | no       | —       |             |
-| nativeID           | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| numberOfLines      | `number \| undefined`                                                                                                                                     | no       | —       |             |
-| selectable         | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
-| size               | `Responsive<HeadingSize> \| undefined`                                                                                                                    | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| text               | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| weight             | `Responsive<HeadingWeight> \| undefined`                                                                                                                  | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityHint | `string \| undefined` | no | — |  |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
+| align | `Responsive<HeadingAlign> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no | — |  |
+| ellipsizeMode | `"head" \| "middle" \| "tail" \| "clip" \| undefined` | no | — |  |
+| emphasis | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no | — |  |
+| i18nKey | `string \| undefined` | no | — |  |
+| italic | `boolean \| undefined` | no | — |  |
+| level | `HeadingLevel \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
+| numberOfLines | `number \| undefined` | no | — |  |
+| selectable | `boolean \| undefined` | no | — |  |
+| size | `Responsive<HeadingSize> \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| text | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| weight | `Responsive<HeadingWeight> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Icon</summary>
+
+Renders an icon from a configured icon provider with theme-aware defaults.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `string \| number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| name | `string` | yes | — |  |
+| provider | `string \| undefined` | no | — |  |
+| size | `string \| number \| undefined` | no | — |  |
+| style | `StyleProp<TextStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>IconButton</summary>
+
+Icon-only button for compact actions; requires an accessible `label`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec` | yes | — |  |
+| label | `string` | yes | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| variant | `ZoraButtonVariant \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Image</summary>
+
+Displays an image with cross-platform source and fit handling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| alt | `string \| undefined` | no | — |  |
+| aspectRatio | `number \| undefined` | no | — |  |
+| fallbackSource | `SurfaceImageSource \| null \| undefined` | no | — |  |
+| fit | `ImageResizeMode \| undefined` | no | — |  |
+| height | `string \| number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onError | `((error: import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageErrorEvent) => void) \| undefined` | no | — |  |
+| radius | `number \| "s" \| "m" \| "l" \| "none" \| "full" \| undefined` | no | — |  |
+| resizeMode | `ImageResizeMode \| undefined` | no | — |  |
+| source | `SurfaceImageSource \| null \| undefined` | no | — |  |
+| style | `StyleProp<ImageStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| width | `string \| number \| undefined` | no | — |  |
 
 </details>
 
@@ -1770,172 +2388,662 @@ handling, and accessible trailing actions without dropping into Surface directly
 <details>
 <summary>Props</summary>
 
-| Prop                                   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Required | Default | Description |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityActions                   | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| accessibilityElementsHidden            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| accessibilityHint                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| accessibilityIgnoresInvertColors       | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| accessibilityLabel                     | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| accessibilityLabelledBy                | `string \| string[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| accessibilityLanguage                  | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| accessibilityLargeContentTitle         | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| accessibilityLiveRegion                | `"none" \| "polite" \| "assertive" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       | —       |             |
-| accessibilityRespondsToUserInteraction | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| accessibilityRole                      | `AccessibilityRole \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       | —       |             |
-| accessibilityShowsLargeContentViewer   | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| accessibilityState                     | `AccessibilityState \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| accessibilityValue                     | `AccessibilityValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| accessibilityViewIsModal               | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| accessible                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| allowFontScaling                       | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-busy                              | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-checked                           | `boolean \| "mixed" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| aria-disabled                          | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-expanded                          | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-hidden                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-label                             | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| aria-labelledby                        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| aria-live                              | `"off" \| "polite" \| "assertive" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
-| aria-modal                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-selected                          | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| aria-valuemax                          | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| aria-valuemin                          | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| aria-valuenow                          | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| aria-valuetext                         | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| autoCapitalize                         | `"none" \| "sentences" \| "words" \| "characters" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
-| autoComplete                           | `"email" \| "password" \| "tel" \| "url" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "family-name" \| "gender" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "username" \| "username-new" \| "off" \| undefined` | no       | —       |             |
-| autoCorrect                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| autoFocus                              | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| blurOnSubmit                           | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| caretHidden                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| children                               | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| clearButtonMode                        | `"never" \| "while-editing" \| "unless-editing" \| "always" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       | —       |             |
-| clearTextOnFocus                       | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| collapsable                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| collapsableChildren                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| contextMenuHidden                      | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| cursorColor                            | `ColorValue \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| dataDetectorTypes                      | `DataDetectorTypes \| DataDetectorTypes[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| defaultValue                           | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| disabled                               | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| disableFullscreenUI                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| disableKeyboardShortcuts               | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| enablesReturnKeyAutomatically          | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| enterKeyHint                           | `EnterKeyHintTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| focusable                              | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| hasTVPreferredFocus                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| hitSlop                                | `number \| Insets \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| id                                     | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| importantForAccessibility              | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
-| importantForAutofill                   | `"auto" \| "yes" \| "no" \| "noExcludeDescendants" \| "yesExcludeDescendants" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| inlineImageLeft                        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| inlineImagePadding                     | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| inputAccessoryViewButtonLabel          | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| inputAccessoryViewID                   | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| inputMode                              | `InputModeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
-| invalid                                | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| isTVSelectable                         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| keyboardAppearance                     | `"light" \| "dark" \| "default" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| keyboardType                           | `KeyboardTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       | —       |             |
-| leadingIcon                            | `Surface.ButtonIconSpec \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| lineBreakModeIOS                       | `"head" \| "middle" \| "tail" \| "clip" \| "wordWrapping" \| "char" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| lineBreakStrategyIOS                   | `"none" \| "standard" \| "hangul-word" \| "push-out" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       | —       |             |
-| maxFontSizeMultiplier                  | `number \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| maxLength                              | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| mode                                   | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       | —       |             |
-| multiline                              | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| nativeID                               | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| needsOffscreenAlphaCompositing         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| numberOfLines                          | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| onAccessibilityAction                  | `((event: AccessibilityActionEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onAccessibilityEscape                  | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| onAccessibilityTap                     | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| onBlur                                 | `((e: BlurEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onChange                               | `((e: TextInputChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       | —       |             |
-| onChangeText                           | `((text: string) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onContentSizeChange                    | `((e: TextInputContentSizeChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| onEndEditing                           | `((e: TextInputEndEditingEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| onFocus                                | `((e: FocusEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       | —       |             |
-| onKeyPress                             | `((e: TextInputKeyPressEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       | —       |             |
-| onLayout                               | `((event: LayoutChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       | —       |             |
-| onMagicTap                             | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| onMoveShouldSetResponder               | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onMoveShouldSetResponderCapture        | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onPointerCancel                        | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerCancelCapture                 | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerDown                          | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerDownCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerEnter                         | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerEnterCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerLeave                         | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerLeaveCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerMove                          | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerMoveCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerUp                            | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPointerUpCapture                     | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| onPress                                | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       | —       |             |
-| onPressIn                              | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       | —       |             |
-| onPressOut                             | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       | —       |             |
-| onResponderEnd                         | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderGrant                       | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderMove                        | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderReject                      | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderRelease                     | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderStart                       | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderTerminate                   | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onResponderTerminationRequest          | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onScroll                               | `((e: TextInputScrollEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       | —       |             |
-| onSelectionChange                      | `((e: TextInputSelectionChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| onStartShouldSetResponder              | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onStartShouldSetResponderCapture       | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onSubmitEditing                        | `((e: TextInputSubmitEditingEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       | —       |             |
-| onTouchCancel                          | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onTouchEnd                             | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onTouchEndCapture                      | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onTouchMove                            | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| onTouchStart                           | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| passwordRules                          | `string \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| placeholder                            | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| pointerEvents                          | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       | —       |             |
-| readOnly                               | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| rejectResponderTermination             | `boolean \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| removeClippedSubviews                  | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| renderToHardwareTextureAndroid         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| returnKeyLabel                         | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| returnKeyType                          | `ReturnKeyTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       | —       |             |
-| role                                   | `Role \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       | —       |             |
-| screenReaderFocusable                  | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| scrollEnabled                          | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| secureTextEntry                        | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| selection                              | `{ start: number; end?: number \| undefined; } \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       | —       |             |
-| selectionColor                         | `ColorValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       | —       |             |
-| selectionHandleColor                   | `ColorValue \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| selectionState                         | `DocumentSelectionState \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| selectTextOnFocus                      | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| shouldRasterizeIOS                     | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| showSoftInputOnFocus                   | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| size                                   | `ZoraControlSize \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       | —       |             |
-| smartInsertDelete                      | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| spellCheck                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| style                                  | `StyleProp<TextStyle>`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| submitBehavior                         | `SubmitBehavior \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
-| tabIndex                               | `0 \| -1 \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| testID                                 | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| textAlign                              | `"left" \| "right" \| "center" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       | —       |             |
-| textAlignVertical                      | `"top" \| "bottom" \| "auto" \| "center" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| textBreakStrategy                      | `"simple" \| "highQuality" \| "balanced" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
-| textContentType                        | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined`                                                                                                                                                              | no       | —       |             |
-| themeId                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| trailingAction                         | `InputTrailingAction \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       | —       |             |
-| trailingIcon                           | `Surface.ButtonIconSpec \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| tvParallaxMagnification                | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| tvParallaxShiftDistanceX               | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| tvParallaxShiftDistanceY               | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| tvParallaxTiltAngle                    | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| underlineColorAndroid                  | `ColorValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       | —       |             |
-| value                                  | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
-| verticalAlign                          | `"top" \| "bottom" \| "auto" \| "middle" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityActions | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined` | no | — |  |
+| accessibilityElementsHidden | `boolean \| undefined` | no | — |  |
+| accessibilityHint | `string \| undefined` | no | — |  |
+| accessibilityIgnoresInvertColors | `boolean \| undefined` | no | — |  |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
+| accessibilityLanguage | `string \| undefined` | no | — |  |
+| accessibilityLargeContentTitle | `string \| undefined` | no | — |  |
+| accessibilityLiveRegion | `"none" \| "polite" \| "assertive" \| undefined` | no | — |  |
+| accessibilityRespondsToUserInteraction | `boolean \| undefined` | no | — |  |
+| accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
+| accessibilityShowsLargeContentViewer | `boolean \| undefined` | no | — |  |
+| accessibilityState | `AccessibilityState \| undefined` | no | — |  |
+| accessibilityValue | `AccessibilityValue \| undefined` | no | — |  |
+| accessibilityViewIsModal | `boolean \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| allowFontScaling | `boolean \| undefined` | no | — |  |
+| aria-busy | `boolean \| undefined` | no | — |  |
+| aria-checked | `boolean \| "mixed" \| undefined` | no | — |  |
+| aria-disabled | `boolean \| undefined` | no | — |  |
+| aria-expanded | `boolean \| undefined` | no | — |  |
+| aria-hidden | `boolean \| undefined` | no | — |  |
+| aria-label | `string \| undefined` | no | — |  |
+| aria-labelledby | `string \| undefined` | no | — |  |
+| aria-live | `"off" \| "polite" \| "assertive" \| undefined` | no | — |  |
+| aria-modal | `boolean \| undefined` | no | — |  |
+| aria-selected | `boolean \| undefined` | no | — |  |
+| aria-valuemax | `number \| undefined` | no | — |  |
+| aria-valuemin | `number \| undefined` | no | — |  |
+| aria-valuenow | `number \| undefined` | no | — |  |
+| aria-valuetext | `string \| undefined` | no | — |  |
+| autoCapitalize | `"none" \| "sentences" \| "words" \| "characters" \| undefined` | no | — |  |
+| autoComplete | `"email" \| "password" \| "tel" \| "url" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "family-name" \| "gender" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "username" \| "username-new" \| "off" \| undefined` | no | — |  |
+| autoCorrect | `boolean \| undefined` | no | — |  |
+| autoFocus | `boolean \| undefined` | no | — |  |
+| blurOnSubmit | `boolean \| undefined` | no | — |  |
+| caretHidden | `boolean \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| clearButtonMode | `"never" \| "while-editing" \| "unless-editing" \| "always" \| undefined` | no | — |  |
+| clearTextOnFocus | `boolean \| undefined` | no | — |  |
+| collapsable | `boolean \| undefined` | no | — |  |
+| collapsableChildren | `boolean \| undefined` | no | — |  |
+| contextMenuHidden | `boolean \| undefined` | no | — |  |
+| cursorColor | `ColorValue \| null \| undefined` | no | — |  |
+| dataDetectorTypes | `DataDetectorTypes \| DataDetectorTypes[] \| undefined` | no | — |  |
+| defaultValue | `string \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| disableFullscreenUI | `boolean \| undefined` | no | — |  |
+| disableKeyboardShortcuts | `boolean \| undefined` | no | — |  |
+| enablesReturnKeyAutomatically | `boolean \| undefined` | no | — |  |
+| enterKeyHint | `EnterKeyHintTypeOptions \| undefined` | no | — |  |
+| focusable | `boolean \| undefined` | no | — |  |
+| hasTVPreferredFocus | `boolean \| undefined` | no | — |  |
+| hitSlop | `number \| Insets \| null \| undefined` | no | — |  |
+| id | `string \| undefined` | no | — |  |
+| importantForAccessibility | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no | — |  |
+| importantForAutofill | `"auto" \| "yes" \| "no" \| "noExcludeDescendants" \| "yesExcludeDescendants" \| undefined` | no | — |  |
+| inlineImageLeft | `string \| undefined` | no | — |  |
+| inlineImagePadding | `number \| undefined` | no | — |  |
+| inputAccessoryViewButtonLabel | `string \| undefined` | no | — |  |
+| inputAccessoryViewID | `string \| undefined` | no | — |  |
+| inputMode | `InputModeOptions \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| isTVSelectable | `boolean \| undefined` | no | — |  |
+| keyboardAppearance | `"light" \| "dark" \| "default" \| undefined` | no | — |  |
+| keyboardType | `KeyboardTypeOptions \| undefined` | no | — |  |
+| leadingIcon | `Surface.ButtonIconSpec \| undefined` | no | — |  |
+| lineBreakModeIOS | `"head" \| "middle" \| "tail" \| "clip" \| "wordWrapping" \| "char" \| undefined` | no | — |  |
+| lineBreakStrategyIOS | `"none" \| "standard" \| "hangul-word" \| "push-out" \| undefined` | no | — |  |
+| maxFontSizeMultiplier | `number \| null \| undefined` | no | — |  |
+| maxLength | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| multiline | `boolean \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
+| needsOffscreenAlphaCompositing | `boolean \| undefined` | no | — |  |
+| numberOfLines | `number \| undefined` | no | — |  |
+| onAccessibilityAction | `((event: AccessibilityActionEvent) => void) \| undefined` | no | — |  |
+| onAccessibilityEscape | `(() => void) \| undefined` | no | — |  |
+| onAccessibilityTap | `(() => void) \| undefined` | no | — |  |
+| onBlur | `((e: BlurEvent) => void) \| undefined` | no | — |  |
+| onChange | `((e: TextInputChangeEvent) => void) \| undefined` | no | — |  |
+| onChangeText | `((text: string) => void) \| undefined` | no | — |  |
+| onContentSizeChange | `((e: TextInputContentSizeChangeEvent) => void) \| undefined` | no | — |  |
+| onEndEditing | `((e: TextInputEndEditingEvent) => void) \| undefined` | no | — |  |
+| onFocus | `((e: FocusEvent) => void) \| undefined` | no | — |  |
+| onKeyPress | `((e: TextInputKeyPressEvent) => void) \| undefined` | no | — |  |
+| onLayout | `((event: LayoutChangeEvent) => void) \| undefined` | no | — |  |
+| onMagicTap | `(() => void) \| undefined` | no | — |  |
+| onMoveShouldSetResponder | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onMoveShouldSetResponderCapture | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onPointerCancel | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerCancelCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerDown | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerDownCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerEnter | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerEnterCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerLeave | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerLeaveCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerMove | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerMoveCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerUp | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerUpCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPress | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onPressIn | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onPressOut | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onResponderEnd | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderGrant | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderMove | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderReject | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderRelease | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderStart | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderTerminate | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderTerminationRequest | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onScroll | `((e: TextInputScrollEvent) => void) \| undefined` | no | — |  |
+| onSelectionChange | `((e: TextInputSelectionChangeEvent) => void) \| undefined` | no | — |  |
+| onStartShouldSetResponder | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onStartShouldSetResponderCapture | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onSubmitEditing | `((e: TextInputSubmitEditingEvent) => void) \| undefined` | no | — |  |
+| onTouchCancel | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchEnd | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchEndCapture | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchMove | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchStart | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| passwordRules | `string \| null \| undefined` | no | — |  |
+| placeholder | `string \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| rejectResponderTermination | `boolean \| null \| undefined` | no | — |  |
+| removeClippedSubviews | `boolean \| undefined` | no | — |  |
+| renderToHardwareTextureAndroid | `boolean \| undefined` | no | — |  |
+| returnKeyLabel | `string \| undefined` | no | — |  |
+| returnKeyType | `ReturnKeyTypeOptions \| undefined` | no | — |  |
+| role | `Role \| undefined` | no | — |  |
+| screenReaderFocusable | `boolean \| undefined` | no | — |  |
+| scrollEnabled | `boolean \| undefined` | no | — |  |
+| secureTextEntry | `boolean \| undefined` | no | — |  |
+| selection | `{ start: number; end?: number \| undefined; } \| undefined` | no | — |  |
+| selectionColor | `ColorValue \| undefined` | no | — |  |
+| selectionHandleColor | `ColorValue \| null \| undefined` | no | — |  |
+| selectionState | `DocumentSelectionState \| undefined` | no | — |  |
+| selectTextOnFocus | `boolean \| undefined` | no | — |  |
+| shouldRasterizeIOS | `boolean \| undefined` | no | — |  |
+| showSoftInputOnFocus | `boolean \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| smartInsertDelete | `boolean \| undefined` | no | — |  |
+| spellCheck | `boolean \| undefined` | no | — |  |
+| style | `StyleProp<TextStyle>` | no | — |  |
+| submitBehavior | `SubmitBehavior \| undefined` | no | — |  |
+| tabIndex | `0 \| -1 \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| textAlign | `"left" \| "right" \| "center" \| undefined` | no | — |  |
+| textAlignVertical | `"top" \| "bottom" \| "auto" \| "center" \| undefined` | no | — |  |
+| textBreakStrategy | `"simple" \| "highQuality" \| "balanced" \| undefined` | no | — |  |
+| textContentType | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| trailingAction | `InputTrailingAction \| undefined` | no | — |  |
+| trailingIcon | `Surface.ButtonIconSpec \| undefined` | no | — |  |
+| tvParallaxMagnification | `number \| undefined` | no | — |  |
+| tvParallaxShiftDistanceX | `number \| undefined` | no | — |  |
+| tvParallaxShiftDistanceY | `number \| undefined` | no | — |  |
+| tvParallaxTiltAngle | `number \| undefined` | no | — |  |
+| underlineColorAndroid | `ColorValue \| undefined` | no | — |  |
+| value | `string \| undefined` | no | — |  |
+| verticalAlign | `"top" \| "bottom" \| "auto" \| "middle" \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>MediaCard</summary>
+
+Card layout with an optional media/header region and structured content slots.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| badges | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| image | `React.ReactNode` | no | — |  |
+| imageAspectRatio | `number \| undefined` | no | — |  |
+| imageLabel | `string \| undefined` | no | — |  |
+| imageSource | `ImageSourcePropType \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+| tone | `ZoraCardTone \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Menu</summary>
+
+Presents a list of actions as a menu with optional icons and intent styling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `readonly MenuAction[]` | yes | — |  |
+| closeOnSelect | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| trigger | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>MetricCard</summary>
+
+Highlights a key metric with label, value, and optional trend/actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| delta | `React.ReactNode` | no | — |  |
+| deltaColor | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| icon | `ButtonIconSpec \| undefined` | no | — |  |
+| label | `React.ReactNode` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| tone | `ZoraCardTone \| undefined` | no | — |  |
+| value | `React.ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Modal</summary>
+
+Modal dialog surface with header/content/footer slots.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| closeOnBackdrop | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+| visible | `boolean` | yes | — |  |
+| width | `ZoraContentWidth \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>NavigationItem</summary>
+
+Renders a single navigation entry with active/disabled state support.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| active | `boolean \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| metadata | `ZoraNavigationRouteMetadata \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| route | `ZoraNavigationRouteState` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>NavigationList</summary>
+
+Renders a navigation list from route metadata with active state mapping.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| activeRouteKey | `string \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| header | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onRoutePress | `((route: ZoraNavigationRouteState) => void) \| undefined` | no | — |  |
+| orientation | `"horizontal" \| "vertical" \| undefined` | no | — |  |
+| routeMap | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no | — |  |
+| routes | `readonly ZoraNavigationRouteState[]` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Pagination</summary>
+
+Pagination control for navigating between pages of results.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| boundaryCount | `number \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| firstLabel | `React.ReactNode` | no | — |  |
+| lastLabel | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| nextLabel | `React.ReactNode` | no | — |  |
+| onPageChange | `((page: number) => void) \| undefined` | no | — |  |
+| page | `number` | yes | — |  |
+| pageCount | `number` | yes | — |  |
+| previousLabel | `React.ReactNode` | no | — |  |
+| showFirstLast | `boolean \| undefined` | no | — |  |
+| siblingCount | `number \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Progress</summary>
+
+Progress indicator for determinate and indeterminate loading states.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| max | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `number` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Radio</summary>
+
+Single-choice selection control used within a radio group.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| checked | `boolean \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| defaultChecked | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| onCheckedChange | `((checked: boolean) => void) \| undefined` | no | — |  |
+| onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| size | `ControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>RadioGroup</summary>
+
+Renders a group of radio options for selecting a single value.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| gap | `"xs" \| "s" \| "m" \| "l" \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `(value: TValue) => void` | yes | — |  |
+| options | `readonly RadioGroupOption<TValue>[]` | yes | — |  |
+| orientation | `"horizontal" \| "vertical" \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| size | `ControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `TValue` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Rating</summary>
+
+Displays a star-based rating value with optional half steps.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| max | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `number` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SearchBar</summary>
+
+Search input with leading icon and optional trailing action.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| clearable | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onClear | `(() => void) \| undefined` | no | — |  |
+| onSubmit | `((value: string) => void) \| undefined` | no | — |  |
+| onValueChange | `(value: string) => void` | yes | — |  |
+| placeholder | `string \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `string` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Select</summary>
+
+Select control for choosing a value from a list of options.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `(value: TValue) => void` | yes | — |  |
+| options | `readonly SelectOption<TValue>[]` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `TValue` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Skeleton</summary>
+
+Generic skeleton placeholder for loading states.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| height | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| radius | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| width | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SkeletonCard</summary>
+
+Skeleton placeholder that matches the structure of a `Card`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `boolean \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| lines | `number \| undefined` | no | — |  |
+| media | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SkeletonList</summary>
+
+Skeleton placeholder list for loading states in list views.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| avatar | `boolean \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| lines | `number \| undefined` | no | — |  |
+| media | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| rows | `number \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| variant | `SkeletonListVariant \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SkeletonText</summary>
+
+Multi-line skeleton placeholder for text content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| gap | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no | — |  |
+| lastLineWidth | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined` | no | — |  |
+| lineHeight | `number \| undefined` | no | — |  |
+| lines | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| width | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Tabs</summary>
+
+Tab navigation for switching between views or content sections.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| items | `readonly TabItem<TValue>[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `(value: TValue) => void` | yes | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `TValue` | yes | — |  |
+| variant | `TabsVariant \| undefined` | no | — |  |
 
 </details>
 
@@ -1952,41 +3060,454 @@ consumers do not need to import lower-level Surface typography directly.
 #### Muted supporting copy
 
 ```tsx
-<Text variant="bodySmall" emphasis="muted">
-  Updated just now
-</Text>
+<Text variant="bodySmall" emphasis="muted">Updated just now</Text>
 ```
 
 <details>
 <summary>Props</summary>
 
-| Prop               | Type                                                                                                                                                      | Required | Default | Description |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityHint  | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| accessibilityLabel | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| accessibilityRole  | `AccessibilityRole \| undefined`                                                                                                                          | no       | —       |             |
-| align              | `Responsive<TextAlign> \| undefined`                                                                                                                      | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                                         | no       | —       |             |
-| color              | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no       | —       |             |
-| ellipsizeMode      | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       | —       |             |
-| emphasis           | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       | —       |             |
-| i18nKey            | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| italic             | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                                              | no       | —       |             |
-| nativeID           | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| numberOfLines      | `number \| undefined`                                                                                                                                     | no       | —       |             |
-| selectable         | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| text               | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                                                     | no       | —       |             |
-| variant            | `Responsive<TextVariant> \| undefined`                                                                                                                    | no       | —       |             |
-| weight             | `Responsive<TextWeight> \| undefined`                                                                                                                     | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityHint | `string \| undefined` | no | — |  |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
+| align | `Responsive<TextAlign> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no | — |  |
+| ellipsizeMode | `"head" \| "middle" \| "tail" \| "clip" \| undefined` | no | — |  |
+| emphasis | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no | — |  |
+| i18nKey | `string \| undefined` | no | — |  |
+| italic | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
+| numberOfLines | `number \| undefined` | no | — |  |
+| selectable | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| text | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| variant | `Responsive<TextVariant> \| undefined` | no | — |  |
+| weight | `Responsive<TextWeight> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Textarea</summary>
+
+Multi-line text input with consistent ZORA field styling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityActions | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined` | no | — |  |
+| accessibilityElementsHidden | `boolean \| undefined` | no | — |  |
+| accessibilityHint | `string \| undefined` | no | — |  |
+| accessibilityIgnoresInvertColors | `boolean \| undefined` | no | — |  |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
+| accessibilityLanguage | `string \| undefined` | no | — |  |
+| accessibilityLargeContentTitle | `string \| undefined` | no | — |  |
+| accessibilityLiveRegion | `"none" \| "polite" \| "assertive" \| undefined` | no | — |  |
+| accessibilityRespondsToUserInteraction | `boolean \| undefined` | no | — |  |
+| accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
+| accessibilityShowsLargeContentViewer | `boolean \| undefined` | no | — |  |
+| accessibilityState | `AccessibilityState \| undefined` | no | — |  |
+| accessibilityValue | `AccessibilityValue \| undefined` | no | — |  |
+| accessibilityViewIsModal | `boolean \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| allowFontScaling | `boolean \| undefined` | no | — |  |
+| aria-busy | `boolean \| undefined` | no | — |  |
+| aria-checked | `boolean \| "mixed" \| undefined` | no | — |  |
+| aria-disabled | `boolean \| undefined` | no | — |  |
+| aria-expanded | `boolean \| undefined` | no | — |  |
+| aria-hidden | `boolean \| undefined` | no | — |  |
+| aria-label | `string \| undefined` | no | — |  |
+| aria-labelledby | `string \| undefined` | no | — |  |
+| aria-live | `"off" \| "polite" \| "assertive" \| undefined` | no | — |  |
+| aria-modal | `boolean \| undefined` | no | — |  |
+| aria-selected | `boolean \| undefined` | no | — |  |
+| aria-valuemax | `number \| undefined` | no | — |  |
+| aria-valuemin | `number \| undefined` | no | — |  |
+| aria-valuenow | `number \| undefined` | no | — |  |
+| aria-valuetext | `string \| undefined` | no | — |  |
+| autoCapitalize | `"none" \| "sentences" \| "words" \| "characters" \| undefined` | no | — |  |
+| autoComplete | `"email" \| "password" \| "tel" \| "url" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "family-name" \| "gender" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "username" \| "username-new" \| "off" \| undefined` | no | — |  |
+| autoCorrect | `boolean \| undefined` | no | — |  |
+| autoFocus | `boolean \| undefined` | no | — |  |
+| blurOnSubmit | `boolean \| undefined` | no | — |  |
+| caretHidden | `boolean \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| clearButtonMode | `"never" \| "while-editing" \| "unless-editing" \| "always" \| undefined` | no | — |  |
+| clearTextOnFocus | `boolean \| undefined` | no | — |  |
+| collapsable | `boolean \| undefined` | no | — |  |
+| collapsableChildren | `boolean \| undefined` | no | — |  |
+| contextMenuHidden | `boolean \| undefined` | no | — |  |
+| cursorColor | `ColorValue \| null \| undefined` | no | — |  |
+| dataDetectorTypes | `DataDetectorTypes \| DataDetectorTypes[] \| undefined` | no | — |  |
+| defaultValue | `string \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| disableFullscreenUI | `boolean \| undefined` | no | — |  |
+| disableKeyboardShortcuts | `boolean \| undefined` | no | — |  |
+| enablesReturnKeyAutomatically | `boolean \| undefined` | no | — |  |
+| enterKeyHint | `EnterKeyHintTypeOptions \| undefined` | no | — |  |
+| focusable | `boolean \| undefined` | no | — |  |
+| hasTVPreferredFocus | `boolean \| undefined` | no | — |  |
+| hitSlop | `number \| Insets \| null \| undefined` | no | — |  |
+| id | `string \| undefined` | no | — |  |
+| importantForAccessibility | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no | — |  |
+| importantForAutofill | `"auto" \| "yes" \| "no" \| "noExcludeDescendants" \| "yesExcludeDescendants" \| undefined` | no | — |  |
+| inlineImageLeft | `string \| undefined` | no | — |  |
+| inlineImagePadding | `number \| undefined` | no | — |  |
+| inputAccessoryViewButtonLabel | `string \| undefined` | no | — |  |
+| inputAccessoryViewID | `string \| undefined` | no | — |  |
+| inputMode | `InputModeOptions \| undefined` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| isTVSelectable | `boolean \| undefined` | no | — |  |
+| keyboardAppearance | `"light" \| "dark" \| "default" \| undefined` | no | — |  |
+| keyboardType | `KeyboardTypeOptions \| undefined` | no | — |  |
+| leadingIcon | `Surface.ButtonIconSpec \| undefined` | no | — |  |
+| lineBreakModeIOS | `"head" \| "middle" \| "tail" \| "clip" \| "wordWrapping" \| "char" \| undefined` | no | — |  |
+| lineBreakStrategyIOS | `"none" \| "standard" \| "hangul-word" \| "push-out" \| undefined` | no | — |  |
+| maxFontSizeMultiplier | `number \| null \| undefined` | no | — |  |
+| maxLength | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
+| needsOffscreenAlphaCompositing | `boolean \| undefined` | no | — |  |
+| numberOfLines | `number \| undefined` | no | — |  |
+| onAccessibilityAction | `((event: AccessibilityActionEvent) => void) \| undefined` | no | — |  |
+| onAccessibilityEscape | `(() => void) \| undefined` | no | — |  |
+| onAccessibilityTap | `(() => void) \| undefined` | no | — |  |
+| onBlur | `((e: BlurEvent) => void) \| undefined` | no | — |  |
+| onChange | `((e: TextInputChangeEvent) => void) \| undefined` | no | — |  |
+| onChangeText | `((text: string) => void) \| undefined` | no | — |  |
+| onContentSizeChange | `((e: TextInputContentSizeChangeEvent) => void) \| undefined` | no | — |  |
+| onEndEditing | `((e: TextInputEndEditingEvent) => void) \| undefined` | no | — |  |
+| onFocus | `((e: FocusEvent) => void) \| undefined` | no | — |  |
+| onKeyPress | `((e: TextInputKeyPressEvent) => void) \| undefined` | no | — |  |
+| onLayout | `((event: LayoutChangeEvent) => void) \| undefined` | no | — |  |
+| onMagicTap | `(() => void) \| undefined` | no | — |  |
+| onMoveShouldSetResponder | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onMoveShouldSetResponderCapture | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onPointerCancel | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerCancelCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerDown | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerDownCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerEnter | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerEnterCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerLeave | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerLeaveCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerMove | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerMoveCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerUp | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPointerUpCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onPress | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onPressIn | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onPressOut | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no | — |  |
+| onResponderEnd | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderGrant | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderMove | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderReject | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderRelease | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderStart | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderTerminate | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onResponderTerminationRequest | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onScroll | `((e: TextInputScrollEvent) => void) \| undefined` | no | — |  |
+| onSelectionChange | `((e: TextInputSelectionChangeEvent) => void) \| undefined` | no | — |  |
+| onStartShouldSetResponder | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onStartShouldSetResponderCapture | `((event: GestureResponderEvent) => boolean) \| undefined` | no | — |  |
+| onSubmitEditing | `((e: TextInputSubmitEditingEvent) => void) \| undefined` | no | — |  |
+| onTouchCancel | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchEnd | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchEndCapture | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchMove | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| onTouchStart | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
+| passwordRules | `string \| null \| undefined` | no | — |  |
+| placeholder | `string \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| rejectResponderTermination | `boolean \| null \| undefined` | no | — |  |
+| removeClippedSubviews | `boolean \| undefined` | no | — |  |
+| renderToHardwareTextureAndroid | `boolean \| undefined` | no | — |  |
+| returnKeyLabel | `string \| undefined` | no | — |  |
+| returnKeyType | `ReturnKeyTypeOptions \| undefined` | no | — |  |
+| role | `Role \| undefined` | no | — |  |
+| rows | `number \| undefined` | no | — |  |
+| screenReaderFocusable | `boolean \| undefined` | no | — |  |
+| scrollEnabled | `boolean \| undefined` | no | — |  |
+| secureTextEntry | `boolean \| undefined` | no | — |  |
+| selection | `{ start: number; end?: number \| undefined; } \| undefined` | no | — |  |
+| selectionColor | `ColorValue \| undefined` | no | — |  |
+| selectionHandleColor | `ColorValue \| null \| undefined` | no | — |  |
+| selectionState | `DocumentSelectionState \| undefined` | no | — |  |
+| selectTextOnFocus | `boolean \| undefined` | no | — |  |
+| shouldRasterizeIOS | `boolean \| undefined` | no | — |  |
+| showSoftInputOnFocus | `boolean \| undefined` | no | — |  |
+| size | `ZoraControlSize \| undefined` | no | — |  |
+| smartInsertDelete | `boolean \| undefined` | no | — |  |
+| spellCheck | `boolean \| undefined` | no | — |  |
+| style | `StyleProp<TextStyle>` | no | — |  |
+| submitBehavior | `SubmitBehavior \| undefined` | no | — |  |
+| tabIndex | `0 \| -1 \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| textAlign | `"left" \| "right" \| "center" \| undefined` | no | — |  |
+| textAlignVertical | `"top" \| "bottom" \| "auto" \| "center" \| undefined` | no | — |  |
+| textBreakStrategy | `"simple" \| "highQuality" \| "balanced" \| undefined` | no | — |  |
+| textContentType | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| trailingIcon | `Surface.ButtonIconSpec \| undefined` | no | — |  |
+| tvParallaxMagnification | `number \| undefined` | no | — |  |
+| tvParallaxShiftDistanceX | `number \| undefined` | no | — |  |
+| tvParallaxShiftDistanceY | `number \| undefined` | no | — |  |
+| tvParallaxTiltAngle | `number \| undefined` | no | — |  |
+| underlineColorAndroid | `ColorValue \| undefined` | no | — |  |
+| value | `string \| undefined` | no | — |  |
+| verticalAlign | `"top" \| "bottom" \| "auto" \| "middle" \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>TimePicker</summary>
+
+Time input control with wheel selection and formatted display value.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| formatTime | `((value: string) => React.ReactNode) \| undefined` | no | — |  |
+| label | `React.ReactNode` | no | — |  |
+| maxTime | `string \| undefined` | no | — |  |
+| minTime | `string \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `((value: TimePickerValue) => void) \| undefined` | no | — |  |
+| placeholder | `React.ReactNode` | no | — |  |
+| required | `boolean \| undefined` | no | — |  |
+| stepMinutes | `number \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `TimePickerValue` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Toast</summary>
+
+Renders a toast notification message.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
+| status | `ToastStatus \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ToastProvider</summary>
+
+```ts
+ToastProvider({ children, defaultDuration }: ToastProviderProps) => React.JSX.Element
+```
+
+Provides toast state and rendering context for `useToast` and `Toast`.
+
+Related types: `ToastProviderProps`
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode \| undefined` | no | — |  |
+| defaultDuration | `number \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Toolbar</summary>
+
+Horizontal toolbar surface for grouping actions and controls.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| floating | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| position | `ToolbarPosition \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ToolbarAction</summary>
+
+Convenience icon action for toolbars with active state styling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| active | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec` | yes | — |  |
+| label | `string` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
 
 </details>
 
 </details>
 
 ### Patterns
+
+<details>
+<summary>ChatListItem</summary>
+
+Chat-style list row with avatar, title, preview text, and unread indicators.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| avatar | `ChatListAvatar \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| meta | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| preview | `React.ReactNode` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| timestamp | `React.ReactNode` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+| trailing | `React.ReactNode` | no | — |  |
+| unread | `boolean \| undefined` | no | — |  |
+| unreadCount | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>CollectionEditor</summary>
+
+Editor pattern for adding, removing, and reordering a collection of items.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| addLabel | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| emptyLabel | `React.ReactNode` | no | — |  |
+| items | `readonly TItem[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onAdd | `(() => void) \| undefined` | no | — |  |
+| onMove | `((from: number, to: number) => void) \| undefined` | no | — |  |
+| onRemove | `((index: number) => void) \| undefined` | no | — |  |
+| renderItem | `(props: CollectionEditorRenderItemProps<TItem>) => React.ReactNode` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ConfirmDialog</summary>
+
+Confirmation dialog pattern with cancel/confirm actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| busy | `boolean \| undefined` | no | — |  |
+| cancelLabel | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| closeOnBackdrop | `boolean \| undefined` | no | — |  |
+| confirmColor | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| confirmLabel | `React.ReactNode` | no | — |  |
+| confirmVariant | `ZoraButtonVariant \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onCancel | `(() => void) \| undefined` | no | — |  |
+| onConfirm | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+| visible | `boolean` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>DisclosureSection</summary>
+
+Expandable section pattern with a summary header and collapsible content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `ReactNode` | no | — |  |
+| children | `ReactNode` | no | — |  |
+| defaultOpen | `boolean \| undefined` | no | — |  |
+| description | `ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onOpenChange | `((open: boolean) => void) \| undefined` | no | — |  |
+| open | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `ReactNode` | yes | — |  |
+
+</details>
+
+</details>
 
 <details>
 <summary>EmptyState</summary>
@@ -2005,17 +3526,416 @@ so apps can guide users without custom card and button wiring.
 <details>
 <summary>Props</summary>
 
-| Prop            | Type                            | Required | Default | Description |
-| --------------- | ------------------------------- | -------- | ------- | ----------- |
-| description     | `React.ReactNode`               | no       | —       |             |
-| eyebrow         | `React.ReactNode`               | no       | —       |             |
-| footer          | `React.ReactNode`               | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`    | no       | —       |             |
-| primaryAction   | `EmptyStateAction \| undefined` | no       | —       |             |
-| secondaryAction | `EmptyStateAction \| undefined` | no       | —       |             |
-| testID          | `string \| undefined`           | no       | —       |             |
-| themeId         | `string \| undefined`           | no       | —       |             |
-| title           | `React.ReactNode`               | yes      | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| primaryAction | `EmptyStateAction \| undefined` | no | — |  |
+| secondaryAction | `EmptyStateAction \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>FilterBar</summary>
+
+Horizontal filter/action bar layout with leading/trailing slots.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | yes | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| trailing | `React.ReactNode` | no | — |  |
+| wrap | `boolean \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ForgotPasswordForm</summary>
+
+Password reset form pattern with validation and submit actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| identifierLabel | `React.ReactNode` | no | — |  |
+| identifiers | `readonly AuthIdentifierKind[] \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSignIn | `(() => void \| Promise<void>) \| undefined` | no | — |  |
+| onSubmit | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes | — |  |
+| signInLabel | `React.ReactNode` | no | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Hero</summary>
+
+Hero section pattern for prominent page introductions with actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| align | `HeroAlign \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| layout | `HeroLayout \| undefined` | no | — |  |
+| media | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| primaryAction | `HeroAction \| undefined` | no | — |  |
+| secondaryAction | `HeroAction \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+| tone | `HeroTone \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ImagePreview</summary>
+
+Preview pattern for showing an image with optional metadata and actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| aspectRatio | `number \| undefined` | no | — |  |
+| asset | `ZoraImageAsset \| null \| undefined` | no | — |  |
+| emptyDescription | `React.ReactNode` | no | — |  |
+| emptyTitle | `React.ReactNode` | no | — |  |
+| fit | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageResizeMode \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ImageUploadField</summary>
+
+Form field pattern for picking, previewing, and uploading an image.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accept | `string \| undefined` | no | — |  |
+| aspectRatio | `number \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| errorText | `React.ReactNode` | no | — |  |
+| helperText | `React.ReactNode` | no | — |  |
+| label | `React.ReactNode` | yes | — |  |
+| maxSizeBytes | `number \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onChange | `(next: ZoraImageAsset \| null) => void` | yes | — |  |
+| onPick | `() => Promise<ZoraPickedImage \| null>` | yes | — |  |
+| onRemove | `((current: ZoraImageAsset) => void \| Promise<void>) \| undefined` | no | — |  |
+| onUpload | `((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) \| undefined` | no | — |  |
+| previewDescription | `React.ReactNode` | no | — |  |
+| previewTitle | `React.ReactNode` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| required | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| validatePicked | `((picked: ZoraPickedImage) => string \| undefined) \| undefined` | no | — |  |
+| value | `ZoraImageAsset \| null` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>InspectorField</summary>
+
+Inspector row pattern with label, description, and control slot.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `ReactNode` | no | — |  |
+| control | `ReactNode` | no | — |  |
+| description | `ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| errorText | `ReactNode` | no | — |  |
+| helperText | `ReactNode` | no | — |  |
+| invalid | `boolean \| undefined` | no | — |  |
+| label | `ReactNode` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | — |  |
+| required | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>List</summary>
+
+List container pattern for composing `ListRow` and `ListSection`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ListRow</summary>
+
+Row pattern for lists with leading/trailing slots and optional press behavior.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| action | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| meta | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+| trailing | `React.ReactNode` | no | — |  |
+| variant | `ListRowVariant \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ListSection</summary>
+
+Section wrapper for lists with optional title and description.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>MessageBubble</summary>
+
+Message bubble pattern for chat UIs with direction and status styling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| author | `MessageBubbleAuthor \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| direction | `MessageBubbleDirection \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| leading | `React.ReactNode` | no | — |  |
+| meta | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| status | `MessageBubbleStatusContent` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| text | `React.ReactNode` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| timestamp | `React.ReactNode` | no | — |  |
+| trailing | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Notice</summary>
+
+Notice pattern for inline feedback with tone, title, and actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>OtpForm</summary>
+
+One-time passcode form pattern with digit input and submit actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| length | `number \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onResend | `(() => void \| Promise<void>) \| undefined` | no | — |  |
+| onSubmit | `(values: OtpFormValues) => void \| Promise<void>` | yes | — |  |
+| otpLabel | `React.ReactNode` | no | — |  |
+| resendDisabled | `boolean \| undefined` | no | — |  |
+| resendLabel | `React.ReactNode` | no | — |  |
+| resendLoading | `boolean \| undefined` | no | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>PaletteItem</summary>
+
+Tile item pattern for palettes and option grids.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| badge | `ReactNode` | no | — |  |
+| description | `ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| icon | `ButtonIconSpec \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| selected | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Panel</summary>
+
+Semantic wrapper around `Card` for panel-style page sections.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+| tone | `ZoraCardTone \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>PostCard</summary>
+
+Social-style post card pattern with author, content, media, and actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `readonly PostAction[] \| undefined` | no | — |  |
+| author | `PostAuthor` | yes | — |  |
+| children | `React.ReactNode` | no | — |  |
+| comments | `readonly PostCommentPreview[] \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| headerAction | `React.ReactNode` | no | — |  |
+| media | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| text | `React.ReactNode` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| tone | `ZoraCardTone \| undefined` | no | — |  |
 
 </details>
 
@@ -2032,32 +3952,393 @@ content to work across compact mobile screens and wider desktop layouts.
 #### Scrollable wide panel
 
 ```tsx
-<ResponsivePanel open title="APIs" size="wide" scroll="content">
-  ...
-</ResponsivePanel>
+<ResponsivePanel open title="APIs" size="wide" scroll="content">...</ResponsivePanel>
 ```
 
 <details>
 <summary>Props</summary>
 
-| Prop         | Type                                      | Required | Default | Description |
-| ------------ | ----------------------------------------- | -------- | ------- | ----------- |
-| actions      | `React.ReactNode`                         | no       | —       |             |
-| children     | `React.ReactNode`                         | no       | —       |             |
-| compact      | `boolean \| undefined`                    | no       | —       |             |
-| description  | `React.ReactNode`                         | no       | —       |             |
-| desktopMode  | `ResponsivePanelDesktopMode \| undefined` | no       | —       |             |
-| footer       | `React.ReactNode`                         | no       | —       |             |
-| mobileMode   | `ResponsivePanelMobileMode \| undefined`  | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined`              | no       | —       |             |
-| onOpenChange | `(open: boolean) => void`                 | yes      | —       |             |
-| open         | `boolean`                                 | yes      | —       |             |
-| scroll       | `ResponsivePanelScroll \| undefined`      | no       | —       |             |
-| side         | `ResponsivePanelSide \| undefined`        | no       | —       |             |
-| size         | `ResponsivePanelSize \| undefined`        | no       | —       |             |
-| testID       | `string \| undefined`                     | no       | —       |             |
-| themeId      | `string \| undefined`                     | no       | —       |             |
-| title        | `React.ReactNode`                         | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| desktopMode | `ResponsivePanelDesktopMode \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mobileMode | `ResponsivePanelMobileMode \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onOpenChange | `(open: boolean) => void` | yes | — |  |
+| open | `boolean` | yes | — |  |
+| scroll | `ResponsivePanelScroll \| undefined` | no | — |  |
+| side | `ResponsivePanelSide \| undefined` | no | — |  |
+| size | `ResponsivePanelSize \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SectionHeader</summary>
+
+Section heading pattern with optional description and action slot.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| eyebrow | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SelectableItem</summary>
+
+```ts
+SelectableItem({ id, trigger, disabled = false, children }: SelectableItemProps) => React.JSX.Element
+```
+
+Adds selection behavior to arbitrary child content via render props.
+
+Related types: `SelectableItemProps`
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode \| ((state: SelectableItemState) => React.ReactNode) \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | `false` |  |
+| id | `string` | yes | — |  |
+| trigger | `SelectionTrigger \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SelectionProvider</summary>
+
+```ts
+SelectionProvider({
+  children,
+  selectedIds,
+  defaultSelectedIds,
+  mode,
+  disabled,
+  onSelectionChange,
+}: SelectionProviderProps) => React.JSX.Element
+```
+
+Provides selection state for building selectable lists and grids.
+
+Related types: `SelectionProviderProps`
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode \| undefined` | no | — |  |
+| defaultSelectedIds | `readonly string[] \| undefined` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| mode | `SelectionMode \| undefined` | no | — |  |
+| onSelectionChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
+| selectedIds | `readonly string[] \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SettingsRow</summary>
+
+Settings row pattern with title, description/meta, and optional trailing content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| control | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| meta | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onPress | `(() => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SignInForm</summary>
+
+Sign-in form pattern with identifier and password fields.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| forgotPasswordLabel | `React.ReactNode` | no | — |  |
+| identifierLabel | `React.ReactNode` | no | — |  |
+| identifiers | `readonly AuthIdentifierKind[] \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onForgotPassword | `(() => void \| Promise<void>) \| undefined` | no | — |  |
+| onSignUp | `(() => void \| Promise<void>) \| undefined` | no | — |  |
+| onSubmit | `(values: SignInFormValues) => void \| Promise<void>` | yes | — |  |
+| secretLabel | `React.ReactNode` | no | — |  |
+| signUpLabel | `React.ReactNode` | no | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SignUpForm</summary>
+
+Sign-up form pattern with structured fields and validation.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| fields | `readonly SignUpFormField[] \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSignIn | `(() => void \| Promise<void>) \| undefined` | no | — |  |
+| onSubmit | `(values: SignUpFormValues) => void \| Promise<void>` | yes | — |  |
+| signInLabel | `React.ReactNode` | no | — |  |
+| submitLabel | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SwitchField</summary>
+
+Labeled switch field pattern built on `SettingsRow`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| description | `ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| label | `ReactNode` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onValueChange | `(value: boolean) => void` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `boolean` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ThemeComposer</summary>
+
+UI for composing and applying a theme via structured controls.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| appCategories | `readonly ("books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onChange | `(theme: ZoraTheme) => void` | yes | — |  |
+| onModeChange | `((mode: ZoraThemeMode) => void) \| undefined` | no | — |  |
+| onSubmit | `((theme: ZoraTheme) => void) \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| value | `ZoraTheme` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>TileGrid</summary>
+
+Responsive grid layout for arranging tile content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `ReactNode` | no | — |  |
+| columns | `number \| "responsive" \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Timeline</summary>
+
+Timeline pattern for displaying a sequence of events.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| compact | `boolean \| undefined` | no | — |  |
+| items | `readonly TimelineItem[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>TreeItem</summary>
+
+Single tree node row used within `TreeView`.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| depth | `number` | yes | — |  |
+| expandedIds | `readonly TId[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| node | `TreeItemNode<TId>` | yes | — |  |
+| onSelect | `((id: TId) => void) \| undefined` | no | — |  |
+| onToggleExpand | `(id: TId) => void` | yes | — |  |
+| renderItem | `((props: TreeItemRenderProps<TId>) => React.ReactNode) \| undefined` | no | — |  |
+| selectedId | `TId \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>TreeView</summary>
+
+Tree view pattern for hierarchical navigation and expandable lists.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| defaultExpandedIds | `readonly TId[] \| undefined` | no | — |  |
+| expandedIds | `readonly TId[] \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| nodes | `readonly TreeItemNode<TId>[]` | yes | — |  |
+| onExpandedChange | `((ids: readonly TId[]) => void) \| undefined` | no | — |  |
+| onSelect | `((id: TId) => void) \| undefined` | no | — |  |
+| renderItem | `((props: TreeItemRenderProps<TId>) => ReactNode) \| undefined` | no | — |  |
+| selectedId | `TId \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>useSelection</summary>
+
+```ts
+useSelection() => UseSelectionResult
+```
+
+Accesses selection state provided by `SelectionProvider`.
+
+Module: `src/patterns/selection/SelectionProvider.tsx`
+Source: `src/patterns/selection/SelectionProvider.tsx:26:1`
+Related symbols: `UseSelectionResult`
+
+</details>
+
+<details>
+<summary>ZoraDrawerContent</summary>
+
+Standard drawer content pattern for ZORA navigation lists.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| compact | `boolean \| undefined` | no | — |  |
+| descriptors | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| header | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| navigation | `ZoraDrawerNavigation` | yes | — |  |
+| routeMap | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined` | no | — |  |
+| state | `ZoraNavigationState` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ZoraTabBar</summary>
+
+Bottom tab bar pattern with badge support and active state styling.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| chrome | `"none" \| "raised" \| undefined` | no | — |  |
+| compact | `boolean \| undefined` | no | — |  |
+| descriptors | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no | — |  |
+| insets | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| navigation | `ZoraTabBarNavigation` | yes | — |  |
+| routeMap | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined` | no | — |  |
+| state | `ZoraNavigationState` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
 
 </details>
 
@@ -2082,21 +4363,682 @@ leaving navigation, toolbars, and overlays composable through explicit slots.
 <details>
 <summary>Props</summary>
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`            | no       | —       |             |
-| footer   | `React.ReactNode`            | no       | —       |             |
-| header   | `React.ReactNode`            | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| overlay  | `React.ReactNode`            | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| header | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| overlay | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Screen</summary>
+
+Page-level container with standard background and optional scroll behavior.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| footer | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| scroll | `boolean \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| width | `ZoraContentWidth \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>ScreenSection</summary>
+
+Screen section layout with optional title, description, and actions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SettingsLayout</summary>
+
+Settings page layout with app bar, sidebar, and scrollable content area.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| actions | `React.ReactNode` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| description | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| sidebar | `React.ReactNode` | yes | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>SidebarLayout</summary>
+
+Responsive layout with a sidebar and main content area (and optional aside).
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| aside | `React.ReactNode` | no | — |  |
+| asideWidth | `number \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| sidebar | `React.ReactNode` | yes | — |  |
+| sidebarWidth | `number \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>TopbarLayout</summary>
+
+Layout that composes a top bar with optional sidebar and content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| sidebar | `React.ReactNode` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| topbar | `React.ReactNode` | yes | — |  |
 
 </details>
 
 </details>
 
 ### Utilities
+
+<details>
+<summary>Box</summary>
+
+Base layout primitive for themed spacing, color, border, flex, and responsive props.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Center</summary>
+
+Centers children horizontally and vertically within the available space.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| axis | `"horizontal" \| "vertical" \| "both" \| undefined` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Container</summary>
+
+Constrains page content to semantic widths with responsive padding.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<string \| number> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Divider</summary>
+
+Renders a themed visual separator between content sections.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| color | `ColorValue \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| orientation | `"horizontal" \| "vertical" \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| thickness | `number \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Grid</summary>
+
+Creates responsive grid layouts for cards, tiles, and dashboard content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| colGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| cols | `Responsive<number>` | yes | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| gap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minItemWidth | `Responsive<number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| rowGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Inline</summary>
+
+Arranges children inline with spacing and wrapping behavior.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| align | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| gap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| justify | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| wrap | `Responsive<"wrap" \| "nowrap"> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Show</summary>
+
+Conditionally renders children for responsive display and breakpoint-based visibility.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode` | yes | — |  |
+| fallback | `React.ReactNode` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| when | `Responsive<boolean>` | yes | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Spacer</summary>
+
+Adds flexible or fixed empty space in layout compositions.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| axis | `"horizontal" \| "vertical" \| "both" \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| size | `SpaceValue \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Stack</summary>
+
+Arranges layout items in one direction with theme spacing.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| align | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| direction | `Responsive<"row" \| "column"> \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| gap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| justify | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| wrap | `Responsive<"wrap" \| "nowrap"> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
+
+<details>
+<summary>Surface</summary>
+
+Provides a semantic themed region for elevated, subtle, or bordered content.
+
+<details>
+<summary>Props</summary>
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityRole | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined` | no | — |  |
+| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined` | no | — |  |
+| accessible | `boolean \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pointerEvents | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
+| variant | `SurfaceVariant \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
+
+</details>
+
+</details>
 
 <details>
 <summary>ZoraProvider</summary>
@@ -2117,9 +5059,7 @@ layouts, and theme hooks resolve the same design tokens and color mode.
 #### App provider
 
 ```tsx
-<ZoraProvider initialMode="light">
-  <App />
-</ZoraProvider>
+<ZoraProvider initialMode="light"><App /></ZoraProvider>
 ```
 
 Related types: `ZoraProviderProps`
@@ -2127,11 +5067,11 @@ Related types: `ZoraProviderProps`
 <details>
 <summary>Props</summary>
 
-| Prop        | Type                           | Required | Default            | Description |
-| ----------- | ------------------------------ | -------- | ------------------ | ----------- |
-| children    | `React.ReactNode \| undefined` | no       | —                  |             |
-| initialMode | `ZoraThemeMode \| undefined`   | no       | `'light'`          |             |
-| theme       | `ZoraTheme \| undefined`       | no       | `zoraDefaultTheme` |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `React.ReactNode \| undefined` | no | — |  |
+| initialMode | `ZoraThemeMode \| undefined` | no | `'light'` |  |
+| theme | `ZoraTheme \| undefined` | no | `zoraDefaultTheme` |  |
 
 </details>
 

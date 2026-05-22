@@ -231,4 +231,9 @@ function PostCardInner({
   );
 }
 
+/***
+ * Social-style post card pattern with author, content, media, and actions.
+ *
+ * @readme
+ */
 export const PostCard = withZoraThemeScope(PostCardInner);

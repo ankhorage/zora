@@ -8,4 +8,9 @@ function ActionSheetInner({ mode: _mode, themeId: _themeId, ...props }: ActionSh
   return <SurfaceActionSheet {...props} />;
 }
 
+/***
+ * Presents a modal bottom sheet with a list of actions.
+ *
+ * @readme
+ */
 export const ActionSheet = withZoraThemeScope(ActionSheetInner);

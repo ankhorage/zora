@@ -113,4 +113,9 @@ function SignInFormInner({
   );
 }
 
+/***
+ * Sign-in form pattern with identifier and password fields.
+ *
+ * @readme
+ */
 export const SignInForm = withZoraThemeScope(SignInFormInner);

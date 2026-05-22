@@ -59,4 +59,9 @@ function NavigationListInner({
   );
 }
 
+/***
+ * Renders a navigation list from route metadata with active state mapping.
+ *
+ * @readme
+ */
 export const NavigationList = withZoraThemeScope(NavigationListInner);

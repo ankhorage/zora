@@ -102,4 +102,9 @@ function ButtonGroupInner({
   );
 }
 
+/***
+ * Groups multiple `Button` elements with consistent spacing and alignment.
+ *
+ * @readme
+ */
 export const ButtonGroup = withZoraThemeScope(ButtonGroupInner);

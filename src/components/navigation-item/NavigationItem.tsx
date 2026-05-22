@@ -33,4 +33,9 @@ function NavigationItemInner({
   );
 }
 
+/***
+ * Renders a single navigation entry with active/disabled state support.
+ *
+ * @readme
+ */
 export const NavigationItem = withZoraThemeScope(NavigationItemInner);

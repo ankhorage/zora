@@ -22,4 +22,9 @@ function FormErrorInner({ themeId: _themeId, mode: _mode, error, testID }: FormE
   );
 }
 
+/***
+ * Displays a form-level validation or submission error message.
+ *
+ * @readme
+ */
 export const FormError = withZoraThemeScope(FormErrorInner);

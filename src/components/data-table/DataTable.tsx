@@ -385,4 +385,9 @@ function DataTableInner<TRow extends object>({
   );
 }
 
+/***
+ * Displays structured tabular data with responsive desktop/mobile layouts.
+ *
+ * @readme
+ */
 export const DataTable = withZoraThemeScope(DataTableInner);

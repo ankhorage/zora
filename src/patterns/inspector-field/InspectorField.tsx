@@ -23,4 +23,9 @@ function InspectorFieldInner({
   );
 }
 
+/***
+ * Inspector row pattern with label, description, and control slot.
+ *
+ * @readme
+ */
 export const InspectorField = withZoraThemeScope(InspectorFieldInner);

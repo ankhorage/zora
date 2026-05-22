@@ -10,4 +10,9 @@ function IconInner({ themeId: _themeId, mode: _mode, ...props }: IconProps) {
   return <SurfaceIcon {...props} />;
 }
 
+/***
+ * Renders an icon from a configured icon provider with theme-aware defaults.
+ *
+ * @readme
+ */
 export const Icon = withZoraThemeScope(IconInner);

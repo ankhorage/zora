@@ -113,4 +113,9 @@ function resolveContentAlign(align: HeroAlign) {
   return align === 'center' ? 'center' : 'flex-start';
 }
 
+/***
+ * Hero section pattern for prominent page introductions with actions.
+ *
+ * @readme
+ */
 export const Hero = withZoraThemeScope(HeroInner);

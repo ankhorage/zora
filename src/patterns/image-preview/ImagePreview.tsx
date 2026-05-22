@@ -73,4 +73,9 @@ function ImagePreviewInner({
   );
 }
 
+/***
+ * Preview pattern for showing an image with optional metadata and actions.
+ *
+ * @readme
+ */
 export const ImagePreview = withZoraThemeScope(ImagePreviewInner);

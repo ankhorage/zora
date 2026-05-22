@@ -33,4 +33,9 @@ function ListSectionInner({
   );
 }
 
+/***
+ * Section wrapper for lists with optional title and description.
+ *
+ * @readme
+ */
 export const ListSection = withZoraThemeScope(ListSectionInner);

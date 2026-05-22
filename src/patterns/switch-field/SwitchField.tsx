@@ -26,4 +26,9 @@ function SwitchFieldInner({
   );
 }
 
+/***
+ * Labeled switch field pattern built on `SettingsRow`.
+ *
+ * @readme
+ */
 export const SwitchField = withZoraThemeScope(SwitchFieldInner);

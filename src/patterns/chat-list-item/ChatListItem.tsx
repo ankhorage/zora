@@ -217,4 +217,9 @@ function ChatListItemInner({
   );
 }
 
+/***
+ * Chat-style list row with avatar, title, preview text, and unread indicators.
+ *
+ * @readme
+ */
 export const ChatListItem = withZoraThemeScope(ChatListItemInner);

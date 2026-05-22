@@ -26,4 +26,9 @@ function SettingsLayoutInner({
   );
 }
 
+/***
+ * Settings page layout with app bar, sidebar, and scrollable content area.
+ *
+ * @readme
+ */
 export const SettingsLayout = withZoraThemeScope(SettingsLayoutInner);
