@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.3
+
+### Patch Changes
+
+- 66fe27e: Add Paradox `@readme` coverage for the full public ZORA UI surface.
+
 ## 2.5.2
 
 ### Patch Changes
