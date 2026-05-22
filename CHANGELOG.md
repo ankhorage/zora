@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.2
+
+### Patch Changes
+
+- 1db1f4b: Add initial Paradox `@readme` comments for core ZORA README exports.
+
 ## 2.5.1
 
 ### Patch Changes
