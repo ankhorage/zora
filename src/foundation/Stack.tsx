@@ -10,4 +10,9 @@ function StackInner({ themeId: _themeId, mode: _mode, ...props }: StackProps) {
   return <SurfaceStack {...props} />;
 }
 
+/***
+ * Arranges layout items in one direction with theme spacing.
+ *
+ * @readme
+ */
 export const Stack = withZoraThemeScope(StackInner);
