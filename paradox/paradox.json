@@ -59,7 +59,15 @@
     }
   ],
   "usage": null,
-  "readmeUsage": [],
+  "readmeUsage": [
+    {
+      "title": "Minimal ZORA app root.",
+      "description": "Minimal ZORA app root.\n\nUse `ZoraProvider` once at the application root, place `AppShell` inside it,\nand use `AppBar` as the default header slot for a simple app frame.",
+      "language": "tsx",
+      "code": "import {\n  AppBar,\n  AppShell,\n  Screen,\n  ScreenSection,\n  Text,\n  ZoraProvider,\n  type ZoraTheme,\n} from '@ankhorage/zora';\n\nconst basicTheme: ZoraTheme = {\n  id: 'basic-app',\n  name: 'Basic app',\n  appCategory: 'developer_tools',\n  primaryColor: '#0b6e99',\n  harmony: 'analogous',\n};\n\nexport default function BasicApp() {\n  return (\n    <ZoraProvider initialMode=\"light\" theme={basicTheme}>\n      <AppShell header={<AppBar title=\"Dashboard\" subtitle=\"Welcome to ZORA\" />}>\n        <Screen>\n          <ScreenSection>\n            <Text variant=\"lead\">Build your app content inside the shell.</Text>\n          </ScreenSection>\n        </Screen>\n      </AppShell>\n    </ZoraProvider>\n  );\n}",
+      "sourcePath": "examples/basic-app/App.tsx"
+    }
+  ],
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [

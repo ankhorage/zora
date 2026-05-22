@@ -7,6 +7,49 @@
 
 ZORA — an opinionated UI kit for React Native + Web built on top of @ankhorage/surface.
 
+## Usage
+
+### Minimal ZORA app root.
+
+Use `ZoraProvider` once at the application root, place `AppShell` inside it,
+and use `AppBar` as the default header slot for a simple app frame.
+
+Source: `examples/basic-app/App.tsx`
+
+```tsx
+import {
+  AppBar,
+  AppShell,
+  Screen,
+  ScreenSection,
+  Text,
+  ZoraProvider,
+  type ZoraTheme,
+} from '@ankhorage/zora';
+
+const basicTheme: ZoraTheme = {
+  id: 'basic-app',
+  name: 'Basic app',
+  appCategory: 'developer_tools',
+  primaryColor: '#0b6e99',
+  harmony: 'analogous',
+};
+
+export default function BasicApp() {
+  return (
+    <ZoraProvider initialMode="light" theme={basicTheme}>
+      <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
+        <Screen>
+          <ScreenSection>
+            <Text variant="lead">Build your app content inside the shell.</Text>
+          </ScreenSection>
+        </Screen>
+      </AppShell>
+    </ZoraProvider>
+  );
+}
+```
+
 ## Generated documentation
 
 - [Interactive documentation app](././paradox/index.html)
