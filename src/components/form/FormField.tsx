@@ -148,4 +148,9 @@ function FormFieldInner<TName extends string = string>(props: FormFieldProps<TNa
   );
 }
 
+/***
+ * Connects a controlled form value to a labeled input field with error handling.
+ *
+ * @readme
+ */
 export const FormField = withZoraThemeScope(FormFieldInner);

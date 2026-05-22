@@ -2,7 +2,9 @@
 
 ## ActionSheet
 
-Source: `src/components/action-sheet/ActionSheet.tsx:11:14`
+Source: `src/components/action-sheet/ActionSheet.tsx:16:14`
+
+Presents a modal bottom sheet with a list of actions.
 
 Export paths: `src/index.ts`
 
@@ -21,7 +23,9 @@ Export paths: `src/index.ts`
 
 ## ActionSheetItem
 
-Source: `src/components/action-sheet/ActionSheetItem.tsx:32:14`
+Source: `src/components/action-sheet/ActionSheetItem.tsx:37:14`
+
+Renders a single selectable action row within an `ActionSheet`.
 
 Export paths: `src/index.ts`
 
@@ -42,7 +46,9 @@ Export paths: `src/index.ts`
 
 ## AppBar
 
-Source: `src/components/app-bar/AppBar.tsx:133:14`
+Source: `src/components/app-bar/AppBar.tsx:138:14`
+
+Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
 Export paths: `src/index.ts`
 
@@ -84,7 +90,9 @@ Export paths: `src/index.ts`
 
 ## Avatar
 
-Source: `src/components/avatar/Avatar.tsx:143:14`
+Source: `src/components/avatar/Avatar.tsx:148:14`
+
+Displays a user or entity avatar with image support and initials fallback.
 
 Export paths: `src/index.ts`
 
@@ -104,7 +112,9 @@ Export paths: `src/index.ts`
 
 ## AvatarGroup
 
-Source: `src/components/avatar-group/AvatarGroup.tsx:74:14`
+Source: `src/components/avatar-group/AvatarGroup.tsx:79:14`
+
+Renders a compact group of avatars with optional overflow handling.
 
 Export paths: `src/index.ts`
 
@@ -121,7 +131,9 @@ Export paths: `src/index.ts`
 
 ## Badge
 
-Source: `src/components/badge/Badge.tsx:30:14`
+Source: `src/components/badge/Badge.tsx:35:14`
+
+Shows a small status, label, or count indicator.
 
 Export paths: `src/index.ts`
 
@@ -137,7 +149,9 @@ Export paths: `src/index.ts`
 
 ## Box
 
-Source: `src/foundation/Box.tsx:13:14`
+Source: `src/foundation/Box.tsx:18:14`
+
+Base layout primitive for themed spacing, color, border, flex, and responsive props.
 
 Export paths: `src/index.ts`
 
@@ -193,7 +207,9 @@ Export paths: `src/index.ts`
 
 ## Breadcrumbs
 
-Source: `src/components/breadcrumbs/Breadcrumbs.tsx:143:14`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:148:14`
+
+Renders a breadcrumb trail for hierarchical navigation.
 
 Export paths: `src/index.ts`
 
@@ -278,7 +294,9 @@ Export paths: `src/index.ts`
 
 ## ButtonGroup
 
-Source: `src/components/button-group/ButtonGroup.tsx:105:14`
+Source: `src/components/button-group/ButtonGroup.tsx:110:14`
+
+Groups multiple `Button` elements with consistent spacing and alignment.
 
 Export paths: `src/index.ts`
 
@@ -360,7 +378,9 @@ Export paths: `src/index.ts`
 
 ## Center
 
-Source: `src/foundation/Center.tsx:16:14`
+Source: `src/foundation/Center.tsx:21:14`
+
+Centers children horizontally and vertically within the available space.
 
 Export paths: `src/index.ts`
 
@@ -417,7 +437,9 @@ Export paths: `src/index.ts`
 
 ## ChatListItem
 
-Source: `src/patterns/chat-list-item/ChatListItem.tsx:220:14`
+Source: `src/patterns/chat-list-item/ChatListItem.tsx:225:14`
+
+Chat-style list row with avatar, title, preview text, and unread indicators.
 
 Export paths: `src/index.ts`
 
@@ -443,7 +465,9 @@ Export paths: `src/index.ts`
 
 ## Checkbox
 
-Source: `src/components/checkbox/Checkbox.tsx:11:14`
+Source: `src/components/checkbox/Checkbox.tsx:16:14`
+
+Binary selection control for toggling a value on or off.
 
 Export paths: `src/index.ts`
 
@@ -504,7 +528,9 @@ Export paths: `src/index.ts`
 
 ## CheckboxGroup
 
-Source: `src/components/checkbox/CheckboxGroup.tsx:60:14`
+Source: `src/components/checkbox/CheckboxGroup.tsx:65:14`
+
+Renders a group of checkboxes for multi-select values.
 
 Export paths: `src/index.ts`
 
@@ -526,7 +552,9 @@ Export paths: `src/index.ts`
 
 ## Chip
 
-Source: `src/components/chip/Chip.tsx:94:14`
+Source: `src/components/chip/Chip.tsx:99:14`
+
+Compact pill-like control for filters, tags, and quick selections.
 
 Export paths: `src/index.ts`
 
@@ -545,7 +573,9 @@ Export paths: `src/index.ts`
 
 ## ChipGroup
 
-Source: `src/components/chip-group/ChipGroup.tsx:66:14`
+Source: `src/components/chip-group/ChipGroup.tsx:71:14`
+
+Renders a row or wrap layout of `Chip` items.
 
 Export paths: `src/index.ts`
 
@@ -565,7 +595,9 @@ Export paths: `src/index.ts`
 
 ## CollectionEditor
 
-Source: `src/patterns/collection-editor/CollectionEditor.tsx:106:14`
+Source: `src/patterns/collection-editor/CollectionEditor.tsx:111:14`
+
+Editor pattern for adding, removing, and reordering a collection of items.
 
 Export paths: `src/index.ts`
 
@@ -587,7 +619,9 @@ Export paths: `src/index.ts`
 
 ## ConfirmDialog
 
-Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:51:14`
+Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:56:14`
+
+Confirmation dialog pattern with cancel/confirm actions.
 
 Export paths: `src/index.ts`
 
@@ -611,7 +645,9 @@ Export paths: `src/index.ts`
 
 ## Container
 
-Source: `src/foundation/Container.tsx:17:14`
+Source: `src/foundation/Container.tsx:22:14`
+
+Constrains page content to semantic widths with responsive padding.
 
 Export paths: `src/index.ts`
 
@@ -667,7 +703,9 @@ Export paths: `src/index.ts`
 
 ## DataTable
 
-Source: `src/components/data-table/DataTable.tsx:388:14`
+Source: `src/components/data-table/DataTable.tsx:393:14`
+
+Displays structured tabular data with responsive desktop/mobile layouts.
 
 Export paths: `src/index.ts`
 
@@ -690,7 +728,9 @@ Export paths: `src/index.ts`
 
 ## DatePicker
 
-Source: `src/components/date-picker/DatePicker.tsx:242:14`
+Source: `src/components/date-picker/DatePicker.tsx:247:14`
+
+Date input control with calendar selection and formatted display value.
 
 Export paths: `src/index.ts`
 
@@ -713,7 +753,9 @@ Export paths: `src/index.ts`
 
 ## DisclosureSection
 
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:66:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:71:14`
+
+Expandable section pattern with a summary header and collapsible content.
 
 Export paths: `src/index.ts`
 
@@ -734,7 +776,9 @@ Export paths: `src/index.ts`
 
 ## Divider
 
-Source: `src/foundation/Divider.tsx:17:14`
+Source: `src/foundation/Divider.tsx:22:14`
+
+Renders a themed visual separator between content sections.
 
 Export paths: `src/index.ts`
 
@@ -790,7 +834,9 @@ Export paths: `src/index.ts`
 
 ## Drawer
 
-Source: `src/components/drawer/Drawer.tsx:55:14`
+Source: `src/components/drawer/Drawer.tsx:60:14`
+
+Side panel overlay for navigation, settings, and secondary content.
 
 Export paths: `src/index.ts`
 
@@ -810,7 +856,9 @@ Export paths: `src/index.ts`
 
 ## DropdownMenu
 
-Source: `src/components/menu/DropdownMenu.tsx:6:1`
+Source: `src/components/menu/DropdownMenu.tsx:11:1`
+
+Convenience wrapper for rendering a `Menu` as a dropdown.
 
 Export paths: `src/index.ts`
 
@@ -849,7 +897,9 @@ Export paths: `src/index.ts`
 
 ## FilterBar
 
-Source: `src/patterns/filter-bar/FilterBar.tsx:25:14`
+Source: `src/patterns/filter-bar/FilterBar.tsx:30:14`
+
+Horizontal filter/action bar layout with leading/trailing slots.
 
 Export paths: `src/index.ts`
 
@@ -865,7 +915,9 @@ Export paths: `src/index.ts`
 
 ## ForgotPasswordForm
 
-Source: `src/patterns/auth/ForgotPasswordForm.tsx:89:14`
+Source: `src/patterns/auth/ForgotPasswordForm.tsx:94:14`
+
+Password reset form pattern with validation and submit actions.
 
 Export paths: `src/index.ts`
 
@@ -886,7 +938,9 @@ Export paths: `src/index.ts`
 
 ## Form
 
-Source: `src/components/form/Form.tsx:66:14`
+Source: `src/components/form/Form.tsx:71:14`
+
+Composes fields and actions into a validated form layout.
 
 Export paths: `src/index.ts`
 
@@ -910,7 +964,9 @@ Export paths: `src/index.ts`
 
 ## FormActions
 
-Source: `src/components/form/FormActions.tsx:28:14`
+Source: `src/components/form/FormActions.tsx:33:14`
+
+Standard submit/action area for forms.
 
 Export paths: `src/index.ts`
 
@@ -927,7 +983,9 @@ Export paths: `src/index.ts`
 
 ## FormError
 
-Source: `src/components/form/FormError.tsx:25:14`
+Source: `src/components/form/FormError.tsx:30:14`
+
+Displays a form-level validation or submission error message.
 
 Export paths: `src/index.ts`
 
@@ -940,7 +998,9 @@ Export paths: `src/index.ts`
 
 ## FormField
 
-Source: `src/components/form/FormField.tsx:151:14`
+Source: `src/components/form/FormField.tsx:156:14`
+
+Connects a controlled form value to a labeled input field with error handling.
 
 Export paths: `src/index.ts`
 
@@ -953,7 +1013,9 @@ Export paths: `src/index.ts`
 
 ## Grid
 
-Source: `src/foundation/Grid.tsx:13:14`
+Source: `src/foundation/Grid.tsx:18:14`
+
+Creates responsive grid layouts for cards, tiles, and dashboard content.
 
 Export paths: `src/index.ts`
 
@@ -1048,7 +1110,9 @@ Export paths: `src/index.ts`
 
 ## Hero
 
-Source: `src/patterns/hero/Hero.tsx:116:14`
+Source: `src/patterns/hero/Hero.tsx:121:14`
+
+Hero section pattern for prominent page introductions with actions.
 
 Export paths: `src/index.ts`
 
@@ -1071,7 +1135,9 @@ Export paths: `src/index.ts`
 
 ## Icon
 
-Source: `src/components/icon/Icon.tsx:13:14`
+Source: `src/components/icon/Icon.tsx:18:14`
+
+Renders an icon from a configured icon provider with theme-aware defaults.
 
 Export paths: `src/index.ts`
 
@@ -1088,7 +1154,9 @@ Export paths: `src/index.ts`
 
 ## IconButton
 
-Source: `src/components/icon-button/IconButton.tsx:32:14`
+Source: `src/components/icon-button/IconButton.tsx:37:14`
+
+Icon-only button for compact actions; requires an accessible `label`.
 
 Export paths: `src/index.ts`
 
@@ -1108,7 +1176,9 @@ Export paths: `src/index.ts`
 
 ## Image
 
-Source: `src/components/image/Image.tsx:11:14`
+Source: `src/components/image/Image.tsx:16:14`
+
+Displays an image with cross-platform source and fit handling.
 
 Export paths: `src/index.ts`
 
@@ -1132,7 +1202,9 @@ Export paths: `src/index.ts`
 
 ## ImagePreview
 
-Source: `src/patterns/image-preview/ImagePreview.tsx:76:14`
+Source: `src/patterns/image-preview/ImagePreview.tsx:81:14`
+
+Preview pattern for showing an image with optional metadata and actions.
 
 Export paths: `src/index.ts`
 
@@ -1149,7 +1221,9 @@ Export paths: `src/index.ts`
 
 ## ImageUploadField
 
-Source: `src/patterns/image-upload-field/ImageUploadField.tsx:293:14`
+Source: `src/patterns/image-upload-field/ImageUploadField.tsx:298:14`
+
+Form field pattern for picking, previewing, and uploading an image.
 
 Export paths: `src/index.ts`
 
@@ -1179,7 +1253,9 @@ Export paths: `src/index.ts`
 
 ## Inline
 
-Source: `src/foundation/Inline.tsx:16:14`
+Source: `src/foundation/Inline.tsx:21:14`
+
+Arranges children inline with spacing and wrapping behavior.
 
 Export paths: `src/index.ts`
 
@@ -1417,7 +1493,9 @@ Export paths: `src/index.ts`
 
 ## InspectorField
 
-Source: `src/patterns/inspector-field/InspectorField.tsx:26:14`
+Source: `src/patterns/inspector-field/InspectorField.tsx:31:14`
+
+Inspector row pattern with label, description, and control slot.
 
 Export paths: `src/index.ts`
 
@@ -1439,7 +1517,9 @@ Export paths: `src/index.ts`
 
 ## List
 
-Source: `src/patterns/list/List.tsx:72:14`
+Source: `src/patterns/list/List.tsx:77:14`
+
+List container pattern for composing `ListRow` and `ListSection`.
 
 Export paths: `src/index.ts`
 
@@ -1451,7 +1531,9 @@ Export paths: `src/index.ts`
 
 ## ListRow
 
-Source: `src/patterns/list/ListRow.tsx:193:14`
+Source: `src/patterns/list/ListRow.tsx:198:14`
+
+Row pattern for lists with leading/trailing slots and optional press behavior.
 
 Export paths: `src/index.ts`
 
@@ -1474,7 +1556,9 @@ Export paths: `src/index.ts`
 
 ## ListSection
 
-Source: `src/patterns/list/ListSection.tsx:36:14`
+Source: `src/patterns/list/ListSection.tsx:41:14`
+
+Section wrapper for lists with optional title and description.
 
 Export paths: `src/index.ts`
 
@@ -1490,7 +1574,9 @@ Export paths: `src/index.ts`
 
 ## MediaCard
 
-Source: `src/components/media-card/MediaCard.tsx:120:14`
+Source: `src/components/media-card/MediaCard.tsx:125:14`
+
+Card layout with an optional media/header region and structured content slots.
 
 Export paths: `src/index.ts`
 
@@ -1516,7 +1602,9 @@ Export paths: `src/index.ts`
 
 ## Menu
 
-Source: `src/components/menu/Menu.tsx:63:14`
+Source: `src/components/menu/Menu.tsx:68:14`
+
+Presents a list of actions as a menu with optional icons and intent styling.
 
 Export paths: `src/index.ts`
 
@@ -1532,7 +1620,9 @@ Export paths: `src/index.ts`
 
 ## MessageBubble
 
-Source: `src/patterns/message-bubble/MessageBubble.tsx:265:14`
+Source: `src/patterns/message-bubble/MessageBubble.tsx:270:14`
+
+Message bubble pattern for chat UIs with direction and status styling.
 
 Export paths: `src/index.ts`
 
@@ -1559,7 +1649,9 @@ Export paths: `src/index.ts`
 
 ## MetricCard
 
-Source: `src/components/metric-card/MetricCard.tsx:84:14`
+Source: `src/components/metric-card/MetricCard.tsx:89:14`
+
+Highlights a key metric with label, value, and optional trend/actions.
 
 Export paths: `src/index.ts`
 
@@ -1581,7 +1673,9 @@ Export paths: `src/index.ts`
 
 ## Modal
 
-Source: `src/components/modal/Modal.tsx:59:14`
+Source: `src/components/modal/Modal.tsx:64:14`
+
+Modal dialog surface with header/content/footer slots.
 
 Export paths: `src/index.ts`
 
@@ -1601,7 +1695,9 @@ Export paths: `src/index.ts`
 
 ## NavigationItem
 
-Source: `src/components/navigation-item/NavigationItem.tsx:36:14`
+Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
+
+Renders a single navigation entry with active/disabled state support.
 
 Export paths: `src/index.ts`
 
@@ -1618,7 +1714,9 @@ Export paths: `src/index.ts`
 
 ## NavigationList
 
-Source: `src/components/navigation-list/NavigationList.tsx:62:14`
+Source: `src/components/navigation-list/NavigationList.tsx:67:14`
+
+Renders a navigation list from route metadata with active state mapping.
 
 Export paths: `src/index.ts`
 
@@ -1638,7 +1736,9 @@ Export paths: `src/index.ts`
 
 ## Notice
 
-Source: `src/patterns/notice/Notice.tsx:35:14`
+Source: `src/patterns/notice/Notice.tsx:40:14`
+
+Notice pattern for inline feedback with tone, title, and actions.
 
 Export paths: `src/index.ts`
 
@@ -1655,7 +1755,9 @@ Export paths: `src/index.ts`
 
 ## OtpForm
 
-Source: `src/patterns/auth/OtpForm.tsx:85:14`
+Source: `src/patterns/auth/OtpForm.tsx:90:14`
+
+One-time passcode form pattern with digit input and submit actions.
 
 Export paths: `src/index.ts`
 
@@ -1678,7 +1780,9 @@ Export paths: `src/index.ts`
 
 ## Pagination
 
-Source: `src/components/pagination/Pagination.tsx:189:14`
+Source: `src/components/pagination/Pagination.tsx:194:14`
+
+Pagination control for navigating between pages of results.
 
 Export paths: `src/index.ts`
 
@@ -1702,7 +1806,9 @@ Export paths: `src/index.ts`
 
 ## PaletteItem
 
-Source: `src/patterns/tile-grid/PaletteItem.tsx:57:14`
+Source: `src/patterns/tile-grid/PaletteItem.tsx:62:14`
+
+Tile item pattern for palettes and option grids.
 
 Export paths: `src/index.ts`
 
@@ -1721,7 +1827,9 @@ Export paths: `src/index.ts`
 
 ## Panel
 
-Source: `src/patterns/panel/Panel.tsx:11:14`
+Source: `src/patterns/panel/Panel.tsx:16:14`
+
+Semantic wrapper around `Card` for panel-style page sections.
 
 Export paths: `src/index.ts`
 
@@ -1741,7 +1849,9 @@ Export paths: `src/index.ts`
 
 ## PostCard
 
-Source: `src/patterns/post-card/PostCard.tsx:234:14`
+Source: `src/patterns/post-card/PostCard.tsx:239:14`
+
+Social-style post card pattern with author, content, media, and actions.
 
 Export paths: `src/index.ts`
 
@@ -1764,7 +1874,9 @@ Export paths: `src/index.ts`
 
 ## Progress
 
-Source: `src/components/progress/Progress.tsx:50:14`
+Source: `src/components/progress/Progress.tsx:55:14`
+
+Progress indicator for determinate and indeterminate loading states.
 
 Export paths: `src/index.ts`
 
@@ -1780,7 +1892,9 @@ Export paths: `src/index.ts`
 
 ## Radio
 
-Source: `src/components/radio/Radio.tsx:11:14`
+Source: `src/components/radio/Radio.tsx:16:14`
+
+Single-choice selection control used within a radio group.
 
 Export paths: `src/index.ts`
 
@@ -1841,7 +1955,9 @@ Export paths: `src/index.ts`
 
 ## RadioGroup
 
-Source: `src/components/radio/RadioGroup.tsx:59:14`
+Source: `src/components/radio/RadioGroup.tsx:64:14`
+
+Renders a group of radio options for selecting a single value.
 
 Export paths: `src/index.ts`
 
@@ -1863,7 +1979,9 @@ Export paths: `src/index.ts`
 
 ## Rating
 
-Source: `src/components/rating/Rating.tsx:38:14`
+Source: `src/components/rating/Rating.tsx:43:14`
+
+Displays a star-based rating value with optional half steps.
 
 Export paths: `src/index.ts`
 
@@ -1909,7 +2027,9 @@ Export paths: `src/index.ts`
 
 ## Screen
 
-Source: `src/layout/screen/Screen.tsx:42:14`
+Source: `src/layout/screen/Screen.tsx:47:14`
+
+Page-level container with standard background and optional scroll behavior.
 
 Export paths: `src/index.ts`
 
@@ -1925,7 +2045,9 @@ Export paths: `src/index.ts`
 
 ## ScreenSection
 
-Source: `src/layout/screen-section/ScreenSection.tsx:25:14`
+Source: `src/layout/screen-section/ScreenSection.tsx:30:14`
+
+Screen section layout with optional title, description, and actions.
 
 Export paths: `src/index.ts`
 
@@ -1941,7 +2063,9 @@ Export paths: `src/index.ts`
 
 ## SearchBar
 
-Source: `src/components/search-bar/SearchBar.tsx:50:14`
+Source: `src/components/search-bar/SearchBar.tsx:55:14`
+
+Search input with leading icon and optional trailing action.
 
 Export paths: `src/index.ts`
 
@@ -1962,7 +2086,9 @@ Export paths: `src/index.ts`
 
 ## SectionHeader
 
-Source: `src/patterns/section-header/SectionHeader.tsx:46:14`
+Source: `src/patterns/section-header/SectionHeader.tsx:51:14`
+
+Section heading pattern with optional description and action slot.
 
 Export paths: `src/index.ts`
 
@@ -1978,7 +2104,9 @@ Export paths: `src/index.ts`
 
 ## Select
 
-Source: `src/components/select/Select.tsx:55:14`
+Source: `src/components/select/Select.tsx:60:14`
+
+Select control for choosing a value from a list of options.
 
 Export paths: `src/index.ts`
 
@@ -1995,7 +2123,9 @@ Export paths: `src/index.ts`
 
 ## SelectableItem
 
-Source: `src/patterns/selection/SelectableItem.tsx:18:1`
+Source: `src/patterns/selection/SelectableItem.tsx:23:1`
+
+Adds selection behavior to arbitrary child content via render props.
 
 Export paths: `src/index.ts`
 
@@ -2008,7 +2138,9 @@ Export paths: `src/index.ts`
 
 ## SelectionProvider
 
-Source: `src/patterns/selection/SelectionProvider.tsx:30:1`
+Source: `src/patterns/selection/SelectionProvider.tsx:40:1`
+
+Provides selection state for building selectable lists and grids.
 
 Export paths: `src/index.ts`
 
@@ -2023,7 +2155,9 @@ Export paths: `src/index.ts`
 
 ## SettingsLayout
 
-Source: `src/layout/settings-layout/SettingsLayout.tsx:29:14`
+Source: `src/layout/settings-layout/SettingsLayout.tsx:34:14`
+
+Settings page layout with app bar, sidebar, and scrollable content area.
 
 Export paths: `src/index.ts`
 
@@ -2040,7 +2174,9 @@ Export paths: `src/index.ts`
 
 ## SettingsRow
 
-Source: `src/patterns/settings-row/SettingsRow.tsx:46:14`
+Source: `src/patterns/settings-row/SettingsRow.tsx:51:14`
+
+Settings row pattern with title, description/meta, and optional trailing content.
 
 Export paths: `src/index.ts`
 
@@ -2058,7 +2194,9 @@ Export paths: `src/index.ts`
 
 ## Show
 
-Source: `src/foundation/Show.tsx:13:14`
+Source: `src/foundation/Show.tsx:18:14`
+
+Conditionally renders children for responsive display and breakpoint-based visibility.
 
 Export paths: `src/index.ts`
 
@@ -2073,7 +2211,9 @@ Export paths: `src/index.ts`
 
 ## SidebarLayout
 
-Source: `src/layout/sidebar-layout/SidebarLayout.tsx:28:14`
+Source: `src/layout/sidebar-layout/SidebarLayout.tsx:33:14`
+
+Responsive layout with a sidebar and main content area (and optional aside).
 
 Export paths: `src/index.ts`
 
@@ -2090,7 +2230,9 @@ Export paths: `src/index.ts`
 
 ## SignInForm
 
-Source: `src/patterns/auth/SignInForm.tsx:116:14`
+Source: `src/patterns/auth/SignInForm.tsx:121:14`
+
+Sign-in form pattern with identifier and password fields.
 
 Export paths: `src/index.ts`
 
@@ -2114,7 +2256,9 @@ Export paths: `src/index.ts`
 
 ## SignUpForm
 
-Source: `src/patterns/auth/SignUpForm.tsx:81:14`
+Source: `src/patterns/auth/SignUpForm.tsx:86:14`
+
+Sign-up form pattern with structured fields and validation.
 
 Export paths: `src/index.ts`
 
@@ -2134,7 +2278,9 @@ Export paths: `src/index.ts`
 
 ## Skeleton
 
-Source: `src/components/skeleton/Skeleton.tsx:32:14`
+Source: `src/components/skeleton/Skeleton.tsx:37:14`
+
+Generic skeleton placeholder for loading states.
 
 Export paths: `src/index.ts`
 
@@ -2149,7 +2295,9 @@ Export paths: `src/index.ts`
 
 ## SkeletonCard
 
-Source: `src/components/skeleton/SkeletonCard.tsx:39:14`
+Source: `src/components/skeleton/SkeletonCard.tsx:44:14`
+
+Skeleton placeholder that matches the structure of a `Card`.
 
 Export paths: `src/index.ts`
 
@@ -2165,7 +2313,9 @@ Export paths: `src/index.ts`
 
 ## SkeletonList
 
-Source: `src/components/skeleton/SkeletonList.tsx:52:14`
+Source: `src/components/skeleton/SkeletonList.tsx:57:14`
+
+Skeleton placeholder list for loading states in list views.
 
 Export paths: `src/index.ts`
 
@@ -2183,7 +2333,9 @@ Export paths: `src/index.ts`
 
 ## SkeletonText
 
-Source: `src/components/skeleton/SkeletonText.tsx:45:14`
+Source: `src/components/skeleton/SkeletonText.tsx:50:14`
+
+Multi-line skeleton placeholder for text content.
 
 Export paths: `src/index.ts`
 
@@ -2200,7 +2352,9 @@ Export paths: `src/index.ts`
 
 ## Spacer
 
-Source: `src/foundation/Spacer.tsx:16:14`
+Source: `src/foundation/Spacer.tsx:21:14`
+
+Adds flexible or fixed empty space in layout compositions.
 
 Export paths: `src/index.ts`
 
@@ -2214,7 +2368,9 @@ Export paths: `src/index.ts`
 
 ## Stack
 
-Source: `src/foundation/Stack.tsx:13:14`
+Source: `src/foundation/Stack.tsx:18:14`
+
+Arranges layout items in one direction with theme spacing.
 
 Export paths: `src/index.ts`
 
@@ -2275,7 +2431,9 @@ Export paths: `src/index.ts`
 
 ## Surface
 
-Source: `src/foundation/Surface.tsx:20:14`
+Source: `src/foundation/Surface.tsx:25:14`
+
+Provides a semantic themed region for elevated, subtle, or bordered content.
 
 Export paths: `src/index.ts`
 
@@ -2329,7 +2487,9 @@ Export paths: `src/index.ts`
 
 ## SwitchField
 
-Source: `src/patterns/switch-field/SwitchField.tsx:29:14`
+Source: `src/patterns/switch-field/SwitchField.tsx:34:14`
+
+Labeled switch field pattern built on `SettingsRow`.
 
 Export paths: `src/index.ts`
 
@@ -2346,7 +2506,9 @@ Export paths: `src/index.ts`
 
 ## Tabs
 
-Source: `src/components/tabs/Tabs.tsx:110:14`
+Source: `src/components/tabs/Tabs.tsx:115:14`
+
+Tab navigation for switching between views or content sections.
 
 Export paths: `src/index.ts`
 
@@ -2397,7 +2559,9 @@ Export paths: `src/index.ts`
 
 ## Textarea
 
-Source: `src/components/textarea/Textarea.tsx:49:14`
+Source: `src/components/textarea/Textarea.tsx:54:14`
+
+Multi-line text input with consistent ZORA field styling.
 
 Export paths: `src/index.ts`
 
@@ -2569,7 +2733,9 @@ Export paths: `src/index.ts`
 
 ## ThemeComposer
 
-Source: `src/patterns/theme-composer/ThemeComposer.tsx:310:14`
+Source: `src/patterns/theme-composer/ThemeComposer.tsx:315:14`
+
+UI for composing and applying a theme via structured controls.
 
 Export paths: `src/index.ts`
 
@@ -2586,7 +2752,9 @@ Export paths: `src/index.ts`
 
 ## TileGrid
 
-Source: `src/patterns/tile-grid/TileGrid.tsx:49:14`
+Source: `src/patterns/tile-grid/TileGrid.tsx:54:14`
+
+Responsive grid layout for arranging tile content.
 
 Export paths: `src/index.ts`
 
@@ -2601,7 +2769,9 @@ Export paths: `src/index.ts`
 
 ## Timeline
 
-Source: `src/patterns/timeline/Timeline.tsx:115:14`
+Source: `src/patterns/timeline/Timeline.tsx:120:14`
+
+Timeline pattern for displaying a sequence of events.
 
 Export paths: `src/index.ts`
 
@@ -2615,7 +2785,9 @@ Export paths: `src/index.ts`
 
 ## TimePicker
 
-Source: `src/components/time-picker/TimePicker.tsx:152:14`
+Source: `src/components/time-picker/TimePicker.tsx:157:14`
+
+Time input control with wheel selection and formatted display value.
 
 Export paths: `src/index.ts`
 
@@ -2639,7 +2811,9 @@ Export paths: `src/index.ts`
 
 ## Toast
 
-Source: `src/components/toast/Toast.tsx:11:14`
+Source: `src/components/toast/Toast.tsx:16:14`
+
+Renders a toast notification message.
 
 Export paths: `src/index.ts`
 
@@ -2655,7 +2829,9 @@ Export paths: `src/index.ts`
 
 ## ToastProvider
 
-Source: `src/components/toast/ToastProvider.tsx:6:1`
+Source: `src/components/toast/ToastProvider.tsx:11:1`
+
+Provides toast state and rendering context for `useToast` and `Toast`.
 
 Export paths: `src/index.ts`
 
@@ -2666,7 +2842,9 @@ Export paths: `src/index.ts`
 
 ## Toolbar
 
-Source: `src/components/toolbar/Toolbar.tsx:42:14`
+Source: `src/components/toolbar/Toolbar.tsx:47:14`
+
+Horizontal toolbar surface for grouping actions and controls.
 
 Export paths: `src/index.ts`
 
@@ -2682,7 +2860,9 @@ Export paths: `src/index.ts`
 
 ## ToolbarAction
 
-Source: `src/components/toolbar/ToolbarAction.tsx:23:14`
+Source: `src/components/toolbar/ToolbarAction.tsx:28:14`
+
+Convenience icon action for toolbars with active state styling.
 
 Export paths: `src/index.ts`
 
@@ -2699,7 +2879,9 @@ Export paths: `src/index.ts`
 
 ## TopbarLayout
 
-Source: `src/layout/topbar-layout/TopbarLayout.tsx:24:14`
+Source: `src/layout/topbar-layout/TopbarLayout.tsx:29:14`
+
+Layout that composes a top bar with optional sidebar and content.
 
 Export paths: `src/index.ts`
 
@@ -2714,7 +2896,9 @@ Export paths: `src/index.ts`
 
 ## TreeItem
 
-Source: `src/patterns/tree-view/TreeItem.tsx:93:14`
+Source: `src/patterns/tree-view/TreeItem.tsx:98:14`
+
+Single tree node row used within `TreeView`.
 
 Export paths: `src/index.ts`
 
@@ -2733,7 +2917,9 @@ Export paths: `src/index.ts`
 
 ## TreeView
 
-Source: `src/patterns/tree-view/TreeView.tsx:55:14`
+Source: `src/patterns/tree-view/TreeView.tsx:60:14`
+
+Tree view pattern for hierarchical navigation and expandable lists.
 
 Export paths: `src/index.ts`
 
@@ -2752,7 +2938,9 @@ Export paths: `src/index.ts`
 
 ## ZoraDrawerContent
 
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:53:14`
+Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:58:14`
+
+Standard drawer content pattern for ZORA navigation lists.
 
 Export paths: `src/index.ts`
 
@@ -2788,7 +2976,9 @@ Export paths: `src/index.ts`
 
 ## ZoraTabBar
 
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:144:14`
+Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:149:14`
+
+Bottom tab bar pattern with badge support and active state styling.
 
 Export paths: `src/index.ts`
 

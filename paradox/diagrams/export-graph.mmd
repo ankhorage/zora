@@ -610,14 +610,11 @@ graph LR
   export_FormFieldControlProps["FormFieldControlProps"]
   module_src_components_form_types_ts --> export_FormFieldControlProps
   export_FormFieldControlProps -.-> export_FormFieldConfig
-  export_FormFieldControlProps -.-> export_FormFieldValue
   export_FormFieldControlProps -.-> export_ZoraThemeMode
   export_FormFieldInputType["FormFieldInputType"]
   module_src_components_form_types_ts --> export_FormFieldInputType
   export_FormFieldProps["FormFieldProps"]
   module_src_components_form_types_ts --> export_FormFieldProps
-  export_FormFieldValue["FormFieldValue"]
-  module_src_components_form_types_ts --> export_FormFieldValue
   export_FormProps["FormProps"]
   module_src_components_form_types_ts --> export_FormProps
   export_FormProps -.-> export_FormFieldConfig
@@ -1155,7 +1152,6 @@ graph LR
   export_UseFormControllerOptions -.-> export_FormValues
   export_UseFormControllerResult["UseFormControllerResult"]
   module_src_components_form_types_ts --> export_UseFormControllerResult
-  export_UseFormControllerResult -.-> export_FormFieldValue
   export_UseFormControllerResult -.-> export_FormValidationResult
   export_UseFormControllerResult -.-> export_FormValues
   export_useSelection["useSelection"]

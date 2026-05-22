@@ -186,4 +186,9 @@ function PaginationInner({
   );
 }
 
+/***
+ * Pagination control for navigating between pages of results.
+ *
+ * @readme
+ */
 export const Pagination = withZoraThemeScope(PaginationInner);

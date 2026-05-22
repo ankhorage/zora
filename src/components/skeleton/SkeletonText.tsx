@@ -42,4 +42,9 @@ function SkeletonTextInner({
   );
 }
 
+/***
+ * Multi-line skeleton placeholder for text content.
+ *
+ * @readme
+ */
 export const SkeletonText = withZoraThemeScope(SkeletonTextInner);

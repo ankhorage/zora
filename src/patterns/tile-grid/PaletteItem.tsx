@@ -54,4 +54,9 @@ function PaletteItemInner({
   );
 }
 
+/***
+ * Tile item pattern for palettes and option grids.
+ *
+ * @readme
+ */
 export const PaletteItem = withZoraThemeScope(PaletteItemInner);

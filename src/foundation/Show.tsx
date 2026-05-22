@@ -10,4 +10,9 @@ function ShowInner({ themeId: _themeId, mode: _mode, ...props }: ShowProps) {
   return <SurfaceShow {...props} />;
 }
 
+/***
+ * Conditionally renders children for responsive display and breakpoint-based visibility.
+ *
+ * @readme
+ */
 export const Show = withZoraThemeScope(ShowInner);

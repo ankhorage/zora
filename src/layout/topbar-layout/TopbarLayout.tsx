@@ -21,4 +21,9 @@ function TopbarLayoutInner({
   );
 }
 
+/***
+ * Layout that composes a top bar with optional sidebar and content.
+ *
+ * @readme
+ */
 export const TopbarLayout = withZoraThemeScope(TopbarLayoutInner);

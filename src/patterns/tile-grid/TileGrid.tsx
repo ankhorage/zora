@@ -46,4 +46,9 @@ function TileGridInner({
   );
 }
 
+/***
+ * Responsive grid layout for arranging tile content.
+ *
+ * @readme
+ */
 export const TileGrid = withZoraThemeScope(TileGridInner);

@@ -290,4 +290,9 @@ function ImageUploadFieldInner({
   );
 }
 
+/***
+ * Form field pattern for picking, previewing, and uploading an image.
+ *
+ * @readme
+ */
 export const ImageUploadField = withZoraThemeScope(ImageUploadFieldInner);

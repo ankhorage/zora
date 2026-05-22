@@ -2,6 +2,7 @@ import React from 'react';
 
 import type {
   FormErrors,
+  FormFieldValue,
   FormValues,
   UseFormControllerOptions,
   UseFormControllerResult,
@@ -12,7 +13,7 @@ function createInitialValues<TName extends string>(
   fields: readonly { name: TName }[],
   initialValues: Partial<FormValues<TName>> | undefined,
 ): FormValues<TName> {
-  const values = fields.reduce<Record<string, string>>((nextValues, field) => {
+  const values = fields.reduce<Record<string, FormFieldValue>>((nextValues, field) => {
     nextValues[field.name] = initialValues?.[field.name] ?? '';
     return nextValues;
   }, {});
@@ -62,7 +63,7 @@ export function useFormController<TName extends string = string>({
   }, [fields, values]);
 
   const setFieldValue = React.useCallback(
-    (name: TName, value: string) => {
+    (name: TName, value: FormFieldValue) => {
       const nextValues = {
         ...values,
         [name]: value,

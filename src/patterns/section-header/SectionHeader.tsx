@@ -43,4 +43,9 @@ function SectionHeaderInner({
   );
 }
 
+/***
+ * Section heading pattern with optional description and action slot.
+ *
+ * @readme
+ */
 export const SectionHeader = withZoraThemeScope(SectionHeaderInner);

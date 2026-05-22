@@ -112,4 +112,9 @@ function TimelineInner({
   );
 }
 
+/***
+ * Timeline pattern for displaying a sequence of events.
+ *
+ * @readme
+ */
 export const Timeline = withZoraThemeScope(TimelineInner);

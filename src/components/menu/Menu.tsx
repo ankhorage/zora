@@ -60,4 +60,9 @@ function MenuInner({ themeId: _themeId, mode: _mode, actions, onDismiss, ...prop
   return <SurfaceMenu {...props} actions={surfaceActions} dismiss={onDismiss} />;
 }
 
+/***
+ * Presents a list of actions as a menu with optional icons and intent styling.
+ *
+ * @readme
+ */
 export const Menu = withZoraThemeScope(MenuInner);

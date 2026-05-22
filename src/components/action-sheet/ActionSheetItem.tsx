@@ -29,4 +29,9 @@ function ActionSheetItemInner({
   return <SurfaceActionSheetItem {...props} leading={resolvedLeading} />;
 }
 
+/***
+ * Renders a single selectable action row within an `ActionSheet`.
+ *
+ * @readme
+ */
 export const ActionSheetItem = withZoraThemeScope(ActionSheetItemInner);

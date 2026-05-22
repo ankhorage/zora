@@ -8,4 +8,9 @@ function PanelInner({ themeId: _themeId, mode: _mode, ...props }: PanelProps) {
   return <Card {...props} />;
 }
 
+/***
+ * Semantic wrapper around `Card` for panel-style page sections.
+ *
+ * @readme
+ */
 export const Panel = withZoraThemeScope(PanelInner);

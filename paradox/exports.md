@@ -4,13 +4,17 @@
 
 Kind: `value`
 Module: `src/components/action-sheet/ActionSheet.tsx`
-Source: `src/components/action-sheet/ActionSheet.tsx:11:14`
+Source: `src/components/action-sheet/ActionSheet.tsx:16:14`
+
+Presents a modal bottom sheet with a list of actions.
 
 ## ActionSheetItem
 
 Kind: `value`
 Module: `src/components/action-sheet/ActionSheetItem.tsx`
-Source: `src/components/action-sheet/ActionSheetItem.tsx:32:14`
+Source: `src/components/action-sheet/ActionSheetItem.tsx:37:14`
+
+Renders a single selectable action row within an `ActionSheet`.
 
 ## ActionSheetItemProps
 
@@ -60,7 +64,9 @@ Source: `src/components/action-sheet/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/app-bar/AppBar.tsx`
-Source: `src/components/app-bar/AppBar.tsx:133:14`
+Source: `src/components/app-bar/AppBar.tsx:138:14`
+
+Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
 ## AppBarMode
 
@@ -163,13 +169,17 @@ Source: `src/patterns/auth/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/avatar/Avatar.tsx`
-Source: `src/components/avatar/Avatar.tsx:143:14`
+Source: `src/components/avatar/Avatar.tsx:148:14`
+
+Displays a user or entity avatar with image support and initials fallback.
 
 ## AvatarGroup
 
 Kind: `value`
 Module: `src/components/avatar-group/AvatarGroup.tsx`
-Source: `src/components/avatar-group/AvatarGroup.tsx:74:14`
+Source: `src/components/avatar-group/AvatarGroup.tsx:79:14`
+
+Renders a compact group of avatars with optional overflow handling.
 
 ## AvatarGroupItem
 
@@ -246,7 +256,9 @@ Source: `src/components/avatar/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/badge/Badge.tsx`
-Source: `src/components/badge/Badge.tsx:30:14`
+Source: `src/components/badge/Badge.tsx:35:14`
+
+Shows a small status, label, or count indicator.
 
 ## BadgeProps
 
@@ -270,7 +282,9 @@ Source: `src/components/badge/types.ts:7:1`
 
 Kind: `value`
 Module: `src/foundation/Box.tsx`
-Source: `src/foundation/Box.tsx:13:14`
+Source: `src/foundation/Box.tsx:18:14`
+
+Base layout primitive for themed spacing, color, border, flex, and responsive props.
 
 ## BoxProps
 
@@ -350,7 +364,9 @@ Source: `src/components/breadcrumbs/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/breadcrumbs/Breadcrumbs.tsx`
-Source: `src/components/breadcrumbs/Breadcrumbs.tsx:143:14`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:148:14`
+
+Renders a breadcrumb trail for hierarchical navigation.
 
 ## BreadcrumbsProps
 
@@ -386,7 +402,9 @@ variant, and size recipes across React Native and React Native Web.
 
 Kind: `value`
 Module: `src/components/button-group/ButtonGroup.tsx`
-Source: `src/components/button-group/ButtonGroup.tsx:105:14`
+Source: `src/components/button-group/ButtonGroup.tsx:110:14`
+
+Groups multiple `Button` elements with consistent spacing and alignment.
 
 ## ButtonGroupAlign
 
@@ -561,7 +579,9 @@ Source: `src/components/card/types.ts:7:1`
 
 Kind: `value`
 Module: `src/foundation/Center.tsx`
-Source: `src/foundation/Center.tsx:16:14`
+Source: `src/foundation/Center.tsx:21:14`
+
+Centers children horizontally and vertically within the available space.
 
 ## CenterProps
 
@@ -644,7 +664,9 @@ Source: `src/patterns/chat-list-item/types.ts:8:1`
 
 Kind: `value`
 Module: `src/patterns/chat-list-item/ChatListItem.tsx`
-Source: `src/patterns/chat-list-item/ChatListItem.tsx:220:14`
+Source: `src/patterns/chat-list-item/ChatListItem.tsx:225:14`
+
+Chat-style list row with avatar, title, preview text, and unread indicators.
 
 ## ChatListItemProps
 
@@ -678,13 +700,17 @@ Source: `src/patterns/chat-list-item/types.ts:18:1`
 
 Kind: `value`
 Module: `src/components/checkbox/Checkbox.tsx`
-Source: `src/components/checkbox/Checkbox.tsx:11:14`
+Source: `src/components/checkbox/Checkbox.tsx:16:14`
+
+Binary selection control for toggling a value on or off.
 
 ## CheckboxGroup
 
 Kind: `value`
 Module: `src/components/checkbox/CheckboxGroup.tsx`
-Source: `src/components/checkbox/CheckboxGroup.tsx:60:14`
+Source: `src/components/checkbox/CheckboxGroup.tsx:65:14`
+
+Renders a group of checkboxes for multi-select values.
 
 ## CheckboxGroupOption
 
@@ -793,13 +819,17 @@ Source: `src/components/checkbox/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/chip/Chip.tsx`
-Source: `src/components/chip/Chip.tsx:94:14`
+Source: `src/components/chip/Chip.tsx:99:14`
+
+Compact pill-like control for filters, tags, and quick selections.
 
 ## ChipGroup
 
 Kind: `value`
 Module: `src/components/chip-group/ChipGroup.tsx`
-Source: `src/components/chip-group/ChipGroup.tsx:66:14`
+Source: `src/components/chip-group/ChipGroup.tsx:71:14`
+
+Renders a row or wrap layout of `Chip` items.
 
 ## ChipGroupItem
 
@@ -848,7 +878,9 @@ Source: `src/components/chip/types.ts:7:1`
 
 Kind: `value`
 Module: `src/patterns/collection-editor/CollectionEditor.tsx`
-Source: `src/patterns/collection-editor/CollectionEditor.tsx:106:14`
+Source: `src/patterns/collection-editor/CollectionEditor.tsx:111:14`
+
+Editor pattern for adding, removing, and reordering a collection of items.
 
 ## CollectionEditorProps
 
@@ -896,7 +928,9 @@ Source: `src/patterns/collection-editor/types.ts:3:1`
 
 Kind: `value`
 Module: `src/patterns/confirm-dialog/ConfirmDialog.tsx`
-Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:51:14`
+Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:56:14`
+
+Confirmation dialog pattern with cancel/confirm actions.
 
 ## ConfirmDialogProps
 
@@ -928,7 +962,9 @@ Source: `src/patterns/confirm-dialog/types.ts:6:1`
 
 Kind: `value`
 Module: `src/foundation/Container.tsx`
-Source: `src/foundation/Container.tsx:17:14`
+Source: `src/foundation/Container.tsx:22:14`
+
+Constrains page content to semantic widths with responsive padding.
 
 ## ContainerProps
 
@@ -1004,7 +1040,9 @@ Source: `src/theme/createZoraThemeConfig.ts:7:1`
 
 Kind: `value`
 Module: `src/components/data-table/DataTable.tsx`
-Source: `src/components/data-table/DataTable.tsx:388:14`
+Source: `src/components/data-table/DataTable.tsx:393:14`
+
+Displays structured tabular data with responsive desktop/mobile layouts.
 
 ## DataTableCellContext
 
@@ -1118,7 +1156,9 @@ Source: `src/components/data-table/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/date-picker/DatePicker.tsx`
-Source: `src/components/date-picker/DatePicker.tsx:242:14`
+Source: `src/components/date-picker/DatePicker.tsx:247:14`
+
+Date input control with calendar selection and formatted display value.
 
 ## DatePickerProps
 
@@ -1155,7 +1195,9 @@ Source: `src/components/date-picker/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/disclosure-section/DisclosureSection.tsx`
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:66:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:71:14`
+
+Expandable section pattern with a summary header and collapsible content.
 
 ## DisclosureSectionProps
 
@@ -1184,7 +1226,9 @@ Source: `src/patterns/disclosure-section/types.ts:6:1`
 
 Kind: `value`
 Module: `src/foundation/Divider.tsx`
-Source: `src/foundation/Divider.tsx:17:14`
+Source: `src/foundation/Divider.tsx:22:14`
+
+Renders a themed visual separator between content sections.
 
 ## DividerProps
 
@@ -1248,7 +1292,9 @@ Source: `src/foundation/Divider.tsx:10:1`
 
 Kind: `value`
 Module: `src/components/drawer/Drawer.tsx`
-Source: `src/components/drawer/Drawer.tsx:55:14`
+Source: `src/components/drawer/Drawer.tsx:60:14`
+
+Side panel overlay for navigation, settings, and secondary content.
 
 ## DrawerProps
 
@@ -1276,7 +1322,9 @@ Source: `src/components/drawer/types.ts:6:1`
 
 Kind: `function`
 Module: `src/components/menu/DropdownMenu.tsx`
-Source: `src/components/menu/DropdownMenu.tsx:6:1`
+Source: `src/components/menu/DropdownMenu.tsx:11:1`
+
+Convenience wrapper for rendering a `Menu` as a dropdown.
 
 ### Signatures
 
@@ -1340,7 +1388,9 @@ Source: `src/patterns/empty-state/types.ts:13:1`
 
 Kind: `value`
 Module: `src/patterns/filter-bar/FilterBar.tsx`
-Source: `src/patterns/filter-bar/FilterBar.tsx:25:14`
+Source: `src/patterns/filter-bar/FilterBar.tsx:30:14`
+
+Horizontal filter/action bar layout with leading/trailing slots.
 
 ## FilterBarProps
 
@@ -1364,7 +1414,9 @@ Source: `src/patterns/filter-bar/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/auth/ForgotPasswordForm.tsx`
-Source: `src/patterns/auth/ForgotPasswordForm.tsx:89:14`
+Source: `src/patterns/auth/ForgotPasswordForm.tsx:94:14`
+
+Password reset form pattern with validation and submit actions.
 
 ## ForgotPasswordFormProps
 
@@ -1406,13 +1458,17 @@ Source: `src/patterns/auth/types.ts:42:1`
 
 Kind: `value`
 Module: `src/components/form/Form.tsx`
-Source: `src/components/form/Form.tsx:66:14`
+Source: `src/components/form/Form.tsx:71:14`
+
+Composes fields and actions into a validated form layout.
 
 ## FormActions
 
 Kind: `value`
 Module: `src/components/form/FormActions.tsx`
-Source: `src/components/form/FormActions.tsx:28:14`
+Source: `src/components/form/FormActions.tsx:33:14`
+
+Standard submit/action area for forms.
 
 ## FormActionsProps
 
@@ -1437,7 +1493,9 @@ Source: `src/components/form/types.ts:65:1`
 
 Kind: `value`
 Module: `src/components/form/FormError.tsx`
-Source: `src/components/form/FormError.tsx:25:14`
+Source: `src/components/form/FormError.tsx:30:14`
+
+Displays a form-level validation or submission error message.
 
 ## FormErrorProps
 
@@ -1464,7 +1522,9 @@ Source: `src/components/form/types.ts:15:1`
 
 Kind: `value`
 Module: `src/components/form/FormField.tsx`
-Source: `src/components/form/FormField.tsx:151:14`
+Source: `src/components/form/FormField.tsx:156:14`
+
+Connects a controlled form value to a labeled input field with error handling.
 
 ## FormFieldConfig
 
@@ -1526,12 +1586,6 @@ Kind: `unknown`
 Module: `src/components/form/types.ts`
 Source: `src/components/form/types.ts:61:1`
 
-## FormFieldValue
-
-Kind: `unknown`
-Module: `src/components/form/types.ts`
-Source: `src/components/form/types.ts:13:1`
-
 ## FormProps
 
 Kind: `type`
@@ -1587,7 +1641,9 @@ Source: `src/components/form/types.ts:14:1`
 
 Kind: `value`
 Module: `src/foundation/Grid.tsx`
-Source: `src/foundation/Grid.tsx:13:14`
+Source: `src/foundation/Grid.tsx:18:14`
+
+Creates responsive grid layouts for cards, tiles, and dashboard content.
 
 ## GridProps
 
@@ -1746,7 +1802,9 @@ Source: `src/components/heading/types.ts:17:1`
 
 Kind: `value`
 Module: `src/patterns/hero/Hero.tsx`
-Source: `src/patterns/hero/Hero.tsx:116:14`
+Source: `src/patterns/hero/Hero.tsx:121:14`
+
+Hero section pattern for prominent page introductions with actions.
 
 ## HeroAction
 
@@ -1811,13 +1869,17 @@ Source: `src/patterns/hero/types.ts:8:1`
 
 Kind: `value`
 Module: `src/components/icon/Icon.tsx`
-Source: `src/components/icon/Icon.tsx:13:14`
+Source: `src/components/icon/Icon.tsx:18:14`
+
+Renders an icon from a configured icon provider with theme-aware defaults.
 
 ## IconButton
 
 Kind: `value`
 Module: `src/components/icon-button/IconButton.tsx`
-Source: `src/components/icon-button/IconButton.tsx:32:14`
+Source: `src/components/icon-button/IconButton.tsx:37:14`
+
+Icon-only button for compact actions; requires an accessible `label`.
 
 ## IconButtonProps
 
@@ -1864,7 +1926,9 @@ Source: `src/components/icon/Icon.tsx:7:1`
 
 Kind: `value`
 Module: `src/components/image/Image.tsx`
-Source: `src/components/image/Image.tsx:11:14`
+Source: `src/components/image/Image.tsx:16:14`
+
+Displays an image with cross-platform source and fit handling.
 
 ## ImageFit
 
@@ -1876,7 +1940,9 @@ Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/image-preview/ImagePreview.tsx`
-Source: `src/patterns/image-preview/ImagePreview.tsx:76:14`
+Source: `src/patterns/image-preview/ImagePreview.tsx:81:14`
+
+Preview pattern for showing an image with optional metadata and actions.
 
 ## ImagePreviewProps
 
@@ -1927,7 +1993,9 @@ Source: `src/components/image/types.ts:7:1`
 
 Kind: `value`
 Module: `src/patterns/image-upload-field/ImageUploadField.tsx`
-Source: `src/patterns/image-upload-field/ImageUploadField.tsx:293:14`
+Source: `src/patterns/image-upload-field/ImageUploadField.tsx:298:14`
+
+Form field pattern for picking, previewing, and uploading an image.
 
 ## ImageUploadFieldProps
 
@@ -1977,7 +2045,9 @@ Source: `src/patterns/image-upload-field/types.ts:15:1`
 
 Kind: `value`
 Module: `src/foundation/Inline.tsx`
-Source: `src/foundation/Inline.tsx:16:14`
+Source: `src/foundation/Inline.tsx:21:14`
+
+Arranges children inline with spacing and wrapping behavior.
 
 ## InlineProps
 
@@ -2076,7 +2146,9 @@ Source: `src/components/input/types.ts:6:1`
 
 Kind: `value`
 Module: `src/patterns/inspector-field/InspectorField.tsx`
-Source: `src/patterns/inspector-field/InspectorField.tsx:26:14`
+Source: `src/patterns/inspector-field/InspectorField.tsx:31:14`
+
+Inspector row pattern with label, description, and control slot.
 
 ## InspectorFieldProps
 
@@ -2106,7 +2178,9 @@ Source: `src/patterns/inspector-field/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/list/List.tsx`
-Source: `src/patterns/list/List.tsx:72:14`
+Source: `src/patterns/list/List.tsx:77:14`
+
+List container pattern for composing `ListRow` and `ListSection`.
 
 ## ListChildrenProps
 
@@ -2150,7 +2224,9 @@ Source: `src/patterns/list/types.ts:47:1`
 
 Kind: `value`
 Module: `src/patterns/list/ListRow.tsx`
-Source: `src/patterns/list/ListRow.tsx:193:14`
+Source: `src/patterns/list/ListRow.tsx:198:14`
+
+Row pattern for lists with leading/trailing slots and optional press behavior.
 
 ## ListRowProps
 
@@ -2168,13 +2244,17 @@ Source: `src/patterns/list/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/list/ListSection.tsx`
-Source: `src/patterns/list/ListSection.tsx:36:14`
+Source: `src/patterns/list/ListSection.tsx:41:14`
+
+Section wrapper for lists with optional title and description.
 
 ## MediaCard
 
 Kind: `value`
 Module: `src/components/media-card/MediaCard.tsx`
-Source: `src/components/media-card/MediaCard.tsx:120:14`
+Source: `src/components/media-card/MediaCard.tsx:125:14`
+
+Card layout with an optional media/header region and structured content slots.
 
 ## MediaCardImageProps
 
@@ -2192,7 +2272,9 @@ Source: `src/components/media-card/types.ts:44:1`
 
 Kind: `value`
 Module: `src/components/menu/Menu.tsx`
-Source: `src/components/menu/Menu.tsx:63:14`
+Source: `src/components/menu/Menu.tsx:68:14`
+
+Presents a list of actions as a menu with optional icons and intent styling.
 
 ## MenuAction
 
@@ -2243,7 +2325,9 @@ Source: `src/components/menu/types.ts:25:1`
 
 Kind: `value`
 Module: `src/patterns/message-bubble/MessageBubble.tsx`
-Source: `src/patterns/message-bubble/MessageBubble.tsx:265:14`
+Source: `src/patterns/message-bubble/MessageBubble.tsx:270:14`
+
+Message bubble pattern for chat UIs with direction and status styling.
 
 ## MessageBubbleAuthor
 
@@ -2321,7 +2405,9 @@ Source: `src/patterns/message-bubble/types.ts:9:1`
 
 Kind: `value`
 Module: `src/components/metric-card/MetricCard.tsx`
-Source: `src/components/metric-card/MetricCard.tsx:84:14`
+Source: `src/components/metric-card/MetricCard.tsx:89:14`
+
+Highlights a key metric with label, value, and optional trend/actions.
 
 ## MetricCardProps
 
@@ -2351,7 +2437,9 @@ Source: `src/components/metric-card/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/modal/Modal.tsx`
-Source: `src/components/modal/Modal.tsx:59:14`
+Source: `src/components/modal/Modal.tsx:64:14`
+
+Modal dialog surface with header/content/footer slots.
 
 ## ModalProps
 
@@ -2379,7 +2467,9 @@ Source: `src/components/modal/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/navigation-item/NavigationItem.tsx`
-Source: `src/components/navigation-item/NavigationItem.tsx:36:14`
+Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
+
+Renders a single navigation entry with active/disabled state support.
 
 ## NavigationItemProps
 
@@ -2404,7 +2494,9 @@ Source: `src/components/navigation-item/types.ts:20:1`
 
 Kind: `value`
 Module: `src/components/navigation-list/NavigationList.tsx`
-Source: `src/components/navigation-list/NavigationList.tsx:62:14`
+Source: `src/components/navigation-list/NavigationList.tsx:67:14`
+
+Renders a navigation list from route metadata with active state mapping.
 
 ## NavigationListProps
 
@@ -2432,7 +2524,9 @@ Source: `src/components/navigation-list/types.ts:8:1`
 
 Kind: `value`
 Module: `src/patterns/notice/Notice.tsx`
-Source: `src/patterns/notice/Notice.tsx:35:14`
+Source: `src/patterns/notice/Notice.tsx:40:14`
+
+Notice pattern for inline feedback with tone, title, and actions.
 
 ## NoticeProps
 
@@ -2457,7 +2551,9 @@ Source: `src/patterns/notice/types.ts:6:1`
 
 Kind: `value`
 Module: `src/patterns/auth/OtpForm.tsx`
-Source: `src/patterns/auth/OtpForm.tsx:85:14`
+Source: `src/patterns/auth/OtpForm.tsx:90:14`
+
+One-time passcode form pattern with digit input and submit actions.
 
 ## OtpFormProps
 
@@ -2500,7 +2596,9 @@ Source: `src/patterns/auth/types.ts:55:1`
 
 Kind: `value`
 Module: `src/components/pagination/Pagination.tsx`
-Source: `src/components/pagination/Pagination.tsx:189:14`
+Source: `src/components/pagination/Pagination.tsx:194:14`
+
+Pagination control for navigating between pages of results.
 
 ## PaginationProps
 
@@ -2532,7 +2630,9 @@ Source: `src/components/pagination/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/tile-grid/PaletteItem.tsx`
-Source: `src/patterns/tile-grid/PaletteItem.tsx:57:14`
+Source: `src/patterns/tile-grid/PaletteItem.tsx:62:14`
+
+Tile item pattern for palettes and option grids.
 
 ## PaletteItemProps
 
@@ -2559,7 +2659,9 @@ Source: `src/patterns/tile-grid/types.ts:12:1`
 
 Kind: `value`
 Module: `src/patterns/panel/Panel.tsx`
-Source: `src/patterns/panel/Panel.tsx:11:14`
+Source: `src/patterns/panel/Panel.tsx:16:14`
+
+Semantic wrapper around `Card` for panel-style page sections.
 
 ## PanelProps
 
@@ -2637,7 +2739,9 @@ Source: `src/patterns/post-card/types.ts:9:1`
 
 Kind: `value`
 Module: `src/patterns/post-card/PostCard.tsx`
-Source: `src/patterns/post-card/PostCard.tsx:234:14`
+Source: `src/patterns/post-card/PostCard.tsx:239:14`
+
+Social-style post card pattern with author, content, media, and actions.
 
 ## PostCardMedia
 
@@ -2674,7 +2778,9 @@ Source: `src/patterns/post-card/types.ts:59:1`
 
 Kind: `value`
 Module: `src/components/progress/Progress.tsx`
-Source: `src/components/progress/Progress.tsx:50:14`
+Source: `src/components/progress/Progress.tsx:55:14`
+
+Progress indicator for determinate and indeterminate loading states.
 
 ## ProgressProps
 
@@ -2698,13 +2804,17 @@ Source: `src/components/progress/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/radio/Radio.tsx`
-Source: `src/components/radio/Radio.tsx:11:14`
+Source: `src/components/radio/Radio.tsx:16:14`
+
+Single-choice selection control used within a radio group.
 
 ## RadioGroup
 
 Kind: `value`
 Module: `src/components/radio/RadioGroup.tsx`
-Source: `src/components/radio/RadioGroup.tsx:59:14`
+Source: `src/components/radio/RadioGroup.tsx:64:14`
+
+Renders a group of radio options for selecting a single value.
 
 ## RadioGroupOption
 
@@ -2813,7 +2923,9 @@ Source: `src/components/radio/types.ts:6:1`
 
 Kind: `value`
 Module: `src/components/rating/Rating.tsx`
-Source: `src/components/rating/Rating.tsx:38:14`
+Source: `src/components/rating/Rating.tsx:43:14`
+
+Displays a star-based rating value with optional half steps.
 
 ## RatingProps
 
@@ -2917,7 +3029,9 @@ Source: `src/patterns/responsive-panel/types.ts:8:1`
 
 Kind: `value`
 Module: `src/layout/screen/Screen.tsx`
-Source: `src/layout/screen/Screen.tsx:42:14`
+Source: `src/layout/screen/Screen.tsx:47:14`
+
+Page-level container with standard background and optional scroll behavior.
 
 ## ScreenProps
 
@@ -2941,7 +3055,9 @@ Source: `src/layout/screen/types.ts:6:1`
 
 Kind: `value`
 Module: `src/layout/screen-section/ScreenSection.tsx`
-Source: `src/layout/screen-section/ScreenSection.tsx:25:14`
+Source: `src/layout/screen-section/ScreenSection.tsx:30:14`
+
+Screen section layout with optional title, description, and actions.
 
 ## ScreenSectionProps
 
@@ -2965,7 +3081,9 @@ Source: `src/layout/screen-section/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/search-bar/SearchBar.tsx`
-Source: `src/components/search-bar/SearchBar.tsx:50:14`
+Source: `src/components/search-bar/SearchBar.tsx:55:14`
+
+Search input with leading icon and optional trailing action.
 
 ## SearchBarProps
 
@@ -2994,7 +3112,9 @@ Source: `src/components/search-bar/types.ts:4:1`
 
 Kind: `value`
 Module: `src/patterns/section-header/SectionHeader.tsx`
-Source: `src/patterns/section-header/SectionHeader.tsx:46:14`
+Source: `src/patterns/section-header/SectionHeader.tsx:51:14`
+
+Section heading pattern with optional description and action slot.
 
 ## SectionHeaderProps
 
@@ -3018,13 +3138,17 @@ Source: `src/patterns/section-header/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/select/Select.tsx`
-Source: `src/components/select/Select.tsx:55:14`
+Source: `src/components/select/Select.tsx:60:14`
+
+Select control for choosing a value from a list of options.
 
 ## SelectableItem
 
 Kind: `function`
 Module: `src/patterns/selection/SelectableItem.tsx`
-Source: `src/patterns/selection/SelectableItem.tsx:18:1`
+Source: `src/patterns/selection/SelectableItem.tsx:23:1`
+
+Adds selection behavior to arbitrary child content via render props.
 
 ### Signatures
 
@@ -3075,7 +3199,9 @@ Source: `src/patterns/selection/types.ts:3:1`
 
 Kind: `function`
 Module: `src/patterns/selection/SelectionProvider.tsx`
-Source: `src/patterns/selection/SelectionProvider.tsx:30:1`
+Source: `src/patterns/selection/SelectionProvider.tsx:40:1`
+
+Provides selection state for building selectable lists and grids.
 
 ### Signatures
 
@@ -3157,7 +3283,9 @@ Source: `src/components/select/types.ts:9:1`
 
 Kind: `value`
 Module: `src/layout/settings-layout/SettingsLayout.tsx`
-Source: `src/layout/settings-layout/SettingsLayout.tsx:29:14`
+Source: `src/layout/settings-layout/SettingsLayout.tsx:34:14`
+
+Settings page layout with app bar, sidebar, and scrollable content area.
 
 ## SettingsLayoutProps
 
@@ -3182,7 +3310,9 @@ Source: `src/layout/settings-layout/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/settings-row/SettingsRow.tsx`
-Source: `src/patterns/settings-row/SettingsRow.tsx:46:14`
+Source: `src/patterns/settings-row/SettingsRow.tsx:51:14`
+
+Settings row pattern with title, description/meta, and optional trailing content.
 
 ## SettingsRowProps
 
@@ -3194,7 +3324,9 @@ Source: `src/patterns/settings-row/types.ts:27:1`
 
 Kind: `value`
 Module: `src/foundation/Show.tsx`
-Source: `src/foundation/Show.tsx:13:14`
+Source: `src/foundation/Show.tsx:18:14`
+
+Conditionally renders children for responsive display and breakpoint-based visibility.
 
 ## ShowProps
 
@@ -3217,7 +3349,9 @@ Source: `src/foundation/Show.tsx:7:1`
 
 Kind: `value`
 Module: `src/layout/sidebar-layout/SidebarLayout.tsx`
-Source: `src/layout/sidebar-layout/SidebarLayout.tsx:28:14`
+Source: `src/layout/sidebar-layout/SidebarLayout.tsx:33:14`
+
+Responsive layout with a sidebar and main content area (and optional aside).
 
 ## SidebarLayoutProps
 
@@ -3242,7 +3376,9 @@ Source: `src/layout/sidebar-layout/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/auth/SignInForm.tsx`
-Source: `src/patterns/auth/SignInForm.tsx:116:14`
+Source: `src/patterns/auth/SignInForm.tsx:121:14`
+
+Sign-in form pattern with identifier and password fields.
 
 ## SignInFormProps
 
@@ -3288,7 +3424,9 @@ Source: `src/patterns/auth/types.ts:15:1`
 
 Kind: `value`
 Module: `src/patterns/auth/SignUpForm.tsx`
-Source: `src/patterns/auth/SignUpForm.tsx:81:14`
+Source: `src/patterns/auth/SignUpForm.tsx:86:14`
+
+Sign-up form pattern with structured fields and validation.
 
 ## SignUpFormField
 
@@ -3328,13 +3466,17 @@ Source: `src/patterns/auth/types.ts:32:1`
 
 Kind: `value`
 Module: `src/components/skeleton/Skeleton.tsx`
-Source: `src/components/skeleton/Skeleton.tsx:32:14`
+Source: `src/components/skeleton/Skeleton.tsx:37:14`
+
+Generic skeleton placeholder for loading states.
 
 ## SkeletonCard
 
 Kind: `value`
 Module: `src/components/skeleton/SkeletonCard.tsx`
-Source: `src/components/skeleton/SkeletonCard.tsx:39:14`
+Source: `src/components/skeleton/SkeletonCard.tsx:44:14`
+
+Skeleton placeholder that matches the structure of a `Card`.
 
 ## SkeletonCardProps
 
@@ -3364,7 +3506,9 @@ Source: `src/components/skeleton/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/skeleton/SkeletonList.tsx`
-Source: `src/components/skeleton/SkeletonList.tsx:52:14`
+Source: `src/components/skeleton/SkeletonList.tsx:57:14`
+
+Skeleton placeholder list for loading states in list views.
 
 ## SkeletonListProps
 
@@ -3419,7 +3563,9 @@ Source: `src/components/skeleton/types.ts:4:1`
 
 Kind: `value`
 Module: `src/components/skeleton/SkeletonText.tsx`
-Source: `src/components/skeleton/SkeletonText.tsx:45:14`
+Source: `src/components/skeleton/SkeletonText.tsx:50:14`
+
+Multi-line skeleton placeholder for text content.
 
 ## SkeletonTextProps
 
@@ -3444,7 +3590,9 @@ Source: `src/components/skeleton/types.ts:14:1`
 
 Kind: `value`
 Module: `src/foundation/Spacer.tsx`
-Source: `src/foundation/Spacer.tsx:16:14`
+Source: `src/foundation/Spacer.tsx:21:14`
+
+Adds flexible or fixed empty space in layout compositions.
 
 ## SpacerProps
 
@@ -3466,7 +3614,9 @@ Source: `src/foundation/Spacer.tsx:10:1`
 
 Kind: `value`
 Module: `src/foundation/Stack.tsx`
-Source: `src/foundation/Stack.tsx:13:14`
+Source: `src/foundation/Stack.tsx:18:14`
+
+Arranges layout items in one direction with theme spacing.
 
 ## StackProps
 
@@ -3535,7 +3685,9 @@ Source: `src/foundation/Stack.tsx:7:1`
 
 Kind: `value`
 Module: `src/foundation/Surface.tsx`
-Source: `src/foundation/Surface.tsx:20:14`
+Source: `src/foundation/Surface.tsx:25:14`
+
+Provides a semantic themed region for elevated, subtle, or bordered content.
 
 ## SurfaceImageSource
 
@@ -3609,7 +3761,9 @@ Source: `node_modules/@ankhorage/surface/dist/layout/Surface.d.ts:3:1`
 
 Kind: `value`
 Module: `src/patterns/switch-field/SwitchField.tsx`
-Source: `src/patterns/switch-field/SwitchField.tsx:29:14`
+Source: `src/patterns/switch-field/SwitchField.tsx:34:14`
+
+Labeled switch field pattern built on `SettingsRow`.
 
 ## SwitchFieldProps
 
@@ -3651,7 +3805,9 @@ Source: `src/components/tabs/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/tabs/Tabs.tsx`
-Source: `src/components/tabs/Tabs.tsx:110:14`
+Source: `src/components/tabs/Tabs.tsx:115:14`
+
+Tab navigation for switching between views or content sections.
 
 ## TabsProps
 
@@ -3700,7 +3856,9 @@ Source: `src/components/text/types.ts:15:1`
 
 Kind: `value`
 Module: `src/components/textarea/Textarea.tsx`
-Source: `src/components/textarea/Textarea.tsx:49:14`
+Source: `src/components/textarea/Textarea.tsx:54:14`
+
+Multi-line text input with consistent ZORA field styling.
 
 ## TextareaProps
 
@@ -3934,7 +4092,9 @@ Source: `src/components/text/types.ts:13:1`
 
 Kind: `value`
 Module: `src/patterns/theme-composer/ThemeComposer.tsx`
-Source: `src/patterns/theme-composer/ThemeComposer.tsx:310:14`
+Source: `src/patterns/theme-composer/ThemeComposer.tsx:315:14`
+
+UI for composing and applying a theme via structured controls.
 
 ## ThemeComposerProps
 
@@ -3959,7 +4119,9 @@ Source: `src/patterns/theme-composer/types.ts:6:1`
 
 Kind: `value`
 Module: `src/patterns/tile-grid/TileGrid.tsx`
-Source: `src/patterns/tile-grid/TileGrid.tsx:49:14`
+Source: `src/patterns/tile-grid/TileGrid.tsx:54:14`
+
+Responsive grid layout for arranging tile content.
 
 ## TileGridProps
 
@@ -3982,7 +4144,9 @@ Source: `src/patterns/tile-grid/types.ts:6:1`
 
 Kind: `value`
 Module: `src/patterns/timeline/Timeline.tsx`
-Source: `src/patterns/timeline/Timeline.tsx:115:14`
+Source: `src/patterns/timeline/Timeline.tsx:120:14`
+
+Timeline pattern for displaying a sequence of events.
 
 ## TimelineItem
 
@@ -4022,7 +4186,9 @@ Source: `src/patterns/timeline/types.ts:17:1`
 
 Kind: `value`
 Module: `src/components/time-picker/TimePicker.tsx`
-Source: `src/components/time-picker/TimePicker.tsx:152:14`
+Source: `src/components/time-picker/TimePicker.tsx:157:14`
+
+Time input control with wheel selection and formatted display value.
 
 ## TimePickerProps
 
@@ -4060,7 +4226,9 @@ Source: `src/components/time-picker/types.ts:5:1`
 
 Kind: `value`
 Module: `src/components/toast/Toast.tsx`
-Source: `src/components/toast/Toast.tsx:11:14`
+Source: `src/components/toast/Toast.tsx:16:14`
+
+Renders a toast notification message.
 
 ## ToastOptions
 
@@ -4090,7 +4258,9 @@ Source: `src/components/toast/types.ts:13:1`
 
 Kind: `function`
 Module: `src/components/toast/ToastProvider.tsx`
-Source: `src/components/toast/ToastProvider.tsx:6:1`
+Source: `src/components/toast/ToastProvider.tsx:11:1`
+
+Provides toast state and rendering context for `useToast` and `Toast`.
 
 ### Signatures
 
@@ -4121,13 +4291,17 @@ Source: `src/components/toast/types.ts:10:1`
 
 Kind: `value`
 Module: `src/components/toolbar/Toolbar.tsx`
-Source: `src/components/toolbar/Toolbar.tsx:42:14`
+Source: `src/components/toolbar/Toolbar.tsx:47:14`
+
+Horizontal toolbar surface for grouping actions and controls.
 
 ## ToolbarAction
 
 Kind: `value`
 Module: `src/components/toolbar/ToolbarAction.tsx`
-Source: `src/components/toolbar/ToolbarAction.tsx:23:14`
+Source: `src/components/toolbar/ToolbarAction.tsx:28:14`
+
+Convenience icon action for toolbars with active state styling.
 
 ## ToolbarActionProps
 
@@ -4176,7 +4350,9 @@ Source: `src/components/toolbar/types.ts:8:1`
 
 Kind: `value`
 Module: `src/layout/topbar-layout/TopbarLayout.tsx`
-Source: `src/layout/topbar-layout/TopbarLayout.tsx:24:14`
+Source: `src/layout/topbar-layout/TopbarLayout.tsx:29:14`
+
+Layout that composes a top bar with optional sidebar and content.
 
 ## TopbarLayoutProps
 
@@ -4199,7 +4375,9 @@ Source: `src/layout/topbar-layout/types.ts:5:1`
 
 Kind: `value`
 Module: `src/patterns/tree-view/TreeItem.tsx`
-Source: `src/patterns/tree-view/TreeItem.tsx:93:14`
+Source: `src/patterns/tree-view/TreeItem.tsx:98:14`
+
+Single tree node row used within `TreeView`.
 
 ## TreeItemNode
 
@@ -4239,7 +4417,9 @@ Source: `src/patterns/tree-view/types.ts:16:1`
 
 Kind: `value`
 Module: `src/patterns/tree-view/TreeView.tsx`
-Source: `src/patterns/tree-view/TreeView.tsx:55:14`
+Source: `src/patterns/tree-view/TreeView.tsx:60:14`
+
+Tree view pattern for hierarchical navigation and expandable lists.
 
 ## TreeViewProps
 
@@ -4266,7 +4446,7 @@ Source: `src/patterns/tree-view/types.ts:24:1`
 
 Kind: `function`
 Module: `src/components/form/useFormController.ts`
-Source: `src/components/form/useFormController.ts:23:1`
+Source: `src/components/form/useFormController.ts:24:1`
 
 ### Signatures
 
@@ -4330,7 +4510,9 @@ Source: `src/components/form/types.ts:107:1`
 
 Kind: `function`
 Module: `src/patterns/selection/SelectionProvider.tsx`
-Source: `src/patterns/selection/SelectionProvider.tsx:21:1`
+Source: `src/patterns/selection/SelectionProvider.tsx:26:1`
+
+Accesses selection state provided by `SelectionProvider`.
 
 ### Signatures
 
@@ -4698,7 +4880,9 @@ Source: `src/theme/zoraDefaultTheme.ts:3:14`
 
 Kind: `value`
 Module: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx`
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:53:14`
+Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:58:14`
+
+Standard drawer content pattern for ZORA navigation lists.
 
 ## ZoraDrawerContentProps
 
@@ -4855,7 +5039,9 @@ Source: `src/internal/colorModel.ts:9:1`
 
 Kind: `value`
 Module: `src/patterns/zora-tab-bar/ZoraTabBar.tsx`
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:144:14`
+Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:149:14`
+
+Bottom tab bar pattern with badge support and active state styling.
 
 ## ZoraTabBarProps
 

@@ -8,4 +8,9 @@ function ToastInner({ mode: _mode, themeId: _themeId, ...props }: ToastProps) {
   return <SurfaceToast {...props} />;
 }
 
+/***
+ * Renders a toast notification message.
+ *
+ * @readme
+ */
 export const Toast = withZoraThemeScope(ToastInner);

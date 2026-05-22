@@ -141,4 +141,9 @@ function ZoraTabBarInner({
   );
 }
 
+/***
+ * Bottom tab bar pattern with badge support and active state styling.
+ *
+ * @readme
+ */
 export const ZoraTabBar = withZoraThemeScope(ZoraTabBarInner);

@@ -49,4 +49,9 @@ function SkeletonListInner({
   return <List compact={compact} items={items} rowVariant={variant} testID={testID} />;
 }
 
+/***
+ * Skeleton placeholder list for loading states in list views.
+ *
+ * @readme
+ */
 export const SkeletonList = withZoraThemeScope(SkeletonListInner);

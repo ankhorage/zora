@@ -13,4 +13,9 @@ function CenterInner({ themeId: _themeId, mode: _mode, ...props }: CenterProps) 
   return <SurfaceCenter {...props} />;
 }
 
+/***
+ * Centers children horizontally and vertically within the available space.
+ *
+ * @readme
+ */
 export const Center = withZoraThemeScope(CenterInner);

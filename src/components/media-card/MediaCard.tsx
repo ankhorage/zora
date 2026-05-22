@@ -117,4 +117,9 @@ function MediaCardInner({
   );
 }
 
+/***
+ * Card layout with an optional media/header region and structured content slots.
+ *
+ * @readme
+ */
 export const MediaCard = withZoraThemeScope(MediaCardInner);

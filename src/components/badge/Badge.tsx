@@ -27,4 +27,9 @@ function BadgeInner({
   );
 }
 
+/***
+ * Shows a small status, label, or count indicator.
+ *
+ * @readme
+ */
 export const Badge = withZoraThemeScope(BadgeInner);

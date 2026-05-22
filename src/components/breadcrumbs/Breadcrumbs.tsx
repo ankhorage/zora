@@ -140,4 +140,9 @@ function BreadcrumbsInner({
   );
 }
 
+/***
+ * Renders a breadcrumb trail for hierarchical navigation.
+ *
+ * @readme
+ */
 export const Breadcrumbs = withZoraThemeScope(BreadcrumbsInner);

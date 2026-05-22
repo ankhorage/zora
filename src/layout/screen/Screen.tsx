@@ -39,4 +39,9 @@ function ScreenInner({
   );
 }
 
+/***
+ * Page-level container with standard background and optional scroll behavior.
+ *
+ * @readme
+ */
 export const Screen = withZoraThemeScope(ScreenInner);

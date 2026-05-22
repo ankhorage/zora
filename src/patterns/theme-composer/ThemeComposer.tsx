@@ -307,4 +307,9 @@ function ThemeComposerInner({
   );
 }
 
+/***
+ * UI for composing and applying a theme via structured controls.
+ *
+ * @readme
+ */
 export const ThemeComposer = withZoraThemeScope(ThemeComposerInner);
