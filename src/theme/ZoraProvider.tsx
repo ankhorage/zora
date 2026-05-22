@@ -12,6 +12,18 @@ export interface ZoraProviderProps {
   initialMode?: ZoraThemeMode;
 }
 
+/***
+ * Installs the ZORA theme runtime and underlying Surface theme provider.
+ *
+ * Wrap an app with `ZoraProvider` once near the root so components, patterns,
+ * layouts, and theme hooks resolve the same design tokens and color mode.
+ *
+ * @readme
+ * @example App provider
+ * ```tsx
+ * <ZoraProvider initialMode="light"><App /></ZoraProvider>
+ * ```
+ */
 export function ZoraProvider({
   children,
   theme = zoraDefaultTheme,
