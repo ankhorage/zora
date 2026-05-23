@@ -1,7 +1,7 @@
 {
-  "packageName": "@ankhorage/zora",
+  "packageName": "ZORA",
   "packageId": "@ankhorage/zora",
-  "description": "ZORA — an opinionated UI kit for React Native + Web built on top of @ankhorage/surface.",
+  "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "badges": [
     {
       "id": "license",
@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.5.3",
+      "value": "v2.5.4",
       "color": "cb3837"
     },
     {

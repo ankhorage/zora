@@ -4,9 +4,7 @@ export default defineParadoxConfig({
   mode: 'write',
 
   docs: {
-    title: '@ankhorage/zora',
-    description:
-      'ZORA — an opinionated UI kit for React Native + Web built on top of @ankhorage/surface.',
+    title: 'ZORA',
     usage: {
       entrypoints: ['examples/basic-app/App.tsx'],
     },
