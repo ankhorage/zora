@@ -21,13 +21,20 @@ function GradientInner({
   testID,
 }: GradientProps) {
   return (
-    <Box height={height} minHeight={minHeight} radius={radius} testID={testID} width={width}>
+    <Box
+      height={height}
+      minHeight={minHeight}
+      radius={radius}
+      testID={testID}
+      width={width}
+      style={{ overflow: 'hidden' }}
+    >
       <LinearGradient
         colors={colors}
         end={end}
         locations={locations}
         start={start}
-        style={{ borderRadius: radius === 'full' ? 9999 : undefined, flex: 1, overflow: 'hidden' }}
+        style={{ flex: 1 }}
       >
         <Box p={p} style={{ flex: 1 }}>
           {children}
