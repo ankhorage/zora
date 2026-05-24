@@ -11,6 +11,24 @@ export const forgotPasswordFormMeta = {
   props: {},
 } as const satisfies ZoraComponentMeta;
 
+export const oauthProviderButtonMeta = {
+  name: 'OAuthProviderButton',
+  category: 'pattern',
+  directManifestNode: false,
+  allowedChildren: [],
+  note: AUTH_NOTE,
+  props: {},
+} as const satisfies ZoraComponentMeta;
+
+export const oauthProviderListMeta = {
+  name: 'OAuthProviderList',
+  category: 'pattern',
+  directManifestNode: false,
+  allowedChildren: [],
+  note: AUTH_NOTE,
+  props: {},
+} as const satisfies ZoraComponentMeta;
+
 export const otpFormMeta = {
   name: 'OtpForm',
   category: 'pattern',
