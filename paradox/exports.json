@@ -12432,7 +12432,7 @@
     "modulePath": "src/patterns/auth/oauthProviders.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/oauthProviders.ts",
-      "line": 47,
+      "line": 49,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -12464,7 +12464,7 @@
     "modulePath": "src/patterns/auth/oauthProviders.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/oauthProviders.ts",
-      "line": 55,
+      "line": 57,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

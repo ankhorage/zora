@@ -3070,7 +3070,7 @@ Source: `src/components/avatar/resolveAvatarInitials.ts:20:1`
 
 Kind: `function`
 Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:47:1`
+Source: `src/patterns/auth/oauthProviders.ts:49:1`
 
 ### Signatures
 
@@ -3082,7 +3082,7 @@ Source: `src/patterns/auth/oauthProviders.ts:47:1`
 
 Kind: `function`
 Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:55:1`
+Source: `src/patterns/auth/oauthProviders.ts:57:1`
 
 ### Signatures
 
