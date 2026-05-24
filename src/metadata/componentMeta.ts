@@ -14,6 +14,7 @@ import { dataTableMeta } from '../components/data-table/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
 import { drawerMeta } from '../components/drawer/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
+import { gradientMeta } from '../components/gradient/meta';
 import { headingMeta } from '../components/heading/meta';
 import { iconMeta } from '../components/icon/meta';
 import { iconButtonMeta } from '../components/icon-button/meta';
@@ -37,6 +38,7 @@ import {
   skeletonMeta,
   skeletonTextMeta,
 } from '../components/skeleton/meta';
+import { splashScreenMeta } from '../components/splash-screen/meta';
 import { tabsMeta } from '../components/tabs/meta';
 import { textMeta } from '../components/text/meta';
 import { textareaMeta } from '../components/textarea/meta';
@@ -108,6 +110,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   FormActions: formActionsMeta,
   FormError: formErrorMeta,
   FormField: formFieldMeta,
+  Gradient: gradientMeta,
   Heading: headingMeta,
   Icon: iconMeta,
   IconButton: iconButtonMeta,
@@ -130,6 +133,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   SkeletonCard: skeletonCardMeta,
   SkeletonList: skeletonListMeta,
   SkeletonText: skeletonTextMeta,
+  SplashScreen: splashScreenMeta,
   Tabs: tabsMeta,
   Text: textMeta,
   Textarea: textareaMeta,
