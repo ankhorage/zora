@@ -19219,7 +19219,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 89,
+      "line": 91,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

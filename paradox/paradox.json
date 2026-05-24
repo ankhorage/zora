@@ -2530,7 +2530,14 @@
       "path": "src/patterns/auth/meta.ts",
       "isEntrypoint": false,
       "dependencies": ["src/metadata/index.ts"],
-      "exports": ["forgotPasswordFormMeta", "otpFormMeta", "signInFormMeta", "signUpFormMeta"]
+      "exports": [
+        "forgotPasswordFormMeta",
+        "oauthProviderButtonMeta",
+        "oauthProviderListMeta",
+        "otpFormMeta",
+        "signInFormMeta",
+        "signUpFormMeta"
+      ]
     },
     {
       "path": "src/patterns/auth/OAuthProviderButton.tsx",
@@ -22972,7 +22979,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 89,
+        "line": 91,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],

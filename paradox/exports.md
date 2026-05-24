@@ -4874,7 +4874,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:89:14`
+Source: `src/metadata/componentMeta.ts:91:14`
 
 ## ZORA_EMPHASES
 
