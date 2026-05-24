@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.6.0
+
+### Minor Changes
+
+- 4687a8a: Add reusable OAuth provider button and list auth patterns.
+
 ## 2.5.5
 
 ### Patch Changes
