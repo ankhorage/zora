@@ -1011,6 +1011,33 @@ Export paths: `src/index.ts`
 | testID   | `string \| undefined`        | no       | —       |             |
 | themeId  | `string \| undefined`        | no       | —       |             |
 
+## Gradient
+
+Source: `src/components/gradient/Gradient.tsx:53:14`
+
+Gradient background container for branded loading surfaces, hero blocks, and previews.
+
+`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA
+component and does not replace native Expo splash-screen configuration.
+
+Export paths: `src/index.ts`
+
+| Prop      | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children  | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| colors    | `GradientColors`                                                                                                                                                                                                     | yes      | —       |             |
+| end       | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| height    | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| locations | `GradientLocations \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| minHeight | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| mode      | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| p         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| radius    | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                        | no       | —       |             |
+| start     | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| testID    | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId   | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| width     | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+
 ## Grid
 
 Source: `src/foundation/Grid.tsx:18:14`
@@ -2415,6 +2442,33 @@ Export paths: `src/index.ts`
 | size    | `SpaceValue \| undefined`                           | no       | —       |             |
 | testID  | `string \| undefined`                               | no       | —       |             |
 | themeId | `string \| undefined`                               | no       | —       |             |
+
+## SplashScreen
+
+Source: `src/components/splash-screen/SplashScreen.tsx:98:14`
+
+Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.
+
+`SplashScreen` is a React-rendered component. It intentionally does not manage
+Expo's native splash screen lifecycle or replace generated `expo-splash-screen`
+configuration.
+
+Export paths: `src/index.ts`
+
+| Prop            | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| backgroundColor | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       | —       |             |
+| children        | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| logo            | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| logoLabel       | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| logoShape       | `SplashScreenLogoShape \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| logoSize        | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| minHeight       | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| mode            | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| subtitle        | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| testID          | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId         | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| title           | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
 
 ## Stack
 

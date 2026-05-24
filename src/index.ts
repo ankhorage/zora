@@ -69,6 +69,14 @@ export {
   validateValue,
 } from './components/form';
 export type {
+  GradientColor,
+  GradientColors,
+  GradientLocations,
+  GradientPoint,
+  GradientProps,
+} from './components/gradient';
+export { Gradient } from './components/gradient';
+export type {
   HeadingAlign,
   HeadingColor,
   HeadingEmphasis,
@@ -124,6 +132,8 @@ export type {
   SkeletonTextProps,
 } from './components/skeleton';
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
+export type { SplashScreenLogoShape, SplashScreenProps } from './components/splash-screen';
+export { SplashScreen } from './components/splash-screen';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
 export type {

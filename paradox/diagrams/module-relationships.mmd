@@ -72,6 +72,10 @@ graph LR
   module_src_components_form_types_ts["src/components/form/types.ts"]
   module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
   module_src_components_form_validation_ts["src/components/form/validation.ts"]
+  module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
+  module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
+  module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
+  module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
   module_src_components_heading_Heading_tsx["src/components/heading/Heading.tsx"]
   module_src_components_heading_index_ts["src/components/heading/index.ts"]
   module_src_components_heading_meta_ts["src/components/heading/meta.ts"]
@@ -151,6 +155,10 @@ graph LR
   module_src_components_skeleton_SkeletonList_tsx["src/components/skeleton/SkeletonList.tsx"]
   module_src_components_skeleton_SkeletonText_tsx["src/components/skeleton/SkeletonText.tsx"]
   module_src_components_skeleton_types_ts["src/components/skeleton/types.ts"]
+  module_src_components_splash_screen_index_ts["src/components/splash-screen/index.ts"]
+  module_src_components_splash_screen_meta_ts["src/components/splash-screen/meta.ts"]
+  module_src_components_splash_screen_SplashScreen_tsx["src/components/splash-screen/SplashScreen.tsx"]
+  module_src_components_splash_screen_types_ts["src/components/splash-screen/types.ts"]
   module_src_components_tabs_index_ts["src/components/tabs/index.ts"]
   module_src_components_tabs_meta_ts["src/components/tabs/meta.ts"]
   module_src_components_tabs_Tabs_tsx["src/components/tabs/Tabs.tsx"]
@@ -522,6 +530,12 @@ graph LR
   module_src_components_form_useFormController_ts --> module_src_components_form_types_ts
   module_src_components_form_useFormController_ts --> module_src_components_form_validation_ts
   module_src_components_form_validation_ts --> module_src_components_form_types_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_types_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_foundation_index_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_gradient_meta_ts --> module_src_metadata_index_ts
+  module_src_components_gradient_types_ts --> module_src_foundation_index_ts
+  module_src_components_gradient_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_heading_Heading_tsx --> module_src_components_heading_resolveHeadingRecipe_ts
   module_src_components_heading_Heading_tsx --> module_src_components_heading_types_ts
   module_src_components_heading_Heading_tsx --> module_src_theme_useZoraTheme_ts
@@ -671,6 +685,15 @@ graph LR
   module_src_components_skeleton_SkeletonText_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_skeleton_types_ts --> module_src_foundation_index_ts
   module_src_components_skeleton_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_splash_screen_meta_ts --> module_src_metadata_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_heading_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_splash_screen_types_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_text_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_foundation_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_splash_screen_types_ts --> module_src_foundation_index_ts
+  module_src_components_splash_screen_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_tabs_meta_ts --> module_src_metadata_index_ts
   module_src_components_tabs_Tabs_tsx --> module_src_components_button_index_ts
   module_src_components_tabs_Tabs_tsx --> module_src_components_tabs_types_ts
@@ -797,6 +820,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_components_date_picker_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_drawer_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_form_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_components_gradient_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_heading_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_icon_button_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_icon_meta_ts
@@ -815,6 +839,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_components_search_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_select_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_skeleton_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_components_splash_screen_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_tabs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_text_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_textarea_meta_ts

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.5
+
+### Patch Changes
+
+- 64282a1: Add Gradient and SplashScreen components for branded loading and preview surfaces.
+
 ## 2.5.4
 
 ### Patch Changes
