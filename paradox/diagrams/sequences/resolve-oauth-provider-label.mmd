@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_normalizeOAuthProviderId as normalizeOAuthProviderId
+  participant participant_resolveOAuthProviderLabel as resolveOAuthProviderLabel
+  participant participant_titleCaseProviderId as titleCaseProviderId
+  participant_resolveOAuthProviderLabel->>participant_normalizeOAuthProviderId: normalizeOAuthProviderId()
+  participant_normalizeOAuthProviderId-->>participant_resolveOAuthProviderLabel: return
+  participant_resolveOAuthProviderLabel->>participant_titleCaseProviderId: titleCaseProviderId()
+  participant_titleCaseProviderId-->>participant_resolveOAuthProviderLabel: return

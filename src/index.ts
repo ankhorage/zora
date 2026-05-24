@@ -225,6 +225,11 @@ export type {
   AuthIdentifierKind,
   ForgotPasswordFormProps,
   ForgotPasswordFormValues,
+  OAuthProviderButtonProps,
+  OAuthProviderIconSpec,
+  OAuthProviderItem,
+  OAuthProviderListLayout,
+  OAuthProviderListProps,
   OtpFormProps,
   OtpFormValues,
   SignInFormProps,
@@ -233,7 +238,17 @@ export type {
   SignUpFormProps,
   SignUpFormValues,
 } from './patterns/auth';
-export { ForgotPasswordForm, OtpForm, SignInForm, SignUpForm } from './patterns/auth';
+export {
+  DEFAULT_OAUTH_PROVIDER_ICONS,
+  ForgotPasswordForm,
+  OAuthProviderButton,
+  OAuthProviderList,
+  OtpForm,
+  resolveOAuthProviderIcon,
+  resolveOAuthProviderLabel,
+  SignInForm,
+  SignUpForm,
+} from './patterns/auth';
 export type { ChatListAvatar, ChatListItemProps } from './patterns/chat-list-item';
 export { ChatListItem } from './patterns/chat-list-item';
 export type {

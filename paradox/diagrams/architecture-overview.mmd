@@ -991,6 +991,21 @@ graph TD
   module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
   package__ankhorage_zora -.-> module_src_patterns_auth_meta_ts
   module_src_patterns_auth_meta_ts --> module_src_metadata_index_ts
+  module_src_patterns_auth_OAuthProviderButton_tsx["src/patterns/auth/OAuthProviderButton.tsx"]
+  package__ankhorage_zora -.-> module_src_patterns_auth_OAuthProviderButton_tsx
+  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_components_button_index_ts
+  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_patterns_auth_oauthProviders_ts
+  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_patterns_auth_types_ts
+  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_OAuthProviderList_tsx["src/patterns/auth/OAuthProviderList.tsx"]
+  package__ankhorage_zora -.-> module_src_patterns_auth_OAuthProviderList_tsx
+  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_foundation_index_ts
+  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_patterns_auth_OAuthProviderButton_tsx
+  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_patterns_auth_types_ts
+  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_oauthProviders_ts["src/patterns/auth/oauthProviders.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_auth_oauthProviders_ts
+  module_src_patterns_auth_oauthProviders_ts --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_OtpForm_tsx["src/patterns/auth/OtpForm.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_auth_OtpForm_tsx
   module_src_patterns_auth_OtpForm_tsx --> module_src_components_button_index_ts
@@ -1015,6 +1030,7 @@ graph TD
   module_src_patterns_auth_SignUpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_auth_types_ts["src/patterns/auth/types.ts"]
   package__ankhorage_zora -.-> module_src_patterns_auth_types_ts
+  module_src_patterns_auth_types_ts --> module_src_components_button_index_ts
   module_src_patterns_auth_types_ts --> module_src_components_form_index_ts
   module_src_patterns_auth_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_auth_utils_ts["src/patterns/auth/utils.ts"]

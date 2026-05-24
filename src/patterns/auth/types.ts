@@ -1,5 +1,6 @@
 import type React from 'react';
 
+import type { ButtonProps } from '../../components/button';
 import type { FormFieldConfig, FormValues } from '../../components/form';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
@@ -64,4 +65,46 @@ export interface OtpFormProps extends AuthFormBaseProps {
   resendLoading?: boolean;
   onSubmit: (values: OtpFormValues) => void | Promise<void>;
   onResend?: () => void | Promise<void>;
+}
+
+export interface OAuthProviderIconSpec {
+  name: string;
+  provider?: string;
+  size?: number | string;
+  color?: string;
+}
+
+export interface OAuthProviderItem {
+  id: string;
+  label?: React.ReactNode;
+  icon?: OAuthProviderIconSpec;
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+export interface OAuthProviderButtonProps extends ZoraBaseProps {
+  providerId: string;
+  label?: React.ReactNode;
+  icon?: OAuthProviderIconSpec;
+  disabled?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
+  size?: ButtonProps['size'];
+  variant?: ButtonProps['variant'];
+  color?: ButtonProps['color'];
+  onPress?: (providerId: string) => void | Promise<void>;
+}
+
+export type OAuthProviderListLayout = 'stack' | 'inline';
+
+export interface OAuthProviderListProps extends ZoraBaseProps {
+  providers: readonly OAuthProviderItem[];
+  disabled?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
+  layout?: OAuthProviderListLayout;
+  size?: ButtonProps['size'];
+  variant?: ButtonProps['variant'];
+  color?: ButtonProps['color'];
+  onProviderPress?: (providerId: string) => void | Promise<void>;
 }

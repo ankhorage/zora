@@ -145,7 +145,7 @@ Source: `src/layout/app-shell/types.ts:5:1`
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:8:1`
+Source: `src/patterns/auth/types.ts:9:1`
 
 ### Members
 
@@ -163,7 +163,7 @@ Source: `src/patterns/auth/types.ts:8:1`
 
 Kind: `unknown`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:6:1`
+Source: `src/patterns/auth/types.ts:7:1`
 
 ## Avatar
 
@@ -1191,6 +1191,12 @@ Kind: `unknown`
 Module: `src/components/date-picker/types.ts`
 Source: `src/components/date-picker/types.ts:5:1`
 
+## DEFAULT_OAUTH_PROVIDER_ICONS
+
+Kind: `value`
+Module: `src/patterns/auth/oauthProviders.ts`
+Source: `src/patterns/auth/oauthProviders.ts:3:14`
+
 ## DisclosureSection
 
 Kind: `value`
@@ -1422,7 +1428,7 @@ Password reset form pattern with validation and submit actions.
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:47:1`
+Source: `src/patterns/auth/types.ts:48:1`
 
 ### Members
 
@@ -1445,7 +1451,7 @@ Source: `src/patterns/auth/types.ts:47:1`
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:42:1`
+Source: `src/patterns/auth/types.ts:43:1`
 
 ### Members
 
@@ -2613,6 +2619,109 @@ Source: `src/patterns/notice/types.ts:6:1`
 | themeId     | property | `string \| undefined`                                                                                                                         | no       |             |
 | title       | property | `React.ReactNode`                                                                                                                             | yes      |             |
 
+## OAuthProviderButton
+
+Kind: `value`
+Module: `src/patterns/auth/OAuthProviderButton.tsx`
+Source: `src/patterns/auth/OAuthProviderButton.tsx:51:14`
+
+Renders a provider-branded OAuth action button without owning auth behavior.
+
+The component only renders UI and forwards the provider id through `onPress`.
+Adapters, redirects, and callback handling belong to app/runtime layers.
+
+## OAuthProviderButtonProps
+
+Kind: `type`
+Module: `src/patterns/auth/types.ts`
+Source: `src/patterns/auth/types.ts:85:1`
+
+### Members
+
+| Name       | Kind     | Type                                                                                                                                          | Required | Description |
+| ---------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color      | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled   | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| fullWidth  | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| icon       | property | `OAuthProviderIconSpec \| undefined`                                                                                                          | no       |             |
+| label      | property | `React.ReactNode`                                                                                                                             | no       |             |
+| loading    | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode       | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress    | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
+| providerId | property | `string`                                                                                                                                      | yes      |             |
+| size       | property | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       |             |
+| testID     | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId    | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant    | property | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       |             |
+
+## OAuthProviderIconSpec
+
+Kind: `type`
+Module: `src/patterns/auth/types.ts`
+Source: `src/patterns/auth/types.ts:70:1`
+
+### Members
+
+| Name     | Kind     | Type                            | Required | Description |
+| -------- | -------- | ------------------------------- | -------- | ----------- |
+| color    | property | `string \| undefined`           | no       |             |
+| name     | property | `string`                        | yes      |             |
+| provider | property | `string \| undefined`           | no       |             |
+| size     | property | `string \| number \| undefined` | no       |             |
+
+## OAuthProviderItem
+
+Kind: `type`
+Module: `src/patterns/auth/types.ts`
+Source: `src/patterns/auth/types.ts:77:1`
+
+### Members
+
+| Name     | Kind     | Type                                 | Required | Description |
+| -------- | -------- | ------------------------------------ | -------- | ----------- |
+| disabled | property | `boolean \| undefined`               | no       |             |
+| icon     | property | `OAuthProviderIconSpec \| undefined` | no       |             |
+| id       | property | `string`                             | yes      |             |
+| label    | property | `React.ReactNode`                    | no       |             |
+| loading  | property | `boolean \| undefined`               | no       |             |
+
+## OAuthProviderList
+
+Kind: `value`
+Module: `src/patterns/auth/OAuthProviderList.tsx`
+Source: `src/patterns/auth/OAuthProviderList.tsx:54:14`
+
+Renders a group of OAuth provider buttons for sign-in and auth settings flows.
+
+## OAuthProviderListLayout
+
+Kind: `unknown`
+Module: `src/patterns/auth/types.ts`
+Source: `src/patterns/auth/types.ts:98:1`
+
+## OAuthProviderListProps
+
+Kind: `type`
+Module: `src/patterns/auth/types.ts`
+Source: `src/patterns/auth/types.ts:100:1`
+
+### Members
+
+| Name            | Kind     | Type                                                                                                                                          | Required | Description |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color           | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled        | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| fullWidth       | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| layout          | property | `OAuthProviderListLayout \| undefined`                                                                                                        | no       |             |
+| loading         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode            | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onProviderPress | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
+| providers       | property | `readonly OAuthProviderItem[]`                                                                                                                | yes      |             |
+| size            | property | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       |             |
+| testID          | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId         | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant         | property | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       |             |
+
 ## OtpForm
 
 Kind: `value`
@@ -2625,7 +2734,7 @@ One-time passcode form pattern with digit input and submit actions.
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:59:1`
+Source: `src/patterns/auth/types.ts:60:1`
 
 ### Members
 
@@ -2650,7 +2759,7 @@ Source: `src/patterns/auth/types.ts:59:1`
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:55:1`
+Source: `src/patterns/auth/types.ts:56:1`
 
 ### Members
 
@@ -3022,6 +3131,30 @@ Source: `src/components/avatar/resolveAvatarInitials.ts:20:1`
 - `(name: string | undefined) => string | null`
   - name: `string | undefined`
   - returns: `string | null`
+
+## resolveOAuthProviderIcon
+
+Kind: `function`
+Module: `src/patterns/auth/oauthProviders.ts`
+Source: `src/patterns/auth/oauthProviders.ts:49:1`
+
+### Signatures
+
+- `(providerId: string) => OAuthProviderIconSpec | undefined`
+  - providerId: `string`
+  - returns: `OAuthProviderIconSpec | undefined`
+
+## resolveOAuthProviderLabel
+
+Kind: `function`
+Module: `src/patterns/auth/oauthProviders.ts`
+Source: `src/patterns/auth/oauthProviders.ts:57:1`
+
+### Signatures
+
+- `(providerId: string) => string`
+  - providerId: `string`
+  - returns: `string`
 
 ## ResponsivePanel
 
@@ -3450,7 +3583,7 @@ Sign-in form pattern with identifier and password fields.
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:21:1`
+Source: `src/patterns/auth/types.ts:22:1`
 
 ### Members
 
@@ -3476,7 +3609,7 @@ Source: `src/patterns/auth/types.ts:21:1`
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:15:1`
+Source: `src/patterns/auth/types.ts:16:1`
 
 ### Members
 
@@ -3498,13 +3631,13 @@ Sign-up form pattern with structured fields and validation.
 
 Kind: `unknown`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:33:1`
+Source: `src/patterns/auth/types.ts:34:1`
 
 ## SignUpFormProps
 
 Kind: `type`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:35:1`
+Source: `src/patterns/auth/types.ts:36:1`
 
 ### Members
 
@@ -3526,7 +3659,7 @@ Source: `src/patterns/auth/types.ts:35:1`
 
 Kind: `unknown`
 Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:32:1`
+Source: `src/patterns/auth/types.ts:33:1`
 
 ## Skeleton
 
@@ -4741,7 +4874,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:89:14`
+Source: `src/metadata/componentMeta.ts:91:14`
 
 ## ZORA_EMPHASES
 

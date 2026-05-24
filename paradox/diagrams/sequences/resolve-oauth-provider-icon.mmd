@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_normalizeOAuthProviderId as normalizeOAuthProviderId
+  participant participant_resolveOAuthProviderIcon as resolveOAuthProviderIcon
+  participant_resolveOAuthProviderIcon->>participant_normalizeOAuthProviderId: normalizeOAuthProviderId()
+  participant_normalizeOAuthProviderId-->>participant_resolveOAuthProviderIcon: return

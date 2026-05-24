@@ -54,6 +54,8 @@ import { sidebarLayoutMeta } from '../layout/sidebar-layout/meta';
 import { topbarLayoutMeta } from '../layout/topbar-layout/meta';
 import {
   forgotPasswordFormMeta,
+  oauthProviderButtonMeta,
+  oauthProviderListMeta,
   otpFormMeta,
   signInFormMeta,
   signUpFormMeta,
@@ -149,6 +151,8 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   SidebarLayout: sidebarLayoutMeta,
   TopbarLayout: topbarLayoutMeta,
   ForgotPasswordForm: forgotPasswordFormMeta,
+  OAuthProviderButton: oauthProviderButtonMeta,
+  OAuthProviderList: oauthProviderListMeta,
   OtpForm: otpFormMeta,
   SignInForm: signInFormMeta,
   SignUpForm: signUpFormMeta,
