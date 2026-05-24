@@ -44,6 +44,8 @@ const DEFAULT_OAUTH_PROVIDER_LABELS = {
   zoom: 'Zoom',
 } as const satisfies Record<string, string>;
 
+const oauthProviderLabels: Partial<Record<string, string>> = DEFAULT_OAUTH_PROVIDER_LABELS;
+
 export function resolveOAuthProviderIcon(providerId: string): OAuthProviderIconSpec | undefined {
   const normalizedProviderId = normalizeOAuthProviderId(providerId);
 
@@ -54,10 +56,7 @@ export function resolveOAuthProviderIcon(providerId: string): OAuthProviderIconS
 
 export function resolveOAuthProviderLabel(providerId: string): string {
   const normalizedProviderId = normalizeOAuthProviderId(providerId);
-  const knownLabel =
-    DEFAULT_OAUTH_PROVIDER_LABELS[
-      normalizedProviderId as keyof typeof DEFAULT_OAUTH_PROVIDER_LABELS
-    ];
+  const knownLabel = oauthProviderLabels[normalizedProviderId];
 
   return knownLabel ?? titleCaseProviderId(normalizedProviderId);
 }
