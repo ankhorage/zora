@@ -19,7 +19,11 @@ function resolveLogoRadius(shape: SplashScreenLogoShape): NonNullable<SplashScre
   }
 }
 
-function PlaceholderLogo({ label, shape, size }: Required<Pick<SplashScreenProps, 'logoLabel' | 'logoShape' | 'logoSize'>>) {
+function PlaceholderLogo({
+  label,
+  shape,
+  size,
+}: Required<Pick<SplashScreenProps, 'logoLabel' | 'logoShape' | 'logoSize'>>) {
   const { theme } = useZoraTheme();
   const radius = resolveLogoRadius(shape);
 
@@ -32,7 +36,7 @@ function PlaceholderLogo({ label, shape, size }: Required<Pick<SplashScreenProps
       width={size}
       style={{ borderRadius: radius }}
     >
-      <Text color="primary" emphasis="onColor" variant="eyebrow" weight="bold">
+      <Text emphasis="inverse" variant="eyebrow" weight="bold">
         {label.slice(0, 2).toUpperCase()}
       </Text>
     </Center>
@@ -54,7 +58,7 @@ function SplashScreenInner({
   testID,
 }: SplashScreenProps) {
   const { theme } = useZoraTheme();
-  const background = backgroundColor ?? theme.semantics.neutral.background;
+  const background = backgroundColor ?? theme.semantics.neutral.surface;
   const renderedLogo = logo ?? (
     <PlaceholderLogo label={logoLabel} shape={logoShape} size={logoSize} />
   );
