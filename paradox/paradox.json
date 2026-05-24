@@ -1731,6 +1731,7 @@
         "DatePicker",
         "DatePickerProps",
         "DatePickerValue",
+        "DEFAULT_OAUTH_PROVIDER_ICONS",
         "DisclosureSection",
         "DisclosureSectionProps",
         "Divider",
@@ -1829,6 +1830,13 @@
         "NavigationListProps",
         "Notice",
         "NoticeProps",
+        "OAuthProviderButton",
+        "OAuthProviderButtonProps",
+        "OAuthProviderIconSpec",
+        "OAuthProviderItem",
+        "OAuthProviderList",
+        "OAuthProviderListLayout",
+        "OAuthProviderListProps",
         "OtpForm",
         "OtpFormProps",
         "OtpFormValues",
@@ -1854,6 +1862,8 @@
         "Rating",
         "RatingProps",
         "resolveAvatarInitials",
+        "resolveOAuthProviderIcon",
+        "resolveOAuthProviderLabel",
         "ResponsivePanel",
         "ResponsivePanelDesktopMode",
         "ResponsivePanelMobileMode",
@@ -2408,12 +2418,22 @@
       "exports": [
         "AuthFormBaseProps",
         "AuthIdentifierKind",
+        "DEFAULT_OAUTH_PROVIDER_ICONS",
         "ForgotPasswordForm",
         "ForgotPasswordFormProps",
         "ForgotPasswordFormValues",
+        "OAuthProviderButton",
+        "OAuthProviderButtonProps",
+        "OAuthProviderIconSpec",
+        "OAuthProviderItem",
+        "OAuthProviderList",
+        "OAuthProviderListLayout",
+        "OAuthProviderListProps",
         "OtpForm",
         "OtpFormProps",
         "OtpFormValues",
+        "resolveOAuthProviderIcon",
+        "resolveOAuthProviderLabel",
         "SignInForm",
         "SignInFormProps",
         "SignInFormValues",
@@ -2428,6 +2448,38 @@
       "isEntrypoint": false,
       "dependencies": ["src/metadata/index.ts"],
       "exports": ["forgotPasswordFormMeta", "otpFormMeta", "signInFormMeta", "signUpFormMeta"]
+    },
+    {
+      "path": "src/patterns/auth/OAuthProviderButton.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/button/index.ts",
+        "src/patterns/auth/oauthProviders.ts",
+        "src/patterns/auth/types.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["OAuthProviderButton"]
+    },
+    {
+      "path": "src/patterns/auth/OAuthProviderList.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/foundation/index.ts",
+        "src/patterns/auth/OAuthProviderButton.tsx",
+        "src/patterns/auth/types.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["OAuthProviderList"]
+    },
+    {
+      "path": "src/patterns/auth/oauthProviders.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/patterns/auth/types.ts"],
+      "exports": [
+        "DEFAULT_OAUTH_PROVIDER_ICONS",
+        "resolveOAuthProviderIcon",
+        "resolveOAuthProviderLabel"
+      ]
     },
     {
       "path": "src/patterns/auth/OtpForm.tsx",
@@ -2469,12 +2521,21 @@
     {
       "path": "src/patterns/auth/types.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/components/form/index.ts", "src/theme/ZoraBaseProps.ts"],
+      "dependencies": [
+        "src/components/button/index.ts",
+        "src/components/form/index.ts",
+        "src/theme/ZoraBaseProps.ts"
+      ],
       "exports": [
         "AuthFormBaseProps",
         "AuthIdentifierKind",
         "ForgotPasswordFormProps",
         "ForgotPasswordFormValues",
+        "OAuthProviderButtonProps",
+        "OAuthProviderIconSpec",
+        "OAuthProviderItem",
+        "OAuthProviderListLayout",
+        "OAuthProviderListProps",
         "OtpFormProps",
         "OtpFormValues",
         "SignInFormProps",
@@ -4115,7 +4176,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 8,
+        "line": 9,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -4183,7 +4244,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 6,
+        "line": 7,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -8737,6 +8798,24 @@
       "structuredRows": []
     },
     {
+      "name": "DEFAULT_OAUTH_PROVIDER_ICONS",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/auth/oauthProviders.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 3,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "DisclosureSection",
       "description": "Expandable section pattern with a summary header and collapsible content.",
       "isReadme": false,
@@ -9653,7 +9732,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 47,
+        "line": 48,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -9756,7 +9835,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 42,
+        "line": 43,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -14007,6 +14086,374 @@
       "structuredRows": []
     },
     {
+      "name": "OAuthProviderButton",
+      "description": "Renders a provider-branded OAuth action button without owning auth behavior.\n\nThe component only renders UI and forwards the provider id through `onPress`.\nAdapters, redirects, and callback handling belong to app/runtime layers.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/auth/OAuthProviderButton.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "line": 51,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderButtonProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/auth/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/types.ts",
+        "line": 85,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["OAuthProviderIconSpec", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "color",
+          "kind": "property",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "fullWidth",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "kind": "property",
+          "type": "OAuthProviderIconSpec | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "label",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "kind": "property",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "providerId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "size",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "variant",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderIconSpec",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/auth/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/types.ts",
+        "line": 70,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "color",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "name",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "provider",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "size",
+          "kind": "property",
+          "type": "string | number | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderItem",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/auth/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/types.ts",
+        "line": 77,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["OAuthProviderIconSpec"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "kind": "property",
+          "type": "OAuthProviderIconSpec | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "label",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderList",
+      "description": "Renders a group of OAuth provider buttons for sign-in and auth settings flows.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/auth/OAuthProviderList.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderList.tsx",
+        "line": 54,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderListLayout",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/auth/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/types.ts",
+        "line": 98,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "OAuthProviderListProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/auth/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/types.ts",
+        "line": 100,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["OAuthProviderItem", "OAuthProviderListLayout", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "color",
+          "kind": "property",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "fullWidth",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "layout",
+          "kind": "property",
+          "type": "OAuthProviderListLayout | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onProviderPress",
+          "kind": "property",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "providers",
+          "kind": "property",
+          "type": "readonly OAuthProviderItem[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "size",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "variant",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "OtpForm",
       "description": "One-time passcode form pattern with digit input and submit actions.",
       "isReadme": false,
@@ -14033,7 +14480,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 59,
+        "line": 60,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -14150,7 +14597,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 55,
+        "line": 56,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -15647,6 +16094,70 @@
       "structuredRows": []
     },
     {
+      "name": "resolveOAuthProviderIcon",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/patterns/auth/oauthProviders.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 47,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["OAuthProviderIconSpec"],
+      "signatures": [
+        {
+          "label": "(providerId: string) => OAuthProviderIconSpec | undefined",
+          "parameters": [
+            {
+              "name": "providerId",
+              "type": "string",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "OAuthProviderIconSpec | undefined",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "resolveOAuthProviderLabel",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/patterns/auth/oauthProviders.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 55,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [
+        {
+          "label": "(providerId: string) => string",
+          "parameters": [
+            {
+              "name": "providerId",
+              "type": "string",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "string",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "ResponsivePanel",
       "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
       "isReadme": false,
@@ -17014,7 +17525,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 21,
+        "line": 22,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -17138,7 +17649,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 15,
+        "line": 16,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -17196,7 +17707,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 33,
+        "line": 34,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -17214,7 +17725,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 35,
+        "line": 36,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -17310,7 +17821,7 @@
       "modulePath": "src/patterns/auth/types.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/types.ts",
-        "line": 32,
+        "line": 33,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -31130,6 +31641,186 @@
       ]
     },
     {
+      "name": "OAuthProviderButton",
+      "description": "Renders a provider-branded OAuth action button without owning auth behavior.\n\nThe component only renders UI and forwards the provider id through `onPress`.\nAdapters, redirects, and callback handling belong to app/runtime layers.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/auth/OAuthProviderButton.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "line": 51,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "color",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "type": "OAuthProviderIconSpec | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "label",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "providerId",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "variant",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "OAuthProviderList",
+      "description": "Renders a group of OAuth provider buttons for sign-in and auth settings flows.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/auth/OAuthProviderList.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderList.tsx",
+        "line": 54,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "color",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "layout",
+          "type": "OAuthProviderListLayout | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onProviderPress",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "providers",
+          "type": "readonly OAuthProviderItem[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "variant",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "OtpForm",
       "description": "One-time passcode form pattern with digit input and submit actions.",
       "isReadme": false,
@@ -37864,6 +38555,60 @@
       }
     },
     {
+      "name": "OAuthProviderButtonInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "OAuthProviderListInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/OAuthProviderList.tsx",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveOAuthProviderIcon",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 47,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveOAuthProviderLabel",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 55,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeOAuthProviderId",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 65,
+        "column": 1
+      }
+    },
+    {
+      "name": "titleCaseProviderId",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/oauthProviders.ts",
+        "line": 69,
+        "column": 1
+      }
+    },
+    {
       "name": "OtpFormInner",
       "description": null,
       "sourceLocation": {
@@ -38974,6 +39719,22 @@
       "name": "resolveAvatarInitials",
       "sourcePath": "src/components/avatar/resolveAvatarInitials.ts",
       "symbolName": "resolveAvatarInitials",
+      "description": null,
+      "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "resolveOAuthProviderIcon",
+      "sourcePath": "src/patterns/auth/oauthProviders.ts",
+      "symbolName": "resolveOAuthProviderIcon",
+      "description": null,
+      "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "resolveOAuthProviderLabel",
+      "sourcePath": "src/patterns/auth/oauthProviders.ts",
+      "symbolName": "resolveOAuthProviderLabel",
       "description": null,
       "isReadme": false
     },
@@ -42706,6 +43467,21 @@
       },
       {
         "fromPath": "src/patterns/auth/index.ts",
+        "toPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "sourcePath": "src/patterns/auth/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/auth/index.ts",
+        "toPath": "src/patterns/auth/OAuthProviderList.tsx",
+        "sourcePath": "src/patterns/auth/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/auth/index.ts",
+        "toPath": "src/patterns/auth/oauthProviders.ts",
+        "sourcePath": "src/patterns/auth/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/auth/index.ts",
         "toPath": "src/patterns/auth/OtpForm.tsx",
         "sourcePath": "src/patterns/auth/index.ts"
       },
@@ -42728,6 +43504,51 @@
         "fromPath": "src/patterns/auth/meta.ts",
         "toPath": "src/metadata/index.ts",
         "sourcePath": "src/patterns/auth/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toPath": "src/patterns/auth/oauthProviders.ts",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toPath": "src/patterns/auth/types.ts",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderList.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/auth/OAuthProviderList.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderList.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/auth/OAuthProviderList.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderList.tsx",
+        "toPath": "src/patterns/auth/OAuthProviderButton.tsx",
+        "sourcePath": "src/patterns/auth/OAuthProviderList.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/OAuthProviderList.tsx",
+        "toPath": "src/patterns/auth/types.ts",
+        "sourcePath": "src/patterns/auth/OAuthProviderList.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/oauthProviders.ts",
+        "toPath": "src/patterns/auth/types.ts",
+        "sourcePath": "src/patterns/auth/oauthProviders.ts"
       },
       {
         "fromPath": "src/patterns/auth/OtpForm.tsx",
@@ -42808,6 +43629,11 @@
         "fromPath": "src/patterns/auth/SignUpForm.tsx",
         "toPath": "src/patterns/auth/types.ts",
         "sourcePath": "src/patterns/auth/SignUpForm.tsx"
+      },
+      {
+        "fromPath": "src/patterns/auth/types.ts",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/patterns/auth/types.ts"
       },
       {
         "fromPath": "src/patterns/auth/types.ts",
@@ -46102,6 +46928,54 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/auth/ForgotPasswordForm.tsx"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonInner",
+        "toSymbol": "resolveOAuthProviderIcon",
+        "callExpression": "resolveOAuthProviderIcon",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonInner",
+        "toSymbol": "resolveOAuthProviderLabel",
+        "callExpression": "resolveOAuthProviderLabel",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toSymbol": "onPress",
+        "callExpression": "onPress",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/auth/OAuthProviderButton.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/auth/OAuthProviderButton.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/auth/OAuthProviderList.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/auth/OAuthProviderList.tsx"
+      },
+      {
+        "fromSymbol": "resolveOAuthProviderIcon",
+        "toSymbol": "normalizeOAuthProviderId",
+        "callExpression": "normalizeOAuthProviderId",
+        "sourcePath": "src/patterns/auth/oauthProviders.ts"
+      },
+      {
+        "fromSymbol": "resolveOAuthProviderLabel",
+        "toSymbol": "normalizeOAuthProviderId",
+        "callExpression": "normalizeOAuthProviderId",
+        "sourcePath": "src/patterns/auth/oauthProviders.ts"
+      },
+      {
+        "fromSymbol": "resolveOAuthProviderLabel",
+        "toSymbol": "titleCaseProviderId",
+        "callExpression": "titleCaseProviderId",
+        "sourcePath": "src/patterns/auth/oauthProviders.ts"
       },
       {
         "fromSymbol": "src/patterns/auth/OtpForm.tsx",
@@ -49703,6 +50577,86 @@
         "sourcePath": "src/patterns/auth/types.ts"
       },
       {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "OAuthProviderIconSpec",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "React",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "Users",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "ZoraButtonVariant",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "ZoraControlSize",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderButtonProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderItem",
+        "toType": "OAuthProviderIconSpec",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderItem",
+        "toType": "React",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderItem",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "OAuthProviderItem",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "OAuthProviderListLayout",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "Users",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "ZoraButtonVariant",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "ZoraControlSize",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "OAuthProviderListProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
         "fromSymbol": "OtpFormProps",
         "toType": "OtpFormValues",
         "sourcePath": "src/patterns/auth/types.ts"
@@ -49776,6 +50730,11 @@
         "fromSymbol": "SignUpFormProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/patterns/auth/types.ts"
+      },
+      {
+        "fromSymbol": "resolveOAuthProviderIcon",
+        "toType": "OAuthProviderIconSpec",
+        "sourcePath": "src/patterns/auth/oauthProviders.ts"
       },
       {
         "fromSymbol": "ChatListAvatar",

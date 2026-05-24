@@ -54,9 +54,10 @@ export function resolveOAuthProviderIcon(providerId: string): OAuthProviderIconS
 
 export function resolveOAuthProviderLabel(providerId: string): string {
   const normalizedProviderId = normalizeOAuthProviderId(providerId);
-  const knownLabel = DEFAULT_OAUTH_PROVIDER_LABELS[
-    normalizedProviderId as keyof typeof DEFAULT_OAUTH_PROVIDER_LABELS
-  ];
+  const knownLabel =
+    DEFAULT_OAUTH_PROVIDER_LABELS[
+      normalizedProviderId as keyof typeof DEFAULT_OAUTH_PROVIDER_LABELS
+    ];
 
   return knownLabel ?? titleCaseProviderId(normalizedProviderId);
 }

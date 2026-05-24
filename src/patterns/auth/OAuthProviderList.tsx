@@ -23,7 +23,12 @@ function OAuthProviderListInner({
   const resolvedFullWidth = fullWidth ?? layout === 'stack';
 
   return (
-    <Stack direction={direction} gap="s" testID={testID} wrap={layout === 'inline' ? 'wrap' : undefined}>
+    <Stack
+      direction={direction}
+      gap="s"
+      testID={testID}
+      wrap={layout === 'inline' ? 'wrap' : undefined}
+    >
       {providers.map((provider) => (
         <OAuthProviderButton
           color={color}

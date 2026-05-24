@@ -1753,6 +1753,56 @@ Export paths: `src/index.ts`
 | themeId     | `string \| undefined`                                                                                                                         | no       | —       |             |
 | title       | `React.ReactNode`                                                                                                                             | yes      | —       |             |
 
+## OAuthProviderButton
+
+Source: `src/patterns/auth/OAuthProviderButton.tsx:51:14`
+
+Renders a provider-branded OAuth action button without owning auth behavior.
+
+The component only renders UI and forwards the provider id through `onPress`.
+Adapters, redirects, and callback handling belong to app/runtime layers.
+
+Export paths: `src/index.ts`
+
+| Prop       | Type                                                                                                                                          | Required | Default | Description |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color      | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled   | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| fullWidth  | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| icon       | `OAuthProviderIconSpec \| undefined`                                                                                                          | no       | —       |             |
+| label      | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| loading    | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode       | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress    | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
+| providerId | `string`                                                                                                                                      | yes      | —       |             |
+| size       | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| testID     | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId    | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant    | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+
+## OAuthProviderList
+
+Source: `src/patterns/auth/OAuthProviderList.tsx:54:14`
+
+Renders a group of OAuth provider buttons for sign-in and auth settings flows.
+
+Export paths: `src/index.ts`
+
+| Prop            | Type                                                                                                                                          | Required | Default | Description |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color           | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled        | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| fullWidth       | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| layout          | `OAuthProviderListLayout \| undefined`                                                                                                        | no       | —       |             |
+| loading         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode            | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onProviderPress | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
+| providers       | `readonly OAuthProviderItem[]`                                                                                                                | yes      | —       |             |
+| size            | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| testID          | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId         | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant         | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+
 ## OtpForm
 
 Source: `src/patterns/auth/OtpForm.tsx:90:14`

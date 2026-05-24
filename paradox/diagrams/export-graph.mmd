@@ -226,6 +226,9 @@ graph LR
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
   module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
+  module_src_patterns_auth_OAuthProviderButton_tsx["src/patterns/auth/OAuthProviderButton.tsx"]
+  module_src_patterns_auth_OAuthProviderList_tsx["src/patterns/auth/OAuthProviderList.tsx"]
+  module_src_patterns_auth_oauthProviders_ts["src/patterns/auth/oauthProviders.ts"]
   module_src_patterns_auth_OtpForm_tsx["src/patterns/auth/OtpForm.tsx"]
   module_src_patterns_auth_SignInForm_tsx["src/patterns/auth/SignInForm.tsx"]
   module_src_patterns_auth_SignUpForm_tsx["src/patterns/auth/SignUpForm.tsx"]
@@ -544,6 +547,8 @@ graph LR
   export_DatePickerProps -.-> export_ZoraThemeMode
   export_DatePickerValue["DatePickerValue"]
   module_src_components_date_picker_types_ts --> export_DatePickerValue
+  export_DEFAULT_OAUTH_PROVIDER_ICONS["DEFAULT_OAUTH_PROVIDER_ICONS"]
+  module_src_patterns_auth_oauthProviders_ts --> export_DEFAULT_OAUTH_PROVIDER_ICONS
   export_DisclosureSection["DisclosureSection"]
   module_src_patterns_disclosure_section_DisclosureSection_tsx --> export_DisclosureSection
   export_DisclosureSectionProps["DisclosureSectionProps"]
@@ -806,6 +811,26 @@ graph LR
   export_NoticeProps["NoticeProps"]
   module_src_patterns_notice_types_ts --> export_NoticeProps
   export_NoticeProps -.-> export_ZoraThemeMode
+  export_OAuthProviderButton["OAuthProviderButton"]
+  module_src_patterns_auth_OAuthProviderButton_tsx --> export_OAuthProviderButton
+  export_OAuthProviderButtonProps["OAuthProviderButtonProps"]
+  module_src_patterns_auth_types_ts --> export_OAuthProviderButtonProps
+  export_OAuthProviderButtonProps -.-> export_OAuthProviderIconSpec
+  export_OAuthProviderButtonProps -.-> export_ZoraThemeMode
+  export_OAuthProviderIconSpec["OAuthProviderIconSpec"]
+  module_src_patterns_auth_types_ts --> export_OAuthProviderIconSpec
+  export_OAuthProviderItem["OAuthProviderItem"]
+  module_src_patterns_auth_types_ts --> export_OAuthProviderItem
+  export_OAuthProviderItem -.-> export_OAuthProviderIconSpec
+  export_OAuthProviderList["OAuthProviderList"]
+  module_src_patterns_auth_OAuthProviderList_tsx --> export_OAuthProviderList
+  export_OAuthProviderListLayout["OAuthProviderListLayout"]
+  module_src_patterns_auth_types_ts --> export_OAuthProviderListLayout
+  export_OAuthProviderListProps["OAuthProviderListProps"]
+  module_src_patterns_auth_types_ts --> export_OAuthProviderListProps
+  export_OAuthProviderListProps -.-> export_OAuthProviderItem
+  export_OAuthProviderListProps -.-> export_OAuthProviderListLayout
+  export_OAuthProviderListProps -.-> export_ZoraThemeMode
   export_OtpForm["OtpForm"]
   module_src_patterns_auth_OtpForm_tsx --> export_OtpForm
   export_OtpFormProps["OtpFormProps"]
@@ -873,6 +898,11 @@ graph LR
   export_RatingProps -.-> export_ZoraThemeMode
   export_resolveAvatarInitials["resolveAvatarInitials"]
   module_src_components_avatar_resolveAvatarInitials_ts --> export_resolveAvatarInitials
+  export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
+  module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderIcon
+  export_resolveOAuthProviderIcon -.-> export_OAuthProviderIconSpec
+  export_resolveOAuthProviderLabel["resolveOAuthProviderLabel"]
+  module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderLabel
   export_ResponsivePanel["ResponsivePanel"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> export_ResponsivePanel
   export_ResponsivePanelDesktopMode["ResponsivePanelDesktopMode"]
