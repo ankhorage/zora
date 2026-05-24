@@ -34,7 +34,6 @@ function PlaceholderLogo({ label, shape, size }: PlaceholderLogoProps) {
       accessibilityLabel={label}
       bg={theme.semantics.action.primary.base}
       height={size}
-      radius="xl"
       width={size}
       style={{ borderRadius: radius }}
     >
