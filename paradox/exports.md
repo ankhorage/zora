@@ -1637,6 +1637,72 @@ Kind: `unknown`
 Module: `src/components/form/types.ts`
 Source: `src/components/form/types.ts:14:1`
 
+## Gradient
+
+Kind: `value`
+Module: `src/components/gradient/Gradient.tsx`
+Source: `src/components/gradient/Gradient.tsx:53:14`
+
+Gradient background container for branded loading surfaces, hero blocks, and previews.
+
+`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA
+component and does not replace native Expo splash-screen configuration.
+
+## GradientColor
+
+Kind: `unknown`
+Module: `src/components/gradient/types.ts`
+Source: `src/components/gradient/types.ts:6:1`
+
+## GradientColors
+
+Kind: `unknown`
+Module: `src/components/gradient/types.ts`
+Source: `src/components/gradient/types.ts:7:1`
+
+## GradientLocations
+
+Kind: `unknown`
+Module: `src/components/gradient/types.ts`
+Source: `src/components/gradient/types.ts:8:1`
+
+## GradientPoint
+
+Kind: `type`
+Module: `src/components/gradient/types.ts`
+Source: `src/components/gradient/types.ts:10:1`
+
+### Members
+
+| Name | Kind     | Type     | Required | Description |
+| ---- | -------- | -------- | -------- | ----------- |
+| x    | property | `number` | yes      |             |
+| y    | property | `number` | yes      |             |
+
+## GradientProps
+
+Kind: `type`
+Module: `src/components/gradient/types.ts`
+Source: `src/components/gradient/types.ts:15:1`
+
+### Members
+
+| Name      | Kind     | Type                                                                                                                                                                                                                 | Required | Description |
+| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| children  | property | `React.ReactNode`                                                                                                                                                                                                    | no       |             |
+| colors    | property | `GradientColors`                                                                                                                                                                                                     | yes      |             |
+| end       | property | `GradientPoint \| undefined`                                                                                                                                                                                         | no       |             |
+| height    | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       |             |
+| locations | property | `GradientLocations \| undefined`                                                                                                                                                                                     | no       |             |
+| minHeight | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       |             |
+| mode      | property | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       |             |
+| p         | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
+| radius    | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                        | no       |             |
+| start     | property | `GradientPoint \| undefined`                                                                                                                                                                                         | no       |             |
+| testID    | property | `string \| undefined`                                                                                                                                                                                                | no       |             |
+| themeId   | property | `string \| undefined`                                                                                                                                                                                                | no       |             |
+| width     | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       |             |
+
 ## Grid
 
 Kind: `value`
@@ -3610,6 +3676,47 @@ Source: `src/foundation/Spacer.tsx:10:1`
 | testID  | property | `string \| undefined`                               | no       |             |
 | themeId | property | `string \| undefined`                               | no       |             |
 
+## SplashScreen
+
+Kind: `value`
+Module: `src/components/splash-screen/SplashScreen.tsx`
+Source: `src/components/splash-screen/SplashScreen.tsx:98:14`
+
+Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.
+
+`SplashScreen` is a React-rendered component. It intentionally does not manage
+Expo's native splash screen lifecycle or replace generated `expo-splash-screen`
+configuration.
+
+## SplashScreenLogoShape
+
+Kind: `unknown`
+Module: `src/components/splash-screen/types.ts`
+Source: `src/components/splash-screen/types.ts:6:1`
+
+## SplashScreenProps
+
+Kind: `type`
+Module: `src/components/splash-screen/types.ts`
+Source: `src/components/splash-screen/types.ts:8:1`
+
+### Members
+
+| Name            | Kind     | Type                                                                                                                                                                                                                 | Required | Description |
+| --------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| backgroundColor | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       |             |
+| children        | property | `React.ReactNode`                                                                                                                                                                                                    | no       |             |
+| logo            | property | `React.ReactNode`                                                                                                                                                                                                    | no       |             |
+| logoLabel       | property | `string \| undefined`                                                                                                                                                                                                | no       |             |
+| logoShape       | property | `SplashScreenLogoShape \| undefined`                                                                                                                                                                                 | no       |             |
+| logoSize        | property | `number \| undefined`                                                                                                                                                                                                | no       |             |
+| minHeight       | property | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       |             |
+| mode            | property | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       |             |
+| subtitle        | property | `React.ReactNode`                                                                                                                                                                                                    | no       |             |
+| testID          | property | `string \| undefined`                                                                                                                                                                                                | no       |             |
+| themeId         | property | `string \| undefined`                                                                                                                                                                                                | no       |             |
+| title           | property | `React.ReactNode`                                                                                                                                                                                                    | no       |             |
+
 ## Stack
 
 Kind: `value`
@@ -4634,7 +4741,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:87:14`
+Source: `src/metadata/componentMeta.ts:89:14`
 
 ## ZORA_EMPHASES
 

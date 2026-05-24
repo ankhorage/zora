@@ -6841,6 +6841,221 @@
     "structuredRows": []
   },
   {
+    "name": "Gradient",
+    "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\n`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA\ncomponent and does not replace native Expo splash-screen configuration.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/components/gradient/Gradient.tsx",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/Gradient.tsx",
+      "line": 53,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientColor",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientColors",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientLocations",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientPoint",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 15,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GradientColors", "GradientLocations", "GradientPoint", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colors",
+        "kind": "property",
+        "type": "GradientColors",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "end",
+        "kind": "property",
+        "type": "GradientPoint | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "locations",
+        "kind": "property",
+        "type": "GradientLocations | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "p",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "radius",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "start",
+        "kind": "property",
+        "type": "GradientPoint | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Grid",
     "description": "Creates responsive grid layouts for cards, tiles, and dashboard content.",
     "isReadme": false,
@@ -14195,6 +14410,145 @@
     "structuredRows": []
   },
   {
+    "name": "SplashScreen",
+    "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/components/splash-screen/SplashScreen.tsx",
+    "sourceLocation": {
+      "filePath": "src/components/splash-screen/SplashScreen.tsx",
+      "line": 98,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SplashScreenLogoShape",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/components/splash-screen/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/splash-screen/types.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SplashScreenProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/splash-screen/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/splash-screen/types.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SplashScreenLogoShape", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "backgroundColor",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logo",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logoLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logoShape",
+        "kind": "property",
+        "type": "SplashScreenLogoShape | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logoSize",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "subtitle",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Stack",
     "description": "Arranges layout items in one direction with theme spacing.",
     "isReadme": false,
@@ -18415,7 +18769,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 87,
+      "line": 89,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

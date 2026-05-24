@@ -705,6 +705,47 @@
       "exports": ["hasRequiredRule", "validateField", "validateFields", "validateValue"]
     },
     {
+      "path": "src/components/gradient/Gradient.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/gradient/types.ts",
+        "src/foundation/index.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["Gradient"]
+    },
+    {
+      "path": "src/components/gradient/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "Gradient",
+        "GradientColor",
+        "GradientColors",
+        "GradientLocations",
+        "GradientPoint",
+        "GradientProps"
+      ]
+    },
+    {
+      "path": "src/components/gradient/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["gradientMeta"]
+    },
+    {
+      "path": "src/components/gradient/types.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/foundation/index.ts", "src/theme/ZoraBaseProps.ts"],
+      "exports": [
+        "GradientColor",
+        "GradientColors",
+        "GradientLocations",
+        "GradientPoint",
+        "GradientProps"
+      ]
+    },
+    {
       "path": "src/components/heading/Heading.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -1340,6 +1381,37 @@
       ]
     },
     {
+      "path": "src/components/splash-screen/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["SplashScreen", "SplashScreenLogoShape", "SplashScreenProps"]
+    },
+    {
+      "path": "src/components/splash-screen/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["splashScreenMeta"]
+    },
+    {
+      "path": "src/components/splash-screen/SplashScreen.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/heading/index.ts",
+        "src/components/splash-screen/types.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["SplashScreen"]
+    },
+    {
+      "path": "src/components/splash-screen/types.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/foundation/index.ts", "src/theme/ZoraBaseProps.ts"],
+      "exports": ["SplashScreenLogoShape", "SplashScreenProps"]
+    },
+    {
       "path": "src/components/tabs/index.ts",
       "isEntrypoint": false,
       "dependencies": [],
@@ -1762,6 +1834,12 @@
         "FormValidationErrors",
         "FormValidationResult",
         "FormValues",
+        "Gradient",
+        "GradientColor",
+        "GradientColors",
+        "GradientLocations",
+        "GradientPoint",
+        "GradientProps",
         "Grid",
         "GridProps",
         "hasRequiredRule",
@@ -1907,6 +1985,9 @@
         "SkeletonTextProps",
         "Spacer",
         "SpacerProps",
+        "SplashScreen",
+        "SplashScreenLogoShape",
+        "SplashScreenProps",
         "Stack",
         "StackProps",
         "Surface",
@@ -2281,6 +2362,7 @@
         "src/components/date-picker/meta.ts",
         "src/components/drawer/meta.ts",
         "src/components/form/meta.ts",
+        "src/components/gradient/meta.ts",
         "src/components/heading/meta.ts",
         "src/components/icon-button/meta.ts",
         "src/components/icon/meta.ts",
@@ -2299,6 +2381,7 @@
         "src/components/search-bar/meta.ts",
         "src/components/select/meta.ts",
         "src/components/skeleton/meta.ts",
+        "src/components/splash-screen/meta.ts",
         "src/components/tabs/meta.ts",
         "src/components/text/meta.ts",
         "src/components/textarea/meta.ts",
@@ -10442,6 +10525,221 @@
       "structuredRows": []
     },
     {
+      "name": "Gradient",
+      "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\n`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA\ncomponent and does not replace native Expo splash-screen configuration.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/components/gradient/Gradient.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/Gradient.tsx",
+        "line": 53,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GradientColor",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/components/gradient/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GradientColors",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/components/gradient/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/types.ts",
+        "line": 7,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GradientLocations",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/components/gradient/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/types.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GradientPoint",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/gradient/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/types.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "x",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "y",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "GradientProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/gradient/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/types.ts",
+        "line": 15,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["GradientColors", "GradientLocations", "GradientPoint", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "colors",
+          "kind": "property",
+          "type": "GradientColors",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "end",
+          "kind": "property",
+          "type": "GradientPoint | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "height",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "locations",
+          "kind": "property",
+          "type": "GradientLocations | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minHeight",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "p",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "start",
+          "kind": "property",
+          "type": "GradientPoint | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "width",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Grid",
       "description": "Creates responsive grid layouts for cards, tiles, and dashboard content.",
       "isReadme": false,
@@ -17804,6 +18102,145 @@
       "structuredRows": []
     },
     {
+      "name": "SplashScreen",
+      "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/components/splash-screen/SplashScreen.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/SplashScreen.tsx",
+        "line": 98,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SplashScreenLogoShape",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/components/splash-screen/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SplashScreenProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/splash-screen/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/types.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SplashScreenLogoShape", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "backgroundColor",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logo",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoShape",
+          "kind": "property",
+          "type": "SplashScreenLogoShape | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoSize",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minHeight",
+          "kind": "property",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "subtitle",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Stack",
       "description": "Arranges layout items in one direction with theme spacing.",
       "isReadme": false,
@@ -22024,7 +22461,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 87,
+        "line": 89,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -27824,6 +28261,99 @@
       ]
     },
     {
+      "name": "Gradient",
+      "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\n`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA\ncomponent and does not replace native Expo splash-screen configuration.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/components/gradient/Gradient.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/gradient/Gradient.tsx",
+        "line": 53,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "colors",
+          "type": "GradientColors",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "end",
+          "type": "GradientPoint | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "height",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "locations",
+          "type": "GradientLocations | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minHeight",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "p",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "start",
+          "type": "GradientPoint | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "width",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Grid",
       "description": "Creates responsive grid layouts for cards, tiles, and dashboard content.",
       "isReadme": false,
@@ -33369,6 +33899,93 @@
       ]
     },
     {
+      "name": "SplashScreen",
+      "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/components/splash-screen/SplashScreen.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/SplashScreen.tsx",
+        "line": 98,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logo",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoShape",
+          "type": "SplashScreenLogoShape | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "logoSize",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minHeight",
+          "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "subtitle",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Stack",
       "description": "Arranges layout items in one direction with theme spacing.",
       "isReadme": false,
@@ -36955,6 +37572,15 @@
       }
     },
     {
+      "name": "GradientInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/gradient/Gradient.tsx",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveHeadingContent",
       "description": null,
       "sourceLocation": {
@@ -37419,6 +38045,33 @@
       "sourceLocation": {
         "filePath": "src/components/skeleton/SkeletonText.tsx",
         "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveLogoRadius",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/SplashScreen.tsx",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "PlaceholderLogo",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/SplashScreen.tsx",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
+      "name": "SplashScreenInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/splash-screen/SplashScreen.tsx",
+        "line": 47,
         "column": 1
       }
     },
@@ -39166,6 +39819,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/components/gradient/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/components/heading/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -39252,6 +39910,11 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/components/skeleton/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/components/splash-screen/index.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -39726,6 +40389,11 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/components/gradient/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/heading/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -39812,6 +40480,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/skeleton/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/components/splash-screen/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -41170,6 +41843,46 @@
         "sourcePath": "src/components/form/validation.ts"
       },
       {
+        "fromPath": "src/components/gradient/Gradient.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/gradient/Gradient.tsx"
+      },
+      {
+        "fromPath": "src/components/gradient/Gradient.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/components/gradient/Gradient.tsx"
+      },
+      {
+        "fromPath": "src/components/gradient/Gradient.tsx",
+        "toPath": "src/components/gradient/types.ts",
+        "sourcePath": "src/components/gradient/Gradient.tsx"
+      },
+      {
+        "fromPath": "src/components/gradient/index.ts",
+        "toPath": "src/components/gradient/Gradient.tsx",
+        "sourcePath": "src/components/gradient/index.ts"
+      },
+      {
+        "fromPath": "src/components/gradient/index.ts",
+        "toPath": "src/components/gradient/types.ts",
+        "sourcePath": "src/components/gradient/index.ts"
+      },
+      {
+        "fromPath": "src/components/gradient/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/components/gradient/meta.ts"
+      },
+      {
+        "fromPath": "src/components/gradient/types.ts",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromPath": "src/components/gradient/types.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
         "fromPath": "src/components/heading/Heading.tsx",
         "toPath": "src/theme/useZoraTheme.ts",
         "sourcePath": "src/components/heading/Heading.tsx"
@@ -42113,6 +42826,61 @@
         "fromPath": "src/components/skeleton/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/skeleton/types.ts"
+      },
+      {
+        "fromPath": "src/components/splash-screen/index.ts",
+        "toPath": "src/components/splash-screen/SplashScreen.tsx",
+        "sourcePath": "src/components/splash-screen/index.ts"
+      },
+      {
+        "fromPath": "src/components/splash-screen/index.ts",
+        "toPath": "src/components/splash-screen/types.ts",
+        "sourcePath": "src/components/splash-screen/index.ts"
+      },
+      {
+        "fromPath": "src/components/splash-screen/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/components/splash-screen/meta.ts"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/components/heading/index.ts",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/SplashScreen.tsx",
+        "toPath": "src/components/splash-screen/types.ts",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromPath": "src/components/splash-screen/types.ts",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromPath": "src/components/splash-screen/types.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/components/splash-screen/types.ts"
       },
       {
         "fromPath": "src/components/tabs/index.ts",
@@ -45342,6 +46110,12 @@
         "sourcePath": "src/components/form/validation.ts"
       },
       {
+        "fromSymbol": "src/components/gradient/Gradient.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/components/gradient/Gradient.tsx"
+      },
+      {
         "fromSymbol": "HeadingInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -45826,6 +46600,30 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/components/skeleton/SkeletonText.tsx"
+      },
+      {
+        "fromSymbol": "PlaceholderLogo",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromSymbol": "PlaceholderLogo",
+        "toSymbol": "resolveLogoRadius",
+        "callExpression": "resolveLogoRadius",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromSymbol": "SplashScreenInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
+      },
+      {
+        "fromSymbol": "src/components/splash-screen/SplashScreen.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/components/splash-screen/SplashScreen.tsx"
       },
       {
         "fromSymbol": "TabsInner",
@@ -48073,6 +48871,51 @@
         "sourcePath": "src/components/form/validation.ts"
       },
       {
+        "fromSymbol": "GradientProps",
+        "toType": "GradientColors",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "GradientLocations",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "GradientPoint",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "React",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "Responsive",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "SpaceValue",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "Users",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
+        "fromSymbol": "GradientProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/components/gradient/types.ts"
+      },
+      {
         "fromSymbol": "HeadingProps",
         "toType": "AccessibilityRole",
         "sourcePath": "src/components/heading/types.ts"
@@ -48561,6 +49404,41 @@
         "fromSymbol": "SkeletonTextProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/skeleton/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "ColorValue",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "React",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "Responsive",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "SplashScreenLogoShape",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "Users",
+        "sourcePath": "src/components/splash-screen/types.ts"
+      },
+      {
+        "fromSymbol": "SplashScreenProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/components/splash-screen/types.ts"
       },
       {
         "fromSymbol": "TabItem",
