@@ -72,6 +72,10 @@ graph LR
   module_src_components_form_types_ts["src/components/form/types.ts"]
   module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
   module_src_components_form_validation_ts["src/components/form/validation.ts"]
+  module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
+  module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
+  module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
+  module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
   module_src_components_heading_Heading_tsx["src/components/heading/Heading.tsx"]
   module_src_components_heading_index_ts["src/components/heading/index.ts"]
   module_src_components_heading_meta_ts["src/components/heading/meta.ts"]
@@ -151,6 +155,10 @@ graph LR
   module_src_components_skeleton_SkeletonList_tsx["src/components/skeleton/SkeletonList.tsx"]
   module_src_components_skeleton_SkeletonText_tsx["src/components/skeleton/SkeletonText.tsx"]
   module_src_components_skeleton_types_ts["src/components/skeleton/types.ts"]
+  module_src_components_splash_screen_index_ts["src/components/splash-screen/index.ts"]
+  module_src_components_splash_screen_meta_ts["src/components/splash-screen/meta.ts"]
+  module_src_components_splash_screen_SplashScreen_tsx["src/components/splash-screen/SplashScreen.tsx"]
+  module_src_components_splash_screen_types_ts["src/components/splash-screen/types.ts"]
   module_src_components_tabs_index_ts["src/components/tabs/index.ts"]
   module_src_components_tabs_meta_ts["src/components/tabs/meta.ts"]
   module_src_components_tabs_Tabs_tsx["src/components/tabs/Tabs.tsx"]
@@ -626,6 +634,22 @@ graph LR
   module_src_components_form_types_ts --> export_FormValidationResult
   export_FormValues["FormValues"]
   module_src_components_form_types_ts --> export_FormValues
+  export_Gradient["Gradient"]
+  module_src_components_gradient_Gradient_tsx --> export_Gradient
+  export_GradientColor["GradientColor"]
+  module_src_components_gradient_types_ts --> export_GradientColor
+  export_GradientColors["GradientColors"]
+  module_src_components_gradient_types_ts --> export_GradientColors
+  export_GradientLocations["GradientLocations"]
+  module_src_components_gradient_types_ts --> export_GradientLocations
+  export_GradientPoint["GradientPoint"]
+  module_src_components_gradient_types_ts --> export_GradientPoint
+  export_GradientProps["GradientProps"]
+  module_src_components_gradient_types_ts --> export_GradientProps
+  export_GradientProps -.-> export_GradientColors
+  export_GradientProps -.-> export_GradientLocations
+  export_GradientProps -.-> export_GradientPoint
+  export_GradientProps -.-> export_ZoraThemeMode
   export_Grid["Grid"]
   module_src_foundation_Grid_tsx --> export_Grid
   export_GridProps["GridProps"]
@@ -1013,6 +1037,14 @@ graph LR
   export_SpacerProps["SpacerProps"]
   module_src_foundation_Spacer_tsx --> export_SpacerProps
   export_SpacerProps -.-> export_ZoraThemeMode
+  export_SplashScreen["SplashScreen"]
+  module_src_components_splash_screen_SplashScreen_tsx --> export_SplashScreen
+  export_SplashScreenLogoShape["SplashScreenLogoShape"]
+  module_src_components_splash_screen_types_ts --> export_SplashScreenLogoShape
+  export_SplashScreenProps["SplashScreenProps"]
+  module_src_components_splash_screen_types_ts --> export_SplashScreenProps
+  export_SplashScreenProps -.-> export_SplashScreenLogoShape
+  export_SplashScreenProps -.-> export_ZoraThemeMode
   export_Stack["Stack"]
   module_src_foundation_Stack_tsx --> export_Stack
   export_StackProps["StackProps"]

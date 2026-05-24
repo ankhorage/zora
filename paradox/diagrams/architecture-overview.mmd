@@ -310,6 +310,20 @@ graph TD
   module_src_components_form_validation_ts["src/components/form/validation.ts"]
   package__ankhorage_zora -.-> module_src_components_form_validation_ts
   module_src_components_form_validation_ts --> module_src_components_form_types_ts
+  module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
+  package__ankhorage_zora -.-> module_src_components_gradient_Gradient_tsx
+  module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_types_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_foundation_index_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
+  package__ankhorage_zora -.-> module_src_components_gradient_index_ts
+  module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
+  package__ankhorage_zora -.-> module_src_components_gradient_meta_ts
+  module_src_components_gradient_meta_ts --> module_src_metadata_index_ts
+  module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
+  package__ankhorage_zora -.-> module_src_components_gradient_types_ts
+  module_src_components_gradient_types_ts --> module_src_foundation_index_ts
+  module_src_components_gradient_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_heading_Heading_tsx["src/components/heading/Heading.tsx"]
   package__ankhorage_zora -.-> module_src_components_heading_Heading_tsx
   module_src_components_heading_Heading_tsx --> module_src_components_heading_resolveHeadingRecipe_ts
@@ -617,6 +631,23 @@ graph TD
   package__ankhorage_zora -.-> module_src_components_skeleton_types_ts
   module_src_components_skeleton_types_ts --> module_src_foundation_index_ts
   module_src_components_skeleton_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_splash_screen_index_ts["src/components/splash-screen/index.ts"]
+  package__ankhorage_zora -.-> module_src_components_splash_screen_index_ts
+  module_src_components_splash_screen_meta_ts["src/components/splash-screen/meta.ts"]
+  package__ankhorage_zora -.-> module_src_components_splash_screen_meta_ts
+  module_src_components_splash_screen_meta_ts --> module_src_metadata_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx["src/components/splash-screen/SplashScreen.tsx"]
+  package__ankhorage_zora -.-> module_src_components_splash_screen_SplashScreen_tsx
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_heading_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_splash_screen_types_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_components_text_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_foundation_index_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_components_splash_screen_SplashScreen_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_splash_screen_types_ts["src/components/splash-screen/types.ts"]
+  package__ankhorage_zora -.-> module_src_components_splash_screen_types_ts
+  module_src_components_splash_screen_types_ts --> module_src_foundation_index_ts
+  module_src_components_splash_screen_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_tabs_index_ts["src/components/tabs/index.ts"]
   package__ankhorage_zora -.-> module_src_components_tabs_index_ts
   module_src_components_tabs_meta_ts["src/components/tabs/meta.ts"]
@@ -882,6 +913,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_components_date_picker_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_drawer_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_form_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_components_gradient_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_heading_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_icon_button_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_icon_meta_ts
@@ -900,6 +932,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_components_search_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_select_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_skeleton_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_components_splash_screen_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_tabs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_text_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_textarea_meta_ts
