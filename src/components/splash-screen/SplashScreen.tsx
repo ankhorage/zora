@@ -7,7 +7,13 @@ import { Heading } from '../heading';
 import { Text } from '../text';
 import type { SplashScreenLogoShape, SplashScreenProps } from './types';
 
-function resolveLogoRadius(shape: SplashScreenLogoShape): NonNullable<SplashScreenProps['logoSize']> {
+interface PlaceholderLogoProps {
+  label: string;
+  shape: SplashScreenLogoShape;
+  size: number;
+}
+
+function resolveLogoRadius(shape: SplashScreenLogoShape): number {
   switch (shape) {
     case 'circle':
       return 9999;
@@ -19,11 +25,7 @@ function resolveLogoRadius(shape: SplashScreenLogoShape): NonNullable<SplashScre
   }
 }
 
-function PlaceholderLogo({
-  label,
-  shape,
-  size,
-}: Required<Pick<SplashScreenProps, 'logoLabel' | 'logoShape' | 'logoSize'>>) {
+function PlaceholderLogo({ label, shape, size }: PlaceholderLogoProps) {
   const { theme } = useZoraTheme();
   const radius = resolveLogoRadius(shape);
 
@@ -70,7 +72,7 @@ function SplashScreenInner({
         {title || subtitle ? (
           <Stack align="center" gap="xs">
             {title ? (
-              <Heading align="center" level={1} size="l">
+              <Heading align="center" level={1} size="h1">
                 {title}
               </Heading>
             ) : null}
