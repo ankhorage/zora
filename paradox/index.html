@@ -2916,11 +2916,14 @@
             </article>
             <article
               class="item"
-              data-search="src/components/progress/meta.ts src/metadata/index.ts progressMeta"
+              data-search="src/components/progress/meta.ts src/internal/colorModel.ts src/metadata/index.ts progressMeta"
             >
               <h3>src/components/progress/meta.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>src/metadata/index.ts</code></p>
+              <p>
+                <strong>Dependencies:</strong> <code>src/internal/colorModel.ts</code>,
+                <code>src/metadata/index.ts</code>
+              </p>
               <p><strong>Exports:</strong> <code>progressMeta</code></p>
             </article>
             <article
@@ -44594,6 +44597,7 @@
                 package__ankhorage_zora -.-&gt; module_src_components_progress_index_ts
                 module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_components_progress_meta_ts
+                module_src_components_progress_meta_ts --&gt; module_src_internal_colorModel_ts
                 module_src_components_progress_meta_ts --&gt; module_src_metadata_index_ts
                 module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_components_progress_Progress_tsx
@@ -46372,6 +46376,7 @@ graph TD
   package__ankhorage_zora -.-&gt; module_src_components_progress_index_ts
   module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_components_progress_meta_ts
+  module_src_components_progress_meta_ts --&gt; module_src_internal_colorModel_ts
   module_src_components_progress_meta_ts --&gt; module_src_metadata_index_ts
   module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_components_progress_Progress_tsx
@@ -48119,6 +48124,7 @@ graph TD
                 module_src_components_pagination_Pagination_tsx --&gt;
                 module_src_theme_withZoraThemeScope_tsx module_src_components_pagination_types_ts
                 --&gt; module_src_theme_ZoraBaseProps_ts module_src_components_progress_meta_ts
+                --&gt; module_src_internal_colorModel_ts module_src_components_progress_meta_ts
                 --&gt; module_src_metadata_index_ts module_src_components_progress_Progress_tsx
                 --&gt; module_src_components_progress_resolveProgressFraction_ts
                 module_src_components_progress_Progress_tsx --&gt;
@@ -49486,6 +49492,7 @@ graph LR
   module_src_components_pagination_Pagination_tsx --&gt; module_src_foundation_index_ts
   module_src_components_pagination_Pagination_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_components_pagination_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
+  module_src_components_progress_meta_ts --&gt; module_src_internal_colorModel_ts
   module_src_components_progress_meta_ts --&gt; module_src_metadata_index_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_components_progress_resolveProgressFraction_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_components_progress_types_ts

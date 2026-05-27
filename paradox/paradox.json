@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.5.5",
+      "value": "v2.6.0",
       "color": "cb3837"
     },
     {
@@ -1137,7 +1137,7 @@
     {
       "path": "src/components/progress/meta.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
+      "dependencies": ["src/internal/colorModel.ts", "src/metadata/index.ts"],
       "exports": ["progressMeta"]
     },
     {
@@ -43219,6 +43219,11 @@
         "fromPath": "src/components/progress/index.ts",
         "toPath": "src/components/progress/types.ts",
         "sourcePath": "src/components/progress/index.ts"
+      },
+      {
+        "fromPath": "src/components/progress/meta.ts",
+        "toPath": "src/internal/colorModel.ts",
+        "sourcePath": "src/components/progress/meta.ts"
       },
       {
         "fromPath": "src/components/progress/meta.ts",
