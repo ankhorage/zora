@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.0
+
+### Minor Changes
+
+- 17287a0: Add ZORA scanner UI patterns: BarcodeScannerView, CameraPermissionView, and ScanOverlay.
+
 ## 2.6.1
 
 ### Patch Changes
