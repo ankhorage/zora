@@ -317,6 +317,14 @@ export type {
   ResponsivePanelSize,
 } from './patterns/responsive-panel';
 export { ResponsivePanel } from './patterns/responsive-panel';
+export type {
+  BarcodeScannerViewProps,
+  BarcodeScanResult,
+  CameraPermissionStatus,
+  CameraPermissionViewProps,
+  ScanOverlayProps,
+} from './patterns/scanner';
+export { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 export type { SectionHeaderProps } from './patterns/section-header';
 export { SectionHeader } from './patterns/section-header';
 export type {
