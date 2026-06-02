@@ -18,7 +18,9 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
   test('covers every public UI React component export (foundation/components/patterns/layout)', async () => {
     const source = await Bun.file('src/index.ts').text();
     const componentExports = Array.from(
-      source.matchAll(/export \{ ([^}]+) \} from '\.\/(components|foundation|layout|patterns)\/[^']+';/g),
+      source.matchAll(
+        /export \{ ([^}]+) \} from '\.\/(components|foundation|layout|patterns)\/[^']+';/g,
+      ),
     )
       .flatMap((match) => match[1].split(',').map((item) => item.trim()))
       .map((item) => item.split(' as ')[0].trim())
@@ -26,7 +28,10 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       .filter((name) => !['ToastProvider'].includes(name));
 
     for (const name of componentExports) {
-      expect(ZORA_COMPONENT_META[name], `${name} is missing from ZORA_COMPONENT_META`).toBeDefined();
+      expect(
+        ZORA_COMPONENT_META[name],
+        `${name} is missing from ZORA_COMPONENT_META`,
+      ).toBeDefined();
     }
   });
 
