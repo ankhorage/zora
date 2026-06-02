@@ -2,10 +2,7 @@ import { describe, expect, it } from 'bun:test';
 import React from 'react';
 
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './index';
-
-function getComponentName(component: unknown) {
-  return typeof component === 'function' ? component.name : undefined;
-}
+import { barcodeScannerViewMeta, cameraPermissionViewMeta, scanOverlayMeta } from './meta';
 
 describe('scanner patterns', () => {
   it('exports scanner primitives', () => {
@@ -40,9 +37,10 @@ describe('scanner patterns', () => {
     expect(typeof element.props.onBarcodeScanned).toBe('function');
   });
 
-  it('keeps component names useful in docs and debugging', () => {
-    expect(getComponentName(BarcodeScannerView)).toContain('BarcodeScannerView');
-    expect(getComponentName(CameraPermissionView)).toContain('CameraPermissionView');
-    expect(getComponentName(ScanOverlay)).toContain('ScanOverlay');
+  it('describes scanner components for metadata-driven tooling', () => {
+    expect(barcodeScannerViewMeta.name).toBe('BarcodeScannerView');
+    expect(barcodeScannerViewMeta.events?.onBarcodeScanned?.eventType).toBe('scan');
+    expect(cameraPermissionViewMeta.name).toBe('CameraPermissionView');
+    expect(scanOverlayMeta.name).toBe('ScanOverlay');
   });
 });
