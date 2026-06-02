@@ -5491,7 +5491,7 @@
             </article>
             <article
               class="item"
-              data-search="src/patterns/scanner/BarcodeScannerView.tsx src/components/card/index.ts src/components/text/index.ts src/foundation/index.ts src/patterns/scanner/CameraPermissionView.tsx src/patterns/scanner/ScanOverlay.tsx src/patterns/scanner/types.ts src/theme/withZoraThemeScope.tsx BarcodeScannerView"
+              data-search="src/patterns/scanner/BarcodeScannerView.tsx src/components/card/index.ts src/components/text/index.ts src/foundation/index.ts src/patterns/scanner/CameraPermissionView.tsx src/patterns/scanner/ScanOverlay.tsx src/patterns/scanner/types.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx BarcodeScannerView"
             >
               <h3>src/patterns/scanner/BarcodeScannerView.tsx</h3>
               <p class="muted">Referenced module</p>
@@ -5500,7 +5500,7 @@
                 <code>src/components/text/index.ts</code>, <code>src/foundation/index.ts</code>,
                 <code>src/patterns/scanner/CameraPermissionView.tsx</code>,
                 <code>src/patterns/scanner/ScanOverlay.tsx</code>,
-                <code>src/patterns/scanner/types.ts</code>,
+                <code>src/patterns/scanner/types.ts</code>, <code>src/theme/useZoraTheme.ts</code>,
                 <code>src/theme/withZoraThemeScope.tsx</code>
               </p>
               <p><strong>Exports:</strong> <code>BarcodeScannerView</code></p>
@@ -5552,14 +5552,14 @@
             </article>
             <article
               class="item"
-              data-search="src/patterns/scanner/ScanOverlay.tsx src/components/badge/index.ts src/components/text/index.ts src/foundation/index.ts src/patterns/scanner/types.ts src/theme/withZoraThemeScope.tsx ScanOverlay"
+              data-search="src/patterns/scanner/ScanOverlay.tsx src/components/badge/index.ts src/components/text/index.ts src/foundation/index.ts src/patterns/scanner/types.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx ScanOverlay"
             >
               <h3>src/patterns/scanner/ScanOverlay.tsx</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong> <code>src/components/badge/index.ts</code>,
                 <code>src/components/text/index.ts</code>, <code>src/foundation/index.ts</code>,
-                <code>src/patterns/scanner/types.ts</code>,
+                <code>src/patterns/scanner/types.ts</code>, <code>src/theme/useZoraTheme.ts</code>,
                 <code>src/theme/withZoraThemeScope.tsx</code>
               </p>
               <p><strong>Exports:</strong> <code>ScanOverlay</code></p>
@@ -26957,7 +26957,7 @@
               >
                 <h4>BarcodeScannerView</h4>
                 <p class="muted">
-                  value • <code>src/patterns/scanner/BarcodeScannerView.tsx:120:14</code>
+                  value • <code>src/patterns/scanner/BarcodeScannerView.tsx:127:14</code>
                 </p>
                 <p>
                   Composed ZORA scanner shell for barcode scanning experiences. `BarcodeScannerView`
@@ -26996,7 +26996,7 @@
                 data-search="ScanOverlay value src/patterns/scanner/ScanOverlay.tsx Camera-agnostic scan frame overlay for barcode and QR scanning flows.&#10;&#10;`ScanOverlay` intentionally renders no native camera. Apps provide camera&#10;capability separately while ZORA owns the visible scan affordance."
               >
                 <h4>ScanOverlay</h4>
-                <p class="muted">value • <code>src/patterns/scanner/ScanOverlay.tsx:92:14</code></p>
+                <p class="muted">value • <code>src/patterns/scanner/ScanOverlay.tsx:99:14</code></p>
                 <p>
                   Camera-agnostic scan frame overlay for barcode and QR scanning flows.
                   `ScanOverlay` intentionally renders no native camera. Apps provide camera
@@ -30390,7 +30390,7 @@
               data-search="BarcodeScannerView src/patterns/scanner/BarcodeScannerView.tsx Composed ZORA scanner shell for barcode scanning experiences.&#10;&#10;`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,&#10;or test camera element through `camera`; keep permission and fallback UI here. camera React.ReactNode children React.ReactNode cornerLabel React.ReactNode deniedPermissionLabel React.ReactNode description React.ReactNode manualEntryLabel React.ReactNode mode ZoraThemeMode | undefined onBarcodeScanned ((result: BarcodeScanResult) =&gt; void | Promise&lt;void&gt;) | undefined onManualEntry (() =&gt; void | Promise&lt;void&gt;) | undefined onRequestPermission (() =&gt; void | Promise&lt;void&gt;) | undefined overlayDescription React.ReactNode overlayTitle React.ReactNode permissionStatus CameraPermissionStatus requestPermissionLabel React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode"
             >
               <h3>BarcodeScannerView</h3>
-              <p class="muted"><code>src/patterns/scanner/BarcodeScannerView.tsx:120:14</code></p>
+              <p class="muted"><code>src/patterns/scanner/BarcodeScannerView.tsx:127:14</code></p>
               <p>
                 Composed ZORA scanner shell for barcode scanning experiences. `BarcodeScannerView`
                 is camera-adapter-neutral: pass an `expo-camera`, web, or test camera element
@@ -40223,7 +40223,7 @@
               data-search="ScanOverlay src/patterns/scanner/ScanOverlay.tsx Camera-agnostic scan frame overlay for barcode and QR scanning flows.&#10;&#10;`ScanOverlay` intentionally renders no native camera. Apps provide camera&#10;capability separately while ZORA owns the visible scan affordance. cornerLabel React.ReactNode description React.ReactNode mode ZoraThemeMode | undefined testID string | undefined themeId string | undefined title React.ReactNode"
             >
               <h3>ScanOverlay</h3>
-              <p class="muted"><code>src/patterns/scanner/ScanOverlay.tsx:92:14</code></p>
+              <p class="muted"><code>src/patterns/scanner/ScanOverlay.tsx:99:14</code></p>
               <p>
                 Camera-agnostic scan frame overlay for barcode and QR scanning flows. `ScanOverlay`
                 intentionally renders no native camera. Apps provide camera capability separately
@@ -46504,7 +46504,8 @@
                 module_src_patterns_scanner_BarcodeScannerView_tsx --&gt;
                 module_src_patterns_scanner_types_ts
                 module_src_patterns_scanner_BarcodeScannerView_tsx --&gt;
-                module_src_theme_withZoraThemeScope_tsx
+                module_src_theme_useZoraTheme_ts module_src_patterns_scanner_BarcodeScannerView_tsx
+                --&gt; module_src_theme_withZoraThemeScope_tsx
                 module_src_patterns_scanner_CameraPermissionView_tsx[&quot;src/patterns/scanner/CameraPermissionView.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_patterns_scanner_CameraPermissionView_tsx
                 module_src_patterns_scanner_CameraPermissionView_tsx --&gt;
@@ -46532,6 +46533,7 @@
                 module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_foundation_index_ts
                 module_src_patterns_scanner_ScanOverlay_tsx --&gt;
                 module_src_patterns_scanner_types_ts module_src_patterns_scanner_ScanOverlay_tsx
+                --&gt; module_src_theme_useZoraTheme_ts module_src_patterns_scanner_ScanOverlay_tsx
                 --&gt; module_src_theme_withZoraThemeScope_tsx
                 module_src_patterns_scanner_types_ts[&quot;src/patterns/scanner/types.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_patterns_scanner_types_ts
@@ -48165,6 +48167,7 @@ graph TD
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_CameraPermissionView_tsx
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_ScanOverlay_tsx
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_scanner_CameraPermissionView_tsx[&quot;src/patterns/scanner/CameraPermissionView.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_scanner_CameraPermissionView_tsx
@@ -48186,6 +48189,7 @@ graph TD
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_components_text_index_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_foundation_index_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_scanner_types_ts[&quot;src/patterns/scanner/types.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_scanner_types_ts
@@ -49714,7 +49718,8 @@ graph TD
                 module_src_patterns_scanner_BarcodeScannerView_tsx --&gt;
                 module_src_patterns_scanner_types_ts
                 module_src_patterns_scanner_BarcodeScannerView_tsx --&gt;
-                module_src_theme_withZoraThemeScope_tsx
+                module_src_theme_useZoraTheme_ts module_src_patterns_scanner_BarcodeScannerView_tsx
+                --&gt; module_src_theme_withZoraThemeScope_tsx
                 module_src_patterns_scanner_CameraPermissionView_tsx --&gt;
                 module_src_components_button_index_ts
                 module_src_patterns_scanner_CameraPermissionView_tsx --&gt;
@@ -49733,6 +49738,7 @@ graph TD
                 module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_foundation_index_ts
                 module_src_patterns_scanner_ScanOverlay_tsx --&gt;
                 module_src_patterns_scanner_types_ts module_src_patterns_scanner_ScanOverlay_tsx
+                --&gt; module_src_theme_useZoraTheme_ts module_src_patterns_scanner_ScanOverlay_tsx
                 --&gt; module_src_theme_withZoraThemeScope_tsx module_src_patterns_scanner_types_ts
                 --&gt; module_src_components_button_index_ts module_src_patterns_scanner_types_ts
                 --&gt; module_src_theme_ZoraBaseProps_ts module_src_patterns_section_header_meta_ts
@@ -50988,6 +50994,7 @@ graph LR
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_CameraPermissionView_tsx
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_ScanOverlay_tsx
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_patterns_scanner_BarcodeScannerView_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_scanner_CameraPermissionView_tsx --&gt; module_src_components_button_index_ts
   module_src_patterns_scanner_CameraPermissionView_tsx --&gt; module_src_components_card_index_ts
@@ -51001,6 +51008,7 @@ graph LR
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_components_text_index_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_foundation_index_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_patterns_scanner_ScanOverlay_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_scanner_types_ts --&gt; module_src_components_button_index_ts
   module_src_patterns_scanner_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
@@ -57224,7 +57232,7 @@ sequenceDiagram
               data-search="BarcodeScannerViewInner src/patterns/scanner/BarcodeScannerView.tsx "
             >
               <h3>BarcodeScannerViewInner</h3>
-              <p class="muted"><code>src/patterns/scanner/BarcodeScannerView.tsx:12:1</code></p>
+              <p class="muted"><code>src/patterns/scanner/BarcodeScannerView.tsx:13:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -57268,7 +57276,7 @@ sequenceDiagram
               data-search="ScanOverlayInner src/patterns/scanner/ScanOverlay.tsx "
             >
               <h3>ScanOverlayInner</h3>
-              <p class="muted"><code>src/patterns/scanner/ScanOverlay.tsx:10:1</code></p>
+              <p class="muted"><code>src/patterns/scanner/ScanOverlay.tsx:11:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

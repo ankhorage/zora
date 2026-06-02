@@ -282,7 +282,7 @@ Source: `src/components/badge/types.ts:7:1`
 
 Kind: `value`
 Module: `src/patterns/scanner/BarcodeScannerView.tsx`
-Source: `src/patterns/scanner/BarcodeScannerView.tsx:120:14`
+Source: `src/patterns/scanner/BarcodeScannerView.tsx:127:14`
 
 Composed ZORA scanner shell for barcode scanning experiences.
 
@@ -3321,7 +3321,7 @@ Source: `src/patterns/responsive-panel/types.ts:8:1`
 
 Kind: `value`
 Module: `src/patterns/scanner/ScanOverlay.tsx`
-Source: `src/patterns/scanner/ScanOverlay.tsx:92:14`
+Source: `src/patterns/scanner/ScanOverlay.tsx:99:14`
 
 Camera-agnostic scan frame overlay for barcode and QR scanning flows.
 

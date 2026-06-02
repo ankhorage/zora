@@ -997,7 +997,7 @@
     "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
-      "line": 120,
+      "line": 127,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13298,7 +13298,7 @@
     "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/scanner/ScanOverlay.tsx",
-      "line": 92,
+      "line": 99,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

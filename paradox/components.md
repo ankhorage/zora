@@ -149,7 +149,7 @@ Export paths: `src/index.ts`
 
 ## BarcodeScannerView
 
-Source: `src/patterns/scanner/BarcodeScannerView.tsx:120:14`
+Source: `src/patterns/scanner/BarcodeScannerView.tsx:127:14`
 
 Composed ZORA scanner shell for barcode scanning experiences.
 
@@ -2162,7 +2162,7 @@ Export paths: `src/index.ts`
 
 ## ScanOverlay
 
-Source: `src/patterns/scanner/ScanOverlay.tsx:92:14`
+Source: `src/patterns/scanner/ScanOverlay.tsx:99:14`
 
 Camera-agnostic scan frame overlay for barcode and QR scanning flows.
 

@@ -3302,6 +3302,7 @@
         "src/patterns/scanner/CameraPermissionView.tsx",
         "src/patterns/scanner/ScanOverlay.tsx",
         "src/patterns/scanner/types.ts",
+        "src/theme/useZoraTheme.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["BarcodeScannerView"]
@@ -3348,6 +3349,7 @@
         "src/components/text/index.ts",
         "src/foundation/index.ts",
         "src/patterns/scanner/types.ts",
+        "src/theme/useZoraTheme.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["ScanOverlay"]
@@ -4830,7 +4832,7 @@
       "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
-        "line": 120,
+        "line": 127,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -17139,7 +17141,7 @@
       "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/scanner/ScanOverlay.tsx",
-        "line": 92,
+        "line": 99,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -25510,7 +25512,7 @@
       "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
-        "line": 120,
+        "line": 127,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -34180,7 +34182,7 @@
       "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/scanner/ScanOverlay.tsx",
-        "line": 92,
+        "line": 99,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -40713,7 +40715,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
-        "line": 12,
+        "line": 13,
         "column": 1
       }
     },
@@ -40740,7 +40742,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/scanner/ScanOverlay.tsx",
-        "line": 10,
+        "line": 11,
         "column": 1
       }
     },
@@ -46219,6 +46221,11 @@
       },
       {
         "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
       },
@@ -46310,6 +46317,11 @@
       {
         "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
         "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
         "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
       },
       {
@@ -49351,6 +49363,12 @@
         "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
       },
       {
+        "fromSymbol": "BarcodeScannerViewInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
         "fromSymbol": "src/patterns/scanner/BarcodeScannerView.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
@@ -49379,6 +49397,12 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromSymbol": "ScanOverlayInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
       },
       {
         "fromSymbol": "src/patterns/scanner/ScanOverlay.tsx",
