@@ -105,6 +105,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ChatListItem',
       'CameraPermissionView',
       'ScanOverlay',
+      'Progress'
     ]);
 
     const expectedContainerNodes = new Set([
@@ -144,6 +145,17 @@ describe('ZORA_COMPONENT_META invariants', () => {
         `Direct manifest node '${key}' must be categorized as leaf or container in the test.`,
       );
     }
+  });
+
+  test('Progress is a direct manifest leaf with serializable defaults', () => {
+    expect(ZORA_COMPONENT_META.Progress.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.Progress.allowedChildren).toEqual([]);
+    expect(ZORA_COMPONENT_META.Progress.blueprint?.defaultProps).toEqual({
+      value: 50,
+      max: 100,
+      color: 'primary',
+      size: 'm',
+    });
   });
 
   test('non-direct manifest nodes include an explicit note', () => {

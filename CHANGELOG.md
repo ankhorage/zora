@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.6.1
+
+### Patch Changes
+
+- 77fa4f9: Register `Progress` as a direct manifest-capable ZORA component with serializable metadata props and blueprint defaults.
+
+## 2.6.0
+
+### Minor Changes
+
+- 4687a8a: Add reusable OAuth provider button and list auth patterns.
+
 ## 2.5.5
 
 ### Patch Changes

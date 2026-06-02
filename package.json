@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "2.5.5",
+  "version": "2.6.1",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.0.7",
-    "@ankhorage/contracts": "^1.13.0",
+    "@ankhorage/contracts": "^1.15.0",
     "@ankhorage/surface": "^2.0.2"
   },
   "files": [
