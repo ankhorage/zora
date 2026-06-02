@@ -39,7 +39,7 @@ describe('scanner patterns', () => {
 
   it('describes scanner components for metadata-driven tooling', () => {
     expect(barcodeScannerViewMeta.name).toBe('BarcodeScannerView');
-    expect(barcodeScannerViewMeta.events?.onBarcodeScanned?.eventType).toBe('scan');
+    expect(barcodeScannerViewMeta.events.onBarcodeScanned.eventType).toBe('scan');
     expect(cameraPermissionViewMeta.name).toBe('CameraPermissionView');
     expect(scanOverlayMeta.name).toBe('ScanOverlay');
   });
