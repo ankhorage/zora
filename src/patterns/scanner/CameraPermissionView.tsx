@@ -47,6 +47,16 @@ function CameraPermissionViewInner({
 }: CameraPermissionViewProps) {
   const copy = resolvePermissionCopy(status);
   const primaryLabel = status === 'denied' ? deniedLabel : requestLabel;
+  const handleRequestPermission = onRequestPermission
+    ? () => {
+        void onRequestPermission();
+      }
+    : undefined;
+  const handleManualEntry = onManualEntry
+    ? () => {
+        void onManualEntry();
+      }
+    : undefined;
 
   return (
     <Card
@@ -62,20 +72,20 @@ function CameraPermissionViewInner({
           Permission state: {status}
         </Text>
         <Stack direction={{ base: 'column', md: 'row' }} gap="s">
-          {onRequestPermission ? (
+          {handleRequestPermission ? (
             <Button
               color="primary"
               disabled={status === 'requesting'}
-              onPress={onRequestPermission}
+              onPress={handleRequestPermission}
               {...requestButtonProps}
             >
               {primaryLabel}
             </Button>
           ) : null}
-          {onManualEntry ? (
+          {handleManualEntry ? (
             <Button
               color="neutral"
-              onPress={onManualEntry}
+              onPress={handleManualEntry}
               variant="soft"
               {...manualEntryButtonProps}
             >
