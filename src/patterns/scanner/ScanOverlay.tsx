@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Badge } from '../../components/badge';
 import { Text } from '../../components/text';
 import { Box, Stack } from '../../foundation';
+import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScanOverlayProps } from './types';
 
@@ -15,14 +16,22 @@ function ScanOverlayInner({
   cornerLabel = 'SCAN',
   testID,
 }: ScanOverlayProps) {
+  const { theme } = useZoraTheme();
+  const frameStyle = {
+    borderColor: theme.semantics.border.default,
+  };
+  const cornerStyle = {
+    borderColor: theme.semantics.border.focus,
+  };
+
   return (
     <Box testID={testID}>
       <Stack gap="m">
-        <View accessibilityRole="image" style={styles.frame}>
-          <View style={[styles.corner, styles.topLeft]} />
-          <View style={[styles.corner, styles.topRight]} />
-          <View style={[styles.corner, styles.bottomLeft]} />
-          <View style={[styles.corner, styles.bottomRight]} />
+        <View accessibilityRole="image" style={[styles.frame, frameStyle]}>
+          <View style={[styles.corner, styles.topLeft, cornerStyle]} />
+          <View style={[styles.corner, styles.topRight, cornerStyle]} />
+          <View style={[styles.corner, styles.bottomLeft, cornerStyle]} />
+          <View style={[styles.corner, styles.bottomRight, cornerStyle]} />
           <Badge color="primary">{cornerLabel}</Badge>
         </View>
         <Stack gap="xs">
@@ -42,7 +51,6 @@ const styles = StyleSheet.create({
   frame: {
     alignItems: 'center',
     aspectRatio: 1.55,
-    borderColor: 'rgba(255,255,255,0.36)',
     borderRadius: 28,
     borderWidth: 1,
     justifyContent: 'center',
@@ -51,7 +59,6 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   corner: {
-    borderColor: '#FFFFFF',
     height: 34,
     position: 'absolute',
     width: 34,
