@@ -147,6 +147,37 @@ Export paths: `src/index.ts`
 | themeId  | `string \| undefined`                                                                                                                         | no       | —       |             |
 | variant  | `ZoraBadgeVariant \| undefined`                                                                                                               | no       | —       |             |
 
+## BarcodeScannerView
+
+Source: `src/patterns/scanner/BarcodeScannerView.tsx:120:14`
+
+Composed ZORA scanner shell for barcode scanning experiences.
+
+`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,
+or test camera element through `camera`; keep permission and fallback UI here.
+
+Export paths: `src/index.ts`
+
+| Prop                   | Type                                                                  | Required | Default | Description |
+| ---------------------- | --------------------------------------------------------------------- | -------- | ------- | ----------- |
+| camera                 | `React.ReactNode`                                                     | no       | —       |             |
+| children               | `React.ReactNode`                                                     | no       | —       |             |
+| cornerLabel            | `React.ReactNode`                                                     | no       | —       |             |
+| deniedPermissionLabel  | `React.ReactNode`                                                     | no       | —       |             |
+| description            | `React.ReactNode`                                                     | no       | —       |             |
+| manualEntryLabel       | `React.ReactNode`                                                     | no       | —       |             |
+| mode                   | `ZoraThemeMode \| undefined`                                          | no       | —       |             |
+| onBarcodeScanned       | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no       | —       |             |
+| onManualEntry          | `(() => void \| Promise<void>) \| undefined`                          | no       | —       |             |
+| onRequestPermission    | `(() => void \| Promise<void>) \| undefined`                          | no       | —       |             |
+| overlayDescription     | `React.ReactNode`                                                     | no       | —       |             |
+| overlayTitle           | `React.ReactNode`                                                     | no       | —       |             |
+| permissionStatus       | `CameraPermissionStatus`                                              | yes      | —       |             |
+| requestPermissionLabel | `React.ReactNode`                                                     | no       | —       |             |
+| testID                 | `string \| undefined`                                                 | no       | —       |             |
+| themeId                | `string \| undefined`                                                 | no       | —       |             |
+| title                  | `React.ReactNode`                                                     | no       | —       |             |
+
 ## Box
 
 Source: `src/foundation/Box.tsx:18:14`
@@ -310,6 +341,33 @@ Export paths: `src/index.ts`
 | reverse     | `boolean \| undefined`                                                                                                                                                                                               | no       | —       |             |
 | testID      | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
 | themeId     | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+
+## CameraPermissionView
+
+Source: `src/patterns/scanner/CameraPermissionView.tsx:108:14`
+
+ZORA-owned camera permission state for scanner flows.
+
+Native permission APIs stay in app adapters. This component renders the
+request, denied, requesting, and manual-entry surfaces consistently.
+
+Export paths: `src/index.ts`
+
+| Prop                   | Type                                                      | Required | Default | Description |
+| ---------------------- | --------------------------------------------------------- | -------- | ------- | ----------- |
+| deniedLabel            | `React.ReactNode`                                         | no       | —       |             |
+| description            | `React.ReactNode`                                         | no       | —       |             |
+| manualEntryButtonProps | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       | —       |             |
+| manualEntryLabel       | `React.ReactNode`                                         | no       | —       |             |
+| mode                   | `ZoraThemeMode \| undefined`                              | no       | —       |             |
+| onManualEntry          | `(() => void \| Promise<void>) \| undefined`              | no       | —       |             |
+| onRequestPermission    | `(() => void \| Promise<void>) \| undefined`              | no       | —       |             |
+| requestButtonProps     | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       | —       |             |
+| requestLabel           | `React.ReactNode`                                         | no       | —       |             |
+| status                 | `"unknown" \| "requesting" \| "denied"`                   | yes      | —       |             |
+| testID                 | `string \| undefined`                                     | no       | —       |             |
+| themeId                | `string \| undefined`                                     | no       | —       |             |
+| title                  | `React.ReactNode`                                         | no       | —       |             |
 
 ## Card
 
@@ -2101,6 +2159,26 @@ Export paths: `src/index.ts`
 | testID       | `string \| undefined`                     | no       | —       |             |
 | themeId      | `string \| undefined`                     | no       | —       |             |
 | title        | `React.ReactNode`                         | no       | —       |             |
+
+## ScanOverlay
+
+Source: `src/patterns/scanner/ScanOverlay.tsx:92:14`
+
+Camera-agnostic scan frame overlay for barcode and QR scanning flows.
+
+`ScanOverlay` intentionally renders no native camera. Apps provide camera
+capability separately while ZORA owns the visible scan affordance.
+
+Export paths: `src/index.ts`
+
+| Prop        | Type                         | Required | Default | Description |
+| ----------- | ---------------------------- | -------- | ------- | ----------- |
+| cornerLabel | `React.ReactNode`            | no       | —       |             |
+| description | `React.ReactNode`            | no       | —       |             |
+| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
+| testID      | `string \| undefined`        | no       | —       |             |
+| themeId     | `string \| undefined`        | no       | —       |             |
+| title       | `React.ReactNode`            | no       | —       |             |
 
 ## Screen
 

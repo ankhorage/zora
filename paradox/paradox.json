@@ -1755,6 +1755,9 @@
         "AvatarSize",
         "Badge",
         "BadgeProps",
+        "BarcodeScannerView",
+        "BarcodeScannerViewProps",
+        "BarcodeScanResult",
         "Box",
         "BoxProps",
         "BreadcrumbItem",
@@ -1766,6 +1769,9 @@
         "ButtonGroupOrientation",
         "ButtonGroupProps",
         "ButtonProps",
+        "CameraPermissionStatus",
+        "CameraPermissionView",
+        "CameraPermissionViewProps",
         "Card",
         "CardProps",
         "Center",
@@ -1949,6 +1955,8 @@
         "ResponsivePanelScroll",
         "ResponsivePanelSide",
         "ResponsivePanelSize",
+        "ScanOverlay",
+        "ScanOverlayProps",
         "Screen",
         "ScreenProps",
         "ScreenSection",
@@ -2423,6 +2431,7 @@
         "src/patterns/panel/meta.ts",
         "src/patterns/post-card/meta.ts",
         "src/patterns/responsive-panel/meta.ts",
+        "src/patterns/scanner/meta.ts",
         "src/patterns/section-header/meta.ts",
         "src/patterns/selection/meta.ts",
         "src/patterns/settings-row/meta.ts",
@@ -3281,6 +3290,78 @@
         "ResponsivePanelScroll",
         "ResponsivePanelSide",
         "ResponsivePanelSize"
+      ]
+    },
+    {
+      "path": "src/patterns/scanner/BarcodeScannerView.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/card/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/patterns/scanner/CameraPermissionView.tsx",
+        "src/patterns/scanner/ScanOverlay.tsx",
+        "src/patterns/scanner/types.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["BarcodeScannerView"]
+    },
+    {
+      "path": "src/patterns/scanner/CameraPermissionView.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/button/index.ts",
+        "src/components/card/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/patterns/scanner/types.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["CameraPermissionView"]
+    },
+    {
+      "path": "src/patterns/scanner/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "BarcodeScannerView",
+        "BarcodeScannerViewProps",
+        "BarcodeScanResult",
+        "CameraPermissionStatus",
+        "CameraPermissionView",
+        "CameraPermissionViewProps",
+        "ScanOverlay",
+        "ScanOverlayProps"
+      ]
+    },
+    {
+      "path": "src/patterns/scanner/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/index.ts"],
+      "exports": ["barcodeScannerViewMeta", "cameraPermissionViewMeta", "scanOverlayMeta"]
+    },
+    {
+      "path": "src/patterns/scanner/ScanOverlay.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/badge/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/patterns/scanner/types.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["ScanOverlay"]
+    },
+    {
+      "path": "src/patterns/scanner/types.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/components/button/index.ts", "src/theme/ZoraBaseProps.ts"],
+      "exports": [
+        "BarcodeScannerViewProps",
+        "BarcodeScanResult",
+        "CameraPermissionStatus",
+        "CameraPermissionViewProps",
+        "ScanOverlayProps"
       ]
     },
     {
@@ -4741,6 +4822,195 @@
       "structuredRows": []
     },
     {
+      "name": "BarcodeScannerView",
+      "description": "Composed ZORA scanner shell for barcode scanning experiences.\n\n`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,\nor test camera element through `camera`; keep permission and fallback UI here.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "line": 120,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "BarcodeScannerViewProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/scanner/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/types.ts",
+        "line": 32,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["BarcodeScanResult", "CameraPermissionStatus", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "camera",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "cornerLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "deniedPermissionLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBarcodeScanned",
+          "kind": "property",
+          "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onManualEntry",
+          "kind": "property",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onRequestPermission",
+          "kind": "property",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overlayDescription",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overlayTitle",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "permissionStatus",
+          "kind": "property",
+          "type": "CameraPermissionStatus",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "requestPermissionLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "BarcodeScanResult",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/scanner/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/types.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "type",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "value",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Box",
       "description": "Base layout primitive for themed spacing, color, border, flex, and responsive props.",
       "isReadme": false,
@@ -5797,6 +6067,152 @@
           "name": "zIndex",
           "kind": "property",
           "type": "Responsive<number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "CameraPermissionStatus",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/scanner/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CameraPermissionView",
+      "description": "ZORA-owned camera permission state for scanner flows.\n\nNative permission APIs stay in app adapters. This component renders the\nrequest, denied, requesting, and manual-entry surfaces consistently.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/scanner/CameraPermissionView.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "line": 108,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CameraPermissionViewProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/scanner/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/types.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["ButtonProps", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "deniedLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryButtonProps",
+          "kind": "property",
+          "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onManualEntry",
+          "kind": "property",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onRequestPermission",
+          "kind": "property",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "requestButtonProps",
+          "kind": "property",
+          "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "requestLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "status",
+          "kind": "property",
+          "type": "\"unknown\" | \"requesting\" | \"denied\"",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -16715,6 +17131,85 @@
       "structuredRows": []
     },
     {
+      "name": "ScanOverlay",
+      "description": "Camera-agnostic scan frame overlay for barcode and QR scanning flows.\n\n`ScanOverlay` intentionally renders no native camera. Apps provide camera\ncapability separately while ZORA owns the visible scan affordance.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/ScanOverlay.tsx",
+        "line": 92,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ScanOverlayProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/scanner/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/types.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "cornerLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Screen",
       "description": "Page-level container with standard background and optional scroll behavior.",
       "isReadme": false,
@@ -22979,7 +23474,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 91,
+        "line": 96,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -25008,6 +25503,123 @@
       ]
     },
     {
+      "name": "BarcodeScannerView",
+      "description": "Composed ZORA scanner shell for barcode scanning experiences.\n\n`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,\nor test camera element through `camera`; keep permission and fallback UI here.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "line": 120,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "camera",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "cornerLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "deniedPermissionLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBarcodeScanned",
+          "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onManualEntry",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onRequestPermission",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overlayDescription",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overlayTitle",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "permissionStatus",
+          "type": "CameraPermissionStatus",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "requestPermissionLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Box",
       "description": "Base layout primitive for themed spacing, color, border, flex, and responsive props.",
       "isReadme": false,
@@ -25770,6 +26382,99 @@
         {
           "name": "themeId",
           "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "CameraPermissionView",
+      "description": "ZORA-owned camera permission state for scanner flows.\n\nNative permission APIs stay in app adapters. This component renders the\nrequest, denied, requesting, and manual-entry surfaces consistently.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/scanner/CameraPermissionView.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "line": 108,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "deniedLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryButtonProps",
+          "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "manualEntryLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onManualEntry",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onRequestPermission",
+          "type": "(() => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "requestButtonProps",
+          "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "requestLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "status",
+          "type": "\"unknown\" | \"requesting\" | \"denied\"",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -33468,6 +34173,57 @@
       ]
     },
     {
+      "name": "ScanOverlay",
+      "description": "Camera-agnostic scan frame overlay for barcode and QR scanning flows.\n\n`ScanOverlay` intentionally renders no native camera. Apps provide camera\ncapability separately while ZORA owns the visible scan affordance.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/ScanOverlay.tsx",
+        "line": 92,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "cornerLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Screen",
       "description": "Page-level container with standard background and optional scroll behavior.",
       "isReadme": false,
@@ -39953,6 +40709,42 @@
       }
     },
     {
+      "name": "BarcodeScannerViewInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolvePermissionCopy",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "CameraPermissionViewInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "line": 33,
+        "column": 1
+      }
+    },
+    {
+      "name": "ScanOverlayInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/scanner/ScanOverlay.tsx",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
       "name": "SectionHeaderInner",
       "description": null,
       "sourceLocation": {
@@ -40847,6 +41639,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/patterns/scanner/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/patterns/section-header/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -41403,6 +42200,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/responsive-panel/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/patterns/scanner/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -45401,6 +46203,136 @@
         "sourcePath": "src/patterns/responsive-panel/types.ts"
       },
       {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/components/card/index.ts",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toPath": "src/patterns/scanner/types.ts",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/components/card/index.ts",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toPath": "src/patterns/scanner/types.ts",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/index.ts",
+        "toPath": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "sourcePath": "src/patterns/scanner/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/index.ts",
+        "toPath": "src/patterns/scanner/CameraPermissionView.tsx",
+        "sourcePath": "src/patterns/scanner/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/index.ts",
+        "toPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "sourcePath": "src/patterns/scanner/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/index.ts",
+        "toPath": "src/patterns/scanner/types.ts",
+        "sourcePath": "src/patterns/scanner/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/patterns/scanner/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/meta.ts",
+        "toPath": "src/metadata/allowedChildren.ts",
+        "sourcePath": "src/patterns/scanner/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/components/badge/index.ts",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/ScanOverlay.tsx",
+        "toPath": "src/patterns/scanner/types.ts",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
+      },
+      {
+        "fromPath": "src/patterns/scanner/types.ts",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromPath": "src/patterns/scanner/types.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
         "fromPath": "src/patterns/section-header/index.ts",
         "toPath": "src/patterns/section-header/SectionHeader.tsx",
         "sourcePath": "src/patterns/section-header/index.ts"
@@ -48417,6 +49349,42 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/scanner/BarcodeScannerView.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewInner",
+        "toSymbol": "resolvePermissionCopy",
+        "callExpression": "resolvePermissionCopy",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toSymbol": "onRequestPermission",
+        "callExpression": "onRequestPermission",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toSymbol": "onManualEntry",
+        "callExpression": "onManualEntry",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/scanner/CameraPermissionView.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/scanner/CameraPermissionView.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/scanner/ScanOverlay.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/scanner/ScanOverlay.tsx"
       },
       {
         "fromSymbol": "src/patterns/section-header/SectionHeader.tsx",
@@ -52140,6 +53108,71 @@
         "fromSymbol": "ResponsivePanelProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/patterns/responsive-panel/types.ts"
+      },
+      {
+        "fromSymbol": "BarcodeScannerViewProps",
+        "toType": "BarcodeScanResult",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "BarcodeScannerViewProps",
+        "toType": "CameraPermissionStatus",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "BarcodeScannerViewProps",
+        "toType": "React",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "BarcodeScannerViewProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "BarcodeScannerViewProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewProps",
+        "toType": "ButtonProps",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewProps",
+        "toType": "Omit",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewProps",
+        "toType": "React",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "CameraPermissionViewProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "ScanOverlayProps",
+        "toType": "React",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "ScanOverlayProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/scanner/types.ts"
+      },
+      {
+        "fromSymbol": "ScanOverlayProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/scanner/types.ts"
       },
       {
         "fromSymbol": "SectionHeaderProps",

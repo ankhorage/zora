@@ -313,6 +313,12 @@ graph LR
   module_src_patterns_responsive_panel_meta_ts["src/patterns/responsive-panel/meta.ts"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx["src/patterns/responsive-panel/ResponsivePanel.tsx"]
   module_src_patterns_responsive_panel_types_ts["src/patterns/responsive-panel/types.ts"]
+  module_src_patterns_scanner_BarcodeScannerView_tsx["src/patterns/scanner/BarcodeScannerView.tsx"]
+  module_src_patterns_scanner_CameraPermissionView_tsx["src/patterns/scanner/CameraPermissionView.tsx"]
+  module_src_patterns_scanner_index_ts["src/patterns/scanner/index.ts"]
+  module_src_patterns_scanner_meta_ts["src/patterns/scanner/meta.ts"]
+  module_src_patterns_scanner_ScanOverlay_tsx["src/patterns/scanner/ScanOverlay.tsx"]
+  module_src_patterns_scanner_types_ts["src/patterns/scanner/types.ts"]
   module_src_patterns_section_header_index_ts["src/patterns/section-header/index.ts"]
   module_src_patterns_section_header_meta_ts["src/patterns/section-header/meta.ts"]
   module_src_patterns_section_header_SectionHeader_tsx["src/patterns/section-header/SectionHeader.tsx"]
@@ -871,6 +877,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_patterns_panel_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_post_card_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_responsive_panel_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_patterns_scanner_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_section_header_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_selection_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_settings_row_meta_ts
@@ -1077,6 +1084,28 @@ graph LR
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> module_src_patterns_responsive_panel_types_ts
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_responsive_panel_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_components_card_index_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_components_text_index_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_foundation_index_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_patterns_scanner_CameraPermissionView_tsx
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_patterns_scanner_ScanOverlay_tsx
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_components_button_index_ts
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_components_card_index_ts
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_components_text_index_ts
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_foundation_index_ts
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_CameraPermissionView_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_scanner_meta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_patterns_scanner_meta_ts --> module_src_metadata_index_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --> module_src_components_badge_index_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --> module_src_components_text_index_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --> module_src_foundation_index_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --> module_src_patterns_scanner_types_ts
+  module_src_patterns_scanner_ScanOverlay_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_scanner_types_ts --> module_src_components_button_index_ts
+  module_src_patterns_scanner_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_section_header_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_section_header_SectionHeader_tsx --> module_src_components_heading_index_ts
   module_src_patterns_section_header_SectionHeader_tsx --> module_src_components_text_index_ts
