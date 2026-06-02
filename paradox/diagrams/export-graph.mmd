@@ -313,6 +313,12 @@ graph LR
   module_src_patterns_responsive_panel_meta_ts["src/patterns/responsive-panel/meta.ts"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx["src/patterns/responsive-panel/ResponsivePanel.tsx"]
   module_src_patterns_responsive_panel_types_ts["src/patterns/responsive-panel/types.ts"]
+  module_src_patterns_scanner_BarcodeScannerView_tsx["src/patterns/scanner/BarcodeScannerView.tsx"]
+  module_src_patterns_scanner_CameraPermissionView_tsx["src/patterns/scanner/CameraPermissionView.tsx"]
+  module_src_patterns_scanner_index_ts["src/patterns/scanner/index.ts"]
+  module_src_patterns_scanner_meta_ts["src/patterns/scanner/meta.ts"]
+  module_src_patterns_scanner_ScanOverlay_tsx["src/patterns/scanner/ScanOverlay.tsx"]
+  module_src_patterns_scanner_types_ts["src/patterns/scanner/types.ts"]
   module_src_patterns_section_header_index_ts["src/patterns/section-header/index.ts"]
   module_src_patterns_section_header_meta_ts["src/patterns/section-header/meta.ts"]
   module_src_patterns_section_header_SectionHeader_tsx["src/patterns/section-header/SectionHeader.tsx"]
@@ -425,6 +431,15 @@ graph LR
   export_BadgeProps["BadgeProps"]
   module_src_components_badge_types_ts --> export_BadgeProps
   export_BadgeProps -.-> export_ZoraThemeMode
+  export_BarcodeScannerView["BarcodeScannerView"]
+  module_src_patterns_scanner_BarcodeScannerView_tsx --> export_BarcodeScannerView
+  export_BarcodeScannerViewProps["BarcodeScannerViewProps"]
+  module_src_patterns_scanner_types_ts --> export_BarcodeScannerViewProps
+  export_BarcodeScannerViewProps -.-> export_BarcodeScanResult
+  export_BarcodeScannerViewProps -.-> export_CameraPermissionStatus
+  export_BarcodeScannerViewProps -.-> export_ZoraThemeMode
+  export_BarcodeScanResult["BarcodeScanResult"]
+  module_src_patterns_scanner_types_ts --> export_BarcodeScanResult
   export_Box["Box"]
   module_src_foundation_Box_tsx --> export_Box
   export_BoxProps["BoxProps"]
@@ -454,6 +469,14 @@ graph LR
   export_ButtonProps["ButtonProps"]
   module_src_components_button_types_ts --> export_ButtonProps
   export_ButtonProps -.-> export_ZoraThemeMode
+  export_CameraPermissionStatus["CameraPermissionStatus"]
+  module_src_patterns_scanner_types_ts --> export_CameraPermissionStatus
+  export_CameraPermissionView["CameraPermissionView"]
+  module_src_patterns_scanner_CameraPermissionView_tsx --> export_CameraPermissionView
+  export_CameraPermissionViewProps["CameraPermissionViewProps"]
+  module_src_patterns_scanner_types_ts --> export_CameraPermissionViewProps
+  export_CameraPermissionViewProps -.-> export_ButtonProps
+  export_CameraPermissionViewProps -.-> export_ZoraThemeMode
   export_Card["Card"]
   module_src_components_card_Card_tsx --> export_Card
   export_CardProps["CardProps"]
@@ -947,6 +970,11 @@ graph LR
   module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelSide
   export_ResponsivePanelSize["ResponsivePanelSize"]
   module_src_patterns_responsive_panel_types_ts --> export_ResponsivePanelSize
+  export_ScanOverlay["ScanOverlay"]
+  module_src_patterns_scanner_ScanOverlay_tsx --> export_ScanOverlay
+  export_ScanOverlayProps["ScanOverlayProps"]
+  module_src_patterns_scanner_types_ts --> export_ScanOverlayProps
+  export_ScanOverlayProps -.-> export_ZoraThemeMode
   export_Screen["Screen"]
   module_src_layout_screen_Screen_tsx --> export_Screen
   export_ScreenProps["ScreenProps"]

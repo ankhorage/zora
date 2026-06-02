@@ -278,6 +278,58 @@ Source: `src/components/badge/types.ts:7:1`
 | themeId  | property | `string \| undefined`                                                                                                                         | no       |             |
 | variant  | property | `ZoraBadgeVariant \| undefined`                                                                                                               | no       |             |
 
+## BarcodeScannerView
+
+Kind: `value`
+Module: `src/patterns/scanner/BarcodeScannerView.tsx`
+Source: `src/patterns/scanner/BarcodeScannerView.tsx:127:14`
+
+Composed ZORA scanner shell for barcode scanning experiences.
+
+`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,
+or test camera element through `camera`; keep permission and fallback UI here.
+
+## BarcodeScannerViewProps
+
+Kind: `type`
+Module: `src/patterns/scanner/types.ts`
+Source: `src/patterns/scanner/types.ts:32:1`
+
+### Members
+
+| Name                   | Kind     | Type                                                                  | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------------------- | -------- | ----------- |
+| camera                 | property | `React.ReactNode`                                                     | no       |             |
+| children               | property | `React.ReactNode`                                                     | no       |             |
+| cornerLabel            | property | `React.ReactNode`                                                     | no       |             |
+| deniedPermissionLabel  | property | `React.ReactNode`                                                     | no       |             |
+| description            | property | `React.ReactNode`                                                     | no       |             |
+| manualEntryLabel       | property | `React.ReactNode`                                                     | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                                          | no       |             |
+| onBarcodeScanned       | property | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no       |             |
+| onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`                          | no       |             |
+| onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`                          | no       |             |
+| overlayDescription     | property | `React.ReactNode`                                                     | no       |             |
+| overlayTitle           | property | `React.ReactNode`                                                     | no       |             |
+| permissionStatus       | property | `CameraPermissionStatus`                                              | yes      |             |
+| requestPermissionLabel | property | `React.ReactNode`                                                     | no       |             |
+| testID                 | property | `string \| undefined`                                                 | no       |             |
+| themeId                | property | `string \| undefined`                                                 | no       |             |
+| title                  | property | `React.ReactNode`                                                     | no       |             |
+
+## BarcodeScanResult
+
+Kind: `type`
+Module: `src/patterns/scanner/types.ts`
+Source: `src/patterns/scanner/types.ts:8:1`
+
+### Members
+
+| Name  | Kind     | Type                  | Required | Description |
+| ----- | -------- | --------------------- | -------- | ----------- |
+| type  | property | `string \| undefined` | no       |             |
+| value | property | `string`              | yes      |             |
+
 ## Box
 
 Kind: `value`
@@ -501,6 +553,47 @@ Source: `src/components/button/types.ts:7:1`
 | variant            | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
 | width              | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
 | zIndex             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+
+## CameraPermissionStatus
+
+Kind: `unknown`
+Module: `src/patterns/scanner/types.ts`
+Source: `src/patterns/scanner/types.ts:6:1`
+
+## CameraPermissionView
+
+Kind: `value`
+Module: `src/patterns/scanner/CameraPermissionView.tsx`
+Source: `src/patterns/scanner/CameraPermissionView.tsx:108:14`
+
+ZORA-owned camera permission state for scanner flows.
+
+Native permission APIs stay in app adapters. This component renders the
+request, denied, requesting, and manual-entry surfaces consistently.
+
+## CameraPermissionViewProps
+
+Kind: `type`
+Module: `src/patterns/scanner/types.ts`
+Source: `src/patterns/scanner/types.ts:19:1`
+
+### Members
+
+| Name                   | Kind     | Type                                                      | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------- | -------- | ----------- |
+| deniedLabel            | property | `React.ReactNode`                                         | no       |             |
+| description            | property | `React.ReactNode`                                         | no       |             |
+| manualEntryButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| manualEntryLabel       | property | `React.ReactNode`                                         | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                              | no       |             |
+| onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
+| onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
+| requestButtonProps     | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| requestLabel           | property | `React.ReactNode`                                         | no       |             |
+| status                 | property | `"unknown" \| "requesting" \| "denied"`                   | yes      |             |
+| testID                 | property | `string \| undefined`                                     | no       |             |
+| themeId                | property | `string \| undefined`                                     | no       |             |
+| title                  | property | `React.ReactNode`                                         | no       |             |
 
 ## Card
 
@@ -3224,6 +3317,34 @@ Kind: `unknown`
 Module: `src/patterns/responsive-panel/types.ts`
 Source: `src/patterns/responsive-panel/types.ts:8:1`
 
+## ScanOverlay
+
+Kind: `value`
+Module: `src/patterns/scanner/ScanOverlay.tsx`
+Source: `src/patterns/scanner/ScanOverlay.tsx:99:14`
+
+Camera-agnostic scan frame overlay for barcode and QR scanning flows.
+
+`ScanOverlay` intentionally renders no native camera. Apps provide camera
+capability separately while ZORA owns the visible scan affordance.
+
+## ScanOverlayProps
+
+Kind: `type`
+Module: `src/patterns/scanner/types.ts`
+Source: `src/patterns/scanner/types.ts:13:1`
+
+### Members
+
+| Name        | Kind     | Type                         | Required | Description |
+| ----------- | -------- | ---------------------------- | -------- | ----------- |
+| cornerLabel | property | `React.ReactNode`            | no       |             |
+| description | property | `React.ReactNode`            | no       |             |
+| mode        | property | `ZoraThemeMode \| undefined` | no       |             |
+| testID      | property | `string \| undefined`        | no       |             |
+| themeId     | property | `string \| undefined`        | no       |             |
+| title       | property | `React.ReactNode`            | no       |             |
+
 ## Screen
 
 Kind: `value`
@@ -4874,7 +4995,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:91:14`
+Source: `src/metadata/componentMeta.ts:96:14`
 
 ## ZORA_EMPHASES
 

@@ -989,6 +989,195 @@
     "structuredRows": []
   },
   {
+    "name": "BarcodeScannerView",
+    "description": "Composed ZORA scanner shell for barcode scanning experiences.\n\n`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,\nor test camera element through `camera`; keep permission and fallback UI here.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+      "line": 127,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "BarcodeScannerViewProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/scanner/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/types.ts",
+      "line": 32,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["BarcodeScanResult", "CameraPermissionStatus", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "camera",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cornerLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "deniedPermissionLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "manualEntryLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onBarcodeScanned",
+        "kind": "property",
+        "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onManualEntry",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onRequestPermission",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overlayDescription",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overlayTitle",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "permissionStatus",
+        "kind": "property",
+        "type": "CameraPermissionStatus",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requestPermissionLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "BarcodeScanResult",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/scanner/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/types.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Box",
     "description": "Base layout primitive for themed spacing, color, border, flex, and responsive props.",
     "isReadme": false,
@@ -2045,6 +2234,152 @@
         "name": "zIndex",
         "kind": "property",
         "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "CameraPermissionStatus",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/scanner/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/types.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CameraPermissionView",
+    "description": "ZORA-owned camera permission state for scanner flows.\n\nNative permission APIs stay in app adapters. This component renders the\nrequest, denied, requesting, and manual-entry surfaces consistently.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/scanner/CameraPermissionView.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+      "line": 108,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CameraPermissionViewProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/scanner/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/types.ts",
+      "line": 19,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ButtonProps", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "deniedLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "manualEntryButtonProps",
+        "kind": "property",
+        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "manualEntryLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onManualEntry",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onRequestPermission",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestButtonProps",
+        "kind": "property",
+        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "\"unknown\" | \"requesting\" | \"denied\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "React.ReactNode",
         "required": false,
         "description": null
       }
@@ -12955,6 +13290,85 @@
     "structuredRows": []
   },
   {
+    "name": "ScanOverlay",
+    "description": "Camera-agnostic scan frame overlay for barcode and QR scanning flows.\n\n`ScanOverlay` intentionally renders no native camera. Apps provide camera\ncapability separately while ZORA owns the visible scan affordance.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/ScanOverlay.tsx",
+      "line": 99,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ScanOverlayProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/scanner/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/scanner/types.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "cornerLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Screen",
     "description": "Page-level container with standard background and optional scroll behavior.",
     "isReadme": false,
@@ -19219,7 +19633,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 91,
+      "line": 96,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

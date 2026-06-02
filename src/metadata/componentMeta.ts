@@ -76,6 +76,11 @@ import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
 import { postCardMeta } from '../patterns/post-card/meta';
 import { responsivePanelMeta } from '../patterns/responsive-panel/meta';
+import {
+  barcodeScannerViewMeta,
+  cameraPermissionViewMeta,
+  scanOverlayMeta,
+} from '../patterns/scanner/meta';
 import { sectionHeaderMeta } from '../patterns/section-header/meta';
 import { selectableItemMeta, selectionProviderMeta } from '../patterns/selection/meta';
 import { settingsRowMeta } from '../patterns/settings-row/meta';
@@ -174,6 +179,9 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Panel: panelMeta,
   PostCard: postCardMeta,
   ResponsivePanel: responsivePanelMeta,
+  BarcodeScannerView: barcodeScannerViewMeta,
+  CameraPermissionView: cameraPermissionViewMeta,
+  ScanOverlay: scanOverlayMeta,
   SectionHeader: sectionHeaderMeta,
   SelectableItem: selectableItemMeta,
   SelectionProvider: selectionProviderMeta,
