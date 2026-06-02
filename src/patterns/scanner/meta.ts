@@ -103,7 +103,8 @@ export const cameraPermissionViewMeta = {
 export const barcodeScannerViewMeta = {
   name: 'BarcodeScannerView',
   category: 'pattern',
-  description: 'Composed scanner shell with permission, camera slot, scan overlay, and manual entry affordance.',
+  description:
+    'Composed scanner shell with permission, camera slot, scan overlay, and manual entry affordance.',
   directManifestNode: true,
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   blueprint: {

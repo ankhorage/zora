@@ -42,11 +42,22 @@ function BarcodeScannerViewInner({
   }
 
   return (
-    <Card compact description={description} eyebrow="Scanner" testID={testID} title={title} tone="subtle">
+    <Card
+      compact
+      description={description}
+      eyebrow="Scanner"
+      testID={testID}
+      title={title}
+      tone="subtle"
+    >
       <Stack gap="m">
         <Box>
           <View style={styles.viewport}>
-            {camera ? <View style={styles.cameraSlot}>{camera}</View> : <View style={styles.placeholder} />}
+            {camera ? (
+              <View style={styles.cameraSlot}>{camera}</View>
+            ) : (
+              <View style={styles.placeholder} />
+            )}
             <View pointerEvents="none" style={styles.overlay}>
               <ScanOverlay
                 cornerLabel={cornerLabel}
@@ -58,7 +69,8 @@ function BarcodeScannerViewInner({
         </Box>
         {children ? <Box>{children}</Box> : null}
         <Text emphasis="muted" variant="caption">
-          Native scanning belongs to an app adapter such as expo-camera. ZORA owns this visible scanner surface.
+          Native scanning belongs to an app adapter such as expo-camera. ZORA owns this visible
+          scanner surface.
         </Text>
       </Stack>
     </Card>

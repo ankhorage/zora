@@ -25,7 +25,8 @@ function resolvePermissionCopy(status: CameraPermissionViewProps['status']) {
 
   return {
     title: 'Allow camera access',
-    description: 'Camera access is required to scan barcodes. You can also enter the barcode manually.',
+    description:
+      'Camera access is required to scan barcodes. You can also enter the barcode manually.',
   };
 }
 
