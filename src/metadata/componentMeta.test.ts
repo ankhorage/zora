@@ -105,7 +105,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ChatListItem',
       'CameraPermissionView',
       'ScanOverlay',
-      'Progress'
+      'Progress',
     ]);
 
     const expectedContainerNodes = new Set([
