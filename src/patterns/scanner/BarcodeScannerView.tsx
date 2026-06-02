@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Card } from '../../components/card';
 import { Text } from '../../components/text';
 import { Box, Stack } from '../../foundation';
+import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { CameraPermissionView } from './CameraPermissionView';
 import { ScanOverlay } from './ScanOverlay';
@@ -27,6 +28,14 @@ function BarcodeScannerViewInner({
   onManualEntry,
   testID,
 }: BarcodeScannerViewProps) {
+  const { theme } = useZoraTheme();
+  const viewportStyle = {
+    backgroundColor: theme.semantics.surface.inverse,
+  };
+  const placeholderStyle = {
+    backgroundColor: theme.semantics.surface.inverse,
+  };
+
   if (permissionStatus !== 'granted') {
     return (
       <CameraPermissionView
@@ -52,11 +61,11 @@ function BarcodeScannerViewInner({
     >
       <Stack gap="m">
         <Box>
-          <View style={styles.viewport}>
+          <View style={[styles.viewport, viewportStyle]}>
             {camera ? (
               <View style={styles.cameraSlot}>{camera}</View>
             ) : (
-              <View style={styles.placeholder} />
+              <View style={[styles.placeholder, placeholderStyle]} />
             )}
             <View pointerEvents="none" style={styles.overlay}>
               <ScanOverlay
@@ -80,7 +89,6 @@ function BarcodeScannerViewInner({
 const styles = StyleSheet.create({
   viewport: {
     aspectRatio: 0.72,
-    backgroundColor: '#111827',
     borderRadius: 28,
     minHeight: 360,
     overflow: 'hidden',
@@ -94,7 +102,6 @@ const styles = StyleSheet.create({
     top: 0,
   },
   placeholder: {
-    backgroundColor: '#111827',
     bottom: 0,
     left: 0,
     position: 'absolute',
