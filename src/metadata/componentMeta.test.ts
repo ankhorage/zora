@@ -17,7 +17,9 @@ describe('ZORA_COMPONENT_META public API', () => {
 describe('ZORA_COMPONENT_META registry coverage', () => {
   test('covers every public UI React component export (foundation/components/patterns/layout)', async () => {
     const source = await Bun.file('src/index.ts').text();
-    const componentExports = Array.from(source.matchAll(/export \{ ([^}]+) \} from '\.\/(components|foundation|layout|patterns)\/[^']+';/g))
+    const componentExports = Array.from(
+      source.matchAll(/export \{ ([^}]+) \} from '\.\/(components|foundation|layout|patterns)\/[^']+';/g),
+    )
       .flatMap((match) => match[1].split(',').map((item) => item.trim()))
       .map((item) => item.split(' as ')[0].trim())
       .filter((name) => /^[A-Z]/.test(name))
@@ -28,8 +30,8 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
     }
   });
 
-  test('does not treat providers/scopes as UI component registry entries', () => {
-    expect(ZORA_COMPONENT_META.ToastProvider).toBeUndefined();
+  test('does not treat providers/scopes as direct manifest UI nodes', () => {
+    expect(ZORA_COMPONENT_META.ToastProvider?.directManifestNode).toBe(false);
     expect(ZORA_COMPONENT_META.ZoraProvider).toBeUndefined();
   });
 });
