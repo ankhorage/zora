@@ -26,7 +26,7 @@ function ScanOverlayInner({
           <Badge color="primary">{cornerLabel}</Badge>
         </View>
         <Stack gap="xs">
-          <Text align="center" variant="label" weight="semibold">
+          <Text align="center" variant="label" weight="semiBold">
             {title}
           </Text>
           <Text align="center" emphasis="muted" variant="bodySmall">
