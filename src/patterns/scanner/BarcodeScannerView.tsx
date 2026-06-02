@@ -30,10 +30,10 @@ function BarcodeScannerViewInner({
 }: BarcodeScannerViewProps) {
   const { theme } = useZoraTheme();
   const viewportStyle = {
-    backgroundColor: theme.semantics.surface.inverse,
+    backgroundColor: theme.semantics.surface.default,
   };
   const placeholderStyle = {
-    backgroundColor: theme.semantics.surface.inverse,
+    backgroundColor: theme.semantics.surface.default,
   };
 
   if (permissionStatus !== 'granted') {
