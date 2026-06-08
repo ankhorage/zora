@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.3
+
+### Patch Changes
+
+- 3155142: Update CONTRACTS
+
 ## 2.7.2
 
 ### Patch Changes
