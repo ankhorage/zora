@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.2
+
+### Patch Changes
+
+- d84eb54: Fix `DisclosureSection` header interaction and long-description layout so the main header area toggles open/closed, long text wraps, and the trailing chevron remains visible.
+
 ## 2.7.1
 
 ### Patch Changes
