@@ -1,10 +1,35 @@
 import React from 'react';
+import { Platform, Pressable, type ViewStyle } from 'react-native';
 
+import { Heading } from '../../components/heading';
 import { IconButton } from '../../components/icon-button';
+import { Text } from '../../components/text';
 import { Box, Stack } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { DisclosureSectionProps } from './types';
+
+const triggerTextStyle: ViewStyle = {
+  flex: 1,
+  minWidth: 0,
+};
+
+const trailingStyle: ViewStyle = {
+  flexShrink: 0,
+};
+
+const getTriggerStyle = (disabled?: boolean): ViewStyle =>
+  ({
+    alignSelf: 'stretch',
+    flex: 1,
+    justifyContent: 'center',
+    minWidth: 0,
+    ...(Platform.OS === 'web'
+      ? {
+          cursor: disabled ? 'default' : 'pointer',
+        }
+      : null),
+  }) as ViewStyle;
 
 function DisclosureSectionInner({
   themeId: _themeId,
@@ -24,6 +49,8 @@ function DisclosureSectionInner({
 
   const isControlled = controlledOpen !== undefined;
   const isOpen = isControlled ? controlledOpen : internalOpen;
+  const titleLabel = typeof title === 'string' || typeof title === 'number' ? `: ${title}` : '';
+  const toggleLabel = `${isOpen ? 'Collapse' : 'Expand'} section${titleLabel}`;
 
   const toggleOpen = () => {
     if (disabled) return;
@@ -37,28 +64,47 @@ function DisclosureSectionInner({
   };
 
   return (
-    <Panel
-      compact
-      description={description}
-      testID={testID}
-      title={title}
-      eyebrow={icon ? <Box pb="xs">{/* Surface icon spec would go here */}</Box> : null}
-      actions={
-        <Stack direction="row" gap="xs" align="center">
-          {actions}
-          <IconButton
-            icon={{ name: isOpen ? 'chevron-up-outline' : 'chevron-down-outline' }}
-            label={isOpen ? 'Collapse' : 'Expand'}
-            variant="ghost"
-            color="neutral"
-            size="s"
+    <Panel compact testID={testID}>
+      <Stack gap="s">
+        <Stack direction="row" gap="m" align="center">
+          <Pressable
+            accessibilityLabel={toggleLabel}
+            accessibilityRole="button"
+            accessibilityState={{ disabled, expanded: isOpen }}
             disabled={disabled}
             onPress={toggleOpen}
-          />
+            style={getTriggerStyle(disabled)}
+          >
+            <Box style={triggerTextStyle}>
+              <Stack gap="xs">
+                {icon ? <Box pb="xs">{/* Surface icon spec would go here */}</Box> : null}
+                <Heading level={4}>{title}</Heading>
+                {description ? (
+                  <Text emphasis="muted" variant="bodySmall">
+                    {description}
+                  </Text>
+                ) : null}
+              </Stack>
+            </Box>
+          </Pressable>
+
+          {actions ? <Box style={trailingStyle}>{actions}</Box> : null}
+
+          <Box style={trailingStyle}>
+            <IconButton
+              icon={{ name: isOpen ? 'chevron-up-outline' : 'chevron-down-outline' }}
+              label={isOpen ? 'Collapse' : 'Expand'}
+              variant="ghost"
+              color="neutral"
+              size="s"
+              disabled={disabled}
+              onPress={toggleOpen}
+            />
+          </Box>
         </Stack>
-      }
-    >
-      {isOpen ? <Box pt="m">{children}</Box> : null}
+
+        {isOpen ? <Box pt="m">{children}</Box> : null}
+      </Stack>
     </Panel>
   );
 }
@@ -66,6 +112,6 @@ function DisclosureSectionInner({
 /***
  * Expandable section pattern with a summary header and collapsible content.
  *
- 
+
  */
 export const DisclosureSection = withZoraThemeScope(DisclosureSectionInner);

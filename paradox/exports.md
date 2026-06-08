@@ -1294,7 +1294,7 @@ Source: `src/patterns/auth/oauthProviders.ts:3:14`
 
 Kind: `value`
 Module: `src/patterns/disclosure-section/DisclosureSection.tsx`
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:71:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:117:14`
 
 Expandable section pattern with a summary header and collapsible content.
 

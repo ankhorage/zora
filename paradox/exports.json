@@ -5497,7 +5497,7 @@
     "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "line": 71,
+      "line": 117,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

@@ -1020,7 +1020,7 @@
                 data-target="src/patterns/disclosure-section/DisclosureSection.tsx"
               >
                 src/patterns/disclosure-section/DisclosureSection.tsx
-                <small>2 functions</small>
+                <small>3 functions</small>
               </button>
             </li>
             <li>
@@ -4766,13 +4766,14 @@
             </article>
             <article
               class="item"
-              data-search="src/patterns/disclosure-section/DisclosureSection.tsx src/components/icon-button/index.ts src/foundation/index.ts src/patterns/disclosure-section/types.ts src/patterns/panel/index.ts src/theme/withZoraThemeScope.tsx DisclosureSection"
+              data-search="src/patterns/disclosure-section/DisclosureSection.tsx src/components/heading/index.ts src/components/icon-button/index.ts src/components/text/index.ts src/foundation/index.ts src/patterns/disclosure-section/types.ts src/patterns/panel/index.ts src/theme/withZoraThemeScope.tsx DisclosureSection"
             >
               <h3>src/patterns/disclosure-section/DisclosureSection.tsx</h3>
               <p class="muted">Referenced module</p>
               <p>
-                <strong>Dependencies:</strong> <code>src/components/icon-button/index.ts</code>,
-                <code>src/foundation/index.ts</code>,
+                <strong>Dependencies:</strong> <code>src/components/heading/index.ts</code>,
+                <code>src/components/icon-button/index.ts</code>,
+                <code>src/components/text/index.ts</code>, <code>src/foundation/index.ts</code>,
                 <code>src/patterns/disclosure-section/types.ts</code>,
                 <code>src/patterns/panel/index.ts</code>,
                 <code>src/theme/withZoraThemeScope.tsx</code>
@@ -24293,7 +24294,7 @@
               >
                 <h4>DisclosureSection</h4>
                 <p class="muted">
-                  value • <code>src/patterns/disclosure-section/DisclosureSection.tsx:71:14</code>
+                  value • <code>src/patterns/disclosure-section/DisclosureSection.tsx:117:14</code>
                 </p>
                 <p>Expandable section pattern with a summary header and collapsible content.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -33764,7 +33765,7 @@
             >
               <h3>DisclosureSection</h3>
               <p class="muted">
-                <code>src/patterns/disclosure-section/DisclosureSection.tsx:71:14</code>
+                <code>src/patterns/disclosure-section/DisclosureSection.tsx:117:14</code>
               </p>
               <p>Expandable section pattern with a summary header and collapsible content.</p>
               <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -46189,7 +46190,11 @@
                 package__ankhorage_zora -.-&gt;
                 module_src_patterns_disclosure_section_DisclosureSection_tsx
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
+                module_src_components_heading_index_ts
+                module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
                 module_src_components_icon_button_index_ts
+                module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
+                module_src_components_text_index_ts
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
                 module_src_foundation_index_ts
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
@@ -47917,7 +47922,9 @@ graph TD
   module_src_patterns_confirm_dialog_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx[&quot;src/patterns/disclosure-section/DisclosureSection.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_disclosure_section_DisclosureSection_tsx
+  module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_heading_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_icon_button_index_ts
+  module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_text_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_foundation_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_patterns_disclosure_section_types_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_patterns_panel_index_ts
@@ -49534,7 +49541,11 @@ graph TD
                 --&gt; module_src_internal_recipes_ts module_src_patterns_confirm_dialog_types_ts
                 --&gt; module_src_theme_ZoraBaseProps_ts
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
+                module_src_components_heading_index_ts
+                module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
                 module_src_components_icon_button_index_ts
+                module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
+                module_src_components_text_index_ts
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
                 module_src_foundation_index_ts
                 module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt;
@@ -50864,7 +50875,9 @@ graph LR
   module_src_patterns_confirm_dialog_meta_ts --&gt; module_src_metadata_index_ts
   module_src_patterns_confirm_dialog_types_ts --&gt; module_src_internal_recipes_ts
   module_src_patterns_confirm_dialog_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_heading_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_icon_button_index_ts
+  module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_components_text_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_foundation_index_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_patterns_disclosure_section_types_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx --&gt; module_src_patterns_panel_index_ts
@@ -56611,11 +56624,21 @@ sequenceDiagram
             <h2>src/patterns/disclosure-section/DisclosureSection.tsx</h2>
             <article
               class="item"
+              data-search="getTriggerStyle src/patterns/disclosure-section/DisclosureSection.tsx "
+            >
+              <h3>getTriggerStyle</h3>
+              <p class="muted">
+                <code>src/patterns/disclosure-section/DisclosureSection.tsx:21:7</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
               data-search="DisclosureSectionInner src/patterns/disclosure-section/DisclosureSection.tsx "
             >
               <h3>DisclosureSectionInner</h3>
               <p class="muted">
-                <code>src/patterns/disclosure-section/DisclosureSection.tsx:9:1</code>
+                <code>src/patterns/disclosure-section/DisclosureSection.tsx:34:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -56625,7 +56648,7 @@ sequenceDiagram
             >
               <h3>toggleOpen</h3>
               <p class="muted">
-                <code>src/patterns/disclosure-section/DisclosureSection.tsx:28:9</code>
+                <code>src/patterns/disclosure-section/DisclosureSection.tsx:55:9</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
