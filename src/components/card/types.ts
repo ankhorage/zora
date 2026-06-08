@@ -9,4 +9,7 @@ export interface CardProps
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
-  eyebrow
+  eyebrow?: React.ReactNode;
+  actions?: React.ReactNode;
+  footer?: React.ReactNode;
+  tone?:
