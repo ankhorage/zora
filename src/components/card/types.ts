@@ -6,6 +6,4 @@ import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface CardProps
   extends ZoraBaseProps, Omit<SurfaceCardProps, 'children' | 'p' | 'radius' | 'variant'> {
-  children?: React.ReactNode;
-  title?: React.ReactNode;
-  description?:
+  children?: React.ReactNode
