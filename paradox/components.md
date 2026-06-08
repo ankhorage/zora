@@ -811,7 +811,7 @@ Export paths: `src/index.ts`
 
 ## DisclosureSection
 
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:71:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:117:14`
 
 Expandable section pattern with a summary header and collapsible content.
 

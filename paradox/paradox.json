@@ -2758,7 +2758,9 @@
       "path": "src/patterns/disclosure-section/DisclosureSection.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/components/heading/index.ts",
         "src/components/icon-button/index.ts",
+        "src/components/text/index.ts",
         "src/foundation/index.ts",
         "src/patterns/disclosure-section/types.ts",
         "src/patterns/panel/index.ts",
@@ -9332,7 +9334,7 @@
       "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 71,
+        "line": 117,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -28506,7 +28508,7 @@
       "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 71,
+        "line": 117,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -40180,11 +40182,20 @@
       }
     },
     {
+      "name": "getTriggerStyle",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
+        "line": 21,
+        "column": 7
+      }
+    },
+    {
       "name": "DisclosureSectionInner",
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 9,
+        "line": 34,
         "column": 1
       }
     },
@@ -40193,7 +40204,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 28,
+        "line": 55,
         "column": 9
       }
     },
@@ -45411,7 +45422,17 @@
       },
       {
         "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
+        "toPath": "src/components/heading/index.ts",
+        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
+      },
+      {
+        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
         "toPath": "src/components/icon-button/index.ts",
+        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
+      },
+      {
+        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
+        "toPath": "src/components/text/index.ts",
         "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
       },
       {
@@ -48927,6 +48948,12 @@
         "fromSymbol": "toggleOpen",
         "toSymbol": "setInternalOpen",
         "callExpression": "setInternalOpen",
+        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
+      },
+      {
+        "fromSymbol": "DisclosureSectionInner",
+        "toSymbol": "getTriggerStyle",
+        "callExpression": "getTriggerStyle",
         "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
       },
       {
