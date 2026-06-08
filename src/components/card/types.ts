@@ -8,5 +8,4 @@ export interface CardProps
   extends ZoraBaseProps, Omit<SurfaceCardProps, 'children' | 'p' | 'radius' | 'variant'> {
   children?: React.ReactNode;
   title?: React.ReactNode;
-  description?: React.ReactNode;
-  eyebrow?: React
+  description?:
