@@ -35,6 +35,8 @@ function ProductCardInner({
   const hasActions = !!primaryActionLabel || !!secondaryActionLabel;
   const isInteractive = Boolean(onPress);
 
+  const eyebrow = brand ?? _vendor;
+
   return (
     <Card onPress={isInteractive ? onPress : undefined} {...rest}>
       <Stack gap="m">
@@ -50,9 +52,9 @@ function ProductCardInner({
         <Stack gap="s">
           {hasHeaderInfo ? (
             <Stack gap="xxs">
-              {brand ? (
+              {eyebrow ? (
                 <Text variant="caption" weight="semiBold" emphasis="muted">
-                  {brand.toUpperCase()}
+                  {eyebrow}
                 </Text>
               ) : null}
               <Heading level={4}>{title}</Heading>
@@ -68,8 +70,8 @@ function ProductCardInner({
 
           {badges && badges.length > 0 ? (
             <Inline gap="xs" wrap="wrap">
-              {badges.map((badge) => (
-                <Badge key={badge}>{badge}</Badge>
+              {badges.map((badge, index) => (
+                <Badge key={`${badge}-${index}`}>{badge}</Badge>
               ))}
             </Inline>
           ) : null}
@@ -85,8 +87,8 @@ function ProductCardInner({
         {hasMeta ? (
           <Stack gap="xs">
             <Divider />
-            {meta.map((item) => (
-              <Inline key={item.label} justify="space-between">
+            {meta.map((item, index) => (
+              <Inline key={`${item.label}-${index}`} justify="space-between">
                 <Text variant="bodySmall" emphasis="muted">
                   {item.label}
                 </Text>

@@ -1,12 +1,31 @@
 import type { ZoraComponentMeta } from '../../metadata';
-import { CONTAINER_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
 
 export const productCardMeta = {
   name: 'ProductCard',
   category: 'pattern',
   description: 'A generic card for displaying product or article information.',
   directManifestNode: true,
-  allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
+  allowedChildren: [],
+  events: {
+    press: {
+      label: 'Press',
+      eventType: 'productCard.press',
+      description: 'Emitted when the product card is pressed.',
+      payloadFields: [],
+    },
+    primaryAction: {
+      label: 'Primary action',
+      eventType: 'productCard.primaryAction',
+      description: 'Emitted when the primary product card action is pressed.',
+      payloadFields: [],
+    },
+    secondaryAction: {
+      label: 'Secondary action',
+      eventType: 'productCard.secondaryAction',
+      description: 'Emitted when the secondary product card action is pressed.',
+      payloadFields: [],
+    },
+  },
   props: {
     title: {
       type: 'string',
@@ -72,6 +91,21 @@ export const productCardMeta = {
       type: 'string',
       category: 'Content',
       label: 'Secondary Action Label',
+    },
+    onPress: {
+      type: 'action',
+      category: 'Events',
+      label: 'Press action',
+    },
+    onPrimaryAction: {
+      type: 'action',
+      category: 'Events',
+      label: 'Primary action',
+    },
+    onSecondaryAction: {
+      type: 'action',
+      category: 'Events',
+      label: 'Secondary action',
     },
   },
 } as const satisfies ZoraComponentMeta;

@@ -124,6 +124,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ChatListItem',
       'CameraPermissionView',
       'ScanOverlay',
+      'ProductCard',
       'Progress',
     ]);
 
@@ -136,7 +137,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Panel',
       'Notice',
       'PostCard',
-      'ProductCard',
       'MessageBubble',
       'Box',
 
