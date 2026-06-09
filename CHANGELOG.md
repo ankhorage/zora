@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.0
+
+### Minor Changes
+
+- be736ad: Add a generic ProductCard pattern for commerce and catalog items.
+
 ## 2.7.3
 
 ### Patch Changes
