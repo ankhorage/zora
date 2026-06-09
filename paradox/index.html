@@ -5466,14 +5466,11 @@
             </article>
             <article
               class="item"
-              data-search="src/patterns/product-card/meta.ts src/metadata/allowedChildren.ts src/metadata/index.ts productCardMeta"
+              data-search="src/patterns/product-card/meta.ts src/metadata/index.ts productCardMeta"
             >
               <h3>src/patterns/product-card/meta.ts</h3>
               <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/metadata/allowedChildren.ts</code>,
-                <code>src/metadata/index.ts</code>
-              </p>
+              <p><strong>Dependencies:</strong> <code>src/metadata/index.ts</code></p>
               <p><strong>Exports:</strong> <code>productCardMeta</code></p>
             </article>
             <article
@@ -26807,7 +26804,7 @@
               >
                 <h4>ProductCard</h4>
                 <p class="muted">
-                  value • <code>src/patterns/product-card/ProductCard.tsx:123:14</code>
+                  value • <code>src/patterns/product-card/ProductCard.tsx:125:14</code>
                 </p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -39735,7 +39732,7 @@
               data-search="ProductCard src/patterns/product-card/ProductCard.tsx  badges readonly string[] | undefined brand string | undefined currency string | undefined description string | undefined imageAlt string | undefined imageUrl string | undefined meta readonly { label: string; value: string; }[] | undefined mode ZoraThemeMode | undefined onPress (() =&gt; void) | undefined onPrimaryAction (() =&gt; void) | undefined onSecondaryAction (() =&gt; void) | undefined price string | undefined primaryActionLabel string | undefined secondaryActionLabel string | undefined subtitle string | undefined testID string | undefined themeId string | undefined title string vendor string | undefined"
             >
               <h3>ProductCard</h3>
-              <p class="muted"><code>src/patterns/product-card/ProductCard.tsx:123:14</code></p>
+              <p class="muted"><code>src/patterns/product-card/ProductCard.tsx:125:14</code></p>
 
               <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
               <table>
@@ -46865,9 +46862,7 @@
                 package__ankhorage_zora -.-&gt; module_src_patterns_product_card_index_ts
                 module_src_patterns_product_card_meta_ts[&quot;src/patterns/product-card/meta.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_patterns_product_card_meta_ts
-                module_src_patterns_product_card_meta_ts --&gt;
-                module_src_metadata_allowedChildren_ts module_src_patterns_product_card_meta_ts
-                --&gt; module_src_metadata_index_ts
+                module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_index_ts
                 module_src_patterns_product_card_ProductCard_tsx[&quot;src/patterns/product-card/ProductCard.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_patterns_product_card_ProductCard_tsx
                 module_src_patterns_product_card_ProductCard_tsx --&gt;
@@ -48575,7 +48570,6 @@ graph TD
   package__ankhorage_zora -.-&gt; module_src_patterns_product_card_index_ts
   module_src_patterns_product_card_meta_ts[&quot;src/patterns/product-card/meta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_product_card_meta_ts
-  module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_allowedChildren_ts
   module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_index_ts
   module_src_patterns_product_card_ProductCard_tsx[&quot;src/patterns/product-card/ProductCard.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_product_card_ProductCard_tsx
@@ -50150,10 +50144,9 @@ graph TD
                 module_src_patterns_post_card_types_ts --&gt; module_src_components_avatar_index_ts
                 module_src_patterns_post_card_types_ts --&gt; module_src_internal_recipes_ts
                 module_src_patterns_post_card_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
-                module_src_patterns_product_card_meta_ts --&gt;
-                module_src_metadata_allowedChildren_ts module_src_patterns_product_card_meta_ts
-                --&gt; module_src_metadata_index_ts module_src_patterns_product_card_ProductCard_tsx
-                --&gt; module_src_components_badge_index_ts
+                module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_index_ts
+                module_src_patterns_product_card_ProductCard_tsx --&gt;
+                module_src_components_badge_index_ts
                 module_src_patterns_product_card_ProductCard_tsx --&gt;
                 module_src_components_button_index_ts
                 module_src_patterns_product_card_ProductCard_tsx --&gt;
@@ -51466,7 +51459,6 @@ graph LR
   module_src_patterns_post_card_types_ts --&gt; module_src_components_avatar_index_ts
   module_src_patterns_post_card_types_ts --&gt; module_src_internal_recipes_ts
   module_src_patterns_post_card_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_allowedChildren_ts
   module_src_patterns_product_card_meta_ts --&gt; module_src_metadata_index_ts
   module_src_patterns_product_card_ProductCard_tsx --&gt; module_src_components_badge_index_ts
   module_src_patterns_product_card_ProductCard_tsx --&gt; module_src_components_button_index_ts

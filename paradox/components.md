@@ -2010,7 +2010,7 @@ Export paths: `src/index.ts`
 
 ## ProductCard
 
-Source: `src/patterns/product-card/ProductCard.tsx:123:14`
+Source: `src/patterns/product-card/ProductCard.tsx:125:14`
 
 Export paths: `src/index.ts`
 

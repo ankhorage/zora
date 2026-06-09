@@ -3047,7 +3047,7 @@ Source: `src/patterns/post-card/types.ts:59:1`
 
 Kind: `value`
 Module: `src/patterns/product-card/ProductCard.tsx`
-Source: `src/patterns/product-card/ProductCard.tsx:123:14`
+Source: `src/patterns/product-card/ProductCard.tsx:125:14`
 
 ## ProductCardProps
 

@@ -3260,7 +3260,7 @@
     {
       "path": "src/patterns/product-card/meta.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/index.ts"],
+      "dependencies": ["src/metadata/index.ts"],
       "exports": ["productCardMeta"]
     },
     {
@@ -16085,7 +16085,7 @@
       "modulePath": "src/patterns/product-card/ProductCard.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/product-card/ProductCard.tsx",
-        "line": 123,
+        "line": 125,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -33747,7 +33747,7 @@
       "modulePath": "src/patterns/product-card/ProductCard.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/product-card/ProductCard.tsx",
-        "line": 123,
+        "line": 125,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -46561,11 +46561,6 @@
       {
         "fromPath": "src/patterns/product-card/meta.ts",
         "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/patterns/product-card/meta.ts"
-      },
-      {
-        "fromPath": "src/patterns/product-card/meta.ts",
-        "toPath": "src/metadata/allowedChildren.ts",
         "sourcePath": "src/patterns/product-card/meta.ts"
       },
       {

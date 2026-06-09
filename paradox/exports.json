@@ -12202,7 +12202,7 @@
     "modulePath": "src/patterns/product-card/ProductCard.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/product-card/ProductCard.tsx",
-      "line": 123,
+      "line": 125,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
