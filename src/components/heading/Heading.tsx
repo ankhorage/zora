@@ -1,11 +1,24 @@
 import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
-import { Text as ReactNativeText } from 'react-native';
+import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveHeadingRecipe, resolveHeadingSizeFromLevel } from './resolveHeadingRecipe';
 import type { HeadingProps } from './types';
+
+const headingLayoutStyle = {
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+  ...(Platform.OS === 'web'
+    ? {
+        overflowWrap: 'break-word',
+        whiteSpace: 'normal',
+        wordBreak: 'normal',
+      }
+    : null),
+} as unknown as TextStyle;
 
 function resolveHeadingContent({
   children,
@@ -47,6 +60,7 @@ function HeadingInner({
   numberOfLines,
   ellipsizeMode,
   selectable,
+  style,
   accessibilityLabel,
   accessibilityHint,
   accessibilityRole = 'header',
@@ -76,15 +90,19 @@ function HeadingInner({
       numberOfLines={numberOfLines}
       selectable={selectable}
       testID={testID}
-      style={resolveHeadingRecipe(theme, {
-        align: resolvedAlign,
-        italic,
-        level,
-        size: resolvedSize,
-        color: resolvedColor,
-        emphasis: resolvedEmphasis,
-        weight: resolvedWeight,
-      })}
+      style={[
+        headingLayoutStyle,
+        resolveHeadingRecipe(theme, {
+          align: resolvedAlign,
+          italic,
+          level,
+          size: resolvedSize,
+          color: resolvedColor,
+          emphasis: resolvedEmphasis,
+          weight: resolvedWeight,
+        }),
+        style,
+      ]}
     >
       {content}
     </ReactNativeText>

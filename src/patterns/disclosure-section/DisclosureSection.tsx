@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Pressable, type ViewStyle } from 'react-native';
+import { Platform, Pressable, type TextStyle, type ViewStyle } from 'react-native';
 
 import { Heading } from '../../components/heading';
 import { IconButton } from '../../components/icon-button';
@@ -11,6 +11,13 @@ import type { DisclosureSectionProps } from './types';
 
 const triggerTextStyle: ViewStyle = {
   flex: 1,
+  flexBasis: 0,
+  minWidth: 0,
+};
+
+const triggerCopyStyle: TextStyle = {
+  flexShrink: 1,
+  maxWidth: '100%',
   minWidth: 0,
 };
 
@@ -22,6 +29,7 @@ const getTriggerStyle = (disabled?: boolean): ViewStyle =>
   ({
     alignSelf: 'stretch',
     flex: 1,
+    flexBasis: 0,
     justifyContent: 'center',
     minWidth: 0,
     ...(Platform.OS === 'web'
@@ -78,9 +86,11 @@ function DisclosureSectionInner({
             <Box style={triggerTextStyle}>
               <Stack gap="xs">
                 {icon ? <Box pb="xs">{/* Surface icon spec would go here */}</Box> : null}
-                <Heading level={4}>{title}</Heading>
+                <Heading level={4} style={triggerCopyStyle}>
+                  {title}
+                </Heading>
                 {description ? (
-                  <Text emphasis="muted" variant="bodySmall">
+                  <Text emphasis="muted" variant="bodySmall" style={triggerCopyStyle}>
                     {description}
                   </Text>
                 ) : null}

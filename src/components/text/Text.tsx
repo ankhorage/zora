@@ -1,11 +1,24 @@
 import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
-import { Text as ReactNativeText } from 'react-native';
+import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveTextStyle } from './resolveTextRecipe';
 import type { TextProps } from './types';
+
+const textLayoutStyle = {
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+  ...(Platform.OS === 'web'
+    ? {
+        overflowWrap: 'break-word',
+        whiteSpace: 'normal',
+        wordBreak: 'normal',
+      }
+    : null),
+} as unknown as TextStyle;
 
 function resolveTextContent({
   children,
@@ -46,6 +59,7 @@ function TextInner({
   numberOfLines,
   ellipsizeMode,
   selectable,
+  style,
   accessibilityLabel,
   accessibilityHint,
   accessibilityRole,
@@ -81,7 +95,7 @@ function TextInner({
       numberOfLines={numberOfLines}
       selectable={selectable}
       testID={testID}
-      style={resolvedStyle}
+      style={[textLayoutStyle, resolvedStyle, style]}
     >
       {content}
     </ReactNativeText>
@@ -94,7 +108,7 @@ function TextInner({
  * `Text` owns normal body, caption, label, code, and supporting-copy variants so
  * consumers do not need to import lower-level Surface typography directly.
  *
- 
+
  * @example Muted supporting copy
  * ```tsx
  * <Text variant="bodySmall" emphasis="muted">Updated just now</Text>
