@@ -1,0 +1,1 @@
+- Added generic `ProductCard` component
