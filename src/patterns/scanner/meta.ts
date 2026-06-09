@@ -43,6 +43,9 @@ export const cameraPermissionViewMeta = {
   description: 'ZORA-owned camera permission state for scanner flows.',
   directManifestNode: true,
   allowedChildren: [],
+  requirements: {
+    permissions: [{ permission: 'camera' }],
+  },
   blueprint: {
     label: 'Camera permission',
     defaultProps: {
@@ -107,6 +110,10 @@ export const barcodeScannerViewMeta = {
     'Composed scanner shell with permission, camera slot, scan overlay, and manual entry affordance.',
   directManifestNode: true,
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
+  requirements: {
+    permissions: [{ permission: 'camera' }],
+    capabilities: [{ capability: 'barcodeScanner' }],
+  },
   blueprint: {
     label: 'Barcode scanner',
     defaultProps: {
