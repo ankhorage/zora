@@ -1,5 +1,5 @@
 ---
-'@ankhorage/zora': patch
+'@ankhorage/zora': minor
 ---
 
-Added generic `ProductCard` component
+Add a generic ProductCard pattern for commerce and catalog items.
