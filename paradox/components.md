@@ -811,7 +811,7 @@ Export paths: `src/index.ts`
 
 ## DisclosureSection
 
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:117:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:127:14`
 
 Expandable section pattern with a summary header and collapsible content.
 
@@ -1161,7 +1161,7 @@ Export paths: `src/index.ts`
 
 ## Heading
 
-Source: `src/components/heading/Heading.tsx:105:14`
+Source: `src/components/heading/Heading.tsx:123:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -1188,6 +1188,7 @@ Export paths: `src/index.ts`
 | numberOfLines      | `number \| undefined`                                                                                                                                     | no       | —       |             |
 | selectable         | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
 | size               | `Responsive<HeadingSize> \| undefined`                                                                                                                    | no       | —       |             |
+| style              | `StyleProp<TextStyle>`                                                                                                                                    | no       | —       |             |
 | testID             | `string \| undefined`                                                                                                                                     | no       | —       |             |
 | text               | `string \| undefined`                                                                                                                                     | no       | —       |             |
 | themeId            | `string \| undefined`                                                                                                                                     | no       | —       |             |
@@ -2708,7 +2709,7 @@ Export paths: `src/index.ts`
 
 ## Text
 
-Source: `src/components/text/Text.tsx:103:14`
+Source: `src/components/text/Text.tsx:117:14`
 
 Structured copy primitive for theme-aware app text.
 
@@ -2733,6 +2734,7 @@ Export paths: `src/index.ts`
 | nativeID           | `string \| undefined`                                                                                                                                     | no       | —       |             |
 | numberOfLines      | `number \| undefined`                                                                                                                                     | no       | —       |             |
 | selectable         | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
+| style              | `StyleProp<TextStyle>`                                                                                                                                    | no       | —       |             |
 | testID             | `string \| undefined`                                                                                                                                     | no       | —       |             |
 | text               | `string \| undefined`                                                                                                                                     | no       | —       |             |
 | themeId            | `string \| undefined`                                                                                                                                     | no       | —       |             |

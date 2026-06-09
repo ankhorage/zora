@@ -1294,7 +1294,7 @@ Source: `src/patterns/auth/oauthProviders.ts:3:14`
 
 Kind: `value`
 Module: `src/patterns/disclosure-section/DisclosureSection.tsx`
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:117:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:127:14`
 
 Expandable section pattern with a summary header and collapsible content.
 
@@ -1889,7 +1889,7 @@ Source: `src/components/form/validation.ts:11:1`
 
 Kind: `value`
 Module: `src/components/heading/Heading.tsx`
-Source: `src/components/heading/Heading.tsx:105:14`
+Source: `src/components/heading/Heading.tsx:123:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -1946,6 +1946,7 @@ Source: `src/components/heading/types.ts:19:1`
 | numberOfLines      | property | `number \| undefined`                                                                                                                                     | no       |             |
 | selectable         | property | `boolean \| undefined`                                                                                                                                    | no       |             |
 | size               | property | `Responsive<HeadingSize> \| undefined`                                                                                                                    | no       |             |
+| style              | property | `StyleProp<TextStyle>`                                                                                                                                    | no       |             |
 | testID             | property | `string \| undefined`                                                                                                                                     | no       |             |
 | text               | property | `string \| undefined`                                                                                                                                     | no       |             |
 | themeId            | property | `string \| undefined`                                                                                                                                     | no       |             |
@@ -4200,7 +4201,7 @@ Source: `src/components/tabs/types.ts:16:1`
 
 Kind: `value`
 Module: `src/components/text/Text.tsx`
-Source: `src/components/text/Text.tsx:103:14`
+Source: `src/components/text/Text.tsx:117:14`
 
 Structured copy primitive for theme-aware app text.
 
@@ -4431,6 +4432,7 @@ Source: `src/components/text/types.ts:17:1`
 | nativeID           | property | `string \| undefined`                                                                                                                                     | no       |             |
 | numberOfLines      | property | `number \| undefined`                                                                                                                                     | no       |             |
 | selectable         | property | `boolean \| undefined`                                                                                                                                    | no       |             |
+| style              | property | `StyleProp<TextStyle>`                                                                                                                                    | no       |             |
 | testID             | property | `string \| undefined`                                                                                                                                     | no       |             |
 | text               | property | `string \| undefined`                                                                                                                                     | no       |             |
 | themeId            | property | `string \| undefined`                                                                                                                                     | no       |             |

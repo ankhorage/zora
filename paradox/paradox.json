@@ -9334,7 +9334,7 @@
       "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 117,
+        "line": 127,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -11693,7 +11693,7 @@
       "modulePath": "src/components/heading/Heading.tsx",
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 105,
+        "line": 123,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -11905,6 +11905,13 @@
           "name": "size",
           "kind": "property",
           "type": "Responsive<HeadingSize> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "kind": "property",
+          "type": "StyleProp<TextStyle>",
           "required": false,
           "description": null
         },
@@ -20333,7 +20340,7 @@
       "modulePath": "src/components/text/Text.tsx",
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 103,
+        "line": 117,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -21685,6 +21692,13 @@
           "name": "selectable",
           "kind": "property",
           "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "kind": "property",
+          "type": "StyleProp<TextStyle>",
           "required": false,
           "description": null
         },
@@ -28515,7 +28529,7 @@
       "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 117,
+        "line": 127,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -29928,7 +29942,7 @@
       "modulePath": "src/components/heading/Heading.tsx",
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 105,
+        "line": 123,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -30026,6 +30040,12 @@
         {
           "name": "size",
           "type": "Responsive<HeadingSize> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "type": "StyleProp<TextStyle>",
           "required": false,
           "description": null
         },
@@ -36208,7 +36228,7 @@
       "modulePath": "src/components/text/Text.tsx",
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 103,
+        "line": 117,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -36294,6 +36314,12 @@
         {
           "name": "selectable",
           "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "type": "StyleProp<TextStyle>",
           "required": false,
           "description": null
         },
@@ -39050,7 +39076,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 10,
+        "line": 23,
         "column": 1
       }
     },
@@ -39059,7 +39085,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 34,
+        "line": 47,
         "column": 1
       }
     },
@@ -39626,7 +39652,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 10,
+        "line": 23,
         "column": 1
       }
     },
@@ -39635,7 +39661,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 34,
+        "line": 47,
         "column": 1
       }
     },
@@ -40193,7 +40219,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 21,
+        "line": 28,
         "column": 7
       }
     },
@@ -40202,7 +40228,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 34,
+        "line": 42,
         "column": 1
       }
     },
@@ -40211,7 +40237,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 55,
+        "line": 63,
         "column": 9
       }
     },
@@ -50869,6 +50895,16 @@
       },
       {
         "fromSymbol": "HeadingProps",
+        "toType": "StyleProp",
+        "sourcePath": "src/components/heading/types.ts"
+      },
+      {
+        "fromSymbol": "HeadingProps",
+        "toType": "TextStyle",
+        "sourcePath": "src/components/heading/types.ts"
+      },
+      {
+        "fromSymbol": "HeadingProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/heading/types.ts"
       },
@@ -51414,7 +51450,17 @@
       },
       {
         "fromSymbol": "TextProps",
+        "toType": "StyleProp",
+        "sourcePath": "src/components/text/types.ts"
+      },
+      {
+        "fromSymbol": "TextProps",
         "toType": "TextAlign",
+        "sourcePath": "src/components/text/types.ts"
+      },
+      {
+        "fromSymbol": "TextProps",
+        "toType": "TextStyle",
         "sourcePath": "src/components/text/types.ts"
       },
       {

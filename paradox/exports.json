@@ -5497,7 +5497,7 @@
     "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "line": 117,
+      "line": 127,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7856,7 +7856,7 @@
     "modulePath": "src/components/heading/Heading.tsx",
     "sourceLocation": {
       "filePath": "src/components/heading/Heading.tsx",
-      "line": 105,
+      "line": 123,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8068,6 +8068,13 @@
         "name": "size",
         "kind": "property",
         "type": "Responsive<HeadingSize> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<TextStyle>",
         "required": false,
         "description": null
       },
@@ -16488,7 +16495,7 @@
     "modulePath": "src/components/text/Text.tsx",
     "sourceLocation": {
       "filePath": "src/components/text/Text.tsx",
-      "line": 103,
+      "line": 117,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -17840,6 +17847,13 @@
         "name": "selectable",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<TextStyle>",
         "required": false,
         "description": null
       },
