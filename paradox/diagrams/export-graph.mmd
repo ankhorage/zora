@@ -309,6 +309,10 @@ graph LR
   module_src_patterns_post_card_meta_ts["src/patterns/post-card/meta.ts"]
   module_src_patterns_post_card_PostCard_tsx["src/patterns/post-card/PostCard.tsx"]
   module_src_patterns_post_card_types_ts["src/patterns/post-card/types.ts"]
+  module_src_patterns_product_card_index_ts["src/patterns/product-card/index.ts"]
+  module_src_patterns_product_card_meta_ts["src/patterns/product-card/meta.ts"]
+  module_src_patterns_product_card_ProductCard_tsx["src/patterns/product-card/ProductCard.tsx"]
+  module_src_patterns_product_card_types_ts["src/patterns/product-card/types.ts"]
   module_src_patterns_responsive_panel_index_ts["src/patterns/responsive-panel/index.ts"]
   module_src_patterns_responsive_panel_meta_ts["src/patterns/responsive-panel/meta.ts"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx["src/patterns/responsive-panel/ResponsivePanel.tsx"]
@@ -920,6 +924,10 @@ graph LR
   export_PostCardProps -.-> export_PostAuthor
   export_PostCardProps -.-> export_PostCardMedia
   export_PostCardProps -.-> export_ZoraThemeMode
+  export_ProductCard["ProductCard"]
+  module_src_patterns_product_card_ProductCard_tsx --> export_ProductCard
+  export_ProductCardProps["ProductCardProps"]
+  module_src_patterns_product_card_types_ts --> export_ProductCardProps
   export_Progress["Progress"]
   module_src_components_progress_Progress_tsx --> export_Progress
   export_ProgressProps["ProgressProps"]

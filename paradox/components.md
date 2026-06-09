@@ -2008,6 +2008,34 @@ Export paths: `src/index.ts`
 | themeId      | `string \| undefined`                                    | no       | —       |             |
 | tone         | `ZoraCardTone \| undefined`                              | no       | —       |             |
 
+## ProductCard
+
+Source: `src/patterns/product-card/ProductCard.tsx:123:14`
+
+Export paths: `src/index.ts`
+
+| Prop                 | Type                                                        | Required | Default | Description |
+| -------------------- | ----------------------------------------------------------- | -------- | ------- | ----------- |
+| badges               | `readonly string[] \| undefined`                            | no       | —       |             |
+| brand                | `string \| undefined`                                       | no       | —       |             |
+| currency             | `string \| undefined`                                       | no       | —       |             |
+| description          | `string \| undefined`                                       | no       | —       |             |
+| imageAlt             | `string \| undefined`                                       | no       | —       |             |
+| imageUrl             | `string \| undefined`                                       | no       | —       |             |
+| meta                 | `readonly { label: string; value: string; }[] \| undefined` | no       | —       |             |
+| mode                 | `ZoraThemeMode \| undefined`                                | no       | —       |             |
+| onPress              | `(() => void) \| undefined`                                 | no       | —       |             |
+| onPrimaryAction      | `(() => void) \| undefined`                                 | no       | —       |             |
+| onSecondaryAction    | `(() => void) \| undefined`                                 | no       | —       |             |
+| price                | `string \| undefined`                                       | no       | —       |             |
+| primaryActionLabel   | `string \| undefined`                                       | no       | —       |             |
+| secondaryActionLabel | `string \| undefined`                                       | no       | —       |             |
+| subtitle             | `string \| undefined`                                       | no       | —       |             |
+| testID               | `string \| undefined`                                       | no       | —       |             |
+| themeId              | `string \| undefined`                                       | no       | —       |             |
+| title                | `string`                                                    | yes      | —       |             |
+| vendor               | `string \| undefined`                                       | no       | —       |             |
+
 ## Progress
 
 Source: `src/components/progress/Progress.tsx:53:14`
