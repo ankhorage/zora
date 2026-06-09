@@ -3043,6 +3043,39 @@ Source: `src/patterns/post-card/types.ts:59:1`
 | themeId      | property | `string \| undefined`                                    | no       |             |
 | tone         | property | `ZoraCardTone \| undefined`                              | no       |             |
 
+## ProductCard
+
+Kind: `value`
+Module: `src/patterns/product-card/ProductCard.tsx`
+Source: `src/patterns/product-card/ProductCard.tsx:125:14`
+
+## ProductCardProps
+
+Kind: `type`
+Module: `src/patterns/product-card/types.ts`
+Source: `src/patterns/product-card/types.ts:1:1`
+
+### Members
+
+| Name                 | Kind     | Type                                                        | Required | Description |
+| -------------------- | -------- | ----------------------------------------------------------- | -------- | ----------- |
+| badges               | property | `readonly string[] \| undefined`                            | no       |             |
+| brand                | property | `string \| undefined`                                       | no       |             |
+| currency             | property | `string \| undefined`                                       | no       |             |
+| description          | property | `string \| undefined`                                       | no       |             |
+| imageAlt             | property | `string \| undefined`                                       | no       |             |
+| imageUrl             | property | `string \| undefined`                                       | no       |             |
+| meta                 | property | `readonly { label: string; value: string; }[] \| undefined` | no       |             |
+| onPress              | property | `(() => void) \| undefined`                                 | no       |             |
+| onPrimaryAction      | property | `(() => void) \| undefined`                                 | no       |             |
+| onSecondaryAction    | property | `(() => void) \| undefined`                                 | no       |             |
+| price                | property | `string \| undefined`                                       | no       |             |
+| primaryActionLabel   | property | `string \| undefined`                                       | no       |             |
+| secondaryActionLabel | property | `string \| undefined`                                       | no       |             |
+| subtitle             | property | `string \| undefined`                                       | no       |             |
+| title                | property | `string`                                                    | yes      |             |
+| vendor               | property | `string \| undefined`                                       | no       |             |
+
 ## Progress
 
 Kind: `value`
@@ -4997,7 +5030,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:96:14`
+Source: `src/metadata/componentMeta.ts:97:14`
 
 ## ZORA_EMPHASES
 

@@ -1936,6 +1936,8 @@
         "PostCard",
         "PostCardMedia",
         "PostCardProps",
+        "ProductCard",
+        "ProductCardProps",
         "Progress",
         "ProgressProps",
         "Radio",
@@ -2430,6 +2432,7 @@
         "src/patterns/notice/meta.ts",
         "src/patterns/panel/meta.ts",
         "src/patterns/post-card/meta.ts",
+        "src/patterns/product-card/meta.ts",
         "src/patterns/responsive-panel/meta.ts",
         "src/patterns/scanner/meta.ts",
         "src/patterns/section-header/meta.ts",
@@ -3247,6 +3250,41 @@
         "PostCardProps",
         "PostCommentPreview"
       ]
+    },
+    {
+      "path": "src/patterns/product-card/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["ProductCard", "ProductCardProps"]
+    },
+    {
+      "path": "src/patterns/product-card/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["productCardMeta"]
+    },
+    {
+      "path": "src/patterns/product-card/ProductCard.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/badge/index.ts",
+        "src/components/button/index.ts",
+        "src/components/card/index.ts",
+        "src/components/heading/index.ts",
+        "src/components/image/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/patterns/product-card/types.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/theme/ZoraBaseProps.ts"
+      ],
+      "exports": ["ProductCard"]
+    },
+    {
+      "path": "src/patterns/product-card/types.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["ProductCardProps"]
     },
     {
       "path": "src/patterns/responsive-panel/index.ts",
@@ -16039,6 +16077,155 @@
       "structuredRows": []
     },
     {
+      "name": "ProductCard",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/product-card/ProductCard.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/product-card/ProductCard.tsx",
+        "line": 125,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ProductCardProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/product-card/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/product-card/types.ts",
+        "line": 1,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "badges",
+          "kind": "property",
+          "type": "readonly string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "brand",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "currency",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "imageAlt",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "imageUrl",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "meta",
+          "kind": "property",
+          "type": "readonly { label: string; value: string; }[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPrimaryAction",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSecondaryAction",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "price",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "primaryActionLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "secondaryActionLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "subtitle",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "vendor",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Progress",
       "description": "Progress indicator for determinate and indeterminate loading states.",
       "isReadme": false,
@@ -23492,7 +23679,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 96,
+        "line": 97,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -33553,6 +33740,135 @@
       ]
     },
     {
+      "name": "ProductCard",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/product-card/ProductCard.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/product-card/ProductCard.tsx",
+        "line": 125,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "badges",
+          "type": "readonly string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "brand",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "currency",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "imageAlt",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "imageUrl",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "meta",
+          "type": "readonly { label: string; value: string; }[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPrimaryAction",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSecondaryAction",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "price",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "primaryActionLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "secondaryActionLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "subtitle",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "vendor",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Progress",
       "description": "Progress indicator for determinate and indeterminate loading states.",
       "isReadme": false,
@@ -40719,6 +41035,15 @@
       }
     },
     {
+      "name": "ProductCardInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/product-card/ProductCard.tsx",
+        "line": 14,
+        "column": 1
+      }
+    },
+    {
       "name": "resolvePanelWidth",
       "description": null,
       "sourceLocation": {
@@ -41680,6 +42005,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/patterns/product-card/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/patterns/responsive-panel/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -42241,6 +42571,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/post-card/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/patterns/product-card/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -46214,6 +46549,71 @@
         "sourcePath": "src/patterns/post-card/types.ts"
       },
       {
+        "fromPath": "src/patterns/product-card/index.ts",
+        "toPath": "src/patterns/product-card/ProductCard.tsx",
+        "sourcePath": "src/patterns/product-card/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/product-card/index.ts",
+        "toPath": "src/patterns/product-card/types.ts",
+        "sourcePath": "src/patterns/product-card/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/product-card/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/patterns/product-card/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/badge/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/card/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/heading/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/image/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
+        "fromPath": "src/patterns/product-card/ProductCard.tsx",
+        "toPath": "src/patterns/product-card/types.ts",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
+      },
+      {
         "fromPath": "src/patterns/responsive-panel/index.ts",
         "toPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
         "sourcePath": "src/patterns/responsive-panel/index.ts"
@@ -49396,6 +49796,12 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/post-card/PostCard.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/product-card/ProductCard.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/product-card/ProductCard.tsx"
       },
       {
         "fromSymbol": "ResponsivePanelInner",

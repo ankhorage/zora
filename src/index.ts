@@ -308,6 +308,8 @@ export type {
   PostCardProps,
 } from './patterns/post-card';
 export { PostCard } from './patterns/post-card';
+export type { ProductCardProps } from './patterns/product-card';
+export { ProductCard } from './patterns/product-card';
 export type {
   ResponsivePanelDesktopMode,
   ResponsivePanelMobileMode,

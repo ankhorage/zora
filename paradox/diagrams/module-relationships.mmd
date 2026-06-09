@@ -309,6 +309,10 @@ graph LR
   module_src_patterns_post_card_meta_ts["src/patterns/post-card/meta.ts"]
   module_src_patterns_post_card_PostCard_tsx["src/patterns/post-card/PostCard.tsx"]
   module_src_patterns_post_card_types_ts["src/patterns/post-card/types.ts"]
+  module_src_patterns_product_card_index_ts["src/patterns/product-card/index.ts"]
+  module_src_patterns_product_card_meta_ts["src/patterns/product-card/meta.ts"]
+  module_src_patterns_product_card_ProductCard_tsx["src/patterns/product-card/ProductCard.tsx"]
+  module_src_patterns_product_card_types_ts["src/patterns/product-card/types.ts"]
   module_src_patterns_responsive_panel_index_ts["src/patterns/responsive-panel/index.ts"]
   module_src_patterns_responsive_panel_meta_ts["src/patterns/responsive-panel/meta.ts"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx["src/patterns/responsive-panel/ResponsivePanel.tsx"]
@@ -877,6 +881,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_patterns_notice_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_panel_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_post_card_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_patterns_product_card_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_responsive_panel_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_scanner_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_section_header_meta_ts
@@ -1079,6 +1084,17 @@ graph LR
   module_src_patterns_post_card_types_ts --> module_src_components_avatar_index_ts
   module_src_patterns_post_card_types_ts --> module_src_internal_recipes_ts
   module_src_patterns_post_card_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_product_card_meta_ts --> module_src_metadata_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_badge_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_button_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_card_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_heading_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_image_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_components_text_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_foundation_index_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_patterns_product_card_types_ts
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_product_card_ProductCard_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_responsive_panel_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> module_src_components_drawer_index_ts
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> module_src_components_modal_index_ts

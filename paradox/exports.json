@@ -12194,6 +12194,155 @@
     "structuredRows": []
   },
   {
+    "name": "ProductCard",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/product-card/ProductCard.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/product-card/ProductCard.tsx",
+      "line": 125,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ProductCardProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/product-card/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/product-card/types.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "badges",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "brand",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "currency",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "imageAlt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "imageUrl",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "meta",
+        "kind": "property",
+        "type": "readonly { label: string; value: string; }[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPress",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPrimaryAction",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSecondaryAction",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "price",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "primaryActionLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "secondaryActionLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "subtitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "vendor",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Progress",
     "description": "Progress indicator for determinate and indeterminate loading states.",
     "isReadme": false,
@@ -19647,7 +19796,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 96,
+      "line": 97,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
