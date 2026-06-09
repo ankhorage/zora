@@ -20080,6 +20080,13 @@
         "description": null
       },
       {
+        "name": "requirements",
+        "kind": "property",
+        "type": "ComponentRequirements | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "slots",
         "kind": "property",
         "type": "Readonly<Record<string, ZoraComponentSlotMeta>> | undefined",
@@ -20098,7 +20105,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 101,
+      "line": 102,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

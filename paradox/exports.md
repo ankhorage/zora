@@ -5135,13 +5135,14 @@ Source: `src/metadata/types.ts:87:1`
 | name               | property | `string`                                                        | yes      |             |
 | note               | property | `string \| undefined`                                           | no       |             |
 | props              | property | `Readonly<Record<string, ZoraComponentPropSchema>>`             | yes      |             |
+| requirements       | property | `ComponentRequirements \| undefined`                            | no       |             |
 | slots              | property | `Readonly<Record<string, ZoraComponentSlotMeta>> \| undefined`  | no       |             |
 
 ## ZoraComponentMetaRegistry
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:101:1`
+Source: `src/metadata/types.ts:102:1`
 
 ## ZoraComponentPropArrayItemSchema
 
