@@ -1,4 +1,4 @@
-import type { ComponentEventDtoKind } from '@ankhorage/contracts';
+import type { ComponentEventDtoKind, ComponentRequirements } from '@ankhorage/contracts';
 
 export type ZoraComponentCategory = 'foundation' | 'component' | 'pattern' | 'layout';
 
@@ -90,6 +90,7 @@ export interface ZoraComponentMeta {
   description?: string;
   directManifestNode: boolean;
   allowedChildren: readonly string[];
+  requirements?: ComponentRequirements;
   blueprint?: ZoraComponentBlueprint;
   events?: Readonly<Record<string, ZoraComponentEventMeta>>;
   i18n?: ZoraComponentI18nMeta;
