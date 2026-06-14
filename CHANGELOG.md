@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.1
+
+### Patch Changes
+
+- 65f2008: Tmp installation of expo-linear-gradient package before extraction of gradient plugin
+
 ## 2.8.0
 
 ### Minor Changes
