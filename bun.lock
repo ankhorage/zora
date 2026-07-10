@@ -33,9 +33,7 @@
       },
       "optionalPeers": [
         "@expo/vector-icons",
-        "@react-native-picker/picker",
         "expo-font",
-        "expo-linear-gradient",
       ],
     },
   },
