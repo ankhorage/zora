@@ -36,13 +36,7 @@
     "@expo/vector-icons": {
       "optional": true
     },
-    "@react-native-picker/picker": {
-      "optional": true
-    },
     "expo-font": {
-      "optional": true
-    },
-    "expo-linear-gradient": {
       "optional": true
     }
   },
