@@ -18,7 +18,7 @@ test('root-entry native imports are required peers', async () => {
   ) as unknown;
   if (!isRecord(packageJson)) throw new Error('Expected package.json to contain an object.');
 
-  const peerDependenciesMeta = packageJson.peerDependenciesMeta;
+  const { peerDependenciesMeta } = packageJson;
   expect(isOptionalPeer(peerDependenciesMeta, 'expo-linear-gradient')).toBe(false);
   expect(isOptionalPeer(peerDependenciesMeta, '@react-native-picker/picker')).toBe(false);
 });

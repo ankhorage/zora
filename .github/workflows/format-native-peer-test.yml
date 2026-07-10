@@ -16,7 +16,6 @@ jobs:
       github.actor != 'github-actions[bot]' &&
       github.event.pull_request.head.ref == 'agent/fix-required-native-peer-contract'
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout fix branch
         uses: actions/checkout@v4
