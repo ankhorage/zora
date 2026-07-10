@@ -2,4 +2,4 @@
 '@ankhorage/zora': patch
 ---
 
-Treat the native modules imported from the root Zora entrypoint as required peers instead of optional integrations.
+Require the native modules that are always reachable from the root Zora entrypoint instead of describing them as optional integrations.
