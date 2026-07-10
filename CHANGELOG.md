@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.2
+
+### Patch Changes
+
+- 4be3f5b: Require the native modules that are always reachable from the root Zora entrypoint instead of describing them as optional integrations.
+
 ## 2.8.1
 
 ### Patch Changes
