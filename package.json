@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.0.7",
-    "@ankhorage/contracts": "^1.18.3",
+    "@ankhorage/contracts": "^2.0.0",
     "@ankhorage/surface": "^2.0.2"
   },
   "files": [
