@@ -22,13 +22,12 @@ const HEX_INPUT_PLACEHOLDER = 'Enter hex color';
 const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
 
 interface InputDraft {
-  sourceValue: string;
   inputValue: string;
   error: string | undefined;
 }
 
 function createInputDraft(sourceValue: string): InputDraft {
-  return { sourceValue, inputValue: sourceValue, error: undefined };
+  return { inputValue: sourceValue, error: undefined };
 }
 
 function isValidHex(value: string): boolean {
@@ -85,7 +84,7 @@ function ThemeComposerInner({
 
   function handleNameChange(text: string) {
     const error = text.trim().length === 0 ? NAME_ERROR_MESSAGE : undefined;
-    setNameDraft({ sourceValue: value.name, inputValue: text, error });
+    setNameDraft({ inputValue: text, error });
 
     if (!error) {
       onChange({ ...value, name: text });
@@ -95,7 +94,7 @@ function ThemeComposerInner({
   function handleHexChange(text: string) {
     const normalized = text.startsWith('#') ? text : `#${text}`;
     const error = isValidHex(normalized) ? undefined : HEX_ERROR_MESSAGE;
-    setHexDraft({ sourceValue: value.primaryColor, inputValue: normalized, error });
+    setHexDraft({ inputValue: normalized, error });
 
     if (!error) {
       onChange({ ...value, primaryColor: normalized });
