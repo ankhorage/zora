@@ -6,9 +6,19 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+function findRecordValue(record: Record<string, unknown>, key: string): unknown {
+  for (const [entryKey, entryValue] of Object.entries(record)) {
+    if (entryKey === key) {
+      return entryValue;
+    }
+  }
+
+  return undefined;
+}
+
 function isOptionalPeer(metadata: unknown, packageName: string): boolean {
   if (!isRecord(metadata)) return false;
-  const peerMetadata = metadata[packageName];
+  const peerMetadata = findRecordValue(metadata, packageName);
   return isRecord(peerMetadata) && peerMetadata.optional === true;
 }
 
