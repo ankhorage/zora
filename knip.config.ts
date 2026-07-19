@@ -6,6 +6,7 @@ export default createKnipConfig({
   ignoreFiles: [
     '.prettierrc.js',
     'eslint.config.mjs',
+    'eslint.local.config.mjs',
     'examples/expo-showcase/**',
     'examples/*/*/**',
     'paradox.config.ts',
