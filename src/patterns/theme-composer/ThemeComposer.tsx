@@ -70,14 +70,18 @@ function ThemeComposerInner({
     createInputDraft(value.primaryColor),
   );
   const [nameDraft, setNameDraft] = React.useState<InputDraft>(() => createInputDraft(value.name));
+  const [previousPrimaryColor, setPreviousPrimaryColor] = React.useState(value.primaryColor);
+  const [previousName, setPreviousName] = React.useState(value.name);
 
-  const hexDraftIsCurrent = hexDraft.sourceValue === value.primaryColor;
-  const hexInput = hexDraftIsCurrent ? hexDraft.inputValue : value.primaryColor;
-  const hexError = hexDraftIsCurrent ? hexDraft.error : undefined;
+  if (previousPrimaryColor !== value.primaryColor) {
+    setPreviousPrimaryColor(value.primaryColor);
+    setHexDraft(createInputDraft(value.primaryColor));
+  }
 
-  const nameDraftIsCurrent = nameDraft.sourceValue === value.name;
-  const nameInput = nameDraftIsCurrent ? nameDraft.inputValue : value.name;
-  const nameError = nameDraftIsCurrent ? nameDraft.error : undefined;
+  if (previousName !== value.name) {
+    setPreviousName(value.name);
+    setNameDraft(createInputDraft(value.name));
+  }
 
   function handleNameChange(text: string) {
     const error = text.trim().length === 0 ? NAME_ERROR_MESSAGE : undefined;
@@ -99,23 +103,15 @@ function ThemeComposerInner({
   }
 
   function handleSubmit() {
-    const hasValidName = nameInput.trim().length > 0;
-    const hasValidHex = isValidHex(hexInput);
+    const hasValidName = nameDraft.inputValue.trim().length > 0;
+    const hasValidHex = isValidHex(hexDraft.inputValue);
 
     if (!hasValidName) {
-      setNameDraft({
-        sourceValue: value.name,
-        inputValue: nameInput,
-        error: NAME_ERROR_MESSAGE,
-      });
+      setNameDraft((current) => ({ ...current, error: NAME_ERROR_MESSAGE }));
     }
 
     if (!hasValidHex) {
-      setHexDraft({
-        sourceValue: value.primaryColor,
-        inputValue: hexInput,
-        error: HEX_ERROR_MESSAGE,
-      });
+      setHexDraft((current) => ({ ...current, error: HEX_ERROR_MESSAGE }));
     }
 
     if (!hasValidName || !hasValidHex) {
@@ -124,8 +120,8 @@ function ThemeComposerInner({
 
     onSubmit?.({
       ...value,
-      name: nameInput,
-      primaryColor: hexInput,
+      name: nameDraft.inputValue,
+      primaryColor: hexDraft.inputValue,
     });
   }
 
@@ -146,16 +142,16 @@ function ThemeComposerInner({
           <Stack gap="xs">
             <Text variant="label">Name</Text>
             <Input
-              value={nameInput}
+              value={nameDraft.inputValue}
               onChangeText={handleNameChange}
               placeholder="My theme"
               autoCorrect={false}
-              invalid={nameError !== undefined}
+              invalid={nameDraft.error !== undefined}
               testID={testID ? `${testID}-name-input` : undefined}
             />
-            {nameError ? (
+            {nameDraft.error ? (
               <Text color="danger" variant="bodySmall">
-                {nameError}
+                {nameDraft.error}
               </Text>
             ) : null}
           </Stack>
@@ -188,13 +184,13 @@ function ThemeComposerInner({
           <Stack direction="row" gap="m" align="center">
             <Box flex={1}>
               <Input
-                value={hexInput}
+                value={hexDraft.inputValue}
                 onChangeText={handleHexChange}
                 placeholder={HEX_INPUT_PLACEHOLDER}
                 autoCapitalize="none"
                 autoCorrect={false}
                 maxLength={7}
-                invalid={hexError !== undefined}
+                invalid={hexDraft.error !== undefined}
                 testID={testID ? `${testID}-hex-input` : undefined}
               />
             </Box>
@@ -204,15 +200,17 @@ function ThemeComposerInner({
               height={36}
               radius="m"
               style={{
-                backgroundColor: isValidHex(hexInput) ? hexInput : theme.colors.border,
+                backgroundColor: isValidHex(hexDraft.inputValue)
+                  ? hexDraft.inputValue
+                  : theme.colors.border,
                 borderWidth: 1,
                 borderColor: theme.colors.border,
               }}
             />
           </Stack>
-          {hexError ? (
+          {hexDraft.error ? (
             <Text color="danger" variant="bodySmall">
-              {hexError}
+              {hexDraft.error}
             </Text>
           ) : null}
         </Stack>
