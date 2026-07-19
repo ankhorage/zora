@@ -20,7 +20,7 @@ export function normalizeIds(
 export function areIdsEqual(a: readonly string[], b: readonly string[]): boolean {
   if (a.length !== b.length) return false;
   for (let index = 0; index < a.length; index += 1) {
-    if (a[index] !== b[index]) return false;
+    if (a.at(index) !== b.at(index)) return false;
   }
 
   return true;
