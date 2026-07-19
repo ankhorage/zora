@@ -35,6 +35,9 @@ jobs:
             echo "No build script found; skipping."
           fi
 
+      - name: Validate Ankhorage repository
+        run: bunx @ankhorage/ankh doctor validate .
+
       - name: Run lint
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.lint ? 0 : 1)"; then
@@ -78,8 +81,8 @@ jobs:
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: |
-          if [ -f ./scripts/check-changeset-status.sh ]; then
-            bash ./scripts/check-changeset-status.sh
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['changeset:status'] ? 0 : 1)"; then
+            bun run changeset:status
           else
-            echo "No changeset status script found; skipping."
+            echo "No changeset:status script found; skipping."
           fi
