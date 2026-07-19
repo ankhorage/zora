@@ -11,6 +11,7 @@ export default [
   {
     files,
     rules: {
+      'no-unused-vars': 'off',
       'max-lines-per-function': [
         'error',
         { max: 600, skipBlankLines: true, skipComments: true },
