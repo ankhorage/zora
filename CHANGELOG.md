@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.4
+
+### Patch Changes
+
+- a77e5bd: Fix DatePicker, ThemeComposer, and form controller state synchronization to comply with React Hooks correctness rules without disabling lint checks.
+
 ## 2.8.3
 
 ### Patch Changes
