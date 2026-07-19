@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.3
+
+### Patch Changes
+
+- f443bc1: update DEVTOOLS
+
 ## 2.8.2
 
 ### Patch Changes
