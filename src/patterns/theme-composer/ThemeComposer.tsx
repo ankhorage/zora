@@ -21,6 +21,16 @@ const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color.';
 const HEX_INPUT_PLACEHOLDER = 'Enter hex color';
 const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
 
+interface InputDraft {
+  sourceValue: string;
+  inputValue: string;
+  error: string | undefined;
+}
+
+function createInputDraft(sourceValue: string): InputDraft {
+  return { sourceValue, inputValue: sourceValue, error: undefined };
+}
+
 function isValidHex(value: string): boolean {
   try {
     parseHexColorOrThrow(value);
@@ -56,43 +66,35 @@ function ThemeComposerInner({
 }: ThemeComposerProps) {
   const { theme } = useZoraTheme();
 
-  const [hexInput, setHexInput] = React.useState<string>(value.primaryColor);
-  const [hexError, setHexError] = React.useState<string | undefined>(undefined);
+  const [hexDraft, setHexDraft] = React.useState<InputDraft>(() =>
+    createInputDraft(value.primaryColor),
+  );
+  const [nameDraft, setNameDraft] = React.useState<InputDraft>(() => createInputDraft(value.name));
 
-  const [nameInput, setNameInput] = React.useState<string>(value.name);
-  const [nameError, setNameError] = React.useState<string | undefined>(undefined);
+  const hexDraftIsCurrent = hexDraft.sourceValue === value.primaryColor;
+  const hexInput = hexDraftIsCurrent ? hexDraft.inputValue : value.primaryColor;
+  const hexError = hexDraftIsCurrent ? hexDraft.error : undefined;
 
-  // Keep local inputs in sync when value changes externally
-  React.useEffect(() => {
-    setHexInput(value.primaryColor);
-    setHexError(undefined);
-  }, [value.primaryColor]);
-
-  React.useEffect(() => {
-    setNameInput(value.name);
-    setNameError(undefined);
-  }, [value.name]);
+  const nameDraftIsCurrent = nameDraft.sourceValue === value.name;
+  const nameInput = nameDraftIsCurrent ? nameDraft.inputValue : value.name;
+  const nameError = nameDraftIsCurrent ? nameDraft.error : undefined;
 
   function handleNameChange(text: string) {
-    setNameInput(text);
-    if (text.trim().length === 0) {
-      setNameError(NAME_ERROR_MESSAGE);
-    } else {
-      setNameError(undefined);
+    const error = text.trim().length === 0 ? NAME_ERROR_MESSAGE : undefined;
+    setNameDraft({ sourceValue: value.name, inputValue: text, error });
+
+    if (!error) {
       onChange({ ...value, name: text });
     }
   }
 
   function handleHexChange(text: string) {
-    // Ensure leading hash
     const normalized = text.startsWith('#') ? text : `#${text}`;
-    setHexInput(normalized);
+    const error = isValidHex(normalized) ? undefined : HEX_ERROR_MESSAGE;
+    setHexDraft({ sourceValue: value.primaryColor, inputValue: normalized, error });
 
-    if (isValidHex(normalized)) {
-      setHexError(undefined);
+    if (!error) {
       onChange({ ...value, primaryColor: normalized });
-    } else {
-      setHexError(HEX_ERROR_MESSAGE);
     }
   }
 
@@ -101,11 +103,19 @@ function ThemeComposerInner({
     const hasValidHex = isValidHex(hexInput);
 
     if (!hasValidName) {
-      setNameError(NAME_ERROR_MESSAGE);
+      setNameDraft({
+        sourceValue: value.name,
+        inputValue: nameInput,
+        error: NAME_ERROR_MESSAGE,
+      });
     }
 
     if (!hasValidHex) {
-      setHexError(HEX_ERROR_MESSAGE);
+      setHexDraft({
+        sourceValue: value.primaryColor,
+        inputValue: hexInput,
+        error: HEX_ERROR_MESSAGE,
+      });
     }
 
     if (!hasValidName || !hasValidHex) {
@@ -310,6 +320,6 @@ function ThemeComposerInner({
 /***
  * UI for composing and applying a theme via structured controls.
  *
- 
+ *
  */
 export const ThemeComposer = withZoraThemeScope(ThemeComposerInner);
