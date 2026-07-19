@@ -2,6 +2,8 @@ import { describe, expect, test } from 'bun:test';
 
 import { ZORA_COMPONENT_META, type ZoraComponentEventPayloadKind } from './index';
 
+const componentMetaByName = new Map(Object.entries(ZORA_COMPONENT_META));
+
 describe('ZORA_COMPONENT_META public API', () => {
   test('src/index.ts re-exports ZORA_COMPONENT_META', () => {
     expect(ZORA_COMPONENT_META).toBeDefined();
@@ -28,10 +30,7 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       .filter((name) => !['ToastProvider'].includes(name));
 
     for (const name of componentExports) {
-      expect(
-        ZORA_COMPONENT_META[name],
-        `${name} is missing from ZORA_COMPONENT_META`,
-      ).toBeDefined();
+      expect(componentMetaByName.get(name), `${name} is missing from ZORA_COMPONENT_META`).toBeDefined();
     }
   });
 
@@ -99,10 +98,10 @@ describe('ZORA_COMPONENT_META invariants', () => {
   test('allowedChildren always points to a known direct manifest node', () => {
     for (const [key, meta] of Object.entries(ZORA_COMPONENT_META)) {
       for (const child of meta.allowedChildren) {
-        const childMeta = ZORA_COMPONENT_META[child];
+        const childMeta = componentMetaByName.get(child);
         expect(childMeta, `${key} allowedChildren includes unknown key '${child}'`).toBeDefined();
         expect(
-          childMeta.directManifestNode,
+          childMeta?.directManifestNode,
           `${key} allowedChildren includes non-directManifestNode key '${child}'`,
         ).toBe(true);
       }
