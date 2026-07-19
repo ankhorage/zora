@@ -3,7 +3,7 @@
 
 # ZORA
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v2.8.2](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v2.8.3](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -64,7 +64,6 @@ export default function BasicApp() {
 - [resolveOAuthProviderLabel sequence](././paradox/diagrams/sequences/resolve-oauth-provider-label.mmd)
 - [SelectableItem sequence](././paradox/diagrams/sequences/selectable-item.mmd)
 - [SelectionProvider sequence](././paradox/diagrams/sequences/selection-provider.mmd)
-- [useFormController sequence](././paradox/diagrams/sequences/use-form-controller.mmd)
 - [useZoraTheme sequence](././paradox/diagrams/sequences/use-zora-theme.mmd)
 - [validateField sequence](././paradox/diagrams/sequences/validate-field.mmd)
 - [validateFields sequence](././paradox/diagrams/sequences/validate-fields.mmd)

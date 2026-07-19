@@ -11,13 +11,21 @@ import { Text, type TextVariant } from '../text';
 import { resolveAvatarInitials } from './resolveAvatarInitials';
 import type { AvatarProps, AvatarShape, AvatarSize } from './types';
 
-const AVATAR_SIZES: Record<AvatarSize, number> = {
-  xs: 24,
-  s: 32,
-  m: 40,
-  l: 48,
-  xl: 64,
-};
+function resolveAvatarSize(size: AvatarSize): number {
+  switch (size) {
+    case 'xs':
+      return 24;
+    case 's':
+      return 32;
+    case 'l':
+      return 48;
+    case 'xl':
+      return 64;
+    case 'm':
+    default:
+      return 40;
+  }
+}
 
 function resolveRoleSemantics(theme: SurfaceTheme, color: ZoraColor): RoleSemantics {
   switch (color) {
@@ -82,7 +90,7 @@ function AvatarInner({
   color = 'neutral',
 }: AvatarProps) {
   const { theme } = useZoraTheme();
-  const resolvedSize = AVATAR_SIZES[size];
+  const resolvedSize = resolveAvatarSize(size);
   const resolvedInitials = initials ?? resolveAvatarInitials(name);
   const role = resolveRoleSemantics(theme, color);
   const backgroundColor = color === 'neutral' ? theme.semantics.neutral.surface : role.softBg;

@@ -13,6 +13,24 @@ function isResponsiveRecord<T>(value: Responsive<T>): value is Partial<Record<Br
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+function readResponsiveValue<T>(
+  value: Partial<Record<Breakpoint, T>>,
+  breakpoint: Breakpoint,
+): T | undefined {
+  switch (breakpoint) {
+    case 'base':
+      return value.base;
+    case 'sm':
+      return value.sm;
+    case 'md':
+      return value.md;
+    case 'lg':
+      return value.lg;
+    case 'xl':
+      return value.xl;
+  }
+}
+
 function resolveResponsiveMock<T>(
   value: Responsive<T> | undefined,
   breakpoint: Breakpoint,
@@ -22,9 +40,9 @@ function resolveResponsiveMock<T>(
 
   const activeIndex = breakpointOrder.indexOf(breakpoint);
   for (let i = activeIndex; i >= 0; i -= 1) {
-    const key = breakpointOrder[i];
+    const key = breakpointOrder.at(i);
     if (!key) continue;
-    const candidate = value[key];
+    const candidate = readResponsiveValue(value, key);
     if (candidate !== undefined) return candidate;
   }
 

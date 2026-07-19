@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.8.2",
+      "value": "v2.8.3",
       "color": "cb3837"
     },
     {
@@ -4475,7 +4475,7 @@
       "modulePath": "src/components/avatar/Avatar.tsx",
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 146,
+        "line": 154,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -9201,7 +9201,7 @@
       "modulePath": "src/components/date-picker/DatePicker.tsx",
       "sourceLocation": {
         "filePath": "src/components/date-picker/DatePicker.tsx",
-        "line": 245,
+        "line": 256,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -17021,7 +17021,7 @@
       "modulePath": "src/patterns/auth/oauthProviders.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 49,
+        "line": 52,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -17053,7 +17053,7 @@
       "modulePath": "src/patterns/auth/oauthProviders.ts",
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 57,
+        "line": 56,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -21972,7 +21972,7 @@
       "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 315,
+        "line": 322,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -25521,7 +25521,7 @@
       "modulePath": "src/components/avatar/Avatar.tsx",
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 146,
+        "line": 154,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -28617,7 +28617,7 @@
       "modulePath": "src/components/date-picker/DatePicker.tsx",
       "sourceLocation": {
         "filePath": "src/components/date-picker/DatePicker.tsx",
-        "line": 245,
+        "line": 256,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -37672,7 +37672,7 @@
       "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 315,
+        "line": 322,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -38650,11 +38650,20 @@
       }
     },
     {
+      "name": "resolveAvatarSize",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/avatar/Avatar.tsx",
+        "line": 14,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveRoleSemantics",
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 22,
+        "line": 30,
         "column": 1
       }
     },
@@ -38663,7 +38672,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 48,
+        "line": 56,
         "column": 1
       }
     },
@@ -38672,7 +38681,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 52,
+        "line": 60,
         "column": 1
       }
     },
@@ -38681,7 +38690,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 67,
+        "line": 75,
         "column": 1
       }
     },
@@ -38690,7 +38699,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 71,
+        "line": 79,
         "column": 1
       }
     },
@@ -38699,7 +38708,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/avatar/Avatar.tsx",
-        "line": 92,
+        "line": 100,
         "column": 9
       }
     },
@@ -39226,6 +39235,24 @@
       }
     },
     {
+      "name": "setDisplayMonth",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/date-picker/DatePicker.tsx",
+        "line": 152,
+        "column": 3
+      }
+    },
+    {
+      "name": "openPicker",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/date-picker/DatePicker.tsx",
+        "line": 156,
+        "column": 3
+      }
+    },
+    {
       "name": "useStableCallback",
       "description": null,
       "sourceLocation": {
@@ -39464,7 +39491,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/resolveHeadingRecipe.ts",
-        "line": 136,
+        "line": 146,
         "column": 1
       }
     },
@@ -39473,7 +39500,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/resolveHeadingRecipe.ts",
-        "line": 148,
+        "line": 166,
         "column": 1
       }
     },
@@ -39923,7 +39950,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/resolveTextRecipe.ts",
-        "line": 40,
+        "line": 50,
         "column": 1
       }
     },
@@ -39932,7 +39959,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/resolveTextRecipe.ts",
-        "line": 58,
+        "line": 76,
         "column": 1
       }
     },
@@ -39941,7 +39968,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/resolveTextRecipe.ts",
-        "line": 114,
+        "line": 132,
         "column": 1
       }
     },
@@ -39950,7 +39977,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/resolveTextRecipe.ts",
-        "line": 140,
+        "line": 158,
         "column": 1
       }
     },
@@ -39959,7 +39986,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/resolveTextRecipe.ts",
-        "line": 159,
+        "line": 177,
         "column": 1
       }
     },
@@ -40346,7 +40373,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 49,
+        "line": 52,
         "column": 1
       }
     },
@@ -40355,7 +40382,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 57,
+        "line": 56,
         "column": 1
       }
     },
@@ -40364,7 +40391,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 64,
+        "line": 63,
         "column": 1
       }
     },
@@ -40373,7 +40400,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/oauthProviders.ts",
-        "line": 68,
+        "line": 67,
         "column": 1
       }
     },
@@ -40414,11 +40441,20 @@
       }
     },
     {
+      "name": "resolveIdentifierKindLabel",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/auth/utils.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
       "name": "includesIdentifier",
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/utils.ts",
-        "line": 12,
+        "line": 18,
         "column": 1
       }
     },
@@ -40427,7 +40463,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/utils.ts",
-        "line": 19,
+        "line": 25,
         "column": 1
       }
     },
@@ -40436,7 +40472,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/utils.ts",
-        "line": 27,
+        "line": 33,
         "column": 1
       }
     },
@@ -40445,7 +40481,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/utils.ts",
-        "line": 47,
+        "line": 53,
         "column": 1
       }
     },
@@ -40454,7 +40490,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/auth/utils.ts",
-        "line": 57,
+        "line": 63,
         "column": 1
       }
     },
@@ -41269,16 +41305,16 @@
       }
     },
     {
-      "name": "isValidHex",
+      "name": "createInputDraft",
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 24,
+        "line": 29,
         "column": 1
       }
     },
     {
-      "name": "formatAppCategoryLabel",
+      "name": "isValidHex",
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
@@ -41287,11 +41323,20 @@
       }
     },
     {
+      "name": "formatAppCategoryLabel",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
+        "line": 42,
+        "column": 1
+      }
+    },
+    {
       "name": "ThemeComposerInner",
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 47,
+        "line": 56,
         "column": 1
       }
     },
@@ -41300,7 +41345,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 76,
+        "line": 85,
         "column": 3
       }
     },
@@ -41309,7 +41354,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 86,
+        "line": 94,
         "column": 3
       }
     },
@@ -41318,7 +41363,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "line": 99,
+        "line": 104,
         "column": 3
       }
     },
@@ -47615,6 +47660,12 @@
       },
       {
         "fromSymbol": "AvatarInner",
+        "toSymbol": "resolveAvatarSize",
+        "callExpression": "resolveAvatarSize",
+        "sourcePath": "src/components/avatar/Avatar.tsx"
+      },
+      {
+        "fromSymbol": "AvatarInner",
         "toSymbol": "resolveAvatarInitials",
         "callExpression": "resolveAvatarInitials",
         "sourcePath": "src/components/avatar/Avatar.tsx"
@@ -48094,6 +48145,12 @@
         "sourcePath": "src/components/date-picker/DatePicker.tsx"
       },
       {
+        "fromSymbol": "DatePickerInner",
+        "toSymbol": "resolveInitialMonth",
+        "callExpression": "resolveInitialMonth",
+        "sourcePath": "src/components/date-picker/DatePicker.tsx"
+      },
+      {
         "fromSymbol": "src/components/date-picker/DatePicker.tsx",
         "toSymbol": "createMonthDays",
         "callExpression": "createMonthDays",
@@ -48112,9 +48169,21 @@
         "sourcePath": "src/components/date-picker/DatePicker.tsx"
       },
       {
-        "fromSymbol": "src/components/date-picker/DatePicker.tsx",
-        "toSymbol": "setDisplayMonth",
-        "callExpression": "setDisplayMonth",
+        "fromSymbol": "setDisplayMonth",
+        "toSymbol": "setDisplayMonthState",
+        "callExpression": "setDisplayMonthState",
+        "sourcePath": "src/components/date-picker/DatePicker.tsx"
+      },
+      {
+        "fromSymbol": "openPicker",
+        "toSymbol": "setDisplayMonthState",
+        "callExpression": "setDisplayMonthState",
+        "sourcePath": "src/components/date-picker/DatePicker.tsx"
+      },
+      {
+        "fromSymbol": "openPicker",
+        "toSymbol": "setVisible",
+        "callExpression": "setVisible",
         "sourcePath": "src/components/date-picker/DatePicker.tsx"
       },
       {
@@ -48133,6 +48202,12 @@
         "fromSymbol": "DatePickerInner",
         "toSymbol": "canNavigateToMonth",
         "callExpression": "canNavigateToMonth",
+        "sourcePath": "src/components/date-picker/DatePicker.tsx"
+      },
+      {
+        "fromSymbol": "src/components/date-picker/DatePicker.tsx",
+        "toSymbol": "setDisplayMonth",
+        "callExpression": "setDisplayMonth",
         "sourcePath": "src/components/date-picker/DatePicker.tsx"
       },
       {
@@ -48286,7 +48361,7 @@
         "sourcePath": "src/components/form/FormField.tsx"
       },
       {
-        "fromSymbol": "useFormController",
+        "fromSymbol": "src/components/form/useFormController.ts",
         "toSymbol": "createInitialValues",
         "callExpression": "createInitialValues",
         "sourcePath": "src/components/form/useFormController.ts"
@@ -49270,6 +49345,12 @@
         "sourcePath": "src/patterns/auth/SignUpForm.tsx"
       },
       {
+        "fromSymbol": "resolveIdentifierLabel",
+        "toSymbol": "resolveIdentifierKindLabel",
+        "callExpression": "resolveIdentifierKindLabel",
+        "sourcePath": "src/patterns/auth/utils.ts"
+      },
+      {
         "fromSymbol": "normalizeIdentifierKind",
         "toSymbol": "includesIdentifier",
         "callExpression": "includesIdentifier",
@@ -50051,38 +50132,44 @@
       },
       {
         "fromSymbol": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "toSymbol": "setHexInput",
-        "callExpression": "setHexInput",
+        "toSymbol": "createInputDraft",
+        "callExpression": "createInputDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
-        "fromSymbol": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "toSymbol": "setHexError",
-        "callExpression": "setHexError",
+        "fromSymbol": "ThemeComposerInner",
+        "toSymbol": "setPreviousPrimaryColor",
+        "callExpression": "setPreviousPrimaryColor",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
-        "fromSymbol": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "toSymbol": "setNameInput",
-        "callExpression": "setNameInput",
+        "fromSymbol": "ThemeComposerInner",
+        "toSymbol": "setHexDraft",
+        "callExpression": "setHexDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
-        "fromSymbol": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "toSymbol": "setNameError",
-        "callExpression": "setNameError",
+        "fromSymbol": "ThemeComposerInner",
+        "toSymbol": "createInputDraft",
+        "callExpression": "createInputDraft",
+        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
+      },
+      {
+        "fromSymbol": "ThemeComposerInner",
+        "toSymbol": "setPreviousName",
+        "callExpression": "setPreviousName",
+        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
+      },
+      {
+        "fromSymbol": "ThemeComposerInner",
+        "toSymbol": "setNameDraft",
+        "callExpression": "setNameDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
         "fromSymbol": "handleNameChange",
-        "toSymbol": "setNameInput",
-        "callExpression": "setNameInput",
-        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
-      },
-      {
-        "fromSymbol": "handleNameChange",
-        "toSymbol": "setNameError",
-        "callExpression": "setNameError",
+        "toSymbol": "setNameDraft",
+        "callExpression": "setNameDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
@@ -50093,20 +50180,14 @@
       },
       {
         "fromSymbol": "handleHexChange",
-        "toSymbol": "setHexInput",
-        "callExpression": "setHexInput",
-        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
-      },
-      {
-        "fromSymbol": "handleHexChange",
         "toSymbol": "isValidHex",
         "callExpression": "isValidHex",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
         "fromSymbol": "handleHexChange",
-        "toSymbol": "setHexError",
-        "callExpression": "setHexError",
+        "toSymbol": "setHexDraft",
+        "callExpression": "setHexDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
@@ -50123,14 +50204,14 @@
       },
       {
         "fromSymbol": "handleSubmit",
-        "toSymbol": "setNameError",
-        "callExpression": "setNameError",
+        "toSymbol": "setNameDraft",
+        "callExpression": "setNameDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
         "fromSymbol": "handleSubmit",
-        "toSymbol": "setHexError",
-        "callExpression": "setHexError",
+        "toSymbol": "setHexDraft",
+        "callExpression": "setHexDraft",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {

@@ -21,6 +21,15 @@ const HEX_ERROR_MESSAGE = 'Enter a valid 6-digit hex color.';
 const HEX_INPUT_PLACEHOLDER = 'Enter hex color';
 const NAME_ERROR_MESSAGE = 'Theme name cannot be empty.';
 
+interface InputDraft {
+  inputValue: string;
+  error: string | undefined;
+}
+
+function createInputDraft(sourceValue: string): InputDraft {
+  return { inputValue: sourceValue, error: undefined };
+}
+
 function isValidHex(value: string): boolean {
   try {
     parseHexColorOrThrow(value);
@@ -56,56 +65,52 @@ function ThemeComposerInner({
 }: ThemeComposerProps) {
   const { theme } = useZoraTheme();
 
-  const [hexInput, setHexInput] = React.useState<string>(value.primaryColor);
-  const [hexError, setHexError] = React.useState<string | undefined>(undefined);
+  const [hexDraft, setHexDraft] = React.useState<InputDraft>(() =>
+    createInputDraft(value.primaryColor),
+  );
+  const [nameDraft, setNameDraft] = React.useState<InputDraft>(() => createInputDraft(value.name));
+  const [previousPrimaryColor, setPreviousPrimaryColor] = React.useState(value.primaryColor);
+  const [previousName, setPreviousName] = React.useState(value.name);
 
-  const [nameInput, setNameInput] = React.useState<string>(value.name);
-  const [nameError, setNameError] = React.useState<string | undefined>(undefined);
+  if (previousPrimaryColor !== value.primaryColor) {
+    setPreviousPrimaryColor(value.primaryColor);
+    setHexDraft(createInputDraft(value.primaryColor));
+  }
 
-  // Keep local inputs in sync when value changes externally
-  React.useEffect(() => {
-    setHexInput(value.primaryColor);
-    setHexError(undefined);
-  }, [value.primaryColor]);
-
-  React.useEffect(() => {
-    setNameInput(value.name);
-    setNameError(undefined);
-  }, [value.name]);
+  if (previousName !== value.name) {
+    setPreviousName(value.name);
+    setNameDraft(createInputDraft(value.name));
+  }
 
   function handleNameChange(text: string) {
-    setNameInput(text);
-    if (text.trim().length === 0) {
-      setNameError(NAME_ERROR_MESSAGE);
-    } else {
-      setNameError(undefined);
+    const error = text.trim().length === 0 ? NAME_ERROR_MESSAGE : undefined;
+    setNameDraft({ inputValue: text, error });
+
+    if (!error) {
       onChange({ ...value, name: text });
     }
   }
 
   function handleHexChange(text: string) {
-    // Ensure leading hash
     const normalized = text.startsWith('#') ? text : `#${text}`;
-    setHexInput(normalized);
+    const error = isValidHex(normalized) ? undefined : HEX_ERROR_MESSAGE;
+    setHexDraft({ inputValue: normalized, error });
 
-    if (isValidHex(normalized)) {
-      setHexError(undefined);
+    if (!error) {
       onChange({ ...value, primaryColor: normalized });
-    } else {
-      setHexError(HEX_ERROR_MESSAGE);
     }
   }
 
   function handleSubmit() {
-    const hasValidName = nameInput.trim().length > 0;
-    const hasValidHex = isValidHex(hexInput);
+    const hasValidName = nameDraft.inputValue.trim().length > 0;
+    const hasValidHex = isValidHex(hexDraft.inputValue);
 
     if (!hasValidName) {
-      setNameError(NAME_ERROR_MESSAGE);
+      setNameDraft((current) => ({ ...current, error: NAME_ERROR_MESSAGE }));
     }
 
     if (!hasValidHex) {
-      setHexError(HEX_ERROR_MESSAGE);
+      setHexDraft((current) => ({ ...current, error: HEX_ERROR_MESSAGE }));
     }
 
     if (!hasValidName || !hasValidHex) {
@@ -114,8 +119,8 @@ function ThemeComposerInner({
 
     onSubmit?.({
       ...value,
-      name: nameInput,
-      primaryColor: hexInput,
+      name: nameDraft.inputValue,
+      primaryColor: hexDraft.inputValue,
     });
   }
 
@@ -136,16 +141,16 @@ function ThemeComposerInner({
           <Stack gap="xs">
             <Text variant="label">Name</Text>
             <Input
-              value={nameInput}
+              value={nameDraft.inputValue}
               onChangeText={handleNameChange}
               placeholder="My theme"
               autoCorrect={false}
-              invalid={nameError !== undefined}
+              invalid={nameDraft.error !== undefined}
               testID={testID ? `${testID}-name-input` : undefined}
             />
-            {nameError ? (
+            {nameDraft.error ? (
               <Text color="danger" variant="bodySmall">
-                {nameError}
+                {nameDraft.error}
               </Text>
             ) : null}
           </Stack>
@@ -178,13 +183,13 @@ function ThemeComposerInner({
           <Stack direction="row" gap="m" align="center">
             <Box flex={1}>
               <Input
-                value={hexInput}
+                value={hexDraft.inputValue}
                 onChangeText={handleHexChange}
                 placeholder={HEX_INPUT_PLACEHOLDER}
                 autoCapitalize="none"
                 autoCorrect={false}
                 maxLength={7}
-                invalid={hexError !== undefined}
+                invalid={hexDraft.error !== undefined}
                 testID={testID ? `${testID}-hex-input` : undefined}
               />
             </Box>
@@ -194,15 +199,17 @@ function ThemeComposerInner({
               height={36}
               radius="m"
               style={{
-                backgroundColor: isValidHex(hexInput) ? hexInput : theme.colors.border,
+                backgroundColor: isValidHex(hexDraft.inputValue)
+                  ? hexDraft.inputValue
+                  : theme.colors.border,
                 borderWidth: 1,
                 borderColor: theme.colors.border,
               }}
             />
           </Stack>
-          {hexError ? (
+          {hexDraft.error ? (
             <Text color="danger" variant="bodySmall">
-              {hexError}
+              {hexDraft.error}
             </Text>
           ) : null}
         </Stack>
@@ -310,6 +317,6 @@ function ThemeComposerInner({
 /***
  * UI for composing and applying a theme via structured controls.
  *
- 
+ *
  */
 export const ThemeComposer = withZoraThemeScope(ThemeComposerInner);

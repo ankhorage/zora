@@ -131,7 +131,15 @@ function DatePickerInner({
   testID,
 }: DatePickerProps) {
   const [visible, setVisible] = React.useState(false);
-  const [displayMonth, setDisplayMonth] = React.useState(() => resolveInitialMonth(value, minDate));
+  const [fallbackMonth] = React.useState(() => resolveInitialMonth(null, undefined));
+  const initialMonth = value || minDate ? resolveInitialMonth(value, minDate) : fallbackMonth;
+  const initialMonthKey = initialMonth.getTime();
+  const [displayMonthState, setDisplayMonthState] = React.useState(() => ({
+    sourceMonthKey: initialMonthKey,
+    month: initialMonth,
+  }));
+  const displayMonth =
+    displayMonthState.sourceMonthKey === initialMonthKey ? displayMonthState.month : initialMonth;
   const monthDays = React.useMemo(() => createMonthDays(displayMonth), [displayMonth]);
   const previousMonth = new Date(displayMonth.getFullYear(), displayMonth.getMonth() - 1, 1);
   const nextMonth = new Date(displayMonth.getFullYear(), displayMonth.getMonth() + 1, 1);
@@ -141,11 +149,14 @@ function DatePickerInner({
       : formatDefaultDate(value)
     : placeholder;
 
-  React.useEffect(() => {
-    if (visible) {
-      setDisplayMonth(resolveInitialMonth(value, minDate));
-    }
-  }, [minDate, value, visible]);
+  function setDisplayMonth(month: Date) {
+    setDisplayMonthState({ sourceMonthKey: initialMonthKey, month });
+  }
+
+  function openPicker() {
+    setDisplayMonthState({ sourceMonthKey: initialMonthKey, month: initialMonth });
+    setVisible(true);
+  }
 
   return (
     <Field
@@ -158,7 +169,7 @@ function DatePickerInner({
     >
       <Button
         disabled={disabled}
-        onPress={() => setVisible(true)}
+        onPress={openPicker}
         testID={testID ? `${testID}-trigger` : undefined}
         trailingIcon={{ name: 'calendar-outline' }}
         variant="outline"

@@ -30,9 +30,11 @@ export function useFormController<TName extends string = string>({
   onSubmit,
   validateOnChange = false,
 }: UseFormControllerOptions<TName>): UseFormControllerResult<TName> {
-  const initialValuesRef = React.useRef(createInitialValues(fields, initialValues));
+  const [initialFormValues] = React.useState<FormValues<TName>>(() =>
+    createInitialValues(fields, initialValues),
+  );
   const [internalValues, setInternalValues] = React.useState<FormValues<TName>>(
-    initialValuesRef.current,
+    () => initialFormValues,
   );
   const [validationErrors, setValidationErrors] = React.useState<FormErrors<TName>>({});
 
@@ -91,8 +93,8 @@ export function useFormController<TName extends string = string>({
 
   const reset = React.useCallback(() => {
     setValidationErrors({});
-    setValues(initialValuesRef.current);
-  }, [setValues]);
+    setValues(initialFormValues);
+  }, [initialFormValues, setValues]);
 
   return {
     values,

@@ -3,11 +3,17 @@ import type { AuthIdentifierKind } from './types';
 
 export const defaultIdentifiers = ['email'] as const satisfies readonly AuthIdentifierKind[];
 
-const identifierLabels: Record<AuthIdentifierKind, string> = {
-  email: 'Email',
-  phone: 'Phone',
-  username: 'Username',
-};
+function resolveIdentifierKindLabel(identifier: AuthIdentifierKind): string {
+  switch (identifier) {
+    case 'phone':
+      return 'Phone';
+    case 'username':
+      return 'Username';
+    case 'email':
+    default:
+      return 'Email';
+  }
+}
 
 function includesIdentifier(
   identifiers: readonly AuthIdentifierKind[],
@@ -18,10 +24,10 @@ function includesIdentifier(
 
 export function resolveIdentifierLabel(identifiers: readonly AuthIdentifierKind[]): string {
   if (identifiers.length === 1) {
-    return identifierLabels[identifiers[0] ?? 'email'];
+    return resolveIdentifierKindLabel(identifiers[0] ?? 'email');
   }
 
-  return identifiers.map((identifier) => identifierLabels[identifier]).join(', or ');
+  return identifiers.map(resolveIdentifierKindLabel).join(', or ');
 }
 
 export function resolveIdentifierType(

@@ -130,7 +130,17 @@ function resolveHeadingColor(
 }
 
 function resolveWeight(theme: SurfaceTheme, weight: HeadingWeight): FontWeight {
-  return theme.typography.weights[weight];
+  switch (weight) {
+    case 'medium':
+      return theme.typography.weights.medium;
+    case 'semiBold':
+      return theme.typography.weights.semiBold;
+    case 'bold':
+      return theme.typography.weights.bold;
+    case 'regular':
+    default:
+      return theme.typography.weights.regular;
+  }
 }
 
 function resolveFontFamily({
@@ -142,7 +152,15 @@ function resolveFontFamily({
   weight: FontWeight;
   italic: boolean;
 }): string | undefined {
-  return theme.typography.fonts[italic ? 'italic' : 'normal'][weight];
+  const fonts = italic ? theme.typography.fonts.italic : theme.typography.fonts.normal;
+
+  for (const [fontWeight, fontFamily] of Object.entries(fonts)) {
+    if (fontWeight === weight) {
+      return fontFamily;
+    }
+  }
+
+  return undefined;
 }
 
 export function resolveHeadingRecipe(

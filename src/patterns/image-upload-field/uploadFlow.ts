@@ -78,7 +78,7 @@ function formatBytes(value: number): string {
     unitIndex += 1;
   }
 
-  const unit = units[unitIndex] ?? 'B';
+  const unit = units.at(unitIndex) ?? 'B';
   const rounded = unitIndex === 0 ? Math.round(size) : Math.round(size * 10) / 10;
   return `${rounded} ${unit}`;
 }
