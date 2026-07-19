@@ -131,7 +131,8 @@ function DatePickerInner({
   testID,
 }: DatePickerProps) {
   const [visible, setVisible] = React.useState(false);
-  const initialMonth = resolveInitialMonth(value, minDate);
+  const [fallbackMonth] = React.useState(() => resolveInitialMonth(null, undefined));
+  const initialMonth = value || minDate ? resolveInitialMonth(value, minDate) : fallbackMonth;
   const initialMonthKey = initialMonth.getTime();
   const [displayMonthState, setDisplayMonthState] = React.useState(() => ({
     sourceMonthKey: initialMonthKey,
