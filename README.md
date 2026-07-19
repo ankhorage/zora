@@ -64,7 +64,6 @@ export default function BasicApp() {
 - [resolveOAuthProviderLabel sequence](././paradox/diagrams/sequences/resolve-oauth-provider-label.mmd)
 - [SelectableItem sequence](././paradox/diagrams/sequences/selectable-item.mmd)
 - [SelectionProvider sequence](././paradox/diagrams/sequences/selection-provider.mmd)
-- [useFormController sequence](././paradox/diagrams/sequences/use-form-controller.mmd)
 - [useZoraTheme sequence](././paradox/diagrams/sequences/use-zora-theme.mmd)
 - [validateField sequence](././paradox/diagrams/sequences/validate-field.mmd)
 - [validateFields sequence](././paradox/diagrams/sequences/validate-fields.mmd)

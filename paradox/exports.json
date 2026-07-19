@@ -600,7 +600,7 @@
     "modulePath": "src/components/avatar/Avatar.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar/Avatar.tsx",
-      "line": 146,
+      "line": 154,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5326,7 +5326,7 @@
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 245,
+      "line": 256,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13138,7 +13138,7 @@
     "modulePath": "src/patterns/auth/oauthProviders.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/oauthProviders.ts",
-      "line": 49,
+      "line": 52,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -13170,7 +13170,7 @@
     "modulePath": "src/patterns/auth/oauthProviders.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/oauthProviders.ts",
-      "line": 57,
+      "line": 56,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18089,7 +18089,7 @@
     "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-      "line": 315,
+      "line": 322,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

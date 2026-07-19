@@ -169,7 +169,7 @@ Source: `src/patterns/auth/types.ts:7:1`
 
 Kind: `value`
 Module: `src/components/avatar/Avatar.tsx`
-Source: `src/components/avatar/Avatar.tsx:146:14`
+Source: `src/components/avatar/Avatar.tsx:154:14`
 
 Displays a user or entity avatar with image support and initials fallback.
 
@@ -1249,7 +1249,7 @@ Source: `src/components/data-table/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/date-picker/DatePicker.tsx`
-Source: `src/components/date-picker/DatePicker.tsx:245:14`
+Source: `src/components/date-picker/DatePicker.tsx:256:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -3263,7 +3263,7 @@ Source: `src/components/avatar/resolveAvatarInitials.ts:20:1`
 
 Kind: `function`
 Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:49:1`
+Source: `src/patterns/auth/oauthProviders.ts:52:1`
 
 ### Signatures
 
@@ -3275,7 +3275,7 @@ Source: `src/patterns/auth/oauthProviders.ts:49:1`
 
 Kind: `function`
 Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:57:1`
+Source: `src/patterns/auth/oauthProviders.ts:56:1`
 
 ### Signatures
 
@@ -4488,7 +4488,7 @@ Source: `src/components/text/types.ts:13:1`
 
 Kind: `value`
 Module: `src/patterns/theme-composer/ThemeComposer.tsx`
-Source: `src/patterns/theme-composer/ThemeComposer.tsx:315:14`
+Source: `src/patterns/theme-composer/ThemeComposer.tsx:322:14`
 
 UI for composing and applying a theme via structured controls.
 

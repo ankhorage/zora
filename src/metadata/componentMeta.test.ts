@@ -30,7 +30,10 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       .filter((name) => !['ToastProvider'].includes(name));
 
     for (const name of componentExports) {
-      expect(componentMetaByName.get(name), `${name} is missing from ZORA_COMPONENT_META`).toBeDefined();
+      expect(
+        componentMetaByName.get(name),
+        `${name} is missing from ZORA_COMPONENT_META`,
+      ).toBeDefined();
     }
   });
 

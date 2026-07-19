@@ -90,7 +90,7 @@ Export paths: `src/index.ts`
 
 ## Avatar
 
-Source: `src/components/avatar/Avatar.tsx:146:14`
+Source: `src/components/avatar/Avatar.tsx:154:14`
 
 Displays a user or entity avatar with image support and initials fallback.
 
@@ -786,7 +786,7 @@ Export paths: `src/index.ts`
 
 ## DatePicker
 
-Source: `src/components/date-picker/DatePicker.tsx:245:14`
+Source: `src/components/date-picker/DatePicker.tsx:256:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -2945,7 +2945,7 @@ Export paths: `src/index.ts`
 
 ## ThemeComposer
 
-Source: `src/patterns/theme-composer/ThemeComposer.tsx:315:14`
+Source: `src/patterns/theme-composer/ThemeComposer.tsx:322:14`
 
 UI for composing and applying a theme via structured controls.
 
