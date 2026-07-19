@@ -1,13 +1,24 @@
 import { createConfig } from '@ankhorage/devtools/eslint';
 
-const files = ['examples/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'];
+const sourceFiles = ['src/**/*.{ts,tsx}'];
+const exampleFiles = ['examples/**/*.{ts,tsx}'];
+const files = [...sourceFiles, ...exampleFiles];
 
 export default [
   ...createConfig({
     tsconfigRootDir: import.meta.dirname,
     project: ['./tsconfig.eslint.json'],
-    files: ['examples/**/*.{ts,tsx}'],
+    files: exampleFiles,
   }),
+  {
+    files: sourceFiles,
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.eslint.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   {
     files,
     rules: {
