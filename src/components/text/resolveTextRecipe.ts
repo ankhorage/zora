@@ -34,7 +34,27 @@ function isMediumBreakpointOrLarger(breakpoint: Breakpoint): boolean {
 }
 
 function resolveWeight(theme: SurfaceTheme, weight: TextWeight): FontWeight {
-  return theme.typography.weights[weight];
+  switch (weight) {
+    case 'thin':
+      return theme.typography.weights.thin;
+    case 'extraLight':
+      return theme.typography.weights.extraLight;
+    case 'light':
+      return theme.typography.weights.light;
+    case 'medium':
+      return theme.typography.weights.medium;
+    case 'semiBold':
+      return theme.typography.weights.semiBold;
+    case 'bold':
+      return theme.typography.weights.bold;
+    case 'extraBold':
+      return theme.typography.weights.extraBold;
+    case 'black':
+      return theme.typography.weights.black;
+    case 'regular':
+    default:
+      return theme.typography.weights.regular;
+  }
 }
 
 function resolveFontFamily({
@@ -52,7 +72,15 @@ function resolveFontFamily({
     return 'monospace';
   }
 
-  return theme.typography.fonts[italic ? 'italic' : 'normal'][weight];
+  const fonts = italic ? theme.typography.fonts.italic : theme.typography.fonts.normal;
+
+  for (const [fontWeight, fontFamily] of Object.entries(fonts)) {
+    if (fontWeight === weight) {
+      return fontFamily;
+    }
+  }
+
+  return undefined;
 }
 
 function resolveVariantRecipe(
