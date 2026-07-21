@@ -33,7 +33,7 @@ function escapeRegExp(value: string): string {
 
 function listRuntimeNamedBindings(moduleSpecifier: string): readonly string[] {
   const bindingPattern = new RegExp(
-    `(?:import|export)\\s+(?!type\\s)\\{([\\s\\S]*?)\\}\\s+from\\s+['"]${escapeRegExp(moduleSpecifier)}['"]`,
+    `(?:import|export)\\s+(?!type\\s)\\{([^}]*)\\}\\s+from\\s+['"]${escapeRegExp(moduleSpecifier)}['"]`,
     'g',
   );
   const boundNames = new Set<string>();
