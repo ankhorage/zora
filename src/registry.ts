@@ -97,7 +97,7 @@ import { TreeItem, TreeView } from './patterns/tree-view';
 import { ZoraDrawerContent } from './patterns/zora-drawer-content';
 import { ZoraTabBar } from './patterns/zora-tab-bar';
 
-export type ZoraComponentRegistry = Record<string, React.ElementType>;
+export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
 
 export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = {
   ActionSheet,
