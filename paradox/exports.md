@@ -4954,8 +4954,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
