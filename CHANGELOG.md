@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.5
+
+### Patch Changes
+
+- 355af5a: Update SURFACE with the color inverse fix where e.g. Tooltip showed black on black (not readable)
+
 ## 2.8.4
 
 ### Patch Changes
