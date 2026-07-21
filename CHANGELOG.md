@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.7
+
+### Patch Changes
+
+- 45cd65a: Make the public ZORA component registry type readonly and verify the actual registry object in tests.
+
 ## 2.8.6
 
 ### Patch Changes
