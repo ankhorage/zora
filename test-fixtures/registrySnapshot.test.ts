@@ -47,7 +47,7 @@ function listRuntimeNamedBindings(moduleSpecifier: string): readonly string[] {
           continue;
         }
 
-        const importedName = specifier.split(/\\s+as\\s+/)[0]?.trim();
+        const importedName = specifier.split(/\s+as\s+/)[0]?.trim();
         if (importedName) {
           boundNames.add(importedName);
         }
