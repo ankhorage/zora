@@ -21,21 +21,21 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
     ]);
 
     if (exitCode !== 0) {
-      throw new Error(`Failed to inspect ZORA_COMPONENT_REGISTRY:\n${stderr}`);
+      throw new Error(`Failed to inspect ZORA_COMPONENT_REGISTRY:\n${stdout}\n${stderr}`);
     }
 
     const output = `${stdout}\n${stderr}`;
     const snapshotLine = output
       .split(/\r?\n/)
       .find((line) => line.includes(REGISTRY_SNAPSHOT_PREFIX));
-    const snapshotJson = snapshotLine?.slice(
-      (snapshotLine.indexOf(REGISTRY_SNAPSHOT_PREFIX) ?? -1) + REGISTRY_SNAPSHOT_PREFIX.length,
-    );
 
-    if (!snapshotJson) {
+    if (!snapshotLine) {
       throw new Error('Registry snapshot subprocess did not emit a registry snapshot.');
     }
 
+    const snapshotJson = snapshotLine.slice(
+      snapshotLine.indexOf(REGISTRY_SNAPSHOT_PREFIX) + REGISTRY_SNAPSHOT_PREFIX.length,
+    );
     const parsed: unknown = JSON.parse(snapshotJson);
     if (!Array.isArray(parsed) || !parsed.every((entry): entry is string => typeof entry === 'string')) {
       throw new Error('Registry snapshot must be a JSON array of component names.');
