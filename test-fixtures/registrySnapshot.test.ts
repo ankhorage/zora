@@ -117,5 +117,7 @@ mock.module('expo-linear-gradient', () => ({
 test('prints the canonical ZORA component registry snapshot', async () => {
   const { ZORA_COMPONENT_REGISTRY } = await import('../src/registry');
 
-  console.log(`${SNAPSHOT_PREFIX}${JSON.stringify(Object.keys(ZORA_COMPONENT_REGISTRY).sort())}`);
+  console.log(
+    `${SNAPSHOT_PREFIX}${JSON.stringify(Object.keys(ZORA_COMPONENT_REGISTRY).sort())}`,
+  );
 });
