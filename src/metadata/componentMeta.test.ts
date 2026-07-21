@@ -21,12 +21,12 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
     const source = await Bun.file('src/index.ts').text();
     const componentExports = Array.from(
       source.matchAll(
-        /export \{ ([^}]+) \} from '\.\/(components|foundation|layout|patterns)\/[^']+';/g,
+        /export\s+\{([^}]+)\}\s+from '\.\/(components\/[^']+|foundation|layout\/[^']+|patterns\/[^']+)';/g,
       ),
     )
       .flatMap((match) => match[1].split(',').map((item) => item.trim()))
       .map((item) => item.split(' as ')[0].trim())
-      .filter((name) => /^[A-Z]/.test(name))
+      .filter((name) => /^[A-Z][A-Za-z0-9]+$/.test(name))
       .filter((name) => !['ToastProvider'].includes(name));
 
     for (const name of componentExports) {

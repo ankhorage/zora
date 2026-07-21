@@ -19806,6 +19806,24 @@
     "structuredRows": []
   },
   {
+    "name": "ZORA_COMPONENT_REGISTRY",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/registry.ts",
+    "sourceLocation": {
+      "filePath": "src/registry.ts",
+      "line": 102,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ZORA_EMPHASES",
     "description": null,
     "isReadme": false,
@@ -20403,6 +20421,24 @@
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
       "line": 20,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraComponentRegistry",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/registry.ts",
+    "sourceLocation": {
+      "filePath": "src/registry.ts",
+      "line": 100,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

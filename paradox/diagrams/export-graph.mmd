@@ -367,6 +367,7 @@ graph LR
   module_src_patterns_zora_tab_bar_meta_ts["src/patterns/zora-tab-bar/meta.ts"]
   module_src_patterns_zora_tab_bar_types_ts["src/patterns/zora-tab-bar/types.ts"]
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx["src/patterns/zora-tab-bar/ZoraTabBar.tsx"]
+  module_src_registry_ts["src/registry.ts"]
   module_src_theme_createZoraThemeConfig_ts["src/theme/createZoraThemeConfig.ts"]
   module_src_theme_index_ts["src/theme/index.ts"]
   module_src_theme_resolveZoraScopedThemeId_ts["src/theme/resolveZoraScopedThemeId.ts"]
@@ -1284,6 +1285,8 @@ graph LR
   module_src_internal_colorModel_ts --> export_ZORA_COLORS
   export_ZORA_COMPONENT_META["ZORA_COMPONENT_META"]
   module_src_metadata_componentMeta_ts --> export_ZORA_COMPONENT_META
+  export_ZORA_COMPONENT_REGISTRY["ZORA_COMPONENT_REGISTRY"]
+  module_src_registry_ts --> export_ZORA_COMPONENT_REGISTRY
   export_ZORA_EMPHASES["ZORA_EMPHASES"]
   module_src_internal_colorModel_ts --> export_ZORA_EMPHASES
   export_ZORA_PALETTE_COLORS["ZORA_PALETTE_COLORS"]
@@ -1337,6 +1340,8 @@ graph LR
   module_src_metadata_types_ts --> export_ZoraComponentPropType
   export_ZoraComponentPropValue["ZoraComponentPropValue"]
   module_src_metadata_types_ts --> export_ZoraComponentPropValue
+  export_ZoraComponentRegistry["ZoraComponentRegistry"]
+  module_src_registry_ts --> export_ZoraComponentRegistry
   export_ZoraComponentSlotMeta["ZoraComponentSlotMeta"]
   module_src_metadata_types_ts --> export_ZoraComponentSlotMeta
   export_ZoraComputedTheme["ZoraComputedTheme"]

@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.8.4",
+      "value": "v2.8.5",
       "color": "cb3837"
     },
     {
@@ -2072,6 +2072,7 @@
         "ZORA_BINDABLE_COMPONENT_META",
         "ZORA_COLORS",
         "ZORA_COMPONENT_META",
+        "ZORA_COMPONENT_REGISTRY",
         "ZORA_EMPHASES",
         "ZORA_PALETTE_COLORS",
         "ZORA_STATUS_COLORS",
@@ -2091,6 +2092,7 @@
         "ZoraComponentPropSchema",
         "ZoraComponentPropType",
         "ZoraComponentPropValue",
+        "ZoraComponentRegistry",
         "ZoraComponentSlotMeta",
         "ZoraComputedTheme",
         "ZoraComputedThemeMode",
@@ -3774,6 +3776,91 @@
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["ZoraTabBar"]
+    },
+    {
+      "path": "src/registry.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/action-sheet/index.ts",
+        "src/components/app-bar/index.ts",
+        "src/components/avatar-group/index.ts",
+        "src/components/avatar/index.ts",
+        "src/components/badge/index.ts",
+        "src/components/breadcrumbs/index.ts",
+        "src/components/button-group/index.ts",
+        "src/components/button/index.ts",
+        "src/components/card/index.ts",
+        "src/components/checkbox/index.ts",
+        "src/components/chip-group/index.ts",
+        "src/components/chip/index.ts",
+        "src/components/data-table/index.ts",
+        "src/components/date-picker/index.ts",
+        "src/components/drawer/index.ts",
+        "src/components/form/index.ts",
+        "src/components/gradient/index.ts",
+        "src/components/heading/index.ts",
+        "src/components/icon-button/index.ts",
+        "src/components/icon/index.ts",
+        "src/components/image/index.ts",
+        "src/components/input/index.ts",
+        "src/components/media-card/index.ts",
+        "src/components/menu/index.ts",
+        "src/components/metric-card/index.ts",
+        "src/components/modal/index.ts",
+        "src/components/navigation-item/index.ts",
+        "src/components/navigation-list/index.ts",
+        "src/components/pagination/index.ts",
+        "src/components/progress/index.ts",
+        "src/components/radio/index.ts",
+        "src/components/rating/index.ts",
+        "src/components/search-bar/index.ts",
+        "src/components/select/index.ts",
+        "src/components/skeleton/index.ts",
+        "src/components/splash-screen/index.ts",
+        "src/components/tabs/index.ts",
+        "src/components/text/index.ts",
+        "src/components/textarea/index.ts",
+        "src/components/time-picker/index.ts",
+        "src/components/toast/index.ts",
+        "src/components/toolbar/index.ts",
+        "src/foundation/index.ts",
+        "src/layout/app-shell/index.ts",
+        "src/layout/screen-section/index.ts",
+        "src/layout/screen/index.ts",
+        "src/layout/settings-layout/index.ts",
+        "src/layout/sidebar-layout/index.ts",
+        "src/layout/topbar-layout/index.ts",
+        "src/patterns/auth/index.ts",
+        "src/patterns/chat-list-item/index.ts",
+        "src/patterns/collection-editor/index.ts",
+        "src/patterns/confirm-dialog/index.ts",
+        "src/patterns/disclosure-section/index.ts",
+        "src/patterns/empty-state/index.ts",
+        "src/patterns/filter-bar/index.ts",
+        "src/patterns/hero/index.ts",
+        "src/patterns/image-preview/index.ts",
+        "src/patterns/image-upload-field/index.ts",
+        "src/patterns/inspector-field/index.ts",
+        "src/patterns/list/index.ts",
+        "src/patterns/message-bubble/index.ts",
+        "src/patterns/notice/index.ts",
+        "src/patterns/panel/index.ts",
+        "src/patterns/post-card/index.ts",
+        "src/patterns/product-card/index.ts",
+        "src/patterns/responsive-panel/index.ts",
+        "src/patterns/scanner/index.ts",
+        "src/patterns/section-header/index.ts",
+        "src/patterns/selection/index.ts",
+        "src/patterns/settings-row/index.ts",
+        "src/patterns/switch-field/index.ts",
+        "src/patterns/theme-composer/index.ts",
+        "src/patterns/tile-grid/index.ts",
+        "src/patterns/timeline/index.ts",
+        "src/patterns/tree-view/index.ts",
+        "src/patterns/zora-drawer-content/index.ts",
+        "src/patterns/zora-tab-bar/index.ts"
+      ],
+      "exports": ["ZORA_COMPONENT_REGISTRY", "ZoraComponentRegistry"]
     },
     {
       "path": "src/theme/createZoraThemeConfig.ts",
@@ -23689,6 +23776,24 @@
       "structuredRows": []
     },
     {
+      "name": "ZORA_COMPONENT_REGISTRY",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/registry.ts",
+      "sourceLocation": {
+        "filePath": "src/registry.ts",
+        "line": 102,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "ZORA_EMPHASES",
       "description": null,
       "isReadme": false,
@@ -24286,6 +24391,24 @@
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
         "line": 20,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ZoraComponentRegistry",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/registry.ts",
+      "sourceLocation": {
+        "filePath": "src/registry.ts",
+        "line": 100,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -42115,8 +42238,403 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/registry.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/theme/index.ts",
         "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/action-sheet/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/app-bar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/avatar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/avatar-group/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/badge/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/breadcrumbs/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/button/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/button-group/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/card/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/checkbox/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/chip/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/chip-group/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/data-table/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/date-picker/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/drawer/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/form/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/gradient/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/heading/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/icon/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/icon-button/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/image/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/input/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/media-card/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/menu/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/metric-card/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/modal/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/navigation-item/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/navigation-list/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/pagination/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/progress/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/radio/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/rating/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/search-bar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/select/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/skeleton/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/splash-screen/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/tabs/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/textarea/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/time-picker/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/toast/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/components/toolbar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/app-shell/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/screen/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/screen-section/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/settings-layout/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/sidebar-layout/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/layout/topbar-layout/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/auth/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/chat-list-item/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/collection-editor/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/confirm-dialog/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/disclosure-section/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/empty-state/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/filter-bar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/hero/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/image-preview/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/image-upload-field/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/inspector-field/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/list/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/message-bubble/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/notice/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/panel/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/post-card/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/product-card/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/responsive-panel/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/scanner/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/section-header/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/selection/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/settings-row/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/switch-field/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/theme-composer/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/tile-grid/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/timeline/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/tree-view/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/zora-drawer-content/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/zora-tab-bar/index.ts",
+        "sourcePath": "src/registry.ts"
       },
       {
         "fromPath": "src/foundation/Box.tsx",

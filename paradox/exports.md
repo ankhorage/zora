@@ -5032,6 +5032,12 @@ Kind: `value`
 Module: `src/metadata/componentMeta.ts`
 Source: `src/metadata/componentMeta.ts:97:14`
 
+## ZORA_COMPONENT_REGISTRY
+
+Kind: `value`
+Module: `src/registry.ts`
+Source: `src/registry.ts:102:14`
+
 ## ZORA_EMPHASES
 
 Kind: `value`
@@ -5220,6 +5226,12 @@ Source: `src/metadata/types.ts:5:1`
 Kind: `unknown`
 Module: `src/metadata/types.ts`
 Source: `src/metadata/types.ts:20:1`
+
+## ZoraComponentRegistry
+
+Kind: `unknown`
+Module: `src/registry.ts`
+Source: `src/registry.ts:100:1`
 
 ## ZoraComponentSlotMeta
 

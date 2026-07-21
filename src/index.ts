@@ -354,4 +354,6 @@ export type { ZoraDrawerContentProps } from './patterns/zora-drawer-content';
 export { ZoraDrawerContent } from './patterns/zora-drawer-content';
 export type { ZoraTabBarProps } from './patterns/zora-tab-bar';
 export { ZoraTabBar } from './patterns/zora-tab-bar';
+export type { ZoraComponentRegistry } from './registry';
+export { ZORA_COMPONENT_REGISTRY } from './registry';
 export * from './theme';

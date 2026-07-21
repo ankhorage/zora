@@ -367,6 +367,7 @@ graph LR
   module_src_patterns_zora_tab_bar_meta_ts["src/patterns/zora-tab-bar/meta.ts"]
   module_src_patterns_zora_tab_bar_types_ts["src/patterns/zora-tab-bar/types.ts"]
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx["src/patterns/zora-tab-bar/ZoraTabBar.tsx"]
+  module_src_registry_ts["src/registry.ts"]
   module_src_theme_createZoraThemeConfig_ts["src/theme/createZoraThemeConfig.ts"]
   module_src_theme_index_ts["src/theme/index.ts"]
   module_src_theme_resolveZoraScopedThemeId_ts["src/theme/resolveZoraScopedThemeId.ts"]
@@ -1220,6 +1221,84 @@ graph LR
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_patterns_zora_tab_bar_types_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_registry_ts --> module_src_components_action_sheet_index_ts
+  module_src_registry_ts --> module_src_components_app_bar_index_ts
+  module_src_registry_ts --> module_src_components_avatar_group_index_ts
+  module_src_registry_ts --> module_src_components_avatar_index_ts
+  module_src_registry_ts --> module_src_components_badge_index_ts
+  module_src_registry_ts --> module_src_components_breadcrumbs_index_ts
+  module_src_registry_ts --> module_src_components_button_group_index_ts
+  module_src_registry_ts --> module_src_components_button_index_ts
+  module_src_registry_ts --> module_src_components_card_index_ts
+  module_src_registry_ts --> module_src_components_checkbox_index_ts
+  module_src_registry_ts --> module_src_components_chip_group_index_ts
+  module_src_registry_ts --> module_src_components_chip_index_ts
+  module_src_registry_ts --> module_src_components_data_table_index_ts
+  module_src_registry_ts --> module_src_components_date_picker_index_ts
+  module_src_registry_ts --> module_src_components_drawer_index_ts
+  module_src_registry_ts --> module_src_components_form_index_ts
+  module_src_registry_ts --> module_src_components_gradient_index_ts
+  module_src_registry_ts --> module_src_components_heading_index_ts
+  module_src_registry_ts --> module_src_components_icon_button_index_ts
+  module_src_registry_ts --> module_src_components_icon_index_ts
+  module_src_registry_ts --> module_src_components_image_index_ts
+  module_src_registry_ts --> module_src_components_input_index_ts
+  module_src_registry_ts --> module_src_components_media_card_index_ts
+  module_src_registry_ts --> module_src_components_menu_index_ts
+  module_src_registry_ts --> module_src_components_metric_card_index_ts
+  module_src_registry_ts --> module_src_components_modal_index_ts
+  module_src_registry_ts --> module_src_components_navigation_item_index_ts
+  module_src_registry_ts --> module_src_components_navigation_list_index_ts
+  module_src_registry_ts --> module_src_components_pagination_index_ts
+  module_src_registry_ts --> module_src_components_progress_index_ts
+  module_src_registry_ts --> module_src_components_radio_index_ts
+  module_src_registry_ts --> module_src_components_rating_index_ts
+  module_src_registry_ts --> module_src_components_search_bar_index_ts
+  module_src_registry_ts --> module_src_components_select_index_ts
+  module_src_registry_ts --> module_src_components_skeleton_index_ts
+  module_src_registry_ts --> module_src_components_splash_screen_index_ts
+  module_src_registry_ts --> module_src_components_tabs_index_ts
+  module_src_registry_ts --> module_src_components_text_index_ts
+  module_src_registry_ts --> module_src_components_textarea_index_ts
+  module_src_registry_ts --> module_src_components_time_picker_index_ts
+  module_src_registry_ts --> module_src_components_toast_index_ts
+  module_src_registry_ts --> module_src_components_toolbar_index_ts
+  module_src_registry_ts --> module_src_foundation_index_ts
+  module_src_registry_ts --> module_src_layout_app_shell_index_ts
+  module_src_registry_ts --> module_src_layout_screen_section_index_ts
+  module_src_registry_ts --> module_src_layout_screen_index_ts
+  module_src_registry_ts --> module_src_layout_settings_layout_index_ts
+  module_src_registry_ts --> module_src_layout_sidebar_layout_index_ts
+  module_src_registry_ts --> module_src_layout_topbar_layout_index_ts
+  module_src_registry_ts --> module_src_patterns_auth_index_ts
+  module_src_registry_ts --> module_src_patterns_chat_list_item_index_ts
+  module_src_registry_ts --> module_src_patterns_collection_editor_index_ts
+  module_src_registry_ts --> module_src_patterns_confirm_dialog_index_ts
+  module_src_registry_ts --> module_src_patterns_disclosure_section_index_ts
+  module_src_registry_ts --> module_src_patterns_empty_state_index_ts
+  module_src_registry_ts --> module_src_patterns_filter_bar_index_ts
+  module_src_registry_ts --> module_src_patterns_hero_index_ts
+  module_src_registry_ts --> module_src_patterns_image_preview_index_ts
+  module_src_registry_ts --> module_src_patterns_image_upload_field_index_ts
+  module_src_registry_ts --> module_src_patterns_inspector_field_index_ts
+  module_src_registry_ts --> module_src_patterns_list_index_ts
+  module_src_registry_ts --> module_src_patterns_message_bubble_index_ts
+  module_src_registry_ts --> module_src_patterns_notice_index_ts
+  module_src_registry_ts --> module_src_patterns_panel_index_ts
+  module_src_registry_ts --> module_src_patterns_post_card_index_ts
+  module_src_registry_ts --> module_src_patterns_product_card_index_ts
+  module_src_registry_ts --> module_src_patterns_responsive_panel_index_ts
+  module_src_registry_ts --> module_src_patterns_scanner_index_ts
+  module_src_registry_ts --> module_src_patterns_section_header_index_ts
+  module_src_registry_ts --> module_src_patterns_selection_index_ts
+  module_src_registry_ts --> module_src_patterns_settings_row_index_ts
+  module_src_registry_ts --> module_src_patterns_switch_field_index_ts
+  module_src_registry_ts --> module_src_patterns_theme_composer_index_ts
+  module_src_registry_ts --> module_src_patterns_tile_grid_index_ts
+  module_src_registry_ts --> module_src_patterns_timeline_index_ts
+  module_src_registry_ts --> module_src_patterns_tree_view_index_ts
+  module_src_registry_ts --> module_src_patterns_zora_drawer_content_index_ts
+  module_src_registry_ts --> module_src_patterns_zora_tab_bar_index_ts
   module_src_theme_createZoraThemeConfig_ts --> module_src_theme_types_ts
   module_src_theme_createZoraThemeConfig_ts --> module_src_theme_zoraDefaultTheme_ts
   module_src_theme_resolveZoraScopedThemeId_ts --> module_src_theme_types_ts
