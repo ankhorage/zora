@@ -33,7 +33,10 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
     }
 
     const parsed: unknown = JSON.parse(snapshotJson);
-    if (!Array.isArray(parsed) || !parsed.every((entry): entry is string => typeof entry === 'string')) {
+    if (
+      !Array.isArray(parsed) ||
+      !parsed.every((entry): entry is string => typeof entry === 'string')
+    ) {
       throw new Error('Registry snapshot must be a JSON array of component names.');
     }
 
