@@ -31,31 +31,31 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function listRuntimeNamedImports(moduleSpecifier: string): readonly string[] {
-  const importPattern = new RegExp(
-    `import\\s+(?!type\\s)\\{([\\s\\S]*?)\\}\\s+from\\s+['"]${escapeRegExp(moduleSpecifier)}['"]`,
+function listRuntimeNamedBindings(moduleSpecifier: string): readonly string[] {
+  const bindingPattern = new RegExp(
+    `(?:import|export)\\s+(?!type\\s)\\{([\\s\\S]*?)\\}\\s+from\\s+['"]${escapeRegExp(moduleSpecifier)}['"]`,
     'g',
   );
-  const importedNames = new Set<string>();
+  const boundNames = new Set<string>();
 
   for (const filePath of listRuntimeSourceFiles(sourceRoot)) {
     const source = readFileSync(filePath, 'utf8');
-    for (const match of source.matchAll(importPattern)) {
+    for (const match of source.matchAll(bindingPattern)) {
       for (const rawSpecifier of match[1].split(',')) {
         const specifier = rawSpecifier.trim();
         if (!specifier || specifier.startsWith('type ')) {
           continue;
         }
 
-        const importedName = specifier.split(/\s+as\s+/)[0]?.trim();
+        const importedName = specifier.split(/\\s+as\\s+/)[0]?.trim();
         if (importedName) {
-          importedNames.add(importedName);
+          boundNames.add(importedName);
         }
       }
     }
   }
 
-  return [...importedNames].sort();
+  return [...boundNames].sort();
 }
 
 function createRuntimeModuleMock(
@@ -63,7 +63,7 @@ function createRuntimeModuleMock(
   overrides: Readonly<Record<string, unknown>> = {},
 ): ModuleMock {
   return Object.fromEntries(
-    listRuntimeNamedImports(moduleSpecifier).map((name) => [
+    listRuntimeNamedBindings(moduleSpecifier).map((name) => [
       name,
       Object.hasOwn(overrides, name) ? overrides[name] : createMockComponent,
     ]),
