@@ -3,13 +3,14 @@ import { describe, expect, test } from 'bun:test';
 import type { ZoraComponentRegistry } from './index';
 
 const NON_RUNTIME_COMPONENT_EXPORTS = new Set(['SelectionProvider', 'ToastProvider']);
+const REGISTRY_SNAPSHOT_PREFIX = 'ZORA_REGISTRY_SNAPSHOT:';
 
 let registryEntriesPromise: Promise<readonly string[]> | undefined;
 
 async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
   registryEntriesPromise ??= (async () => {
     const subprocess = Bun.spawn({
-      cmd: [process.execPath, 'src/test/registrySnapshot.ts'],
+      cmd: [process.execPath, 'test', 'test-fixtures/registrySnapshot.test.ts'],
       stdout: 'pipe',
       stderr: 'pipe',
     });
@@ -23,7 +24,19 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
       throw new Error(`Failed to inspect ZORA_COMPONENT_REGISTRY:\n${stderr}`);
     }
 
-    const parsed: unknown = JSON.parse(stdout);
+    const output = `${stdout}\n${stderr}`;
+    const snapshotLine = output
+      .split(/\r?\n/)
+      .find((line) => line.includes(REGISTRY_SNAPSHOT_PREFIX));
+    const snapshotJson = snapshotLine?.slice(
+      (snapshotLine.indexOf(REGISTRY_SNAPSHOT_PREFIX) ?? -1) + REGISTRY_SNAPSHOT_PREFIX.length,
+    );
+
+    if (!snapshotJson) {
+      throw new Error('Registry snapshot subprocess did not emit a registry snapshot.');
+    }
+
+    const parsed: unknown = JSON.parse(snapshotJson);
     if (!Array.isArray(parsed) || !parsed.every((entry): entry is string => typeof entry === 'string')) {
       throw new Error('Registry snapshot must be a JSON array of component names.');
     }
