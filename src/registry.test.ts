@@ -25,17 +25,13 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
     }
 
     const output = `${stdout}\n${stderr}`;
-    const snapshotLine = output
-      .split(/\r?\n/)
-      .find((line) => line.includes(REGISTRY_SNAPSHOT_PREFIX));
+    const escapedPrefix = REGISTRY_SNAPSHOT_PREFIX.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const snapshotJson = new RegExp(`${escapedPrefix}(\\[[^\\r\\n]*\\])`).exec(output)?.[1];
 
-    if (!snapshotLine) {
+    if (!snapshotJson) {
       throw new Error('Registry snapshot subprocess did not emit a registry snapshot.');
     }
 
-    const snapshotJson = snapshotLine.slice(
-      snapshotLine.indexOf(REGISTRY_SNAPSHOT_PREFIX) + REGISTRY_SNAPSHOT_PREFIX.length,
-    );
     const parsed: unknown = JSON.parse(snapshotJson);
     if (!Array.isArray(parsed) || !parsed.every((entry): entry is string => typeof entry === 'string')) {
       throw new Error('Registry snapshot must be a JSON array of component names.');
