@@ -1,7 +1,11 @@
 import { createKnipConfig } from '@ankhorage/devtools/knip';
 
 export default createKnipConfig({
-  entry: ['scripts/scaffold-zora-example-app.ts', 'examples/basic-app/App.tsx'],
+  entry: [
+    'scripts/scaffold-zora-example-app.ts',
+    'examples/basic-app/App.tsx',
+    'test-fixtures/registrySnapshot.test.ts',
+  ],
   ignoreDependencies: ['expo-font'],
   ignoreFiles: [
     '.prettierrc.js',
