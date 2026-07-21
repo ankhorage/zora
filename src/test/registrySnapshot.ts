@@ -1,0 +1,118 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+
+import { mock } from 'bun:test';
+
+type ModuleMock = Record<string, unknown>;
+
+const sourceRoot = path.resolve(import.meta.dir, '..');
+
+function createMockComponent() {
+  return null;
+}
+
+function listRuntimeSourceFiles(directoryPath: string): string[] {
+  return readdirSync(directoryPath, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directoryPath, entry.name);
+    if (entry.isDirectory()) {
+      return listRuntimeSourceFiles(entryPath);
+    }
+
+    if (!entry.name.endsWith('.ts') && !entry.name.endsWith('.tsx')) {
+      return [];
+    }
+
+    return entry.name.includes('.test.') ? [] : [entryPath];
+  });
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function listRuntimeNamedImports(moduleSpecifier: string): readonly string[] {
+  const importPattern = new RegExp(
+    `import\\s+(?!type\\s)\\{([\\s\\S]*?)\\}\\s+from\\s+['"]${escapeRegExp(moduleSpecifier)}['"]`,
+    'g',
+  );
+  const importedNames = new Set<string>();
+
+  for (const filePath of listRuntimeSourceFiles(sourceRoot)) {
+    const source = readFileSync(filePath, 'utf8');
+    for (const match of source.matchAll(importPattern)) {
+      for (const rawSpecifier of match[1].split(',')) {
+        const specifier = rawSpecifier.trim();
+        if (!specifier || specifier.startsWith('type ')) {
+          continue;
+        }
+
+        const importedName = specifier.split(/\s+as\s+/)[0]?.trim();
+        if (importedName) {
+          importedNames.add(importedName);
+        }
+      }
+    }
+  }
+
+  return [...importedNames].sort();
+}
+
+function createRuntimeModuleMock(
+  moduleSpecifier: string,
+  overrides: Readonly<Record<string, unknown>> = {},
+): ModuleMock {
+  return Object.fromEntries(
+    listRuntimeNamedImports(moduleSpecifier).map((name) => [
+      name,
+      Object.hasOwn(overrides, name) ? overrides[name] : createMockComponent,
+    ]),
+  );
+}
+
+mock.module('react-native', () =>
+  createRuntimeModuleMock('react-native', {
+    Platform: {
+      OS: 'web',
+      select: <T>(options: Partial<Record<string, T>>): T | undefined =>
+        options.web ?? options.default,
+    },
+    StyleSheet: {
+      create: <T>(styles: T): T => styles,
+      flatten: <T>(style: T): T => style,
+    },
+  }),
+);
+
+mock.module('@ankhorage/surface', () =>
+  createRuntimeModuleMock('@ankhorage/surface', {
+    ThemeContext: {
+      Provider: createMockComponent,
+    },
+    createTheme: () => ({}),
+    resolveResponsive: <T>(value: T): T => value,
+    useFontContext: () => ({ activeFontId: undefined }),
+    useResponsiveRuntime: () => ({ breakpoint: 'base' }),
+    useTheme: () => ({
+      mode: 'light',
+      setMode: () => undefined,
+      setThemeConfig: () => undefined,
+      theme: {},
+    }),
+    useToast: () => ({
+      dismiss: () => undefined,
+      show: () => undefined,
+    }),
+  }),
+);
+
+mock.module('@react-native-picker/picker', () => ({
+  Picker: createMockComponent,
+}));
+
+mock.module('expo-linear-gradient', () => ({
+  LinearGradient: createMockComponent,
+}));
+
+const { ZORA_COMPONENT_REGISTRY } = await import('../registry');
+
+console.log(JSON.stringify(Object.keys(ZORA_COMPONENT_REGISTRY).sort()));
