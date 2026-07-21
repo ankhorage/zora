@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.6
+
+### Patch Changes
+
+- 2c162c8: Export the canonical ZORA component registry for runtime renderer composition.
+
 ## 2.8.5
 
 ### Patch Changes
