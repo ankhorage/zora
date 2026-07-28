@@ -85,7 +85,7 @@ function HeadingInner({
     <ReactNativeText
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
-      accessibilityRole={accessibilityRole}
+      accessibilityRole={accessibilityRole ?? 'header'}
       ellipsizeMode={ellipsizeMode}
       nativeID={nativeID}
       numberOfLines={numberOfLines}

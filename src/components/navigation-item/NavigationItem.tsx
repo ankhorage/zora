@@ -13,11 +13,12 @@ function NavigationItemInner({
   compact = false,
   onPress,
   testID,
-  interactionPolicy: _interactionPolicy,
+  interactionPolicy,
 }: NavigationItemProps) {
   return (
     <SurfaceNavigationItem
       compact={compact}
+      interactionPolicy={interactionPolicy}
       item={{
         id: route.key,
         label: metadata?.label ?? route.name,

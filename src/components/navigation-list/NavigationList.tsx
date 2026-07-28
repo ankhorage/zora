@@ -19,7 +19,7 @@ function NavigationListInner({
   header,
   footer,
   testID,
-  interactionPolicy: _interactionPolicy,
+  interactionPolicy,
 }: NavigationListProps) {
   const items = routes.map((route) => {
     const metadata = routeMap?.[route.name];
@@ -44,6 +44,7 @@ function NavigationListInner({
         compact={compact}
         footer={footer}
         header={header}
+        interactionPolicy={interactionPolicy}
         items={items}
         testID={testID}
       />
@@ -53,6 +54,7 @@ function NavigationListInner({
   return (
     <SurfaceNavigationList
       compact={compact}
+      interactionPolicy={interactionPolicy}
       items={items}
       orientation={orientation}
       testID={testID}

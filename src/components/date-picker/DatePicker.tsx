@@ -173,6 +173,7 @@ function DatePickerInner({
     >
       <Button
         disabled={disabled}
+        interactionPolicy={interactionPolicy}
         onPress={openPicker}
         testID={testID ? `${testID}-trigger` : undefined}
         trailingIcon={{ name: 'calendar-outline' }}
@@ -182,7 +183,12 @@ function DatePickerInner({
       </Button>
       <ActionSheet
         description={description}
-        onDismiss={() => setVisible(false)}
+        interactionPolicy={interactionPolicy}
+        onDismiss={() => {
+          if (passive) return;
+
+          setVisible(false);
+        }}
         testID={testID ? `${testID}-sheet` : undefined}
         title={label ?? 'Choose date'}
         visible={visible}
@@ -191,7 +197,10 @@ function DatePickerInner({
           <Stack align="center" direction="row" justify="space-between">
             <Button
               disabled={!canNavigateToMonth(previousMonth, minDate, maxDate)}
+              interactionPolicy={interactionPolicy}
               onPress={() => {
+                if (passive) return;
+
                 setDisplayMonth(previousMonth);
               }}
               size="s"
@@ -204,7 +213,10 @@ function DatePickerInner({
             </Text>
             <Button
               disabled={!canNavigateToMonth(nextMonth, minDate, maxDate)}
+              interactionPolicy={interactionPolicy}
               onPress={() => {
+                if (passive) return;
+
                 setDisplayMonth(nextMonth);
               }}
               size="s"
@@ -238,6 +250,7 @@ function DatePickerInner({
                   <Button
                     color={selected ? 'primary' : 'neutral'}
                     disabled={dayDisabled}
+                    interactionPolicy={interactionPolicy}
                     onPress={() => {
                       if (passive) return;
 
