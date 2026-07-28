@@ -8,6 +8,7 @@ import type { OAuthProviderButtonProps } from './types';
 function OAuthProviderButtonInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   providerId,
   label,
   icon,
@@ -28,6 +29,7 @@ function OAuthProviderButtonInner({
       color={color}
       disabled={disabled || loading || onPress === undefined}
       fullWidth={fullWidth}
+      interactionPolicy={interactionPolicy}
       leadingIcon={resolvedIcon}
       loading={loading}
       onPress={() => {

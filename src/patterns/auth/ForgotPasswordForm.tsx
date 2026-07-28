@@ -18,6 +18,7 @@ type ForgotPasswordFieldName = 'identifier';
 function ForgotPasswordFormInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   identifiers = defaultIdentifiers,
   identifierLabel,
   signInLabel = 'Sign in',
@@ -76,6 +77,7 @@ function ForgotPasswordFormInner({
       disabled={disabled}
       error={error}
       fields={fields}
+      interactionPolicy={interactionPolicy}
       loading={loading}
       onChange={setValues}
       onSubmit={handleSubmit}

@@ -6,7 +6,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface StackProps extends ZoraBaseProps, Omit<SurfaceStackProps, 'mode' | 'themeId'> {}
 
-function StackInner({ themeId: _themeId, mode: _mode, ...props }: StackProps) {
+function StackInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: StackProps) {
   return <SurfaceStack {...props} />;
 }
 

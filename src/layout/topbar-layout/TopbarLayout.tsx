@@ -8,6 +8,7 @@ import type { TopbarLayoutProps } from './types';
 function TopbarLayoutInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   topbar,
   children,
   sidebar,

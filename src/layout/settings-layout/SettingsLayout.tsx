@@ -9,6 +9,7 @@ import type { SettingsLayoutProps } from './types';
 function SettingsLayoutInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   title,
   description,
   sidebar,

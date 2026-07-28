@@ -20,6 +20,8 @@ function SettingsRowInner({
 }: SettingsRowProps) {
   const isInteractive = Boolean(onPress) && !control;
 
+  // Prevent nested interactive elements:
+  // If a control is present (likely contains buttons), the row itself must not be clickable
   return (
     <Card
       compact

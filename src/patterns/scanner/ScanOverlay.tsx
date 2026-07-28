@@ -10,6 +10,7 @@ import type { ScanOverlayProps } from './types';
 
 function ScanOverlayInner({
   themeId: _themeId,
+  interactionPolicy: _interactionPolicy,
   mode: _mode,
   title = 'Align the barcode',
   description = 'Hold the barcode inside the frame. Scanning starts automatically.',

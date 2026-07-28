@@ -32,6 +32,7 @@ function resolvePermissionCopy(status: CameraPermissionViewProps['status']) {
 
 function CameraPermissionViewInner({
   themeId: _themeId,
+  interactionPolicy,
   mode: _mode,
   status,
   title,
@@ -63,6 +64,7 @@ function CameraPermissionViewInner({
       compact
       description={description ?? copy.description}
       eyebrow="Scanner permission"
+      interactionPolicy={interactionPolicy}
       testID={testID}
       title={title ?? copy.title}
       tone="subtle"

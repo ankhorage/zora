@@ -13,6 +13,7 @@ function defaultOverflowLabel(overflowCount: number): string {
 function AvatarGroupInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   testID,
   items,
   max = 4,

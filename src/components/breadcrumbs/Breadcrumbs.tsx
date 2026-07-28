@@ -80,6 +80,7 @@ function BreadcrumbLabel({ item, compact }: { item: BreadcrumbItem; compact: boo
 function BreadcrumbsInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   items,
   separator = '/',
   maxItems,

@@ -131,6 +131,7 @@ function MessageAvatar({
 function MessageBubbleInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   testID,
   direction = 'incoming',
   text,
@@ -224,6 +225,7 @@ function MessageBubbleInner({
       accessibilityRole="button"
       accessibilityState={{ disabled, selected }}
       disabled={disabled}
+      interactionPolicy={interactionPolicy}
       onPress={onPress}
       radius={isSystem ? 'm' : 'l'}
       testID={testID}

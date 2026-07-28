@@ -17,6 +17,7 @@ type SignInFieldName = 'identifier' | 'secret';
 
 function SignInFormInner({
   themeId: _themeId,
+  interactionPolicy,
   mode: _mode,
   identifiers = defaultIdentifiers,
   identifierLabel,
@@ -103,6 +104,7 @@ function SignInFormInner({
       disabled={disabled}
       error={error}
       fields={fields}
+      interactionPolicy={interactionPolicy}
       loading={loading}
       onChange={setValues}
       onSubmit={handleSubmit}

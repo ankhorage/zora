@@ -13,7 +13,12 @@ export type { SurfaceVariant };
 export interface SurfaceProps
   extends ZoraBaseProps, Omit<SurfaceSurfaceProps, 'mode' | 'themeId'> {}
 
-function SurfaceInner({ themeId: _themeId, mode: _mode, ...props }: SurfaceProps) {
+function SurfaceInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: SurfaceProps) {
   return <SurfaceSurface {...props} />;
 }
 

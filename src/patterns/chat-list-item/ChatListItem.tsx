@@ -71,6 +71,7 @@ function renderUnreadCount(unreadCount: React.ReactNode) {
 function ChatListItemInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   testID,
   title,
   preview,
@@ -203,6 +204,7 @@ function ChatListItemInner({
       accessibilityRole="button"
       accessibilityState={{ disabled, selected }}
       disabled={disabled}
+      interactionPolicy={interactionPolicy}
       onPress={onPress}
       radius="m"
       testID={testID}

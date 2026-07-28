@@ -8,6 +8,7 @@ import type { BadgeProps } from './types';
 function BadgeInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   color,
   variant,

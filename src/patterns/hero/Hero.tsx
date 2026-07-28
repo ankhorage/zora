@@ -11,6 +11,7 @@ import type { HeroAction, HeroAlign, HeroProps } from './types';
 function HeroInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   title,
   description,
   eyebrow,

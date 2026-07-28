@@ -8,6 +8,7 @@ import type { ToolbarProps } from './types';
 function ToolbarInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   position = 'inline',
   floating = false,

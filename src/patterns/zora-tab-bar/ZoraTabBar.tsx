@@ -33,6 +33,7 @@ function resolveAccessibilityLabel(
 function ZoraTabBarInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   state,
   navigation,
   descriptors,

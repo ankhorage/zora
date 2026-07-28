@@ -6,7 +6,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface ShowProps extends ZoraBaseProps, Omit<SurfaceShowProps, 'mode' | 'themeId'> {}
 
-function ShowInner({ themeId: _themeId, mode: _mode, ...props }: ShowProps) {
+function ShowInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: ShowProps) {
   return <SurfaceShow {...props} />;
 }
 

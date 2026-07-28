@@ -9,7 +9,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface CenterProps extends ZoraBaseProps, Omit<SurfaceCenterProps, 'mode' | 'themeId'> {}
 
-function CenterInner({ themeId: _themeId, mode: _mode, ...props }: CenterProps) {
+function CenterInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: CenterProps) {
   return <SurfaceCenter {...props} />;
 }
 

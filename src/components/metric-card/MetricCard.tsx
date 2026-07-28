@@ -14,6 +14,7 @@ import type { MetricCardProps } from './types';
 function MetricCardInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   testID,
   label,
   value,
@@ -35,6 +36,7 @@ function MetricCardInner({
   return (
     <Card
       compact={compact}
+      interactionPolicy={interactionPolicy}
       onPress={isInteractive ? onPress : undefined}
       testID={testID}
       tone={tone}

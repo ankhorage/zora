@@ -4,8 +4,8 @@ import React from 'react';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { RadioProps } from './types';
 
-function RadioInner({ themeId: _themeId, mode: _mode, ...props }: RadioProps) {
-  return <SurfaceRadio {...props} />;
+function RadioInner({ themeId: _themeId, mode: _mode, interactionPolicy, ...props }: RadioProps) {
+  return <SurfaceRadio {...props} interactionPolicy={interactionPolicy} />;
 }
 
 /***

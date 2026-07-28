@@ -9,6 +9,7 @@ import type { SectionHeaderProps } from './types';
 function SectionHeaderInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   title,
   description,
   eyebrow,

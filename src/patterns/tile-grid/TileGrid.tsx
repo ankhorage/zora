@@ -7,6 +7,7 @@ import type { TileGridProps } from './types';
 function TileGridInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   columns = 'responsive',
   compact = false,

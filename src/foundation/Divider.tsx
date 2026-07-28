@@ -10,7 +10,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 export interface DividerProps
   extends ZoraBaseProps, Omit<SurfaceDividerProps, 'mode' | 'themeId'> {}
 
-function DividerInner({ themeId: _themeId, mode: _mode, ...props }: DividerProps) {
+function DividerInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: DividerProps) {
   return <SurfaceDivider {...props} />;
 }
 

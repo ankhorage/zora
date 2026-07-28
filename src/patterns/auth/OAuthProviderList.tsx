@@ -8,6 +8,7 @@ import type { OAuthProviderListProps } from './types';
 function OAuthProviderListInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   providers,
   disabled = false,
   loading = false,
@@ -42,6 +43,7 @@ function OAuthProviderListInner({
           providerId={provider.id}
           size={size}
           variant={variant}
+          interactionPolicy={interactionPolicy}
         />
       ))}
     </Stack>

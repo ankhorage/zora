@@ -11,6 +11,7 @@ type OtpFieldName = 'otp';
 function OtpFormInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   length = 6,
   otpLabel = 'Code',
   resendLabel = 'Resend code',
@@ -72,6 +73,7 @@ function OtpFormInner({
       disabled={disabled}
       error={error}
       fields={fields}
+      interactionPolicy={interactionPolicy}
       loading={loading}
       onChange={setValues}
       onSubmit={handleSubmit}

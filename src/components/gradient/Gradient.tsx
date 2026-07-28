@@ -8,6 +8,7 @@ import type { GradientProps } from './types';
 function GradientInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   colors,
   locations,

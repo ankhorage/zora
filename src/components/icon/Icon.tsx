@@ -6,7 +6,12 @@ import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export interface IconProps extends ZoraBaseProps, Omit<SurfaceIconProps, 'mode' | 'themeId'> {}
 
-function IconInner({ themeId: _themeId, mode: _mode, ...props }: IconProps) {
+function IconInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: IconProps) {
   return <SurfaceIcon {...props} />;
 }
 
