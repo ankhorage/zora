@@ -47,6 +47,7 @@ function BarcodeScannerViewInner({
         requestLabel={requestPermissionLabel}
         status={permissionStatus}
         testID={testID}
+        interactionPolicy={interactionPolicy}
       />
     );
   }

@@ -64,6 +64,7 @@ function OtpFormInner({
               }}
               size="s"
               color="neutral"
+              interactionPolicy={interactionPolicy}
             >
               {resendLabel}
             </Button>

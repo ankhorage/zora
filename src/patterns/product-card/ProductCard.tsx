@@ -110,12 +110,23 @@ function ProductCardInner({
             <Divider />
             <Inline gap="s">
               {secondaryActionLabel ? (
-                <Button variant="ghost" onPress={onSecondaryAction} size="s">
+                <Button
+                  interactionPolicy={interactionPolicy}
+                  variant="ghost"
+                  onPress={onSecondaryAction}
+                  size="s"
+                >
                   {secondaryActionLabel}
                 </Button>
               ) : null}
               {primaryActionLabel ? (
-                <Button variant="solid" onPress={onPrimaryAction} size="s" flex={1}>
+                <Button
+                  interactionPolicy={interactionPolicy}
+                  variant="solid"
+                  onPress={onPrimaryAction}
+                  size="s"
+                  flex={1}
+                >
                   {primaryActionLabel}
                 </Button>
               ) : null}

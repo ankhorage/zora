@@ -1,6 +1,6 @@
-import type { InteractionPolicy } from '@ankhorage/surface';
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
-export interface ProductCardProps {
+export interface ProductCardProps extends ZoraBaseProps {
   title: string;
   subtitle?: string;
   description?: string;
@@ -20,5 +20,4 @@ export interface ProductCardProps {
   onPress?: () => void;
   onPrimaryAction?: () => void;
   onSecondaryAction?: () => void;
-  interactionPolicy?: InteractionPolicy;
 }

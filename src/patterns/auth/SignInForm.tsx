@@ -81,6 +81,7 @@ function SignInFormInner({
                 }}
                 size="s"
                 color="neutral"
+                interactionPolicy={interactionPolicy}
               >
                 {forgotPasswordLabel}
               </Button>
@@ -94,6 +95,7 @@ function SignInFormInner({
                 }}
                 size="s"
                 color="neutral"
+                interactionPolicy={interactionPolicy}
               >
                 {signUpLabel}
               </Button>

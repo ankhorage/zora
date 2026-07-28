@@ -80,7 +80,7 @@ function BreadcrumbLabel({ item, compact }: { item: BreadcrumbItem; compact: boo
 function BreadcrumbsInner({
   themeId: _themeId,
   mode: _mode,
-  interactionPolicy: _interactionPolicy,
+  interactionPolicy,
   items,
   separator = '/',
   maxItems,
@@ -122,6 +122,7 @@ function BreadcrumbsInner({
             {interactive ? (
               <Button
                 color="neutral"
+                interactionPolicy={interactionPolicy}
                 leadingIcon={item.icon}
                 onPress={item.onPress}
                 size={compact ? 's' : 'm'}

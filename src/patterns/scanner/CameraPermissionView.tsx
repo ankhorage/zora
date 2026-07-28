@@ -80,6 +80,7 @@ function CameraPermissionViewInner({
               disabled={status === 'requesting'}
               onPress={handleRequestPermission}
               {...requestButtonProps}
+              interactionPolicy={interactionPolicy}
             >
               {primaryLabel}
             </Button>
@@ -90,6 +91,7 @@ function CameraPermissionViewInner({
               onPress={handleManualEntry}
               variant="soft"
               {...manualEntryButtonProps}
+              interactionPolicy={interactionPolicy}
             >
               {manualEntryLabel}
             </Button>

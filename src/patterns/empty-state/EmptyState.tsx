@@ -9,6 +9,7 @@ import type { EmptyStateProps } from './types';
 function EmptyStateInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   title,
   description,
   eyebrow,
@@ -16,13 +17,13 @@ function EmptyStateInner({
   secondaryAction,
   footer,
   testID,
-  interactionPolicy: _interactionPolicy,
 }: EmptyStateProps) {
   return (
     <Card
       compact
       description={description}
       eyebrow={eyebrow}
+      interactionPolicy={interactionPolicy}
       testID={testID}
       title={title}
       tone="subtle"
@@ -32,6 +33,7 @@ function EmptyStateInner({
           <Stack direction={{ base: 'column', md: 'row' }} gap="s">
             {primaryAction ? (
               <Button
+                interactionPolicy={interactionPolicy}
                 variant={primaryAction.variant}
                 onPress={primaryAction.onPress}
                 color={primaryAction.color}
@@ -41,6 +43,7 @@ function EmptyStateInner({
             ) : null}
             {secondaryAction ? (
               <Button
+                interactionPolicy={interactionPolicy}
                 variant={secondaryAction.variant ?? 'soft'}
                 onPress={secondaryAction.onPress}
                 color={secondaryAction.color ?? 'neutral'}

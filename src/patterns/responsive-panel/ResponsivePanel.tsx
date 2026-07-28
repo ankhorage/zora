@@ -131,6 +131,7 @@ function ResponsivePanelInner({
       compact={compact}
       description={description}
       footer={footer}
+      interactionPolicy={interactionPolicy}
       testID={testID}
       title={title}
     >

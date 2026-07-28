@@ -11,7 +11,7 @@ import type { HeroAction, HeroAlign, HeroProps } from './types';
 function HeroInner({
   themeId: _themeId,
   mode: _mode,
-  interactionPolicy: _interactionPolicy,
+  interactionPolicy,
   title,
   description,
   eyebrow,
@@ -65,8 +65,12 @@ function HeroInner({
             gap="s"
             justify={align === 'center' ? 'center' : 'flex-start'}
           >
-            {primaryAction !== undefined ? renderAction(primaryAction, 'primary') : null}
-            {secondaryAction !== undefined ? renderAction(secondaryAction, 'secondary') : null}
+            {primaryAction !== undefined
+              ? renderAction(primaryAction, 'primary', interactionPolicy)
+              : null}
+            {secondaryAction !== undefined
+              ? renderAction(secondaryAction, 'secondary', interactionPolicy)
+              : null}
           </Stack>
         ) : null}
 
@@ -91,16 +95,21 @@ function HeroInner({
     );
 
   return (
-    <Card compact={compact} testID={testID} tone={tone}>
+    <Card compact={compact} interactionPolicy={interactionPolicy} testID={testID} tone={tone}>
       {body}
     </Card>
   );
 }
 
-function renderAction(action: HeroAction, role: 'primary' | 'secondary') {
+function renderAction(
+  action: HeroAction,
+  role: 'primary' | 'secondary',
+  interactionPolicy: HeroProps['interactionPolicy'],
+) {
   return (
     <Button
       disabled={action.disabled}
+      interactionPolicy={interactionPolicy}
       variant={action.variant ?? (role === 'primary' ? 'solid' : 'soft')}
       onPress={action.onPress}
       color={action.color ?? (role === 'primary' ? 'primary' : 'neutral')}

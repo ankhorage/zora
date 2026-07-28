@@ -48,6 +48,7 @@ function TreeViewInner<TId extends string = string>({
           onToggleExpand={handleToggleExpand}
           renderItem={renderItem}
           selectedId={selectedId}
+          interactionPolicy={interactionPolicy}
         />
       ))}
     </Stack>

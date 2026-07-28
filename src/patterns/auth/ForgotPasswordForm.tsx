@@ -68,6 +68,7 @@ function ForgotPasswordFormInner({
               }}
               size="s"
               color="neutral"
+              interactionPolicy={interactionPolicy}
             >
               {signInLabel}
             </Button>

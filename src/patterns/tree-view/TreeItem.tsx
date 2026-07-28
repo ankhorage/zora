@@ -28,6 +28,7 @@ function TreeItemInner<TId extends string = string>({
   onToggleExpand,
   renderItem,
   testID,
+  interactionPolicy,
 }: TreeItemProps<TId>) {
   const hasChildren = node.children !== undefined && node.children.length > 0;
   const isExpanded = expandedIds.includes(node.id);
@@ -53,6 +54,7 @@ function TreeItemInner<TId extends string = string>({
             {hasChildren ? (
               <IconButton
                 icon={{ name: isExpanded ? 'chevron-down-outline' : 'chevron-forward-outline' }}
+                interactionPolicy={interactionPolicy}
                 label={isExpanded ? 'Collapse' : 'Expand'}
                 onPress={() => onToggleExpand(node.id)}
                 size="s"
