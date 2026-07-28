@@ -105,8 +105,10 @@ type ComponentPropsFor<K extends keyof typeof _ZORA_COMPONENT_REGISTRY> = React.
 >;
 
 type AcceptsSurfaceInteractionPolicyProps<P> = 'interactionPolicy' extends keyof P
-  ? Pick<P, 'interactionPolicy'> extends InteractionPolicyProps
-    ? true
+  ? InteractionPolicyProps extends Pick<P, 'interactionPolicy'>
+    ? Pick<P, 'interactionPolicy'> extends InteractionPolicyProps
+      ? true
+      : false
     : false
   : false;
 
