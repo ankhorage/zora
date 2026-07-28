@@ -7,7 +7,7 @@
       "dependencies": {
         "@ankhorage/color-theory": "^0.0.7",
         "@ankhorage/contracts": "^2.1.0",
-        "@ankhorage/surface": "^2.0.3",
+        "@ankhorage/surface": "^2.1.0",
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.3.4",
@@ -46,7 +46,7 @@
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.1.10", "", { "dependencies": { "ts-morph": "^24.0.0" }, "bin": { "paradox": "dist/cli.js" } }, "sha512-e86ltBY37+BYGpM8oUVF/7mQU/4dKAQJBiIPSHuZ72mRDcJeN0eScnJrCA5YeV+aK8iXrfD6qPbEkyNRcUIRzQ=="],
 
-    "@ankhorage/surface": ["@ankhorage/surface@2.0.3", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.7", "@ankhorage/contracts": "^2.1.0" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0", "react-native-safe-area-context": "^5.0.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-F5uG1Hun98N0c8fYgXAOlliUoIgX1LRm5B5IyiN0I2GEiyW12mC1UOu2MNn+9PAjZNdH1tsNbHHikw/OJhh5jA=="],
+    "@ankhorage/surface": ["@ankhorage/surface@2.1.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.7", "@ankhorage/contracts": "^2.1.0" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0", "react-native-safe-area-context": "^5.0.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-6DB9lLQV+CfiA1uytI3juD1h06atJDAkpdGfCzQHK1QEnmPaLrS3nhC2/UidA1oRAx4BihFsTYp6yYY1Cprc1A=="],
 
     "@ankhorage/utility": ["@ankhorage/utility@0.1.1", "", {}, "sha512-6EehBCB59HOibxq7YUYq54TjgAfktBFGrEXZSqn1DsnsoRSIRUNbroKvzw7oF3bWiJRXj7mtc3DClFm0kIW0Mg=="],
 
