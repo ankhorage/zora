@@ -25,12 +25,16 @@ function ChipGroupInner<TValue extends string = string>({
   size = 's',
   wrap = true,
   disabled,
+  interactionPolicy,
 }: ChipGroupProps<TValue>) {
+  const passive = interactionPolicy === 'passive';
+
   const renderChip = (item: ChipGroupItem<TValue>) => {
     const itemDisabled = disabled ?? item.disabled ?? false;
     const isSelected = Array.isArray(value) ? hasValue(value, item.value) : value === item.value;
 
     const handlePress = () => {
+      if (passive) return;
       if (multiple) {
         const next = toggleValue(value, item.value);
         onValueChange(next);
@@ -42,6 +46,7 @@ function ChipGroupInner<TValue extends string = string>({
 
     return (
       <Chip
+        interactionPolicy={interactionPolicy}
         key={item.value}
         disabled={itemDisabled}
         icon={item.icon}
