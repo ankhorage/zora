@@ -16,9 +16,8 @@ function SettingsRowInner({
   onPress,
   disabled = false,
   testID,
+  interactionPolicy,
 }: SettingsRowProps) {
-  // Prevent nested interactive elements:
-  // If a control is present (likely contains buttons), the row itself must not be clickable
   const isInteractive = Boolean(onPress) && !control;
 
   return (
@@ -27,6 +26,7 @@ function SettingsRowInner({
       actions={control}
       description={description}
       disabled={disabled}
+      interactionPolicy={interactionPolicy}
       onPress={isInteractive ? onPress : undefined}
       testID={testID}
       title={title}

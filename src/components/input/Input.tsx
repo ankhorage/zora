@@ -44,6 +44,7 @@ function InputInner({
         trailingAction ? (
           <IconButton
             icon={trailingAction.icon}
+            interactionPolicy={interactionPolicy}
             label={trailingAction.label}
             disabled={disabled ?? readOnly}
             variant="ghost"

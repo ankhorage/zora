@@ -94,6 +94,7 @@ function FormFieldInner<TName extends string = string>(props: FormFieldProps<TNa
       description,
       helperText,
       children,
+      interactionPolicy: _interactionPolicy,
       ...fieldProps
     } = props;
 
@@ -114,6 +115,7 @@ function FormFieldInner<TName extends string = string>(props: FormFieldProps<TNa
     loading = false,
     onChange,
     testID,
+    interactionPolicy,
   } = props;
   const fieldDisabled = disabled || loading || field.disabled;
   const required = field.required ?? hasRequiredRule(field.rules);
@@ -134,6 +136,7 @@ function FormFieldInner<TName extends string = string>(props: FormFieldProps<TNa
         autoCapitalize={resolveAutoCapitalize(field)}
         autoComplete={field.autoComplete}
         disabled={fieldDisabled}
+        interactionPolicy={interactionPolicy}
         invalid={Boolean(error)}
         keyboardType={resolveKeyboardType(field)}
         maxLength={field.maxLength}

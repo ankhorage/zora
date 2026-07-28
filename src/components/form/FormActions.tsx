@@ -14,10 +14,17 @@ function FormActionsInner({
   onSubmit,
   children,
   testID,
+  interactionPolicy,
 }: FormActionsProps) {
   return (
     <Stack gap="s" testID={testID}>
-      <Button disabled={disabled} fullWidth loading={loading} onPress={onSubmit}>
+      <Button
+        disabled={disabled}
+        fullWidth
+        interactionPolicy={interactionPolicy}
+        loading={loading}
+        onPress={onSubmit}
+      >
         {submitLabel}
       </Button>
       {children ? <Box>{children}</Box> : null}

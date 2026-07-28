@@ -22,11 +22,13 @@ function SearchBarInner({
   const passive = interactionPolicy === 'passive';
 
   const trailingAction: InputTrailingAction | undefined =
-    clearable && value.length > 0 && !passive
+    clearable && value.length > 0
       ? {
           icon: { name: 'close-circle' },
           label: 'Clear search',
           onPress: () => {
+            if (passive) return;
+
             onValueChange('');
             onClear?.();
           },
