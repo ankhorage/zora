@@ -14,14 +14,23 @@ function SwitchFieldInner({
   onValueChange,
   disabled,
   testID,
+  interactionPolicy,
 }: SwitchFieldProps) {
+  const passive = interactionPolicy === 'passive';
+
   return (
     <SettingsRow
       title={label}
       description={description}
       disabled={disabled}
       testID={testID}
-      control={<Switch checked={value} onCheckedChange={onValueChange} disabled={disabled} />}
+      control={
+        <Switch
+          checked={value}
+          disabled={disabled}
+          onCheckedChange={passive ? undefined : onValueChange}
+        />
+      }
     />
   );
 }

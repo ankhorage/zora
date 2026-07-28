@@ -92,7 +92,9 @@ function PaginationInner({
   lastLabel = 'Last',
   compact = false,
   testID,
+  interactionPolicy,
 }: PaginationProps) {
+  const passive = interactionPolicy === 'passive';
   const normalizedPageCount = Math.max(0, Math.trunc(Number.isFinite(pageCount) ? pageCount : 0));
   const currentPage = clampInteger(page, 1, Math.max(normalizedPageCount, 1));
   const safeSiblingCount = normalizeCount(siblingCount, 1);
@@ -110,7 +112,7 @@ function PaginationInner({
 
   const changePage = (nextPage: number) => {
     const clampedPage = clampInteger(nextPage, 1, Math.max(normalizedPageCount, 1));
-    if (disabled || clampedPage === currentPage) {
+    if (passive || disabled || clampedPage === currentPage) {
       return;
     }
 
@@ -122,6 +124,7 @@ function PaginationInner({
       {showFirstLast ? (
         <Button
           disabled={navigationDisabled || currentPage === 1}
+          interactionPolicy={interactionPolicy}
           onPress={() => changePage(1)}
           size="s"
           testID={testID ? `${testID}-first` : undefined}
@@ -133,6 +136,7 @@ function PaginationInner({
 
       <Button
         disabled={navigationDisabled || !canGoPrevious}
+        interactionPolicy={interactionPolicy}
         onPress={() => changePage(currentPage - 1)}
         size="s"
         testID={testID ? `${testID}-previous` : undefined}
@@ -150,6 +154,7 @@ function PaginationInner({
           <Button
             color={item === currentPage ? 'primary' : 'neutral'}
             disabled={disabled}
+            interactionPolicy={interactionPolicy}
             key={item}
             onPress={() => changePage(item)}
             size="s"
@@ -163,6 +168,7 @@ function PaginationInner({
 
       <Button
         disabled={navigationDisabled || !canGoNext}
+        interactionPolicy={interactionPolicy}
         onPress={() => changePage(currentPage + 1)}
         size="s"
         testID={testID ? `${testID}-next` : undefined}
@@ -174,6 +180,7 @@ function PaginationInner({
       {showFirstLast ? (
         <Button
           disabled={navigationDisabled || currentPage === normalizedPageCount}
+          interactionPolicy={interactionPolicy}
           onPress={() => changePage(normalizedPageCount)}
           size="s"
           testID={testID ? `${testID}-last` : undefined}

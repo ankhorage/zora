@@ -85,6 +85,7 @@ function ButtonGroupInner({
   gap = 's',
   reverse = false,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: ButtonGroupProps) {
   const items = React.Children.toArray(children);
   const orderedItems = reverse ? items.reverse() : items;

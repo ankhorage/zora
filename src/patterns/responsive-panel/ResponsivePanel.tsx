@@ -72,9 +72,11 @@ function ResponsivePanelInner({
   size,
   scroll = 'none',
   testID,
+  interactionPolicy,
 }: ResponsivePanelProps) {
   if (!open) return null;
 
+  const passive = interactionPolicy === 'passive';
   const body = renderPanelBody(children, scroll);
 
   // For now, we assume desktopMode determines the rendering.
@@ -87,7 +89,12 @@ function ResponsivePanelInner({
         <Modal
           description={description}
           footer={footer}
-          onDismiss={() => onOpenChange(false)}
+          interactionPolicy={interactionPolicy}
+          onDismiss={() => {
+            if (passive) return;
+
+            onOpenChange(false);
+          }}
           testID={testID}
           title={title}
           visible={open}
@@ -102,7 +109,12 @@ function ResponsivePanelInner({
       <Drawer
         description={description}
         footer={footer}
-        onDismiss={() => onOpenChange(false)}
+        interactionPolicy={interactionPolicy}
+        onDismiss={() => {
+          if (passive) return;
+
+          onOpenChange(false);
+        }}
         position={side}
         testID={testID}
         title={title}
