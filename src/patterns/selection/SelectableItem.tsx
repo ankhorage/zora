@@ -20,7 +20,13 @@ function isRenderProp(
  *
  
  */
-export function SelectableItem({ id, trigger, disabled = false, children }: SelectableItemProps) {
+export function SelectableItem({
+  id,
+  trigger,
+  disabled = false,
+  interactionPolicy,
+  children,
+}: SelectableItemProps) {
   const selection = useSelection();
   const resolvedTrigger = resolveTrigger(trigger);
   const resolvedDisabled = selection.disabled || disabled;
@@ -28,18 +34,21 @@ export function SelectableItem({ id, trigger, disabled = false, children }: Sele
 
   const select = React.useCallback(() => {
     if (resolvedDisabled) return;
+    if (interactionPolicy === 'passive') return;
     selection.select(id);
-  }, [id, resolvedDisabled, selection]);
+  }, [id, resolvedDisabled, interactionPolicy, selection]);
 
   const toggle = React.useCallback(() => {
     if (resolvedDisabled) return;
+    if (interactionPolicy === 'passive') return;
     selection.toggle(id);
-  }, [id, resolvedDisabled, selection]);
+  }, [id, resolvedDisabled, interactionPolicy, selection]);
 
   const clear = React.useCallback(() => {
     if (selection.disabled) return;
+    if (interactionPolicy === 'passive') return;
     selection.clear();
-  }, [selection]);
+  }, [interactionPolicy, selection]);
 
   const itemState = React.useMemo<SelectableItemState>(() => {
     return {
@@ -65,6 +74,7 @@ export function SelectableItem({ id, trigger, disabled = false, children }: Sele
   const handlePress = (event: GestureResponderEvent) => {
     event.stopPropagation();
     if (resolvedDisabled) return;
+    if (interactionPolicy === 'passive') return;
     if (selection.mode === 'single') {
       selection.select(id);
       return;
@@ -76,6 +86,7 @@ export function SelectableItem({ id, trigger, disabled = false, children }: Sele
   const handleLongPress = (event: GestureResponderEvent) => {
     event.stopPropagation();
     if (resolvedDisabled) return;
+    if (interactionPolicy === 'passive') return;
     if (selection.mode === 'single') {
       selection.select(id);
       return;
@@ -86,6 +97,7 @@ export function SelectableItem({ id, trigger, disabled = false, children }: Sele
 
   return (
     <ButtonBase
+      interactionPolicy={interactionPolicy}
       accessibilityRole="button"
       accessibilityState={{ disabled: resolvedDisabled, selected }}
       disabled={resolvedDisabled}

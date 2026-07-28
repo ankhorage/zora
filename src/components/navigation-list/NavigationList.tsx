@@ -19,6 +19,7 @@ function NavigationListInner({
   header,
   footer,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: NavigationListProps) {
   const items = routes.map((route) => {
     const metadata = routeMap?.[route.name];

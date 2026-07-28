@@ -65,6 +65,7 @@ function TextInner({
   accessibilityRole,
   nativeID,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: TextProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();

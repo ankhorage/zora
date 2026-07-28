@@ -28,6 +28,7 @@ function ProductCardInner({
   onPress,
   onPrimaryAction,
   onSecondaryAction,
+  interactionPolicy,
   ...rest
 }: ProductCardProps & ZoraBaseProps) {
   const hasHeaderInfo = !!title || !!brand || !!subtitle;
@@ -38,7 +39,11 @@ function ProductCardInner({
   const eyebrow = brand ?? _vendor;
 
   return (
-    <Card onPress={isInteractive ? onPress : undefined} {...rest}>
+    <Card
+      onPress={isInteractive ? onPress : undefined}
+      interactionPolicy={interactionPolicy}
+      {...rest}
+    >
       <Stack gap="m">
         {imageUrl ? (
           <Image

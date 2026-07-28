@@ -15,8 +15,10 @@ function SelectInner<TValue extends string = string>({
   disabled,
   invalid,
   testID,
+  interactionPolicy,
 }: SelectProps<TValue>) {
   const { theme } = useZoraTheme();
+  const passive = interactionPolicy === 'passive';
 
   return (
     <Box
@@ -29,7 +31,11 @@ function SelectInner<TValue extends string = string>({
     >
       <Picker
         enabled={!disabled}
-        onValueChange={(itemValue) => onValueChange(itemValue)}
+        onValueChange={(itemValue) => {
+          if (!passive) {
+            onValueChange(itemValue);
+          }
+        }}
         selectedValue={value}
         style={{
           height: 44,

@@ -11,12 +11,19 @@ function ButtonInner({
   color,
   variant,
   size,
+  interactionPolicy,
   ...props
 }: ButtonProps) {
   const recipe = resolveButtonRecipe({ color, variant, size });
 
   return (
-    <SurfaceButton {...props} color={recipe.color} size={recipe.size} variant={recipe.variant} />
+    <SurfaceButton
+      {...props}
+      color={recipe.color}
+      size={recipe.size}
+      variant={recipe.variant}
+      interactionPolicy={interactionPolicy}
+    />
   );
 }
 

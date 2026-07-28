@@ -29,13 +29,14 @@ function ModalInner({
   footer,
   width = 'default',
   onDismiss,
+  interactionPolicy,
   ...props
 }: ModalProps) {
   const hasHeader = title != null || description != null;
   const stableOnDismiss = useStableCallback(onDismiss);
 
   return (
-    <SurfaceModal {...props} onDismiss={stableOnDismiss}>
+    <SurfaceModal {...props} onDismiss={stableOnDismiss} interactionPolicy={interactionPolicy}>
       <Box maxWidth={resolveDialogWidth(width)} style={{ alignSelf: 'center', width: '100%' }}>
         <Stack gap="m">
           {hasHeader ? (

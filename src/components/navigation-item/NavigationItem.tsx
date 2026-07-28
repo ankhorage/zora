@@ -13,6 +13,7 @@ function NavigationItemInner({
   compact = false,
   onPress,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: NavigationItemProps) {
   return (
     <SurfaceNavigationItem

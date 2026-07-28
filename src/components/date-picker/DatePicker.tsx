@@ -129,7 +129,9 @@ function DatePickerInner({
   required = false,
   formatDate,
   testID,
+  interactionPolicy,
 }: DatePickerProps) {
+  const passive = interactionPolicy === 'passive';
   const [visible, setVisible] = React.useState(false);
   const [fallbackMonth] = React.useState(() => resolveInitialMonth(null, undefined));
   const initialMonth = value || minDate ? resolveInitialMonth(value, minDate) : fallbackMonth;
@@ -154,6 +156,8 @@ function DatePickerInner({
   }
 
   function openPicker() {
+    if (passive) return;
+
     setDisplayMonthState({ sourceMonthKey: initialMonthKey, month: initialMonth });
     setVisible(true);
   }
@@ -187,7 +191,9 @@ function DatePickerInner({
           <Stack align="center" direction="row" justify="space-between">
             <Button
               disabled={!canNavigateToMonth(previousMonth, minDate, maxDate)}
-              onPress={() => setDisplayMonth(previousMonth)}
+              onPress={() => {
+                setDisplayMonth(previousMonth);
+              }}
               size="s"
               variant="ghost"
             >
@@ -198,7 +204,9 @@ function DatePickerInner({
             </Text>
             <Button
               disabled={!canNavigateToMonth(nextMonth, minDate, maxDate)}
-              onPress={() => setDisplayMonth(nextMonth)}
+              onPress={() => {
+                setDisplayMonth(nextMonth);
+              }}
               size="s"
               variant="ghost"
             >
@@ -231,6 +239,8 @@ function DatePickerInner({
                     color={selected ? 'primary' : 'neutral'}
                     disabled={dayDisabled}
                     onPress={() => {
+                      if (passive) return;
+
                       onValueChange?.(startOfLocalDay(day));
                       setVisible(false);
                     }}

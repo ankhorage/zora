@@ -6,7 +6,13 @@ import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
 import type { FormErrorProps } from './types';
 
-function FormErrorInner({ themeId: _themeId, mode: _mode, error, testID }: FormErrorProps) {
+function FormErrorInner({
+  themeId: _themeId,
+  mode: _mode,
+  error,
+  testID,
+  interactionPolicy: _interactionPolicy,
+}: FormErrorProps) {
   const { theme } = useZoraTheme();
 
   if (!error) {

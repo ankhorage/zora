@@ -45,6 +45,7 @@ function AppBarInner({
   safeAreaTop = true,
   divider = true,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: AppBarProps) {
   const { theme } = useZoraTheme();
   const resolvedMode = resolveMode(appMode);

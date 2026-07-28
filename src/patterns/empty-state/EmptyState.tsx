@@ -16,6 +16,7 @@ function EmptyStateInner({
   secondaryAction,
   footer,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: EmptyStateProps) {
   return (
     <Card

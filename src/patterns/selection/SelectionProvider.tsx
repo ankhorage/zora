@@ -44,6 +44,7 @@ export function SelectionProvider({
   mode,
   disabled,
   onSelectionChange,
+  interactionPolicy,
 }: SelectionProviderProps) {
   const resolvedMode = resolveMode(mode);
   const resolvedDisabled = resolveDisabled(disabled);
@@ -61,6 +62,7 @@ export function SelectionProvider({
   const commitSelectionChange = React.useCallback(
     (nextNormalizedIds: readonly string[]) => {
       if (resolvedDisabled) return;
+      if (interactionPolicy === 'passive') return;
       if (areIdsEqual(nextNormalizedIds, currentNormalizedIds)) return;
 
       onSelectionChange?.(nextNormalizedIds);
@@ -69,7 +71,7 @@ export function SelectionProvider({
         setUncontrolledIds(nextNormalizedIds);
       }
     },
-    [currentNormalizedIds, isControlled, onSelectionChange, resolvedDisabled],
+    [currentNormalizedIds, interactionPolicy, isControlled, onSelectionChange, resolvedDisabled],
   );
 
   const clear = React.useCallback(() => {

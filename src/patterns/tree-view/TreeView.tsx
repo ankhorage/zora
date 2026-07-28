@@ -16,6 +16,7 @@ function TreeViewInner<TId extends string = string>({
   onExpandedChange,
   renderItem,
   testID,
+  interactionPolicy,
 }: TreeViewProps<TId>) {
   const [internalExpandedIds, setInternalExpandedIds] = React.useState<readonly TId[]>(
     defaultExpandedIds ?? [],
@@ -25,6 +26,7 @@ function TreeViewInner<TId extends string = string>({
   const expandedIds = isControlled ? controlledExpandedIds : internalExpandedIds;
 
   const handleToggleExpand = (id: TId) => {
+    if (interactionPolicy === 'passive') return;
     const isExpanded = expandedIds.includes(id);
     const newIds = isExpanded ? expandedIds.filter((eid) => eid !== id) : [...expandedIds, id];
 

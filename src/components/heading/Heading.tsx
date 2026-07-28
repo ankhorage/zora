@@ -63,9 +63,10 @@ function HeadingInner({
   style,
   accessibilityLabel,
   accessibilityHint,
-  accessibilityRole = 'header',
+  accessibilityRole,
   nativeID,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: HeadingProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();

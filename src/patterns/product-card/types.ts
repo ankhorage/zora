@@ -1,3 +1,5 @@
+import type { InteractionPolicy } from '@ankhorage/surface';
+
 export interface ProductCardProps {
   title: string;
   subtitle?: string;
@@ -18,4 +20,5 @@ export interface ProductCardProps {
   onPress?: () => void;
   onPrimaryAction?: () => void;
   onSecondaryAction?: () => void;
+  interactionPolicy?: InteractionPolicy;
 }

@@ -27,13 +27,14 @@ function DrawerInner({
   description,
   footer,
   onDismiss,
+  interactionPolicy,
   ...props
 }: DrawerProps) {
   const hasHeader = title != null || description != null;
   const stableOnDismiss = useStableCallback(onDismiss);
 
   return (
-    <SurfaceDrawer {...props} onDismiss={stableOnDismiss}>
+    <SurfaceDrawer {...props} onDismiss={stableOnDismiss} interactionPolicy={interactionPolicy}>
       <Stack gap="m">
         {hasHeader ? (
           <Stack gap="xs">

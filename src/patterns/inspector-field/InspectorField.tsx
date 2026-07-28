@@ -11,6 +11,7 @@ function InspectorFieldInner({
   label,
   control,
   children,
+  interactionPolicy: _interactionPolicy,
   ...props
 }: InspectorFieldProps) {
   return (
