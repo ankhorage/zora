@@ -1,3 +1,4 @@
+import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
 import { ActionSheet, ActionSheetItem } from './components/action-sheet';
@@ -99,7 +100,28 @@ import { ZoraTabBar } from './patterns/zora-tab-bar';
 
 export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
 
-export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = {
+type ComponentPropsFor<K extends keyof typeof _ZORA_COMPONENT_REGISTRY> = React.ComponentProps<
+  (typeof _ZORA_COMPONENT_REGISTRY)[K]
+>;
+
+type AcceptsSurfaceInteractionPolicyProps<P> = 'interactionPolicy' extends keyof P
+  ? Pick<P, 'interactionPolicy'> extends InteractionPolicyProps
+    ? true
+    : false
+  : false;
+
+type RegistryInteractionPolicyContract = {
+  [K in keyof typeof _ZORA_COMPONENT_REGISTRY]: AcceptsSurfaceInteractionPolicyProps<
+    ComponentPropsFor<K>
+  >;
+};
+
+type _AssertTrue<T extends true> = T;
+type _RegistryInteractionPolicyCheck = _AssertTrue<
+  RegistryInteractionPolicyContract[keyof typeof _ZORA_COMPONENT_REGISTRY]
+>;
+
+const _ZORA_COMPONENT_REGISTRY = {
   ActionSheet,
   ActionSheetItem,
   AppBar,
@@ -209,4 +231,6 @@ export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = {
   TreeView,
   ZoraDrawerContent,
   ZoraTabBar,
-};
+} as const satisfies ZoraComponentRegistry;
+
+export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = _ZORA_COMPONENT_REGISTRY;

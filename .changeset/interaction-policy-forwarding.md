@@ -1,5 +1,5 @@
 ---
-"@ankhorage/zora": patch
+"@ankhorage/zora": minor
 ---
 
-Enforce uniform interaction policy forwarding across ZORA interactive wrappers.
+Enforce uniform `interactionPolicy` support across all public registry components, with a compile-time contract invariant, and correct `ConfirmDialog` to forward callbacks unchanged.

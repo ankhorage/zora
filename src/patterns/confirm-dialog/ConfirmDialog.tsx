@@ -24,8 +24,6 @@ function ConfirmDialogInner({
   testID,
   interactionPolicy,
 }: ConfirmDialogProps) {
-  const passive = interactionPolicy === 'passive';
-
   return (
     <Modal
       closeOnBackdrop={closeOnBackdrop}
@@ -36,7 +34,7 @@ function ConfirmDialogInner({
           <Button
             variant="soft"
             interactionPolicy={interactionPolicy}
-            onPress={passive ? undefined : onCancel}
+            onPress={onCancel}
             color="neutral"
           >
             {cancelLabel}
@@ -45,7 +43,7 @@ function ConfirmDialogInner({
             variant={confirmVariant}
             loading={busy}
             interactionPolicy={interactionPolicy}
-            onPress={passive ? undefined : onConfirm}
+            onPress={onConfirm}
             color={confirmColor}
           >
             {confirmLabel}
