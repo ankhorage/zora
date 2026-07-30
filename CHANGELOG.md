@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.0
+
+### Minor Changes
+
+- a561fbb: Enforce uniform `interactionPolicy` support across all public registry components, with a compile-time contract invariant, and correct `ConfirmDialog` to forward callbacks unchanged.
+
 ## 2.8.7
 
 ### Patch Changes
