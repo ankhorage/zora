@@ -33,6 +33,7 @@ function resolveAccessibilityLabel(
 function ZoraTabBarInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   state,
   navigation,
   descriptors,
@@ -88,7 +89,11 @@ function ZoraTabBarInner({
             accessibilityState={{ selected: active, disabled }}
             disabled={disabled}
             key={item.route.key}
-            onPress={createTabBarItemPressHandler({ item, navigation })}
+            onPress={
+              interactionPolicy === 'passive'
+                ? undefined
+                : createTabBarItemPressHandler({ item, navigation })
+            }
             style={{
               alignItems: 'center',
               backgroundColor,
@@ -135,7 +140,11 @@ function ZoraTabBarInner({
   }
 
   return (
-    <Surface variant="raised" testID={testID ? `${testID}-chrome` : undefined}>
+    <Surface
+      interactionPolicy={interactionPolicy}
+      testID={testID ? `${testID}-chrome` : undefined}
+      variant="raised"
+    >
       {content}
     </Surface>
   );

@@ -17,8 +17,10 @@ function TabsInner<TValue extends string = string>({
   size = 'm',
   disabled: tabsDisabled,
   testID,
+  interactionPolicy,
 }: TabsProps<TValue>) {
   const { theme } = useZoraTheme();
+  const passive = interactionPolicy === 'passive';
 
   const renderTab = (item: TabItem<TValue>) => {
     const isActive = item.value === value;
@@ -32,7 +34,11 @@ function TabsInner<TValue extends string = string>({
           color="neutral"
           size={size}
           disabled={isDisabled}
-          onPress={() => onValueChange(item.value)}
+          onPress={() => {
+            if (!passive) {
+              onValueChange(item.value);
+            }
+          }}
           leadingIcon={item.icon}
           testID={item.testID}
         >
@@ -50,7 +56,11 @@ function TabsInner<TValue extends string = string>({
           color={isActive ? 'primary' : 'neutral'}
           size={size}
           disabled={isDisabled}
-          onPress={() => onValueChange(item.value)}
+          onPress={() => {
+            if (!passive) {
+              onValueChange(item.value);
+            }
+          }}
           leadingIcon={item.icon}
           testID={item.testID}
         >
@@ -75,7 +85,11 @@ function TabsInner<TValue extends string = string>({
           color="neutral"
           size={size}
           disabled={isDisabled}
-          onPress={() => onValueChange(item.value)}
+          onPress={() => {
+            if (!passive) {
+              onValueChange(item.value);
+            }
+          }}
           leadingIcon={item.icon}
           testID={item.testID}
         >

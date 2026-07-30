@@ -22,17 +22,30 @@ function ConfirmDialogInner({
   onConfirm,
   onCancel,
   testID,
+  interactionPolicy,
 }: ConfirmDialogProps) {
   return (
     <Modal
       closeOnBackdrop={closeOnBackdrop}
       description={description}
+      interactionPolicy={interactionPolicy}
       footer={
         <Stack direction={{ base: 'column', md: 'row' }} gap="s" justify="flex-end">
-          <Button variant="soft" onPress={onCancel} color="neutral">
+          <Button
+            variant="soft"
+            interactionPolicy={interactionPolicy}
+            onPress={onCancel}
+            color="neutral"
+          >
             {cancelLabel}
           </Button>
-          <Button variant={confirmVariant} loading={busy} onPress={onConfirm} color={confirmColor}>
+          <Button
+            variant={confirmVariant}
+            loading={busy}
+            interactionPolicy={interactionPolicy}
+            onPress={onConfirm}
+            color={confirmColor}
+          >
             {confirmLabel}
           </Button>
         </Stack>

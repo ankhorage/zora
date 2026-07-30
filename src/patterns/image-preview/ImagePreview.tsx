@@ -34,6 +34,7 @@ function ImagePreviewInner({
   fit = 'cover',
   emptyTitle = 'No image',
   emptyDescription = 'Select an image to preview it here.',
+  interactionPolicy: _interactionPolicy,
 }: ImagePreviewProps) {
   const { theme } = useZoraTheme();
   const renderableUrl = resolveRenderableUrl(asset);

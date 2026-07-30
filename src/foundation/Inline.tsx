@@ -9,7 +9,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface InlineProps extends ZoraBaseProps, Omit<SurfaceInlineProps, 'mode' | 'themeId'> {}
 
-function InlineInner({ themeId: _themeId, mode: _mode, ...props }: InlineProps) {
+function InlineInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: InlineProps) {
   return <SurfaceInline {...props} />;
 }
 

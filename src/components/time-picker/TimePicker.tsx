@@ -95,13 +95,21 @@ function TimePickerInner({
   required = false,
   formatTime,
   testID,
+  interactionPolicy,
 }: TimePickerProps) {
+  const passive = interactionPolicy === 'passive';
   const [visible, setVisible] = React.useState(false);
   const options = React.useMemo(
     () => generateTimeOptions({ maxTime, minTime, stepMinutes }),
     [maxTime, minTime, stepMinutes],
   );
   const displayValue = value ? (formatTime ? formatTime(value) : value) : placeholder;
+
+  function openPicker() {
+    if (passive) return;
+
+    setVisible(true);
+  }
 
   return (
     <Field
@@ -114,7 +122,8 @@ function TimePickerInner({
     >
       <Button
         disabled={disabled}
-        onPress={() => setVisible(true)}
+        interactionPolicy={interactionPolicy}
+        onPress={openPicker}
         testID={testID ? `${testID}-trigger` : undefined}
         trailingIcon={{ name: 'chevron-down-outline' }}
         variant="outline"
@@ -123,7 +132,12 @@ function TimePickerInner({
       </Button>
       <ActionSheet
         description={description}
-        onDismiss={() => setVisible(false)}
+        interactionPolicy={interactionPolicy}
+        onDismiss={() => {
+          if (passive) return;
+
+          setVisible(false);
+        }}
         testID={testID ? `${testID}-sheet` : undefined}
         title={label ?? 'Choose time'}
         visible={visible}
@@ -132,9 +146,12 @@ function TimePickerInner({
           <Stack gap="xxs">
             {options.map((option) => (
               <ActionSheetItem
+                interactionPolicy={interactionPolicy}
                 key={option}
                 label={formatTime ? formatTime(option) : option}
                 onPress={() => {
+                  if (passive) return;
+
                   onValueChange?.(option);
                   setVisible(false);
                 }}

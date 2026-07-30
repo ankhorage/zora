@@ -33,6 +33,7 @@ function createValues(fields: readonly FormFieldConfig[]): FormValues {
 
 function SignUpFormInner({
   themeId: _themeId,
+  interactionPolicy,
   mode: _mode,
   fields = defaultSignUpFields,
   signInLabel = 'Sign in',
@@ -59,6 +60,7 @@ function SignUpFormInner({
               }}
               size="s"
               color="neutral"
+              interactionPolicy={interactionPolicy}
             >
               {signInLabel}
             </Button>
@@ -68,6 +70,7 @@ function SignUpFormInner({
       disabled={disabled}
       error={error}
       fields={fields}
+      interactionPolicy={interactionPolicy}
       loading={loading}
       onChange={setValues}
       onSubmit={onSubmit}

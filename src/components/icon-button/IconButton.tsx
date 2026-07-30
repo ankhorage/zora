@@ -13,6 +13,7 @@ function IconButtonInner({
   variant = 'ghost',
   color = 'neutral',
   size = 'm',
+  interactionPolicy,
   ...props
 }: IconButtonProps) {
   const recipe = resolveButtonRecipe({ color, variant, size });
@@ -25,6 +26,7 @@ function IconButtonInner({
       color={recipe.color}
       size={recipe.size}
       variant={recipe.variant}
+      interactionPolicy={interactionPolicy}
     />
   );
 }

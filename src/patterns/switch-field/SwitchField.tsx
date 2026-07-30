@@ -14,6 +14,7 @@ function SwitchFieldInner({
   onValueChange,
   disabled,
   testID,
+  interactionPolicy,
 }: SwitchFieldProps) {
   return (
     <SettingsRow
@@ -21,7 +22,14 @@ function SwitchFieldInner({
       description={description}
       disabled={disabled}
       testID={testID}
-      control={<Switch checked={value} onCheckedChange={onValueChange} disabled={disabled} />}
+      control={
+        <Switch
+          checked={value}
+          disabled={disabled}
+          interactionPolicy={interactionPolicy}
+          onCheckedChange={onValueChange}
+        />
+      }
     />
   );
 }

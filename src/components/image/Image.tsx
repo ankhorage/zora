@@ -4,7 +4,12 @@ import React from 'react';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ImageProps } from './types';
 
-function ImageInner({ themeId: _themeId, mode: _mode, ...props }: ImageProps) {
+function ImageInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: ImageProps) {
   return <SurfaceImage {...props} />;
 }
 

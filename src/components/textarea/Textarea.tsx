@@ -12,6 +12,7 @@ function TextareaInner({
   size = 'l',
   leadingIcon,
   trailingIcon,
+  interactionPolicy,
   ...props
 }: TextareaProps) {
   const { theme } = useZoraTheme();
@@ -21,6 +22,7 @@ function TextareaInner({
   return (
     <Surface.Textarea
       {...props}
+      interactionPolicy={interactionPolicy}
       leadingAccessory={
         leadingIcon ? (
           <Surface.Icon

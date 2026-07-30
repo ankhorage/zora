@@ -9,6 +9,7 @@ import type { ScreenProps } from './types';
 function ScreenInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   footer,
   scroll = true,

@@ -17,6 +17,7 @@ type SignInFieldName = 'identifier' | 'secret';
 
 function SignInFormInner({
   themeId: _themeId,
+  interactionPolicy,
   mode: _mode,
   identifiers = defaultIdentifiers,
   identifierLabel,
@@ -80,6 +81,7 @@ function SignInFormInner({
                 }}
                 size="s"
                 color="neutral"
+                interactionPolicy={interactionPolicy}
               >
                 {forgotPasswordLabel}
               </Button>
@@ -93,6 +95,7 @@ function SignInFormInner({
                 }}
                 size="s"
                 color="neutral"
+                interactionPolicy={interactionPolicy}
               >
                 {signUpLabel}
               </Button>
@@ -103,6 +106,7 @@ function SignInFormInner({
       disabled={disabled}
       error={error}
       fields={fields}
+      interactionPolicy={interactionPolicy}
       loading={loading}
       onChange={setValues}
       onSubmit={handleSubmit}

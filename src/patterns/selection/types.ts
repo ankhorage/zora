@@ -1,3 +1,4 @@
+import type { InteractionPolicy } from '@ankhorage/surface';
 import type React from 'react';
 
 export type SelectionMode = 'single' | 'multi';
@@ -11,6 +12,7 @@ export interface SelectionProviderProps {
   mode?: SelectionMode;
   disabled?: boolean;
   onSelectionChange?: (ids: readonly string[]) => void;
+  interactionPolicy?: InteractionPolicy;
 }
 
 export interface UseSelectionResult {
@@ -39,5 +41,6 @@ export interface SelectableItemProps {
   id: string;
   trigger?: SelectionTrigger;
   disabled?: boolean;
+  interactionPolicy?: InteractionPolicy;
   children: React.ReactNode | ((state: SelectableItemState) => React.ReactNode);
 }

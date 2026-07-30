@@ -22,6 +22,7 @@ function resolveImageAspectRatio(
 function MediaCardInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   testID,
   imageSource,
   imageLabel,
@@ -74,6 +75,7 @@ function MediaCardInner({
   return (
     <Card
       compact={compact}
+      interactionPolicy={interactionPolicy}
       onPress={isInteractive ? onPress : undefined}
       testID={testID}
       tone={tone}

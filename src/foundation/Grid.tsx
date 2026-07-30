@@ -6,7 +6,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface GridProps extends ZoraBaseProps, Omit<SurfaceGridProps, 'mode' | 'themeId'> {}
 
-function GridInner({ themeId: _themeId, mode: _mode, ...props }: GridProps) {
+function GridInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: GridProps) {
   return <SurfaceGrid {...props} />;
 }
 

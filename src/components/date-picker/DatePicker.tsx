@@ -129,7 +129,9 @@ function DatePickerInner({
   required = false,
   formatDate,
   testID,
+  interactionPolicy,
 }: DatePickerProps) {
+  const passive = interactionPolicy === 'passive';
   const [visible, setVisible] = React.useState(false);
   const [fallbackMonth] = React.useState(() => resolveInitialMonth(null, undefined));
   const initialMonth = value || minDate ? resolveInitialMonth(value, minDate) : fallbackMonth;
@@ -154,6 +156,8 @@ function DatePickerInner({
   }
 
   function openPicker() {
+    if (passive) return;
+
     setDisplayMonthState({ sourceMonthKey: initialMonthKey, month: initialMonth });
     setVisible(true);
   }
@@ -169,6 +173,7 @@ function DatePickerInner({
     >
       <Button
         disabled={disabled}
+        interactionPolicy={interactionPolicy}
         onPress={openPicker}
         testID={testID ? `${testID}-trigger` : undefined}
         trailingIcon={{ name: 'calendar-outline' }}
@@ -178,7 +183,12 @@ function DatePickerInner({
       </Button>
       <ActionSheet
         description={description}
-        onDismiss={() => setVisible(false)}
+        interactionPolicy={interactionPolicy}
+        onDismiss={() => {
+          if (passive) return;
+
+          setVisible(false);
+        }}
         testID={testID ? `${testID}-sheet` : undefined}
         title={label ?? 'Choose date'}
         visible={visible}
@@ -187,7 +197,12 @@ function DatePickerInner({
           <Stack align="center" direction="row" justify="space-between">
             <Button
               disabled={!canNavigateToMonth(previousMonth, minDate, maxDate)}
-              onPress={() => setDisplayMonth(previousMonth)}
+              interactionPolicy={interactionPolicy}
+              onPress={() => {
+                if (passive) return;
+
+                setDisplayMonth(previousMonth);
+              }}
               size="s"
               variant="ghost"
             >
@@ -198,7 +213,12 @@ function DatePickerInner({
             </Text>
             <Button
               disabled={!canNavigateToMonth(nextMonth, minDate, maxDate)}
-              onPress={() => setDisplayMonth(nextMonth)}
+              interactionPolicy={interactionPolicy}
+              onPress={() => {
+                if (passive) return;
+
+                setDisplayMonth(nextMonth);
+              }}
               size="s"
               variant="ghost"
             >
@@ -230,7 +250,10 @@ function DatePickerInner({
                   <Button
                     color={selected ? 'primary' : 'neutral'}
                     disabled={dayDisabled}
+                    interactionPolicy={interactionPolicy}
                     onPress={() => {
+                      if (passive) return;
+
                       onValueChange?.(startOfLocalDay(day));
                       setVisible(false);
                     }}

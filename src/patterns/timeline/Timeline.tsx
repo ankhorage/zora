@@ -40,6 +40,7 @@ function resolveRoleSemantics(theme: SurfaceTheme, color: ZoraColor): RoleSemant
 function TimelineInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   testID,
   items,
   compact = false,

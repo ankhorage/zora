@@ -11,6 +11,7 @@ import { type RatingProps, resolveRatingRole } from './types';
 function RatingInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   testID,
   value,
   max = 5,

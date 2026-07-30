@@ -1,3 +1,4 @@
+import type { InteractionPolicy } from '@ankhorage/surface';
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 
@@ -152,12 +153,14 @@ function renderRowActions<TRow extends object>({
   rowIndex,
   rowActions,
   testID,
+  interactionPolicy,
 }: {
   row: TRow;
   rowIndex: number;
   rowActions: DataTableProps<TRow>['rowActions'];
   testID?: string;
-}) {
+  interactionPolicy?: InteractionPolicy;
+}): React.ReactNode {
   const actions = rowActions?.(row, rowIndex) ?? [];
 
   if (actions.length === 0) {
@@ -167,6 +170,8 @@ function renderRowActions<TRow extends object>({
   return (
     <DropdownMenu
       actions={mapRowActions(row, actions)}
+      interactionPolicy={interactionPolicy}
+      testID={testID ? `${testID}-row-actions-${rowIndex}` : undefined}
       trigger={
         <IconButton
           icon={{ name: 'ellipsis-horizontal' }}
@@ -175,7 +180,6 @@ function renderRowActions<TRow extends object>({
           variant="ghost"
         />
       }
-      testID={testID ? `${testID}-row-actions-${rowIndex}` : undefined}
     />
   );
 }
@@ -185,8 +189,12 @@ function DataTableHeader<TRow extends object>({
   sort,
   onSortChange,
   density,
-}: Pick<DataTableProps<TRow>, 'columns' | 'density' | 'onSortChange' | 'sort'>) {
+  interactionPolicy,
+}: Pick<DataTableProps<TRow>, 'columns' | 'density' | 'onSortChange' | 'sort'> & {
+  interactionPolicy?: InteractionPolicy;
+}) {
   const padding = resolveRowPadding(density ?? 'comfortable');
+  const passive = interactionPolicy === 'passive';
 
   return (
     <Box bg="subtle" borderColor="border" borderWidth={1} radius="m">
@@ -202,12 +210,15 @@ function DataTableHeader<TRow extends object>({
               {sortable ? (
                 <Button
                   color="primary"
-                  onPress={() =>
+                  interactionPolicy={interactionPolicy}
+                  onPress={() => {
+                    if (passive) return;
+
                     onSortChange?.({
                       columnId: column.id,
                       direction: resolveNextSortDirection(currentDirection),
-                    })
-                  }
+                    });
+                  }}
                   size="s"
                   variant="ghost"
                 >
@@ -246,6 +257,7 @@ function DataTableDesktop<TRow extends object>({
   onSortChange,
   density,
   testID,
+  interactionPolicy,
 }: DataTableProps<TRow>) {
   const padding = resolveRowPadding(density ?? 'comfortable');
 
@@ -256,6 +268,7 @@ function DataTableDesktop<TRow extends object>({
           <DataTableHeader
             columns={columns}
             density={density}
+            interactionPolicy={interactionPolicy}
             onSortChange={onSortChange}
             sort={sort}
           />
@@ -285,7 +298,7 @@ function DataTableDesktop<TRow extends object>({
                     py={padding.py}
                     style={{ alignItems: 'flex-end', minWidth: 56, width: 56 }}
                   >
-                    {renderRowActions({ row, rowActions, rowIndex, testID })}
+                    {renderRowActions({ row, rowActions, rowIndex, testID, interactionPolicy })}
                   </Box>
                 </Stack>
               </Box>
@@ -303,6 +316,7 @@ function DataTableMobile<TRow extends object>({
   rowActions,
   rowId,
   testID,
+  interactionPolicy,
 }: DataTableProps<TRow>) {
   const [primaryColumn, ...detailColumns] = columns;
 
@@ -312,12 +326,13 @@ function DataTableMobile<TRow extends object>({
         const title = primaryColumn
           ? renderCell(primaryColumn, row, rowIndex)
           : `Row ${rowIndex + 1}`;
-        const actions = renderRowActions({ row, rowActions, rowIndex, testID });
+        const actions = renderRowActions({ row, rowActions, rowIndex, testID, interactionPolicy });
 
         return (
           <Card
             actions={actions}
             compact
+            interactionPolicy={interactionPolicy}
             key={rowId(row, rowIndex)}
             testID={testID ? `${testID}-card-${rowIndex}` : undefined}
             title={title}
@@ -355,6 +370,7 @@ function DataTableInner<TRow extends object>({
   emptyDescription = 'There are no rows to display.',
   testID,
   density = 'comfortable',
+  interactionPolicy,
   ...props
 }: DataTableProps<TRow>) {
   if (loading) {
@@ -370,6 +386,7 @@ function DataTableInner<TRow extends object>({
     density,
     emptyDescription,
     emptyTitle,
+    interactionPolicy,
     loading,
     loadingRows,
     rows,

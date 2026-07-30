@@ -21,6 +21,7 @@ function CheckboxGroupInner<TValue extends string>({
   readOnly = false,
   disabled = false,
   testID,
+  interactionPolicy,
 }: CheckboxGroupProps<TValue>) {
   const selectedValues = new Set(value);
   const isHorizontal = orientation === 'horizontal';
@@ -50,6 +51,7 @@ function CheckboxGroupInner<TValue extends string>({
             color={color}
             value={value}
             onValueChange={onValueChange}
+            interactionPolicy={interactionPolicy}
           />
         ))}
       </Stack>
@@ -72,6 +74,7 @@ function CheckboxGroupItem<TValue extends string>({
   color,
   value,
   onValueChange,
+  interactionPolicy,
 }: {
   option: CheckboxGroupOption<TValue>;
   checked: boolean;
@@ -82,9 +85,13 @@ function CheckboxGroupItem<TValue extends string>({
   color: NonNullable<CheckboxGroupProps<TValue>['color']>;
   value: readonly TValue[];
   onValueChange: (value: TValue[]) => void;
+  interactionPolicy: CheckboxGroupProps<TValue>['interactionPolicy'];
 }) {
+  const passive = interactionPolicy === 'passive';
+
   return (
     <Checkbox
+      interactionPolicy={interactionPolicy}
       checked={checked}
       disabled={disabled}
       invalid={invalid}
@@ -93,6 +100,7 @@ function CheckboxGroupItem<TValue extends string>({
       color={color}
       testID={option.testID}
       onCheckedChange={(nextChecked) => {
+        if (passive) return;
         const nextValue = nextChecked
           ? [...value, option.value]
           : value.filter((currentValue) => currentValue !== option.value);

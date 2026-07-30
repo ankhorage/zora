@@ -7,6 +7,7 @@ import type { FilterBarProps } from './types';
 function FilterBarInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   testID,
   leading,
   trailing,

@@ -1,4 +1,6 @@
-export interface ProductCardProps {
+import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+
+export interface ProductCardProps extends ZoraBaseProps {
   title: string;
   subtitle?: string;
   description?: string;

@@ -6,7 +6,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface BoxProps extends ZoraBaseProps, Omit<SurfaceBoxProps, 'mode' | 'themeId'> {}
 
-function BoxInner({ themeId: _themeId, mode: _mode, ...props }: BoxProps) {
+function BoxInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: BoxProps) {
   return <SurfaceBox {...props} />;
 }
 

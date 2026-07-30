@@ -1,3 +1,5 @@
+import type { InteractionPolicy } from '@ankhorage/surface';
+
 import type { ZoraThemeId, ZoraThemeMode } from './types';
 
 export interface ZoraBaseProps {
@@ -17,4 +19,10 @@ export interface ZoraBaseProps {
   mode?: ZoraThemeMode;
 
   testID?: string;
+
+  /**
+   * Controls whether user interaction is enabled or suppressed.
+   * When omitted, the component behaves as enabled.
+   */
+  interactionPolicy?: InteractionPolicy;
 }

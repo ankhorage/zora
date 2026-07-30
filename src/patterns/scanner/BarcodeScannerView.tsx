@@ -12,6 +12,7 @@ import type { BarcodeScannerViewProps } from './types';
 
 function BarcodeScannerViewInner({
   themeId: _themeId,
+  interactionPolicy,
   mode: _mode,
   permissionStatus,
   camera,
@@ -46,6 +47,7 @@ function BarcodeScannerViewInner({
         requestLabel={requestPermissionLabel}
         status={permissionStatus}
         testID={testID}
+        interactionPolicy={interactionPolicy}
       />
     );
   }
@@ -55,6 +57,7 @@ function BarcodeScannerViewInner({
       compact
       description={description}
       eyebrow="Scanner"
+      interactionPolicy={interactionPolicy}
       testID={testID}
       title={title}
       tone="subtle"

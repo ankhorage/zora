@@ -88,6 +88,7 @@ function AvatarInner({
   size = 'm',
   shape = 'circle',
   color = 'neutral',
+  interactionPolicy: _interactionPolicy,
 }: AvatarProps) {
   const { theme } = useZoraTheme();
   const resolvedSize = resolveAvatarSize(size);

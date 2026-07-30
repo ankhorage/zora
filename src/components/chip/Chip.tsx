@@ -35,6 +35,7 @@ function ChipInner({
   disabled = false,
   color = 'neutral',
   size = 's',
+  interactionPolicy,
   onPress,
 }: ChipProps) {
   const { theme } = useZoraTheme();
@@ -85,7 +86,13 @@ function ChipInner({
   }
 
   return (
-    <ButtonBase disabled={disabled} onPress={onPress} radius="full" testID={testID}>
+    <ButtonBase
+      disabled={disabled}
+      interactionPolicy={interactionPolicy}
+      onPress={onPress}
+      radius="full"
+      testID={testID}
+    >
       {(state) => renderContent(state)}
     </ButtonBase>
   );

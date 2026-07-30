@@ -11,6 +11,7 @@ import type { ZoraDrawerContentProps } from './types';
 function ZoraDrawerContentInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   state,
   navigation,
   descriptors,
@@ -44,6 +45,7 @@ function ZoraDrawerContentInner({
       compact={compact}
       footer={footer}
       header={header}
+      interactionPolicy={interactionPolicy}
       items={items}
       testID={testID}
     />

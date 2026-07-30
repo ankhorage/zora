@@ -51,7 +51,9 @@ function ImageUploadFieldInner({
   aspectRatio = 1,
   previewTitle = 'Image preview',
   previewDescription,
+  interactionPolicy,
 }: ImageUploadFieldProps) {
+  const passive = interactionPolicy === 'passive';
   const [internalError, setInternalError] = React.useState<string | undefined>(undefined);
   const [uploading, setUploading] = React.useState(false);
   const [removing, setRemoving] = React.useState(false);
@@ -88,7 +90,7 @@ function ImageUploadFieldInner({
   }, []);
 
   const handleReplace = React.useCallback(async () => {
-    if (actionsDisabled || uploading || removing) return;
+    if (passive || actionsDisabled || uploading || removing) return;
 
     setInternalError(undefined);
     let picked;
@@ -143,6 +145,7 @@ function ImageUploadFieldInner({
     onChange,
     onPick,
     onUpload,
+    passive,
     removing,
     setProgressSafe,
     uploading,
@@ -150,7 +153,7 @@ function ImageUploadFieldInner({
   ]);
 
   const handleRemove = React.useCallback(async () => {
-    if (actionsDisabled || uploading || removing) return;
+    if (passive || actionsDisabled || uploading || removing) return;
     if (!value) {
       onChange(null);
       return;
@@ -174,14 +177,17 @@ function ImageUploadFieldInner({
       setInternalError(formatUnknownError(error));
       setRemoving(false);
     }
-  }, [actionsDisabled, onChange, onRemove, removing, uploading, value]);
+  }, [actionsDisabled, onChange, onRemove, passive, removing, uploading, value]);
 
   const handlePreview = React.useCallback(() => {
-    if (!isRenderable) return;
+    if (passive || !isRenderable) return;
     setPreviewOpen(true);
-  }, [isRenderable]);
+  }, [isRenderable, passive]);
 
-  const closePreview = React.useCallback(() => setPreviewOpen(false), []);
+  const closePreview = React.useCallback(() => {
+    if (passive) return;
+    setPreviewOpen(false);
+  }, [passive]);
 
   return (
     <>
@@ -190,6 +196,7 @@ function ImageUploadFieldInner({
         disabled={disabled}
         errorText={effectiveError}
         helperText={helperText}
+        interactionPolicy={interactionPolicy}
         invalid={invalid}
         label={label}
         readOnly={readOnly}
@@ -230,6 +237,7 @@ function ImageUploadFieldInner({
           <Stack direction={{ base: 'column', md: 'row' }} gap="s">
             <Button
               disabled={actionsDisabled || uploading || removing}
+              interactionPolicy={interactionPolicy}
               onPress={() => {
                 void handleReplace();
               }}
@@ -243,6 +251,7 @@ function ImageUploadFieldInner({
                 variant="outline"
                 loading={removing}
                 color="danger"
+                interactionPolicy={interactionPolicy}
                 onPress={() => {
                   void handleRemove();
                 }}
@@ -252,7 +261,13 @@ function ImageUploadFieldInner({
             ) : null}
 
             {isRenderable ? (
-              <Button disabled={false} variant="soft" color="neutral" onPress={handlePreview}>
+              <Button
+                disabled={false}
+                interactionPolicy={interactionPolicy}
+                variant="soft"
+                color="neutral"
+                onPress={handlePreview}
+              >
                 Preview
               </Button>
             ) : null}
@@ -272,14 +287,20 @@ function ImageUploadFieldInner({
         <Modal
           closeOnBackdrop
           description={previewDescription}
+          interactionPolicy={interactionPolicy}
+          onDismiss={closePreview}
           title={previewTitle}
           visible={previewOpen}
-          onDismiss={closePreview}
         >
           <Stack gap="m">
             <ImagePreview asset={value} aspectRatio={aspectRatio} />
             <Stack direction="row" justify="flex-end">
-              <Button variant="soft" color="neutral" onPress={closePreview}>
+              <Button
+                interactionPolicy={interactionPolicy}
+                variant="soft"
+                color="neutral"
+                onPress={closePreview}
+              >
                 Close
               </Button>
             </Stack>

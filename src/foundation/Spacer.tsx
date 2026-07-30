@@ -9,7 +9,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface SpacerProps extends ZoraBaseProps, Omit<SurfaceSpacerProps, 'mode' | 'themeId'> {}
 
-function SpacerInner({ themeId: _themeId, mode: _mode, ...props }: SpacerProps) {
+function SpacerInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: SpacerProps) {
   return <SurfaceSpacer {...props} />;
 }
 

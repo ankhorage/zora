@@ -8,6 +8,7 @@ import type { AppShellProps } from './types';
 function AppShellInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   children,
   header,
   footer,

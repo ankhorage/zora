@@ -45,6 +45,7 @@ function AppBarInner({
   safeAreaTop = true,
   divider = true,
   testID,
+  interactionPolicy,
 }: AppBarProps) {
   const { theme } = useZoraTheme();
   const resolvedMode = resolveMode(appMode);
@@ -55,6 +56,7 @@ function AppBarInner({
     (isSelectionMode ? (
       <IconButton
         icon={resolvedMode.cancelIcon ?? DEFAULT_CANCEL_ICON}
+        interactionPolicy={interactionPolicy}
         label={resolveCancelLabel(resolvedMode)}
         variant="ghost"
         size="m"
@@ -67,6 +69,7 @@ function AppBarInner({
     <IconButton
       disabled={overflow.disabled}
       icon={overflow.icon ?? DEFAULT_OVERFLOW_ICON}
+      interactionPolicy={interactionPolicy}
       label={resolveOverflowLabel(overflow)}
       variant="ghost"
       size="m"

@@ -63,9 +63,10 @@ function HeadingInner({
   style,
   accessibilityLabel,
   accessibilityHint,
-  accessibilityRole = 'header',
+  accessibilityRole,
   nativeID,
   testID,
+  interactionPolicy: _interactionPolicy,
 }: HeadingProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
@@ -84,7 +85,7 @@ function HeadingInner({
     <ReactNativeText
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
-      accessibilityRole={accessibilityRole}
+      accessibilityRole={accessibilityRole ?? 'header'}
       ellipsizeMode={ellipsizeMode}
       nativeID={nativeID}
       numberOfLines={numberOfLines}

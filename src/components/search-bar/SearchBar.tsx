@@ -17,13 +17,18 @@ function SearchBarInner({
   size = 'l',
   disabled,
   readOnly,
+  interactionPolicy,
 }: SearchBarProps) {
+  const passive = interactionPolicy === 'passive';
+
   const trailingAction: InputTrailingAction | undefined =
     clearable && value.length > 0
       ? {
           icon: { name: 'close-circle' },
           label: 'Clear search',
           onPress: () => {
+            if (passive) return;
+
             onValueChange('');
             onClear?.();
           },
@@ -33,9 +38,10 @@ function SearchBarInner({
   return (
     <Input
       disabled={disabled}
+      interactionPolicy={interactionPolicy}
       leadingIcon={{ name: 'search-outline' }}
       onChangeText={onValueChange}
-      onSubmitEditing={onSubmit ? () => onSubmit(value) : undefined}
+      onSubmitEditing={onSubmit ? (passive ? undefined : () => onSubmit(value)) : undefined}
       placeholder={placeholder}
       readOnly={readOnly}
       returnKeyType="search"

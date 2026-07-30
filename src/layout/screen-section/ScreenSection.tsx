@@ -8,6 +8,7 @@ import type { ScreenSectionProps } from './types';
 function ScreenSectionInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   title,
   description,
   actions,

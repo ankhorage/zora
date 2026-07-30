@@ -21,6 +21,7 @@ function RadioGroupInner<TValue extends string>({
   readOnly = false,
   disabled = false,
   testID,
+  interactionPolicy,
 }: RadioGroupProps<TValue>) {
   const isHorizontal = orientation === 'horizontal';
 
@@ -49,6 +50,7 @@ function RadioGroupInner<TValue extends string>({
             size={size}
             color={color}
             onSelect={onValueChange}
+            interactionPolicy={interactionPolicy}
           />
         ))}
       </Stack>
@@ -70,6 +72,7 @@ function RadioGroupItem<TValue extends string>({
   size,
   color,
   onSelect,
+  interactionPolicy,
 }: {
   option: RadioGroupOption<TValue>;
   checked: boolean;
@@ -79,9 +82,13 @@ function RadioGroupItem<TValue extends string>({
   size: NonNullable<RadioGroupProps<TValue>['size']>;
   color: NonNullable<RadioGroupProps<TValue>['color']>;
   onSelect: (value: TValue) => void;
+  interactionPolicy: RadioGroupProps<TValue>['interactionPolicy'];
 }) {
+  const passive = interactionPolicy === 'passive';
+
   return (
     <Radio
+      interactionPolicy={interactionPolicy}
       checked={checked}
       disabled={disabled}
       invalid={invalid}
@@ -90,6 +97,7 @@ function RadioGroupItem<TValue extends string>({
       color={color}
       testID={option.testID}
       onCheckedChange={(nextChecked) => {
+        if (passive) return;
         if (nextChecked) onSelect(option.value);
       }}
     >

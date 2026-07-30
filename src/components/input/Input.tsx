@@ -16,6 +16,7 @@ function InputInner({
   trailingAction,
   disabled,
   readOnly,
+  interactionPolicy,
   ...props
 }: InputProps) {
   const { theme } = useZoraTheme();
@@ -26,6 +27,7 @@ function InputInner({
     <Surface.TextInput
       {...props}
       disabled={disabled}
+      interactionPolicy={interactionPolicy}
       leadingAccessory={
         leadingIcon ? (
           <Surface.Icon
@@ -42,6 +44,7 @@ function InputInner({
         trailingAction ? (
           <IconButton
             icon={trailingAction.icon}
+            interactionPolicy={interactionPolicy}
             label={trailingAction.label}
             disabled={disabled ?? readOnly}
             variant="ghost"

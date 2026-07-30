@@ -174,6 +174,7 @@ function PostCardComments({ comments }: { comments: readonly PostCommentPreview[
 function PostCardInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy,
   testID,
   author,
   text,
@@ -196,6 +197,7 @@ function PostCardInner({
   return (
     <Card
       compact={compact}
+      interactionPolicy={interactionPolicy}
       onPress={isInteractive ? onPress : undefined}
       testID={testID}
       tone={tone}

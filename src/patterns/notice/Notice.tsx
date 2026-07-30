@@ -9,6 +9,7 @@ import type { NoticeProps } from './types';
 function NoticeInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   title,
   description,
   children,

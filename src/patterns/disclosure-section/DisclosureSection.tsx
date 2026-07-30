@@ -52,16 +52,18 @@ function DisclosureSectionInner({
   children,
   disabled,
   testID,
+  interactionPolicy,
 }: DisclosureSectionProps) {
   const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
 
   const isControlled = controlledOpen !== undefined;
   const isOpen = isControlled ? controlledOpen : internalOpen;
+  const passive = interactionPolicy === 'passive';
   const titleLabel = typeof title === 'string' || typeof title === 'number' ? `: ${title}` : '';
   const toggleLabel = `${isOpen ? 'Collapse' : 'Expand'} section${titleLabel}`;
 
   const toggleOpen = () => {
-    if (disabled) return;
+    if (disabled || passive) return;
 
     if (isControlled) {
       onOpenChange?.(!controlledOpen);
@@ -108,6 +110,7 @@ function DisclosureSectionInner({
               color="neutral"
               size="s"
               disabled={disabled}
+              interactionPolicy={interactionPolicy}
               onPress={toggleOpen}
             />
           </Box>

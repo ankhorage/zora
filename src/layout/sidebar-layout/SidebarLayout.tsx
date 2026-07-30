@@ -7,6 +7,7 @@ import type { SidebarLayoutProps } from './types';
 function SidebarLayoutInner({
   themeId: _themeId,
   mode: _mode,
+  interactionPolicy: _interactionPolicy,
   sidebar,
   children,
   aside,

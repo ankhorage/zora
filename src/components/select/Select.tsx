@@ -1,5 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
 import React from 'react';
+import { View } from 'react-native';
 
 import { Box } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
@@ -15,8 +16,10 @@ function SelectInner<TValue extends string = string>({
   disabled,
   invalid,
   testID,
+  interactionPolicy,
 }: SelectProps<TValue>) {
   const { theme } = useZoraTheme();
+  const passive = interactionPolicy === 'passive';
 
   return (
     <Box
@@ -27,27 +30,33 @@ function SelectInner<TValue extends string = string>({
       radius="m"
       testID={testID}
     >
-      <Picker
-        enabled={!disabled}
-        onValueChange={(itemValue) => onValueChange(itemValue)}
-        selectedValue={value}
-        style={{
-          height: 44,
-          width: '100%',
-          backgroundColor: 'transparent',
-          color: theme.colors.text,
-          borderWidth: 0,
-        }}
-      >
-        {options.map((option) => (
-          <Picker.Item
-            key={option.value}
-            enabled={!option.disabled}
-            label={option.label}
-            value={option.value}
-          />
-        ))}
-      </Picker>
+      <View pointerEvents={passive ? 'none' : 'auto'}>
+        <Picker
+          enabled={!disabled}
+          onValueChange={(itemValue) => {
+            if (!passive) {
+              onValueChange(itemValue);
+            }
+          }}
+          selectedValue={value}
+          style={{
+            height: 44,
+            width: '100%',
+            backgroundColor: 'transparent',
+            color: theme.colors.text,
+            borderWidth: 0,
+          }}
+        >
+          {options.map((option) => (
+            <Picker.Item
+              key={option.value}
+              enabled={!option.disabled}
+              label={option.label}
+              value={option.value}
+            />
+          ))}
+        </Picker>
+      </View>
     </Box>
   );
 }

@@ -22,6 +22,7 @@ function CollectionEditorInner<TItem>({
   emptyLabel = 'No items yet.',
   disabled,
   testID,
+  interactionPolicy,
 }: CollectionEditorProps<TItem>) {
   const isEmpty = items.length === 0;
 
@@ -29,11 +30,18 @@ function CollectionEditorInner<TItem>({
     <Panel
       compact
       description={description}
+      interactionPolicy={interactionPolicy}
       testID={testID}
       title={title}
       actions={
         onAdd ? (
-          <Button variant="soft" size="s" disabled={disabled} onPress={onAdd}>
+          <Button
+            variant="soft"
+            size="s"
+            disabled={disabled}
+            interactionPolicy={interactionPolicy}
+            onPress={onAdd}
+          >
             {addLabel}
           </Button>
         ) : null
@@ -68,6 +76,7 @@ function CollectionEditorInner<TItem>({
                         icon={{ name: 'arrow-up-outline' }}
                         label="Move Up"
                         disabled={disabled ?? index === 0}
+                        interactionPolicy={interactionPolicy}
                         onPress={() => onMove(index, index - 1)}
                         size="s"
                         variant="ghost"
@@ -76,6 +85,7 @@ function CollectionEditorInner<TItem>({
                         icon={{ name: 'arrow-down-outline' }}
                         label="Move Down"
                         disabled={disabled ?? index === items.length - 1}
+                        interactionPolicy={interactionPolicy}
                         onPress={() => onMove(index, index + 1)}
                         size="s"
                         variant="ghost"
@@ -88,6 +98,7 @@ function CollectionEditorInner<TItem>({
                       label="Remove"
                       color="danger"
                       disabled={disabled}
+                      interactionPolicy={interactionPolicy}
                       onPress={() => onRemove(index)}
                       size="s"
                       variant="ghost"

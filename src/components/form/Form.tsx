@@ -24,6 +24,7 @@ function FormInner<TName extends string = string>({
   footer,
   validateOnChange = false,
   testID,
+  interactionPolicy,
 }: FormProps<TName>) {
   const controller = useFormController({
     fields,
@@ -43,6 +44,7 @@ function FormInner<TName extends string = string>({
           disabled={disabled}
           error={controller.errors[field.name]}
           field={field}
+          interactionPolicy={interactionPolicy}
           loading={loading}
           onChange={controller.setFieldValue}
           value={values[field.name]}
@@ -50,8 +52,11 @@ function FormInner<TName extends string = string>({
       ))}
       <FormActions
         disabled={disabled}
+        interactionPolicy={interactionPolicy}
         loading={loading}
         onSubmit={() => {
+          if (interactionPolicy === 'passive') return;
+
           void controller.handleSubmit();
         }}
         submitLabel={submitLabel}

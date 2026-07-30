@@ -10,7 +10,12 @@ import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 export interface ContainerProps
   extends ZoraBaseProps, Omit<SurfaceContainerProps, 'mode' | 'themeId'> {}
 
-function ContainerInner({ themeId: _themeId, mode: _mode, ...props }: ContainerProps) {
+function ContainerInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  ...props
+}: ContainerProps) {
   return <SurfaceContainer {...props} />;
 }
 
