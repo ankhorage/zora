@@ -209,3 +209,18 @@ describe('Select', () => {
     );
   });
 });
+
+describe('TreeItem', () => {
+  test('accepts and forwards interactionPolicy to owned and recursive controls', () => {
+    const source = readPattern('tree-view', 'TreeItem.tsx');
+
+    expect(source).toMatch(/interface TreeItemProps[\s\S]*?extends ZoraBaseProps/);
+    expect(source).toMatch(/function TreeItemInner[\s\S]*?interactionPolicy,/);
+    expect(source).toMatch(
+      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{\(\) => onToggleExpand\(node\.id\)\}/,
+    );
+    expect(source).toMatch(
+      /node\.children\?\.map[\s\S]*?<TreeItem[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?node=\{child\}/,
+    );
+  });
+});

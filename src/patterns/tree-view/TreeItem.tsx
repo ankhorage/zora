@@ -79,6 +79,7 @@ function TreeItemInner<TId extends string = string>({
               key={child.id}
               depth={depth + 1}
               expandedIds={expandedIds}
+              interactionPolicy={interactionPolicy}
               node={child}
               onSelect={onSelect}
               onToggleExpand={onToggleExpand}
