@@ -8,18 +8,19 @@ Presents a modal bottom sheet with a list of actions.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                         | Required | Default | Description |
-| --------------- | ---------------------------- | -------- | ------- | ----------- |
-| cancelLabel     | `React.ReactNode`            | no       | —       |             |
-| children        | `React.ReactNode`            | no       | —       |             |
-| closeOnBackdrop | `boolean \| undefined`       | no       | —       |             |
-| description     | `React.ReactNode`            | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onDismiss       | `(() => void) \| undefined`  | no       | —       |             |
-| testID          | `string \| undefined`        | no       | —       |             |
-| themeId         | `string \| undefined`        | no       | —       |             |
-| title           | `React.ReactNode`            | no       | —       |             |
-| visible         | `boolean`                    | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| cancelLabel       | `React.ReactNode`                | no       | —       |             |
+| children          | `React.ReactNode`                | no       | —       |             |
+| closeOnBackdrop   | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
+| visible           | `boolean`                        | yes      | —       |             |
 
 ## ActionSheetItem
 
@@ -29,47 +30,49 @@ Renders a single selectable action row within an `ActionSheet`.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                          | Required | Default | Description |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color       | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| description | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| disabled    | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| icon        | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| label       | `React.ReactNode`                                                                                                                             | yes      | —       |             |
-| leading     | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onPress     | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| selected    | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| testID      | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                         | no       | —       |             |
-| trailing    | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| description       | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| icon              | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| label             | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| leading           | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| selected          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| trailing          | `React.ReactNode`                                                                                                                             | no       | —       |             |
 
 ## AppBar
 
-Source: `src/components/app-bar/AppBar.tsx:136:14`
+Source: `src/components/app-bar/AppBar.tsx:139:14`
 
 Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                | Required | Default | Description |
-| ----------- | ----------------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`                   | no       | —       |             |
-| appMode     | `AppBarMode \| undefined`           | no       | —       |             |
-| children    | `React.ReactNode`                   | no       | —       |             |
-| divider     | `boolean \| undefined`              | no       | —       |             |
-| leading     | `React.ReactNode`                   | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`        | no       | —       |             |
-| overflow    | `AppBarOverflowAction \| undefined` | no       | —       |             |
-| safeAreaTop | `boolean \| undefined`              | no       | —       |             |
-| subtitle    | `React.ReactNode`                   | no       | —       |             |
-| testID      | `string \| undefined`               | no       | —       |             |
-| themeId     | `string \| undefined`               | no       | —       |             |
-| title       | `React.ReactNode`                   | no       | —       |             |
+| Prop              | Type                                | Required | Default | Description |
+| ----------------- | ----------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                   | no       | —       |             |
+| appMode           | `AppBarMode \| undefined`           | no       | —       |             |
+| children          | `React.ReactNode`                   | no       | —       |             |
+| divider           | `boolean \| undefined`              | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`    | no       | —       |             |
+| leading           | `React.ReactNode`                   | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`        | no       | —       |             |
+| overflow          | `AppBarOverflowAction \| undefined` | no       | —       |             |
+| safeAreaTop       | `boolean \| undefined`              | no       | —       |             |
+| subtitle          | `React.ReactNode`                   | no       | —       |             |
+| testID            | `string \| undefined`               | no       | —       |             |
+| themeId           | `string \| undefined`               | no       | —       |             |
+| title             | `React.ReactNode`                   | no       | —       |             |
 
 ## AppShell
 
-Source: `src/layout/app-shell/AppShell.tsx:48:14`
+Source: `src/layout/app-shell/AppShell.tsx:49:14`
 
 Root application shell with stable header, content, footer, and overlay slots.
 
@@ -78,78 +81,82 @@ leaving navigation, toolbars, and overlays composable through explicit slots.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`            | no       | —       |             |
-| footer   | `React.ReactNode`            | no       | —       |             |
-| header   | `React.ReactNode`            | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| overlay  | `React.ReactNode`            | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| header            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| overlay           | `React.ReactNode`                | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## Avatar
 
-Source: `src/components/avatar/Avatar.tsx:154:14`
+Source: `src/components/avatar/Avatar.tsx:155:14`
 
 Displays a user or entity avatar with image support and initials fallback.
 
 Export paths: `src/index.ts`
 
-| Prop         | Type                                                                                                                                          | Required | Default | Description |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color        | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| iconFallback | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| initials     | `string \| undefined`                                                                                                                         | no       | —       |             |
-| label        | `string \| undefined`                                                                                                                         | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| name         | `string \| undefined`                                                                                                                         | no       | —       |             |
-| shape        | `AvatarShape \| undefined`                                                                                                                    | no       | —       |             |
-| size         | `AvatarSize \| undefined`                                                                                                                     | no       | —       |             |
-| source       | `ImageSourcePropType \| undefined`                                                                                                            | no       | —       |             |
-| testID       | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId      | `string \| undefined`                                                                                                                         | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| iconFallback      | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
+| initials          | `string \| undefined`                                                                                                                         | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| label             | `string \| undefined`                                                                                                                         | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| name              | `string \| undefined`                                                                                                                         | no       | —       |             |
+| shape             | `AvatarShape \| undefined`                                                                                                                    | no       | —       |             |
+| size              | `AvatarSize \| undefined`                                                                                                                     | no       | —       |             |
+| source            | `ImageSourcePropType \| undefined`                                                                                                            | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
 
 ## AvatarGroup
 
-Source: `src/components/avatar-group/AvatarGroup.tsx:77:14`
+Source: `src/components/avatar-group/AvatarGroup.tsx:78:14`
 
 Renders a compact group of avatars with optional overflow handling.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                               | Required | Default | Description |
-| ------------- | -------------------------------------------------- | -------- | ------- | ----------- |
-| items         | `readonly AvatarGroupItem[]`                       | yes      | —       |             |
-| max           | `number \| undefined`                              | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                       | no       | —       |             |
-| overflowLabel | `((overflowCount: number) => string) \| undefined` | no       | —       |             |
-| shape         | `AvatarShape \| undefined`                         | no       | —       |             |
-| size          | `AvatarSize \| undefined`                          | no       | —       |             |
-| testID        | `string \| undefined`                              | no       | —       |             |
-| themeId       | `string \| undefined`                              | no       | —       |             |
+| Prop              | Type                                               | Required | Default | Description |
+| ----------------- | -------------------------------------------------- | -------- | ------- | ----------- |
+| interactionPolicy | `InteractionPolicy \| undefined`                   | no       | —       |             |
+| items             | `readonly AvatarGroupItem[]`                       | yes      | —       |             |
+| max               | `number \| undefined`                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                       | no       | —       |             |
+| overflowLabel     | `((overflowCount: number) => string) \| undefined` | no       | —       |             |
+| shape             | `AvatarShape \| undefined`                         | no       | —       |             |
+| size              | `AvatarSize \| undefined`                          | no       | —       |             |
+| testID            | `string \| undefined`                              | no       | —       |             |
+| themeId           | `string \| undefined`                              | no       | —       |             |
 
 ## Badge
 
-Source: `src/components/badge/Badge.tsx:33:14`
+Source: `src/components/badge/Badge.tsx:34:14`
 
 Shows a small status, label, or count indicator.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                                                                                                                          | Required | Default | Description |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| color    | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| size     | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID   | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId  | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant  | `ZoraBadgeVariant \| undefined`                                                                                                               | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant           | `ZoraBadgeVariant \| undefined`                                                                                                               | no       | —       |             |
 
 ## BarcodeScannerView
 
-Source: `src/patterns/scanner/BarcodeScannerView.tsx:127:14`
+Source: `src/patterns/scanner/BarcodeScannerView.tsx:130:14`
 
 Composed ZORA scanner shell for barcode scanning experiences.
 
@@ -165,6 +172,7 @@ Export paths: `src/index.ts`
 | cornerLabel            | `React.ReactNode`                                                     | no       | —       |             |
 | deniedPermissionLabel  | `React.ReactNode`                                                     | no       | —       |             |
 | description            | `React.ReactNode`                                                     | no       | —       |             |
+| interactionPolicy      | `InteractionPolicy \| undefined`                                      | no       | —       |             |
 | manualEntryLabel       | `React.ReactNode`                                                     | no       | —       |             |
 | mode                   | `ZoraThemeMode \| undefined`                                          | no       | —       |             |
 | onBarcodeScanned       | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no       | —       |             |
@@ -180,7 +188,7 @@ Export paths: `src/index.ts`
 
 ## Box
 
-Source: `src/foundation/Box.tsx:18:14`
+Source: `src/foundation/Box.tsx:23:14`
 
 Base layout primitive for themed spacing, color, border, flex, and responsive props.
 
@@ -203,6 +211,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -238,26 +247,27 @@ Export paths: `src/index.ts`
 
 ## Breadcrumbs
 
-Source: `src/components/breadcrumbs/Breadcrumbs.tsx:146:14`
+Source: `src/components/breadcrumbs/Breadcrumbs.tsx:148:14`
 
 Renders a breadcrumb trail for hierarchical navigation.
 
 Export paths: `src/index.ts`
 
-| Prop      | Type                         | Required | Default | Description |
-| --------- | ---------------------------- | -------- | ------- | ----------- |
-| compact   | `boolean \| undefined`       | no       | —       |             |
-| disabled  | `boolean \| undefined`       | no       | —       |             |
-| items     | `readonly BreadcrumbItem[]`  | yes      | —       |             |
-| maxItems  | `number \| undefined`        | no       | —       |             |
-| mode      | `ZoraThemeMode \| undefined` | no       | —       |             |
-| separator | `React.ReactNode`            | no       | —       |             |
-| testID    | `string \| undefined`        | no       | —       |             |
-| themeId   | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| items             | `readonly BreadcrumbItem[]`      | yes      | —       |             |
+| maxItems          | `number \| undefined`            | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| separator         | `React.ReactNode`                | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## Button
 
-Source: `src/components/button/Button.tsx:34:14`
+Source: `src/components/button/Button.tsx:41:14`
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
 
@@ -285,6 +295,7 @@ Export paths: `src/index.ts`
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | fullWidth          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
 | leadingIcon        | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | loading            | `boolean \| undefined`                                                                                                                        | no       | —       |             |
@@ -325,26 +336,27 @@ Export paths: `src/index.ts`
 
 ## ButtonGroup
 
-Source: `src/components/button-group/ButtonGroup.tsx:108:14`
+Source: `src/components/button-group/ButtonGroup.tsx:109:14`
 
 Groups multiple `Button` elements with consistent spacing and alignment.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| align       | `ButtonGroupAlign \| undefined`                                                                                                                                                                                      | no       | —       |             |
-| children    | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| gap         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| orientation | `ButtonGroupOrientation \| undefined`                                                                                                                                                                                | no       | —       |             |
-| reverse     | `boolean \| undefined`                                                                                                                                                                                               | no       | —       |             |
-| testID      | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| align             | `ButtonGroupAlign \| undefined`                                                                                                                                                                                      | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| gap               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| orientation       | `ButtonGroupOrientation \| undefined`                                                                                                                                                                                | no       | —       |             |
+| reverse           | `boolean \| undefined`                                                                                                                                                                                               | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
 
 ## CameraPermissionView
 
-Source: `src/patterns/scanner/CameraPermissionView.tsx:108:14`
+Source: `src/patterns/scanner/CameraPermissionView.tsx:112:14`
 
 ZORA-owned camera permission state for scanner flows.
 
@@ -357,6 +369,7 @@ Export paths: `src/index.ts`
 | ---------------------- | --------------------------------------------------------- | -------- | ------- | ----------- |
 | deniedLabel            | `React.ReactNode`                                         | no       | —       |             |
 | description            | `React.ReactNode`                                         | no       | —       |             |
+| interactionPolicy      | `InteractionPolicy \| undefined`                          | no       | —       |             |
 | manualEntryButtonProps | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       | —       |             |
 | manualEntryLabel       | `React.ReactNode`                                         | no       | —       |             |
 | mode                   | `ZoraThemeMode \| undefined`                              | no       | —       |             |
@@ -371,7 +384,7 @@ Export paths: `src/index.ts`
 
 ## Card
 
-Source: `src/components/card/Card.tsx:84:14`
+Source: `src/components/card/Card.tsx:86:14`
 
 Structured content container with built-in heading, description, actions, and footer slots.
 
@@ -400,6 +413,7 @@ Export paths: `src/index.ts`
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | footer             | `React.ReactNode`                                                                                                                | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -436,7 +450,7 @@ Export paths: `src/index.ts`
 
 ## Center
 
-Source: `src/foundation/Center.tsx:21:14`
+Source: `src/foundation/Center.tsx:26:14`
 
 Centers children horizontally and vertically within the available space.
 
@@ -460,6 +474,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -495,35 +510,36 @@ Export paths: `src/index.ts`
 
 ## ChatListItem
 
-Source: `src/patterns/chat-list-item/ChatListItem.tsx:225:14`
+Source: `src/patterns/chat-list-item/ChatListItem.tsx:227:14`
 
 Chat-style list row with avatar, title, preview text, and unread indicators.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                          | Required | Default | Description |
-| ------------------ | ----------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`         | no       | —       |             |
-| avatar             | `ChatListAvatar \| undefined` | no       | —       |             |
-| compact            | `boolean \| undefined`        | no       | —       |             |
-| disabled           | `boolean \| undefined`        | no       | —       |             |
-| leading            | `React.ReactNode`             | no       | —       |             |
-| meta               | `React.ReactNode`             | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`  | no       | —       |             |
-| onPress            | `(() => void) \| undefined`   | no       | —       |             |
-| preview            | `React.ReactNode`             | no       | —       |             |
-| selected           | `boolean \| undefined`        | no       | —       |             |
-| testID             | `string \| undefined`         | no       | —       |             |
-| themeId            | `string \| undefined`         | no       | —       |             |
-| timestamp          | `React.ReactNode`             | no       | —       |             |
-| title              | `React.ReactNode`             | yes      | —       |             |
-| trailing           | `React.ReactNode`             | no       | —       |             |
-| unread             | `boolean \| undefined`        | no       | —       |             |
-| unreadCount        | `React.ReactNode`             | no       | —       |             |
+| Prop               | Type                             | Required | Default | Description |
+| ------------------ | -------------------------------- | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`            | no       | —       |             |
+| avatar             | `ChatListAvatar \| undefined`    | no       | —       |             |
+| compact            | `boolean \| undefined`           | no       | —       |             |
+| disabled           | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined` | no       | —       |             |
+| leading            | `React.ReactNode`                | no       | —       |             |
+| meta               | `React.ReactNode`                | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onPress            | `(() => void) \| undefined`      | no       | —       |             |
+| preview            | `React.ReactNode`                | no       | —       |             |
+| selected           | `boolean \| undefined`           | no       | —       |             |
+| testID             | `string \| undefined`            | no       | —       |             |
+| themeId            | `string \| undefined`            | no       | —       |             |
+| timestamp          | `React.ReactNode`                | no       | —       |             |
+| title              | `React.ReactNode`                | yes      | —       |             |
+| trailing           | `React.ReactNode`                | no       | —       |             |
+| unread             | `boolean \| undefined`           | no       | —       |             |
+| unreadCount        | `React.ReactNode`                | no       | —       |             |
 
 ## Checkbox
 
-Source: `src/components/checkbox/Checkbox.tsx:16:14`
+Source: `src/components/checkbox/Checkbox.tsx:21:14`
 
 Binary selection control for toggling a value on or off.
 
@@ -548,6 +564,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
 | invalid            | `boolean \| undefined`                                                                                                                        | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
@@ -586,124 +603,129 @@ Export paths: `src/index.ts`
 
 ## CheckboxGroup
 
-Source: `src/components/checkbox/CheckboxGroup.tsx:63:14`
+Source: `src/components/checkbox/CheckboxGroup.tsx:65:14`
 
 Renders a group of checkboxes for multi-select values.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                                                                                                          | Required | Default | Description |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color         | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| gap           | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       | —       |             |
-| invalid       | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onValueChange | `(value: TValue[]) => void`                                                                                                                   | yes      | —       |             |
-| options       | `readonly CheckboxGroupOption<TValue>[]`                                                                                                      | yes      | —       |             |
-| orientation   | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       | —       |             |
-| readOnly      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| size          | `ControlSize \| undefined`                                                                                                                    | no       | —       |             |
-| testID        | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId       | `string \| undefined`                                                                                                                         | no       | —       |             |
-| value         | `readonly TValue[]`                                                                                                                           | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| gap               | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| invalid           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onValueChange     | `(value: TValue[]) => void`                                                                                                                   | yes      | —       |             |
+| options           | `readonly CheckboxGroupOption<TValue>[]`                                                                                                      | yes      | —       |             |
+| orientation       | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       | —       |             |
+| readOnly          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| size              | `ControlSize \| undefined`                                                                                                                    | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| value             | `readonly TValue[]`                                                                                                                           | yes      | —       |             |
 
 ## Chip
 
-Source: `src/components/chip/Chip.tsx:97:14`
+Source: `src/components/chip/Chip.tsx:104:14`
 
 Compact pill-like control for filters, tags, and quick selections.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                                                                                                                          | Required | Default | Description |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`                                                                                                                             | yes      | —       |             |
-| color    | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| icon     | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onPress  | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| selected | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| size     | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID   | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId  | `string \| undefined`                                                                                                                         | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| icon              | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| selected          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
 
 ## ChipGroup
 
-Source: `src/components/chip-group/ChipGroup.tsx:69:14`
+Source: `src/components/chip-group/ChipGroup.tsx:74:14`
 
 Renders a row or wrap layout of `Chip` items.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                                                                                                          | Required | Default | Description |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color         | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| items         | `readonly ChipGroupItem<TValue>[]`                                                                                                            | yes      | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| multiple      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| onValueChange | `((value: TValue) => void) \| ((value: TValue[]) => void)`                                                                                    | yes      | —       |             |
-| size          | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID        | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId       | `string \| undefined`                                                                                                                         | no       | —       |             |
-| value         | `TValue \| readonly TValue[]`                                                                                                                 | yes      | —       |             |
-| wrap          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| items             | `readonly ChipGroupItem<TValue>[]`                                                                                                            | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| multiple          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| onValueChange     | `((value: TValue) => void) \| ((value: TValue[]) => void)`                                                                                    | yes      | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| value             | `TValue \| readonly TValue[]`                                                                                                                 | yes      | —       |             |
+| wrap              | `boolean \| undefined`                                                                                                                        | no       | —       |             |
 
 ## CollectionEditor
 
-Source: `src/patterns/collection-editor/CollectionEditor.tsx:111:14`
+Source: `src/patterns/collection-editor/CollectionEditor.tsx:122:14`
 
 Editor pattern for adding, removing, and reordering a collection of items.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                 | Required | Default | Description |
-| ----------- | -------------------------------------------------------------------- | -------- | ------- | ----------- |
-| addLabel    | `React.ReactNode`                                                    | no       | —       |             |
-| description | `React.ReactNode`                                                    | no       | —       |             |
-| disabled    | `boolean \| undefined`                                               | no       | —       |             |
-| emptyLabel  | `React.ReactNode`                                                    | no       | —       |             |
-| items       | `readonly TItem[]`                                                   | yes      | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                         | no       | —       |             |
-| onAdd       | `(() => void) \| undefined`                                          | no       | —       |             |
-| onMove      | `((from: number, to: number) => void) \| undefined`                  | no       | —       |             |
-| onRemove    | `((index: number) => void) \| undefined`                             | no       | —       |             |
-| renderItem  | `(props: CollectionEditorRenderItemProps<TItem>) => React.ReactNode` | yes      | —       |             |
-| testID      | `string \| undefined`                                                | no       | —       |             |
-| themeId     | `string \| undefined`                                                | no       | —       |             |
-| title       | `React.ReactNode`                                                    | no       | —       |             |
+| Prop              | Type                                                                 | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------- | -------- | ------- | ----------- |
+| addLabel          | `React.ReactNode`                                                    | no       | —       |             |
+| description       | `React.ReactNode`                                                    | no       | —       |             |
+| disabled          | `boolean \| undefined`                                               | no       | —       |             |
+| emptyLabel        | `React.ReactNode`                                                    | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                     | no       | —       |             |
+| items             | `readonly TItem[]`                                                   | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                         | no       | —       |             |
+| onAdd             | `(() => void) \| undefined`                                          | no       | —       |             |
+| onMove            | `((from: number, to: number) => void) \| undefined`                  | no       | —       |             |
+| onRemove          | `((index: number) => void) \| undefined`                             | no       | —       |             |
+| renderItem        | `(props: CollectionEditorRenderItemProps<TItem>) => React.ReactNode` | yes      | —       |             |
+| testID            | `string \| undefined`                                                | no       | —       |             |
+| themeId           | `string \| undefined`                                                | no       | —       |             |
+| title             | `React.ReactNode`                                                    | no       | —       |             |
 
 ## ConfirmDialog
 
-Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:56:14`
+Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:69:14`
 
 Confirmation dialog pattern with cancel/confirm actions.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                                                                                                                                          | Required | Default | Description |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| busy            | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| cancelLabel     | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| children        | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| closeOnBackdrop | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| confirmColor    | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| confirmLabel    | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| confirmVariant  | `ZoraButtonVariant \| undefined`                                                                                                              | no       | —       |             |
-| description     | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onCancel        | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| onConfirm       | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| testID          | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId         | `string \| undefined`                                                                                                                         | no       | —       |             |
-| title           | `React.ReactNode`                                                                                                                             | yes      | —       |             |
-| visible         | `boolean`                                                                                                                                     | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| busy              | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| cancelLabel       | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| closeOnBackdrop   | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| confirmColor      | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| confirmLabel      | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| confirmVariant    | `ZoraButtonVariant \| undefined`                                                                                                              | no       | —       |             |
+| description       | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onCancel          | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| onConfirm         | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| title             | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| visible           | `boolean`                                                                                                                                     | yes      | —       |             |
 
 ## Container
 
-Source: `src/foundation/Container.tsx:22:14`
+Source: `src/foundation/Container.tsx:27:14`
 
 Constrains page content to semantic widths with responsive padding.
 
@@ -726,6 +748,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -761,80 +784,83 @@ Export paths: `src/index.ts`
 
 ## DataTable
 
-Source: `src/components/data-table/DataTable.tsx:391:14`
+Source: `src/components/data-table/DataTable.tsx:408:14`
 
 Displays structured tabular data with responsive desktop/mobile layouts.
 
 Export paths: `src/index.ts`
 
-| Prop             | Type                                                                               | Required | Default | Description |
-| ---------------- | ---------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| columns          | `readonly DataTableColumn<TRow>[]`                                                 | yes      | —       |             |
-| density          | `DataTableDensity \| undefined`                                                    | no       | —       |             |
-| emptyDescription | `React.ReactNode`                                                                  | no       | —       |             |
-| emptyTitle       | `React.ReactNode`                                                                  | no       | —       |             |
-| loading          | `boolean \| undefined`                                                             | no       | —       |             |
-| loadingRows      | `number \| undefined`                                                              | no       | —       |             |
-| mode             | `ZoraThemeMode \| undefined`                                                       | no       | —       |             |
-| onSortChange     | `((sort: DataTableSortState) => void) \| undefined`                                | no       | —       |             |
-| rowActions       | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no       | —       |             |
-| rowId            | `(row: TRow, index: number) => string`                                             | yes      | —       |             |
-| rows             | `readonly TRow[]`                                                                  | yes      | —       |             |
-| sort             | `DataTableSortState \| undefined`                                                  | no       | —       |             |
-| testID           | `string \| undefined`                                                              | no       | —       |             |
-| themeId          | `string \| undefined`                                                              | no       | —       |             |
+| Prop              | Type                                                                               | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| columns           | `readonly DataTableColumn<TRow>[]`                                                 | yes      | —       |             |
+| density           | `DataTableDensity \| undefined`                                                    | no       | —       |             |
+| emptyDescription  | `React.ReactNode`                                                                  | no       | —       |             |
+| emptyTitle        | `React.ReactNode`                                                                  | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                   | no       | —       |             |
+| loading           | `boolean \| undefined`                                                             | no       | —       |             |
+| loadingRows       | `number \| undefined`                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                       | no       | —       |             |
+| onSortChange      | `((sort: DataTableSortState) => void) \| undefined`                                | no       | —       |             |
+| rowActions        | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no       | —       |             |
+| rowId             | `(row: TRow, index: number) => string`                                             | yes      | —       |             |
+| rows              | `readonly TRow[]`                                                                  | yes      | —       |             |
+| sort              | `DataTableSortState \| undefined`                                                  | no       | —       |             |
+| testID            | `string \| undefined`                                                              | no       | —       |             |
+| themeId           | `string \| undefined`                                                              | no       | —       |             |
 
 ## DatePicker
 
-Source: `src/components/date-picker/DatePicker.tsx:256:14`
+Source: `src/components/date-picker/DatePicker.tsx:279:14`
 
 Date input control with calendar selection and formatted display value.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                              | Required | Default | Description |
-| ------------- | ------------------------------------------------- | -------- | ------- | ----------- |
-| description   | `React.ReactNode`                                 | no       | —       |             |
-| disabled      | `boolean \| undefined`                            | no       | —       |             |
-| error         | `React.ReactNode`                                 | no       | —       |             |
-| formatDate    | `((value: Date) => React.ReactNode) \| undefined` | no       | —       |             |
-| label         | `React.ReactNode`                                 | no       | —       |             |
-| maxDate       | `Date \| undefined`                               | no       | —       |             |
-| minDate       | `Date \| undefined`                               | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                      | no       | —       |             |
-| onValueChange | `((value: DatePickerValue) => void) \| undefined` | no       | —       |             |
-| placeholder   | `React.ReactNode`                                 | no       | —       |             |
-| required      | `boolean \| undefined`                            | no       | —       |             |
-| testID        | `string \| undefined`                             | no       | —       |             |
-| themeId       | `string \| undefined`                             | no       | —       |             |
-| value         | `DatePickerValue`                                 | yes      | —       |             |
+| Prop              | Type                                              | Required | Default | Description |
+| ----------------- | ------------------------------------------------- | -------- | ------- | ----------- |
+| description       | `React.ReactNode`                                 | no       | —       |             |
+| disabled          | `boolean \| undefined`                            | no       | —       |             |
+| error             | `React.ReactNode`                                 | no       | —       |             |
+| formatDate        | `((value: Date) => React.ReactNode) \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                  | no       | —       |             |
+| label             | `React.ReactNode`                                 | no       | —       |             |
+| maxDate           | `Date \| undefined`                               | no       | —       |             |
+| minDate           | `Date \| undefined`                               | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                      | no       | —       |             |
+| onValueChange     | `((value: DatePickerValue) => void) \| undefined` | no       | —       |             |
+| placeholder       | `React.ReactNode`                                 | no       | —       |             |
+| required          | `boolean \| undefined`                            | no       | —       |             |
+| testID            | `string \| undefined`                             | no       | —       |             |
+| themeId           | `string \| undefined`                             | no       | —       |             |
+| value             | `DatePickerValue`                                 | yes      | —       |             |
 
 ## DisclosureSection
 
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:127:14`
+Source: `src/patterns/disclosure-section/DisclosureSection.tsx:130:14`
 
 Expandable section pattern with a summary header and collapsible content.
 
 Export paths: `src/index.ts`
 
-| Prop         | Type                                     | Required | Default | Description |
-| ------------ | ---------------------------------------- | -------- | ------- | ----------- |
-| actions      | `ReactNode`                              | no       | —       |             |
-| children     | `ReactNode`                              | no       | —       |             |
-| defaultOpen  | `boolean \| undefined`                   | no       | —       |             |
-| description  | `ReactNode`                              | no       | —       |             |
-| disabled     | `boolean \| undefined`                   | no       | —       |             |
-| icon         | `ButtonIconSpec \| undefined`            | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined`             | no       | —       |             |
-| onOpenChange | `((open: boolean) => void) \| undefined` | no       | —       |             |
-| open         | `boolean \| undefined`                   | no       | —       |             |
-| testID       | `string \| undefined`                    | no       | —       |             |
-| themeId      | `string \| undefined`                    | no       | —       |             |
-| title        | `ReactNode`                              | yes      | —       |             |
+| Prop              | Type                                     | Required | Default | Description |
+| ----------------- | ---------------------------------------- | -------- | ------- | ----------- |
+| actions           | `ReactNode`                              | no       | —       |             |
+| children          | `ReactNode`                              | no       | —       |             |
+| defaultOpen       | `boolean \| undefined`                   | no       | —       |             |
+| description       | `ReactNode`                              | no       | —       |             |
+| disabled          | `boolean \| undefined`                   | no       | —       |             |
+| icon              | `ButtonIconSpec \| undefined`            | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`         | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`             | no       | —       |             |
+| onOpenChange      | `((open: boolean) => void) \| undefined` | no       | —       |             |
+| open              | `boolean \| undefined`                   | no       | —       |             |
+| testID            | `string \| undefined`                    | no       | —       |             |
+| themeId           | `string \| undefined`                    | no       | —       |             |
+| title             | `ReactNode`                              | yes      | —       |             |
 
 ## Divider
 
-Source: `src/foundation/Divider.tsx:22:14`
+Source: `src/foundation/Divider.tsx:27:14`
 
 Renders a themed visual separator between content sections.
 
@@ -856,6 +882,7 @@ Export paths: `src/index.ts`
 | flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -892,25 +919,26 @@ Export paths: `src/index.ts`
 
 ## Drawer
 
-Source: `src/components/drawer/Drawer.tsx:58:14`
+Source: `src/components/drawer/Drawer.tsx:59:14`
 
 Side panel overlay for navigation, settings, and secondary content.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                             | Required | Default | Description |
-| --------------- | -------------------------------- | -------- | ------- | ----------- |
-| children        | `React.ReactNode`                | no       | —       |             |
-| closeOnBackdrop | `boolean \| undefined`           | no       | —       |             |
-| description     | `React.ReactNode`                | no       | —       |             |
-| footer          | `React.ReactNode`                | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`     | no       | —       |             |
-| onDismiss       | `(() => void) \| undefined`      | no       | —       |             |
-| position        | `"left" \| "right" \| undefined` | no       | —       |             |
-| testID          | `string \| undefined`            | no       | —       |             |
-| themeId         | `string \| undefined`            | no       | —       |             |
-| title           | `React.ReactNode`                | no       | —       |             |
-| visible         | `boolean`                        | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| closeOnBackdrop   | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
+| position          | `"left" \| "right" \| undefined` | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
+| visible           | `boolean`                        | yes      | —       |             |
 
 ## DropdownMenu
 
@@ -920,19 +948,20 @@ Convenience wrapper for rendering a `Menu` as a dropdown.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                           | Required | Default | Description |
-| ------------- | ------------------------------ | -------- | ------- | ----------- |
-| actions       | `readonly MenuAction[]`        | yes      | —       |             |
-| closeOnSelect | `boolean \| undefined`         | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`   | no       | —       |             |
-| onDismiss     | `() => void \| undefined`      | no       | —       |             |
-| testID        | `string \| undefined`          | no       | —       |             |
-| themeId       | `ZoraThemeId \| undefined`     | no       | —       |             |
-| trigger       | `React.ReactNode \| undefined` | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `readonly MenuAction[]`          | yes      | —       |             |
+| closeOnSelect     | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `() => void \| undefined`        | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `ZoraThemeId \| undefined`       | no       | —       |             |
+| trigger           | `React.ReactNode \| undefined`   | no       | —       |             |
 
 ## EmptyState
 
-Source: `src/patterns/empty-state/EmptyState.tsx:70:14`
+Source: `src/patterns/empty-state/EmptyState.tsx:74:14`
 
 Reusable fallback state for empty lists, missing data, or first-run experiences.
 
@@ -941,137 +970,144 @@ so apps can guide users without custom card and button wiring.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                            | Required | Default | Description |
-| --------------- | ------------------------------- | -------- | ------- | ----------- |
-| description     | `React.ReactNode`               | no       | —       |             |
-| eyebrow         | `React.ReactNode`               | no       | —       |             |
-| footer          | `React.ReactNode`               | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`    | no       | —       |             |
-| primaryAction   | `EmptyStateAction \| undefined` | no       | —       |             |
-| secondaryAction | `EmptyStateAction \| undefined` | no       | —       |             |
-| testID          | `string \| undefined`           | no       | —       |             |
-| themeId         | `string \| undefined`           | no       | —       |             |
-| title           | `React.ReactNode`               | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| description       | `React.ReactNode`                | no       | —       |             |
+| eyebrow           | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| primaryAction     | `EmptyStateAction \| undefined`  | no       | —       |             |
+| secondaryAction   | `EmptyStateAction \| undefined`  | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | yes      | —       |             |
 
 ## FilterBar
 
-Source: `src/patterns/filter-bar/FilterBar.tsx:30:14`
+Source: `src/patterns/filter-bar/FilterBar.tsx:31:14`
 
 Horizontal filter/action bar layout with leading/trailing slots.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`            | yes      | —       |             |
-| leading  | `React.ReactNode`            | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
-| trailing | `React.ReactNode`            | no       | —       |             |
-| wrap     | `boolean \| undefined`       | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | yes      | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| leading           | `React.ReactNode`                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| trailing          | `React.ReactNode`                | no       | —       |             |
+| wrap              | `boolean \| undefined`           | no       | —       |             |
 
 ## ForgotPasswordForm
 
-Source: `src/patterns/auth/ForgotPasswordForm.tsx:94:14`
+Source: `src/patterns/auth/ForgotPasswordForm.tsx:97:14`
 
 Password reset form pattern with validation and submit actions.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                                                          | Required | Default | Description |
-| --------------- | ------------------------------------------------------------- | -------- | ------- | ----------- |
-| disabled        | `boolean \| undefined`                                        | no       | —       |             |
-| error           | `React.ReactNode`                                             | no       | —       |             |
-| identifierLabel | `React.ReactNode`                                             | no       | —       |             |
-| identifiers     | `readonly AuthIdentifierKind[] \| undefined`                  | no       | —       |             |
-| loading         | `boolean \| undefined`                                        | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`                                  | no       | —       |             |
-| onSignIn        | `(() => void \| Promise<void>) \| undefined`                  | no       | —       |             |
-| onSubmit        | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes      | —       |             |
-| signInLabel     | `React.ReactNode`                                             | no       | —       |             |
-| submitLabel     | `React.ReactNode`                                             | no       | —       |             |
-| testID          | `string \| undefined`                                         | no       | —       |             |
-| themeId         | `string \| undefined`                                         | no       | —       |             |
+| Prop              | Type                                                          | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`                                        | no       | —       |             |
+| error             | `React.ReactNode`                                             | no       | —       |             |
+| identifierLabel   | `React.ReactNode`                                             | no       | —       |             |
+| identifiers       | `readonly AuthIdentifierKind[] \| undefined`                  | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                              | no       | —       |             |
+| loading           | `boolean \| undefined`                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                  | no       | —       |             |
+| onSignIn          | `(() => void \| Promise<void>) \| undefined`                  | no       | —       |             |
+| onSubmit          | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes      | —       |             |
+| signInLabel       | `React.ReactNode`                                             | no       | —       |             |
+| submitLabel       | `React.ReactNode`                                             | no       | —       |             |
+| testID            | `string \| undefined`                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                         | no       | —       |             |
 
 ## Form
 
-Source: `src/components/form/Form.tsx:69:14`
+Source: `src/components/form/Form.tsx:74:14`
 
 Composes fields and actions into a validated form layout.
 
 Export paths: `src/index.ts`
 
-| Prop             | Type                                                   | Required | Default | Description |
-| ---------------- | ------------------------------------------------------ | -------- | ------- | ----------- |
-| actions          | `React.ReactNode`                                      | no       | —       |             |
-| disabled         | `boolean \| undefined`                                 | no       | —       |             |
-| error            | `React.ReactNode`                                      | no       | —       |             |
-| errors           | `Partial<Record<TName, React.ReactNode>> \| undefined` | no       | —       |             |
-| fields           | `readonly FormFieldConfig<TName>[]`                    | yes      | —       |             |
-| footer           | `React.ReactNode`                                      | no       | —       |             |
-| loading          | `boolean \| undefined`                                 | no       | —       |             |
-| mode             | `ZoraThemeMode \| undefined`                           | no       | —       |             |
-| onChange         | `(values: FormValues<TName>) => void`                  | yes      | —       |             |
-| onSubmit         | `(values: FormValues<TName>) => void \| Promise<void>` | yes      | —       |             |
-| submitLabel      | `React.ReactNode`                                      | no       | —       |             |
-| testID           | `string \| undefined`                                  | no       | —       |             |
-| themeId          | `string \| undefined`                                  | no       | —       |             |
-| validateOnChange | `boolean \| undefined`                                 | no       | —       |             |
-| values           | `FormValues<TName>`                                    | yes      | —       |             |
+| Prop              | Type                                                   | Required | Default | Description |
+| ----------------- | ------------------------------------------------------ | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                                      | no       | —       |             |
+| disabled          | `boolean \| undefined`                                 | no       | —       |             |
+| error             | `React.ReactNode`                                      | no       | —       |             |
+| errors            | `Partial<Record<TName, React.ReactNode>> \| undefined` | no       | —       |             |
+| fields            | `readonly FormFieldConfig<TName>[]`                    | yes      | —       |             |
+| footer            | `React.ReactNode`                                      | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                       | no       | —       |             |
+| loading           | `boolean \| undefined`                                 | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                           | no       | —       |             |
+| onChange          | `(values: FormValues<TName>) => void`                  | yes      | —       |             |
+| onSubmit          | `(values: FormValues<TName>) => void \| Promise<void>` | yes      | —       |             |
+| submitLabel       | `React.ReactNode`                                      | no       | —       |             |
+| testID            | `string \| undefined`                                  | no       | —       |             |
+| themeId           | `string \| undefined`                                  | no       | —       |             |
+| validateOnChange  | `boolean \| undefined`                                 | no       | —       |             |
+| values            | `FormValues<TName>`                                    | yes      | —       |             |
 
 ## FormActions
 
-Source: `src/components/form/FormActions.tsx:31:14`
+Source: `src/components/form/FormActions.tsx:38:14`
 
 Standard submit/action area for forms.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| children    | `React.ReactNode`            | no       | —       |             |
-| disabled    | `boolean \| undefined`       | no       | —       |             |
-| loading     | `boolean \| undefined`       | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onSubmit    | `(() => void) \| undefined`  | no       | —       |             |
-| submitLabel | `React.ReactNode`            | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| loading           | `boolean \| undefined`           | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onSubmit          | `(() => void) \| undefined`      | no       | —       |             |
+| submitLabel       | `React.ReactNode`                | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## FormError
 
-Source: `src/components/form/FormError.tsx:28:14`
+Source: `src/components/form/FormError.tsx:34:14`
 
 Displays a form-level validation or submission error message.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                         | Required | Default | Description |
-| ------- | ---------------------------- | -------- | ------- | ----------- |
-| error   | `React.ReactNode`            | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID  | `string \| undefined`        | no       | —       |             |
-| themeId | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| error             | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## FormField
 
-Source: `src/components/form/FormField.tsx:154:14`
+Source: `src/components/form/FormField.tsx:157:14`
 
 Connects a controlled form value to a labeled input field with error handling.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| disabled | `boolean \| undefined`       | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## Gradient
 
-Source: `src/components/gradient/Gradient.tsx:53:14`
+Source: `src/components/gradient/Gradient.tsx:54:14`
 
 Gradient background container for branded loading surfaces, hero blocks, and previews.
 
@@ -1080,25 +1116,26 @@ component and does not replace native Expo splash-screen configuration.
 
 Export paths: `src/index.ts`
 
-| Prop      | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children  | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| colors    | `GradientColors`                                                                                                                                                                                                     | yes      | —       |             |
-| end       | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| height    | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| locations | `GradientLocations \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| minHeight | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| mode      | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| p         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| radius    | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                        | no       | —       |             |
-| start     | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| testID    | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId   | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| width     | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| colors            | `GradientColors`                                                                                                                                                                                                     | yes      | —       |             |
+| end               | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| height            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| locations         | `GradientLocations \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| minHeight         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| p                 | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| radius            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                        | no       | —       |             |
+| start             | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
 
 ## Grid
 
-Source: `src/foundation/Grid.tsx:18:14`
+Source: `src/foundation/Grid.tsx:23:14`
 
 Creates responsive grid layouts for cards, tiles, and dashboard content.
 
@@ -1124,6 +1161,7 @@ Export paths: `src/index.ts`
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -1161,7 +1199,7 @@ Export paths: `src/index.ts`
 
 ## Heading
 
-Source: `src/components/heading/Heading.tsx:123:14`
+Source: `src/components/heading/Heading.tsx:124:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -1181,6 +1219,7 @@ Export paths: `src/index.ts`
 | ellipsizeMode      | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       | —       |             |
 | emphasis           | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       | —       |             |
 | i18nKey            | `string \| undefined`                                                                                                                                     | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                                          | no       | —       |             |
 | italic             | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
 | level              | `HeadingLevel \| undefined`                                                                                                                               | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`                                                                                                                              | no       | —       |             |
@@ -1196,73 +1235,76 @@ Export paths: `src/index.ts`
 
 ## Hero
 
-Source: `src/patterns/hero/Hero.tsx:121:14`
+Source: `src/patterns/hero/Hero.tsx:131:14`
 
 Hero section pattern for prominent page introductions with actions.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                         | Required | Default | Description |
-| --------------- | ---------------------------- | -------- | ------- | ----------- |
-| align           | `HeroAlign \| undefined`     | no       | —       |             |
-| compact         | `boolean \| undefined`       | no       | —       |             |
-| description     | `React.ReactNode`            | no       | —       |             |
-| eyebrow         | `React.ReactNode`            | no       | —       |             |
-| footer          | `React.ReactNode`            | no       | —       |             |
-| layout          | `HeroLayout \| undefined`    | no       | —       |             |
-| media           | `React.ReactNode`            | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined` | no       | —       |             |
-| primaryAction   | `HeroAction \| undefined`    | no       | —       |             |
-| secondaryAction | `HeroAction \| undefined`    | no       | —       |             |
-| testID          | `string \| undefined`        | no       | —       |             |
-| themeId         | `string \| undefined`        | no       | —       |             |
-| title           | `React.ReactNode`            | yes      | —       |             |
-| tone            | `HeroTone \| undefined`      | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| align             | `HeroAlign \| undefined`         | no       | —       |             |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| eyebrow           | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| layout            | `HeroLayout \| undefined`        | no       | —       |             |
+| media             | `React.ReactNode`                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| primaryAction     | `HeroAction \| undefined`        | no       | —       |             |
+| secondaryAction   | `HeroAction \| undefined`        | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | yes      | —       |             |
+| tone              | `HeroTone \| undefined`          | no       | —       |             |
 
 ## Icon
 
-Source: `src/components/icon/Icon.tsx:16:14`
+Source: `src/components/icon/Icon.tsx:21:14`
 
 Renders an icon from a configured icon provider with theme-aware defaults.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                            | Required | Default | Description |
-| -------- | ------------------------------- | -------- | ------- | ----------- |
-| color    | `string \| number \| undefined` | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`    | no       | —       |             |
-| name     | `string`                        | yes      | —       |             |
-| provider | `string \| undefined`           | no       | —       |             |
-| size     | `string \| number \| undefined` | no       | —       |             |
-| style    | `StyleProp<TextStyle>`          | no       | —       |             |
-| testID   | `string \| undefined`           | no       | —       |             |
-| themeId  | `string \| undefined`           | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| color             | `string \| number \| undefined`  | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| name              | `string`                         | yes      | —       |             |
+| provider          | `string \| undefined`            | no       | —       |             |
+| size              | `string \| number \| undefined`  | no       | —       |             |
+| style             | `StyleProp<TextStyle>`           | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## IconButton
 
-Source: `src/components/icon-button/IconButton.tsx:35:14`
+Source: `src/components/icon-button/IconButton.tsx:37:14`
 
 Icon-only button for compact actions; requires an accessible `label`.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                                                                                                                          | Required | Default | Description |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color    | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| icon     | `ButtonIconSpec`                                                                                                                              | yes      | —       |             |
-| label    | `string`                                                                                                                                      | yes      | —       |             |
-| loading  | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onPress  | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| size     | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID   | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId  | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant  | `ZoraButtonVariant \| undefined`                                                                                                              | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| icon              | `ButtonIconSpec`                                                                                                                              | yes      | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| label             | `string`                                                                                                                                      | yes      | —       |             |
+| loading           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant           | `ZoraButtonVariant \| undefined`                                                                                                              | no       | —       |             |
 
 ## Image
 
-Source: `src/components/image/Image.tsx:16:14`
+Source: `src/components/image/Image.tsx:21:14`
 
 Displays an image with cross-platform source and fit handling.
 
@@ -1276,6 +1318,7 @@ Export paths: `src/index.ts`
 | fallbackSource     | `SurfaceImageSource \| null \| undefined`                                                                                       | no       | —       |             |
 | fit                | `ImageResizeMode \| undefined`                                                                                                  | no       | —       |             |
 | height             | `string \| number \| undefined`                                                                                                 | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`                                                                                                    | no       | —       |             |
 | onError            | `((error: import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageErrorEvent) => void) \| undefined` | no       | —       |             |
 | radius             | `number \| "s" \| "m" \| "l" \| "none" \| "full" \| undefined`                                                                  | no       | —       |             |
@@ -1288,26 +1331,27 @@ Export paths: `src/index.ts`
 
 ## ImagePreview
 
-Source: `src/patterns/image-preview/ImagePreview.tsx:81:14`
+Source: `src/patterns/image-preview/ImagePreview.tsx:82:14`
 
 Preview pattern for showing an image with optional metadata and actions.
 
 Export paths: `src/index.ts`
 
-| Prop             | Type                                                                                                         | Required | Default | Description |
-| ---------------- | ------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
-| aspectRatio      | `number \| undefined`                                                                                        | no       | —       |             |
-| asset            | `ZoraImageAsset \| null \| undefined`                                                                        | no       | —       |             |
-| emptyDescription | `React.ReactNode`                                                                                            | no       | —       |             |
-| emptyTitle       | `React.ReactNode`                                                                                            | no       | —       |             |
-| fit              | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageResizeMode \| undefined` | no       | —       |             |
-| mode             | `ZoraThemeMode \| undefined`                                                                                 | no       | —       |             |
-| testID           | `string \| undefined`                                                                                        | no       | —       |             |
-| themeId          | `string \| undefined`                                                                                        | no       | —       |             |
+| Prop              | Type                                                                                                         | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| aspectRatio       | `number \| undefined`                                                                                        | no       | —       |             |
+| asset             | `ZoraImageAsset \| null \| undefined`                                                                        | no       | —       |             |
+| emptyDescription  | `React.ReactNode`                                                                                            | no       | —       |             |
+| emptyTitle        | `React.ReactNode`                                                                                            | no       | —       |             |
+| fit               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageResizeMode \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                 | no       | —       |             |
+| testID            | `string \| undefined`                                                                                        | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                        | no       | —       |             |
 
 ## ImageUploadField
 
-Source: `src/patterns/image-upload-field/ImageUploadField.tsx:298:14`
+Source: `src/patterns/image-upload-field/ImageUploadField.tsx:319:14`
 
 Form field pattern for picking, previewing, and uploading an image.
 
@@ -1321,6 +1365,7 @@ Export paths: `src/index.ts`
 | disabled           | `boolean \| undefined`                                                                                     | no       | —       |             |
 | errorText          | `React.ReactNode`                                                                                          | no       | —       |             |
 | helperText         | `React.ReactNode`                                                                                          | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                           | no       | —       |             |
 | label              | `React.ReactNode`                                                                                          | yes      | —       |             |
 | maxSizeBytes       | `number \| undefined`                                                                                      | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`                                                                               | no       | —       |             |
@@ -1339,7 +1384,7 @@ Export paths: `src/index.ts`
 
 ## Inline
 
-Source: `src/foundation/Inline.tsx:21:14`
+Source: `src/foundation/Inline.tsx:26:14`
 
 Arranges children inline with spacing and wrapping behavior.
 
@@ -1364,6 +1409,7 @@ Export paths: `src/index.ts`
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`         | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
@@ -1401,7 +1447,7 @@ Export paths: `src/index.ts`
 
 ## Input
 
-Source: `src/components/input/Input.tsx:76:14`
+Source: `src/components/input/Input.tsx:79:14`
 
 Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
 
@@ -1474,6 +1520,7 @@ Export paths: `src/index.ts`
 | inputAccessoryViewButtonLabel          | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
 | inputAccessoryViewID                   | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
 | inputMode                              | `InputModeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
+| interactionPolicy                      | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       | —       |             |
 | invalid                                | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
 | isTVSelectable                         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
 | keyboardAppearance                     | `"light" \| "dark" \| "default" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
@@ -1579,27 +1626,28 @@ Export paths: `src/index.ts`
 
 ## InspectorField
 
-Source: `src/patterns/inspector-field/InspectorField.tsx:31:14`
+Source: `src/patterns/inspector-field/InspectorField.tsx:32:14`
 
 Inspector row pattern with label, description, and control slot.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| children    | `ReactNode`                  | no       | —       |             |
-| control     | `ReactNode`                  | no       | —       |             |
-| description | `ReactNode`                  | no       | —       |             |
-| disabled    | `boolean \| undefined`       | no       | —       |             |
-| errorText   | `ReactNode`                  | no       | —       |             |
-| helperText  | `ReactNode`                  | no       | —       |             |
-| invalid     | `boolean \| undefined`       | no       | —       |             |
-| label       | `ReactNode`                  | yes      | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| readOnly    | `boolean \| undefined`       | no       | —       |             |
-| required    | `boolean \| undefined`       | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `ReactNode`                      | no       | —       |             |
+| control           | `ReactNode`                      | no       | —       |             |
+| description       | `ReactNode`                      | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| errorText         | `ReactNode`                      | no       | —       |             |
+| helperText        | `ReactNode`                      | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| invalid           | `boolean \| undefined`           | no       | —       |             |
+| label             | `ReactNode`                      | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| readOnly          | `boolean \| undefined`           | no       | —       |             |
+| required          | `boolean \| undefined`           | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## List
 
@@ -1609,11 +1657,12 @@ List container pattern for composing `ListRow` and `ListSection`.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                         | Required | Default | Description |
-| ------- | ---------------------------- | -------- | ------- | ----------- |
-| mode    | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID  | `string \| undefined`        | no       | —       |             |
-| themeId | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## ListRow
 
@@ -1623,22 +1672,23 @@ Row pattern for lists with leading/trailing slots and optional press behavior.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                          | Required | Default | Description |
-| ----------- | ----------------------------- | -------- | ------- | ----------- |
-| action      | `React.ReactNode`             | no       | —       |             |
-| compact     | `boolean \| undefined`        | no       | —       |             |
-| description | `React.ReactNode`             | no       | —       |             |
-| disabled    | `boolean \| undefined`        | no       | —       |             |
-| leading     | `React.ReactNode`             | no       | —       |             |
-| meta        | `React.ReactNode`             | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`  | no       | —       |             |
-| onPress     | `(() => void) \| undefined`   | no       | —       |             |
-| selected    | `boolean \| undefined`        | no       | —       |             |
-| testID      | `string \| undefined`         | no       | —       |             |
-| themeId     | `string \| undefined`         | no       | —       |             |
-| title       | `React.ReactNode`             | yes      | —       |             |
-| trailing    | `React.ReactNode`             | no       | —       |             |
-| variant     | `ListRowVariant \| undefined` | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| action            | `React.ReactNode`                | no       | —       |             |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| leading           | `React.ReactNode`                | no       | —       |             |
+| meta              | `React.ReactNode`                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onPress           | `(() => void) \| undefined`      | no       | —       |             |
+| selected          | `boolean \| undefined`           | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | yes      | —       |             |
+| trailing          | `React.ReactNode`                | no       | —       |             |
+| variant           | `ListRowVariant \| undefined`    | no       | —       |             |
 
 ## ListSection
 
@@ -1648,43 +1698,45 @@ Section wrapper for lists with optional title and description.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| eyebrow     | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| eyebrow           | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
 
 ## MediaCard
 
-Source: `src/components/media-card/MediaCard.tsx:123:14`
+Source: `src/components/media-card/MediaCard.tsx:125:14`
 
 Card layout with an optional media/header region and structured content slots.
 
 Export paths: `src/index.ts`
 
-| Prop             | Type                               | Required | Default | Description |
-| ---------------- | ---------------------------------- | -------- | ------- | ----------- |
-| actions          | `React.ReactNode`                  | no       | —       |             |
-| badges           | `React.ReactNode`                  | no       | —       |             |
-| children         | `React.ReactNode`                  | no       | —       |             |
-| compact          | `boolean \| undefined`             | no       | —       |             |
-| description      | `React.ReactNode`                  | no       | —       |             |
-| eyebrow          | `React.ReactNode`                  | no       | —       |             |
-| footer           | `React.ReactNode`                  | no       | —       |             |
-| image            | `React.ReactNode`                  | no       | —       |             |
-| imageAspectRatio | `number \| undefined`              | no       | —       |             |
-| imageLabel       | `string \| undefined`              | no       | —       |             |
-| imageSource      | `ImageSourcePropType \| undefined` | no       | —       |             |
-| mode             | `ZoraThemeMode \| undefined`       | no       | —       |             |
-| onPress          | `(() => void) \| undefined`        | no       | —       |             |
-| testID           | `string \| undefined`              | no       | —       |             |
-| themeId          | `string \| undefined`              | no       | —       |             |
-| title            | `React.ReactNode`                  | yes      | —       |             |
-| tone             | `ZoraCardTone \| undefined`        | no       | —       |             |
+| Prop              | Type                               | Required | Default | Description |
+| ----------------- | ---------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                  | no       | —       |             |
+| badges            | `React.ReactNode`                  | no       | —       |             |
+| children          | `React.ReactNode`                  | no       | —       |             |
+| compact           | `boolean \| undefined`             | no       | —       |             |
+| description       | `React.ReactNode`                  | no       | —       |             |
+| eyebrow           | `React.ReactNode`                  | no       | —       |             |
+| footer            | `React.ReactNode`                  | no       | —       |             |
+| image             | `React.ReactNode`                  | no       | —       |             |
+| imageAspectRatio  | `number \| undefined`              | no       | —       |             |
+| imageLabel        | `string \| undefined`              | no       | —       |             |
+| imageSource       | `ImageSourcePropType \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`   | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`       | no       | —       |             |
+| onPress           | `(() => void) \| undefined`        | no       | —       |             |
+| testID            | `string \| undefined`              | no       | —       |             |
+| themeId           | `string \| undefined`              | no       | —       |             |
+| title             | `React.ReactNode`                  | yes      | —       |             |
+| tone              | `ZoraCardTone \| undefined`        | no       | —       |             |
 
 ## Menu
 
@@ -1694,19 +1746,20 @@ Presents a list of actions as a menu with optional icons and intent styling.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                         | Required | Default | Description |
-| ------------- | ---------------------------- | -------- | ------- | ----------- |
-| actions       | `readonly MenuAction[]`      | yes      | —       |             |
-| closeOnSelect | `boolean \| undefined`       | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onDismiss     | `(() => void) \| undefined`  | no       | —       |             |
-| testID        | `string \| undefined`        | no       | —       |             |
-| themeId       | `string \| undefined`        | no       | —       |             |
-| trigger       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `readonly MenuAction[]`          | yes      | —       |             |
+| closeOnSelect     | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| trigger           | `React.ReactNode`                | no       | —       |             |
 
 ## MessageBubble
 
-Source: `src/patterns/message-bubble/MessageBubble.tsx:270:14`
+Source: `src/patterns/message-bubble/MessageBubble.tsx:272:14`
 
 Message bubble pattern for chat UIs with direction and status styling.
 
@@ -1721,6 +1774,7 @@ Export paths: `src/index.ts`
 | direction          | `MessageBubbleDirection \| undefined` | no       | —       |             |
 | disabled           | `boolean \| undefined`                | no       | —       |             |
 | footer             | `React.ReactNode`                     | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`      | no       | —       |             |
 | leading            | `React.ReactNode`                     | no       | —       |             |
 | meta               | `React.ReactNode`                     | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`          | no       | —       |             |
@@ -1735,113 +1789,118 @@ Export paths: `src/index.ts`
 
 ## MetricCard
 
-Source: `src/components/metric-card/MetricCard.tsx:87:14`
+Source: `src/components/metric-card/MetricCard.tsx:89:14`
 
 Highlights a key metric with label, value, and optional trend/actions.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                          | Required | Default | Description |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| compact     | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| delta       | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| deltaColor  | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| description | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| icon        | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
-| label       | `React.ReactNode`                                                                                                                             | yes      | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onPress     | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
-| testID      | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                         | no       | —       |             |
-| tone        | `ZoraCardTone \| undefined`                                                                                                                   | no       | —       |             |
-| value       | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| compact           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| delta             | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| deltaColor        | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| description       | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| icon              | `ButtonIconSpec \| undefined`                                                                                                                 | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| label             | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                                                                                                                   | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| tone              | `ZoraCardTone \| undefined`                                                                                                                   | no       | —       |             |
+| value             | `React.ReactNode`                                                                                                                             | yes      | —       |             |
 
 ## Modal
 
-Source: `src/components/modal/Modal.tsx:62:14`
+Source: `src/components/modal/Modal.tsx:63:14`
 
 Modal dialog surface with header/content/footer slots.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                            | Required | Default | Description |
-| --------------- | ------------------------------- | -------- | ------- | ----------- |
-| children        | `React.ReactNode`               | no       | —       |             |
-| closeOnBackdrop | `boolean \| undefined`          | no       | —       |             |
-| description     | `React.ReactNode`               | no       | —       |             |
-| footer          | `React.ReactNode`               | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`    | no       | —       |             |
-| onDismiss       | `(() => void) \| undefined`     | no       | —       |             |
-| testID          | `string \| undefined`           | no       | —       |             |
-| themeId         | `string \| undefined`           | no       | —       |             |
-| title           | `React.ReactNode`               | no       | —       |             |
-| visible         | `boolean`                       | yes      | —       |             |
-| width           | `ZoraContentWidth \| undefined` | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| closeOnBackdrop   | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
+| visible           | `boolean`                        | yes      | —       |             |
+| width             | `ZoraContentWidth \| undefined`  | no       | —       |             |
 
 ## NavigationItem
 
-Source: `src/components/navigation-item/NavigationItem.tsx:39:14`
+Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
 
 Renders a single navigation entry with active/disabled state support.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                       | Required | Default | Description |
-| -------- | ------------------------------------------ | -------- | ------- | ----------- |
-| active   | `boolean \| undefined`                     | no       | —       |             |
-| compact  | `boolean \| undefined`                     | no       | —       |             |
-| metadata | `ZoraNavigationRouteMetadata \| undefined` | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`               | no       | —       |             |
-| onPress  | `(() => void) \| undefined`                | no       | —       |             |
-| route    | `ZoraNavigationRouteState`                 | yes      | —       |             |
-| testID   | `string \| undefined`                      | no       | —       |             |
-| themeId  | `string \| undefined`                      | no       | —       |             |
+| Prop              | Type                                       | Required | Default | Description |
+| ----------------- | ------------------------------------------ | -------- | ------- | ----------- |
+| active            | `boolean \| undefined`                     | no       | —       |             |
+| compact           | `boolean \| undefined`                     | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`           | no       | —       |             |
+| metadata          | `ZoraNavigationRouteMetadata \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`               | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                | no       | —       |             |
+| route             | `ZoraNavigationRouteState`                 | yes      | —       |             |
+| testID            | `string \| undefined`                      | no       | —       |             |
+| themeId           | `string \| undefined`                      | no       | —       |             |
 
 ## NavigationList
 
-Source: `src/components/navigation-list/NavigationList.tsx:65:14`
+Source: `src/components/navigation-list/NavigationList.tsx:68:14`
 
 Renders a navigation list from route metadata with active state mapping.
 
 Export paths: `src/index.ts`
 
-| Prop           | Type                                                                | Required | Default | Description |
-| -------------- | ------------------------------------------------------------------- | -------- | ------- | ----------- |
-| activeRouteKey | `string \| undefined`                                               | no       | —       |             |
-| compact        | `boolean \| undefined`                                              | no       | —       |             |
-| footer         | `React.ReactNode`                                                   | no       | —       |             |
-| header         | `React.ReactNode`                                                   | no       | —       |             |
-| mode           | `ZoraThemeMode \| undefined`                                        | no       | —       |             |
-| onRoutePress   | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       | —       |             |
-| orientation    | `"horizontal" \| "vertical" \| undefined`                           | no       | —       |             |
-| routeMap       | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       | —       |             |
-| routes         | `readonly ZoraNavigationRouteState[]`                               | yes      | —       |             |
-| testID         | `string \| undefined`                                               | no       | —       |             |
-| themeId        | `string \| undefined`                                               | no       | —       |             |
+| Prop              | Type                                                                | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------------- | -------- | ------- | ----------- |
+| activeRouteKey    | `string \| undefined`                                               | no       | —       |             |
+| compact           | `boolean \| undefined`                                              | no       | —       |             |
+| footer            | `React.ReactNode`                                                   | no       | —       |             |
+| header            | `React.ReactNode`                                                   | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                    | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                        | no       | —       |             |
+| onRoutePress      | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       | —       |             |
+| orientation       | `"horizontal" \| "vertical" \| undefined`                           | no       | —       |             |
+| routeMap          | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       | —       |             |
+| routes            | `readonly ZoraNavigationRouteState[]`                               | yes      | —       |             |
+| testID            | `string \| undefined`                                               | no       | —       |             |
+| themeId           | `string \| undefined`                                               | no       | —       |             |
 
 ## Notice
 
-Source: `src/patterns/notice/Notice.tsx:40:14`
+Source: `src/patterns/notice/Notice.tsx:41:14`
 
 Notice pattern for inline feedback with tone, title, and actions.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                          | Required | Default | Description |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| children    | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| color       | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| description | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| testID      | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                         | no       | —       |             |
-| title       | `React.ReactNode`                                                                                                                             | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| description       | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| title             | `React.ReactNode`                                                                                                                             | yes      | —       |             |
 
 ## OAuthProviderButton
 
-Source: `src/patterns/auth/OAuthProviderButton.tsx:51:14`
+Source: `src/patterns/auth/OAuthProviderButton.tsx:53:14`
 
 Renders a provider-branded OAuth action button without owning auth behavior.
 
@@ -1850,95 +1909,99 @@ Adapters, redirects, and callback handling belong to app/runtime layers.
 
 Export paths: `src/index.ts`
 
-| Prop       | Type                                                                                                                                          | Required | Default | Description |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color      | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled   | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| fullWidth  | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| icon       | `OAuthProviderIconSpec \| undefined`                                                                                                          | no       | —       |             |
-| label      | `React.ReactNode`                                                                                                                             | no       | —       |             |
-| loading    | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| mode       | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onPress    | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
-| providerId | `string`                                                                                                                                      | yes      | —       |             |
-| size       | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
-| testID     | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId    | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant    | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| fullWidth         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| icon              | `OAuthProviderIconSpec \| undefined`                                                                                                          | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| label             | `React.ReactNode`                                                                                                                             | no       | —       |             |
+| loading           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onPress           | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
+| providerId        | `string`                                                                                                                                      | yes      | —       |             |
+| size              | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant           | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
 
 ## OAuthProviderList
 
-Source: `src/patterns/auth/OAuthProviderList.tsx:54:14`
+Source: `src/patterns/auth/OAuthProviderList.tsx:56:14`
 
 Renders a group of OAuth provider buttons for sign-in and auth settings flows.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                                                                                                                                          | Required | Default | Description |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color           | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled        | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| fullWidth       | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| layout          | `OAuthProviderListLayout \| undefined`                                                                                                        | no       | —       |             |
-| loading         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onProviderPress | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
-| providers       | `readonly OAuthProviderItem[]`                                                                                                                | yes      | —       |             |
-| size            | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
-| testID          | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId         | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant         | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| fullWidth         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| layout            | `OAuthProviderListLayout \| undefined`                                                                                                        | no       | —       |             |
+| loading           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onProviderPress   | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
+| providers         | `readonly OAuthProviderItem[]`                                                                                                                | yes      | —       |             |
+| size              | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| variant           | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
 
 ## OtpForm
 
-Source: `src/patterns/auth/OtpForm.tsx:90:14`
+Source: `src/patterns/auth/OtpForm.tsx:93:14`
 
 One-time passcode form pattern with digit input and submit actions.
 
 Export paths: `src/index.ts`
 
-| Prop           | Type                                               | Required | Default | Description |
-| -------------- | -------------------------------------------------- | -------- | ------- | ----------- |
-| disabled       | `boolean \| undefined`                             | no       | —       |             |
-| error          | `React.ReactNode`                                  | no       | —       |             |
-| length         | `number \| undefined`                              | no       | —       |             |
-| loading        | `boolean \| undefined`                             | no       | —       |             |
-| mode           | `ZoraThemeMode \| undefined`                       | no       | —       |             |
-| onResend       | `(() => void \| Promise<void>) \| undefined`       | no       | —       |             |
-| onSubmit       | `(values: OtpFormValues) => void \| Promise<void>` | yes      | —       |             |
-| otpLabel       | `React.ReactNode`                                  | no       | —       |             |
-| resendDisabled | `boolean \| undefined`                             | no       | —       |             |
-| resendLabel    | `React.ReactNode`                                  | no       | —       |             |
-| resendLoading  | `boolean \| undefined`                             | no       | —       |             |
-| submitLabel    | `React.ReactNode`                                  | no       | —       |             |
-| testID         | `string \| undefined`                              | no       | —       |             |
-| themeId        | `string \| undefined`                              | no       | —       |             |
+| Prop              | Type                                               | Required | Default | Description |
+| ----------------- | -------------------------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`                             | no       | —       |             |
+| error             | `React.ReactNode`                                  | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                   | no       | —       |             |
+| length            | `number \| undefined`                              | no       | —       |             |
+| loading           | `boolean \| undefined`                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                       | no       | —       |             |
+| onResend          | `(() => void \| Promise<void>) \| undefined`       | no       | —       |             |
+| onSubmit          | `(values: OtpFormValues) => void \| Promise<void>` | yes      | —       |             |
+| otpLabel          | `React.ReactNode`                                  | no       | —       |             |
+| resendDisabled    | `boolean \| undefined`                             | no       | —       |             |
+| resendLabel       | `React.ReactNode`                                  | no       | —       |             |
+| resendLoading     | `boolean \| undefined`                             | no       | —       |             |
+| submitLabel       | `React.ReactNode`                                  | no       | —       |             |
+| testID            | `string \| undefined`                              | no       | —       |             |
+| themeId           | `string \| undefined`                              | no       | —       |             |
 
 ## Pagination
 
-Source: `src/components/pagination/Pagination.tsx:192:14`
+Source: `src/components/pagination/Pagination.tsx:199:14`
 
 Pagination control for navigating between pages of results.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                    | Required | Default | Description |
-| ------------- | --------------------------------------- | -------- | ------- | ----------- |
-| boundaryCount | `number \| undefined`                   | no       | —       |             |
-| compact       | `boolean \| undefined`                  | no       | —       |             |
-| disabled      | `boolean \| undefined`                  | no       | —       |             |
-| firstLabel    | `React.ReactNode`                       | no       | —       |             |
-| lastLabel     | `React.ReactNode`                       | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`            | no       | —       |             |
-| nextLabel     | `React.ReactNode`                       | no       | —       |             |
-| onPageChange  | `((page: number) => void) \| undefined` | no       | —       |             |
-| page          | `number`                                | yes      | —       |             |
-| pageCount     | `number`                                | yes      | —       |             |
-| previousLabel | `React.ReactNode`                       | no       | —       |             |
-| showFirstLast | `boolean \| undefined`                  | no       | —       |             |
-| siblingCount  | `number \| undefined`                   | no       | —       |             |
-| testID        | `string \| undefined`                   | no       | —       |             |
-| themeId       | `string \| undefined`                   | no       | —       |             |
+| Prop              | Type                                    | Required | Default | Description |
+| ----------------- | --------------------------------------- | -------- | ------- | ----------- |
+| boundaryCount     | `number \| undefined`                   | no       | —       |             |
+| compact           | `boolean \| undefined`                  | no       | —       |             |
+| disabled          | `boolean \| undefined`                  | no       | —       |             |
+| firstLabel        | `React.ReactNode`                       | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`        | no       | —       |             |
+| lastLabel         | `React.ReactNode`                       | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`            | no       | —       |             |
+| nextLabel         | `React.ReactNode`                       | no       | —       |             |
+| onPageChange      | `((page: number) => void) \| undefined` | no       | —       |             |
+| page              | `number`                                | yes      | —       |             |
+| pageCount         | `number`                                | yes      | —       |             |
+| previousLabel     | `React.ReactNode`                       | no       | —       |             |
+| showFirstLast     | `boolean \| undefined`                  | no       | —       |             |
+| siblingCount      | `number \| undefined`                   | no       | —       |             |
+| testID            | `string \| undefined`                   | no       | —       |             |
+| themeId           | `string \| undefined`                   | no       | —       |             |
 
 ## PaletteItem
 
@@ -1948,18 +2011,19 @@ Tile item pattern for palettes and option grids.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                          | Required | Default | Description |
-| ----------- | ----------------------------- | -------- | ------- | ----------- |
-| badge       | `ReactNode`                   | no       | —       |             |
-| description | `ReactNode`                   | no       | —       |             |
-| disabled    | `boolean \| undefined`        | no       | —       |             |
-| icon        | `ButtonIconSpec \| undefined` | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`  | no       | —       |             |
-| onPress     | `(() => void) \| undefined`   | no       | —       |             |
-| selected    | `boolean \| undefined`        | no       | —       |             |
-| testID      | `string \| undefined`         | no       | —       |             |
-| themeId     | `string \| undefined`         | no       | —       |             |
-| title       | `ReactNode`                   | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| badge             | `ReactNode`                      | no       | —       |             |
+| description       | `ReactNode`                      | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| icon              | `ButtonIconSpec \| undefined`    | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onPress           | `(() => void) \| undefined`      | no       | —       |             |
+| selected          | `boolean \| undefined`           | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `ReactNode`                      | yes      | —       |             |
 
 ## Panel
 
@@ -1969,48 +2033,50 @@ Semantic wrapper around `Card` for panel-style page sections.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`            | no       | —       |             |
-| children    | `React.ReactNode`            | no       | —       |             |
-| compact     | `boolean \| undefined`       | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| eyebrow     | `React.ReactNode`            | no       | —       |             |
-| footer      | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
-| tone        | `ZoraCardTone \| undefined`  | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                | no       | —       |             |
+| children          | `React.ReactNode`                | no       | —       |             |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| eyebrow           | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
+| tone              | `ZoraCardTone \| undefined`      | no       | —       |             |
 
 ## PostCard
 
-Source: `src/patterns/post-card/PostCard.tsx:239:14`
+Source: `src/patterns/post-card/PostCard.tsx:241:14`
 
 Social-style post card pattern with author, content, media, and actions.
 
 Export paths: `src/index.ts`
 
-| Prop         | Type                                                     | Required | Default | Description |
-| ------------ | -------------------------------------------------------- | -------- | ------- | ----------- |
-| actions      | `readonly PostAction[] \| undefined`                     | no       | —       |             |
-| author       | `PostAuthor`                                             | yes      | —       |             |
-| children     | `React.ReactNode`                                        | no       | —       |             |
-| comments     | `readonly PostCommentPreview[] \| undefined`             | no       | —       |             |
-| compact      | `boolean \| undefined`                                   | no       | —       |             |
-| footer       | `React.ReactNode`                                        | no       | —       |             |
-| headerAction | `React.ReactNode`                                        | no       | —       |             |
-| media        | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined`                             | no       | —       |             |
-| onPress      | `(() => void) \| undefined`                              | no       | —       |             |
-| testID       | `string \| undefined`                                    | no       | —       |             |
-| text         | `React.ReactNode`                                        | no       | —       |             |
-| themeId      | `string \| undefined`                                    | no       | —       |             |
-| tone         | `ZoraCardTone \| undefined`                              | no       | —       |             |
+| Prop              | Type                                                     | Required | Default | Description |
+| ----------------- | -------------------------------------------------------- | -------- | ------- | ----------- |
+| actions           | `readonly PostAction[] \| undefined`                     | no       | —       |             |
+| author            | `PostAuthor`                                             | yes      | —       |             |
+| children          | `React.ReactNode`                                        | no       | —       |             |
+| comments          | `readonly PostCommentPreview[] \| undefined`             | no       | —       |             |
+| compact           | `boolean \| undefined`                                   | no       | —       |             |
+| footer            | `React.ReactNode`                                        | no       | —       |             |
+| headerAction      | `React.ReactNode`                                        | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                         | no       | —       |             |
+| media             | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                             | no       | —       |             |
+| onPress           | `(() => void) \| undefined`                              | no       | —       |             |
+| testID            | `string \| undefined`                                    | no       | —       |             |
+| text              | `React.ReactNode`                                        | no       | —       |             |
+| themeId           | `string \| undefined`                                    | no       | —       |             |
+| tone              | `ZoraCardTone \| undefined`                              | no       | —       |             |
 
 ## ProductCard
 
-Source: `src/patterns/product-card/ProductCard.tsx:125:14`
+Source: `src/patterns/product-card/ProductCard.tsx:141:14`
 
 Export paths: `src/index.ts`
 
@@ -2022,6 +2088,7 @@ Export paths: `src/index.ts`
 | description          | `string \| undefined`                                       | no       | —       |             |
 | imageAlt             | `string \| undefined`                                       | no       | —       |             |
 | imageUrl             | `string \| undefined`                                       | no       | —       |             |
+| interactionPolicy    | `InteractionPolicy \| undefined`                            | no       | —       |             |
 | meta                 | `readonly { label: string; value: string; }[] \| undefined` | no       | —       |             |
 | mode                 | `ZoraThemeMode \| undefined`                                | no       | —       |             |
 | onPress              | `(() => void) \| undefined`                                 | no       | —       |             |
@@ -2038,21 +2105,22 @@ Export paths: `src/index.ts`
 
 ## Progress
 
-Source: `src/components/progress/Progress.tsx:53:14`
+Source: `src/components/progress/Progress.tsx:54:14`
 
 Progress indicator for determinate and indeterminate loading states.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                                                                                                                                          | Required | Default | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color   | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| max     | `number \| undefined`                                                                                                                         | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| size    | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID  | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId | `string \| undefined`                                                                                                                         | no       | —       |             |
-| value   | `number`                                                                                                                                      | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| max               | `number \| undefined`                                                                                                                         | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| value             | `number`                                                                                                                                      | yes      | —       |             |
 
 ## Radio
 
@@ -2081,6 +2149,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                                   | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
 | invalid            | `boolean \| undefined`                                                                                                                        | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       | —       |             |
@@ -2119,49 +2188,51 @@ Export paths: `src/index.ts`
 
 ## RadioGroup
 
-Source: `src/components/radio/RadioGroup.tsx:62:14`
+Source: `src/components/radio/RadioGroup.tsx:64:14`
 
 Renders a group of radio options for selecting a single value.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                                                                                                          | Required | Default | Description |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color         | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| disabled      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| gap           | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       | —       |             |
-| invalid       | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| onValueChange | `(value: TValue) => void`                                                                                                                     | yes      | —       |             |
-| options       | `readonly RadioGroupOption<TValue>[]`                                                                                                         | yes      | —       |             |
-| orientation   | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       | —       |             |
-| readOnly      | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| size          | `ControlSize \| undefined`                                                                                                                    | no       | —       |             |
-| testID        | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId       | `string \| undefined`                                                                                                                         | no       | —       |             |
-| value         | `TValue`                                                                                                                                      | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| gap               | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| invalid           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| onValueChange     | `(value: TValue) => void`                                                                                                                     | yes      | —       |             |
+| options           | `readonly RadioGroupOption<TValue>[]`                                                                                                         | yes      | —       |             |
+| orientation       | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       | —       |             |
+| readOnly          | `boolean \| undefined`                                                                                                                        | no       | —       |             |
+| size              | `ControlSize \| undefined`                                                                                                                    | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| value             | `TValue`                                                                                                                                      | yes      | —       |             |
 
 ## Rating
 
-Source: `src/components/rating/Rating.tsx:41:14`
+Source: `src/components/rating/Rating.tsx:42:14`
 
 Displays a star-based rating value with optional half steps.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                                                                                                                                          | Required | Default | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| color   | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
-| max     | `number \| undefined`                                                                                                                         | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
-| size    | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
-| testID  | `string \| undefined`                                                                                                                         | no       | —       |             |
-| themeId | `string \| undefined`                                                                                                                         | no       | —       |             |
-| value   | `number`                                                                                                                                      | yes      | —       |             |
+| Prop              | Type                                                                                                                                          | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| color             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| max               | `number \| undefined`                                                                                                                         | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
+| value             | `number`                                                                                                                                      | yes      | —       |             |
 
 ## ResponsivePanel
 
-Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:159:14`
+Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:172:14`
 
 Adaptive secondary surface that can render as an inline panel, drawer, or modal.
 
@@ -2170,28 +2241,29 @@ content to work across compact mobile screens and wider desktop layouts.
 
 Export paths: `src/index.ts`
 
-| Prop         | Type                                      | Required | Default | Description |
-| ------------ | ----------------------------------------- | -------- | ------- | ----------- |
-| actions      | `React.ReactNode`                         | no       | —       |             |
-| children     | `React.ReactNode`                         | no       | —       |             |
-| compact      | `boolean \| undefined`                    | no       | —       |             |
-| description  | `React.ReactNode`                         | no       | —       |             |
-| desktopMode  | `ResponsivePanelDesktopMode \| undefined` | no       | —       |             |
-| footer       | `React.ReactNode`                         | no       | —       |             |
-| mobileMode   | `ResponsivePanelMobileMode \| undefined`  | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined`              | no       | —       |             |
-| onOpenChange | `(open: boolean) => void`                 | yes      | —       |             |
-| open         | `boolean`                                 | yes      | —       |             |
-| scroll       | `ResponsivePanelScroll \| undefined`      | no       | —       |             |
-| side         | `ResponsivePanelSide \| undefined`        | no       | —       |             |
-| size         | `ResponsivePanelSize \| undefined`        | no       | —       |             |
-| testID       | `string \| undefined`                     | no       | —       |             |
-| themeId      | `string \| undefined`                     | no       | —       |             |
-| title        | `React.ReactNode`                         | no       | —       |             |
+| Prop              | Type                                      | Required | Default | Description |
+| ----------------- | ----------------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                         | no       | —       |             |
+| children          | `React.ReactNode`                         | no       | —       |             |
+| compact           | `boolean \| undefined`                    | no       | —       |             |
+| description       | `React.ReactNode`                         | no       | —       |             |
+| desktopMode       | `ResponsivePanelDesktopMode \| undefined` | no       | —       |             |
+| footer            | `React.ReactNode`                         | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`          | no       | —       |             |
+| mobileMode        | `ResponsivePanelMobileMode \| undefined`  | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`              | no       | —       |             |
+| onOpenChange      | `(open: boolean) => void`                 | yes      | —       |             |
+| open              | `boolean`                                 | yes      | —       |             |
+| scroll            | `ResponsivePanelScroll \| undefined`      | no       | —       |             |
+| side              | `ResponsivePanelSide \| undefined`        | no       | —       |             |
+| size              | `ResponsivePanelSize \| undefined`        | no       | —       |             |
+| testID            | `string \| undefined`                     | no       | —       |             |
+| themeId           | `string \| undefined`                     | no       | —       |             |
+| title             | `React.ReactNode`                         | no       | —       |             |
 
 ## ScanOverlay
 
-Source: `src/patterns/scanner/ScanOverlay.tsx:99:14`
+Source: `src/patterns/scanner/ScanOverlay.tsx:100:14`
 
 Camera-agnostic scan frame overlay for barcode and QR scanning flows.
 
@@ -2200,110 +2272,116 @@ capability separately while ZORA owns the visible scan affordance.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| cornerLabel | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| cornerLabel       | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
 
 ## Screen
 
-Source: `src/layout/screen/Screen.tsx:47:14`
+Source: `src/layout/screen/Screen.tsx:48:14`
 
 Page-level container with standard background and optional scroll behavior.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                            | Required | Default | Description |
-| -------- | ------------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`               | no       | —       |             |
-| footer   | `React.ReactNode`               | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`    | no       | —       |             |
-| scroll   | `boolean \| undefined`          | no       | —       |             |
-| testID   | `string \| undefined`           | no       | —       |             |
-| themeId  | `string \| undefined`           | no       | —       |             |
-| width    | `ZoraContentWidth \| undefined` | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| footer            | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| scroll            | `boolean \| undefined`           | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| width             | `ZoraContentWidth \| undefined`  | no       | —       |             |
 
 ## ScreenSection
 
-Source: `src/layout/screen-section/ScreenSection.tsx:30:14`
+Source: `src/layout/screen-section/ScreenSection.tsx:31:14`
 
 Screen section layout with optional title, description, and actions.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`            | no       | —       |             |
-| children    | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                | no       | —       |             |
+| children          | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
 
 ## SearchBar
 
-Source: `src/components/search-bar/SearchBar.tsx:53:14`
+Source: `src/components/search-bar/SearchBar.tsx:59:14`
 
 Search input with leading icon and optional trailing action.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                     | Required | Default | Description |
-| ------------- | ---------------------------------------- | -------- | ------- | ----------- |
-| clearable     | `boolean \| undefined`                   | no       | —       |             |
-| disabled      | `boolean \| undefined`                   | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`             | no       | —       |             |
-| onClear       | `(() => void) \| undefined`              | no       | —       |             |
-| onSubmit      | `((value: string) => void) \| undefined` | no       | —       |             |
-| onValueChange | `(value: string) => void`                | yes      | —       |             |
-| placeholder   | `string \| undefined`                    | no       | —       |             |
-| readOnly      | `boolean \| undefined`                   | no       | —       |             |
-| size          | `ZoraControlSize \| undefined`           | no       | —       |             |
-| testID        | `string \| undefined`                    | no       | —       |             |
-| themeId       | `string \| undefined`                    | no       | —       |             |
-| value         | `string`                                 | yes      | —       |             |
+| Prop              | Type                                     | Required | Default | Description |
+| ----------------- | ---------------------------------------- | -------- | ------- | ----------- |
+| clearable         | `boolean \| undefined`                   | no       | —       |             |
+| disabled          | `boolean \| undefined`                   | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`         | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`             | no       | —       |             |
+| onClear           | `(() => void) \| undefined`              | no       | —       |             |
+| onSubmit          | `((value: string) => void) \| undefined` | no       | —       |             |
+| onValueChange     | `(value: string) => void`                | yes      | —       |             |
+| placeholder       | `string \| undefined`                    | no       | —       |             |
+| readOnly          | `boolean \| undefined`                   | no       | —       |             |
+| size              | `ZoraControlSize \| undefined`           | no       | —       |             |
+| testID            | `string \| undefined`                    | no       | —       |             |
+| themeId           | `string \| undefined`                    | no       | —       |             |
+| value             | `string`                                 | yes      | —       |             |
 
 ## SectionHeader
 
-Source: `src/patterns/section-header/SectionHeader.tsx:51:14`
+Source: `src/patterns/section-header/SectionHeader.tsx:52:14`
 
 Section heading pattern with optional description and action slot.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| eyebrow     | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| eyebrow           | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | yes      | —       |             |
 
 ## Select
 
-Source: `src/components/select/Select.tsx:58:14`
+Source: `src/components/select/Select.tsx:67:14`
 
 Select control for choosing a value from a list of options.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                              | Required | Default | Description |
-| ------------- | --------------------------------- | -------- | ------- | ----------- |
-| disabled      | `boolean \| undefined`            | no       | —       |             |
-| invalid       | `boolean \| undefined`            | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`      | no       | —       |             |
-| onValueChange | `(value: TValue) => void`         | yes      | —       |             |
-| options       | `readonly SelectOption<TValue>[]` | yes      | —       |             |
-| testID        | `string \| undefined`             | no       | —       |             |
-| themeId       | `string \| undefined`             | no       | —       |             |
-| value         | `TValue`                          | yes      | —       |             |
+| Prop              | Type                              | Required | Default | Description |
+| ----------------- | --------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`            | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`  | no       | —       |             |
+| invalid           | `boolean \| undefined`            | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`      | no       | —       |             |
+| onValueChange     | `(value: TValue) => void`         | yes      | —       |             |
+| options           | `readonly SelectOption<TValue>[]` | yes      | —       |             |
+| testID            | `string \| undefined`             | no       | —       |             |
+| themeId           | `string \| undefined`             | no       | —       |             |
+| value             | `TValue`                          | yes      | —       |             |
 
 ## SelectableItem
 
@@ -2313,12 +2391,13 @@ Adds selection behavior to arbitrary child content via render props.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                                                                | Required | Default | Description |
-| -------- | ----------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode \| ((state: SelectableItemState) => React.ReactNode) \| undefined` | no       | —       |             |
-| disabled | `boolean \| undefined`                                                              | no       | `false` |             |
-| id       | `string`                                                                            | yes      | —       |             |
-| trigger  | `SelectionTrigger \| undefined`                                                     | no       | —       |             |
+| Prop              | Type                                                                                | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode \| ((state: SelectableItemState) => React.ReactNode) \| undefined` | no       | —       |             |
+| disabled          | `boolean \| undefined`                                                              | no       | `false` |             |
+| id                | `string`                                                                            | yes      | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                    | no       | —       |             |
+| trigger           | `SelectionTrigger \| undefined`                                                     | no       | —       |             |
 
 ## SelectionProvider
 
@@ -2333,88 +2412,93 @@ Export paths: `src/index.ts`
 | children           | `React.ReactNode \| undefined`                  | no       | —       |             |
 | defaultSelectedIds | `readonly string[] \| undefined`                | no       | —       |             |
 | disabled           | `boolean \| undefined`                          | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                | no       | —       |             |
 | mode               | `SelectionMode \| undefined`                    | no       | —       |             |
 | onSelectionChange  | `(ids: readonly string[]) => void \| undefined` | no       | —       |             |
 | selectedIds        | `readonly string[] \| undefined`                | no       | —       |             |
 
 ## SettingsLayout
 
-Source: `src/layout/settings-layout/SettingsLayout.tsx:34:14`
+Source: `src/layout/settings-layout/SettingsLayout.tsx:35:14`
 
 Settings page layout with app bar, sidebar, and scrollable content area.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| actions     | `React.ReactNode`            | no       | —       |             |
-| children    | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| sidebar     | `React.ReactNode`            | yes      | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `React.ReactNode`                | no       | —       |             |
+| children          | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| sidebar           | `React.ReactNode`                | yes      | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
 
 ## SettingsRow
 
-Source: `src/patterns/settings-row/SettingsRow.tsx:51:14`
+Source: `src/patterns/settings-row/SettingsRow.tsx:53:14`
 
 Settings row pattern with title, description/meta, and optional trailing content.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| control     | `React.ReactNode`            | no       | —       |             |
-| description | `React.ReactNode`            | no       | —       |             |
-| disabled    | `boolean \| undefined`       | no       | —       |             |
-| meta        | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onPress     | `(() => void) \| undefined`  | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| control           | `React.ReactNode`                | no       | —       |             |
+| description       | `React.ReactNode`                | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| meta              | `React.ReactNode`                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onPress           | `(() => void) \| undefined`      | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | yes      | —       |             |
 
 ## Show
 
-Source: `src/foundation/Show.tsx:18:14`
+Source: `src/foundation/Show.tsx:23:14`
 
 Conditionally renders children for responsive display and breakpoint-based visibility.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`            | yes      | —       |             |
-| fallback | `React.ReactNode`            | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
-| when     | `Responsive<boolean>`        | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | yes      | —       |             |
+| fallback          | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| when              | `Responsive<boolean>`            | yes      | —       |             |
 
 ## SidebarLayout
 
-Source: `src/layout/sidebar-layout/SidebarLayout.tsx:33:14`
+Source: `src/layout/sidebar-layout/SidebarLayout.tsx:34:14`
 
 Responsive layout with a sidebar and main content area (and optional aside).
 
 Export paths: `src/index.ts`
 
-| Prop         | Type                         | Required | Default | Description |
-| ------------ | ---------------------------- | -------- | ------- | ----------- |
-| aside        | `React.ReactNode`            | no       | —       |             |
-| asideWidth   | `number \| undefined`        | no       | —       |             |
-| children     | `React.ReactNode`            | no       | —       |             |
-| mode         | `ZoraThemeMode \| undefined` | no       | —       |             |
-| sidebar      | `React.ReactNode`            | yes      | —       |             |
-| sidebarWidth | `number \| undefined`        | no       | —       |             |
-| testID       | `string \| undefined`        | no       | —       |             |
-| themeId      | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| aside             | `React.ReactNode`                | no       | —       |             |
+| asideWidth        | `number \| undefined`            | no       | —       |             |
+| children          | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| sidebar           | `React.ReactNode`                | yes      | —       |             |
+| sidebarWidth      | `number \| undefined`            | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## SignInForm
 
-Source: `src/patterns/auth/SignInForm.tsx:121:14`
+Source: `src/patterns/auth/SignInForm.tsx:125:14`
 
 Sign-in form pattern with identifier and password fields.
 
@@ -2427,6 +2511,7 @@ Export paths: `src/index.ts`
 | forgotPasswordLabel | `React.ReactNode`                                     | no       | —       |             |
 | identifierLabel     | `React.ReactNode`                                     | no       | —       |             |
 | identifiers         | `readonly AuthIdentifierKind[] \| undefined`          | no       | —       |             |
+| interactionPolicy   | `InteractionPolicy \| undefined`                      | no       | —       |             |
 | loading             | `boolean \| undefined`                                | no       | —       |             |
 | mode                | `ZoraThemeMode \| undefined`                          | no       | —       |             |
 | onForgotPassword    | `(() => void \| Promise<void>) \| undefined`          | no       | —       |             |
@@ -2440,25 +2525,26 @@ Export paths: `src/index.ts`
 
 ## SignUpForm
 
-Source: `src/patterns/auth/SignUpForm.tsx:86:14`
+Source: `src/patterns/auth/SignUpForm.tsx:89:14`
 
 Sign-up form pattern with structured fields and validation.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                  | Required | Default | Description |
-| ----------- | ----------------------------------------------------- | -------- | ------- | ----------- |
-| disabled    | `boolean \| undefined`                                | no       | —       |             |
-| error       | `React.ReactNode`                                     | no       | —       |             |
-| fields      | `readonly SignUpFormField[] \| undefined`             | no       | —       |             |
-| loading     | `boolean \| undefined`                                | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                          | no       | —       |             |
-| onSignIn    | `(() => void \| Promise<void>) \| undefined`          | no       | —       |             |
-| onSubmit    | `(values: SignUpFormValues) => void \| Promise<void>` | yes      | —       |             |
-| signInLabel | `React.ReactNode`                                     | no       | —       |             |
-| submitLabel | `React.ReactNode`                                     | no       | —       |             |
-| testID      | `string \| undefined`                                 | no       | —       |             |
-| themeId     | `string \| undefined`                                 | no       | —       |             |
+| Prop              | Type                                                  | Required | Default | Description |
+| ----------------- | ----------------------------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`                                | no       | —       |             |
+| error             | `React.ReactNode`                                     | no       | —       |             |
+| fields            | `readonly SignUpFormField[] \| undefined`             | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                      | no       | —       |             |
+| loading           | `boolean \| undefined`                                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                          | no       | —       |             |
+| onSignIn          | `(() => void \| Promise<void>) \| undefined`          | no       | —       |             |
+| onSubmit          | `(values: SignUpFormValues) => void \| Promise<void>` | yes      | —       |             |
+| signInLabel       | `React.ReactNode`                                     | no       | —       |             |
+| submitLabel       | `React.ReactNode`                                     | no       | —       |             |
+| testID            | `string \| undefined`                                 | no       | —       |             |
+| themeId           | `string \| undefined`                                 | no       | —       |             |
 
 ## Skeleton
 
@@ -2468,14 +2554,15 @@ Generic skeleton placeholder for loading states.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                                                                                                                                                          | Required | Default | Description |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| height  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined`                                                                                                                                  | no       | —       |             |
-| radius  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined` | no       | —       |             |
-| testID  | `string \| undefined`                                                                                                                                         | no       | —       |             |
-| themeId | `string \| undefined`                                                                                                                                         | no       | —       |             |
-| width   | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
+| Prop              | Type                                                                                                                                                          | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| height            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                              | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                  | no       | —       |             |
+| radius            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined` | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                         | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                         | no       | —       |             |
+| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
 
 ## SkeletonCard
 
@@ -2485,15 +2572,16 @@ Skeleton placeholder that matches the structure of a `Card`.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                         | Required | Default | Description |
-| ------- | ---------------------------- | -------- | ------- | ----------- |
-| actions | `boolean \| undefined`       | no       | —       |             |
-| compact | `boolean \| undefined`       | no       | —       |             |
-| lines   | `number \| undefined`        | no       | —       |             |
-| media   | `boolean \| undefined`       | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID  | `string \| undefined`        | no       | —       |             |
-| themeId | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| actions           | `boolean \| undefined`           | no       | —       |             |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| lines             | `number \| undefined`            | no       | —       |             |
+| media             | `boolean \| undefined`           | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## SkeletonList
 
@@ -2503,17 +2591,18 @@ Skeleton placeholder list for loading states in list views.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                               | Required | Default | Description |
-| ------- | ---------------------------------- | -------- | ------- | ----------- |
-| avatar  | `boolean \| undefined`             | no       | —       |             |
-| compact | `boolean \| undefined`             | no       | —       |             |
-| lines   | `number \| undefined`              | no       | —       |             |
-| media   | `boolean \| undefined`             | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined`       | no       | —       |             |
-| rows    | `number \| undefined`              | no       | —       |             |
-| testID  | `string \| undefined`              | no       | —       |             |
-| themeId | `string \| undefined`              | no       | —       |             |
-| variant | `SkeletonListVariant \| undefined` | no       | —       |             |
+| Prop              | Type                               | Required | Default | Description |
+| ----------------- | ---------------------------------- | -------- | ------- | ----------- |
+| avatar            | `boolean \| undefined`             | no       | —       |             |
+| compact           | `boolean \| undefined`             | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`   | no       | —       |             |
+| lines             | `number \| undefined`              | no       | —       |             |
+| media             | `boolean \| undefined`             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`       | no       | —       |             |
+| rows              | `number \| undefined`              | no       | —       |             |
+| testID            | `string \| undefined`              | no       | —       |             |
+| themeId           | `string \| undefined`              | no       | —       |             |
+| variant           | `SkeletonListVariant \| undefined` | no       | —       |             |
 
 ## SkeletonText
 
@@ -2523,32 +2612,34 @@ Multi-line skeleton placeholder for text content.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| gap           | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| lastLineWidth | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| lineHeight    | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| lines         | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| testID        | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId       | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| width         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| gap               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| lastLineWidth     | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| lineHeight        | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| lines             | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
 
 ## Spacer
 
-Source: `src/foundation/Spacer.tsx:21:14`
+Source: `src/foundation/Spacer.tsx:26:14`
 
 Adds flexible or fixed empty space in layout compositions.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                                                | Required | Default | Description |
-| ------- | --------------------------------------------------- | -------- | ------- | ----------- |
-| axis    | `"horizontal" \| "vertical" \| "both" \| undefined` | no       | —       |             |
-| mode    | `ZoraThemeMode \| undefined`                        | no       | —       |             |
-| size    | `SpaceValue \| undefined`                           | no       | —       |             |
-| testID  | `string \| undefined`                               | no       | —       |             |
-| themeId | `string \| undefined`                               | no       | —       |             |
+| Prop              | Type                                                | Required | Default | Description |
+| ----------------- | --------------------------------------------------- | -------- | ------- | ----------- |
+| axis              | `"horizontal" \| "vertical" \| "both" \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                    | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                        | no       | —       |             |
+| size              | `SpaceValue \| undefined`                           | no       | —       |             |
+| testID            | `string \| undefined`                               | no       | —       |             |
+| themeId           | `string \| undefined`                               | no       | —       |             |
 
 ## SplashScreen
 
@@ -2562,24 +2653,25 @@ configuration.
 
 Export paths: `src/index.ts`
 
-| Prop            | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| backgroundColor | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       | —       |             |
-| children        | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| logo            | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| logoLabel       | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| logoShape       | `SplashScreenLogoShape \| undefined`                                                                                                                                                                                 | no       | —       |             |
-| logoSize        | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| minHeight       | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| mode            | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| subtitle        | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| testID          | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId         | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| title           | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| backgroundColor   | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| logo              | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| logoLabel         | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| logoShape         | `SplashScreenLogoShape \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| logoSize          | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| minHeight         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
+| subtitle          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| title             | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
 
 ## Stack
 
-Source: `src/foundation/Stack.tsx:18:14`
+Source: `src/foundation/Stack.tsx:23:14`
 
 Arranges layout items in one direction with theme spacing.
 
@@ -2605,6 +2697,7 @@ Export paths: `src/index.ts`
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`         | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
@@ -2642,7 +2735,7 @@ Export paths: `src/index.ts`
 
 ## Surface
 
-Source: `src/foundation/Surface.tsx:25:14`
+Source: `src/foundation/Surface.tsx:30:14`
 
 Provides a semantic themed region for elevated, subtle, or bordered content.
 
@@ -2662,6 +2755,7 @@ Export paths: `src/index.ts`
 | flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
 | left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
 | m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
 | maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
@@ -2698,46 +2792,48 @@ Export paths: `src/index.ts`
 
 ## SwitchField
 
-Source: `src/patterns/switch-field/SwitchField.tsx:34:14`
+Source: `src/patterns/switch-field/SwitchField.tsx:42:14`
 
 Labeled switch field pattern built on `SettingsRow`.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                         | Required | Default | Description |
-| ------------- | ---------------------------- | -------- | ------- | ----------- |
-| description   | `ReactNode`                  | no       | —       |             |
-| disabled      | `boolean \| undefined`       | no       | —       |             |
-| label         | `ReactNode`                  | yes      | —       |             |
-| mode          | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onValueChange | `(value: boolean) => void`   | yes      | —       |             |
-| testID        | `string \| undefined`        | no       | —       |             |
-| themeId       | `string \| undefined`        | no       | —       |             |
-| value         | `boolean`                    | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| description       | `ReactNode`                      | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| label             | `ReactNode`                      | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onValueChange     | `(value: boolean) => void`       | yes      | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| value             | `boolean`                        | yes      | —       |             |
 
 ## Tabs
 
-Source: `src/components/tabs/Tabs.tsx:115:14`
+Source: `src/components/tabs/Tabs.tsx:129:14`
 
 Tab navigation for switching between views or content sections.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                           | Required | Default | Description |
-| ------------- | ------------------------------ | -------- | ------- | ----------- |
-| disabled      | `boolean \| undefined`         | no       | —       |             |
-| items         | `readonly TabItem<TValue>[]`   | yes      | —       |             |
-| mode          | `ZoraThemeMode \| undefined`   | no       | —       |             |
-| onValueChange | `(value: TValue) => void`      | yes      | —       |             |
-| size          | `ZoraControlSize \| undefined` | no       | —       |             |
-| testID        | `string \| undefined`          | no       | —       |             |
-| themeId       | `string \| undefined`          | no       | —       |             |
-| value         | `TValue`                       | yes      | —       |             |
-| variant       | `TabsVariant \| undefined`     | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| items             | `readonly TabItem<TValue>[]`     | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onValueChange     | `(value: TValue) => void`        | yes      | —       |             |
+| size              | `ZoraControlSize \| undefined`   | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| value             | `TValue`                         | yes      | —       |             |
+| variant           | `TabsVariant \| undefined`       | no       | —       |             |
 
 ## Text
 
-Source: `src/components/text/Text.tsx:117:14`
+Source: `src/components/text/Text.tsx:118:14`
 
 Structured copy primitive for theme-aware app text.
 
@@ -2757,6 +2853,7 @@ Export paths: `src/index.ts`
 | ellipsizeMode      | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       | —       |             |
 | emphasis           | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       | —       |             |
 | i18nKey            | `string \| undefined`                                                                                                                                     | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                                          | no       | —       |             |
 | italic             | `boolean \| undefined`                                                                                                                                    | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`                                                                                                                              | no       | —       |             |
 | nativeID           | `string \| undefined`                                                                                                                                     | no       | —       |             |
@@ -2771,7 +2868,7 @@ Export paths: `src/index.ts`
 
 ## Textarea
 
-Source: `src/components/textarea/Textarea.tsx:54:14`
+Source: `src/components/textarea/Textarea.tsx:56:14`
 
 Multi-line text input with consistent ZORA field styling.
 
@@ -2841,6 +2938,7 @@ Export paths: `src/index.ts`
 | inputAccessoryViewButtonLabel          | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
 | inputAccessoryViewID                   | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       | —       |             |
 | inputMode                              | `InputModeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       | —       |             |
+| interactionPolicy                      | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       | —       |             |
 | invalid                                | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
 | isTVSelectable                         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       | —       |             |
 | keyboardAppearance                     | `"light" \| "dark" \| "default" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       | —       |             |
@@ -2951,75 +3049,79 @@ UI for composing and applying a theme via structured controls.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Required | Default | Description |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| appCategories | `readonly ("books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       | —       |             |
-| onChange      | `(theme: ZoraTheme) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                            | yes      | —       |             |
-| onModeChange  | `((mode: ZoraThemeMode) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
-| onSubmit      | `((theme: ZoraTheme) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
-| testID        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| themeId       | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
-| value         | `ZoraTheme`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | yes      | —       |             |
+| Prop              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| appCategories     | `readonly ("books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       | —       |             |
+| onChange          | `(theme: ZoraTheme) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                            | yes      | —       |             |
+| onModeChange      | `((mode: ZoraThemeMode) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                          | no       | —       |             |
+| onSubmit          | `((theme: ZoraTheme) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                             | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       | —       |             |
+| value             | `ZoraTheme`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | yes      | —       |             |
 
 ## TileGrid
 
-Source: `src/patterns/tile-grid/TileGrid.tsx:54:14`
+Source: `src/patterns/tile-grid/TileGrid.tsx:55:14`
 
 Responsive grid layout for arranging tile content.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                                  | Required | Default | Description |
-| -------- | ------------------------------------- | -------- | ------- | ----------- |
-| children | `ReactNode`                           | no       | —       |             |
-| columns  | `number \| "responsive" \| undefined` | no       | —       |             |
-| compact  | `boolean \| undefined`                | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`          | no       | —       |             |
-| testID   | `string \| undefined`                 | no       | —       |             |
-| themeId  | `string \| undefined`                 | no       | —       |             |
+| Prop              | Type                                  | Required | Default | Description |
+| ----------------- | ------------------------------------- | -------- | ------- | ----------- |
+| children          | `ReactNode`                           | no       | —       |             |
+| columns           | `number \| "responsive" \| undefined` | no       | —       |             |
+| compact           | `boolean \| undefined`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`      | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`          | no       | —       |             |
+| testID            | `string \| undefined`                 | no       | —       |             |
+| themeId           | `string \| undefined`                 | no       | —       |             |
 
 ## Timeline
 
-Source: `src/patterns/timeline/Timeline.tsx:120:14`
+Source: `src/patterns/timeline/Timeline.tsx:121:14`
 
 Timeline pattern for displaying a sequence of events.
 
 Export paths: `src/index.ts`
 
-| Prop    | Type                         | Required | Default | Description |
-| ------- | ---------------------------- | -------- | ------- | ----------- |
-| compact | `boolean \| undefined`       | no       | —       |             |
-| items   | `readonly TimelineItem[]`    | yes      | —       |             |
-| mode    | `ZoraThemeMode \| undefined` | no       | —       |             |
-| testID  | `string \| undefined`        | no       | —       |             |
-| themeId | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| items             | `readonly TimelineItem[]`        | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## TimePicker
 
-Source: `src/components/time-picker/TimePicker.tsx:157:14`
+Source: `src/components/time-picker/TimePicker.tsx:174:14`
 
 Time input control with wheel selection and formatted display value.
 
 Export paths: `src/index.ts`
 
-| Prop          | Type                                                | Required | Default | Description |
-| ------------- | --------------------------------------------------- | -------- | ------- | ----------- |
-| description   | `React.ReactNode`                                   | no       | —       |             |
-| disabled      | `boolean \| undefined`                              | no       | —       |             |
-| error         | `React.ReactNode`                                   | no       | —       |             |
-| formatTime    | `((value: string) => React.ReactNode) \| undefined` | no       | —       |             |
-| label         | `React.ReactNode`                                   | no       | —       |             |
-| maxTime       | `string \| undefined`                               | no       | —       |             |
-| minTime       | `string \| undefined`                               | no       | —       |             |
-| mode          | `ZoraThemeMode \| undefined`                        | no       | —       |             |
-| onValueChange | `((value: TimePickerValue) => void) \| undefined`   | no       | —       |             |
-| placeholder   | `React.ReactNode`                                   | no       | —       |             |
-| required      | `boolean \| undefined`                              | no       | —       |             |
-| stepMinutes   | `number \| undefined`                               | no       | —       |             |
-| testID        | `string \| undefined`                               | no       | —       |             |
-| themeId       | `string \| undefined`                               | no       | —       |             |
-| value         | `TimePickerValue`                                   | yes      | —       |             |
+| Prop              | Type                                                | Required | Default | Description |
+| ----------------- | --------------------------------------------------- | -------- | ------- | ----------- |
+| description       | `React.ReactNode`                                   | no       | —       |             |
+| disabled          | `boolean \| undefined`                              | no       | —       |             |
+| error             | `React.ReactNode`                                   | no       | —       |             |
+| formatTime        | `((value: string) => React.ReactNode) \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                    | no       | —       |             |
+| label             | `React.ReactNode`                                   | no       | —       |             |
+| maxTime           | `string \| undefined`                               | no       | —       |             |
+| minTime           | `string \| undefined`                               | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                        | no       | —       |             |
+| onValueChange     | `((value: TimePickerValue) => void) \| undefined`   | no       | —       |             |
+| placeholder       | `React.ReactNode`                                   | no       | —       |             |
+| required          | `boolean \| undefined`                              | no       | —       |             |
+| stepMinutes       | `number \| undefined`                               | no       | —       |             |
+| testID            | `string \| undefined`                               | no       | —       |             |
+| themeId           | `string \| undefined`                               | no       | —       |             |
+| value             | `TimePickerValue`                                   | yes      | —       |             |
 
 ## Toast
 
@@ -3029,15 +3131,16 @@ Renders a toast notification message.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                         | Required | Default | Description |
-| ----------- | ---------------------------- | -------- | ------- | ----------- |
-| description | `React.ReactNode`            | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onDismiss   | `(() => void) \| undefined`  | no       | —       |             |
-| status      | `ToastStatus \| undefined`   | no       | —       |             |
-| testID      | `string \| undefined`        | no       | —       |             |
-| themeId     | `string \| undefined`        | no       | —       |             |
-| title       | `React.ReactNode`            | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| description       | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
+| status            | `ToastStatus \| undefined`       | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| title             | `React.ReactNode`                | no       | —       |             |
 
 ## ToastProvider
 
@@ -3054,21 +3157,22 @@ Export paths: `src/index.ts`
 
 ## Toolbar
 
-Source: `src/components/toolbar/Toolbar.tsx:47:14`
+Source: `src/components/toolbar/Toolbar.tsx:48:14`
 
 Horizontal toolbar surface for grouping actions and controls.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                           | Required | Default | Description |
-| -------- | ------------------------------ | -------- | ------- | ----------- |
-| children | `React.ReactNode`              | no       | —       |             |
-| compact  | `boolean \| undefined`         | no       | —       |             |
-| floating | `boolean \| undefined`         | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined`   | no       | —       |             |
-| position | `ToolbarPosition \| undefined` | no       | —       |             |
-| testID   | `string \| undefined`          | no       | —       |             |
-| themeId  | `string \| undefined`          | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| compact           | `boolean \| undefined`           | no       | —       |             |
+| floating          | `boolean \| undefined`           | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| position          | `ToolbarPosition \| undefined`   | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## ToolbarAction
 
@@ -3078,58 +3182,61 @@ Convenience icon action for toolbars with active state styling.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| active   | `boolean \| undefined`       | no       | —       |             |
-| disabled | `boolean \| undefined`       | no       | —       |             |
-| icon     | `ButtonIconSpec`             | yes      | —       |             |
-| label    | `string`                     | yes      | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| onPress  | `(() => void) \| undefined`  | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| active            | `boolean \| undefined`           | no       | —       |             |
+| disabled          | `boolean \| undefined`           | no       | —       |             |
+| icon              | `ButtonIconSpec`                 | yes      | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| label             | `string`                         | yes      | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| onPress           | `(() => void) \| undefined`      | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
 
 ## TopbarLayout
 
-Source: `src/layout/topbar-layout/TopbarLayout.tsx:29:14`
+Source: `src/layout/topbar-layout/TopbarLayout.tsx:30:14`
 
 Layout that composes a top bar with optional sidebar and content.
 
 Export paths: `src/index.ts`
 
-| Prop     | Type                         | Required | Default | Description |
-| -------- | ---------------------------- | -------- | ------- | ----------- |
-| children | `React.ReactNode`            | no       | —       |             |
-| mode     | `ZoraThemeMode \| undefined` | no       | —       |             |
-| sidebar  | `React.ReactNode`            | no       | —       |             |
-| testID   | `string \| undefined`        | no       | —       |             |
-| themeId  | `string \| undefined`        | no       | —       |             |
-| topbar   | `React.ReactNode`            | yes      | —       |             |
+| Prop              | Type                             | Required | Default | Description |
+| ----------------- | -------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
+| sidebar           | `React.ReactNode`                | no       | —       |             |
+| testID            | `string \| undefined`            | no       | —       |             |
+| themeId           | `string \| undefined`            | no       | —       |             |
+| topbar            | `React.ReactNode`                | yes      | —       |             |
 
 ## TreeItem
 
-Source: `src/patterns/tree-view/TreeItem.tsx:98:14`
+Source: `src/patterns/tree-view/TreeItem.tsx:101:14`
 
 Single tree node row used within `TreeView`.
 
 Export paths: `src/index.ts`
 
-| Prop           | Type                                                                  | Required | Default | Description |
-| -------------- | --------------------------------------------------------------------- | -------- | ------- | ----------- |
-| depth          | `number`                                                              | yes      | —       |             |
-| expandedIds    | `readonly TId[]`                                                      | yes      | —       |             |
-| mode           | `ZoraThemeMode \| undefined`                                          | no       | —       |             |
-| node           | `TreeItemNode<TId>`                                                   | yes      | —       |             |
-| onSelect       | `((id: TId) => void) \| undefined`                                    | no       | —       |             |
-| onToggleExpand | `(id: TId) => void`                                                   | yes      | —       |             |
-| renderItem     | `((props: TreeItemRenderProps<TId>) => React.ReactNode) \| undefined` | no       | —       |             |
-| selectedId     | `TId \| undefined`                                                    | no       | —       |             |
-| testID         | `string \| undefined`                                                 | no       | —       |             |
-| themeId        | `string \| undefined`                                                 | no       | —       |             |
+| Prop              | Type                                                                  | Required | Default | Description |
+| ----------------- | --------------------------------------------------------------------- | -------- | ------- | ----------- |
+| depth             | `number`                                                              | yes      | —       |             |
+| expandedIds       | `readonly TId[]`                                                      | yes      | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                      | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                          | no       | —       |             |
+| node              | `TreeItemNode<TId>`                                                   | yes      | —       |             |
+| onSelect          | `((id: TId) => void) \| undefined`                                    | no       | —       |             |
+| onToggleExpand    | `(id: TId) => void`                                                   | yes      | —       |             |
+| renderItem        | `((props: TreeItemRenderProps<TId>) => React.ReactNode) \| undefined` | no       | —       |             |
+| selectedId        | `TId \| undefined`                                                    | no       | —       |             |
+| testID            | `string \| undefined`                                                 | no       | —       |             |
+| themeId           | `string \| undefined`                                                 | no       | —       |             |
 
 ## TreeView
 
-Source: `src/patterns/tree-view/TreeView.tsx:60:14`
+Source: `src/patterns/tree-view/TreeView.tsx:63:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
 
@@ -3139,6 +3246,7 @@ Export paths: `src/index.ts`
 | ------------------ | --------------------------------------------------------------- | -------- | ------- | ----------- |
 | defaultExpandedIds | `readonly TId[] \| undefined`                                   | no       | —       |             |
 | expandedIds        | `readonly TId[] \| undefined`                                   | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                | no       | —       |             |
 | mode               | `ZoraThemeMode \| undefined`                                    | no       | —       |             |
 | nodes              | `readonly TreeItemNode<TId>[]`                                  | yes      | —       |             |
 | onExpandedChange   | `((ids: readonly TId[]) => void) \| undefined`                  | no       | —       |             |
@@ -3150,24 +3258,25 @@ Export paths: `src/index.ts`
 
 ## ZoraDrawerContent
 
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:58:14`
+Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:60:14`
 
 Standard drawer content pattern for ZORA navigation lists.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                                           | Required | Default | Description |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| compact     | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
-| descriptors | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| footer      | `React.ReactNode`                                                                                                                                              | no       | —       |             |
-| header      | `React.ReactNode`                                                                                                                                              | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
-| navigation  | `ZoraDrawerNavigation`                                                                                                                                         | yes      | —       |             |
-| routeMap    | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
-| state       | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
-| testID      | `string \| undefined`                                                                                                                                          | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| Prop              | Type                                                                                                                                                           | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| compact           | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
+| descriptors       | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
+| footer            | `React.ReactNode`                                                                                                                                              | no       | —       |             |
+| header            | `React.ReactNode`                                                                                                                                              | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                               | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
+| navigation        | `ZoraDrawerNavigation`                                                                                                                                         | yes      | —       |             |
+| routeMap          | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
+| state             | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
+| testID            | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                          | no       | —       |             |
 
 ## ZoraProvider
 
@@ -3188,24 +3297,25 @@ Export paths: `src/index.ts`
 
 ## ZoraTabBar
 
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:149:14`
+Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:158:14`
 
 Bottom tab bar pattern with badge support and active state styling.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                                                                                                                                                           | Required | Default | Description |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| chrome      | `"none" \| "raised" \| undefined`                                                                                                                              | no       | —       |             |
-| compact     | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
-| descriptors | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| insets      | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                                               | no       | —       |             |
-| mode        | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
-| navigation  | `ZoraTabBarNavigation`                                                                                                                                         | yes      | —       |             |
-| routeMap    | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
-| state       | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
-| testID      | `string \| undefined`                                                                                                                                          | no       | —       |             |
-| themeId     | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| Prop              | Type                                                                                                                                                           | Required | Default | Description |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| chrome            | `"none" \| "raised" \| undefined`                                                                                                                              | no       | —       |             |
+| compact           | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
+| descriptors       | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
+| insets            | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                                               | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                               | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
+| navigation        | `ZoraTabBarNavigation`                                                                                                                                         | yes      | —       |             |
+| routeMap          | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
+| state             | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
+| testID            | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                          | no       | —       |             |
 
 ## ZoraThemeScope
 
