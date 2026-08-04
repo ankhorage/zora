@@ -80,6 +80,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "label",
         "kind": "property",
         "type": "React.ReactNode",
@@ -183,6 +190,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -236,7 +250,7 @@
     "modulePath": "src/components/app-bar/AppBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/app-bar/AppBar.tsx",
-      "line": 136,
+      "line": 139,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -355,6 +369,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leading",
         "kind": "property",
         "type": "React.ReactNode",
@@ -428,7 +449,7 @@
     "modulePath": "src/layout/app-shell/AppShell.tsx",
     "sourceLocation": {
       "filePath": "src/layout/app-shell/AppShell.tsx",
-      "line": 48,
+      "line": 49,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -471,6 +492,13 @@
         "name": "header",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -532,6 +560,13 @@
         "name": "error",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -600,7 +635,7 @@
     "modulePath": "src/components/avatar/Avatar.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar/Avatar.tsx",
-      "line": 154,
+      "line": 155,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -618,7 +653,7 @@
     "modulePath": "src/components/avatar-group/AvatarGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar-group/AvatarGroup.tsx",
-      "line": 77,
+      "line": 78,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -712,6 +747,13 @@
     "signatures": [],
     "members": [
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "items",
         "kind": "property",
         "type": "readonly AvatarGroupItem[]",
@@ -804,6 +846,13 @@
         "name": "initials",
         "kind": "property",
         "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -911,7 +960,7 @@
     "modulePath": "src/components/badge/Badge.tsx",
     "sourceLocation": {
       "filePath": "src/components/badge/Badge.tsx",
-      "line": 33,
+      "line": 34,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -947,6 +996,13 @@
         "name": "color",
         "kind": "property",
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -997,7 +1053,7 @@
     "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
-      "line": 127,
+      "line": 130,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1054,6 +1110,13 @@
         "name": "description",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -1186,7 +1249,7 @@
     "modulePath": "src/foundation/Box.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Box.tsx",
-      "line": 18,
+      "line": 23,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1313,6 +1376,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -1606,7 +1676,7 @@
     "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
     "sourceLocation": {
       "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-      "line": 146,
+      "line": 148,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1642,6 +1712,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -1705,7 +1782,7 @@
     "modulePath": "src/components/button/Button.tsx",
     "sourceLocation": {
       "filePath": "src/components/button/Button.tsx",
-      "line": 34,
+      "line": 41,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1723,7 +1800,7 @@
     "modulePath": "src/components/button-group/ButtonGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/button-group/ButtonGroup.tsx",
-      "line": 108,
+      "line": 109,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1802,6 +1879,13 @@
         "name": "gap",
         "kind": "property",
         "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -1975,6 +2059,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -2267,7 +2358,7 @@
     "modulePath": "src/patterns/scanner/CameraPermissionView.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
-      "line": 108,
+      "line": 112,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2303,6 +2394,13 @@
         "name": "description",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -2401,7 +2499,7 @@
     "modulePath": "src/components/card/Card.tsx",
     "sourceLocation": {
       "filePath": "src/components/card/Card.tsx",
-      "line": 84,
+      "line": 86,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2549,6 +2647,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -2795,7 +2900,7 @@
     "modulePath": "src/foundation/Center.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Center.tsx",
-      "line": 21,
+      "line": 26,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2929,6 +3034,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -3236,7 +3348,7 @@
     "modulePath": "src/patterns/chat-list-item/ChatListItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/chat-list-item/ChatListItem.tsx",
-      "line": 225,
+      "line": 227,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3286,6 +3398,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -3392,7 +3511,7 @@
     "modulePath": "src/components/checkbox/Checkbox.tsx",
     "sourceLocation": {
       "filePath": "src/components/checkbox/Checkbox.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3410,7 +3529,7 @@
     "modulePath": "src/components/checkbox/CheckboxGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/checkbox/CheckboxGroup.tsx",
-      "line": 63,
+      "line": 65,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3507,6 +3626,13 @@
         "name": "gap",
         "kind": "property",
         "type": "\"xs\" | \"s\" | \"m\" | \"l\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -3715,6 +3841,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -3975,7 +4108,7 @@
     "modulePath": "src/components/chip/Chip.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip/Chip.tsx",
-      "line": 97,
+      "line": 104,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -3993,7 +4126,7 @@
     "modulePath": "src/components/chip-group/ChipGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip-group/ChipGroup.tsx",
-      "line": 69,
+      "line": 74,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4119,6 +4252,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -4172,7 +4312,7 @@
     "modulePath": "src/patterns/collection-editor/CollectionEditor.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/collection-editor/CollectionEditor.tsx",
-      "line": 111,
+      "line": 122,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4222,6 +4362,13 @@
         "name": "emptyLabel",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -4368,7 +4515,7 @@
     "modulePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
-      "line": 56,
+      "line": 69,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4450,6 +4597,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -4510,7 +4664,7 @@
     "modulePath": "src/foundation/Container.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Container.tsx",
-      "line": 22,
+      "line": 27,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4637,6 +4791,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -4908,7 +5069,7 @@
     "modulePath": "src/components/data-table/DataTable.tsx",
     "sourceLocation": {
       "filePath": "src/components/data-table/DataTable.tsx",
-      "line": 391,
+      "line": 408,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5126,6 +5287,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -5326,7 +5494,7 @@
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 256,
+      "line": 279,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5376,6 +5544,13 @@
         "name": "formatDate",
         "kind": "property",
         "type": "((value: Date) => React.ReactNode) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -5497,7 +5672,7 @@
     "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "line": 127,
+      "line": 130,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5565,6 +5740,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -5618,7 +5800,7 @@
     "modulePath": "src/foundation/Divider.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Divider.tsx",
-      "line": 22,
+      "line": 27,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5738,6 +5920,13 @@
         "name": "flexShrink",
         "kind": "property",
         "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -5984,7 +6173,7 @@
     "modulePath": "src/components/drawer/Drawer.tsx",
     "sourceLocation": {
       "filePath": "src/components/drawer/Drawer.tsx",
-      "line": 58,
+      "line": 59,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6034,6 +6223,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -6154,7 +6350,7 @@
     "modulePath": "src/patterns/empty-state/EmptyState.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/empty-state/EmptyState.tsx",
-      "line": 70,
+      "line": 74,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6248,6 +6444,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -6301,7 +6504,7 @@
     "modulePath": "src/patterns/filter-bar/FilterBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/filter-bar/FilterBar.tsx",
-      "line": 30,
+      "line": 31,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6331,6 +6534,13 @@
         "kind": "property",
         "type": "React.ReactNode",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -6387,7 +6597,7 @@
     "modulePath": "src/patterns/auth/ForgotPasswordForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/ForgotPasswordForm.tsx",
-      "line": 94,
+      "line": 97,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6437,6 +6647,13 @@
         "name": "identifiers",
         "kind": "property",
         "type": "readonly AuthIdentifierKind[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -6541,7 +6758,7 @@
     "modulePath": "src/components/form/Form.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/Form.tsx",
-      "line": 69,
+      "line": 74,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6559,7 +6776,7 @@
     "modulePath": "src/components/form/FormActions.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormActions.tsx",
-      "line": 31,
+      "line": 38,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6595,6 +6812,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -6652,7 +6876,7 @@
     "modulePath": "src/components/form/FormError.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormError.tsx",
-      "line": 28,
+      "line": 34,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6681,6 +6905,13 @@
         "name": "error",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -6735,7 +6966,7 @@
     "modulePath": "src/components/form/FormField.tsx",
     "sourceLocation": {
       "filePath": "src/components/form/FormField.tsx",
-      "line": 154,
+      "line": 157,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6920,6 +7151,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -7055,6 +7293,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -7202,7 +7447,7 @@
     "modulePath": "src/components/gradient/Gradient.tsx",
     "sourceLocation": {
       "filePath": "src/components/gradient/Gradient.tsx",
-      "line": 53,
+      "line": 54,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7343,6 +7588,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "locations",
         "kind": "property",
         "type": "GradientLocations | undefined",
@@ -7417,7 +7669,7 @@
     "modulePath": "src/foundation/Grid.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Grid.tsx",
-      "line": 18,
+      "line": 23,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7565,6 +7817,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -7856,7 +8115,7 @@
     "modulePath": "src/components/heading/Heading.tsx",
     "sourceLocation": {
       "filePath": "src/components/heading/Heading.tsx",
-      "line": 123,
+      "line": 124,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8023,6 +8282,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "italic",
         "kind": "property",
         "type": "boolean | undefined",
@@ -8154,7 +8420,7 @@
     "modulePath": "src/patterns/hero/Hero.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/hero/Hero.tsx",
-      "line": 121,
+      "line": 131,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8305,6 +8571,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "layout",
         "kind": "property",
         "type": "HeroLayout | undefined",
@@ -8397,7 +8670,7 @@
     "modulePath": "src/components/icon/Icon.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon/Icon.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8415,7 +8688,7 @@
     "modulePath": "src/components/icon-button/IconButton.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon-button/IconButton.tsx",
-      "line": 35,
+      "line": 37,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8459,6 +8732,13 @@
         "kind": "property",
         "type": "ButtonIconSpec",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -8544,6 +8824,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -8604,7 +8891,7 @@
     "modulePath": "src/components/image/Image.tsx",
     "sourceLocation": {
       "filePath": "src/components/image/Image.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8640,7 +8927,7 @@
     "modulePath": "src/patterns/image-preview/ImagePreview.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/image-preview/ImagePreview.tsx",
-      "line": 81,
+      "line": 82,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8697,6 +8984,13 @@
         "name": "fit",
         "kind": "property",
         "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").ImageResizeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -8783,6 +9077,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -8857,7 +9158,7 @@
     "modulePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-      "line": 298,
+      "line": 319,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8926,6 +9227,13 @@
         "name": "helperText",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -9072,7 +9380,7 @@
     "modulePath": "src/foundation/Inline.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Inline.tsx",
-      "line": 21,
+      "line": 26,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9213,6 +9521,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -9472,7 +9787,7 @@
     "modulePath": "src/components/input/Input.tsx",
     "sourceLocation": {
       "filePath": "src/components/input/Input.tsx",
-      "line": 76,
+      "line": 79,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9548,7 +9863,7 @@
     "modulePath": "src/patterns/inspector-field/InspectorField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/inspector-field/InspectorField.tsx",
-      "line": 31,
+      "line": 32,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9612,6 +9927,13 @@
         "name": "helperText",
         "kind": "property",
         "type": "ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -9709,6 +10031,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -9752,6 +10081,13 @@
         "name": "compact",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -9892,7 +10228,7 @@
     "modulePath": "src/components/media-card/MediaCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/media-card/MediaCard.tsx",
-      "line": 123,
+      "line": 125,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10093,6 +10429,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -10139,7 +10482,7 @@
     "modulePath": "src/patterns/message-bubble/MessageBubble.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/message-bubble/MessageBubble.tsx",
-      "line": 270,
+      "line": 272,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10333,6 +10676,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leading",
         "kind": "property",
         "type": "React.ReactNode",
@@ -10439,7 +10789,7 @@
     "modulePath": "src/components/metric-card/MetricCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/metric-card/MetricCard.tsx",
-      "line": 87,
+      "line": 89,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10507,6 +10857,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "label",
         "kind": "property",
         "type": "React.ReactNode",
@@ -10567,7 +10924,7 @@
     "modulePath": "src/components/modal/Modal.tsx",
     "sourceLocation": {
       "filePath": "src/components/modal/Modal.tsx",
-      "line": 62,
+      "line": 63,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10617,6 +10974,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -10681,7 +11045,7 @@
     "modulePath": "src/components/navigation-item/NavigationItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-item/NavigationItem.tsx",
-      "line": 39,
+      "line": 41,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10717,6 +11081,13 @@
         "name": "compact",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -10774,7 +11145,7 @@
     "modulePath": "src/components/navigation-list/NavigationList.tsx",
     "sourceLocation": {
       "filePath": "src/components/navigation-list/NavigationList.tsx",
-      "line": 65,
+      "line": 68,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10824,6 +11195,13 @@
         "name": "header",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -10888,7 +11266,7 @@
     "modulePath": "src/patterns/notice/Notice.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/notice/Notice.tsx",
-      "line": 40,
+      "line": 41,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10942,6 +11320,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -10981,7 +11366,7 @@
     "modulePath": "src/patterns/auth/OAuthProviderButton.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/OAuthProviderButton.tsx",
-      "line": 51,
+      "line": 53,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11031,6 +11416,13 @@
         "name": "icon",
         "kind": "property",
         "type": "OAuthProviderIconSpec | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -11210,7 +11602,7 @@
     "modulePath": "src/patterns/auth/OAuthProviderList.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/OAuthProviderList.tsx",
-      "line": 54,
+      "line": 56,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11271,6 +11663,13 @@
         "name": "fullWidth",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -11349,7 +11748,7 @@
     "modulePath": "src/patterns/auth/OtpForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/OtpForm.tsx",
-      "line": 90,
+      "line": 93,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11385,6 +11784,13 @@
         "name": "error",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -11510,7 +11916,7 @@
     "modulePath": "src/components/pagination/Pagination.tsx",
     "sourceLocation": {
       "filePath": "src/components/pagination/Pagination.tsx",
-      "line": 192,
+      "line": 199,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11560,6 +11966,13 @@
         "name": "firstLabel",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -11706,6 +12119,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -11823,6 +12243,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -12049,7 +12476,7 @@
     "modulePath": "src/patterns/post-card/PostCard.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/post-card/PostCard.tsx",
-      "line": 239,
+      "line": 241,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12142,6 +12569,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "media",
         "kind": "property",
         "type": "PostCardMedia | readonly PostCardMedia[] | undefined",
@@ -12202,7 +12636,7 @@
     "modulePath": "src/patterns/product-card/ProductCard.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/product-card/ProductCard.tsx",
-      "line": 125,
+      "line": 141,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12220,11 +12654,11 @@
     "modulePath": "src/patterns/product-card/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/product-card/types.ts",
-      "line": 1,
+      "line": 3,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
+    "relatedSymbols": ["ZoraThemeMode"],
     "signatures": [],
     "members": [
       {
@@ -12270,9 +12704,23 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "meta",
         "kind": "property",
         "type": "readonly { label: string; value: string; }[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
         "required": false,
         "description": null
       },
@@ -12326,6 +12774,20 @@
         "description": null
       },
       {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "title",
         "kind": "property",
         "type": "string",
@@ -12351,7 +12813,7 @@
     "modulePath": "src/components/progress/Progress.tsx",
     "sourceLocation": {
       "filePath": "src/components/progress/Progress.tsx",
-      "line": 53,
+      "line": 54,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12380,6 +12842,13 @@
         "name": "color",
         "kind": "property",
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -12455,7 +12924,7 @@
     "modulePath": "src/components/radio/RadioGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/RadioGroup.tsx",
-      "line": 62,
+      "line": 64,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12552,6 +13021,13 @@
         "name": "gap",
         "kind": "property",
         "type": "\"xs\" | \"s\" | \"m\" | \"l\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -12760,6 +13236,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13020,7 +13503,7 @@
     "modulePath": "src/components/rating/Rating.tsx",
     "sourceLocation": {
       "filePath": "src/components/rating/Rating.tsx",
-      "line": 41,
+      "line": 42,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13049,6 +13532,13 @@
         "name": "color",
         "kind": "property",
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13208,7 +13698,7 @@
     "modulePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "line": 159,
+      "line": 172,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13315,6 +13805,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13454,7 +13951,7 @@
     "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/scanner/ScanOverlay.tsx",
-      "line": 99,
+      "line": 100,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13490,6 +13987,13 @@
         "name": "description",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13533,7 +14037,7 @@
     "modulePath": "src/layout/screen/Screen.tsx",
     "sourceLocation": {
       "filePath": "src/layout/screen/Screen.tsx",
-      "line": 47,
+      "line": 48,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13569,6 +14073,13 @@
         "name": "footer",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13619,7 +14130,7 @@
     "modulePath": "src/layout/screen-section/ScreenSection.tsx",
     "sourceLocation": {
       "filePath": "src/layout/screen-section/ScreenSection.tsx",
-      "line": 30,
+      "line": 31,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13666,6 +14177,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -13705,7 +14223,7 @@
     "modulePath": "src/components/search-bar/SearchBar.tsx",
     "sourceLocation": {
       "filePath": "src/components/search-bar/SearchBar.tsx",
-      "line": 53,
+      "line": 59,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13741,6 +14259,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -13826,7 +14351,7 @@
     "modulePath": "src/patterns/section-header/SectionHeader.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/section-header/SectionHeader.tsx",
-      "line": 51,
+      "line": 52,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13873,6 +14398,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -13912,7 +14444,7 @@
     "modulePath": "src/components/select/Select.tsx",
     "sourceLocation": {
       "filePath": "src/components/select/Select.tsx",
-      "line": 58,
+      "line": 67,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13937,10 +14469,10 @@
     "relatedSymbols": ["SelectableItemProps"],
     "signatures": [
       {
-        "label": "({ id, trigger, disabled = false, children }: SelectableItemProps) => React.JSX.Element",
+        "label": "({\n  id,\n  trigger,\n  disabled = false,\n  interactionPolicy,\n  children,\n}: SelectableItemProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{ id, trigger, disabled = false, children }",
+            "name": "{\n  id,\n  trigger,\n  disabled = false,\n  interactionPolicy,\n  children,\n}",
             "type": "SelectableItemProps",
             "required": true,
             "description": null
@@ -13962,7 +14494,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 38,
+      "line": 40,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -13991,6 +14523,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "trigger",
         "kind": "property",
         "type": "SelectionTrigger | undefined",
@@ -14009,7 +14548,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 28,
+      "line": 30,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -14077,7 +14616,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 3,
+      "line": 4,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -14102,10 +14641,10 @@
     "relatedSymbols": ["SelectionProviderProps"],
     "signatures": [
       {
-        "label": "({\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n}: SelectionProviderProps) => React.JSX.Element",
+        "label": "({\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n  interactionPolicy,\n}: SelectionProviderProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n}",
+            "name": "{\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n  interactionPolicy,\n}",
             "type": "SelectionProviderProps",
             "required": true,
             "description": null
@@ -14127,7 +14666,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -14152,6 +14691,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -14188,7 +14734,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 5,
+      "line": 6,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -14261,6 +14807,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "invalid",
         "kind": "property",
         "type": "boolean | undefined",
@@ -14321,7 +14874,7 @@
     "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-      "line": 34,
+      "line": 35,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14364,6 +14917,13 @@
         "name": "description",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -14414,7 +14974,7 @@
     "modulePath": "src/patterns/settings-row/SettingsRow.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/settings-row/SettingsRow.tsx",
-      "line": 51,
+      "line": 53,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14450,7 +15010,7 @@
     "modulePath": "src/foundation/Show.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Show.tsx",
-      "line": 18,
+      "line": 23,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14486,6 +15046,13 @@
         "name": "fallback",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -14529,7 +15096,7 @@
     "modulePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
-      "line": 33,
+      "line": 34,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14572,6 +15139,13 @@
         "name": "children",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -14622,7 +15196,7 @@
     "modulePath": "src/patterns/auth/SignInForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/SignInForm.tsx",
-      "line": 121,
+      "line": 125,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14679,6 +15253,13 @@
         "name": "identifiers",
         "kind": "property",
         "type": "readonly AuthIdentifierKind[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -14804,7 +15385,7 @@
     "modulePath": "src/patterns/auth/SignUpForm.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/auth/SignUpForm.tsx",
-      "line": 86,
+      "line": 89,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14865,6 +15446,13 @@
         "name": "fields",
         "kind": "property",
         "type": "readonly SignUpFormField[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -15012,6 +15600,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lines",
         "kind": "property",
         "type": "number | undefined",
@@ -15116,6 +15711,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lines",
         "kind": "property",
         "type": "number | undefined",
@@ -15205,6 +15807,13 @@
         "name": "height",
         "kind": "property",
         "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -15306,6 +15915,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lastLineWidth",
         "kind": "property",
         "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
@@ -15366,7 +15982,7 @@
     "modulePath": "src/foundation/Spacer.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Spacer.tsx",
-      "line": 21,
+      "line": 26,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -15395,6 +16011,13 @@
         "name": "axis",
         "kind": "property",
         "type": "\"horizontal\" | \"vertical\" | \"both\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -15496,6 +16119,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "logo",
         "kind": "property",
         "type": "React.ReactNode",
@@ -15577,7 +16207,7 @@
     "modulePath": "src/foundation/Stack.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Stack.tsx",
-      "line": 18,
+      "line": 23,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -15725,6 +16355,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -15978,7 +16615,7 @@
     "modulePath": "src/foundation/Surface.tsx",
     "sourceLocation": {
       "filePath": "src/foundation/Surface.tsx",
-      "line": 25,
+      "line": 30,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16102,6 +16739,13 @@
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -16366,7 +17010,7 @@
     "modulePath": "src/patterns/switch-field/SwitchField.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/switch-field/SwitchField.tsx",
-      "line": 34,
+      "line": 42,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16402,6 +17046,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -16520,7 +17171,7 @@
     "modulePath": "src/components/tabs/Tabs.tsx",
     "sourceLocation": {
       "filePath": "src/components/tabs/Tabs.tsx",
-      "line": 115,
+      "line": 129,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16549,6 +17200,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -16644,7 +17302,7 @@
     "modulePath": "src/components/text/Text.tsx",
     "sourceLocation": {
       "filePath": "src/components/text/Text.tsx",
-      "line": 117,
+      "line": 118,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16680,7 +17338,7 @@
     "modulePath": "src/components/textarea/Textarea.tsx",
     "sourceLocation": {
       "filePath": "src/components/textarea/Textarea.tsx",
-      "line": 54,
+      "line": 56,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -17136,6 +17794,13 @@
         "name": "inputMode",
         "kind": "property",
         "type": "InputModeOptions | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -17965,6 +18630,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "italic",
         "kind": "property",
         "type": "boolean | undefined",
@@ -18122,6 +18794,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -18182,7 +18861,7 @@
     "modulePath": "src/patterns/tile-grid/TileGrid.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tile-grid/TileGrid.tsx",
-      "line": 54,
+      "line": 55,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18229,6 +18908,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -18261,7 +18947,7 @@
     "modulePath": "src/patterns/timeline/Timeline.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/timeline/Timeline.tsx",
-      "line": 120,
+      "line": 121,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18362,6 +19048,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "items",
         "kind": "property",
         "type": "readonly TimelineItem[]",
@@ -18401,7 +19094,7 @@
     "modulePath": "src/components/time-picker/TimePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/time-picker/TimePicker.tsx",
-      "line": 157,
+      "line": 174,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18451,6 +19144,13 @@
         "name": "formatTime",
         "kind": "property",
         "type": "((value: string) => React.ReactNode) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -18612,6 +19312,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -18748,7 +19455,7 @@
     "modulePath": "src/components/toolbar/Toolbar.tsx",
     "sourceLocation": {
       "filePath": "src/components/toolbar/Toolbar.tsx",
-      "line": 47,
+      "line": 48,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18810,6 +19517,13 @@
         "kind": "property",
         "type": "ButtonIconSpec",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -18906,6 +19620,13 @@
         "description": null
       },
       {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -18945,7 +19666,7 @@
     "modulePath": "src/layout/topbar-layout/TopbarLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/topbar-layout/TopbarLayout.tsx",
-      "line": 29,
+      "line": 30,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18974,6 +19695,13 @@
         "name": "children",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -19024,7 +19752,7 @@
     "modulePath": "src/patterns/tree-view/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tree-view/TreeItem.tsx",
-      "line": 98,
+      "line": 101,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -19164,7 +19892,7 @@
     "modulePath": "src/patterns/tree-view/TreeView.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tree-view/TreeView.tsx",
-      "line": 60,
+      "line": 63,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -19200,6 +19928,13 @@
         "name": "expandedIds",
         "kind": "property",
         "type": "readonly TId[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -19464,7 +20199,7 @@
     "modulePath": "src/patterns/selection/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/selection/types.ts",
-      "line": 16,
+      "line": 18,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -19814,7 +20549,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 102,
+      "line": 238,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -19886,13 +20621,20 @@
     "modulePath": "src/theme/ZoraBaseProps.ts",
     "sourceLocation": {
       "filePath": "src/theme/ZoraBaseProps.ts",
-      "line": 3,
+      "line": 5,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": ["ZoraThemeMode"],
     "signatures": [],
     "members": [
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
       {
         "name": "mode",
         "kind": "property",
@@ -20438,7 +21180,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 100,
+      "line": 101,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20622,7 +21364,7 @@
     "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "line": 58,
+      "line": 60,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20672,6 +21414,13 @@
         "name": "header",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
@@ -21092,7 +21841,7 @@
     "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "line": 149,
+      "line": 158,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21142,6 +21891,13 @@
         "name": "insets",
         "kind": "property",
         "type": "{ top?: number; bottom?: number; left?: number; right?: number; } | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
         "required": false,
         "description": null
       },
