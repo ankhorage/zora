@@ -5,9 +5,9 @@
     "": {
       "name": "@ankhorage/zora",
       "dependencies": {
-        "@ankhorage/color-theory": "^0.0.7",
-        "@ankhorage/contracts": "^2.1.0",
-        "@ankhorage/surface": "^2.1.0",
+        "@ankhorage/color-theory": "^0.0.8",
+        "@ankhorage/contracts": "^4.0.1",
+        "@ankhorage/surface": "^2.1.1",
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.3.4",
@@ -38,15 +38,15 @@
     },
   },
   "packages": {
-    "@ankhorage/color-theory": ["@ankhorage/color-theory@0.0.7", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-fcdJZMmhfbvc9Yhz5vjTolmWYAaCsUaUOq4/P6YDZLHhXer8Mv8y0LaOhWgaXcwq48nrxILGUMOxOl48tRhTmA=="],
+    "@ankhorage/color-theory": ["@ankhorage/color-theory@0.0.8", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-+JRLkvBUiPxFrRANyewRZxLv1sU5cKFOc3VBYB+b/eFngLFDIAqXf/a4e0A6gQE+lk6e3wb3FcGQYIyYB1Dqzg=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@2.1.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.7" } }, "sha512-QGG0atpGDe9+BUWzWvV83Kj309TBOK76yBRbWOoQli8g0LY8QLb7Z4UquD+qVhtWJTp3Y1jHUTEttQ0WjdhY/Q=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@4.0.1", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.8" } }, "sha512-8HE0Fyj8WvQwSmFLKkgqWDHBT8r47lmJMgqCOgQKRCszBP71DqoZ4X6WTVaMshrIjgm+hCkKW4JMdtGz7H9tKg=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.3.4", "", { "dependencies": { "@ankhorage/utility": "^0.1.1", "@eslint/compat": "^2.1.0", "@eslint/js": "^10.0.1", "eslint": "^10.7.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.5", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^12.1.1", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.12.2", "prettier": "^3.8.1", "typescript-eslint": "^8.24.0" }, "bin": { "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-prettier": "dist/cli/bin/prettier.js" } }, "sha512-bQfsgxCHo3n9Dohvpujma7BHiBCcWY7N46W+W5rZlTES4xbfjw2BRvItflKPTUZGZ5cSbeut2DIRpIbz6fZoVA=="],
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.1.10", "", { "dependencies": { "ts-morph": "^24.0.0" }, "bin": { "paradox": "dist/cli.js" } }, "sha512-e86ltBY37+BYGpM8oUVF/7mQU/4dKAQJBiIPSHuZ72mRDcJeN0eScnJrCA5YeV+aK8iXrfD6qPbEkyNRcUIRzQ=="],
 
-    "@ankhorage/surface": ["@ankhorage/surface@2.1.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.7", "@ankhorage/contracts": "^2.1.0" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0", "react-native-safe-area-context": "^5.0.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-6DB9lLQV+CfiA1uytI3juD1h06atJDAkpdGfCzQHK1QEnmPaLrS3nhC2/UidA1oRAx4BihFsTYp6yYY1Cprc1A=="],
+    "@ankhorage/surface": ["@ankhorage/surface@2.1.1", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.8", "@ankhorage/contracts": "^4.0.1" }, "peerDependencies": { "@expo/vector-icons": ">=14.0.0", "expo-font": "^55.0.6", "react": ">=18.2.0", "react-native": ">=0.72.0", "react-native-safe-area-context": "^5.0.0" }, "optionalPeers": ["@expo/vector-icons", "expo-font"] }, "sha512-zBd/0q4Fs6d2kq+cDXvN+61azZ7cTR0fiPflvAcQF8DA2wlaB/gBkfSkazkG6iR4UT3YNcdhzHou0eeI3y4nrg=="],
 
     "@ankhorage/utility": ["@ankhorage/utility@0.1.1", "", {}, "sha512-6EehBCB59HOibxq7YUYq54TjgAfktBFGrEXZSqn1DsnsoRSIRUNbroKvzw7oF3bWiJRXj7mtc3DClFm0kIW0Mg=="],
 
