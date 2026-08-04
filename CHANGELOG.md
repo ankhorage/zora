@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.9.1
+
+### Patch Changes
+
+- 8a9cd02: Update packages
+- f63b36a: update packages
+
 ## 2.9.0
 
 ### Minor Changes
