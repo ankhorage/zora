@@ -134,6 +134,9 @@ graph TD
   package__ankhorage_zora -.-> module_src_components_button_meta_ts
   module_src_components_button_meta_ts --> module_src_internal_colorModel_ts
   module_src_components_button_meta_ts --> module_src_metadata_index_ts
+  module_src_components_button_themeRecipeMeta_ts["src/components/button/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_components_button_themeRecipeMeta_ts
+  module_src_components_button_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_button_types_ts["src/components/button/types.ts"]
   package__ankhorage_zora -.-> module_src_components_button_types_ts
   module_src_components_button_types_ts --> module_src_internal_recipes_ts
@@ -152,6 +155,9 @@ graph TD
   package__ankhorage_zora -.-> module_src_components_card_meta_ts
   module_src_components_card_meta_ts --> module_src_metadata_allowedChildren_ts
   module_src_components_card_meta_ts --> module_src_metadata_index_ts
+  module_src_components_card_themeRecipeMeta_ts["src/components/card/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_components_card_themeRecipeMeta_ts
+  module_src_components_card_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_card_types_ts["src/components/card/types.ts"]
   package__ankhorage_zora -.-> module_src_components_card_types_ts
   module_src_components_card_types_ts --> module_src_internal_recipes_ts
@@ -681,6 +687,9 @@ graph TD
   module_src_components_text_Text_tsx --> module_src_components_text_types_ts
   module_src_components_text_Text_tsx --> module_src_theme_useZoraTheme_ts
   module_src_components_text_Text_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_text_themeRecipeMeta_ts["src/components/text/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_components_text_themeRecipeMeta_ts
+  module_src_components_text_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_text_types_ts["src/components/text/types.ts"]
   package__ankhorage_zora -.-> module_src_components_text_types_ts
   module_src_components_text_types_ts --> module_src_internal_recipes_ts
@@ -979,6 +988,15 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_patterns_zora_tab_bar_meta_ts
   module_src_metadata_index_ts["src/metadata/index.ts"]
   package__ankhorage_zora -.-> module_src_metadata_index_ts
+  module_src_metadata_themeRecipeMeta_ts["src/metadata/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_metadata_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_button_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_card_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_text_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_patterns_panel_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeTypes_ts["src/metadata/themeRecipeTypes.ts"]
+  package__ankhorage_zora -.-> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_types_ts["src/metadata/types.ts"]
   package__ankhorage_zora -.-> module_src_metadata_types_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
@@ -1302,6 +1320,9 @@ graph TD
   module_src_patterns_panel_Panel_tsx --> module_src_components_card_index_ts
   module_src_patterns_panel_Panel_tsx --> module_src_patterns_panel_types_ts
   module_src_patterns_panel_Panel_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_panel_themeRecipeMeta_ts["src/patterns/panel/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_panel_themeRecipeMeta_ts
+  module_src_patterns_panel_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_patterns_panel_types_ts["src/patterns/panel/types.ts"]
   package__ankhorage_zora -.-> module_src_patterns_panel_types_ts
   module_src_patterns_panel_types_ts --> module_src_internal_recipes_ts

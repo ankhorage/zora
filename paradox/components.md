@@ -194,56 +194,56 @@ Base layout primitive for themed spacing, color, border, flex, and responsive pr
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Breadcrumbs
 
@@ -281,7 +281,7 @@ Export paths: `src/index.ts`
 | accessibilityRole  | `AccessibilityRole \| undefined`                                                                                                              | no       | —       |             |
 | accessibilityState | `AccessibilityState \| undefined`                                                                                                             | no       | —       |             |
 | accessible         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`              | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`                | no       | —       |             |
 | bg                 | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderColor        | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderWidth        | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
@@ -342,17 +342,17 @@ Groups multiple `Button` elements with consistent spacing and alignment.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| align             | `ButtonGroupAlign \| undefined`                                                                                                                                                                                      | no       | —       |             |
-| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| gap               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| orientation       | `ButtonGroupOrientation \| undefined`                                                                                                                                                                                | no       | —       |             |
-| reverse           | `boolean \| undefined`                                                                                                                                                                                               | no       | —       |             |
-| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                             | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| align             | `ButtonGroupAlign \| undefined`                                                                                                                                                                                  | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
+| gap               | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| orientation       | `ButtonGroupOrientation \| undefined`                                                                                                                                                                            | no       | —       |             |
+| reverse           | `boolean \| undefined`                                                                                                                                                                                           | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
 
 ## CameraPermissionView
 
@@ -393,60 +393,60 @@ radius, tone, and responsive header layout without hand-assembling primitives.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| actions            | `React.ReactNode`                                                                                                                | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| compact            | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| description        | `React.ReactNode`                                                                                                                | no       | —       |             |
-| disabled           | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| eyebrow            | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| footer             | `React.ReactNode`                                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| onPress            | `(() => void) \| undefined`                                                                                                      | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| title              | `React.ReactNode`                                                                                                                | no       | —       |             |
-| tone               | `ZoraCardTone \| undefined`                                                                                                      | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| actions            | `React.ReactNode`                                                                                                              | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| compact            | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| description        | `React.ReactNode`                                                                                                              | no       | —       |             |
+| disabled           | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| eyebrow            | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| footer             | `React.ReactNode`                                                                                                              | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| onPress            | `(() => void) \| undefined`                                                                                                    | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| title              | `React.ReactNode`                                                                                                              | no       | —       |             |
+| tone               | `ZoraCardTone \| undefined`                                                                                                    | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Center
 
@@ -456,57 +456,57 @@ Centers children horizontally and vertically within the available space.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| axis               | `"horizontal" \| "vertical" \| "both" \| undefined`                                                                              | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| axis               | `"horizontal" \| "vertical" \| "both" \| undefined`                                                                            | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## ChatListItem
 
@@ -549,7 +549,7 @@ Export paths: `src/index.ts`
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
 | accessibilityLabel | `string \| undefined`                                                                                                                         | no       | —       |             |
 | accessible         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`              | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`                | no       | —       |             |
 | bg                 | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderColor        | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderWidth        | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
@@ -731,56 +731,56 @@ Constrains page content to semantic widths with responsive padding.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## DataTable
 
@@ -866,56 +866,56 @@ Renders a themed visual separator between content sections.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| color              | `ColorValue \| undefined`                                                                                                        | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| orientation        | `"horizontal" \| "vertical" \| undefined`                                                                                        | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| thickness          | `number \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| color              | `ColorValue \| undefined`                                                                                                      | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| orientation        | `"horizontal" \| "vertical" \| undefined`                                                                                      | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| thickness          | `number \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Drawer
 
@@ -1116,22 +1116,22 @@ component and does not replace native Expo splash-screen configuration.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| colors            | `GradientColors`                                                                                                                                                                                                     | yes      | —       |             |
-| end               | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| height            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| locations         | `GradientLocations \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| minHeight         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| p                 | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| radius            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                        | no       | —       |             |
-| start             | `GradientPoint \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                             | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
+| colors            | `GradientColors`                                                                                                                                                                                                 | yes      | —       |             |
+| end               | `GradientPoint \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| height            | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| locations         | `GradientLocations \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| minHeight         | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| p                 | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| radius            | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined`                                                      | no       | —       |             |
+| start             | `GradientPoint \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| width             | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
 
 ## Grid
 
@@ -1141,61 +1141,61 @@ Creates responsive grid layouts for cards, tiles, and dashboard content.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| colGap             | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| cols               | `Responsive<number>`                                                                                                             | yes      | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minItemWidth       | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| rowGap             | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| colGap             | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| cols               | `Responsive<number>`                                                                                                           | yes      | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| gap                | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minItemWidth       | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| rowGap             | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Heading
 
@@ -1310,24 +1310,24 @@ Displays an image with cross-platform source and fit handling.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                            | Required | Default | Description |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                           | no       | —       |             |
-| alt                | `string \| undefined`                                                                                                           | no       | —       |             |
-| aspectRatio        | `number \| undefined`                                                                                                           | no       | —       |             |
-| fallbackSource     | `SurfaceImageSource \| null \| undefined`                                                                                       | no       | —       |             |
-| fit                | `ImageResizeMode \| undefined`                                                                                                  | no       | —       |             |
-| height             | `string \| number \| undefined`                                                                                                 | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                    | no       | —       |             |
-| onError            | `((error: import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageErrorEvent) => void) \| undefined` | no       | —       |             |
-| radius             | `number \| "s" \| "m" \| "l" \| "none" \| "full" \| undefined`                                                                  | no       | —       |             |
-| resizeMode         | `ImageResizeMode \| undefined`                                                                                                  | no       | —       |             |
-| source             | `SurfaceImageSource \| null \| undefined`                                                                                       | no       | —       |             |
-| style              | `StyleProp<ImageStyle>`                                                                                                         | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                           | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                           | no       | —       |             |
-| width              | `string \| number \| undefined`                                                                                                 | no       | —       |             |
+| Prop               | Type                                                                                                                          | Required | Default | Description |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                         | no       | —       |             |
+| alt                | `string \| undefined`                                                                                                         | no       | —       |             |
+| aspectRatio        | `number \| undefined`                                                                                                         | no       | —       |             |
+| fallbackSource     | `SurfaceImageSource \| null \| undefined`                                                                                     | no       | —       |             |
+| fit                | `ImageResizeMode \| undefined`                                                                                                | no       | —       |             |
+| height             | `string \| number \| undefined`                                                                                               | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                              | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                  | no       | —       |             |
+| onError            | `((error: import("/home/runner/work/zora/zora/node_modules/react-native/types/index").ImageErrorEvent) => void) \| undefined` | no       | —       |             |
+| radius             | `number \| "s" \| "m" \| "l" \| "none" \| "full" \| undefined`                                                                | no       | —       |             |
+| resizeMode         | `ImageResizeMode \| undefined`                                                                                                | no       | —       |             |
+| source             | `SurfaceImageSource \| null \| undefined`                                                                                     | no       | —       |             |
+| style              | `StyleProp<ImageStyle>`                                                                                                       | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                         | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                         | no       | —       |             |
+| width              | `string \| number \| undefined`                                                                                               | no       | —       |             |
 
 ## ImagePreview
 
@@ -1337,17 +1337,17 @@ Preview pattern for showing an image with optional metadata and actions.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                         | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
-| aspectRatio       | `number \| undefined`                                                                                        | no       | —       |             |
-| asset             | `ZoraImageAsset \| null \| undefined`                                                                        | no       | —       |             |
-| emptyDescription  | `React.ReactNode`                                                                                            | no       | —       |             |
-| emptyTitle        | `React.ReactNode`                                                                                            | no       | —       |             |
-| fit               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").ImageResizeMode \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                             | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                 | no       | —       |             |
-| testID            | `string \| undefined`                                                                                        | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                        | no       | —       |             |
+| Prop              | Type                                                                                                       | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| aspectRatio       | `number \| undefined`                                                                                      | no       | —       |             |
+| asset             | `ZoraImageAsset \| null \| undefined`                                                                      | no       | —       |             |
+| emptyDescription  | `React.ReactNode`                                                                                          | no       | —       |             |
+| emptyTitle        | `React.ReactNode`                                                                                          | no       | —       |             |
+| fit               | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").ImageResizeMode \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                           | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                               | no       | —       |             |
+| testID            | `string \| undefined`                                                                                      | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                      | no       | —       |             |
 
 ## ImageUploadField
 
@@ -1390,60 +1390,60 @@ Arranges children inline with spacing and wrapping behavior.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| align              | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                                     | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`         | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| wrap               | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                                    | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| align              | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                                   | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| gap                | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`       | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| wrap               | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                                  | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Input
 
@@ -1921,10 +1921,10 @@ Export paths: `src/index.ts`
 | mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
 | onPress           | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
 | providerId        | `string`                                                                                                                                      | yes      | —       |             |
-| size              | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| size              | `import("/home/runner/work/zora/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                     | no       | —       |             |
 | testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
 | themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant           | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+| variant           | `import("/home/runner/work/zora/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                   | no       | —       |             |
 
 ## OAuthProviderList
 
@@ -1945,10 +1945,10 @@ Export paths: `src/index.ts`
 | mode              | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
 | onProviderPress   | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       | —       |             |
 | providers         | `readonly OAuthProviderItem[]`                                                                                                                | yes      | —       |             |
-| size              | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                   | no       | —       |             |
+| size              | `import("/home/runner/work/zora/zora/src/internal/recipes").ZoraControlSize \| undefined`                                                     | no       | —       |             |
 | testID            | `string \| undefined`                                                                                                                         | no       | —       |             |
 | themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
-| variant           | `import("/Users/a_rtiphishl_e/git/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                 | no       | —       |             |
+| variant           | `import("/home/runner/work/zora/zora/src/internal/recipes").ZoraButtonVariant \| undefined`                                                   | no       | —       |             |
 
 ## OtpForm
 
@@ -2134,7 +2134,7 @@ Export paths: `src/index.ts`
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
 | accessibilityLabel | `string \| undefined`                                                                                                                         | no       | —       |             |
 | accessible         | `boolean \| undefined`                                                                                                                        | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`              | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>`                | no       | —       |             |
 | bg                 | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderColor        | `Responsive<ColorValue> \| undefined`                                                                                                         | no       | —       |             |
 | borderWidth        | `Responsive<number> \| undefined`                                                                                                             | no       | —       |             |
@@ -2554,15 +2554,15 @@ Generic skeleton placeholder for loading states.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                          | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| height            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                              | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                  | no       | —       |             |
-| radius            | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined` | no       | —       |             |
-| testID            | `string \| undefined`                                                                                                                                         | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                         | no       | —       |             |
-| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
+| Prop              | Type                                                                                                                                                        | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| height            | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                            | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                | no       | —       |             |
+| radius            | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<number \| "s" \| "m" \| "l" \| "none" \| "full"> \| undefined` | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                       | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                       | no       | —       |             |
+| width             | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                | no       | —       |             |
 
 ## SkeletonCard
 
@@ -2612,17 +2612,17 @@ Multi-line skeleton placeholder for text content.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| gap               | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| lastLineWidth     | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| lineHeight        | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| lines             | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| width             | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                             | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| gap               | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| lastLineWidth     | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
+| lineHeight        | `number \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| lines             | `number \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| width             | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
 
 ## Spacer
 
@@ -2653,21 +2653,21 @@ configuration.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                                                                                 | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| backgroundColor   | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       | —       |             |
-| children          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                     | no       | —       |             |
-| logo              | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| logoLabel         | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| logoShape         | `SplashScreenLogoShape \| undefined`                                                                                                                                                                                 | no       | —       |             |
-| logoSize          | `number \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| minHeight         | `import("/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                       | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                         | no       | —       |             |
-| subtitle          | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
-| testID            | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                                                                                | no       | —       |             |
-| title             | `React.ReactNode`                                                                                                                                                                                                    | no       | —       |             |
+| Prop              | Type                                                                                                                                                                                                             | Required | Default | Description |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| backgroundColor   | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                                                                                 | no       | —       |             |
+| logo              | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
+| logoLabel         | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| logoShape         | `SplashScreenLogoShape \| undefined`                                                                                                                                                                             | no       | —       |             |
+| logoSize          | `number \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| minHeight         | `import("/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index").Responsive<string \| number> \| undefined`                                                                                     | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                                                                     | no       | —       |             |
+| subtitle          | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
+| testID            | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                                                                            | no       | —       |             |
+| title             | `React.ReactNode`                                                                                                                                                                                                | no       | —       |             |
 
 ## Stack
 
@@ -2677,61 +2677,61 @@ Arranges layout items in one direction with theme spacing.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| align              | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                                     | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bg                 | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                            | no       | —       |             |
-| borderWidth        | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| direction          | `Responsive<"row" \| "column"> \| undefined`                                                                                     | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| gap                | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`         | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| wrap               | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                                    | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| align              | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                                   | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bg                 | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderColor        | `Responsive<ColorValue> \| undefined`                                                                                          | no       | —       |             |
+| borderWidth        | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| direction          | `Responsive<"row" \| "column"> \| undefined`                                                                                   | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| gap                | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| justify            | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`       | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| wrap               | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                                  | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## Surface
 
@@ -2741,54 +2741,54 @@ Provides a semantic themed region for elevated, subtle, or bordered content.
 
 Export paths: `src/index.ts`
 
-| Prop               | Type                                                                                                                             | Required | Default | Description |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| accessibilityLabel | `string \| undefined`                                                                                                            | no       | —       |             |
-| accessibilityRole  | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
-| accessibilityState | `import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
-| accessible         | `boolean \| undefined`                                                                                                           | no       | —       |             |
-| alignSelf          | `Responsive<"auto" \| import("/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
-| bottom             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| children           | `React.ReactNode`                                                                                                                | no       | —       |             |
-| flex               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| flexGrow           | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| flexShrink         | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| height             | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                                 | no       | —       |             |
-| left               | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| m                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| minHeight          | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| minWidth           | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mode               | `ZoraThemeMode \| undefined`                                                                                                     | no       | —       |             |
-| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| my                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| opacity            | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                     | no       | —       |             |
-| p                  | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                      | no       | —       |             |
-| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                  | no       | —       |             |
-| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| px                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| py                 | `Responsive<SpaceValue> \| undefined`                                                                                            | no       | —       |             |
-| radius             | `Responsive<RadiusValue> \| undefined`                                                                                           | no       | —       |             |
-| right              | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| style              | `StyleProp<ViewStyle>`                                                                                                           | no       | —       |             |
-| testID             | `string \| undefined`                                                                                                            | no       | —       |             |
-| themeId            | `string \| undefined`                                                                                                            | no       | —       |             |
-| top                | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
-| variant            | `SurfaceVariant \| undefined`                                                                                                    | no       | —       |             |
-| width              | `Responsive<string \| number> \| undefined`                                                                                      | no       | —       |             |
-| zIndex             | `Responsive<number> \| undefined`                                                                                                | no       | —       |             |
+| Prop               | Type                                                                                                                           | Required | Default | Description |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| accessibilityLabel | `string \| undefined`                                                                                                          | no       | —       |             |
+| accessibilityRole  | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityRole \| undefined`                   | no       | —       |             |
+| accessibilityState | `import("/home/runner/work/zora/zora/node_modules/react-native/types/index").AccessibilityState \| undefined`                  | no       | —       |             |
+| accessible         | `boolean \| undefined`                                                                                                         | no       | —       |             |
+| alignSelf          | `Responsive<"auto" \| import("/home/runner/work/zora/zora/node_modules/react-native/types/index").FlexAlignType \| undefined>` | no       | —       |             |
+| bottom             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| children           | `React.ReactNode`                                                                                                              | no       | —       |             |
+| flex               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexBasis          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| flexGrow           | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| flexShrink         | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| height             | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| interactionPolicy  | `InteractionPolicy \| undefined`                                                                                               | no       | —       |             |
+| left               | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| m                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| maxHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| maxWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| mb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| minHeight          | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| minWidth           | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| ml                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mode               | `ZoraThemeMode \| undefined`                                                                                                   | no       | —       |             |
+| mr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| mx                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| my                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| opacity            | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| overflow           | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                   | no       | —       |             |
+| p                  | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pb                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pl                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pointerEvents      | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                    | no       | —       |             |
+| position           | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                | no       | —       |             |
+| pr                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| pt                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| px                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| py                 | `Responsive<SpaceValue> \| undefined`                                                                                          | no       | —       |             |
+| radius             | `Responsive<RadiusValue> \| undefined`                                                                                         | no       | —       |             |
+| right              | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| style              | `StyleProp<ViewStyle>`                                                                                                         | no       | —       |             |
+| testID             | `string \| undefined`                                                                                                          | no       | —       |             |
+| themeId            | `string \| undefined`                                                                                                          | no       | —       |             |
+| top                | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
+| variant            | `SurfaceVariant \| undefined`                                                                                                  | no       | —       |             |
+| width              | `Responsive<string \| number> \| undefined`                                                                                    | no       | —       |             |
+| zIndex             | `Responsive<number> \| undefined`                                                                                              | no       | —       |             |
 
 ## SwitchField
 
@@ -3264,19 +3264,19 @@ Standard drawer content pattern for ZORA navigation lists.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                           | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| compact           | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
-| descriptors       | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| footer            | `React.ReactNode`                                                                                                                                              | no       | —       |             |
-| header            | `React.ReactNode`                                                                                                                                              | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                               | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
-| navigation        | `ZoraDrawerNavigation`                                                                                                                                         | yes      | —       |             |
-| routeMap          | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
-| state             | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
-| testID            | `string \| undefined`                                                                                                                                          | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| Prop              | Type                                                                                                                                                         | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| compact           | `boolean \| undefined`                                                                                                                                       | no       | —       |             |
+| descriptors       | `Readonly<Record<string, import("/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
+| footer            | `React.ReactNode`                                                                                                                                            | no       | —       |             |
+| header            | `React.ReactNode`                                                                                                                                            | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                 | no       | —       |             |
+| navigation        | `ZoraDrawerNavigation`                                                                                                                                       | yes      | —       |             |
+| routeMap          | `Partial<Record<string, import("/home/runner/work/zora/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
+| state             | `ZoraNavigationState`                                                                                                                                        | yes      | —       |             |
+| testID            | `string \| undefined`                                                                                                                                        | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                        | no       | —       |             |
 
 ## ZoraProvider
 
@@ -3303,19 +3303,19 @@ Bottom tab bar pattern with badge support and active state styling.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                                                           | Required | Default | Description |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| chrome            | `"none" \| "raised" \| undefined`                                                                                                                              | no       | —       |             |
-| compact           | `boolean \| undefined`                                                                                                                                         | no       | —       |             |
-| descriptors       | `Readonly<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| insets            | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                                               | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                               | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                                                   | no       | —       |             |
-| navigation        | `ZoraTabBarNavigation`                                                                                                                                         | yes      | —       |             |
-| routeMap          | `Partial<Record<string, import("/Users/a_rtiphishl_e/git/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
-| state             | `ZoraNavigationState`                                                                                                                                          | yes      | —       |             |
-| testID            | `string \| undefined`                                                                                                                                          | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                                                          | no       | —       |             |
+| Prop              | Type                                                                                                                                                         | Required | Default | Description |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ----------- |
+| chrome            | `"none" \| "raised" \| undefined`                                                                                                                            | no       | —       |             |
+| compact           | `boolean \| undefined`                                                                                                                                       | no       | —       |             |
+| descriptors       | `Readonly<Record<string, import("/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
+| insets            | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                                             | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                                                                 | no       | —       |             |
+| navigation        | `ZoraTabBarNavigation`                                                                                                                                       | yes      | —       |             |
+| routeMap          | `Partial<Record<string, import("/home/runner/work/zora/zora/src/index").ZoraNavigationRouteMetadata>> \| undefined`                                          | no       | —       |             |
+| state             | `ZoraNavigationState`                                                                                                                                        | yes      | —       |             |
+| testID            | `string \| undefined`                                                                                                                                        | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                                                                        | no       | —       |             |
 
 ## ZoraThemeScope
 

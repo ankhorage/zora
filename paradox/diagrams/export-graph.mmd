@@ -32,10 +32,12 @@ graph LR
   module_src_components_button_Button_tsx["src/components/button/Button.tsx"]
   module_src_components_button_index_ts["src/components/button/index.ts"]
   module_src_components_button_meta_ts["src/components/button/meta.ts"]
+  module_src_components_button_themeRecipeMeta_ts["src/components/button/themeRecipeMeta.ts"]
   module_src_components_button_types_ts["src/components/button/types.ts"]
   module_src_components_card_Card_tsx["src/components/card/Card.tsx"]
   module_src_components_card_index_ts["src/components/card/index.ts"]
   module_src_components_card_meta_ts["src/components/card/meta.ts"]
+  module_src_components_card_themeRecipeMeta_ts["src/components/card/themeRecipeMeta.ts"]
   module_src_components_card_types_ts["src/components/card/types.ts"]
   module_src_components_checkbox_Checkbox_tsx["src/components/checkbox/Checkbox.tsx"]
   module_src_components_checkbox_CheckboxGroup_tsx["src/components/checkbox/CheckboxGroup.tsx"]
@@ -167,6 +169,7 @@ graph LR
   module_src_components_text_meta_ts["src/components/text/meta.ts"]
   module_src_components_text_resolveTextRecipe_ts["src/components/text/resolveTextRecipe.ts"]
   module_src_components_text_Text_tsx["src/components/text/Text.tsx"]
+  module_src_components_text_themeRecipeMeta_ts["src/components/text/themeRecipeMeta.ts"]
   module_src_components_text_types_ts["src/components/text/types.ts"]
   module_src_components_textarea_index_ts["src/components/textarea/index.ts"]
   module_src_components_textarea_meta_ts["src/components/textarea/meta.ts"]
@@ -230,6 +233,8 @@ graph LR
   module_src_metadata_bindableComponentMeta_ts["src/metadata/bindableComponentMeta.ts"]
   module_src_metadata_componentMeta_ts["src/metadata/componentMeta.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
+  module_src_metadata_themeRecipeMeta_ts["src/metadata/themeRecipeMeta.ts"]
+  module_src_metadata_themeRecipeTypes_ts["src/metadata/themeRecipeTypes.ts"]
   module_src_metadata_types_ts["src/metadata/types.ts"]
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
@@ -304,6 +309,7 @@ graph LR
   module_src_patterns_panel_index_ts["src/patterns/panel/index.ts"]
   module_src_patterns_panel_meta_ts["src/patterns/panel/meta.ts"]
   module_src_patterns_panel_Panel_tsx["src/patterns/panel/Panel.tsx"]
+  module_src_patterns_panel_themeRecipeMeta_ts["src/patterns/panel/themeRecipeMeta.ts"]
   module_src_patterns_panel_types_ts["src/patterns/panel/types.ts"]
   module_src_patterns_post_card_index_ts["src/patterns/post-card/index.ts"]
   module_src_patterns_post_card_meta_ts["src/patterns/post-card/meta.ts"]
@@ -1294,6 +1300,10 @@ graph LR
   module_src_internal_colorModel_ts --> export_ZORA_PALETTE_COLORS
   export_ZORA_STATUS_COLORS["ZORA_STATUS_COLORS"]
   module_src_internal_colorModel_ts --> export_ZORA_STATUS_COLORS
+  export_ZORA_THEME_RECIPE_META["ZORA_THEME_RECIPE_META"]
+  module_src_metadata_themeRecipeMeta_ts --> export_ZORA_THEME_RECIPE_META
+  export_ZORA_THEME_TOKEN_FAMILIES["ZORA_THEME_TOKEN_FAMILIES"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZORA_THEME_TOKEN_FAMILIES
   export_ZoraBaseProps["ZoraBaseProps"]
   module_src_theme_ZoraBaseProps_ts --> export_ZoraBaseProps
   export_ZoraBaseProps -.-> export_ZoraThemeMode
@@ -1332,9 +1342,12 @@ graph LR
   export_ZoraComponentPropArrayItemSchema["ZoraComponentPropArrayItemSchema"]
   module_src_metadata_types_ts --> export_ZoraComponentPropArrayItemSchema
   export_ZoraComponentPropArrayItemSchema -.-> export_ZoraComponentPropSchema
+  export_ZoraComponentPropAuthoring["ZoraComponentPropAuthoring"]
+  module_src_metadata_types_ts --> export_ZoraComponentPropAuthoring
   export_ZoraComponentPropSchema["ZoraComponentPropSchema"]
   module_src_metadata_types_ts --> export_ZoraComponentPropSchema
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropArrayItemSchema
+  export_ZoraComponentPropSchema -.-> export_ZoraComponentPropAuthoring
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropType
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropValue
   export_ZoraComponentPropType["ZoraComponentPropType"]
@@ -1397,9 +1410,27 @@ graph LR
   module_src_theme_types_ts --> export_ZoraThemeId
   export_ZoraThemeMode["ZoraThemeMode"]
   module_src_theme_types_ts --> export_ZoraThemeMode
+  export_ZoraThemeRecipeBooleanFieldMeta["ZoraThemeRecipeBooleanFieldMeta"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeBooleanFieldMeta
+  export_ZoraThemeRecipeChoiceFieldMeta["ZoraThemeRecipeChoiceFieldMeta"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeChoiceFieldMeta
+  export_ZoraThemeRecipeFieldMeta["ZoraThemeRecipeFieldMeta"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeFieldMeta
+  export_ZoraThemeRecipeKind["ZoraThemeRecipeKind"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeKind
+  export_ZoraThemeRecipeMeta["ZoraThemeRecipeMeta"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeMeta
+  export_ZoraThemeRecipeMeta -.-> export_ZoraThemeRecipeFieldMeta
+  export_ZoraThemeRecipeMeta -.-> export_ZoraThemeRecipeKind
+  export_ZoraThemeRecipeMetaRegistry["ZoraThemeRecipeMetaRegistry"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeMetaRegistry
+  export_ZoraThemeRecipeTokenFieldMeta["ZoraThemeRecipeTokenFieldMeta"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeRecipeTokenFieldMeta
   export_ZoraThemeScope["ZoraThemeScope"]
   module_src_theme_ZoraThemeScope_tsx --> export_ZoraThemeScope
   export_ZoraThemeScope -.-> export_ZoraThemeScopeProps
   export_ZoraThemeScopeProps["ZoraThemeScopeProps"]
   module_src_theme_ZoraThemeScope_tsx --> export_ZoraThemeScopeProps
   export_ZoraThemeScopeProps -.-> export_ZoraThemeMode
+  export_ZoraThemeTokenFamily["ZoraThemeTokenFamily"]
+  module_src_metadata_themeRecipeTypes_ts --> export_ZoraThemeTokenFamily
