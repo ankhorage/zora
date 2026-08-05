@@ -1,8 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from '../index';
 import { ZORA_COMPONENT_REGISTRY } from '../registry';
-import { ZORA_COMPONENT_META } from './componentMeta';
+import { ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from './index';
 
 const tokenFamilies = new Set<string>(ZORA_THEME_TOKEN_FAMILIES);
 const expectedKinds = new Map<string, 'component' | 'pattern'>([
