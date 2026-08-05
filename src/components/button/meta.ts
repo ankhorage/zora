@@ -29,6 +29,7 @@ export const buttonMeta = {
       category: 'Content',
       label: 'Label',
       default: 'Continue',
+      authoring: { authority: 'instance' },
     },
     color: {
       type: 'enum',
@@ -36,6 +37,7 @@ export const buttonMeta = {
       label: 'Color',
       enum: [...ZORA_COLORS],
       default: 'primary',
+      authoring: { authority: 'theme', scope: 'component' },
     },
     variant: {
       type: 'enum',
@@ -43,6 +45,7 @@ export const buttonMeta = {
       label: 'Variant',
       enum: ['solid', 'outline', 'ghost', 'soft'],
       default: 'solid',
+      authoring: { authority: 'theme', scope: 'component' },
     },
     size: {
       type: 'enum',
@@ -50,6 +53,7 @@ export const buttonMeta = {
       label: 'Size',
       enum: ['s', 'm', 'l'],
       default: 'm',
+      authoring: { authority: 'theme', scope: 'component' },
     },
   },
 } as const satisfies ZoraComponentMeta;
