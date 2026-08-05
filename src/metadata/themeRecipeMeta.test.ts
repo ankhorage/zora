@@ -1,6 +1,5 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_REGISTRY } from '../registry';
 import { ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from './index';
 
 const tokenFamilies = new Set<string>(ZORA_THEME_TOKEN_FAMILIES);
@@ -59,11 +58,10 @@ describe('ZORA_THEME_RECIPE_META', () => {
     });
   });
 
-  test('stays distinct from component metadata and the concrete React registry', () => {
+  test('stays distinct from component metadata', () => {
     expect(ZORA_THEME_RECIPE_META).not.toBe(ZORA_COMPONENT_META);
-    expect(ZORA_THEME_RECIPE_META).not.toBe(ZORA_COMPONENT_REGISTRY);
-    expect(typeof ZORA_COMPONENT_REGISTRY.Button).toBe('function');
-    expect(typeof ZORA_THEME_RECIPE_META.Button).toBe('object');
+    expect(ZORA_COMPONENT_META.Button.props.size?.type).toBe('enum');
+    expect(ZORA_THEME_RECIPE_META.Button?.fields.size?.type).toBe('choice');
   });
 
   test('is serializable for downstream authoring consumers', () => {
