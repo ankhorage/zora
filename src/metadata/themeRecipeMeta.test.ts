@@ -1,26 +1,22 @@
 import { describe, expect, test } from 'bun:test';
 
-import {
-  ZORA_THEME_RECIPE_META,
-  ZORA_THEME_TOKEN_FAMILIES,
-  type ZoraThemeRecipeMeta,
-} from '../index';
+import { ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from '../index';
 import { ZORA_COMPONENT_REGISTRY } from '../registry';
 import { ZORA_COMPONENT_META } from './componentMeta';
 
 const tokenFamilies = new Set<string>(ZORA_THEME_TOKEN_FAMILIES);
-
-function recipe(name: string): ZoraThemeRecipeMeta {
-  const value = ZORA_THEME_RECIPE_META[name];
-  if (!value) throw new Error(`Missing theme recipe metadata for ${name}.`);
-  return value;
-}
+const expectedKinds = new Map<string, 'component' | 'pattern'>([
+  ['Button', 'component'],
+  ['Card', 'component'],
+  ['Text', 'component'],
+  ['Panel', 'pattern'],
+]);
 
 describe('ZORA_THEME_RECIPE_META', () => {
   test('exports representative component and pattern recipes', () => {
     expect(Object.keys(ZORA_THEME_RECIPE_META)).toEqual(['Button', 'Card', 'Text', 'Panel']);
-    expect(recipe('Button').kind).toBe('component');
-    expect(recipe('Panel').kind).toBe('pattern');
+    expect(ZORA_THEME_RECIPE_META.Button?.kind).toBe('component');
+    expect(ZORA_THEME_RECIPE_META.Panel?.kind).toBe('pattern');
   });
 
   test('keeps registry names unique and aligned with component metadata', () => {
@@ -29,8 +25,13 @@ describe('ZORA_THEME_RECIPE_META', () => {
 
     for (const [key, meta] of Object.entries(ZORA_THEME_RECIPE_META)) {
       expect(meta.name).toBe(key);
-      expect(ZORA_COMPONENT_META[key]?.category).toBe(meta.kind);
+      expect(meta.kind).toBe(expectedKinds.get(key));
     }
+
+    expect(ZORA_COMPONENT_META.Button.category).toBe('component');
+    expect(ZORA_COMPONENT_META.Card.category).toBe('component');
+    expect(ZORA_COMPONENT_META.Text.category).toBe('component');
+    expect(ZORA_COMPONENT_META.Panel.category).toBe('pattern');
   });
 
   test('references only canonical token families and valid choice defaults', () => {
@@ -47,12 +48,12 @@ describe('ZORA_THEME_RECIPE_META', () => {
   });
 
   test('describes component-specific semantic scales instead of universal geometry', () => {
-    expect(recipe('Button').fields.size).toMatchObject({
+    expect(ZORA_THEME_RECIPE_META.Button?.fields.size).toMatchObject({
       type: 'choice',
       options: ['s', 'm', 'l'],
       default: 'm',
     });
-    expect(recipe('Card').fields.padding).toMatchObject({
+    expect(ZORA_THEME_RECIPE_META.Card?.fields.padding).toMatchObject({
       type: 'token',
       tokenFamily: 'spacing',
       default: 'l',
@@ -62,7 +63,8 @@ describe('ZORA_THEME_RECIPE_META', () => {
   test('stays distinct from component metadata and the concrete React registry', () => {
     expect(ZORA_THEME_RECIPE_META).not.toBe(ZORA_COMPONENT_META);
     expect(ZORA_THEME_RECIPE_META).not.toBe(ZORA_COMPONENT_REGISTRY);
-    expect(ZORA_COMPONENT_REGISTRY.Button).not.toBe(ZORA_THEME_RECIPE_META.Button);
+    expect(typeof ZORA_COMPONENT_REGISTRY.Button).toBe('function');
+    expect(typeof ZORA_THEME_RECIPE_META.Button).toBe('object');
   });
 
   test('is serializable for downstream authoring consumers', () => {
