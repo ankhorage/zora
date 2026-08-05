@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.2
+
+### Patch Changes
+
+- 2f1bf27: Add canonical prop authoring authority metadata and a separate ZORA-owned component and pattern theme recipe metadata registry.
+
 ## 2.9.1
 
 ### Patch Changes
