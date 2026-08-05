@@ -32,10 +32,12 @@ graph LR
   module_src_components_button_Button_tsx["src/components/button/Button.tsx"]
   module_src_components_button_index_ts["src/components/button/index.ts"]
   module_src_components_button_meta_ts["src/components/button/meta.ts"]
+  module_src_components_button_themeRecipeMeta_ts["src/components/button/themeRecipeMeta.ts"]
   module_src_components_button_types_ts["src/components/button/types.ts"]
   module_src_components_card_Card_tsx["src/components/card/Card.tsx"]
   module_src_components_card_index_ts["src/components/card/index.ts"]
   module_src_components_card_meta_ts["src/components/card/meta.ts"]
+  module_src_components_card_themeRecipeMeta_ts["src/components/card/themeRecipeMeta.ts"]
   module_src_components_card_types_ts["src/components/card/types.ts"]
   module_src_components_checkbox_Checkbox_tsx["src/components/checkbox/Checkbox.tsx"]
   module_src_components_checkbox_CheckboxGroup_tsx["src/components/checkbox/CheckboxGroup.tsx"]
@@ -167,6 +169,7 @@ graph LR
   module_src_components_text_meta_ts["src/components/text/meta.ts"]
   module_src_components_text_resolveTextRecipe_ts["src/components/text/resolveTextRecipe.ts"]
   module_src_components_text_Text_tsx["src/components/text/Text.tsx"]
+  module_src_components_text_themeRecipeMeta_ts["src/components/text/themeRecipeMeta.ts"]
   module_src_components_text_types_ts["src/components/text/types.ts"]
   module_src_components_textarea_index_ts["src/components/textarea/index.ts"]
   module_src_components_textarea_meta_ts["src/components/textarea/meta.ts"]
@@ -230,6 +233,8 @@ graph LR
   module_src_metadata_bindableComponentMeta_ts["src/metadata/bindableComponentMeta.ts"]
   module_src_metadata_componentMeta_ts["src/metadata/componentMeta.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
+  module_src_metadata_themeRecipeMeta_ts["src/metadata/themeRecipeMeta.ts"]
+  module_src_metadata_themeRecipeTypes_ts["src/metadata/themeRecipeTypes.ts"]
   module_src_metadata_types_ts["src/metadata/types.ts"]
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
@@ -304,6 +309,7 @@ graph LR
   module_src_patterns_panel_index_ts["src/patterns/panel/index.ts"]
   module_src_patterns_panel_meta_ts["src/patterns/panel/meta.ts"]
   module_src_patterns_panel_Panel_tsx["src/patterns/panel/Panel.tsx"]
+  module_src_patterns_panel_themeRecipeMeta_ts["src/patterns/panel/themeRecipeMeta.ts"]
   module_src_patterns_panel_types_ts["src/patterns/panel/types.ts"]
   module_src_patterns_post_card_index_ts["src/patterns/post-card/index.ts"]
   module_src_patterns_post_card_meta_ts["src/patterns/post-card/meta.ts"]
@@ -445,6 +451,7 @@ graph LR
   module_src_components_button_Button_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_button_meta_ts --> module_src_internal_colorModel_ts
   module_src_components_button_meta_ts --> module_src_metadata_index_ts
+  module_src_components_button_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_button_types_ts --> module_src_internal_recipes_ts
   module_src_components_button_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_card_Card_tsx --> module_src_components_card_types_ts
@@ -455,6 +462,7 @@ graph LR
   module_src_components_card_Card_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_card_meta_ts --> module_src_metadata_allowedChildren_ts
   module_src_components_card_meta_ts --> module_src_metadata_index_ts
+  module_src_components_card_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_card_types_ts --> module_src_internal_recipes_ts
   module_src_components_card_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_checkbox_Checkbox_tsx --> module_src_components_checkbox_types_ts
@@ -722,6 +730,7 @@ graph LR
   module_src_components_text_Text_tsx --> module_src_components_text_types_ts
   module_src_components_text_Text_tsx --> module_src_theme_useZoraTheme_ts
   module_src_components_text_Text_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_text_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_text_types_ts --> module_src_internal_recipes_ts
   module_src_components_text_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_textarea_meta_ts --> module_src_metadata_index_ts
@@ -895,6 +904,11 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_patterns_tree_view_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_zora_drawer_content_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_zora_tab_bar_meta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_button_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_card_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_text_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_patterns_panel_themeRecipeMeta_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_components_button_index_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_foundation_index_ts
@@ -1070,6 +1084,7 @@ graph LR
   module_src_patterns_panel_Panel_tsx --> module_src_components_card_index_ts
   module_src_patterns_panel_Panel_tsx --> module_src_patterns_panel_types_ts
   module_src_patterns_panel_Panel_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_panel_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_patterns_panel_types_ts --> module_src_internal_recipes_ts
   module_src_patterns_panel_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_post_card_meta_ts --> module_src_metadata_allowedChildren_ts

@@ -25,6 +25,13 @@ export type ZoraComponentPropValue =
   | readonly ZoraComponentPropValue[]
   | { readonly [key: string]: ZoraComponentPropValue };
 
+export type ZoraComponentPropAuthoring =
+  | { readonly authority: 'instance' }
+  | {
+      readonly authority: 'theme';
+      readonly scope: 'global' | 'component' | 'pattern';
+    };
+
 export interface ZoraComponentPropArrayItemSchema {
   key: string;
   schema: ZoraComponentPropSchema;
@@ -37,6 +44,7 @@ export interface ZoraComponentPropSchema {
   enum?: readonly (string | number)[];
   default?: ZoraComponentPropValue;
   itemSchema?: readonly ZoraComponentPropArrayItemSchema[];
+  authoring?: ZoraComponentPropAuthoring;
 }
 
 export interface ZoraComponentBlueprint {

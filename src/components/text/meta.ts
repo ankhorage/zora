@@ -23,11 +23,13 @@ export const textMeta = {
       category: 'Content',
       label: 'Text',
       default: 'Text',
+      authoring: { authority: 'instance' },
     },
     i18nKey: {
       type: 'string',
       category: 'Content',
       label: 'i18n key',
+      authoring: { authority: 'instance' },
     },
     variant: {
       type: 'enum',
@@ -35,12 +37,14 @@ export const textMeta = {
       label: 'Variant',
       enum: ['body', 'lead', 'bodySmall', 'caption', 'label', 'eyebrow', 'code'],
       default: 'body',
+      authoring: { authority: 'theme', scope: 'component' },
     },
     color: {
       type: 'enum',
       category: 'Style',
       label: 'Color',
       enum: ZORA_COLORS,
+      authoring: { authority: 'theme', scope: 'component' },
     },
     emphasis: {
       type: 'enum',
@@ -48,29 +52,34 @@ export const textMeta = {
       label: 'Emphasis',
       enum: ZORA_EMPHASES,
       default: 'default',
+      authoring: { authority: 'theme', scope: 'component' },
     },
     align: {
       type: 'enum',
       category: 'Layout',
       label: 'Align',
       enum: ['auto', 'left', 'right', 'center', 'justify'],
+      authoring: { authority: 'theme', scope: 'component' },
     },
     weight: {
       type: 'enum',
       category: 'Typography',
       label: 'Weight',
       enum: ['regular', 'medium', 'semiBold', 'bold'],
+      authoring: { authority: 'theme', scope: 'component' },
     },
     italic: {
       type: 'boolean',
       category: 'Typography',
       label: 'Italic',
       default: false,
+      authoring: { authority: 'theme', scope: 'component' },
     },
     numberOfLines: {
       type: 'number',
       category: 'Layout',
       label: 'Line clamp',
+      authoring: { authority: 'instance' },
     },
   },
 } as const satisfies ZoraComponentMeta;

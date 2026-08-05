@@ -214,12 +214,26 @@ export type {
   ZoraComponentMeta,
   ZoraComponentMetaRegistry,
   ZoraComponentPropArrayItemSchema,
+  ZoraComponentPropAuthoring,
   ZoraComponentPropSchema,
   ZoraComponentPropType,
   ZoraComponentPropValue,
   ZoraComponentSlotMeta,
+  ZoraThemeRecipeBooleanFieldMeta,
+  ZoraThemeRecipeChoiceFieldMeta,
+  ZoraThemeRecipeFieldMeta,
+  ZoraThemeRecipeKind,
+  ZoraThemeRecipeMeta,
+  ZoraThemeRecipeMetaRegistry,
+  ZoraThemeRecipeTokenFieldMeta,
+  ZoraThemeTokenFamily,
 } from './metadata';
-export { ZORA_BINDABLE_COMPONENT_META, ZORA_COMPONENT_META } from './metadata';
+export {
+  ZORA_BINDABLE_COMPONENT_META,
+  ZORA_COMPONENT_META,
+  ZORA_THEME_RECIPE_META,
+  ZORA_THEME_TOKEN_FAMILIES,
+} from './metadata';
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,

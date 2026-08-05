@@ -1284,14 +1284,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -1305,7 +1305,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -1878,7 +1878,7 @@
       {
         "name": "gap",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
@@ -1967,7 +1967,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -2534,14 +2534,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -2562,7 +2562,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -2935,14 +2935,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -2956,7 +2956,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -3742,7 +3742,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -4699,14 +4699,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -4720,7 +4720,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -5413,7 +5413,7 @@
       {
         "name": "intent",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").MenuActionIntent | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").MenuActionIntent | undefined",
         "required": false,
         "description": null
       },
@@ -5835,14 +5835,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -5856,7 +5856,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -6301,11 +6301,11 @@
     "relatedSymbols": ["MenuProps"],
     "signatures": [
       {
-        "label": "(props: import(\"/Users/a_rtiphishl_e/git/zora/src/index\").MenuProps) => React.JSX.Element",
+        "label": "(props: import(\"/home/runner/work/zora/zora/src/index\").MenuProps) => React.JSX.Element",
         "parameters": [
           {
             "name": "props",
-            "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/index\").MenuProps",
+            "type": "import(\"/home/runner/work/zora/zora/src/index\").MenuProps",
             "required": true,
             "description": null
           }
@@ -7029,7 +7029,7 @@
       {
         "name": "keyboardType",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").KeyboardTypeOptions | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").KeyboardTypeOptions | undefined",
         "required": false,
         "description": null
       },
@@ -7583,7 +7583,7 @@
       {
         "name": "height",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -7604,7 +7604,7 @@
       {
         "name": "minHeight",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -7618,14 +7618,14 @@
       {
         "name": "p",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "radius",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
         "required": false,
         "description": null
       },
@@ -7653,7 +7653,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -7704,14 +7704,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -7725,7 +7725,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -8983,7 +8983,7 @@
       {
         "name": "fit",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").ImageResizeMode | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageResizeMode | undefined",
         "required": false,
         "description": null
       },
@@ -9093,7 +9093,7 @@
       {
         "name": "onError",
         "kind": "property",
-        "type": "((error: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").ImageErrorEvent) => void) | undefined",
+        "type": "((error: import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageErrorEvent) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -9415,14 +9415,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -9443,7 +9443,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -11464,7 +11464,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -11485,7 +11485,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -11711,7 +11711,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -11732,7 +11732,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -13137,7 +13137,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -15806,7 +15806,7 @@
       {
         "name": "height",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -15827,7 +15827,7 @@
       {
         "name": "radius",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
         "required": false,
         "description": null
       },
@@ -15848,7 +15848,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -15910,7 +15910,7 @@
       {
         "name": "gap",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
@@ -15924,7 +15924,7 @@
       {
         "name": "lastLineWidth",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -15966,7 +15966,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -16107,7 +16107,7 @@
       {
         "name": "backgroundColor",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
         "required": false,
         "description": null
       },
@@ -16156,7 +16156,7 @@
       {
         "name": "minHeight",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -16242,14 +16242,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -16270,7 +16270,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -16668,14 +16668,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -16689,7 +16689,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"/Users/a_rtiphishl_e/git/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -20313,9 +20313,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/Users/a_rtiphishl_e/git/zora/node_modules/@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -20613,6 +20613,42 @@
     "structuredRows": []
   },
   {
+    "name": "ZORA_THEME_RECIPE_META",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/metadata/themeRecipeMeta.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeMeta.ts",
+      "line": 7,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZORA_THEME_TOKEN_FAMILIES",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 1,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ZoraBaseProps",
     "description": null,
     "isReadme": false,
@@ -20704,7 +20740,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 42,
+      "line": 50,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20762,7 +20798,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 75,
+      "line": 83,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20809,7 +20845,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 68,
+      "line": 76,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20856,7 +20892,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 60,
+      "line": 68,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20874,7 +20910,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 58,
+      "line": 66,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20892,7 +20928,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 51,
+      "line": 59,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20918,7 +20954,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 87,
+      "line": 95,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21028,7 +21064,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 102,
+      "line": 110,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21046,7 +21082,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 28,
+      "line": 35,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21071,6 +21107,24 @@
     "structuredRows": []
   },
   {
+    "name": "ZoraComponentPropAuthoring",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/metadata/types.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/types.ts",
+      "line": 28,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ZoraComponentPropSchema",
     "description": null,
     "isReadme": false,
@@ -21079,17 +21133,25 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 33,
+      "line": 40,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [
       "ZoraComponentPropArrayItemSchema",
+      "ZoraComponentPropAuthoring",
       "ZoraComponentPropType",
       "ZoraComponentPropValue"
     ],
     "signatures": [],
     "members": [
+      {
+        "name": "authoring",
+        "kind": "property",
+        "type": "ZoraComponentPropAuthoring | undefined",
+        "required": false,
+        "description": null
+      },
       {
         "name": "category",
         "kind": "property",
@@ -21198,7 +21260,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 82,
+      "line": 90,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21399,7 +21461,7 @@
       {
         "name": "descriptors",
         "kind": "property",
-        "type": "Readonly<Record<string, import(\"/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+        "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
         "required": false,
         "description": null
       },
@@ -21441,7 +21503,7 @@
       {
         "name": "routeMap",
         "kind": "property",
-        "type": "Partial<Record<string, import(\"/Users/a_rtiphishl_e/git/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+        "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
         "required": false,
         "description": null
       },
@@ -21883,7 +21945,7 @@
       {
         "name": "descriptors",
         "kind": "property",
-        "type": "Readonly<Record<string, import(\"/Users/a_rtiphishl_e/git/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+        "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
         "required": false,
         "description": null
       },
@@ -21918,7 +21980,7 @@
       {
         "name": "routeMap",
         "kind": "property",
-        "type": "Partial<Record<string, import(\"/Users/a_rtiphishl_e/git/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+        "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
         "required": false,
         "description": null
       },
@@ -22037,6 +22099,262 @@
     "structuredRows": []
   },
   {
+    "name": "ZoraThemeRecipeBooleanFieldMeta",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 30,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "default",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "\"boolean\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeChoiceFieldMeta",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 24,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "default",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "options",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "\"choice\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeFieldMeta",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 35,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeKind",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 11,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeMeta",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 40,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeRecipeFieldMeta", "ZoraThemeRecipeKind"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fields",
+        "kind": "property",
+        "type": "Readonly<Record<string, ZoraThemeRecipeFieldMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "kind",
+        "kind": "property",
+        "type": "ZoraThemeRecipeKind",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeMetaRegistry",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 47,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeRecipeTokenFieldMeta",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 18,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "default",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tokenFamily",
+        "kind": "property",
+        "type": "\"spacing\" | \"colors\" | \"radii\" | \"typography\" | \"shadows\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "\"token\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "ZoraThemeScope",
     "description": null,
     "isReadme": false,
@@ -22106,6 +22424,24 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeTokenFamily",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/metadata/themeRecipeTypes.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/themeRecipeTypes.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
     "structuredRows": []
   }
 ]
