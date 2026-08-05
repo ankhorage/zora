@@ -18,16 +18,19 @@ export const panelMeta = {
       type: 'string',
       category: 'Content',
       label: 'Title',
+      authoring: { authority: 'instance' },
     },
     description: {
       type: 'string',
       category: 'Content',
       label: 'Description',
+      authoring: { authority: 'instance' },
     },
     eyebrow: {
       type: 'string',
       category: 'Content',
       label: 'Eyebrow',
+      authoring: { authority: 'instance' },
     },
     tone: {
       type: 'enum',
@@ -35,12 +38,14 @@ export const panelMeta = {
       label: 'Tone',
       enum: ['default', 'subtle', 'outline'],
       default: 'default',
+      authoring: { authority: 'theme', scope: 'pattern' },
     },
     compact: {
       type: 'boolean',
       category: 'Layout',
       label: 'Compact',
       default: false,
+      authoring: { authority: 'theme', scope: 'pattern' },
     },
   },
 } as const satisfies ZoraComponentMeta;
