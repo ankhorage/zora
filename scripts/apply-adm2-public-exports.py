@@ -44,10 +44,3 @@ export {
 ''',
     'root metadata exports',
 )
-
-replace_once(
-    'src/metadata/authoringMeta.test.ts',
-    "    expect(authoring('Image', 'resizeMode')).toBeUndefined();",
-    "    expect(authoring('Progress', 'value')).toBeUndefined();",
-    'absent authoring metadata expectation',
-)
