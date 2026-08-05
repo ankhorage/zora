@@ -1,0 +1,61 @@
+name: Apply adm2 authoring metadata
+
+on:
+  push:
+    branches:
+      - agent/adm-2-authoring-theme-metadata
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/adm-2-authoring-theme-metadata
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.13'
+
+      - name: Apply public export changes
+        run: python scripts/apply-adm2-public-exports.py
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Format and regenerate docs
+        run: |
+          bun run lint:fix
+          bun run format
+          bun run docs
+          bun run format
+
+      - name: Validate implementation
+        run: |
+          bun run build
+          bunx @ankhorage/ankh doctor validate .
+          bun run lint
+          bun run format:check
+          bun run knip
+          bun run test
+          bun run typecheck
+          bun run changeset:status
+          npm pack --dry-run
+
+      - name: Commit validated implementation and remove helpers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/apply-adm2-authoring-metadata.yml
+          git rm scripts/apply-adm2-public-exports.py
+          git add -A
+          git commit -m "Add ZORA authoring and theme recipe metadata"
+          git push
