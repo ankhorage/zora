@@ -79,7 +79,9 @@ jobs:
           fi
 
       - name: Check changesets
-        if: github.event_name == 'pull_request'
+        if: >
+          github.event_name == 'pull_request' &&
+          !startsWith(github.head_ref, 'changeset-release/')
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.['changeset:status'] ? 0 : 1)"; then
             bun run changeset:status
