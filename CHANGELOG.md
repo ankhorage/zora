@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.3
+
+### Patch Changes
+
+- 72f5814: Classify Heading content and semantics for instance authoring while keeping visual presentation under component theme authority.
+
 ## 2.9.2
 
 ### Patch Changes
