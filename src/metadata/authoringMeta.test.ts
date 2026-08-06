@@ -24,6 +24,8 @@ describe('ZORA component prop authoring authority', () => {
       authority: 'instance',
     });
     expect(ZORA_COMPONENT_META.Card.props.title?.authoring).toEqual({ authority: 'instance' });
+    expect(ZORA_COMPONENT_META.Heading.props.text?.authoring).toEqual({ authority: 'instance' });
+    expect(ZORA_COMPONENT_META.Heading.props.level?.authoring).toEqual({ authority: 'instance' });
     expect(ZORA_COMPONENT_META.Text.props.text?.authoring).toEqual({ authority: 'instance' });
     expect(ZORA_COMPONENT_META.Panel.props.description?.authoring).toEqual({
       authority: 'instance',
@@ -39,6 +41,10 @@ describe('ZORA component prop authoring authority', () => {
       authority: 'theme',
       scope: 'component',
     });
+    expect(ZORA_COMPONENT_META.Heading.props.size?.authoring).toEqual({
+      authority: 'theme',
+      scope: 'component',
+    });
     expect(ZORA_COMPONENT_META.Text.props.variant?.authoring).toEqual({
       authority: 'theme',
       scope: 'component',
@@ -46,6 +52,13 @@ describe('ZORA component prop authoring authority', () => {
     expect(ZORA_COMPONENT_META.Panel.props.compact?.authoring).toEqual({
       authority: 'theme',
       scope: 'pattern',
+    });
+  });
+
+  test('keeps Heading blueprint content useful before instance editing', () => {
+    expect(ZORA_COMPONENT_META.Heading.blueprint?.defaultProps).toEqual({
+      text: 'Heading',
+      level: 2,
     });
   });
 
