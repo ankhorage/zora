@@ -24,7 +24,9 @@ A prop participates in authoring only when its schema has `authoring` metadata.
 { authority: 'theme', scope: 'global' | 'component' | 'pattern' }
 ```
 
-Instance authority is reserved for legitimate per-node content or behavior. Theme authority prevents visual design props from becoming unrelated per-instance overrides. Internal or technical props have no `authoring` property. There is no `system` authority.
+Instance authority is reserved for legitimate per-node content, behavior, or semantics. For example, a Heading owns its text, semantic level, translation key, and optional line clamp per instance. Its size, color, emphasis, alignment, weight, and italic presentation remain component-theme concerns.
+
+Theme authority prevents visual design props from becoming unrelated per-instance overrides. Internal or technical props have no `authoring` property. There is no `system` authority.
 
 ## Theme recipe direction
 
