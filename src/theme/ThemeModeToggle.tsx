@@ -1,6 +1,6 @@
 import { IconButton } from '../components/icon-button';
-import type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 import { resolveThemeModeToggleState } from './resolveThemeModeToggleState';
+import type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 import { useZoraTheme } from './useZoraTheme';
 
 export function ThemeModeToggle({ disabled, size = 'm', testID }: ThemeModeToggleProps) {
