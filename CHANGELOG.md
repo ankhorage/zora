@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.10.0
+
+### Minor Changes
+
+- 3c1f70f: Add a reusable `ThemeModeToggle` that switches the canonical ZORA light/dark runtime mode with accessible sun/moon affordances.
+
 ## 2.9.3
 
 ### Patch Changes
