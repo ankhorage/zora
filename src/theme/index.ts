@@ -1,6 +1,6 @@
 export { createZoraThemeConfig } from './createZoraThemeConfig';
-export type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 export { ThemeModeToggle } from './ThemeModeToggle';
+export type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 export type {
   ZoraComputedTheme,
   ZoraComputedThemeMode,
