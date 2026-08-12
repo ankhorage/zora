@@ -28,6 +28,7 @@ jobs:
           python3 scripts/adm13_fix.py
           python3 scripts/adm13_crash_fix.py
           python3 scripts/adm13_test_fix.py
+          python3 scripts/adm13_authority_fix.py
 
       - name: Install and format source
         run: |
@@ -40,7 +41,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git reset .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py scripts/adm13_crash_fix.py scripts/adm13_test_fix.py
+          git reset .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py scripts/adm13_crash_fix.py scripts/adm13_test_fix.py scripts/adm13_authority_fix.py
           git commit -m 'Resolve ZORA theme recipe overrides'
 
       - name: Validate
@@ -62,7 +63,7 @@ jobs:
 
       - name: Commit generated artifacts and cleanup
         run: |
-          git rm .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py scripts/adm13_crash_fix.py scripts/adm13_test_fix.py
+          git rm .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py scripts/adm13_crash_fix.py scripts/adm13_test_fix.py scripts/adm13_authority_fix.py
           git add -A
           git commit -m 'Refresh ZORA theme recipe documentation'
           git push
