@@ -23,19 +23,22 @@ jobs:
           bun-version: '1.3.13'
 
       - name: Apply migration
-        run: python3 scripts/adm13_apply.py
+        run: |
+          python3 scripts/adm13_apply.py
+          python3 scripts/adm13_fix.py
 
       - name: Install and format source
         run: |
           bun install
           bun run format
+          bun run lint:fix
 
       - name: Commit product source locally
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git reset .github/workflows/adm13-apply.yml scripts/adm13_apply.py
+          git reset .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py
           git commit -m 'Resolve ZORA theme recipe overrides'
 
       - name: Validate
@@ -57,7 +60,7 @@ jobs:
 
       - name: Commit generated artifacts and cleanup
         run: |
-          git rm .github/workflows/adm13-apply.yml scripts/adm13_apply.py
+          git rm .github/workflows/adm13-apply.yml scripts/adm13_apply.py scripts/adm13_fix.py
           git add -A
           git commit -m 'Refresh ZORA theme recipe documentation'
           git push
