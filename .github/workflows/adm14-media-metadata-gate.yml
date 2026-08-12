@@ -115,7 +115,7 @@ jobs:
               '    });',
               '    expect(image.props).toEqual(ZORA_COMPONENT_META.Image.props);',
               '    expect(image.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);',
-              "    expect(image.bindings.props.source?.value.type).toBe('imageAsset');",
+              "    expect(image.bindings.props.source.value.type).toBe('imageAsset');",
               '  });',
           ])
           if 'shares canonical Image authoring metadata while preserving dynamic image bindings' not in bindable_test:
