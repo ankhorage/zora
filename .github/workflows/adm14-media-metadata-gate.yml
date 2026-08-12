@@ -105,19 +105,21 @@ jobs:
           bindable_import = "import { ZORA_BINDABLE_COMPONENT_META } from './bindableComponentMeta';\n"
           if component_import not in bindable_test:
               bindable_test = bindable_test.replace(bindable_import, bindable_import + component_import, 1)
-          old_assertion = "    expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');\n"
-          new_assertions = '\n'.join([
-              '    expect(registry.Image?.props.source).toMatchObject({',
+          image_registry_test = '\n'.join([
+              "  it('shares canonical Image authoring metadata while preserving dynamic image bindings', () => {",
+              '    const image = ZORA_BINDABLE_COMPONENT_META.Image;',
+              '',
+              '    expect(image.props.source).toMatchObject({',
               "      type: 'media',",
               "      mediaKinds: ['image'],",
               '    });',
-              '    expect(registry.Image?.props).toEqual(ZORA_COMPONENT_META.Image.props);',
-              '    expect(registry.Image?.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);',
-              "    expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');",
-              '',
+              '    expect(image.props).toEqual(ZORA_COMPONENT_META.Image.props);',
+              '    expect(image.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);',
+              "    expect(image.bindings.props.source?.value.type).toBe('imageAsset');",
+              '  });',
           ])
-          if old_assertion in bindable_test:
-              bindable_test = bindable_test.replace(old_assertion, new_assertions, 1)
+          if 'shares canonical Image authoring metadata while preserving dynamic image bindings' not in bindable_test:
+              bindable_test = bindable_test.replace('\n});\n', '\n\n' + image_registry_test + '\n});\n', 1)
           bindable_test_path.write_text(bindable_test)
           PY
 
