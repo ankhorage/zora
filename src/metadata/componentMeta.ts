@@ -92,6 +92,7 @@ import { timelineMeta } from '../patterns/timeline/meta';
 import { treeItemMeta, treeViewMeta } from '../patterns/tree-view/meta';
 import { zoraDrawerContentMeta } from '../patterns/zora-drawer-content/meta';
 import { zoraTabBarMeta } from '../patterns/zora-tab-bar/meta';
+import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
 import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
@@ -150,6 +151,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ToastProvider: toastProviderMeta,
   Toolbar: toolbarMeta,
   ToolbarAction: toolbarActionMeta,
+  ThemeModeToggle: themeModeToggleMeta,
   AppShell: appShellMeta,
   Screen: screenMeta,
   ScreenSection: screenSectionMeta,
