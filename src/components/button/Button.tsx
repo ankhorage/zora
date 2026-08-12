@@ -1,8 +1,9 @@
 import { Button as SurfaceButton } from '@ankhorage/surface';
 import React from 'react';
 
-import { resolveButtonRecipe } from '../../internal/recipes';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { resolveButtonThemeRecipe } from './resolveButtonThemeRecipe';
 import type { ButtonProps } from './types';
 
 function ButtonInner({
@@ -14,7 +15,8 @@ function ButtonInner({
   interactionPolicy,
   ...props
 }: ButtonProps) {
-  const recipe = resolveButtonRecipe({ color, variant, size });
+  const themeFields = useZoraThemeRecipe('Button');
+  const recipe = resolveButtonThemeRecipe({ color, variant, size, themeFields });
 
   return (
     <SurfaceButton

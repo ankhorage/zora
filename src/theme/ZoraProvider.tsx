@@ -1,3 +1,4 @@
+import type { ThemeConfig } from '@ankhorage/contracts';
 import { ThemeProvider } from '@ankhorage/surface';
 import React from 'react';
 
@@ -9,30 +10,26 @@ import { ZoraThemeRuntimeContext } from './ZoraThemeRuntimeContext';
 export interface ZoraProviderProps {
   children: React.ReactNode;
   theme?: ZoraTheme;
+  themeConfig?: ThemeConfig;
   initialMode?: ZoraThemeMode;
 }
 
-/***
- * Installs the ZORA theme runtime and underlying Surface theme provider.
- *
- * Wrap an app with `ZoraProvider` once near the root so components, patterns,
- * layouts, and theme hooks resolve the same design tokens and color mode.
- *
- * @example App provider
- * ```tsx
- * <ZoraProvider initialMode="light"><App /></ZoraProvider>
- * ```
- */
+/** Installs the ZORA theme runtime and underlying Surface theme provider. */
 export function ZoraProvider({
   children,
   theme = zoraDefaultTheme,
+  themeConfig,
   initialMode = 'light',
 }: ZoraProviderProps) {
-  const runtimeValue = React.useMemo(() => ({ sourceTheme: theme, themeId: theme.id }), [theme]);
+  const resolvedConfig = React.useMemo(
+    () => themeConfig ?? createZoraThemeConfig(theme),
+    [theme, themeConfig],
+  );
+  const runtimeValue = React.useMemo(() => ({ themeId: resolvedConfig.id }), [resolvedConfig.id]);
 
   return (
     <ZoraThemeRuntimeContext.Provider value={runtimeValue}>
-      <ThemeProvider initialConfig={createZoraThemeConfig(theme)} initialMode={initialMode}>
+      <ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>
         {children}
       </ThemeProvider>
     </ZoraThemeRuntimeContext.Provider>

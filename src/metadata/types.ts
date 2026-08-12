@@ -30,6 +30,7 @@ export type ZoraComponentPropAuthoring =
   | {
       readonly authority: 'theme';
       readonly scope: 'global' | 'component' | 'pattern';
+      readonly allowInstanceOverride?: boolean;
     };
 
 export interface ZoraComponentPropArrayItemSchema {
@@ -49,22 +50,15 @@ export interface ZoraComponentPropSchema {
 
 export interface ZoraComponentBlueprint {
   label: string;
-  icon?: {
-    name: string;
-    provider?: string;
-  };
+  icon?: { name: string; provider?: string };
   defaultProps?: Readonly<Record<string, ZoraComponentPropValue>>;
 }
 
 export interface ZoraComponentI18nMeta {
-  fields: readonly {
-    keyProp: string;
-    defaultTextProp: string;
-  }[];
+  fields: readonly { keyProp: string; defaultTextProp: string }[];
 }
 
 export type ZoraComponentEventPayloadKind = ComponentEventDtoKind | (string & {});
-
 export type ZoraComponentEventPayloadFieldType =
   | 'boolean'
   | 'number'

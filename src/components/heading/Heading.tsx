@@ -3,8 +3,10 @@ import React from 'react';
 import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveHeadingRecipe, resolveHeadingSizeFromLevel } from './resolveHeadingRecipe';
+import { resolveHeadingThemeRecipe } from './resolveHeadingThemeRecipe';
 import type { HeadingProps } from './types';
 
 const headingLayoutStyle = {
@@ -24,23 +26,10 @@ function resolveHeadingContent({
   children,
   text,
   i18nKey,
-}: {
-  children: HeadingProps['children'];
-  text: HeadingProps['text'];
-  i18nKey: HeadingProps['i18nKey'];
-}): React.ReactNode {
-  if (children !== undefined) {
-    return children;
-  }
-
-  if (text !== undefined) {
-    return text;
-  }
-
-  if (!i18nKey) {
-    return null;
-  }
-
+}: Pick<HeadingProps, 'children' | 'text' | 'i18nKey'>) {
+  if (children !== undefined) return children;
+  if (text !== undefined) return text;
+  if (i18nKey === undefined || i18nKey === '') return null;
   return i18nKey;
 }
 
@@ -53,10 +42,10 @@ function HeadingInner({
   level = 2,
   size,
   color,
-  emphasis = 'default',
+  emphasis,
   align,
   weight,
-  italic = false,
+  italic,
   numberOfLines,
   ellipsizeMode,
   selectable,
@@ -70,16 +59,17 @@ function HeadingInner({
 }: HeadingProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
+  const themeRecipe = resolveHeadingThemeRecipe(useZoraThemeRecipe('Heading'));
   const content = resolveHeadingContent({ children, text, i18nKey });
-  const resolvedSize = resolveResponsive(size, breakpoint) ?? resolveHeadingSizeFromLevel(level);
-  const resolvedColor = resolveResponsive(color, breakpoint);
-  const resolvedEmphasis = resolveResponsive(emphasis, breakpoint) ?? 'default';
-  const resolvedAlign = resolveResponsive(align, breakpoint);
-  const resolvedWeight = resolveResponsive(weight, breakpoint);
+  const resolvedSize =
+    resolveResponsive(size ?? themeRecipe.size, breakpoint) ?? resolveHeadingSizeFromLevel(level);
+  const resolvedColor = resolveResponsive(color ?? themeRecipe.color, breakpoint);
+  const resolvedEmphasis =
+    resolveResponsive(emphasis ?? themeRecipe.emphasis, breakpoint) ?? 'default';
+  const resolvedAlign = resolveResponsive(align ?? themeRecipe.align, breakpoint);
+  const resolvedWeight = resolveResponsive(weight ?? themeRecipe.weight, breakpoint);
 
-  if (content === null || content === undefined) {
-    return null;
-  }
+  if (content === null) return null;
 
   return (
     <ReactNativeText
@@ -95,7 +85,7 @@ function HeadingInner({
         headingLayoutStyle,
         resolveHeadingRecipe(theme, {
           align: resolvedAlign,
-          italic,
+          italic: italic ?? themeRecipe.italic ?? false,
           level,
           size: resolvedSize,
           color: resolvedColor,

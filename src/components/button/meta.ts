@@ -1,20 +1,18 @@
 import { ZORA_COLORS } from '../../internal/colorModel';
 import type { ZoraComponentMeta } from '../../metadata';
 
+const themeAuthoring = {
+  authority: 'theme',
+  scope: 'component',
+  allowInstanceOverride: true,
+} as const;
+
 export const buttonMeta = {
   name: 'Button',
   category: 'component',
   directManifestNode: true,
   allowedChildren: [],
-  blueprint: {
-    label: 'Button',
-    defaultProps: {
-      children: 'Continue',
-      color: 'primary',
-      variant: 'solid',
-      size: 'm',
-    },
-  },
+  blueprint: { label: 'Button', defaultProps: { children: 'Continue' } },
   events: {
     press: {
       label: 'Press',
@@ -36,24 +34,21 @@ export const buttonMeta = {
       category: 'Style',
       label: 'Color',
       enum: [...ZORA_COLORS],
-      default: 'primary',
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     variant: {
       type: 'enum',
       category: 'Style',
       label: 'Variant',
       enum: ['solid', 'outline', 'ghost', 'soft'],
-      default: 'solid',
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     size: {
       type: 'enum',
       category: 'Style',
       label: 'Size',
       enum: ['s', 'm', 'l'],
-      default: 'm',
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
   },
 } as const satisfies ZoraComponentMeta;

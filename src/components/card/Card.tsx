@@ -3,9 +3,11 @@ import React from 'react';
 
 import { Box, Stack } from '../../foundation';
 import { resolveCardVariant } from '../../internal/recipes';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Heading } from '../heading';
 import { Text } from '../text';
+import { resolveCardThemeRecipe } from './resolveCardThemeRecipe';
 import type { CardProps } from './types';
 
 function CardInner({
@@ -17,15 +19,19 @@ function CardInner({
   eyebrow,
   actions,
   footer,
-  tone = 'default',
-  compact = false,
+  tone,
+  compact,
+  padding,
+  radius,
   onPress,
   interactionPolicy,
   ...props
 }: CardProps) {
+  const themeFields = useZoraThemeRecipe('Card');
+  const recipe = resolveCardThemeRecipe({ tone, compact, padding, radius, themeFields });
   const hasHeader = [eyebrow, title, description, actions].some((item) => item != null);
   const hasFooter = footer !== undefined;
-  const gap = compact ? 's' : 'm';
+  const gap = recipe.compact ? 's' : 'm';
   const isInteractive = Boolean(onPress) && !actions;
   const passive = interactionPolicy === 'passive';
 
@@ -33,9 +39,9 @@ function CardInner({
     <SurfaceCard
       {...props}
       onPress={isInteractive && !passive ? onPress : undefined}
-      p={compact ? 'm' : 'l'}
-      radius="l"
-      variant={resolveCardVariant(tone)}
+      p={recipe.padding}
+      radius={recipe.radius}
+      variant={resolveCardVariant(recipe.tone)}
     >
       <Stack gap={gap}>
         {hasHeader ? (
@@ -52,7 +58,7 @@ function CardInner({
                     {eyebrow}
                   </Text>
                 ) : null}
-                {title ? <Heading level={compact ? 4 : 3}>{title}</Heading> : null}
+                {title ? <Heading level={recipe.compact ? 4 : 3}>{title}</Heading> : null}
                 {description ? (
                   <Text emphasis="muted" variant="bodySmall">
                     {description}

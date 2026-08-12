@@ -18,18 +18,18 @@ interface ZoraThemeRecipeFieldBase {
 export interface ZoraThemeRecipeTokenFieldMeta extends ZoraThemeRecipeFieldBase {
   readonly type: 'token';
   readonly tokenFamily: ZoraThemeTokenFamily;
-  readonly default: string;
+  readonly default?: string;
 }
 
 export interface ZoraThemeRecipeChoiceFieldMeta extends ZoraThemeRecipeFieldBase {
   readonly type: 'choice';
   readonly options: readonly string[];
-  readonly default: string;
+  readonly default?: string;
 }
 
 export interface ZoraThemeRecipeBooleanFieldMeta extends ZoraThemeRecipeFieldBase {
   readonly type: 'boolean';
-  readonly default: boolean;
+  readonly default?: boolean;
 }
 
 export type ZoraThemeRecipeFieldMeta =

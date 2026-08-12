@@ -3,8 +3,10 @@ import React from 'react';
 import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
 
 import { useZoraTheme } from '../../theme/useZoraTheme';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveTextStyle } from './resolveTextRecipe';
+import { resolveTextThemeRecipe } from './resolveTextThemeRecipe';
 import type { TextProps } from './types';
 
 const textLayoutStyle = {
@@ -29,18 +31,9 @@ function resolveTextContent({
   text: TextProps['text'];
   i18nKey: TextProps['i18nKey'];
 }): React.ReactNode {
-  if (children !== undefined) {
-    return children;
-  }
-
-  if (text !== undefined) {
-    return text;
-  }
-
-  if (!i18nKey) {
-    return null;
-  }
-
+  if (children !== undefined) return children;
+  if (text !== undefined) return text;
+  if (i18nKey === undefined || i18nKey === '') return null;
   return i18nKey;
 }
 
@@ -50,12 +43,12 @@ function TextInner({
   children,
   text,
   i18nKey,
-  variant = 'body',
+  variant,
   color,
-  emphasis = 'default',
+  emphasis,
   align,
   weight,
-  italic = false,
+  italic,
   numberOfLines,
   ellipsizeMode,
   selectable,
@@ -69,22 +62,21 @@ function TextInner({
 }: TextProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
+  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe('Text'));
   const content = resolveTextContent({ children, text, i18nKey });
-  const resolvedVariant = resolveResponsive(variant, breakpoint) ?? 'body';
+  const resolvedVariant = resolveResponsive(variant ?? themeRecipe.variant, breakpoint) ?? 'body';
   const resolvedStyle = resolveTextStyle({
     theme,
     breakpoint,
     variant: resolvedVariant,
-    color,
-    emphasis,
-    align,
-    weight,
-    italic,
+    color: color ?? themeRecipe.color,
+    emphasis: emphasis ?? themeRecipe.emphasis,
+    align: align ?? themeRecipe.align,
+    weight: weight ?? themeRecipe.weight,
+    italic: italic ?? themeRecipe.italic ?? false,
   });
 
-  if (content === null || content === undefined) {
-    return null;
-  }
+  if (content === null || content === undefined) return null;
 
   return (
     <ReactNativeText
@@ -109,7 +101,6 @@ function TextInner({
  * `Text` owns normal body, caption, label, code, and supporting-copy variants so
  * consumers do not need to import lower-level Surface typography directly.
  *
-
  * @example Muted supporting copy
  * ```tsx
  * <Text variant="bodySmall" emphasis="muted">Updated just now</Text>

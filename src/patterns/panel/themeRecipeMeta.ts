@@ -15,7 +15,7 @@ export const panelThemeRecipeMeta = {
       type: 'token',
       tokenFamily: 'spacing',
       label: 'Padding',
-      default: 'l',
+      description: 'When unset, Panel keeps Card compact-aware spacing.',
     },
     radius: {
       type: 'token',

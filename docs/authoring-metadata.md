@@ -39,3 +39,18 @@ Global theme tokens
 Recipe fields may reference shared token families such as colors, spacing, radii, typography, and shadows. Semantic choices remain recipe-specific: a Button `size: m` does not imply the same geometry as another component's `size: m`.
 
 This metadata defines the authoring contract. Theme administration and concrete recipe resolution are downstream consumers and must not move into the concrete component registry.
+
+## Theme recipe runtime precedence
+
+Theme recipe metadata is the canonical schema for theme-authorable component and pattern defaults. Persisted `ThemeConfig.recipes` stores selected values only. Runtime precedence is:
+
+```text
+component hard behavior
+  <- ZORA recipe metadata default
+  <- persisted ThemeConfig recipe override
+  <- explicit component instance prop (when allowInstanceOverride is true)
+```
+
+Unknown persisted fields are ignored as stale metadata; invalid values for known fields fail explicitly. Token fields must reference a token that exists in the field's declared family. New manifest blueprints do not copy theme-owned defaults into instance props, so theme changes remain inherited.
+
+`ZoraProvider` can receive a canonical `themeConfig`; nested scopes preserve that complete config so authored global tokens and recipes are not lost. The legacy `theme` seed remains supported for standalone consumers and is converted once at the provider boundary.
