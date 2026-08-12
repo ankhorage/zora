@@ -5105,8 +5105,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
@@ -5169,7 +5169,7 @@ Source: `src/theme/withZoraThemeScope.tsx:6:1`
 
 Kind: `value`
 Module: `src/metadata/bindableComponentMeta.ts`
-Source: `src/metadata/bindableComponentMeta.ts:3:14`
+Source: `src/metadata/bindableComponentMeta.ts:5:14`
 
 ## ZORA_COLORS
 
@@ -5238,7 +5238,7 @@ Source: `src/theme/ZoraBaseProps.ts:5:1`
 
 Kind: `unknown`
 Module: `src/metadata/bindableComponentMeta.ts`
-Source: `src/metadata/bindableComponentMeta.ts:476:1`
+Source: `src/metadata/bindableComponentMeta.ts:467:1`
 
 ## ZoraColor
 
@@ -5250,7 +5250,7 @@ Source: `src/internal/colorModel.ts:10:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:51:1`
+Source: `src/metadata/types.ts:44:1`
 
 ### Members
 
@@ -5264,13 +5264,13 @@ Source: `src/metadata/types.ts:51:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:3:1`
+Source: `src/metadata/types.ts:8:1`
 
 ## ZoraComponentEventMeta
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:77:1`
+Source: `src/metadata/types.ts:70:1`
 
 ### Members
 
@@ -5285,7 +5285,7 @@ Source: `src/metadata/types.ts:77:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:70:1`
+Source: `src/metadata/types.ts:63:1`
 
 ### Members
 
@@ -5300,19 +5300,19 @@ Source: `src/metadata/types.ts:70:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:62:1`
+Source: `src/metadata/types.ts:55:1`
 
 ## ZoraComponentEventPayloadKind
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:61:1`
+Source: `src/metadata/types.ts:54:1`
 
 ## ZoraComponentI18nMeta
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:57:1`
+Source: `src/metadata/types.ts:50:1`
 
 ### Members
 
@@ -5324,7 +5324,7 @@ Source: `src/metadata/types.ts:57:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:89:1`
+Source: `src/metadata/types.ts:82:1`
 
 ### Members
 
@@ -5347,13 +5347,13 @@ Source: `src/metadata/types.ts:89:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:104:1`
+Source: `src/metadata/types.ts:97:1`
 
 ## ZoraComponentPropArrayItemSchema
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:36:1`
+Source: `src/metadata/types.ts:28:1`
 
 ### Members
 
@@ -5366,37 +5366,38 @@ Source: `src/metadata/types.ts:36:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:28:1`
+Source: `src/metadata/types.ts:20:1`
 
 ## ZoraComponentPropSchema
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:41:1`
+Source: `src/metadata/types.ts:33:1`
 
 ### Members
 
-| Name       | Kind     | Type                                                       | Required | Description |
-| ---------- | -------- | ---------------------------------------------------------- | -------- | ----------- |
-| authoring  | property | `ZoraComponentPropAuthoring \| undefined`                  | no       |             |
-| category   | property | `string`                                                   | yes      |             |
-| default    | property | `ZoraComponentPropValue \| undefined`                      | no       |             |
-| enum       | property | `readonly (string \| number)[] \| undefined`               | no       |             |
-| itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined` | no       |             |
-| label      | property | `string \| undefined`                                      | no       |             |
-| type       | property | `ZoraComponentPropType`                                    | yes      |             |
+| Name       | Kind     | Type                                                                          | Required | Description |
+| ---------- | -------- | ----------------------------------------------------------------------------- | -------- | ----------- |
+| authoring  | property | `ZoraComponentPropAuthoring \| undefined`                                     | no       |             |
+| category   | property | `string`                                                                      | yes      |             |
+| default    | property | `ZoraComponentPropValue \| undefined`                                         | no       |             |
+| enum       | property | `readonly (string \| number)[] \| undefined`                                  | no       |             |
+| itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined`                    | no       |             |
+| label      | property | `string \| undefined`                                                         | no       |             |
+| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no       |             |
+| type       | property | `UiComponentPropType`                                                         | yes      |             |
 
 ## ZoraComponentPropType
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:5:1`
+Source: `src/metadata/types.ts:10:1`
 
 ## ZoraComponentPropValue
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:20:1`
+Source: `src/metadata/types.ts:12:1`
 
 ## ZoraComponentRegistry
 
@@ -5408,7 +5409,7 @@ Source: `src/registry.ts:102:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:84:1`
+Source: `src/metadata/types.ts:77:1`
 
 ### Members
 

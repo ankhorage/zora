@@ -6,7 +6,7 @@
       "name": "@ankhorage/zora",
       "dependencies": {
         "@ankhorage/color-theory": "^0.0.8",
-        "@ankhorage/contracts": "^7.2.0",
+        "@ankhorage/contracts": "^7.6.0",
         "@ankhorage/surface": "^2.2.0",
       },
       "devDependencies": {
@@ -40,7 +40,7 @@
   "packages": {
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.0.8", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-+JRLkvBUiPxFrRANyewRZxLv1sU5cKFOc3VBYB+b/eFngLFDIAqXf/a4e0A6gQE+lk6e3wb3FcGQYIyYB1Dqzg=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@7.2.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.8" } }, "sha512-p+QbZ7j3ByjtQumehovnps6Uw67aCtCpwL4SznQGHwcPwWV8jTYEfYaaSbYiX+XDLrvurEbv0104W8+0oSqX+w=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@7.6.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.8" } }, "sha512-lWwru2FQc/gmCNssZ4em4SV1tCbVUK6gKOKj2Poh2C5uHeViwMbg/8qDVYVrRoIFjp78lubR6xo2MlFqVml5FQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.3.4", "", { "dependencies": { "@ankhorage/utility": "^0.1.1", "@eslint/compat": "^2.1.0", "@eslint/js": "^10.0.1", "eslint": "^10.7.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.5", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^12.1.1", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.12.2", "prettier": "^3.8.1", "typescript-eslint": "^8.24.0" }, "bin": { "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-prettier": "dist/cli/bin/prettier.js" } }, "sha512-bQfsgxCHo3n9Dohvpujma7BHiBCcWY7N46W+W5rZlTES4xbfjw2BRvItflKPTUZGZ5cSbeut2DIRpIbz6fZoVA=="],
 
@@ -1665,6 +1665,8 @@
     "zod": ["zod@4.4.3", "", {}, "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ=="],
 
     "zod-validation-error": ["zod-validation-error@4.0.2", "", { "peerDependencies": { "zod": "^3.25.0 || ^4.0.0" } }, "sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ=="],
+
+    "@ankhorage/surface/@ankhorage/contracts": ["@ankhorage/contracts@7.2.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.0.8" } }, "sha512-p+QbZ7j3ByjtQumehovnps6Uw67aCtCpwL4SznQGHwcPwWV8jTYEfYaaSbYiX+XDLrvurEbv0104W8+0oSqX+w=="],
 
     "@babel/core/json5": ["json5@2.2.3", "", { "bin": { "json5": "lib/cli.js" } }, "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="],
 

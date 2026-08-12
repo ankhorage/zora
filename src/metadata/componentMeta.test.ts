@@ -124,6 +124,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Textarea',
       'Text',
       'Heading',
+      'Image',
       'Divider',
       'ChatListItem',
       'CameraPermissionView',
@@ -170,6 +171,19 @@ describe('ZORA_COMPONENT_META invariants', () => {
         `Direct manifest node '${key}' must be categorized as leaf or container in the test.`,
       );
     }
+  });
+
+  test('Image is a direct manifest leaf with canonical media authoring metadata', () => {
+    expect(ZORA_COMPONENT_META.Image.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.Image.allowedChildren).toEqual([]);
+    expect(ZORA_COMPONENT_META.Image.props.source).toEqual({
+      type: 'media',
+      category: 'Content',
+      label: 'Source',
+      mediaKinds: ['image'],
+      authoring: { authority: 'instance' },
+    });
+    expect(ZORA_COMPONENT_META.Image.props.alt?.authoring).toEqual({ authority: 'instance' });
   });
 
   test('ThemeModeToggle is a direct manifest leaf with serializable defaults', () => {
