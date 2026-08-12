@@ -9,15 +9,15 @@ const headingSource = readFileSync(join(import.meta.dir, 'heading', 'Heading.tsx
 describe('content fallback ownership', () => {
   it('keeps Text free of translation context coupling', () => {
     expect(textSource).not.toMatch(/useTranslationContext/);
-    expect(textSource).toMatch(/if \(children !== undefined\) \{/);
-    expect(textSource).toMatch(/if \(text !== undefined\) \{/);
+    expect(textSource).toMatch(/if \(children !== undefined\) return children;/);
+    expect(textSource).toMatch(/if \(text !== undefined\) return text;/);
     expect(textSource).toMatch(/return i18nKey;/);
   });
 
   it('keeps Heading free of translation context coupling', () => {
     expect(headingSource).not.toMatch(/useTranslationContext/);
-    expect(headingSource).toMatch(/if \(children !== undefined\) \{/);
-    expect(headingSource).toMatch(/if \(text !== undefined\) \{/);
+    expect(headingSource).toMatch(/if \(children !== undefined\) return children;/);
+    expect(headingSource).toMatch(/if \(text !== undefined\) return text;/);
     expect(headingSource).toMatch(/return i18nKey;/);
   });
 });

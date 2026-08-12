@@ -14,4 +14,6 @@ export interface CardProps
   footer?: React.ReactNode;
   tone?: ZoraCardTone;
   compact?: boolean;
+  padding?: string;
+  radius?: string;
 }

@@ -15,7 +15,7 @@ export const cardThemeRecipeMeta = {
       type: 'token',
       tokenFamily: 'spacing',
       label: 'Padding',
-      default: 'l',
+      description: 'When unset, Card keeps its compact-aware spacing default.',
     },
     radius: {
       type: 'token',

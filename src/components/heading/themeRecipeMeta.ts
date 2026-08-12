@@ -1,16 +1,15 @@
 import { ZORA_COLORS, ZORA_EMPHASES } from '../../internal/colorModel';
 import type { ZoraThemeRecipeMeta } from '../../metadata/themeRecipeTypes';
 
-export const textThemeRecipeMeta = {
-  name: 'Text',
+export const headingThemeRecipeMeta = {
+  name: 'Heading',
   kind: 'component',
-  description: 'Maps semantic Text presentation defaults into runtime props.',
+  description: 'Maps Heading presentation defaults without replacing semantic heading levels.',
   fields: {
-    variant: {
+    size: {
       type: 'choice',
-      label: 'Typography variant',
-      options: ['body', 'lead', 'bodySmall', 'caption', 'label', 'eyebrow', 'code'],
-      default: 'body',
+      label: 'Size',
+      options: ['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     },
     color: { type: 'choice', label: 'Color', options: ZORA_COLORS },
     emphasis: {

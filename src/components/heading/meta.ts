@@ -1,21 +1,19 @@
 import { ZORA_COLORS, ZORA_EMPHASES } from '../../internal/colorModel';
 import type { ZoraComponentMeta } from '../../metadata';
 
+const themeAuthoring = {
+  authority: 'theme',
+  scope: 'component',
+  allowInstanceOverride: true,
+} as const;
+
 export const headingMeta = {
   name: 'Heading',
   category: 'component',
   directManifestNode: true,
   allowedChildren: [],
-  blueprint: {
-    label: 'Heading',
-    defaultProps: {
-      text: 'Heading',
-      level: 2,
-    },
-  },
-  i18n: {
-    fields: [{ keyProp: 'i18nKey', defaultTextProp: 'text' }],
-  },
+  blueprint: { label: 'Heading', defaultProps: { text: 'Heading', level: 2 } },
+  i18n: { fields: [{ keyProp: 'i18nKey', defaultTextProp: 'text' }] },
   props: {
     text: {
       type: 'string',
@@ -43,43 +41,37 @@ export const headingMeta = {
       category: 'Typography',
       label: 'Size',
       enum: ['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     color: {
       type: 'enum',
       category: 'Style',
       label: 'Color',
       enum: ZORA_COLORS,
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     emphasis: {
       type: 'enum',
       category: 'Style',
       label: 'Emphasis',
       enum: ZORA_EMPHASES,
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     align: {
       type: 'enum',
       category: 'Layout',
       label: 'Align',
       enum: ['auto', 'left', 'right', 'center', 'justify'],
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
     weight: {
       type: 'enum',
       category: 'Typography',
       label: 'Weight',
       enum: ['regular', 'medium', 'semiBold', 'bold'],
-      authoring: { authority: 'theme', scope: 'component' },
+      authoring: themeAuthoring,
     },
-    italic: {
-      type: 'boolean',
-      category: 'Typography',
-      label: 'Italic',
-      default: false,
-      authoring: { authority: 'theme', scope: 'component' },
-    },
+    italic: { type: 'boolean', category: 'Typography', label: 'Italic', authoring: themeAuthoring },
     numberOfLines: {
       type: 'number',
       category: 'Layout',

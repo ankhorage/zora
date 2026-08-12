@@ -1,14 +1,15 @@
+import { ZORA_COLORS } from '../../internal/colorModel';
 import type { ZoraThemeRecipeMeta } from '../../metadata/themeRecipeTypes';
 
 export const buttonThemeRecipeMeta = {
   name: 'Button',
   kind: 'component',
-  description: 'Maps shared theme tokens and semantic choices into Button presentation.',
+  description: 'Maps shared semantic choices into Button presentation defaults.',
   fields: {
     color: {
-      type: 'token',
-      tokenFamily: 'colors',
+      type: 'choice',
       label: 'Color',
+      options: ZORA_COLORS,
       default: 'primary',
     },
     variant: {
@@ -22,13 +23,7 @@ export const buttonThemeRecipeMeta = {
       label: 'Size',
       description: 'A Button-specific semantic scale, not a universal pixel size.',
       options: ['s', 'm', 'l'],
-      default: 'm',
-    },
-    radius: {
-      type: 'token',
-      tokenFamily: 'radii',
-      label: 'Corner radius',
-      default: 'm',
+      default: 'l',
     },
   },
 } as const satisfies ZoraThemeRecipeMeta;

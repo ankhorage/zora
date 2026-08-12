@@ -12,4 +12,6 @@ export interface PanelProps extends ZoraBaseProps {
   children?: React.ReactNode;
   tone?: ZoraCardTone;
   compact?: boolean;
+  padding?: string;
+  radius?: string;
 }

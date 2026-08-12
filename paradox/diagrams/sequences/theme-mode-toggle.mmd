@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_resolveThemeModeToggleState as resolveThemeModeToggleState
+  participant participant_ThemeModeToggle as ThemeModeToggle
+  participant participant_useTheme as useTheme
+  participant participant_useZoraTheme as useZoraTheme
+  participant_ThemeModeToggle->>participant_useZoraTheme: useZoraTheme()
+  participant_useZoraTheme->>participant_useTheme: useTheme()
+  participant_useTheme-->>participant_useZoraTheme: return
+  participant_useZoraTheme-->>participant_ThemeModeToggle: return
+  participant_ThemeModeToggle->>participant_resolveThemeModeToggleState: resolveThemeModeToggleState()
+  participant_resolveThemeModeToggleState-->>participant_ThemeModeToggle: return
