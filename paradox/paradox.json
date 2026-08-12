@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.9.2",
+      "value": "v2.11.0",
       "color": "cb3837"
     },
     {
@@ -59,6 +59,7 @@
     }
   ],
   "usage": null,
+  "readmeUsageDescription": null,
   "readmeUsage": [
     {
       "title": "Minimal ZORA app root.",
@@ -68,6 +69,8 @@
       "sourcePath": "examples/basic-app/App.tsx"
     }
   ],
+  "readmeCli": null,
+  "readmeConfig": null,
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
@@ -305,8 +308,9 @@
       "path": "src/components/button/Button.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/components/button/resolveButtonThemeRecipe.ts",
         "src/components/button/types.ts",
-        "src/internal/recipes.ts",
+        "src/theme/useZoraThemeRecipe.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["Button"]
@@ -324,9 +328,15 @@
       "exports": ["buttonMeta"]
     },
     {
+      "path": "src/components/button/resolveButtonThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/internal/recipes.ts"],
+      "exports": ["resolveButtonThemeRecipe"]
+    },
+    {
       "path": "src/components/button/themeRecipeMeta.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/metadata/themeRecipeTypes.ts"],
+      "dependencies": ["src/internal/colorModel.ts", "src/metadata/themeRecipeTypes.ts"],
       "exports": ["buttonThemeRecipeMeta"]
     },
     {
@@ -339,11 +349,13 @@
       "path": "src/components/card/Card.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/components/card/resolveCardThemeRecipe.ts",
         "src/components/card/types.ts",
         "src/components/heading/index.ts",
         "src/components/text/index.ts",
         "src/foundation/index.ts",
         "src/internal/recipes.ts",
+        "src/theme/useZoraThemeRecipe.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["Card"]
@@ -359,6 +371,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/index.ts"],
       "exports": ["cardMeta"]
+    },
+    {
+      "path": "src/components/card/resolveCardThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/internal/recipes.ts"],
+      "exports": ["resolveCardThemeRecipe"]
     },
     {
       "path": "src/components/card/themeRecipeMeta.ts",
@@ -762,8 +780,10 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/components/heading/resolveHeadingRecipe.ts",
+        "src/components/heading/resolveHeadingThemeRecipe.ts",
         "src/components/heading/types.ts",
         "src/theme/useZoraTheme.ts",
+        "src/theme/useZoraThemeRecipe.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["Heading"]
@@ -794,6 +814,18 @@
       "isEntrypoint": false,
       "dependencies": ["src/components/heading/types.ts"],
       "exports": ["resolveHeadingRecipe", "resolveHeadingSizeFromLevel"]
+    },
+    {
+      "path": "src/components/heading/resolveHeadingThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/components/heading/types.ts"],
+      "exports": ["resolveHeadingThemeRecipe"]
+    },
+    {
+      "path": "src/components/heading/themeRecipeMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/internal/colorModel.ts", "src/metadata/themeRecipeTypes.ts"],
+      "exports": ["headingThemeRecipeMeta"]
     },
     {
       "path": "src/components/heading/types.ts",
@@ -1481,12 +1513,20 @@
       "exports": ["resolveTextStyle"]
     },
     {
+      "path": "src/components/text/resolveTextThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/components/text/types.ts"],
+      "exports": ["resolveTextThemeRecipe"]
+    },
+    {
       "path": "src/components/text/Text.tsx",
       "isEntrypoint": false,
       "dependencies": [
         "src/components/text/resolveTextRecipe.ts",
+        "src/components/text/resolveTextThemeRecipe.ts",
         "src/components/text/types.ts",
         "src/theme/useZoraTheme.ts",
+        "src/theme/useZoraThemeRecipe.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["Text"]
@@ -1494,7 +1534,7 @@
     {
       "path": "src/components/text/themeRecipeMeta.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/metadata/themeRecipeTypes.ts"],
+      "dependencies": ["src/internal/colorModel.ts", "src/metadata/themeRecipeTypes.ts"],
       "exports": ["textThemeRecipeMeta"]
     },
     {
@@ -2049,6 +2089,8 @@
         "TextWeight",
         "ThemeComposer",
         "ThemeComposerProps",
+        "ThemeModeToggle",
+        "ThemeModeToggleProps",
         "TileGrid",
         "TileGridProps",
         "Timeline",
@@ -2475,7 +2517,8 @@
         "src/patterns/timeline/meta.ts",
         "src/patterns/tree-view/meta.ts",
         "src/patterns/zora-drawer-content/meta.ts",
-        "src/patterns/zora-tab-bar/meta.ts"
+        "src/patterns/zora-tab-bar/meta.ts",
+        "src/theme/ThemeModeToggle.meta.ts"
       ],
       "exports": ["ZORA_COMPONENT_META"]
     },
@@ -2520,6 +2563,7 @@
       "dependencies": [
         "src/components/button/themeRecipeMeta.ts",
         "src/components/card/themeRecipeMeta.ts",
+        "src/components/heading/themeRecipeMeta.ts",
         "src/components/text/themeRecipeMeta.ts",
         "src/metadata/themeRecipeTypes.ts",
         "src/patterns/panel/themeRecipeMeta.ts"
@@ -3260,7 +3304,9 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/components/card/index.ts",
+        "src/components/card/resolveCardThemeRecipe.ts",
         "src/patterns/panel/types.ts",
+        "src/theme/useZoraThemeRecipe.ts",
         "src/theme/withZoraThemeScope.tsx"
       ],
       "exports": ["Panel"]
@@ -3933,7 +3979,8 @@
         "src/patterns/timeline/index.ts",
         "src/patterns/tree-view/index.ts",
         "src/patterns/zora-drawer-content/index.ts",
-        "src/patterns/zora-tab-bar/index.ts"
+        "src/patterns/zora-tab-bar/index.ts",
+        "src/theme/ThemeModeToggle.tsx"
       ],
       "exports": ["ZORA_COMPONENT_REGISTRY", "ZoraComponentRegistry"]
     },
@@ -3949,6 +3996,8 @@
       "dependencies": [],
       "exports": [
         "createZoraThemeConfig",
+        "ThemeModeToggle",
+        "ThemeModeToggleProps",
         "useZoraTheme",
         "withZoraThemeScope",
         "ZoraBaseProps",
@@ -3965,10 +4014,45 @@
       ]
     },
     {
+      "path": "src/theme/resolveThemeModeToggleState.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/types.ts"],
+      "exports": ["resolveThemeModeToggleState"]
+    },
+    {
       "path": "src/theme/resolveZoraScopedThemeId.ts",
       "isEntrypoint": false,
       "dependencies": ["src/theme/types.ts"],
       "exports": ["resolveZoraScopedThemeId"]
+    },
+    {
+      "path": "src/theme/resolveZoraThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/themeRecipeMeta.ts", "src/metadata/themeRecipeTypes.ts"],
+      "exports": ["resolveZoraThemeRecipe"]
+    },
+    {
+      "path": "src/theme/ThemeModeToggle.meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["themeModeToggleMeta"]
+    },
+    {
+      "path": "src/theme/ThemeModeToggle.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/icon-button/index.ts",
+        "src/theme/resolveThemeModeToggleState.ts",
+        "src/theme/ThemeModeToggleProps.ts",
+        "src/theme/useZoraTheme.ts"
+      ],
+      "exports": ["ThemeModeToggle"]
+    },
+    {
+      "path": "src/theme/ThemeModeToggleProps.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/components/icon-button/index.ts"],
+      "exports": ["ThemeModeToggleProps"]
     },
     {
       "path": "src/theme/types.ts",
@@ -3987,6 +4071,12 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": ["useZoraTheme"]
+    },
+    {
+      "path": "src/theme/useZoraThemeRecipe.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/resolveZoraThemeRecipe.ts", "src/theme/useZoraTheme.ts"],
+      "exports": ["useZoraThemeRecipe"]
     },
     {
       "path": "src/theme/withZoraThemeScope.tsx",
@@ -4027,7 +4117,6 @@
       "path": "src/theme/ZoraThemeScope.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/theme/createZoraThemeConfig.ts",
         "src/theme/resolveZoraScopedThemeId.ts",
         "src/theme/types.ts",
         "src/theme/ZoraThemeRuntimeContext.tsx"
@@ -5321,14 +5410,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -5342,7 +5431,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -5819,7 +5908,7 @@
       "modulePath": "src/components/button/Button.tsx",
       "sourceLocation": {
         "filePath": "src/components/button/Button.tsx",
-        "line": 41,
+        "line": 43,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -5915,7 +6004,7 @@
         {
           "name": "gap",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -6004,7 +6093,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -6536,7 +6625,7 @@
       "modulePath": "src/components/card/Card.tsx",
       "sourceLocation": {
         "filePath": "src/components/card/Card.tsx",
-        "line": 86,
+        "line": 92,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -6571,14 +6660,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -6599,7 +6688,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -6807,6 +6896,13 @@
           "description": null
         },
         {
+          "name": "padding",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "pb",
           "kind": "property",
           "type": "Responsive<SpaceValue> | undefined",
@@ -6859,6 +6955,13 @@
           "name": "py",
           "kind": "property",
           "type": "Responsive<SpaceValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "kind": "property",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -6972,14 +7075,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -6993,7 +7096,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -7779,7 +7882,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -8736,14 +8839,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -8757,7 +8860,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -9450,7 +9553,7 @@
         {
           "name": "intent",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").MenuActionIntent | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").MenuActionIntent | undefined",
           "required": false,
           "description": null
         },
@@ -9872,14 +9975,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -9893,7 +9996,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -10338,11 +10441,11 @@
       "relatedSymbols": ["MenuProps"],
       "signatures": [
         {
-          "label": "(props: import(\"/home/runner/work/zora/zora/src/index\").MenuProps) => React.JSX.Element",
+          "label": "(props: import(\"./src/index\").MenuProps) => React.JSX.Element",
           "parameters": [
             {
               "name": "props",
-              "type": "import(\"/home/runner/work/zora/zora/src/index\").MenuProps",
+              "type": "import(\"./src/index\").MenuProps",
               "required": true,
               "description": null
             }
@@ -11066,7 +11169,7 @@
         {
           "name": "keyboardType",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").KeyboardTypeOptions | undefined",
+          "type": "import(\"react-native/types/index\").KeyboardTypeOptions | undefined",
           "required": false,
           "description": null
         },
@@ -11620,7 +11723,7 @@
         {
           "name": "height",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -11641,7 +11744,7 @@
         {
           "name": "minHeight",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -11655,14 +11758,14 @@
         {
           "name": "p",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "radius",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -11690,7 +11793,7 @@
         {
           "name": "width",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -11741,14 +11844,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -11762,7 +11865,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -12152,7 +12255,7 @@
       "modulePath": "src/components/heading/Heading.tsx",
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 124,
+        "line": 114,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -13020,7 +13123,7 @@
         {
           "name": "fit",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageResizeMode | undefined",
+          "type": "import(\"react-native/types/index\").ImageResizeMode | undefined",
           "required": false,
           "description": null
         },
@@ -13130,14 +13233,14 @@
         {
           "name": "onError",
           "kind": "property",
-          "type": "((error: import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageErrorEvent) => void) | undefined",
+          "type": "((error: import(\"react-native/types/index\").ImageErrorEvent) => void) | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "radius",
           "kind": "property",
-          "type": "number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\" | undefined",
+          "type": "string | number | undefined",
           "required": false,
           "description": null
         },
@@ -13452,14 +13555,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -13480,7 +13583,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -15509,7 +15612,7 @@
         {
           "name": "size",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
           "required": false,
           "description": null
         },
@@ -15530,7 +15633,7 @@
         {
           "name": "variant",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
           "required": false,
           "description": null
         }
@@ -15756,7 +15859,7 @@
         {
           "name": "size",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
           "required": false,
           "description": null
         },
@@ -15777,7 +15880,7 @@
         {
           "name": "variant",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
           "required": false,
           "description": null
         }
@@ -16224,7 +16327,7 @@
       "modulePath": "src/patterns/panel/Panel.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/panel/Panel.tsx",
-        "line": 16,
+        "line": 26,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -16302,6 +16405,20 @@
           "name": "mode",
           "kind": "property",
           "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "padding",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "kind": "property",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -17182,7 +17299,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -19851,7 +19968,7 @@
         {
           "name": "height",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -19872,7 +19989,7 @@
         {
           "name": "radius",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -19893,7 +20010,7 @@
         {
           "name": "width",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -19955,7 +20072,7 @@
         {
           "name": "gap",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -19969,7 +20086,7 @@
         {
           "name": "lastLineWidth",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -20011,7 +20128,7 @@
         {
           "name": "width",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -20152,7 +20269,7 @@
         {
           "name": "backgroundColor",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
           "required": false,
           "description": null
         },
@@ -20201,7 +20318,7 @@
         {
           "name": "minHeight",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -20287,14 +20404,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -20315,7 +20432,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -20713,14 +20830,14 @@
         {
           "name": "accessibilityRole",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
           "kind": "property",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -20734,7 +20851,7 @@
         {
           "name": "alignSelf",
           "kind": "property",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -21347,7 +21464,7 @@
       "modulePath": "src/components/text/Text.tsx",
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 118,
+        "line": 109,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -22898,6 +23015,56 @@
       "structuredRows": []
     },
     {
+      "name": "ThemeModeToggle",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/theme/ThemeModeToggle.tsx",
+      "sourceLocation": {
+        "filePath": "src/theme/ThemeModeToggle.tsx",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["ThemeModeToggleProps"],
+      "signatures": [
+        {
+          "label": "({\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}: ThemeModeToggleProps) => import(\"@types/react/index\").JSX.Element",
+          "parameters": [
+            {
+              "name": "{\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}",
+              "type": "ThemeModeToggleProps",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "import(\"@types/react/index\").JSX.Element",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ThemeModeToggleProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/theme/ThemeModeToggleProps.ts",
+      "sourceLocation": {
+        "filePath": "src/theme/ThemeModeToggleProps.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "TileGrid",
       "description": "Responsive grid layout for arranging tile content.",
       "isReadme": false,
@@ -24358,9 +24525,9 @@
       "relatedSymbols": [],
       "signatures": [
         {
-          "label": "() => { theme: import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "parameters": [],
-          "returnType": "{ theme: import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "returnDescription": null
         }
       ],
@@ -24576,7 +24743,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 97,
+        "line": 98,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -24594,7 +24761,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 238,
+        "line": 240,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -24666,7 +24833,7 @@
       "modulePath": "src/metadata/themeRecipeMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/themeRecipeMeta.ts",
-        "line": 7,
+        "line": 8,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -24785,7 +24952,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 50,
+        "line": 51,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24843,7 +25010,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 83,
+        "line": 77,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24890,7 +25057,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 76,
+        "line": 70,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24937,7 +25104,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 68,
+        "line": 62,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24955,7 +25122,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 66,
+        "line": 61,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24973,7 +25140,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 59,
+        "line": 57,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24999,7 +25166,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 95,
+        "line": 89,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25109,7 +25276,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 110,
+        "line": 104,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25127,7 +25294,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 35,
+        "line": 36,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25178,7 +25345,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 40,
+        "line": 41,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25287,7 +25454,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 101,
+        "line": 102,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25305,7 +25472,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 90,
+        "line": 84,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25506,7 +25673,7 @@
         {
           "name": "descriptors",
           "kind": "property",
-          "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+          "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
           "required": false,
           "description": null
         },
@@ -25548,7 +25715,7 @@
         {
           "name": "routeMap",
           "kind": "property",
-          "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+          "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
           "required": false,
           "description": null
         },
@@ -25845,30 +26012,24 @@
     },
     {
       "name": "ZoraProvider",
-      "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
+      "description": null,
       "isReadme": false,
-      "examples": [
-        {
-          "title": "App provider",
-          "language": "tsx",
-          "code": "<ZoraProvider initialMode=\"light\"><App /></ZoraProvider>"
-        }
-      ],
+      "examples": [],
       "kind": "function",
       "modulePath": "src/theme/ZoraProvider.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 26,
+        "line": 18,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
       "relatedSymbols": ["ZoraProviderProps"],
       "signatures": [
         {
-          "label": "({\n  children,\n  theme = zoraDefaultTheme,\n  initialMode = 'light',\n}: ZoraProviderProps) => React.JSX.Element",
+          "label": "({\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n}: ZoraProviderProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  children,\n  theme = zoraDefaultTheme,\n  initialMode = 'light',\n}",
+              "name": "{\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n}",
               "type": "ZoraProviderProps",
               "required": true,
               "description": null
@@ -25890,7 +26051,7 @@
       "modulePath": "src/theme/ZoraProvider.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 9,
+        "line": 10,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25915,6 +26076,13 @@
           "name": "theme",
           "kind": "property",
           "type": "ZoraTheme | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeConfig",
+          "kind": "property",
+          "type": "ThemeConfig | undefined",
           "required": false,
           "description": null
         }
@@ -25990,7 +26158,7 @@
         {
           "name": "descriptors",
           "kind": "property",
-          "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+          "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
           "required": false,
           "description": null
         },
@@ -26025,7 +26193,7 @@
         {
           "name": "routeMap",
           "kind": "property",
-          "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+          "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
           "required": false,
           "description": null
         },
@@ -26162,8 +26330,8 @@
         {
           "name": "default",
           "kind": "property",
-          "type": "boolean",
-          "required": true,
+          "type": "boolean | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -26209,8 +26377,8 @@
         {
           "name": "default",
           "kind": "property",
-          "type": "string",
-          "required": true,
+          "type": "string | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -26364,8 +26532,8 @@
         {
           "name": "default",
           "kind": "property",
-          "type": "string",
-          "required": true,
+          "type": "string | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -26408,7 +26576,7 @@
       "modulePath": "src/theme/ZoraThemeScope.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
-        "line": 64,
+        "line": 47,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -26440,7 +26608,7 @@
       "modulePath": "src/theme/ZoraThemeScope.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
-        "line": 9,
+        "line": 8,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -27190,13 +27358,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -27208,7 +27376,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -27555,7 +27723,7 @@
       "modulePath": "src/components/button/Button.tsx",
       "sourceLocation": {
         "filePath": "src/components/button/Button.tsx",
-        "line": 41,
+        "line": 43,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -27580,7 +27748,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -27919,7 +28087,7 @@
         },
         {
           "name": "gap",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -28074,7 +28242,7 @@
       "modulePath": "src/components/card/Card.tsx",
       "sourceLocation": {
         "filePath": "src/components/card/Card.tsx",
-        "line": 86,
+        "line": 92,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -28087,13 +28255,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -28111,7 +28279,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -28290,6 +28458,12 @@
           "description": null
         },
         {
+          "name": "padding",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "pb",
           "type": "Responsive<SpaceValue> | undefined",
           "required": false,
@@ -28334,6 +28508,12 @@
         {
           "name": "py",
           "type": "Responsive<SpaceValue> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -28414,13 +28594,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -28432,7 +28612,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -28852,7 +29032,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -29656,13 +29836,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -29674,7 +29854,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -30262,13 +30442,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -30280,7 +30460,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -31234,7 +31414,7 @@
         },
         {
           "name": "height",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -31252,7 +31432,7 @@
         },
         {
           "name": "minHeight",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -31264,13 +31444,13 @@
         },
         {
           "name": "p",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "radius",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -31294,7 +31474,7 @@
         },
         {
           "name": "width",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -31321,13 +31501,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -31339,7 +31519,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -31647,7 +31827,7 @@
       "modulePath": "src/components/heading/Heading.tsx",
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 124,
+        "line": 114,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -32110,13 +32290,13 @@
         },
         {
           "name": "onError",
-          "type": "((error: import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageErrorEvent) => void) | undefined",
+          "type": "((error: import(\"react-native/types/index\").ImageErrorEvent) => void) | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "radius",
-          "type": "number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\" | undefined",
+          "type": "string | number | undefined",
           "required": false,
           "description": null
         },
@@ -32197,7 +32377,7 @@
         },
         {
           "name": "fit",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").ImageResizeMode | undefined",
+          "type": "import(\"react-native/types/index\").ImageResizeMode | undefined",
           "required": false,
           "description": null
         },
@@ -32395,13 +32575,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -32419,7 +32599,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -34819,7 +34999,7 @@
         },
         {
           "name": "size",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
           "required": false,
           "description": null
         },
@@ -34837,7 +35017,7 @@
         },
         {
           "name": "variant",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
           "required": false,
           "description": null
         }
@@ -34912,7 +35092,7 @@
         },
         {
           "name": "size",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraControlSize | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
           "required": false,
           "description": null
         },
@@ -34930,7 +35110,7 @@
         },
         {
           "name": "variant",
-          "type": "import(\"/home/runner/work/zora/zora/src/internal/recipes\").ZoraButtonVariant | undefined",
+          "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
           "required": false,
           "description": null
         }
@@ -35241,7 +35421,7 @@
       "modulePath": "src/patterns/panel/Panel.tsx",
       "sourceLocation": {
         "filePath": "src/patterns/panel/Panel.tsx",
-        "line": 16,
+        "line": 26,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -35291,6 +35471,18 @@
         {
           "name": "mode",
           "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "padding",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "radius",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -35650,7 +35842,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -37235,7 +37427,7 @@
       "props": [
         {
           "name": "height",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -37253,7 +37445,7 @@
         },
         {
           "name": "radius",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<number | \"s\" | \"m\" | \"l\" | \"none\" | \"full\"> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -37271,7 +37463,7 @@
         },
         {
           "name": "width",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -37430,7 +37622,7 @@
       "props": [
         {
           "name": "gap",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -37442,7 +37634,7 @@
         },
         {
           "name": "lastLineWidth",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -37478,7 +37670,7 @@
         },
         {
           "name": "width",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         }
@@ -37550,7 +37742,7 @@
       "props": [
         {
           "name": "backgroundColor",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
           "required": false,
           "description": null
         },
@@ -37592,7 +37784,7 @@
         },
         {
           "name": "minHeight",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+          "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
           "required": false,
           "description": null
         },
@@ -37649,13 +37841,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -37673,7 +37865,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -37982,13 +38174,13 @@
         },
         {
           "name": "accessibilityRole",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityRole | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
           "required": false,
           "description": null
         },
         {
           "name": "accessibilityState",
-          "type": "import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").AccessibilityState | undefined",
+          "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
           "required": false,
           "description": null
         },
@@ -38000,7 +38192,7 @@
         },
         {
           "name": "alignSelf",
-          "type": "Responsive<\"auto\" | import(\"/home/runner/work/zora/zora/node_modules/react-native/types/index\").FlexAlignType | undefined>",
+          "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
           "required": false,
           "description": null
         },
@@ -38410,7 +38602,7 @@
       "modulePath": "src/components/text/Text.tsx",
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 118,
+        "line": 109,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -39612,6 +39804,46 @@
       ]
     },
     {
+      "name": "ThemeModeToggle",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/theme/ThemeModeToggle.tsx",
+      "sourceLocation": {
+        "filePath": "src/theme/ThemeModeToggle.tsx",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "ZoraControlSize | undefined",
+          "required": false,
+          "defaultValue": "'m'",
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "TileGrid",
       "description": "Responsive grid layout for arranging tile content.",
       "isReadme": false,
@@ -40292,7 +40524,7 @@
         },
         {
           "name": "descriptors",
-          "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+          "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
           "required": false,
           "description": null
         },
@@ -40328,7 +40560,7 @@
         },
         {
           "name": "routeMap",
-          "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+          "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
           "required": false,
           "description": null
         },
@@ -40354,19 +40586,13 @@
     },
     {
       "name": "ZoraProvider",
-      "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
+      "description": null,
       "isReadme": false,
-      "examples": [
-        {
-          "title": "App provider",
-          "language": "tsx",
-          "code": "<ZoraProvider initialMode=\"light\"><App /></ZoraProvider>"
-        }
-      ],
+      "examples": [],
       "modulePath": "src/theme/ZoraProvider.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 26,
+        "line": 18,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -40389,6 +40615,12 @@
           "type": "ZoraTheme | undefined",
           "required": false,
           "defaultValue": "zoraDefaultTheme",
+          "description": null
+        },
+        {
+          "name": "themeConfig",
+          "type": "ThemeConfig | undefined",
+          "required": false,
           "description": null
         }
       ]
@@ -40420,7 +40652,7 @@
         },
         {
           "name": "descriptors",
-          "type": "Readonly<Record<string, import(\"/home/runner/work/zora/zora/src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+          "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
           "required": false,
           "description": null
         },
@@ -40450,7 +40682,7 @@
         },
         {
           "name": "routeMap",
-          "type": "Partial<Record<string, import(\"/home/runner/work/zora/zora/src/index\").ZoraNavigationRouteMetadata>> | undefined",
+          "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
           "required": false,
           "description": null
         },
@@ -40482,7 +40714,7 @@
       "modulePath": "src/theme/ZoraThemeScope.tsx",
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
-        "line": 64,
+        "line": 47,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -40802,7 +41034,43 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/button/Button.tsx",
-        "line": 8,
+        "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveButtonThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/button/resolveButtonThemeRecipe.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "readColor",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/button/resolveButtonThemeRecipe.ts",
+        "line": 23,
+        "column": 1
+      }
+    },
+    {
+      "name": "readVariant",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/button/resolveButtonThemeRecipe.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "readSize",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/button/resolveButtonThemeRecipe.ts",
+        "line": 38,
         "column": 1
       }
     },
@@ -40811,7 +41079,43 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/card/Card.tsx",
-        "line": 11,
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveCardThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/card/resolveCardThemeRecipe.ts",
+        "line": 5,
+        "column": 1
+      }
+    },
+    {
+      "name": "readTone",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/card/resolveCardThemeRecipe.ts",
+        "line": 22,
+        "column": 1
+      }
+    },
+    {
+      "name": "readBoolean",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/card/resolveCardThemeRecipe.ts",
+        "line": 27,
+        "column": 1
+      }
+    },
+    {
+      "name": "readString",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/card/resolveCardThemeRecipe.ts",
+        "line": 31,
         "column": 1
       }
     },
@@ -41369,7 +41673,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 23,
+        "line": 25,
         "column": 1
       }
     },
@@ -41378,7 +41682,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/heading/Heading.tsx",
-        "line": 47,
+        "line": 36,
         "column": 1
       }
     },
@@ -41451,6 +41755,60 @@
       "sourceLocation": {
         "filePath": "src/components/heading/resolveHeadingRecipe.ts",
         "line": 166,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveHeadingThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "readSize",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 24,
+        "column": 1
+      }
+    },
+    {
+      "name": "readColor",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 30,
+        "column": 1
+      }
+    },
+    {
+      "name": "readEmphasis",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
+      "name": "readAlign",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 45,
+        "column": 1
+      }
+    },
+    {
+      "name": "readWeight",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "line": 51,
         "column": 1
       }
     },
@@ -41941,11 +42299,65 @@
       }
     },
     {
+      "name": "resolveTextThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 5,
+        "column": 1
+      }
+    },
+    {
+      "name": "readVariant",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "readColor",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 23,
+        "column": 1
+      }
+    },
+    {
+      "name": "readEmphasis",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "readAlign",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
+      "name": "readWeight",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/text/resolveTextThemeRecipe.ts",
+        "line": 44,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveTextContent",
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 23,
+        "line": 25,
         "column": 1
       }
     },
@@ -41954,7 +42366,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/text/Text.tsx",
-        "line": 47,
+        "line": 40,
         "column": 1
       }
     },
@@ -42926,7 +43338,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/patterns/panel/Panel.tsx",
-        "line": 7,
+        "line": 9,
         "column": 1
       }
     },
@@ -43444,6 +43856,15 @@
       }
     },
     {
+      "name": "resolveThemeModeToggleState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/resolveThemeModeToggleState.ts",
+        "line": 9,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveZoraScopedThemeId",
       "description": null,
       "sourceLocation": {
@@ -43453,11 +43874,65 @@
       }
     },
     {
+      "name": "resolveZoraThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/resolveZoraThemeRecipe.ts",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateFieldValue",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/resolveZoraThemeRecipe.ts",
+        "line": 47,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasThemeToken",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/resolveZoraThemeRecipe.ts",
+        "line": 73,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasOwn",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/resolveZoraThemeRecipe.ts",
+        "line": 89,
+        "column": 1
+      }
+    },
+    {
+      "name": "ThemeModeToggle",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/ThemeModeToggle.tsx",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
       "name": "useZoraTheme",
       "description": null,
       "sourceLocation": {
         "filePath": "src/theme/useZoraTheme.ts",
         "line": 3,
+        "column": 1
+      }
+    },
+    {
+      "name": "useZoraThemeRecipe",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/theme/useZoraThemeRecipe.ts",
+        "line": 4,
         "column": 1
       }
     },
@@ -43481,10 +43956,10 @@
     },
     {
       "name": "ZoraProvider",
-      "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
+      "description": null,
       "sourceLocation": {
         "filePath": "src/theme/ZoraProvider.tsx",
-        "line": 26,
+        "line": 18,
         "column": 1
       }
     },
@@ -43493,7 +43968,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeRuntimeContext.tsx",
-        "line": 16,
+        "line": 14,
         "column": 1
       }
     },
@@ -43502,7 +43977,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
-        "line": 15,
+        "line": 14,
         "column": 1
       }
     },
@@ -43511,7 +43986,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
-        "line": 64,
+        "line": 47,
         "column": 1
       }
     }
@@ -43579,6 +44054,14 @@
       "sourcePath": "src/patterns/selection/SelectionProvider.tsx",
       "symbolName": "SelectionProvider",
       "description": "Provides selection state for building selectable lists and grids.",
+      "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "ThemeModeToggle",
+      "sourcePath": "src/theme/ThemeModeToggle.tsx",
+      "symbolName": "ThemeModeToggle",
+      "description": null,
       "isReadme": false
     },
     {
@@ -43658,7 +44141,7 @@
       "name": "ZoraProvider",
       "sourcePath": "src/theme/ZoraProvider.tsx",
       "symbolName": "ZoraProvider",
-      "description": "Installs the ZORA theme runtime and underlying Surface theme provider.\n\nWrap an app with `ZoraProvider` once near the root so components, patterns,\nlayouts, and theme hooks resolve the same design tokens and color mode.",
+      "description": null,
       "isReadme": false
     },
     {
@@ -44473,6 +44956,11 @@
         "sourcePath": "src/registry.ts"
       },
       {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/theme/ThemeModeToggle.tsx",
+        "sourcePath": "src/registry.ts"
+      },
+      {
         "fromPath": "src/foundation/Box.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/foundation/Box.tsx"
@@ -45039,6 +45527,11 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/theme/ThemeModeToggle.meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/metadata/types.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -45079,6 +45572,11 @@
       },
       {
         "fromPath": "src/metadata/themeRecipeMeta.ts",
+        "toPath": "src/components/heading/themeRecipeMeta.ts",
+        "sourcePath": "src/metadata/themeRecipeMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/themeRecipeMeta.ts",
         "toPath": "src/components/text/themeRecipeMeta.ts",
         "sourcePath": "src/metadata/themeRecipeMeta.ts"
       },
@@ -45105,6 +45603,16 @@
       {
         "fromPath": "src/theme/index.ts",
         "toPath": "src/theme/createZoraThemeConfig.ts",
+        "sourcePath": "src/theme/index.ts"
+      },
+      {
+        "fromPath": "src/theme/index.ts",
+        "toPath": "src/theme/ThemeModeToggle.tsx",
+        "sourcePath": "src/theme/index.ts"
+      },
+      {
+        "fromPath": "src/theme/index.ts",
+        "toPath": "src/theme/ThemeModeToggleProps.ts",
         "sourcePath": "src/theme/index.ts"
       },
       {
@@ -45143,9 +45651,64 @@
         "sourcePath": "src/theme/index.ts"
       },
       {
+        "fromPath": "src/theme/resolveThemeModeToggleState.ts",
+        "toPath": "src/theme/types.ts",
+        "sourcePath": "src/theme/resolveThemeModeToggleState.ts"
+      },
+      {
         "fromPath": "src/theme/resolveZoraScopedThemeId.ts",
         "toPath": "src/theme/types.ts",
         "sourcePath": "src/theme/resolveZoraScopedThemeId.ts"
+      },
+      {
+        "fromPath": "src/theme/resolveZoraThemeRecipe.ts",
+        "toPath": "src/metadata/themeRecipeMeta.ts",
+        "sourcePath": "src/theme/resolveZoraThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/theme/resolveZoraThemeRecipe.ts",
+        "toPath": "src/metadata/themeRecipeTypes.ts",
+        "sourcePath": "src/theme/resolveZoraThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggle.meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/theme/ThemeModeToggle.meta.ts"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggle.tsx",
+        "toPath": "src/components/icon-button/index.ts",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggle.tsx",
+        "toPath": "src/theme/resolveThemeModeToggleState.ts",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggle.tsx",
+        "toPath": "src/theme/ThemeModeToggleProps.ts",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggle.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromPath": "src/theme/ThemeModeToggleProps.ts",
+        "toPath": "src/components/icon-button/index.ts",
+        "sourcePath": "src/theme/ThemeModeToggleProps.ts"
+      },
+      {
+        "fromPath": "src/theme/useZoraThemeRecipe.ts",
+        "toPath": "src/theme/resolveZoraThemeRecipe.ts",
+        "sourcePath": "src/theme/useZoraThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/theme/useZoraThemeRecipe.ts",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/theme/useZoraThemeRecipe.ts"
       },
       {
         "fromPath": "src/theme/withZoraThemeScope.tsx",
@@ -45196,11 +45759,6 @@
         "fromPath": "src/theme/ZoraThemeRuntimeContext.tsx",
         "toPath": "src/theme/zoraDefaultTheme.ts",
         "sourcePath": "src/theme/ZoraThemeRuntimeContext.tsx"
-      },
-      {
-        "fromPath": "src/theme/ZoraThemeScope.tsx",
-        "toPath": "src/theme/createZoraThemeConfig.ts",
-        "sourcePath": "src/theme/ZoraThemeScope.tsx"
       },
       {
         "fromPath": "src/theme/ZoraThemeScope.tsx",
@@ -45564,12 +46122,17 @@
       },
       {
         "fromPath": "src/components/button/Button.tsx",
-        "toPath": "src/internal/recipes.ts",
+        "toPath": "src/theme/useZoraThemeRecipe.ts",
         "sourcePath": "src/components/button/Button.tsx"
       },
       {
         "fromPath": "src/components/button/Button.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/components/button/Button.tsx"
+      },
+      {
+        "fromPath": "src/components/button/Button.tsx",
+        "toPath": "src/components/button/resolveButtonThemeRecipe.ts",
         "sourcePath": "src/components/button/Button.tsx"
       },
       {
@@ -45596,6 +46159,16 @@
         "fromPath": "src/components/button/meta.ts",
         "toPath": "src/metadata/index.ts",
         "sourcePath": "src/components/button/meta.ts"
+      },
+      {
+        "fromPath": "src/components/button/resolveButtonThemeRecipe.ts",
+        "toPath": "src/internal/recipes.ts",
+        "sourcePath": "src/components/button/resolveButtonThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/components/button/themeRecipeMeta.ts",
+        "toPath": "src/internal/colorModel.ts",
+        "sourcePath": "src/components/button/themeRecipeMeta.ts"
       },
       {
         "fromPath": "src/components/button/themeRecipeMeta.ts",
@@ -45664,6 +46237,11 @@
       },
       {
         "fromPath": "src/components/card/Card.tsx",
+        "toPath": "src/theme/useZoraThemeRecipe.ts",
+        "sourcePath": "src/components/card/Card.tsx"
+      },
+      {
+        "fromPath": "src/components/card/Card.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/components/card/Card.tsx"
       },
@@ -45675,6 +46253,11 @@
       {
         "fromPath": "src/components/card/Card.tsx",
         "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/components/card/Card.tsx"
+      },
+      {
+        "fromPath": "src/components/card/Card.tsx",
+        "toPath": "src/components/card/resolveCardThemeRecipe.ts",
         "sourcePath": "src/components/card/Card.tsx"
       },
       {
@@ -45701,6 +46284,11 @@
         "fromPath": "src/components/card/meta.ts",
         "toPath": "src/metadata/allowedChildren.ts",
         "sourcePath": "src/components/card/meta.ts"
+      },
+      {
+        "fromPath": "src/components/card/resolveCardThemeRecipe.ts",
+        "toPath": "src/internal/recipes.ts",
+        "sourcePath": "src/components/card/resolveCardThemeRecipe.ts"
       },
       {
         "fromPath": "src/components/card/themeRecipeMeta.ts",
@@ -46284,12 +46872,22 @@
       },
       {
         "fromPath": "src/components/heading/Heading.tsx",
+        "toPath": "src/theme/useZoraThemeRecipe.ts",
+        "sourcePath": "src/components/heading/Heading.tsx"
+      },
+      {
+        "fromPath": "src/components/heading/Heading.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/components/heading/Heading.tsx"
       },
       {
         "fromPath": "src/components/heading/Heading.tsx",
         "toPath": "src/components/heading/resolveHeadingRecipe.ts",
+        "sourcePath": "src/components/heading/Heading.tsx"
+      },
+      {
+        "fromPath": "src/components/heading/Heading.tsx",
+        "toPath": "src/components/heading/resolveHeadingThemeRecipe.ts",
         "sourcePath": "src/components/heading/Heading.tsx"
       },
       {
@@ -46321,6 +46919,21 @@
         "fromPath": "src/components/heading/resolveHeadingRecipe.ts",
         "toPath": "src/components/heading/types.ts",
         "sourcePath": "src/components/heading/resolveHeadingRecipe.ts"
+      },
+      {
+        "fromPath": "src/components/heading/resolveHeadingThemeRecipe.ts",
+        "toPath": "src/components/heading/types.ts",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/components/heading/themeRecipeMeta.ts",
+        "toPath": "src/internal/colorModel.ts",
+        "sourcePath": "src/components/heading/themeRecipeMeta.ts"
+      },
+      {
+        "fromPath": "src/components/heading/themeRecipeMeta.ts",
+        "toPath": "src/metadata/themeRecipeTypes.ts",
+        "sourcePath": "src/components/heading/themeRecipeMeta.ts"
       },
       {
         "fromPath": "src/components/heading/types.ts",
@@ -47363,8 +47976,18 @@
         "sourcePath": "src/components/text/resolveTextRecipe.ts"
       },
       {
+        "fromPath": "src/components/text/resolveTextThemeRecipe.ts",
+        "toPath": "src/components/text/types.ts",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
         "fromPath": "src/components/text/Text.tsx",
         "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/components/text/Text.tsx"
+      },
+      {
+        "fromPath": "src/components/text/Text.tsx",
+        "toPath": "src/theme/useZoraThemeRecipe.ts",
         "sourcePath": "src/components/text/Text.tsx"
       },
       {
@@ -47379,8 +48002,18 @@
       },
       {
         "fromPath": "src/components/text/Text.tsx",
+        "toPath": "src/components/text/resolveTextThemeRecipe.ts",
+        "sourcePath": "src/components/text/Text.tsx"
+      },
+      {
+        "fromPath": "src/components/text/Text.tsx",
         "toPath": "src/components/text/types.ts",
         "sourcePath": "src/components/text/Text.tsx"
+      },
+      {
+        "fromPath": "src/components/text/themeRecipeMeta.ts",
+        "toPath": "src/internal/colorModel.ts",
+        "sourcePath": "src/components/text/themeRecipeMeta.ts"
       },
       {
         "fromPath": "src/components/text/themeRecipeMeta.ts",
@@ -48904,6 +49537,16 @@
       },
       {
         "fromPath": "src/patterns/panel/Panel.tsx",
+        "toPath": "src/components/card/resolveCardThemeRecipe.ts",
+        "sourcePath": "src/patterns/panel/Panel.tsx"
+      },
+      {
+        "fromPath": "src/patterns/panel/Panel.tsx",
+        "toPath": "src/theme/useZoraThemeRecipe.ts",
+        "sourcePath": "src/patterns/panel/Panel.tsx"
+      },
+      {
+        "fromPath": "src/patterns/panel/Panel.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/patterns/panel/Panel.tsx"
       },
@@ -49935,13 +50578,61 @@
         "sourcePath": "src/theme/createZoraThemeConfig.ts"
       },
       {
+        "fromSymbol": "resolveZoraThemeRecipe",
+        "toSymbol": "validateFieldValue",
+        "callExpression": "validateFieldValue",
+        "sourcePath": "src/theme/resolveZoraThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "validateFieldValue",
+        "toSymbol": "hasThemeToken",
+        "callExpression": "hasThemeToken",
+        "sourcePath": "src/theme/resolveZoraThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "hasThemeToken",
+        "toSymbol": "hasOwn",
+        "callExpression": "hasOwn",
+        "sourcePath": "src/theme/resolveZoraThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "ThemeModeToggle",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromSymbol": "ThemeModeToggle",
+        "toSymbol": "resolveThemeModeToggleState",
+        "callExpression": "resolveThemeModeToggleState",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
+        "fromSymbol": "src/theme/ThemeModeToggle.tsx",
+        "toSymbol": "setMode",
+        "callExpression": "setMode",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
         "fromSymbol": "useZoraTheme",
         "toSymbol": "useTheme",
         "callExpression": "useTheme",
         "sourcePath": "src/theme/useZoraTheme.ts"
       },
       {
-        "fromSymbol": "ZoraProvider",
+        "fromSymbol": "useZoraThemeRecipe",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/theme/useZoraThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "useZoraThemeRecipe",
+        "toSymbol": "resolveZoraThemeRecipe",
+        "callExpression": "resolveZoraThemeRecipe",
+        "sourcePath": "src/theme/useZoraThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "src/theme/ZoraProvider.tsx",
         "toSymbol": "createZoraThemeConfig",
         "callExpression": "createZoraThemeConfig",
         "sourcePath": "src/theme/ZoraProvider.tsx"
@@ -49986,12 +50677,6 @@
         "fromSymbol": "ZoraThemeScopeInner",
         "toSymbol": "useMemo",
         "callExpression": "useMemo",
-        "sourcePath": "src/theme/ZoraThemeScope.tsx"
-      },
-      {
-        "fromSymbol": "src/theme/ZoraThemeScope.tsx",
-        "toSymbol": "createZoraThemeConfig",
-        "callExpression": "createZoraThemeConfig",
         "sourcePath": "src/theme/ZoraThemeScope.tsx"
       },
       {
@@ -50200,8 +50885,14 @@
       },
       {
         "fromSymbol": "ButtonInner",
-        "toSymbol": "resolveButtonRecipe",
-        "callExpression": "resolveButtonRecipe",
+        "toSymbol": "useZoraThemeRecipe",
+        "callExpression": "useZoraThemeRecipe",
+        "sourcePath": "src/components/button/Button.tsx"
+      },
+      {
+        "fromSymbol": "ButtonInner",
+        "toSymbol": "resolveButtonThemeRecipe",
+        "callExpression": "resolveButtonThemeRecipe",
         "sourcePath": "src/components/button/Button.tsx"
       },
       {
@@ -50209,6 +50900,30 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/components/button/Button.tsx"
+      },
+      {
+        "fromSymbol": "resolveButtonThemeRecipe",
+        "toSymbol": "resolveButtonRecipe",
+        "callExpression": "resolveButtonRecipe",
+        "sourcePath": "src/components/button/resolveButtonThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveButtonThemeRecipe",
+        "toSymbol": "readColor",
+        "callExpression": "readColor",
+        "sourcePath": "src/components/button/resolveButtonThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveButtonThemeRecipe",
+        "toSymbol": "readVariant",
+        "callExpression": "readVariant",
+        "sourcePath": "src/components/button/resolveButtonThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveButtonThemeRecipe",
+        "toSymbol": "readSize",
+        "callExpression": "readSize",
+        "sourcePath": "src/components/button/resolveButtonThemeRecipe.ts"
       },
       {
         "fromSymbol": "resolveStackAlign",
@@ -50248,6 +50963,18 @@
       },
       {
         "fromSymbol": "CardInner",
+        "toSymbol": "useZoraThemeRecipe",
+        "callExpression": "useZoraThemeRecipe",
+        "sourcePath": "src/components/card/Card.tsx"
+      },
+      {
+        "fromSymbol": "CardInner",
+        "toSymbol": "resolveCardThemeRecipe",
+        "callExpression": "resolveCardThemeRecipe",
+        "sourcePath": "src/components/card/Card.tsx"
+      },
+      {
+        "fromSymbol": "CardInner",
         "toSymbol": "resolveCardVariant",
         "callExpression": "resolveCardVariant",
         "sourcePath": "src/components/card/Card.tsx"
@@ -50257,6 +50984,24 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/components/card/Card.tsx"
+      },
+      {
+        "fromSymbol": "resolveCardThemeRecipe",
+        "toSymbol": "readTone",
+        "callExpression": "readTone",
+        "sourcePath": "src/components/card/resolveCardThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveCardThemeRecipe",
+        "toSymbol": "readBoolean",
+        "callExpression": "readBoolean",
+        "sourcePath": "src/components/card/resolveCardThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveCardThemeRecipe",
+        "toSymbol": "readString",
+        "callExpression": "readString",
+        "sourcePath": "src/components/card/resolveCardThemeRecipe.ts"
       },
       {
         "fromSymbol": "src/components/checkbox/Checkbox.tsx",
@@ -50854,6 +51599,18 @@
       },
       {
         "fromSymbol": "HeadingInner",
+        "toSymbol": "resolveHeadingThemeRecipe",
+        "callExpression": "resolveHeadingThemeRecipe",
+        "sourcePath": "src/components/heading/Heading.tsx"
+      },
+      {
+        "fromSymbol": "HeadingInner",
+        "toSymbol": "useZoraThemeRecipe",
+        "callExpression": "useZoraThemeRecipe",
+        "sourcePath": "src/components/heading/Heading.tsx"
+      },
+      {
+        "fromSymbol": "HeadingInner",
         "toSymbol": "resolveHeadingContent",
         "callExpression": "resolveHeadingContent",
         "sourcePath": "src/components/heading/Heading.tsx"
@@ -50923,6 +51680,36 @@
         "toSymbol": "resolveFontFamily",
         "callExpression": "resolveFontFamily",
         "sourcePath": "src/components/heading/resolveHeadingRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveHeadingThemeRecipe",
+        "toSymbol": "readSize",
+        "callExpression": "readSize",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveHeadingThemeRecipe",
+        "toSymbol": "readColor",
+        "callExpression": "readColor",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveHeadingThemeRecipe",
+        "toSymbol": "readEmphasis",
+        "callExpression": "readEmphasis",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveHeadingThemeRecipe",
+        "toSymbol": "readAlign",
+        "callExpression": "readAlign",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveHeadingThemeRecipe",
+        "toSymbol": "readWeight",
+        "callExpression": "readWeight",
+        "sourcePath": "src/components/heading/resolveHeadingThemeRecipe.ts"
       },
       {
         "fromSymbol": "src/components/icon/Icon.tsx",
@@ -51411,6 +52198,36 @@
         "sourcePath": "src/components/text/resolveTextRecipe.ts"
       },
       {
+        "fromSymbol": "resolveTextThemeRecipe",
+        "toSymbol": "readVariant",
+        "callExpression": "readVariant",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveTextThemeRecipe",
+        "toSymbol": "readColor",
+        "callExpression": "readColor",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveTextThemeRecipe",
+        "toSymbol": "readEmphasis",
+        "callExpression": "readEmphasis",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveTextThemeRecipe",
+        "toSymbol": "readAlign",
+        "callExpression": "readAlign",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
+        "fromSymbol": "resolveTextThemeRecipe",
+        "toSymbol": "readWeight",
+        "callExpression": "readWeight",
+        "sourcePath": "src/components/text/resolveTextThemeRecipe.ts"
+      },
+      {
         "fromSymbol": "TextInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -51420,6 +52237,18 @@
         "fromSymbol": "TextInner",
         "toSymbol": "useResponsiveRuntime",
         "callExpression": "useResponsiveRuntime",
+        "sourcePath": "src/components/text/Text.tsx"
+      },
+      {
+        "fromSymbol": "TextInner",
+        "toSymbol": "resolveTextThemeRecipe",
+        "callExpression": "resolveTextThemeRecipe",
+        "sourcePath": "src/components/text/Text.tsx"
+      },
+      {
+        "fromSymbol": "TextInner",
+        "toSymbol": "useZoraThemeRecipe",
+        "callExpression": "useZoraThemeRecipe",
         "sourcePath": "src/components/text/Text.tsx"
       },
       {
@@ -52255,6 +53084,18 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/notice/Notice.tsx"
+      },
+      {
+        "fromSymbol": "PanelInner",
+        "toSymbol": "useZoraThemeRecipe",
+        "callExpression": "useZoraThemeRecipe",
+        "sourcePath": "src/patterns/panel/Panel.tsx"
+      },
+      {
+        "fromSymbol": "PanelInner",
+        "toSymbol": "resolveCardThemeRecipe",
+        "callExpression": "resolveCardThemeRecipe",
+        "sourcePath": "src/patterns/panel/Panel.tsx"
       },
       {
         "fromSymbol": "src/patterns/panel/Panel.tsx",
@@ -56916,6 +57757,11 @@
         "sourcePath": "src/theme/createZoraThemeConfig.ts"
       },
       {
+        "fromSymbol": "ThemeModeToggle",
+        "toType": "ThemeModeToggleProps",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
         "fromSymbol": "ZoraComputedTheme",
         "toType": "ThemeConfig",
         "sourcePath": "src/theme/types.ts"
@@ -57003,6 +57849,11 @@
       {
         "fromSymbol": "ZoraProviderProps",
         "toType": "ReactNode",
+        "sourcePath": "src/theme/ZoraProvider.tsx"
+      },
+      {
+        "fromSymbol": "ZoraProviderProps",
+        "toType": "ThemeConfig",
         "sourcePath": "src/theme/ZoraProvider.tsx"
       },
       {
@@ -57096,6 +57947,12 @@
         "sourcePath": "src/patterns/selection/SelectionProvider.tsx"
       },
       {
+        "fromComponent": "ThemeModeToggle",
+        "toComponent": "IconButton",
+        "jsxElement": "<IconButton\n      color=\"neutral\"\n      disabled={disabled}\n      icon={{ name: state.iconName }}\n      interactionPolicy={interactionPolicy}\n      label={state.label}\n      onPress={() => setMode(state.nextMode)}\n      size={size}\n      testID={testID}\n      variant=\"ghost\"\n    />",
+        "sourcePath": "src/theme/ThemeModeToggle.tsx"
+      },
+      {
         "fromComponent": "ToastProvider",
         "toComponent": "SurfaceToastProvider",
         "jsxElement": "<SurfaceToastProvider>",
@@ -57116,7 +57973,7 @@
       {
         "fromComponent": "ZoraProvider",
         "toComponent": "ThemeProvider",
-        "jsxElement": "<ThemeProvider initialConfig={createZoraThemeConfig(theme)} initialMode={initialMode}>",
+        "jsxElement": "<ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>",
         "sourcePath": "src/theme/ZoraProvider.tsx"
       },
       {
