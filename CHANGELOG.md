@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.11.0
+
+### Minor Changes
+
+- b7ae65d: Make ThemeModeToggle manifest-authorable by registering it in the runtime component registry, publishing static authoring metadata, and supporting interaction-policy injection.
+
 ## 2.10.0
 
 ### Minor Changes
