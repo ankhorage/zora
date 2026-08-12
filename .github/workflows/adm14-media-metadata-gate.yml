@@ -41,29 +41,31 @@ jobs:
               bindable = bindable.replace(import_anchor, import_anchor + image_import, 1)
           start = bindable.index('  Image: {')
           end = bindable.index('  Input: {', start)
-          image_block = """  Image: {
-            ...imageMeta,
-            bindings: {
-              props: {
-                source: {
-                  label: 'Source',
-                  description: 'Dynamic image source or asset descriptor.',
-                  value: {
-                    type: 'imageAsset',
-                    fields: [
-                      { path: 'uri', type: 'string', label: 'URI' },
-                      { path: 'width', type: 'number', label: 'Width' },
-                      { path: 'height', type: 'number', label: 'Height' },
-                      { path: 'alt', type: 'string', label: 'Alt text' },
-                    ],
-                  },
-                  acceptsFallback: true,
-                  acceptsTransforms: true,
-                },
-              },
-            },
-          },
-"""
+          image_block = '\n'.join([
+              '  Image: {',
+              '    ...imageMeta,',
+              '    bindings: {',
+              '      props: {',
+              '        source: {',
+              "          label: 'Source',",
+              "          description: 'Dynamic image source or asset descriptor.',",
+              '          value: {',
+              "            type: 'imageAsset',",
+              '            fields: [',
+              "              { path: 'uri', type: 'string', label: 'URI' },",
+              "              { path: 'width', type: 'number', label: 'Width' },",
+              "              { path: 'height', type: 'number', label: 'Height' },",
+              "              { path: 'alt', type: 'string', label: 'Alt text' },",
+              '            ],',
+              '          },',
+              '          acceptsFallback: true,',
+              '          acceptsTransforms: true,',
+              '        },',
+              '      },',
+              '    },',
+              '  },',
+              '',
+          ])
           bindable = bindable[:start] + image_block + bindable[end:]
           bindable_path.write_text(bindable)
 
@@ -76,22 +78,24 @@ jobs:
                   "      'Heading',\n      'Image',\n      'Divider',",
                   1,
               )
-          image_test = """  test('Image is a direct manifest leaf with canonical media authoring metadata', () => {
-    expect(ZORA_COMPONENT_META.Image.directManifestNode).toBe(true);
-    expect(ZORA_COMPONENT_META.Image.allowedChildren).toEqual([]);
-    expect(ZORA_COMPONENT_META.Image.props.source).toEqual({
-      type: 'media',
-      category: 'Content',
-      label: 'Source',
-      mediaKinds: ['image'],
-      authoring: { authority: 'instance' },
-    });
-    expect(ZORA_COMPONENT_META.Image.props.alt?.authoring).toEqual({ authority: 'instance' });
-  });
-
-"""
+          image_test = '\n'.join([
+              "  test('Image is a direct manifest leaf with canonical media authoring metadata', () => {",
+              '    expect(ZORA_COMPONENT_META.Image.directManifestNode).toBe(true);',
+              '    expect(ZORA_COMPONENT_META.Image.allowedChildren).toEqual([]);',
+              '    expect(ZORA_COMPONENT_META.Image.props.source).toEqual({',
+              "      type: 'media',",
+              "      category: 'Content',",
+              "      label: 'Source',",
+              "      mediaKinds: ['image'],",
+              "      authoring: { authority: 'instance' },",
+              '    });',
+              "    expect(ZORA_COMPONENT_META.Image.props.alt?.authoring).toEqual({ authority: 'instance' });",
+              '  });',
+              '',
+              '',
+          ])
           test_anchor = "  test('ThemeModeToggle is a direct manifest leaf with serializable defaults', () => {"
-          if "Image is a direct manifest leaf with canonical media authoring metadata" not in component_test:
+          if 'Image is a direct manifest leaf with canonical media authoring metadata' not in component_test:
               component_test = component_test.replace(test_anchor, image_test + test_anchor, 1)
           component_test_path.write_text(component_test)
 
@@ -102,14 +106,16 @@ jobs:
           if component_import not in bindable_test:
               bindable_test = bindable_test.replace(bindable_import, bindable_import + component_import, 1)
           old_assertion = "    expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');\n"
-          new_assertions = """    expect(registry.Image?.props.source).toMatchObject({
-      type: 'media',
-      mediaKinds: ['image'],
-    });
-    expect(registry.Image?.props).toEqual(ZORA_COMPONENT_META.Image.props);
-    expect(registry.Image?.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);
-    expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');
-"""
+          new_assertions = '\n'.join([
+              '    expect(registry.Image?.props.source).toMatchObject({',
+              "      type: 'media',",
+              "      mediaKinds: ['image'],",
+              '    });',
+              '    expect(registry.Image?.props).toEqual(ZORA_COMPONENT_META.Image.props);',
+              '    expect(registry.Image?.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);',
+              "    expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');",
+              '',
+          ])
           if old_assertion in bindable_test:
               bindable_test = bindable_test.replace(old_assertion, new_assertions, 1)
           bindable_test_path.write_text(bindable_test)
