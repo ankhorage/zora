@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.13.0
+
+### Minor Changes
+
+- 04e4124: Make Image a first-class manifest-authoring node backed by canonical media metadata, with image-kind constraints and shared static metadata across the standard and bindable registries.
+
 ## 2.12.0
 
 ### Minor Changes
