@@ -3,6 +3,7 @@ import { describe, expect, test } from 'bun:test';
 import type { ZoraComponentRegistry } from './index';
 
 const NON_RUNTIME_COMPONENT_EXPORTS = new Set(['SelectionProvider', 'ToastProvider']);
+const RUNTIME_THEME_COMPONENT_EXPORTS = ['ThemeModeToggle'] as const;
 const REGISTRY_SNAPSHOT_PREFIX = 'ZORA_REGISTRY_SNAPSHOT:';
 
 let registryEntriesPromise: Promise<readonly string[]> | undefined;
@@ -48,7 +49,7 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
 
 async function listPublicConcreteComponentExports(): Promise<readonly string[]> {
   const source = await Bun.file('src/index.ts').text();
-  return Array.from(
+  const componentExports = Array.from(
     source.matchAll(
       /export\s+\{([^}]+)\}\s+from '\.\/(components\/[^']+|foundation|layout\/[^']+|patterns\/[^']+)';/g,
     ),
@@ -56,8 +57,9 @@ async function listPublicConcreteComponentExports(): Promise<readonly string[]> 
     .flatMap((match) => match[1].split(',').map((item) => item.trim()))
     .map((item) => item.split(' as ')[0].trim())
     .filter((name) => /^[A-Z][A-Za-z0-9]+$/.test(name))
-    .filter((name) => !NON_RUNTIME_COMPONENT_EXPORTS.has(name))
-    .sort();
+    .filter((name) => !NON_RUNTIME_COMPONENT_EXPORTS.has(name));
+
+  return [...componentExports, ...RUNTIME_THEME_COMPONENT_EXPORTS].sort();
 }
 
 describe('ZORA_COMPONENT_REGISTRY', () => {

@@ -28,6 +28,7 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       .map((item) => item.split(' as ')[0].trim())
       .filter((name) => /^[A-Z][A-Za-z0-9]+$/.test(name))
       .filter((name) => !['ToastProvider'].includes(name));
+    componentExports.push('ThemeModeToggle');
 
     for (const name of componentExports) {
       expect(
@@ -118,6 +119,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'EmptyState',
       'Hero',
       'Button',
+      'ThemeModeToggle',
       'Input',
       'Textarea',
       'Text',
@@ -168,6 +170,12 @@ describe('ZORA_COMPONENT_META invariants', () => {
         `Direct manifest node '${key}' must be categorized as leaf or container in the test.`,
       );
     }
+  });
+
+  test('ThemeModeToggle is a direct manifest leaf with serializable defaults', () => {
+    expect(ZORA_COMPONENT_META.ThemeModeToggle.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.ThemeModeToggle.allowedChildren).toEqual([]);
+    expect(ZORA_COMPONENT_META.ThemeModeToggle.blueprint?.defaultProps).toEqual({ size: 'm' });
   });
 
   test('Progress is a direct manifest leaf with serializable defaults', () => {

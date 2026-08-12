@@ -97,6 +97,7 @@ import { Timeline } from './patterns/timeline';
 import { TreeItem, TreeView } from './patterns/tree-view';
 import { ZoraDrawerContent } from './patterns/zora-drawer-content';
 import { ZoraTabBar } from './patterns/zora-tab-bar';
+import { ThemeModeToggle } from './theme/ThemeModeToggle';
 
 export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
 
@@ -177,6 +178,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Toast,
   Toolbar,
   ToolbarAction,
+  ThemeModeToggle,
   Box,
   Center,
   Container,

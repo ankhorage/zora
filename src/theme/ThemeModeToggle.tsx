@@ -3,7 +3,12 @@ import { resolveThemeModeToggleState } from './resolveThemeModeToggleState';
 import type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 import { useZoraTheme } from './useZoraTheme';
 
-export function ThemeModeToggle({ disabled, size = 'm', testID }: ThemeModeToggleProps) {
+export function ThemeModeToggle({
+  disabled,
+  interactionPolicy,
+  size = 'm',
+  testID,
+}: ThemeModeToggleProps) {
   const { mode, setMode } = useZoraTheme();
   const state = resolveThemeModeToggleState(mode);
 
@@ -12,6 +17,7 @@ export function ThemeModeToggle({ disabled, size = 'm', testID }: ThemeModeToggl
       color="neutral"
       disabled={disabled}
       icon={{ name: state.iconName }}
+      interactionPolicy={interactionPolicy}
       label={state.label}
       onPress={() => setMode(state.nextMode)}
       size={size}
