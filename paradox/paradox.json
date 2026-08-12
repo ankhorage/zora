@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v2.11.0",
+      "value": "v2.12.0",
       "color": "cb3837"
     },
     {
@@ -2432,7 +2432,7 @@
     {
       "path": "src/metadata/bindableComponentMeta.ts",
       "isEntrypoint": false,
-      "dependencies": [],
+      "dependencies": ["src/components/image/meta.ts"],
       "exports": ["ZORA_BINDABLE_COMPONENT_META", "ZoraBindableComponentType"]
     },
     {
@@ -24525,9 +24525,9 @@
       "relatedSymbols": [],
       "signatures": [
         {
-          "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "parameters": [],
-          "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+          "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
           "returnDescription": null
         }
       ],
@@ -24707,7 +24707,7 @@
       "modulePath": "src/metadata/bindableComponentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/bindableComponentMeta.ts",
-        "line": 3,
+        "line": 5,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -24916,7 +24916,7 @@
       "modulePath": "src/metadata/bindableComponentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/bindableComponentMeta.ts",
-        "line": 476,
+        "line": 467,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24952,7 +24952,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 51,
+        "line": 44,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -24992,7 +24992,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 3,
+        "line": 8,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25010,7 +25010,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 77,
+        "line": 70,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25057,7 +25057,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 70,
+        "line": 63,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25104,7 +25104,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 62,
+        "line": 55,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25122,7 +25122,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 61,
+        "line": 54,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25140,7 +25140,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 57,
+        "line": 50,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25166,7 +25166,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 89,
+        "line": 82,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25276,7 +25276,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 104,
+        "line": 97,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25294,7 +25294,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 36,
+        "line": 28,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25327,7 +25327,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 28,
+        "line": 20,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25345,14 +25345,13 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 41,
+        "line": 33,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
       "relatedSymbols": [
         "ZoraComponentPropArrayItemSchema",
         "ZoraComponentPropAuthoring",
-        "ZoraComponentPropType",
         "ZoraComponentPropValue"
       ],
       "signatures": [],
@@ -25400,9 +25399,16 @@
           "description": null
         },
         {
+          "name": "mediaKinds",
+          "kind": "property",
+          "type": "readonly (\"image\" | \"audio\" | \"video\" | \"font\" | \"file\")[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "type",
           "kind": "property",
-          "type": "ZoraComponentPropType",
+          "type": "UiComponentPropType",
           "required": true,
           "description": null
         }
@@ -25418,7 +25424,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 5,
+        "line": 10,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25436,7 +25442,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 20,
+        "line": 12,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -25472,7 +25478,7 @@
       "modulePath": "src/metadata/types.ts",
       "sourceLocation": {
         "filePath": "src/metadata/types.ts",
-        "line": 84,
+        "line": 77,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -45136,6 +45142,11 @@
         "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
       },
       {
+        "fromPath": "src/metadata/bindableComponentMeta.ts",
+        "toPath": "src/components/image/meta.ts",
+        "sourcePath": "src/metadata/bindableComponentMeta.ts"
+      },
+      {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/action-sheet/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
@@ -56453,17 +56464,17 @@
       },
       {
         "fromSymbol": "ZoraComponentPropSchema",
+        "toType": "UiComponentPropType",
+        "sourcePath": "src/metadata/types.ts"
+      },
+      {
+        "fromSymbol": "ZoraComponentPropSchema",
         "toType": "ZoraComponentPropArrayItemSchema",
         "sourcePath": "src/metadata/types.ts"
       },
       {
         "fromSymbol": "ZoraComponentPropSchema",
         "toType": "ZoraComponentPropAuthoring",
-        "sourcePath": "src/metadata/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraComponentPropSchema",
-        "toType": "ZoraComponentPropType",
         "sourcePath": "src/metadata/types.ts"
       },
       {

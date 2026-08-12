@@ -1,21 +1,13 @@
-import type { ComponentEventDtoKind, ComponentRequirements } from '@ankhorage/contracts';
+import type {
+  ComponentEventDtoKind,
+  ComponentRequirements,
+  MediaAssetKind,
+  UiComponentPropType,
+} from '@ankhorage/contracts';
 
 export type ZoraComponentCategory = 'foundation' | 'component' | 'pattern' | 'layout';
 
-export type ZoraComponentPropType =
-  | 'string'
-  | 'number'
-  | 'boolean'
-  | 'enum'
-  | 'color'
-  | 'spacing'
-  | 'radius'
-  | 'shadow'
-  | 'typographySize'
-  | 'typographyWeight'
-  | 'action'
-  | 'imageAsset'
-  | 'array';
+export type ZoraComponentPropType = UiComponentPropType;
 
 export type ZoraComponentPropValue =
   | string
@@ -45,6 +37,7 @@ export interface ZoraComponentPropSchema {
   enum?: readonly (string | number)[];
   default?: ZoraComponentPropValue;
   itemSchema?: readonly ZoraComponentPropArrayItemSchema[];
+  mediaKinds?: readonly MediaAssetKind[];
   authoring?: ZoraComponentPropAuthoring;
 }
 

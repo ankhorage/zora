@@ -1,5 +1,7 @@
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
+import { imageMeta } from '../components/image/meta';
+
 export const ZORA_BINDABLE_COMPONENT_META = {
   Text: {
     name: 'Text',
@@ -107,16 +109,12 @@ export const ZORA_BINDABLE_COMPONENT_META = {
     },
   },
   Image: {
-    name: 'Image',
-    category: 'component',
-    description: 'Displays an image asset or remote image source.',
-    directManifestNode: true,
-    allowedChildren: [],
+    ...imageMeta,
     bindings: {
       props: {
         source: {
           label: 'Source',
-          description: 'Image source or asset descriptor.',
+          description: 'Dynamic image source or asset descriptor.',
           value: {
             type: 'imageAsset',
             fields: [
@@ -129,13 +127,6 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           acceptsFallback: true,
           acceptsTransforms: true,
         },
-      },
-    },
-    props: {
-      source: {
-        type: 'imageAsset',
-        category: 'Content',
-        label: 'Source',
       },
     },
   },
