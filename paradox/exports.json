@@ -14058,14 +14058,14 @@
   },
   {
     "name": "Screen",
-    "description": "Page-level container with standard background and optional scroll behavior.",
+    "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/screen/Screen.tsx",
     "sourceLocation": {
       "filePath": "src/layout/screen/Screen.tsx",
-      "line": 48,
+      "line": 47,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20391,9 +20391,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface/dist/index\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],

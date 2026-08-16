@@ -2288,9 +2288,7 @@ Export paths: `src/index.ts`
 
 ## Screen
 
-Source: `src/layout/screen/Screen.tsx:48:14`
-
-Page-level container with standard background and optional scroll behavior.
+Source: `src/layout/screen/Screen.tsx:47:14`
 
 Export paths: `src/index.ts`
 
