@@ -20,12 +20,7 @@ function SidebarLayoutInner({
   const layoutSizing = resolveSidebarLayoutSizing(sizing);
 
   return (
-    <Stack
-      {...layoutSizing.root}
-      direction={{ base: 'column', lg: 'row' }}
-      gap="l"
-      testID={testID}
-    >
+    <Stack {...layoutSizing.root} direction={{ base: 'column', lg: 'row' }} gap="l" testID={testID}>
       <Box {...layoutSizing.child} width={{ base: '100%', lg: sidebarWidth }}>
         {sidebar}
       </Box>
