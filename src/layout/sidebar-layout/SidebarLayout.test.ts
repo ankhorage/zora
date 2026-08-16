@@ -1,21 +1,35 @@
-import { readFile } from 'node:fs/promises';
-
 import { describe, expect, it } from 'bun:test';
 
-describe('SidebarLayout viewport contract', () => {
-  it('keeps content-flow sizing as the default', async () => {
-    const source = await readFile(new URL('./SidebarLayout.tsx', import.meta.url), 'utf8');
+import { resolveSidebarLayoutSizing } from './resolveSidebarLayoutSizing';
 
-    expect(source).toContain("sizing = 'content'");
-    expect(source).toContain("const ownsViewport = sizing === 'viewport'");
-    expect(source).toContain("align={ownsViewport ? 'stretch' : 'flex-start'}");
+describe('SidebarLayout sizing contract', () => {
+  it('keeps content-flow sizing as the default', () => {
+    expect(resolveSidebarLayoutSizing()).toEqual({
+      root: {
+        align: 'flex-start',
+        flex: undefined,
+        minHeight: undefined,
+        minWidth: undefined,
+      },
+      child: {
+        minHeight: undefined,
+        minWidth: undefined,
+      },
+    });
   });
 
-  it('preserves bounded flex sizing for child-owned scroll areas', async () => {
-    const source = await readFile(new URL('./SidebarLayout.tsx', import.meta.url), 'utf8');
-
-    expect(source).toContain('flex={ownsViewport ? 1 : undefined}');
-    expect(source).toContain('minHeight={ownsViewport ? 0 : undefined}');
-    expect(source).toContain('minWidth={ownsViewport ? 0 : undefined}');
+  it('fills a bounded parent for child-owned scroll areas', () => {
+    expect(resolveSidebarLayoutSizing('fill')).toEqual({
+      root: {
+        align: 'stretch',
+        flex: 1,
+        minHeight: 0,
+        minWidth: 0,
+      },
+      child: {
+        minHeight: 0,
+        minWidth: 0,
+      },
+    });
   });
 });
