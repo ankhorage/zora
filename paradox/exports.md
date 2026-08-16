@@ -3459,9 +3459,7 @@ Source: `src/patterns/scanner/types.ts:13:1`
 
 Kind: `value`
 Module: `src/layout/screen/Screen.tsx`
-Source: `src/layout/screen/Screen.tsx:48:14`
-
-Page-level container with standard background and optional scroll behavior.
+Source: `src/layout/screen/Screen.tsx:47:14`
 
 ## ScreenProps
 
@@ -5105,8 +5103,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface/dist/index").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("@ankhorage/surface/dist/index").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts/dist/types").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
