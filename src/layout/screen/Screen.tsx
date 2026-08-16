@@ -16,33 +16,32 @@ function ScreenInner({
   width = 'default',
   testID,
 }: ScreenProps) {
-  const content = (
-    <Container maxWidth={resolvePageMaxWidth(width)} py="xl" testID={testID}>
-      <Stack gap="l">
-        {children}
-        {footer}
-      </Stack>
-    </Container>
-  );
-
   if (!scroll) {
     return (
-      <Box bg="background" flex={1}>
-        {content}
+      <Box bg="background" flex={1} minHeight={0} minWidth={0} testID={testID}>
+        {children}
+        {footer}
       </Box>
     );
   }
 
   return (
-    <ScrollArea bg="background" style={{ flex: 1 }}>
-      {content}
+    <ScrollArea bg="background" style={{ flex: 1, minHeight: 0, minWidth: 0 }}>
+      <Container maxWidth={resolvePageMaxWidth(width)} py="xl" testID={testID}>
+        <Stack gap="l">
+          {children}
+          {footer}
+        </Stack>
+      </Container>
     </ScrollArea>
   );
 }
 
-/***
- * Page-level container with standard background and optional scroll behavior.
+/**
+ * Outer content boundary for one app screen.
  *
- 
+ * By default Screen owns normal vertical scrolling. Set `scroll={false}` to preserve a bounded
+ * viewport and delegate scroll or gesture ownership to specialized children such as lists, maps,
+ * chats, canvases, or editors.
  */
 export const Screen = withZoraThemeScope(ScreenInner);
