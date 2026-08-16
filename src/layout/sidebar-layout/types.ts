@@ -2,7 +2,7 @@ import type React from 'react';
 
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
-export type SidebarLayoutSizing = 'content' | 'viewport';
+export type SidebarLayoutSizing = 'content' | 'fill';
 
 export interface SidebarLayoutProps extends ZoraBaseProps {
   sidebar: React.ReactNode;
