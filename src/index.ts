@@ -198,7 +198,7 @@ export type { ScreenSectionProps } from './layout/screen-section';
 export { ScreenSection } from './layout/screen-section';
 export type { SettingsLayoutProps } from './layout/settings-layout';
 export { SettingsLayout } from './layout/settings-layout';
-export type { SidebarLayoutProps, SidebarLayoutSizing } from './layout/sidebar-layout';
+export type { SidebarLayoutProps } from './layout/sidebar-layout';
 export { SidebarLayout } from './layout/sidebar-layout';
 export type { TopbarLayoutProps } from './layout/topbar-layout';
 export { TopbarLayout } from './layout/topbar-layout';
@@ -225,7 +225,7 @@ export type {
   ZoraThemeRecipeKind,
   ZoraThemeRecipeMeta,
   ZoraThemeRecipeMetaRegistry,
-  ZoraThemeRecipeTokenFamily,
+  ZoraThemeRecipeTokenFieldMeta,
   ZoraThemeTokenFamily,
 } from './metadata';
 export {
