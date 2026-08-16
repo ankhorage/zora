@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.13.2
+
+### Patch Changes
+
+- 954029e: Add an explicit fill sizing mode to SidebarLayout so bounded shells can preserve child-owned
+  scrolling while existing content-flow layouts keep their current behavior.
+
 ## 2.13.1
 
 ### Patch Changes
