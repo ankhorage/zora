@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.13.1
+
+### Patch Changes
+
+- 400863f: Define Screen scroll ownership explicitly: normal screens own scrolling, while `scroll={false}` preserves a bounded viewport for child-owned scroll and gesture surfaces. Require `@ankhorage/surface` 2.2.1 or newer so Stack preserves direct-child flex and min-size semantics throughout that viewport chain.
+
 ## 2.13.0
 
 ### Minor Changes
