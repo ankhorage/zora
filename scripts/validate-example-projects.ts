@@ -29,6 +29,8 @@ function run(command: readonly string[], cwd: string): void {
   }
 }
 
+run(['bun', 'run', 'build'], REPOSITORY_ROOT);
+
 for (const exampleProject of EXAMPLE_PROJECTS) {
   const projectRoot = resolve(REPOSITORY_ROOT, exampleProject);
   run(['bun', 'install', '--frozen-lockfile'], projectRoot);
