@@ -110,10 +110,6 @@ mock.module('@react-native-picker/picker', () => ({
   Picker: createMockComponent,
 }));
 
-mock.module('expo-linear-gradient', () => ({
-  LinearGradient: createMockComponent,
-}));
-
 test('prints the canonical ZORA component registry snapshot', async () => {
   const { ZORA_COMPONENT_REGISTRY } = await import('../src/registry');
 

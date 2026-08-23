@@ -109,14 +109,7 @@ function AvatarInner({
 
     if (iconFallback) {
       const iconSize = Math.max(16, Math.round(resolvedSize * 0.48));
-      return (
-        <Icon
-          color={contentColor}
-          name={iconFallback.name}
-          provider={iconFallback.provider}
-          size={iconSize}
-        />
-      );
+      return <Icon {...iconFallback} color={contentColor} size={iconSize} />;
     }
 
     return null;

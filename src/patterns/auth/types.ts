@@ -1,3 +1,4 @@
+import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { ButtonProps } from '../../components/button';
@@ -67,12 +68,7 @@ export interface OtpFormProps extends AuthFormBaseProps {
   onResend?: () => void | Promise<void>;
 }
 
-export interface OAuthProviderIconSpec {
-  name: string;
-  provider?: string;
-  size?: number | string;
-  color?: string;
-}
+export type OAuthProviderIconSpec = ButtonIconSpec;
 
 export interface OAuthProviderItem {
   id: string;

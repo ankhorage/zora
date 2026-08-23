@@ -31,9 +31,9 @@ export default function SearchScreen() {
         <ScreenSection
           title="Query"
           description="Search stays inside the ZORA component surface."
-          actions={<Badge tone="neutral">Filters later</Badge>}
+          actions={<Badge color="neutral">Filters later</Badge>}
         >
-          <SearchBar value="" placeholder="Search marketplace" />
+          <SearchBar value="" placeholder="Search marketplace" onValueChange={() => undefined} />
         </ScreenSection>
 
         <ListSection

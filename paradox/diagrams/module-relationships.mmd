@@ -77,6 +77,7 @@ graph LR
   module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
   module_src_components_form_validation_ts["src/components/form/validation.ts"]
   module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
+  module_src_components_gradient_GradientRendererContext_tsx["src/components/gradient/GradientRendererContext.tsx"]
   module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
   module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
   module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
@@ -228,6 +229,7 @@ graph LR
   module_src_layout_settings_layout_types_ts["src/layout/settings-layout/types.ts"]
   module_src_layout_sidebar_layout_index_ts["src/layout/sidebar-layout/index.ts"]
   module_src_layout_sidebar_layout_meta_ts["src/layout/sidebar-layout/meta.ts"]
+  module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts["src/layout/sidebar-layout/resolveSidebarLayoutSizing.ts"]
   module_src_layout_sidebar_layout_SidebarLayout_tsx["src/layout/sidebar-layout/SidebarLayout.tsx"]
   module_src_layout_sidebar_layout_types_ts["src/layout/sidebar-layout/types.ts"]
   module_src_layout_topbar_layout_index_ts["src/layout/topbar-layout/index.ts"]
@@ -566,9 +568,11 @@ graph LR
   module_src_components_form_useFormController_ts --> module_src_components_form_types_ts
   module_src_components_form_useFormController_ts --> module_src_components_form_validation_ts
   module_src_components_form_validation_ts --> module_src_components_form_types_ts
+  module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_GradientRendererContext_tsx
   module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_types_ts
   module_src_components_gradient_Gradient_tsx --> module_src_foundation_index_ts
   module_src_components_gradient_Gradient_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_gradient_GradientRendererContext_tsx --> module_src_components_gradient_types_ts
   module_src_components_gradient_meta_ts --> module_src_metadata_index_ts
   module_src_components_gradient_types_ts --> module_src_foundation_index_ts
   module_src_components_gradient_types_ts --> module_src_theme_ZoraBaseProps_ts
@@ -841,7 +845,9 @@ graph LR
   module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_layout_settings_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_layout_sidebar_layout_meta_ts --> module_src_metadata_index_ts
+  module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts --> module_src_layout_sidebar_layout_types_ts
   module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_foundation_index_ts
+  module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts
   module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_layout_sidebar_layout_types_ts
   module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_layout_sidebar_layout_types_ts --> module_src_theme_ZoraBaseProps_ts

@@ -1,6 +1,11 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@ankhorage/zora": ["../../../dist/index.d.ts"]
+    },
     "strict": true
   }
 }

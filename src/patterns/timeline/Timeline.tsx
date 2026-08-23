@@ -69,9 +69,8 @@ function TimelineInner({
           >
             {item.icon ? (
               <Icon
+                {...item.icon}
                 color={status === 'neutral' ? theme.semantics.content.muted : role.base}
-                name={item.icon.name}
-                provider={item.icon.provider}
                 size={iconSize}
               />
             ) : null}

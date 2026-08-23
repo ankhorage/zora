@@ -65,14 +65,7 @@ function ChipInner({
         }}
       >
         <Inline align="center" gap="xs" wrap="nowrap">
-          {icon ? (
-            <Icon
-              color={colors.contentColor}
-              name={icon.name}
-              provider={icon.provider}
-              size={iconSize}
-            />
-          ) : null}
+          {icon ? <Icon {...icon} color={colors.contentColor} size={iconSize} /> : null}
           <Text color={textColor} emphasis={textEmphasis} variant="label">
             {children}
           </Text>

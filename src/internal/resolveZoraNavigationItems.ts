@@ -8,8 +8,8 @@ import type { ZoraNavigationRouteMap } from '../components/navigation-list';
 
 interface ZoraNavigationDescriptorOptions {
   title?: string;
-  tabBarLabel?: string | React.ReactNode;
-  drawerLabel?: string | React.ReactNode;
+  tabBarLabel?: unknown;
+  drawerLabel?: unknown;
 }
 
 export interface ZoraNavigationDescriptor {
@@ -71,13 +71,14 @@ export function resolveRouteLabel({
   }
 
   const options = descriptor?.options;
+  const configuredLabel = kind === 'tab' ? options?.tabBarLabel : options?.drawerLabel;
   const fallback =
-    kind === 'tab'
-      ? (options?.tabBarLabel ?? options?.title)
-      : (options?.drawerLabel ?? options?.title);
+    configuredLabel === undefined || typeof configuredLabel === 'function'
+      ? options?.title
+      : configuredLabel;
 
   if (fallback !== undefined) {
-    return { label: fallback, source: 'descriptor' };
+    return { label: fallback as React.ReactNode, source: 'descriptor' };
   }
 
   return { label: route.name, source: 'name' };

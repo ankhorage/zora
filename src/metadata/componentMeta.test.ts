@@ -27,7 +27,7 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
       .flatMap((match) => match[1].split(',').map((item) => item.trim()))
       .map((item) => item.split(' as ')[0].trim())
       .filter((name) => /^[A-Z][A-Za-z0-9]+$/.test(name))
-      .filter((name) => !['ToastProvider'].includes(name));
+      .filter((name) => !['GradientRendererProvider', 'ToastProvider'].includes(name));
     componentExports.push('ThemeModeToggle');
 
     for (const name of componentExports) {
@@ -40,6 +40,7 @@ describe('ZORA_COMPONENT_META registry coverage', () => {
 
   test('does not treat providers/scopes as direct manifest UI nodes', () => {
     expect(ZORA_COMPONENT_META.ToastProvider?.directManifestNode).toBe(false);
+    expect(ZORA_COMPONENT_META.GradientRendererProvider).toBeUndefined();
     expect(ZORA_COMPONENT_META.ZoraProvider).toBeUndefined();
   });
 });

@@ -18,12 +18,7 @@ function ActionSheetItemInner({
   const resolvedLeading =
     leading ??
     (icon ? (
-      <Icon
-        color={theme.semantics.content.muted}
-        name={icon.name}
-        provider={icon.provider}
-        size={resolveIconSize('s')}
-      />
+      <Icon {...icon} color={theme.semantics.content.muted} size={resolveIconSize('s')} />
     ) : undefined);
 
   return <SurfaceActionSheetItem {...props} leading={resolvedLeading} />;

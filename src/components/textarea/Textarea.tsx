@@ -25,23 +25,13 @@ function TextareaInner({
       interactionPolicy={interactionPolicy}
       leadingAccessory={
         leadingIcon ? (
-          <Surface.Icon
-            color={iconColor}
-            name={leadingIcon.name}
-            provider={leadingIcon.provider}
-            size={iconSize}
-          />
+          <Surface.Icon {...leadingIcon} color={iconColor} size={iconSize} />
         ) : undefined
       }
       size={size}
       trailingAccessory={
         trailingIcon ? (
-          <Surface.Icon
-            color={iconColor}
-            name={trailingIcon.name}
-            provider={trailingIcon.provider}
-            size={iconSize}
-          />
+          <Surface.Icon {...trailingIcon} color={iconColor} size={iconSize} />
         ) : undefined
       }
     />

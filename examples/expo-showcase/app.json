@@ -6,11 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#020617"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.faebster.zoraexposhowcase"
@@ -23,8 +18,17 @@
       "package": "com.faebster.zoraexposhowcase"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "output": "single"
     },
-    "plugins": ["expo-font"]
+    "plugins": [
+      "@react-native-vector-icons/fontawesome",
+      "@react-native-vector-icons/fontawesome5",
+      "@react-native-vector-icons/fontawesome6",
+      "@react-native-vector-icons/ionicons"
+    ],
+    "experiments": {
+      "reactCompiler": true
+    }
   }
 }

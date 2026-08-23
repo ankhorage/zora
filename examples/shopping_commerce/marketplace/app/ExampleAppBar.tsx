@@ -14,9 +14,9 @@ export function ExampleAppBar({ testID, title }: ExampleAppBarProps) {
         <IconButton
           icon={{ name: mode === 'dark' ? 'sunny-outline' : 'moon-outline' }}
           label={mode === 'dark' ? 'Use light mode' : 'Use dark mode'}
-          emphasis="ghost"
+          variant="ghost"
           size="m"
-          tone="neutral"
+          color="neutral"
           onPress={() => setMode(nextMode)}
         />
       }

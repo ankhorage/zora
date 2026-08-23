@@ -1,10 +1,7 @@
 import { Badge, Button, Card, Hero, Screen, ScreenSection, Text } from '@ankhorage/zora';
-import React from 'react';
-
-type ShowcaseTab = 'home' | 'components' | 'patterns' | 'theme';
 
 interface HomePageProps {
-  onNavigate: React.Dispatch<React.SetStateAction<ShowcaseTab>>;
+  onNavigate: (tab: 'components' | 'patterns' | 'theme') => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {

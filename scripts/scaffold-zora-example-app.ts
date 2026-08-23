@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 
 const APP_CATEGORIES = [
@@ -31,6 +31,27 @@ const APP_CATEGORIES = [
 ] as const;
 
 type AppCategory = (typeof APP_CATEGORIES)[number];
+
+// Package manifests cannot import @ankhorage/expo-runtime/platform. Keep this
+// script-only projection aligned with its released Expo 57 contract without
+// adding Expo Runtime (and its required Expo peers) to portable ZORA tooling.
+const EXPO_57_SCAFFOLD_VERSIONS = {
+  expo: '~57.0.15',
+  expoConstants: '~57.0.13',
+  expoFont: '~57.0.1',
+  expoLinking: '~57.0.7',
+  expoRouter: '~57.0.15',
+  expoStatusBar: '~57.0.1',
+  picker: '2.11.4',
+  react: '19.2.3',
+  reactNative: '0.86.2',
+  reactNativeSafeArea: '~5.7.0',
+  reactNativeScreens: '~4.26.0',
+  reactNativeWeb: '~0.21.0',
+  reactNativeVectorIcons: '^13.1.3',
+  typesReact: '~19.2.18',
+  typescript: '~6.0.3',
+} as const;
 
 interface RouteSpec {
   readonly name: string;
@@ -238,9 +259,9 @@ export default function ${route.name === 'index' ? 'Index' : toPascalCase(route.
           <Card
             title=${JSON.stringify(route.primaryCardTitle)}
             description=${JSON.stringify(route.primaryCardDescription)}
-            actions={<Badge tone="success">Live route</Badge>}
+            actions={<Badge color="success">Live route</Badge>}
           >
-            <Text tone="muted">
+            <Text emphasis="muted">
               Replace this starter content with realistic static data for the selected app archetype.
             </Text>
           </Card>
@@ -269,7 +290,7 @@ function createPackageName(options: ScaffoldOptions): string {
   return `zora-example-${options.category.replaceAll('_', '-')}-${options.exampleId}`;
 }
 
-function createAppFiles(options: ScaffoldOptions, targetDir: string): void {
+function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion: string): void {
   const routes = getRoutes(options.exampleId);
   const appDir = join(targetDir, 'app');
 
@@ -287,9 +308,19 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string): void {
     "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "static"
     },
-    "plugins": ["expo-router"]
+    "experiments": {
+      "reactCompiler": true,
+      "typedRoutes": true
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-vector-icons/fontawesome",
+      "@react-native-vector-icons/fontawesome5",
+      "@react-native-vector-icons/fontawesome6",
+      "@react-native-vector-icons/ionicons"
+    ]
   }
 }`,
   );
@@ -309,23 +340,28 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string): void {
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "latest",
-    "@expo/vector-icons": "^15.1.1",
-    "@react-native-picker/picker": "2.11.1",
-    "expo": "~54.0.34",
-    "expo-font": "~14.0.11",
-    "expo-router": "~6.0.20",
-    "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-native": "0.81.5",
-    "react-native-safe-area-context": "~5.6.0",
-    "react-native-screens": "~4.16.0",
-    "react-native-web": "^0.21.0"
+    "@ankhorage/zora": ${JSON.stringify(`^${zoraVersion}`)},
+    "@react-native-picker/picker": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.picker)},
+    "@react-native-vector-icons/fontawesome": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
+    "@react-native-vector-icons/fontawesome5": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
+    "@react-native-vector-icons/fontawesome6": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
+    "@react-native-vector-icons/ionicons": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
+    "expo": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expo)},
+    "expo-constants": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expoConstants)},
+    "expo-font": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expoFont)},
+    "expo-linking": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expoLinking)},
+    "expo-router": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expoRouter)},
+    "expo-status-bar": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.expoStatusBar)},
+    "react": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.react)},
+    "react-dom": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.react)},
+    "react-native": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNative)},
+    "react-native-safe-area-context": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeSafeArea)},
+    "react-native-screens": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeScreens)},
+    "react-native-web": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeWeb)}
   },
   "devDependencies": {
-    "@types/react": "~19.1.0",
-    "typescript": "~5.9.2"
+    "@types/react": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.typesReact)},
+    "typescript": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.typescript)}
   }
 }`,
   );
@@ -343,11 +379,58 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string): void {
   writeTextFile(join(targetDir, 'expo-env.d.ts'), `/// <reference types="expo/types" />`);
 
   writeTextFile(
+    join(targetDir, 'types', 'assets.d.ts'),
+    `declare module '*.ttf' {
+  const source: number;
+  export default source;
+}`,
+  );
+
+  writeTextFile(
+    join(appDir, 'useZoraIconFonts.ts'),
+    `export function useZoraIconFonts(): boolean {
+  return true;
+}`,
+  );
+
+  writeTextFile(
+    join(appDir, 'useZoraIconFonts.web.ts'),
+    `import fontAwesome from '@react-native-vector-icons/fontawesome/fonts/FontAwesome.ttf';
+import fontAwesome5Brands from '@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Brands.ttf';
+import fontAwesome5Solid from '@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Solid.ttf';
+import fontAwesome6Brands from '@react-native-vector-icons/fontawesome6/fonts/FontAwesome6_Brands.ttf';
+import ionicons from '@react-native-vector-icons/ionicons/fonts/Ionicons.ttf';
+import { useFonts } from 'expo-font';
+
+const ZORA_ICON_FONTS = {
+  FontAwesome: fontAwesome,
+  'FontAwesome5Brands-Regular': fontAwesome5Brands,
+  'FontAwesome5Free-Solid': fontAwesome5Solid,
+  'FontAwesome6Brands-Regular': fontAwesome6Brands,
+  Ionicons: ionicons,
+} as const;
+
+export function useZoraIconFonts(): boolean {
+  const [loaded, error] = useFonts(ZORA_ICON_FONTS);
+  if (error) throw error;
+  return loaded;
+}`,
+  );
+
+  writeTextFile(
     join(appDir, '_layout.tsx'),
-    `import { Stack } from 'expo-router';
-import { ZoraProvider } from '@ankhorage/zora';
+    `import { ZoraProvider } from '@ankhorage/zora';
+import { Stack } from 'expo-router';
+
+import { useZoraIconFonts } from './useZoraIconFonts';
 
 export default function RootLayout() {
+  const iconFontsLoaded = useZoraIconFonts();
+
+  if (!iconFontsLoaded) {
+    return null;
+  }
+
   return (
     <ZoraProvider>
       <Stack screenOptions={{ headerShown: false }} />
@@ -393,6 +476,9 @@ bunx expo start
 - Uses ZORA public exports for UI.
 - Does not use \`StyleSheet\` or direct Surface imports.
 - Installs the published \`@ankhorage/zora\` package.
+- Registers the four scoped RNVI packages for native development builds.
+- Loads the icon font faces used by ZORA on Web through an app-owned Expo Font hook.
+- Rebuild the Android/iOS development client after changing RNVI packages or plugins.
 `,
   );
 }
@@ -400,6 +486,13 @@ bunx expo start
 function scaffold(options: ScaffoldOptions): void {
   const repoRoot = process.cwd();
   const targetDir = resolve(repoRoot, 'examples', options.category, options.exampleId);
+  const packageManifest = JSON.parse(readFileSync(join(repoRoot, 'package.json'), 'utf8')) as {
+    version?: unknown;
+  };
+
+  if (typeof packageManifest.version !== 'string') {
+    throw new Error('Expected the ZORA package manifest to declare a version.');
+  }
 
   if (existsSync(targetDir)) {
     throw new Error(`Target already exists: ${targetDir}`);
@@ -407,8 +500,8 @@ function scaffold(options: ScaffoldOptions): void {
 
   mkdirSync(dirname(targetDir), { recursive: true });
 
-  run('bunx', ['create-expo-app@latest', targetDir, '--template', 'default', '--yes'], repoRoot);
-  createAppFiles(options, targetDir);
+  run('bunx', ['create-expo-app@4.0.0', targetDir, '--template', 'default', '--yes'], repoRoot);
+  createAppFiles(options, targetDir, packageManifest.version);
   run('bun', ['install'], targetDir);
 
   console.log(`Created ${targetDir}`);

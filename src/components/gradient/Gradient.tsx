@@ -1,8 +1,8 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 
 import { Box } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { useGradientRenderer } from './GradientRendererContext';
 import type { GradientProps } from './types';
 
 function GradientInner({
@@ -21,6 +21,8 @@ function GradientInner({
   p,
   testID,
 }: GradientProps) {
+  const gradientRenderer = useGradientRenderer();
+
   return (
     <Box
       height={height}
@@ -30,17 +32,19 @@ function GradientInner({
       width={width}
       style={{ overflow: 'hidden' }}
     >
-      <LinearGradient
-        colors={colors}
-        end={end}
-        locations={locations}
-        start={start}
-        style={{ flex: 1 }}
-      >
+      {React.createElement(
+        gradientRenderer,
+        {
+          colors,
+          end,
+          locations,
+          start,
+          style: { flex: 1 },
+        },
         <Box p={p} style={{ flex: 1 }}>
           {children}
-        </Box>
-      </LinearGradient>
+        </Box>,
+      )}
     </Box>
   );
 }
@@ -48,7 +52,7 @@ function GradientInner({
 /***
  * Gradient background container for branded loading surfaces, hero blocks, and previews.
  *
- * `Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA
- * component and does not replace native Expo splash-screen configuration.
+ * The host supplies a platform-compatible renderer through
+ * `GradientRendererProvider`; ZORA does not require an Expo runtime.
  */
 export const Gradient = withZoraThemeScope(GradientInner);

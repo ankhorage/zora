@@ -17,6 +17,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
+    "types": ["node"],
     "rootDir": "src",
     "outDir": "dist"
   },

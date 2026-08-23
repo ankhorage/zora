@@ -45,14 +45,7 @@ function MetricCardInner({
         <Inline align="flex-start" gap="m" justify="space-between">
           <Stack flex={1} gap="xs">
             <Inline align="center" gap="xs" wrap="wrap">
-              {icon ? (
-                <Icon
-                  color={iconColor}
-                  name={icon.name}
-                  provider={icon.provider}
-                  size={resolveIconSize('s')}
-                />
-              ) : null}
+              {icon ? <Icon {...icon} color={iconColor} size={resolveIconSize('s')} /> : null}
               <Text emphasis="muted" variant="caption" weight="semiBold">
                 {label}
               </Text>

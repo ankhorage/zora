@@ -78,3 +78,14 @@ cd examples/social_community/community-feed
 bun install
 bunx expo start
 ```
+
+The Expo 57 examples use scoped React Native Vector Icons packages. Their app
+configs register all four RNVI plugins for development builds, so adding or
+upgrading an icon package requires rebuilding the Android/iOS development
+client. Web loads the Ionicons, FontAwesome, FA5 Brands, FA5 Solid, and FA6
+Brands font files through an `expo-font` hook that exists only in the example
+app boundary.
+
+ZORA itself does not load Expo fonts. The showcase also demonstrates the
+optional `GradientRendererProvider` boundary by adapting
+`expo-linear-gradient` in app code.

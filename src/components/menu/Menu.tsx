@@ -17,14 +17,7 @@ function renderActionLeading(action: MenuAction, iconColor: string) {
     return undefined;
   }
 
-  return (
-    <Icon
-      color={iconColor}
-      name={action.icon.name}
-      provider={action.icon.provider}
-      size={resolveIconSize('s')}
-    />
-  );
+  return <Icon {...action.icon} color={iconColor} size={resolveIconSize('s')} />;
 }
 
 function renderActionTrailing(action: MenuAction) {

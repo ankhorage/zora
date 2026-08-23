@@ -70,7 +70,7 @@ function BarcodeScannerViewInner({
             ) : (
               <View style={[styles.placeholder, placeholderStyle]} />
             )}
-            <View pointerEvents="none" style={styles.overlay}>
+            <View style={[styles.overlay, { pointerEvents: 'none' }]}>
               <ScanOverlay
                 cornerLabel={cornerLabel}
                 description={overlayDescription}
