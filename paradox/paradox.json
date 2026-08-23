@@ -42782,7 +42782,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 84,
+        "line": 87,
         "column": 1
       }
     },
@@ -42791,7 +42791,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 113,
+        "line": 116,
         "column": 1
       }
     },
@@ -42800,7 +42800,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 139,
+        "line": 142,
         "column": 1
       }
     },

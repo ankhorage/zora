@@ -120,10 +120,12 @@ Cross-repository writes are intentionally not mixed into this ZORA worktree.
 Fresh temporary clones pass their current full build, lint, test, and Knip
 gates (zora-chess: 16 tests; zora-tabletop: 13 tests). Their only ZORA runtime
 import is `useZoraTheme`, which is unchanged by this migration. Installation of
-the packed ZORA candidate into those clones was not completed in this checkout,
-so this is baseline/source-inventory evidence rather than a claim that their
-stale development matrices already accept ZORA 3. Each consumer owner must
-commit and release its own development-matrix migration.
+the packed ZORA candidate into those clones is not a substitute for updating
+their stale development matrices after ZORA 3 is released. This is
+baseline/source-inventory evidence rather than a claim that those matrices
+already accept ZORA 3. Merge and publish ZORA 3 first; each consumer owner must
+then commit, validate, and release its own development-matrix migration before
+roadmap issue #294 closes.
 
 ## Automated acceptance results
 
@@ -131,21 +133,36 @@ commit and release its own development-matrix migration.
   214-test suite, docs generation, Ankh doctor, and package creation pass.
 - React Compiler healthcheck compiled 219 of 219 components and reported no
   incompatible libraries.
-- Every committed basic/Expo example typechecks against the current ZORA
-  declarations. Expo install compatibility checks report the configured
-  versions current in offline mode.
-- Expo 57 Web export passes for the showcase and a static Expo Router example.
-  The showcase export includes the five scoped RNVI faces used by acceptance:
-  Ionicons, FontAwesome, FA5 Brands, FA5 Solid, and FA6 Brands.
-- Expo Doctor passes all 21 checks for the showcase after eliminating the stale
-  installed `@expo/vector-icons` artifact from its previous dependency tree.
+- Root lint owns only portable `src` plus its root-owned validation scripts.
+  `examples:validate` performs frozen installs in all nine example project
+  roots, runs every example typecheck, and then runs type-aware example lint
+  with those app-owned dependency graphs present. This reproduces clean CI
+  without adding Expo packages to portable ZORA.
+- `expo:candidate` builds and packs the actual branch artifact, copies the
+  showcase and restaurant Router app into isolated temporary projects, removes
+  their source declaration aliases and registry locks, points each disposable
+  manifest to the tarball, generates a lock, deletes `node_modules`, and repeats
+  a frozen install. The gate fails unless each lock names the tarball, the
+  installed package contains the candidate-only `GradientRendererProvider`
+  implementation, its Surface range is `^3.0.0`, and the installed Surface is
+  exactly `3.0.0` with no Surface 2 graph.
+- The current pre-changeset tarball is
+  `ankhorage-zora-2.13.2.tgz`; `.changeset/modern-ravens-upgrade.md` promotes it
+  to ZORA 3 during the release flow. The temporary dependency is intentionally
+  file-backed only inside acceptance; committed example manifests continue to
+  name the latest released ZORA until 3.0.0 exists.
+- Candidate-backed TypeScript and Expo install compatibility checks pass for
+  both fixtures. Expo Doctor 1.20.2 passes all checks for the candidate-backed
+  showcase.
+- Candidate-backed Expo 57 Web export passes for the showcase and the static
+  restaurant Router app (14 routes). Both exported bundles include the five
+  scoped RNVI faces used by acceptance: Ionicons, FontAwesome, FA5 Brands, FA5
+  Solid, and FA6 Brands.
 - Expo config evaluation passes for both showcase and Router app. An automated
   iOS prebuild succeeds and records Ionicons, FontAwesome, all three FA5 styles,
   and all three FA6 styles in `UIAppFonts`.
-- `npm pack` produces the ZORA candidate. A clean packed-candidate install in
-  the examples/downstream clones remains an external acceptance item because
-  the sandbox denied the candidate replacement operation; no production result
-  is inferred from the existing published ZORA 2 dependency tree.
+- Registry ZORA 2.13.2 and Surface 2 are therefore no longer used as runtime
+  evidence for the migrated showcase/Router acceptance.
 
 ## Native acceptance boundary
 
