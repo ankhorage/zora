@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 
 import type { BoxProps } from '../../foundation';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
@@ -10,6 +11,22 @@ export type GradientLocations = readonly [number, number, ...number[]];
 export interface GradientPoint {
   readonly x: number;
   readonly y: number;
+}
+
+export interface GradientRendererProps {
+  children?: React.ReactNode;
+  colors: GradientColors;
+  locations?: GradientLocations;
+  start?: GradientPoint;
+  end?: GradientPoint;
+  style?: StyleProp<ViewStyle>;
+}
+
+export type GradientRenderer = React.ComponentType<GradientRendererProps>;
+
+export interface GradientRendererProviderProps {
+  children?: React.ReactNode;
+  renderer: GradientRenderer;
 }
 
 export interface GradientProps extends ZoraBaseProps {

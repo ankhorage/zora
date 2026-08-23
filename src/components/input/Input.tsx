@@ -30,12 +30,7 @@ function InputInner({
       interactionPolicy={interactionPolicy}
       leadingAccessory={
         leadingIcon ? (
-          <Surface.Icon
-            color={iconColor}
-            name={leadingIcon.name}
-            provider={leadingIcon.provider}
-            size={iconSize}
-          />
+          <Surface.Icon {...leadingIcon} color={iconColor} size={iconSize} />
         ) : undefined
       }
       readOnly={readOnly}
@@ -53,12 +48,7 @@ function InputInner({
             onPress={trailingAction.onPress}
           />
         ) : trailingIcon ? (
-          <Surface.Icon
-            color={iconColor}
-            name={trailingIcon.name}
-            provider={trailingIcon.provider}
-            size={iconSize}
-          />
+          <Surface.Icon {...trailingIcon} color={iconColor} size={iconSize} />
         ) : undefined
       }
     />

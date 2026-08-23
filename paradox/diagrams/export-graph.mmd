@@ -77,6 +77,7 @@ graph LR
   module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
   module_src_components_form_validation_ts["src/components/form/validation.ts"]
   module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
+  module_src_components_gradient_GradientRendererContext_tsx["src/components/gradient/GradientRendererContext.tsx"]
   module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
   module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
   module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
@@ -228,6 +229,7 @@ graph LR
   module_src_layout_settings_layout_types_ts["src/layout/settings-layout/types.ts"]
   module_src_layout_sidebar_layout_index_ts["src/layout/sidebar-layout/index.ts"]
   module_src_layout_sidebar_layout_meta_ts["src/layout/sidebar-layout/meta.ts"]
+  module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts["src/layout/sidebar-layout/resolveSidebarLayoutSizing.ts"]
   module_src_layout_sidebar_layout_SidebarLayout_tsx["src/layout/sidebar-layout/SidebarLayout.tsx"]
   module_src_layout_sidebar_layout_types_ts["src/layout/sidebar-layout/types.ts"]
   module_src_layout_topbar_layout_index_ts["src/layout/topbar-layout/index.ts"]
@@ -700,6 +702,19 @@ graph LR
   export_GradientProps -.-> export_GradientLocations
   export_GradientProps -.-> export_GradientPoint
   export_GradientProps -.-> export_ZoraThemeMode
+  export_GradientRenderer["GradientRenderer"]
+  module_src_components_gradient_types_ts --> export_GradientRenderer
+  export_GradientRendererProps["GradientRendererProps"]
+  module_src_components_gradient_types_ts --> export_GradientRendererProps
+  export_GradientRendererProps -.-> export_GradientColors
+  export_GradientRendererProps -.-> export_GradientLocations
+  export_GradientRendererProps -.-> export_GradientPoint
+  export_GradientRendererProvider["GradientRendererProvider"]
+  module_src_components_gradient_GradientRendererContext_tsx --> export_GradientRendererProvider
+  export_GradientRendererProvider -.-> export_GradientRendererProviderProps
+  export_GradientRendererProviderProps["GradientRendererProviderProps"]
+  module_src_components_gradient_types_ts --> export_GradientRendererProviderProps
+  export_GradientRendererProviderProps -.-> export_GradientRenderer
   export_Grid["Grid"]
   module_src_foundation_Grid_tsx --> export_Grid
   export_GridProps["GridProps"]
@@ -755,7 +770,6 @@ graph LR
   export_IconButtonProps -.-> export_ZoraThemeMode
   export_IconProps["IconProps"]
   module_src_components_icon_Icon_tsx --> export_IconProps
-  export_IconProps -.-> export_ZoraThemeMode
   export_Image["Image"]
   module_src_components_image_Image_tsx --> export_Image
   export_ImageFit["ImageFit"]
@@ -884,13 +898,11 @@ graph LR
   module_src_patterns_auth_OAuthProviderButton_tsx --> export_OAuthProviderButton
   export_OAuthProviderButtonProps["OAuthProviderButtonProps"]
   module_src_patterns_auth_types_ts --> export_OAuthProviderButtonProps
-  export_OAuthProviderButtonProps -.-> export_OAuthProviderIconSpec
   export_OAuthProviderButtonProps -.-> export_ZoraThemeMode
   export_OAuthProviderIconSpec["OAuthProviderIconSpec"]
   module_src_patterns_auth_types_ts --> export_OAuthProviderIconSpec
   export_OAuthProviderItem["OAuthProviderItem"]
   module_src_patterns_auth_types_ts --> export_OAuthProviderItem
-  export_OAuthProviderItem -.-> export_OAuthProviderIconSpec
   export_OAuthProviderList["OAuthProviderList"]
   module_src_patterns_auth_OAuthProviderList_tsx --> export_OAuthProviderList
   export_OAuthProviderListLayout["OAuthProviderListLayout"]
@@ -974,7 +986,6 @@ graph LR
   module_src_components_avatar_resolveAvatarInitials_ts --> export_resolveAvatarInitials
   export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
   module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderIcon
-  export_resolveOAuthProviderIcon -.-> export_OAuthProviderIconSpec
   export_resolveOAuthProviderLabel["resolveOAuthProviderLabel"]
   module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderLabel
   export_ResponsivePanel["ResponsivePanel"]

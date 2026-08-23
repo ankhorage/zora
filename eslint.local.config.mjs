@@ -1,14 +1,17 @@
 import { createConfig } from '@ankhorage/devtools/eslint';
 
 const sourceFiles = ['src/**/*.{ts,tsx}'];
-const exampleFiles = ['examples/**/*.{ts,tsx}'];
-const files = [...sourceFiles, ...exampleFiles];
+const validationScriptFiles = [
+  'scripts/validate-example-projects.ts',
+  'scripts/validate-expo-candidate.ts',
+];
+const files = [...sourceFiles, ...validationScriptFiles];
 
 export default [
   ...createConfig({
     tsconfigRootDir: import.meta.dirname,
-    project: ['./tsconfig.eslint.json'],
-    files: exampleFiles,
+    project: ['./tsconfig.scripts.json'],
+    files: validationScriptFiles,
   }),
   {
     files: sourceFiles,

@@ -2,6 +2,7 @@ import {
   Badge,
   Button,
   Card,
+  FormField,
   ImageUploadField,
   Input,
   Notice,
@@ -10,7 +11,7 @@ import {
   Textarea,
 } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 export default function SellScreen() {
   return (
@@ -25,7 +26,9 @@ export default function SellScreen() {
           <ImageUploadField
             label="Listing photos"
             description="Add clear photos from multiple angles."
-            actionLabel="Choose photos"
+            onChange={() => undefined}
+            onPick={() => Promise.resolve(null)}
+            value={null}
           />
         </ScreenSection>
 
@@ -33,8 +36,12 @@ export default function SellScreen() {
           title="Details"
           description="A minimal listing form without local style objects."
         >
-          <Input label="Title" placeholder="Walnut lounge chair" />
-          <Input label="Price" placeholder="CHF 420" />
+          <FormField label="Title">
+            <Input placeholder="Walnut lounge chair" />
+          </FormField>
+          <FormField label="Price">
+            <Input placeholder="CHF 420" />
+          </FormField>
           <Textarea placeholder="Describe condition, pickup details, and what is included..." />
         </ScreenSection>
 

@@ -110,9 +110,8 @@ function ZoraTabBarInner({
           >
             {item.metadata?.icon ? (
               <Icon
+                {...item.metadata.icon}
                 color={contentColor}
-                name={item.metadata.icon.name}
-                provider={item.metadata.icon.provider}
                 size={compact ? theme.spacing.m : theme.spacing.l}
               />
             ) : null}

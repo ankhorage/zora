@@ -210,7 +210,7 @@ describe('theme scope structure', () => {
     for (const filePath of scopedPropTypeFiles) {
       const source = readFileSync(filePath, 'utf8');
       expect(source).toMatch(/ZoraBaseProps/);
-      expect(source).toMatch(/extends\s+ZoraBaseProps/);
+      expect(source).toMatch(/extends\s+ZoraBaseProps|ZoraBaseProps\s*&|&\s*ZoraBaseProps/);
     }
   });
 

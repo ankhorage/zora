@@ -22,13 +22,15 @@ function isOptionalPeer(metadata: unknown, packageName: string): boolean {
   return isRecord(peerMetadata) && peerMetadata.optional === true;
 }
 
-test('root-entry native imports are required peers', async () => {
+test('root-entry native imports are required portable peers', async () => {
   const packageJson = JSON.parse(
     await readFile(new URL('../package.json', import.meta.url), 'utf8'),
   ) as unknown;
   if (!isRecord(packageJson)) throw new Error('Expected package.json to contain an object.');
 
-  const { peerDependenciesMeta } = packageJson;
-  expect(isOptionalPeer(peerDependenciesMeta, 'expo-linear-gradient')).toBe(false);
+  const { peerDependencies, peerDependenciesMeta } = packageJson;
   expect(isOptionalPeer(peerDependenciesMeta, '@react-native-picker/picker')).toBe(false);
+  expect(isRecord(peerDependencies) && peerDependencies['expo-linear-gradient']).toBeUndefined();
+  expect(isRecord(peerDependencies) && peerDependencies['expo-font']).toBeUndefined();
+  expect(isRecord(peerDependencies) && peerDependencies['@expo/vector-icons']).toBeUndefined();
 });

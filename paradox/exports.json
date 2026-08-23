@@ -26,7 +26,7 @@
     "modulePath": "src/components/action-sheet/ActionSheetItem.tsx",
     "sourceLocation": {
       "filePath": "src/components/action-sheet/ActionSheetItem.tsx",
-      "line": 35,
+      "line": 30,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -75,7 +75,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -303,7 +303,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -449,7 +449,7 @@
     "modulePath": "src/layout/app-shell/AppShell.tsx",
     "sourceLocation": {
       "filePath": "src/layout/app-shell/AppShell.tsx",
-      "line": 49,
+      "line": 45,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -542,7 +542,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 9,
+      "line": 10,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -617,7 +617,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -635,7 +635,7 @@
     "modulePath": "src/components/avatar/Avatar.tsx",
     "sourceLocation": {
       "filePath": "src/components/avatar/Avatar.tsx",
-      "line": 155,
+      "line": 148,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -688,7 +688,7 @@
       {
         "name": "iconFallback",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -838,7 +838,7 @@
       {
         "name": "iconFallback",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -1639,7 +1639,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -1676,7 +1676,7 @@
     "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
     "sourceLocation": {
       "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-      "line": 148,
+      "line": 147,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -2072,7 +2072,7 @@
       {
         "name": "leadingIcon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -2303,7 +2303,7 @@
       {
         "name": "trailingIcon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -4122,7 +4122,7 @@
     "modulePath": "src/components/chip/Chip.tsx",
     "sourceLocation": {
       "filePath": "src/components/chip/Chip.tsx",
-      "line": 104,
+      "line": 97,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4175,7 +4175,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -4261,7 +4261,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -5413,7 +5413,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -5749,7 +5749,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -6629,7 +6629,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 48,
+      "line": 49,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -6739,7 +6739,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 43,
+      "line": 44,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7015,7 +7015,7 @@
       {
         "name": "autoComplete",
         "kind": "property",
-        "type": "\"email\" | \"password\" | \"tel\" | \"url\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"family-name\" | \"gender\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"name\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"username\" | \"username-new\" | \"off\" | undefined",
+        "type": "\"email\" | \"password\" | \"tel\" | \"url\" | \"2fa-app-otp\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"email-otp\" | \"flight-confirmation-code\" | \"flight-number\" | \"family-name\" | \"gender\" | \"gift-card-number\" | \"gift-card-pin\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"loyalty-account-number\" | \"name\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-dependent-locality\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-address-unit\" | \"postal-code\" | \"promo-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"upi-vpa\" | \"wifi-password\" | \"username\" | \"username-new\" | \"off\" | undefined",
         "required": false,
         "description": null
       },
@@ -7454,14 +7454,14 @@
   },
   {
     "name": "Gradient",
-    "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\n`Gradient` is backed by `expo-linear-gradient`. It is a React-rendered ZORA\ncomponent and does not replace native Expo splash-screen configuration.",
+    "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\nThe host supplies a platform-compatible renderer through\n`GradientRendererProvider`; ZORA does not require an Expo runtime.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/gradient/Gradient.tsx",
     "sourceLocation": {
       "filePath": "src/components/gradient/Gradient.tsx",
-      "line": 54,
+      "line": 58,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7479,7 +7479,7 @@
     "modulePath": "src/components/gradient/types.ts",
     "sourceLocation": {
       "filePath": "src/components/gradient/types.ts",
-      "line": 6,
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7497,7 +7497,7 @@
     "modulePath": "src/components/gradient/types.ts",
     "sourceLocation": {
       "filePath": "src/components/gradient/types.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7515,7 +7515,7 @@
     "modulePath": "src/components/gradient/types.ts",
     "sourceLocation": {
       "filePath": "src/components/gradient/types.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7533,7 +7533,7 @@
     "modulePath": "src/components/gradient/types.ts",
     "sourceLocation": {
       "filePath": "src/components/gradient/types.ts",
-      "line": 10,
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7566,7 +7566,7 @@
     "modulePath": "src/components/gradient/types.ts",
     "sourceLocation": {
       "filePath": "src/components/gradient/types.ts",
-      "line": 15,
+      "line": 32,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7669,6 +7669,150 @@
         "kind": "property",
         "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
         "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientRenderer",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientRendererProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 16,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GradientColors", "GradientLocations", "GradientPoint"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colors",
+        "kind": "property",
+        "type": "GradientColors",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "end",
+        "kind": "property",
+        "type": "GradientPoint | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "locations",
+        "kind": "property",
+        "type": "GradientLocations | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "start",
+        "kind": "property",
+        "type": "GradientPoint | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientRendererProvider",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/components/gradient/GradientRendererContext.tsx",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/GradientRendererContext.tsx",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GradientRendererProviderProps"],
+    "signatures": [
+      {
+        "label": "({ children, renderer }: GradientRendererProviderProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{ children, renderer }",
+            "type": "GradientRendererProviderProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GradientRendererProviderProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/gradient/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/gradient/types.ts",
+      "line": 27,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GradientRenderer"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderer",
+        "kind": "property",
+        "type": "GradientRenderer",
+        "required": true,
         "description": null
       }
     ],
@@ -8744,7 +8888,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource",
         "required": true,
         "description": null
       },
@@ -8819,7 +8963,7 @@
     "description": null,
     "isReadme": false,
     "examples": [],
-    "kind": "type",
+    "kind": "unknown",
     "modulePath": "src/components/icon/Icon.tsx",
     "sourceLocation": {
       "filePath": "src/components/icon/Icon.tsx",
@@ -8827,73 +8971,9 @@
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "relatedSymbols": [],
     "signatures": [],
-    "members": [
-      {
-        "name": "color",
-        "kind": "property",
-        "type": "string | number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "name",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "provider",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "size",
-        "kind": "property",
-        "type": "string | number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<TextStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -9801,7 +9881,7 @@
     "modulePath": "src/components/input/Input.tsx",
     "sourceLocation": {
       "filePath": "src/components/input/Input.tsx",
-      "line": 79,
+      "line": 69,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9847,7 +9927,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "Surface.ButtonIconSpec",
+        "type": "Surface.IconSource",
         "required": true,
         "description": null
       },
@@ -10296,7 +10376,7 @@
     "modulePath": "src/components/menu/Menu.tsx",
     "sourceLocation": {
       "filePath": "src/components/menu/Menu.tsx",
-      "line": 66,
+      "line": 59,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10338,7 +10418,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -10803,7 +10883,7 @@
     "modulePath": "src/components/metric-card/MetricCard.tsx",
     "sourceLocation": {
       "filePath": "src/components/metric-card/MetricCard.tsx",
-      "line": 89,
+      "line": 82,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -10866,7 +10946,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11398,11 +11478,11 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 85,
+      "line": 81,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OAuthProviderIconSpec", "ZoraThemeMode"],
+    "relatedSymbols": ["ZoraThemeMode"],
     "signatures": [],
     "members": [
       {
@@ -11429,7 +11509,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "OAuthProviderIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11511,46 +11591,17 @@
     "description": null,
     "isReadme": false,
     "examples": [],
-    "kind": "type",
+    "kind": "unknown",
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 70,
+      "line": 71,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
-    "members": [
-      {
-        "name": "color",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "name",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "provider",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "size",
-        "kind": "property",
-        "type": "string | number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -11562,11 +11613,11 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 77,
+      "line": 73,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OAuthProviderIconSpec"],
+    "relatedSymbols": [],
     "signatures": [],
     "members": [
       {
@@ -11579,7 +11630,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "OAuthProviderIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11634,7 +11685,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 98,
+      "line": 94,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11652,7 +11703,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 100,
+      "line": 96,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11780,7 +11831,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 60,
+      "line": 61,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11904,7 +11955,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 56,
+      "line": 57,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -12128,7 +12179,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -12352,7 +12403,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -13660,10 +13711,10 @@
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OAuthProviderIconSpec"],
+    "relatedSymbols": [],
     "signatures": [
       {
-        "label": "(providerId: string) => OAuthProviderIconSpec | undefined",
+        "label": "(providerId: string) => import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "parameters": [
           {
             "name": "providerId",
@@ -13672,7 +13723,7 @@
             "description": null
           }
         ],
-        "returnType": "OAuthProviderIconSpec | undefined",
+        "returnType": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "returnDescription": null
       }
     ],
@@ -15117,14 +15168,14 @@
   },
   {
     "name": "SidebarLayout",
-    "description": "Responsive layout with a sidebar and main content area (and optional aside).",
+    "description": "Responsive layout with a sidebar and main content area (and optional aside).\n\n`sizing=\"content\"` keeps normal content-flow behavior. Use `sizing=\"fill\"` when the layout\nshould fill an already bounded parent so sidebar/content children receive the available space\nfor their own scrolling or gesture ownership.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
-      "line": 34,
+      "line": 46,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -15142,7 +15193,7 @@
     "modulePath": "src/layout/sidebar-layout/types.ts",
     "sourceLocation": {
       "filePath": "src/layout/sidebar-layout/types.ts",
-      "line": 5,
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15199,6 +15250,13 @@
         "description": null
       },
       {
+        "name": "sizing",
+        "kind": "property",
+        "type": "SidebarLayoutSizing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "testID",
         "kind": "property",
         "type": "string | undefined",
@@ -15242,7 +15300,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 22,
+      "line": 23,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15373,7 +15431,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 16,
+      "line": 17,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15431,7 +15489,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 34,
+      "line": 35,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15449,7 +15507,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 36,
+      "line": 37,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -15552,7 +15610,7 @@
     "modulePath": "src/patterns/auth/types.ts",
     "sourceLocation": {
       "filePath": "src/patterns/auth/types.ts",
-      "line": 33,
+      "line": 34,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -17162,7 +17220,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -17366,7 +17424,7 @@
     "modulePath": "src/components/textarea/Textarea.tsx",
     "sourceLocation": {
       "filePath": "src/components/textarea/Textarea.tsx",
-      "line": 56,
+      "line": 46,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -17618,7 +17676,7 @@
       {
         "name": "autoComplete",
         "kind": "property",
-        "type": "\"email\" | \"password\" | \"tel\" | \"url\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"family-name\" | \"gender\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"name\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"username\" | \"username-new\" | \"off\" | undefined",
+        "type": "\"email\" | \"password\" | \"tel\" | \"url\" | \"2fa-app-otp\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"email-otp\" | \"flight-confirmation-code\" | \"flight-number\" | \"family-name\" | \"gender\" | \"gift-card-number\" | \"gift-card-pin\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"loyalty-account-number\" | \"name\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-dependent-locality\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-address-unit\" | \"postal-code\" | \"promo-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"upi-vpa\" | \"wifi-password\" | \"username\" | \"username-new\" | \"off\" | undefined",
         "required": false,
         "description": null
       },
@@ -17863,7 +17921,7 @@
       {
         "name": "leadingIcon",
         "kind": "property",
-        "type": "Surface.ButtonIconSpec | undefined",
+        "type": "Surface.IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -18486,7 +18544,7 @@
       {
         "name": "trailingIcon",
         "kind": "property",
-        "type": "Surface.ButtonIconSpec | undefined",
+        "type": "Surface.IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -19025,7 +19083,7 @@
     "modulePath": "src/patterns/timeline/Timeline.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/timeline/Timeline.tsx",
-      "line": 121,
+      "line": 120,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -19060,7 +19118,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -19593,7 +19651,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource",
         "required": true,
         "description": null
       },
@@ -19879,7 +19937,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -21749,7 +21807,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "ButtonIconSpec | undefined",
+        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -21988,7 +22046,7 @@
     "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "line": 158,
+      "line": 157,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

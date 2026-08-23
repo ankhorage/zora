@@ -203,7 +203,7 @@ describe('Select', () => {
   test('prevents pointer/touch interaction with Picker subtree while passive', () => {
     const source = readComponent('select', 'Select.tsx');
 
-    expect(source).toMatch(/pointerEvents=\{passive \? 'none' : 'auto'\}/);
+    expect(source).toMatch(/pointerEvents:\s*passive \? 'none' : 'auto'/);
     expect(source).toMatch(
       /onValueChange=\{\s*\(\s*itemValue\s*\)\s*=>\s*\{\s*if\s*\(\s*!passive\s*\)/,
     );

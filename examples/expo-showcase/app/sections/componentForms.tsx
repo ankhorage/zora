@@ -6,9 +6,11 @@ import {
   FormActions,
   FormError,
   FormField,
+  Gradient,
   Icon,
   Inline,
   Input,
+  OAuthProviderList,
   Radio,
   ScreenSection,
   Stack,
@@ -42,6 +44,27 @@ export function ComponentFormsSection() {
           </Radio>
           <Radio disabled>Disabled radio</Radio>
         </Stack>
+      </Card>
+
+      <Card
+        title="Portable gradient adapter"
+        description="The Expo app supplies expo-linear-gradient without coupling the ZORA runtime to Expo."
+      >
+        <Gradient colors={['#0b6e99', '#7c3aed']} minHeight={96} p="m" radius="m">
+          <Text color="neutral" weight="semiBold">
+            Expo 57 gradient integration
+          </Text>
+        </Gradient>
+      </Card>
+
+      <Card
+        title="OAuth icon styles"
+        description="Exercises FontAwesome, FA5 brand, FA5 solid, and FA6 brand fonts."
+      >
+        <OAuthProviderList
+          layout="inline"
+          providers={[{ id: 'github' }, { id: 'microsoft' }, { id: 'zoom' }, { id: 'x' }]}
+        />
       </Card>
 
       <Card

@@ -74,8 +74,11 @@ export type {
   GradientLocations,
   GradientPoint,
   GradientProps,
+  GradientRenderer,
+  GradientRendererProps,
+  GradientRendererProviderProps,
 } from './components/gradient';
-export { Gradient } from './components/gradient';
+export { Gradient, GradientRendererProvider } from './components/gradient';
 export type {
   HeadingAlign,
   HeadingColor,

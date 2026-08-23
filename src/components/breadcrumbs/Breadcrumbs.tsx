@@ -64,9 +64,8 @@ function BreadcrumbLabel({ item, compact }: { item: BreadcrumbItem; compact: boo
     <Inline align="center" gap="xs" wrap="nowrap">
       {item.icon ? (
         <Icon
+          {...item.icon}
           color={theme.semantics.content.muted}
-          name={item.icon.name}
-          provider={item.icon.provider}
           size={resolveIconSize(compact ? 's' : 'm')}
         />
       ) : null}

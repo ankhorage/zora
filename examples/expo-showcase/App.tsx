@@ -1,6 +1,8 @@
 import {
   AppBar,
   AppShell,
+  type GradientRendererProps,
+  GradientRendererProvider,
   Tabs,
   Toolbar,
   ToolbarAction,
@@ -8,6 +10,7 @@ import {
   type ZoraTheme,
   type ZoraThemeMode,
 } from '@ankhorage/zora';
+import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
@@ -19,6 +22,7 @@ import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
 import { PostsPage } from './app/posts';
 import { ThemeComposerPage } from './app/theme-composer';
+import { useZoraIconFonts } from './useZoraIconFonts';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'chats' | 'theme';
 type ColorMode = ZoraThemeMode;
@@ -31,12 +35,21 @@ const initialShowcaseTheme: ZoraTheme = {
   harmony: 'analogous',
 };
 
+function ExpoGradientRenderer({ children, ...props }: GradientRendererProps) {
+  return <LinearGradient {...props}>{children}</LinearGradient>;
+}
+
 function AppWrapper() {
+  const iconFontsLoaded = useZoraIconFonts();
   const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');
   const [colorMode, setColorMode] = React.useState<ColorMode>('light');
   const [showcaseTheme, setShowcaseTheme] = React.useState<ZoraTheme>(initialShowcaseTheme);
 
   const isDark = colorMode === 'dark';
+
+  if (!iconFontsLoaded) {
+    return null;
+  }
 
   const toggleColorMode = () => {
     setColorMode((currentMode) => (currentMode === 'dark' ? 'light' : 'dark'));
@@ -70,41 +83,43 @@ function AppWrapper() {
 
   return (
     <ZoraProvider key={colorMode} initialMode={colorMode} theme={showcaseTheme}>
-      <SafeAreaProvider>
-        <StatusBar style={isDark ? 'light' : 'dark'} />
+      <GradientRendererProvider renderer={ExpoGradientRenderer}>
+        <SafeAreaProvider>
+          <StatusBar style={isDark ? 'light' : 'dark'} />
 
-        <AppShell
-          header={
-            <AppBar>
-              <Toolbar position="inline" compact={false}>
-                <Tabs
-                  variant="segmented"
-                  size="s"
-                  value={activeTab}
-                  onValueChange={setActiveTab}
-                  items={[
-                    { value: 'home', label: 'Home' },
-                    { value: 'components', label: 'Components' },
-                    { value: 'patterns', label: 'Patterns' },
-                    { value: 'posts', label: 'Posts' },
-                    { value: 'chats', label: 'Chats' },
-                    { value: 'theme', label: 'Theme' },
-                  ]}
-                />
-                <View style={{ flex: 1 }} />
-                <ToolbarAction
-                  active={isDark}
-                  icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
-                  label={isDark ? 'Use light mode' : 'Use dark mode'}
-                  onPress={toggleColorMode}
-                />
-              </Toolbar>
-            </AppBar>
-          }
-        >
-          {renderContent()}
-        </AppShell>
-      </SafeAreaProvider>
+          <AppShell
+            header={
+              <AppBar>
+                <Toolbar position="inline" compact={false}>
+                  <Tabs
+                    variant="segmented"
+                    size="s"
+                    value={activeTab}
+                    onValueChange={setActiveTab}
+                    items={[
+                      { value: 'home', label: 'Home' },
+                      { value: 'components', label: 'Components' },
+                      { value: 'patterns', label: 'Patterns' },
+                      { value: 'posts', label: 'Posts' },
+                      { value: 'chats', label: 'Chats' },
+                      { value: 'theme', label: 'Theme' },
+                    ]}
+                  />
+                  <View style={{ flex: 1 }} />
+                  <ToolbarAction
+                    active={isDark}
+                    icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+                    label={isDark ? 'Use light mode' : 'Use dark mode'}
+                    onPress={toggleColorMode}
+                  />
+                </Toolbar>
+              </AppBar>
+            }
+          >
+            {renderContent()}
+          </AppShell>
+        </SafeAreaProvider>
+      </GradientRendererProvider>
     </ZoraProvider>
   );
 }

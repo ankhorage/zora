@@ -2,7 +2,11 @@ import { describe, expect, test } from 'bun:test';
 
 import type { ZoraComponentRegistry } from './index';
 
-const NON_RUNTIME_COMPONENT_EXPORTS = new Set(['SelectionProvider', 'ToastProvider']);
+const NON_RUNTIME_COMPONENT_EXPORTS = new Set([
+  'GradientRendererProvider',
+  'SelectionProvider',
+  'ToastProvider',
+]);
 const RUNTIME_THEME_COMPONENT_EXPORTS = ['ThemeModeToggle'] as const;
 const REGISTRY_SNAPSHOT_PREFIX = 'ZORA_REGISTRY_SNAPSHOT:';
 

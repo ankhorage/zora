@@ -1,6 +1,6 @@
 import { Badge, ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 const orderRows = [
   {

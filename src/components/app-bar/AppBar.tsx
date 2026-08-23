@@ -1,4 +1,4 @@
-import { AppBar as SurfaceAppBar } from '@ankhorage/surface';
+import { AppBar as SurfaceAppBar, type ButtonIconSpec } from '@ankhorage/surface';
 import React from 'react';
 
 import { Box, Inline, Stack } from '../../foundation';
@@ -9,8 +9,8 @@ import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import type { AppBarMode, AppBarOverflowAction, AppBarProps } from './types';
 
-const DEFAULT_CANCEL_ICON = { name: 'close-outline' };
-const DEFAULT_OVERFLOW_ICON = { name: 'ellipsis-vertical' };
+const DEFAULT_CANCEL_ICON = { name: 'close-outline' } satisfies ButtonIconSpec;
+const DEFAULT_OVERFLOW_ICON = { name: 'ellipsis-vertical' } satisfies ButtonIconSpec;
 
 function resolveMode(mode: AppBarMode | undefined): AppBarMode {
   return mode ?? { type: 'default' };

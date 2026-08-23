@@ -23,6 +23,31 @@ describe('OAuth provider UI helpers', () => {
     expect(resolveOAuthProviderIcon('google')).toEqual({ provider: 'FontAwesome', name: 'google' });
     expect(resolveOAuthProviderIcon('github')).toEqual({ provider: 'FontAwesome', name: 'github' });
     expect(DEFAULT_OAUTH_PROVIDER_ICONS.apple).toEqual({ provider: 'FontAwesome', name: 'apple' });
+    expect(DEFAULT_OAUTH_PROVIDER_ICONS.microsoft).toEqual({
+      provider: 'FontAwesome5',
+      name: 'microsoft',
+      variant: 'brand',
+    });
+    expect(DEFAULT_OAUTH_PROVIDER_ICONS.discord).toEqual({
+      provider: 'FontAwesome5',
+      name: 'discord',
+      variant: 'brand',
+    });
+    expect(DEFAULT_OAUTH_PROVIDER_ICONS.gitlab).toEqual({
+      provider: 'FontAwesome5',
+      name: 'gitlab',
+      variant: 'brand',
+    });
+    expect(DEFAULT_OAUTH_PROVIDER_ICONS.zoom).toEqual({
+      provider: 'FontAwesome5',
+      name: 'video',
+      variant: 'solid',
+    });
+    expect(DEFAULT_OAUTH_PROVIDER_ICONS.x).toEqual({
+      provider: 'FontAwesome6',
+      name: 'x-twitter',
+      variant: 'brand',
+    });
   });
 
   it('returns undefined for custom provider icons', () => {

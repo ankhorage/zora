@@ -30,7 +30,7 @@ function SelectInner<TValue extends string = string>({
       radius="m"
       testID={testID}
     >
-      <View pointerEvents={passive ? 'none' : 'auto'}>
+      <View style={{ pointerEvents: passive ? 'none' : 'auto' }}>
         <Picker
           enabled={!disabled}
           onValueChange={(itemValue) => {

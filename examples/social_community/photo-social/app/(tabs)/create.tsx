@@ -9,7 +9,7 @@ import {
   Textarea,
 } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 export default function CreateScreen() {
   return (
@@ -27,7 +27,9 @@ export default function CreateScreen() {
           <ImageUploadField
             label="Cover image"
             description="Choose a photo for the next visual story."
-            actionLabel="Choose image"
+            onChange={() => undefined}
+            onPick={() => Promise.resolve(null)}
+            value={null}
           />
         </ScreenSection>
 

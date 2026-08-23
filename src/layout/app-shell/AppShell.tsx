@@ -24,11 +24,7 @@ function AppShellInner({
 
         {footer ? <View style={styles.slot}>{footer}</View> : null}
 
-        {overlay ? (
-          <View pointerEvents="box-none" style={styles.overlay}>
-            {overlay}
-          </View>
-        ) : null}
+        {overlay ? <View style={[StyleSheet.absoluteFill, styles.overlay]}>{overlay}</View> : null}
       </View>
     </Box>
   );
@@ -63,7 +59,7 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject,
+    pointerEvents: 'box-none',
     zIndex: 10,
   },
 });

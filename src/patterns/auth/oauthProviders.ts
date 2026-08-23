@@ -2,22 +2,22 @@ import type { OAuthProviderIconSpec } from './types';
 
 export const DEFAULT_OAUTH_PROVIDER_ICONS = {
   apple: { provider: 'FontAwesome', name: 'apple' },
-  azure: { provider: 'FontAwesome5', name: 'microsoft' },
+  azure: { provider: 'FontAwesome5', name: 'microsoft', variant: 'brand' },
   bitbucket: { provider: 'FontAwesome', name: 'bitbucket' },
-  discord: { provider: 'FontAwesome5', name: 'discord' },
+  discord: { provider: 'FontAwesome5', name: 'discord', variant: 'brand' },
   facebook: { provider: 'FontAwesome', name: 'facebook' },
-  figma: { provider: 'FontAwesome5', name: 'figma' },
+  figma: { provider: 'FontAwesome5', name: 'figma', variant: 'brand' },
   github: { provider: 'FontAwesome', name: 'github' },
-  gitlab: { provider: 'FontAwesome5', name: 'gitlab' },
+  gitlab: { provider: 'FontAwesome5', name: 'gitlab', variant: 'brand' },
   google: { provider: 'FontAwesome', name: 'google' },
   linkedin: { provider: 'FontAwesome', name: 'linkedin' },
-  microsoft: { provider: 'FontAwesome5', name: 'microsoft' },
-  slack: { provider: 'FontAwesome5', name: 'slack' },
+  microsoft: { provider: 'FontAwesome5', name: 'microsoft', variant: 'brand' },
+  slack: { provider: 'FontAwesome5', name: 'slack', variant: 'brand' },
   spotify: { provider: 'FontAwesome', name: 'spotify' },
-  twitch: { provider: 'FontAwesome5', name: 'twitch' },
+  twitch: { provider: 'FontAwesome5', name: 'twitch', variant: 'brand' },
   twitter: { provider: 'FontAwesome', name: 'twitter' },
-  x: { provider: 'FontAwesome6', name: 'x-twitter' },
-  zoom: { provider: 'FontAwesome5', name: 'video' },
+  x: { provider: 'FontAwesome6', name: 'x-twitter', variant: 'brand' },
+  zoom: { provider: 'FontAwesome5', name: 'video', variant: 'solid' },
 } as const satisfies Record<string, OAuthProviderIconSpec>;
 
 const DEFAULT_OAUTH_PROVIDER_LABELS = {

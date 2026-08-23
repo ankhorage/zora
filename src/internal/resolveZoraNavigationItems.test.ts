@@ -60,6 +60,17 @@ describe('resolveRouteLabel', () => {
 
     expect(result).toEqual({ label: 'profile', source: 'name' });
   });
+
+  test('uses descriptor title instead of invoking a callable Expo tab label', () => {
+    const result = resolveRouteLabel({
+      route: { key: 'k4', name: 'home' },
+      metadata: undefined,
+      descriptor: { options: { tabBarLabel: () => 'callable', title: 'Home title' } },
+      kind: 'tab',
+    });
+
+    expect(result).toEqual({ label: 'Home title', source: 'descriptor' });
+  });
 });
 
 describe('resolveNavigationItems', () => {

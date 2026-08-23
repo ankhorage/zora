@@ -8,8 +8,18 @@
     "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "static"
     },
-    "plugins": ["expo-router"]
+    "experiments": {
+      "reactCompiler": true,
+      "typedRoutes": true
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-vector-icons/fontawesome",
+      "@react-native-vector-icons/fontawesome5",
+      "@react-native-vector-icons/fontawesome6",
+      "@react-native-vector-icons/ionicons"
+    ]
   }
 }

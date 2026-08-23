@@ -1,6 +1,7 @@
 import {
   Badge,
   Card,
+  FormField,
   Input,
   Notice,
   Screen,
@@ -9,7 +10,7 @@ import {
   Textarea,
 } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 export default function ReservationsScreen() {
   return (
@@ -20,17 +21,23 @@ export default function ReservationsScreen() {
           title="Booking details"
           description="A reservation form composed from ZORA inputs."
         >
-          <Input label="Date" placeholder="Friday, 24 May" />
-          <Input label="Time" placeholder="19:30" />
-          <Select
-            label="Party size"
-            placeholder="Choose guests"
-            options={[
-              { label: '2 guests', value: '2' },
-              { label: '4 guests', value: '4' },
-              { label: '6 guests', value: '6' },
-            ]}
-          />
+          <FormField label="Date">
+            <Input placeholder="Friday, 24 May" />
+          </FormField>
+          <FormField label="Time">
+            <Input placeholder="19:30" />
+          </FormField>
+          <FormField label="Party size">
+            <Select
+              value="2"
+              onValueChange={() => undefined}
+              options={[
+                { label: '2 guests', value: '2' },
+                { label: '4 guests', value: '4' },
+                { label: '6 guests', value: '6' },
+              ]}
+            />
+          </FormField>
           <Textarea placeholder="Dietary notes, stroller, celebration, or seating preference..." />
         </ScreenSection>
 
