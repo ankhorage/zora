@@ -387,14 +387,14 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion
   );
 
   writeTextFile(
-    join(appDir, 'useZoraIconFonts.ts'),
+    join(targetDir, 'src', 'hooks', 'use-zora-icon-fonts.ts'),
     `export function useZoraIconFonts(): boolean {
   return true;
 }`,
   );
 
   writeTextFile(
-    join(appDir, 'useZoraIconFonts.web.ts'),
+    join(targetDir, 'src', 'hooks', 'use-zora-icon-fonts.web.ts'),
     `import fontAwesome from '@react-native-vector-icons/fontawesome/fonts/FontAwesome.ttf';
 import fontAwesome5Brands from '@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Brands.ttf';
 import fontAwesome5Solid from '@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Solid.ttf';
@@ -422,7 +422,7 @@ export function useZoraIconFonts(): boolean {
     `import { ZoraProvider } from '@ankhorage/zora';
 import { Stack } from 'expo-router';
 
-import { useZoraIconFonts } from './useZoraIconFonts';
+import { useZoraIconFonts } from '../src/hooks/use-zora-icon-fonts';
 
 export default function RootLayout() {
   const iconFontsLoaded = useZoraIconFonts();

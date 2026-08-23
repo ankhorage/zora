@@ -14,6 +14,7 @@ import { basename, join, relative, resolve, sep } from 'node:path';
 
 interface CandidateFixture {
   readonly doctor: boolean;
+  readonly expectedWebRoutes?: readonly string[];
   readonly name: string;
   readonly nativePrebuild: boolean;
   readonly project: string;
@@ -40,6 +41,21 @@ const REQUIRED_NATIVE_FONT_FILES = [
   'FontAwesome6_Solid.ttf',
   'Ionicons.ttf',
 ] as const;
+const RESTAURANT_WEB_ROUTES = [
+  '/',
+  '/(tabs)',
+  '/(tabs)/menu',
+  '/(tabs)/orders',
+  '/(tabs)/profile',
+  '/(tabs)/reservations',
+  '/+not-found',
+  '/_sitemap',
+  '/menu',
+  '/orders',
+  '/profile',
+  '/reservations',
+] as const;
+const FORBIDDEN_ROUTER_HELPER_ROUTES = ['/ExampleAppBar', '/useZoraIconFonts'] as const;
 
 const FIXTURES: readonly CandidateFixture[] = [
   {
@@ -50,6 +66,7 @@ const FIXTURES: readonly CandidateFixture[] = [
   },
   {
     doctor: false,
+    expectedWebRoutes: RESTAURANT_WEB_ROUTES,
     name: 'restaurant',
     nativePrebuild: false,
     project: 'examples/food_drink/restaurant',
@@ -274,6 +291,35 @@ function verifyWebFonts(exportRoot: string): void {
   }
 }
 
+function toStaticRoute(exportRoot: string, htmlPath: string): string {
+  const routePath = relative(exportRoot, htmlPath)
+    .split(sep)
+    .join('/')
+    .replace(/\.html$/, '');
+  return routePath === 'index' ? '/' : `/${routePath.replace(/\/index$/, '')}`;
+}
+
+function verifyRouterRouteSurface(exportRoot: string, expectedRoutes: readonly string[]): void {
+  const actualRoutes = collectFiles(exportRoot, '.html')
+    .map((path) => toStaticRoute(exportRoot, path))
+    .sort();
+  const sortedExpectedRoutes = [...expectedRoutes].sort();
+
+  for (const forbiddenRoute of FORBIDDEN_ROUTER_HELPER_ROUTES) {
+    assert(
+      !actualRoutes.includes(forbiddenRoute),
+      `Exported Router surface contains implementation-only route ${forbiddenRoute}.`,
+    );
+  }
+
+  assert(
+    JSON.stringify(actualRoutes) === JSON.stringify(sortedExpectedRoutes),
+    `Unexpected Router route surface. Expected ${sortedExpectedRoutes.join(', ')}, received ${actualRoutes.join(', ')}.`,
+  );
+
+  console.log(`Verified Router route surface: ${actualRoutes.join(', ')}`);
+}
+
 function verifyNativeFonts(fixtureRoot: string): void {
   run(
     ['bun', 'x', 'expo', 'prebuild', '--platform', 'ios', '--no-install', '--clean'],
@@ -339,6 +385,10 @@ try {
       fixtureRoot,
     );
     verifyWebFonts(exportRoot);
+
+    if (fixture.expectedWebRoutes) {
+      verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
+    }
 
     if (fixture.nativePrebuild) {
       verifyNativeFonts(fixtureRoot);

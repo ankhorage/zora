@@ -1,6 +1,6 @@
 import { Avatar, Badge, Card, MetricCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 export default function ProfileScreen() {
   return (

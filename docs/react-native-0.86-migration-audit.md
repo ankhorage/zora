@@ -146,6 +146,11 @@ roadmap issue #294 closes.
   installed package contains the candidate-only `GradientRendererProvider`
   implementation, its Surface range is `^3.0.0`, and the installed Surface is
   exactly `3.0.0` with no Surface 2 graph.
+- All seven Expo Router examples keep implementation files outside `app/`:
+  shared app bars live in `src/components`, while the platform-specific icon
+  font hooks live in `src/hooks`. `examples:validate` rejects app-tree modules
+  that are not route/layout modules with default exports, and the scaffold now
+  generates its font hooks under `src/hooks`.
 - The current pre-changeset tarball is
   `ankhorage-zora-2.13.2.tgz`; `.changeset/modern-ravens-upgrade.md` promotes it
   to ZORA 3 during the release flow. The temporary dependency is intentionally
@@ -155,9 +160,12 @@ roadmap issue #294 closes.
   both fixtures. Expo Doctor 1.20.2 passes all checks for the candidate-backed
   showcase.
 - Candidate-backed Expo 57 Web export passes for the showcase and the static
-  restaurant Router app (14 routes). Both exported bundles include the five
-  scoped RNVI faces used by acceptance: Ionicons, FontAwesome, FA5 Brands, FA5
-  Solid, and FA6 Brands.
+  restaurant Router app. Its exact 12-route export consists of five public app
+  routes, Expo's five `(tabs)` route-group representations, and the generated
+  sitemap/not-found routes; candidate acceptance explicitly rejects helper
+  routes such as `/ExampleAppBar` and `/useZoraIconFonts`. Both exported bundles
+  include the five scoped RNVI faces used by acceptance: Ionicons, FontAwesome,
+  FA5 Brands, FA5 Solid, and FA6 Brands.
 - Expo config evaluation passes for both showcase and Router app. An automated
   iOS prebuild succeeds and records Ionicons, FontAwesome, all three FA5 styles,
   and all three FA6 styles in `UIAppFonts`.

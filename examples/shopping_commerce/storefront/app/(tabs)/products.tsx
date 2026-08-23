@@ -1,6 +1,6 @@
 import { Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
 
-import { ExampleAppBar } from '../ExampleAppBar';
+import { ExampleAppBar } from '../../src/components/example-app-bar';
 
 const products = [
   {
