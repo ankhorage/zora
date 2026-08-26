@@ -1,0 +1,12 @@
+/***
+ * Repository configuration
+ *
+ * Loads the canonical Ankhorage dependency-update policy from its default branch.
+ *
+ * @usage
+ * @readme
+ */
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['github>ankhorage/renovate'],
+}

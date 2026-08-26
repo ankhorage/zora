@@ -1,0 +1,21 @@
+name: Renovate
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: read
+
+jobs:
+  changeset:
+    if: >-
+      github.actor == 'renovate[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'renovate/')
+    uses: ankhorage/renovate/.github/workflows/changeset.yml@b7305e8f17f9b07238f6b827bbc9f866fd498a0f
