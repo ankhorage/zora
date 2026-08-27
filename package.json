@@ -86,8 +86,8 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^1.6.0",
-    "@ankhorage/paradox": "^0.1.21",
+    "@ankhorage/devtools": "^1.7.0",
+    "@ankhorage/paradox": "^0.1.24",
     "@changesets/cli": "^2.31.0",
     "@react-native-picker/picker": "2.11.4",
     "@react-native-vector-icons/fontawesome": "^13.1.3",
