@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+### Patch Changes
+
+- 7e0ae67: Support the React Native 0.86 patch line as a peer, consume the released Surface peer fix, and align ZORA's validation and Expo 57 examples with React Native 0.86.3.
+
 ## 3.0.0
 
 ### Major Changes
