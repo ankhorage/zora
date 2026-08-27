@@ -52,10 +52,10 @@ describe('portable ZORA package boundary', () => {
     const peers = readRecord(packageJson, 'peerDependencies');
     const development = readRecord(packageJson, 'devDependencies');
 
-    expect(readValue(dependencies, '@ankhorage/surface')).toBe('^3.0.0');
+    expect(readValue(dependencies, '@ankhorage/surface')).toBe('^3.0.1');
     expect(readValue(dependencies, '@ankhorage/contracts')).toBe('^8.0.0');
     expect(peers.react).toBe('19.2.3');
-    expect(readValue(peers, 'react-native')).toBe('0.86.2');
+    expect(readValue(peers, 'react-native')).toBe('0.86.x');
     expect(readValue(peers, 'react-native-web')).toBe('~0.21.0');
     expect(development.typescript).toBe('~6.0.3');
 
@@ -88,9 +88,10 @@ describe('Expo 57 example boundary', () => {
       const dependencies = readRecord(packageJson, 'dependencies');
       const development = readRecord(packageJson, 'devDependencies');
 
-      expect(dependencies.expo).toBe('~57.0.15');
+      expect(readValue(dependencies, '@ankhorage/zora')).toBe('^3.0.0');
+      expect(dependencies.expo).toBe('57.0.17');
       expect(dependencies.react).toBe('19.2.3');
-      expect(readValue(dependencies, 'react-native')).toBe('0.86.2');
+      expect(readValue(dependencies, 'react-native')).toBe('0.86.3');
       expect(readValue(dependencies, 'react-native-web')).toBe('~0.21.0');
       expect(development.typescript).toBe('~6.0.3');
       expect(readValue(dependencies, '@expo/vector-icons')).toBeUndefined();

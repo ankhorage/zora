@@ -1,7 +1,7 @@
 # Expo 57 / React Native 0.86 ZORA migration audit
 
 This audit covers roadmap step `[expo 4]` and the move from React 19.1 / React
-Native 0.81 to React 19.2.3 / React Native 0.86.2. ZORA remains the portable
+Native 0.81 to React 19.2.3 / the React Native 0.86 patch line. ZORA remains the portable
 React Native and React Native Web UI owner; Expo setup is confined to ZORA-owned
 example applications.
 
@@ -11,16 +11,17 @@ The review uses the React Native release posts for
 [0.84](https://reactnative.dev/blog/2026/02/11/react-native-0.84),
 [0.85](https://reactnative.dev/blog/2026/04/07/react-native-0.85), and
 [0.86](https://reactnative.dev/blog/2026/06/11/react-native-0.86), plus the
-released `@ankhorage/surface@3.0.0` icon contract and
-`@ankhorage/expo-runtime@2.7.0/platform` projection.
+released `@ankhorage/surface@3.0.1` icon contract and
+`@ankhorage/expo-runtime@3.0.6/platform` projection.
 
 ## Target and ownership decisions
 
-- **CHANGE REQUIRED — platform contract.** React is `19.2.3`, React Native is
-  `0.86.2`, React Native Web is `~0.21.0`, TypeScript is `~6.0.3`, Node typings
-  are `^24.13.3`, and Bun policy is `1.3.14`.
+- **CHANGE REQUIRED — platform contract.** React is `19.2.3`; the portable ZORA peer
+  supports `0.86.x`, while development and Expo examples validate exactly React Native
+  `0.86.3`. React Native Web is `~0.21.0`, TypeScript is `~6.0.3`, Node typings are
+  `^24.13.3`, and Bun policy is `1.3.14`.
 - **CHANGE REQUIRED — Surface contract.** ZORA consumes released
-  `@ankhorage/surface@3.0.0` through `^3.0.0` and reuses its discriminated
+  `@ankhorage/surface@3.0.1` through `^3.0.1` and reuses its discriminated
   `IconSource`/`ButtonIconSpec` types instead of reconstructing icon specs.
 - **CHANGE REQUIRED — Expo optionality.** Published ZORA source and package
   metadata contain no Expo runtime dependency or peer. `Gradient` receives a
@@ -32,7 +33,7 @@ released `@ankhorage/surface@3.0.0` icon contract and
 
 Package manifests cannot execute TypeScript and therefore cannot import the
 canonical Expo platform projection. The scaffold keeps a narrow script-only
-version object aligned to released `@ankhorage/expo-runtime@2.7.0/platform`.
+version object aligned to released `@ankhorage/expo-runtime@3.0.6/platform`.
 Adding Expo Runtime as a ZORA development dependency would install its required
 Expo peers into the portable base repository, defeating the optionality gate.
 Committed example JSON necessarily records concrete versions, while portable
@@ -55,7 +56,7 @@ Each requested audit area has one decision.
 | Audit area                            | Decision                         | Evidence and action                                                                                                                                                                                                                          |
 | ------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Components / removed APIs             | **CHANGE REQUIRED**              | `AppShell` used removed `StyleSheet.absoluteFillObject`; it now composes `StyleSheet.absoluteFill`. No other removed component API is active.                                                                                                |
-| TypeScript types                      | **CHANGE REQUIRED**              | ZORA compiles with TypeScript 6.0.3, React 19.2 declarations, RN 0.86.2 declarations, and the discriminated Surface icon union. Icon forwarding preserves the complete provider/variant discriminant.                                        |
+| TypeScript types                      | **CHANGE REQUIRED**              | ZORA compiles with TypeScript 6.0.3, React 19.2 declarations, RN 0.86.3 declarations, and the discriminated Surface icon union. Icon forwarding preserves the complete provider/variant discriminant.                                        |
 | Fabric / New Architecture             | **VERIFIED: NO CHANGE REQUIRED** | ZORA is TypeScript/React UI only: no native module, codegen component, bridge branch, UIManager-type check, or legacy-architecture flag exists.                                                                                              |
 | Layout / measurement                  | **CHANGE REQUIRED**              | The removed absolute-fill style path is replaced and RNW 0.21 static render/hydration covers responsive Container/Grid/Show plus AppShell overlay positioning. ZORA performs no manual measurement or inset correction.                      |
 | Pressable behavior                    | **VERIFIED: NO CHANGE REQUIRED** | Public `onPress`, pressed, hover, focus, keyboard, and accessibility-state contracts remain valid. ZORA does not render hidden React `Activity` boundaries or depend on listener teardown timing.                                            |
@@ -100,7 +101,7 @@ native font bootstrapping.
   `1.3.13`.
 - **Owner follow-up required:** in the zora-chess repository, retain broad
   public peers but move development/tooling validation to released ZORA 3,
-  React 19.2.3, RN 0.86.2, TypeScript 6.0.3, Node 24 typings, Devtools 1.6.0,
+  React 19.2.3, RN 0.86.3, TypeScript 6.0.3, Node 24 typings, Devtools 1.6.0,
   and Bun 1.3.14, then run its full gates and changeset/release flow.
 
 ### `@ankhorage/zora-tabletop`

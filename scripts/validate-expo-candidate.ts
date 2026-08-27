@@ -231,8 +231,8 @@ function verifyCandidateGraph(
     `Expected ZORA ${candidateVersion}, received ${installedZoraVersion}.`,
   );
   assert(
-    installedSurfaceRange === '^3.0.0',
-    `Expected the candidate to depend on Surface ^3.0.0, received ${installedSurfaceRange}.`,
+    installedSurfaceRange === '^3.0.1',
+    `Expected the candidate to depend on Surface ^3.0.1, received ${installedSurfaceRange}.`,
   );
   assert(
     existsSync(
@@ -249,8 +249,8 @@ function verifyCandidateGraph(
     'installed Surface version',
   );
   assert(
-    installedSurfaceVersion === '3.0.0',
-    `Expected Surface 3.0.0, received ${installedSurfaceVersion}.`,
+    installedSurfaceVersion === '3.0.1',
+    `Expected Surface 3.0.1, received ${installedSurfaceVersion}.`,
   );
 
   const installedZoraRealPath = realpathSync(installedZoraRoot);
