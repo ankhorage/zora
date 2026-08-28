@@ -254,7 +254,7 @@ Preferred full validation:
 bun run build
 bun run lint:fix
 bun run test
-bun run knip
+bun run knip:check
 bun run typecheck
 bun run format:check
 ```
@@ -266,7 +266,7 @@ bun run build
 bun run changeset
 bun run changeset:status
 bun run docs
-bun run knip
+bun run knip:check
 bun run lint
 bun run lint:fix
 bun run format

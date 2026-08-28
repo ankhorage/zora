@@ -62,10 +62,10 @@ jobs:
 
       - name: Run Knip
         run: |
-          if node -e "const p=require('./package.json'); process.exit(p.scripts?.knip ? 0 : 1)"; then
-            bun run knip
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['knip:check'] ? 0 : 1)"; then
+            bun run knip:check
           else
-            echo "No knip script found; skipping."
+            echo "No knip:check script found; skipping."
           fi
 
       - name: Run tests

@@ -73,7 +73,7 @@
     "changeset": "changeset",
     "changeset:status": "changeset status --since=origin/main",
     "docs": "paradox",
-    "knip": "ankhorage-knip",
+    "knip:check": "ankhorage-knip",
     "examples:validate": "bun scripts/validate-example-projects.ts",
     "expo:candidate": "bun scripts/validate-expo-candidate.ts",
     "lint": "ankhorage-eslint . --max-warnings=0",
@@ -86,8 +86,8 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^1.6.0",
-    "@ankhorage/paradox": "^0.1.21",
+    "@ankhorage/devtools": "^1.7.0",
+    "@ankhorage/paradox": "^0.1.24",
     "@changesets/cli": "^2.31.0",
     "@react-native-picker/picker": "2.11.4",
     "@react-native-vector-icons/fontawesome": "^13.1.3",
