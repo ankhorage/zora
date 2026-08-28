@@ -217,7 +217,7 @@ Before finishing ANY task, run:
 bun run build
 bun run lint:fix
 bun run test
-bun run knip
+bun run knip:check
 ```
 
 If anything fails:
@@ -256,7 +256,7 @@ A plan MUST include:
   - `bun run build`
   - `bun run lint:fix`
   - `bun run test`
-  - `bun run knip`
+  - `bun run knip:check`
 
 Forbidden changes MUST be listed:
 

@@ -73,7 +73,7 @@
     "changeset": "changeset",
     "changeset:status": "changeset status --since=origin/main",
     "docs": "paradox",
-    "knip": "ankhorage-knip",
+    "knip:check": "ankhorage-knip",
     "examples:validate": "bun scripts/validate-example-projects.ts",
     "expo:candidate": "bun scripts/validate-expo-candidate.ts",
     "lint": "ankhorage-eslint . --max-warnings=0",
