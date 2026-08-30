@@ -89,7 +89,7 @@ describe('Expo 57 example boundary', () => {
       const development = readRecord(packageJson, 'devDependencies');
 
       expect(readValue(dependencies, '@ankhorage/zora')).toBe('^3.0.0');
-      expect(dependencies.expo).toBe('57.0.17');
+      expect(dependencies.expo).toBe('57.0.18');
       expect(dependencies.react).toBe('19.2.3');
       expect(readValue(dependencies, 'react-native')).toBe('0.86.3');
       expect(readValue(dependencies, 'react-native-web')).toBe('~0.21.0');
