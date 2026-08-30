@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2
+
+### Patch Changes
+
+- 52d0916: Update `@ankhorage/surface` to include the Web overlay pointer-interaction fix.
+
 ## 3.0.1
 
 ### Patch Changes
