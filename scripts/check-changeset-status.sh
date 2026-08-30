@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if bun x changeset status --since=origin/main; then
+if bun run changeset -- status --since=origin/main; then
   exit 0
 fi
 

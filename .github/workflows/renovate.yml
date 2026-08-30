@@ -18,4 +18,4 @@ jobs:
       github.actor == 'renovate[bot]' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       startsWith(github.event.pull_request.head.ref, 'renovate/')
-    uses: ankhorage/renovate/.github/workflows/changeset.yml@b7305e8f17f9b07238f6b827bbc9f866fd498a0f
+    uses: ankhorage/renovate/.github/workflows/changeset.yml@7d4a5104b94e763ca5be34919f4fcfbb12efd526

@@ -59,8 +59,7 @@ export interface FormFieldControlProps<TName extends string = string> extends Zo
 }
 
 export type FormFieldProps<TName extends string = string> =
-  | FormFieldControlProps<TName>
-  | FormFieldWrapperProps;
+  FormFieldControlProps<TName> | FormFieldWrapperProps;
 
 export interface FormActionsProps extends ZoraBaseProps {
   submitLabel?: React.ReactNode;

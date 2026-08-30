@@ -52,7 +52,7 @@ describe('portable ZORA package boundary', () => {
     const peers = readRecord(packageJson, 'peerDependencies');
     const development = readRecord(packageJson, 'devDependencies');
 
-    expect(readValue(dependencies, '@ankhorage/surface')).toBe('^3.0.1');
+    expect(readValue(dependencies, '@ankhorage/surface')).toBe('^3.0.2');
     expect(readValue(dependencies, '@ankhorage/contracts')).toBe('^8.0.0');
     expect(peers.react).toBe('19.2.3');
     expect(readValue(peers, 'react-native')).toBe('0.86.x');

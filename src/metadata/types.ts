@@ -53,12 +53,7 @@ export interface ZoraComponentI18nMeta {
 
 export type ZoraComponentEventPayloadKind = ComponentEventDtoKind | (string & {});
 export type ZoraComponentEventPayloadFieldType =
-  | 'boolean'
-  | 'number'
-  | 'object'
-  | 'record'
-  | 'string'
-  | 'unknown';
+  'boolean' | 'number' | 'object' | 'record' | 'string' | 'unknown';
 
 export interface ZoraComponentEventPayloadFieldMeta {
   readonly path: string;

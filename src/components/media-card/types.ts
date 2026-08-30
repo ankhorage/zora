@@ -23,9 +23,7 @@ interface MediaCardWithoutImage {
 }
 
 export type MediaCardImageProps =
-  | MediaCardWithImageSource
-  | MediaCardWithImageSlot
-  | MediaCardWithoutImage;
+  MediaCardWithImageSource | MediaCardWithImageSlot | MediaCardWithoutImage;
 
 interface MediaCardBaseProps extends ZoraBaseProps {
   title: React.ReactNode;
