@@ -33,9 +33,7 @@ export interface ZoraThemeRecipeBooleanFieldMeta extends ZoraThemeRecipeFieldBas
 }
 
 export type ZoraThemeRecipeFieldMeta =
-  | ZoraThemeRecipeTokenFieldMeta
-  | ZoraThemeRecipeChoiceFieldMeta
-  | ZoraThemeRecipeBooleanFieldMeta;
+  ZoraThemeRecipeTokenFieldMeta | ZoraThemeRecipeChoiceFieldMeta | ZoraThemeRecipeBooleanFieldMeta;
 
 export interface ZoraThemeRecipeMeta {
   readonly name: string;

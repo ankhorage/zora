@@ -194,6 +194,7 @@ function verifyCandidateGraph(
   fixtureRoot: string,
   candidatePath: string,
   candidateVersion: string,
+  expectedSurfaceRange: string,
 ): void {
   const fixturePackageJson = readJsonObject(join(fixtureRoot, 'package.json'));
   const fixtureDependencies = requireObject(
@@ -231,8 +232,8 @@ function verifyCandidateGraph(
     `Expected ZORA ${candidateVersion}, received ${installedZoraVersion}.`,
   );
   assert(
-    installedSurfaceRange === '^3.0.1',
-    `Expected the candidate to depend on Surface ^3.0.1, received ${installedSurfaceRange}.`,
+    installedSurfaceRange === expectedSurfaceRange,
+    `Expected the candidate to depend on Surface ${expectedSurfaceRange}, received ${installedSurfaceRange}.`,
   );
   assert(
     existsSync(
@@ -249,8 +250,8 @@ function verifyCandidateGraph(
     'installed Surface version',
   );
   assert(
-    installedSurfaceVersion === '3.0.1',
-    `Expected Surface 3.0.1, received ${installedSurfaceVersion}.`,
+    Bun.semver.satisfies(installedSurfaceVersion, installedSurfaceRange),
+    `Installed Surface ${installedSurfaceVersion} does not satisfy ${installedSurfaceRange}.`,
   );
 
   const installedZoraRealPath = realpathSync(installedZoraRoot);
@@ -356,6 +357,14 @@ try {
   const candidatePath = join(packageRoot, candidateTarball);
   const sourcePackageJson = readJsonObject(join(REPOSITORY_ROOT, 'package.json'));
   const candidateVersion = requireString(sourcePackageJson.version, 'candidate package version');
+  const sourceDependencies = requireObject(
+    sourcePackageJson.dependencies,
+    'source package dependencies',
+  );
+  const expectedSurfaceRange = requireString(
+    sourceDependencies['@ankhorage/surface'],
+    'source package Surface range',
+  );
 
   console.log(`\nPacked candidate: ${candidatePath}`);
   console.log(`Candidate package version: ${candidateVersion}`);
@@ -372,7 +381,7 @@ try {
     rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
     run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
 
-    verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion);
+    verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
     run(['bun', 'run', 'typecheck'], fixtureRoot);
     run(['bun', 'x', 'expo', 'install', '--check'], fixtureRoot);
 

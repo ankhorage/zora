@@ -15,5 +15,6 @@ export default createKnipConfig({
     'examples/expo-showcase/**',
     'examples/*/*/**',
     'paradox.config.ts',
+    'prettier.local.config.js',
   ],
 });
