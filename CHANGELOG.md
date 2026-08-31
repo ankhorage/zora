@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0
+
+### Minor Changes
+
+- 10bf7ac: Add the adapter-neutral, manifest-authorable `ReaderSurface` for controlled EPUB and PDF reader experiences, including normalized events, progress and navigation chrome, renderer/action slots, bindable metadata, accessible live page announcements, and a static showcase example.
+
 ## 3.0.2
 
 ### Patch Changes
