@@ -75,7 +75,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -303,7 +303,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -688,7 +688,7 @@
       {
         "name": "iconFallback",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -838,7 +838,7 @@
       {
         "name": "iconFallback",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -1284,14 +1284,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -1305,7 +1305,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -1639,7 +1639,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -1878,7 +1878,7 @@
       {
         "name": "gap",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
@@ -1967,7 +1967,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -2072,7 +2072,7 @@
       {
         "name": "leadingIcon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -2303,7 +2303,7 @@
       {
         "name": "trailingIcon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -2534,14 +2534,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -2562,7 +2562,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -2949,14 +2949,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -2970,7 +2970,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -3756,7 +3756,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -4175,7 +4175,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -4261,7 +4261,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -4713,14 +4713,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -4734,7 +4734,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -5413,7 +5413,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -5427,7 +5427,7 @@
       {
         "name": "intent",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").MenuActionIntent | undefined",
+        "type": "import(\"@ankhorage/surface\").MenuActionIntent | undefined",
         "required": false,
         "description": null
       },
@@ -5749,7 +5749,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -5849,14 +5849,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -5870,7 +5870,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -6315,11 +6315,11 @@
     "relatedSymbols": ["MenuProps"],
     "signatures": [
       {
-        "label": "(props: import(\"./src/index\").MenuProps) => React.JSX.Element",
+        "label": "(props: import(\"./types\").MenuProps) => React.JSX.Element",
         "parameters": [
           {
             "name": "props",
-            "type": "import(\"./src/index\").MenuProps",
+            "type": "import(\"./types\").MenuProps",
             "required": true,
             "description": null
           }
@@ -6808,7 +6808,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 65,
+      "line": 64,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -6908,7 +6908,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 73,
+      "line": 72,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7043,7 +7043,7 @@
       {
         "name": "keyboardType",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").KeyboardTypeOptions | undefined",
+        "type": "import(\"react-native\").KeyboardTypeOptions | undefined",
         "required": false,
         "description": null
       },
@@ -7261,7 +7261,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 77,
+      "line": 76,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7410,7 +7410,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 92,
+      "line": 91,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7597,7 +7597,7 @@
       {
         "name": "height",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -7618,7 +7618,7 @@
       {
         "name": "minHeight",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -7632,14 +7632,14 @@
       {
         "name": "p",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "radius",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -7667,7 +7667,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -7862,14 +7862,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -7883,7 +7883,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -8888,7 +8888,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource",
+        "type": "import(\"@ankhorage/surface\").IconSource",
         "required": true,
         "description": null
       },
@@ -9077,7 +9077,7 @@
       {
         "name": "fit",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").ImageResizeMode | undefined",
+        "type": "import(\"react-native\").ImageResizeMode | undefined",
         "required": false,
         "description": null
       },
@@ -9187,7 +9187,7 @@
       {
         "name": "onError",
         "kind": "property",
-        "type": "((error: import(\"react-native/types/index\").ImageErrorEvent) => void) | undefined",
+        "type": "((error: import(\"react-native\").ImageErrorEvent) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -9509,14 +9509,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -9537,7 +9537,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -10358,7 +10358,7 @@
     "modulePath": "src/components/media-card/types.ts",
     "sourceLocation": {
       "filePath": "src/components/media-card/types.ts",
-      "line": 44,
+      "line": 42,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -10418,7 +10418,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -10946,7 +10946,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11509,7 +11509,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11558,7 +11558,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"../../internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -11579,7 +11579,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"../../internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -11630,7 +11630,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -11776,7 +11776,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"./src/internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"../../internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -11797,7 +11797,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"./src/internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"../../internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -12179,7 +12179,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -12403,7 +12403,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -13216,7 +13216,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -13667,6 +13667,607 @@
     "structuredRows": []
   },
   {
+    "name": "ReaderColorScheme",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 32,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderDocumentFormat",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderErrorCode",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 23,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderErrorEvent",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ReaderDocumentFormat", "ReaderErrorCode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "code",
+        "kind": "property",
+        "type": "ReaderErrorCode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "format",
+        "kind": "property",
+        "type": "ReaderDocumentFormat | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "message",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderExternalLinkEvent",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "url",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderLineHeight",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderLocationChangeEvent",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ReaderDocumentFormat", "ReaderNavigationTrigger"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "chapterId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "chapterTitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "format",
+        "kind": "property",
+        "type": "ReaderDocumentFormat",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "locator",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "page",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "pageCount",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "progression",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "trigger",
+        "kind": "property",
+        "type": "ReaderNavigationTrigger",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderNavigationTrigger",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderResolvedSource",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 36,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderStatus",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderSurface",
+    "description": "Adapter-neutral reader shell for EPUB and PDF experiences.\n\nSupply the actual renderer through `viewport`; ZORA owns only the reader\nchrome, controlled state, progress, accessible controls, and normalized\nadapter callbacks.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/reader/ReaderSurface.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/ReaderSurface.tsx",
+      "line": 348,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderSurfaceProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/reader/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/types.ts",
+      "line": 42,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [
+      "ReaderColorScheme",
+      "ReaderDocumentFormat",
+      "ReaderErrorEvent",
+      "ReaderExternalLinkEvent",
+      "ReaderLineHeight",
+      "ReaderLocationChangeEvent",
+      "ReaderResolvedSource",
+      "ReaderStatus",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "appearanceLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "canGoNext",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "canGoPrevious",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "chapterLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentsLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorTitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fontScale",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "footerActions",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "format",
+        "kind": "property",
+        "type": "ReaderDocumentFormat",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "headerActions",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "highlighted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "highlightLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "lineHeight",
+        "kind": "property",
+        "type": "ReaderLineHeight | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "loadingLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "location",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "nextPageLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onLocationChange",
+        "kind": "property",
+        "type": "((event: ReaderLocationChangeEvent) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onNextPage",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onOpenAppearance",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onOpenContents",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onOpenExternalLink",
+        "kind": "property",
+        "type": "((event: ReaderExternalLinkEvent) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPreviousPage",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onReaderError",
+        "kind": "property",
+        "type": "((event: ReaderErrorEvent) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onToggleHighlight",
+        "kind": "property",
+        "type": "(() => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "page",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pageCount",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pageLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "previousPageLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "progress",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readerColorScheme",
+        "kind": "property",
+        "type": "ReaderColorScheme | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "showChrome",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "source",
+        "kind": "property",
+        "type": "ReaderResolvedSource | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "ReaderStatus | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "subtitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "unavailableTitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewport",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "resolveAvatarInitials",
     "description": null,
     "isReadme": false,
@@ -13714,7 +14315,7 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "(providerId: string) => import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "label": "(providerId: string) => import(\"@ankhorage/surface\").IconSource | undefined",
         "parameters": [
           {
             "name": "providerId",
@@ -13723,7 +14324,7 @@
             "description": null
           }
         ],
-        "returnType": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "returnType": "import(\"@ankhorage/surface\").IconSource | undefined",
         "returnDescription": null
       }
     ],
@@ -13756,6 +14357,38 @@
           }
         ],
         "returnType": "string",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "resolveReaderProgress",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/patterns/reader/resolveReaderProgress.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/reader/resolveReaderProgress.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "({\n  progress,\n  page,\n  pageCount,\n}: { progress?: number; page?: number; pageCount?: number; }) => number",
+        "parameters": [
+          {
+            "name": "{\n  progress,\n  page,\n  pageCount,\n}",
+            "type": "{ progress?: number; page?: number; pageCount?: number; }",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "number",
         "returnDescription": null
       }
     ],
@@ -15892,7 +16525,7 @@
       {
         "name": "height",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -15913,7 +16546,7 @@
       {
         "name": "radius",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -15934,7 +16567,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -15996,7 +16629,7 @@
       {
         "name": "gap",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
         "required": false,
         "description": null
       },
@@ -16010,7 +16643,7 @@
       {
         "name": "lastLineWidth",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -16052,7 +16685,7 @@
       {
         "name": "width",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       }
@@ -16193,7 +16826,7 @@
       {
         "name": "backgroundColor",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
         "required": false,
         "description": null
       },
@@ -16242,7 +16875,7 @@
       {
         "name": "minHeight",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").Responsive<string | number> | undefined",
+        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
         "required": false,
         "description": null
       },
@@ -16328,14 +16961,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -16356,7 +16989,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -16754,14 +17387,14 @@
       {
         "name": "accessibilityRole",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityRole | undefined",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
         "required": false,
         "description": null
       },
       {
         "name": "accessibilityState",
         "kind": "property",
-        "type": "import(\"react-native/types/index\").AccessibilityState | undefined",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
         "required": false,
         "description": null
       },
@@ -16775,7 +17408,7 @@
       {
         "name": "alignSelf",
         "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native/types/index\").FlexAlignType | undefined>",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
         "required": false,
         "description": null
       },
@@ -17220,7 +17853,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -17388,7 +18021,7 @@
     "modulePath": "src/components/text/Text.tsx",
     "sourceLocation": {
       "filePath": "src/components/text/Text.tsx",
-      "line": 109,
+      "line": 111,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -17406,7 +18039,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 15,
+      "line": 20,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18609,7 +19242,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 10,
+      "line": 15,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18627,7 +19260,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 11,
+      "line": 16,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18645,7 +19278,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 17,
+      "line": 22,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18663,6 +19296,13 @@
         "name": "accessibilityLabel",
         "kind": "property",
         "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLiveRegion",
+        "kind": "property",
+        "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
         "required": false,
         "description": null
       },
@@ -18811,7 +19451,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 8,
+      "line": 13,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18829,7 +19469,7 @@
     "modulePath": "src/components/text/types.ts",
     "sourceLocation": {
       "filePath": "src/components/text/types.ts",
-      "line": 13,
+      "line": 18,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -18954,7 +19594,7 @@
     "relatedSymbols": ["ThemeModeToggleProps"],
     "signatures": [
       {
-        "label": "({\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}: ThemeModeToggleProps) => import(\"@types/react/index\").JSX.Element",
+        "label": "({\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}: ThemeModeToggleProps) => import(\"react\").JSX.Element",
         "parameters": [
           {
             "name": "{\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}",
@@ -18963,7 +19603,7 @@
             "description": null
           }
         ],
-        "returnType": "import(\"@types/react/index\").JSX.Element",
+        "returnType": "import(\"react\").JSX.Element",
         "returnDescription": null
       }
     ],
@@ -19118,7 +19758,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -19651,7 +20291,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource",
+        "type": "import(\"@ankhorage/surface\").IconSource",
         "required": true,
         "description": null
       },
@@ -19937,7 +20577,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -20174,7 +20814,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 97,
+      "line": 96,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20242,7 +20882,7 @@
     "modulePath": "src/components/form/types.ts",
     "sourceLocation": {
       "filePath": "src/components/form/types.ts",
-      "line": 107,
+      "line": 106,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20449,9 +21089,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface/dist/index\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts/dist/types\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -20631,7 +21271,7 @@
     "modulePath": "src/metadata/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/bindableComponentMeta.ts",
-      "line": 5,
+      "line": 6,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20667,7 +21307,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 98,
+      "line": 99,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20685,7 +21325,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 240,
+      "line": 242,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20840,7 +21480,7 @@
     "modulePath": "src/metadata/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/bindableComponentMeta.ts",
-      "line": 467,
+      "line": 569,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20934,7 +21574,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 70,
+      "line": 65,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20981,7 +21621,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 63,
+      "line": 58,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21090,7 +21730,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 82,
+      "line": 77,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21200,7 +21840,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 97,
+      "line": 92,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21384,7 +22024,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 102,
+      "line": 103,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21402,7 +22042,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 77,
+      "line": 72,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21603,7 +22243,7 @@
       {
         "name": "descriptors",
         "kind": "property",
-        "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+        "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
         "required": false,
         "description": null
       },
@@ -21645,7 +22285,7 @@
       {
         "name": "routeMap",
         "kind": "property",
-        "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
+        "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
         "required": false,
         "description": null
       },
@@ -21807,7 +22447,7 @@
       {
         "name": "icon",
         "kind": "property",
-        "type": "import(\"@ankhorage/surface/dist/index\").IconSource | undefined",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },
@@ -22088,7 +22728,7 @@
       {
         "name": "descriptors",
         "kind": "property",
-        "type": "Readonly<Record<string, import(\"./src/internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
+        "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
         "required": false,
         "description": null
       },
@@ -22123,7 +22763,7 @@
       {
         "name": "routeMap",
         "kind": "property",
-        "type": "Partial<Record<string, import(\"./src/index\").ZoraNavigationRouteMetadata>> | undefined",
+        "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
         "required": false,
         "description": null
       },
@@ -22387,7 +23027,7 @@
     "modulePath": "src/metadata/themeRecipeTypes.ts",
     "sourceLocation": {
       "filePath": "src/metadata/themeRecipeTypes.ts",
-      "line": 40,
+      "line": 38,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22434,7 +23074,7 @@
     "modulePath": "src/metadata/themeRecipeTypes.ts",
     "sourceLocation": {
       "filePath": "src/metadata/themeRecipeTypes.ts",
-      "line": 47,
+      "line": 45,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

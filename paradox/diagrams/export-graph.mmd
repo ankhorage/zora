@@ -326,6 +326,11 @@ graph LR
   module_src_patterns_product_card_meta_ts["src/patterns/product-card/meta.ts"]
   module_src_patterns_product_card_ProductCard_tsx["src/patterns/product-card/ProductCard.tsx"]
   module_src_patterns_product_card_types_ts["src/patterns/product-card/types.ts"]
+  module_src_patterns_reader_index_ts["src/patterns/reader/index.ts"]
+  module_src_patterns_reader_meta_ts["src/patterns/reader/meta.ts"]
+  module_src_patterns_reader_ReaderSurface_tsx["src/patterns/reader/ReaderSurface.tsx"]
+  module_src_patterns_reader_resolveReaderProgress_ts["src/patterns/reader/resolveReaderProgress.ts"]
+  module_src_patterns_reader_types_ts["src/patterns/reader/types.ts"]
   module_src_patterns_responsive_panel_index_ts["src/patterns/responsive-panel/index.ts"]
   module_src_patterns_responsive_panel_meta_ts["src/patterns/responsive-panel/meta.ts"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx["src/patterns/responsive-panel/ResponsivePanel.tsx"]
@@ -982,12 +987,51 @@ graph LR
   export_RatingProps["RatingProps"]
   module_src_components_rating_types_ts --> export_RatingProps
   export_RatingProps -.-> export_ZoraThemeMode
+  export_ReaderColorScheme["ReaderColorScheme"]
+  module_src_patterns_reader_types_ts --> export_ReaderColorScheme
+  export_ReaderDocumentFormat["ReaderDocumentFormat"]
+  module_src_patterns_reader_types_ts --> export_ReaderDocumentFormat
+  export_ReaderErrorCode["ReaderErrorCode"]
+  module_src_patterns_reader_types_ts --> export_ReaderErrorCode
+  export_ReaderErrorEvent["ReaderErrorEvent"]
+  module_src_patterns_reader_types_ts --> export_ReaderErrorEvent
+  export_ReaderErrorEvent -.-> export_ReaderDocumentFormat
+  export_ReaderErrorEvent -.-> export_ReaderErrorCode
+  export_ReaderExternalLinkEvent["ReaderExternalLinkEvent"]
+  module_src_patterns_reader_types_ts --> export_ReaderExternalLinkEvent
+  export_ReaderLineHeight["ReaderLineHeight"]
+  module_src_patterns_reader_types_ts --> export_ReaderLineHeight
+  export_ReaderLocationChangeEvent["ReaderLocationChangeEvent"]
+  module_src_patterns_reader_types_ts --> export_ReaderLocationChangeEvent
+  export_ReaderLocationChangeEvent -.-> export_ReaderDocumentFormat
+  export_ReaderLocationChangeEvent -.-> export_ReaderNavigationTrigger
+  export_ReaderNavigationTrigger["ReaderNavigationTrigger"]
+  module_src_patterns_reader_types_ts --> export_ReaderNavigationTrigger
+  export_ReaderResolvedSource["ReaderResolvedSource"]
+  module_src_patterns_reader_types_ts --> export_ReaderResolvedSource
+  export_ReaderStatus["ReaderStatus"]
+  module_src_patterns_reader_types_ts --> export_ReaderStatus
+  export_ReaderSurface["ReaderSurface"]
+  module_src_patterns_reader_ReaderSurface_tsx --> export_ReaderSurface
+  export_ReaderSurfaceProps["ReaderSurfaceProps"]
+  module_src_patterns_reader_types_ts --> export_ReaderSurfaceProps
+  export_ReaderSurfaceProps -.-> export_ReaderColorScheme
+  export_ReaderSurfaceProps -.-> export_ReaderDocumentFormat
+  export_ReaderSurfaceProps -.-> export_ReaderErrorEvent
+  export_ReaderSurfaceProps -.-> export_ReaderExternalLinkEvent
+  export_ReaderSurfaceProps -.-> export_ReaderLineHeight
+  export_ReaderSurfaceProps -.-> export_ReaderLocationChangeEvent
+  export_ReaderSurfaceProps -.-> export_ReaderResolvedSource
+  export_ReaderSurfaceProps -.-> export_ReaderStatus
+  export_ReaderSurfaceProps -.-> export_ZoraThemeMode
   export_resolveAvatarInitials["resolveAvatarInitials"]
   module_src_components_avatar_resolveAvatarInitials_ts --> export_resolveAvatarInitials
   export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
   module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderIcon
   export_resolveOAuthProviderLabel["resolveOAuthProviderLabel"]
   module_src_patterns_auth_oauthProviders_ts --> export_resolveOAuthProviderLabel
+  export_resolveReaderProgress["resolveReaderProgress"]
+  module_src_patterns_reader_resolveReaderProgress_ts --> export_resolveReaderProgress
   export_ResponsivePanel["ResponsivePanel"]
   module_src_patterns_responsive_panel_ResponsivePanel_tsx --> export_ResponsivePanel
   export_ResponsivePanelDesktopMode["ResponsivePanelDesktopMode"]

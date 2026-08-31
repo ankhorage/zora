@@ -28,4 +28,34 @@ describe('ZORA bindable component metadata', () => {
     expect(image.directManifestNode).toBe(ZORA_COMPONENT_META.Image.directManifestNode);
     expect(image.bindings.props.source.value.type).toBe('imageAsset');
   });
+
+  it('describes serializable controlled ReaderSurface bindings', () => {
+    const reader = ZORA_BINDABLE_COMPONENT_META.ReaderSurface;
+
+    expect(Object.keys(reader.bindings.props)).toEqual([
+      'location',
+      'page',
+      'pageCount',
+      'progress',
+      'status',
+    ]);
+    expect(reader.bindings.events.locationChange.payload.fields.map((field) => field.path)).toEqual(
+      [
+        'format',
+        'locator',
+        'page',
+        'pageCount',
+        'progression',
+        'chapterId',
+        'chapterTitle',
+        'trigger',
+      ],
+    );
+    expect(reader.bindings.events.openExternalLink.payload.fields).toEqual([
+      { path: 'url', type: 'string', label: 'URL' },
+    ]);
+    expect(reader.bindings.props.location.value.type).toBe('string');
+    expect(reader.bindings.props.page.value.type).toBe('number');
+    expect(reader.bindings.events.locationChange.payload.eventType).toBe('reader.locationChange');
+  });
 });

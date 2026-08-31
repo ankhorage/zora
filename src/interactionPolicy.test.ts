@@ -42,6 +42,7 @@ describe('InteractionPolicy declaration', () => {
       readPattern('empty-state', 'types.ts'),
       readPattern('hero', 'types.ts'),
       readPattern('product-card', 'types.ts'),
+      readPattern('reader', 'types.ts'),
       readPattern('scanner', 'types.ts'),
       readPattern('zora-tab-bar', 'types.ts'),
       readComponent('select', 'types.ts'),
@@ -153,6 +154,35 @@ describe('ProductCard', () => {
     expect(source).toMatch(
       /<Button[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{onSecondaryAction/,
     );
+  });
+});
+
+describe('ReaderSurface', () => {
+  test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
+    const source = readPattern('reader', 'types.ts');
+
+    expect(source).not.toMatch(
+      /import type \{\s*InteractionPolicy\s*\} from '@ankhorage\/surface';/,
+    );
+    expect(source).toMatch(/export interface ReaderSurfaceProps extends ZoraBaseProps/);
+    expect(source).not.toMatch(/interactionPolicy\?: InteractionPolicy;/);
+  });
+
+  test('forwards interactionPolicy to its owned interactive controls', () => {
+    const source = readPattern('reader', 'ReaderSurface.tsx');
+
+    expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
+    expect(source).toMatch(
+      /function ReaderHeader[\s\S]*?<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}/,
+    );
+    expect(source).toMatch(
+      /function ReaderHeader[\s\S]*?<AppBar[\s\S]*?interactionPolicy=\{interactionPolicy\}/,
+    );
+    expect(source).toMatch(
+      /function ReaderFooter[\s\S]*?<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}/,
+    );
+    expect(source).toMatch(/<ReaderHeader[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
+    expect(source).toMatch(/<ReaderFooter[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
   });
 });
 

@@ -76,6 +76,7 @@ import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
 import { postCardMeta } from '../patterns/post-card/meta';
 import { productCardMeta } from '../patterns/product-card/meta';
+import { readerSurfaceMeta } from '../patterns/reader/meta';
 import { responsivePanelMeta } from '../patterns/responsive-panel/meta';
 import {
   barcodeScannerViewMeta,
@@ -183,6 +184,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   PostCard: postCardMeta,
   ProductCard: productCardMeta,
   ResponsivePanel: responsivePanelMeta,
+  ReaderSurface: readerSurfaceMeta,
   BarcodeScannerView: barcodeScannerViewMeta,
   CameraPermissionView: cameraPermissionViewMeta,
   ScanOverlay: scanOverlayMeta,

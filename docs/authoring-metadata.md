@@ -54,3 +54,9 @@ component hard behavior
 Unknown persisted fields are ignored as stale metadata; invalid values for known fields fail explicitly. Token fields must reference a token that exists in the field's declared family. New manifest blueprints do not copy theme-owned defaults into instance props, so theme changes remain inherited.
 
 `ZoraProvider` can receive a canonical `themeConfig`; nested scopes preserve that complete config so authored global tokens and recipes are not lost. The legacy `theme` seed remains supported for standalone consumers and is converted once at the provider boundary.
+
+## Reader authoring boundary
+
+`ReaderSurface` is the manifest-authorable presentation contract for EPUB and PDF readers. Its `source` metadata accepts the canonical `file` media kind, while `format`, opaque `location`, page state, progress, chrome labels, and appearance inputs remain serializable props. The blueprint deliberately selects `epub` without inventing a source.
+
+ZORA renders the reader chrome, injected viewport slot, loading/error/unavailable states, accessible navigation controls, and live page status. A platform adapter owns document loading and validation, EPUB/PDF rendering, pagination, swipe and keyboard navigation, publication security, and normalized location/error/link notifications. Applications continue to own persistence, downloads, bookmarks, highlights, and appearance state.
