@@ -21,6 +21,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'PostCard',
   'ChatListItem',
   'MessageBubble',
+  'ProgressRing',
   'ReaderSurface',
 ] as const;
 

@@ -30,7 +30,7 @@ import { Modal } from './components/modal';
 import { NavigationItem } from './components/navigation-item';
 import { NavigationList } from './components/navigation-list';
 import { Pagination } from './components/pagination';
-import { Progress } from './components/progress';
+import { Progress, ProgressRing } from './components/progress';
 import { Radio, RadioGroup } from './components/radio';
 import { Rating } from './components/rating';
 import { SearchBar } from './components/search-bar';
@@ -162,6 +162,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   NavigationList,
   Pagination,
   Progress,
+  ProgressRing,
   Radio,
   RadioGroup,
   Rating,
