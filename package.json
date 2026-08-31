@@ -38,7 +38,7 @@
   "dependencies": {
     "@ankhorage/color-theory": "^0.0.8",
     "@ankhorage/contracts": "^8.0.1",
-    "@ankhorage/surface": "^3.0.2"
+    "@ankhorage/surface": "^3.1.0"
   },
   "files": [
     "dist",
