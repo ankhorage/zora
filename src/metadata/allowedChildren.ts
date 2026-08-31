@@ -22,6 +22,19 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'ChatListItem',
   'MessageBubble',
   'ReaderSurface',
+  'ContentRail',
+] as const;
+
+export const CONTENT_RAIL_ALLOWED_CHILDREN = [
+  'Box',
+  'Stack',
+  'Card',
+  'Panel',
+  'Image',
+  'ProductCard',
+  'PostCard',
+  'ChatListItem',
+  'MessageBubble',
 ] as const;
 
 export const SCREEN_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;

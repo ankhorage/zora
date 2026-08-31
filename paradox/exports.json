@@ -5043,6 +5043,315 @@
     "structuredRows": []
   },
   {
+    "name": "ContentRail",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/content-rail/ContentRail.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/ContentRail.tsx",
+      "line": 233,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailControlPressEvent",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "\"next\" | \"previous\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "targetIndex",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailDirection",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailItemSize",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailMotion",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 21,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [
+      "ContentRailControlPressEvent",
+      "ContentRailDirection",
+      "ContentRailItemSize",
+      "ContentRailMotion",
+      "ContentRailSpacing",
+      "ContentRailVisibleRangeChangeEvent",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "ContentRailDirection | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "gap",
+        "kind": "property",
+        "type": "ContentRailSpacing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "itemSize",
+        "kind": "property",
+        "type": "ContentRailItemSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motion",
+        "kind": "property",
+        "type": "ContentRailMotion | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "nextLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onControlPress",
+        "kind": "property",
+        "type": "((event: ContentRailControlPressEvent) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onVisibleRangeChange",
+        "kind": "property",
+        "type": "((event: ContentRailVisibleRangeChangeEvent) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "padding",
+        "kind": "property",
+        "type": "ContentRailSpacing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "peek",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "previousLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "showControls",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailSpacing",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ContentRailVisibleRangeChangeEvent",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/content-rail/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/content-rail/types.ts",
+      "line": 15,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "firstVisibleIndex",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "itemCount",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lastVisibleIndex",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "createZoraThemeConfig",
     "description": null,
     "isReadme": false,
@@ -21089,9 +21398,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -21307,7 +21616,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 99,
+      "line": 100,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21325,7 +21634,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 242,
+      "line": 244,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22024,7 +22333,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 103,
+      "line": 104,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

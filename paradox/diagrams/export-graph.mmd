@@ -266,6 +266,14 @@ graph LR
   module_src_patterns_confirm_dialog_index_ts["src/patterns/confirm-dialog/index.ts"]
   module_src_patterns_confirm_dialog_meta_ts["src/patterns/confirm-dialog/meta.ts"]
   module_src_patterns_confirm_dialog_types_ts["src/patterns/confirm-dialog/types.ts"]
+  module_src_patterns_content_rail_ContentRail_tsx["src/patterns/content-rail/ContentRail.tsx"]
+  module_src_patterns_content_rail_index_ts["src/patterns/content-rail/index.ts"]
+  module_src_patterns_content_rail_meta_ts["src/patterns/content-rail/meta.ts"]
+  module_src_patterns_content_rail_resolveContentRailItemWidth_ts["src/patterns/content-rail/resolveContentRailItemWidth.ts"]
+  module_src_patterns_content_rail_resolveContentRailPhysicalOffset_ts["src/patterns/content-rail/resolveContentRailPhysicalOffset.ts"]
+  module_src_patterns_content_rail_resolveContentRailState_ts["src/patterns/content-rail/resolveContentRailState.ts"]
+  module_src_patterns_content_rail_types_ts["src/patterns/content-rail/types.ts"]
+  module_src_patterns_content_rail_useContentRailReducedMotion_ts["src/patterns/content-rail/useContentRailReducedMotion.ts"]
   module_src_patterns_disclosure_section_DisclosureSection_tsx["src/patterns/disclosure-section/DisclosureSection.tsx"]
   module_src_patterns_disclosure_section_index_ts["src/patterns/disclosure-section/index.ts"]
   module_src_patterns_disclosure_section_meta_ts["src/patterns/disclosure-section/meta.ts"]
@@ -568,6 +576,29 @@ graph LR
   export_ContainerProps["ContainerProps"]
   module_src_foundation_Container_tsx --> export_ContainerProps
   export_ContainerProps -.-> export_ZoraThemeMode
+  export_ContentRail["ContentRail"]
+  module_src_patterns_content_rail_ContentRail_tsx --> export_ContentRail
+  export_ContentRailControlPressEvent["ContentRailControlPressEvent"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailControlPressEvent
+  export_ContentRailDirection["ContentRailDirection"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailDirection
+  export_ContentRailItemSize["ContentRailItemSize"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailItemSize
+  export_ContentRailMotion["ContentRailMotion"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailMotion
+  export_ContentRailProps["ContentRailProps"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailProps
+  export_ContentRailProps -.-> export_ContentRailControlPressEvent
+  export_ContentRailProps -.-> export_ContentRailDirection
+  export_ContentRailProps -.-> export_ContentRailItemSize
+  export_ContentRailProps -.-> export_ContentRailMotion
+  export_ContentRailProps -.-> export_ContentRailSpacing
+  export_ContentRailProps -.-> export_ContentRailVisibleRangeChangeEvent
+  export_ContentRailProps -.-> export_ZoraThemeMode
+  export_ContentRailSpacing["ContentRailSpacing"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailSpacing
+  export_ContentRailVisibleRangeChangeEvent["ContentRailVisibleRangeChangeEvent"]
+  module_src_patterns_content_rail_types_ts --> export_ContentRailVisibleRangeChangeEvent
   export_createZoraThemeConfig["createZoraThemeConfig"]
   module_src_theme_createZoraThemeConfig_ts --> export_createZoraThemeConfig
   export_createZoraThemeConfig -.-> export_ZoraTheme

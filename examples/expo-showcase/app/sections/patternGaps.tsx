@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   ConfirmDialog,
+  ContentRail,
   IconButton,
   Notice,
   Panel,
@@ -26,6 +27,27 @@ export function PatternGapsSection() {
 
   return (
     <ScreenSection title="Additional patterns">
+      <SectionHeader
+        title="ContentRail"
+        description="Responsive horizontal shelves with a partial-next affordance and accessible controls."
+      />
+      <ContentRail accessibilityLabel="Featured reading" itemSize="responsive">
+        {['The North Wind', 'Borrowed Light', 'A Map of Rain', 'Small Hours'].map(
+          (title, index) => (
+            <Card
+              key={title}
+              description={`A focused manifest child · ${index + 1}`}
+              title={title}
+              tone="subtle"
+            >
+              <Text emphasis="muted" variant="bodySmall">
+                ContentRail sizes and scrolls generic children without owning their data or routes.
+              </Text>
+            </Card>
+          ),
+        )}
+      </ContentRail>
+
       <SectionHeader
         title="ReaderSurface"
         description="Adapter-neutral EPUB/PDF chrome around an injected viewport."

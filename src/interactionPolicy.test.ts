@@ -186,6 +186,28 @@ describe('ReaderSurface', () => {
   });
 });
 
+describe('ContentRail', () => {
+  test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
+    const source = readPattern('content-rail', 'types.ts');
+
+    expect(source).toMatch(/export interface ContentRailProps extends ZoraBaseProps/);
+    expect(source).not.toMatch(/interactionPolicy\?: InteractionPolicy;/);
+  });
+
+  test('suppresses scrolling and forwards interactionPolicy to owned controls', () => {
+    const source = readPattern('content-rail', 'ContentRail.tsx');
+
+    expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
+    expect(source).toContain('scrollEnabled={!passive}');
+    expect(source).toMatch(
+      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?label=\{previousLabel\}/,
+    );
+    expect(source).toMatch(
+      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?label=\{nextLabel\}/,
+    );
+  });
+});
+
 describe('CameraPermissionView', () => {
   test('forwards interactionPolicy to internal Buttons after prop spreads', () => {
     const source = readPattern('scanner', 'CameraPermissionView.tsx');

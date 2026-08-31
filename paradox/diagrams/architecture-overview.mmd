@@ -996,6 +996,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_patterns_chat_list_item_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_collection_editor_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_confirm_dialog_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_patterns_content_rail_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_disclosure_section_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_empty_state_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_filter_bar_meta_ts
@@ -1148,6 +1149,37 @@ graph TD
   package__ankhorage_zora -.-> module_src_patterns_confirm_dialog_types_ts
   module_src_patterns_confirm_dialog_types_ts --> module_src_internal_recipes_ts
   module_src_patterns_confirm_dialog_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_content_rail_ContentRail_tsx["src/patterns/content-rail/ContentRail.tsx"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_ContentRail_tsx
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_components_icon_button_index_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_components_text_index_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_foundation_index_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_patterns_content_rail_resolveContentRailItemWidth_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_patterns_content_rail_resolveContentRailPhysicalOffset_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_patterns_content_rail_resolveContentRailState_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_patterns_content_rail_types_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_patterns_content_rail_useContentRailReducedMotion_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_patterns_content_rail_ContentRail_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_content_rail_index_ts["src/patterns/content-rail/index.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_index_ts
+  module_src_patterns_content_rail_meta_ts["src/patterns/content-rail/meta.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_meta_ts
+  module_src_patterns_content_rail_meta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_patterns_content_rail_meta_ts --> module_src_metadata_index_ts
+  module_src_patterns_content_rail_resolveContentRailItemWidth_ts["src/patterns/content-rail/resolveContentRailItemWidth.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_resolveContentRailItemWidth_ts
+  module_src_patterns_content_rail_resolveContentRailItemWidth_ts --> module_src_patterns_content_rail_types_ts
+  module_src_patterns_content_rail_resolveContentRailPhysicalOffset_ts["src/patterns/content-rail/resolveContentRailPhysicalOffset.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_resolveContentRailPhysicalOffset_ts
+  module_src_patterns_content_rail_resolveContentRailState_ts["src/patterns/content-rail/resolveContentRailState.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_resolveContentRailState_ts
+  module_src_patterns_content_rail_types_ts["src/patterns/content-rail/types.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_types_ts
+  module_src_patterns_content_rail_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_content_rail_useContentRailReducedMotion_ts["src/patterns/content-rail/useContentRailReducedMotion.ts"]
+  package__ankhorage_zora -.-> module_src_patterns_content_rail_useContentRailReducedMotion_ts
+  module_src_patterns_content_rail_useContentRailReducedMotion_ts --> module_src_patterns_content_rail_types_ts
   module_src_patterns_disclosure_section_DisclosureSection_tsx["src/patterns/disclosure-section/DisclosureSection.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_disclosure_section_DisclosureSection_tsx
   module_src_patterns_disclosure_section_DisclosureSection_tsx --> module_src_components_heading_index_ts
@@ -1718,6 +1750,7 @@ graph TD
   module_src_registry_ts --> module_src_patterns_chat_list_item_index_ts
   module_src_registry_ts --> module_src_patterns_collection_editor_index_ts
   module_src_registry_ts --> module_src_patterns_confirm_dialog_index_ts
+  module_src_registry_ts --> module_src_patterns_content_rail_index_ts
   module_src_registry_ts --> module_src_patterns_disclosure_section_index_ts
   module_src_registry_ts --> module_src_patterns_empty_state_index_ts
   module_src_registry_ts --> module_src_patterns_filter_bar_index_ts

@@ -275,6 +275,16 @@ export type {
 export { CollectionEditor } from './patterns/collection-editor';
 export type { ConfirmDialogProps } from './patterns/confirm-dialog';
 export { ConfirmDialog } from './patterns/confirm-dialog';
+export type {
+  ContentRailControlPressEvent,
+  ContentRailDirection,
+  ContentRailItemSize,
+  ContentRailMotion,
+  ContentRailProps,
+  ContentRailSpacing,
+  ContentRailVisibleRangeChangeEvent,
+} from './patterns/content-rail';
+export { ContentRail } from './patterns/content-rail';
 export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
 export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';

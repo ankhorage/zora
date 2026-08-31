@@ -157,6 +157,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Grid',
       'Container',
       'BarcodeScannerView',
+      'ContentRail',
     ]);
 
     for (const [key, meta] of Object.entries(ZORA_COMPONENT_META)) {
@@ -238,6 +239,39 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'trigger',
     ]);
     expect(reader.events?.readerError?.eventType).toBe('reader.error');
+  });
+
+  test('ContentRail exposes manifest children, serializable controls, and normalized events', () => {
+    const rail = ZORA_COMPONENT_META.ContentRail;
+
+    expect(rail.directManifestNode).toBe(true);
+    expect(rail.allowedChildren).toEqual([
+      'Box',
+      'Stack',
+      'Card',
+      'Panel',
+      'Image',
+      'ProductCard',
+      'PostCard',
+      'ChatListItem',
+      'MessageBubble',
+    ]);
+    expect(rail.slots?.children?.allowedChildren).toEqual(rail.allowedChildren);
+    expect(rail.blueprint?.defaultProps).toEqual({
+      itemSize: 'responsive',
+      gap: 'm',
+      padding: 'm',
+      peek: 32,
+      showControls: true,
+      direction: 'auto',
+      motion: 'system',
+      accessibilityLabel: 'Content rail',
+      previousLabel: 'Previous items',
+      nextLabel: 'Next items',
+    });
+    expect(rail.events?.controlPress?.eventType).toBe('contentRail.controlPress');
+    expect(rail.events?.visibleRangeChange?.eventType).toBe('contentRail.visibleRangeChange');
+    expect(rail.requirements).toBeUndefined();
   });
 
   test('non-direct manifest nodes include an explicit note', () => {
