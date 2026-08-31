@@ -784,6 +784,32 @@ Export paths: `src/index.ts`
 | width              | `Responsive<string \| number> \| undefined`                               | no       | —       |             |
 | zIndex             | `Responsive<number> \| undefined`                                         | no       | —       |             |
 
+## ContentRail
+
+Source: `src/patterns/content-rail/ContentRail.tsx:233:14`
+
+Export paths: `src/index.ts`
+
+| Prop                 | Type                                                                                  | Required | Default | Description |
+| -------------------- | ------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| accessibilityLabel   | `string \| undefined`                                                                 | no       | —       |             |
+| children             | `ReactNode`                                                                           | no       | —       |             |
+| direction            | `ContentRailDirection \| undefined`                                                   | no       | —       |             |
+| gap                  | `ContentRailSpacing \| undefined`                                                     | no       | —       |             |
+| interactionPolicy    | `InteractionPolicy \| undefined`                                                      | no       | —       |             |
+| itemSize             | `ContentRailItemSize \| undefined`                                                    | no       | —       |             |
+| mode                 | `ZoraThemeMode \| undefined`                                                          | no       | —       |             |
+| motion               | `ContentRailMotion \| undefined`                                                      | no       | —       |             |
+| nextLabel            | `string \| undefined`                                                                 | no       | —       |             |
+| onControlPress       | `((event: ContentRailControlPressEvent) => void \| Promise<void>) \| undefined`       | no       | —       |             |
+| onVisibleRangeChange | `((event: ContentRailVisibleRangeChangeEvent) => void \| Promise<void>) \| undefined` | no       | —       |             |
+| padding              | `ContentRailSpacing \| undefined`                                                     | no       | —       |             |
+| peek                 | `number \| undefined`                                                                 | no       | —       |             |
+| previousLabel        | `string \| undefined`                                                                 | no       | —       |             |
+| showControls         | `boolean \| undefined`                                                                | no       | —       |             |
+| testID               | `string \| undefined`                                                                 | no       | —       |             |
+| themeId              | `string \| undefined`                                                                 | no       | —       |             |
+
 ## DataTable
 
 Source: `src/components/data-table/DataTable.tsx:408:14`

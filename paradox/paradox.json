@@ -1890,6 +1890,14 @@
         "ConfirmDialogProps",
         "Container",
         "ContainerProps",
+        "ContentRail",
+        "ContentRailControlPressEvent",
+        "ContentRailDirection",
+        "ContentRailItemSize",
+        "ContentRailMotion",
+        "ContentRailProps",
+        "ContentRailSpacing",
+        "ContentRailVisibleRangeChangeEvent",
         "createZoraThemeConfig",
         "DataTable",
         "DataTableCellContext",
@@ -2487,6 +2495,7 @@
       "dependencies": [],
       "exports": [
         "CONTAINER_ALLOWED_CHILDREN",
+        "CONTENT_RAIL_ALLOWED_CHILDREN",
         "SCREEN_ALLOWED_CHILDREN",
         "SCREEN_SECTION_ALLOWED_CHILDREN"
       ]
@@ -2555,6 +2564,7 @@
         "src/patterns/chat-list-item/meta.ts",
         "src/patterns/collection-editor/meta.ts",
         "src/patterns/confirm-dialog/meta.ts",
+        "src/patterns/content-rail/meta.ts",
         "src/patterns/disclosure-section/meta.ts",
         "src/patterns/empty-state/meta.ts",
         "src/patterns/filter-bar/meta.ts",
@@ -2934,6 +2944,82 @@
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["ConfirmDialogProps"]
+    },
+    {
+      "path": "src/patterns/content-rail/ContentRail.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/icon-button/index.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+        "src/patterns/content-rail/resolveContentRailPhysicalOffset.ts",
+        "src/patterns/content-rail/resolveContentRailState.ts",
+        "src/patterns/content-rail/types.ts",
+        "src/patterns/content-rail/useContentRailReducedMotion.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["ContentRail"]
+    },
+    {
+      "path": "src/patterns/content-rail/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ContentRail",
+        "ContentRailControlPressEvent",
+        "ContentRailDirection",
+        "ContentRailItemSize",
+        "ContentRailMotion",
+        "ContentRailProps",
+        "ContentRailSpacing",
+        "ContentRailVisibleRangeChangeEvent"
+      ]
+    },
+    {
+      "path": "src/patterns/content-rail/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/index.ts"],
+      "exports": ["contentRailMeta"]
+    },
+    {
+      "path": "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/patterns/content-rail/types.ts"],
+      "exports": ["resolveContentRailItemWidth"]
+    },
+    {
+      "path": "src/patterns/content-rail/resolveContentRailPhysicalOffset.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["resolveContentRailPhysicalOffset"]
+    },
+    {
+      "path": "src/patterns/content-rail/resolveContentRailState.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["resolveContentRailState"]
+    },
+    {
+      "path": "src/patterns/content-rail/types.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": [
+        "ContentRailControlPressEvent",
+        "ContentRailDirection",
+        "ContentRailItemSize",
+        "ContentRailMotion",
+        "ContentRailProps",
+        "ContentRailSpacing",
+        "ContentRailVisibleRangeChangeEvent"
+      ]
+    },
+    {
+      "path": "src/patterns/content-rail/useContentRailReducedMotion.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/patterns/content-rail/types.ts"],
+      "exports": ["useContentRailReducedMotion"]
     },
     {
       "path": "src/patterns/disclosure-section/DisclosureSection.tsx",
@@ -4084,6 +4170,7 @@
         "src/patterns/chat-list-item/index.ts",
         "src/patterns/collection-editor/index.ts",
         "src/patterns/confirm-dialog/index.ts",
+        "src/patterns/content-rail/index.ts",
         "src/patterns/disclosure-section/index.ts",
         "src/patterns/empty-state/index.ts",
         "src/patterns/filter-bar/index.ts",
@@ -9293,6 +9380,315 @@
           "kind": "property",
           "type": "Responsive<number> | undefined",
           "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRail",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/patterns/content-rail/ContentRail.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 233,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailControlPressEvent",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "direction",
+          "kind": "property",
+          "type": "\"next\" | \"previous\"",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "targetIndex",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailDirection",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 5,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailItemSize",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailMotion",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 7,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 21,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [
+        "ContentRailControlPressEvent",
+        "ContentRailDirection",
+        "ContentRailItemSize",
+        "ContentRailMotion",
+        "ContentRailSpacing",
+        "ContentRailVisibleRangeChangeEvent",
+        "ZoraThemeMode"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "accessibilityLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "direction",
+          "kind": "property",
+          "type": "ContentRailDirection | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "gap",
+          "kind": "property",
+          "type": "ContentRailSpacing | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "itemSize",
+          "kind": "property",
+          "type": "ContentRailItemSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "motion",
+          "kind": "property",
+          "type": "ContentRailMotion | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nextLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onControlPress",
+          "kind": "property",
+          "type": "((event: ContentRailControlPressEvent) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onVisibleRangeChange",
+          "kind": "property",
+          "type": "((event: ContentRailVisibleRangeChangeEvent) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "padding",
+          "kind": "property",
+          "type": "ContentRailSpacing | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "peek",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "previousLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "showControls",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailSpacing",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ContentRailVisibleRangeChangeEvent",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/patterns/content-rail/types.ts",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/types.ts",
+        "line": 15,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "firstVisibleIndex",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "itemCount",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "lastVisibleIndex",
+          "kind": "property",
+          "type": "number",
+          "required": true,
           "description": null
         }
       ],
@@ -25706,7 +26102,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 99,
+        "line": 100,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -25724,7 +26120,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 243,
+        "line": 245,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -26423,7 +26819,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 103,
+        "line": 104,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -31082,6 +31478,123 @@
         {
           "name": "zIndex",
           "type": "Responsive<number> | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "ContentRail",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/patterns/content-rail/ContentRail.tsx",
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 233,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "direction",
+          "type": "ContentRailDirection | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "gap",
+          "type": "ContentRailSpacing | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "itemSize",
+          "type": "ContentRailItemSize | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "motion",
+          "type": "ContentRailMotion | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nextLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onControlPress",
+          "type": "((event: ContentRailControlPressEvent) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onVisibleRangeChange",
+          "type": "((event: ContentRailVisibleRangeChangeEvent) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "padding",
+          "type": "ContentRailSpacing | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "peek",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "previousLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "showControls",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
           "required": false,
           "description": null
         }
@@ -44366,6 +44879,87 @@
       }
     },
     {
+      "name": "ContentRailInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "scrollToIndex",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 124,
+        "column": 9
+      }
+    },
+    {
+      "name": "handleScroll",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 143,
+        "column": 9
+      }
+    },
+    {
+      "name": "resolveSpacingValue",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/ContentRail.tsx",
+        "line": 235,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveContentRailItemWidth",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+        "line": 3,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveFixedItemWidth",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+        "line": 34,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveContentRailPhysicalOffset",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/resolveContentRailPhysicalOffset.ts",
+        "line": 1,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveContentRailState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/resolveContentRailState.ts",
+        "line": 1,
+        "column": 1
+      }
+    },
+    {
+      "name": "useContentRailReducedMotion",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/patterns/content-rail/useContentRailReducedMotion.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
       "name": "getTriggerStyle",
       "description": null,
       "sourceLocation": {
@@ -45957,6 +46551,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/patterns/content-rail/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/patterns/disclosure-section/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -46358,6 +46957,11 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/patterns/confirm-dialog/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/patterns/content-rail/index.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -46943,6 +47547,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/confirm-dialog/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/patterns/content-rail/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -50484,6 +51093,91 @@
         "fromPath": "src/patterns/confirm-dialog/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/patterns/confirm-dialog/types.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/components/icon-button/index.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/patterns/content-rail/resolveContentRailPhysicalOffset.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/patterns/content-rail/resolveContentRailState.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/patterns/content-rail/types.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/ContentRail.tsx",
+        "toPath": "src/patterns/content-rail/useContentRailReducedMotion.ts",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/index.ts",
+        "toPath": "src/patterns/content-rail/ContentRail.tsx",
+        "sourcePath": "src/patterns/content-rail/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/index.ts",
+        "toPath": "src/patterns/content-rail/types.ts",
+        "sourcePath": "src/patterns/content-rail/index.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/meta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/patterns/content-rail/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/meta.ts",
+        "toPath": "src/metadata/allowedChildren.ts",
+        "sourcePath": "src/patterns/content-rail/meta.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/resolveContentRailItemWidth.ts",
+        "toPath": "src/patterns/content-rail/types.ts",
+        "sourcePath": "src/patterns/content-rail/resolveContentRailItemWidth.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/types.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromPath": "src/patterns/content-rail/useContentRailReducedMotion.ts",
+        "toPath": "src/patterns/content-rail/types.ts",
+        "sourcePath": "src/patterns/content-rail/useContentRailReducedMotion.ts"
       },
       {
         "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
@@ -54450,6 +55144,138 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx"
+      },
+      {
+        "fromSymbol": "ContentRailInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "ContentRailInner",
+        "toSymbol": "useContentRailReducedMotion",
+        "callExpression": "useContentRailReducedMotion",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "ContentRailInner",
+        "toSymbol": "resolveSpacingValue",
+        "callExpression": "resolveSpacingValue",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "ContentRailInner",
+        "toSymbol": "resolveContentRailItemWidth",
+        "callExpression": "resolveContentRailItemWidth",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "ContentRailInner",
+        "toSymbol": "resolveContentRailState",
+        "callExpression": "resolveContentRailState",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "resolveContentRailState",
+        "callExpression": "resolveContentRailState",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "onVisibleRangeChange",
+        "callExpression": "onVisibleRangeChange",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "emitVisibleRange",
+        "callExpression": "emitVisibleRange",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "resolveContentRailPhysicalOffset",
+        "callExpression": "resolveContentRailPhysicalOffset",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "scrollToIndex",
+        "toSymbol": "setLogicalOffset",
+        "callExpression": "setLogicalOffset",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "scrollToIndex",
+        "toSymbol": "resolveContentRailPhysicalOffset",
+        "callExpression": "resolveContentRailPhysicalOffset",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "scrollToIndex",
+        "toSymbol": "emitVisibleRange",
+        "callExpression": "emitVisibleRange",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "scrollToIndex",
+        "toSymbol": "onControlPress",
+        "callExpression": "onControlPress",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "handleScroll",
+        "toSymbol": "resolveContentRailPhysicalOffset",
+        "callExpression": "resolveContentRailPhysicalOffset",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "handleScroll",
+        "toSymbol": "setLogicalOffset",
+        "callExpression": "setLogicalOffset",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "handleScroll",
+        "toSymbol": "emitVisibleRange",
+        "callExpression": "emitVisibleRange",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "scrollToIndex",
+        "callExpression": "scrollToIndex",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "setContentWidth",
+        "callExpression": "setContentWidth",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "setViewportWidth",
+        "callExpression": "setViewportWidth",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/ContentRail.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/patterns/content-rail/ContentRail.tsx"
+      },
+      {
+        "fromSymbol": "resolveContentRailItemWidth",
+        "toSymbol": "resolveFixedItemWidth",
+        "callExpression": "resolveFixedItemWidth",
+        "sourcePath": "src/patterns/content-rail/resolveContentRailItemWidth.ts"
+      },
+      {
+        "fromSymbol": "src/patterns/content-rail/useContentRailReducedMotion.ts",
+        "toSymbol": "setSystemReducedMotion",
+        "callExpression": "setSystemReducedMotion",
+        "sourcePath": "src/patterns/content-rail/useContentRailReducedMotion.ts"
       },
       {
         "fromSymbol": "toggleOpen",
@@ -58674,6 +59500,51 @@
         "fromSymbol": "ConfirmDialogProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/patterns/confirm-dialog/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailControlPressEvent",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailDirection",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailItemSize",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailMotion",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailSpacing",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ContentRailVisibleRangeChangeEvent",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/patterns/content-rail/types.ts"
+      },
+      {
+        "fromSymbol": "ContentRailProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/patterns/content-rail/types.ts"
       },
       {
         "fromSymbol": "DisclosureSectionProps",

@@ -63,6 +63,7 @@ import {
 import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
+import { contentRailMeta } from '../patterns/content-rail/meta';
 import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { emptyStateMeta } from '../patterns/empty-state/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
@@ -169,6 +170,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ChatListItem: chatListItemMeta,
   CollectionEditor: collectionEditorMeta,
   ConfirmDialog: confirmDialogMeta,
+  ContentRail: contentRailMeta,
   DisclosureSection: disclosureSectionMeta,
   EmptyState: emptyStateMeta,
   FilterBar: filterBarMeta,

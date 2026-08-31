@@ -1142,6 +1142,91 @@ Source: `src/foundation/Container.tsx:10:1`
 | width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
 | zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
+## ContentRail
+
+Kind: `value`
+Module: `src/patterns/content-rail/ContentRail.tsx`
+Source: `src/patterns/content-rail/ContentRail.tsx:233:14`
+
+## ContentRailControlPressEvent
+
+Kind: `type`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:10:1`
+
+### Members
+
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| direction   | property | `"next" \| "previous"` | yes      |             |
+| targetIndex | property | `number`               | yes      |             |
+
+## ContentRailDirection
+
+Kind: `unknown`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:5:1`
+
+## ContentRailItemSize
+
+Kind: `unknown`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:6:1`
+
+## ContentRailMotion
+
+Kind: `unknown`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:7:1`
+
+## ContentRailProps
+
+Kind: `type`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:21:1`
+
+### Members
+
+| Name                 | Kind     | Type                                                                                  | Required | Description |
+| -------------------- | -------- | ------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel   | property | `string \| undefined`                                                                 | no       |             |
+| children             | property | `ReactNode`                                                                           | no       |             |
+| direction            | property | `ContentRailDirection \| undefined`                                                   | no       |             |
+| gap                  | property | `ContentRailSpacing \| undefined`                                                     | no       |             |
+| interactionPolicy    | property | `InteractionPolicy \| undefined`                                                      | no       |             |
+| itemSize             | property | `ContentRailItemSize \| undefined`                                                    | no       |             |
+| mode                 | property | `ZoraThemeMode \| undefined`                                                          | no       |             |
+| motion               | property | `ContentRailMotion \| undefined`                                                      | no       |             |
+| nextLabel            | property | `string \| undefined`                                                                 | no       |             |
+| onControlPress       | property | `((event: ContentRailControlPressEvent) => void \| Promise<void>) \| undefined`       | no       |             |
+| onVisibleRangeChange | property | `((event: ContentRailVisibleRangeChangeEvent) => void \| Promise<void>) \| undefined` | no       |             |
+| padding              | property | `ContentRailSpacing \| undefined`                                                     | no       |             |
+| peek                 | property | `number \| undefined`                                                                 | no       |             |
+| previousLabel        | property | `string \| undefined`                                                                 | no       |             |
+| showControls         | property | `boolean \| undefined`                                                                | no       |             |
+| testID               | property | `string \| undefined`                                                                 | no       |             |
+| themeId              | property | `string \| undefined`                                                                 | no       |             |
+
+## ContentRailSpacing
+
+Kind: `unknown`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:8:1`
+
+## ContentRailVisibleRangeChangeEvent
+
+Kind: `type`
+Module: `src/patterns/content-rail/types.ts`
+Source: `src/patterns/content-rail/types.ts:15:1`
+
+### Members
+
+| Name              | Kind     | Type     | Required | Description |
+| ----------------- | -------- | -------- | -------- | ----------- |
+| firstVisibleIndex | property | `number` | yes      |             |
+| itemCount         | property | `number` | yes      |             |
+| lastVisibleIndex  | property | `number` | yes      |             |
+
 ## createZoraThemeConfig
 
 Kind: `function`
@@ -5414,13 +5499,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:99:14`
+Source: `src/metadata/componentMeta.ts:100:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:243:14`
+Source: `src/registry.ts:245:14`
 
 ## ZORA_EMPHASES
 
@@ -5636,7 +5721,7 @@ Source: `src/metadata/types.ts:12:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:103:1`
+Source: `src/registry.ts:104:1`
 
 ## ZoraComponentSlotMeta
 

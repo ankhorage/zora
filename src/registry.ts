@@ -72,6 +72,7 @@ import {
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
+import { ContentRail } from './patterns/content-rail';
 import { DisclosureSection } from './patterns/disclosure-section';
 import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
@@ -206,6 +207,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   ChatListItem,
   CollectionEditor,
   ConfirmDialog,
+  ContentRail,
   DisclosureSection,
   EmptyState,
   FilterBar,
