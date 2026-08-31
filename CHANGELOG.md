@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.2.0
+
+### Minor Changes
+
+- ff90f8c: Add a manifest-authorable, accessible ProgressRing with semantic colors and serializable center content.
+
 ## 3.1.1
 
 ### Patch Changes
