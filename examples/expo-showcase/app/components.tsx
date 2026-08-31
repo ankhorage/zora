@@ -17,6 +17,7 @@ import {
   MetricCard,
   Modal,
   Progress,
+  ProgressRing,
   RadioGroup,
   Rating,
   Screen,
@@ -532,6 +533,30 @@ export function ComponentsPage() {
               <Progress value={72} />
               <Progress color="success" value={38} />
               <Progress color="warning" value={55} />
+            </Stack>
+          </Card>
+
+          <Card
+            title="Progress rings"
+            description="Circular determinate progress supports serializable center value and label compositions."
+          >
+            <Stack direction="row" gap="l" wrap="wrap">
+              <ProgressRing
+                accessibilityLabel="Library read"
+                accessibilityValueText="68% of your library read"
+                centerLabel="of your library read"
+                centerValue="68%"
+                value={68}
+              />
+              <ProgressRing
+                accessibilityLabel="Annual reading goal"
+                accessibilityValueText="16 of 24 books"
+                centerLabel="of 24 books"
+                centerValue="16"
+                color="success"
+                max={24}
+                value={16}
+              />
             </Stack>
           </Card>
         </ScreenSection>

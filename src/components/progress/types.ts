@@ -10,6 +10,19 @@ export interface ProgressProps extends ZoraBaseProps {
   size?: ZoraControlSize;
 }
 
+export interface ProgressRingProps extends ZoraBaseProps {
+  value: number;
+  max?: number;
+  color?: ZoraColor;
+  trackColor?: ZoraColor;
+  size?: number;
+  thickness?: number;
+  centerValue?: string;
+  centerLabel?: string;
+  accessibilityLabel?: string;
+  accessibilityValueText?: string;
+}
+
 export function resolveProgressRole(theme: SurfaceTheme, color: ZoraColor): RoleSemantics {
   switch (color) {
     case 'secondary':

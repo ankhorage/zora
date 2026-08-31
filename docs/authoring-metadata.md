@@ -59,4 +59,6 @@ Unknown persisted fields are ignored as stale metadata; invalid values for known
 
 `ReaderSurface` is the manifest-authorable presentation contract for EPUB and PDF readers. Its `source` metadata accepts the canonical `file` media kind, while `format`, opaque `location`, page state, progress, chrome labels, and appearance inputs remain serializable props. The blueprint deliberately selects `epub` without inventing a source.
 
+`ProgressRing` is the manifest-authorable circular counterpart to `Progress`. Its determinate value, maximum, semantic progress and track colors, numeric diameter and thickness, accessibility text, and two-line center value/label composition are all serializable. The component uses the same clamped progress fraction as `Progress`, so invalid and out-of-range state resolves consistently across linear and circular indicators.
+
 ZORA renders the reader chrome, injected viewport slot, loading/error/unavailable states, accessible navigation controls, and live page status. A platform adapter owns document loading and validation, EPUB/PDF rendering, pagination, swipe and keyboard navigation, publication security, and normalized location/error/link notifications. Applications continue to own persistence, downloads, bookmarks, highlights, and appearance state.

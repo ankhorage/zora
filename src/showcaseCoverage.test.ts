@@ -44,6 +44,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'NavigationItem',
     'NavigationList',
     'Progress',
+    'ProgressRing',
     'Radio',
     'RadioGroup',
     'Rating',
