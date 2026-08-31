@@ -1,6 +1,7 @@
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
 import { imageMeta } from '../components/image/meta';
+import { readerSurfaceMeta } from '../patterns/reader/meta';
 
 export const ZORA_BINDABLE_COMPONENT_META = {
   Text: {
@@ -459,6 +460,107 @@ export const ZORA_BINDABLE_COMPONENT_META = {
         type: 'array',
         category: 'Data',
         label: 'Rows',
+      },
+    },
+  },
+  ReaderSurface: {
+    ...readerSurfaceMeta,
+    bindings: {
+      props: {
+        location: {
+          label: 'Location',
+          description: 'Opaque adapter locator to restore.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        page: {
+          label: 'Page',
+          description: 'One-based visible page.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        pageCount: {
+          label: 'Page count',
+          description: 'Current number of logical pages.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        progress: {
+          label: 'Progress',
+          description: 'Reading progression clamped from zero to one.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        status: {
+          label: 'Status',
+          description: 'Current reader loading status.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        previousPage: {
+          label: 'Previous page',
+          description: 'Requests navigation to the previous page.',
+          payload: { eventType: 'reader.previousPage', fields: [] },
+        },
+        nextPage: {
+          label: 'Next page',
+          description: 'Requests navigation to the next page.',
+          payload: { eventType: 'reader.nextPage', fields: [] },
+        },
+        locationChange: {
+          label: 'Location change',
+          description: 'Runs after the adapter displays a destination.',
+          payload: {
+            eventType: 'reader.locationChange',
+            fields: [
+              { path: 'format', type: 'string', label: 'Format' },
+              { path: 'locator', type: 'string', label: 'Opaque locator' },
+              { path: 'page', type: 'number', label: 'Page' },
+              { path: 'pageCount', type: 'number', label: 'Page count' },
+              { path: 'progression', type: 'number', label: 'Progression' },
+              { path: 'chapterId', type: 'string', label: 'Chapter ID' },
+              { path: 'chapterTitle', type: 'string', label: 'Chapter title' },
+              { path: 'trigger', type: 'string', label: 'Navigation trigger' },
+            ],
+          },
+        },
+        openContents: {
+          label: 'Open contents',
+          payload: { eventType: 'reader.openContents', fields: [] },
+        },
+        openAppearance: {
+          label: 'Open appearance',
+          payload: { eventType: 'reader.openAppearance', fields: [] },
+        },
+        toggleHighlight: {
+          label: 'Toggle highlight',
+          payload: { eventType: 'reader.toggleHighlight', fields: [] },
+        },
+        openExternalLink: {
+          label: 'Open external link',
+          payload: {
+            eventType: 'reader.openExternalLink',
+            fields: [{ path: 'url', type: 'string', label: 'URL' }],
+          },
+        },
+        readerError: {
+          label: 'Reader error',
+          payload: {
+            eventType: 'reader.error',
+            fields: [
+              { path: 'code', type: 'string', label: 'Error code' },
+              { path: 'format', type: 'string', label: 'Format' },
+              { path: 'message', type: 'string', label: 'Message' },
+            ],
+          },
+        },
       },
     },
   },

@@ -1,6 +1,11 @@
 import type { Responsive } from '@ankhorage/surface';
 import type React from 'react';
-import type { AccessibilityRole, StyleProp, TextStyle } from 'react-native';
+import type {
+  AccessibilityRole,
+  StyleProp,
+  TextProps as ReactNativeTextProps,
+  TextStyle,
+} from 'react-native';
 
 import type { ZoraColor, ZoraEmphasis } from '../../internal/recipes';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
@@ -31,5 +36,6 @@ export interface TextProps extends ZoraBaseProps {
   accessibilityLabel?: string;
   accessibilityHint?: string;
   accessibilityRole?: AccessibilityRole;
+  accessibilityLiveRegion?: ReactNativeTextProps['accessibilityLiveRegion'];
   nativeID?: string;
 }

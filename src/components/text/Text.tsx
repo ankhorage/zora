@@ -56,6 +56,7 @@ function TextInner({
   accessibilityLabel,
   accessibilityHint,
   accessibilityRole,
+  accessibilityLiveRegion,
   nativeID,
   testID,
   interactionPolicy: _interactionPolicy,
@@ -82,6 +83,7 @@ function TextInner({
     <ReactNativeText
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
+      accessibilityLiveRegion={accessibilityLiveRegion}
       accessibilityRole={accessibilityRole}
       ellipsizeMode={ellipsizeMode}
       nativeID={nativeID}

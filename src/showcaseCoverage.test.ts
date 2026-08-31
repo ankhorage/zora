@@ -97,6 +97,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'Notice',
     'Panel',
     'ResponsivePanel',
+    'ReaderSurface',
     'SectionHeader',
     'SettingsRow',
     'SwitchField',

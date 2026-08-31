@@ -328,6 +328,20 @@ export { PostCard } from './patterns/post-card';
 export type { ProductCardProps } from './patterns/product-card';
 export { ProductCard } from './patterns/product-card';
 export type {
+  ReaderColorScheme,
+  ReaderDocumentFormat,
+  ReaderErrorCode,
+  ReaderErrorEvent,
+  ReaderExternalLinkEvent,
+  ReaderLineHeight,
+  ReaderLocationChangeEvent,
+  ReaderNavigationTrigger,
+  ReaderResolvedSource,
+  ReaderStatus,
+  ReaderSurfaceProps,
+} from './patterns/reader';
+export { ReaderSurface, resolveReaderProgress } from './patterns/reader';
+export type {
   ResponsivePanelDesktopMode,
   ResponsivePanelMobileMode,
   ResponsivePanelProps,

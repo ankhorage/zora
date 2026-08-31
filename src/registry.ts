@@ -85,6 +85,7 @@ import { Notice } from './patterns/notice';
 import { Panel } from './patterns/panel';
 import { PostCard } from './patterns/post-card';
 import { ProductCard } from './patterns/product-card';
+import { ReaderSurface } from './patterns/reader';
 import { ResponsivePanel } from './patterns/responsive-panel';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
@@ -220,6 +221,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   PostCard,
   ProductCard,
   ResponsivePanel,
+  ReaderSurface,
   BarcodeScannerView,
   CameraPermissionView,
   ScanOverlay,

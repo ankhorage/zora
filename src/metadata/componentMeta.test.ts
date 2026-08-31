@@ -132,6 +132,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ScanOverlay',
       'ProductCard',
       'Progress',
+      'ReaderSurface',
     ]);
 
     const expectedContainerNodes = new Set([
@@ -202,6 +203,35 @@ describe('ZORA_COMPONENT_META invariants', () => {
       color: 'primary',
       size: 'm',
     });
+  });
+
+  test('ReaderSurface exposes a safe file-media blueprint and normalized events', () => {
+    const reader = ZORA_COMPONENT_META.ReaderSurface;
+
+    expect(reader.directManifestNode).toBe(true);
+    expect(reader.allowedChildren).toEqual([]);
+    expect(reader.props.source).toMatchObject({ type: 'media', mediaKinds: ['file'] });
+    expect(reader.props.format.enum).toEqual(['epub', 'pdf']);
+    expect(reader.blueprint?.defaultProps).toEqual({
+      format: 'epub',
+      status: 'idle',
+      showChrome: true,
+      readerColorScheme: 'system',
+      fontScale: 1,
+      lineHeight: 'normal',
+    });
+    expect(reader.blueprint?.defaultProps).not.toHaveProperty('source');
+    expect(reader.events?.locationChange?.payloadFields?.map((field) => field.path)).toEqual([
+      'format',
+      'locator',
+      'page',
+      'pageCount',
+      'progression',
+      'chapterId',
+      'chapterTitle',
+      'trigger',
+    ]);
+    expect(reader.events?.readerError?.eventType).toBe('reader.error');
   });
 
   test('non-direct manifest nodes include an explicit note', () => {

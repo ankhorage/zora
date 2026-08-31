@@ -21,6 +21,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'PostCard',
   'ChatListItem',
   'MessageBubble',
+  'ReaderSurface',
 ] as const;
 
 export const SCREEN_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;
