@@ -20,6 +20,10 @@ const RNVI_PLUGINS = [
   '@react-native-vector-icons/fontawesome6',
   '@react-native-vector-icons/ionicons',
 ] as const;
+const CARET_SEMVER_RANGE = /^\^\d+\.\d+\.\d+$/u;
+const EXACT_SEMVER_VERSION = /^\d+\.\d+\.\d+$/u;
+const MINOR_WILDCARD_SEMVER_RANGE = /^\d+\.\d+\.x$/u;
+const TILDE_SEMVER_RANGE = /^~\d+\.\d+\.\d+$/u;
 
 function readJson(path: string): Record<string, unknown> {
   const value: unknown = JSON.parse(readFileSync(path, 'utf8'));
@@ -46,18 +50,18 @@ function readExamplePackage(directory: string): Record<string, unknown> {
 }
 
 describe('portable ZORA package boundary', () => {
-  test('targets the released RN 0.86 and Surface 3 contract without Expo runtime peers', () => {
+  test('uses the expected dependency range styles without Expo runtime peers', () => {
     const packageJson = readJson(join(ROOT, 'package.json'));
     const dependencies = readRecord(packageJson, 'dependencies');
     const peers = readRecord(packageJson, 'peerDependencies');
     const development = readRecord(packageJson, 'devDependencies');
 
-    expect(readValue(dependencies, '@ankhorage/surface')).toBe('^3.0.2');
-    expect(readValue(dependencies, '@ankhorage/contracts')).toBe('^8.0.1');
-    expect(peers.react).toBe('19.2.3');
-    expect(readValue(peers, 'react-native')).toBe('0.86.x');
-    expect(readValue(peers, 'react-native-web')).toBe('~0.21.0');
-    expect(development.typescript).toBe('~6.0.3');
+    expect(readValue(dependencies, '@ankhorage/surface')).toMatch(CARET_SEMVER_RANGE);
+    expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(CARET_SEMVER_RANGE);
+    expect(peers.react).toMatch(EXACT_SEMVER_VERSION);
+    expect(readValue(peers, 'react-native')).toMatch(MINOR_WILDCARD_SEMVER_RANGE);
+    expect(readValue(peers, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
+    expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
 
     for (const expoPackage of ['@expo/vector-icons', 'expo-font', 'expo-linear-gradient']) {
       expect(readValue(peers, expoPackage)).toBeUndefined();
@@ -82,18 +86,18 @@ describe('portable ZORA package boundary', () => {
 });
 
 describe('Expo 57 example boundary', () => {
-  test('uses the canonical React, RN, RNW, TypeScript, and Expo baselines', () => {
+  test('uses Renovate-safe dependency range styles across every Expo example', () => {
     for (const directory of EXPO_EXAMPLE_DIRS) {
       const packageJson = readExamplePackage(directory);
       const dependencies = readRecord(packageJson, 'dependencies');
       const development = readRecord(packageJson, 'devDependencies');
 
-      expect(readValue(dependencies, '@ankhorage/zora')).toBe('^3.0.0');
-      expect(dependencies.expo).toBe('57.0.18');
-      expect(dependencies.react).toBe('19.2.3');
-      expect(readValue(dependencies, 'react-native')).toBe('0.86.3');
-      expect(readValue(dependencies, 'react-native-web')).toBe('~0.21.0');
-      expect(development.typescript).toBe('~6.0.3');
+      expect(readValue(dependencies, '@ankhorage/zora')).toMatch(CARET_SEMVER_RANGE);
+      expect(dependencies.expo).toMatch(EXACT_SEMVER_VERSION);
+      expect(dependencies.react).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native')).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
+      expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
       expect(readValue(dependencies, '@expo/vector-icons')).toBeUndefined();
     }
   });
