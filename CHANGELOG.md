@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.0
+
+### Minor Changes
+
+- 62c1c68: Add a manifest-authorable ContentRail pattern with responsive item sizing, touch scrolling, accessible controls, RTL behavior, and reduced-motion support.
+
 ## 3.2.0
 
 ### Minor Changes
