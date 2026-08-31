@@ -138,6 +138,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ScanOverlay',
       'ProductCard',
       'Progress',
+      'ProgressRing',
       'ReaderSurface',
     ]);
 
@@ -210,6 +211,22 @@ describe('ZORA_COMPONENT_META invariants', () => {
       color: 'primary',
       size: 'm',
     });
+  });
+
+  test('ProgressRing is a direct manifest leaf with serializable center content', () => {
+    const progressRing = ZORA_COMPONENT_META.ProgressRing;
+
+    expect(progressRing.directManifestNode).toBe(true);
+    expect(progressRing.allowedChildren).toEqual([]);
+    expect(progressRing.blueprint?.defaultProps).toMatchObject({
+      centerLabel: 'Complete',
+      centerValue: '68%',
+      max: 100,
+      value: 68,
+    });
+    expect(progressRing.props.centerValue?.type).toBe('string');
+    expect(progressRing.props.centerLabel?.type).toBe('string');
+    expect(progressRing.props.accessibilityValueText?.type).toBe('string');
   });
 
   test('ReaderSurface exposes a safe file-media blueprint and normalized events', () => {

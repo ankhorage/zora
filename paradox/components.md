@@ -2164,6 +2164,31 @@ Export paths: `src/index.ts`
 | themeId           | `string \| undefined`                                                                                                                         | no       | —       |             |
 | value             | `number`                                                                                                                                      | yes      | —       |             |
 
+## ProgressRing
+
+Source: `src/components/progress/ProgressRing.tsx:151:14`
+
+Circular determinate progress with optional serializable center value and label content.
+
+Export paths: `src/index.ts`
+
+| Prop                   | Type                                                                                                                                          | Required | Default | Description |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| accessibilityLabel     | `string \| undefined`                                                                                                                         | no       | —       |             |
+| accessibilityValueText | `string \| undefined`                                                                                                                         | no       | —       |             |
+| centerLabel            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| centerValue            | `string \| undefined`                                                                                                                         | no       | —       |             |
+| color                  | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| interactionPolicy      | `InteractionPolicy \| undefined`                                                                                                              | no       | —       |             |
+| max                    | `number \| undefined`                                                                                                                         | no       | —       |             |
+| mode                   | `ZoraThemeMode \| undefined`                                                                                                                  | no       | —       |             |
+| size                   | `number \| undefined`                                                                                                                         | no       | —       |             |
+| testID                 | `string \| undefined`                                                                                                                         | no       | —       |             |
+| themeId                | `string \| undefined`                                                                                                                         | no       | —       |             |
+| thickness              | `number \| undefined`                                                                                                                         | no       | —       |             |
+| trackColor             | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       | —       |             |
+| value                  | `number`                                                                                                                                      | yes      | —       |             |
+
 ## Radio
 
 Source: `src/components/radio/Radio.tsx:14:14`

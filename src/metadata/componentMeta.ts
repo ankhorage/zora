@@ -27,7 +27,7 @@ import { modalMeta } from '../components/modal/meta';
 import { navigationItemMeta } from '../components/navigation-item/meta';
 import { navigationListMeta } from '../components/navigation-list/meta';
 import { paginationMeta } from '../components/pagination/meta';
-import { progressMeta } from '../components/progress/meta';
+import { progressMeta, progressRingMeta } from '../components/progress/meta';
 import { radioGroupMeta, radioMeta } from '../components/radio/meta';
 import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
@@ -135,6 +135,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   NavigationList: navigationListMeta,
   Pagination: paginationMeta,
   Progress: progressMeta,
+  ProgressRing: progressRingMeta,
   Radio: radioMeta,
   RadioGroup: radioGroupMeta,
   Rating: ratingMeta,

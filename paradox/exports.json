@@ -13286,6 +13286,141 @@
     "structuredRows": []
   },
   {
+    "name": "ProgressRing",
+    "description": "Circular determinate progress with optional serializable center value and label content.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/components/progress/ProgressRing.tsx",
+    "sourceLocation": {
+      "filePath": "src/components/progress/ProgressRing.tsx",
+      "line": 151,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ProgressRingProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/components/progress/types.ts",
+    "sourceLocation": {
+      "filePath": "src/components/progress/types.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityValueText",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerValue",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "color",
+        "kind": "property",
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "max",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "thickness",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "trackColor",
+        "kind": "property",
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Radio",
     "description": "Single-choice selection control used within a radio group.",
     "isReadme": false,
@@ -21634,7 +21769,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 244,
+      "line": 245,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

@@ -3283,6 +3283,39 @@ Source: `src/components/progress/types.ts:6:1`
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
 | value             | property | `number`                                                                                                                                      | yes      |             |
 
+## ProgressRing
+
+Kind: `value`
+Module: `src/components/progress/ProgressRing.tsx`
+Source: `src/components/progress/ProgressRing.tsx:151:14`
+
+Circular determinate progress with optional serializable center value and label content.
+
+## ProgressRingProps
+
+Kind: `type`
+Module: `src/components/progress/types.ts`
+Source: `src/components/progress/types.ts:13:1`
+
+### Members
+
+| Name                   | Kind     | Type                                                                                                                                          | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel     | property | `string \| undefined`                                                                                                                         | no       |             |
+| accessibilityValueText | property | `string \| undefined`                                                                                                                         | no       |             |
+| centerLabel            | property | `string \| undefined`                                                                                                                         | no       |             |
+| centerValue            | property | `string \| undefined`                                                                                                                         | no       |             |
+| color                  | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| interactionPolicy      | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| max                    | property | `number \| undefined`                                                                                                                         | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| size                   | property | `number \| undefined`                                                                                                                         | no       |             |
+| testID                 | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId                | property | `string \| undefined`                                                                                                                         | no       |             |
+| thickness              | property | `number \| undefined`                                                                                                                         | no       |             |
+| trackColor             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| value                  | property | `number`                                                                                                                                      | yes      |             |
+
 ## Radio
 
 Kind: `value`
@@ -5472,7 +5505,7 @@ Source: `src/metadata/componentMeta.ts:100:14`
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:244:14`
+Source: `src/registry.ts:245:14`
 
 ## ZORA_EMPHASES
 

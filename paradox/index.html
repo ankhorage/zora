@@ -613,10 +613,30 @@
               <button
                 class="nav-button"
                 type="button"
+                data-target="src/components/progress/ProgressRing.tsx"
+              >
+                src/components/progress/ProgressRing.tsx
+                <small>1 function</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
                 data-target="src/components/progress/resolveProgressFraction.ts"
               >
                 src/components/progress/resolveProgressFraction.ts
                 <small>1 function</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/components/progress/resolveProgressRingGeometry.ts"
+              >
+                src/components/progress/resolveProgressRingGeometry.ts
+                <small>2 functions</small>
               </button>
             </li>
             <li>
@@ -1585,9 +1605,9 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>421</strong><span class="muted">public exports</span></div>
-              <div><strong>117</strong><span class="muted">components</span></div>
-              <div><strong>412</strong><span class="muted">modules</span></div>
+              <div><strong>423</strong><span class="muted">public exports</span></div>
+              <div><strong>118</strong><span class="muted">components</span></div>
+              <div><strong>414</strong><span class="muted">modules</span></div>
               <div><strong>1</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -3198,16 +3218,19 @@
             </article>
             <article
               class="item"
-              data-search="src/components/progress/index.ts Progress ProgressProps"
+              data-search="src/components/progress/index.ts Progress ProgressProps ProgressRing ProgressRingProps"
             >
               <h3>src/components/progress/index.ts</h3>
               <p class="muted">Referenced module</p>
               <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p><strong>Exports:</strong> <code>Progress</code>, <code>ProgressProps</code></p>
+              <p>
+                <strong>Exports:</strong> <code>Progress</code>, <code>ProgressProps</code>,
+                <code>ProgressRing</code>, <code>ProgressRingProps</code>
+              </p>
             </article>
             <article
               class="item"
-              data-search="src/components/progress/meta.ts src/internal/colorModel.ts src/metadata/index.ts progressMeta"
+              data-search="src/components/progress/meta.ts src/internal/colorModel.ts src/metadata/index.ts progressMeta progressRingMeta"
             >
               <h3>src/components/progress/meta.ts</h3>
               <p class="muted">Referenced module</p>
@@ -3215,7 +3238,9 @@
                 <strong>Dependencies:</strong> <code>src/internal/colorModel.ts</code>,
                 <code>src/metadata/index.ts</code>
               </p>
-              <p><strong>Exports:</strong> <code>progressMeta</code></p>
+              <p>
+                <strong>Exports:</strong> <code>progressMeta</code>, <code>progressRingMeta</code>
+              </p>
             </article>
             <article
               class="item"
@@ -3234,6 +3259,23 @@
             </article>
             <article
               class="item"
+              data-search="src/components/progress/ProgressRing.tsx src/components/progress/resolveProgressFraction.ts src/components/progress/resolveProgressRingGeometry.ts src/components/progress/types.ts src/components/text/index.ts src/foundation/index.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx ProgressRing"
+            >
+              <h3>src/components/progress/ProgressRing.tsx</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/components/progress/resolveProgressFraction.ts</code>,
+                <code>src/components/progress/resolveProgressRingGeometry.ts</code>,
+                <code>src/components/progress/types.ts</code>,
+                <code>src/components/text/index.ts</code>, <code>src/foundation/index.ts</code>,
+                <code>src/theme/useZoraTheme.ts</code>,
+                <code>src/theme/withZoraThemeScope.tsx</code>
+              </p>
+              <p><strong>Exports:</strong> <code>ProgressRing</code></p>
+            </article>
+            <article
+              class="item"
               data-search="src/components/progress/resolveProgressFraction.ts resolveProgressFraction"
             >
               <h3>src/components/progress/resolveProgressFraction.ts</h3>
@@ -3243,7 +3285,16 @@
             </article>
             <article
               class="item"
-              data-search="src/components/progress/types.ts src/internal/recipes.ts src/theme/ZoraBaseProps.ts ProgressProps resolveProgressRole"
+              data-search="src/components/progress/resolveProgressRingGeometry.ts resolveProgressRingGeometry"
+            >
+              <h3>src/components/progress/resolveProgressRingGeometry.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <code>resolveProgressRingGeometry</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/components/progress/types.ts src/internal/recipes.ts src/theme/ZoraBaseProps.ts ProgressProps ProgressRingProps resolveProgressRole"
             >
               <h3>src/components/progress/types.ts</h3>
               <p class="muted">Referenced module</p>
@@ -3253,7 +3304,7 @@
               </p>
               <p>
                 <strong>Exports:</strong> <code>ProgressProps</code>,
-                <code>resolveProgressRole</code>
+                <code>ProgressRingProps</code>, <code>resolveProgressRole</code>
               </p>
             </article>
             <article
@@ -4109,7 +4160,7 @@
             </article>
             <article
               class="item"
-              data-search="src/index.ts ActionSheet ActionSheetItem ActionSheetItemProps ActionSheetProps AppBar AppBarMode AppBarOverflowAction AppBarProps AppShell AppShellProps AuthFormBaseProps AuthIdentifierKind Avatar AvatarGroup AvatarGroupItem AvatarGroupProps AvatarProps AvatarShape AvatarSize Badge BadgeProps BarcodeScannerView BarcodeScannerViewProps BarcodeScanResult Box BoxProps BreadcrumbItem Breadcrumbs BreadcrumbsProps Button ButtonGroup ButtonGroupAlign ButtonGroupOrientation ButtonGroupProps ButtonProps CameraPermissionStatus CameraPermissionView CameraPermissionViewProps Card CardProps Center CenterProps ChatListAvatar ChatListItem ChatListItemProps Checkbox CheckboxGroup CheckboxGroupOption CheckboxGroupProps CheckboxProps Chip ChipGroup ChipGroupItem ChipGroupProps ChipProps CollectionEditor CollectionEditorProps CollectionEditorRenderItemProps ConfirmDialog ConfirmDialogProps Container ContainerProps ContentRail ContentRailControlPressEvent ContentRailDirection ContentRailItemSize ContentRailMotion ContentRailProps ContentRailSpacing ContentRailVisibleRangeChangeEvent createZoraThemeConfig DataTable DataTableCellContext DataTableColumn DataTableColumnAlign DataTableDensity DataTableProps DataTableRowAction DataTableSortDirection DataTableSortState DatePicker DatePickerProps DatePickerValue DEFAULT_OAUTH_PROVIDER_ICONS DisclosureSection DisclosureSectionProps Divider DividerProps Drawer DrawerProps DropdownMenu DropdownMenuProps EmptyState EmptyStateAction EmptyStateProps FilterBar FilterBarProps ForgotPasswordForm ForgotPasswordFormProps ForgotPasswordFormValues Form FormActions FormActionsProps FormError FormErrorProps FormErrors FormField FormFieldConfig FormFieldControlProps FormFieldInputType FormFieldProps FormProps FormValidationErrors FormValidationResult FormValues Gradient GradientColor GradientColors GradientLocations GradientPoint GradientProps GradientRenderer GradientRendererProps GradientRendererProvider GradientRendererProviderProps Grid GridProps hasRequiredRule Heading HeadingAlign HeadingColor HeadingEmphasis HeadingLevel HeadingProps HeadingSize HeadingWeight Hero HeroAction HeroAlign HeroLayout HeroProps HeroTone Icon IconButton IconButtonProps IconProps Image ImageFit ImagePreview ImagePreviewProps ImageProps ImageUploadField ImageUploadFieldProps ImageUploadProgressContext Inline InlineProps Input InputProps InputTrailingAction InspectorField InspectorFieldProps List ListChildrenProps ListItemsProps ListProps ListRow ListRowProps ListRowVariant ListSection MediaCard MediaCardImageProps MediaCardProps Menu MenuAction MenuActionIntent MenuProps MessageBubble MessageBubbleAuthor MessageBubbleAvatar MessageBubbleDirection MessageBubbleProps MessageBubbleStatus MetricCard MetricCardProps Modal ModalProps NavigationItem NavigationItemProps NavigationList NavigationListProps Notice NoticeProps OAuthProviderButton OAuthProviderButtonProps OAuthProviderIconSpec OAuthProviderItem OAuthProviderList OAuthProviderListLayout OAuthProviderListProps OtpForm OtpFormProps OtpFormValues Pagination PaginationProps PaletteItem PaletteItemProps Panel PanelProps PostAction PostAuthor PostAuthorAvatar PostCard PostCardMedia PostCardProps ProductCard ProductCardProps Progress ProgressProps Radio RadioGroup RadioGroupOption RadioGroupProps RadioProps Rating RatingProps ReaderColorScheme ReaderDocumentFormat ReaderErrorCode ReaderErrorEvent ReaderExternalLinkEvent ReaderLineHeight ReaderLocationChangeEvent ReaderNavigationTrigger ReaderResolvedSource ReaderStatus ReaderSurface ReaderSurfaceProps resolveAvatarInitials resolveOAuthProviderIcon resolveOAuthProviderLabel resolveReaderProgress ResponsivePanel ResponsivePanelDesktopMode ResponsivePanelMobileMode ResponsivePanelProps ResponsivePanelScroll ResponsivePanelSide ResponsivePanelSize ScanOverlay ScanOverlayProps Screen ScreenProps ScreenSection ScreenSectionProps SearchBar SearchBarProps SectionHeader SectionHeaderProps Select SelectableItem SelectableItemProps SelectableItemState SelectionMode SelectionProvider SelectionProviderProps SelectionTrigger SelectOption SelectProps SettingsLayout SettingsLayoutProps SettingsRow SettingsRowProps Show ShowProps SidebarLayout SidebarLayoutProps SignInForm SignInFormProps SignInFormValues SignUpForm SignUpFormField SignUpFormProps SignUpFormValues Skeleton SkeletonCard SkeletonCardProps SkeletonDimension SkeletonList SkeletonListProps SkeletonListVariant SkeletonProps SkeletonRadius SkeletonText SkeletonTextProps Spacer SpacerProps SplashScreen SplashScreenLogoShape SplashScreenProps Stack StackProps Surface SurfaceImageSource SurfaceProps SurfaceVariant SwitchField SwitchFieldProps TabItem Tabs TabsProps TabsVariant Text TextAlign Textarea TextareaProps TextColor TextEmphasis TextProps TextVariant TextWeight ThemeComposer ThemeComposerProps ThemeModeToggle ThemeModeToggleProps TileGrid TileGridProps Timeline TimelineItem TimelineProps TimePicker TimePickerProps TimePickerValue Toast ToastOptions ToastProps ToastProvider ToastProviderProps ToastStatus Toolbar ToolbarAction ToolbarActionProps ToolbarPosition ToolbarProps TopbarLayout TopbarLayoutProps TreeItem TreeItemNode TreeItemRenderProps TreeView TreeViewProps useFormController UseFormControllerOptions UseFormControllerResult useSelection UseSelectionResult useToast useZoraTheme validateField validateFields validateValue ValidationRule withZoraThemeScope ZORA_BINDABLE_COMPONENT_META ZORA_COLORS ZORA_COMPONENT_META ZORA_COMPONENT_REGISTRY ZORA_EMPHASES ZORA_PALETTE_COLORS ZORA_STATUS_COLORS ZORA_THEME_RECIPE_META ZORA_THEME_TOKEN_FAMILIES ZoraBaseProps ZoraBindableComponentType ZoraColor ZoraComponentBlueprint ZoraComponentCategory ZoraComponentEventMeta ZoraComponentEventPayloadFieldMeta ZoraComponentEventPayloadFieldType ZoraComponentEventPayloadKind ZoraComponentI18nMeta ZoraComponentMeta ZoraComponentMetaRegistry ZoraComponentPropArrayItemSchema ZoraComponentPropAuthoring ZoraComponentPropSchema ZoraComponentPropType ZoraComponentPropValue ZoraComponentRegistry ZoraComponentSlotMeta ZoraComputedTheme ZoraComputedThemeMode zoraDefaultTheme ZoraDrawerContent ZoraDrawerContentProps ZoraEmphasis ZoraImageAsset ZoraImageMetadata ZoraNavigationRouteMap ZoraNavigationRouteMetadata ZoraNavigationRouteState ZoraPaletteColor ZoraPickedImage ZoraProvider ZoraProviderProps ZoraStatusColor ZoraTabBar ZoraTabBarProps ZoraTheme ZoraThemeId ZoraThemeMode ZoraThemeRecipeBooleanFieldMeta ZoraThemeRecipeChoiceFieldMeta ZoraThemeRecipeFieldMeta ZoraThemeRecipeKind ZoraThemeRecipeMeta ZoraThemeRecipeMetaRegistry ZoraThemeRecipeTokenFieldMeta ZoraThemeScope ZoraThemeScopeProps ZoraThemeTokenFamily"
+              data-search="src/index.ts ActionSheet ActionSheetItem ActionSheetItemProps ActionSheetProps AppBar AppBarMode AppBarOverflowAction AppBarProps AppShell AppShellProps AuthFormBaseProps AuthIdentifierKind Avatar AvatarGroup AvatarGroupItem AvatarGroupProps AvatarProps AvatarShape AvatarSize Badge BadgeProps BarcodeScannerView BarcodeScannerViewProps BarcodeScanResult Box BoxProps BreadcrumbItem Breadcrumbs BreadcrumbsProps Button ButtonGroup ButtonGroupAlign ButtonGroupOrientation ButtonGroupProps ButtonProps CameraPermissionStatus CameraPermissionView CameraPermissionViewProps Card CardProps Center CenterProps ChatListAvatar ChatListItem ChatListItemProps Checkbox CheckboxGroup CheckboxGroupOption CheckboxGroupProps CheckboxProps Chip ChipGroup ChipGroupItem ChipGroupProps ChipProps CollectionEditor CollectionEditorProps CollectionEditorRenderItemProps ConfirmDialog ConfirmDialogProps Container ContainerProps ContentRail ContentRailControlPressEvent ContentRailDirection ContentRailItemSize ContentRailMotion ContentRailProps ContentRailSpacing ContentRailVisibleRangeChangeEvent createZoraThemeConfig DataTable DataTableCellContext DataTableColumn DataTableColumnAlign DataTableDensity DataTableProps DataTableRowAction DataTableSortDirection DataTableSortState DatePicker DatePickerProps DatePickerValue DEFAULT_OAUTH_PROVIDER_ICONS DisclosureSection DisclosureSectionProps Divider DividerProps Drawer DrawerProps DropdownMenu DropdownMenuProps EmptyState EmptyStateAction EmptyStateProps FilterBar FilterBarProps ForgotPasswordForm ForgotPasswordFormProps ForgotPasswordFormValues Form FormActions FormActionsProps FormError FormErrorProps FormErrors FormField FormFieldConfig FormFieldControlProps FormFieldInputType FormFieldProps FormProps FormValidationErrors FormValidationResult FormValues Gradient GradientColor GradientColors GradientLocations GradientPoint GradientProps GradientRenderer GradientRendererProps GradientRendererProvider GradientRendererProviderProps Grid GridProps hasRequiredRule Heading HeadingAlign HeadingColor HeadingEmphasis HeadingLevel HeadingProps HeadingSize HeadingWeight Hero HeroAction HeroAlign HeroLayout HeroProps HeroTone Icon IconButton IconButtonProps IconProps Image ImageFit ImagePreview ImagePreviewProps ImageProps ImageUploadField ImageUploadFieldProps ImageUploadProgressContext Inline InlineProps Input InputProps InputTrailingAction InspectorField InspectorFieldProps List ListChildrenProps ListItemsProps ListProps ListRow ListRowProps ListRowVariant ListSection MediaCard MediaCardImageProps MediaCardProps Menu MenuAction MenuActionIntent MenuProps MessageBubble MessageBubbleAuthor MessageBubbleAvatar MessageBubbleDirection MessageBubbleProps MessageBubbleStatus MetricCard MetricCardProps Modal ModalProps NavigationItem NavigationItemProps NavigationList NavigationListProps Notice NoticeProps OAuthProviderButton OAuthProviderButtonProps OAuthProviderIconSpec OAuthProviderItem OAuthProviderList OAuthProviderListLayout OAuthProviderListProps OtpForm OtpFormProps OtpFormValues Pagination PaginationProps PaletteItem PaletteItemProps Panel PanelProps PostAction PostAuthor PostAuthorAvatar PostCard PostCardMedia PostCardProps ProductCard ProductCardProps Progress ProgressProps ProgressRing ProgressRingProps Radio RadioGroup RadioGroupOption RadioGroupProps RadioProps Rating RatingProps ReaderColorScheme ReaderDocumentFormat ReaderErrorCode ReaderErrorEvent ReaderExternalLinkEvent ReaderLineHeight ReaderLocationChangeEvent ReaderNavigationTrigger ReaderResolvedSource ReaderStatus ReaderSurface ReaderSurfaceProps resolveAvatarInitials resolveOAuthProviderIcon resolveOAuthProviderLabel resolveReaderProgress ResponsivePanel ResponsivePanelDesktopMode ResponsivePanelMobileMode ResponsivePanelProps ResponsivePanelScroll ResponsivePanelSide ResponsivePanelSize ScanOverlay ScanOverlayProps Screen ScreenProps ScreenSection ScreenSectionProps SearchBar SearchBarProps SectionHeader SectionHeaderProps Select SelectableItem SelectableItemProps SelectableItemState SelectionMode SelectionProvider SelectionProviderProps SelectionTrigger SelectOption SelectProps SettingsLayout SettingsLayoutProps SettingsRow SettingsRowProps Show ShowProps SidebarLayout SidebarLayoutProps SignInForm SignInFormProps SignInFormValues SignUpForm SignUpFormField SignUpFormProps SignUpFormValues Skeleton SkeletonCard SkeletonCardProps SkeletonDimension SkeletonList SkeletonListProps SkeletonListVariant SkeletonProps SkeletonRadius SkeletonText SkeletonTextProps Spacer SpacerProps SplashScreen SplashScreenLogoShape SplashScreenProps Stack StackProps Surface SurfaceImageSource SurfaceProps SurfaceVariant SwitchField SwitchFieldProps TabItem Tabs TabsProps TabsVariant Text TextAlign Textarea TextareaProps TextColor TextEmphasis TextProps TextVariant TextWeight ThemeComposer ThemeComposerProps ThemeModeToggle ThemeModeToggleProps TileGrid TileGridProps Timeline TimelineItem TimelineProps TimePicker TimePickerProps TimePickerValue Toast ToastOptions ToastProps ToastProvider ToastProviderProps ToastStatus Toolbar ToolbarAction ToolbarActionProps ToolbarPosition ToolbarProps TopbarLayout TopbarLayoutProps TreeItem TreeItemNode TreeItemRenderProps TreeView TreeViewProps useFormController UseFormControllerOptions UseFormControllerResult useSelection UseSelectionResult useToast useZoraTheme validateField validateFields validateValue ValidationRule withZoraThemeScope ZORA_BINDABLE_COMPONENT_META ZORA_COLORS ZORA_COMPONENT_META ZORA_COMPONENT_REGISTRY ZORA_EMPHASES ZORA_PALETTE_COLORS ZORA_STATUS_COLORS ZORA_THEME_RECIPE_META ZORA_THEME_TOKEN_FAMILIES ZoraBaseProps ZoraBindableComponentType ZoraColor ZoraComponentBlueprint ZoraComponentCategory ZoraComponentEventMeta ZoraComponentEventPayloadFieldMeta ZoraComponentEventPayloadFieldType ZoraComponentEventPayloadKind ZoraComponentI18nMeta ZoraComponentMeta ZoraComponentMetaRegistry ZoraComponentPropArrayItemSchema ZoraComponentPropAuthoring ZoraComponentPropSchema ZoraComponentPropType ZoraComponentPropValue ZoraComponentRegistry ZoraComponentSlotMeta ZoraComputedTheme ZoraComputedThemeMode zoraDefaultTheme ZoraDrawerContent ZoraDrawerContentProps ZoraEmphasis ZoraImageAsset ZoraImageMetadata ZoraNavigationRouteMap ZoraNavigationRouteMetadata ZoraNavigationRouteState ZoraPaletteColor ZoraPickedImage ZoraProvider ZoraProviderProps ZoraStatusColor ZoraTabBar ZoraTabBarProps ZoraTheme ZoraThemeId ZoraThemeMode ZoraThemeRecipeBooleanFieldMeta ZoraThemeRecipeChoiceFieldMeta ZoraThemeRecipeFieldMeta ZoraThemeRecipeKind ZoraThemeRecipeMeta ZoraThemeRecipeMetaRegistry ZoraThemeRecipeTokenFieldMeta ZoraThemeScope ZoraThemeScopeProps ZoraThemeTokenFamily"
             >
               <h3>src/index.ts</h3>
               <p class="muted">Configured entrypoint</p>
@@ -4203,7 +4254,8 @@
                 <code>PostAction</code>, <code>PostAuthor</code>, <code>PostAuthorAvatar</code>,
                 <code>PostCard</code>, <code>PostCardMedia</code>, <code>PostCardProps</code>,
                 <code>ProductCard</code>, <code>ProductCardProps</code>, <code>Progress</code>,
-                <code>ProgressProps</code>, <code>Radio</code>, <code>RadioGroup</code>,
+                <code>ProgressProps</code>, <code>ProgressRing</code>,
+                <code>ProgressRingProps</code>, <code>Radio</code>, <code>RadioGroup</code>,
                 <code>RadioGroupOption</code>, <code>RadioGroupProps</code>,
                 <code>RadioProps</code>, <code>Rating</code>, <code>RatingProps</code>,
                 <code>ReaderColorScheme</code>, <code>ReaderDocumentFormat</code>,
@@ -14449,6 +14501,25 @@
               </article>
             </section>
             <section>
+              <h3>src/components/progress/ProgressRing.tsx</h3>
+              <article
+                class="item"
+                id="symbol-progressring"
+                data-search="ProgressRing value src/components/progress/ProgressRing.tsx Circular determinate progress with optional serializable center value and label content."
+              >
+                <h4>ProgressRing</h4>
+                <p class="muted">
+                  value • <code>src/components/progress/ProgressRing.tsx:151:14</code>
+                </p>
+                <p>
+                  Circular determinate progress with optional serializable center value and label
+                  content.
+                </p>
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+            </section>
+            <section>
               <h3>src/components/progress/types.ts</h3>
               <article
                 class="item"
@@ -14530,6 +14601,148 @@
                       <td><code>themeId</code></td>
                       <td>property</td>
                       <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>value</code></td>
+                      <td>property</td>
+                      <td><code>number</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-progressringprops"
+                data-search="ProgressRingProps type src/components/progress/types.ts  ZoraThemeMode"
+              >
+                <h4>ProgressRingProps</h4>
+                <p class="muted">type • <code>src/components/progress/types.ts:13:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">ZoraThemeMode</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>accessibilityLabel</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>accessibilityValueText</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>centerLabel</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>centerValue</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>color</code></td>
+                      <td>property</td>
+                      <td>
+                        <code
+                          >&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; |
+                          &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; |
+                          &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; |
+                          &quot;danger&quot; | undefined</code
+                        >
+                      </td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>interactionPolicy</code></td>
+                      <td>property</td>
+                      <td><code>InteractionPolicy | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>max</code></td>
+                      <td>property</td>
+                      <td><code>number | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>mode</code></td>
+                      <td>property</td>
+                      <td><code>ZoraThemeMode | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>size</code></td>
+                      <td>property</td>
+                      <td><code>number | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>testID</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>themeId</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>thickness</code></td>
+                      <td>property</td>
+                      <td><code>number | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>trackColor</code></td>
+                      <td>property</td>
+                      <td>
+                        <code
+                          >&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; |
+                          &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; |
+                          &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; |
+                          &quot;danger&quot; | undefined</code
+                        >
+                      </td>
                       <td>no</td>
                       <td></td>
                     </tr>
@@ -32235,7 +32448,7 @@
                 data-search="ZORA_COMPONENT_REGISTRY value src/registry.ts "
               >
                 <h4>ZORA_COMPONENT_REGISTRY</h4>
-                <p class="muted">value • <code>src/registry.ts:244:14</code></p>
+                <p class="muted">value • <code>src/registry.ts:245:14</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -48345,6 +48558,129 @@
             </article>
             <article
               class="item"
+              id="component-progressring"
+              data-search='ProgressRing src/components/progress/ProgressRing.tsx Circular determinate progress with optional serializable center value and label content. accessibilityLabel string | undefined accessibilityValueText string | undefined centerLabel string | undefined centerValue string | undefined color "primary" | "secondary" | "tertiary" | "quaternary" | "neutral" | "success" | "warning" | "error" | "info" | "danger" | undefined interactionPolicy InteractionPolicy | undefined max number | undefined mode ZoraThemeMode | undefined size number | undefined testID string | undefined themeId string | undefined thickness number | undefined trackColor "primary" | "secondary" | "tertiary" | "quaternary" | "neutral" | "success" | "warning" | "error" | "info" | "danger" | undefined value number'
+            >
+              <h3>ProgressRing</h3>
+              <p class="muted"><code>src/components/progress/ProgressRing.tsx:151:14</code></p>
+              <p>
+                Circular determinate progress with optional serializable center value and label
+                content.
+              </p>
+              <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>accessibilityLabel</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>accessibilityValueText</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>centerLabel</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>centerValue</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>color</code></td>
+                    <td>
+                      <code
+                        >&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; |
+                        &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; |
+                        &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; |
+                        &quot;danger&quot; | undefined</code
+                      >
+                    </td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>interactionPolicy</code></td>
+                    <td><code>InteractionPolicy | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>max</code></td>
+                    <td><code>number | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>mode</code></td>
+                    <td><code>ZoraThemeMode | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>size</code></td>
+                    <td><code>number | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>testID</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>themeId</code></td>
+                    <td><code>string | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>thickness</code></td>
+                    <td><code>number | undefined</code></td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>trackColor</code></td>
+                    <td>
+                      <code
+                        >&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; |
+                        &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; |
+                        &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; |
+                        &quot;danger&quot; | undefined</code
+                      >
+                    </td>
+                    <td>no</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><code>value</code></td>
+                    <td><code>number</code></td>
+                    <td>yes</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+            <article
+              class="item"
               id="component-radio"
               data-search='Radio src/components/radio/Radio.tsx Single-choice selection control used within a radio group. accessibilityLabel string | undefined accessible boolean | undefined alignSelf Responsive&lt;"auto" | import("react-native").FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color "primary" | "secondary" | "tertiary" | "quaternary" | "neutral" | "success" | "warning" | "error" | "info" | "danger" | undefined defaultChecked boolean | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;"visible" | "hidden" | "scroll" | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;"absolute" | "relative" | "static" | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined zIndex Responsive&lt;number&gt; | undefined'
             >
@@ -54958,9 +55294,26 @@
                 --&gt; module_src_foundation_index_ts module_src_components_progress_Progress_tsx
                 --&gt; module_src_theme_useZoraTheme_ts module_src_components_progress_Progress_tsx
                 --&gt; module_src_theme_withZoraThemeScope_tsx
+                module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
+                package__ankhorage_zora -.-&gt; module_src_components_progress_ProgressRing_tsx
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_resolveProgressFraction_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_resolveProgressRingGeometry_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_types_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_text_index_ts module_src_components_progress_ProgressRing_tsx
+                --&gt; module_src_foundation_index_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_theme_useZoraTheme_ts module_src_components_progress_ProgressRing_tsx
+                --&gt; module_src_theme_withZoraThemeScope_tsx
                 module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
                 package__ankhorage_zora -.-&gt;
                 module_src_components_progress_resolveProgressFraction_ts
+                module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
+                package__ankhorage_zora -.-&gt;
+                module_src_components_progress_resolveProgressRingGeometry_ts
                 module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_components_progress_types_ts
                 module_src_components_progress_types_ts --&gt; module_src_internal_recipes_ts
@@ -57073,8 +57426,19 @@ graph TD
   module_src_components_progress_Progress_tsx --&gt; module_src_foundation_index_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
+  module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
+  package__ankhorage_zora -.-&gt; module_src_components_progress_ProgressRing_tsx
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_resolveProgressFraction_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_resolveProgressRingGeometry_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_types_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_text_index_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_foundation_index_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_theme_useZoraTheme_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_components_progress_resolveProgressFraction_ts
+  module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_components_progress_resolveProgressRingGeometry_ts
   module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_components_progress_types_ts
   module_src_components_progress_types_ts --&gt; module_src_internal_recipes_ts
@@ -58507,7 +58871,9 @@ graph TD
                 module_src_components_progress_index_ts[&quot;src/components/progress/index.ts&quot;]
                 module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
                 module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
+                module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
                 module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
+                module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
                 module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
                 module_src_components_radio_index_ts[&quot;src/components/radio/index.ts&quot;]
                 module_src_components_radio_meta_ts[&quot;src/components/radio/meta.ts&quot;]
@@ -59136,6 +59502,18 @@ graph TD
                 module_src_components_progress_types_ts module_src_components_progress_Progress_tsx
                 --&gt; module_src_foundation_index_ts module_src_components_progress_Progress_tsx
                 --&gt; module_src_theme_useZoraTheme_ts module_src_components_progress_Progress_tsx
+                --&gt; module_src_theme_withZoraThemeScope_tsx
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_resolveProgressFraction_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_resolveProgressRingGeometry_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_progress_types_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_components_text_index_ts module_src_components_progress_ProgressRing_tsx
+                --&gt; module_src_foundation_index_ts
+                module_src_components_progress_ProgressRing_tsx --&gt;
+                module_src_theme_useZoraTheme_ts module_src_components_progress_ProgressRing_tsx
                 --&gt; module_src_theme_withZoraThemeScope_tsx
                 module_src_components_progress_types_ts --&gt; module_src_internal_recipes_ts
                 module_src_components_progress_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
@@ -60236,7 +60614,9 @@ graph LR
   module_src_components_progress_index_ts[&quot;src/components/progress/index.ts&quot;]
   module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
   module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
+  module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
   module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
+  module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
   module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
   module_src_components_radio_index_ts[&quot;src/components/radio/index.ts&quot;]
   module_src_components_radio_meta_ts[&quot;src/components/radio/meta.ts&quot;]
@@ -60790,6 +61170,13 @@ graph LR
   module_src_components_progress_Progress_tsx --&gt; module_src_foundation_index_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_components_progress_Progress_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_resolveProgressFraction_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_resolveProgressRingGeometry_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_progress_types_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_components_text_index_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_foundation_index_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_theme_useZoraTheme_ts
+  module_src_components_progress_ProgressRing_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_components_progress_types_ts --&gt; module_src_internal_recipes_ts
   module_src_components_progress_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_components_radio_meta_ts --&gt; module_src_metadata_index_ts
@@ -61670,7 +62057,9 @@ graph LR
                 module_src_components_progress_index_ts[&quot;src/components/progress/index.ts&quot;]
                 module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
                 module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
+                module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
                 module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
+                module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
                 module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
                 module_src_components_radio_index_ts[&quot;src/components/radio/index.ts&quot;]
                 module_src_components_radio_meta_ts[&quot;src/components/radio/meta.ts&quot;]
@@ -62465,10 +62854,16 @@ graph LR
                 export_Progress[&quot;Progress&quot;] module_src_components_progress_Progress_tsx
                 --&gt; export_Progress export_ProgressProps[&quot;ProgressProps&quot;]
                 module_src_components_progress_types_ts --&gt; export_ProgressProps
-                export_ProgressProps -.-&gt; export_ZoraThemeMode export_Radio[&quot;Radio&quot;]
-                module_src_components_radio_Radio_tsx --&gt; export_Radio
-                export_RadioGroup[&quot;RadioGroup&quot;] module_src_components_radio_RadioGroup_tsx
-                --&gt; export_RadioGroup export_RadioGroupOption[&quot;RadioGroupOption&quot;]
+                export_ProgressProps -.-&gt; export_ZoraThemeMode
+                export_ProgressRing[&quot;ProgressRing&quot;]
+                module_src_components_progress_ProgressRing_tsx --&gt; export_ProgressRing
+                export_ProgressRingProps[&quot;ProgressRingProps&quot;]
+                module_src_components_progress_types_ts --&gt; export_ProgressRingProps
+                export_ProgressRingProps -.-&gt; export_ZoraThemeMode
+                export_Radio[&quot;Radio&quot;] module_src_components_radio_Radio_tsx --&gt;
+                export_Radio export_RadioGroup[&quot;RadioGroup&quot;]
+                module_src_components_radio_RadioGroup_tsx --&gt; export_RadioGroup
+                export_RadioGroupOption[&quot;RadioGroupOption&quot;]
                 module_src_components_radio_types_ts --&gt; export_RadioGroupOption
                 export_RadioGroupProps[&quot;RadioGroupProps&quot;]
                 module_src_components_radio_types_ts --&gt; export_RadioGroupProps
@@ -63095,7 +63490,9 @@ graph LR
   module_src_components_progress_index_ts[&quot;src/components/progress/index.ts&quot;]
   module_src_components_progress_meta_ts[&quot;src/components/progress/meta.ts&quot;]
   module_src_components_progress_Progress_tsx[&quot;src/components/progress/Progress.tsx&quot;]
+  module_src_components_progress_ProgressRing_tsx[&quot;src/components/progress/ProgressRing.tsx&quot;]
   module_src_components_progress_resolveProgressFraction_ts[&quot;src/components/progress/resolveProgressFraction.ts&quot;]
+  module_src_components_progress_resolveProgressRingGeometry_ts[&quot;src/components/progress/resolveProgressRingGeometry.ts&quot;]
   module_src_components_progress_types_ts[&quot;src/components/progress/types.ts&quot;]
   module_src_components_radio_index_ts[&quot;src/components/radio/index.ts&quot;]
   module_src_components_radio_meta_ts[&quot;src/components/radio/meta.ts&quot;]
@@ -63960,6 +64357,11 @@ graph LR
   export_ProgressProps[&quot;ProgressProps&quot;]
   module_src_components_progress_types_ts --&gt; export_ProgressProps
   export_ProgressProps -.-&gt; export_ZoraThemeMode
+  export_ProgressRing[&quot;ProgressRing&quot;]
+  module_src_components_progress_ProgressRing_tsx --&gt; export_ProgressRing
+  export_ProgressRingProps[&quot;ProgressRingProps&quot;]
+  module_src_components_progress_types_ts --&gt; export_ProgressRingProps
+  export_ProgressRingProps -.-&gt; export_ZoraThemeMode
   export_Radio[&quot;Radio&quot;]
   module_src_components_radio_Radio_tsx --&gt; export_Radio
   export_RadioGroup[&quot;RadioGroup&quot;]
@@ -66336,6 +66738,24 @@ sequenceDiagram
           </section>
         </section>
         <section
+          id="view-src-components-progress-progressring-tsx"
+          class="view"
+          data-view="src/components/progress/ProgressRing.tsx"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/components/progress/ProgressRing.tsx</h2>
+            <article
+              class="item"
+              data-search="ProgressRingInner src/components/progress/ProgressRing.tsx "
+            >
+              <h3>ProgressRingInner</h3>
+              <p class="muted"><code>src/components/progress/ProgressRing.tsx:12:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
           id="view-src-components-progress-resolveprogressfraction-ts"
           class="view"
           data-view="src/components/progress/resolveProgressFraction.ts"
@@ -66356,6 +66776,36 @@ sequenceDiagram
           </section>
         </section>
         <section
+          id="view-src-components-progress-resolveprogressringgeometry-ts"
+          class="view"
+          data-view="src/components/progress/resolveProgressRingGeometry.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/components/progress/resolveProgressRingGeometry.ts</h2>
+            <article
+              class="item"
+              data-search="resolveProgressRingGeometry src/components/progress/resolveProgressRingGeometry.ts "
+            >
+              <h3>resolveProgressRingGeometry</h3>
+              <p class="muted">
+                <code>src/components/progress/resolveProgressRingGeometry.ts:1:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="normalizePositiveNumber src/components/progress/resolveProgressRingGeometry.ts "
+            >
+              <h3>normalizePositiveNumber</h3>
+              <p class="muted">
+                <code>src/components/progress/resolveProgressRingGeometry.ts:38:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
           id="view-src-components-progress-types-ts"
           class="view"
           data-view="src/components/progress/types.ts"
@@ -66368,7 +66818,7 @@ sequenceDiagram
               data-search="resolveProgressRole src/components/progress/types.ts "
             >
               <h3>resolveProgressRole</h3>
-              <p class="muted"><code>src/components/progress/types.ts:13:1</code></p>
+              <p class="muted"><code>src/components/progress/types.ts:26:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

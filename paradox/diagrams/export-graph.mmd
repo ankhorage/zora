@@ -135,7 +135,9 @@ graph LR
   module_src_components_progress_index_ts["src/components/progress/index.ts"]
   module_src_components_progress_meta_ts["src/components/progress/meta.ts"]
   module_src_components_progress_Progress_tsx["src/components/progress/Progress.tsx"]
+  module_src_components_progress_ProgressRing_tsx["src/components/progress/ProgressRing.tsx"]
   module_src_components_progress_resolveProgressFraction_ts["src/components/progress/resolveProgressFraction.ts"]
+  module_src_components_progress_resolveProgressRingGeometry_ts["src/components/progress/resolveProgressRingGeometry.ts"]
   module_src_components_progress_types_ts["src/components/progress/types.ts"]
   module_src_components_radio_index_ts["src/components/radio/index.ts"]
   module_src_components_radio_meta_ts["src/components/radio/meta.ts"]
@@ -1000,6 +1002,11 @@ graph LR
   export_ProgressProps["ProgressProps"]
   module_src_components_progress_types_ts --> export_ProgressProps
   export_ProgressProps -.-> export_ZoraThemeMode
+  export_ProgressRing["ProgressRing"]
+  module_src_components_progress_ProgressRing_tsx --> export_ProgressRing
+  export_ProgressRingProps["ProgressRingProps"]
+  module_src_components_progress_types_ts --> export_ProgressRingProps
+  export_ProgressRingProps -.-> export_ZoraThemeMode
   export_Radio["Radio"]
   module_src_components_radio_Radio_tsx --> export_Radio
   export_RadioGroup["RadioGroup"]

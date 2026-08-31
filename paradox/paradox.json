@@ -1192,13 +1192,13 @@
       "path": "src/components/progress/index.ts",
       "isEntrypoint": false,
       "dependencies": [],
-      "exports": ["Progress", "ProgressProps"]
+      "exports": ["Progress", "ProgressProps", "ProgressRing", "ProgressRingProps"]
     },
     {
       "path": "src/components/progress/meta.ts",
       "isEntrypoint": false,
       "dependencies": ["src/internal/colorModel.ts", "src/metadata/index.ts"],
-      "exports": ["progressMeta"]
+      "exports": ["progressMeta", "progressRingMeta"]
     },
     {
       "path": "src/components/progress/Progress.tsx",
@@ -1213,16 +1213,36 @@
       "exports": ["Progress"]
     },
     {
+      "path": "src/components/progress/ProgressRing.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/components/progress/resolveProgressFraction.ts",
+        "src/components/progress/resolveProgressRingGeometry.ts",
+        "src/components/progress/types.ts",
+        "src/components/text/index.ts",
+        "src/foundation/index.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx"
+      ],
+      "exports": ["ProgressRing"]
+    },
+    {
       "path": "src/components/progress/resolveProgressFraction.ts",
       "isEntrypoint": false,
       "dependencies": [],
       "exports": ["resolveProgressFraction"]
     },
     {
+      "path": "src/components/progress/resolveProgressRingGeometry.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["resolveProgressRingGeometry"]
+    },
+    {
       "path": "src/components/progress/types.ts",
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
-      "exports": ["ProgressProps", "resolveProgressRole"]
+      "exports": ["ProgressProps", "ProgressRingProps", "resolveProgressRole"]
     },
     {
       "path": "src/components/radio/index.ts",
@@ -2026,6 +2046,8 @@
         "ProductCardProps",
         "Progress",
         "ProgressProps",
+        "ProgressRing",
+        "ProgressRingProps",
         "Radio",
         "RadioGroup",
         "RadioGroupOption",
@@ -17615,6 +17637,141 @@
       "structuredRows": []
     },
     {
+      "name": "ProgressRing",
+      "description": "Circular determinate progress with optional serializable center value and label content.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/components/progress/ProgressRing.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/progress/ProgressRing.tsx",
+        "line": 151,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ProgressRingProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/components/progress/types.ts",
+      "sourceLocation": {
+        "filePath": "src/components/progress/types.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "accessibilityLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValueText",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "centerLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "centerValue",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "color",
+          "kind": "property",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "max",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "size",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "thickness",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "trackColor",
+          "kind": "property",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "value",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "Radio",
       "description": "Single-choice selection control used within a radio group.",
       "isReadme": false,
@@ -25963,7 +26120,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 244,
+        "line": 245,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -37174,6 +37331,105 @@
       ]
     },
     {
+      "name": "ProgressRing",
+      "description": "Circular determinate progress with optional serializable center value and label content.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/components/progress/ProgressRing.tsx",
+      "sourceLocation": {
+        "filePath": "src/components/progress/ProgressRing.tsx",
+        "line": 151,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValueText",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "centerLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "centerValue",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "color",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "max",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "thickness",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "trackColor",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Radio",
       "description": "Single-choice selection control used within a radio group.",
       "isReadme": false,
@@ -43687,6 +43943,15 @@
       }
     },
     {
+      "name": "ProgressRingInner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/progress/ProgressRing.tsx",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveProgressFraction",
       "description": null,
       "sourceLocation": {
@@ -43696,11 +43961,29 @@
       }
     },
     {
+      "name": "resolveProgressRingGeometry",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/progress/resolveProgressRingGeometry.ts",
+        "line": 1,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizePositiveNumber",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/components/progress/resolveProgressRingGeometry.ts",
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveProgressRole",
       "description": null,
       "sourceLocation": {
         "filePath": "src/components/progress/types.ts",
-        "line": 13,
+        "line": 26,
         "column": 1
       }
     },
@@ -49348,6 +49631,11 @@
       },
       {
         "fromPath": "src/components/progress/index.ts",
+        "toPath": "src/components/progress/ProgressRing.tsx",
+        "sourcePath": "src/components/progress/index.ts"
+      },
+      {
+        "fromPath": "src/components/progress/index.ts",
         "toPath": "src/components/progress/types.ts",
         "sourcePath": "src/components/progress/index.ts"
       },
@@ -49385,6 +49673,41 @@
         "fromPath": "src/components/progress/Progress.tsx",
         "toPath": "src/components/progress/types.ts",
         "sourcePath": "src/components/progress/Progress.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/components/text/index.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/components/progress/resolveProgressFraction.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/components/progress/resolveProgressRingGeometry.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromPath": "src/components/progress/ProgressRing.tsx",
+        "toPath": "src/components/progress/types.ts",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
       },
       {
         "fromPath": "src/components/progress/types.ts",
@@ -54055,6 +54378,42 @@
         "sourcePath": "src/components/progress/Progress.tsx"
       },
       {
+        "fromSymbol": "ProgressRingInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromSymbol": "ProgressRingInner",
+        "toSymbol": "resolveProgressFraction",
+        "callExpression": "resolveProgressFraction",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromSymbol": "ProgressRingInner",
+        "toSymbol": "resolveProgressRingGeometry",
+        "callExpression": "resolveProgressRingGeometry",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromSymbol": "ProgressRingInner",
+        "toSymbol": "resolveProgressRole",
+        "callExpression": "resolveProgressRole",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromSymbol": "src/components/progress/ProgressRing.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/components/progress/ProgressRing.tsx"
+      },
+      {
+        "fromSymbol": "resolveProgressRingGeometry",
+        "toSymbol": "normalizePositiveNumber",
+        "callExpression": "normalizePositiveNumber",
+        "sourcePath": "src/components/progress/resolveProgressRingGeometry.ts"
+      },
+      {
         "fromSymbol": "src/components/radio/Radio.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
@@ -57344,6 +57703,16 @@
       },
       {
         "fromSymbol": "ProgressProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/components/progress/types.ts"
+      },
+      {
+        "fromSymbol": "ProgressRingProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/components/progress/types.ts"
+      },
+      {
+        "fromSymbol": "ProgressRingProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/progress/types.ts"
       },
