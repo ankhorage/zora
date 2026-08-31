@@ -5305,8 +5305,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 

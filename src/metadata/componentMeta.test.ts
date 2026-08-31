@@ -88,6 +88,12 @@ describe('ZORA_COMPONENT_META requirement metadata', () => {
     });
   });
 
+  test('declares ebook reader capability metadata for ReaderSurface', () => {
+    expect(ZORA_COMPONENT_META.ReaderSurface.requirements).toEqual({
+      capabilities: [{ capability: 'ebookReader' }],
+    });
+  });
+
   test('does not declare runtime requirements for the camera-agnostic scan overlay', () => {
     expect(ZORA_COMPONENT_META.ScanOverlay.requirements).toBeUndefined();
   });
