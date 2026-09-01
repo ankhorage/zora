@@ -140,6 +140,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Progress',
       'ProgressRing',
       'ReaderSurface',
+      'MissingElement',
     ]);
 
     const expectedContainerNodes = new Set([
@@ -272,6 +273,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'PostCard',
       'ChatListItem',
       'MessageBubble',
+      'MissingElement',
     ]);
     expect(rail.slots?.children?.allowedChildren).toEqual(rail.allowedChildren);
     expect(rail.blueprint?.defaultProps).toEqual({
@@ -289,6 +291,20 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(rail.events?.controlPress?.eventType).toBe('contentRail.controlPress');
     expect(rail.events?.visibleRangeChange?.eventType).toBe('contentRail.visibleRangeChange');
     expect(rail.requirements).toBeUndefined();
+  });
+
+  test('MissingElement exposes a release-blocking unresolved manifest policy', () => {
+    const missingElement = ZORA_COMPONENT_META.MissingElement;
+
+    expect(missingElement.directManifestNode).toBe(true);
+    expect(missingElement.allowedChildren).toEqual([]);
+    expect(missingElement.manifestPolicy).toEqual({
+      kind: 'unresolved-element',
+      availability: 'draft-only',
+      releaseGate: 'blocked',
+    });
+    expect(missingElement.events).toBeUndefined();
+    expect(missingElement.requirements).toBeUndefined();
   });
 
   test('non-direct manifest nodes include an explicit note', () => {

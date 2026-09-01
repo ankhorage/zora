@@ -24,6 +24,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'ProgressRing',
   'ReaderSurface',
   'ContentRail',
+  'MissingElement',
 ] as const;
 
 export const CONTENT_RAIL_ALLOWED_CHILDREN = [
@@ -36,6 +37,7 @@ export const CONTENT_RAIL_ALLOWED_CHILDREN = [
   'PostCard',
   'ChatListItem',
   'MessageBubble',
+  'MissingElement',
 ] as const;
 
 export const SCREEN_SECTION_ALLOWED_CHILDREN = [...CONTAINER_ALLOWED_CHILDREN] as const;

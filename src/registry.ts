@@ -82,6 +82,7 @@ import { ImageUploadField } from './patterns/image-upload-field';
 import { InspectorField } from './patterns/inspector-field';
 import { List, ListRow, ListSection } from './patterns/list';
 import { MessageBubble } from './patterns/message-bubble';
+import { MissingElement } from './patterns/missing-element';
 import { Notice } from './patterns/notice';
 import { Panel } from './patterns/panel';
 import { PostCard } from './patterns/post-card';
@@ -219,6 +220,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   ListRow,
   ListSection,
   MessageBubble,
+  MissingElement,
   Notice,
   Panel,
   PostCard,

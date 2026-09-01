@@ -74,12 +74,19 @@ export interface ZoraComponentSlotMeta {
   allowedChildren?: readonly string[];
 }
 
+export interface ZoraComponentManifestPolicy {
+  kind: 'unresolved-element';
+  availability: 'draft-only';
+  releaseGate: 'blocked';
+}
+
 export interface ZoraComponentMeta {
   name: string;
   category: ZoraComponentCategory;
   description?: string;
   directManifestNode: boolean;
   allowedChildren: readonly string[];
+  manifestPolicy?: ZoraComponentManifestPolicy;
   requirements?: ComponentRequirements;
   blueprint?: ZoraComponentBlueprint;
   events?: Readonly<Record<string, ZoraComponentEventMeta>>;

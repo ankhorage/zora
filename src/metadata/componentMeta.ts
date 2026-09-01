@@ -73,6 +73,7 @@ import { imageUploadFieldMeta } from '../patterns/image-upload-field/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
 import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
 import { messageBubbleMeta } from '../patterns/message-bubble/meta';
+import { missingElementMeta } from '../patterns/missing-element/meta';
 import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
 import { postCardMeta } from '../patterns/post-card/meta';
@@ -182,6 +183,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ListRow: listRowMeta,
   ListSection: listSectionMeta,
   MessageBubble: messageBubbleMeta,
+  MissingElement: missingElementMeta,
   Notice: noticeMeta,
   Panel: panelMeta,
   PostCard: postCardMeta,
