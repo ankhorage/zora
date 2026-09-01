@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Ankhorage Coding Rules'
+  short_description: 'Implement and deliver Ankhorage changes'
+  default_prompt: 'Use $ankhorage-coding-rules to implement and deliver this Ankhorage change.'
+
+policy:
+  allow_implicit_invocation: true
