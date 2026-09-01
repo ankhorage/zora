@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Ankhorage Project Structure'
+  short_description: 'Structure and migrate Ankhorage repositories'
+  default_prompt: 'Use $ankhorage-project-structure to design or review this Ankhorage repository structure.'
+
+policy:
+  allow_implicit_invocation: true
