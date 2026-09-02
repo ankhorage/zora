@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.2
+
+### Patch Changes
+
+- 55bae01: Add the manifest-authorable, release-blocking `MissingElement` draft pattern and metadata policy.
+
 ## 3.3.1
 
 ### Patch Changes
