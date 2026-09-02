@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDevtoolsVersion": "1.9.5",
+  "sourceDevtoolsVersion": "1.10.4",
   "skills": {
     "ankhorage-coding-rules": {
       "files": {
@@ -16,11 +16,24 @@
         ".agents/skills/ankhorage-project-structure/references/hexagonal-architecture.md": "sha256:6ee2ed6d33445737bd2616e675e5ce77bf62a67326abaf0f827c8b29edfd4010",
         ".agents/skills/ankhorage-project-structure/references/migration.md": "sha256:abea79e3d2f5a0ee16f695ecc8432d47587e13e0f70cc7bd77788a5c50d9dba2",
         ".agents/skills/ankhorage-project-structure/references/repository-profiles.md": "sha256:ea57b4fdd36260b3106309a03f003cd52865c6d29da960c55c4b2c20b766e4ec",
-        ".agents/skills/ankhorage-project-structure/references/skill-distribution.md": "sha256:62e2d1a9deab16021af1489b10c8c2e2748dda43c209267277919771739c8ed4",
+        ".agents/skills/ankhorage-project-structure/references/skill-distribution.md": "sha256:44c03ecc9157234f540f0ae8a9cc6ad84d1efad25ab83b1776129d8f11d713b9",
         ".agents/skills/ankhorage-project-structure/references/studio.md": "sha256:c11ba39befbec7e0829ccec92aa3a1a27755d2b8d02a832ac98fb5e2fd417f63",
         ".agents/skills/ankhorage-project-structure/references/ui-libraries.md": "sha256:c8e991dc42b40e66f5d02b4beb5b301ec2786d84c8aae74c6d391a70693e9a47",
         ".agents/skills/ankhorage-project-structure/references/utilities.md": "sha256:9641407a941fdfcdcc862760de828a07fccb8b25cca2fcd5c8a0f474fb0f142b",
         ".agents/skills/ankhorage-project-structure/SKILL.md": "sha256:4f3832815e4960ad050d18a07e2e67ec0d1ec14fd70834d1980cc7e6d18594d3"
+      }
+    },
+    "zora-designer": {
+      "files": {
+        ".agents/skills/zora-designer/agents/openai.yaml": "sha256:dff17bee852379313ad3bb6cc7838040582bf4ba91680b12ed7b360111619577",
+        ".agents/skills/zora-designer/assets/audit-rubric.json": "sha256:b623da6896ef9ae740dced94586acf973b5f8ef12ed72ea66c1e5c1d7d654437",
+        ".agents/skills/zora-designer/references/artifact.md": "sha256:4a45173d0637d6dd71fc6d95f9225031d2d345962332b5c54a476a9e51cf2433",
+        ".agents/skills/zora-designer/references/audit.md": "sha256:92495791e9b6d08a74eec2bdb8dc2506285e6db76d54f887494618f578197e98",
+        ".agents/skills/zora-designer/references/workflow.md": "sha256:35d026ea9ad9406517cbf29ff4810840068dfe9d46ca3378c605b92ada3ecc69",
+        ".agents/skills/zora-designer/scripts/audit.mjs": "sha256:8a2d84e3e6a53a3150c188551186f61ad637288d4ff8908e54bfda2441376643",
+        ".agents/skills/zora-designer/scripts/owner-api.mjs": "sha256:f0c579dc812676d3a7c5e03ce2cf0a581ae9cc9ea5d69c079a0a691e6d926ddf",
+        ".agents/skills/zora-designer/scripts/scaffold-template.mjs": "sha256:d14b4bcd9c870dbd43b7fcc24cf5b04cfbcc0443d7d500e3d611d2fece77ba34",
+        ".agents/skills/zora-designer/SKILL.md": "sha256:08eb82e6d8802b636adb747016632fba5b065df14d58c403ef02ce03dc4bc7a3"
       }
     }
   }

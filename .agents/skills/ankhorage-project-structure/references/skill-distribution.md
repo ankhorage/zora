@@ -54,6 +54,11 @@ Do not copy every available skill into every repository.
 - External, personal, experimental, and task-specific skills are not part of Devtools sync.
 - A repository may own additional skill directories beside the Devtools-managed set.
 
+The `zora-designer` profile skill is selected for the ZORA, Templates, and Studio owners and for
+generated-app authoring repositories that consume ZORA with the Ankhorage Runtime, Templates, or
+Studio application model. Plain libraries and unrelated tooling packages retain only baseline
+skills.
+
 Prefer the same repository-trait detection used by other Devtools profiles. Add explicit metadata
 only for an actual ambiguity; do not require each repository to repeat a default skill list.
 

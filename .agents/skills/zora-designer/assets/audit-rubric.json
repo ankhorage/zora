@@ -1,0 +1,312 @@
+{
+  "schema": "zora-designer/audit-rubric/v1",
+  "rules": [
+    {
+      "id": "R01",
+      "name": "Clarity",
+      "weight": 7,
+      "generation": "Use unambiguous labels, recognizable controls, plain-language instructions, and a visible primary task.",
+      "audit": "Check calls to action, icons, headings, affordances, state, and consequences; do not infer accessible names from pixels.",
+      "criteria": [
+        "purpose-and-primary-task",
+        "labels-and-copy",
+        "icons-and-affordances",
+        "consequences-and-state-clarity"
+      ]
+    },
+    {
+      "id": "R02",
+      "name": "Consistency",
+      "weight": 5,
+      "generation": "Reuse owner tokens, components, terminology, navigation placement, and state behavior.",
+      "audit": "Group repeated one-off styling, labels, placement, or behavior under their systemic root cause.",
+      "criteria": [
+        "tokens-and-components",
+        "terminology",
+        "navigation-and-placement",
+        "interaction-and-state-behavior"
+      ]
+    },
+    {
+      "id": "R03",
+      "name": "Simplicity",
+      "weight": 4,
+      "generation": "Keep elements that support comprehension, completion, confidence, or brand intent; disclose advanced detail progressively.",
+      "audit": "Check redundant controls, avoidable steps, repeated explanation, and decorative competition without penalizing required domain complexity.",
+      "criteria": [
+        "necessity-and-redundancy",
+        "task-step-efficiency",
+        "progressive-disclosure",
+        "decorative-competition"
+      ]
+    },
+    {
+      "id": "R04",
+      "name": "Visual hierarchy",
+      "weight": 7,
+      "generation": "Create a deliberate reading and action order through scale, weight, contrast, position, grouping, and whitespace.",
+      "audit": "Compare focal priority, heading order, action emphasis, and visual order against semantic and focus order.",
+      "criteria": [
+        "focal-priority",
+        "heading-and-content-order",
+        "action-priority",
+        "visual-semantic-focus-order"
+      ]
+    },
+    {
+      "id": "R05",
+      "name": "Scannability",
+      "weight": 5,
+      "generation": "Chunk content with meaningful headings, concise labels, stable alignment, and task-appropriate line length and density.",
+      "audit": "Check walls of text, weak anchors, long forms, comparison alignment, and key-information discovery.",
+      "criteria": [
+        "chunking-and-headings",
+        "alignment-and-comparison",
+        "line-length-and-density",
+        "key-information-discovery"
+      ]
+    },
+    {
+      "id": "R06",
+      "name": "Color contrast",
+      "weight": 10,
+      "generation": "Meet applicable contrast requirements in every state, mode, overlay, and composite background using computed owner values.",
+      "audit": "Use measurements for ratios; visual evidence can identify risk but cannot prove exact composited contrast.",
+      "criteria": [
+        "normal-and-large-text",
+        "active-ui-and-graphics",
+        "focus-and-selection",
+        "states-overlays-images-gradients"
+      ]
+    },
+    {
+      "id": "R07",
+      "name": "Intentional color",
+      "weight": 5,
+      "generation": "Assign color through semantic roles, use high chroma sparingly, and provide a non-color cue for every meaning.",
+      "audit": "Check semantic conflicts, color-only state, competing accents, and separation of brand from severity meaning.",
+      "criteria": [
+        "semantic-role-consistency",
+        "non-color-cues",
+        "accent-restraint",
+        "brand-status-separation"
+      ]
+    },
+    {
+      "id": "R08",
+      "name": "Negative space",
+      "weight": 4,
+      "generation": "Use whitespace to reveal grouping, hierarchy, focus, and rhythm at the intended product density.",
+      "audit": "Check control crowding, edge collisions, uneven rhythm, disconnected empty regions, and space masking weak hierarchy.",
+      "criteria": [
+        "internal-rhythm",
+        "external-rhythm",
+        "edge-clearance-and-group-separation",
+        "density-balance"
+      ]
+    },
+    {
+      "id": "R09",
+      "name": "Typography hierarchy",
+      "weight": 7,
+      "generation": "Use a small tokenized type scale, clear role mapping, readable metrics, verified fonts, and robust scaling.",
+      "audit": "Check arbitrary styles, essential text size, line height, unavailable weights or glyphs, clipping, and semantic heading alignment.",
+      "criteria": [
+        "roles-and-scale",
+        "line-height-measure-tracking",
+        "font-glyph-availability",
+        "scaling-clipping-semantics"
+      ]
+    },
+    {
+      "id": "R10",
+      "name": "Immediate feedback",
+      "weight": 5,
+      "generation": "Define relevant pressed, selected, hover, focus, loading, success, error, empty, and disabled behavior.",
+      "audit": "Check silent actions, unstable progress, duplicate submission, and state feedback; static images cannot pass behavior criteria alone.",
+      "criteria": [
+        "direct-interaction-feedback",
+        "async-loading-progress",
+        "outcome-and-empty-feedback",
+        "focus-hover-disabled-states"
+      ]
+    },
+    {
+      "id": "R11",
+      "name": "User control",
+      "weight": 5,
+      "generation": "Provide exit, cancel, undo, pause, retry, and reversible paths proportional to risk while preserving user work.",
+      "audit": "Check traps, unnecessary irreversibility, destructive action safety, and dismissals that lose data or context.",
+      "criteria": [
+        "exit-cancel-back",
+        "undo-retry-reversibility",
+        "destructive-confirmation",
+        "input-and-context-preservation"
+      ]
+    },
+    {
+      "id": "R12",
+      "name": "Error prevention and recovery",
+      "weight": 7,
+      "generation": "Prevent predictable errors, validate at useful times, identify the problem and remedy, and preserve valid input.",
+      "audit": "Check constraints, defaults, timing, error association, human-readable recovery, retry, and data preservation.",
+      "criteria": [
+        "prevention-constraints-defaults",
+        "validation-timing",
+        "error-identification-association",
+        "recovery-and-data-preservation"
+      ]
+    },
+    {
+      "id": "R13",
+      "name": "Familiar patterns",
+      "weight": 4,
+      "generation": "Use platform and domain conventions unless a different pattern is demonstrably more suitable and learnable.",
+      "audit": "Check surprising navigation, placement, or control behavior and familiar-looking elements that behave unexpectedly.",
+      "criteria": [
+        "navigation-conventions",
+        "control-conventions",
+        "domain-flow-conventions",
+        "innovation-learnability"
+      ]
+    },
+    {
+      "id": "R14",
+      "name": "Choice limitation",
+      "weight": 3,
+      "generation": "Prioritize choices, provide defaults, group options, and progressively reveal advanced decisions.",
+      "audit": "Check equal-priority action clusters, ungrouped menus, deferrable decisions, and large sets without discovery support.",
+      "criteria": [
+        "priority-and-defaults",
+        "option-grouping",
+        "progressive-choice-disclosure",
+        "search-filter-for-large-sets"
+      ]
+    },
+    {
+      "id": "R15",
+      "name": "Target sizing",
+      "weight": 7,
+      "generation": "Size and space complete interactive bounds for the actual touch, pointer, keyboard, and assistive input profile.",
+      "audit": "Measure bounds rather than glyphs and consider platform baselines, exceptions, edge placement, reach, frequency, and consequence.",
+      "criteria": [
+        "interactive-bound-size",
+        "spacing-and-overlap",
+        "reach-edge-frequency",
+        "input-specific-equivalence"
+      ]
+    },
+    {
+      "id": "R16",
+      "name": "Proximity and grouping",
+      "weight": 5,
+      "generation": "Place labels, help, errors, actions, and content near the items they describe and expose groups without color alone.",
+      "audit": "Check detached labels or errors, misassociated actions, ambiguous containers, and grouping based only on color.",
+      "criteria": [
+        "label-control-association",
+        "help-error-proximity",
+        "action-container-association",
+        "group-boundary-and-alignment"
+      ]
+    },
+    {
+      "id": "R17",
+      "name": "Accessibility",
+      "weight": 10,
+      "generation": "Support semantics, names, keyboard and focus, alternatives, reflow, scaling, orientation, reduced motion, localization, and assistive updates.",
+      "audit": "Use appropriate runtime, source, and accessibility evidence; score contrast under R06 and target size under R15 without duplicate deductions.",
+      "criteria": [
+        "semantics-names-roles-values",
+        "keyboard-focus-order-and-traps",
+        "reflow-zoom-scaling-orientation",
+        "alternatives-announcements-motion-localization"
+      ]
+    }
+  ],
+  "statusFactors": {
+    "pass": 1,
+    "minor": 0.75,
+    "major": 0.4,
+    "critical": 0,
+    "not-assessable": null,
+    "not-applicable": null
+  },
+  "confidenceFactors": {
+    "high": 1,
+    "medium": 0.67,
+    "low": 0.33,
+    "unknown": 0
+  },
+  "releaseGates": [
+    {
+      "id": "RG01",
+      "name": "core-task-operability",
+      "criteria": [
+        "primary-task-reachable-and-completable",
+        "required-controls-operable",
+        "state-and-outcome-perceivable",
+        "no-blocking-task-failure"
+      ]
+    },
+    {
+      "id": "RG02",
+      "name": "keyboard-focus-and-no-trap",
+      "criteria": [
+        "keyboard-equivalent-operation",
+        "visible-focus",
+        "logical-focus-order",
+        "no-keyboard-trap-and-contained-modal-focus"
+      ]
+    },
+    {
+      "id": "RG03",
+      "name": "semantics-names-roles-values-and-announcements",
+      "criteria": [
+        "semantic-structure",
+        "accessible-names",
+        "roles-states-and-values",
+        "announcements-errors-and-live-updates"
+      ]
+    },
+    {
+      "id": "RG04",
+      "name": "visual-AA-contrast-color-reflow-and-resize",
+      "criteria": [
+        "text-contrast",
+        "non-text-contrast-and-color-cues",
+        "reflow-zoom-orientation-and-text-spacing",
+        "text-resize-without-clipping-or-loss"
+      ]
+    },
+    {
+      "id": "RG05",
+      "name": "input-AA-target-drag-and-gesture-operation",
+      "criteria": [
+        "minimum-target-size-or-exception",
+        "target-spacing-and-obstruction",
+        "drag-and-complex-gesture-alternative",
+        "pointer-touch-and-motion-equivalence"
+      ]
+    },
+    {
+      "id": "RG06",
+      "name": "error-recovery-and-destructive-safety",
+      "criteria": [
+        "error-identification-and-prevention",
+        "recovery-and-input-preservation",
+        "destructive-confirmation-or-reversal",
+        "cancel-back-retry-and-context-preservation"
+      ]
+    },
+    {
+      "id": "RG07",
+      "name": "blocking-owner-or-runtime-diagnostics",
+      "criteria": [
+        "owner-diagnostics-pass",
+        "runtime-matches-approved-target",
+        "no-unresolved-application-blocker",
+        "required-validation-evidence-present"
+      ]
+    }
+  ]
+}

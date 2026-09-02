@@ -1,0 +1,6 @@
+interface:
+  display_name: 'ZORA Designer'
+  short_description: 'Design, audit, and author Ankhorage screens and templates through ZORA.'
+  default_prompt: 'Use $zora-designer to design, audit, or author this Ankhorage interface.'
+policy:
+  allow_implicit_invocation: true
