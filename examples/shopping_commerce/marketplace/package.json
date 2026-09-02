@@ -17,7 +17,7 @@
     "@react-native-vector-icons/fontawesome5": "^13.1.3",
     "@react-native-vector-icons/fontawesome6": "^13.1.3",
     "@react-native-vector-icons/ionicons": "^13.1.3",
-    "expo": "57.0.18",
+    "expo": "57.0.19",
     "expo-constants": "~57.0.13",
     "expo-font": "~57.0.1",
     "expo-linking": "~57.0.7",

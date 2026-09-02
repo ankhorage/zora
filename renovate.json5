@@ -9,4 +9,25 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: ['github>ankhorage/renovate'],
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Keep the generated-app Expo baseline aligned with the example manifests.',
+      managerFilePatterns: ['/^scripts\\/scaffold-zora-example-app\\.ts$/'],
+      matchStrings: ["expo:\\s*'(?<currentValue>\\d+\\.\\d+\\.\\d+)'"],
+      depNameTemplate: 'expo',
+      datasourceTemplate: 'npm',
+      versioningTemplate: 'semver',
+    },
+  ],
+  packageRules: [
+    {
+      description: 'Group the Expo SDK patch with the generated-app baseline projection.',
+      matchDatasources: ['npm'],
+      matchPackageNames: ['expo'],
+      matchUpdateTypes: ['patch'],
+      groupName: 'Expo SDK patch baseline',
+      groupSlug: 'expo-sdk-patch-baseline',
+    },
+  ],
 }
