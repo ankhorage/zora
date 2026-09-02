@@ -1,9 +1,13 @@
-import { COLOR_HARMONIES, parseHexColorOrThrow } from '@ankhorage/color-theory';
+import { readFileSync } from 'node:fs';
+
+import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import { APP_CATEGORIES } from '@ankhorage/contracts';
 import { describe, expect, test } from 'bun:test';
 
 import { zoraDefaultTheme } from '../../theme/zoraDefaultTheme';
 import type { ThemeComposerProps } from './types';
+
+const themeComposerSource = readFileSync(new URL('./ThemeComposer.tsx', import.meta.url), 'utf8');
 
 // ---------------------------------------------------------------------------
 // ThemeComposerProps shape tests
@@ -56,20 +60,12 @@ describe('ThemeComposerProps', () => {
 });
 
 // ---------------------------------------------------------------------------
-// COLOR_HARMONIES coverage
+// COLOR_HARMONIES ownership
 // ---------------------------------------------------------------------------
 
-describe('COLOR_HARMONIES coverage for ThemeComposer', () => {
-  test('all canonical harmony values are present for the Select options', () => {
-    const expected = [
-      'monochromatic',
-      'analogous',
-      'complementary',
-      'triadic',
-      'tetradic',
-      'splitComplementary',
-    ] as const;
-    expect(COLOR_HARMONIES).toEqual(expected);
+describe('COLOR_HARMONIES ownership for ThemeComposer', () => {
+  test('derives Select options from the canonical Color Theory catalog', () => {
+    expect(themeComposerSource).toContain('COLOR_HARMONIES.map');
   });
 });
 
