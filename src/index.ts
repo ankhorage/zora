@@ -214,6 +214,7 @@ export type {
   ZoraComponentEventPayloadFieldType,
   ZoraComponentEventPayloadKind,
   ZoraComponentI18nMeta,
+  ZoraComponentManifestPolicy,
   ZoraComponentMeta,
   ZoraComponentMetaRegistry,
   ZoraComponentPropArrayItemSchema,
@@ -323,6 +324,8 @@ export type {
   MessageBubbleStatus,
 } from './patterns/message-bubble';
 export { MessageBubble } from './patterns/message-bubble';
+export type { MissingElementProps } from './patterns/missing-element';
+export { MissingElement } from './patterns/missing-element';
 export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';

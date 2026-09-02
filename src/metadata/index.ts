@@ -21,6 +21,7 @@ export type {
   ZoraComponentEventPayloadFieldType,
   ZoraComponentEventPayloadKind,
   ZoraComponentI18nMeta,
+  ZoraComponentManifestPolicy,
   ZoraComponentMeta,
   ZoraComponentMetaRegistry,
   ZoraComponentPropArrayItemSchema,

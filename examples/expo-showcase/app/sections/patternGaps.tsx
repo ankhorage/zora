@@ -5,6 +5,7 @@ import {
   ConfirmDialog,
   ContentRail,
   IconButton,
+  MissingElement,
   Notice,
   Panel,
   ReaderSurface,
@@ -74,6 +75,17 @@ export function PatternGapsSection() {
             </Text>
           </Stack>
         }
+      />
+
+      <SectionHeader
+        title="MissingElement"
+        description="Draft-only marker for a semantic ZORA capability that has not been implemented yet."
+      />
+      <MissingElement
+        evidenceId="reference-screen:featured-map"
+        minimumHeight={180}
+        reason="The current ZORA catalog has no semantic interactive map element."
+        requestedCapability="Interactive location map"
       />
 
       <SectionHeader
