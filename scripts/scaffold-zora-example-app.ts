@@ -36,7 +36,7 @@ type AppCategory = (typeof APP_CATEGORIES)[number];
 // script-only projection aligned with its released Expo 57 contract without
 // adding Expo Runtime (and its required Expo peers) to portable ZORA tooling.
 const EXPO_57_SCAFFOLD_VERSIONS = {
-  expo: '57.0.18',
+  expo: '57.0.19',
   expoConstants: '~57.0.13',
   expoFont: '~57.0.1',
   expoLinking: '~57.0.7',
