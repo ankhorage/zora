@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.4
+
+### Patch Changes
+
+- ea5a57d: Update Ankhorage dependencies: `@ankhorage/surface`.
+
 ## 3.3.3
 
 ### Patch Changes
