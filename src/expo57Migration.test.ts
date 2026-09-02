@@ -87,19 +87,34 @@ describe('portable ZORA package boundary', () => {
 
 describe('Expo 57 example boundary', () => {
   test('uses Renovate-safe dependency range styles across every Expo example', () => {
+    const expoVersions = new Set<string>();
+
     for (const directory of EXPO_EXAMPLE_DIRS) {
       const packageJson = readExamplePackage(directory);
       const dependencies = readRecord(packageJson, 'dependencies');
       const development = readRecord(packageJson, 'devDependencies');
+      const expoVersion = readValue(dependencies, 'expo');
 
       expect(readValue(dependencies, '@ankhorage/zora')).toMatch(CARET_SEMVER_RANGE);
-      expect(dependencies.expo).toMatch(EXACT_SEMVER_VERSION);
+      expect(expoVersion).toMatch(EXACT_SEMVER_VERSION);
       expect(dependencies.react).toMatch(EXACT_SEMVER_VERSION);
       expect(readValue(dependencies, 'react-native')).toMatch(EXACT_SEMVER_VERSION);
       expect(readValue(dependencies, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
       expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
       expect(readValue(dependencies, '@expo/vector-icons')).toBeUndefined();
+
+      if (typeof expoVersion === 'string') {
+        expoVersions.add(expoVersion);
+      }
     }
+
+    expect(expoVersions.size).toBe(1);
+    const [expoVersion] = expoVersions;
+    const scaffoldSource = readFileSync(
+      join(ROOT, 'scripts', 'scaffold-zora-example-app.ts'),
+      'utf8',
+    );
+    expect(scaffoldSource).toContain(`expo: '${expoVersion}',`);
   });
 
   test('registers all scoped RNVI packages in each Expo app config', () => {
