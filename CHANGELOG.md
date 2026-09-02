@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.3
+
+### Patch Changes
+
+- 9342fb9: Update Ankhorage dependencies: `@ankhorage/color-theory`, `@ankhorage/contracts`, `@ankhorage/surface`.
+
 ## 3.3.2
 
 ### Patch Changes
