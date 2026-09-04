@@ -10,6 +10,15 @@ await mock.module('react-native', () => ReactNativeWeb);
 await mock.module('react-native-safe-area-context', () => ({
   SafeAreaInsetsContext: React.createContext({ bottom: 0, left: 0, right: 0, top: 0 }),
 }));
+await mock.module('react-native-svg', () => ({
+  SvgUri: ({ color, height, uri, width }: Record<string, unknown>) =>
+    React.createElement('svg', {
+      'data-color': color,
+      'data-uri': uri,
+      height,
+      width,
+    }),
+}));
 
 const { Gradient } = await import('../src/components/gradient/Gradient');
 const { GradientRendererProvider } =
@@ -38,6 +47,17 @@ describe('Surface 3 icon integration', () => {
     expect(markup).toContain('font-family:FontAwesome5Brands-Regular');
     expect(markup).toContain('font-family:FontAwesome5Free-Solid');
     expect(markup).toContain('font-family:FontAwesome6Brands-Regular');
+  });
+
+  test('forwards SVG sources through the existing ZORA Icon', () => {
+    const markup = renderToStaticMarkup(
+      <ZoraProvider>
+        <Icon color="#123456" size={18} source="https://example.com/icons/home.svg" />
+      </ZoraProvider>,
+    );
+
+    expect(markup).toContain('data-uri="https://example.com/icons/home.svg"');
+    expect(markup).toContain('data-color="#123456"');
   });
 });
 

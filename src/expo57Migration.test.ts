@@ -60,6 +60,8 @@ describe('portable ZORA package boundary', () => {
     expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(CARET_SEMVER_RANGE);
     expect(peers.react).toMatch(EXACT_SEMVER_VERSION);
     expect(readValue(peers, 'react-native')).toMatch(MINOR_WILDCARD_SEMVER_RANGE);
+    expect(readValue(peers, 'react-native-svg')).toBe('15.15.4');
+    expect(readValue(development, 'react-native-svg')).toBe('15.15.4');
     expect(readValue(peers, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
     expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
 

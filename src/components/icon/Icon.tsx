@@ -16,6 +16,6 @@ function IconInner({
 }
 
 /***
- * Renders an icon from a configured icon provider with theme-aware defaults.
+ * Renders either a named font icon or an SVG source through Surface with theme-aware defaults.
  */
 export const Icon = withZoraThemeScope(IconInner);
