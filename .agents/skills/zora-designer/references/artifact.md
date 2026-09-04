@@ -2,7 +2,7 @@
 
 `zora-designer.md` is the deterministic design/audit decision record. It is never runtime theme or
 manifest authority. The serializer and its ordered frontmatter/section skeleton live in
-[audit.mjs](../scripts/audit.mjs); do not maintain another template.
+[audit.ts](../scripts/audit.ts); do not maintain another template.
 
 ## Document lifecycle
 
@@ -67,8 +67,10 @@ Aggregate validation in this order: blocker, failure, not run, pass with non-blo
 pass. Resolve the application gate separately. A runtime blocker affects aggregate status only when
 runtime application is in the requested scope.
 
-Every unresolved `MissingElement` records a blocker, owner issue link when one exists, and the
-condition for replacing it with a released real ZORA element.
+Every capability that lacks an exact metadata-supported ZORA element records a non-blocking
+capability gap and uses a visible `Box` placeholder in the concept composition. An owner diagnostic
+with `severity: error` is a blocker. Record an owner issue link when one exists and the condition
+for replacing the placeholder with a released real ZORA element.
 
 ## Deterministic audit fields
 
@@ -89,5 +91,5 @@ state that it was not persisted.
 
 Before returning, confirm the artifact matches the requested mode, every resolved value has an
 origin, owner identifiers were inspected, exact measurements came from tools, invisible behavior
-was not passed from screenshots, gaps block application, and the manifest remains canonical runtime
-authority.
+was not passed from screenshots, owner errors block release, capability gaps are explicit, and the
+manifest remains canonical runtime authority.
