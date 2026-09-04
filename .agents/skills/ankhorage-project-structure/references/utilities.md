@@ -9,8 +9,8 @@ one domain only                      -> src/<domain>/utils/<functionName>.ts
 semantic/domain behavior             -> owning domain, not utils
 ```
 
-Do not retain local copies while waiting for a Utility release. Follow the Utility PR, merge,
-release, dependency-update sequence defined by `ankhorage-package-structure`.
+Do not retain local copies while waiting for a Utility release. Follow the Utility repository's
+current PR, merge, release, and dependency-update workflow.
 
 ## Strong cross-repository candidates
 

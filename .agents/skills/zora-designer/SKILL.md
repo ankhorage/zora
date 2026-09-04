@@ -1,89 +1,96 @@
 ---
 name: zora-designer
 description: >
-  Design one application screen or an ordered screen series, audit a URL or supplied image
-  evidence, and author an Ankhorage Templates manifest or starter using installed ZORA metadata
-  and theme APIs. Use for category-driven design decisions, design audits and scoring, visual
-  reconstruction with ZORA elements, or template creation. Do not use for illustration-only work.
+  Configure an owner-backed application design, generate one screen or a coherent screen series,
+  audit supplied evidence, and author portable Ankhorage templates. Use for category-driven design
+  decisions, ZORA screen generation, visual audits, or template creation.
 ---
 
 # ZORA Designer
 
-Design, audit, and author through the target repository's released owner APIs. Keep
-`zora-designer.md` as review evidence; the application manifest and owner contracts remain runtime
-authority.
+Design, audit, and author through the target repository's released owner APIs. The complete
+`AppManifest` is runtime authority; `zora-designer.md` and generated screen images are design
+evidence.
 
 ## Route the request
 
-- `interactive`: resolve a design configuration without silently creating code or images.
-- `screen`: design one screen and, when requested, produce a concept image or implementation.
-- `screens`: design a coherent ordered series with shared navigation, state, and tokens.
-- `audit`: evaluate a URL, one supplied image, or an ordered image series with explicit evidence.
-- `template`: compose a canonical `AppManifest`; in Templates, scaffold the normal starter source
-  and registry entry.
+- `interactive`: run the progressive configuration conversation in
+  [workflow.md](references/workflow.md). Do not create code or images before confirmation.
+- `screen`: resolve the configuration, then read [screens.md](references/screens.md) and design one
+  screen.
+- `screens`: resolve the configuration, then read [screens.md](references/screens.md) and design an
+  ordered series with shared navigation, state, geometry, and tokens.
+- `audit`: read [audit.md](references/audit.md) and evaluate supplied image or runtime evidence.
+- `template`: resolve the configuration and screen model, then author one portable template through
+  the workflow below.
 
-Natural language is enough. Ask only when an unresolved choice would materially change the output.
-Read [workflow.md](references/workflow.md) for the ordered process and capability gates.
+Natural language is enough. Treat short replies as answers to the current question, not permission
+to infer later decisions. A reply such as “go on” advances to the next unresolved decision. Only an
+explicit request such as “accept all recommended values” resolves the remaining recommendations at
+once.
 
 ## Start with the owners
 
 From the target repository, run:
 
 ```text
-bun .agents/skills/zora-designer/scripts/owner-api.mjs inspect
+bun .agents/skills/zora-designer/scripts/owner-api.ts inspect
 ```
 
-The helper loads public exports from installed `@ankhorage/templates`, `@ankhorage/zora/theme`, and
-`@ankhorage/zora/metadata`. If it reports a missing or outdated owner, update the released package
-through the repository's normal dependency workflow. Never copy a catalog, token inventory, color
-algorithm, theme compiler, component schema, or manifest implementation into this skill.
+Use its installed owner output for categories, recommendations, harmonies, tone pairs, navigation
+types, ZORA elements, events, recipes, and version provenance. Never copy owner catalogs, component
+schemas, token inventories, color algorithms, action types, or manifest implementations into this
+skill.
 
-Use owner terminology verbatim: `GeneratedColorRole`, `ThemeTokens.colors`, `ThemeSemantics`, and
-`SemanticColorToken`. Do not introduce aliases or naming cleanup here.
+Compile chosen values with the same helper before composing screens. Inspect both computed modes,
+including their resolved Surface themes and all owner diagnostics. Never hand-calculate a value the
+owner exposes.
 
-## Preserve decisions and evidence
+## Preserve the complete UX
 
-Resolve values in this order: current request, current session, verified project state, confirmed
-existing brief target, category preset, then safe global default. Record an origin for each value.
-Keep target design separate from observed runtime state and report drift rather than overwriting one
-with the other.
+For every screen region, prefer the exact semantic ZORA element supported by current metadata.
+Visual resemblance alone is insufficient. If no exact element exists, preserve the requested UX
+with an obvious supported placeholder such as a secondary-surface `Box`, and record the capability
+gap. Do not invent props, application components, or successful behavior.
 
-For scoring, evidence limits, release gates, and finding rules, read
-[audit.md](references/audit.md). For deterministic `zora-designer.md` shape and serialization, read
-[artifact.md](references/artifact.md).
+Bind every interaction expressible by installed Contracts and ZORA event metadata. Leave an
+unsupported interaction visibly present and explicitly unbound without blocking unrelated design
+work. Release validation still decides whether the complete manifest is shippable.
 
-## Compose only supported ZORA elements
+## Template output
 
-Inspect `ZORA_COMPONENT_META` and `ZORA_THEME_RECIPE_META`. Map a source region only when the
-element's semantic responsibility, structure, states/interactions, accessibility contract, props,
-events, and data requirements fit. Visual resemblance alone is insufficient.
+A Templates repository template is exactly one portable unit:
 
-If no exact element fits:
+```text
+src/templates/categories/{appCategory}/{slug}/
+  createAppManifest.ts
+  assets/
+    screens/
+    images/
+```
 
-1. use the metadata-backed `MissingElement` draft node at that location;
-2. record the evidence, warning, requested capability, and application blocker;
-3. create or link a ZORA owner issue;
-4. stop release application until a released real element replaces it.
+`createAppManifest.ts` default-exports a function returning the complete `AppManifest`.
+`assets/screens/` contains design evidence only. Runtime media uses real application image regions
+under `assets/images/`; rebuild text, controls, icons, surfaces, and layout with ZORA.
 
-Never disguise the gap with a generic container, invented prop, or custom application workaround.
+Scaffold only a reviewed, release-valid manifest:
 
-## Capability truthfulness
+```text
+bun .agents/skills/zora-designer/scripts/scaffold-template.ts scaffold-input.json
+```
 
-- Concept image output requires an available image-generation capability.
-- URL intake and authoritative runtime screenshots require a browser/runtime capture capability.
-- Image audits require the supplied original image or ordered series.
-
-When a required capability or source is unavailable, report that deliverable or evidence scope as
-blocked. Do not simulate an image, browser observation, or runtime proof. Clearly distinguish
-generated concept images from authoritative runtime captures.
+The helper creates the template directory and regenerates discovery from the filesystem. Do not add
+category registries, seed definitions, fallback templates, compatibility paths, or per-template
+barrels.
 
 ## Validate before handoff
 
-- Compile the category design and both theme modes through installed owner APIs.
-- Validate manifest composition and preserve every owner diagnostic.
-- Confirm every manifest node and recipe against current ZORA metadata.
-- Run deterministic audit arithmetic when an audit is in scope.
-- Keep screenshot-only behavior `not-assessable`.
-- Require a ready application gate before release; a score never overrides a blocker.
-- Update `zora-designer.md` and report target/runtime drift, unsupported capabilities, and owner
-  issues.
+- confirm the interactive decision sequence completed or the user explicitly accepted remaining
+  recommendations;
+- compile light and dark independently through installed owner APIs;
+- validate selected ZORA nodes, props, events, actions, and complete manifest contracts;
+- run the screen composition gate from [screens.md](references/screens.md) before returning screen
+  output;
+- keep unsupported interactions and capability gaps explicit;
+- keep concept screens separate from runtime assets;
+- for deterministic artifact shape, read [artifact.md](references/artifact.md).
