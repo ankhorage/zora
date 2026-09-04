@@ -36,7 +36,7 @@ type AppCategory = (typeof APP_CATEGORIES)[number];
 // script-only projection aligned with its released Expo 57 contract without
 // adding Expo Runtime (and its required Expo peers) to portable ZORA tooling.
 const EXPO_57_SCAFFOLD_VERSIONS = {
-  expo: '57.0.19',
+  expo: '57.0.20',
   expoConstants: '~57.0.13',
   expoFont: '~57.0.1',
   expoLinking: '~57.0.7',
@@ -47,6 +47,7 @@ const EXPO_57_SCAFFOLD_VERSIONS = {
   reactNative: '0.86.3',
   reactNativeSafeArea: '~5.7.0',
   reactNativeScreens: '~4.26.0',
+  reactNativeSvg: '15.15.4',
   reactNativeWeb: '~0.21.0',
   reactNativeVectorIcons: '^13.1.3',
   typesReact: '~19.2.18',
@@ -357,6 +358,7 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion
     "react-native": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNative)},
     "react-native-safe-area-context": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeSafeArea)},
     "react-native-screens": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeScreens)},
+    "react-native-svg": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeSvg)},
     "react-native-web": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeWeb)}
   },
   "devDependencies": {
