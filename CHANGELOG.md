@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.1.0
+
+### Minor Changes
+
+- 39967b9: Expose SVG `source` rendering through the existing ZORA `Icon` component.
+
 ## 4.0.0
 
 ### Major Changes
