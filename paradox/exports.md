@@ -24,21 +24,21 @@ Source: `src/components/action-sheet/types.ts:16:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| leading | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| trailing | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| label             | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| leading           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| selected          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| trailing          | property | `React.ReactNode`                                                                                                                             | no       |             |
 
 ## ActionSheetProps
 
@@ -48,19 +48,19 @@ Source: `src/components/action-sheet/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| cancelLabel | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| closeOnBackdrop | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onDismiss | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
-| visible | property | `boolean` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| cancelLabel       | property | `React.ReactNode`                | no       |             |
+| children          | property | `React.ReactNode`                | no       |             |
+| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
+| visible           | property | `boolean`                        | yes      |             |
 
 ## AppBar
 
@@ -84,12 +84,12 @@ Source: `src/components/app-bar/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| onPress | property | `() => void` | yes |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| label    | property | `string \| undefined`                                  | no       |             |
+| onPress  | property | `() => void`                                           | yes      |             |
 
 ## AppBarProps
 
@@ -99,21 +99,21 @@ Source: `src/components/app-bar/types.ts:26:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| appMode | property | `AppBarMode \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| divider | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| leading | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| overflow | property | `AppBarOverflowAction \| undefined` | no |  |
-| safeAreaTop | property | `boolean \| undefined` | no |  |
-| subtitle | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                                | Required | Description |
+| ----------------- | -------- | ----------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                   | no       |             |
+| appMode           | property | `AppBarMode \| undefined`           | no       |             |
+| children          | property | `React.ReactNode`                   | no       |             |
+| divider           | property | `boolean \| undefined`              | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`    | no       |             |
+| leading           | property | `React.ReactNode`                   | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`        | no       |             |
+| overflow          | property | `AppBarOverflowAction \| undefined` | no       |             |
+| safeAreaTop       | property | `boolean \| undefined`              | no       |             |
+| subtitle          | property | `React.ReactNode`                   | no       |             |
+| testID            | property | `string \| undefined`               | no       |             |
+| themeId           | property | `string \| undefined`               | no       |             |
+| title             | property | `React.ReactNode`                   | no       |             |
 
 ## AppShell
 
@@ -134,16 +134,16 @@ Source: `src/layout/app-shell/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| header | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| overlay | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| header            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| overlay           | property | `React.ReactNode`                | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## AuthFormBaseProps
 
@@ -153,16 +153,16 @@ Source: `src/patterns/auth/types.ts:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| error             | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| loading           | property | `boolean \| undefined`           | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| submitLabel       | property | `React.ReactNode`                | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## AuthIdentifierKind
 
@@ -194,15 +194,15 @@ Source: `src/components/avatar-group/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| iconFallback | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string \| undefined` | no |  |
-| initials | property | `string \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| name | property | `string \| undefined` | no |  |
-| source | property | `ImageSourcePropType \| undefined` | no |  |
+| Name         | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color        | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| iconFallback | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| id           | property | `string \| undefined`                                                                                                                         | no       |             |
+| initials     | property | `string \| undefined`                                                                                                                         | no       |             |
+| label        | property | `string \| undefined`                                                                                                                         | no       |             |
+| name         | property | `string \| undefined`                                                                                                                         | no       |             |
+| source       | property | `ImageSourcePropType \| undefined`                                                                                                            | no       |             |
 
 ## AvatarGroupProps
 
@@ -212,17 +212,17 @@ Source: `src/components/avatar-group/types.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly AvatarGroupItem[]` | yes |  |
-| max | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| overflowLabel | property | `((overflowCount: number) => string) \| undefined` | no |  |
-| shape | property | `AvatarShape \| undefined` | no |  |
-| size | property | `AvatarSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                               | Required | Description |
+| ----------------- | -------- | -------------------------------------------------- | -------- | ----------- |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                   | no       |             |
+| items             | property | `readonly AvatarGroupItem[]`                       | yes      |             |
+| max               | property | `number \| undefined`                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                       | no       |             |
+| overflowLabel     | property | `((overflowCount: number) => string) \| undefined` | no       |             |
+| shape             | property | `AvatarShape \| undefined`                         | no       |             |
+| size              | property | `AvatarSize \| undefined`                          | no       |             |
+| testID            | property | `string \| undefined`                              | no       |             |
+| themeId           | property | `string \| undefined`                              | no       |             |
 
 ## AvatarProps
 
@@ -232,20 +232,20 @@ Source: `src/components/avatar/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| iconFallback | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| initials | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| name | property | `string \| undefined` | no |  |
-| shape | property | `AvatarShape \| undefined` | no |  |
-| size | property | `AvatarSize \| undefined` | no |  |
-| source | property | `ImageSourcePropType \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| iconFallback      | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| initials          | property | `string \| undefined`                                                                                                                         | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| label             | property | `string \| undefined`                                                                                                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| name              | property | `string \| undefined`                                                                                                                         | no       |             |
+| shape             | property | `AvatarShape \| undefined`                                                                                                                    | no       |             |
+| size              | property | `AvatarSize \| undefined`                                                                                                                     | no       |             |
+| source            | property | `ImageSourcePropType \| undefined`                                                                                                            | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
 
 ## AvatarShape
 
@@ -275,16 +275,16 @@ Source: `src/components/badge/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `ZoraBadgeVariant \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| size              | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant           | property | `ZoraBadgeVariant \| undefined`                                                                                                               | no       |             |
 
 ## BarcodeScannerView
 
@@ -305,26 +305,26 @@ Source: `src/patterns/scanner/types.ts:32:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| camera | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| cornerLabel | property | `React.ReactNode` | no |  |
-| deniedPermissionLabel | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| manualEntryLabel | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onBarcodeScanned | property | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no |  |
-| onManualEntry | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onRequestPermission | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| overlayDescription | property | `React.ReactNode` | no |  |
-| overlayTitle | property | `React.ReactNode` | no |  |
-| permissionStatus | property | `CameraPermissionStatus` | yes |  |
-| requestPermissionLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name                   | Kind     | Type                                                                  | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------------------- | -------- | ----------- |
+| camera                 | property | `React.ReactNode`                                                     | no       |             |
+| children               | property | `React.ReactNode`                                                     | no       |             |
+| cornerLabel            | property | `React.ReactNode`                                                     | no       |             |
+| deniedPermissionLabel  | property | `React.ReactNode`                                                     | no       |             |
+| description            | property | `React.ReactNode`                                                     | no       |             |
+| interactionPolicy      | property | `InteractionPolicy \| undefined`                                      | no       |             |
+| manualEntryLabel       | property | `React.ReactNode`                                                     | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                                          | no       |             |
+| onBarcodeScanned       | property | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no       |             |
+| onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`                          | no       |             |
+| onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`                          | no       |             |
+| overlayDescription     | property | `React.ReactNode`                                                     | no       |             |
+| overlayTitle           | property | `React.ReactNode`                                                     | no       |             |
+| permissionStatus       | property | `CameraPermissionStatus`                                              | yes      |             |
+| requestPermissionLabel | property | `React.ReactNode`                                                     | no       |             |
+| testID                 | property | `string \| undefined`                                                 | no       |             |
+| themeId                | property | `string \| undefined`                                                 | no       |             |
+| title                  | property | `React.ReactNode`                                                     | no       |             |
 
 ## BarcodeScanResult
 
@@ -334,10 +334,10 @@ Source: `src/patterns/scanner/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| type | property | `string \| undefined` | no |  |
-| value | property | `string` | yes |  |
+| Name  | Kind     | Type                  | Required | Description |
+| ----- | -------- | --------------------- | -------- | ----------- |
+| type  | property | `string \| undefined` | no       |             |
+| value | property | `string`              | yes      |             |
 
 ## Box
 
@@ -355,56 +355,56 @@ Source: `src/foundation/Box.tsx:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                         | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## BreadcrumbItem
 
@@ -414,13 +414,13 @@ Source: `src/components/breadcrumbs/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| label | property | `React.ReactNode` | yes |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| id       | property | `string`                                               | yes      |             |
+| label    | property | `React.ReactNode`                                      | yes      |             |
+| onPress  | property | `(() => void) \| undefined`                            | no       |             |
 
 ## Breadcrumbs
 
@@ -438,17 +438,17 @@ Source: `src/components/breadcrumbs/types.ts:14:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| compact | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly BreadcrumbItem[]` | yes |  |
-| maxItems | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| separator | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| items             | property | `readonly BreadcrumbItem[]`      | yes      |             |
+| maxItems          | property | `number \| undefined`            | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| separator         | property | `React.ReactNode`                | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## Button
 
@@ -489,17 +489,17 @@ Source: `src/components/button-group/types.ts:9:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| align | property | `ButtonGroupAlign \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| gap | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| orientation | property | `ButtonGroupOrientation \| undefined` | no |  |
-| reverse | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| align             | property | `ButtonGroupAlign \| undefined`                                                                                     | no       |             |
+| children          | property | `React.ReactNode`                                                                                                   | no       |             |
+| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
+| orientation       | property | `ButtonGroupOrientation \| undefined`                                                                               | no       |             |
+| reverse           | property | `boolean \| undefined`                                                                                              | no       |             |
+| testID            | property | `string \| undefined`                                                                                               | no       |             |
+| themeId           | property | `string \| undefined`                                                                                               | no       |             |
 
 ## ButtonProps
 
@@ -509,63 +509,63 @@ Source: `src/components/button/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityRole | property | `AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| fullWidth | property | `boolean \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| leadingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| onLongPress | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onPress | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| trailingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| variant | property | `ZoraButtonVariant \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityRole  | property | `AccessibilityRole \| undefined`                                                                                                              | no       |             |
+| accessibilityState | property | `AccessibilityState \| undefined`                                                                                                             | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                                     | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| children           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color              | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| fullWidth          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| leadingIcon        | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| loading            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| onLongPress        | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       |             |
+| onPress            | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                                  | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                               | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                                        | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| size               | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                         | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| trailingIcon       | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| variant            | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
 
 ## CameraPermissionStatus
 
@@ -592,22 +592,22 @@ Source: `src/patterns/scanner/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| deniedLabel | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| manualEntryButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no |  |
-| manualEntryLabel | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onManualEntry | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onRequestPermission | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| requestButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no |  |
-| requestLabel | property | `React.ReactNode` | no |  |
-| status | property | `"unknown" \| "requesting" \| "denied"` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name                   | Kind     | Type                                                      | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------- | -------- | ----------- |
+| deniedLabel            | property | `React.ReactNode`                                         | no       |             |
+| description            | property | `React.ReactNode`                                         | no       |             |
+| interactionPolicy      | property | `InteractionPolicy \| undefined`                          | no       |             |
+| manualEntryButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| manualEntryLabel       | property | `React.ReactNode`                                         | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                              | no       |             |
+| onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
+| onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
+| requestButtonProps     | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| requestLabel           | property | `React.ReactNode`                                         | no       |             |
+| status                 | property | `"unknown" \| "requesting" \| "denied"`                   | yes      |             |
+| testID                 | property | `string \| undefined`                                     | no       |             |
+| themeId                | property | `string \| undefined`                                     | no       |             |
+| title                  | property | `React.ReactNode`                                         | no       |             |
 
 ## Card
 
@@ -628,62 +628,62 @@ Source: `src/components/card/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| actions | property | `React.ReactNode` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| eyebrow | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| padding | property | `string \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `string \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
-| tone | property | `ZoraCardTone \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| actions            | property | `React.ReactNode`                                                         | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| compact            | property | `boolean \| undefined`                                                    | no       |             |
+| description        | property | `React.ReactNode`                                                         | no       |             |
+| disabled           | property | `boolean \| undefined`                                                    | no       |             |
+| eyebrow            | property | `React.ReactNode`                                                         | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| footer             | property | `React.ReactNode`                                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| onPress            | property | `(() => void) \| undefined`                                               | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| padding            | property | `string \| undefined`                                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `string \| undefined`                                                     | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| title              | property | `React.ReactNode`                                                         | no       |             |
+| tone               | property | `ZoraCardTone \| undefined`                                               | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## Center
 
@@ -701,57 +701,57 @@ Source: `src/foundation/Center.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| axis | property | `"horizontal" \| "vertical" \| "both" \| undefined` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| axis               | property | `"horizontal" \| "vertical" \| "both" \| undefined`                       | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                         | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## ChatListAvatar
 
@@ -761,15 +761,15 @@ Source: `src/patterns/chat-list-item/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| initials | property | `string \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| name | property | `string \| undefined` | no |  |
-| shape | property | `AvatarShape \| undefined` | no |  |
-| size | property | `AvatarSize \| undefined` | no |  |
-| source | property | `ImageSourcePropType \| undefined` | no |  |
+| Name     | Kind     | Type                                                                                                                                          | Required | Description |
+| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color    | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| initials | property | `string \| undefined`                                                                                                                         | no       |             |
+| label    | property | `string \| undefined`                                                                                                                         | no       |             |
+| name     | property | `string \| undefined`                                                                                                                         | no       |             |
+| shape    | property | `AvatarShape \| undefined`                                                                                                                    | no       |             |
+| size     | property | `AvatarSize \| undefined`                                                                                                                     | no       |             |
+| source   | property | `ImageSourcePropType \| undefined`                                                                                                            | no       |             |
 
 ## ChatListItem
 
@@ -787,26 +787,26 @@ Source: `src/patterns/chat-list-item/types.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| avatar | property | `ChatListAvatar \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| leading | property | `React.ReactNode` | no |  |
-| meta | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| preview | property | `React.ReactNode` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| timestamp | property | `React.ReactNode` | no |  |
-| title | property | `React.ReactNode` | yes |  |
-| trailing | property | `React.ReactNode` | no |  |
-| unread | property | `boolean \| undefined` | no |  |
-| unreadCount | property | `React.ReactNode` | no |  |
+| Name               | Kind     | Type                             | Required | Description |
+| ------------------ | -------- | -------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`            | no       |             |
+| avatar             | property | `ChatListAvatar \| undefined`    | no       |             |
+| compact            | property | `boolean \| undefined`           | no       |             |
+| disabled           | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined` | no       |             |
+| leading            | property | `React.ReactNode`                | no       |             |
+| meta               | property | `React.ReactNode`                | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onPress            | property | `(() => void) \| undefined`      | no       |             |
+| preview            | property | `React.ReactNode`                | no       |             |
+| selected           | property | `boolean \| undefined`           | no       |             |
+| testID             | property | `string \| undefined`            | no       |             |
+| themeId            | property | `string \| undefined`            | no       |             |
+| timestamp          | property | `React.ReactNode`                | no       |             |
+| title              | property | `React.ReactNode`                | yes      |             |
+| trailing           | property | `React.ReactNode`                | no       |             |
+| unread             | property | `boolean \| undefined`           | no       |             |
+| unreadCount        | property | `React.ReactNode`                | no       |             |
 
 ## Checkbox
 
@@ -832,13 +832,13 @@ Source: `src/components/checkbox/types.ts:9:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| description | property | `React.ReactNode`      | no       |             |
+| disabled    | property | `boolean \| undefined` | no       |             |
+| label       | property | `React.ReactNode`      | yes      |             |
+| testID      | property | `string \| undefined`  | no       |             |
+| value       | property | `TValue`               | yes      |             |
 
 ## CheckboxGroupProps
 
@@ -848,22 +848,22 @@ Source: `src/components/checkbox/types.ts:17:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| gap | property | `"xs" \| "s" \| "m" \| "l" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `(value: TValue[]) => void` | yes |  |
-| options | property | `readonly CheckboxGroupOption<TValue>[]` | yes |  |
-| orientation | property | `"horizontal" \| "vertical" \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| size | property | `ControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `readonly TValue[]` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| gap               | property | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onValueChange     | property | `(value: TValue[]) => void`                                                                                                                   | yes      |             |
+| options           | property | `readonly CheckboxGroupOption<TValue>[]`                                                                                                      | yes      |             |
+| orientation       | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
+| readOnly          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| size              | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| value             | property | `readonly TValue[]`                                                                                                                           | yes      |             |
 
 ## CheckboxProps
 
@@ -873,61 +873,61 @@ Source: `src/components/checkbox/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| checked | property | `boolean \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| defaultChecked | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| onCheckedChange | property | `((checked: boolean) => void) \| undefined` | no |  |
-| onLongPress | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| size | property | `ControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                                                                                         | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                                     | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| checked            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| children           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color              | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| defaultChecked     | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| onCheckedChange    | property | `((checked: boolean) => void) \| undefined`                                                                                                   | no       |             |
+| onLongPress        | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                                  | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                               | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                                        | no       |             |
+| readOnly           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| size               | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                         | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
 
 ## Chip
 
@@ -953,13 +953,13 @@ Source: `src/components/chip-group/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| label    | property | `React.ReactNode`                                      | yes      |             |
+| testID   | property | `string \| undefined`                                  | no       |             |
+| value    | property | `TValue`                                               | yes      |             |
 
 ## ChipGroupProps
 
@@ -975,19 +975,19 @@ Source: `src/components/chip/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| selected          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| size              | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
 
 ## CollectionEditor
 
@@ -1005,22 +1005,22 @@ Source: `src/patterns/collection-editor/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| addLabel | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| emptyLabel | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly TItem[]` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onAdd | property | `(() => void) \| undefined` | no |  |
-| onMove | property | `((from: number, to: number) => void) \| undefined` | no |  |
-| onRemove | property | `((index: number) => void) \| undefined` | no |  |
-| renderItem | property | `(props: CollectionEditorRenderItemProps<TItem>) => React.ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                                                                 | Required | Description |
+| ----------------- | -------- | -------------------------------------------------------------------- | -------- | ----------- |
+| addLabel          | property | `React.ReactNode`                                                    | no       |             |
+| description       | property | `React.ReactNode`                                                    | no       |             |
+| disabled          | property | `boolean \| undefined`                                               | no       |             |
+| emptyLabel        | property | `React.ReactNode`                                                    | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                     | no       |             |
+| items             | property | `readonly TItem[]`                                                   | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                         | no       |             |
+| onAdd             | property | `(() => void) \| undefined`                                          | no       |             |
+| onMove            | property | `((from: number, to: number) => void) \| undefined`                  | no       |             |
+| onRemove          | property | `((index: number) => void) \| undefined`                             | no       |             |
+| renderItem        | property | `(props: CollectionEditorRenderItemProps<TItem>) => React.ReactNode` | yes      |             |
+| testID            | property | `string \| undefined`                                                | no       |             |
+| themeId           | property | `string \| undefined`                                                | no       |             |
+| title             | property | `React.ReactNode`                                                    | no       |             |
 
 ## CollectionEditorRenderItemProps
 
@@ -1030,15 +1030,15 @@ Source: `src/patterns/collection-editor/types.ts:3:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| canMoveDown | property | `boolean` | yes |  |
-| canMoveUp | property | `boolean` | yes |  |
-| index | property | `number` | yes |  |
-| item | property | `TItem` | yes |  |
-| moveDown | property | `() => void` | yes |  |
-| moveUp | property | `() => void` | yes |  |
-| remove | property | `() => void` | yes |  |
+| Name        | Kind     | Type         | Required | Description |
+| ----------- | -------- | ------------ | -------- | ----------- |
+| canMoveDown | property | `boolean`    | yes      |             |
+| canMoveUp   | property | `boolean`    | yes      |             |
+| index       | property | `number`     | yes      |             |
+| item        | property | `TItem`      | yes      |             |
+| moveDown    | property | `() => void` | yes      |             |
+| moveUp      | property | `() => void` | yes      |             |
+| remove      | property | `() => void` | yes      |             |
 
 ## compileZoraTheme
 
@@ -1072,24 +1072,24 @@ Source: `src/patterns/confirm-dialog/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| busy | property | `boolean \| undefined` | no |  |
-| cancelLabel | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| closeOnBackdrop | property | `boolean \| undefined` | no |  |
-| confirmColor | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| confirmLabel | property | `React.ReactNode` | no |  |
-| confirmVariant | property | `ZoraButtonVariant \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onCancel | property | `(() => void) \| undefined` | no |  |
-| onConfirm | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
-| visible | property | `boolean` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| busy              | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| cancelLabel       | property | `React.ReactNode`                                                                                                                             | no       |             |
+| children          | property | `React.ReactNode`                                                                                                                             | no       |             |
+| closeOnBackdrop   | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| confirmColor      | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| confirmLabel      | property | `React.ReactNode`                                                                                                                             | no       |             |
+| confirmVariant    | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
+| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onCancel          | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| onConfirm         | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| title             | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| visible           | property | `boolean`                                                                                                                                     | yes      |             |
 
 ## Container
 
@@ -1107,56 +1107,56 @@ Source: `src/foundation/Container.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<string \| number> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                         | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## ContentRail
 
@@ -1172,10 +1172,10 @@ Source: `src/patterns/content-rail/types.ts:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| direction | property | `"next" \| "previous"` | yes |  |
-| targetIndex | property | `number` | yes |  |
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| direction   | property | `"next" \| "previous"` | yes      |             |
+| targetIndex | property | `number`               | yes      |             |
 
 ## ContentRailDirection
 
@@ -1203,25 +1203,25 @@ Source: `src/patterns/content-rail/types.ts:21:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| children | property | `ReactNode` | no |  |
-| direction | property | `ContentRailDirection \| undefined` | no |  |
-| gap | property | `ContentRailSpacing \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| itemSize | property | `ContentRailItemSize \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| motion | property | `ContentRailMotion \| undefined` | no |  |
-| nextLabel | property | `string \| undefined` | no |  |
-| onControlPress | property | `((event: ContentRailControlPressEvent) => void \| Promise<void>) \| undefined` | no |  |
-| onVisibleRangeChange | property | `((event: ContentRailVisibleRangeChangeEvent) => void \| Promise<void>) \| undefined` | no |  |
-| padding | property | `ContentRailSpacing \| undefined` | no |  |
-| peek | property | `number \| undefined` | no |  |
-| previousLabel | property | `string \| undefined` | no |  |
-| showControls | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name                 | Kind     | Type                                                                                  | Required | Description |
+| -------------------- | -------- | ------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel   | property | `string \| undefined`                                                                 | no       |             |
+| children             | property | `ReactNode`                                                                           | no       |             |
+| direction            | property | `ContentRailDirection \| undefined`                                                   | no       |             |
+| gap                  | property | `ContentRailSpacing \| undefined`                                                     | no       |             |
+| interactionPolicy    | property | `InteractionPolicy \| undefined`                                                      | no       |             |
+| itemSize             | property | `ContentRailItemSize \| undefined`                                                    | no       |             |
+| mode                 | property | `ZoraThemeMode \| undefined`                                                          | no       |             |
+| motion               | property | `ContentRailMotion \| undefined`                                                      | no       |             |
+| nextLabel            | property | `string \| undefined`                                                                 | no       |             |
+| onControlPress       | property | `((event: ContentRailControlPressEvent) => void \| Promise<void>) \| undefined`       | no       |             |
+| onVisibleRangeChange | property | `((event: ContentRailVisibleRangeChangeEvent) => void \| Promise<void>) \| undefined` | no       |             |
+| padding              | property | `ContentRailSpacing \| undefined`                                                     | no       |             |
+| peek                 | property | `number \| undefined`                                                                 | no       |             |
+| previousLabel        | property | `string \| undefined`                                                                 | no       |             |
+| showControls         | property | `boolean \| undefined`                                                                | no       |             |
+| testID               | property | `string \| undefined`                                                                 | no       |             |
+| themeId              | property | `string \| undefined`                                                                 | no       |             |
 
 ## ContentRailSpacing
 
@@ -1237,11 +1237,11 @@ Source: `src/patterns/content-rail/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| firstVisibleIndex | property | `number` | yes |  |
-| itemCount | property | `number` | yes |  |
-| lastVisibleIndex | property | `number` | yes |  |
+| Name              | Kind     | Type     | Required | Description |
+| ----------------- | -------- | -------- | -------- | ----------- |
+| firstVisibleIndex | property | `number` | yes      |             |
+| itemCount         | property | `number` | yes      |             |
+| lastVisibleIndex  | property | `number` | yes      |             |
 
 ## createZoraThemeConfig
 
@@ -1273,12 +1273,12 @@ Source: `src/components/data-table/types.ts:16:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| column | property | `DataTableColumn<TRow>` | yes |  |
-| row | property | `TRow` | yes |  |
-| rowIndex | property | `number` | yes |  |
-| value | property | `unknown` | yes |  |
+| Name     | Kind     | Type                    | Required | Description |
+| -------- | -------- | ----------------------- | -------- | ----------- |
+| column   | property | `DataTableColumn<TRow>` | yes      |             |
+| row      | property | `TRow`                  | yes      |             |
+| rowIndex | property | `number`                | yes      |             |
+| value    | property | `unknown`               | yes      |             |
 
 ## DataTableColumn
 
@@ -1288,16 +1288,16 @@ Source: `src/components/data-table/types.ts:23:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessor | property | `keyof TRow \| undefined` | no |  |
-| align | property | `DataTableColumnAlign \| undefined` | no |  |
-| header | property | `React.ReactNode` | yes |  |
-| id | property | `string` | yes |  |
-| minWidth | property | `number \| undefined` | no |  |
-| renderCell | property | `((context: DataTableCellContext<TRow>) => React.ReactNode) \| undefined` | no |  |
-| sortable | property | `boolean \| undefined` | no |  |
-| width | property | `number \| undefined` | no |  |
+| Name       | Kind     | Type                                                                      | Required | Description |
+| ---------- | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessor   | property | `keyof TRow \| undefined`                                                 | no       |             |
+| align      | property | `DataTableColumnAlign \| undefined`                                       | no       |             |
+| header     | property | `React.ReactNode`                                                         | yes      |             |
+| id         | property | `string`                                                                  | yes      |             |
+| minWidth   | property | `number \| undefined`                                                     | no       |             |
+| renderCell | property | `((context: DataTableCellContext<TRow>) => React.ReactNode) \| undefined` | no       |             |
+| sortable   | property | `boolean \| undefined`                                                    | no       |             |
+| width      | property | `number \| undefined`                                                     | no       |             |
 
 ## DataTableColumnAlign
 
@@ -1319,23 +1319,23 @@ Source: `src/components/data-table/types.ts:44:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| columns | property | `readonly DataTableColumn<TRow>[]` | yes |  |
-| density | property | `DataTableDensity \| undefined` | no |  |
-| emptyDescription | property | `React.ReactNode` | no |  |
-| emptyTitle | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| loadingRows | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onSortChange | property | `((sort: DataTableSortState) => void) \| undefined` | no |  |
-| rowActions | property | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no |  |
-| rowId | property | `(row: TRow, index: number) => string` | yes |  |
-| rows | property | `readonly TRow[]` | yes |  |
-| sort | property | `DataTableSortState \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                               | Required | Description |
+| ----------------- | -------- | ---------------------------------------------------------------------------------- | -------- | ----------- |
+| columns           | property | `readonly DataTableColumn<TRow>[]`                                                 | yes      |             |
+| density           | property | `DataTableDensity \| undefined`                                                    | no       |             |
+| emptyDescription  | property | `React.ReactNode`                                                                  | no       |             |
+| emptyTitle        | property | `React.ReactNode`                                                                  | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                   | no       |             |
+| loading           | property | `boolean \| undefined`                                                             | no       |             |
+| loadingRows       | property | `number \| undefined`                                                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                       | no       |             |
+| onSortChange      | property | `((sort: DataTableSortState) => void) \| undefined`                                | no       |             |
+| rowActions        | property | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no       |             |
+| rowId             | property | `(row: TRow, index: number) => string`                                             | yes      |             |
+| rows              | property | `readonly TRow[]`                                                                  | yes      |             |
+| sort              | property | `DataTableSortState \| undefined`                                                  | no       |             |
+| testID            | property | `string \| undefined`                                                              | no       |             |
+| themeId           | property | `string \| undefined`                                                              | no       |             |
 
 ## DataTableRowAction
 
@@ -1345,15 +1345,15 @@ Source: `src/components/data-table/types.ts:34:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| intent | property | `import("@ankhorage/surface").MenuActionIntent \| undefined` | no |  |
-| onPress | property | `((row: TRow) => void) \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
+| Name        | Kind     | Type                                                         | Required | Description |
+| ----------- | -------- | ------------------------------------------------------------ | -------- | ----------- |
+| description | property | `React.ReactNode`                                            | no       |             |
+| disabled    | property | `boolean \| undefined`                                       | no       |             |
+| icon        | property | `import("@ankhorage/surface").IconSource \| undefined`       | no       |             |
+| id          | property | `string`                                                     | yes      |             |
+| intent      | property | `import("@ankhorage/surface").MenuActionIntent \| undefined` | no       |             |
+| onPress     | property | `((row: TRow) => void) \| undefined`                         | no       |             |
+| title       | property | `React.ReactNode`                                            | yes      |             |
 
 ## DataTableSortDirection
 
@@ -1369,10 +1369,10 @@ Source: `src/components/data-table/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| columnId | property | `string` | yes |  |
-| direction | property | `DataTableSortDirection` | yes |  |
+| Name      | Kind     | Type                     | Required | Description |
+| --------- | -------- | ------------------------ | -------- | ----------- |
+| columnId  | property | `string`                 | yes      |             |
+| direction | property | `DataTableSortDirection` | yes      |             |
 
 ## DatePicker
 
@@ -1390,23 +1390,23 @@ Source: `src/components/date-picker/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| formatDate | property | `((value: Date) => React.ReactNode) \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | no |  |
-| maxDate | property | `Date \| undefined` | no |  |
-| minDate | property | `Date \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `((value: DatePickerValue) => void) \| undefined` | no |  |
-| placeholder | property | `React.ReactNode` | no |  |
-| required | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `DatePickerValue` | yes |  |
+| Name              | Kind     | Type                                              | Required | Description |
+| ----------------- | -------- | ------------------------------------------------- | -------- | ----------- |
+| description       | property | `React.ReactNode`                                 | no       |             |
+| disabled          | property | `boolean \| undefined`                            | no       |             |
+| error             | property | `React.ReactNode`                                 | no       |             |
+| formatDate        | property | `((value: Date) => React.ReactNode) \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                  | no       |             |
+| label             | property | `React.ReactNode`                                 | no       |             |
+| maxDate           | property | `Date \| undefined`                               | no       |             |
+| minDate           | property | `Date \| undefined`                               | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                      | no       |             |
+| onValueChange     | property | `((value: DatePickerValue) => void) \| undefined` | no       |             |
+| placeholder       | property | `React.ReactNode`                                 | no       |             |
+| required          | property | `boolean \| undefined`                            | no       |             |
+| testID            | property | `string \| undefined`                             | no       |             |
+| themeId           | property | `string \| undefined`                             | no       |             |
+| value             | property | `DatePickerValue`                                 | yes      |             |
 
 ## DatePickerValue
 
@@ -1436,21 +1436,21 @@ Source: `src/patterns/disclosure-section/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `ReactNode` | no |  |
-| children | property | `ReactNode` | no |  |
-| defaultOpen | property | `boolean \| undefined` | no |  |
-| description | property | `ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onOpenChange | property | `((open: boolean) => void) \| undefined` | no |  |
-| open | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `ReactNode` | yes |  |
+| Name              | Kind     | Type                                                   | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| actions           | property | `ReactNode`                                            | no       |             |
+| children          | property | `ReactNode`                                            | no       |             |
+| defaultOpen       | property | `boolean \| undefined`                                 | no       |             |
+| description       | property | `ReactNode`                                            | no       |             |
+| disabled          | property | `boolean \| undefined`                                 | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                       | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                           | no       |             |
+| onOpenChange      | property | `((open: boolean) => void) \| undefined`               | no       |             |
+| open              | property | `boolean \| undefined`                                 | no       |             |
+| testID            | property | `string \| undefined`                                  | no       |             |
+| themeId           | property | `string \| undefined`                                  | no       |             |
+| title             | property | `ReactNode`                                            | yes      |             |
 
 ## Divider
 
@@ -1468,56 +1468,56 @@ Source: `src/foundation/Divider.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `ColorValue \| undefined` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| orientation | property | `"horizontal" \| "vertical" \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| thickness | property | `number \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                         | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| color              | property | `ColorValue \| undefined`                                                 | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| orientation        | property | `"horizontal" \| "vertical" \| undefined`                                 | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| thickness          | property | `number \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## Drawer
 
@@ -1535,20 +1535,20 @@ Source: `src/components/drawer/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| closeOnBackdrop | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onDismiss | property | `(() => void) \| undefined` | no |  |
-| position | property | `"left" \| "right" \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
-| visible | property | `boolean` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
+| position          | property | `"left" \| "right" \| undefined` | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
+| visible           | property | `boolean`                        | yes      |             |
 
 ## DropdownMenu
 
@@ -1589,12 +1589,12 @@ Source: `src/patterns/empty-state/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| onPress | property | `() => void` | yes |  |
-| variant | property | `ZoraButtonVariant \| undefined` | no |  |
+| Name    | Kind     | Type                                                                                                                                          | Required | Description |
+| ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color   | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| label   | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| onPress | property | `() => void`                                                                                                                                  | yes      |             |
+| variant | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
 
 ## EmptyStateProps
 
@@ -1604,18 +1604,18 @@ Source: `src/patterns/empty-state/types.ts:13:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| eyebrow | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| primaryAction | property | `EmptyStateAction \| undefined` | no |  |
-| secondaryAction | property | `EmptyStateAction \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| description       | property | `React.ReactNode`                | no       |             |
+| eyebrow           | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| primaryAction     | property | `EmptyStateAction \| undefined`  | no       |             |
+| secondaryAction   | property | `EmptyStateAction \| undefined`  | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | yes      |             |
 
 ## FilterBar
 
@@ -1633,16 +1633,16 @@ Source: `src/patterns/filter-bar/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| leading | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| trailing | property | `React.ReactNode` | no |  |
-| wrap | property | `boolean \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| leading           | property | `React.ReactNode`                | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| trailing          | property | `React.ReactNode`                | no       |             |
+| wrap              | property | `boolean \| undefined`           | no       |             |
 
 ## ForgotPasswordForm
 
@@ -1660,21 +1660,21 @@ Source: `src/patterns/auth/types.ts:49:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| identifierLabel | property | `React.ReactNode` | no |  |
-| identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onSignIn | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onSubmit | property | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes |  |
-| signInLabel | property | `React.ReactNode` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                          | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                                        | no       |             |
+| error             | property | `React.ReactNode`                                             | no       |             |
+| identifierLabel   | property | `React.ReactNode`                                             | no       |             |
+| identifiers       | property | `readonly AuthIdentifierKind[] \| undefined`                  | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                              | no       |             |
+| loading           | property | `boolean \| undefined`                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                  | no       |             |
+| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`                  | no       |             |
+| onSubmit          | property | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes      |             |
+| signInLabel       | property | `React.ReactNode`                                             | no       |             |
+| submitLabel       | property | `React.ReactNode`                                             | no       |             |
+| testID            | property | `string \| undefined`                                         | no       |             |
+| themeId           | property | `string \| undefined`                                         | no       |             |
 
 ## ForgotPasswordFormValues
 
@@ -1684,10 +1684,10 @@ Source: `src/patterns/auth/types.ts:44:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| identifier | property | `string` | yes |  |
-| identifierKind | property | `AuthIdentifierKind` | yes |  |
+| Name           | Kind     | Type                 | Required | Description |
+| -------------- | -------- | -------------------- | -------- | ----------- |
+| identifier     | property | `string`             | yes      |             |
+| identifierKind | property | `AuthIdentifierKind` | yes      |             |
 
 ## Form
 
@@ -1713,17 +1713,17 @@ Source: `src/components/form/types.ts:64:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onSubmit | property | `(() => void) \| undefined` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| loading           | property | `boolean \| undefined`           | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onSubmit          | property | `(() => void) \| undefined`      | no       |             |
+| submitLabel       | property | `React.ReactNode`                | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## FormError
 
@@ -1741,13 +1741,13 @@ Source: `src/components/form/types.ts:72:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| error | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| error             | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## FormErrors
 
@@ -1771,25 +1771,25 @@ Source: `src/components/form/types.ts:20:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| autoCapitalize | property | `"none" \| "sentences" \| "words" \| "characters" \| undefined` | no |  |
-| autoComplete | property | `"email" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username" \| "username-new" \| "off" \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| helperText | property | `React.ReactNode` | no |  |
-| keyboardType | property | `import("react-native").KeyboardTypeOptions \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| maxLength | property | `number \| undefined` | no |  |
-| name | property | `TName` | yes |  |
-| placeholder | property | `string \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| required | property | `boolean \| undefined` | no |  |
-| rules | property | `readonly ValidationRule[] \| undefined` | no |  |
-| secureTextEntry | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| textContentType | property | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined` | no |  |
-| type | property | `FormFieldInputType \| undefined` | no |  |
+| Name            | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Required | Description |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| autoCapitalize  | property | `"none" \| "sentences" \| "words" \| "characters" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
+| autoComplete    | property | `"email" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username" \| "username-new" \| "off" \| undefined` | no       |             |
+| description     | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| disabled        | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| helperText      | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| keyboardType    | property | `import("react-native").KeyboardTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       |             |
+| label           | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | yes      |             |
+| maxLength       | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| name            | property | `TName`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | yes      |             |
+| placeholder     | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| readOnly        | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| required        | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| rules           | property | `readonly ValidationRule[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       |             |
+| secureTextEntry | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| testID          | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| textContentType | property | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| type            | property | `FormFieldInputType \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
 
 ## FormFieldControlProps
 
@@ -1799,18 +1799,18 @@ Source: `src/components/form/types.ts:52:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| field | property | `FormFieldConfig<TName>` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onChange | property | `(name: TName, value: FormFieldValue) => void` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `string` | yes |  |
+| Name              | Kind     | Type                                           | Required | Description |
+| ----------------- | -------- | ---------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                         | no       |             |
+| error             | property | `React.ReactNode`                              | no       |             |
+| field             | property | `FormFieldConfig<TName>`                       | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`               | no       |             |
+| loading           | property | `boolean \| undefined`                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                   | no       |             |
+| onChange          | property | `(name: TName, value: FormFieldValue) => void` | yes      |             |
+| testID            | property | `string \| undefined`                          | no       |             |
+| themeId           | property | `string \| undefined`                          | no       |             |
+| value             | property | `string`                                       | yes      |             |
 
 ## FormFieldInputType
 
@@ -1832,24 +1832,24 @@ Source: `src/components/form/types.ts:76:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| errors | property | `Partial<Record<TName, React.ReactNode>> \| undefined` | no |  |
-| fields | property | `readonly FormFieldConfig<TName>[]` | yes |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onChange | property | `(values: FormValues<TName>) => void` | yes |  |
-| onSubmit | property | `(values: FormValues<TName>) => void \| Promise<void>` | yes |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| validateOnChange | property | `boolean \| undefined` | no |  |
-| values | property | `FormValues<TName>` | yes |  |
+| Name              | Kind     | Type                                                   | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| actions           | property | `React.ReactNode`                                      | no       |             |
+| disabled          | property | `boolean \| undefined`                                 | no       |             |
+| error             | property | `React.ReactNode`                                      | no       |             |
+| errors            | property | `Partial<Record<TName, React.ReactNode>> \| undefined` | no       |             |
+| fields            | property | `readonly FormFieldConfig<TName>[]`                    | yes      |             |
+| footer            | property | `React.ReactNode`                                      | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                       | no       |             |
+| loading           | property | `boolean \| undefined`                                 | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                           | no       |             |
+| onChange          | property | `(values: FormValues<TName>) => void`                  | yes      |             |
+| onSubmit          | property | `(values: FormValues<TName>) => void \| Promise<void>` | yes      |             |
+| submitLabel       | property | `React.ReactNode`                                      | no       |             |
+| testID            | property | `string \| undefined`                                  | no       |             |
+| themeId           | property | `string \| undefined`                                  | no       |             |
+| validateOnChange  | property | `boolean \| undefined`                                 | no       |             |
+| values            | property | `FormValues<TName>`                                    | yes      |             |
 
 ## FormValidationErrors
 
@@ -1865,10 +1865,10 @@ Source: `src/components/form/types.ts:91:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| errors | property | `Partial<Record<TName, string>>` | yes |  |
-| valid | property | `boolean` | yes |  |
+| Name   | Kind     | Type                             | Required | Description |
+| ------ | -------- | -------------------------------- | -------- | ----------- |
+| errors | property | `Partial<Record<TName, string>>` | yes      |             |
+| valid  | property | `boolean`                        | yes      |             |
 
 ## FormValues
 
@@ -1913,10 +1913,10 @@ Source: `src/components/gradient/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| x | property | `number` | yes |  |
-| y | property | `number` | yes |  |
+| Name | Kind     | Type     | Required | Description |
+| ---- | -------- | -------- | -------- | ----------- |
+| x    | property | `number` | yes      |             |
+| y    | property | `number` | yes      |             |
 
 ## GradientProps
 
@@ -1926,22 +1926,22 @@ Source: `src/components/gradient/types.ts:32:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| colors | property | `GradientColors` | yes |  |
-| end | property | `GradientPoint \| undefined` | no |  |
-| height | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| locations | property | `GradientLocations \| undefined` | no |  |
-| minHeight | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| p | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no |  |
-| radius | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| start | property | `GradientPoint \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| width | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                                                                                                   | no       |             |
+| colors            | property | `GradientColors`                                                                                                    | yes      |             |
+| end               | property | `GradientPoint \| undefined`                                                                                        | no       |             |
+| height            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
+| locations         | property | `GradientLocations \| undefined`                                                                                    | no       |             |
+| minHeight         | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
+| p                 | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
+| radius            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| start             | property | `GradientPoint \| undefined`                                                                                        | no       |             |
+| testID            | property | `string \| undefined`                                                                                               | no       |             |
+| themeId           | property | `string \| undefined`                                                                                               | no       |             |
+| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
 
 ## GradientRenderer
 
@@ -1957,14 +1957,14 @@ Source: `src/components/gradient/types.ts:16:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| colors | property | `GradientColors` | yes |  |
-| end | property | `GradientPoint \| undefined` | no |  |
-| locations | property | `GradientLocations \| undefined` | no |  |
-| start | property | `GradientPoint \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
+| Name      | Kind     | Type                             | Required | Description |
+| --------- | -------- | -------------------------------- | -------- | ----------- |
+| children  | property | `React.ReactNode`                | no       |             |
+| colors    | property | `GradientColors`                 | yes      |             |
+| end       | property | `GradientPoint \| undefined`     | no       |             |
+| locations | property | `GradientLocations \| undefined` | no       |             |
+| start     | property | `GradientPoint \| undefined`     | no       |             |
+| style     | property | `StyleProp<ViewStyle>`           | no       |             |
 
 ## GradientRendererProvider
 
@@ -1986,10 +1986,10 @@ Source: `src/components/gradient/types.ts:27:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| renderer | property | `GradientRenderer` | yes |  |
+| Name     | Kind     | Type               | Required | Description |
+| -------- | -------- | ------------------ | -------- | ----------- |
+| children | property | `React.ReactNode`  | no       |             |
+| renderer | property | `GradientRenderer` | yes      |             |
 
 ## Grid
 
@@ -2007,61 +2007,61 @@ Source: `src/foundation/Grid.tsx:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| colGap | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| cols | property | `Responsive<number>` | yes |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minItemWidth | property | `Responsive<number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| rowGap | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                     | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                         | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| colGap             | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| cols               | property | `Responsive<number>`                                                      | yes      |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| gap                | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minItemWidth       | property | `Responsive<number> \| undefined`                                         | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| rowGap             | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## hasRequiredRule
 
@@ -2118,30 +2118,30 @@ Source: `src/components/heading/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityHint | property | `string \| undefined` | no |  |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `AccessibilityRole \| undefined` | no |  |
-| align | property | `Responsive<HeadingAlign> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no |  |
-| ellipsizeMode | property | `"head" \| "middle" \| "tail" \| "clip" \| undefined` | no |  |
-| emphasis | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no |  |
-| i18nKey | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| italic | property | `boolean \| undefined` | no |  |
-| level | property | `HeadingLevel \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nativeID | property | `string \| undefined` | no |  |
-| numberOfLines | property | `number \| undefined` | no |  |
-| selectable | property | `boolean \| undefined` | no |  |
-| size | property | `Responsive<HeadingSize> \| undefined` | no |  |
-| style | property | `StyleProp<TextStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| text | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| weight | property | `Responsive<HeadingWeight> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                                                      | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityHint  | property | `string \| undefined`                                                                                                                                     | no       |             |
+| accessibilityLabel | property | `string \| undefined`                                                                                                                                     | no       |             |
+| accessibilityRole  | property | `AccessibilityRole \| undefined`                                                                                                                          | no       |             |
+| align              | property | `Responsive<HeadingAlign> \| undefined`                                                                                                                   | no       |             |
+| children           | property | `React.ReactNode`                                                                                                                                         | no       |             |
+| color              | property | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no       |             |
+| ellipsizeMode      | property | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       |             |
+| emphasis           | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       |             |
+| i18nKey            | property | `string \| undefined`                                                                                                                                     | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                                          | no       |             |
+| italic             | property | `boolean \| undefined`                                                                                                                                    | no       |             |
+| level              | property | `HeadingLevel \| undefined`                                                                                                                               | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                              | no       |             |
+| nativeID           | property | `string \| undefined`                                                                                                                                     | no       |             |
+| numberOfLines      | property | `number \| undefined`                                                                                                                                     | no       |             |
+| selectable         | property | `boolean \| undefined`                                                                                                                                    | no       |             |
+| size               | property | `Responsive<HeadingSize> \| undefined`                                                                                                                    | no       |             |
+| style              | property | `StyleProp<TextStyle>`                                                                                                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                                     | no       |             |
+| text               | property | `string \| undefined`                                                                                                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                                     | no       |             |
+| weight             | property | `Responsive<HeadingWeight> \| undefined`                                                                                                                  | no       |             |
 
 ## HeadingSize
 
@@ -2171,13 +2171,13 @@ Source: `src/patterns/hero/types.ts:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| onPress | property | `() => void` | yes |  |
-| variant | property | `ZoraButtonVariant \| undefined` | no |  |
+| Name     | Kind     | Type                                                                                                                                          | Required | Description |
+| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color    | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| label    | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| onPress  | property | `() => void`                                                                                                                                  | yes      |             |
+| variant  | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
 
 ## HeroAlign
 
@@ -2199,23 +2199,23 @@ Source: `src/patterns/hero/types.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| align | property | `HeroAlign \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| eyebrow | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| layout | property | `HeroLayout \| undefined` | no |  |
-| media | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| primaryAction | property | `HeroAction \| undefined` | no |  |
-| secondaryAction | property | `HeroAction \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
-| tone | property | `HeroTone \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| align             | property | `HeroAlign \| undefined`         | no       |             |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| eyebrow           | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| layout            | property | `HeroLayout \| undefined`        | no       |             |
+| media             | property | `React.ReactNode`                | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| primaryAction     | property | `HeroAction \| undefined`        | no       |             |
+| secondaryAction   | property | `HeroAction \| undefined`        | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | yes      |             |
+| tone              | property | `HeroTone \| undefined`          | no       |             |
 
 ## HeroTone
 
@@ -2247,20 +2247,20 @@ Source: `src/components/icon-button/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `ZoraButtonVariant \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource`                                                                                                     | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| label             | property | `string`                                                                                                                                      | yes      |             |
+| loading           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| size              | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant           | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
 
 ## IconProps
 
@@ -2298,17 +2298,17 @@ Source: `src/patterns/image-preview/types.ts:35:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| aspectRatio | property | `number \| undefined` | no |  |
-| asset | property | `ZoraImageAsset \| null \| undefined` | no |  |
-| emptyDescription | property | `React.ReactNode` | no |  |
-| emptyTitle | property | `React.ReactNode` | no |  |
-| fit | property | `import("react-native").ImageResizeMode \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                  | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
+| aspectRatio       | property | `number \| undefined`                                 | no       |             |
+| asset             | property | `ZoraImageAsset \| null \| undefined`                 | no       |             |
+| emptyDescription  | property | `React.ReactNode`                                     | no       |             |
+| emptyTitle        | property | `React.ReactNode`                                     | no       |             |
+| fit               | property | `import("react-native").ImageResizeMode \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                      | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                          | no       |             |
+| testID            | property | `string \| undefined`                                 | no       |             |
+| themeId           | property | `string \| undefined`                                 | no       |             |
 
 ## ImageProps
 
@@ -2318,24 +2318,24 @@ Source: `src/components/image/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| alt | property | `string \| undefined` | no |  |
-| aspectRatio | property | `number \| undefined` | no |  |
-| fallbackSource | property | `SurfaceImageSource \| null \| undefined` | no |  |
-| fit | property | `ImageResizeMode \| undefined` | no |  |
-| height | property | `string \| number \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onError | property | `((error: import("react-native").ImageErrorEvent) => void) \| undefined` | no |  |
-| radius | property | `string \| number \| undefined` | no |  |
-| resizeMode | property | `ImageResizeMode \| undefined` | no |  |
-| source | property | `SurfaceImageSource \| null \| undefined` | no |  |
-| style | property | `StyleProp<ImageStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| width | property | `string \| number \| undefined` | no |  |
+| Name               | Kind     | Type                                                                     | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------ | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                    | no       |             |
+| alt                | property | `string \| undefined`                                                    | no       |             |
+| aspectRatio        | property | `number \| undefined`                                                    | no       |             |
+| fallbackSource     | property | `SurfaceImageSource \| null \| undefined`                                | no       |             |
+| fit                | property | `ImageResizeMode \| undefined`                                           | no       |             |
+| height             | property | `string \| number \| undefined`                                          | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                         | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                             | no       |             |
+| onError            | property | `((error: import("react-native").ImageErrorEvent) => void) \| undefined` | no       |             |
+| radius             | property | `string \| number \| undefined`                                          | no       |             |
+| resizeMode         | property | `ImageResizeMode \| undefined`                                           | no       |             |
+| source             | property | `SurfaceImageSource \| null \| undefined`                                | no       |             |
+| style              | property | `StyleProp<ImageStyle>`                                                  | no       |             |
+| testID             | property | `string \| undefined`                                                    | no       |             |
+| themeId            | property | `string \| undefined`                                                    | no       |             |
+| width              | property | `string \| number \| undefined`                                          | no       |             |
 
 ## ImageUploadField
 
@@ -2353,30 +2353,30 @@ Source: `src/patterns/image-upload-field/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accept | property | `string \| undefined` | no |  |
-| aspectRatio | property | `number \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| errorText | property | `React.ReactNode` | no |  |
-| helperText | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| maxSizeBytes | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onChange | property | `(next: ZoraImageAsset \| null) => void` | yes |  |
-| onPick | property | `() => Promise<ZoraPickedImage \| null>` | yes |  |
-| onRemove | property | `((current: ZoraImageAsset) => void \| Promise<void>) \| undefined` | no |  |
-| onUpload | property | `((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) \| undefined` | no |  |
-| previewDescription | property | `React.ReactNode` | no |  |
-| previewTitle | property | `React.ReactNode` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| required | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| validatePicked | property | `((picked: ZoraPickedImage) => string \| undefined) \| undefined` | no |  |
-| value | property | `ZoraImageAsset \| null` | yes |  |
+| Name               | Kind     | Type                                                                                                       | Required | Description |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accept             | property | `string \| undefined`                                                                                      | no       |             |
+| aspectRatio        | property | `number \| undefined`                                                                                      | no       |             |
+| description        | property | `React.ReactNode`                                                                                          | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                     | no       |             |
+| errorText          | property | `React.ReactNode`                                                                                          | no       |             |
+| helperText         | property | `React.ReactNode`                                                                                          | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                           | no       |             |
+| label              | property | `React.ReactNode`                                                                                          | yes      |             |
+| maxSizeBytes       | property | `number \| undefined`                                                                                      | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                               | no       |             |
+| onChange           | property | `(next: ZoraImageAsset \| null) => void`                                                                   | yes      |             |
+| onPick             | property | `() => Promise<ZoraPickedImage \| null>`                                                                   | yes      |             |
+| onRemove           | property | `((current: ZoraImageAsset) => void \| Promise<void>) \| undefined`                                        | no       |             |
+| onUpload           | property | `((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) \| undefined` | no       |             |
+| previewDescription | property | `React.ReactNode`                                                                                          | no       |             |
+| previewTitle       | property | `React.ReactNode`                                                                                          | no       |             |
+| readOnly           | property | `boolean \| undefined`                                                                                     | no       |             |
+| required           | property | `boolean \| undefined`                                                                                     | no       |             |
+| testID             | property | `string \| undefined`                                                                                      | no       |             |
+| themeId            | property | `string \| undefined`                                                                                      | no       |             |
+| validatePicked     | property | `((picked: ZoraPickedImage) => string \| undefined) \| undefined`                                          | no       |             |
+| value              | property | `ZoraImageAsset \| null`                                                                                   | yes      |             |
 
 ## ImageUploadProgressContext
 
@@ -2386,9 +2386,9 @@ Source: `src/patterns/image-upload-field/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| setProgress | property | `(progress: number \| null) => void` | yes |  |
+| Name        | Kind     | Type                                 | Required | Description |
+| ----------- | -------- | ------------------------------------ | -------- | ----------- |
+| setProgress | property | `(progress: number \| null) => void` | yes      |             |
 
 ## Inline
 
@@ -2406,60 +2406,60 @@ Source: `src/foundation/Inline.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| align | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| justify | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                     | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                                                                    | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                                                                  | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                                                                 | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                   | no       |             |
+| align              | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                             | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                    | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                    | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| children           | property | `React.ReactNode`                                                                                                        | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| gap                | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                         | no       |             |
+| justify            | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                             | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                             | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                              | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                          | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                   | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                                                                   | no       |             |
+| testID             | property | `string \| undefined`                                                                                                    | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                    | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| wrap               | property | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                            | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
 
 ## Input
 
@@ -2486,11 +2486,11 @@ Source: `src/components/input/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| icon | property | `Surface.IconSource` | yes |  |
-| label | property | `string` | yes |  |
-| onPress | property | `() => void` | yes |  |
+| Name    | Kind     | Type                 | Required | Description |
+| ------- | -------- | -------------------- | -------- | ----------- |
+| icon    | property | `Surface.IconSource` | yes      |             |
+| label   | property | `string`             | yes      |             |
+| onPress | property | `() => void`         | yes      |             |
 
 ## InspectorField
 
@@ -2508,22 +2508,22 @@ Source: `src/patterns/inspector-field/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `ReactNode` | no |  |
-| control | property | `ReactNode` | no |  |
-| description | property | `ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| errorText | property | `ReactNode` | no |  |
-| helperText | property | `ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| label | property | `ReactNode` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| required | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `ReactNode`                      | no       |             |
+| control           | property | `ReactNode`                      | no       |             |
+| description       | property | `ReactNode`                      | no       |             |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| errorText         | property | `ReactNode`                      | no       |             |
+| helperText        | property | `ReactNode`                      | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| invalid           | property | `boolean \| undefined`           | no       |             |
+| label             | property | `ReactNode`                      | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| readOnly          | property | `boolean \| undefined`           | no       |             |
+| required          | property | `boolean \| undefined`           | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## List
 
@@ -2541,13 +2541,13 @@ Source: `src/patterns/list/types.ts:43:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## ListItemsProps
 
@@ -2557,15 +2557,15 @@ Source: `src/patterns/list/types.ts:37:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly ListRowProps[]` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| rowVariant | property | `ListRowVariant \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| items             | property | `readonly ListRowProps[]`        | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| rowVariant        | property | `ListRowVariant \| undefined`    | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## ListProps
 
@@ -2637,18 +2637,18 @@ Source: `src/components/menu/types.ts:12:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| intent | property | `SurfaceMenuActionIntent \| undefined` | no |  |
-| leading | property | `React.ReactNode` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
-| trailing | property | `React.ReactNode` | no |  |
+| Name        | Kind     | Type                                                   | Required | Description |
+| ----------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| description | property | `React.ReactNode`                                      | no       |             |
+| disabled    | property | `boolean \| undefined`                                 | no       |             |
+| icon        | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| id          | property | `string`                                               | yes      |             |
+| intent      | property | `SurfaceMenuActionIntent \| undefined`                 | no       |             |
+| leading     | property | `React.ReactNode`                                      | no       |             |
+| onPress     | property | `(() => void) \| undefined`                            | no       |             |
+| selected    | property | `boolean \| undefined`                                 | no       |             |
+| title       | property | `React.ReactNode`                                      | yes      |             |
+| trailing    | property | `React.ReactNode`                                      | no       |             |
 
 ## MenuActionIntent
 
@@ -2664,16 +2664,16 @@ Source: `src/components/menu/types.ts:25:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `readonly MenuAction[]` | yes |  |
-| closeOnSelect | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onDismiss | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| trigger | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `readonly MenuAction[]`          | yes      |             |
+| closeOnSelect     | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| trigger           | property | `React.ReactNode`                | no       |             |
 
 ## MessageBubble
 
@@ -2691,10 +2691,10 @@ Source: `src/patterns/message-bubble/types.ts:22:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| avatar | property | `MessageBubbleAvatar \| undefined` | no |  |
-| name | property | `React.ReactNode` | no |  |
+| Name   | Kind     | Type                               | Required | Description |
+| ------ | -------- | ---------------------------------- | -------- | ----------- |
+| avatar | property | `MessageBubbleAvatar \| undefined` | no       |             |
+| name   | property | `React.ReactNode`                  | no       |             |
 
 ## MessageBubbleAvatar
 
@@ -2704,15 +2704,15 @@ Source: `src/patterns/message-bubble/types.ts:12:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| initials | property | `string \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| name | property | `string \| undefined` | no |  |
-| shape | property | `AvatarShape \| undefined` | no |  |
-| size | property | `AvatarSize \| undefined` | no |  |
-| source | property | `ImageSourcePropType \| undefined` | no |  |
+| Name     | Kind     | Type                                                                                                                                          | Required | Description |
+| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color    | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| initials | property | `string \| undefined`                                                                                                                         | no       |             |
+| label    | property | `string \| undefined`                                                                                                                         | no       |             |
+| name     | property | `string \| undefined`                                                                                                                         | no       |             |
+| shape    | property | `AvatarShape \| undefined`                                                                                                                    | no       |             |
+| size     | property | `AvatarSize \| undefined`                                                                                                                     | no       |             |
+| source   | property | `ImageSourcePropType \| undefined`                                                                                                            | no       |             |
 
 ## MessageBubbleDirection
 
@@ -2728,27 +2728,27 @@ Source: `src/patterns/message-bubble/types.ts:27:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| author | property | `MessageBubbleAuthor \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| direction | property | `MessageBubbleDirection \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| leading | property | `React.ReactNode` | no |  |
-| meta | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| status | property | `MessageBubbleStatusContent` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| text | property | `React.ReactNode` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| timestamp | property | `React.ReactNode` | no |  |
-| trailing | property | `React.ReactNode` | no |  |
+| Name               | Kind     | Type                                  | Required | Description |
+| ------------------ | -------- | ------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                 | no       |             |
+| author             | property | `MessageBubbleAuthor \| undefined`    | no       |             |
+| children           | property | `React.ReactNode`                     | no       |             |
+| compact            | property | `boolean \| undefined`                | no       |             |
+| direction          | property | `MessageBubbleDirection \| undefined` | no       |             |
+| disabled           | property | `boolean \| undefined`                | no       |             |
+| footer             | property | `React.ReactNode`                     | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`      | no       |             |
+| leading            | property | `React.ReactNode`                     | no       |             |
+| meta               | property | `React.ReactNode`                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`          | no       |             |
+| onPress            | property | `(() => void) \| undefined`           | no       |             |
+| selected           | property | `boolean \| undefined`                | no       |             |
+| status             | property | `MessageBubbleStatusContent`          | no       |             |
+| testID             | property | `string \| undefined`                 | no       |             |
+| text               | property | `React.ReactNode`                     | no       |             |
+| themeId            | property | `string \| undefined`                 | no       |             |
+| timestamp          | property | `React.ReactNode`                     | no       |             |
+| trailing           | property | `React.ReactNode`                     | no       |             |
 
 ## MessageBubbleStatus
 
@@ -2772,22 +2772,22 @@ Source: `src/components/metric-card/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| delta | property | `React.ReactNode` | no |  |
-| deltaColor | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| tone | property | `ZoraCardTone \| undefined` | no |  |
-| value | property | `React.ReactNode` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| compact           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| delta             | property | `React.ReactNode`                                                                                                                             | no       |             |
+| deltaColor        | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| label             | property | `React.ReactNode`                                                                                                                             | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| tone              | property | `ZoraCardTone \| undefined`                                                                                                                   | no       |             |
+| value             | property | `React.ReactNode`                                                                                                                             | yes      |             |
 
 ## MissingElement
 
@@ -2808,17 +2808,17 @@ Source: `src/patterns/missing-element/types.ts:3:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| evidenceId | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| minimumHeight | property | `number \| undefined` | no |  |
-| minimumWidth | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| reason | property | `string` | yes |  |
-| requestedCapability | property | `string` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name                | Kind     | Type                             | Required | Description |
+| ------------------- | -------- | -------------------------------- | -------- | ----------- |
+| evidenceId          | property | `string \| undefined`            | no       |             |
+| interactionPolicy   | property | `InteractionPolicy \| undefined` | no       |             |
+| minimumHeight       | property | `number \| undefined`            | no       |             |
+| minimumWidth        | property | `number \| undefined`            | no       |             |
+| mode                | property | `ZoraThemeMode \| undefined`     | no       |             |
+| reason              | property | `string`                         | yes      |             |
+| requestedCapability | property | `string`                         | yes      |             |
+| testID              | property | `string \| undefined`            | no       |             |
+| themeId             | property | `string \| undefined`            | no       |             |
 
 ## Modal
 
@@ -2836,20 +2836,20 @@ Source: `src/components/modal/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| closeOnBackdrop | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onDismiss | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
-| visible | property | `boolean` | yes |  |
-| width | property | `ZoraContentWidth \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
+| visible           | property | `boolean`                        | yes      |             |
+| width             | property | `ZoraContentWidth \| undefined`  | no       |             |
 
 ## NavigationItem
 
@@ -2867,17 +2867,17 @@ Source: `src/components/navigation-item/types.ts:20:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| active | property | `boolean \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| metadata | property | `ZoraNavigationRouteMetadata \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| route | property | `ZoraNavigationRouteState` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                       | Required | Description |
+| ----------------- | -------- | ------------------------------------------ | -------- | ----------- |
+| active            | property | `boolean \| undefined`                     | no       |             |
+| compact           | property | `boolean \| undefined`                     | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`           | no       |             |
+| metadata          | property | `ZoraNavigationRouteMetadata \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`               | no       |             |
+| onPress           | property | `(() => void) \| undefined`                | no       |             |
+| route             | property | `ZoraNavigationRouteState`                 | yes      |             |
+| testID            | property | `string \| undefined`                      | no       |             |
+| themeId           | property | `string \| undefined`                      | no       |             |
 
 ## NavigationList
 
@@ -2895,20 +2895,20 @@ Source: `src/components/navigation-list/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| activeRouteKey | property | `string \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| header | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onRoutePress | property | `((route: ZoraNavigationRouteState) => void) \| undefined` | no |  |
-| orientation | property | `"horizontal" \| "vertical" \| undefined` | no |  |
-| routeMap | property | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no |  |
-| routes | property | `readonly ZoraNavigationRouteState[]` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------- | -------- | ----------- |
+| activeRouteKey    | property | `string \| undefined`                                               | no       |             |
+| compact           | property | `boolean \| undefined`                                              | no       |             |
+| footer            | property | `React.ReactNode`                                                   | no       |             |
+| header            | property | `React.ReactNode`                                                   | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                    | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                        | no       |             |
+| onRoutePress      | property | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       |             |
+| orientation       | property | `"horizontal" \| "vertical" \| undefined`                           | no       |             |
+| routeMap          | property | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       |             |
+| routes            | property | `readonly ZoraNavigationRouteState[]`                               | yes      |             |
+| testID            | property | `string \| undefined`                                               | no       |             |
+| themeId           | property | `string \| undefined`                                               | no       |             |
 
 ## Notice
 
@@ -2926,17 +2926,17 @@ Source: `src/patterns/notice/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| children          | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| title             | property | `React.ReactNode`                                                                                                                             | yes      |             |
 
 ## OAuthProviderButton
 
@@ -2957,22 +2957,22 @@ Source: `src/patterns/auth/types.ts:81:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| fullWidth | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `((providerId: string) => void \| Promise<void>) \| undefined` | no |  |
-| providerId | property | `string` | yes |  |
-| size | property | `import("../../internal/recipes").ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| fullWidth         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| label             | property | `React.ReactNode`                                                                                                                             | no       |             |
+| loading           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onPress           | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
+| providerId        | property | `string`                                                                                                                                      | yes      |             |
+| size              | property | `import("../../internal/recipes").ZoraControlSize \| undefined`                                                                               | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant           | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined`                                                                             | no       |             |
 
 ## OAuthProviderIconSpec
 
@@ -2988,13 +2988,13 @@ Source: `src/patterns/auth/types.ts:73:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| label | property | `React.ReactNode` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| id       | property | `string`                                               | yes      |             |
+| label    | property | `React.ReactNode`                                      | no       |             |
+| loading  | property | `boolean \| undefined`                                 | no       |             |
 
 ## OAuthProviderList
 
@@ -3018,21 +3018,21 @@ Source: `src/patterns/auth/types.ts:96:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| fullWidth | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| layout | property | `OAuthProviderListLayout \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onProviderPress | property | `((providerId: string) => void \| Promise<void>) \| undefined` | no |  |
-| providers | property | `readonly OAuthProviderItem[]` | yes |  |
-| size | property | `import("../../internal/recipes").ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| fullWidth         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| layout            | property | `OAuthProviderListLayout \| undefined`                                                                                                        | no       |             |
+| loading           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onProviderPress   | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
+| providers         | property | `readonly OAuthProviderItem[]`                                                                                                                | yes      |             |
+| size              | property | `import("../../internal/recipes").ZoraControlSize \| undefined`                                                                               | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| variant           | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined`                                                                             | no       |             |
 
 ## OtpForm
 
@@ -3050,23 +3050,23 @@ Source: `src/patterns/auth/types.ts:61:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| length | property | `number \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onResend | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onSubmit | property | `(values: OtpFormValues) => void \| Promise<void>` | yes |  |
-| otpLabel | property | `React.ReactNode` | no |  |
-| resendDisabled | property | `boolean \| undefined` | no |  |
-| resendLabel | property | `React.ReactNode` | no |  |
-| resendLoading | property | `boolean \| undefined` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                               | Required | Description |
+| ----------------- | -------- | -------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                             | no       |             |
+| error             | property | `React.ReactNode`                                  | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                   | no       |             |
+| length            | property | `number \| undefined`                              | no       |             |
+| loading           | property | `boolean \| undefined`                             | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                       | no       |             |
+| onResend          | property | `(() => void \| Promise<void>) \| undefined`       | no       |             |
+| onSubmit          | property | `(values: OtpFormValues) => void \| Promise<void>` | yes      |             |
+| otpLabel          | property | `React.ReactNode`                                  | no       |             |
+| resendDisabled    | property | `boolean \| undefined`                             | no       |             |
+| resendLabel       | property | `React.ReactNode`                                  | no       |             |
+| resendLoading     | property | `boolean \| undefined`                             | no       |             |
+| submitLabel       | property | `React.ReactNode`                                  | no       |             |
+| testID            | property | `string \| undefined`                              | no       |             |
+| themeId           | property | `string \| undefined`                              | no       |             |
 
 ## OtpFormValues
 
@@ -3076,9 +3076,9 @@ Source: `src/patterns/auth/types.ts:57:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| otp | property | `string` | yes |  |
+| Name | Kind     | Type     | Required | Description |
+| ---- | -------- | -------- | -------- | ----------- |
+| otp  | property | `string` | yes      |             |
 
 ## Pagination
 
@@ -3096,24 +3096,24 @@ Source: `src/components/pagination/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| boundaryCount | property | `number \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| firstLabel | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| lastLabel | property | `React.ReactNode` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nextLabel | property | `React.ReactNode` | no |  |
-| onPageChange | property | `((page: number) => void) \| undefined` | no |  |
-| page | property | `number` | yes |  |
-| pageCount | property | `number` | yes |  |
-| previousLabel | property | `React.ReactNode` | no |  |
-| showFirstLast | property | `boolean \| undefined` | no |  |
-| siblingCount | property | `number \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                    | Required | Description |
+| ----------------- | -------- | --------------------------------------- | -------- | ----------- |
+| boundaryCount     | property | `number \| undefined`                   | no       |             |
+| compact           | property | `boolean \| undefined`                  | no       |             |
+| disabled          | property | `boolean \| undefined`                  | no       |             |
+| firstLabel        | property | `React.ReactNode`                       | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`        | no       |             |
+| lastLabel         | property | `React.ReactNode`                       | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`            | no       |             |
+| nextLabel         | property | `React.ReactNode`                       | no       |             |
+| onPageChange      | property | `((page: number) => void) \| undefined` | no       |             |
+| page              | property | `number`                                | yes      |             |
+| pageCount         | property | `number`                                | yes      |             |
+| previousLabel     | property | `React.ReactNode`                       | no       |             |
+| showFirstLast     | property | `boolean \| undefined`                  | no       |             |
+| siblingCount      | property | `number \| undefined`                   | no       |             |
+| testID            | property | `string \| undefined`                   | no       |             |
+| themeId           | property | `string \| undefined`                   | no       |             |
 
 ## PaletteItem
 
@@ -3131,19 +3131,19 @@ Source: `src/patterns/tile-grid/types.ts:12:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| badge | property | `ReactNode` | no |  |
-| description | property | `ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `ReactNode` | yes |  |
+| Name              | Kind     | Type                                                   | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| badge             | property | `ReactNode`                                            | no       |             |
+| description       | property | `ReactNode`                                            | no       |             |
+| disabled          | property | `boolean \| undefined`                                 | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                       | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                           | no       |             |
+| onPress           | property | `(() => void) \| undefined`                            | no       |             |
+| selected          | property | `boolean \| undefined`                                 | no       |             |
+| testID            | property | `string \| undefined`                                  | no       |             |
+| themeId           | property | `string \| undefined`                                  | no       |             |
+| title             | property | `ReactNode`                                            | yes      |             |
 
 ## Panel
 
@@ -3161,22 +3161,22 @@ Source: `src/patterns/panel/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| eyebrow | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| padding | property | `string \| undefined` | no |  |
-| radius | property | `string \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
-| tone | property | `ZoraCardTone \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                | no       |             |
+| children          | property | `React.ReactNode`                | no       |             |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| eyebrow           | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| padding           | property | `string \| undefined`            | no       |             |
+| radius            | property | `string \| undefined`            | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
+| tone              | property | `ZoraCardTone \| undefined`      | no       |             |
 
 ## PostAction
 
@@ -3186,15 +3186,15 @@ Source: `src/patterns/post-card/types.ts:41:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| count | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| label | property | `string` | yes |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| selected | property | `boolean \| undefined` | no |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| count    | property | `React.ReactNode`                                      | no       |             |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| id       | property | `string`                                               | yes      |             |
+| label    | property | `string`                                               | yes      |             |
+| onPress  | property | `(() => void) \| undefined`                            | no       |             |
+| selected | property | `boolean \| undefined`                                 | no       |             |
 
 ## PostAuthor
 
@@ -3204,11 +3204,11 @@ Source: `src/patterns/post-card/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| avatar | property | `PostAuthorAvatar \| undefined` | no |  |
-| name | property | `React.ReactNode` | yes |  |
-| subtitle | property | `React.ReactNode` | no |  |
+| Name     | Kind     | Type                            | Required | Description |
+| -------- | -------- | ------------------------------- | -------- | ----------- |
+| avatar   | property | `PostAuthorAvatar \| undefined` | no       |             |
+| name     | property | `React.ReactNode`               | yes      |             |
+| subtitle | property | `React.ReactNode`               | no       |             |
 
 ## PostAuthorAvatar
 
@@ -3218,15 +3218,15 @@ Source: `src/patterns/post-card/types.ts:9:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| initials | property | `string \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| name | property | `string \| undefined` | no |  |
-| shape | property | `AvatarShape \| undefined` | no |  |
-| size | property | `AvatarSize \| undefined` | no |  |
-| source | property | `ImageSourcePropType \| undefined` | no |  |
+| Name     | Kind     | Type                                                                                                                                          | Required | Description |
+| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color    | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| initials | property | `string \| undefined`                                                                                                                         | no       |             |
+| label    | property | `string \| undefined`                                                                                                                         | no       |             |
+| name     | property | `string \| undefined`                                                                                                                         | no       |             |
+| shape    | property | `AvatarShape \| undefined`                                                                                                                    | no       |             |
+| size     | property | `AvatarSize \| undefined`                                                                                                                     | no       |             |
+| source   | property | `ImageSourcePropType \| undefined`                                                                                                            | no       |             |
 
 ## PostCard
 
@@ -3250,23 +3250,23 @@ Source: `src/patterns/post-card/types.ts:59:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `readonly PostAction[] \| undefined` | no |  |
-| author | property | `PostAuthor` | yes |  |
-| children | property | `React.ReactNode` | no |  |
-| comments | property | `readonly PostCommentPreview[] \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| headerAction | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| media | property | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| text | property | `React.ReactNode` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| tone | property | `ZoraCardTone \| undefined` | no |  |
+| Name              | Kind     | Type                                                     | Required | Description |
+| ----------------- | -------- | -------------------------------------------------------- | -------- | ----------- |
+| actions           | property | `readonly PostAction[] \| undefined`                     | no       |             |
+| author            | property | `PostAuthor`                                             | yes      |             |
+| children          | property | `React.ReactNode`                                        | no       |             |
+| comments          | property | `readonly PostCommentPreview[] \| undefined`             | no       |             |
+| compact           | property | `boolean \| undefined`                                   | no       |             |
+| footer            | property | `React.ReactNode`                                        | no       |             |
+| headerAction      | property | `React.ReactNode`                                        | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                         | no       |             |
+| media             | property | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                             | no       |             |
+| onPress           | property | `(() => void) \| undefined`                              | no       |             |
+| testID            | property | `string \| undefined`                                    | no       |             |
+| text              | property | `React.ReactNode`                                        | no       |             |
+| themeId           | property | `string \| undefined`                                    | no       |             |
+| tone              | property | `ZoraCardTone \| undefined`                              | no       |             |
 
 ## ProductCard
 
@@ -3282,28 +3282,28 @@ Source: `src/patterns/product-card/types.ts:3:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| badges | property | `readonly string[] \| undefined` | no |  |
-| brand | property | `string \| undefined` | no |  |
-| currency | property | `string \| undefined` | no |  |
-| description | property | `string \| undefined` | no |  |
-| imageAlt | property | `string \| undefined` | no |  |
-| imageUrl | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| meta | property | `readonly { label: string; value: string; }[] \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| onPrimaryAction | property | `(() => void) \| undefined` | no |  |
-| onSecondaryAction | property | `(() => void) \| undefined` | no |  |
-| price | property | `string \| undefined` | no |  |
-| primaryActionLabel | property | `string \| undefined` | no |  |
-| secondaryActionLabel | property | `string \| undefined` | no |  |
-| subtitle | property | `string \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `string` | yes |  |
-| vendor | property | `string \| undefined` | no |  |
+| Name                 | Kind     | Type                                                        | Required | Description |
+| -------------------- | -------- | ----------------------------------------------------------- | -------- | ----------- |
+| badges               | property | `readonly string[] \| undefined`                            | no       |             |
+| brand                | property | `string \| undefined`                                       | no       |             |
+| currency             | property | `string \| undefined`                                       | no       |             |
+| description          | property | `string \| undefined`                                       | no       |             |
+| imageAlt             | property | `string \| undefined`                                       | no       |             |
+| imageUrl             | property | `string \| undefined`                                       | no       |             |
+| interactionPolicy    | property | `InteractionPolicy \| undefined`                            | no       |             |
+| meta                 | property | `readonly { label: string; value: string; }[] \| undefined` | no       |             |
+| mode                 | property | `ZoraThemeMode \| undefined`                                | no       |             |
+| onPress              | property | `(() => void) \| undefined`                                 | no       |             |
+| onPrimaryAction      | property | `(() => void) \| undefined`                                 | no       |             |
+| onSecondaryAction    | property | `(() => void) \| undefined`                                 | no       |             |
+| price                | property | `string \| undefined`                                       | no       |             |
+| primaryActionLabel   | property | `string \| undefined`                                       | no       |             |
+| secondaryActionLabel | property | `string \| undefined`                                       | no       |             |
+| subtitle             | property | `string \| undefined`                                       | no       |             |
+| testID               | property | `string \| undefined`                                       | no       |             |
+| themeId              | property | `string \| undefined`                                       | no       |             |
+| title                | property | `string`                                                    | yes      |             |
+| vendor               | property | `string \| undefined`                                       | no       |             |
 
 ## Progress
 
@@ -3321,16 +3321,16 @@ Source: `src/components/progress/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| max | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `number` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| max               | property | `number \| undefined`                                                                                                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| size              | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| value             | property | `number`                                                                                                                                      | yes      |             |
 
 ## ProgressRing
 
@@ -3348,22 +3348,22 @@ Source: `src/components/progress/types.ts:13:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityValueText | property | `string \| undefined` | no |  |
-| centerLabel | property | `string \| undefined` | no |  |
-| centerValue | property | `string \| undefined` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| max | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| size | property | `number \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| thickness | property | `number \| undefined` | no |  |
-| trackColor | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| value | property | `number` | yes |  |
+| Name                   | Kind     | Type                                                                                                                                          | Required | Description |
+| ---------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel     | property | `string \| undefined`                                                                                                                         | no       |             |
+| accessibilityValueText | property | `string \| undefined`                                                                                                                         | no       |             |
+| centerLabel            | property | `string \| undefined`                                                                                                                         | no       |             |
+| centerValue            | property | `string \| undefined`                                                                                                                         | no       |             |
+| color                  | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| interactionPolicy      | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| max                    | property | `number \| undefined`                                                                                                                         | no       |             |
+| mode                   | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| size                   | property | `number \| undefined`                                                                                                                         | no       |             |
+| testID                 | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId                | property | `string \| undefined`                                                                                                                         | no       |             |
+| thickness              | property | `number \| undefined`                                                                                                                         | no       |             |
+| trackColor             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| value                  | property | `number`                                                                                                                                      | yes      |             |
 
 ## Radio
 
@@ -3389,13 +3389,13 @@ Source: `src/components/radio/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| label | property | `React.ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| description | property | `React.ReactNode`      | no       |             |
+| disabled    | property | `boolean \| undefined` | no       |             |
+| label       | property | `React.ReactNode`      | yes      |             |
+| testID      | property | `string \| undefined`  | no       |             |
+| value       | property | `TValue`               | yes      |             |
 
 ## RadioGroupProps
 
@@ -3405,22 +3405,22 @@ Source: `src/components/radio/types.ts:16:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| gap | property | `"xs" \| "s" \| "m" \| "l" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `(value: TValue) => void` | yes |  |
-| options | property | `readonly RadioGroupOption<TValue>[]` | yes |  |
-| orientation | property | `"horizontal" \| "vertical" \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| size | property | `ControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| gap               | property | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onValueChange     | property | `(value: TValue) => void`                                                                                                                     | yes      |             |
+| options           | property | `readonly RadioGroupOption<TValue>[]`                                                                                                         | yes      |             |
+| orientation       | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
+| readOnly          | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| size              | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| value             | property | `TValue`                                                                                                                                      | yes      |             |
 
 ## RadioProps
 
@@ -3430,61 +3430,61 @@ Source: `src/components/radio/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| checked | property | `boolean \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| defaultChecked | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| onCheckedChange | property | `((checked: boolean) => void) \| undefined` | no |  |
-| onLongPress | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| size | property | `ControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                                                                                         | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                                     | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| checked            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| children           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color              | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| defaultChecked     | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| onCheckedChange    | property | `((checked: boolean) => void) \| undefined`                                                                                                   | no       |             |
+| onLongPress        | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                                  | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                               | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                                        | no       |             |
+| readOnly           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| size               | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                         | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
 
 ## Rating
 
@@ -3502,16 +3502,16 @@ Source: `src/components/rating/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| max | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `number` | yes |  |
+| Name              | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| max               | property | `number \| undefined`                                                                                                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| size              | property | `ZoraControlSize \| undefined`                                                                                                                | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
+| value             | property | `number`                                                                                                                                      | yes      |             |
 
 ## ReaderColorScheme
 
@@ -3539,11 +3539,11 @@ Source: `src/patterns/reader/types.ts:26:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| code | property | `ReaderErrorCode` | yes |  |
-| format | property | `ReaderDocumentFormat \| undefined` | no |  |
-| message | property | `string` | yes |  |
+| Name    | Kind     | Type                                | Required | Description |
+| ------- | -------- | ----------------------------------- | -------- | ----------- |
+| code    | property | `ReaderErrorCode`                   | yes      |             |
+| format  | property | `ReaderDocumentFormat \| undefined` | no       |             |
+| message | property | `string`                            | yes      |             |
 
 ## ReaderExternalLinkEvent
 
@@ -3553,9 +3553,9 @@ Source: `src/patterns/reader/types.ts:38:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| url | property | `string` | yes |  |
+| Name | Kind     | Type     | Required | Description |
+| ---- | -------- | -------- | -------- | ----------- |
+| url  | property | `string` | yes      |             |
 
 ## ReaderLineHeight
 
@@ -3571,16 +3571,16 @@ Source: `src/patterns/reader/types.ts:12:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| chapterId | property | `string \| undefined` | no |  |
-| chapterTitle | property | `string \| undefined` | no |  |
-| format | property | `ReaderDocumentFormat` | yes |  |
-| locator | property | `string` | yes |  |
-| page | property | `number` | yes |  |
-| pageCount | property | `number \| undefined` | no |  |
-| progression | property | `number` | yes |  |
-| trigger | property | `ReaderNavigationTrigger` | yes |  |
+| Name         | Kind     | Type                      | Required | Description |
+| ------------ | -------- | ------------------------- | -------- | ----------- |
+| chapterId    | property | `string \| undefined`     | no       |             |
+| chapterTitle | property | `string \| undefined`     | no       |             |
+| format       | property | `ReaderDocumentFormat`    | yes      |             |
+| locator      | property | `string`                  | yes      |             |
+| page         | property | `number`                  | yes      |             |
+| pageCount    | property | `number \| undefined`     | no       |             |
+| progression  | property | `number`                  | yes      |             |
+| trigger      | property | `ReaderNavigationTrigger` | yes      |             |
 
 ## ReaderNavigationTrigger
 
@@ -3620,49 +3620,49 @@ Source: `src/patterns/reader/types.ts:42:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| appearanceLabel | property | `string \| undefined` | no |  |
-| canGoNext | property | `boolean \| undefined` | no |  |
-| canGoPrevious | property | `boolean \| undefined` | no |  |
-| chapterLabel | property | `string \| undefined` | no |  |
-| contentsLabel | property | `string \| undefined` | no |  |
-| errorTitle | property | `string \| undefined` | no |  |
-| fontScale | property | `number \| undefined` | no |  |
-| footerActions | property | `React.ReactNode` | no |  |
-| format | property | `ReaderDocumentFormat` | yes |  |
-| headerActions | property | `React.ReactNode` | no |  |
-| highlighted | property | `boolean \| undefined` | no |  |
-| highlightLabel | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| lineHeight | property | `ReaderLineHeight \| undefined` | no |  |
-| loadingLabel | property | `string \| undefined` | no |  |
-| location | property | `string \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nextPageLabel | property | `string \| undefined` | no |  |
-| onLocationChange | property | `((event: ReaderLocationChangeEvent) => void \| Promise<void>) \| undefined` | no |  |
-| onNextPage | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onOpenAppearance | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onOpenContents | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onOpenExternalLink | property | `((event: ReaderExternalLinkEvent) => void \| Promise<void>) \| undefined` | no |  |
-| onPreviousPage | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onReaderError | property | `((event: ReaderErrorEvent) => void \| Promise<void>) \| undefined` | no |  |
-| onToggleHighlight | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| page | property | `number \| undefined` | no |  |
-| pageCount | property | `number \| undefined` | no |  |
-| pageLabel | property | `string \| undefined` | no |  |
-| previousPageLabel | property | `string \| undefined` | no |  |
-| progress | property | `number \| undefined` | no |  |
-| readerColorScheme | property | `ReaderColorScheme \| undefined` | no |  |
-| showChrome | property | `boolean \| undefined` | no |  |
-| source | property | `ReaderResolvedSource \| null \| undefined` | no |  |
-| status | property | `ReaderStatus \| undefined` | no |  |
-| subtitle | property | `string \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `string \| undefined` | no |  |
-| unavailableTitle | property | `string \| undefined` | no |  |
-| viewport | property | `React.ReactNode` | no |  |
+| Name               | Kind     | Type                                                                         | Required | Description |
+| ------------------ | -------- | ---------------------------------------------------------------------------- | -------- | ----------- |
+| appearanceLabel    | property | `string \| undefined`                                                        | no       |             |
+| canGoNext          | property | `boolean \| undefined`                                                       | no       |             |
+| canGoPrevious      | property | `boolean \| undefined`                                                       | no       |             |
+| chapterLabel       | property | `string \| undefined`                                                        | no       |             |
+| contentsLabel      | property | `string \| undefined`                                                        | no       |             |
+| errorTitle         | property | `string \| undefined`                                                        | no       |             |
+| fontScale          | property | `number \| undefined`                                                        | no       |             |
+| footerActions      | property | `React.ReactNode`                                                            | no       |             |
+| format             | property | `ReaderDocumentFormat`                                                       | yes      |             |
+| headerActions      | property | `React.ReactNode`                                                            | no       |             |
+| highlighted        | property | `boolean \| undefined`                                                       | no       |             |
+| highlightLabel     | property | `string \| undefined`                                                        | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                             | no       |             |
+| lineHeight         | property | `ReaderLineHeight \| undefined`                                              | no       |             |
+| loadingLabel       | property | `string \| undefined`                                                        | no       |             |
+| location           | property | `string \| undefined`                                                        | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                 | no       |             |
+| nextPageLabel      | property | `string \| undefined`                                                        | no       |             |
+| onLocationChange   | property | `((event: ReaderLocationChangeEvent) => void \| Promise<void>) \| undefined` | no       |             |
+| onNextPage         | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| onOpenAppearance   | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| onOpenContents     | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| onOpenExternalLink | property | `((event: ReaderExternalLinkEvent) => void \| Promise<void>) \| undefined`   | no       |             |
+| onPreviousPage     | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| onReaderError      | property | `((event: ReaderErrorEvent) => void \| Promise<void>) \| undefined`          | no       |             |
+| onToggleHighlight  | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| page               | property | `number \| undefined`                                                        | no       |             |
+| pageCount          | property | `number \| undefined`                                                        | no       |             |
+| pageLabel          | property | `string \| undefined`                                                        | no       |             |
+| previousPageLabel  | property | `string \| undefined`                                                        | no       |             |
+| progress           | property | `number \| undefined`                                                        | no       |             |
+| readerColorScheme  | property | `ReaderColorScheme \| undefined`                                             | no       |             |
+| showChrome         | property | `boolean \| undefined`                                                       | no       |             |
+| source             | property | `ReaderResolvedSource \| null \| undefined`                                  | no       |             |
+| status             | property | `ReaderStatus \| undefined`                                                  | no       |             |
+| subtitle           | property | `string \| undefined`                                                        | no       |             |
+| testID             | property | `string \| undefined`                                                        | no       |             |
+| themeId            | property | `string \| undefined`                                                        | no       |             |
+| title              | property | `string \| undefined`                                                        | no       |             |
+| unavailableTitle   | property | `string \| undefined`                                                        | no       |             |
+| viewport           | property | `React.ReactNode`                                                            | no       |             |
 
 ## resolveAvatarInitials
 
@@ -3709,15 +3709,15 @@ Source: `src/patterns/reader/resolveReaderProgress.ts:1:1`
 ### Signatures
 
 - `({
-  progress,
-  page,
-  pageCount,
+progress,
+page,
+pageCount,
 }: { progress?: number; page?: number; pageCount?: number; }) => number`
   - {
-  progress,
-  page,
-  pageCount,
-}: `{ progress?: number; page?: number; pageCount?: number; }`
+    progress,
+    page,
+    pageCount,
+    }: `{ progress?: number; page?: number; pageCount?: number; }`
   - returns: `number`
 
 ## ResponsivePanel
@@ -3751,25 +3751,25 @@ Source: `src/patterns/responsive-panel/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| desktopMode | property | `ResponsivePanelDesktopMode \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mobileMode | property | `ResponsivePanelMobileMode \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onOpenChange | property | `(open: boolean) => void` | yes |  |
-| open | property | `boolean` | yes |  |
-| scroll | property | `ResponsivePanelScroll \| undefined` | no |  |
-| side | property | `ResponsivePanelSide \| undefined` | no |  |
-| size | property | `ResponsivePanelSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                                      | Required | Description |
+| ----------------- | -------- | ----------------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                         | no       |             |
+| children          | property | `React.ReactNode`                         | no       |             |
+| compact           | property | `boolean \| undefined`                    | no       |             |
+| description       | property | `React.ReactNode`                         | no       |             |
+| desktopMode       | property | `ResponsivePanelDesktopMode \| undefined` | no       |             |
+| footer            | property | `React.ReactNode`                         | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`          | no       |             |
+| mobileMode        | property | `ResponsivePanelMobileMode \| undefined`  | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`              | no       |             |
+| onOpenChange      | property | `(open: boolean) => void`                 | yes      |             |
+| open              | property | `boolean`                                 | yes      |             |
+| scroll            | property | `ResponsivePanelScroll \| undefined`      | no       |             |
+| side              | property | `ResponsivePanelSide \| undefined`        | no       |             |
+| size              | property | `ResponsivePanelSize \| undefined`        | no       |             |
+| testID            | property | `string \| undefined`                     | no       |             |
+| themeId           | property | `string \| undefined`                     | no       |             |
+| title             | property | `React.ReactNode`                         | no       |             |
 
 ## ResponsivePanelScroll
 
@@ -3808,15 +3808,15 @@ Source: `src/patterns/scanner/types.ts:13:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| cornerLabel | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| cornerLabel       | property | `React.ReactNode`                | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
 
 ## Screen
 
@@ -3832,16 +3832,16 @@ Source: `src/layout/screen/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| scroll | property | `boolean \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| width | property | `ZoraContentWidth \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| footer            | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| scroll            | property | `boolean \| undefined`           | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| width             | property | `ZoraContentWidth \| undefined`  | no       |             |
 
 ## ScreenSection
 
@@ -3859,16 +3859,16 @@ Source: `src/layout/screen-section/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                | no       |             |
+| children          | property | `React.ReactNode`                | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
 
 ## SearchBar
 
@@ -3886,21 +3886,21 @@ Source: `src/components/search-bar/types.ts:4:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| clearable | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onClear | property | `(() => void) \| undefined` | no |  |
-| onSubmit | property | `((value: string) => void) \| undefined` | no |  |
-| onValueChange | property | `(value: string) => void` | yes |  |
-| placeholder | property | `string \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `string` | yes |  |
+| Name              | Kind     | Type                                     | Required | Description |
+| ----------------- | -------- | ---------------------------------------- | -------- | ----------- |
+| clearable         | property | `boolean \| undefined`                   | no       |             |
+| disabled          | property | `boolean \| undefined`                   | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`             | no       |             |
+| onClear           | property | `(() => void) \| undefined`              | no       |             |
+| onSubmit          | property | `((value: string) => void) \| undefined` | no       |             |
+| onValueChange     | property | `(value: string) => void`                | yes      |             |
+| placeholder       | property | `string \| undefined`                    | no       |             |
+| readOnly          | property | `boolean \| undefined`                   | no       |             |
+| size              | property | `ZoraControlSize \| undefined`           | no       |             |
+| testID            | property | `string \| undefined`                    | no       |             |
+| themeId           | property | `string \| undefined`                    | no       |             |
+| value             | property | `string`                                 | yes      |             |
 
 ## SectionHeader
 
@@ -3918,16 +3918,16 @@ Source: `src/patterns/section-header/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| eyebrow | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| eyebrow           | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | yes      |             |
 
 ## Select
 
@@ -3948,19 +3948,19 @@ Adds selection behavior to arbitrary child content via render props.
 ### Signatures
 
 - `({
-  id,
-  trigger,
-  disabled = false,
-  interactionPolicy,
-  children,
+id,
+trigger,
+disabled = false,
+interactionPolicy,
+children,
 }: SelectableItemProps) => React.JSX.Element`
   - {
-  id,
-  trigger,
-  disabled = false,
-  interactionPolicy,
-  children,
-}: `SelectableItemProps`
+    id,
+    trigger,
+    disabled = false,
+    interactionPolicy,
+    children,
+    }: `SelectableItemProps`
   - returns: `React.JSX.Element`
 
 ## SelectableItemProps
@@ -3971,13 +3971,13 @@ Source: `src/patterns/selection/types.ts:40:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode \| ((state: SelectableItemState) => React.ReactNode)` | yes |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| trigger | property | `SelectionTrigger \| undefined` | no |  |
+| Name              | Kind     | Type                                                                   | Required | Description |
+| ----------------- | -------- | ---------------------------------------------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode \| ((state: SelectableItemState) => React.ReactNode)` | yes      |             |
+| disabled          | property | `boolean \| undefined`                                                 | no       |             |
+| id                | property | `string`                                                               | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                       | no       |             |
+| trigger           | property | `SelectionTrigger \| undefined`                                        | no       |             |
 
 ## SelectableItemState
 
@@ -3987,15 +3987,15 @@ Source: `src/patterns/selection/types.ts:30:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| clear | property | `() => void` | yes |  |
-| disabled | property | `boolean` | yes |  |
-| id | property | `string` | yes |  |
-| mode | property | `SelectionMode` | yes |  |
-| select | property | `() => void` | yes |  |
-| selected | property | `boolean` | yes |  |
-| toggle | property | `() => void` | yes |  |
+| Name     | Kind     | Type            | Required | Description |
+| -------- | -------- | --------------- | -------- | ----------- |
+| clear    | property | `() => void`    | yes      |             |
+| disabled | property | `boolean`       | yes      |             |
+| id       | property | `string`        | yes      |             |
+| mode     | property | `SelectionMode` | yes      |             |
+| select   | property | `() => void`    | yes      |             |
+| selected | property | `boolean`       | yes      |             |
+| toggle   | property | `() => void`    | yes      |             |
 
 ## SelectionMode
 
@@ -4014,23 +4014,23 @@ Provides selection state for building selectable lists and grids.
 ### Signatures
 
 - `({
-  children,
-  selectedIds,
-  defaultSelectedIds,
-  mode,
-  disabled,
-  onSelectionChange,
-  interactionPolicy,
+children,
+selectedIds,
+defaultSelectedIds,
+mode,
+disabled,
+onSelectionChange,
+interactionPolicy,
 }: SelectionProviderProps) => React.JSX.Element`
   - {
-  children,
-  selectedIds,
-  defaultSelectedIds,
-  mode,
-  disabled,
-  onSelectionChange,
-  interactionPolicy,
-}: `SelectionProviderProps`
+    children,
+    selectedIds,
+    defaultSelectedIds,
+    mode,
+    disabled,
+    onSelectionChange,
+    interactionPolicy,
+    }: `SelectionProviderProps`
   - returns: `React.JSX.Element`
 
 ## SelectionProviderProps
@@ -4041,15 +4041,15 @@ Source: `src/patterns/selection/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| defaultSelectedIds | property | `readonly string[] \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `SelectionMode \| undefined` | no |  |
-| onSelectionChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
-| selectedIds | property | `readonly string[] \| undefined` | no |  |
+| Name               | Kind     | Type                                              | Required | Description |
+| ------------------ | -------- | ------------------------------------------------- | -------- | ----------- |
+| children           | property | `React.ReactNode`                                 | yes      |             |
+| defaultSelectedIds | property | `readonly string[] \| undefined`                  | no       |             |
+| disabled           | property | `boolean \| undefined`                            | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                  | no       |             |
+| mode               | property | `SelectionMode \| undefined`                      | no       |             |
+| onSelectionChange  | property | `((ids: readonly string[]) => void) \| undefined` | no       |             |
+| selectedIds        | property | `readonly string[] \| undefined`                  | no       |             |
 
 ## SelectionTrigger
 
@@ -4065,11 +4065,11 @@ Source: `src/components/select/types.ts:3:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| value | property | `TValue` | yes |  |
+| Name     | Kind     | Type                   | Required | Description |
+| -------- | -------- | ---------------------- | -------- | ----------- |
+| disabled | property | `boolean \| undefined` | no       |             |
+| label    | property | `string`               | yes      |             |
+| value    | property | `TValue`               | yes      |             |
 
 ## SelectProps
 
@@ -4079,17 +4079,17 @@ Source: `src/components/select/types.ts:9:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `(value: TValue) => void` | yes |  |
-| options | property | `readonly SelectOption<TValue>[]` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name              | Kind     | Type                              | Required | Description |
+| ----------------- | -------- | --------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`            | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`  | no       |             |
+| invalid           | property | `boolean \| undefined`            | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`      | no       |             |
+| onValueChange     | property | `(value: TValue) => void`         | yes      |             |
+| options           | property | `readonly SelectOption<TValue>[]` | yes      |             |
+| testID            | property | `string \| undefined`             | no       |             |
+| themeId           | property | `string \| undefined`             | no       |             |
+| value             | property | `TValue`                          | yes      |             |
 
 ## SettingsLayout
 
@@ -4107,17 +4107,17 @@ Source: `src/layout/settings-layout/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `React.ReactNode` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| sidebar | property | `React.ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `React.ReactNode`                | no       |             |
+| children          | property | `React.ReactNode`                | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| sidebar           | property | `React.ReactNode`                | yes      |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
 
 ## SettingsRow
 
@@ -4149,15 +4149,15 @@ Source: `src/foundation/Show.tsx:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| fallback | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| when | property | `Responsive<boolean>` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | yes      |             |
+| fallback          | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| when              | property | `Responsive<boolean>`            | yes      |             |
 
 ## SidebarLayout
 
@@ -4179,18 +4179,18 @@ Source: `src/layout/sidebar-layout/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| aside | property | `React.ReactNode` | no |  |
-| asideWidth | property | `number \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| sidebar | property | `React.ReactNode` | yes |  |
-| sidebarWidth | property | `number \| undefined` | no |  |
-| sizing | property | `SidebarLayoutSizing \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                               | Required | Description |
+| ----------------- | -------- | ---------------------------------- | -------- | ----------- |
+| aside             | property | `React.ReactNode`                  | no       |             |
+| asideWidth        | property | `number \| undefined`              | no       |             |
+| children          | property | `React.ReactNode`                  | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`   | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`       | no       |             |
+| sidebar           | property | `React.ReactNode`                  | yes      |             |
+| sidebarWidth      | property | `number \| undefined`              | no       |             |
+| sizing            | property | `SidebarLayoutSizing \| undefined` | no       |             |
+| testID            | property | `string \| undefined`              | no       |             |
+| themeId           | property | `string \| undefined`              | no       |             |
 
 ## SignInForm
 
@@ -4208,24 +4208,24 @@ Source: `src/patterns/auth/types.ts:23:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| forgotPasswordLabel | property | `React.ReactNode` | no |  |
-| identifierLabel | property | `React.ReactNode` | no |  |
-| identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onForgotPassword | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onSignUp | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onSubmit | property | `(values: SignInFormValues) => void \| Promise<void>` | yes |  |
-| secretLabel | property | `React.ReactNode` | no |  |
-| signUpLabel | property | `React.ReactNode` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name                | Kind     | Type                                                  | Required | Description |
+| ------------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
+| disabled            | property | `boolean \| undefined`                                | no       |             |
+| error               | property | `React.ReactNode`                                     | no       |             |
+| forgotPasswordLabel | property | `React.ReactNode`                                     | no       |             |
+| identifierLabel     | property | `React.ReactNode`                                     | no       |             |
+| identifiers         | property | `readonly AuthIdentifierKind[] \| undefined`          | no       |             |
+| interactionPolicy   | property | `InteractionPolicy \| undefined`                      | no       |             |
+| loading             | property | `boolean \| undefined`                                | no       |             |
+| mode                | property | `ZoraThemeMode \| undefined`                          | no       |             |
+| onForgotPassword    | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
+| onSignUp            | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
+| onSubmit            | property | `(values: SignInFormValues) => void \| Promise<void>` | yes      |             |
+| secretLabel         | property | `React.ReactNode`                                     | no       |             |
+| signUpLabel         | property | `React.ReactNode`                                     | no       |             |
+| submitLabel         | property | `React.ReactNode`                                     | no       |             |
+| testID              | property | `string \| undefined`                                 | no       |             |
+| themeId             | property | `string \| undefined`                                 | no       |             |
 
 ## SignInFormValues
 
@@ -4235,11 +4235,11 @@ Source: `src/patterns/auth/types.ts:17:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| identifier | property | `string` | yes |  |
-| identifierKind | property | `AuthIdentifierKind` | yes |  |
-| secret | property | `string` | yes |  |
+| Name           | Kind     | Type                 | Required | Description |
+| -------------- | -------- | -------------------- | -------- | ----------- |
+| identifier     | property | `string`             | yes      |             |
+| identifierKind | property | `AuthIdentifierKind` | yes      |             |
+| secret         | property | `string`             | yes      |             |
 
 ## SignUpForm
 
@@ -4263,20 +4263,20 @@ Source: `src/patterns/auth/types.ts:37:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| fields | property | `readonly SignUpFormField[] \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| loading | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onSignIn | property | `(() => void \| Promise<void>) \| undefined` | no |  |
-| onSubmit | property | `(values: SignUpFormValues) => void \| Promise<void>` | yes |  |
-| signInLabel | property | `React.ReactNode` | no |  |
-| submitLabel | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                  | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                                | no       |             |
+| error             | property | `React.ReactNode`                                     | no       |             |
+| fields            | property | `readonly SignUpFormField[] \| undefined`             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                      | no       |             |
+| loading           | property | `boolean \| undefined`                                | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                          | no       |             |
+| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
+| onSubmit          | property | `(values: SignUpFormValues) => void \| Promise<void>` | yes      |             |
+| signInLabel       | property | `React.ReactNode`                                     | no       |             |
+| submitLabel       | property | `React.ReactNode`                                     | no       |             |
+| testID            | property | `string \| undefined`                                 | no       |             |
+| themeId           | property | `string \| undefined`                                 | no       |             |
 
 ## SignUpFormValues
 
@@ -4308,16 +4308,16 @@ Source: `src/components/skeleton/types.ts:22:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `boolean \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| lines | property | `number \| undefined` | no |  |
-| media | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| actions           | property | `boolean \| undefined`           | no       |             |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| lines             | property | `number \| undefined`            | no       |             |
+| media             | property | `boolean \| undefined`           | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## SkeletonDimension
 
@@ -4341,18 +4341,18 @@ Source: `src/components/skeleton/types.ts:29:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| avatar | property | `boolean \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| lines | property | `number \| undefined` | no |  |
-| media | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| rows | property | `number \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `SkeletonListVariant \| undefined` | no |  |
+| Name              | Kind     | Type                               | Required | Description |
+| ----------------- | -------- | ---------------------------------- | -------- | ----------- |
+| avatar            | property | `boolean \| undefined`             | no       |             |
+| compact           | property | `boolean \| undefined`             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`   | no       |             |
+| lines             | property | `number \| undefined`              | no       |             |
+| media             | property | `boolean \| undefined`             | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`       | no       |             |
+| rows              | property | `number \| undefined`              | no       |             |
+| testID            | property | `string \| undefined`              | no       |             |
+| themeId           | property | `string \| undefined`              | no       |             |
+| variant           | property | `SkeletonListVariant \| undefined` | no       |             |
 
 ## SkeletonListVariant
 
@@ -4368,15 +4368,15 @@ Source: `src/components/skeleton/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| height | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| radius | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| width | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
+| Name              | Kind     | Type                                                                     | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------------ | -------- | ----------- |
+| height            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                             | no       |             |
+| radius            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no       |             |
+| testID            | property | `string \| undefined`                                                    | no       |             |
+| themeId           | property | `string \| undefined`                                                    | no       |             |
+| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no       |             |
 
 ## SkeletonRadius
 
@@ -4400,17 +4400,17 @@ Source: `src/components/skeleton/types.ts:14:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| gap | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| lastLineWidth | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| lineHeight | property | `number \| undefined` | no |  |
-| lines | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| width | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
+| lastLineWidth     | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| lineHeight        | property | `number \| undefined`                                                                                               | no       |             |
+| lines             | property | `number \| undefined`                                                                                               | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
+| testID            | property | `string \| undefined`                                                                                               | no       |             |
+| themeId           | property | `string \| undefined`                                                                                               | no       |             |
+| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
 
 ## Spacer
 
@@ -4428,14 +4428,14 @@ Source: `src/foundation/Spacer.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| axis | property | `"horizontal" \| "vertical" \| "both" \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| size | property | `SpaceValue \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                | Required | Description |
+| ----------------- | -------- | --------------------------------------------------- | -------- | ----------- |
+| axis              | property | `"horizontal" \| "vertical" \| "both" \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                    | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                        | no       |             |
+| size              | property | `SpaceValue \| undefined`                           | no       |             |
+| testID            | property | `string \| undefined`                               | no       |             |
+| themeId           | property | `string \| undefined`                               | no       |             |
 
 ## SplashScreen
 
@@ -4463,21 +4463,21 @@ Source: `src/components/splash-screen/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| backgroundColor | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| logo | property | `React.ReactNode` | no |  |
-| logoLabel | property | `string \| undefined` | no |  |
-| logoShape | property | `SplashScreenLogoShape \| undefined` | no |  |
-| logoSize | property | `number \| undefined` | no |  |
-| minHeight | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| subtitle | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                                                                                                                | Required | Description |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| backgroundColor   | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").ColorValue> \| undefined` | no       |             |
+| children          | property | `React.ReactNode`                                                                                                   | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
+| logo              | property | `React.ReactNode`                                                                                                   | no       |             |
+| logoLabel         | property | `string \| undefined`                                                                                               | no       |             |
+| logoShape         | property | `SplashScreenLogoShape \| undefined`                                                                                | no       |             |
+| logoSize          | property | `number \| undefined`                                                                                               | no       |             |
+| minHeight         | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
+| subtitle          | property | `React.ReactNode`                                                                                                   | no       |             |
+| testID            | property | `string \| undefined`                                                                                               | no       |             |
+| themeId           | property | `string \| undefined`                                                                                               | no       |             |
+| title             | property | `React.ReactNode`                                                                                                   | no       |             |
 
 ## Stack
 
@@ -4495,61 +4495,61 @@ Source: `src/foundation/Stack.tsx:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| align | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bg | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderColor | property | `Responsive<ColorValue> \| undefined` | no |  |
-| borderWidth | property | `Responsive<number> \| undefined` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| direction | property | `Responsive<"row" \| "column"> \| undefined` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| justify | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                                                                     | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                                                                    | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                                                                  | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                                                                 | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                   | no       |             |
+| align              | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "stretch" \| "baseline"> \| undefined`                             | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                    | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                    | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| children           | property | `React.ReactNode`                                                                                                        | no       |             |
+| direction          | property | `Responsive<"row" \| "column"> \| undefined`                                                                             | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| gap                | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                         | no       |             |
+| justify            | property | `Responsive<"flex-start" \| "flex-end" \| "center" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                             | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                             | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                              | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                          | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                   | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                                                                   | no       |             |
+| testID             | property | `string \| undefined`                                                                                                    | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                    | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                              | no       |             |
+| wrap               | property | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                            | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                        | no       |             |
 
 ## Surface
 
@@ -4573,54 +4573,54 @@ Source: `src/foundation/Surface.tsx:13:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityRole | property | `import("react-native").AccessibilityRole \| undefined` | no |  |
-| accessibilityState | property | `import("react-native").AccessibilityState \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| alignSelf | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no |  |
-| bottom | property | `Responsive<number> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| flex | property | `Responsive<number> \| undefined` | no |  |
-| flexBasis | property | `Responsive<string \| number> \| undefined` | no |  |
-| flexGrow | property | `Responsive<number> \| undefined` | no |  |
-| flexShrink | property | `Responsive<number> \| undefined` | no |  |
-| height | property | `Responsive<string \| number> \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| left | property | `Responsive<number> \| undefined` | no |  |
-| m | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| maxHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| maxWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| mb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| minHeight | property | `Responsive<string \| number> \| undefined` | no |  |
-| minWidth | property | `Responsive<string \| number> \| undefined` | no |  |
-| ml | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| mr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| mx | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| my | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| opacity | property | `Responsive<number> \| undefined` | no |  |
-| overflow | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no |  |
-| p | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pb | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pl | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| position | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no |  |
-| pr | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| pt | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| px | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| py | property | `Responsive<SpaceValue> \| undefined` | no |  |
-| radius | property | `Responsive<RadiusValue> \| undefined` | no |  |
-| right | property | `Responsive<number> \| undefined` | no |  |
-| style | property | `StyleProp<ViewStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| top | property | `Responsive<number> \| undefined` | no |  |
-| variant | property | `SurfaceVariant \| undefined` | no |  |
-| width | property | `Responsive<string \| number> \| undefined` | no |  |
-| zIndex | property | `Responsive<number> \| undefined` | no |  |
+| Name               | Kind     | Type                                                                      | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                     | no       |             |
+| accessibilityRole  | property | `import("react-native").AccessibilityRole \| undefined`                   | no       |             |
+| accessibilityState | property | `import("react-native").AccessibilityState \| undefined`                  | no       |             |
+| accessible         | property | `boolean \| undefined`                                                    | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                         | no       |             |
+| children           | property | `React.ReactNode`                                                         | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                         | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                          | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                         | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                              | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                         | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`              | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pointerEvents      | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`               | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                    | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                         | no       |             |
+| style              | property | `StyleProp<ViewStyle>`                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                     | no       |             |
+| themeId            | property | `string \| undefined`                                                     | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                         | no       |             |
+| variant            | property | `SurfaceVariant \| undefined`                                             | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                               | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
 ## SurfaceVariant
 
@@ -4644,17 +4644,17 @@ Source: `src/patterns/switch-field/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `ReactNode` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `(value: boolean) => void` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `boolean` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| description       | property | `ReactNode`                      | no       |             |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| label             | property | `ReactNode`                      | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onValueChange     | property | `(value: boolean) => void`       | yes      |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| value             | property | `boolean`                        | yes      |             |
 
 ## TabItem
 
@@ -4664,14 +4664,14 @@ Source: `src/components/tabs/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| badge | property | `ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| label | property | `ReactNode` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| badge    | property | `ReactNode`                                            | no       |             |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| label    | property | `ReactNode`                                            | yes      |             |
+| testID   | property | `string \| undefined`                                  | no       |             |
+| value    | property | `TValue`                                               | yes      |             |
 
 ## Tabs
 
@@ -4689,18 +4689,18 @@ Source: `src/components/tabs/types.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| disabled | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly TabItem<TValue>[]` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `(value: TValue) => void` | yes |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `TValue` | yes |  |
-| variant | property | `TabsVariant \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| items             | property | `readonly TabItem<TValue>[]`     | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onValueChange     | property | `(value: TValue) => void`        | yes      |             |
+| size              | property | `ZoraControlSize \| undefined`   | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| value             | property | `TValue`                         | yes      |             |
+| variant           | property | `TabsVariant \| undefined`       | no       |             |
 
 ## TabsVariant
 
@@ -4741,172 +4741,172 @@ Source: `src/components/textarea/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityActions | property | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined` | no |  |
-| accessibilityElementsHidden | property | `boolean \| undefined` | no |  |
-| accessibilityHint | property | `string \| undefined` | no |  |
-| accessibilityIgnoresInvertColors | property | `boolean \| undefined` | no |  |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityLabelledBy | property | `string \| string[] \| undefined` | no |  |
-| accessibilityLanguage | property | `string \| undefined` | no |  |
-| accessibilityLargeContentTitle | property | `string \| undefined` | no |  |
-| accessibilityLiveRegion | property | `"none" \| "polite" \| "assertive" \| undefined` | no |  |
-| accessibilityRespondsToUserInteraction | property | `boolean \| undefined` | no |  |
-| accessibilityRole | property | `AccessibilityRole \| undefined` | no |  |
-| accessibilityShowsLargeContentViewer | property | `boolean \| undefined` | no |  |
-| accessibilityState | property | `AccessibilityState \| undefined` | no |  |
-| accessibilityValue | property | `AccessibilityValue \| undefined` | no |  |
-| accessibilityViewIsModal | property | `boolean \| undefined` | no |  |
-| accessible | property | `boolean \| undefined` | no |  |
-| allowFontScaling | property | `boolean \| undefined` | no |  |
-| aria-busy | property | `boolean \| undefined` | no |  |
-| aria-checked | property | `boolean \| "mixed" \| undefined` | no |  |
-| aria-disabled | property | `boolean \| undefined` | no |  |
-| aria-expanded | property | `boolean \| undefined` | no |  |
-| aria-hidden | property | `boolean \| undefined` | no |  |
-| aria-label | property | `string \| undefined` | no |  |
-| aria-labelledby | property | `string \| undefined` | no |  |
-| aria-live | property | `"off" \| "polite" \| "assertive" \| undefined` | no |  |
-| aria-modal | property | `boolean \| undefined` | no |  |
-| aria-selected | property | `boolean \| undefined` | no |  |
-| aria-valuemax | property | `number \| undefined` | no |  |
-| aria-valuemin | property | `number \| undefined` | no |  |
-| aria-valuenow | property | `number \| undefined` | no |  |
-| aria-valuetext | property | `string \| undefined` | no |  |
-| autoCapitalize | property | `"none" \| "sentences" \| "words" \| "characters" \| undefined` | no |  |
-| autoComplete | property | `"email" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username" \| "username-new" \| "off" \| undefined` | no |  |
-| autoCorrect | property | `boolean \| undefined` | no |  |
-| autoFocus | property | `boolean \| undefined` | no |  |
-| blurOnSubmit | property | `boolean \| undefined` | no |  |
-| caretHidden | property | `boolean \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| clearButtonMode | property | `"never" \| "while-editing" \| "unless-editing" \| "always" \| undefined` | no |  |
-| clearTextOnFocus | property | `boolean \| undefined` | no |  |
-| collapsable | property | `boolean \| undefined` | no |  |
-| collapsableChildren | property | `boolean \| undefined` | no |  |
-| contextMenuHidden | property | `boolean \| undefined` | no |  |
-| cursorColor | property | `ColorValue \| null \| undefined` | no |  |
-| dataDetectorTypes | property | `DataDetectorTypes \| DataDetectorTypes[] \| undefined` | no |  |
-| defaultValue | property | `string \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| disableFullscreenUI | property | `boolean \| undefined` | no |  |
-| disableKeyboardShortcuts | property | `boolean \| undefined` | no |  |
-| enablesReturnKeyAutomatically | property | `boolean \| undefined` | no |  |
-| enterKeyHint | property | `EnterKeyHintTypeOptions \| undefined` | no |  |
-| focusable | property | `boolean \| undefined` | no |  |
-| hasTVPreferredFocus | property | `boolean \| undefined` | no |  |
-| hitSlop | property | `number \| Insets \| null \| undefined` | no |  |
-| id | property | `string \| undefined` | no |  |
-| importantForAccessibility | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no |  |
-| importantForAutofill | property | `"auto" \| "yes" \| "no" \| "noExcludeDescendants" \| "yesExcludeDescendants" \| undefined` | no |  |
-| inlineImageLeft | property | `string \| undefined` | no |  |
-| inlineImagePadding | property | `number \| undefined` | no |  |
-| inputAccessoryViewButtonLabel | property | `string \| undefined` | no |  |
-| inputAccessoryViewID | property | `string \| undefined` | no |  |
-| inputMode | property | `InputModeOptions \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| invalid | property | `boolean \| undefined` | no |  |
-| isTVSelectable | property | `boolean \| undefined` | no |  |
-| keyboardAppearance | property | `"light" \| "dark" \| "default" \| undefined` | no |  |
-| keyboardType | property | `KeyboardTypeOptions \| undefined` | no |  |
-| leadingIcon | property | `Surface.IconSource \| undefined` | no |  |
-| lineBreakModeIOS | property | `"head" \| "middle" \| "tail" \| "clip" \| "wordWrapping" \| "char" \| undefined` | no |  |
-| lineBreakStrategyIOS | property | `"none" \| "standard" \| "hangul-word" \| "push-out" \| undefined` | no |  |
-| maxFontSizeMultiplier | property | `number \| null \| undefined` | no |  |
-| maxLength | property | `number \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nativeID | property | `string \| undefined` | no |  |
-| needsOffscreenAlphaCompositing | property | `boolean \| undefined` | no |  |
-| numberOfLines | property | `number \| undefined` | no |  |
-| onAccessibilityAction | property | `((event: AccessibilityActionEvent) => void) \| undefined` | no |  |
-| onAccessibilityEscape | property | `(() => void) \| undefined` | no |  |
-| onAccessibilityTap | property | `(() => void) \| undefined` | no |  |
-| onBlur | property | `((e: BlurEvent) => void) \| undefined` | no |  |
-| onChange | property | `((e: TextInputChangeEvent) => void) \| undefined` | no |  |
-| onChangeText | property | `((text: string) => void) \| undefined` | no |  |
-| onContentSizeChange | property | `((e: TextInputContentSizeChangeEvent) => void) \| undefined` | no |  |
-| onEndEditing | property | `((e: TextInputEndEditingEvent) => void) \| undefined` | no |  |
-| onFocus | property | `((e: FocusEvent) => void) \| undefined` | no |  |
-| onKeyPress | property | `((e: TextInputKeyPressEvent) => void) \| undefined` | no |  |
-| onLayout | property | `((event: LayoutChangeEvent) => void) \| undefined` | no |  |
-| onMagicTap | property | `(() => void) \| undefined` | no |  |
-| onMoveShouldSetResponder | property | `((event: GestureResponderEvent) => boolean) \| undefined` | no |  |
-| onMoveShouldSetResponderCapture | property | `((event: GestureResponderEvent) => boolean) \| undefined` | no |  |
-| onPointerCancel | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerCancelCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerDown | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerDownCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerEnter | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerEnterCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerLeave | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerLeaveCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerMove | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerMoveCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerUp | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPointerUpCapture | property | `((event: PointerEvent) => void) \| undefined` | no |  |
-| onPress | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no |  |
-| onPressIn | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no |  |
-| onPressOut | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined` | no |  |
-| onResponderEnd | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderGrant | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderMove | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderReject | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderRelease | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderStart | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderTerminate | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onResponderTerminationRequest | property | `((event: GestureResponderEvent) => boolean) \| undefined` | no |  |
-| onScroll | property | `((e: TextInputScrollEvent) => void) \| undefined` | no |  |
-| onSelectionChange | property | `((e: TextInputSelectionChangeEvent) => void) \| undefined` | no |  |
-| onStartShouldSetResponder | property | `((event: GestureResponderEvent) => boolean) \| undefined` | no |  |
-| onStartShouldSetResponderCapture | property | `((event: GestureResponderEvent) => boolean) \| undefined` | no |  |
-| onSubmitEditing | property | `((e: TextInputSubmitEditingEvent) => void) \| undefined` | no |  |
-| onTouchCancel | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onTouchEnd | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onTouchEndCapture | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onTouchMove | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| onTouchStart | property | `((event: GestureResponderEvent) => void) \| undefined` | no |  |
-| passwordRules | property | `string \| null \| undefined` | no |  |
-| placeholder | property | `string \| undefined` | no |  |
-| pointerEvents | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined` | no |  |
-| readOnly | property | `boolean \| undefined` | no |  |
-| rejectResponderTermination | property | `boolean \| null \| undefined` | no |  |
-| removeClippedSubviews | property | `boolean \| undefined` | no |  |
-| renderToHardwareTextureAndroid | property | `boolean \| undefined` | no |  |
-| returnKeyLabel | property | `string \| undefined` | no |  |
-| returnKeyType | property | `ReturnKeyTypeOptions \| undefined` | no |  |
-| role | property | `Role \| undefined` | no |  |
-| rows | property | `number \| undefined` | no |  |
-| screenReaderFocusable | property | `boolean \| undefined` | no |  |
-| scrollEnabled | property | `boolean \| undefined` | no |  |
-| secureTextEntry | property | `boolean \| undefined` | no |  |
-| selection | property | `{ start: number; end?: number \| undefined; } \| undefined` | no |  |
-| selectionColor | property | `ColorValue \| undefined` | no |  |
-| selectionHandleColor | property | `ColorValue \| null \| undefined` | no |  |
-| selectionState | property | `DocumentSelectionState \| undefined` | no |  |
-| selectTextOnFocus | property | `boolean \| undefined` | no |  |
-| shouldRasterizeIOS | property | `boolean \| undefined` | no |  |
-| showSoftInputOnFocus | property | `boolean \| undefined` | no |  |
-| size | property | `ZoraControlSize \| undefined` | no |  |
-| smartInsertDelete | property | `boolean \| undefined` | no |  |
-| spellCheck | property | `boolean \| undefined` | no |  |
-| style | property | `StyleProp<TextStyle>` | no |  |
-| submitBehavior | property | `SubmitBehavior \| undefined` | no |  |
-| tabIndex | property | `0 \| -1 \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| textAlign | property | `"left" \| "right" \| "center" \| undefined` | no |  |
-| textAlignVertical | property | `"top" \| "bottom" \| "auto" \| "center" \| undefined` | no |  |
-| textBreakStrategy | property | `"simple" \| "highQuality" \| "balanced" \| undefined` | no |  |
-| textContentType | property | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| trailingIcon | property | `Surface.IconSource \| undefined` | no |  |
-| tvParallaxMagnification | property | `number \| undefined` | no |  |
-| tvParallaxShiftDistanceX | property | `number \| undefined` | no |  |
-| tvParallaxShiftDistanceY | property | `number \| undefined` | no |  |
-| tvParallaxTiltAngle | property | `number \| undefined` | no |  |
-| underlineColorAndroid | property | `ColorValue \| undefined` | no |  |
-| value | property | `string \| undefined` | no |  |
-| verticalAlign | property | `"top" \| "bottom" \| "auto" \| "middle" \| undefined` | no |  |
+| Name                                   | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Required | Description |
+| -------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityActions                   | property | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| accessibilityElementsHidden            | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| accessibilityHint                      | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| accessibilityIgnoresInvertColors       | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| accessibilityLabel                     | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| accessibilityLabelledBy                | property | `string \| string[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| accessibilityLanguage                  | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| accessibilityLargeContentTitle         | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| accessibilityLiveRegion                | property | `"none" \| "polite" \| "assertive" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       |             |
+| accessibilityRespondsToUserInteraction | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| accessibilityRole                      | property | `AccessibilityRole \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       |             |
+| accessibilityShowsLargeContentViewer   | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| accessibilityState                     | property | `AccessibilityState \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| accessibilityValue                     | property | `AccessibilityValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| accessibilityViewIsModal               | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| accessible                             | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| allowFontScaling                       | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-busy                              | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-checked                           | property | `boolean \| "mixed" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| aria-disabled                          | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-expanded                          | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-hidden                            | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-label                             | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| aria-labelledby                        | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| aria-live                              | property | `"off" \| "polite" \| "assertive" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
+| aria-modal                             | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-selected                          | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| aria-valuemax                          | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| aria-valuemin                          | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| aria-valuenow                          | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| aria-valuetext                         | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| autoCapitalize                         | property | `"none" \| "sentences" \| "words" \| "characters" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
+| autoComplete                           | property | `"email" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username" \| "username-new" \| "off" \| undefined` | no       |             |
+| autoCorrect                            | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| autoFocus                              | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| blurOnSubmit                           | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| caretHidden                            | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| children                               | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| clearButtonMode                        | property | `"never" \| "while-editing" \| "unless-editing" \| "always" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       |             |
+| clearTextOnFocus                       | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| collapsable                            | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| collapsableChildren                    | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| contextMenuHidden                      | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| cursorColor                            | property | `ColorValue \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| dataDetectorTypes                      | property | `DataDetectorTypes \| DataDetectorTypes[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| defaultValue                           | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| disabled                               | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| disableFullscreenUI                    | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| disableKeyboardShortcuts               | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| enablesReturnKeyAutomatically          | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| enterKeyHint                           | property | `EnterKeyHintTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| focusable                              | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| hasTVPreferredFocus                    | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| hitSlop                                | property | `number \| Insets \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| id                                     | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| importantForAccessibility              | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
+| importantForAutofill                   | property | `"auto" \| "yes" \| "no" \| "noExcludeDescendants" \| "yesExcludeDescendants" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| inlineImageLeft                        | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| inlineImagePadding                     | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| inputAccessoryViewButtonLabel          | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| inputAccessoryViewID                   | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| inputMode                              | property | `InputModeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
+| interactionPolicy                      | property | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | no       |             |
+| invalid                                | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| isTVSelectable                         | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| keyboardAppearance                     | property | `"light" \| "dark" \| "default" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| keyboardType                           | property | `KeyboardTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
+| leadingIcon                            | property | `Surface.IconSource \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| lineBreakModeIOS                       | property | `"head" \| "middle" \| "tail" \| "clip" \| "wordWrapping" \| "char" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| lineBreakStrategyIOS                   | property | `"none" \| "standard" \| "hangul-word" \| "push-out" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
+| maxFontSizeMultiplier                  | property | `number \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| maxLength                              | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| mode                                   | property | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       |             |
+| nativeID                               | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| needsOffscreenAlphaCompositing         | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| numberOfLines                          | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| onAccessibilityAction                  | property | `((event: AccessibilityActionEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onAccessibilityEscape                  | property | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| onAccessibilityTap                     | property | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| onBlur                                 | property | `((e: BlurEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onChange                               | property | `((e: TextInputChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
+| onChangeText                           | property | `((text: string) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onContentSizeChange                    | property | `((e: TextInputContentSizeChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| onEndEditing                           | property | `((e: TextInputEndEditingEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| onFocus                                | property | `((e: FocusEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       |             |
+| onKeyPress                             | property | `((e: TextInputKeyPressEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       |             |
+| onLayout                               | property | `((event: LayoutChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       |             |
+| onMagicTap                             | property | `(() => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| onMoveShouldSetResponder               | property | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onMoveShouldSetResponderCapture        | property | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onPointerCancel                        | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerCancelCapture                 | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerDown                          | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerDownCapture                   | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerEnter                         | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerEnterCapture                  | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerLeave                         | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerLeaveCapture                  | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerMove                          | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerMoveCapture                   | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerUp                            | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPointerUpCapture                     | property | `((event: PointerEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onPress                                | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       |             |
+| onPressIn                              | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       |             |
+| onPressOut                             | property | `((e: NativeSyntheticEvent<NativeTouchEvent>) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | no       |             |
+| onResponderEnd                         | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderGrant                       | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderMove                        | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderReject                      | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderRelease                     | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderStart                       | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderTerminate                   | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onResponderTerminationRequest          | property | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onScroll                               | property | `((e: TextInputScrollEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
+| onSelectionChange                      | property | `((e: TextInputSelectionChangeEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| onStartShouldSetResponder              | property | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onStartShouldSetResponderCapture       | property | `((event: GestureResponderEvent) => boolean) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | no       |             |
+| onSubmitEditing                        | property | `((e: TextInputSubmitEditingEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       |             |
+| onTouchCancel                          | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onTouchEnd                             | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onTouchEndCapture                      | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onTouchMove                            | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| onTouchStart                           | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| passwordRules                          | property | `string \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| placeholder                            | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| pointerEvents                          | property | `"none" \| "auto" \| "box-none" \| "box-only" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | no       |             |
+| readOnly                               | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| rejectResponderTermination             | property | `boolean \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| removeClippedSubviews                  | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| renderToHardwareTextureAndroid         | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| returnKeyLabel                         | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| returnKeyType                          | property | `ReturnKeyTypeOptions \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       |             |
+| role                                   | property | `Role \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | no       |             |
+| rows                                   | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| screenReaderFocusable                  | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| scrollEnabled                          | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| secureTextEntry                        | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| selection                              | property | `{ start: number; end?: number \| undefined; } \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       |             |
+| selectionColor                         | property | `ColorValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       |             |
+| selectionHandleColor                   | property | `ColorValue \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| selectionState                         | property | `DocumentSelectionState \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| selectTextOnFocus                      | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| shouldRasterizeIOS                     | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| showSoftInputOnFocus                   | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| size                                   | property | `ZoraControlSize \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| smartInsertDelete                      | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| spellCheck                             | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| style                                  | property | `StyleProp<TextStyle>`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| submitBehavior                         | property | `SubmitBehavior \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| tabIndex                               | property | `0 \| -1 \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| testID                                 | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| textAlign                              | property | `"left" \| "right" \| "center" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | no       |             |
+| textAlignVertical                      | property | `"top" \| "bottom" \| "auto" \| "center" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| textBreakStrategy                      | property | `"simple" \| "highQuality" \| "balanced" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| textContentType                        | property | `"none" \| "password" \| "name" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "location" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| themeId                                | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| trailingIcon                           | property | `Surface.IconSource \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
+| tvParallaxMagnification                | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| tvParallaxShiftDistanceX               | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| tvParallaxShiftDistanceY               | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| tvParallaxTiltAngle                    | property | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| underlineColorAndroid                  | property | `ColorValue \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | no       |             |
+| value                                  | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
+| verticalAlign                          | property | `"top" \| "bottom" \| "auto" \| "middle" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
 
 ## TextColor
 
@@ -4928,30 +4928,30 @@ Source: `src/components/text/types.ts:22:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityHint | property | `string \| undefined` | no |  |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| accessibilityLiveRegion | property | `"none" \| "polite" \| "assertive" \| undefined` | no |  |
-| accessibilityRole | property | `AccessibilityRole \| undefined` | no |  |
-| align | property | `Responsive<TextAlign> \| undefined` | no |  |
-| children | property | `React.ReactNode` | no |  |
-| color | property | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no |  |
-| ellipsizeMode | property | `"head" \| "middle" \| "tail" \| "clip" \| undefined` | no |  |
-| emphasis | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no |  |
-| i18nKey | property | `string \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| italic | property | `boolean \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nativeID | property | `string \| undefined` | no |  |
-| numberOfLines | property | `number \| undefined` | no |  |
-| selectable | property | `boolean \| undefined` | no |  |
-| style | property | `StyleProp<TextStyle>` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| text | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| variant | property | `Responsive<TextVariant> \| undefined` | no |  |
-| weight | property | `Responsive<TextWeight> \| undefined` | no |  |
+| Name                    | Kind     | Type                                                                                                                                                      | Required | Description |
+| ----------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityHint       | property | `string \| undefined`                                                                                                                                     | no       |             |
+| accessibilityLabel      | property | `string \| undefined`                                                                                                                                     | no       |             |
+| accessibilityLiveRegion | property | `"none" \| "polite" \| "assertive" \| undefined`                                                                                                          | no       |             |
+| accessibilityRole       | property | `AccessibilityRole \| undefined`                                                                                                                          | no       |             |
+| align                   | property | `Responsive<TextAlign> \| undefined`                                                                                                                      | no       |             |
+| children                | property | `React.ReactNode`                                                                                                                                         | no       |             |
+| color                   | property | `Responsive<"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger"> \| undefined` | no       |             |
+| ellipsizeMode           | property | `"head" \| "middle" \| "tail" \| "clip" \| undefined`                                                                                                     | no       |             |
+| emphasis                | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined`                                                                                  | no       |             |
+| i18nKey                 | property | `string \| undefined`                                                                                                                                     | no       |             |
+| interactionPolicy       | property | `InteractionPolicy \| undefined`                                                                                                                          | no       |             |
+| italic                  | property | `boolean \| undefined`                                                                                                                                    | no       |             |
+| mode                    | property | `ZoraThemeMode \| undefined`                                                                                                                              | no       |             |
+| nativeID                | property | `string \| undefined`                                                                                                                                     | no       |             |
+| numberOfLines           | property | `number \| undefined`                                                                                                                                     | no       |             |
+| selectable              | property | `boolean \| undefined`                                                                                                                                    | no       |             |
+| style                   | property | `StyleProp<TextStyle>`                                                                                                                                    | no       |             |
+| testID                  | property | `string \| undefined`                                                                                                                                     | no       |             |
+| text                    | property | `string \| undefined`                                                                                                                                     | no       |             |
+| themeId                 | property | `string \| undefined`                                                                                                                                     | no       |             |
+| variant                 | property | `Responsive<TextVariant> \| undefined`                                                                                                                    | no       |             |
+| weight                  | property | `Responsive<TextWeight> \| undefined`                                                                                                                     | no       |             |
 
 ## TextVariant
 
@@ -4981,17 +4981,17 @@ Source: `src/patterns/theme-composer/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| appCategories | property | `readonly ("books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onChange | property | `(theme: ZoraTheme) => void` | yes |  |
-| onModeChange | property | `((mode: ZoraThemeMode) => void) \| undefined` | no |  |
-| onSubmit | property | `((theme: ZoraTheme) => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `ZoraTheme` | yes |  |
+| Name              | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| appCategories     | property | `readonly ("books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
+| onChange          | property | `(theme: ZoraTheme) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                            | yes      |             |
+| onModeChange      | property | `((mode: ZoraThemeMode) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                          | no       |             |
+| onSubmit          | property | `((theme: ZoraTheme) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
+| testID            | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
+| value             | property | `ZoraTheme`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | yes      |             |
 
 ## ThemeModeToggle
 
@@ -5002,17 +5002,17 @@ Source: `src/theme/ThemeModeToggle.tsx:6:1`
 ### Signatures
 
 - `({
-  disabled,
-  interactionPolicy,
-  size = 'm',
-  testID,
+disabled,
+interactionPolicy,
+size = 'm',
+testID,
 }: ThemeModeToggleProps) => import("react").JSX.Element`
   - {
-  disabled,
-  interactionPolicy,
-  size = 'm',
-  testID,
-}: `ThemeModeToggleProps`
+    disabled,
+    interactionPolicy,
+    size = 'm',
+    testID,
+    }: `ThemeModeToggleProps`
   - returns: `import("react").JSX.Element`
 
 ## ThemeModeToggleProps
@@ -5037,15 +5037,15 @@ Source: `src/patterns/tile-grid/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `ReactNode` | no |  |
-| columns | property | `number \| "responsive" \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                  | Required | Description |
+| ----------------- | -------- | ------------------------------------- | -------- | ----------- |
+| children          | property | `ReactNode`                           | no       |             |
+| columns           | property | `number \| "responsive" \| undefined` | no       |             |
+| compact           | property | `boolean \| undefined`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`      | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`          | no       |             |
+| testID            | property | `string \| undefined`                 | no       |             |
+| themeId           | property | `string \| undefined`                 | no       |             |
 
 ## Timeline
 
@@ -5063,15 +5063,15 @@ Source: `src/patterns/timeline/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `string` | yes |  |
-| meta | property | `React.ReactNode` | no |  |
-| status | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | yes |  |
+| Name        | Kind     | Type                                                                                                                                          | Required | Description |
+| ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| description | property | `React.ReactNode`                                                                                                                             | no       |             |
+| icon        | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
+| id          | property | `string`                                                                                                                                      | yes      |             |
+| meta        | property | `React.ReactNode`                                                                                                                             | no       |             |
+| status      | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| testID      | property | `string \| undefined`                                                                                                                         | no       |             |
+| title       | property | `React.ReactNode`                                                                                                                             | yes      |             |
 
 ## TimelineProps
 
@@ -5081,14 +5081,14 @@ Source: `src/patterns/timeline/types.ts:17:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| compact | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| items | property | `readonly TimelineItem[]` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| items             | property | `readonly TimelineItem[]`        | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## TimePicker
 
@@ -5106,24 +5106,24 @@ Source: `src/components/time-picker/types.ts:7:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| error | property | `React.ReactNode` | no |  |
-| formatTime | property | `((value: string) => React.ReactNode) \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `React.ReactNode` | no |  |
-| maxTime | property | `string \| undefined` | no |  |
-| minTime | property | `string \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onValueChange | property | `((value: TimePickerValue) => void) \| undefined` | no |  |
-| placeholder | property | `React.ReactNode` | no |  |
-| required | property | `boolean \| undefined` | no |  |
-| stepMinutes | property | `number \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| value | property | `TimePickerValue` | yes |  |
+| Name              | Kind     | Type                                                | Required | Description |
+| ----------------- | -------- | --------------------------------------------------- | -------- | ----------- |
+| description       | property | `React.ReactNode`                                   | no       |             |
+| disabled          | property | `boolean \| undefined`                              | no       |             |
+| error             | property | `React.ReactNode`                                   | no       |             |
+| formatTime        | property | `((value: string) => React.ReactNode) \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                    | no       |             |
+| label             | property | `React.ReactNode`                                   | no       |             |
+| maxTime           | property | `string \| undefined`                               | no       |             |
+| minTime           | property | `string \| undefined`                               | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                        | no       |             |
+| onValueChange     | property | `((value: TimePickerValue) => void) \| undefined`   | no       |             |
+| placeholder       | property | `React.ReactNode`                                   | no       |             |
+| required          | property | `boolean \| undefined`                              | no       |             |
+| stepMinutes       | property | `number \| undefined`                               | no       |             |
+| testID            | property | `string \| undefined`                               | no       |             |
+| themeId           | property | `string \| undefined`                               | no       |             |
+| value             | property | `TimePickerValue`                                   | yes      |             |
 
 ## TimePickerValue
 
@@ -5153,16 +5153,16 @@ Source: `src/components/toast/types.ts:13:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onDismiss | property | `(() => void) \| undefined` | no |  |
-| status | property | `ToastStatus \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| title | property | `React.ReactNode` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| description       | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
+| status            | property | `ToastStatus \| undefined`       | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| title             | property | `React.ReactNode`                | no       |             |
 
 ## ToastProvider
 
@@ -5186,10 +5186,10 @@ Source: `src/components/toast/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| defaultDuration | property | `number \| undefined` | no |  |
+| Name            | Kind     | Type                  | Required | Description |
+| --------------- | -------- | --------------------- | -------- | ----------- |
+| children        | property | `React.ReactNode`     | yes      |             |
+| defaultDuration | property | `number \| undefined` | no       |             |
 
 ## ToastStatus
 
@@ -5221,17 +5221,17 @@ Source: `src/components/toolbar/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| active | property | `boolean \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource` | yes |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onPress | property | `(() => void) \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                      | Required | Description |
+| ----------------- | -------- | ----------------------------------------- | -------- | ----------- |
+| active            | property | `boolean \| undefined`                    | no       |             |
+| disabled          | property | `boolean \| undefined`                    | no       |             |
+| icon              | property | `import("@ankhorage/surface").IconSource` | yes      |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`          | no       |             |
+| label             | property | `string`                                  | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`              | no       |             |
+| onPress           | property | `(() => void) \| undefined`               | no       |             |
+| testID            | property | `string \| undefined`                     | no       |             |
+| themeId           | property | `string \| undefined`                     | no       |             |
 
 ## ToolbarPosition
 
@@ -5247,16 +5247,16 @@ Source: `src/components/toolbar/types.ts:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| floating | property | `boolean \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| position | property | `ToolbarPosition \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| compact           | property | `boolean \| undefined`           | no       |             |
+| floating          | property | `boolean \| undefined`           | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| position          | property | `ToolbarPosition \| undefined`   | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## TopbarLayout
 
@@ -5274,15 +5274,15 @@ Source: `src/layout/topbar-layout/types.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| sidebar | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
-| topbar | property | `React.ReactNode` | yes |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| sidebar           | property | `React.ReactNode`                | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+| topbar            | property | `React.ReactNode`                | yes      |             |
 
 ## TreeItem
 
@@ -5300,15 +5300,15 @@ Source: `src/patterns/tree-view/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| actions | property | `ReactNode` | no |  |
-| children | property | `readonly TreeItemNode<TId>[] \| undefined` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| id | property | `TId` | yes |  |
-| label | property | `ReactNode` | yes |  |
-| meta | property | `ReactNode` | no |  |
+| Name     | Kind     | Type                                                   | Required | Description |
+| -------- | -------- | ------------------------------------------------------ | -------- | ----------- |
+| actions  | property | `ReactNode`                                            | no       |             |
+| children | property | `readonly TreeItemNode<TId>[] \| undefined`            | no       |             |
+| disabled | property | `boolean \| undefined`                                 | no       |             |
+| icon     | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| id       | property | `TId`                                                  | yes      |             |
+| label    | property | `ReactNode`                                            | yes      |             |
+| meta     | property | `ReactNode`                                            | no       |             |
 
 ## TreeItemRenderProps
 
@@ -5318,13 +5318,13 @@ Source: `src/patterns/tree-view/types.ts:16:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| depth | property | `number` | yes |  |
-| expanded | property | `boolean` | yes |  |
-| hasChildren | property | `boolean` | yes |  |
-| node | property | `TreeItemNode<TId>` | yes |  |
-| selected | property | `boolean` | yes |  |
+| Name        | Kind     | Type                | Required | Description |
+| ----------- | -------- | ------------------- | -------- | ----------- |
+| depth       | property | `number`            | yes      |             |
+| expanded    | property | `boolean`           | yes      |             |
+| hasChildren | property | `boolean`           | yes      |             |
+| node        | property | `TreeItemNode<TId>` | yes      |             |
+| selected    | property | `boolean`           | yes      |             |
 
 ## TreeView
 
@@ -5342,19 +5342,19 @@ Source: `src/patterns/tree-view/types.ts:24:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| defaultExpandedIds | property | `readonly TId[] \| undefined` | no |  |
-| expandedIds | property | `readonly TId[] \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| nodes | property | `readonly TreeItemNode<TId>[]` | yes |  |
-| onExpandedChange | property | `((ids: readonly TId[]) => void) \| undefined` | no |  |
-| onSelect | property | `((id: TId) => void) \| undefined` | no |  |
-| renderItem | property | `((props: TreeItemRenderProps<TId>) => ReactNode) \| undefined` | no |  |
-| selectedId | property | `TId \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name               | Kind     | Type                                                            | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------- | -------- | ----------- |
+| defaultExpandedIds | property | `readonly TId[] \| undefined`                                   | no       |             |
+| expandedIds        | property | `readonly TId[] \| undefined`                                   | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                    | no       |             |
+| nodes              | property | `readonly TreeItemNode<TId>[]`                                  | yes      |             |
+| onExpandedChange   | property | `((ids: readonly TId[]) => void) \| undefined`                  | no       |             |
+| onSelect           | property | `((id: TId) => void) \| undefined`                              | no       |             |
+| renderItem         | property | `((props: TreeItemRenderProps<TId>) => ReactNode) \| undefined` | no       |             |
+| selectedId         | property | `TId \| undefined`                                              | no       |             |
+| testID             | property | `string \| undefined`                                           | no       |             |
+| themeId            | property | `string \| undefined`                                           | no       |             |
 
 ## useFormController
 
@@ -5365,23 +5365,23 @@ Source: `src/components/form/useFormController.ts:24:1`
 ### Signatures
 
 - `({
-  fields,
-  initialValues,
-  values: controlledValues,
-  errors: externalErrors,
-  onChange,
-  onSubmit,
-  validateOnChange = false,
+fields,
+initialValues,
+values: controlledValues,
+errors: externalErrors,
+onChange,
+onSubmit,
+validateOnChange = false,
 }: UseFormControllerOptions<TName>) => UseFormControllerResult<TName>`
   - {
-  fields,
-  initialValues,
-  values: controlledValues,
-  errors: externalErrors,
-  onChange,
-  onSubmit,
-  validateOnChange = false,
-}: `UseFormControllerOptions<TName>`
+    fields,
+    initialValues,
+    values: controlledValues,
+    errors: externalErrors,
+    onChange,
+    onSubmit,
+    validateOnChange = false,
+    }: `UseFormControllerOptions<TName>`
   - returns: `UseFormControllerResult<TName>`
 
 ## UseFormControllerOptions
@@ -5392,15 +5392,15 @@ Source: `src/components/form/types.ts:96:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| errors | property | `Partial<Record<TName, React.ReactNode>> \| undefined` | no |  |
-| fields | property | `readonly FormFieldConfig<TName>[]` | yes |  |
-| initialValues | property | `Partial<FormValues<TName>> \| undefined` | no |  |
-| onChange | property | `((values: FormValues<TName>) => void) \| undefined` | no |  |
-| onSubmit | property | `((values: FormValues<TName>) => void \| Promise<void>) \| undefined` | no |  |
-| validateOnChange | property | `boolean \| undefined` | no |  |
-| values | property | `FormValues<TName> \| undefined` | no |  |
+| Name             | Kind     | Type                                                                  | Required | Description |
+| ---------------- | -------- | --------------------------------------------------------------------- | -------- | ----------- |
+| errors           | property | `Partial<Record<TName, React.ReactNode>> \| undefined`                | no       |             |
+| fields           | property | `readonly FormFieldConfig<TName>[]`                                   | yes      |             |
+| initialValues    | property | `Partial<FormValues<TName>> \| undefined`                             | no       |             |
+| onChange         | property | `((values: FormValues<TName>) => void) \| undefined`                  | no       |             |
+| onSubmit         | property | `((values: FormValues<TName>) => void \| Promise<void>) \| undefined` | no       |             |
+| validateOnChange | property | `boolean \| undefined`                                                | no       |             |
+| values           | property | `FormValues<TName> \| undefined`                                      | no       |             |
 
 ## UseFormControllerResult
 
@@ -5410,15 +5410,15 @@ Source: `src/components/form/types.ts:106:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| errors | property | `Partial<Record<TName, React.ReactNode>>` | yes |  |
-| handleSubmit | property | `() => Promise<void>` | yes |  |
-| reset | property | `() => void` | yes |  |
-| setFieldValue | property | `(name: TName, value: FormFieldValue) => void` | yes |  |
-| setValues | property | `(values: FormValues<TName>) => void` | yes |  |
-| validate | property | `() => FormValidationResult<TName>` | yes |  |
-| values | property | `FormValues<TName>` | yes |  |
+| Name          | Kind     | Type                                           | Required | Description |
+| ------------- | -------- | ---------------------------------------------- | -------- | ----------- |
+| errors        | property | `Partial<Record<TName, React.ReactNode>>`      | yes      |             |
+| handleSubmit  | property | `() => Promise<void>`                          | yes      |             |
+| reset         | property | `() => void`                                   | yes      |             |
+| setFieldValue | property | `(name: TName, value: FormFieldValue) => void` | yes      |             |
+| setValues     | property | `(values: FormValues<TName>) => void`          | yes      |             |
+| validate      | property | `() => FormValidationResult<TName>`            | yes      |             |
+| values        | property | `FormValues<TName>`                            | yes      |             |
 
 ## useSelection
 
@@ -5441,17 +5441,17 @@ Source: `src/patterns/selection/types.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| clear | property | `() => void` | yes |  |
-| disabled | property | `boolean` | yes |  |
-| hasSelection | property | `boolean` | yes |  |
-| isSelected | property | `(id: string) => boolean` | yes |  |
-| mode | property | `SelectionMode` | yes |  |
-| select | property | `(id: string) => void` | yes |  |
-| selectedCount | property | `number` | yes |  |
-| selectedIds | property | `readonly string[]` | yes |  |
-| toggle | property | `(id: string) => void` | yes |  |
+| Name          | Kind     | Type                      | Required | Description |
+| ------------- | -------- | ------------------------- | -------- | ----------- |
+| clear         | property | `() => void`              | yes      |             |
+| disabled      | property | `boolean`                 | yes      |             |
+| hasSelection  | property | `boolean`                 | yes      |             |
+| isSelected    | property | `(id: string) => boolean` | yes      |             |
+| mode          | property | `SelectionMode`           | yes      |             |
+| select        | property | `(id: string) => void`    | yes      |             |
+| selectedCount | property | `number`                  | yes      |             |
+| selectedIds   | property | `readonly string[]`       | yes      |             |
+| toggle        | property | `(id: string) => void`    | yes      |             |
 
 ## useToast
 
@@ -5594,12 +5594,12 @@ Source: `src/theme/ZoraBaseProps.ts:5:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
 
 ## ZoraBindableComponentType
 
@@ -5621,11 +5621,11 @@ Source: `src/metadata/types.ts:44:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| defaultProps | property | `Readonly<Record<string, ZoraComponentPropValue>> \| undefined` | no |  |
-| icon | property | `{ name: string; provider?: string; } \| undefined` | no |  |
-| label | property | `string` | yes |  |
+| Name         | Kind     | Type                                                            | Required | Description |
+| ------------ | -------- | --------------------------------------------------------------- | -------- | ----------- |
+| defaultProps | property | `Readonly<Record<string, ZoraComponentPropValue>> \| undefined` | no       |             |
+| icon         | property | `{ name: string; provider?: string; } \| undefined`             | no       |             |
+| label        | property | `string`                                                        | yes      |             |
 
 ## ZoraComponentCategory
 
@@ -5641,12 +5641,12 @@ Source: `src/metadata/types.ts:65:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `string \| undefined` | no |  |
-| eventType | property | `ZoraComponentEventPayloadKind` | yes |  |
-| label | property | `string` | yes |  |
-| payloadFields | property | `readonly ZoraComponentEventPayloadFieldMeta[] \| undefined` | no |  |
+| Name          | Kind     | Type                                                         | Required | Description |
+| ------------- | -------- | ------------------------------------------------------------ | -------- | ----------- |
+| description   | property | `string \| undefined`                                        | no       |             |
+| eventType     | property | `ZoraComponentEventPayloadKind`                              | yes      |             |
+| label         | property | `string`                                                     | yes      |             |
+| payloadFields | property | `readonly ZoraComponentEventPayloadFieldMeta[] \| undefined` | no       |             |
 
 ## ZoraComponentEventPayloadFieldMeta
 
@@ -5656,12 +5656,12 @@ Source: `src/metadata/types.ts:58:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `string \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| path | property | `string` | yes |  |
-| type | property | `ZoraComponentEventPayloadFieldType` | yes |  |
+| Name        | Kind     | Type                                 | Required | Description |
+| ----------- | -------- | ------------------------------------ | -------- | ----------- |
+| description | property | `string \| undefined`                | no       |             |
+| label       | property | `string \| undefined`                | no       |             |
+| path        | property | `string`                             | yes      |             |
+| type        | property | `ZoraComponentEventPayloadFieldType` | yes      |             |
 
 ## ZoraComponentEventPayloadFieldType
 
@@ -5683,9 +5683,9 @@ Source: `src/metadata/types.ts:50:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| fields | property | `readonly { keyProp: string; defaultTextProp: string; }[]` | yes |  |
+| Name   | Kind     | Type                                                       | Required | Description |
+| ------ | -------- | ---------------------------------------------------------- | -------- | ----------- |
+| fields | property | `readonly { keyProp: string; defaultTextProp: string; }[]` | yes      |             |
 
 ## ZoraComponentManifestPolicy
 
@@ -5695,11 +5695,11 @@ Source: `src/metadata/types.ts:77:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| availability | property | `"draft-only"` | yes |  |
-| kind | property | `"unresolved-element"` | yes |  |
-| releaseGate | property | `"blocked"` | yes |  |
+| Name         | Kind     | Type                   | Required | Description |
+| ------------ | -------- | ---------------------- | -------- | ----------- |
+| availability | property | `"draft-only"`         | yes      |             |
+| kind         | property | `"unresolved-element"` | yes      |             |
+| releaseGate  | property | `"blocked"`            | yes      |             |
 
 ## ZoraComponentMeta
 
@@ -5709,21 +5709,21 @@ Source: `src/metadata/types.ts:83:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| allowedChildren | property | `readonly string[]` | yes |  |
-| blueprint | property | `ZoraComponentBlueprint \| undefined` | no |  |
-| category | property | `ZoraComponentCategory` | yes |  |
-| description | property | `string \| undefined` | no |  |
-| directManifestNode | property | `boolean` | yes |  |
-| events | property | `Readonly<Record<string, ZoraComponentEventMeta>> \| undefined` | no |  |
-| i18n | property | `ZoraComponentI18nMeta \| undefined` | no |  |
-| manifestPolicy | property | `ZoraComponentManifestPolicy \| undefined` | no |  |
-| name | property | `string` | yes |  |
-| note | property | `string \| undefined` | no |  |
-| props | property | `Readonly<Record<string, ZoraComponentPropSchema>>` | yes |  |
-| requirements | property | `ComponentRequirements \| undefined` | no |  |
-| slots | property | `Readonly<Record<string, ZoraComponentSlotMeta>> \| undefined` | no |  |
+| Name               | Kind     | Type                                                            | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------- | -------- | ----------- |
+| allowedChildren    | property | `readonly string[]`                                             | yes      |             |
+| blueprint          | property | `ZoraComponentBlueprint \| undefined`                           | no       |             |
+| category           | property | `ZoraComponentCategory`                                         | yes      |             |
+| description        | property | `string \| undefined`                                           | no       |             |
+| directManifestNode | property | `boolean`                                                       | yes      |             |
+| events             | property | `Readonly<Record<string, ZoraComponentEventMeta>> \| undefined` | no       |             |
+| i18n               | property | `ZoraComponentI18nMeta \| undefined`                            | no       |             |
+| manifestPolicy     | property | `ZoraComponentManifestPolicy \| undefined`                      | no       |             |
+| name               | property | `string`                                                        | yes      |             |
+| note               | property | `string \| undefined`                                           | no       |             |
+| props              | property | `Readonly<Record<string, ZoraComponentPropSchema>>`             | yes      |             |
+| requirements       | property | `ComponentRequirements \| undefined`                            | no       |             |
+| slots              | property | `Readonly<Record<string, ZoraComponentSlotMeta>> \| undefined`  | no       |             |
 
 ## ZoraComponentMetaRegistry
 
@@ -5739,10 +5739,10 @@ Source: `src/metadata/types.ts:28:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| key | property | `string` | yes |  |
-| schema | property | `ZoraComponentPropSchema` | yes |  |
+| Name   | Kind     | Type                      | Required | Description |
+| ------ | -------- | ------------------------- | -------- | ----------- |
+| key    | property | `string`                  | yes      |             |
+| schema | property | `ZoraComponentPropSchema` | yes      |             |
 
 ## ZoraComponentPropAuthoring
 
@@ -5758,16 +5758,16 @@ Source: `src/metadata/types.ts:33:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| authoring | property | `ZoraComponentPropAuthoring \| undefined` | no |  |
-| category | property | `string` | yes |  |
-| default | property | `ZoraComponentPropValue \| undefined` | no |  |
-| enum | property | `readonly (string \| number)[] \| undefined` | no |  |
-| itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
-| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no |  |
-| type | property | `UiComponentPropType` | yes |  |
+| Name       | Kind     | Type                                                                          | Required | Description |
+| ---------- | -------- | ----------------------------------------------------------------------------- | -------- | ----------- |
+| authoring  | property | `ZoraComponentPropAuthoring \| undefined`                                     | no       |             |
+| category   | property | `string`                                                                      | yes      |             |
+| default    | property | `ZoraComponentPropValue \| undefined`                                         | no       |             |
+| enum       | property | `readonly (string \| number)[] \| undefined`                                  | no       |             |
+| itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined`                    | no       |             |
+| label      | property | `string \| undefined`                                                         | no       |             |
+| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no       |             |
+| type       | property | `UiComponentPropType`                                                         | yes      |             |
 
 ## ZoraComponentPropType
 
@@ -5795,10 +5795,10 @@ Source: `src/metadata/types.ts:72:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| allowedChildren | property | `readonly string[] \| undefined` | no |  |
-| label | property | `string \| undefined` | no |  |
+| Name            | Kind     | Type                             | Required | Description |
+| --------------- | -------- | -------------------------------- | -------- | ----------- |
+| allowedChildren | property | `readonly string[] \| undefined` | no       |             |
+| label           | property | `string \| undefined`            | no       |             |
 
 ## ZoraComputedTheme
 
@@ -5808,13 +5808,13 @@ Source: `src/theme/types.ts:74:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| dark | property | `ZoraComputedThemeMode` | yes |  |
-| diagnostics | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes |  |
-| light | property | `ZoraComputedThemeMode` | yes |  |
-| provenance | property | `readonly ZoraThemeProvenanceEntry[]` | yes |  |
-| themeConfig | property | `ThemeConfig` | yes |  |
+| Name        | Kind     | Type                                        | Required | Description |
+| ----------- | -------- | ------------------------------------------- | -------- | ----------- |
+| dark        | property | `ZoraComputedThemeMode`                     | yes      |             |
+| diagnostics | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes      |             |
+| light       | property | `ZoraComputedThemeMode`                     | yes      |             |
+| provenance  | property | `readonly ZoraThemeProvenanceEntry[]`       | yes      |             |
+| themeConfig | property | `ThemeConfig`                               | yes      |             |
 
 ## ZoraComputedThemeMode
 
@@ -5824,14 +5824,14 @@ Source: `src/theme/types.ts:65:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| diagnostics | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes |  |
-| generated | property | `GeneratedThemeModeColors` | yes |  |
-| mode | property | `ZoraThemeMode` | yes |  |
-| provenance | property | `readonly ZoraThemeProvenanceEntry[]` | yes |  |
-| selections | property | `readonly ZoraThemeSelectionResult[]` | yes |  |
-| surfaceTheme | property | `SurfaceTheme` | yes |  |
+| Name         | Kind     | Type                                        | Required | Description |
+| ------------ | -------- | ------------------------------------------- | -------- | ----------- |
+| diagnostics  | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes      |             |
+| generated    | property | `GeneratedThemeModeColors`                  | yes      |             |
+| mode         | property | `ZoraThemeMode`                             | yes      |             |
+| provenance   | property | `readonly ZoraThemeProvenanceEntry[]`       | yes      |             |
+| selections   | property | `readonly ZoraThemeSelectionResult[]`       | yes      |             |
+| surfaceTheme | property | `SurfaceTheme`                              | yes      |             |
 
 ## zoraDefaultTheme
 
@@ -5855,19 +5855,19 @@ Source: `src/patterns/zora-drawer-content/types.ts:11:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| compact | property | `boolean \| undefined` | no |  |
-| descriptors | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no |  |
-| footer | property | `React.ReactNode` | no |  |
-| header | property | `React.ReactNode` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| navigation | property | `ZoraDrawerNavigation` | yes |  |
-| routeMap | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined` | no |  |
-| state | property | `ZoraNavigationState` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                               | Required | Description |
+| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
+| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
+| footer            | property | `React.ReactNode`                                                                                                                  | no       |             |
+| header            | property | `React.ReactNode`                                                                                                                  | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
+| navigation        | property | `ZoraDrawerNavigation`                                                                                                             | yes      |             |
+| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
+| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
+| testID            | property | `string \| undefined`                                                                                                              | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
 
 ## ZoraEmphasis
 
@@ -5889,11 +5889,11 @@ Source: `src/patterns/image-preview/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| createdAt | property | `string \| undefined` | no |  |
-| fileName | property | `string \| undefined` | no |  |
-| sizeBytes | property | `number \| undefined` | no |  |
+| Name      | Kind     | Type                  | Required | Description |
+| --------- | -------- | --------------------- | -------- | ----------- |
+| createdAt | property | `string \| undefined` | no       |             |
+| fileName  | property | `string \| undefined` | no       |             |
+| sizeBytes | property | `number \| undefined` | no       |             |
 
 ## ZoraNavigationRouteMap
 
@@ -5909,14 +5909,14 @@ Source: `src/components/navigation-item/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| accessibilityLabel | property | `string \| undefined` | no |  |
-| badge | property | `React.ReactNode` | no |  |
-| disabled | property | `boolean \| undefined` | no |  |
-| icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
-| label | property | `React.ReactNode` | no |  |
-| testID | property | `string \| undefined` | no |  |
+| Name               | Kind     | Type                                                   | Required | Description |
+| ------------------ | -------- | ------------------------------------------------------ | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                  | no       |             |
+| badge              | property | `React.ReactNode`                                      | no       |             |
+| disabled           | property | `boolean \| undefined`                                 | no       |             |
+| icon               | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
+| label              | property | `React.ReactNode`                                      | no       |             |
+| testID             | property | `string \| undefined`                                  | no       |             |
 
 ## ZoraNavigationRouteState
 
@@ -5926,10 +5926,10 @@ Source: `src/components/navigation-item/types.ts:15:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| key | property | `string` | yes |  |
-| name | property | `string` | yes |  |
+| Name | Kind     | Type     | Required | Description |
+| ---- | -------- | -------- | -------- | ----------- |
+| key  | property | `string` | yes      |             |
+| name | property | `string` | yes      |             |
 
 ## ZoraPaletteColor
 
@@ -5945,14 +5945,14 @@ Source: `src/patterns/image-upload-field/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| contentType | property | `string \| undefined` | no |  |
-| fileName | property | `string \| undefined` | no |  |
-| height | property | `number \| undefined` | no |  |
-| sizeBytes | property | `number \| undefined` | no |  |
-| uri | property | `string` | yes |  |
-| width | property | `number \| undefined` | no |  |
+| Name        | Kind     | Type                  | Required | Description |
+| ----------- | -------- | --------------------- | -------- | ----------- |
+| contentType | property | `string \| undefined` | no       |             |
+| fileName    | property | `string \| undefined` | no       |             |
+| height      | property | `number \| undefined` | no       |             |
+| sizeBytes   | property | `number \| undefined` | no       |             |
+| uri         | property | `string`              | yes      |             |
+| width       | property | `number \| undefined` | no       |             |
 
 ## ZoraProvider
 
@@ -5963,17 +5963,17 @@ Source: `src/theme/ZoraProvider.tsx:18:1`
 ### Signatures
 
 - `({
-  children,
-  theme = zoraDefaultTheme,
-  themeConfig,
-  initialMode = 'light',
+children,
+theme = zoraDefaultTheme,
+themeConfig,
+initialMode = 'light',
 }: ZoraProviderProps) => React.JSX.Element`
   - {
-  children,
-  theme = zoraDefaultTheme,
-  themeConfig,
-  initialMode = 'light',
-}: `ZoraProviderProps`
+    children,
+    theme = zoraDefaultTheme,
+    themeConfig,
+    initialMode = 'light',
+    }: `ZoraProviderProps`
   - returns: `React.JSX.Element`
 
 ## ZoraProviderProps
@@ -5984,12 +5984,12 @@ Source: `src/theme/ZoraProvider.tsx:10:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| initialMode | property | `ZoraThemeMode \| undefined` | no |  |
-| theme | property | `ZoraTheme \| undefined` | no |  |
-| themeConfig | property | `ThemeConfig \| undefined` | no |  |
+| Name        | Kind     | Type                         | Required | Description |
+| ----------- | -------- | ---------------------------- | -------- | ----------- |
+| children    | property | `React.ReactNode`            | yes      |             |
+| initialMode | property | `ZoraThemeMode \| undefined` | no       |             |
+| theme       | property | `ZoraTheme \| undefined`     | no       |             |
+| themeConfig | property | `ThemeConfig \| undefined`   | no       |             |
 
 ## ZoraStatusColor
 
@@ -6013,19 +6013,19 @@ Source: `src/patterns/zora-tab-bar/types.ts:9:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| chrome | property | `"none" \| "raised" \| undefined` | no |  |
-| compact | property | `boolean \| undefined` | no |  |
-| descriptors | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no |  |
-| insets | property | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined` | no |  |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| navigation | property | `ZoraTabBarNavigation` | yes |  |
-| routeMap | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined` | no |  |
-| state | property | `ZoraNavigationState` | yes |  |
-| testID | property | `string \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name              | Kind     | Type                                                                                                                               | Required | Description |
+| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| chrome            | property | `"none" \| "raised" \| undefined`                                                                                                  | no       |             |
+| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
+| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
+| insets            | property | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                   | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
+| navigation        | property | `ZoraTabBarNavigation`                                                                                                             | yes      |             |
+| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
+| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
+| testID            | property | `string \| undefined`                                                                                                              | no       |             |
+| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
 
 ## ZoraTheme
 
@@ -6035,13 +6035,13 @@ Source: `src/theme/types.ts:17:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| appCategory | property | `"books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather"` | yes |  |
-| harmony | property | `"square" \| "complementary" \| "monochromatic" \| "analogous" \| "splitComplementary" \| "triadic" \| "tetradic"` | yes |  |
-| id | property | `string` | yes |  |
-| name | property | `string` | yes |  |
-| primaryColor | property | `string` | yes |  |
+| Name         | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required | Description |
+| ------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| appCategory  | property | `"books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather"` | yes      |             |
+| harmony      | property | `"square" \| "complementary" \| "monochromatic" \| "analogous" \| "splitComplementary" \| "triadic" \| "tetradic"`                                                                                                                                                                                                                                                                                                                            | yes      |             |
+| id           | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
+| name         | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
+| primaryColor | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
 
 ## ZoraThemeCompilationDiagnostic
 
@@ -6051,13 +6051,13 @@ Source: `src/theme/types.ts:48:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| code | property | `ZoraThemeCompilationDiagnosticCode` | yes |  |
-| message | property | `string` | yes |  |
-| mode | property | `ZoraThemeMode` | yes |  |
-| path | property | `string` | yes |  |
-| severity | property | `"error"` | yes |  |
+| Name     | Kind     | Type                                 | Required | Description |
+| -------- | -------- | ------------------------------------ | -------- | ----------- |
+| code     | property | `ZoraThemeCompilationDiagnosticCode` | yes      |             |
+| message  | property | `string`                             | yes      |             |
+| mode     | property | `ZoraThemeMode`                      | yes      |             |
+| path     | property | `string`                             | yes      |             |
+| severity | property | `"error"`                            | yes      |             |
 
 ## ZoraThemeCompilationDiagnosticCode
 
@@ -6073,9 +6073,9 @@ Source: `src/theme/types.ts:36:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| selectionTargets | property | `Partial<Record<ZoraThemeMode, readonly ZoraThemeSelectionTarget[]>> \| undefined` | no |  |
+| Name             | Kind     | Type                                                                               | Required | Description |
+| ---------------- | -------- | ---------------------------------------------------------------------------------- | -------- | ----------- |
+| selectionTargets | property | `Partial<Record<ZoraThemeMode, readonly ZoraThemeSelectionTarget[]>> \| undefined` | no       |             |
 
 ## ZoraThemeId
 
@@ -6097,12 +6097,12 @@ Source: `src/theme/types.ts:58:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| inputs | property | `readonly string[] \| undefined` | no |  |
-| origin | property | `ZoraThemeValueOrigin` | yes |  |
-| owner | property | `string` | yes |  |
-| path | property | `string` | yes |  |
+| Name   | Kind     | Type                             | Required | Description |
+| ------ | -------- | -------------------------------- | -------- | ----------- |
+| inputs | property | `readonly string[] \| undefined` | no       |             |
+| origin | property | `ZoraThemeValueOrigin`           | yes      |             |
+| owner  | property | `string`                         | yes      |             |
+| path   | property | `string`                         | yes      |             |
 
 ## ZoraThemeRecipeBooleanFieldMeta
 
@@ -6112,12 +6112,12 @@ Source: `src/metadata/themeRecipeTypes.ts:30:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| default | property | `boolean \| undefined` | no |  |
-| description | property | `string \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| type | property | `"boolean"` | yes |  |
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| default     | property | `boolean \| undefined` | no       |             |
+| description | property | `string \| undefined`  | no       |             |
+| label       | property | `string`               | yes      |             |
+| type        | property | `"boolean"`            | yes      |             |
 
 ## ZoraThemeRecipeChoiceFieldMeta
 
@@ -6127,13 +6127,13 @@ Source: `src/metadata/themeRecipeTypes.ts:24:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| default | property | `string \| undefined` | no |  |
-| description | property | `string \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| options | property | `readonly string[]` | yes |  |
-| type | property | `"choice"` | yes |  |
+| Name        | Kind     | Type                  | Required | Description |
+| ----------- | -------- | --------------------- | -------- | ----------- |
+| default     | property | `string \| undefined` | no       |             |
+| description | property | `string \| undefined` | no       |             |
+| label       | property | `string`              | yes      |             |
+| options     | property | `readonly string[]`   | yes      |             |
+| type        | property | `"choice"`            | yes      |             |
 
 ## ZoraThemeRecipeFieldMeta
 
@@ -6155,12 +6155,12 @@ Source: `src/metadata/themeRecipeTypes.ts:38:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| description | property | `string \| undefined` | no |  |
-| fields | property | `Readonly<Record<string, ZoraThemeRecipeFieldMeta>>` | yes |  |
-| kind | property | `ZoraThemeRecipeKind` | yes |  |
-| name | property | `string` | yes |  |
+| Name        | Kind     | Type                                                 | Required | Description |
+| ----------- | -------- | ---------------------------------------------------- | -------- | ----------- |
+| description | property | `string \| undefined`                                | no       |             |
+| fields      | property | `Readonly<Record<string, ZoraThemeRecipeFieldMeta>>` | yes      |             |
+| kind        | property | `ZoraThemeRecipeKind`                                | yes      |             |
+| name        | property | `string`                                             | yes      |             |
 
 ## ZoraThemeRecipeMetaRegistry
 
@@ -6176,13 +6176,13 @@ Source: `src/metadata/themeRecipeTypes.ts:18:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| default | property | `string \| undefined` | no |  |
-| description | property | `string \| undefined` | no |  |
-| label | property | `string` | yes |  |
-| tokenFamily | property | `"spacing" \| "colors" \| "radii" \| "typography" \| "shadows"` | yes |  |
-| type | property | `"token"` | yes |  |
+| Name        | Kind     | Type                                                            | Required | Description |
+| ----------- | -------- | --------------------------------------------------------------- | -------- | ----------- |
+| default     | property | `string \| undefined`                                           | no       |             |
+| description | property | `string \| undefined`                                           | no       |             |
+| label       | property | `string`                                                        | yes      |             |
+| tokenFamily | property | `"spacing" \| "colors" \| "radii" \| "typography" \| "shadows"` | yes      |             |
+| type        | property | `"token"`                                                       | yes      |             |
 
 ## ZoraThemeScope
 
@@ -6204,11 +6204,11 @@ Source: `src/theme/ZoraThemeScope.tsx:8:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| children | property | `React.ReactNode` | yes |  |
-| mode | property | `ZoraThemeMode \| undefined` | no |  |
-| themeId | property | `string \| undefined` | no |  |
+| Name     | Kind     | Type                         | Required | Description |
+| -------- | -------- | ---------------------------- | -------- | ----------- |
+| children | property | `React.ReactNode`            | yes      |             |
+| mode     | property | `ZoraThemeMode \| undefined` | no       |             |
+| themeId  | property | `string \| undefined`        | no       |             |
 
 ## ZoraThemeSelectionResult
 
@@ -6218,10 +6218,10 @@ Source: `src/theme/types.ts:40:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| request | property | `ZoraThemeSelectionTarget` | yes |  |
-| result | property | `ColorSwatchSelectionResult \| null` | yes |  |
+| Name    | Kind     | Type                                 | Required | Description |
+| ------- | -------- | ------------------------------------ | -------- | ----------- |
+| request | property | `ZoraThemeSelectionTarget`           | yes      |             |
+| result  | property | `ColorSwatchSelectionResult \| null` | yes      |             |
 
 ## ZoraThemeSelectionTarget
 
@@ -6231,13 +6231,13 @@ Source: `src/theme/types.ts:28:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| contexts | property | `readonly ColorContrastContext[]` | yes |  |
-| id | property | `string` | yes |  |
-| swatch | property | `keyof GeneratedThemeSwatches` | yes |  |
-| target | property | `ColorSelectionTarget` | yes |  |
-| tiePolicy | property | `ColorSwatchTiePolicy` | yes |  |
+| Name      | Kind     | Type                              | Required | Description |
+| --------- | -------- | --------------------------------- | -------- | ----------- |
+| contexts  | property | `readonly ColorContrastContext[]` | yes      |             |
+| id        | property | `string`                          | yes      |             |
+| swatch    | property | `keyof GeneratedThemeSwatches`    | yes      |             |
+| target    | property | `ColorSelectionTarget`            | yes      |             |
+| tiePolicy | property | `ColorSwatchTiePolicy`            | yes      |             |
 
 ## ZoraThemeSwatchRole
 
