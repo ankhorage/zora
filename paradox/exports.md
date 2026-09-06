@@ -1040,22 +1040,6 @@ Source: `src/patterns/collection-editor/types.ts:3:1`
 | moveUp      | property | `() => void` | yes      |             |
 | remove      | property | `() => void` | yes      |             |
 
-## compileZoraTheme
-
-Kind: `function`
-Module: `src/theme/compileZoraTheme.ts`
-Source: `src/theme/compileZoraTheme.ts:25:1`
-
-Compile canonical theme source into Color Theory evidence and resolved Surface themes.
-This function is pure and does not mount React or reproduce owner algorithms.
-
-### Signatures
-
-- `(themeConfig: ThemeConfig, options?: ZoraThemeCompilationOptions) => ZoraComputedTheme`
-  - options: `ZoraThemeCompilationOptions` (optional)
-  - themeConfig: `ThemeConfig`
-  - returns: `ZoraComputedTheme`
-
 ## ConfirmDialog
 
 Kind: `value`
@@ -1247,9 +1231,7 @@ Source: `src/patterns/content-rail/types.ts:15:1`
 
 Kind: `function`
 Module: `src/theme/createZoraThemeConfig.ts`
-Source: `src/theme/createZoraThemeConfig.ts:8:1`
-
-Convert the concise ZORA design seed into canonical persisted theme source.
+Source: `src/theme/createZoraThemeConfig.ts:7:1`
 
 ### Signatures
 
@@ -2229,7 +2211,7 @@ Kind: `value`
 Module: `src/components/icon/Icon.tsx`
 Source: `src/components/icon/Icon.tsx:21:14`
 
-Renders either a named font icon or an SVG source through Surface with theme-aware defaults.
+Renders an icon from a configured icon provider with theme-aware defaults.
 
 ## IconButton
 
@@ -2788,37 +2770,6 @@ Source: `src/components/metric-card/types.ts:7:1`
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
 | tone              | property | `ZoraCardTone \| undefined`                                                                                                                   | no       |             |
 | value             | property | `React.ReactNode`                                                                                                                             | yes      |             |
-
-## MissingElement
-
-Kind: `value`
-Module: `src/patterns/missing-element/MissingElement.tsx`
-Source: `src/patterns/missing-element/MissingElement.tsx:73:14`
-
-Draft-only marker that preserves an unsupported manifest region without faking its capability.
-
-`MissingElement` is intentionally non-interactive and release-blocking in component metadata.
-Replace it with a released semantic ZORA element before publishing a production template.
-
-## MissingElementProps
-
-Kind: `type`
-Module: `src/patterns/missing-element/types.ts`
-Source: `src/patterns/missing-element/types.ts:3:1`
-
-### Members
-
-| Name                | Kind     | Type                             | Required | Description |
-| ------------------- | -------- | -------------------------------- | -------- | ----------- |
-| evidenceId          | property | `string \| undefined`            | no       |             |
-| interactionPolicy   | property | `InteractionPolicy \| undefined` | no       |             |
-| minimumHeight       | property | `number \| undefined`            | no       |             |
-| minimumWidth        | property | `number \| undefined`            | no       |             |
-| mode                | property | `ZoraThemeMode \| undefined`     | no       |             |
-| reason              | property | `string`                         | yes      |             |
-| requestedCapability | property | `string`                         | yes      |             |
-| testID              | property | `string \| undefined`            | no       |             |
-| themeId             | property | `string \| undefined`            | no       |             |
 
 ## Modal
 
@@ -5548,13 +5499,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:101:14`
+Source: `src/metadata/componentMeta.ts:100:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:247:14`
+Source: `src/registry.ts:245:14`
 
 ## ZORA_EMPHASES
 
@@ -5687,25 +5638,11 @@ Source: `src/metadata/types.ts:50:1`
 | ------ | -------- | ---------------------------------------------------------- | -------- | ----------- |
 | fields | property | `readonly { keyProp: string; defaultTextProp: string; }[]` | yes      |             |
 
-## ZoraComponentManifestPolicy
-
-Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:77:1`
-
-### Members
-
-| Name         | Kind     | Type                   | Required | Description |
-| ------------ | -------- | ---------------------- | -------- | ----------- |
-| availability | property | `"draft-only"`         | yes      |             |
-| kind         | property | `"unresolved-element"` | yes      |             |
-| releaseGate  | property | `"blocked"`            | yes      |             |
-
 ## ZoraComponentMeta
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:83:1`
+Source: `src/metadata/types.ts:77:1`
 
 ### Members
 
@@ -5718,7 +5655,6 @@ Source: `src/metadata/types.ts:83:1`
 | directManifestNode | property | `boolean`                                                       | yes      |             |
 | events             | property | `Readonly<Record<string, ZoraComponentEventMeta>> \| undefined` | no       |             |
 | i18n               | property | `ZoraComponentI18nMeta \| undefined`                            | no       |             |
-| manifestPolicy     | property | `ZoraComponentManifestPolicy \| undefined`                      | no       |             |
 | name               | property | `string`                                                        | yes      |             |
 | note               | property | `string \| undefined`                                           | no       |             |
 | props              | property | `Readonly<Record<string, ZoraComponentPropSchema>>`             | yes      |             |
@@ -5729,7 +5665,7 @@ Source: `src/metadata/types.ts:83:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:99:1`
+Source: `src/metadata/types.ts:92:1`
 
 ## ZoraComponentPropArrayItemSchema
 
@@ -5785,7 +5721,7 @@ Source: `src/metadata/types.ts:12:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:105:1`
+Source: `src/registry.ts:104:1`
 
 ## ZoraComponentSlotMeta
 
@@ -5804,34 +5740,34 @@ Source: `src/metadata/types.ts:72:1`
 
 Kind: `type`
 Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:74:1`
+Source: `src/theme/types.ts:30:1`
 
 ### Members
 
-| Name        | Kind     | Type                                        | Required | Description |
-| ----------- | -------- | ------------------------------------------- | -------- | ----------- |
-| dark        | property | `ZoraComputedThemeMode`                     | yes      |             |
-| diagnostics | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes      |             |
-| light       | property | `ZoraComputedThemeMode`                     | yes      |             |
-| provenance  | property | `readonly ZoraThemeProvenanceEntry[]`       | yes      |             |
-| themeConfig | property | `ThemeConfig`                               | yes      |             |
+| Name          | Kind     | Type                    | Required | Description |
+| ------------- | -------- | ----------------------- | -------- | ----------- |
+| dark          | property | `ZoraComputedThemeMode` | yes      |             |
+| id            | property | `string`                | yes      |             |
+| light         | property | `ZoraComputedThemeMode` | yes      |             |
+| name          | property | `string`                | yes      |             |
+| source        | property | `ZoraTheme`             | yes      |             |
+| surfaceConfig | property | `ThemeConfig`           | yes      |             |
 
 ## ZoraComputedThemeMode
 
 Kind: `type`
 Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:65:1`
+Source: `src/theme/types.ts:22:1`
 
 ### Members
 
-| Name         | Kind     | Type                                        | Required | Description |
-| ------------ | -------- | ------------------------------------------- | -------- | ----------- |
-| diagnostics  | property | `readonly ZoraThemeCompilationDiagnostic[]` | yes      |             |
-| generated    | property | `GeneratedThemeModeColors`                  | yes      |             |
-| mode         | property | `ZoraThemeMode`                             | yes      |             |
-| provenance   | property | `readonly ZoraThemeProvenanceEntry[]`       | yes      |             |
-| selections   | property | `readonly ZoraThemeSelectionResult[]`       | yes      |             |
-| surfaceTheme | property | `SurfaceTheme`                              | yes      |             |
+| Name           | Kind     | Type                                              | Required | Description |
+| -------------- | -------- | ------------------------------------------------- | -------- | ----------- |
+| generated      | property | `GeneratedThemeModeColors`                        | yes      |             |
+| mode           | property | `ZoraThemeMode`                                   | yes      |             |
+| semanticColors | property | `Record<SemanticColorToken, string> \| undefined` | no       |             |
+| surfaceTheme   | property | `SurfaceTheme`                                    | yes      |             |
+| swatches       | property | `GeneratedThemeSwatches`                          | yes      |             |
 
 ## zoraDefaultTheme
 
@@ -6031,78 +5967,29 @@ Source: `src/patterns/zora-tab-bar/types.ts:9:1`
 
 Kind: `type`
 Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:17:1`
+Source: `src/theme/types.ts:14:1`
 
 ### Members
 
 | Name         | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required | Description |
 | ------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
 | appCategory  | property | `"books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "medical" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather"` | yes      |             |
-| harmony      | property | `"square" \| "complementary" \| "monochromatic" \| "analogous" \| "splitComplementary" \| "triadic" \| "tetradic"`                                                                                                                                                                                                                                                                                                                            | yes      |             |
+| harmony      | property | `"complementary" \| "monochromatic" \| "analogous" \| "triadic" \| "tetradic" \| "splitComplementary"`                                                                                                                                                                                                                                                                                                                                        | yes      |             |
 | id           | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
 | name         | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
 | primaryColor | property | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                      | yes      |             |
-
-## ZoraThemeCompilationDiagnostic
-
-Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:48:1`
-
-### Members
-
-| Name     | Kind     | Type                                 | Required | Description |
-| -------- | -------- | ------------------------------------ | -------- | ----------- |
-| code     | property | `ZoraThemeCompilationDiagnosticCode` | yes      |             |
-| message  | property | `string`                             | yes      |             |
-| mode     | property | `ZoraThemeMode`                      | yes      |             |
-| path     | property | `string`                             | yes      |             |
-| severity | property | `"error"`                            | yes      |             |
-
-## ZoraThemeCompilationDiagnosticCode
-
-Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:45:1`
-
-## ZoraThemeCompilationOptions
-
-Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:36:1`
-
-### Members
-
-| Name             | Kind     | Type                                                                               | Required | Description |
-| ---------------- | -------- | ---------------------------------------------------------------------------------- | -------- | ----------- |
-| selectionTargets | property | `Partial<Record<ZoraThemeMode, readonly ZoraThemeSelectionTarget[]>> \| undefined` | no       |             |
 
 ## ZoraThemeId
 
 Kind: `unknown`
 Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:13:1`
+Source: `src/theme/types.ts:10:1`
 
 ## ZoraThemeMode
 
 Kind: `unknown`
 Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:15:1`
-
-## ZoraThemeProvenanceEntry
-
-Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:58:1`
-
-### Members
-
-| Name   | Kind     | Type                             | Required | Description |
-| ------ | -------- | -------------------------------- | -------- | ----------- |
-| inputs | property | `readonly string[] \| undefined` | no       |             |
-| origin | property | `ZoraThemeValueOrigin`           | yes      |             |
-| owner  | property | `string`                         | yes      |             |
-| path   | property | `string`                         | yes      |             |
+Source: `src/theme/types.ts:12:1`
 
 ## ZoraThemeRecipeBooleanFieldMeta
 
@@ -6210,49 +6097,8 @@ Source: `src/theme/ZoraThemeScope.tsx:8:1`
 | mode     | property | `ZoraThemeMode \| undefined` | no       |             |
 | themeId  | property | `string \| undefined`        | no       |             |
 
-## ZoraThemeSelectionResult
-
-Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:40:1`
-
-### Members
-
-| Name    | Kind     | Type                                 | Required | Description |
-| ------- | -------- | ------------------------------------ | -------- | ----------- |
-| request | property | `ZoraThemeSelectionTarget`           | yes      |             |
-| result  | property | `ColorSwatchSelectionResult \| null` | yes      |             |
-
-## ZoraThemeSelectionTarget
-
-Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:28:1`
-
-### Members
-
-| Name      | Kind     | Type                              | Required | Description |
-| --------- | -------- | --------------------------------- | -------- | ----------- |
-| contexts  | property | `readonly ColorContrastContext[]` | yes      |             |
-| id        | property | `string`                          | yes      |             |
-| swatch    | property | `keyof GeneratedThemeSwatches`    | yes      |             |
-| target    | property | `ColorSelectionTarget`            | yes      |             |
-| tiePolicy | property | `ColorSwatchTiePolicy`            | yes      |             |
-
-## ZoraThemeSwatchRole
-
-Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:25:1`
-
 ## ZoraThemeTokenFamily
 
 Kind: `unknown`
 Module: `src/metadata/themeRecipeTypes.ts`
 Source: `src/metadata/themeRecipeTypes.ts:9:1`
-
-## ZoraThemeValueOrigin
-
-Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:56:1`

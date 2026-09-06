@@ -15,6 +15,11 @@ ZORA_THEME_RECIPE_META
 
 Neither component metadata nor theme recipe metadata contains React components. Runtime and Studio consume these registries; they do not recreate or merge ZORA ownership.
 
+`Icon` and `Image` are direct manifest leaves accepted by normal screen containers. Their `source`
+props support media-registry references (`{ mediaId }`): use standalone SVG assets for `Icon` and
+application imagery for `Image`. The host media resolver supplies the renderable source; screen
+mockups remain separate design evidence.
+
 ## Prop authoring authority
 
 A prop participates in authoring only when its schema has `authoring` metadata.

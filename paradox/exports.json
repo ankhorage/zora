@@ -4521,44 +4521,6 @@
     "structuredRows": []
   },
   {
-    "name": "compileZoraTheme",
-    "description": "Compile canonical theme source into Color Theory evidence and resolved Surface themes.\nThis function is pure and does not mount React or reproduce owner algorithms.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "function",
-    "modulePath": "src/theme/compileZoraTheme.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/compileZoraTheme.ts",
-      "line": 25,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComputedTheme", "ZoraThemeCompilationOptions"],
-    "signatures": [
-      {
-        "label": "(themeConfig: ThemeConfig, options?: ZoraThemeCompilationOptions) => ZoraComputedTheme",
-        "parameters": [
-          {
-            "name": "options",
-            "type": "ZoraThemeCompilationOptions",
-            "required": false,
-            "description": null
-          },
-          {
-            "name": "themeConfig",
-            "type": "ThemeConfig",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "ZoraComputedTheme",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "ConfirmDialog",
     "description": "Confirmation dialog pattern with cancel/confirm actions.",
     "isReadme": false,
@@ -5391,14 +5353,14 @@
   },
   {
     "name": "createZoraThemeConfig",
-    "description": "Convert the concise ZORA design seed into canonical persisted theme source.",
+    "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/theme/createZoraThemeConfig.ts",
     "sourceLocation": {
       "filePath": "src/theme/createZoraThemeConfig.ts",
-      "line": 8,
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -9168,7 +9130,7 @@
   },
   {
     "name": "Icon",
-    "description": "Renders either a named font icon or an SVG source through Surface with theme-aware defaults.",
+    "description": "Renders an icon from a configured icon provider with theme-aware defaults.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
@@ -11351,106 +11313,6 @@
         "kind": "property",
         "type": "React.ReactNode",
         "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "MissingElement",
-    "description": "Draft-only marker that preserves an unsupported manifest region without faking its capability.\n\n`MissingElement` is intentionally non-interactive and release-blocking in component metadata.\nReplace it with a released semantic ZORA element before publishing a production template.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/missing-element/MissingElement.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/missing-element/MissingElement.tsx",
-      "line": 73,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "MissingElementProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/missing-element/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/missing-element/types.ts",
-      "line": 3,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "evidenceId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minimumHeight",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minimumWidth",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "reason",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "requestedCapability",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
         "description": null
       }
     ],
@@ -21889,7 +21751,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 101,
+      "line": 100,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21907,7 +21769,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 247,
+      "line": 245,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22304,7 +22166,7 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraComponentManifestPolicy",
+    "name": "ZoraComponentMeta",
     "description": null,
     "isReadme": false,
     "examples": [],
@@ -22316,52 +22178,11 @@
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "availability",
-        "kind": "property",
-        "type": "\"draft-only\"",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "kind",
-        "kind": "property",
-        "type": "\"unresolved-element\"",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "releaseGate",
-        "kind": "property",
-        "type": "\"blocked\"",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraComponentMeta",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/metadata/types.ts",
-    "sourceLocation": {
-      "filePath": "src/metadata/types.ts",
-      "line": 83,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [
       "ZoraComponentBlueprint",
       "ZoraComponentCategory",
       "ZoraComponentEventMeta",
       "ZoraComponentI18nMeta",
-      "ZoraComponentManifestPolicy",
       "ZoraComponentPropSchema",
       "ZoraComponentSlotMeta"
     ],
@@ -22417,13 +22238,6 @@
         "description": null
       },
       {
-        "name": "manifestPolicy",
-        "kind": "property",
-        "type": "ZoraComponentManifestPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
         "name": "name",
         "kind": "property",
         "type": "string",
@@ -22470,7 +22284,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 99,
+      "line": 92,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22654,7 +22468,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 105,
+      "line": 104,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22705,15 +22519,11 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 74,
+      "line": 30,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "ZoraComputedThemeMode",
-      "ZoraThemeCompilationDiagnostic",
-      "ZoraThemeProvenanceEntry"
-    ],
+    "relatedSymbols": ["ZoraComputedThemeMode", "ZoraTheme"],
     "signatures": [],
     "members": [
       {
@@ -22724,9 +22534,9 @@
         "description": null
       },
       {
-        "name": "diagnostics",
+        "name": "id",
         "kind": "property",
-        "type": "readonly ZoraThemeCompilationDiagnostic[]",
+        "type": "string",
         "required": true,
         "description": null
       },
@@ -22738,14 +22548,21 @@
         "description": null
       },
       {
-        "name": "provenance",
+        "name": "name",
         "kind": "property",
-        "type": "readonly ZoraThemeProvenanceEntry[]",
+        "type": "string",
         "required": true,
         "description": null
       },
       {
-        "name": "themeConfig",
+        "name": "source",
+        "kind": "property",
+        "type": "ZoraTheme",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "surfaceConfig",
         "kind": "property",
         "type": "ThemeConfig",
         "required": true,
@@ -22763,25 +22580,13 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 65,
+      "line": 22,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "ZoraThemeCompilationDiagnostic",
-      "ZoraThemeMode",
-      "ZoraThemeProvenanceEntry",
-      "ZoraThemeSelectionResult"
-    ],
+    "relatedSymbols": ["ZoraThemeMode"],
     "signatures": [],
     "members": [
-      {
-        "name": "diagnostics",
-        "kind": "property",
-        "type": "readonly ZoraThemeCompilationDiagnostic[]",
-        "required": true,
-        "description": null
-      },
       {
         "name": "generated",
         "kind": "property",
@@ -22797,23 +22602,23 @@
         "description": null
       },
       {
-        "name": "provenance",
+        "name": "semanticColors",
         "kind": "property",
-        "type": "readonly ZoraThemeProvenanceEntry[]",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "selections",
-        "kind": "property",
-        "type": "readonly ZoraThemeSelectionResult[]",
-        "required": true,
+        "type": "Record<SemanticColorToken, string> | undefined",
+        "required": false,
         "description": null
       },
       {
         "name": "surfaceTheme",
         "kind": "property",
         "type": "SurfaceTheme",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "swatches",
+        "kind": "property",
+        "type": "GeneratedThemeSwatches",
         "required": true,
         "description": null
       }
@@ -23439,7 +23244,7 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 17,
+      "line": 14,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23456,7 +23261,7 @@
       {
         "name": "harmony",
         "kind": "property",
-        "type": "\"square\" | \"complementary\" | \"monochromatic\" | \"analogous\" | \"splitComplementary\" | \"triadic\" | \"tetradic\"",
+        "type": "\"complementary\" | \"monochromatic\" | \"analogous\" | \"triadic\" | \"tetradic\" | \"splitComplementary\"",
         "required": true,
         "description": null
       },
@@ -23485,104 +23290,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraThemeCompilationDiagnostic",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 48,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeCompilationDiagnosticCode", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "code",
-        "kind": "property",
-        "type": "ZoraThemeCompilationDiagnosticCode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "message",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "path",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "severity",
-        "kind": "property",
-        "type": "\"error\"",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeCompilationDiagnosticCode",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 45,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeCompilationOptions",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 36,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode", "ZoraThemeSelectionTarget"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "selectionTargets",
-        "kind": "property",
-        "type": "Partial<Record<ZoraThemeMode, readonly ZoraThemeSelectionTarget[]>> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ZoraThemeId",
     "description": null,
     "isReadme": false,
@@ -23591,7 +23298,7 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 13,
+      "line": 10,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23609,60 +23316,13 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 15,
+      "line": 12,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeProvenanceEntry",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 58,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeValueOrigin"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "inputs",
-        "kind": "property",
-        "type": "readonly string[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "origin",
-        "kind": "property",
-        "type": "ZoraThemeValueOrigin",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "owner",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "path",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
@@ -23994,111 +23654,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraThemeSelectionResult",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 40,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeSelectionTarget"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "request",
-        "kind": "property",
-        "type": "ZoraThemeSelectionTarget",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "result",
-        "kind": "property",
-        "type": "ColorSwatchSelectionResult | null",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeSelectionTarget",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 28,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "contexts",
-        "kind": "property",
-        "type": "readonly ColorContrastContext[]",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "id",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "swatch",
-        "kind": "property",
-        "type": "keyof GeneratedThemeSwatches",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "target",
-        "kind": "property",
-        "type": "ColorSelectionTarget",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "tiePolicy",
-        "kind": "property",
-        "type": "ColorSwatchTiePolicy",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeSwatchRole",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 25,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "ZoraThemeTokenFamily",
     "description": null,
     "isReadme": false,
@@ -24108,24 +23663,6 @@
     "sourceLocation": {
       "filePath": "src/metadata/themeRecipeTypes.ts",
       "line": 9,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraThemeValueOrigin",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/theme/types.ts",
-    "sourceLocation": {
-      "filePath": "src/theme/types.ts",
-      "line": 56,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
