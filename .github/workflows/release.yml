@@ -27,7 +27,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.4.0'
+          bun-version: '1.4.1'
 
       - name: Setup Node for npm publishing
         uses: actions/setup-node@v4
@@ -50,6 +50,7 @@ jobs:
           fi
 
       - name: Create release pull request or publish to npm
+        id: changesets
         if: hashFiles('.changeset/config.json') != ''
         uses: changesets/action@v1
         with:
@@ -57,8 +58,58 @@ jobs:
           publish: bun run changeset -- publish
           commit: Version Packages
           title: Version Packages
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Finalize Changesets v3 tags and GitHub releases
+        if: hashFiles('.changeset/config.json') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git tag --points-at HEAD | while IFS= read -r tag; do
+            if [ -z "$tag" ]; then
+              continue
+            fi
+            git push origin "refs/tags/$tag"
+            if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              gh release create "$tag" --repo "$GITHUB_REPOSITORY" --generate-notes
+            fi
+          done
+
+      - name: Create the scoped rollout token
+        id: rollout-token
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
+          private-key: ${{ secrets.ANKHORAGE_RENOVATE_SYNC_PRIVATE_KEY }}
+          owner: ankhorage
+          repositories: renovate
+          permission-contents: write
+
+      - name: Trigger the Devtools consumer rollout
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+        with:
+          github-token: ${{ steps.rollout-token.outputs.token }}
+          script: |
+            const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES ?? '[]');
+            const release = publishedPackages.find(
+              (candidate) => candidate.name === '@ankhorage/devtools',
+            );
+            if (!release || !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version)) {
+              throw new Error('Changesets must report one exact published Devtools version.');
+            }
+
+            await github.rest.repos.createDispatchEvent({
+              owner: 'ankhorage',
+              repo: 'renovate',
+              event_type: 'devtools-release',
+              client_payload: { version: release.version },
+            });
 
       - name: Skip release
         if: hashFiles('.changeset/config.json') == ''
