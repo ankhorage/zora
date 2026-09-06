@@ -11,7 +11,9 @@
       "line": 14,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -29,7 +31,9 @@
       "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -47,8 +51,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -157,8 +165,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -253,7 +265,9 @@
       "line": 139,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -271,7 +285,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -289,7 +305,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -336,8 +354,14 @@
       "line": 26,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AppBarMode", "AppBarOverflowAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AppBarMode",
+      "AppBarOverflowAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -452,7 +476,9 @@
       "line": 45,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -470,8 +496,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -545,8 +575,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -620,7 +654,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -638,7 +674,9 @@
       "line": 148,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -656,7 +694,9 @@
       "line": 78,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -674,7 +714,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -742,8 +784,15 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarGroupItem", "AvatarShape", "AvatarSize", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarGroupItem",
+      "AvatarShape",
+      "AvatarSize",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -824,8 +873,14 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -927,7 +982,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -945,7 +1002,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -963,7 +1022,9 @@
       "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -981,8 +1042,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1056,7 +1121,9 @@
       "line": 130,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1074,8 +1141,14 @@
       "line": 32,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["BarcodeScanResult", "CameraPermissionStatus", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "BarcodeScanResult",
+      "CameraPermissionStatus",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1219,7 +1292,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -1252,7 +1327,9 @@
       "line": 23,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1270,8 +1347,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1625,7 +1706,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -1679,7 +1762,9 @@
       "line": 147,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1697,8 +1782,13 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["BreadcrumbItem", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "BreadcrumbItem",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1785,7 +1875,9 @@
       "line": 43,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1803,7 +1895,9 @@
       "line": 109,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1821,7 +1915,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1839,7 +1935,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -1857,8 +1955,14 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ButtonGroupAlign", "ButtonGroupOrientation", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ButtonGroupAlign",
+      "ButtonGroupOrientation",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -1939,8 +2043,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2343,7 +2451,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2361,7 +2471,9 @@
       "line": 112,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2379,8 +2491,13 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ButtonProps", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ButtonProps",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2502,7 +2619,9 @@
       "line": 92,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2520,8 +2639,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -2917,7 +3040,9 @@
       "line": 26,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -2935,8 +3060,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3297,8 +3426,13 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3365,7 +3499,9 @@
       "line": 227,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3383,8 +3519,13 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ChatListAvatar", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChatListAvatar",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3528,7 +3669,9 @@
       "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3546,7 +3689,9 @@
       "line": 65,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -3564,7 +3709,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -3618,8 +3765,13 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["CheckboxGroupOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CheckboxGroupOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -3735,8 +3887,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4125,7 +4281,9 @@
       "line": 97,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4143,7 +4301,9 @@
       "line": 74,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4161,7 +4321,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -4215,7 +4377,9 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4233,8 +4397,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4329,7 +4497,9 @@
       "line": 122,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4347,8 +4517,13 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["CollectionEditorRenderItemProps", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CollectionEditorRenderItemProps",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4464,7 +4639,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -4521,6 +4698,49 @@
     "structuredRows": []
   },
   {
+    "name": "compileZoraTheme",
+    "description": "Compile canonical theme source into Color Theory evidence and resolved Surface themes.\nThis function is pure and does not mount React or reproduce owner algorithms.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/theme/compileZoraTheme.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/compileZoraTheme.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComputedTheme",
+      "ZoraThemeCompilationOptions"
+    ],
+    "signatures": [
+      {
+        "label": "(themeConfig: ThemeConfig, options?: ZoraThemeCompilationOptions) => ZoraComputedTheme",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "ZoraThemeCompilationOptions",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "themeConfig",
+            "type": "ThemeConfig",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ZoraComputedTheme",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ConfirmDialog",
     "description": "Confirmation dialog pattern with cancel/confirm actions.",
     "isReadme": false,
@@ -4532,7 +4752,9 @@
       "line": 69,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4550,8 +4772,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -4681,7 +4907,9 @@
       "line": 27,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -4699,8 +4927,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5054,7 +5286,9 @@
       "line": 233,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5072,7 +5306,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -5105,7 +5341,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5123,7 +5361,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5141,7 +5381,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5159,7 +5401,9 @@
       "line": 21,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ContentRailControlPressEvent",
       "ContentRailDirection",
@@ -5305,7 +5549,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5323,7 +5569,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -5353,18 +5601,22 @@
   },
   {
     "name": "createZoraThemeConfig",
-    "description": null,
+    "description": "Convert the concise ZORA design seed into canonical persisted theme source.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/theme/createZoraThemeConfig.ts",
     "sourceLocation": {
       "filePath": "src/theme/createZoraThemeConfig.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme"
+    ],
     "signatures": [
       {
         "label": "(theme?: ZoraTheme) => ThemeConfig",
@@ -5395,7 +5647,9 @@
       "line": 408,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5413,8 +5667,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableColumn"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableColumn"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5460,8 +5718,13 @@
       "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableCellContext", "DataTableColumnAlign"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableCellContext",
+      "DataTableColumnAlign"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5535,7 +5798,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5553,7 +5818,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5571,7 +5838,9 @@
       "line": 44,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "DataTableColumn",
       "DataTableDensity",
@@ -5701,8 +5970,12 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuActionIntent"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuActionIntent"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5769,7 +6042,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5787,8 +6062,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DataTableSortDirection"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DataTableSortDirection"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5820,7 +6099,9 @@
       "line": 279,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5838,8 +6119,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["DatePickerValue", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "DatePickerValue",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -5962,7 +6248,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5980,7 +6268,9 @@
       "line": 3,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -5998,7 +6288,9 @@
       "line": 130,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6016,8 +6308,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6126,7 +6422,9 @@
       "line": 27,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6144,8 +6442,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6499,7 +6801,9 @@
       "line": 59,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6517,8 +6821,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6620,8 +6928,12 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuProps"
+    ],
     "signatures": [
       {
         "label": "(props: import(\"./types\").MenuProps) => React.JSX.Element",
@@ -6652,7 +6964,9 @@
       "line": 31,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6676,7 +6990,9 @@
       "line": 74,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6694,7 +7010,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -6741,8 +7059,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["EmptyStateAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "EmptyStateAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6830,7 +7153,9 @@
       "line": 31,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6848,8 +7173,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -6923,7 +7252,9 @@
       "line": 97,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -6941,8 +7272,14 @@
       "line": 49,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind", "ForgotPasswordFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind",
+      "ForgotPasswordFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7051,8 +7388,12 @@
       "line": 44,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7084,7 +7425,9 @@
       "line": 74,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7102,7 +7445,9 @@
       "line": 38,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7120,8 +7465,12 @@
       "line": 64,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7202,7 +7551,9 @@
       "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7220,8 +7571,12 @@
       "line": 72,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7274,7 +7629,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7292,7 +7649,9 @@
       "line": 157,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7310,8 +7669,13 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldInputType", "ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldInputType",
+      "ValidationRule"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7448,8 +7812,13 @@
       "line": 52,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7537,7 +7906,9 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7555,7 +7926,9 @@
       "line": 61,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7573,8 +7946,14 @@
       "line": 76,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7704,7 +8083,9 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7722,7 +8103,9 @@
       "line": 91,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -7755,7 +8138,9 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7773,7 +8158,9 @@
       "line": 58,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7791,7 +8178,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7809,7 +8198,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7827,7 +8218,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -7845,7 +8238,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -7878,8 +8273,15 @@
       "line": 32,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["GradientColors", "GradientLocations", "GradientPoint", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GradientColors",
+      "GradientLocations",
+      "GradientPoint",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -7995,7 +8397,9 @@
       "line": 25,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8013,8 +8417,14 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["GradientColors", "GradientLocations", "GradientPoint"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GradientColors",
+      "GradientLocations",
+      "GradientPoint"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8074,8 +8484,12 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["GradientRendererProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GradientRendererProviderProps"
+    ],
     "signatures": [
       {
         "label": "({ children, renderer }: GradientRendererProviderProps) => React.JSX.Element",
@@ -8106,8 +8520,12 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["GradientRenderer"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GradientRenderer"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8139,7 +8557,9 @@
       "line": 23,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8157,8 +8577,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -8547,8 +8971,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ValidationRule"
+    ],
     "signatures": [
       {
         "label": "(rules: readonly ValidationRule[] | undefined) => boolean",
@@ -8585,7 +9013,9 @@
       "line": 114,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8603,7 +9033,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8621,7 +9053,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8639,7 +9073,9 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8657,7 +9093,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8675,7 +9113,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "HeadingAlign",
       "HeadingLevel",
@@ -8854,7 +9294,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8872,7 +9314,9 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8890,7 +9334,9 @@
       "line": 131,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8908,7 +9354,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -8962,7 +9410,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8980,7 +9430,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -8998,8 +9450,16 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["HeroAction", "HeroAlign", "HeroLayout", "HeroTone", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "HeroAction",
+      "HeroAlign",
+      "HeroLayout",
+      "HeroTone",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9122,7 +9582,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9130,7 +9592,7 @@
   },
   {
     "name": "Icon",
-    "description": "Renders an icon from a configured icon provider with theme-aware defaults.",
+    "description": "Renders either a named font icon or an SVG source through Surface with theme-aware defaults.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
@@ -9140,7 +9602,9 @@
       "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9158,7 +9622,9 @@
       "line": 37,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9176,8 +9642,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9279,7 +9749,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9297,7 +9769,9 @@
       "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9315,7 +9789,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9333,7 +9809,9 @@
       "line": 82,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9351,8 +9829,13 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraImageAsset", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraImageAsset",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9433,8 +9916,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceImageSource", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SurfaceImageSource",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9564,7 +10052,9 @@
       "line": 319,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9582,7 +10072,9 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ImageUploadProgressContext",
       "ZoraImageAsset",
@@ -9760,7 +10252,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -9786,7 +10280,9 @@
       "line": 26,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -9804,8 +10300,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10193,7 +10693,9 @@
       "line": 69,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10211,7 +10713,9 @@
       "line": 33,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10229,8 +10733,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["Surface"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "Surface"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10269,7 +10777,9 @@
       "line": 32,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10287,8 +10797,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10404,7 +10918,9 @@
       "line": 77,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10422,8 +10938,12 @@
       "line": 43,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10476,8 +10996,14 @@
       "line": 37,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ListRowProps", "ListRowVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ListRowProps",
+      "ListRowVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10544,7 +11070,9 @@
       "line": 47,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10562,7 +11090,9 @@
       "line": 198,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10580,7 +11110,9 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10598,7 +11130,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10616,7 +11150,9 @@
       "line": 41,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10634,7 +11170,9 @@
       "line": 125,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10652,7 +11190,9 @@
       "line": 25,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10670,7 +11210,9 @@
       "line": 42,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10688,7 +11230,9 @@
       "line": 59,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10706,7 +11250,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -10795,7 +11341,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10813,8 +11361,13 @@
       "line": 25,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MenuAction", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MenuAction",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10888,7 +11441,9 @@
       "line": 272,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -10906,8 +11461,12 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MessageBubbleAvatar"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MessageBubbleAvatar"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10939,8 +11498,13 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11007,7 +11571,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11025,8 +11591,14 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["MessageBubbleAuthor", "MessageBubbleDirection", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "MessageBubbleAuthor",
+      "MessageBubbleDirection",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11177,7 +11749,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11195,7 +11769,9 @@
       "line": 82,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11213,8 +11789,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11319,6 +11899,112 @@
     "structuredRows": []
   },
   {
+    "name": "MissingElement",
+    "description": "Draft-only marker that preserves an unsupported manifest region without faking its capability.\n\n`MissingElement` is intentionally non-interactive and release-blocking in component metadata.\nReplace it with a released semantic ZORA element before publishing a production template.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/patterns/missing-element/MissingElement.tsx",
+    "sourceLocation": {
+      "filePath": "src/patterns/missing-element/MissingElement.tsx",
+      "line": 73,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "MissingElementProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/patterns/missing-element/types.ts",
+    "sourceLocation": {
+      "filePath": "src/patterns/missing-element/types.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "evidenceId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minimumHeight",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minimumWidth",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "reason",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requestedCapability",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Modal",
     "description": "Modal dialog surface with header/content/footer slots.",
     "isReadme": false,
@@ -11330,7 +12016,9 @@
       "line": 63,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11348,8 +12036,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11451,7 +12143,9 @@
       "line": 41,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11469,8 +12163,14 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraNavigationRouteState",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11551,7 +12251,9 @@
       "line": 68,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11569,8 +12271,14 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraNavigationRouteState",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11672,7 +12380,9 @@
       "line": 41,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11690,8 +12400,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11772,7 +12486,9 @@
       "line": 53,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11790,8 +12506,12 @@
       "line": 81,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -11907,7 +12627,9 @@
       "line": 71,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11925,7 +12647,9 @@
       "line": 73,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -11979,7 +12703,9 @@
       "line": 56,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -11997,7 +12723,9 @@
       "line": 94,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12015,8 +12743,14 @@
       "line": 96,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OAuthProviderItem", "OAuthProviderListLayout", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "OAuthProviderItem",
+      "OAuthProviderListLayout",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12125,7 +12859,9 @@
       "line": 93,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12143,8 +12879,13 @@
       "line": 61,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["OtpFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "OtpFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12267,7 +13008,9 @@
       "line": 57,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -12293,7 +13036,9 @@
       "line": 199,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12311,8 +13056,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12442,7 +13191,9 @@
       "line": 62,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12460,8 +13211,12 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12556,7 +13311,9 @@
       "line": 26,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12574,8 +13331,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12691,7 +13452,9 @@
       "line": 41,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -12759,8 +13522,12 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["PostAuthorAvatar"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PostAuthorAvatar"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12799,8 +13566,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AvatarShape", "AvatarSize"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AvatarShape",
+      "AvatarSize"
+    ],
     "signatures": [],
     "members": [
       {
@@ -12867,7 +13639,9 @@
       "line": 241,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12885,7 +13659,9 @@
       "line": 39,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -12903,8 +13679,15 @@
       "line": 59,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["PostAction", "PostAuthor", "PostCardMedia", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PostAction",
+      "PostAuthor",
+      "PostCardMedia",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13027,7 +13810,9 @@
       "line": 141,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13045,8 +13830,12 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13204,7 +13993,9 @@
       "line": 54,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13222,8 +14013,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13297,7 +14092,9 @@
       "line": 151,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13315,8 +14112,12 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13432,7 +14233,9 @@
       "line": 14,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13450,7 +14253,9 @@
       "line": 64,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -13468,7 +14273,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -13522,8 +14329,13 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["RadioGroupOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "RadioGroupOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -13639,8 +14451,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14029,7 +14845,9 @@
       "line": 42,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14047,8 +14865,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14122,7 +14944,9 @@
       "line": 32,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14140,7 +14964,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14158,7 +14984,9 @@
       "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14176,8 +15004,13 @@
       "line": 26,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ReaderDocumentFormat", "ReaderErrorCode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ReaderDocumentFormat",
+      "ReaderErrorCode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14216,7 +15049,9 @@
       "line": 38,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -14242,7 +15077,9 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14260,8 +15097,13 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ReaderDocumentFormat", "ReaderNavigationTrigger"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ReaderDocumentFormat",
+      "ReaderNavigationTrigger"
+    ],
     "signatures": [],
     "members": [
       {
@@ -14335,7 +15177,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14353,7 +15197,9 @@
       "line": 36,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14371,7 +15217,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14389,7 +15237,9 @@
       "line": 348,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14407,7 +15257,9 @@
       "line": 42,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ReaderColorScheme",
       "ReaderDocumentFormat",
@@ -14723,7 +15575,9 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -14755,7 +15609,9 @@
       "line": 52,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -14787,7 +15643,9 @@
       "line": 56,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -14819,7 +15677,9 @@
       "line": 1,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -14857,7 +15717,9 @@
       "line": 172,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14875,7 +15737,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14893,7 +15757,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -14911,7 +15777,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ResponsivePanelDesktopMode",
       "ResponsivePanelMobileMode",
@@ -15056,7 +15924,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15074,7 +15944,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15092,7 +15964,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15110,7 +15984,9 @@
       "line": 100,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15128,8 +16004,12 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15196,7 +16076,9 @@
       "line": 47,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15214,8 +16096,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15289,7 +16175,9 @@
       "line": 31,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15307,8 +16195,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15382,7 +16274,9 @@
       "line": 59,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15400,8 +16294,12 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15510,7 +16408,9 @@
       "line": 52,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15528,8 +16428,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15603,7 +16507,9 @@
       "line": 67,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15621,8 +16527,12 @@
       "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectableItemProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectableItemProps"
+    ],
     "signatures": [
       {
         "label": "({\n  id,\n  trigger,\n  disabled = false,\n  interactionPolicy,\n  children,\n}: SelectableItemProps) => React.JSX.Element",
@@ -15653,8 +16563,13 @@
       "line": 40,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectableItemState", "SelectionTrigger"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectableItemState",
+      "SelectionTrigger"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15707,8 +16622,12 @@
       "line": 30,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15775,7 +16694,9 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15793,8 +16714,12 @@
       "line": 40,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionProviderProps"
+    ],
     "signatures": [
       {
         "label": "({\n  children,\n  selectedIds,\n  defaultSelectedIds,\n  mode,\n  disabled,\n  onSelectionChange,\n  interactionPolicy,\n}: SelectionProviderProps) => React.JSX.Element",
@@ -15825,8 +16750,12 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -15893,7 +16822,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -15911,7 +16842,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -15951,8 +16884,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectOption", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectOption",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16033,7 +16971,9 @@
       "line": 35,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16051,8 +16991,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16133,7 +17077,9 @@
       "line": 53,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16151,7 +17097,9 @@
       "line": 27,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16169,7 +17117,9 @@
       "line": 23,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16187,8 +17137,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16255,7 +17209,9 @@
       "line": 46,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16273,8 +17229,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16362,7 +17322,9 @@
       "line": 125,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16380,8 +17342,14 @@
       "line": 23,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind", "SignInFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind",
+      "SignInFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16511,8 +17479,12 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["AuthIdentifierKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthIdentifierKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16551,7 +17523,9 @@
       "line": 89,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16569,7 +17543,9 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16587,8 +17563,14 @@
       "line": 37,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SignUpFormField", "SignUpFormValues", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SignUpFormField",
+      "SignUpFormValues",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16690,7 +17672,9 @@
       "line": 34,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16708,7 +17692,9 @@
       "line": 35,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16726,7 +17712,9 @@
       "line": 42,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16744,8 +17732,12 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16819,7 +17811,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16837,7 +17831,9 @@
       "line": 57,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16855,8 +17851,13 @@
       "line": 29,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SkeletonListVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SkeletonListVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -16944,7 +17945,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -16962,8 +17965,12 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17030,7 +18037,9 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17048,7 +18057,9 @@
       "line": 50,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17066,8 +18077,12 @@
       "line": 14,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17148,7 +18163,9 @@
       "line": 26,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17166,8 +18183,12 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17227,7 +18248,9 @@
       "line": 98,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17245,7 +18268,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17263,8 +18288,13 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SplashScreenLogoShape", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SplashScreenLogoShape",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17373,7 +18403,9 @@
       "line": 23,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17391,8 +18423,12 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -17781,7 +18817,9 @@
       "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17799,7 +18837,9 @@
       "line": 4,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -17817,8 +18857,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SurfaceVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18158,7 +19203,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18176,7 +19223,9 @@
       "line": 42,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18194,8 +19243,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18276,7 +19329,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -18337,7 +19392,9 @@
       "line": 129,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18355,8 +19412,14 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TabItem", "TabsVariant", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabItem",
+      "TabsVariant",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -18444,7 +19507,9 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18468,7 +19533,9 @@
       "line": 111,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18486,7 +19553,9 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18504,7 +19573,9 @@
       "line": 46,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -18522,8 +19593,13 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["Surface", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "Surface",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19689,7 +20765,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19707,7 +20785,9 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19725,8 +20805,15 @@
       "line": 22,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TextAlign", "TextVariant", "TextWeight", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TextAlign",
+      "TextVariant",
+      "TextWeight",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -19898,7 +20985,9 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19916,7 +21005,9 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19934,7 +21025,9 @@
       "line": 322,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -19952,8 +21045,13 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20034,8 +21132,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ThemeModeToggleProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ThemeModeToggleProps"
+    ],
     "signatures": [
       {
         "label": "({\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}: ThemeModeToggleProps) => import(\"react\").JSX.Element",
@@ -20066,7 +21168,9 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20084,7 +21188,9 @@
       "line": 55,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20102,8 +21208,12 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20170,7 +21280,9 @@
       "line": 120,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20188,7 +21300,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -20256,8 +21370,13 @@
       "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TimelineItem", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimelineItem",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20317,7 +21436,9 @@
       "line": 174,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20335,8 +21456,13 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TimePickerValue", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimePickerValue",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20466,7 +21592,9 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20484,7 +21612,9 @@
       "line": 16,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20502,7 +21632,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20520,8 +21652,13 @@
       "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToastStatus", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToastStatus",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20595,8 +21732,12 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToastProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToastProviderProps"
+    ],
     "signatures": [
       {
         "label": "({ children, defaultDuration }: ToastProviderProps) => React.JSX.Element",
@@ -20627,7 +21768,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -20660,7 +21803,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20678,7 +21823,9 @@
       "line": 48,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20696,7 +21843,9 @@
       "line": 28,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20714,8 +21863,12 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20796,7 +21949,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20814,8 +21969,13 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ToolbarPosition", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ToolbarPosition",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20889,7 +22049,9 @@
       "line": 30,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20907,8 +22069,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -20975,7 +22141,9 @@
       "line": 101,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -20993,7 +22161,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -21061,8 +22231,12 @@
       "line": 16,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TreeItemNode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TreeItemNode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21115,7 +22289,9 @@
       "line": 63,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21133,8 +22309,14 @@
       "line": 24,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["TreeItemNode", "TreeItemRenderProps", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TreeItemNode",
+      "TreeItemRenderProps",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21229,8 +22411,13 @@
       "line": 24,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["UseFormControllerOptions", "UseFormControllerResult"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "UseFormControllerOptions",
+      "UseFormControllerResult"
+    ],
     "signatures": [
       {
         "label": "({\n  fields,\n  initialValues,\n  values: controlledValues,\n  errors: externalErrors,\n  onChange,\n  onSubmit,\n  validateOnChange = false,\n}: UseFormControllerOptions<TName>) => UseFormControllerResult<TName>",
@@ -21261,8 +22448,13 @@
       "line": 96,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21329,8 +22521,13 @@
       "line": 106,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormValidationResult", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormValidationResult",
+      "FormValues"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21397,8 +22594,12 @@
       "line": 26,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["UseSelectionResult"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "UseSelectionResult"
+    ],
     "signatures": [
       {
         "label": "() => UseSelectionResult",
@@ -21422,8 +22623,12 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SelectionMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21504,7 +22709,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -21529,13 +22736,15 @@
       "line": 3,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -21554,8 +22763,13 @@
       "line": 58,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValues"
+    ],
     "signatures": [
       {
         "label": "(field: FormFieldConfig<TName>, values: FormValues<TName>) => string | undefined",
@@ -21592,8 +22806,14 @@
       "line": 65,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["FormFieldConfig", "FormValidationResult", "FormValues"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "FormFieldConfig",
+      "FormValidationResult",
+      "FormValues"
+    ],
     "signatures": [
       {
         "label": "(fields: readonly FormFieldConfig<TName>[], values: FormValues<TName>) => FormValidationResult<TName>",
@@ -21630,8 +22850,12 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ValidationRule"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ValidationRule"
+    ],
     "signatures": [
       {
         "label": "(value: string, rules: readonly ValidationRule[] | undefined) => string | undefined",
@@ -21668,7 +22892,9 @@
       "line": 7,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21686,7 +22912,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [
       {
@@ -21718,7 +22946,9 @@
       "line": 6,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21736,7 +22966,9 @@
       "line": 28,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21751,10 +22983,12 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 100,
+      "line": 101,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21769,10 +23003,12 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 245,
+      "line": 247,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21790,7 +23026,9 @@
       "line": 34,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21808,7 +23046,9 @@
       "line": 13,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21826,7 +23066,9 @@
       "line": 21,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21844,7 +23086,9 @@
       "line": 8,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21862,7 +23106,9 @@
       "line": 1,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21880,8 +23126,12 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -21927,7 +23177,9 @@
       "line": 569,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21945,7 +23197,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -21963,8 +23217,12 @@
       "line": 44,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentPropValue"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentPropValue"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22003,7 +23261,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22021,8 +23281,13 @@
       "line": 65,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentEventPayloadFieldMeta", "ZoraComponentEventPayloadKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentEventPayloadFieldMeta",
+      "ZoraComponentEventPayloadKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22068,8 +23333,12 @@
       "line": 58,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentEventPayloadFieldType"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentEventPayloadFieldType"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22115,7 +23384,9 @@
       "line": 55,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22133,7 +23404,9 @@
       "line": 54,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22151,7 +23424,9 @@
       "line": 50,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -22159,6 +23434,48 @@
         "name": "fields",
         "kind": "property",
         "type": "readonly { keyProp: string; defaultTextProp: string; }[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraComponentManifestPolicy",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/metadata/types.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/types.ts",
+      "line": 77,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "availability",
+        "kind": "property",
+        "type": "\"draft-only\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "kind",
+        "kind": "property",
+        "type": "\"unresolved-element\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "releaseGate",
+        "kind": "property",
+        "type": "\"blocked\"",
         "required": true,
         "description": null
       }
@@ -22174,15 +23491,18 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 77,
+      "line": 83,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ZoraComponentBlueprint",
       "ZoraComponentCategory",
       "ZoraComponentEventMeta",
       "ZoraComponentI18nMeta",
+      "ZoraComponentManifestPolicy",
       "ZoraComponentPropSchema",
       "ZoraComponentSlotMeta"
     ],
@@ -22238,6 +23558,13 @@
         "description": null
       },
       {
+        "name": "manifestPolicy",
+        "kind": "property",
+        "type": "ZoraComponentManifestPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "name",
         "kind": "property",
         "type": "string",
@@ -22284,10 +23611,12 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 92,
+      "line": 99,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22305,8 +23634,12 @@
       "line": 28,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComponentPropSchema"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentPropSchema"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22338,7 +23671,9 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22356,7 +23691,9 @@
       "line": 33,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [
       "ZoraComponentPropArrayItemSchema",
       "ZoraComponentPropAuthoring",
@@ -22435,7 +23772,9 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22453,7 +23792,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22468,10 +23809,12 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 104,
+      "line": 105,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22489,7 +23832,9 @@
       "line": 72,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -22519,11 +23864,17 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 30,
+      "line": 74,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraComputedThemeMode", "ZoraTheme"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComputedThemeMode",
+      "ZoraThemeCompilationDiagnostic",
+      "ZoraThemeProvenanceEntry"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22534,9 +23885,9 @@
         "description": null
       },
       {
-        "name": "id",
+        "name": "diagnostics",
         "kind": "property",
-        "type": "string",
+        "type": "readonly ZoraThemeCompilationDiagnostic[]",
         "required": true,
         "description": null
       },
@@ -22548,21 +23899,14 @@
         "description": null
       },
       {
-        "name": "name",
+        "name": "provenance",
         "kind": "property",
-        "type": "string",
+        "type": "readonly ZoraThemeProvenanceEntry[]",
         "required": true,
         "description": null
       },
       {
-        "name": "source",
-        "kind": "property",
-        "type": "ZoraTheme",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "surfaceConfig",
+        "name": "themeConfig",
         "kind": "property",
         "type": "ThemeConfig",
         "required": true,
@@ -22580,13 +23924,27 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 22,
+      "line": 65,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeCompilationDiagnostic",
+      "ZoraThemeMode",
+      "ZoraThemeProvenanceEntry",
+      "ZoraThemeSelectionResult"
+    ],
     "signatures": [],
     "members": [
+      {
+        "name": "diagnostics",
+        "kind": "property",
+        "type": "readonly ZoraThemeCompilationDiagnostic[]",
+        "required": true,
+        "description": null
+      },
       {
         "name": "generated",
         "kind": "property",
@@ -22602,23 +23960,23 @@
         "description": null
       },
       {
-        "name": "semanticColors",
+        "name": "provenance",
         "kind": "property",
-        "type": "Record<SemanticColorToken, string> | undefined",
-        "required": false,
+        "type": "readonly ZoraThemeProvenanceEntry[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selections",
+        "kind": "property",
+        "type": "readonly ZoraThemeSelectionResult[]",
+        "required": true,
         "description": null
       },
       {
         "name": "surfaceTheme",
         "kind": "property",
         "type": "SurfaceTheme",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "swatches",
-        "kind": "property",
-        "type": "GeneratedThemeSwatches",
         "required": true,
         "description": null
       }
@@ -22637,7 +23995,9 @@
       "line": 3,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22655,7 +24015,9 @@
       "line": 60,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22673,8 +24035,13 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -22769,7 +24136,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22787,7 +24156,9 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22805,7 +24176,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -22845,7 +24218,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22863,7 +24238,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -22924,7 +24301,9 @@
       "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -22957,7 +24336,9 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -22975,7 +24356,9 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -23036,8 +24419,12 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraProviderProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraProviderProps"
+    ],
     "signatures": [
       {
         "label": "({\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n}: ZoraProviderProps) => React.JSX.Element",
@@ -23068,8 +24455,13 @@
       "line": 10,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraTheme",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -23115,7 +24507,9 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23133,7 +24527,9 @@
       "line": 157,
       "column": 14
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23151,8 +24547,13 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraNavigationRouteMetadata",
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -23244,10 +24645,12 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 14,
+      "line": 17,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -23261,7 +24664,7 @@
       {
         "name": "harmony",
         "kind": "property",
-        "type": "\"complementary\" | \"monochromatic\" | \"analogous\" | \"triadic\" | \"tetradic\" | \"splitComplementary\"",
+        "type": "\"square\" | \"complementary\" | \"monochromatic\" | \"analogous\" | \"splitComplementary\" | \"triadic\" | \"tetradic\"",
         "required": true,
         "description": null
       },
@@ -23290,6 +24693,116 @@
     "structuredRows": []
   },
   {
+    "name": "ZoraThemeCompilationDiagnostic",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 48,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeCompilationDiagnosticCode",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "code",
+        "kind": "property",
+        "type": "ZoraThemeCompilationDiagnosticCode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "message",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "path",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "severity",
+        "kind": "property",
+        "type": "\"error\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeCompilationDiagnosticCode",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 45,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeCompilationOptions",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 36,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode",
+      "ZoraThemeSelectionTarget"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "selectionTargets",
+        "kind": "property",
+        "type": "Partial<Record<ZoraThemeMode, readonly ZoraThemeSelectionTarget[]>> | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "ZoraThemeId",
     "description": null,
     "isReadme": false,
@@ -23298,10 +24811,12 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 10,
+      "line": 13,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23316,13 +24831,66 @@
     "modulePath": "src/theme/types.ts",
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
-      "line": 12,
+      "line": 15,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeProvenanceEntry",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 58,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeValueOrigin"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "inputs",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "origin",
+        "kind": "property",
+        "type": "ZoraThemeValueOrigin",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "owner",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "path",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -23337,7 +24905,9 @@
       "line": 30,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -23384,7 +24954,9 @@
       "line": 24,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -23438,7 +25010,9 @@
       "line": 35,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23456,7 +25030,9 @@
       "line": 11,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23474,8 +25050,13 @@
       "line": 38,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeRecipeFieldMeta", "ZoraThemeRecipeKind"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeRecipeFieldMeta",
+      "ZoraThemeRecipeKind"
+    ],
     "signatures": [],
     "members": [
       {
@@ -23521,7 +25102,9 @@
       "line": 45,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -23539,7 +25122,9 @@
       "line": 18,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -23593,8 +25178,12 @@
       "line": 47,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeScopeProps"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeScopeProps"
+    ],
     "signatures": [
       {
         "label": "({ children, themeId, mode }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined",
@@ -23625,8 +25214,12 @@
       "line": 8,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -23654,6 +25247,119 @@
     "structuredRows": []
   },
   {
+    "name": "ZoraThemeSelectionResult",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 40,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeSelectionTarget"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "request",
+        "kind": "property",
+        "type": "ZoraThemeSelectionTarget",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "result",
+        "kind": "property",
+        "type": "ColorSwatchSelectionResult | null",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeSelectionTarget",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 28,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "contexts",
+        "kind": "property",
+        "type": "readonly ColorContrastContext[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "swatch",
+        "kind": "property",
+        "type": "keyof GeneratedThemeSwatches",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "target",
+        "kind": "property",
+        "type": "ColorSelectionTarget",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tiePolicy",
+        "kind": "property",
+        "type": "ColorSwatchTiePolicy",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeSwatchRole",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ZoraThemeTokenFamily",
     "description": null,
     "isReadme": false,
@@ -23665,7 +25371,29 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraThemeValueOrigin",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/theme/types.ts",
+    "sourceLocation": {
+      "filePath": "src/theme/types.ts",
+      "line": 56,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
