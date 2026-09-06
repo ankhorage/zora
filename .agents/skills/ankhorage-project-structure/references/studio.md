@@ -3,8 +3,8 @@
 Read this only for `ankhorage/studio`. It is a structural target and ownership checklist, not a
 license to move every file in one change.
 
-Studio is an application/hybrid package. The Studio package is the bounded capability; its internal
-responsibilities are domains, not independently bound `features`.
+Studio is the bounded capability. `features/` is its internal organizational boundary; its contents
+are not independently bound packages.
 
 ## Target source tree
 
@@ -13,29 +13,31 @@ src/
   index.ts
   root.ts
 
-  app/                         # React/RN application edge and composition
   cli/                         # one Studio Ankh provider
   host/                        # Bun/Fastify/filesystem edges and host composition
-  platform/                    # Studio-local native/web implementations only
+  apps/                        # generated applications; Studio-only directory
+    <generated-app>/            # generated; never edited by hand
+    studio/                     # temporary exception until Studio is generated
 
-  auth/
-  bindings/
-  canvas/
-  deploy/
-  diagnostics/
-  external-apis/
-  manifest/
-  media/
-  modules/
-  projects/
-  properties/
-  routes/
-  secrets/
-  selection/
-  templates/
-  workspace/
+  features/                    # Studio-owned capabilities
+    auth/
+    bindings/
+    canvas/
+    deploy/
+    diagnostics/
+    external-apis/
+    manifest/
+    media/
+    modules/
+    projects/
+    properties/
+    routes/
+    secrets/
+    selection/
+    templates/
+    workspace/
 
-  utils/
+  utils/                       # the canonical Studio-local utility directory
 
 test/
   acceptance/
@@ -44,8 +46,20 @@ test/
   smoke/
 ```
 
-Substantial domains may contain `contracts`, `domain`, `application`, `ports`, and domain-local
-`utils` when those roles genuinely exist. Do not pre-create all role directories.
+`index.ts`, `root.ts`, `cli/`, `host/`, `apps/`, `features/`, and `utils/` are the complete Studio
+root taxonomy, apart from required declaration shims. Do not create `app/`, `platform/`, `common/`,
+`core/`, `helpers/`, or `shared/`.
+
+Substantial features may contain `contracts`, `domain`, `application`, `ports`, `adapters`, and
+focused colocated `tests` when those roles genuinely exist. Do not pre-create role directories.
+
+`apps/` contains complete generator-owned applications. Nothing under it is manually maintained.
+`apps/studio/` is a temporary exception while Studio is still hand-authored; it must disappear when
+the Studio app is generated.
+
+`utils/` is the one canonical local utility directory. It contains only reusable Studio-local,
+framework-neutral helpers; behavior with feature semantics remains in that feature, and behavior
+reused across repositories belongs in `@ankhorage/utility`.
 
 ## Studio CLI
 
@@ -73,40 +87,72 @@ ankh studio projects list    -> commands/projects/list.ts
 ankh studio projects sync    -> commands/projects/sync.ts
 ```
 
+`cli/commands/` contains inbound adapters only: parse command input, invoke a feature application
+operation, and render the result. It must not own feature rules or external-package integrations.
+
+## Studio host
+
+```text
+src/host/
+  createStudioHost.ts
+  middleware/
+  routes/
+    <feature>/
+```
+
+`host/` contains inbound HTTP, filesystem, and process adapters plus their composition. Route and
+middleware modules translate into feature application operations; they do not own feature rules.
+
 `ankh studio workspace install` is not part of the target. Generated apps are standalone and own
 their installation. Remove the obsolete command, handler, capability, tests, and documentation
 rather than relocating them.
 
 ## Current directory disposition
 
-- Root `binding*` modules move into `bindings/`.
-- Root `canvas*` and insert/placement behavior move into `canvas/`.
-- Root `projectDeploy*`, host deploy code, deploy routes, and deploy UI converge under the `deploy`
-  domain and package-level edges.
-- Root auth settings/health/OAuth behavior and host auth implementations converge under `auth` and
-  package-level edges.
+- Root `binding*` modules move into `features/bindings/`.
+- Root `canvas*` and insert/placement behavior move into `features/canvas/`.
+- Root `projectDeploy*`, host deploy code, deploy routes, and deploy UI converge under
+  `features/deploy/`, with host routes remaining in `host/routes/deploy/`.
+- Root auth settings/health/OAuth behavior and host auth implementations converge under
+  `features/auth/`, with host routes remaining in `host/routes/auth/`.
 - Root external API contracts/model code, host API services, routes, and UI converge under
-  `external-apis` and package-level edges.
-- Root media authoring code, host media implementations, and media UI converge under `media` and
-  package-level edges.
-- Root module admin code and host module integration converge under `modules` and package-level
-  edges.
-- Root project/workspace models, current app project screens, hooks, project store/generation
-  operations, and matching adapters converge under `projects`, `templates`, or `workspace` according
-  to actual ownership.
-- Root secret API/usage/response behavior, host secret implementations, routes, and UI converge
-  under `secrets` and package-level edges.
-- Route and admin-route behavior moves under `routes`.
+  `features/external-apis/`, with host routes remaining in `host/routes/external-apis/`.
+- Root media authoring code, host media implementations, and media UI converge under
+  `features/media/`.
+- Root module admin code and host module integration converge under `features/modules/`.
+- Root project/workspace models, project screens, hooks, project store/generation operations, and
+  matching adapters converge under `features/projects/`, `features/templates/`, or
+  `features/workspace/` according to actual ownership.
+- Root secret API/usage/response behavior and host secret implementations converge under
+  `features/secrets/`, with host routes remaining in `host/routes/secrets/`.
+- Route and admin-route policy moves under `features/routes/`; the corresponding host adapters stay
+  in `host/routes/`.
 - Selection, measurement, stationary selection, and canvas interaction behavior must be separated
-  between `selection` and `canvas` by actual invariant ownership.
-- The current generic `core/` directory disappears; each file moves to its owning domain or package
-  edge.
+  between `features/selection/` and `features/canvas/` by actual invariant ownership.
+- The current generic `core/` directory disappears; each file moves to its owning feature role or
+  package edge.
 - The current generic `runtime/` directory is reviewed symbol by symbol. Shared runtime behavior
-  moves to `@ankhorage/runtime`; Studio-specific application integration moves to `app/` or its
-  owning domain.
-- Feature-specific UI moves beside its owning domain. Only package-wide UI composition remains in
-  `app/`.
+  moves to `@ankhorage/runtime`; Studio-specific integration becomes a feature-local adapter.
+- Feature-specific UI becomes generated-app code under `apps/`; it is never rehomed in a generic
+  Studio UI directory.
 - Host smoke and acceptance infrastructure moves outside production source to `test/`.
+
+## External package integrations
+
+An Ankhorage or third-party package is connected in the owning feature, not in a global
+`platform/` directory. For example:
+
+```text
+src/features/templates/
+  ports/
+    templateCatalogPort.ts
+  adapters/
+    createAnkhorageTemplatesAdapter.ts
+```
+
+The port states the capability that Templates requires. The adapter imports
+`@ankhorage/templates`, translates its API, and implements that port. The composition root chooses
+the adapter. Do not duplicate an adapter in `host/`, `cli/`, or another feature.
 
 ## Utility gates
 

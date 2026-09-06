@@ -2,6 +2,7 @@ import { createKnipConfig } from '@ankhorage/devtools/knip';
 
 export default createKnipConfig({
   entry: [
+    '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
     'examples/basic-app/App.tsx',
     'test-fixtures/platformAcceptance.test.tsx',

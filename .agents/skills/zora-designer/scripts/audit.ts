@@ -21,9 +21,112 @@ const HUMAN_SECTIONS = [
   'User notes',
 ];
 
+interface AuditRubric {
+  confidenceFactors: Record<string, number>;
+  releaseGates: ReleaseGateDefinition[];
+  rules: RuleDefinition[];
+  statusFactors: Record<string, number | null>;
+}
+
+interface RuleDefinition {
+  criteria: string[];
+  id: string;
+  name: string;
+  weight: number;
+}
+
+interface ReleaseGateDefinition {
+  criteria: string[];
+  id: string;
+  name: string;
+}
+
+interface EvidenceItem extends Record<string, unknown> {
+  confidence: string;
+  confidenceFactor: number;
+  evidenceLevel: string;
+  id: string;
+  kind: string;
+  limitations: unknown[];
+  location: string;
+  observation: string;
+  reproduction: string;
+}
+
+interface CriterionResult {
+  applicable: boolean;
+  confidenceFactor: number | null;
+  essentialEvidenceIds: string[];
+  evidenceIds: string[];
+  id: string;
+  reason: string;
+  status: string;
+  statusFactor: number | null;
+}
+
+interface RuleResult {
+  applicableCount: number;
+  assessedCount: number;
+  assessedWeight: number;
+  assessmentFraction: number | null;
+  confidence: { label: string | null; value: number | null };
+  criteria: CriterionResult[];
+  earnedWeight: number;
+  name: string;
+  rule: string;
+  status: string;
+  statusFactor: number | null;
+  weight: number;
+}
+
+interface ReleaseGateResult {
+  applicable: boolean;
+  criteria: {
+    applicable: boolean;
+    evidenceIds: string[];
+    id: string;
+    reason: string;
+    status: string;
+  }[];
+  evidenceIds: string[];
+  id: string;
+  name: string;
+  reason: string;
+  status: string;
+}
+
+interface Finding extends Record<string, unknown> {
+  confidence: string;
+  criterionId: string;
+  evidence: string;
+  evidenceIds: string[];
+  evidenceLevel: string;
+  expected: string;
+  fix: string;
+  id: string;
+  impact: string;
+  location: string;
+  relatedRules: unknown[];
+  rootCause: string;
+  rule: string;
+  severity: string;
+  verification: string;
+}
+
+interface AuditTotals {
+  applicableWeight: number;
+  assessedWeight: number;
+  confidence: number | null;
+  earnedWeight: number;
+  possibleRange: { lower: number | null; upper: number | null };
+  score: number | null;
+  coverage: number | null;
+}
+
 /*** Load the single canonical audit rubric and verify its invariant total weight. */
-export async function loadAuditRubric() {
-  const rubric = JSON.parse(await readFile(RUBRIC_URL, 'utf8'));
+export async function loadAuditRubric(): Promise<AuditRubric> {
+  const rubric: unknown = JSON.parse(await readFile(RUBRIC_URL, 'utf8'));
+  assertAuditRubric(rubric);
   const totalWeight = rubric.rules.reduce((sum, rule) => sum + rule.weight, 0);
   if (totalWeight !== 100) {
     throw new Error(`Canonical zora-designer rubric weight must equal 100; found ${totalWeight}.`);
@@ -32,7 +135,7 @@ export async function loadAuditRubric() {
 }
 
 /*** Calculate criterion, rule, coverage, confidence, score range, finding impact, and release gates. */
-export async function calculateAudit(input) {
+export async function calculateAudit(input: unknown) {
   assertRecord(input, 'Audit input');
   const rubric = await loadAuditRubric();
   const evidence = Array.isArray(input.evidence) ? input.evidence : [];
@@ -42,8 +145,9 @@ export async function calculateAudit(input) {
     calculateRule(rule, assessments[rule.id], evidenceById, rubric.statusFactors),
   );
   const totals = calculateTotals(ruleResults);
+  const releaseGateInputs = isRecord(input.releaseGates) ? input.releaseGates : {};
   const releaseGateCriteria = rubric.releaseGates.map((gate) =>
-    calculateReleaseGate(gate, input.releaseGates?.[gate.id], evidenceById),
+    calculateReleaseGate(gate, releaseGateInputs[gate.id], evidenceById),
   );
   const releaseGate = calculateAggregateReleaseGate(releaseGateCriteria);
   const findings = allocateFindingImpacts(
@@ -72,9 +176,7 @@ export async function calculateAudit(input) {
     releaseGateCriteria,
     ruleResults,
     findings,
-    risks: Array.isArray(input.risks)
-      ? input.risks.map((risk) => ({ ...risk, scoreImpact: 0 }))
-      : [],
+    risks: Array.isArray(input.risks) ? input.risks.map(normalizeRisk) : [],
     passedRules: ruleResults
       .filter((rule) => rule.assessmentFraction === 1 && rule.status === 'pass')
       .map((rule) => rule.rule),
@@ -91,7 +193,7 @@ export async function calculateAudit(input) {
 }
 
 /*** Serialize one stable configuration or audit artifact using JSON-compatible YAML frontmatter. */
-export function serializeArtifact(input, audit) {
+export function serializeArtifact(input: unknown, audit: unknown) {
   assertRecord(input, 'Artifact input');
   const documentKind = input.documentKind === 'audit' ? 'audit' : 'configuration';
   const frontmatter = {
@@ -111,6 +213,7 @@ export function serializeArtifact(input, audit) {
     tokens: input.tokens ?? {},
     components: input.components ?? { stateRequirements: [], recipeDecisions: {} },
     screens: input.screens ?? [],
+    assets: input.assets ?? { bundlePath: null, status: 'not-run', entries: [] },
     validation: input.validation ?? {
       scope: documentKind === 'audit' ? 'audit' : 'configuration',
       status: 'not-run',
@@ -147,13 +250,18 @@ export function serializeArtifact(input, audit) {
 }
 
 /*** Calculate all four canonical criteria and derived values for one weighted rule. */
-function calculateRule(rule, rawAssessments, evidenceById, statusFactors) {
+function calculateRule(
+  rule: RuleDefinition,
+  rawAssessments: unknown,
+  evidenceById: Map<string, EvidenceItem>,
+  statusFactors: Record<string, number | null>,
+): RuleResult {
   const assessmentRecord = isRecord(rawAssessments) ? rawAssessments : {};
   const criteria = rule.criteria.map((criterionId) =>
     normalizeCriterion(criterionId, assessmentRecord[criterionId], evidenceById, statusFactors),
   );
   const applicable = criteria.filter((criterion) => criterion.applicable);
-  const assessed = applicable.filter((criterion) => criterion.statusFactor !== null);
+  const assessed = applicable.filter(isAssessedCriterion);
   const applicableCount = applicable.length;
   const assessedCount = assessed.length;
   const assessmentFraction = applicableCount === 0 ? null : assessedCount / applicableCount;
@@ -190,7 +298,12 @@ function calculateRule(rule, rawAssessments, evidenceById, statusFactors) {
 }
 
 /*** Normalize one criterion and derive confidence only from its essential evidence. */
-function normalizeCriterion(criterionId, rawAssessment, evidenceById, statusFactors) {
+function normalizeCriterion(
+  criterionId: string,
+  rawAssessment: unknown,
+  evidenceById: Map<string, EvidenceItem>,
+  statusFactors: Record<string, number | null>,
+): CriterionResult {
   const assessment = isRecord(rawAssessment) ? rawAssessment : {};
   const applicable = assessment.applicable !== false;
   const requestedStatus =
@@ -223,7 +336,7 @@ function normalizeCriterion(criterionId, rawAssessment, evidenceById, statusFact
       ? null
       : Math.min(
           ...essentialEvidenceIds.map(
-            (evidenceId) => evidenceById.get(evidenceId).confidenceFactor,
+            (evidenceId) => evidenceById.get(evidenceId)?.confidenceFactor ?? 0,
           ),
         );
   return {
@@ -244,7 +357,7 @@ function normalizeCriterion(criterionId, rawAssessment, evidenceById, statusFact
 }
 
 /*** Calculate aggregate score, coverage, range, and confidence from rule results. */
-function calculateTotals(ruleResults) {
+function calculateTotals(ruleResults: RuleResult[]): AuditTotals {
   const applicableRules = ruleResults.filter((rule) => rule.applicableCount > 0);
   const applicableWeight = applicableRules.reduce((sum, rule) => sum + rule.weight, 0);
   const assessedWeight = ruleResults.reduce(
@@ -260,7 +373,7 @@ function calculateTotals(ruleResults) {
         ? 0
         : (rule.weight / rule.applicableCount) *
           rule.criteria
-            .filter((criterion) => criterion.statusFactor !== null)
+            .filter(isAssessedCriterion)
             .reduce((criterionSum, criterion) => criterionSum + criterion.statusFactor, 0)),
     0,
   );
@@ -287,14 +400,14 @@ function calculateTotals(ruleResults) {
     };
   }
   const confidenceNumerator = ruleResults.reduce((sum, rule) => {
-    const applicableCount = rule.applicableCount;
+    const { applicableCount } = rule;
     if (applicableCount === 0) return sum;
     const criterionWeight = rule.weight / applicableCount;
     return (
       sum +
       criterionWeight *
         rule.criteria
-          .filter((criterion) => criterion.statusFactor !== null)
+          .filter(isAssessedCriterion)
           .reduce((criterionSum, criterion) => criterionSum + criterion.confidenceFactor, 0)
     );
   }, 0);
@@ -315,10 +428,14 @@ function calculateTotals(ruleResults) {
 }
 
 /*** Validate evidence identities and canonical confidence factors. */
-function validateEvidence(evidence, confidenceFactors) {
-  const evidenceById = new Map();
+function validateEvidence(
+  evidence: unknown[],
+  confidenceFactors: Record<string, number>,
+): Map<string, EvidenceItem> {
+  const evidenceById = new Map<string, EvidenceItem>();
   for (const item of evidence) {
     assertRecord(item, 'Evidence item');
+    assertEvidenceItem(item);
     if (typeof item.id !== 'string' || item.id === '') {
       throw new Error('Every evidence item requires a non-empty id.');
     }
@@ -355,17 +472,17 @@ function validateEvidence(evidence, confidenceFactors) {
 }
 
 /*** Derive one canonical release item from all of its subcriteria. */
-function calculateReleaseGate(gate, rawGate, evidenceById) {
+function calculateReleaseGate(
+  gate: ReleaseGateDefinition,
+  rawGate: unknown,
+  evidenceById: Map<string, EvidenceItem>,
+): ReleaseGateResult {
   const gateInput = isRecord(rawGate) ? rawGate : {};
   const rawCriteria = isRecord(gateInput.criteria) ? gateInput.criteria : {};
   const criteria = gate.criteria.map((criterionId) => {
     const raw = isRecord(rawCriteria[criterionId]) ? rawCriteria[criterionId] : {};
     const applicable = raw.applicable !== false;
-    const status = applicable
-      ? ['pass', 'fail'].includes(raw.status)
-        ? raw.status
-        : 'not-assessable'
-      : 'not-applicable';
+    const status = applicable ? readReleaseCriterionStatus(raw.status) : 'not-applicable';
     const evidenceIds = readStringArray(raw.evidenceIds);
     if (['pass', 'fail'].includes(status) && evidenceIds.length === 0) {
       throw new Error(`Release criterion ${criterionId} requires evidence for status ${status}.`);
@@ -406,7 +523,7 @@ function calculateReleaseGate(gate, rawGate, evidenceById) {
 }
 
 /*** Derive the aggregate release gate without allowing the score to override evidence gaps. */
-function calculateAggregateReleaseGate(releaseGates) {
+function calculateAggregateReleaseGate(releaseGates: ReleaseGateResult[]): string {
   const applicable = releaseGates.filter((gate) => gate.applicable);
   if (applicable.length === 0) return 'not-assessable';
   if (applicable.some((gate) => gate.status === 'fail')) return 'fail';
@@ -415,29 +532,44 @@ function calculateAggregateReleaseGate(releaseGates) {
 }
 
 /*** Deduplicate findings by root cause and allocate each criterion loss in stable units. */
-function allocateFindingImpacts(findings, ruleResults, applicableWeight, evidenceById) {
-  const deduplicated = [];
-  const seenRootCauses = new Set();
-  for (const finding of [...findings].sort((left, right) => left.id.localeCompare(right.id))) {
+function allocateFindingImpacts(
+  findings: unknown[],
+  ruleResults: RuleResult[],
+  applicableWeight: number,
+  evidenceById: Map<string, EvidenceItem>,
+) {
+  const normalizedFindings = findings.map((finding) => {
     assertRecord(finding, 'Finding');
     validateFinding(finding, evidenceById);
+    return finding;
+  });
+  const deduplicated: Finding[] = [];
+  const seenRootCauses = new Set<string>();
+  for (const finding of normalizedFindings.sort((left, right) => left.id.localeCompare(right.id))) {
     const rootCause = typeof finding.rootCause === 'string' ? finding.rootCause : finding.id;
     if (!seenRootCauses.has(rootCause)) {
       seenRootCauses.add(rootCause);
       deduplicated.push({ ...finding, rootCause });
     }
   }
-  const byCriterion = new Map();
+  const byCriterion = new Map<string, Finding[]>();
   for (const finding of deduplicated) {
     const key = `${finding.rule}:${finding.criterionId}`;
     byCriterion.set(key, [...(byCriterion.get(key) ?? []), finding]);
   }
-  const allocations = new Map();
+  const allocations = new Map<string, number>();
   for (const [key, criterionFindings] of byCriterion) {
     const [ruleId, criterionId] = key.split(':');
     const rule = ruleResults.find((result) => result.rule === ruleId);
-    const criterion = rule?.criteria.find((result) => result.id === criterionId);
-    if (!rule || !criterion || criterion.statusFactor === null || applicableWeight === 0) {
+    if (!rule) {
+      throw new Error(`Finding references an unscored criterion: ${key}`);
+    }
+    const criterion = rule.criteria.find((result) => result.id === criterionId);
+    if (
+      criterion?.statusFactor === undefined ||
+      criterion.statusFactor === null ||
+      applicableWeight === 0
+    ) {
       throw new Error(`Finding references an unscored criterion: ${key}`);
     }
     if (criterion.statusFactor === 1) {
@@ -460,7 +592,10 @@ function allocateFindingImpacts(findings, ruleResults, applicableWeight, evidenc
 }
 
 /*** Validate the complete finding contract and its evidence references before score allocation. */
-function validateFinding(finding, evidenceById) {
+function validateFinding(
+  finding: Record<string, unknown>,
+  evidenceById: Map<string, EvidenceItem>,
+): asserts finding is Finding {
   for (const field of [
     'id',
     'rule',
@@ -476,26 +611,32 @@ function validateFinding(finding, evidenceById) {
     'verification',
     'confidence',
   ]) {
-    if (typeof finding[field] !== 'string' || finding[field] === '') {
+    const fieldValue = finding[field];
+    if (typeof fieldValue !== 'string' || fieldValue === '') {
       throw new Error(`Finding requires a non-empty ${field}.`);
     }
   }
+  const findingId = typeof finding.id === 'string' ? finding.id : 'unknown finding';
   if (!Array.isArray(finding.relatedRules)) {
-    throw new Error(`Finding ${finding.id} requires a relatedRules list.`);
+    throw new Error(`Finding ${findingId} requires a relatedRules list.`);
   }
   const evidenceIds = readStringArray(finding.evidenceIds);
   if (evidenceIds.length === 0) {
-    throw new Error(`Finding ${finding.id} requires evidenceIds.`);
+    throw new Error(`Finding ${findingId} requires evidenceIds.`);
   }
   for (const evidenceId of evidenceIds) {
     if (!evidenceById.has(evidenceId)) {
-      throw new Error(`Finding ${finding.id} references unknown evidence: ${evidenceId}`);
+      throw new Error(`Finding ${findingId} references unknown evidence: ${evidenceId}`);
     }
   }
 }
 
 /*** Label rule status from assessed factors while preserving explicit critical evidence. */
-function labelRuleStatus(criteria, meanFactor, applicableCount) {
+function labelRuleStatus(
+  criteria: CriterionResult[],
+  meanFactor: number | null,
+  applicableCount: number,
+): string {
   if (applicableCount === 0) return 'not-applicable';
   if (meanFactor === null) return 'not-assessable';
   if (criteria.some((criterion) => criterion.status === 'critical')) return 'critical';
@@ -506,7 +647,7 @@ function labelRuleStatus(criteria, meanFactor, applicableCount) {
 }
 
 /*** Label evidence coverage without conflating it with confidence. */
-function labelCoverage(value) {
+function labelCoverage(value: number | null): string | null {
   if (value === null) return null;
   if (value >= 85) return 'high';
   if (value >= 60) return 'medium';
@@ -514,7 +655,7 @@ function labelCoverage(value) {
 }
 
 /*** Label aggregate evidence confidence from the canonical numeric thresholds. */
-function labelConfidence(value) {
+function labelConfidence(value: number | null): string | null {
   if (value === null) return null;
   if (value >= 0.8) return 'high';
   if (value >= 0.5) return 'medium';
@@ -522,28 +663,118 @@ function labelConfidence(value) {
 }
 
 /*** Round a nonnegative displayed value half up. */
-function roundHalfUp(value) {
+function roundHalfUp(value: number): number {
   return Math.floor(value + 0.5);
 }
 
 /*** Round an intermediate serialization value without changing calculation inputs. */
-function roundDecimal(value, digits) {
+function roundDecimal(value: number, digits: number): number {
   const factor = 10 ** digits;
   return Math.round((value + Number.EPSILON) * factor) / factor;
 }
 
+/*** Return whether a criterion carries the numeric factors required for scoring. */
+function isAssessedCriterion(
+  criterion: CriterionResult,
+): criterion is CriterionResult & { confidenceFactor: number; statusFactor: number } {
+  return criterion.statusFactor !== null && criterion.confidenceFactor !== null;
+}
+
+/*** Normalize one risk while preserving its supplied descriptive fields. */
+function normalizeRisk(value: unknown): Record<string, unknown> {
+  assertRecord(value, 'Risk');
+  return { ...value, scoreImpact: 0 };
+}
+
+/*** Read the only evidence-backed release criterion statuses. */
+function readReleaseCriterionStatus(value: unknown): string {
+  return value === 'pass' || value === 'fail' ? value : 'not-assessable';
+}
+
+/*** Validate the canonical rubric structure loaded from the packaged JSON asset. */
+function assertAuditRubric(value: unknown): asserts value is AuditRubric {
+  assertRecord(value, 'Audit rubric');
+  if (!isNumberRecord(value.confidenceFactors) || !isNullableNumberRecord(value.statusFactors)) {
+    throw new Error('Audit rubric factors must be numeric records.');
+  }
+  if (!Array.isArray(value.rules) || !Array.isArray(value.releaseGates)) {
+    throw new Error('Audit rubric requires rules and releaseGates arrays.');
+  }
+  for (const rule of value.rules) {
+    assertRecord(rule, 'Audit rule');
+    if (
+      typeof rule.id !== 'string' ||
+      typeof rule.name !== 'string' ||
+      typeof rule.weight !== 'number' ||
+      !isStringArray(rule.criteria)
+    ) {
+      throw new Error('Every audit rule requires id, name, weight, and criteria.');
+    }
+  }
+  for (const gate of value.releaseGates) {
+    assertRecord(gate, 'Release gate');
+    if (
+      typeof gate.id !== 'string' ||
+      typeof gate.name !== 'string' ||
+      !isStringArray(gate.criteria)
+    ) {
+      throw new Error('Every release gate requires id, name, and criteria.');
+    }
+  }
+}
+
+/*** Validate one evidence record before semantic checks use its required fields. */
+function assertEvidenceItem(value: Record<string, unknown>): asserts value is EvidenceItem {
+  const stringFields = [
+    'confidence',
+    'evidenceLevel',
+    'id',
+    'kind',
+    'location',
+    'observation',
+    'reproduction',
+  ];
+  if (
+    stringFields.some((field) => typeof value[field] !== 'string') ||
+    typeof value.confidenceFactor !== 'number' ||
+    !Array.isArray(value.limitations)
+  ) {
+    throw new Error('Evidence item has an invalid canonical shape.');
+  }
+}
+
+/*** Return whether every record value is a finite number. */
+function isNumberRecord(value: unknown): value is Record<string, number> {
+  return isRecord(value) && Object.values(value).every((item) => typeof item === 'number');
+}
+
+/*** Return whether every record value is numeric or explicitly unassessed. */
+function isNullableNumberRecord(value: unknown): value is Record<string, number | null> {
+  return (
+    isRecord(value) &&
+    Object.values(value).every((item) => item === null || typeof item === 'number')
+  );
+}
+
+/*** Return whether an unknown value contains only strings. */
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string');
+}
+
 /*** Read a stable string list from optional audit input. */
-function readStringArray(value) {
-  return Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
+function readStringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : [];
 }
 
 /*** Narrow an unknown value to a non-array record. */
-function isRecord(value) {
+function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
 /*** Require an object-shaped input value. */
-function assertRecord(value, label) {
+function assertRecord(value: unknown, label: string): asserts value is Record<string, unknown> {
   if (!isRecord(value)) throw new Error(`${label} must be an object.`);
 }
 
@@ -555,14 +786,15 @@ async function main() {
     return;
   }
   if (command === 'audit' && inputPath) {
-    const input = JSON.parse(await readFile(inputPath, 'utf8'));
+    const input: unknown = JSON.parse(await readFile(inputPath, 'utf8'));
+    assertRecord(input, 'Audit artifact input');
     const audit = await calculateAudit(input.auditInput ?? input);
     const artifact = serializeArtifact({ ...input, documentKind: 'audit' }, audit);
     if (outputPath) await writeFile(outputPath, artifact);
     else console.log(artifact);
     return;
   }
-  throw new Error('Usage: audit.mjs catalog | audit.mjs audit <input.json> [output.md]');
+  throw new Error('Usage: audit.ts catalog | audit.ts audit <input.json> [output.md]');
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

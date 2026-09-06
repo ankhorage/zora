@@ -1,0 +1,23 @@
+sequenceDiagram
+  participant participant_compileMode as compileMode
+  participant participant_compileZoraTheme as compileZoraTheme
+  participant participant_createModeProvenance as createModeProvenance
+  participant participant_createRootProvenance as createRootProvenance
+  participant participant_createTheme as createTheme
+  participant participant_generateThemeModeColors as generateThemeModeColors
+  participant participant_outputsAgree as outputsAgree
+  participant participant_resolveSelections as resolveSelections
+  participant_compileZoraTheme->>participant_compileMode: compileMode()
+  participant_compileMode->>participant_generateThemeModeColors: generateThemeModeColors()
+  participant_generateThemeModeColors-->>participant_compileMode: return
+  participant_compileMode->>participant_createTheme: createTheme()
+  participant_createTheme-->>participant_compileMode: return
+  participant_compileMode->>participant_resolveSelections: resolveSelections()
+  participant_resolveSelections-->>participant_compileMode: return
+  participant_compileMode->>participant_outputsAgree: outputsAgree()
+  participant_outputsAgree-->>participant_compileMode: return
+  participant_compileMode->>participant_createModeProvenance: createModeProvenance()
+  participant_createModeProvenance-->>participant_compileMode: return
+  participant_compileMode-->>participant_compileZoraTheme: return
+  participant_compileZoraTheme->>participant_createRootProvenance: createRootProvenance()
+  participant_createRootProvenance-->>participant_compileZoraTheme: return

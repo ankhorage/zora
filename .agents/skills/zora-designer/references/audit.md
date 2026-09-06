@@ -2,13 +2,13 @@
 
 The canonical rubric, weights, criterion keys, status factors, confidence factors, and release-gate
 inventory live in [audit-rubric.json](../assets/audit-rubric.json). The calculation implementation
-in [audit.mjs](../scripts/audit.mjs) loads that file. Do not reproduce either list or the arithmetic
+in [audit.ts](../scripts/audit.ts) loads that file. Do not reproduce either list or the arithmetic
 in prompts, references, tests, or application code.
 
 Inspect the current catalog when needed:
 
 ```text
-bun .agents/skills/zora-designer/scripts/audit.mjs catalog
+bun .agents/skills/zora-designer/scripts/audit.ts catalog
 ```
 
 ## Evidence intake
