@@ -131,6 +131,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Textarea',
       'Text',
       'Heading',
+      'Icon',
       'Image',
       'Divider',
       'ChatListItem',
