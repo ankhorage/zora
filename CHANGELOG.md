@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.0
+
+### Minor Changes
+
+- 3dbdeb2: Allow standalone media-backed Icon nodes and permit Icon and Image in screen containers so generated templates can use their separate SVG and raster assets.
+
 ## 4.1.0
 
 ### Minor Changes
