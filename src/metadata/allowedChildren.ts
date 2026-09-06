@@ -6,6 +6,8 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'Divider',
   'Text',
   'Heading',
+  'Icon',
+  'Image',
   'Button',
   'ButtonGroup',
   'ThemeModeToggle',
