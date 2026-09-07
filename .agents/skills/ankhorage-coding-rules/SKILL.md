@@ -47,9 +47,9 @@ exceptions or replaced by generic preferences from this skill.
 
 - Test observable behavior at the owning boundary. Keep tests deterministic and independent of
   execution order, ambient state, and live network services.
-- When testing dependency declarations, assert the required semver range shape or a shared policy
-  value instead of a Renovate-managed literal version. Assert an exact version only when the pin is
-  itself the contract under test.
+- Do not hardcode package versions in tests. When testing dependency declarations, assert the
+  required semver range shape or a shared policy value instead of a Renovate-managed literal
+  version. Assert an exact version only when the pin is itself the contract under test.
 - Follow the range-shape patterns in the
   [Devtools repository sync test](https://github.com/ankhorage/devtools/blob/main/src/cli/runRepositoryCommand.test.ts)
   and [ZORA PR #313](https://github.com/ankhorage/zora/pull/313).

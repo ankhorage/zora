@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Hexagonal Architecture'
+  short_description: 'Organize Ankhorage features with ports and adapters'
+  default_prompt: 'Use $hexagonal-architecture to design or review the feature boundaries for this Ankhorage change.'
+
+policy:
+  allow_implicit_invocation: true

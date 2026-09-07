@@ -1,22 +1,23 @@
 {
   "schemaVersion": 1,
-  "sourceDevtoolsVersion": "1.11.7",
+  "sourceDevtoolsVersion": "1.11.9",
   "skills": {
     "ankhorage-coding-rules": {
       "files": {
         ".agents/skills/ankhorage-coding-rules/agents/openai.yaml": "sha256:d4c418aba3af19bd7cab27ccf6f86a14af426646b0d9c66ae9535fc3b7f861bb",
-        ".agents/skills/ankhorage-coding-rules/SKILL.md": "sha256:8ffc7149001f33fc2fb749108a1ee6795a52f3e687f22ad5120e76cc0ecdf3d5"
+        ".agents/skills/ankhorage-coding-rules/SKILL.md": "sha256:49cc28ac3b90500f6620eb719c9a85c87f9d40779681123e534761a0f26da443"
+      }
+    },
+    "hexagonal-architecture": {
+      "files": {
+        ".agents/skills/hexagonal-architecture/agents/openai.yaml": "sha256:08b26061855365ad27db2cff8ebefaaf400108362f9b2319e35d93cf64f21646",
+        ".agents/skills/hexagonal-architecture/SKILL.md": "sha256:431f34cd9505fec72f67b3c9a3a2e24891d19b40aee245968650fe8d626faa74"
       }
     },
     "ankhorage-project-structure": {
       "files": {
         ".agents/skills/ankhorage-project-structure/agents/openai.yaml": "sha256:31c7daf632ab023cefcb72137ec953f1ccdaca0af420ae26e12f1d736b69b679",
-        ".agents/skills/ankhorage-project-structure/references/cli.md": "sha256:3a4e570832c6b1e506d3e8fac70a84ee4ffd39cbff921765681aa583221654d1",
-        ".agents/skills/ankhorage-project-structure/references/migration.md": "sha256:abea79e3d2f5a0ee16f695ecc8432d47587e13e0f70cc7bd77788a5c50d9dba2",
-        ".agents/skills/ankhorage-project-structure/references/skill-distribution.md": "sha256:44c03ecc9157234f540f0ae8a9cc6ad84d1efad25ab83b1776129d8f11d713b9",
-        ".agents/skills/ankhorage-project-structure/references/studio.md": "sha256:ebc2c089ddbcee6cdbea3016cacae7be9d60fefe1b864560ad831face2ed50c4",
-        ".agents/skills/ankhorage-project-structure/references/utilities.md": "sha256:51cf59338315841336e45706709ee60cfef364179bede6535385c20b9b3b73c7",
-        ".agents/skills/ankhorage-project-structure/SKILL.md": "sha256:f70390ec086871c2dd3a51442057a1ecb9062ee29583e0fe2cc4eb67080a125b"
+        ".agents/skills/ankhorage-project-structure/SKILL.md": "sha256:074c74d714e6d5a6bb96efae349a776669112c8b6cdd2bfbb34ab073799b820a"
       }
     },
     "zora-designer": {
