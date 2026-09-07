@@ -1,79 +1,121 @@
 ---
 name: ankhorage-project-structure
 description: >
-  Design, review, or migrate the source structure of Ankhorage repositories and generated
-  applications. Use for directory ownership, package boundaries, package CLI layout, repository
-  skill distribution, public entrypoints, or cross-repository cleanup.
+  Define, review, or implement the standard source structure of Ankhorage repositories. Use for
+  feature ownership, CLI layout, hexagonal boundaries, source-module naming, utilities, or package
+  entrypoints.
 ---
 
 # Ankhorage Project Structure
 
-Apply the general ownership rules first. Only Studio currently has a mandated source taxonomy.
+Every Ankhorage repository follows this structure. It applies now to `ankhorage/studio`,
+`ankhorage/deploy`, `ankhorage/infra`, `ankhorage/repository`, and `ankhorage/navigator`.
 
-Before deciding structure:
+## Required skills
 
-1. Read the repository `AGENTS.md`, `package.json`, exports, source tree, and representative tests.
-2. Load `ankhorage-coding-rules` as the complementary implementation and testing authority.
-3. Identify the repository's owning capability.
-4. Identify current public subpaths and cross-package release boundaries.
+Before structural work, read the repository `AGENTS.md`, inspect its source tree and public
+exports, then load both required repository skills:
 
-Repository-specific rules may refine this skill, but must not silently reverse package ownership
-or dependency direction.
+1. `.agents/skills/ankhorage-coding-rules/SKILL.md`
+2. [Hexagonal Architecture](../hexagonal-architecture/SKILL.md)
 
-## Primary boundary
+If `ankhorage-coding-rules` is missing or unreadable, stop immediately and report exactly:
 
-An Ankhorage repository/package is the primary bounded capability and independently released
-unit. Do not force a Studio directory tree onto libraries, providers, tooling, or generated
-applications.
+```
+Cannot continue: the required repository skill `ankhorage-coding-rules` is missing or unreadable at `.agents/skills/ankhorage-coding-rules/SKILL.md`. Synchronize the repository skills from `@ankhorage/devtools` and retry.
+```
 
-- Independently bindable capabilities belong in standalone packages.
-- Substantial responsibilities inside a package use cohesive directories owned by the package.
-- Cross-package access uses published APIs and declared dependencies, never sibling source.
-- A package owns its application behavior; adapters belonging to another package are not copied
-  or proxied locally.
+If `hexagonal-architecture` is missing or unreadable, stop immediately and report exactly:
 
-When a package declares an Ankh provider or changes `src/cli/`, always read
-[cli.md](references/cli.md).
+```
+Cannot continue: the required repository skill `hexagonal-architecture` is missing or unreadable at `.agents/skills/hexagonal-architecture/SKILL.md`. Synchronize the repository skills from `@ankhorage/devtools` and retry.
+```
 
-When classifying a local or cross-repository utility, also read
-[utilities.md](references/utilities.md).
+## Required source layout
 
-When the task is a structural cleanup or migration, also read
-[migration.md](references/migration.md). For `ankhorage/studio`, always also read
-[studio.md](references/studio.md).
+Every repository provides `src/features/`. It lists the repository's actual product capabilities;
+technical categories are not features. Each feature owns its own hexagonal structure as needed,
+following the required Hexagonal Architecture skill. Do not create empty layers.
 
-When adding, distributing, or synchronizing repository-local agent skills, read
-[skill-distribution.md](references/skill-distribution.md).
+Every repository provides `src/cli/`, or has a concrete issue tracking the missing CLI commands.
+CLI modules are thin inbound adapters: they parse input, invoke a feature use case, and render
+output.
 
-## Universal invariants
+```text
+src/
+  cli/
+    createCliProvider.ts
+    commands/
+      <command>.ts
+      <group>/
+        <command>.ts
+  features/
+    <feature>/
+      domain/
+      application/
+        ports/
+          inbound/
+          outbound/
+        use-cases/
+      adapters/
+        inbound/
+        outbound/
+      composition/
+      utils/
+  utils/
+```
 
-- Keep only intentional package entrypoints and required declaration shims directly under `src/`.
-- Keep one abstraction level and responsibility among siblings.
-- Prefer domain ownership over technical dumping grounds such as `common`, `core`, `helpers`,
-  `misc`, or `shared`. `utils/` is the canonical local directory for genuine package-level
-  utilities.
-- Colocate focused unit tests. Put cross-domain acceptance, E2E, smoke infrastructure, and large
-  fixtures outside production source.
-- Public package subpaths may point to nested source. Do not keep files at `src/` merely because
-  they are exported.
-- Preserve one canonical implementation. Do not add legacy paths, compatibility barrels, or
-  duplicate APIs to make a migration appear smaller.
+Keep only deliberate package facades directly under `src/`. Public package subpaths must name their
+explicit module in `package.json`; generic `index.ts` barrels are not public API exceptions.
 
-## Ownership decision
+The filesystem below `src/cli/commands/` mirrors the public command path after the package prefix:
 
-For every file or new symbol, decide in order:
+```text
+ankh <package> <segment> ... <command>
+  -> src/cli/commands/<segment>/.../<command>.ts
+```
 
-1. Which Ankhorage package owns the capability?
-2. Which internal domain owns it?
-3. Is it core policy, application orchestration, a required port, an edge adapter, composition,
-   or a public entrypoint?
-4. Is it reusable enough to belong in `@ankhorage/utility` instead?
+The package prefix is represented by the provider and is not repeated under `commands/`. Flags and
+positional arguments do not affect this directory tree. Each command file follows the one-export
+rule: `commands/projects/list.ts` exports `list` and owns only the command-specific input/output
+mapping.
 
-If any answer is unclear, resolve ownership before moving or creating code.
+## Feature taxonomy
 
-## Studio enforcement
+Siblings always represent the same kind of entity. A folder cannot be an unrelated catch-all beside
+peer entities. For example, this is invalid because `otherFolder` is not a color:
 
-Only `ankhorage/studio` has a mandatory source taxonomy and hexagonal feature architecture. Its
-complete allowlist, exceptions, port/adapter rules, and generated-app policy are in
-[studio.md](references/studio.md). Other repositories remain structurally unconstrained beyond the
-universal invariants until their owning repository is deliberately brought into scope.
+```text
+colors/
+  red/
+  green/
+  blue/
+  otherFolder/
+```
+
+Resolve the ownership of `otherFolder` and move it to the appropriate taxonomy. Use domain names for
+features, not framework, transport, database, or generic technical names.
+
+## One export per production module
+
+Each production source file has exactly one export. Its exported declaration is the first declaration
+after imports and module documentation, and its name matches the filename exactly.
+
+- `myFunction.ts` exports `myFunction`.
+- `myFunctionAsync.ts` exports `myFunctionAsync`.
+- A public operation that is asynchronous or returns a `Promise` uses the `Async` suffix in both its
+  filename and exported name.
+
+Keep private helpers below that exported declaration when they are used only by that module. Move a
+helper used by multiple modules to `utils/` at the owning layer. Put a repository-wide utility in
+`src/utils/`. Put a generally reusable cross-package utility in the correct `@ankhorage/utility`
+location.
+
+## Utilities
+
+`utils/` is the only utility directory name. Do not create `shared/`, `helper/`, `helpers/`,
+`common/`, or equivalent catch-all folders. Feature-local utilities live in that feature's `utils/`;
+utilities shared by repository features live in `src/utils/`.
+
+This skill defines the target architecture. Schedule repository migrations separately and in this
+order: Studio, Deploy, Infra, Repository, Navigator.

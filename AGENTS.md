@@ -26,3 +26,9 @@ when they support states that the current architecture can intentionally produce
 For directory ownership, package boundaries, architectural profiles, ports and adapters, public
 entrypoints, or cross-repository structural work, load and follow
 `.agents/skills/ankhorage-project-structure/SKILL.md`.
+
+## Skill scripts
+
+Scripts inside an Agent Skill must always be TypeScript files with the `.ts` extension.
+JavaScript skill scripts using `.js`, `.mjs`, or `.cjs` are not allowed. Run TypeScript
+skill scripts with Bun.
