@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   id-token: write
 
 concurrency:
@@ -19,15 +18,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create the scoped release token
+        id: release-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
+          private-key: ${{ secrets.ANKHORAGE_RENOVATE_SYNC_PRIVATE_KEY }}
+          owner: ankhorage
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.release-token.outputs.token }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.4.1'
+          bun-version: '1.4.2'
 
       - name: Setup Node for npm publishing
         uses: actions/setup-node@v4
@@ -49,18 +59,48 @@ jobs:
             echo "No build script found; skipping."
           fi
 
-      - name: Create release pull request or publish to npm
-        id: changesets
+      - name: Version packages directly on main
+        id: release
         if: hashFiles('.changeset/config.json') != ''
-        uses: changesets/action@v1
-        with:
-          version: bun run version-packages
-          publish: bun run changeset -- publish
-          commit: Version Packages
-          title: Version Packages
-          createGithubReleases: false
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+
+          if [ -z "$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name README.md -print -quit)" ]; then
+            echo "versioned=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          before_version="$(node -p "require('./package.json').version")"
+          bun run version-packages
+          after_version="$(node -p "require('./package.json').version")"
+
+          if git diff --quiet; then
+            echo "versioned=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "ankhorage-renovate-sync[bot]"
+          git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "chore(release): version packages [skip ci]"
+          if ! git push origin HEAD:main; then
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+
+          if [ "$before_version" = "$after_version" ]; then
+            echo "versioned=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "versioned=true" >> "$GITHUB_OUTPUT"
+            echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+            echo "package_version=$after_version" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish unpublished packages
+        if: hashFiles('.changeset/config.json') != ''
+        run: bun run changeset -- publish
 
       - name: Finalize Changesets v3 tags and GitHub releases
         if: hashFiles('.changeset/config.json') != ''
@@ -79,7 +119,7 @@ jobs:
 
       - name: Create the scoped rollout token
         id: rollout-token
-        if: steps.changesets.outputs.published == 'true'
+        if: steps.release.outputs.versioned == 'true' && steps.release.outputs.package_name == '@ankhorage/devtools'
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
@@ -89,18 +129,22 @@ jobs:
           permission-contents: write
 
       - name: Trigger the Devtools consumer rollout
-        if: steps.changesets.outputs.published == 'true'
+        if: steps.release.outputs.versioned == 'true' && steps.release.outputs.package_name == '@ankhorage/devtools'
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+          PUBLISHED_PACKAGE_NAME: ${{ steps.release.outputs.package_name }}
+          PUBLISHED_PACKAGE_VERSION: ${{ steps.release.outputs.package_version }}
         with:
           github-token: ${{ steps.rollout-token.outputs.token }}
           script: |
-            const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES ?? '[]');
-            const release = publishedPackages.find(
-              (candidate) => candidate.name === '@ankhorage/devtools',
-            );
-            if (!release || !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version)) {
+            const release = {
+              name: process.env.PUBLISHED_PACKAGE_NAME,
+              version: process.env.PUBLISHED_PACKAGE_VERSION,
+            };
+            if (
+              release.name !== '@ankhorage/devtools' ||
+              !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version)
+            ) {
               throw new Error('Changesets must report one exact published Devtools version.');
             }
 
@@ -111,6 +155,6 @@ jobs:
               client_payload: { version: release.version },
             });
 
-      - name: Skip release
+      - name: Skip release tooling
         if: hashFiles('.changeset/config.json') == ''
-        run: echo "No Changesets config found; skipping release."
+        run: echo "No Changesets config found; skipping versioning and publishing."
