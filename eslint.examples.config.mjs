@@ -1,20 +1,20 @@
+// This file is managed by @ankhorage/devtools.
+import { existsSync } from 'node:fs';
+
 import { createConfig } from '@ankhorage/devtools/eslint';
+import localConfig from './eslint.local.config.mjs';
 
 const exampleFiles = ['examples/**/*.{ts,tsx}'];
+const localEntries = Array.isArray(localConfig) ? localConfig : [localConfig];
+const rootProjects = ['./tsconfig.eslint.json', './tsconfig.json'].filter((project) =>
+  existsSync(new URL(project, import.meta.url)),
+);
 
 export default [
   ...createConfig({
+    files: exampleFiles,
+    project: [...rootProjects, './examples/**/tsconfig.json'],
     tsconfigRootDir: import.meta.dirname,
-    project: ['./tsconfig.eslint.json'],
-    files: exampleFiles,
   }),
-  {
-    files: exampleFiles,
-    rules: {
-      'react-native/no-inline-styles': 'off',
-      'max-lines-per-function': ['error', { max: 600, skipBlankLines: true, skipComments: true }],
-      'max-lines': ['error', { max: 728, skipBlankLines: true, skipComments: true }],
-      complexity: ['error', { max: 31, variant: 'modified' }],
-    },
-  },
+  ...localEntries,
 ];
