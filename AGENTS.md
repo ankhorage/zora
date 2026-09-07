@@ -27,6 +27,19 @@ For directory ownership, package boundaries, architectural profiles, ports and a
 entrypoints, or cross-repository structural work, load and follow
 `.agents/skills/ankhorage-project-structure/SKILL.md`.
 
+## Pull requests
+
+Before creating a pull request, run all of these commands in this order and resolve every failure:
+
+```sh
+bun run build
+bun run check-types
+bun run lint
+bun run knip:test
+bun run changeset
+bun run format
+```
+
 ## Skill scripts
 
 Scripts inside an Agent Skill must always be TypeScript files with the `.ts` extension.
