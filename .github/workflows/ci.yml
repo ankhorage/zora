@@ -23,7 +23,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.4.1'
+          bun-version: '1.4.2'
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -84,17 +84,8 @@ jobs:
             echo "No typecheck script found; skipping."
           fi
 
-      - name: Validate Version Packages metadata
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'changeset-release/main'
-        run: |
-          if node -e "const p=require('./package.json'); process.exit(p.scripts?.changeset ? 0 : 1)"; then
-            bun run changeset -- status --since=HEAD
-          else
-            echo "No changeset script found; skipping."
-          fi
-
       - name: Check changesets
-        if: github.event_name == 'pull_request' && (github.event.pull_request.head.repo.full_name != github.repository || github.head_ref != 'changeset-release/main')
+        if: github.event_name == 'pull_request'
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.['changeset:status'] ? 0 : 1)"; then
             bun run changeset:status
