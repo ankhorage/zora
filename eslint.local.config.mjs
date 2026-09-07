@@ -6,7 +6,14 @@ const validationScriptFiles = [
   'scripts/validate-expo-candidate.ts',
 ];
 const exampleFiles = ['examples/**/*.{ts,tsx}'];
-const files = [...sourceFiles, ...validationScriptFiles, ...exampleFiles];
+const isExamplesLint = process.argv.some((argument) =>
+  argument.endsWith('eslint.examples.config.mjs'),
+);
+const files = [
+  ...sourceFiles,
+  ...validationScriptFiles,
+  ...(isExamplesLint ? exampleFiles : []),
+];
 
 export default [
   ...createConfig({
