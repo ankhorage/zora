@@ -9,11 +9,7 @@ const exampleFiles = ['examples/**/*.{ts,tsx}'];
 const isExamplesLint = process.argv.some((argument) =>
   argument.endsWith('eslint.examples.config.mjs'),
 );
-const files = [
-  ...sourceFiles,
-  ...validationScriptFiles,
-  ...(isExamplesLint ? exampleFiles : []),
-];
+const files = [...sourceFiles, ...validationScriptFiles, ...(isExamplesLint ? exampleFiles : [])];
 
 export default [
   ...createConfig({
