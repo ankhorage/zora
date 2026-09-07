@@ -5,7 +5,8 @@ const validationScriptFiles = [
   'scripts/validate-example-projects.ts',
   'scripts/validate-expo-candidate.ts',
 ];
-const files = [...sourceFiles, ...validationScriptFiles];
+const exampleFiles = ['examples/**/*.{ts,tsx}'];
+const files = [...sourceFiles, ...validationScriptFiles, ...exampleFiles];
 
 export default [
   ...createConfig({
