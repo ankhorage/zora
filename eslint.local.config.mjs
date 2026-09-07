@@ -14,11 +14,6 @@ export default [
     project: ['./tsconfig.scripts.json'],
     files: validationScriptFiles,
   }),
-  ...createConfig({
-    tsconfigRootDir: import.meta.dirname,
-    project: ['./tsconfig.eslint.json'],
-    files: exampleFiles,
-  }),
   {
     files: sourceFiles,
     languageOptions: {
