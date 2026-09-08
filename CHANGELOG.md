@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.3.0
+
+### Minor Changes
+
+- 2007c3d: Add the canonical ZORA plugin descriptor and deterministic runtime/authoring catalog composer.
+
+### Patch Changes
+
+- f203d10: Update Ankhorage dependencies: `@ankhorage/surface`.
+- 6182ab7: Update Ankhorage dependencies: `@ankhorage/contracts`.
+- 31c23d2: Update Ankhorage dependencies: `@ankhorage/contracts`.
+
 ## 4.2.3
 
 ### Patch Changes
