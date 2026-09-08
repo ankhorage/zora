@@ -111,8 +111,20 @@ function RadioGroupItem<TValue extends string>({
       size={size}
       color={color}
       testID={option.testID}
-      bg={isCard ? (checked ? theme.semantics.selection.background : theme.semantics.surface.default) : undefined}
-      borderColor={isCard ? (checked ? theme.semantics.selection.border : theme.semantics.border.default) : undefined}
+      bg={
+        isCard
+          ? checked
+            ? theme.semantics.selection.background
+            : theme.semantics.surface.default
+          : undefined
+      }
+      borderColor={
+        isCard
+          ? checked
+            ? theme.semantics.selection.border
+            : theme.semantics.border.default
+          : undefined
+      }
       borderWidth={isCard ? 1 : undefined}
       p={isCard ? 'm' : undefined}
       radius={isCard ? 'l' : undefined}
