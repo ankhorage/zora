@@ -1,12 +1,17 @@
-import { Radio } from '@ankhorage/surface';
+import { Radio, useTheme } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
 import { Stack } from '../../foundation';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
+import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
 import type { RadioGroupOption, RadioGroupProps } from './types';
 
+/***
+ * Resolves the themed radio-group presentation within the active ZORA scope.
+ */
 function RadioGroupInner<TValue extends string>({
   themeId: _themeId,
   mode: _mode,
@@ -14,9 +19,10 @@ function RadioGroupInner<TValue extends string>({
   onValueChange,
   options,
   orientation = 'vertical',
-  gap = 's',
-  color = 'primary',
-  size = 'm',
+  gap,
+  presentation = 'inline',
+  color,
+  size,
   invalid = false,
   readOnly = false,
   disabled = false,
@@ -24,6 +30,8 @@ function RadioGroupInner<TValue extends string>({
   interactionPolicy,
 }: RadioGroupProps<TValue>) {
   const isHorizontal = orientation === 'horizontal';
+  const themeFields = useZoraThemeRecipe('RadioGroup');
+  const recipe = resolveRadioGroupThemeRecipe({ gap, color, size, themeFields });
 
   return (
     <View
@@ -36,7 +44,7 @@ function RadioGroupInner<TValue extends string>({
     >
       <Stack
         direction={isHorizontal ? 'row' : 'column'}
-        gap={gap}
+        gap={recipe.gap}
         wrap={isHorizontal ? 'wrap' : 'nowrap'}
       >
         {options.map((option) => (
@@ -47,8 +55,10 @@ function RadioGroupInner<TValue extends string>({
             disabled={disabled || option.disabled === true}
             invalid={invalid}
             readOnly={readOnly}
-            size={size}
-            color={color}
+            size={recipe.size}
+            color={recipe.color}
+            orientation={orientation}
+            presentation={presentation}
             onSelect={onValueChange}
             interactionPolicy={interactionPolicy}
           />
@@ -63,6 +73,9 @@ function RadioGroupInner<TValue extends string>({
  */
 export const RadioGroup = withZoraThemeScope(RadioGroupInner);
 
+/***
+ * Renders one option through the single Surface Radio interaction boundary.
+ */
 function RadioGroupItem<TValue extends string>({
   option,
   checked,
@@ -71,6 +84,8 @@ function RadioGroupItem<TValue extends string>({
   readOnly,
   size,
   color,
+  orientation,
+  presentation,
   onSelect,
   interactionPolicy,
 }: {
@@ -81,10 +96,14 @@ function RadioGroupItem<TValue extends string>({
   readOnly: boolean;
   size: NonNullable<RadioGroupProps<TValue>['size']>;
   color: NonNullable<RadioGroupProps<TValue>['color']>;
+  orientation: NonNullable<RadioGroupProps<TValue>['orientation']>;
+  presentation: NonNullable<RadioGroupProps<TValue>['presentation']>;
   onSelect: (value: TValue) => void;
   interactionPolicy: RadioGroupProps<TValue>['interactionPolicy'];
 }) {
+  const { theme } = useTheme();
   const passive = interactionPolicy === 'passive';
+  const isCard = presentation === 'card';
 
   return (
     <Radio
@@ -96,13 +115,31 @@ function RadioGroupItem<TValue extends string>({
       size={size}
       color={color}
       testID={option.testID}
+      bg={
+        isCard
+          ? checked
+            ? theme.semantics.selection.background
+            : theme.semantics.surface.default
+          : undefined
+      }
+      borderColor={
+        isCard
+          ? checked
+            ? theme.semantics.selection.border
+            : theme.semantics.border.default
+          : undefined
+      }
+      borderWidth={isCard ? 1 : undefined}
+      p={isCard ? 'm' : undefined}
+      radius={isCard ? 'l' : undefined}
+      width={isCard && orientation === 'vertical' ? '100%' : undefined}
       onCheckedChange={(nextChecked) => {
         if (passive) return;
         if (nextChecked) onSelect(option.value);
       }}
     >
       <Stack gap="xs">
-        <Text>{option.label}</Text>
+        <Text weight={isCard ? 'semiBold' : undefined}>{option.label}</Text>
         {option.description ? (
           <Text emphasis="muted" variant="caption">
             {option.description}

@@ -25,4 +25,5 @@ export interface RadioGroupProps<TValue extends string>
   options: readonly RadioGroupOption<TValue>[];
   orientation?: 'horizontal' | 'vertical';
   gap?: 'xs' | 's' | 'm' | 'l';
+  presentation?: 'inline' | 'card';
 }
