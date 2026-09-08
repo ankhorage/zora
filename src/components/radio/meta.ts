@@ -39,6 +39,34 @@ export const radioGroupMeta = {
       disabled: false,
     },
   },
+  bindings: {
+    props: {
+      value: {
+        label: 'Value',
+        description: 'Currently selected option value.',
+        value: { type: 'string' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      disabled: {
+        label: 'Disabled',
+        description: 'Whether the complete radio group is disabled.',
+        value: { type: 'boolean' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+    events: {
+      valueChange: {
+        label: 'Value change',
+        description: 'Runs when the selected radio value changes.',
+        payload: {
+          eventType: 'radioGroup.valueChange',
+          fields: [{ path: 'value', type: 'string', label: 'Value' }],
+        },
+      },
+    },
+  },
   events: {
     valueChange: {
       label: 'Value change',
