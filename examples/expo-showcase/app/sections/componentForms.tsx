@@ -12,6 +12,7 @@ import {
   Input,
   OAuthProviderList,
   Radio,
+  RadioGroup,
   ScreenSection,
   Stack,
   Text,
@@ -21,6 +22,7 @@ import React from 'react';
 export function ComponentFormsSection() {
   const [standaloneChecked, setStandaloneChecked] = React.useState(false);
   const [standaloneRadioChecked, setStandaloneRadioChecked] = React.useState(true);
+  const [cardChoice, setCardChoice] = React.useState<'instant' | 'reflect' | 'mixed'>('reflect');
   const [formValues, setFormValues] = React.useState<{ email: string; project: string }>({
     email: 'hello@example.com',
     project: 'Showcase refresh',
@@ -44,6 +46,34 @@ export function ComponentFormsSection() {
           </Radio>
           <Radio disabled>Disabled radio</Radio>
         </Stack>
+      </Card>
+
+      <Card
+        title="Card radio group"
+        description="The presentation changes the option surface while preserving one single-choice radio group."
+      >
+        <RadioGroup
+          value={cardChoice}
+          onValueChange={setCardChoice}
+          presentation="card"
+          options={[
+            {
+              value: 'instant',
+              label: 'Act immediately',
+              description: 'Choose without reflection.',
+            },
+            {
+              value: 'reflect',
+              label: 'Reflect first',
+              description: 'Think before deciding.',
+            },
+            {
+              value: 'mixed',
+              label: 'Mixed approach',
+              description: 'Practice both modes.',
+            },
+          ]}
+        />
       </Card>
 
       <Card
