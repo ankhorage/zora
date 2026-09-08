@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.4.1
+
+### Patch Changes
+
+- 0349716: Allow manifest-authorable RadioGroup nodes inside the canonical screen and container composition contract.
+
 ## 4.4.0
 
 ### Minor Changes
