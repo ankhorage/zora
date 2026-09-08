@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDevtoolsVersion": "1.12.1",
+  "sourceDevtoolsVersion": "1.13.0",
   "skills": {
     "ankhorage-coding-rules": {
       "files": {
@@ -28,14 +28,14 @@
         ".agents/skills/zora-designer/references/audit.md": "sha256:c9247c62da4c0fb9c01f22fce770e78aea96a074cb775f4e9c6f2108fb06f1de",
         ".agents/skills/zora-designer/references/runtime-assets.md": "sha256:60d0b518faa49d6d43c14bd3492ad66db029df233c9c03025cb961e2d4a3dcf1",
         ".agents/skills/zora-designer/references/screens.md": "sha256:3da265dc909965792916574ee347438da71825a1bfa17c43cfa0e208a6f8eed8",
-        ".agents/skills/zora-designer/references/workflow.md": "sha256:a49766e874cd4b274471740b880377b2800b508fc896f3db6ff0b9e33fb6a2d1",
+        ".agents/skills/zora-designer/references/workflow.md": "sha256:841425b0b525a019595e4aa33e5146e98e470557a3dc77dee2d22ba6c39facd0",
         ".agents/skills/zora-designer/scripts/asset-bundle.ts": "sha256:9a3ca758e8bbd089cce8473c1f2096d0c8b4a8b82b8d219ea70ce426b133511f",
         ".agents/skills/zora-designer/scripts/asset-files.ts": "sha256:ddedd5e520987e84ad414d5d041fd7a3b9c7f78447a535b422dd2d79622b3f34",
         ".agents/skills/zora-designer/scripts/audit.ts": "sha256:679ff611d01e4813e4a1c1170282cb2eae009898cdf199e2d3345099038a02a4",
         ".agents/skills/zora-designer/scripts/generate-template-catalog.ts": "sha256:640d23a158c74cd1d0c30749e37ab5693da93b80d036ce031eb27f67970fe35d",
-        ".agents/skills/zora-designer/scripts/owner-api.ts": "sha256:8937b986b6eda5ef589b851df6b5758fec65aa0ede6e52782a7fee4fdb8f165a",
+        ".agents/skills/zora-designer/scripts/owner-api.ts": "sha256:c347e8f282971a19242065ee04b0ba0bbee3d161d93ac0af720e340536f12cb8",
         ".agents/skills/zora-designer/scripts/scaffold-template.ts": "sha256:e858b93f8031809c2ffc961711b62032f238d6e33fa1025ac5752034a2cb3dbe",
-        ".agents/skills/zora-designer/SKILL.md": "sha256:dd794314a6072dee78cef40a653ba4a8cc4dec76453a0126e8c92c4561386395"
+        ".agents/skills/zora-designer/SKILL.md": "sha256:49f7d023224fef20b8b05ca936b8a05bb051bfbd44dbff306ace1a76e0dbdcb6"
       }
     }
   }

@@ -42,6 +42,9 @@ types, ZORA elements, events, recipes, and version provenance. Never copy owner 
 schemas, token inventories, color algorithms, action types, or manifest implementations into this
 skill.
 
+The inspection composes metadata-only descriptors from every installed `@ankhorage/zora-*` plugin;
+use those plugin elements exactly like ZORA core elements and keep their package provenance.
+
 Compile chosen values with the same helper before composing screens. Inspect both computed modes,
 including their resolved Surface themes and all owner diagnostics. Never hand-calculate a value the
 owner exposes.
