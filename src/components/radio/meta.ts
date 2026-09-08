@@ -33,41 +33,10 @@ export const radioGroupMeta = {
         { value: 'option-c', label: 'Third option', description: 'Supporting detail' },
       ],
       orientation: 'vertical',
-      gap: 's',
       presentation: 'inline',
-      color: 'primary',
-      size: 'm',
       invalid: false,
       readOnly: false,
       disabled: false,
-    },
-  },
-  bindings: {
-    props: {
-      value: {
-        label: 'Value',
-        description: 'Currently selected option value.',
-        value: { type: 'string' },
-        acceptsFallback: true,
-        acceptsTransforms: true,
-      },
-      disabled: {
-        label: 'Disabled',
-        description: 'Whether the complete radio group is disabled.',
-        value: { type: 'boolean' },
-        acceptsFallback: true,
-        acceptsTransforms: true,
-      },
-    },
-    events: {
-      valueChange: {
-        label: 'Value change',
-        description: 'Runs when the selected radio value changes.',
-        payload: {
-          eventType: 'radioGroup.valueChange',
-          fields: [{ path: 'value', type: 'string', label: 'Value' }],
-        },
-      },
     },
   },
   events: {
@@ -132,14 +101,13 @@ export const radioGroupMeta = {
       label: 'Orientation',
       enum: ['horizontal', 'vertical'],
       default: 'vertical',
-      authoring: themeAuthoring,
+      authoring: { authority: 'instance' },
     },
     gap: {
       type: 'enum',
       category: 'Layout',
       label: 'Gap',
       enum: ['xs', 's', 'm', 'l'],
-      default: 's',
       authoring: themeAuthoring,
     },
     presentation: {
@@ -148,14 +116,13 @@ export const radioGroupMeta = {
       label: 'Presentation',
       enum: ['inline', 'card'],
       default: 'inline',
-      authoring: themeAuthoring,
+      authoring: { authority: 'instance' },
     },
     color: {
       type: 'enum',
       category: 'Style',
       label: 'Color',
       enum: [...ZORA_COLORS],
-      default: 'primary',
       authoring: themeAuthoring,
     },
     size: {
@@ -163,7 +130,6 @@ export const radioGroupMeta = {
       category: 'Style',
       label: 'Size',
       enum: ['s', 'm', 'l'],
-      default: 'm',
       authoring: themeAuthoring,
     },
     invalid: {
