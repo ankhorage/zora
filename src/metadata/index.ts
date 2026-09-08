@@ -1,3 +1,10 @@
+export { ZORA_CORE_PLUGIN_METADATA } from '../corePluginMetadata';
+export type {
+  ComposedZoraPluginMetadataCatalog,
+  ZoraPluginMetadata,
+  ZoraPluginPlacement,
+} from '../pluginComposition';
+export { composeZoraPluginMetadata, ZoraPluginCompositionError } from '../pluginComposition';
 export type { ZoraBindableComponentType } from './bindableComponentMeta';
 export { ZORA_BINDABLE_COMPONENT_META } from './bindableComponentMeta';
 export { ZORA_COMPONENT_META } from './componentMeta';

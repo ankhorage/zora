@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { mock, test } from 'bun:test';
+import { expect, mock, test } from 'bun:test';
 
 type ModuleMock = Record<string, unknown>;
 
@@ -112,6 +112,14 @@ mock.module('@react-native-picker/picker', () => ({
 
 test('prints the canonical ZORA component registry snapshot', async () => {
   const { ZORA_COMPONENT_REGISTRY } = await import('../src/registry');
+  const { ZORA_CORE_PLUGIN } = await import('../src/corePlugin');
+  const { composeZoraPlugins } = await import('../src/pluginComposition');
+
+  const catalog = composeZoraPlugins([ZORA_CORE_PLUGIN]);
+  expect(Object.keys(catalog.componentRegistry).sort()).toEqual(
+    Object.keys(ZORA_COMPONENT_REGISTRY).sort(),
+  );
+  expect(catalog.componentMeta.Screen.allowedChildren).not.toContain('TabletopTable');
 
   console.log(`${SNAPSHOT_PREFIX}${JSON.stringify(Object.keys(ZORA_COMPONENT_REGISTRY).sort())}`);
 });

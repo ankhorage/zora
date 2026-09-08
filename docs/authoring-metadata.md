@@ -13,7 +13,27 @@ ZORA_THEME_RECIPE_META
   serializable component and pattern theme recipe definitions
 ```
 
-Neither component metadata nor theme recipe metadata contains React components. Runtime and Studio consume these registries; they do not recreate or merge ZORA ownership.
+Neither component metadata nor theme recipe metadata contains React components. Runtime and Studio
+consume these registries; they do not recreate ZORA ownership.
+
+## Plugin composition
+
+ZORA plugins export one `ZoraPluginDescriptor` that keeps the package-owned runtime registry,
+component metadata, bindings, and placement declarations together. The application edge selects
+the installed set and composes it with core:
+
+```ts
+const catalog = composeZoraPlugins([ZORA_CORE_PLUGIN, ZORA_CHESS_PLUGIN]);
+```
+
+The composer sorts packages deterministically, rejects duplicate packages or component keys,
+verifies runtime/metadata coverage, and only permits plugin placement into components explicitly
+declared as extension hosts. Studio and Runtime consume the resulting `componentMeta`,
+`bindableComponentMeta`, and `componentRegistry` projections.
+
+Metadata-only tools import `composeZoraPluginMetadata` and `ZORA_CORE_PLUGIN_METADATA` from
+`@ankhorage/zora/metadata`, then add each installed plugin's `ZORA_PLUGIN_METADATA` export. This
+keeps server-side authoring inspection independent of React Native runtime imports.
 
 `Icon` and `Image` are direct manifest leaves accepted by normal screen containers. Their `source`
 props support media-registry references (`{ mediaId }`): use standalone SVG assets for `Icon` and
