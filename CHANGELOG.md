@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.4.0
+
+### Minor Changes
+
+- 037b931: Make RadioGroup manifest-authorable with normalized value bindings and events, and add a card-style presentation that preserves single-choice radio semantics.
+
 ## 4.3.0
 
 ### Minor Changes
