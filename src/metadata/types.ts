@@ -2,6 +2,7 @@ import type {
   ComponentEventDtoKind,
   ComponentRequirements,
   MediaAssetKind,
+  UiComponentBindingMeta,
   UiComponentPropType,
 } from '@ankhorage/contracts';
 
@@ -86,6 +87,7 @@ export interface ZoraComponentMeta {
   description?: string;
   directManifestNode: boolean;
   allowedChildren: readonly string[];
+  bindings?: UiComponentBindingMeta;
   manifestPolicy?: ZoraComponentManifestPolicy;
   requirements?: ComponentRequirements;
   blueprint?: ZoraComponentBlueprint;

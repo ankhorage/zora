@@ -156,6 +156,8 @@ export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from '
 export { Toast, ToastProvider, useToast } from './components/toast';
 export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
 export { Toolbar, ToolbarAction } from './components/toolbar';
+export { ZORA_CORE_PLUGIN } from './corePlugin';
+export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export type {
   BoxProps,
   CenterProps,
@@ -398,6 +400,19 @@ export type { ZoraDrawerContentProps } from './patterns/zora-drawer-content';
 export { ZoraDrawerContent } from './patterns/zora-drawer-content';
 export type { ZoraTabBarProps } from './patterns/zora-tab-bar';
 export { ZoraTabBar } from './patterns/zora-tab-bar';
+export type {
+  ComposedZoraPluginCatalog,
+  ComposedZoraPluginMetadataCatalog,
+  ZoraPluginCompositionErrorCode,
+  ZoraPluginDescriptor,
+  ZoraPluginMetadata,
+  ZoraPluginPlacement,
+} from './pluginComposition';
+export {
+  composeZoraPluginMetadata,
+  composeZoraPlugins,
+  ZoraPluginCompositionError,
+} from './pluginComposition';
 export type { ZoraComponentRegistry } from './registry';
 export { ZORA_COMPONENT_REGISTRY } from './registry';
 export * from './theme';
