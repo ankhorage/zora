@@ -3,8 +3,10 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Stack } from '../../foundation';
+import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
+import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
 import type { RadioGroupOption, RadioGroupProps } from './types';
 
 /***
@@ -17,10 +19,10 @@ function RadioGroupInner<TValue extends string>({
   onValueChange,
   options,
   orientation = 'vertical',
-  gap = 's',
+  gap,
   presentation = 'inline',
-  color = 'primary',
-  size = 'm',
+  color,
+  size,
   invalid = false,
   readOnly = false,
   disabled = false,
@@ -28,6 +30,8 @@ function RadioGroupInner<TValue extends string>({
   interactionPolicy,
 }: RadioGroupProps<TValue>) {
   const isHorizontal = orientation === 'horizontal';
+  const themeFields = useZoraThemeRecipe('RadioGroup');
+  const recipe = resolveRadioGroupThemeRecipe({ gap, color, size, themeFields });
 
   return (
     <View
@@ -40,7 +44,7 @@ function RadioGroupInner<TValue extends string>({
     >
       <Stack
         direction={isHorizontal ? 'row' : 'column'}
-        gap={gap}
+        gap={recipe.gap}
         wrap={isHorizontal ? 'wrap' : 'nowrap'}
       >
         {options.map((option) => (
@@ -51,8 +55,8 @@ function RadioGroupInner<TValue extends string>({
             disabled={disabled || option.disabled === true}
             invalid={invalid}
             readOnly={readOnly}
-            size={size}
-            color={color}
+            size={recipe.size}
+            color={recipe.color}
             orientation={orientation}
             presentation={presentation}
             onSelect={onValueChange}
