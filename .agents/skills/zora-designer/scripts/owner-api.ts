@@ -58,7 +58,7 @@ interface ZoraThemeApi extends Record<string, unknown> {
 }
 
 interface EventMetadata extends Record<string, unknown> {
-  description: string;
+  description?: string;
   eventType: string;
   label: string;
   payloadFields?: unknown;
@@ -84,6 +84,10 @@ interface RecipeMetadata extends Record<string, unknown> {
 }
 
 interface ZoraMetadataApi extends Record<string, unknown> {
+  composeZoraPluginMetadata: (plugins: readonly Record<string, unknown>[]) => {
+    componentMeta: Record<string, ComponentMetadata | undefined>;
+  };
+  ZORA_CORE_PLUGIN_METADATA: Record<string, unknown>;
   ZORA_COMPONENT_META: Record<string, ComponentMetadata | undefined>;
   ZORA_THEME_RECIPE_META: Record<string, RecipeMetadata | undefined>;
 }
@@ -119,7 +123,7 @@ const OWNER_RELEASES = {
   colorTheory: { packageName: '@ankhorage/color-theory', minimumVersion: '0.3.0' },
   contracts: { packageName: '@ankhorage/contracts', minimumVersion: '10.1.0' },
   templates: { packageName: '@ankhorage/templates', minimumVersion: '9.3.0' },
-  zora: { packageName: '@ankhorage/zora', minimumVersion: '4.2.0' },
+  zora: { packageName: '@ankhorage/zora', minimumVersion: '4.3.0' },
 };
 
 const OWNER_REQUIREMENTS = {
@@ -155,7 +159,12 @@ const OWNER_REQUIREMENTS = {
   zoraMetadata: {
     ...OWNER_RELEASES.zora,
     specifier: '@ankhorage/zora/metadata',
-    exports: ['ZORA_COMPONENT_META', 'ZORA_THEME_RECIPE_META'],
+    exports: [
+      'composeZoraPluginMetadata',
+      'ZORA_COMPONENT_META',
+      'ZORA_CORE_PLUGIN_METADATA',
+      'ZORA_THEME_RECIPE_META',
+    ],
   },
 };
 
@@ -171,25 +180,79 @@ export async function loadOwnerApis(targetDirectory = process.cwd()) {
   const templates = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.templates);
   const zoraTheme = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.zoraTheme);
   const zoraMetadata = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.zoraMetadata);
+  const installedPluginMetadata = await loadInstalledZoraPluginMetadata(targetDirectory);
   assertColorTheoryApi(colorTheory.module);
   assertContractsApi(contracts.module);
   assertTemplatesApi(templates.module);
   assertZoraThemeApi(zoraTheme.module);
   assertZoraMetadataApi(zoraMetadata.module);
+  const composedZoraMetadata = zoraMetadata.module.composeZoraPluginMetadata([
+    zoraMetadata.module.ZORA_CORE_PLUGIN_METADATA,
+    ...installedPluginMetadata.map((entry) => entry.metadata),
+  ]);
+  assertRecord(composedZoraMetadata, 'composed ZORA plugin metadata');
+  assertRecord(composedZoraMetadata.componentMeta, 'composed ZORA component metadata');
 
   return {
     colorTheory: colorTheory.module,
     contracts: contracts.module,
     templates: templates.module,
     zoraTheme: zoraTheme.module,
-    zoraMetadata: zoraMetadata.module,
+    zoraMetadata: {
+      ...zoraMetadata.module,
+      ZORA_COMPONENT_META: composedZoraMetadata.componentMeta,
+    },
     versions: {
       colorTheory: colorTheory.version,
       contracts: contracts.version,
       templates: templates.version,
       zora: zoraTheme.version,
+      plugins: Object.fromEntries(
+        installedPluginMetadata.map((entry) => [entry.packageName, entry.version]),
+      ),
     },
   };
+}
+
+/*** Load metadata-only descriptors for every installed ZORA plugin declared by the target package. */
+async function loadInstalledZoraPluginMetadata(
+  targetDirectory: string,
+): Promise<{ metadata: Record<string, unknown>; packageName: string; version: string }[]> {
+  const targetManifestPath = join(resolve(targetDirectory), 'package.json');
+  const targetManifest: unknown = JSON.parse(await readFile(targetManifestPath, 'utf8'));
+  assertRecord(targetManifest, 'Target package manifest');
+  const packageNames = new Set<string>();
+  if (typeof targetManifest.name === 'string') packageNames.add(targetManifest.name);
+  for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    const dependencies = targetManifest[field];
+    if (!isRecord(dependencies)) continue;
+    for (const packageName of Object.keys(dependencies)) packageNames.add(packageName);
+  }
+
+  const loaded: { metadata: Record<string, unknown>; packageName: string; version: string }[] = [];
+  for (const packageName of [...packageNames].filter(isZoraPluginPackage).sort()) {
+    const minimumVersion =
+      packageName === '@ankhorage/zora-chess'
+        ? '0.2.0'
+        : packageName === '@ankhorage/zora-tabletop'
+          ? '0.1.0'
+          : '0.0.0';
+    const requirement: OwnerRequirement = {
+      packageName,
+      minimumVersion,
+      specifier: `${packageName}/metadata`,
+      exports: ['ZORA_PLUGIN_METADATA'],
+    };
+    const plugin = await loadOwnerModule(targetDirectory, requirement);
+    const metadata = plugin.module.ZORA_PLUGIN_METADATA;
+    assertRecord(metadata, `${packageName} ZORA plugin metadata`);
+    loaded.push({ metadata, packageName, version: plugin.version });
+  }
+  return loaded;
+}
+
+function isZoraPluginPackage(packageName: string): boolean {
+  return packageName.startsWith('@ankhorage/zora-') && packageName !== '@ankhorage/zora';
 }
 
 /*** Load only Contracts for tooling that runs before another owner package has been built. */
@@ -661,6 +724,10 @@ function assertZoraThemeApi(value: Record<string, unknown>): asserts value is Zo
 
 /*** Narrow released ZORA metadata into only the fields the orchestration needs. */
 function assertZoraMetadataApi(value: Record<string, unknown>): asserts value is ZoraMetadataApi {
+  if (typeof value.composeZoraPluginMetadata !== 'function') {
+    throw new Error('composeZoraPluginMetadata must be a function.');
+  }
+  assertRecord(value.ZORA_CORE_PLUGIN_METADATA, 'ZORA_CORE_PLUGIN_METADATA');
   assertRecord(value.ZORA_COMPONENT_META, 'ZORA_COMPONENT_META');
   for (const [name, metadata] of Object.entries(value.ZORA_COMPONENT_META)) {
     assertComponentMetadata(metadata, name);
@@ -696,7 +763,9 @@ function assertEventMetadata(value: unknown, name: string): asserts value is Eve
   assertRecord(value, `ZORA event metadata ${name}`);
   assertNonEmptyString(value.eventType, `ZORA event metadata ${name}.eventType`);
   assertNonEmptyString(value.label, `ZORA event metadata ${name}.label`);
-  assertNonEmptyString(value.description, `ZORA event metadata ${name}.description`);
+  if (value.description !== undefined) {
+    assertNonEmptyString(value.description, `ZORA event metadata ${name}.description`);
+  }
 }
 
 /*** Validate one theme recipe metadata entry and its supported fields. */
