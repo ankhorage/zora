@@ -378,6 +378,7 @@ try {
     configureCandidateFixture(fixtureRoot, candidatePath);
 
     run(['bun', 'install'], fixtureRoot);
+    run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
     rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
     run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
 
