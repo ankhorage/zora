@@ -126,6 +126,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'EmptyState',
       'Hero',
       'Button',
+      'RadioGroup',
       'ThemeModeToggle',
       'Input',
       'Textarea',
@@ -196,6 +197,26 @@ describe('ZORA_COMPONENT_META invariants', () => {
       authoring: { authority: 'instance' },
     });
     expect(ZORA_COMPONENT_META.Image.props.alt?.authoring).toEqual({ authority: 'instance' });
+  });
+
+  test('RadioGroup is a direct manifest leaf with card presentation and normalized value events', () => {
+    const radioGroup = ZORA_COMPONENT_META.RadioGroup;
+
+    expect(radioGroup.directManifestNode).toBe(true);
+    expect(radioGroup.allowedChildren).toEqual([]);
+    expect(radioGroup.props.presentation?.enum).toEqual(['inline', 'card']);
+    expect(radioGroup.props.options?.type).toBe('array');
+    expect(radioGroup.props.options?.itemSchema?.map((item) => item.key)).toEqual([
+      'value',
+      'label',
+      'description',
+      'disabled',
+    ]);
+    expect(radioGroup.bindings?.props?.value?.value).toEqual({ type: 'string' });
+    expect(radioGroup.events?.valueChange?.eventType).toBe('radioGroup.valueChange');
+    expect(radioGroup.events?.valueChange?.payloadFields).toEqual([
+      { path: 'value', type: 'string', label: 'Value' },
+    ]);
   });
 
   test('ThemeModeToggle is a direct manifest leaf with serializable defaults', () => {
