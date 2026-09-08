@@ -10,6 +10,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'Image',
   'Button',
   'ButtonGroup',
+  'RadioGroup',
   'ThemeModeToggle',
   'Input',
   'Textarea',
