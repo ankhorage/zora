@@ -11,6 +11,7 @@ describe('ZORA_THEME_RECIPE_META', () => {
       'Button',
       'Card',
       'Heading',
+      'RadioGroup',
       'Text',
       'Panel',
     ]);
@@ -50,6 +51,9 @@ describe('ZORA_THEME_RECIPE_META', () => {
   test('keeps recipe defaults aligned with existing runtime behavior', () => {
     expect(ZORA_THEME_RECIPE_META.Button?.fields.size?.default).toBe('l');
     expect(ZORA_THEME_RECIPE_META.Card?.fields.padding?.default).toBeUndefined();
+    expect(ZORA_THEME_RECIPE_META.RadioGroup?.fields.gap?.default).toBe('s');
+    expect(ZORA_THEME_RECIPE_META.RadioGroup?.fields.color?.default).toBe('primary');
+    expect(ZORA_THEME_RECIPE_META.RadioGroup?.fields.size?.default).toBe('m');
     expect(ZORA_THEME_RECIPE_META.Text?.fields.weight?.default).toBeUndefined();
     expect(ZORA_THEME_RECIPE_META.Heading?.fields.size?.default).toBeUndefined();
   });
