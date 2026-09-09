@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.5.0
+
+### Minor Changes
+
+- f53e341: Add SVG icon options, equal-width columns and content orientation to RadioGroup. Support local initial selection through defaultValue, accessible icon radio controls on web and native, and a directly insertable Radio button group blueprint for Studio.
+
 ## 4.4.1
 
 ### Patch Changes
