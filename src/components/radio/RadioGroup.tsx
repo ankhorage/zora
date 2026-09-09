@@ -1,145 +1,117 @@
-import { Radio, useTheme } from '@ankhorage/surface';
+import { Radio } from '@ankhorage/surface';
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Stack } from '../../foundation';
 import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Text } from '../text';
+import { RadioOptionControl } from './RadioOptionControl';
 import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
-import type { RadioGroupOption, RadioGroupProps } from './types';
+import type { RadioGroupProps } from './types';
 
-/***
- * Resolves the themed radio-group presentation within the active ZORA scope.
- */
+/*** Present one controlled single-choice group as inline radios or icon radio options. */
+export const RadioGroup = withZoraThemeScope(RadioGroupInner);
+
+/*** Resolve shared presentation once and preserve a single interaction boundary per option. */
 function RadioGroupInner<TValue extends string>({
   themeId: _themeId,
   mode: _mode,
-  value,
-  onValueChange,
-  options,
-  orientation = 'vertical',
-  gap,
-  presentation = 'inline',
-  color,
-  size,
-  invalid = false,
-  readOnly = false,
-  disabled = false,
-  testID,
-  interactionPolicy,
+  ...props
 }: RadioGroupProps<TValue>) {
-  const isHorizontal = orientation === 'horizontal';
+  const [localValue, setLocalValue] = React.useState(props.defaultValue);
+  const onValueChange = (next: TValue) => {
+    if (props.value === undefined) setLocalValue(next);
+    props.onValueChange?.(next);
+  };
+  const selectedProps = { ...props, value: props.value ?? localValue, onValueChange };
   const themeFields = useZoraThemeRecipe('RadioGroup');
-  const recipe = resolveRadioGroupThemeRecipe({ gap, color, size, themeFields });
-
+  const recipe = resolveRadioGroupThemeRecipe({ ...props, themeFields });
+  if (props.presentation !== 'card') return <RadioGroupInline {...selectedProps} {...recipe} />;
+  const columns =
+    props.columns ?? (props.orientation === 'horizontal' ? Math.max(1, props.options.length) : 1);
+  const rows = Array.from({ length: Math.ceil(props.options.length / columns) }, (_, index) =>
+    props.options.slice(index * columns, (index + 1) * columns),
+  );
   return (
-    <View
-      testID={testID}
-      accessibilityRole="radiogroup"
-      style={{
-        flexDirection: isHorizontal ? 'row' : 'column',
-        flexWrap: isHorizontal ? 'wrap' : 'nowrap',
-      }}
-    >
-      <Stack
-        direction={isHorizontal ? 'row' : 'column'}
-        gap={recipe.gap}
-        wrap={isHorizontal ? 'wrap' : 'nowrap'}
-      >
-        {options.map((option) => (
-          <RadioGroupItem
-            key={option.value}
-            option={option}
-            checked={value === option.value}
-            disabled={disabled || option.disabled === true}
-            invalid={invalid}
-            readOnly={readOnly}
-            size={recipe.size}
-            color={recipe.color}
-            orientation={orientation}
-            presentation={presentation}
-            onSelect={onValueChange}
-            interactionPolicy={interactionPolicy}
-          />
+    <View testID={props.testID} accessibilityRole="radiogroup">
+      <Stack gap={recipe.gap}>
+        {rows.map((options, index) => (
+          <Stack key={index} direction="row" gap={recipe.gap}>
+            {options.map((option) => (
+              <View key={option.value} style={styles.option}>
+                <RadioGroupItem {...selectedProps} {...recipe} option={option} />
+              </View>
+            ))}
+            {Array.from({ length: columns - options.length }, (_, slot) => (
+              <View key={`empty-${slot}`} style={styles.option} />
+            ))}
+          </Stack>
         ))}
       </Stack>
     </View>
   );
 }
 
-/***
- * Renders a group of radio options for selecting a single value.
- */
-export const RadioGroup = withZoraThemeScope(RadioGroupInner);
+/*** Preserve ordinary radio wrapping independently of the icon-option grid. */
+function RadioGroupInline<TValue extends string>(props: RadioGroupProps<TValue>) {
+  return (
+    <View testID={props.testID} accessibilityRole="radiogroup">
+      <Stack
+        direction={props.orientation === 'horizontal' ? 'row' : 'column'}
+        gap={props.gap}
+        wrap="wrap"
+      >
+        {props.options.map((option) => (
+          <RadioGroupItem key={option.value} {...props} option={option} />
+        ))}
+      </Stack>
+    </View>
+  );
+}
 
-/***
- * Renders one option through the single Surface Radio interaction boundary.
- */
-function RadioGroupItem<TValue extends string>({
-  option,
-  checked,
-  disabled,
-  invalid,
-  readOnly,
-  size,
-  color,
-  orientation,
-  presentation,
-  onSelect,
-  interactionPolicy,
-}: {
-  option: RadioGroupOption<TValue>;
-  checked: boolean;
-  disabled: boolean;
-  invalid: boolean;
-  readOnly: boolean;
-  size: NonNullable<RadioGroupProps<TValue>['size']>;
-  color: NonNullable<RadioGroupProps<TValue>['color']>;
-  orientation: NonNullable<RadioGroupProps<TValue>['orientation']>;
-  presentation: NonNullable<RadioGroupProps<TValue>['presentation']>;
-  onSelect: (value: TValue) => void;
-  interactionPolicy: RadioGroupProps<TValue>['interactionPolicy'];
-}) {
-  const { theme } = useTheme();
-  const passive = interactionPolicy === 'passive';
-  const isCard = presentation === 'card';
-
+/*** Delegate icon options to their composed radio boundary and ordinary options to Surface Radio. */
+function RadioGroupItem<TValue extends string>(
+  props: RadioGroupProps<TValue> & {
+    option: RadioGroupProps<TValue>['options'][number];
+  },
+) {
+  const { option, value, onValueChange, interactionPolicy, color, size } = props;
+  const checked = value === option.value;
+  const inactive = props.disabled === true || option.disabled === true;
+  const readOnly = props.readOnly === true;
+  const invalid = props.invalid === true;
+  const onSelect = () => {
+    if (!inactive && !readOnly && interactionPolicy !== 'passive' && !checked)
+      onValueChange?.(option.value);
+  };
+  if (props.presentation === 'card') {
+    return (
+      <RadioOptionControl
+        {...props}
+        checked={checked}
+        disabled={inactive}
+        readOnly={readOnly}
+        invalid={invalid}
+        layout={props.contentOrientation ?? 'horizontal'}
+        onSelect={onSelect}
+      />
+    );
+  }
   return (
     <Radio
-      interactionPolicy={interactionPolicy}
       checked={checked}
-      disabled={disabled}
-      invalid={invalid}
+      disabled={inactive}
       readOnly={readOnly}
-      size={size}
+      invalid={invalid}
+      interactionPolicy={interactionPolicy}
       color={color}
+      size={size}
       testID={option.testID}
-      bg={
-        isCard
-          ? checked
-            ? theme.semantics.selection.background
-            : theme.semantics.surface.default
-          : undefined
-      }
-      borderColor={
-        isCard
-          ? checked
-            ? theme.semantics.selection.border
-            : theme.semantics.border.default
-          : undefined
-      }
-      borderWidth={isCard ? 1 : undefined}
-      p={isCard ? 'm' : undefined}
-      radius={isCard ? 'l' : undefined}
-      width={isCard && orientation === 'vertical' ? '100%' : undefined}
-      onCheckedChange={(nextChecked) => {
-        if (passive) return;
-        if (nextChecked) onSelect(option.value);
-      }}
+      onCheckedChange={onSelect}
     >
       <Stack gap="xs">
-        <Text weight={isCard ? 'semiBold' : undefined}>{option.label}</Text>
+        <Text>{option.label}</Text>
         {option.description ? (
           <Text emphasis="muted" variant="caption">
             {option.description}
@@ -149,3 +121,5 @@ function RadioGroupItem<TValue extends string>({
     </Radio>
   );
 }
+
+const styles = StyleSheet.create({ option: { flex: 1, minWidth: 0 } });

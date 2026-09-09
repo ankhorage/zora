@@ -139,10 +139,15 @@ graph LR
   module_src_components_progress_resolveProgressFraction_ts["src/components/progress/resolveProgressFraction.ts"]
   module_src_components_progress_resolveProgressRingGeometry_ts["src/components/progress/resolveProgressRingGeometry.ts"]
   module_src_components_progress_types_ts["src/components/progress/types.ts"]
+  module_src_components_radio_handleRadioOptionKeyDown_ts["src/components/radio/handleRadioOptionKeyDown.ts"]
   module_src_components_radio_index_ts["src/components/radio/index.ts"]
   module_src_components_radio_meta_ts["src/components/radio/meta.ts"]
   module_src_components_radio_Radio_tsx["src/components/radio/Radio.tsx"]
   module_src_components_radio_RadioGroup_tsx["src/components/radio/RadioGroup.tsx"]
+  module_src_components_radio_RadioOptionControl_tsx["src/components/radio/RadioOptionControl.tsx"]
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts["src/components/radio/resolveRadioGroupThemeRecipe.ts"]
+  module_src_components_radio_resolveRadioOptionColors_ts["src/components/radio/resolveRadioOptionColors.ts"]
+  module_src_components_radio_themeRecipeMeta_ts["src/components/radio/themeRecipeMeta.ts"]
   module_src_components_radio_types_ts["src/components/radio/types.ts"]
   module_src_components_rating_index_ts["src/components/rating/index.ts"]
   module_src_components_rating_meta_ts["src/components/rating/meta.ts"]
@@ -197,6 +202,9 @@ graph LR
   module_src_components_toolbar_Toolbar_tsx["src/components/toolbar/Toolbar.tsx"]
   module_src_components_toolbar_ToolbarAction_tsx["src/components/toolbar/ToolbarAction.tsx"]
   module_src_components_toolbar_types_ts["src/components/toolbar/types.ts"]
+  module_src_constants_keyboard_ts["src/constants/keyboard.ts"]
+  module_src_corePlugin_ts["src/corePlugin.ts"]
+  module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   module_src_foundation_Center_tsx["src/foundation/Center.tsx"]
   module_src_foundation_Container_tsx["src/foundation/Container.tsx"]
@@ -399,6 +407,7 @@ graph LR
   module_src_patterns_zora_tab_bar_meta_ts["src/patterns/zora-tab-bar/meta.ts"]
   module_src_patterns_zora_tab_bar_types_ts["src/patterns/zora-tab-bar/types.ts"]
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx["src/patterns/zora-tab-bar/ZoraTabBar.tsx"]
+  module_src_pluginComposition_ts["src/pluginComposition.ts"]
   module_src_registry_ts["src/registry.ts"]
   module_src_theme_compileZoraTheme_ts["src/theme/compileZoraTheme.ts"]
   module_src_theme_createZoraThemeConfig_ts["src/theme/createZoraThemeConfig.ts"]
@@ -706,13 +715,29 @@ graph LR
   module_src_components_progress_ProgressRing_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_progress_types_ts --> module_src_internal_recipes_ts
   module_src_components_progress_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_radio_handleRadioOptionKeyDown_ts --> module_src_constants_keyboard_ts
+  module_src_components_radio_meta_ts --> module_src_internal_colorModel_ts
   module_src_components_radio_meta_ts --> module_src_metadata_index_ts
   module_src_components_radio_Radio_tsx --> module_src_components_radio_types_ts
   module_src_components_radio_Radio_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_RadioOptionControl_tsx
+  module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_resolveRadioGroupThemeRecipe_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_types_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_components_text_index_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_foundation_index_ts
+  module_src_components_radio_RadioGroup_tsx --> module_src_theme_useZoraThemeRecipe_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_icon_index_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_handleRadioOptionKeyDown_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_resolveRadioOptionColors_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_types_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_text_index_ts
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts --> module_src_components_radio_types_ts
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts --> module_src_internal_colorModel_ts
+  module_src_components_radio_resolveRadioOptionColors_ts --> module_src_components_radio_types_ts
+  module_src_components_radio_themeRecipeMeta_ts --> module_src_internal_colorModel_ts
+  module_src_components_radio_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
+  module_src_components_radio_types_ts --> module_src_components_icon_index_ts
   module_src_components_radio_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_rating_meta_ts --> module_src_metadata_index_ts
   module_src_components_rating_Rating_tsx --> module_src_components_icon_index_ts
@@ -820,6 +845,13 @@ graph LR
   module_src_components_toolbar_ToolbarAction_tsx --> module_src_components_toolbar_types_ts
   module_src_components_toolbar_ToolbarAction_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_toolbar_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_corePlugin_ts --> module_src_corePluginMetadata_ts
+  module_src_corePlugin_ts --> module_src_pluginComposition_ts
+  module_src_corePlugin_ts --> module_src_registry_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_bindableComponentMeta_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_componentMeta_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_types_ts
+  module_src_corePluginMetadata_ts --> module_src_pluginComposition_ts
   module_src_foundation_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_foundation_Box_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_foundation_Center_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -973,6 +1005,7 @@ graph LR
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_button_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_card_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_heading_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_radio_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_text_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_patterns_panel_themeRecipeMeta_ts
@@ -1341,6 +1374,8 @@ graph LR
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_patterns_zora_tab_bar_types_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_pluginComposition_ts --> module_src_metadata_types_ts
+  module_src_pluginComposition_ts --> module_src_registry_ts
   module_src_registry_ts --> module_src_components_action_sheet_index_ts
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_avatar_group_index_ts

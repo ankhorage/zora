@@ -210,6 +210,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'value',
       'label',
       'description',
+      'iconSource',
       'disabled',
     ]);
     expect(radioGroup.bindings?.props?.value?.value).toEqual({ type: 'string' });

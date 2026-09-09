@@ -4559,6 +4559,171 @@
     "structuredRows": []
   },
   {
+    "name": "ComposedZoraPluginCatalog",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 41,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraComponentMeta"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "bindableComponentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"@ankhorage/contracts\").UiComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "componentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, ZoraComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "componentRegistry",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"react\").ElementType<any, keyof import(\"react\").JSX.IntrinsicElements>>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicySupportedComponents",
+        "kind": "property",
+        "type": "Readonly<Record<string, true>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "packageManifests",
+        "kind": "property",
+        "type": "readonly UiComponentPackageManifest[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ComposedZoraPluginMetadataCatalog",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraComponentMeta"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "bindableComponentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"@ankhorage/contracts\").UiComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "componentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, ZoraComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicySupportedComponents",
+        "kind": "property",
+        "type": "Readonly<Record<string, true>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "packageManifests",
+        "kind": "property",
+        "type": "readonly UiComponentPackageManifest[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "composeZoraPluginMetadata",
+    "description": "Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 66,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ComposedZoraPluginMetadataCatalog", "ZoraPluginMetadata"],
+    "signatures": [
+      {
+        "label": "(plugins: readonly ZoraPluginMetadata[]) => ComposedZoraPluginMetadataCatalog",
+        "parameters": [
+          {
+            "name": "plugins",
+            "type": "readonly ZoraPluginMetadata[]",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ComposedZoraPluginMetadataCatalog",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "composeZoraPlugins",
+    "description": "Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 112,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ComposedZoraPluginCatalog", "ZoraPluginDescriptor"],
+    "signatures": [
+      {
+        "label": "(plugins: readonly ZoraPluginDescriptor[]) => ComposedZoraPluginCatalog",
+        "parameters": [
+          {
+            "name": "plugins",
+            "type": "readonly ZoraPluginDescriptor[]",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ComposedZoraPluginCatalog",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ConfirmDialog",
     "description": "Confirmation dialog pattern with cancel/confirm actions.",
     "isReadme": false,
@@ -13578,14 +13743,14 @@
   },
   {
     "name": "RadioGroup",
-    "description": "Renders a group of radio options for selecting a single value.",
+    "description": "Present one controlled single-choice group as inline radios or icon radio options.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/radio/RadioGroup.tsx",
     "sourceLocation": {
       "filePath": "src/components/radio/RadioGroup.tsx",
-      "line": 64,
+      "line": 14,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13603,11 +13768,11 @@
     "modulePath": "src/components/radio/types.ts",
     "sourceLocation": {
       "filePath": "src/components/radio/types.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
+    "relatedSymbols": ["SurfaceImageSource"],
     "signatures": [],
     "members": [
       {
@@ -13621,6 +13786,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "iconSource",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").SurfaceImageSource | undefined",
         "required": false,
         "description": null
       },
@@ -13657,7 +13829,7 @@
     "modulePath": "src/components/radio/types.ts",
     "sourceLocation": {
       "filePath": "src/components/radio/types.ts",
-      "line": 16,
+      "line": 19,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -13668,6 +13840,27 @@
         "name": "color",
         "kind": "property",
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columns",
+        "kind": "property",
+        "type": "1 | 2 | 3 | 4 | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentOrientation",
+        "kind": "property",
+        "type": "\"horizontal\" | \"vertical\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "defaultValue",
+        "kind": "property",
+        "type": "TValue | undefined",
         "required": false,
         "description": null
       },
@@ -13709,8 +13902,8 @@
       {
         "name": "onValueChange",
         "kind": "property",
-        "type": "(value: TValue) => void",
-        "required": true,
+        "type": "((value: TValue) => void) | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -13724,6 +13917,13 @@
         "name": "orientation",
         "kind": "property",
         "type": "\"horizontal\" | \"vertical\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "presentation",
+        "kind": "property",
+        "type": "\"inline\" | \"card\" | undefined",
         "required": false,
         "description": null
       },
@@ -13758,8 +13958,8 @@
       {
         "name": "value",
         "kind": "property",
-        "type": "TValue",
-        "required": true,
+        "type": "TValue | undefined",
+        "required": false,
         "description": null
       }
     ],
@@ -13774,7 +13974,7 @@
     "modulePath": "src/components/radio/types.ts",
     "sourceLocation": {
       "filePath": "src/components/radio/types.ts",
-      "line": 6,
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21917,6 +22117,42 @@
     "structuredRows": []
   },
   {
+    "name": "ZORA_CORE_PLUGIN",
+    "description": "Describe the complete ZORA core runtime and authoring surface through the public plugin contract.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/corePlugin.ts",
+    "sourceLocation": {
+      "filePath": "src/corePlugin.ts",
+      "line": 6,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZORA_CORE_PLUGIN_METADATA",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/corePluginMetadata.ts",
+    "sourceLocation": {
+      "filePath": "src/corePluginMetadata.ts",
+      "line": 22,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ZORA_EMPHASES",
     "description": null,
     "isReadme": false,
@@ -21979,7 +22215,7 @@
     "modulePath": "src/metadata/themeRecipeMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/themeRecipeMeta.ts",
-      "line": 8,
+      "line": 9,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22098,7 +22334,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 44,
+      "line": 45,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22138,7 +22374,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22156,7 +22392,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 65,
+      "line": 66,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22203,7 +22439,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 58,
+      "line": 59,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22250,7 +22486,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 55,
+      "line": 56,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22268,7 +22504,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 54,
+      "line": 55,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22286,7 +22522,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 50,
+      "line": 51,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22312,7 +22548,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 77,
+      "line": 78,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22352,7 +22588,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 83,
+      "line": 84,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22372,6 +22608,13 @@
         "kind": "property",
         "type": "readonly string[]",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "bindings",
+        "kind": "property",
+        "type": "UiComponentBindingMeta | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -22470,7 +22713,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 99,
+      "line": 101,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22488,7 +22731,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 28,
+      "line": 29,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22521,7 +22764,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 20,
+      "line": 21,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22539,7 +22782,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 33,
+      "line": 34,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22618,7 +22861,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 10,
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22636,7 +22879,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 12,
+      "line": 13,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22672,7 +22915,7 @@
     "modulePath": "src/metadata/types.ts",
     "sourceLocation": {
       "filePath": "src/metadata/types.ts",
-      "line": 72,
+      "line": 73,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23214,6 +23457,204 @@
         "kind": "property",
         "type": "number | undefined",
         "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraPluginCompositionError",
+    "description": "Report one deterministic plugin composition contract violation.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 46,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraPluginCompositionErrorCode",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraPluginDescriptor",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 30,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraComponentMeta", "ZoraPluginPlacement"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "componentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, ZoraComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "componentRegistry",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"react\").ElementType<any, keyof import(\"react\").JSX.IntrinsicElements>>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "displayName",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "extensionHosts",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicySupportedComponents",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "packageName",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "placements",
+        "kind": "property",
+        "type": "readonly ZoraPluginPlacement[] | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraPluginMetadata",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 21,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraComponentMeta", "ZoraPluginPlacement"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "componentMeta",
+        "kind": "property",
+        "type": "Readonly<Record<string, ZoraComponentMeta>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "displayName",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "extensionHosts",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicySupportedComponents",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "packageName",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "placements",
+        "kind": "property",
+        "type": "readonly ZoraPluginPlacement[] | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraPluginPlacement",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/pluginComposition.ts",
+    "sourceLocation": {
+      "filePath": "src/pluginComposition.ts",
+      "line": 16,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "child",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "parents",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
         "description": null
       }
     ],

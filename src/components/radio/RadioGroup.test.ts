@@ -19,13 +19,17 @@ test('resolves RadioGroup theme defaults while preserving instance overrides', (
   ).toEqual({ gap: 'l', color: 'danger', size: 's' });
 });
 
-test('card presentation stays on the RadioGroup and Surface Radio semantic path', async () => {
-  const source = await Bun.file('src/components/radio/RadioGroup.tsx').text();
-
-  expect(source).toContain('accessibilityRole="radiogroup"');
-  expect(source).toContain('checked={value === option.value}');
-  expect(source).toContain('<Radio');
-  expect(source).toContain("const isCard = presentation === 'card';");
-  expect(source).not.toContain('<Button');
-  expect(source).not.toContain('SelectableItem');
+test('icon radio options expose serializable authoring metadata', async () => {
+  const { radioGroupMeta } = await import('./meta');
+  expect(radioGroupMeta.directManifestNode).toBe(true);
+  expect(radioGroupMeta.blueprint.label).toBe('Radio button group');
+  expect(radioGroupMeta.blueprint.defaultProps.options.map((option) => option.value)).toContain(
+    radioGroupMeta.blueprint.defaultProps.defaultValue,
+  );
+  expect(
+    radioGroupMeta.props.options.itemSchema.find((field) => field.key === 'iconSource')?.schema,
+  ).toMatchObject({ type: 'media', mediaKinds: ['image'] });
+  expect(radioGroupMeta.props.columns.enum).toEqual([1, 2, 3, 4]);
+  expect(radioGroupMeta.props.contentOrientation.enum).toEqual(['horizontal', 'vertical']);
+  expect(radioGroupMeta.events.valueChange.eventType).toBe('radioGroup.valueChange');
 });
