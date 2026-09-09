@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { Button } from '../../components/button';
+import { Image } from '../../components/image';
 import { Modal } from '../../components/modal';
 import { Progress } from '../../components/progress';
 import { Text } from '../../components/text';
 import { Box, Stack } from '../../foundation';
+import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { FormField } from '../form-field';
-import { ImagePreview } from '../image-preview';
 import type { ImageUploadFieldProps } from './types';
 import {
   createOptimisticAssetFromPicked,
@@ -27,6 +28,11 @@ function formatUnknownError(error: unknown): string {
   if (error instanceof Error && error.message) return error.message;
   if (typeof error === 'string' && error.trim().length > 0) return error;
   return 'Something went wrong.';
+}
+
+function resolveSafeAspectRatio(value: number): number {
+  if (!Number.isFinite(value) || value <= 0) return 1;
+  return value;
 }
 
 function ImageUploadFieldInner({
@@ -53,6 +59,7 @@ function ImageUploadFieldInner({
   previewDescription,
   interactionPolicy,
 }: ImageUploadFieldProps) {
+  const { theme } = useZoraTheme();
   const passive = interactionPolicy === 'passive';
   const [internalError, setInternalError] = React.useState<string | undefined>(undefined);
   const [uploading, setUploading] = React.useState(false);
@@ -70,6 +77,7 @@ function ImageUploadFieldInner({
   const renderableUrl = resolveRenderableUrl(value);
   const isRenderable = renderableUrl !== null;
   const actionsDisabled = disabled || readOnly;
+  const resolvedAspectRatio = resolveSafeAspectRatio(aspectRatio);
 
   const effectiveError = errorText ?? internalError;
   const invalid = Boolean(effectiveError);
@@ -204,11 +212,35 @@ function ImageUploadFieldInner({
         testID={testID}
       >
         <Stack gap="m">
-          <ImagePreview
-            aspectRatio={aspectRatio}
-            asset={value}
-            emptyDescription={actionsDisabled ? 'No image available.' : undefined}
-          />
+          <Box
+            bg={theme.semantics.neutral.surface}
+            borderColor={theme.semantics.neutral.divider}
+            borderWidth={1}
+            radius="l"
+            style={{ overflow: 'hidden' }}
+          >
+            {renderableUrl ? (
+              <Box style={{ aspectRatio: resolvedAspectRatio, width: '100%' }}>
+                <Image
+                  alt={value?.alt}
+                  fit="cover"
+                  source={renderableUrl}
+                  style={{ height: '100%', width: '100%' }}
+                />
+              </Box>
+            ) : (
+              <Box p="l">
+                <Stack gap="xs">
+                  <Text variant="label" weight="semiBold">
+                    No image
+                  </Text>
+                  <Text emphasis="muted" variant="bodySmall">
+                    {actionsDisabled ? 'No image available.' : 'Select an image to preview it here.'}
+                  </Text>
+                </Stack>
+              </Box>
+            )}
+          </Box>
 
           {acceptHint || maxSizeHint ? (
             <Stack gap="xs">
@@ -283,7 +315,7 @@ function ImageUploadFieldInner({
         </Stack>
       </FormField>
 
-      {isRenderable ? (
+      {isRenderable && renderableUrl ? (
         <Modal
           closeOnBackdrop
           description={previewDescription}
@@ -293,7 +325,22 @@ function ImageUploadFieldInner({
           visible={previewOpen}
         >
           <Stack gap="m">
-            <ImagePreview asset={value} aspectRatio={aspectRatio} />
+            <Box
+              bg={theme.semantics.neutral.surface}
+              borderColor={theme.semantics.neutral.divider}
+              borderWidth={1}
+              radius="l"
+              style={{ overflow: 'hidden' }}
+            >
+              <Box style={{ aspectRatio: resolvedAspectRatio, width: '100%' }}>
+                <Image
+                  alt={value?.alt}
+                  fit="cover"
+                  source={renderableUrl}
+                  style={{ height: '100%', width: '100%' }}
+                />
+              </Box>
+            </Box>
             <Stack direction="row" justify="flex-end">
               <Button
                 interactionPolicy={interactionPolicy}
