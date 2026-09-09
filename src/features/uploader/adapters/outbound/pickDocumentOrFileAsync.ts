@@ -31,6 +31,7 @@ export async function pickDocumentOrFileAsync(
   };
 }
 
+/*** Maps browser-style accept MIME entries into Expo DocumentPicker's type option. */
 function resolveDocumentMimeTypes(accept: string | undefined): string | string[] {
   if (!accept) {
     return '*/*';
