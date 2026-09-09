@@ -60,7 +60,8 @@ function RadioOptionControlBody<TValue extends string>(
   const { theme } = useTheme();
   const colors = resolveRadioOptionColors(theme, props);
   const contentStyle = {
-    padding: theme.spacing.m,
+    padding: props.size === 's' ? theme.spacing.s : props.size === 'm' ? 12 : theme.spacing.m,
+    gap: props.layout === 'vertical' ? theme.spacing.s : theme.spacing.m,
     opacity: props.disabled ? 0.5 : props.pressed ? 0.7 : 1,
   };
   return (
