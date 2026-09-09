@@ -27,7 +27,7 @@ export function RadioOptionControl<TValue extends string>(props: RadioOptionCont
   const controlStyle = {
     flex: 1,
     width: '100%' as const,
-    minHeight: 44,
+    minHeight: props.size === 'l' ? 84 : 44,
     borderWidth: checked || focused ? 2 : 1,
     borderColor: focused ? theme.semantics.border.focus : checked ? colors.accent : colors.border,
     borderRadius: theme.radii.l,
@@ -61,7 +61,9 @@ function RadioOptionControlBody<TValue extends string>(
   const colors = resolveRadioOptionColors(theme, props);
   const contentStyle = {
     padding: props.size === 's' ? theme.spacing.s : props.size === 'm' ? 12 : theme.spacing.m,
-    gap: props.layout === 'vertical' ? theme.spacing.s : theme.spacing.m,
+    gap:
+      props.layout === 'vertical' || !props.option.iconSource ? theme.spacing.s : theme.spacing.m,
+    ...(!props.option.iconSource ? { flexDirection: 'row-reverse' as const } : {}),
     opacity: props.disabled ? 0.5 : props.pressed ? 0.7 : 1,
   };
   return (
@@ -73,13 +75,15 @@ function RadioOptionControlBody<TValue extends string>(
       ]}
     >
       <RadioOptionControlContent {...props} />
-      <View style={props.layout === 'vertical' ? styles.corner : undefined}>
-        <RadioOptionControlIndicator
-          checked={props.checked}
-          accent={colors.accent}
-          onAccent={colors.onAccent}
-        />
-      </View>
+      {props.option.iconSource || props.checked ? (
+        <View style={props.layout === 'vertical' ? styles.corner : undefined}>
+          <RadioOptionControlIndicator
+            checked={props.checked}
+            accent={colors.accent}
+            onAccent={colors.onAccent}
+          />
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -116,14 +120,18 @@ function RadioOptionControlContent<TValue extends string>({
         </View>
       ) : null}
       <View style={layout === 'horizontal' ? styles.label : styles.centerLabel}>
-        <Text weight="semiBold" align={layout === 'vertical' ? 'center' : 'left'}>
+        <Text
+          variant={size === 'l' ? 'body' : 'bodySmall'}
+          weight="semiBold"
+          align={layout === 'vertical' || !option.iconSource ? 'center' : 'left'}
+        >
           {option.label}
         </Text>
         {option.description ? (
           <Text
             emphasis="muted"
             variant="bodySmall"
-            align={layout === 'vertical' ? 'center' : 'left'}
+            align={layout === 'vertical' || !option.iconSource ? 'center' : 'left'}
           >
             {option.description}
           </Text>
