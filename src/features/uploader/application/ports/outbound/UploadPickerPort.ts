@@ -1,4 +1,4 @@
-import type { UploadAsset, UploadType } from '../../../../types/upload';
+import type { UploadAsset, UploadType } from '../../../../../types/upload';
 
 export interface UploadPickerInput {
   type: UploadType;
