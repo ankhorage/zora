@@ -1,5 +1,7 @@
 import type { KeyboardEvent } from 'react';
 
+import { DIRECTION_MODIFIERS } from '../../constants/keyboard';
+
 /*** Support Space and directional navigation for web radio options without affecting native presses. */
 export function handleRadioOptionKeyDown(
   event: KeyboardEvent<RadioOptionKeyboardTarget>,
@@ -10,12 +12,7 @@ export function handleRadioOptionKeyDown(
     select();
     return;
   }
-  const direction = new Map([
-    ['ArrowRight', 1],
-    ['ArrowDown', 1],
-    ['ArrowLeft', -1],
-    ['ArrowUp', -1],
-  ]).get(event.key);
+  const direction = DIRECTION_MODIFIERS.get(event.key);
   if (direction === undefined) return;
   const group = event.currentTarget.closest('[role="radiogroup"]');
   const options = Array.from(group?.querySelectorAll('[role="radio"]') ?? []).filter(

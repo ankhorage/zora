@@ -1247,7 +1247,7 @@
     {
       "path": "src/components/radio/handleRadioOptionKeyDown.ts",
       "isEntrypoint": false,
-      "dependencies": [],
+      "dependencies": ["src/constants/keyboard.ts"],
       "exports": ["handleRadioOptionKeyDown", "RadioOptionKeyboardTarget"]
     },
     {
@@ -1767,6 +1767,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/theme/ZoraBaseProps.ts"],
       "exports": ["ToolbarActionProps", "ToolbarPosition", "ToolbarProps"]
+    },
+    {
+      "path": "src/constants/keyboard.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["DIRECTION_MODIFIERS"]
     },
     {
       "path": "src/corePlugin.ts",
@@ -45172,7 +45178,7 @@
       "description": "Support Space and directional navigation for web radio options without affecting native presses.",
       "sourceLocation": {
         "filePath": "src/components/radio/handleRadioOptionKeyDown.ts",
-        "line": 4,
+        "line": 6,
         "column": 1
       }
     },
@@ -51351,6 +51357,11 @@
         "fromPath": "src/components/progress/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/progress/types.ts"
+      },
+      {
+        "fromPath": "src/components/radio/handleRadioOptionKeyDown.ts",
+        "toPath": "src/constants/keyboard.ts",
+        "sourcePath": "src/components/radio/handleRadioOptionKeyDown.ts"
       },
       {
         "fromPath": "src/components/radio/index.ts",
