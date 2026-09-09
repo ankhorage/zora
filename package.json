@@ -39,7 +39,9 @@
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.0",
     "@ankhorage/contracts": "^12.0.1",
-    "@ankhorage/surface": "^3.4.4"
+    "@ankhorage/surface": "^3.4.4",
+    "expo-document-picker": "~57.0.1",
+    "expo-image-picker": "~57.0.16"
   },
   "files": [
     "dist",
