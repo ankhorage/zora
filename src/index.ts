@@ -1,5 +1,3 @@
-export type { ActionSheetItemProps, ActionSheetProps } from './components/action-sheet';
-export { ActionSheet, ActionSheetItem } from './components/action-sheet';
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
 export type { AvatarProps, AvatarShape, AvatarSize } from './components/avatar';
@@ -39,8 +37,6 @@ export type {
 export { DataTable } from './components/data-table';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
 export { DatePicker } from './components/date-picker';
-export type { DrawerProps } from './components/drawer';
-export { Drawer } from './components/drawer';
 export type {
   FormActionsProps,
   FormErrorProps,
@@ -105,14 +101,6 @@ export type { MetricCardProps } from './components/metric-card';
 export { MetricCard } from './components/metric-card';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
-export type {
-  NavigationItemProps,
-  ZoraNavigationRouteMetadata,
-  ZoraNavigationRouteState,
-} from './components/navigation-item';
-export { NavigationItem } from './components/navigation-item';
-export type { NavigationListProps, ZoraNavigationRouteMap } from './components/navigation-list';
-export { NavigationList } from './components/navigation-list';
 export type { PaginationProps } from './components/pagination';
 export { Pagination } from './components/pagination';
 export type { ProgressProps, ProgressRingProps } from './components/progress';
@@ -297,12 +285,6 @@ export { FilterBar } from './patterns/filter-bar';
 export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';
 export { Hero } from './patterns/hero';
 export type {
-  ImagePreviewProps,
-  ZoraImageAsset,
-  ZoraImageMetadata,
-} from './patterns/image-preview';
-export { ImagePreview } from './patterns/image-preview';
-export type {
   ImageUploadFieldProps,
   ImageUploadProgressContext,
   ZoraPickedImage,
@@ -357,15 +339,6 @@ export type {
 } from './patterns/reader';
 export { ReaderSurface, resolveReaderProgress } from './patterns/reader';
 export type {
-  ResponsivePanelDesktopMode,
-  ResponsivePanelMobileMode,
-  ResponsivePanelProps,
-  ResponsivePanelScroll,
-  ResponsivePanelSide,
-  ResponsivePanelSize,
-} from './patterns/responsive-panel';
-export { ResponsivePanel } from './patterns/responsive-panel';
-export type {
   BarcodeScannerViewProps,
   BarcodeScanResult,
   CameraPermissionStatus,
@@ -396,10 +369,6 @@ export type { TimelineItem, TimelineProps } from './patterns/timeline';
 export { Timeline } from './patterns/timeline';
 export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';
 export { TreeItem, TreeView } from './patterns/tree-view';
-export type { ZoraDrawerContentProps } from './patterns/zora-drawer-content';
-export { ZoraDrawerContent } from './patterns/zora-drawer-content';
-export type { ZoraTabBarProps } from './patterns/zora-tab-bar';
-export { ZoraTabBar } from './patterns/zora-tab-bar';
 export type {
   ComposedZoraPluginCatalog,
   ComposedZoraPluginMetadataCatalog,
