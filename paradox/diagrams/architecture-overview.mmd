@@ -569,10 +569,13 @@ graph TD
   package__ankhorage_zora -.-> module_src_components_progress_types_ts
   module_src_components_progress_types_ts --> module_src_internal_recipes_ts
   module_src_components_progress_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_radio_handleRadioOptionKeyDown_ts["src/components/radio/handleRadioOptionKeyDown.ts"]
+  package__ankhorage_zora -.-> module_src_components_radio_handleRadioOptionKeyDown_ts
   module_src_components_radio_index_ts["src/components/radio/index.ts"]
   package__ankhorage_zora -.-> module_src_components_radio_index_ts
   module_src_components_radio_meta_ts["src/components/radio/meta.ts"]
   package__ankhorage_zora -.-> module_src_components_radio_meta_ts
+  module_src_components_radio_meta_ts --> module_src_internal_colorModel_ts
   module_src_components_radio_meta_ts --> module_src_metadata_index_ts
   module_src_components_radio_Radio_tsx["src/components/radio/Radio.tsx"]
   package__ankhorage_zora -.-> module_src_components_radio_Radio_tsx
@@ -580,12 +583,34 @@ graph TD
   module_src_components_radio_Radio_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_radio_RadioGroup_tsx["src/components/radio/RadioGroup.tsx"]
   package__ankhorage_zora -.-> module_src_components_radio_RadioGroup_tsx
+  module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_RadioOptionControl_tsx
+  module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_resolveRadioGroupThemeRecipe_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_components_radio_types_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_components_text_index_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_foundation_index_ts
+  module_src_components_radio_RadioGroup_tsx --> module_src_theme_useZoraThemeRecipe_ts
   module_src_components_radio_RadioGroup_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_radio_RadioOptionControl_tsx["src/components/radio/RadioOptionControl.tsx"]
+  package__ankhorage_zora -.-> module_src_components_radio_RadioOptionControl_tsx
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_icon_index_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_handleRadioOptionKeyDown_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_resolveRadioOptionColors_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_radio_types_ts
+  module_src_components_radio_RadioOptionControl_tsx --> module_src_components_text_index_ts
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts["src/components/radio/resolveRadioGroupThemeRecipe.ts"]
+  package__ankhorage_zora -.-> module_src_components_radio_resolveRadioGroupThemeRecipe_ts
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts --> module_src_components_radio_types_ts
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts --> module_src_internal_colorModel_ts
+  module_src_components_radio_resolveRadioOptionColors_ts["src/components/radio/resolveRadioOptionColors.ts"]
+  package__ankhorage_zora -.-> module_src_components_radio_resolveRadioOptionColors_ts
+  module_src_components_radio_resolveRadioOptionColors_ts --> module_src_components_radio_types_ts
+  module_src_components_radio_themeRecipeMeta_ts["src/components/radio/themeRecipeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_components_radio_themeRecipeMeta_ts
+  module_src_components_radio_themeRecipeMeta_ts --> module_src_internal_colorModel_ts
+  module_src_components_radio_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_components_radio_types_ts["src/components/radio/types.ts"]
   package__ankhorage_zora -.-> module_src_components_radio_types_ts
+  module_src_components_radio_types_ts --> module_src_components_icon_index_ts
   module_src_components_radio_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_rating_index_ts["src/components/rating/index.ts"]
   package__ankhorage_zora -.-> module_src_components_rating_index_ts
@@ -799,6 +824,17 @@ graph TD
   module_src_components_toolbar_types_ts["src/components/toolbar/types.ts"]
   package__ankhorage_zora -.-> module_src_components_toolbar_types_ts
   module_src_components_toolbar_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_corePlugin_ts["src/corePlugin.ts"]
+  package__ankhorage_zora -.-> module_src_corePlugin_ts
+  module_src_corePlugin_ts --> module_src_corePluginMetadata_ts
+  module_src_corePlugin_ts --> module_src_pluginComposition_ts
+  module_src_corePlugin_ts --> module_src_registry_ts
+  module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
+  package__ankhorage_zora -.-> module_src_corePluginMetadata_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_bindableComponentMeta_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_componentMeta_ts
+  module_src_corePluginMetadata_ts --> module_src_metadata_types_ts
+  module_src_corePluginMetadata_ts --> module_src_pluginComposition_ts
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   package__ankhorage_zora -.-> module_src_foundation_Box_tsx
   module_src_foundation_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1043,6 +1079,7 @@ graph TD
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_button_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_card_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_heading_themeRecipeMeta_ts
+  module_src_metadata_themeRecipeMeta_ts --> module_src_components_radio_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_components_text_themeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_patterns_panel_themeRecipeMeta_ts
@@ -1723,6 +1760,10 @@ graph TD
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_patterns_zora_tab_bar_types_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_pluginComposition_ts["src/pluginComposition.ts"]
+  package__ankhorage_zora -.-> module_src_pluginComposition_ts
+  module_src_pluginComposition_ts --> module_src_metadata_types_ts
+  module_src_pluginComposition_ts --> module_src_registry_ts
   module_src_registry_ts["src/registry.ts"]
   package__ankhorage_zora -.-> module_src_registry_ts
   module_src_registry_ts --> module_src_components_action_sheet_index_ts

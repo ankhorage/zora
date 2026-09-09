@@ -139,10 +139,15 @@ graph LR
   module_src_components_progress_resolveProgressFraction_ts["src/components/progress/resolveProgressFraction.ts"]
   module_src_components_progress_resolveProgressRingGeometry_ts["src/components/progress/resolveProgressRingGeometry.ts"]
   module_src_components_progress_types_ts["src/components/progress/types.ts"]
+  module_src_components_radio_handleRadioOptionKeyDown_ts["src/components/radio/handleRadioOptionKeyDown.ts"]
   module_src_components_radio_index_ts["src/components/radio/index.ts"]
   module_src_components_radio_meta_ts["src/components/radio/meta.ts"]
   module_src_components_radio_Radio_tsx["src/components/radio/Radio.tsx"]
   module_src_components_radio_RadioGroup_tsx["src/components/radio/RadioGroup.tsx"]
+  module_src_components_radio_RadioOptionControl_tsx["src/components/radio/RadioOptionControl.tsx"]
+  module_src_components_radio_resolveRadioGroupThemeRecipe_ts["src/components/radio/resolveRadioGroupThemeRecipe.ts"]
+  module_src_components_radio_resolveRadioOptionColors_ts["src/components/radio/resolveRadioOptionColors.ts"]
+  module_src_components_radio_themeRecipeMeta_ts["src/components/radio/themeRecipeMeta.ts"]
   module_src_components_radio_types_ts["src/components/radio/types.ts"]
   module_src_components_rating_index_ts["src/components/rating/index.ts"]
   module_src_components_rating_meta_ts["src/components/rating/meta.ts"]
@@ -197,6 +202,8 @@ graph LR
   module_src_components_toolbar_Toolbar_tsx["src/components/toolbar/Toolbar.tsx"]
   module_src_components_toolbar_ToolbarAction_tsx["src/components/toolbar/ToolbarAction.tsx"]
   module_src_components_toolbar_types_ts["src/components/toolbar/types.ts"]
+  module_src_corePlugin_ts["src/corePlugin.ts"]
+  module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   module_src_foundation_Center_tsx["src/foundation/Center.tsx"]
   module_src_foundation_Container_tsx["src/foundation/Container.tsx"]
@@ -399,6 +406,7 @@ graph LR
   module_src_patterns_zora_tab_bar_meta_ts["src/patterns/zora-tab-bar/meta.ts"]
   module_src_patterns_zora_tab_bar_types_ts["src/patterns/zora-tab-bar/types.ts"]
   module_src_patterns_zora_tab_bar_ZoraTabBar_tsx["src/patterns/zora-tab-bar/ZoraTabBar.tsx"]
+  module_src_pluginComposition_ts["src/pluginComposition.ts"]
   module_src_registry_ts["src/registry.ts"]
   module_src_theme_compileZoraTheme_ts["src/theme/compileZoraTheme.ts"]
   module_src_theme_createZoraThemeConfig_ts["src/theme/createZoraThemeConfig.ts"]
@@ -578,6 +586,20 @@ graph LR
   module_src_theme_compileZoraTheme_ts --> export_compileZoraTheme
   export_compileZoraTheme -.-> export_ZoraComputedTheme
   export_compileZoraTheme -.-> export_ZoraThemeCompilationOptions
+  export_ComposedZoraPluginCatalog["ComposedZoraPluginCatalog"]
+  module_src_pluginComposition_ts --> export_ComposedZoraPluginCatalog
+  export_ComposedZoraPluginCatalog -.-> export_ZoraComponentMeta
+  export_ComposedZoraPluginMetadataCatalog["ComposedZoraPluginMetadataCatalog"]
+  module_src_pluginComposition_ts --> export_ComposedZoraPluginMetadataCatalog
+  export_ComposedZoraPluginMetadataCatalog -.-> export_ZoraComponentMeta
+  export_composeZoraPluginMetadata["composeZoraPluginMetadata"]
+  module_src_pluginComposition_ts --> export_composeZoraPluginMetadata
+  export_composeZoraPluginMetadata -.-> export_ComposedZoraPluginMetadataCatalog
+  export_composeZoraPluginMetadata -.-> export_ZoraPluginMetadata
+  export_composeZoraPlugins["composeZoraPlugins"]
+  module_src_pluginComposition_ts --> export_composeZoraPlugins
+  export_composeZoraPlugins -.-> export_ComposedZoraPluginCatalog
+  export_composeZoraPlugins -.-> export_ZoraPluginDescriptor
   export_ConfirmDialog["ConfirmDialog"]
   module_src_patterns_confirm_dialog_ConfirmDialog_tsx --> export_ConfirmDialog
   export_ConfirmDialogProps["ConfirmDialogProps"]
@@ -1028,6 +1050,7 @@ graph LR
   module_src_components_radio_RadioGroup_tsx --> export_RadioGroup
   export_RadioGroupOption["RadioGroupOption"]
   module_src_components_radio_types_ts --> export_RadioGroupOption
+  export_RadioGroupOption -.-> export_SurfaceImageSource
   export_RadioGroupProps["RadioGroupProps"]
   module_src_components_radio_types_ts --> export_RadioGroupProps
   export_RadioGroupProps -.-> export_RadioGroupOption
@@ -1418,6 +1441,10 @@ graph LR
   module_src_metadata_componentMeta_ts --> export_ZORA_COMPONENT_META
   export_ZORA_COMPONENT_REGISTRY["ZORA_COMPONENT_REGISTRY"]
   module_src_registry_ts --> export_ZORA_COMPONENT_REGISTRY
+  export_ZORA_CORE_PLUGIN["ZORA_CORE_PLUGIN"]
+  module_src_corePlugin_ts --> export_ZORA_CORE_PLUGIN
+  export_ZORA_CORE_PLUGIN_METADATA["ZORA_CORE_PLUGIN_METADATA"]
+  module_src_corePluginMetadata_ts --> export_ZORA_CORE_PLUGIN_METADATA
   export_ZORA_EMPHASES["ZORA_EMPHASES"]
   module_src_internal_colorModel_ts --> export_ZORA_EMPHASES
   export_ZORA_PALETTE_COLORS["ZORA_PALETTE_COLORS"]
@@ -1519,6 +1546,20 @@ graph LR
   module_src_internal_colorModel_ts --> export_ZoraPaletteColor
   export_ZoraPickedImage["ZoraPickedImage"]
   module_src_patterns_image_upload_field_types_ts --> export_ZoraPickedImage
+  export_ZoraPluginCompositionError["ZoraPluginCompositionError"]
+  module_src_pluginComposition_ts --> export_ZoraPluginCompositionError
+  export_ZoraPluginCompositionErrorCode["ZoraPluginCompositionErrorCode"]
+  module_src_pluginComposition_ts --> export_ZoraPluginCompositionErrorCode
+  export_ZoraPluginDescriptor["ZoraPluginDescriptor"]
+  module_src_pluginComposition_ts --> export_ZoraPluginDescriptor
+  export_ZoraPluginDescriptor -.-> export_ZoraComponentMeta
+  export_ZoraPluginDescriptor -.-> export_ZoraPluginPlacement
+  export_ZoraPluginMetadata["ZoraPluginMetadata"]
+  module_src_pluginComposition_ts --> export_ZoraPluginMetadata
+  export_ZoraPluginMetadata -.-> export_ZoraComponentMeta
+  export_ZoraPluginMetadata -.-> export_ZoraPluginPlacement
+  export_ZoraPluginPlacement["ZoraPluginPlacement"]
+  module_src_pluginComposition_ts --> export_ZoraPluginPlacement
   export_ZoraProvider["ZoraProvider"]
   module_src_theme_ZoraProvider_tsx --> export_ZoraProvider
   export_ZoraProvider -.-> export_ZoraProviderProps

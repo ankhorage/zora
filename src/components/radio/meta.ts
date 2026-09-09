@@ -24,16 +24,16 @@ export const radioGroupMeta = {
   directManifestNode: true,
   allowedChildren: [],
   blueprint: {
-    label: 'Radio group',
+    label: 'Radio button group',
     defaultProps: {
-      value: 'option-b',
+      defaultValue: 'option-b',
       options: [
         { value: 'option-a', label: 'First option', description: 'Supporting detail' },
         { value: 'option-b', label: 'Second option', description: 'Supporting detail' },
         { value: 'option-c', label: 'Third option', description: 'Supporting detail' },
       ],
       orientation: 'vertical',
-      presentation: 'inline',
+      presentation: 'card',
       invalid: false,
       readOnly: false,
       disabled: false,
@@ -76,6 +76,12 @@ export const radioGroupMeta = {
     },
   },
   props: {
+    defaultValue: {
+      type: 'string',
+      category: 'State',
+      label: 'Initial value',
+      authoring: { authority: 'instance' },
+    },
     value: {
       type: 'string',
       category: 'State',
@@ -112,6 +118,10 @@ export const radioGroupMeta = {
           },
         },
         {
+          key: 'iconSource',
+          schema: { type: 'media', category: 'Content', label: 'Icon', mediaKinds: ['image'] },
+        },
+        {
           key: 'disabled',
           schema: {
             type: 'boolean',
@@ -144,6 +154,21 @@ export const radioGroupMeta = {
       label: 'Presentation',
       enum: ['inline', 'card'],
       default: 'inline',
+      authoring: { authority: 'instance' },
+    },
+    contentOrientation: {
+      type: 'enum',
+      category: 'Layout',
+      label: 'Option content orientation',
+      enum: ['horizontal', 'vertical'],
+      default: 'horizontal',
+      authoring: { authority: 'instance' },
+    },
+    columns: {
+      type: 'enum',
+      category: 'Layout',
+      label: 'Option columns',
+      enum: [1, 2, 3, 4],
       authoring: { authority: 'instance' },
     },
     color: {

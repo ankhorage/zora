@@ -1056,6 +1056,65 @@ This function is pure and does not mount React or reproduce owner algorithms.
   - themeConfig: `ThemeConfig`
   - returns: `ZoraComputedTheme`
 
+## ComposedZoraPluginCatalog
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:41:1`
+
+### Members
+
+| Name                                 | Kind     | Type                                                                                                      | Required | Description |
+| ------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| bindableComponentMeta                | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>`                                | yes      |             |
+| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                                                             | yes      |             |
+| componentRegistry                    | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes      |             |
+| interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>`                                                                          | yes      |             |
+| packageManifests                     | property | `readonly UiComponentPackageManifest[]`                                                                   | yes      |             |
+
+## ComposedZoraPluginMetadataCatalog
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:34:1`
+
+### Members
+
+| Name                                 | Kind     | Type                                                                       | Required | Description |
+| ------------------------------------ | -------- | -------------------------------------------------------------------------- | -------- | ----------- |
+| bindableComponentMeta                | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>` | yes      |             |
+| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                              | yes      |             |
+| interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>`                                           | yes      |             |
+| packageManifests                     | property | `readonly UiComponentPackageManifest[]`                                    | yes      |             |
+
+## composeZoraPluginMetadata
+
+Kind: `function`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:66:1`
+
+Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.
+
+### Signatures
+
+- `(plugins: readonly ZoraPluginMetadata[]) => ComposedZoraPluginMetadataCatalog`
+  - plugins: `readonly ZoraPluginMetadata[]`
+  - returns: `ComposedZoraPluginMetadataCatalog`
+
+## composeZoraPlugins
+
+Kind: `function`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:112:1`
+
+Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.
+
+### Signatures
+
+- `(plugins: readonly ZoraPluginDescriptor[]) => ComposedZoraPluginCatalog`
+  - plugins: `readonly ZoraPluginDescriptor[]`
+  - returns: `ComposedZoraPluginCatalog`
+
 ## ConfirmDialog
 
 Kind: `value`
@@ -3377,56 +3436,61 @@ Single-choice selection control used within a radio group.
 
 Kind: `value`
 Module: `src/components/radio/RadioGroup.tsx`
-Source: `src/components/radio/RadioGroup.tsx:64:14`
+Source: `src/components/radio/RadioGroup.tsx:14:14`
 
-Renders a group of radio options for selecting a single value.
+Present one controlled single-choice group as inline radios or icon radio options.
 
 ## RadioGroupOption
 
 Kind: `type`
 Module: `src/components/radio/types.ts`
-Source: `src/components/radio/types.ts:8:1`
+Source: `src/components/radio/types.ts:9:1`
 
 ### Members
 
-| Name        | Kind     | Type                   | Required | Description |
-| ----------- | -------- | ---------------------- | -------- | ----------- |
-| description | property | `React.ReactNode`      | no       |             |
-| disabled    | property | `boolean \| undefined` | no       |             |
-| label       | property | `React.ReactNode`      | yes      |             |
-| testID      | property | `string \| undefined`  | no       |             |
-| value       | property | `TValue`               | yes      |             |
+| Name        | Kind     | Type                                                           | Required | Description |
+| ----------- | -------- | -------------------------------------------------------------- | -------- | ----------- |
+| description | property | `React.ReactNode`                                              | no       |             |
+| disabled    | property | `boolean \| undefined`                                         | no       |             |
+| iconSource  | property | `import("@ankhorage/surface").SurfaceImageSource \| undefined` | no       |             |
+| label       | property | `React.ReactNode`                                              | yes      |             |
+| testID      | property | `string \| undefined`                                          | no       |             |
+| value       | property | `TValue`                                                       | yes      |             |
 
 ## RadioGroupProps
 
 Kind: `type`
 Module: `src/components/radio/types.ts`
-Source: `src/components/radio/types.ts:16:1`
+Source: `src/components/radio/types.ts:19:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                                                                                                          | Required | Description |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
-| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| gap               | property | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
-| invalid           | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
-| onValueChange     | property | `(value: TValue) => void`                                                                                                                     | yes      |             |
-| options           | property | `readonly RadioGroupOption<TValue>[]`                                                                                                         | yes      |             |
-| orientation       | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
-| readOnly          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| size              | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| value             | property | `TValue`                                                                                                                                      | yes      |             |
+| Name               | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| color              | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| columns            | property | `1 \| 2 \| 3 \| 4 \| undefined`                                                                                                               | no       |             |
+| contentOrientation | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
+| defaultValue       | property | `TValue \| undefined`                                                                                                                         | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| gap                | property | `"xs" \| "s" \| "m" \| "l" \| undefined`                                                                                                      | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| onValueChange      | property | `((value: TValue) => void) \| undefined`                                                                                                      | no       |             |
+| options            | property | `readonly RadioGroupOption<TValue>[]`                                                                                                         | yes      |             |
+| orientation        | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
+| presentation       | property | `"inline" \| "card" \| undefined`                                                                                                             | no       |             |
+| readOnly           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| size               | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                         | no       |             |
+| value              | property | `TValue \| undefined`                                                                                                                         | no       |             |
 
 ## RadioProps
 
 Kind: `type`
 Module: `src/components/radio/types.ts`
-Source: `src/components/radio/types.ts:6:1`
+Source: `src/components/radio/types.ts:7:1`
 
 ### Members
 
@@ -5556,6 +5620,20 @@ Kind: `value`
 Module: `src/registry.ts`
 Source: `src/registry.ts:247:14`
 
+## ZORA_CORE_PLUGIN
+
+Kind: `value`
+Module: `src/corePlugin.ts`
+Source: `src/corePlugin.ts:6:14`
+
+Describe the complete ZORA core runtime and authoring surface through the public plugin contract.
+
+## ZORA_CORE_PLUGIN_METADATA
+
+Kind: `value`
+Module: `src/corePluginMetadata.ts`
+Source: `src/corePluginMetadata.ts:22:14`
+
 ## ZORA_EMPHASES
 
 Kind: `value`
@@ -5578,7 +5656,7 @@ Source: `src/internal/colorModel.ts:21:14`
 
 Kind: `value`
 Module: `src/metadata/themeRecipeMeta.ts`
-Source: `src/metadata/themeRecipeMeta.ts:8:14`
+Source: `src/metadata/themeRecipeMeta.ts:9:14`
 
 ## ZORA_THEME_TOKEN_FAMILIES
 
@@ -5617,7 +5695,7 @@ Source: `src/internal/colorModel.ts:10:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:44:1`
+Source: `src/metadata/types.ts:45:1`
 
 ### Members
 
@@ -5631,13 +5709,13 @@ Source: `src/metadata/types.ts:44:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:8:1`
+Source: `src/metadata/types.ts:9:1`
 
 ## ZoraComponentEventMeta
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:65:1`
+Source: `src/metadata/types.ts:66:1`
 
 ### Members
 
@@ -5652,7 +5730,7 @@ Source: `src/metadata/types.ts:65:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:58:1`
+Source: `src/metadata/types.ts:59:1`
 
 ### Members
 
@@ -5667,19 +5745,19 @@ Source: `src/metadata/types.ts:58:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:55:1`
+Source: `src/metadata/types.ts:56:1`
 
 ## ZoraComponentEventPayloadKind
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:54:1`
+Source: `src/metadata/types.ts:55:1`
 
 ## ZoraComponentI18nMeta
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:50:1`
+Source: `src/metadata/types.ts:51:1`
 
 ### Members
 
@@ -5691,7 +5769,7 @@ Source: `src/metadata/types.ts:50:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:77:1`
+Source: `src/metadata/types.ts:78:1`
 
 ### Members
 
@@ -5705,13 +5783,14 @@ Source: `src/metadata/types.ts:77:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:83:1`
+Source: `src/metadata/types.ts:84:1`
 
 ### Members
 
 | Name               | Kind     | Type                                                            | Required | Description |
 | ------------------ | -------- | --------------------------------------------------------------- | -------- | ----------- |
 | allowedChildren    | property | `readonly string[]`                                             | yes      |             |
+| bindings           | property | `UiComponentBindingMeta \| undefined`                           | no       |             |
 | blueprint          | property | `ZoraComponentBlueprint \| undefined`                           | no       |             |
 | category           | property | `ZoraComponentCategory`                                         | yes      |             |
 | description        | property | `string \| undefined`                                           | no       |             |
@@ -5729,13 +5808,13 @@ Source: `src/metadata/types.ts:83:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:99:1`
+Source: `src/metadata/types.ts:101:1`
 
 ## ZoraComponentPropArrayItemSchema
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:28:1`
+Source: `src/metadata/types.ts:29:1`
 
 ### Members
 
@@ -5748,13 +5827,13 @@ Source: `src/metadata/types.ts:28:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:20:1`
+Source: `src/metadata/types.ts:21:1`
 
 ## ZoraComponentPropSchema
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:33:1`
+Source: `src/metadata/types.ts:34:1`
 
 ### Members
 
@@ -5773,13 +5852,13 @@ Source: `src/metadata/types.ts:33:1`
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:10:1`
+Source: `src/metadata/types.ts:11:1`
 
 ## ZoraComponentPropValue
 
 Kind: `unknown`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:12:1`
+Source: `src/metadata/types.ts:13:1`
 
 ## ZoraComponentRegistry
 
@@ -5791,7 +5870,7 @@ Source: `src/registry.ts:105:1`
 
 Kind: `type`
 Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:72:1`
+Source: `src/metadata/types.ts:73:1`
 
 ### Members
 
@@ -5953,6 +6032,68 @@ Source: `src/patterns/image-upload-field/types.ts:6:1`
 | sizeBytes   | property | `number \| undefined` | no       |             |
 | uri         | property | `string`              | yes      |             |
 | width       | property | `number \| undefined` | no       |             |
+
+## ZoraPluginCompositionError
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:46:1`
+
+Report one deterministic plugin composition contract violation.
+
+## ZoraPluginCompositionErrorCode
+
+Kind: `unknown`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:6:1`
+
+## ZoraPluginDescriptor
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:30:1`
+
+### Members
+
+| Name                                 | Kind     | Type                                                                                                      | Required | Description |
+| ------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                                                             | yes      |             |
+| componentRegistry                    | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes      |             |
+| displayName                          | property | `string \| undefined`                                                                                     | no       |             |
+| extensionHosts                       | property | `readonly string[] \| undefined`                                                                          | no       |             |
+| interactionPolicySupportedComponents | property | `readonly string[] \| undefined`                                                                          | no       |             |
+| packageName                          | property | `string`                                                                                                  | yes      |             |
+| placements                           | property | `readonly ZoraPluginPlacement[] \| undefined`                                                             | no       |             |
+
+## ZoraPluginMetadata
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:21:1`
+
+### Members
+
+| Name                                 | Kind     | Type                                          | Required | Description |
+| ------------------------------------ | -------- | --------------------------------------------- | -------- | ----------- |
+| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>` | yes      |             |
+| displayName                          | property | `string \| undefined`                         | no       |             |
+| extensionHosts                       | property | `readonly string[] \| undefined`              | no       |             |
+| interactionPolicySupportedComponents | property | `readonly string[] \| undefined`              | no       |             |
+| packageName                          | property | `string`                                      | yes      |             |
+| placements                           | property | `readonly ZoraPluginPlacement[] \| undefined` | no       |             |
+
+## ZoraPluginPlacement
+
+Kind: `type`
+Module: `src/pluginComposition.ts`
+Source: `src/pluginComposition.ts:16:1`
+
+### Members
+
+| Name    | Kind     | Type                | Required | Description |
+| ------- | -------- | ------------------- | -------- | ----------- |
+| child   | property | `string`            | yes      |             |
+| parents | property | `readonly string[]` | yes      |             |
 
 ## ZoraProvider
 
