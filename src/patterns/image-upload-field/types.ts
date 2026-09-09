@@ -1,7 +1,35 @@
 import type React from 'react';
 
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { ZoraImageAsset } from '../image-preview';
+
+export interface ZoraImageMetadata {
+  fileName?: string;
+  sizeBytes?: number;
+  createdAt?: string;
+}
+
+export type ZoraImageAsset =
+  | {
+      kind: 'url';
+      url: string;
+      alt?: string;
+      width?: number;
+      height?: number;
+      contentType?: string;
+      metadata?: ZoraImageMetadata;
+    }
+  | {
+      kind: 'storage';
+      storageId?: string;
+      bucket: string;
+      path: string;
+      publicUrl?: string;
+      alt?: string;
+      width?: number;
+      height?: number;
+      contentType?: string;
+      metadata?: ZoraImageMetadata;
+    };
 
 export interface ZoraPickedImage {
   uri: string;
