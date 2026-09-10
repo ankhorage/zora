@@ -149,6 +149,8 @@ describe('Expo 57 example boundary', () => {
       expect(readValue(dependencies, '@ankhorage/navigator')).toMatch(CARET_SEMVER_RANGE);
       expect(layoutSource).toContain("from '@ankhorage/navigator/tabs/native-icons'");
       expect(layoutSource).toContain("from 'expo-router/unstable-native-tabs'");
+      expect(layoutSource).toContain("Platform.OS === 'web'");
+      expect(layoutSource).toContain('Promise.resolve(null)');
       expect(layoutSource).toContain('<NativeTabs>');
       expect(layoutSource).not.toContain('ZoraTabBar');
       expect(layoutSource).not.toContain('ZoraNavigationRouteMap');

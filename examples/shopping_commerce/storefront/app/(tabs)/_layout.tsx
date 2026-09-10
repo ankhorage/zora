@@ -1,5 +1,11 @@
-import { NativeIoniconsFamily } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeIoniconsFamily as NativeIoniconsFamilyRuntime } from '@ankhorage/navigator/tabs/native-icons';
 import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Platform } from 'react-native';
+
+const NativeIoniconsFamily =
+  Platform.OS === 'web'
+    ? { getImageSource: () => Promise.resolve(null) }
+    : NativeIoniconsFamilyRuntime;
 
 export const unstable_settings = { initialRouteName: 'index' };
 
