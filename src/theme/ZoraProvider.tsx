@@ -1,5 +1,6 @@
 import type { ThemeConfig } from '@ankhorage/contracts';
 import { ThemeProvider } from '@ankhorage/surface';
+import { BottomSheetProvider } from '@ankhorage/surface/bottom-sheet';
 import React from 'react';
 
 import { createZoraThemeConfig } from './createZoraThemeConfig';
@@ -14,7 +15,7 @@ export interface ZoraProviderProps {
   initialMode?: ZoraThemeMode;
 }
 
-/** Installs the ZORA theme runtime and underlying Surface theme provider. */
+/** Installs the ZORA theme runtime, Surface theme, and shared bottom-sheet controller. */
 export function ZoraProvider({
   children,
   theme = zoraDefaultTheme,
@@ -30,7 +31,7 @@ export function ZoraProvider({
   return (
     <ZoraThemeRuntimeContext.Provider value={runtimeValue}>
       <ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>
-        {children}
+        <BottomSheetProvider>{children}</BottomSheetProvider>
       </ThemeProvider>
     </ZoraThemeRuntimeContext.Provider>
   );
