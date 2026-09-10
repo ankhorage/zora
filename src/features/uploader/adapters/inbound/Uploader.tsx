@@ -9,7 +9,7 @@ import { Text } from '../../../../components/text';
 import { Box, Stack } from '../../../../foundation';
 import { FormField } from '../../../../patterns/form-field';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { UploadAsset, UploadType, UploaderProps } from '../../../../types/upload';
+import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { validateUploadAsset } from '../../application/use-cases/validateUploadAsset';
 import { createUploadPicker } from '../../composition/createUploadPicker';
 
@@ -46,24 +46,31 @@ function UploaderInner({
   const [removing, setRemoving] = React.useState(false);
   const [progress, setProgress] = React.useState<number | null>(null);
   const [previewOpen, setPreviewOpen] = React.useState(false);
-  const mountedRef = React.useRef(true);
+  const mountedRef = React.useRef<boolean | null>(null);
   const resolvedAccept = resolveUploadAccept(type, accept);
   const actionsDisabled = disabled || readOnly;
   const effectiveError = errorText ?? internalError;
 
   React.useEffect(() => {
+    mountedRef.current = true;
+
     return () => {
       mountedRef.current = false;
     };
   }, []);
 
-  const setProgressSafe = React.useCallback((next: number | null) => {
-    if (!mountedRef.current) {
-      return;
-    }
+  const isMounted = React.useCallback(() => mountedRef.current === true, []);
 
-    setProgress(clampProgress(next));
-  }, []);
+  const setProgressSafe = React.useCallback(
+    (next: number | null) => {
+      if (!isMounted()) {
+        return;
+      }
+
+      setProgress(clampProgress(next));
+    },
+    [isMounted],
+  );
 
   const handlePick = React.useCallback(async () => {
     if (passive || actionsDisabled || uploading || removing) {
@@ -74,7 +81,7 @@ function UploaderInner({
 
     try {
       const picked = await picker.pickAsync({ accept: resolvedAccept, type });
-      if (!picked || !mountedRef.current) {
+      if (!picked || !isMounted()) {
         return;
       }
 
@@ -99,7 +106,7 @@ function UploaderInner({
 
       try {
         const uploaded = await onUpload(picked, { setProgress: setProgressSafe });
-        if (!mountedRef.current) {
+        if (!isMounted()) {
           return;
         }
 
@@ -107,7 +114,7 @@ function UploaderInner({
         setUploading(false);
         setProgress(null);
       } catch (error) {
-        if (!mountedRef.current) {
+        if (!isMounted()) {
           return;
         }
 
@@ -116,12 +123,13 @@ function UploaderInner({
         setProgress(null);
       }
     } catch (error) {
-      if (mountedRef.current) {
+      if (isMounted()) {
         setInternalError(formatUnknownError(error));
       }
     }
   }, [
     actionsDisabled,
+    isMounted,
     maxSizeBytes,
     onChange,
     onUpload,
@@ -149,17 +157,17 @@ function UploaderInner({
     setRemoving(true);
     try {
       await onRemove(value);
-      if (mountedRef.current) {
+      if (isMounted()) {
         onChange(null);
         setRemoving(false);
       }
     } catch (error) {
-      if (mountedRef.current) {
+      if (isMounted()) {
         setInternalError(formatUnknownError(error));
         setRemoving(false);
       }
     }
-  }, [actionsDisabled, onChange, onRemove, passive, removing, uploading, value]);
+  }, [actionsDisabled, isMounted, onChange, onRemove, passive, removing, uploading, value]);
 
   const canPreviewImage = type === 'image' && resolveRenderableAssetUrl(value) !== null;
 
@@ -338,7 +346,9 @@ function resolveRenderableAssetUrl(asset: UploadAsset | null): string | null {
 }
 
 /*** Resolves a generic icon for the selected upload mode. */
-function resolveUploadIcon(type: UploadType): string {
+function resolveUploadIcon(
+  type: UploadType,
+): 'attach-outline' | 'document-text-outline' | 'videocam-outline' {
   switch (type) {
     case 'video':
       return 'videocam-outline';

@@ -3,12 +3,12 @@ import {
   Button,
   Card,
   FormField,
-  ImageUploadField,
   Input,
   Notice,
   Screen,
   ScreenSection,
   Textarea,
+  Uploader,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
@@ -20,14 +20,14 @@ export default function SellScreen() {
       <Screen>
         <ScreenSection
           title="Photos"
-          description="Upload is represented by the ZORA image upload field."
+          description="Upload is represented by the generic ZORA uploader."
           actions={<Button>Publish</Button>}
         >
-          <ImageUploadField
+          <Uploader
             label="Listing photos"
             description="Add clear photos from multiple angles."
             onChange={() => undefined}
-            onPick={() => Promise.resolve(null)}
+            type="image"
             value={null}
           />
         </ScreenSection>

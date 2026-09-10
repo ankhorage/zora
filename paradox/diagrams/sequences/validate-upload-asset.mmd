@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant participant_formatBytes as formatBytes
+  participant participant_isAccepted as isAccepted
+  participant participant_matchesAcceptToken as matchesAcceptToken
+  participant participant_parseAccept as parseAccept
+  participant participant_validate as validate
+  participant participant_validateUploadAsset as validateUploadAsset
+  participant_validateUploadAsset->>participant_isAccepted: isAccepted()
+  participant_isAccepted->>participant_parseAccept: parseAccept()
+  participant_parseAccept-->>participant_isAccepted: return
+  participant_isAccepted->>participant_matchesAcceptToken: matchesAcceptToken()
+  participant_matchesAcceptToken-->>participant_isAccepted: return
+  participant_isAccepted-->>participant_validateUploadAsset: return
+  participant_validateUploadAsset->>participant_formatBytes: formatBytes()
+  participant_formatBytes-->>participant_validateUploadAsset: return
+  participant_validateUploadAsset->>participant_validate: validate()
+  participant_validate-->>participant_validateUploadAsset: return

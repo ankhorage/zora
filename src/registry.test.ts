@@ -55,7 +55,7 @@ async function listPublicConcreteComponentExports(): Promise<readonly string[]> 
   const source = await Bun.file('src/index.ts').text();
   const componentExports = Array.from(
     source.matchAll(
-      /export\s+\{([^}]+)\}\s+from '\.\/(components\/[^']+|foundation|layout\/[^']+|patterns\/[^']+)';/g,
+      /export\s+\{([^}]+)\}\s+from '\.\/(components\/[^']+|features\/[^']+|foundation|layout\/[^']+|patterns\/[^']+)';/g,
     ),
   )
     .flatMap((match) => match[1].split(',').map((item) => item.trim()))

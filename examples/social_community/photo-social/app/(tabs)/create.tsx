@@ -2,11 +2,11 @@ import {
   Badge,
   Button,
   Card,
-  ImageUploadField,
   Notice,
   Screen,
   ScreenSection,
   Textarea,
+  Uploader,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
@@ -24,11 +24,11 @@ export default function CreateScreen() {
           title="Image"
           description="The upload field is a ZORA pattern, not a local wrapper."
         >
-          <ImageUploadField
+          <Uploader
             label="Cover image"
             description="Choose a photo for the next visual story."
             onChange={() => undefined}
-            onPick={() => Promise.resolve(null)}
+            type="image"
             value={null}
           />
         </ScreenSection>

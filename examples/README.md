@@ -62,7 +62,7 @@ The generated example installs the published `@ankhorage/zora` package so it beh
 Every realistic example app must:
 
 - use real Expo Router route files
-- use real `Tabs`, `Stack`, or other Expo Router layouts where appropriate
+- use Navigator-backed native tabs and real Expo Router layouts where appropriate
 - support native and web preview
 - use only public `@ankhorage/zora` UI exports
 - avoid direct `@ankhorage/surface` imports
@@ -70,6 +70,7 @@ Every realistic example app must:
 - avoid local style workaround layers
 - use realistic static data
 - expose missing ZORA APIs as ZORA follow-up work instead of hiding gaps in the example
+- own `GestureHandlerRootView` at the app root, outside `ZoraProvider`
 
 ## Run an example
 

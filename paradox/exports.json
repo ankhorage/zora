@@ -1,247 +1,5 @@
 [
   {
-    "name": "ActionSheet",
-    "description": "Presents a modal bottom sheet with a list of actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/action-sheet/ActionSheet.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/ActionSheet.tsx",
-      "line": 14,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetItem",
-    "description": "Renders a single selectable action row within an `ActionSheet`.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/action-sheet/ActionSheetItem.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/ActionSheetItem.tsx",
-      "line": 30,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetItemProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/action-sheet/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/types.ts",
-      "line": 16,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "color",
-        "kind": "property",
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "icon",
-        "kind": "property",
-        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "leading",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onPress",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "selected",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "trailing",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/action-sheet/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/types.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "cancelLabel",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "closeOnBackdrop",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onDismiss",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "visible",
-        "kind": "property",
-        "type": "boolean",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "AppBar",
     "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
     "isReadme": false,
@@ -2407,7 +2165,7 @@
       {
         "name": "manualEntryButtonProps",
         "kind": "property",
-        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "type": "Omit<ButtonProps, \"children\" | \"onPress\"> | undefined",
         "required": false,
         "description": null
       },
@@ -2442,7 +2200,7 @@
       {
         "name": "requestButtonProps",
         "kind": "property",
-        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "type": "Omit<ButtonProps, \"children\" | \"onPress\"> | undefined",
         "required": false,
         "description": null
       },
@@ -6020,7 +5778,7 @@
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 279,
+      "line": 347,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -6685,127 +6443,6 @@
         "kind": "property",
         "type": "Responsive<number> | undefined",
         "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "Drawer",
-    "description": "Side panel overlay for navigation, settings, and secondary content.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/drawer/Drawer.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/drawer/Drawer.tsx",
-      "line": 59,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "DrawerProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/drawer/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/drawer/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "closeOnBackdrop",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "footer",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onDismiss",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "\"left\" | \"right\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "visible",
-        "kind": "property",
-        "type": "boolean",
-        "required": true,
         "description": null
       }
     ],
@@ -9490,14 +9127,14 @@
   },
   {
     "name": "Image",
-    "description": "Displays an image with cross-platform source and fit handling.",
+    "description": "Displays an image asset and owns its missing, unrenderable, and failed presentation states.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/image/Image.tsx",
     "sourceLocation": {
       "filePath": "src/components/image/Image.tsx",
-      "line": 21,
+      "line": 12,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9525,106 +9162,6 @@
     "structuredRows": []
   },
   {
-    "name": "ImagePreview",
-    "description": "Preview pattern for showing an image with optional metadata and actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/image-preview/ImagePreview.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/ImagePreview.tsx",
-      "line": 82,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ImagePreviewProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 35,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraImageAsset", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "aspectRatio",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "asset",
-        "kind": "property",
-        "type": "ZoraImageAsset | null | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "emptyDescription",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "emptyTitle",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fit",
-        "kind": "property",
-        "type": "import(\"react-native\").ImageResizeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ImageProps",
     "description": null,
     "isReadme": false,
@@ -9633,11 +9170,11 @@
     "modulePath": "src/components/image/types.ts",
     "sourceLocation": {
       "filePath": "src/components/image/types.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceImageSource", "ZoraThemeMode"],
+    "relatedSymbols": ["SurfaceImageSource", "UploadAsset", "ZoraThemeMode"],
     "signatures": [],
     "members": [
       {
@@ -9720,7 +9257,7 @@
       {
         "name": "source",
         "kind": "property",
-        "type": "SurfaceImageSource | null | undefined",
+        "type": "SurfaceImageSource | UploadAsset | null | undefined",
         "required": false,
         "description": null
       },
@@ -9750,228 +9287,6 @@
         "kind": "property",
         "type": "string | number | undefined",
         "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadField",
-    "description": "Form field pattern for picking, previewing, and uploading an image.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-      "line": 319,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadFieldProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 19,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "ImageUploadProgressContext",
-      "ZoraImageAsset",
-      "ZoraPickedImage",
-      "ZoraThemeMode"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accept",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "aspectRatio",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "errorText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "helperText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "maxSizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onChange",
-        "kind": "property",
-        "type": "(next: ZoraImageAsset | null) => void",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "onPick",
-        "kind": "property",
-        "type": "() => Promise<ZoraPickedImage | null>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "onRemove",
-        "kind": "property",
-        "type": "((current: ZoraImageAsset) => void | Promise<void>) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onUpload",
-        "kind": "property",
-        "type": "((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "previewDescription",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "previewTitle",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "readOnly",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "required",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "validatePicked",
-        "kind": "property",
-        "type": "((picked: ZoraPickedImage) => string | undefined) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "value",
-        "kind": "property",
-        "type": "ZoraImageAsset | null",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadProgressContext",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 15,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "setProgress",
-        "kind": "property",
-        "type": "(progress: number | null) => void",
-        "required": true,
         "description": null
       }
     ],
@@ -11736,227 +11051,6 @@
         "name": "width",
         "kind": "property",
         "type": "ZoraContentWidth | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "NavigationItem",
-    "description": "Renders a single navigation entry with active/disabled state support.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/navigation-item/NavigationItem.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-item/NavigationItem.tsx",
-      "line": 41,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "NavigationItemProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/navigation-item/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-item/types.ts",
-      "line": 20,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "active",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "metadata",
-        "kind": "property",
-        "type": "ZoraNavigationRouteMetadata | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onPress",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "route",
-        "kind": "property",
-        "type": "ZoraNavigationRouteState",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "NavigationList",
-    "description": "Renders a navigation list from route metadata with active state mapping.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/navigation-list/NavigationList.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-list/NavigationList.tsx",
-      "line": 68,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "NavigationListProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/navigation-list/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-list/types.ts",
-      "line": 8,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraNavigationRouteState", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "activeRouteKey",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "footer",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "header",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onRoutePress",
-        "kind": "property",
-        "type": "((route: ZoraNavigationRouteState) => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "orientation",
-        "kind": "property",
-        "type": "\"horizontal\" | \"vertical\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "routeMap",
-        "kind": "property",
-        "type": "Partial<Record<string, ZoraNavigationRouteMetadata>> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "routes",
-        "kind": "property",
-        "type": "readonly ZoraNavigationRouteState[]",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
         "required": false,
         "description": null
       }
@@ -15174,265 +14268,6 @@
         "returnDescription": null
       }
     ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanel",
-    "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
-    "isReadme": false,
-    "examples": [
-      {
-        "title": "Scrollable wide panel",
-        "language": "tsx",
-        "code": "<ResponsivePanel open title=\"APIs\" size=\"wide\" scroll=\"content\">...</ResponsivePanel>"
-      }
-    ],
-    "kind": "value",
-    "modulePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "line": 172,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelDesktopMode",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelMobileMode",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "ResponsivePanelDesktopMode",
-      "ResponsivePanelMobileMode",
-      "ResponsivePanelScroll",
-      "ResponsivePanelSide",
-      "ResponsivePanelSize",
-      "ZoraThemeMode"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "actions",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "desktopMode",
-        "kind": "property",
-        "type": "ResponsivePanelDesktopMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "footer",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mobileMode",
-        "kind": "property",
-        "type": "ResponsivePanelMobileMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onOpenChange",
-        "kind": "property",
-        "type": "(open: boolean) => void",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "open",
-        "kind": "property",
-        "type": "boolean",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "scroll",
-        "kind": "property",
-        "type": "ResponsivePanelScroll | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "side",
-        "kind": "property",
-        "type": "ResponsivePanelSide | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "size",
-        "kind": "property",
-        "type": "ResponsivePanelSize | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelScroll",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 9,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelSide",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 5,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ResponsivePanelSize",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/responsive-panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/responsive-panel/types.ts",
-      "line": 8,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -20645,14 +19480,14 @@
   },
   {
     "name": "TimePicker",
-    "description": "Time input control with wheel selection and formatted display value.",
+    "description": "Time input control with bottom-sheet selection and formatted display value.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/time-picker/TimePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/time-picker/TimePicker.tsx",
-      "line": 174,
+      "line": 261,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21556,6 +20391,313 @@
     "structuredRows": []
   },
   {
+    "name": "UploadAsset",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadAssetBase",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "alt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "createdAt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fileName",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "sizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "Uploader",
+    "description": "Picks, validates, uploads, previews, and removes one generic file asset.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
+      "line": 17,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UploaderProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 45,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["UploadAsset", "UploadProgressContext", "UploadType", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accept",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aspectRatio",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "helperText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "maxSizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onChange",
+        "kind": "property",
+        "type": "(next: UploadAsset | null) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onRemove",
+        "kind": "property",
+        "type": "((current: UploadAsset) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onUpload",
+        "kind": "property",
+        "type": "((asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "UploadType | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "validatePicked",
+        "kind": "property",
+        "type": "((asset: UploadAsset) => string | undefined) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "UploadAsset | null",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadProgressContext",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "setProgress",
+        "kind": "property",
+        "type": "(progress: number | null) => void",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadType",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "useFormController",
     "description": null,
     "isReadme": false,
@@ -21871,9 +21013,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -21954,6 +21096,85 @@
       }
     ],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "validateUploadAsset",
+    "description": "Validates a picked upload asset against MIME, extension, size, and caller rules.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
+    "sourceLocation": {
+      "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ValidateUploadAssetInput"],
+    "signatures": [
+      {
+        "label": "({\n  asset,\n  accept,\n  maxSizeBytes,\n  validate,\n}: ValidateUploadAssetInput) => string | undefined",
+        "parameters": [
+          {
+            "name": "{\n  asset,\n  accept,\n  maxSizeBytes,\n  validate,\n}",
+            "type": "ValidateUploadAssetInput",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "string | undefined",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ValidateUploadAssetInput",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["UploadAsset"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accept",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "asset",
+        "kind": "property",
+        "type": "UploadAsset",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "maxSizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "validate",
+        "kind": "property",
+        "type": "((asset: UploadAsset) => string | undefined) | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -22089,7 +21310,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 101,
+      "line": 93,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22107,7 +21328,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 247,
+      "line": 230,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22838,7 +22059,7 @@
       {
         "name": "mediaKinds",
         "kind": "property",
-        "type": "readonly (\"image\" | \"audio\" | \"video\" | \"font\" | \"file\")[] | undefined",
+        "type": "readonly (\"image\" | \"video\" | \"file\" | \"audio\" | \"font\")[] | undefined",
         "required": false,
         "description": null
       },
@@ -22897,7 +22118,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 105,
+      "line": 97,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23082,120 +22303,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraDrawerContent",
-    "description": "Standard drawer content pattern for ZORA navigation lists.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "line": 60,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraDrawerContentProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/zora-drawer-content/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/zora-drawer-content/types.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "descriptors",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "footer",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "header",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "navigation",
-        "kind": "property",
-        "type": "ZoraDrawerNavigation",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "routeMap",
-        "kind": "property",
-        "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "state",
-        "kind": "property",
-        "type": "ZoraNavigationState",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ZoraEmphasis",
     "description": null,
     "isReadme": false,
@@ -23214,176 +22321,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraImageAsset",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 12,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraImageMetadata",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "createdAt",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fileName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraNavigationRouteMap",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/components/navigation-list/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-list/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraNavigationRouteMetadata",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/navigation-item/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-item/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "badge",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "icon",
-        "kind": "property",
-        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraNavigationRouteState",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/navigation-item/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/navigation-item/types.ts",
-      "line": 15,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "key",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "name",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ZoraPaletteColor",
     "description": null,
     "isReadme": false,
@@ -23399,67 +22336,6 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPickedImage",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "contentType",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fileName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "uri",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
@@ -23669,7 +22545,7 @@
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 18,
+      "line": 19,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23701,7 +22577,7 @@
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 10,
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -23755,120 +22631,6 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraTabBar",
-    "description": "Bottom tab bar pattern with badge support and active state styling.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "line": 157,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraTabBarProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/zora-tab-bar/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/zora-tab-bar/types.ts",
-      "line": 9,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "chrome",
-        "kind": "property",
-        "type": "\"none\" | \"raised\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "descriptors",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "insets",
-        "kind": "property",
-        "type": "{ top?: number; bottom?: number; left?: number; right?: number; } | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "navigation",
-        "kind": "property",
-        "type": "ZoraTabBarNavigation",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "routeMap",
-        "kind": "property",
-        "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "state",
-        "kind": "property",
-        "type": "ZoraNavigationState",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {

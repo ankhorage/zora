@@ -1,19 +1,58 @@
-import { type ZoraNavigationRouteMap, ZoraTabBar } from '@ankhorage/zora';
-import { Tabs } from 'expo-router';
+import { NativeIoniconsFamily as NativeIoniconsFamilyRuntime } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Platform } from 'react-native';
 
-const routeMap: ZoraNavigationRouteMap = {
-  index: { label: 'Chats', icon: { name: 'chatbubbles-outline' } },
-  calls: { label: 'Calls', icon: { name: 'call-outline' } },
-  status: { label: 'Status', icon: { name: 'ellipse-outline' } },
-  contacts: { label: 'Contacts', icon: { name: 'people-outline' } },
-  settings: { label: 'Settings', icon: { name: 'settings-outline' } },
-};
+const NativeIoniconsFamily =
+  Platform.OS === 'web'
+    ? { getImageSource: () => Promise.resolve(null) }
+    : NativeIoniconsFamilyRuntime;
+
+export const unstable_settings = { initialRouteName: 'index' };
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{ headerShown: false }}
-      tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />}
-    />
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Chats</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name="chatbubbles-outline"
+            />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="calls">
+        <NativeTabs.Trigger.Label>Calls</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={<NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="call-outline" />}
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="status">
+        <NativeTabs.Trigger.Label>Status</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="ellipse-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="contacts">
+        <NativeTabs.Trigger.Label>Contacts</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="people-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="settings-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }

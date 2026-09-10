@@ -24,6 +24,8 @@ function ImageInner({
   height,
   aspectRatio,
   radius,
+  style,
+  testID,
   onError,
   ...props
 }: ImageProps) {
@@ -33,7 +35,8 @@ function ImageInner({
   const firstFailureKeyRef = React.useRef<string | null>(null);
   const [failedSourceKey, setFailedSourceKey] = React.useState<string | null>(null);
   const showPlaceholder = resolvedSource === null || failedSourceKey === sourceKey;
-  const placeholderLabel = alt ?? accessibilityLabel;
+  const resolvedAlt = alt ?? (isUploadAsset(source) ? source.alt : undefined);
+  const placeholderLabel = accessibilityLabel ?? resolvedAlt;
 
   if (showPlaceholder) {
     return (
@@ -47,12 +50,16 @@ function ImageInner({
         height={height}
         overflow="hidden"
         radius={radius}
+        testID={testID}
         width={width}
-        style={{
-          alignItems: 'center',
-          aspectRatio: aspectRatio ?? 1,
-          justifyContent: 'center',
-        }}
+        style={[
+          {
+            alignItems: 'center',
+            aspectRatio: aspectRatio ?? 1,
+            justifyContent: 'center',
+          },
+          style,
+        ]}
       >
         <Icon color={theme.semantics.content.muted} name="image-outline" size={24} />
       </Box>
@@ -63,7 +70,7 @@ function ImageInner({
     <SurfaceImage
       {...props}
       accessibilityLabel={accessibilityLabel}
-      alt={alt}
+      alt={resolvedAlt}
       aspectRatio={aspectRatio}
       fallbackSource={fallbackSource}
       height={height}
@@ -83,15 +90,15 @@ function ImageInner({
       }}
       radius={radius}
       source={resolvedSource}
+      style={style}
+      testID={testID}
       width={width}
     />
   );
 }
 
 /*** Resolves a generic upload asset into a source understood by the Surface Image primitive. */
-function resolveImageSource(
-  source: ImageProps['source'],
-): SurfaceImageSource | null | undefined {
+function resolveImageSource(source: ImageProps['source']): SurfaceImageSource | null | undefined {
   if (!isUploadAsset(source)) {
     return source;
   }
@@ -137,10 +144,6 @@ function resolveImageSourceKey(source: ImageProps['source']): string | null {
 /*** Identifies the generic ZORA upload asset shape without leaking picker-specific types. */
 function isUploadAsset(source: ImageProps['source']): source is UploadAsset {
   return (
-    typeof source === 'object' &&
-    source !== null &&
-    !Array.isArray(source) &&
-    'kind' in source &&
-    (source.kind === 'local' || source.kind === 'url' || source.kind === 'storage')
+    typeof source === 'object' && source !== null && !Array.isArray(source) && 'kind' in source
   );
 }

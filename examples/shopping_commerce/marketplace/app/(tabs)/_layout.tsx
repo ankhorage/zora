@@ -1,19 +1,63 @@
-import { type ZoraNavigationRouteMap, ZoraTabBar } from '@ankhorage/zora';
-import { Tabs } from 'expo-router';
+import { NativeIoniconsFamily as NativeIoniconsFamilyRuntime } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Platform } from 'react-native';
 
-const routeMap: ZoraNavigationRouteMap = {
-  index: { label: 'Browse', icon: { name: 'storefront-outline' } },
-  search: { label: 'Search', icon: { name: 'search-outline' } },
-  sell: { label: 'Sell', icon: { name: 'add-circle-outline' } },
-  orders: { label: 'Orders', icon: { name: 'receipt-outline' } },
-  profile: { label: 'Profile', icon: { name: 'person-outline' } },
-};
+const NativeIoniconsFamily =
+  Platform.OS === 'web'
+    ? { getImageSource: () => Promise.resolve(null) }
+    : NativeIoniconsFamilyRuntime;
+
+export const unstable_settings = { initialRouteName: 'index' };
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{ headerShown: false }}
-      tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />}
-    />
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Browse</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name="storefront-outline"
+            />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="search">
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="search-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="sell">
+        <NativeTabs.Trigger.Label>Sell</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name="add-circle-outline"
+            />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="orders">
+        <NativeTabs.Trigger.Label>Orders</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="receipt-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="profile">
+        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="person-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }

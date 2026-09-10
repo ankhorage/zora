@@ -12,15 +12,12 @@ import {
   ForgotPasswordForm,
   FormField,
   IconButton,
-  ImagePreview,
-  ImageUploadField,
+  Image,
   Input,
   InspectorField,
   List,
   ListRow,
   ListSection,
-  NavigationItem,
-  NavigationList,
   Notice,
   OtpForm,
   PaletteItem,
@@ -37,16 +34,12 @@ import {
   TileGrid,
   Timeline,
   TreeView,
+  type UploadAsset,
+  Uploader,
   useSelection,
-  ZoraDrawerContent,
-  type ZoraImageAsset,
-  type ZoraPickedImage,
-  ZoraTabBar,
 } from '@ankhorage/zora';
 import React from 'react';
-import { Image as ReactNativeImage } from 'react-native';
 
-import iconPng from '../assets/icon.png';
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
@@ -141,78 +134,13 @@ export function PatternsPage() {
   const [verboseLogging, setVerboseLogging] = React.useState(true);
   const [filters, setFilters] = React.useState<'all' | 'favorites'>('all');
   const [query, setQuery] = React.useState('');
-  const [activeNavIndex, setActiveNavIndex] = React.useState(0);
-  const [drawerStatus, setDrawerStatus] = React.useState('closed');
-  const [imageAsset, setImageAsset] = React.useState<ZoraImageAsset | null>(null);
+  const [imageAsset, setImageAsset] = React.useState<UploadAsset | null>(null);
   const [simulateUploadError, setSimulateUploadError] = React.useState(false);
   const [items, setItems] = React.useState<LayoutSection[]>([
     { id: '1', name: 'Header section' },
     { id: '2', name: 'Main content' },
     { id: '3', name: 'Footer' },
   ]);
-
-  const navigationState = React.useMemo(
-    () => ({
-      index: activeNavIndex,
-      routes: [
-        { key: 'tab-home', name: 'home' },
-        { key: 'tab-inbox', name: 'inbox' },
-        { key: 'tab-settings', name: 'settings' },
-      ] as const,
-    }),
-    [activeNavIndex],
-  );
-
-  const navigationDescriptors = React.useMemo(
-    () => ({
-      'tab-home': { options: { title: 'Home' } },
-      'tab-inbox': { options: { title: 'Inbox' } },
-      'tab-settings': { options: { title: 'Settings' } },
-    }),
-    [],
-  );
-
-  const routeMap = React.useMemo(
-    () => ({
-      home: { label: 'Home', icon: { name: 'home-outline' as const } },
-      inbox: {
-        label: 'Inbox',
-        icon: { name: 'mail-unread-outline' as const },
-        badge: (
-          <Badge color="primary" variant="soft">
-            3
-          </Badge>
-        ),
-      },
-      settings: {
-        label: 'Settings',
-        icon: { name: 'settings-outline' as const },
-        disabled: true,
-      },
-    }),
-    [],
-  );
-
-  const tabNavigation = React.useMemo(
-    () => ({
-      emit: () => ({ defaultPrevented: false }),
-      navigate: (name: string) => {
-        const index = navigationState.routes.findIndex((route) => route.name === name);
-        if (index >= 0) {
-          setActiveNavIndex(index);
-        }
-      },
-    }),
-    [navigationState.routes],
-  );
-
-  const drawerNavigation = React.useMemo(
-    () => ({
-      navigate: tabNavigation.navigate,
-      closeDrawer: () => setDrawerStatus('closed'),
-    }),
-    [tabNavigation.navigate],
-  );
 
   const addItem = () => {
     setItems((currentItems) => [
@@ -247,27 +175,11 @@ export function PatternsPage() {
   };
   const handleMockAction = React.useCallback(() => undefined, []);
 
-  const pickImage = React.useCallback((): Promise<ZoraPickedImage | null> => {
-    const resolved = ReactNativeImage.resolveAssetSource(iconPng);
-    const { uri } = resolved;
-
-    if (!uri) {
-      return Promise.resolve(null);
-    }
-
-    return Promise.resolve({
-      uri,
-      fileName: 'icon.png',
-      contentType: 'image/png',
-      sizeBytes: 180_000,
-    });
-  }, []);
-
   const uploadImage = React.useCallback(
     async (
-      picked: ZoraPickedImage,
+      picked: UploadAsset,
       { setProgress }: { setProgress: (progress: number | null) => void },
-    ): Promise<ZoraImageAsset> => {
+    ): Promise<UploadAsset> => {
       const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
       setProgress(0);
@@ -284,19 +196,24 @@ export function PatternsPage() {
         throw new Error('Simulated upload failure (showcase)');
       }
 
+      const publicUrl =
+        picked.kind === 'local'
+          ? picked.uri
+          : picked.kind === 'url'
+            ? picked.url
+            : picked.publicUrl;
+
       return {
         kind: 'storage',
         storageId: 'local-dev',
         bucket: 'showcase',
         path: `images/${Date.now()}-${picked.fileName ?? 'upload'}`,
-        publicUrl: picked.uri,
+        publicUrl,
+        fileName: picked.fileName,
+        sizeBytes: picked.sizeBytes,
         contentType: picked.contentType,
         width: picked.width,
         height: picked.height,
-        metadata: {
-          fileName: picked.fileName,
-          sizeBytes: picked.sizeBytes,
-        },
       };
     },
     [simulateUploadError],
@@ -324,10 +241,10 @@ export function PatternsPage() {
         </FilterBar>
       </ScreenSection>
 
-      <ScreenSection title="Scenario: Image upload field">
+      <ScreenSection title="Scenario: Generic uploader">
         <Card
           title="Provider-neutral upload"
-          description="Picking, uploading, and removal are injected via callbacks; ZORA owns only the UI."
+          description="ZORA selects the native picker; upload and removal remain consumer-owned callbacks."
           footer={
             <Stack direction={{ base: 'column', md: 'row' }} gap="s">
               <Button
@@ -349,16 +266,16 @@ export function PatternsPage() {
             </Stack>
           }
         >
-          <ImageUploadField
+          <Uploader
             accept="image/*"
             label="Project image"
             helperText="Showcase uses a local image asset and a fake upload function."
             maxSizeBytes={5_000_000}
             value={imageAsset}
             onChange={setImageAsset}
-            onPick={pickImage}
             onUpload={uploadImage}
             onRemove={removeImage}
+            type="image"
           />
         </Card>
 
@@ -367,8 +284,8 @@ export function PatternsPage() {
           description="Storage assets render only once a publicUrl is provided."
         >
           <Stack gap="m">
-            <ImagePreview
-              asset={{
+            <Image
+              source={{
                 kind: 'storage',
                 bucket: 'showcase',
                 path: 'pending/example.png',
@@ -382,32 +299,32 @@ export function PatternsPage() {
 
         <Card title="Disabled and read-only">
           <Stack gap="m">
-            <ImageUploadField
+            <Uploader
               label="Disabled field"
               value={imageAsset}
               onChange={setImageAsset}
-              onPick={pickImage}
               onUpload={uploadImage}
+              type="image"
               disabled
             />
-            <ImageUploadField
+            <Uploader
               label="Read-only field"
               value={imageAsset}
               onChange={setImageAsset}
-              onPick={pickImage}
               onUpload={uploadImage}
+              type="image"
               readOnly
             />
           </Stack>
         </Card>
 
         <Card title="External errorText wins">
-          <ImageUploadField
+          <Uploader
             label="Externally invalid"
             value={imageAsset}
             onChange={setImageAsset}
-            onPick={pickImage}
             onUpload={uploadImage}
+            type="image"
             errorText="External errorText overrides internal validation and upload errors."
           />
         </Card>
@@ -494,68 +411,6 @@ export function PatternsPage() {
         </Card>
       </ScreenSection>
 
-      <ScreenSection title="Scenario: Navigation chrome (simulation)">
-        <Card
-          title="Expo Router chrome"
-          description="This section simulates navigator renderer props to demonstrate ZORA tab/drawer chrome. It is not real Expo Router navigation."
-        >
-          <Stack gap="m">
-            <Text emphasis="muted" variant="bodySmall">
-              Active tab: {navigationState.routes[navigationState.index]?.name}
-            </Text>
-            <ZoraTabBar
-              descriptors={navigationDescriptors}
-              navigation={tabNavigation}
-              routeMap={routeMap}
-              state={navigationState}
-              testID="showcase-tabbar"
-            />
-            <Text emphasis="muted" variant="bodySmall">
-              Drawer status: {drawerStatus}
-            </Text>
-            <ZoraDrawerContent
-              descriptors={navigationDescriptors}
-              footer={
-                <Text emphasis="subtle" variant="caption">
-                  Footer slot
-                </Text>
-              }
-              header={
-                <Text emphasis="subtle" variant="caption">
-                  Header slot
-                </Text>
-              }
-              navigation={drawerNavigation}
-              routeMap={routeMap}
-              state={navigationState}
-              testID="showcase-drawer"
-            />
-            <Card
-              title="Building blocks (Surface-backed)"
-              description="NavigationItem and NavigationList wrap Surface primitives; route metadata comes from routeMap."
-            >
-              <Stack gap="s">
-                <NavigationItem
-                  active
-                  metadata={routeMap.home}
-                  route={{ key: 'nav-home', name: 'home' }}
-                />
-                <NavigationList
-                  activeRouteKey="nav-inbox"
-                  onRoutePress={() => setDrawerStatus('open')}
-                  routeMap={routeMap}
-                  routes={[
-                    { key: 'nav-home', name: 'home' },
-                    { key: 'nav-inbox', name: 'inbox' },
-                    { key: 'nav-settings', name: 'settings' },
-                  ]}
-                />
-              </Stack>
-            </Card>
-          </Stack>
-        </Card>
-      </ScreenSection>
-
       <ScreenSection title="Scenario: Timeline">
         <Timeline
           items={[
@@ -618,6 +473,7 @@ export function PatternsPage() {
 
         <InspectorField
           label="Theme preset"
+          description="Controlled inspector field with a mock reset action."
           control={
             <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
           }

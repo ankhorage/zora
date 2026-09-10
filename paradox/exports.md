@@ -1,67 +1,5 @@
 # Public API
 
-## ActionSheet
-
-Kind: `value`
-Module: `src/components/action-sheet/ActionSheet.tsx`
-Source: `src/components/action-sheet/ActionSheet.tsx:14:14`
-
-Presents a modal bottom sheet with a list of actions.
-
-## ActionSheetItem
-
-Kind: `value`
-Module: `src/components/action-sheet/ActionSheetItem.tsx`
-Source: `src/components/action-sheet/ActionSheetItem.tsx:30:14`
-
-Renders a single selectable action row within an `ActionSheet`.
-
-## ActionSheetItemProps
-
-Kind: `type`
-Module: `src/components/action-sheet/types.ts`
-Source: `src/components/action-sheet/types.ts:16:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                                          | Required | Description |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
-| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
-| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
-| label             | property | `React.ReactNode`                                                                                                                             | yes      |             |
-| leading           | property | `React.ReactNode`                                                                                                                             | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
-| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
-| selected          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| trailing          | property | `React.ReactNode`                                                                                                                             | no       |             |
-
-## ActionSheetProps
-
-Kind: `type`
-Module: `src/components/action-sheet/types.ts`
-Source: `src/components/action-sheet/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| cancelLabel       | property | `React.ReactNode`                | no       |             |
-| children          | property | `React.ReactNode`                | no       |             |
-| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| title             | property | `React.ReactNode`                | no       |             |
-| visible           | property | `boolean`                        | yes      |             |
-
 ## AppBar
 
 Kind: `value`
@@ -597,12 +535,12 @@ Source: `src/patterns/scanner/types.ts:19:1`
 | deniedLabel            | property | `React.ReactNode`                                         | no       |             |
 | description            | property | `React.ReactNode`                                         | no       |             |
 | interactionPolicy      | property | `InteractionPolicy \| undefined`                          | no       |             |
-| manualEntryButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| manualEntryButtonProps | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no       |             |
 | manualEntryLabel       | property | `React.ReactNode`                                         | no       |             |
 | mode                   | property | `ZoraThemeMode \| undefined`                              | no       |             |
 | onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
 | onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
-| requestButtonProps     | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| requestButtonProps     | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no       |             |
 | requestLabel           | property | `React.ReactNode`                                         | no       |             |
 | status                 | property | `"unknown" \| "requesting" \| "denied"`                   | yes      |             |
 | testID                 | property | `string \| undefined`                                     | no       |             |
@@ -1437,7 +1375,7 @@ Source: `src/components/data-table/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/date-picker/DatePicker.tsx`
-Source: `src/components/date-picker/DatePicker.tsx:279:14`
+Source: `src/components/date-picker/DatePicker.tsx:347:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -1577,37 +1515,6 @@ Source: `src/foundation/Divider.tsx:10:1`
 | thickness          | property | `number \| undefined`                                                     | no       |             |
 | top                | property | `Responsive<number> \| undefined`                                         | no       |             |
 | zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
-
-## Drawer
-
-Kind: `value`
-Module: `src/components/drawer/Drawer.tsx`
-Source: `src/components/drawer/Drawer.tsx:59:14`
-
-Side panel overlay for navigation, settings, and secondary content.
-
-## DrawerProps
-
-Kind: `type`
-Module: `src/components/drawer/types.ts`
-Source: `src/components/drawer/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| children          | property | `React.ReactNode`                | no       |             |
-| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| footer            | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
-| position          | property | `"left" \| "right" \| undefined` | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| title             | property | `React.ReactNode`                | no       |             |
-| visible           | property | `boolean`                        | yes      |             |
 
 ## DropdownMenu
 
@@ -2331,9 +2238,9 @@ Source: `src/components/icon/Icon.tsx:7:1`
 
 Kind: `value`
 Module: `src/components/image/Image.tsx`
-Source: `src/components/image/Image.tsx:21:14`
+Source: `src/components/image/Image.tsx:12:14`
 
-Displays an image with cross-platform source and fit handling.
+Displays an image asset and owns its missing, unrenderable, and failed presentation states.
 
 ## ImageFit
 
@@ -2341,39 +2248,11 @@ Kind: `unknown`
 Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
 Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
 
-## ImagePreview
-
-Kind: `value`
-Module: `src/patterns/image-preview/ImagePreview.tsx`
-Source: `src/patterns/image-preview/ImagePreview.tsx:82:14`
-
-Preview pattern for showing an image with optional metadata and actions.
-
-## ImagePreviewProps
-
-Kind: `type`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:35:1`
-
-### Members
-
-| Name              | Kind     | Type                                                  | Required | Description |
-| ----------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
-| aspectRatio       | property | `number \| undefined`                                 | no       |             |
-| asset             | property | `ZoraImageAsset \| null \| undefined`                 | no       |             |
-| emptyDescription  | property | `React.ReactNode`                                     | no       |             |
-| emptyTitle        | property | `React.ReactNode`                                     | no       |             |
-| fit               | property | `import("react-native").ImageResizeMode \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                      | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                          | no       |             |
-| testID            | property | `string \| undefined`                                 | no       |             |
-| themeId           | property | `string \| undefined`                                 | no       |             |
-
 ## ImageProps
 
 Kind: `type`
 Module: `src/components/image/types.ts`
-Source: `src/components/image/types.ts:7:1`
+Source: `src/components/image/types.ts:8:1`
 
 ### Members
 
@@ -2390,64 +2269,11 @@ Source: `src/components/image/types.ts:7:1`
 | onError            | property | `((error: import("react-native").ImageErrorEvent) => void) \| undefined` | no       |             |
 | radius             | property | `string \| number \| undefined`                                          | no       |             |
 | resizeMode         | property | `ImageResizeMode \| undefined`                                           | no       |             |
-| source             | property | `SurfaceImageSource \| null \| undefined`                                | no       |             |
+| source             | property | `SurfaceImageSource \| UploadAsset \| null \| undefined`                 | no       |             |
 | style              | property | `StyleProp<ImageStyle>`                                                  | no       |             |
 | testID             | property | `string \| undefined`                                                    | no       |             |
 | themeId            | property | `string \| undefined`                                                    | no       |             |
 | width              | property | `string \| number \| undefined`                                          | no       |             |
-
-## ImageUploadField
-
-Kind: `value`
-Module: `src/patterns/image-upload-field/ImageUploadField.tsx`
-Source: `src/patterns/image-upload-field/ImageUploadField.tsx:319:14`
-
-Form field pattern for picking, previewing, and uploading an image.
-
-## ImageUploadFieldProps
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:19:1`
-
-### Members
-
-| Name               | Kind     | Type                                                                                                       | Required | Description |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| accept             | property | `string \| undefined`                                                                                      | no       |             |
-| aspectRatio        | property | `number \| undefined`                                                                                      | no       |             |
-| description        | property | `React.ReactNode`                                                                                          | no       |             |
-| disabled           | property | `boolean \| undefined`                                                                                     | no       |             |
-| errorText          | property | `React.ReactNode`                                                                                          | no       |             |
-| helperText         | property | `React.ReactNode`                                                                                          | no       |             |
-| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                           | no       |             |
-| label              | property | `React.ReactNode`                                                                                          | yes      |             |
-| maxSizeBytes       | property | `number \| undefined`                                                                                      | no       |             |
-| mode               | property | `ZoraThemeMode \| undefined`                                                                               | no       |             |
-| onChange           | property | `(next: ZoraImageAsset \| null) => void`                                                                   | yes      |             |
-| onPick             | property | `() => Promise<ZoraPickedImage \| null>`                                                                   | yes      |             |
-| onRemove           | property | `((current: ZoraImageAsset) => void \| Promise<void>) \| undefined`                                        | no       |             |
-| onUpload           | property | `((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) \| undefined` | no       |             |
-| previewDescription | property | `React.ReactNode`                                                                                          | no       |             |
-| previewTitle       | property | `React.ReactNode`                                                                                          | no       |             |
-| readOnly           | property | `boolean \| undefined`                                                                                     | no       |             |
-| required           | property | `boolean \| undefined`                                                                                     | no       |             |
-| testID             | property | `string \| undefined`                                                                                      | no       |             |
-| themeId            | property | `string \| undefined`                                                                                      | no       |             |
-| validatePicked     | property | `((picked: ZoraPickedImage) => string \| undefined) \| undefined`                                          | no       |             |
-| value              | property | `ZoraImageAsset \| null`                                                                                   | yes      |             |
-
-## ImageUploadProgressContext
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:15:1`
-
-### Members
-
-| Name        | Kind     | Type                                 | Required | Description |
-| ----------- | -------- | ------------------------------------ | -------- | ----------- |
-| setProgress | property | `(progress: number \| null) => void` | yes      |             |
 
 ## Inline
 
@@ -2909,65 +2735,6 @@ Source: `src/components/modal/types.ts:7:1`
 | title             | property | `React.ReactNode`                | no       |             |
 | visible           | property | `boolean`                        | yes      |             |
 | width             | property | `ZoraContentWidth \| undefined`  | no       |             |
-
-## NavigationItem
-
-Kind: `value`
-Module: `src/components/navigation-item/NavigationItem.tsx`
-Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
-
-Renders a single navigation entry with active/disabled state support.
-
-## NavigationItemProps
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:20:1`
-
-### Members
-
-| Name              | Kind     | Type                                       | Required | Description |
-| ----------------- | -------- | ------------------------------------------ | -------- | ----------- |
-| active            | property | `boolean \| undefined`                     | no       |             |
-| compact           | property | `boolean \| undefined`                     | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`           | no       |             |
-| metadata          | property | `ZoraNavigationRouteMetadata \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`               | no       |             |
-| onPress           | property | `(() => void) \| undefined`                | no       |             |
-| route             | property | `ZoraNavigationRouteState`                 | yes      |             |
-| testID            | property | `string \| undefined`                      | no       |             |
-| themeId           | property | `string \| undefined`                      | no       |             |
-
-## NavigationList
-
-Kind: `value`
-Module: `src/components/navigation-list/NavigationList.tsx`
-Source: `src/components/navigation-list/NavigationList.tsx:68:14`
-
-Renders a navigation list from route metadata with active state mapping.
-
-## NavigationListProps
-
-Kind: `type`
-Module: `src/components/navigation-list/types.ts`
-Source: `src/components/navigation-list/types.ts:8:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------------- | -------- | ----------- |
-| activeRouteKey    | property | `string \| undefined`                                               | no       |             |
-| compact           | property | `boolean \| undefined`                                              | no       |             |
-| footer            | property | `React.ReactNode`                                                   | no       |             |
-| header            | property | `React.ReactNode`                                                   | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                    | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                        | no       |             |
-| onRoutePress      | property | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       |             |
-| orientation       | property | `"horizontal" \| "vertical" \| undefined`                           | no       |             |
-| routeMap          | property | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       |             |
-| routes            | property | `readonly ZoraNavigationRouteState[]`                               | yes      |             |
-| testID            | property | `string \| undefined`                                               | no       |             |
-| themeId           | property | `string \| undefined`                                               | no       |             |
 
 ## Notice
 
@@ -3783,75 +3550,6 @@ pageCount,
     pageCount,
     }: `{ progress?: number; page?: number; pageCount?: number; }`
   - returns: `number`
-
-## ResponsivePanel
-
-Kind: `value`
-Module: `src/patterns/responsive-panel/ResponsivePanel.tsx`
-Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:172:14`
-
-Adaptive secondary surface that can render as an inline panel, drawer, or modal.
-
-Use `ResponsivePanel` for tool panes and admin/detail flows that need the same
-content to work across compact mobile screens and wider desktop layouts.
-
-## ResponsivePanelDesktopMode
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:6:1`
-
-## ResponsivePanelMobileMode
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:7:1`
-
-## ResponsivePanelProps
-
-Kind: `type`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                                      | Required | Description |
-| ----------------- | -------- | ----------------------------------------- | -------- | ----------- |
-| actions           | property | `React.ReactNode`                         | no       |             |
-| children          | property | `React.ReactNode`                         | no       |             |
-| compact           | property | `boolean \| undefined`                    | no       |             |
-| description       | property | `React.ReactNode`                         | no       |             |
-| desktopMode       | property | `ResponsivePanelDesktopMode \| undefined` | no       |             |
-| footer            | property | `React.ReactNode`                         | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`          | no       |             |
-| mobileMode        | property | `ResponsivePanelMobileMode \| undefined`  | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`              | no       |             |
-| onOpenChange      | property | `(open: boolean) => void`                 | yes      |             |
-| open              | property | `boolean`                                 | yes      |             |
-| scroll            | property | `ResponsivePanelScroll \| undefined`      | no       |             |
-| side              | property | `ResponsivePanelSide \| undefined`        | no       |             |
-| size              | property | `ResponsivePanelSize \| undefined`        | no       |             |
-| testID            | property | `string \| undefined`                     | no       |             |
-| themeId           | property | `string \| undefined`                     | no       |             |
-| title             | property | `React.ReactNode`                         | no       |             |
-
-## ResponsivePanelScroll
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:9:1`
-
-## ResponsivePanelSide
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:5:1`
-
-## ResponsivePanelSize
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:8:1`
 
 ## ScanOverlay
 
@@ -5158,9 +4856,9 @@ Source: `src/patterns/timeline/types.ts:17:1`
 
 Kind: `value`
 Module: `src/components/time-picker/TimePicker.tsx`
-Source: `src/components/time-picker/TimePicker.tsx:174:14`
+Source: `src/components/time-picker/TimePicker.tsx:261:14`
 
-Time input control with wheel selection and formatted display value.
+Time input control with bottom-sheet selection and formatted display value.
 
 ## TimePickerProps
 
@@ -5420,6 +5118,87 @@ Source: `src/patterns/tree-view/types.ts:24:1`
 | testID             | property | `string \| undefined`                                           | no       |             |
 | themeId            | property | `string \| undefined`                                           | no       |             |
 
+## UploadAsset
+
+Kind: `unknown`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:17:1`
+
+## UploadAssetBase
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:7:1`
+
+### Members
+
+| Name        | Kind     | Type                  | Required | Description |
+| ----------- | -------- | --------------------- | -------- | ----------- |
+| alt         | property | `string \| undefined` | no       |             |
+| contentType | property | `string \| undefined` | no       |             |
+| createdAt   | property | `string \| undefined` | no       |             |
+| fileName    | property | `string \| undefined` | no       |             |
+| height      | property | `number \| undefined` | no       |             |
+| sizeBytes   | property | `number \| undefined` | no       |             |
+| width       | property | `number \| undefined` | no       |             |
+
+## Uploader
+
+Kind: `value`
+Module: `src/features/uploader/adapters/inbound/Uploader.tsx`
+Source: `src/features/uploader/adapters/inbound/Uploader.tsx:17:14`
+
+Picks, validates, uploads, previews, and removes one generic file asset.
+
+## UploaderProps
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:45:1`
+
+### Members
+
+| Name              | Kind     | Type                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accept            | property | `string \| undefined`                                                                         | no       |             |
+| aspectRatio       | property | `number \| undefined`                                                                         | no       |             |
+| description       | property | `React.ReactNode`                                                                             | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                        | no       |             |
+| errorText         | property | `React.ReactNode`                                                                             | no       |             |
+| helperText        | property | `React.ReactNode`                                                                             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                              | no       |             |
+| label             | property | `React.ReactNode`                                                                             | yes      |             |
+| maxSizeBytes      | property | `number \| undefined`                                                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                  | no       |             |
+| onChange          | property | `(next: UploadAsset \| null) => void`                                                         | yes      |             |
+| onRemove          | property | `((current: UploadAsset) => void \| Promise<void>) \| undefined`                              | no       |             |
+| onUpload          | property | `((asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>) \| undefined` | no       |             |
+| readOnly          | property | `boolean \| undefined`                                                                        | no       |             |
+| required          | property | `boolean \| undefined`                                                                        | no       |             |
+| testID            | property | `string \| undefined`                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                         | no       |             |
+| type              | property | `UploadType \| undefined`                                                                     | no       |             |
+| validatePicked    | property | `((asset: UploadAsset) => string \| undefined) \| undefined`                                  | no       |             |
+| value             | property | `UploadAsset \| null`                                                                         | yes      |             |
+
+## UploadProgressContext
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:34:1`
+
+### Members
+
+| Name        | Kind     | Type                                 | Required | Description |
+| ----------- | -------- | ------------------------------------ | -------- | ----------- |
+| setProgress | property | `(progress: number \| null) => void` | yes      |             |
+
+## UploadType
+
+Kind: `unknown`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:5:1`
+
 ## useFormController
 
 Kind: `function`
@@ -5536,8 +5315,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
@@ -5564,6 +5343,45 @@ Source: `src/components/form/validation.ts:65:1`
   - fields: `readonly FormFieldConfig<TName>[]`
   - values: `FormValues<TName>`
   - returns: `FormValidationResult<TName>`
+
+## validateUploadAsset
+
+Kind: `function`
+Module: `src/features/uploader/application/use-cases/validateUploadAsset.ts`
+Source: `src/features/uploader/application/use-cases/validateUploadAsset.ts:4:1`
+
+Validates a picked upload asset against MIME, extension, size, and caller rules.
+
+### Signatures
+
+- `({
+asset,
+accept,
+maxSizeBytes,
+validate,
+}: ValidateUploadAssetInput) => string | undefined`
+  - {
+    asset,
+    accept,
+    maxSizeBytes,
+    validate,
+    }: `ValidateUploadAssetInput`
+  - returns: `string | undefined`
+
+## ValidateUploadAssetInput
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:38:1`
+
+### Members
+
+| Name         | Kind     | Type                                                         | Required | Description |
+| ------------ | -------- | ------------------------------------------------------------ | -------- | ----------- |
+| accept       | property | `string \| undefined`                                        | no       |             |
+| asset        | property | `UploadAsset`                                                | yes      |             |
+| maxSizeBytes | property | `number \| undefined`                                        | no       |             |
+| validate     | property | `((asset: UploadAsset) => string \| undefined) \| undefined` | no       |             |
 
 ## validateValue
 
@@ -5612,13 +5430,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:101:14`
+Source: `src/metadata/componentMeta.ts:93:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:247:14`
+Source: `src/registry.ts:230:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5845,7 +5663,7 @@ Source: `src/metadata/types.ts:34:1`
 | enum       | property | `readonly (string \| number)[] \| undefined`                                  | no       |             |
 | itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined`                    | no       |             |
 | label      | property | `string \| undefined`                                                         | no       |             |
-| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no       |             |
+| mediaKinds | property | `readonly ("image" \| "video" \| "file" \| "audio" \| "font")[] \| undefined` | no       |             |
 | type       | property | `UiComponentPropType`                                                         | yes      |             |
 
 ## ZoraComponentPropType
@@ -5864,7 +5682,7 @@ Source: `src/metadata/types.ts:13:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:105:1`
+Source: `src/registry.ts:97:1`
 
 ## ZoraComponentSlotMeta
 
@@ -5918,120 +5736,17 @@ Kind: `value`
 Module: `src/theme/zoraDefaultTheme.ts`
 Source: `src/theme/zoraDefaultTheme.ts:3:14`
 
-## ZoraDrawerContent
-
-Kind: `value`
-Module: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx`
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:60:14`
-
-Standard drawer content pattern for ZORA navigation lists.
-
-## ZoraDrawerContentProps
-
-Kind: `type`
-Module: `src/patterns/zora-drawer-content/types.ts`
-Source: `src/patterns/zora-drawer-content/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                               | Required | Description |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
-| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
-| footer            | property | `React.ReactNode`                                                                                                                  | no       |             |
-| header            | property | `React.ReactNode`                                                                                                                  | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
-| navigation        | property | `ZoraDrawerNavigation`                                                                                                             | yes      |             |
-| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
-| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
-| testID            | property | `string \| undefined`                                                                                                              | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
-
 ## ZoraEmphasis
 
 Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:11:1`
 
-## ZoraImageAsset
-
-Kind: `unknown`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:12:1`
-
-## ZoraImageMetadata
-
-Kind: `type`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:6:1`
-
-### Members
-
-| Name      | Kind     | Type                  | Required | Description |
-| --------- | -------- | --------------------- | -------- | ----------- |
-| createdAt | property | `string \| undefined` | no       |             |
-| fileName  | property | `string \| undefined` | no       |             |
-| sizeBytes | property | `number \| undefined` | no       |             |
-
-## ZoraNavigationRouteMap
-
-Kind: `unknown`
-Module: `src/components/navigation-list/types.ts`
-Source: `src/components/navigation-list/types.ts:6:1`
-
-## ZoraNavigationRouteMetadata
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:6:1`
-
-### Members
-
-| Name               | Kind     | Type                                                   | Required | Description |
-| ------------------ | -------- | ------------------------------------------------------ | -------- | ----------- |
-| accessibilityLabel | property | `string \| undefined`                                  | no       |             |
-| badge              | property | `React.ReactNode`                                      | no       |             |
-| disabled           | property | `boolean \| undefined`                                 | no       |             |
-| icon               | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
-| label              | property | `React.ReactNode`                                      | no       |             |
-| testID             | property | `string \| undefined`                                  | no       |             |
-
-## ZoraNavigationRouteState
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:15:1`
-
-### Members
-
-| Name | Kind     | Type     | Required | Description |
-| ---- | -------- | -------- | -------- | ----------- |
-| key  | property | `string` | yes      |             |
-| name | property | `string` | yes      |             |
-
 ## ZoraPaletteColor
 
 Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:8:1`
-
-## ZoraPickedImage
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:6:1`
-
-### Members
-
-| Name        | Kind     | Type                  | Required | Description |
-| ----------- | -------- | --------------------- | -------- | ----------- |
-| contentType | property | `string \| undefined` | no       |             |
-| fileName    | property | `string \| undefined` | no       |             |
-| height      | property | `number \| undefined` | no       |             |
-| sizeBytes   | property | `number \| undefined` | no       |             |
-| uri         | property | `string`              | yes      |             |
-| width       | property | `number \| undefined` | no       |             |
 
 ## ZoraPluginCompositionError
 
@@ -6099,7 +5814,7 @@ Source: `src/pluginComposition.ts:16:1`
 
 Kind: `function`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:18:1`
+Source: `src/theme/ZoraProvider.tsx:19:1`
 
 ### Signatures
 
@@ -6121,7 +5836,7 @@ initialMode = 'light',
 
 Kind: `type`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:10:1`
+Source: `src/theme/ZoraProvider.tsx:11:1`
 
 ### Members
 
@@ -6137,36 +5852,6 @@ Source: `src/theme/ZoraProvider.tsx:10:1`
 Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:9:1`
-
-## ZoraTabBar
-
-Kind: `value`
-Module: `src/patterns/zora-tab-bar/ZoraTabBar.tsx`
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:157:14`
-
-Bottom tab bar pattern with badge support and active state styling.
-
-## ZoraTabBarProps
-
-Kind: `type`
-Module: `src/patterns/zora-tab-bar/types.ts`
-Source: `src/patterns/zora-tab-bar/types.ts:9:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                               | Required | Description |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| chrome            | property | `"none" \| "raised" \| undefined`                                                                                                  | no       |             |
-| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
-| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
-| insets            | property | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                   | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
-| navigation        | property | `ZoraTabBarNavigation`                                                                                                             | yes      |             |
-| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
-| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
-| testID            | property | `string \| undefined`                                                                                                              | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
 
 ## ZoraTheme
 

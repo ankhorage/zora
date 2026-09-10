@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "4.5.0",
+  "version": "6.0.0",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -32,14 +32,17 @@
     "@react-native-vector-icons/ionicons": "^13.1.3",
     "react": "19.2.3",
     "react-native": "0.86.x",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-svg": "15.15.4",
-    "react-native-web": "~0.21.0"
+    "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.10.1"
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.0",
     "@ankhorage/contracts": "^12.0.1",
-    "@ankhorage/surface": "^3.4.4",
+    "@ankhorage/surface": "^4.1.0",
     "expo-document-picker": "~57.0.1",
     "expo-image-picker": "~57.0.16"
   },
@@ -58,6 +61,20 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./bottom-sheet": {
+      "react-native": "./src/features/bottom-sheet/public.ts",
+      "browser": "./src/features/bottom-sheet/public.ts",
+      "types": "./dist/features/bottom-sheet/public.d.ts",
+      "import": "./dist/features/bottom-sheet/public.js",
+      "default": "./dist/features/bottom-sheet/public.js"
+    },
+    "./uploader": {
+      "react-native": "./src/features/uploader/public.ts",
+      "browser": "./src/features/uploader/public.ts",
+      "types": "./dist/features/uploader/public.d.ts",
+      "import": "./dist/features/uploader/public.js",
+      "default": "./dist/features/uploader/public.js"
     },
     "./metadata": {
       "react-native": "./src/metadata/index.ts",
@@ -113,9 +130,12 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.3",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-svg": "15.15.4",
     "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.10.1",
     "typescript": "~6.0.3"
   },
   "packageManager": "bun@1.4.2"

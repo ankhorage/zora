@@ -1,8 +1,10 @@
-export { Uploader } from './adapters/inbound/Uploader';
 export type {
   UploadAsset,
   UploadAssetBase,
+  UploaderProps,
   UploadProgressContext,
   UploadType,
-  UploaderProps,
+  ValidateUploadAssetInput,
 } from '../../types/upload';
+export { Uploader } from './adapters/inbound/Uploader';
+export { validateUploadAsset } from './application/use-cases/validateUploadAsset';

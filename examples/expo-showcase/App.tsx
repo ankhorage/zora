@@ -14,6 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ChatsPage } from './app/chats';
@@ -82,45 +83,47 @@ function AppWrapper() {
   };
 
   return (
-    <ZoraProvider key={colorMode} initialMode={colorMode} theme={showcaseTheme}>
-      <GradientRendererProvider renderer={ExpoGradientRenderer}>
-        <SafeAreaProvider>
-          <StatusBar style={isDark ? 'light' : 'dark'} />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ZoraProvider key={colorMode} initialMode={colorMode} theme={showcaseTheme}>
+        <GradientRendererProvider renderer={ExpoGradientRenderer}>
+          <SafeAreaProvider>
+            <StatusBar style={isDark ? 'light' : 'dark'} />
 
-          <AppShell
-            header={
-              <AppBar>
-                <Toolbar position="inline" compact={false}>
-                  <Tabs
-                    variant="segmented"
-                    size="s"
-                    value={activeTab}
-                    onValueChange={setActiveTab}
-                    items={[
-                      { value: 'home', label: 'Home' },
-                      { value: 'components', label: 'Components' },
-                      { value: 'patterns', label: 'Patterns' },
-                      { value: 'posts', label: 'Posts' },
-                      { value: 'chats', label: 'Chats' },
-                      { value: 'theme', label: 'Theme' },
-                    ]}
-                  />
-                  <View style={{ flex: 1 }} />
-                  <ToolbarAction
-                    active={isDark}
-                    icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
-                    label={isDark ? 'Use light mode' : 'Use dark mode'}
-                    onPress={toggleColorMode}
-                  />
-                </Toolbar>
-              </AppBar>
-            }
-          >
-            {renderContent()}
-          </AppShell>
-        </SafeAreaProvider>
-      </GradientRendererProvider>
-    </ZoraProvider>
+            <AppShell
+              header={
+                <AppBar>
+                  <Toolbar position="inline" compact={false}>
+                    <Tabs
+                      variant="segmented"
+                      size="s"
+                      value={activeTab}
+                      onValueChange={setActiveTab}
+                      items={[
+                        { value: 'home', label: 'Home' },
+                        { value: 'components', label: 'Components' },
+                        { value: 'patterns', label: 'Patterns' },
+                        { value: 'posts', label: 'Posts' },
+                        { value: 'chats', label: 'Chats' },
+                        { value: 'theme', label: 'Theme' },
+                      ]}
+                    />
+                    <View style={{ flex: 1 }} />
+                    <ToolbarAction
+                      active={isDark}
+                      icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+                      label={isDark ? 'Use light mode' : 'Use dark mode'}
+                      onPress={toggleColorMode}
+                    />
+                  </Toolbar>
+                </AppBar>
+              }
+            >
+              {renderContent()}
+            </AppShell>
+          </SafeAreaProvider>
+        </GradientRendererProvider>
+      </ZoraProvider>
+    </GestureHandlerRootView>
   );
 }
 

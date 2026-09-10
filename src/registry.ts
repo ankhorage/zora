@@ -1,7 +1,6 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import { ActionSheet, ActionSheetItem } from './components/action-sheet';
 import { AppBar } from './components/app-bar';
 import { Avatar } from './components/avatar';
 import { AvatarGroup } from './components/avatar-group';
@@ -15,7 +14,6 @@ import { Chip } from './components/chip';
 import { ChipGroup } from './components/chip-group';
 import { DataTable } from './components/data-table';
 import { DatePicker } from './components/date-picker';
-import { Drawer } from './components/drawer';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
 import { Heading } from './components/heading';
@@ -27,8 +25,6 @@ import { MediaCard } from './components/media-card';
 import { DropdownMenu, Menu } from './components/menu';
 import { MetricCard } from './components/metric-card';
 import { Modal } from './components/modal';
-import { NavigationItem } from './components/navigation-item';
-import { NavigationList } from './components/navigation-list';
 import { Pagination } from './components/pagination';
 import { Progress, ProgressRing } from './components/progress';
 import { Radio, RadioGroup } from './components/radio';
@@ -43,6 +39,7 @@ import { Textarea } from './components/textarea';
 import { TimePicker } from './components/time-picker';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
+import { Uploader } from './features/uploader/public';
 import {
   Box,
   Center,
@@ -77,8 +74,6 @@ import { DisclosureSection } from './patterns/disclosure-section';
 import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
 import { Hero } from './patterns/hero';
-import { ImagePreview } from './patterns/image-preview';
-import { ImageUploadField } from './patterns/image-upload-field';
 import { InspectorField } from './patterns/inspector-field';
 import { List, ListRow, ListSection } from './patterns/list';
 import { MessageBubble } from './patterns/message-bubble';
@@ -88,7 +83,6 @@ import { Panel } from './patterns/panel';
 import { PostCard } from './patterns/post-card';
 import { ProductCard } from './patterns/product-card';
 import { ReaderSurface } from './patterns/reader';
-import { ResponsivePanel } from './patterns/responsive-panel';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
 import { SelectableItem } from './patterns/selection';
@@ -98,8 +92,6 @@ import { ThemeComposer } from './patterns/theme-composer';
 import { PaletteItem, TileGrid } from './patterns/tile-grid';
 import { Timeline } from './patterns/timeline';
 import { TreeItem, TreeView } from './patterns/tree-view';
-import { ZoraDrawerContent } from './patterns/zora-drawer-content';
-import { ZoraTabBar } from './patterns/zora-tab-bar';
 import { ThemeModeToggle } from './theme/ThemeModeToggle';
 
 export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
@@ -128,8 +120,6 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
-  ActionSheet,
-  ActionSheetItem,
   AppBar,
   Avatar,
   AvatarGroup,
@@ -144,7 +134,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   ChipGroup,
   DataTable,
   DatePicker,
-  Drawer,
   DropdownMenu,
   Form,
   FormActions,
@@ -160,8 +149,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Menu,
   MetricCard,
   Modal,
-  NavigationItem,
-  NavigationList,
   Pagination,
   Progress,
   ProgressRing,
@@ -182,6 +169,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Toast,
   Toolbar,
   ToolbarAction,
+  Uploader,
   ThemeModeToggle,
   Box,
   Center,
@@ -213,8 +201,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   EmptyState,
   FilterBar,
   Hero,
-  ImagePreview,
-  ImageUploadField,
   InspectorField,
   List,
   ListRow,
@@ -225,7 +211,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Panel,
   PostCard,
   ProductCard,
-  ResponsivePanel,
   ReaderSurface,
   BarcodeScannerView,
   CameraPermissionView,
@@ -240,8 +225,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Timeline,
   TreeItem,
   TreeView,
-  ZoraDrawerContent,
-  ZoraTabBar,
 } as const satisfies ZoraComponentRegistry;
 
 export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = _ZORA_COMPONENT_REGISTRY;

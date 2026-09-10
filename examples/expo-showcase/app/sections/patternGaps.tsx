@@ -9,7 +9,6 @@ import {
   Notice,
   Panel,
   ReaderSurface,
-  ResponsivePanel,
   ScreenSection,
   SectionHeader,
   SettingsRow,
@@ -22,7 +21,6 @@ import React from 'react';
 
 export function PatternGapsSection() {
   const [confirmOpen, setConfirmOpen] = React.useState(false);
-  const [panelOpen, setPanelOpen] = React.useState(true);
   const [syncEnabled, setSyncEnabled] = React.useState(true);
   const [readerPage, setReaderPage] = React.useState(2);
 
@@ -119,30 +117,6 @@ export function PatternGapsSection() {
           description="This is a compact panel example inside the pattern catalog."
         />
       </Panel>
-
-      <ResponsivePanel
-        title="ResponsivePanel"
-        description="Inline on desktop, drawer or modal in floating mode."
-        open={panelOpen}
-        onOpenChange={setPanelOpen}
-        actions={
-          <Button size="s" variant="soft" onPress={() => setPanelOpen(false)}>
-            Hide
-          </Button>
-        }
-      >
-        <Stack gap="s">
-          <Text>Inline responsive panel content.</Text>
-          <Button size="s" variant="soft" onPress={() => setPanelOpen(true)}>
-            Reopen
-          </Button>
-        </Stack>
-      </ResponsivePanel>
-      {panelOpen ? null : (
-        <Button size="s" variant="soft" onPress={() => setPanelOpen(true)}>
-          Show responsive panel
-        </Button>
-      )}
 
       <SectionHeader
         title="Settings rows"

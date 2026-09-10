@@ -106,8 +106,20 @@ mock.module('@ankhorage/surface', () =>
   }),
 );
 
+mock.module('@ankhorage/surface/bottom-sheet', () =>
+  createRuntimeModuleMock('@ankhorage/surface/bottom-sheet'),
+);
+
 mock.module('@react-native-picker/picker', () => ({
   Picker: createMockComponent,
+}));
+
+mock.module('expo-document-picker', () => ({
+  getDocumentAsync: () => Promise.resolve({ canceled: true, assets: null }),
+}));
+
+mock.module('expo-image-picker', () => ({
+  launchImageLibraryAsync: () => Promise.resolve({ canceled: true, assets: null }),
 }));
 
 test('prints the canonical ZORA component registry snapshot', async () => {
