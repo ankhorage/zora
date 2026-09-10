@@ -60,6 +60,13 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./bottom-sheet": {
+      "react-native": "./src/features/bottom-sheet/public.ts",
+      "browser": "./src/features/bottom-sheet/public.ts",
+      "types": "./dist/features/bottom-sheet/public.d.ts",
+      "import": "./dist/features/bottom-sheet/public.js",
+      "default": "./dist/features/bottom-sheet/public.js"
+    },
     "./metadata": {
       "react-native": "./src/metadata/index.ts",
       "browser": "./src/metadata/index.ts",
