@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -92,75 +92,3 @@ jobs:
           else
             echo "No changeset:status script found; skipping."
           fi
-
-  repair-showcase:
-    if: github.event_name == 'pull_request' && github.head_ref == 'cleanup/remove-obsolete-ui-chrome' && github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-        with:
-          ref: cleanup/remove-obsolete-ui-chrome
-          fetch-depth: 0
-
-      - name: Remove deleted ZORA API consumers
-        run: |
-          python <<'PY'
-          from pathlib import Path
-          import re
-
-          def replace_once(path: str, old: str, new: str) -> None:
-              p = Path(path)
-              text = p.read_text()
-              count = text.count(old)
-              if count != 1:
-                  raise SystemExit(f'{path}: expected one exact match, found {count}: {old!r}')
-              p.write_text(text.replace(old, new, 1))
-
-          def sub_once(path: str, pattern: str, replacement: str) -> None:
-              p = Path(path)
-              text = p.read_text()
-              updated, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
-              if count != 1:
-                  raise SystemExit(f'{path}: expected one regex match, found {count}: {pattern}')
-              p.write_text(updated)
-
-          components = 'examples/expo-showcase/app/components.tsx'
-          replace_once(components, '  Drawer,\n', '')
-          replace_once(components, "  const [drawerOpen, setDrawerOpen] = React.useState(false);\n", '')
-          replace_once(components, 'title="Modal and drawer"', 'title="Modal"')
-          replace_once(components, 'description="Use overlays for focused decisions and contextual panels."', 'description="Use overlays for focused decisions."')
-          sub_once(components, r'\n\s*<Button variant="soft" color="neutral" onPress=\{\(\) => setDrawerOpen\(true\)\}>\s*Open drawer\s*</Button>', '')
-          sub_once(components, r'\n\s*<Drawer[\s\S]*?</Drawer>\n', '\n')
-
-          patterns = 'examples/expo-showcase/app/patterns.tsx'
-          for line in ('  NavigationItem,\n', '  NavigationList,\n', '  ZoraDrawerContent,\n', '  ZoraTabBar,\n'):
-              replace_once(patterns, line, '')
-          replace_once(patterns, "  const [activeNavIndex, setActiveNavIndex] = React.useState(0);\n", '')
-          replace_once(patterns, "  const [drawerStatus, setDrawerStatus] = React.useState('closed');\n", '')
-          sub_once(patterns, r'\n  const navigationState = React\.useMemo\([\s\S]*?\n  const addItem = \(\) => \{', '\n\n  const addItem = () => {')
-          sub_once(patterns, r'\n      <ScreenSection title="Scenario: Navigation chrome \(simulation\)">[\s\S]*?\n      </ScreenSection>\n', '\n')
-
-          gaps = 'examples/expo-showcase/app/sections/patternGaps.tsx'
-          replace_once(gaps, '  ResponsivePanel,\n', '')
-          replace_once(gaps, '  const [panelOpen, setPanelOpen] = React.useState(true);\n', '')
-          sub_once(gaps, r'\n      <ResponsivePanel[\s\S]*?\n\n      <SectionHeader\n        title="Settings rows"', '\n\n      <SectionHeader\n        title="Settings rows"')
-
-          scaffold = 'scripts/scaffold-zora-example-app.ts'
-          sub_once(scaffold, r'\nfunction createRouteMapSource\(routes: readonly RouteSpec\[\]\): string \{[\s\S]*?\n\}\n\nfunction createScreenSource', '\nfunction createScreenSource')
-          replace_once(
-              scaffold,
-              "`import { Tabs } from 'expo-router';\\nimport { ZoraTabBar, type ZoraNavigationRouteMap } from '@ankhorage/zora';\\n\\nconst routeMap: ZoraNavigationRouteMap = {\\n${createRouteMapSource(routes)}\\n};\\n\\nexport default function TabLayout() {\\n  return <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />} />;\\n}`",
-              "`import { Tabs } from 'expo-router';\\n\\nexport default function TabLayout() {\\n  return <Tabs screenOptions={{ headerShown: false }} />;\\n}`",
-          )
-          PY
-
-      - name: Commit repaired consumers
-        run: |
-          git rm .github/workflows/fix-402-showcase.yml
-          git checkout origin/main -- .github/workflows/ci.yml
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add examples/expo-showcase scripts/scaffold-zora-example-app.ts .github/workflows/ci.yml
-          git commit -m "fix: remove deleted ZORA APIs from showcase"
-          git push origin HEAD:cleanup/remove-obsolete-ui-chrome
