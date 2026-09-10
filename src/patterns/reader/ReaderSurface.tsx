@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { AppBar } from '../../components/app-bar';
-import { IconButton } from '../../components/icon-button';
 import { Progress } from '../../components/progress';
-import { Text } from '../../components/text';
-import { Box, Center, Inline, Stack, Surface } from '../../foundation';
+import { IconButton } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Surface } from '../../features/surface/public';
+import { Text } from '../../features/typography/public';
+import { Center, Inline } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveReaderProgress } from './resolveReaderProgress';

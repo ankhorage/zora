@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '../../foundation';
+import { Box } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { useGradientRenderer } from './GradientRendererContext';
 import type { GradientProps } from './types';

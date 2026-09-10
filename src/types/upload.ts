@@ -43,9 +43,15 @@ export interface ValidateUploadAssetInput {
 }
 
 export interface UploaderProps extends ZoraBaseProps {
-  value: UploadAsset | null;
-  onChange: (next: UploadAsset | null) => void;
-  label: React.ReactNode;
+  value?: UploadAsset | null;
+  onChange?: (next: UploadAsset | null) => void;
+  onValueChange?: (next: UploadAsset | null) => void;
+  onUploadRequest?: (event: { asset: UploadAsset }) => void;
+  onRemoveRequest?: (event: { asset: UploadAsset }) => void;
+  onValidationError?: (event: { message: string }) => void;
+  uploadState?: 'idle' | 'uploading' | 'removing';
+  uploadProgress?: number;
+  label?: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
   errorText?: React.ReactNode;

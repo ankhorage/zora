@@ -1,7 +1,7 @@
 import { ScrollArea } from '@ankhorage/surface';
 import React from 'react';
 
-import { Box, Container, Stack } from '../../foundation';
+import { Box, Container, Stack } from '../../features/layout/public';
 import { resolvePageMaxWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScreenProps } from './types';

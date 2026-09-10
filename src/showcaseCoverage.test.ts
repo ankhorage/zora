@@ -65,7 +65,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'Stack',
     'Surface',
   ],
-  features: ['Uploader'],
+  features: ['Uploader', 'BottomSheet', 'FlatList', 'SectionList'],
   layouts: [
     'AppShell',
     'Screen',

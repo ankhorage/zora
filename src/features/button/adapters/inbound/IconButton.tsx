@@ -1,0 +1,37 @@
+import { IconButton as SurfaceIconButton } from '@ankhorage/surface';
+import React from 'react';
+
+import { resolveButtonRecipe } from '../../../../internal/recipes';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { IconButtonProps } from '../../../../types/icon-button';
+/***
+ * Icon-only button for compact actions; requires an accessible `label`.
+ */
+export const IconButton = withZoraThemeScope(IconButtonInner);
+
+function IconButtonInner({
+  themeId: _themeId,
+  mode: _mode,
+  icon,
+  iconName,
+  label,
+  variant = 'ghost',
+  color = 'neutral',
+  size = 'm',
+  interactionPolicy,
+  ...props
+}: IconButtonProps) {
+  const recipe = resolveButtonRecipe({ color, variant, size });
+
+  return (
+    <SurfaceIconButton
+      {...props}
+      icon={icon ?? { name: iconName ?? 'add' }}
+      accessibilityLabel={label}
+      color={recipe.color}
+      size={recipe.size}
+      variant={recipe.variant}
+      interactionPolicy={interactionPolicy}
+    />
+  );
+}

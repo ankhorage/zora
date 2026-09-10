@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Box, Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Button } from '../button';
-import { Text } from '../text';
 import type { TabItem, TabsProps } from './types';
 
 function TabsInner<TValue extends string = string>({

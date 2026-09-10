@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META, type ZoraComponentEventPayloadKind } from './index';
+import { ZORA_COMPONENT_META, type ZoraComponentEventPayloadKind } from '.';
 
 const componentMetaByName = new Map(Object.entries(ZORA_COMPONENT_META));
 
@@ -121,6 +121,15 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
   test('direct manifest node leaf/container rules', () => {
     const expectedLeafNodes = new Set([
+      'Avatar',
+      'AvatarGroup',
+      'Badge',
+      'Chip',
+      'ChipGroup',
+      'DataTable',
+      'IconButton',
+      'MetricCard',
+      'Uploader',
       'SectionHeader',
       'SettingsRow',
       'EmptyState',
@@ -146,6 +155,12 @@ describe('ZORA_COMPONENT_META invariants', () => {
     ]);
 
     const expectedContainerNodes = new Set([
+      'Surface',
+      'MediaCard',
+      'SplashScreen',
+      'FlatList',
+      'SectionList',
+      'BottomSheet',
       'FormField',
       'ButtonGroup',
       'Screen',
@@ -287,6 +302,15 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
     expect(rail.directManifestNode).toBe(true);
     expect(rail.allowedChildren).toEqual([
+      'Chip',
+      'ChipGroup',
+      'MediaCard',
+      'MetricCard',
+      'Avatar',
+      'AvatarGroup',
+      'Badge',
+      'Button',
+      'IconButton',
       'Box',
       'Stack',
       'Card',

@@ -1,4 +1,4 @@
-import { IconButton } from '../components/icon-button';
+import { IconButton } from '../features/button/public';
 import { resolveThemeModeToggleState } from './resolveThemeModeToggleState';
 import type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 import { useZoraTheme } from './useZoraTheme';

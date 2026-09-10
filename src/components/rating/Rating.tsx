@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { Icon } from '../../features/icon/public';
 import { Inline } from '../../foundation';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Icon } from '../icon';
 import { resolveRatingSegments } from './resolveRatingSegments';
 import { type RatingProps, resolveRatingRole } from './types';
 

@@ -9,6 +9,6 @@ test('passes the isolated Surface 4 and RN Web 0.21 acceptance suite', () => {
   const output = `${subprocess.stdout.toString()}\n${subprocess.stderr.toString()}`;
 
   expect(subprocess.exitCode, output).toBe(0);
-  expect(output).toContain('5 pass');
+  expect(output).toContain('9 pass');
   expect(output).toContain('0 fail');
 });

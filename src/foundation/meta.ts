@@ -1,45 +1,12 @@
 import type { ZoraComponentMetaRegistry } from '../metadata';
-import { CONTAINER_ALLOWED_CHILDREN } from '../metadata/allowedChildren';
 
 export const foundationMetas = {
-  Box: {
-    name: 'Box',
-    category: 'foundation',
-    directManifestNode: true,
-    allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
-    blueprint: { label: 'Box' },
-    props: {},
-  },
   Center: {
     name: 'Center',
     category: 'foundation',
     directManifestNode: false,
     allowedChildren: [],
     note: 'Layout helper component; not represented as a manifest node in v1.',
-    props: {},
-  },
-  Container: {
-    name: 'Container',
-    category: 'foundation',
-    directManifestNode: true,
-    allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
-    blueprint: { label: 'Container' },
-    props: {},
-  },
-  Divider: {
-    name: 'Divider',
-    category: 'foundation',
-    directManifestNode: true,
-    allowedChildren: [],
-    blueprint: { label: 'Divider' },
-    props: {},
-  },
-  Grid: {
-    name: 'Grid',
-    category: 'foundation',
-    directManifestNode: true,
-    allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
-    blueprint: { label: 'Grid' },
     props: {},
   },
   Inline: {
@@ -64,22 +31,6 @@ export const foundationMetas = {
     directManifestNode: false,
     allowedChildren: [],
     note: 'Spacing utility component; not represented as a manifest node in v1.',
-    props: {},
-  },
-  Stack: {
-    name: 'Stack',
-    category: 'foundation',
-    directManifestNode: true,
-    allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
-    blueprint: { label: 'Stack' },
-    props: {},
-  },
-  Surface: {
-    name: 'Surface',
-    category: 'foundation',
-    directManifestNode: false,
-    allowedChildren: [],
-    note: 'Low-level surface wrapper; not represented as a manifest node in v1.',
     props: {},
   },
 } as const satisfies ZoraComponentMetaRegistry;

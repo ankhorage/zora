@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Badge } from '../../components/badge';
-import { Text } from '../../components/text';
-import { Box, Stack } from '../../foundation';
+import { Badge } from '../../features/badge/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScanOverlayProps } from './types';

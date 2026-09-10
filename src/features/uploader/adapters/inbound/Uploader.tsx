@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Button } from '../../../../components/button';
-import { Icon } from '../../../../components/icon';
-import { Image } from '../../../../components/image';
 import { Modal } from '../../../../components/modal';
 import { Progress } from '../../../../components/progress';
-import { Text } from '../../../../components/text';
-import { Box, Stack } from '../../../../foundation';
 import { FormField } from '../../../../patterns/form-field';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
+import { Button } from '../../../button/public';
+import { Icon } from '../../../icon/public';
+import { Image } from '../../../image/public';
+import { Box, Stack } from '../../../layout/public';
+import { Text } from '../../../typography/public';
 import { validateUploadAsset } from '../../application/use-cases/validateUploadAsset';
 import { createUploadPicker } from '../../composition/createUploadPicker';
 
@@ -21,9 +21,15 @@ function UploaderInner({
   themeId: _themeId,
   mode: _mode,
   testID,
-  value,
+  value = null,
   onChange,
-  label,
+  onValueChange,
+  onUploadRequest,
+  onRemoveRequest,
+  onValidationError,
+  uploadState = 'idle',
+  uploadProgress,
+  label = 'File',
   description,
   helperText,
   errorText,
@@ -42,14 +48,23 @@ function UploaderInner({
   const passive = interactionPolicy === 'passive';
   const picker = React.useMemo(() => createUploadPicker(), []);
   const [internalError, setInternalError] = React.useState<string | undefined>();
-  const [uploading, setUploading] = React.useState(false);
-  const [removing, setRemoving] = React.useState(false);
+  const [internalUploading, setUploading] = React.useState(false);
+  const [internalRemoving, setRemoving] = React.useState(false);
+  const uploading = internalUploading || uploadState === 'uploading';
+  const removing = internalRemoving || uploadState === 'removing';
   const [progress, setProgress] = React.useState<number | null>(null);
   const [previewOpen, setPreviewOpen] = React.useState(false);
   const mountedRef = React.useRef<boolean | null>(null);
   const resolvedAccept = resolveUploadAccept(type, accept);
   const actionsDisabled = disabled || readOnly;
   const effectiveError = errorText ?? internalError;
+  const notifyValue = React.useCallback(
+    (next: UploadAsset | null) => {
+      onChange?.(next);
+      onValueChange?.(next);
+    },
+    [onChange, onValueChange],
+  );
 
   React.useEffect(() => {
     mountedRef.current = true;
@@ -93,10 +108,12 @@ function UploaderInner({
       });
       if (validationError) {
         setInternalError(validationError);
+        onValidationError?.({ message: validationError });
         return;
       }
 
-      onChange(picked);
+      notifyValue(picked);
+      onUploadRequest?.({ asset: picked });
       if (!onUpload) {
         return;
       }
@@ -110,7 +127,7 @@ function UploaderInner({
           return;
         }
 
-        onChange(uploaded);
+        notifyValue(uploaded);
         setUploading(false);
         setProgress(null);
       } catch (error) {
@@ -131,7 +148,9 @@ function UploaderInner({
     actionsDisabled,
     isMounted,
     maxSizeBytes,
-    onChange,
+    notifyValue,
+    onUploadRequest,
+    onValidationError,
     onUpload,
     passive,
     picker,
@@ -149,8 +168,12 @@ function UploaderInner({
     }
 
     setInternalError(undefined);
+    if (onRemoveRequest) {
+      onRemoveRequest({ asset: value });
+      return;
+    }
     if (!onRemove) {
-      onChange(null);
+      notifyValue(null);
       return;
     }
 
@@ -158,7 +181,7 @@ function UploaderInner({
     try {
       await onRemove(value);
       if (isMounted()) {
-        onChange(null);
+        notifyValue(null);
         setRemoving(false);
       }
     } catch (error) {
@@ -167,7 +190,17 @@ function UploaderInner({
         setRemoving(false);
       }
     }
-  }, [actionsDisabled, isMounted, onChange, onRemove, passive, removing, uploading, value]);
+  }, [
+    actionsDisabled,
+    isMounted,
+    notifyValue,
+    onRemove,
+    onRemoveRequest,
+    passive,
+    removing,
+    uploading,
+    value,
+  ]);
 
   const canPreviewImage = type === 'image' && resolveRenderableAssetUrl(value) !== null;
 
@@ -208,7 +241,9 @@ function UploaderInner({
               <Text emphasis="muted" variant="caption">
                 Uploading…
               </Text>
-              {progress !== null ? <Progress max={1} value={progress} /> : null}
+              {uploadProgress !== undefined || progress !== null ? (
+                <Progress max={1} value={clampProgress(uploadProgress ?? progress) ?? 0} />
+              ) : null}
             </Stack>
           ) : null}
 

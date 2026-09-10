@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
 import { SectionHeader } from '../../patterns/section-header';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScreenSectionProps } from './types';

@@ -2,10 +2,10 @@ import { Radio } from '@ankhorage/surface';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Text } from '../text';
 import { RadioOptionControl } from './RadioOptionControl';
 import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
 import type { RadioGroupProps } from './types';

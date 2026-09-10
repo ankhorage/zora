@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Card } from '../../components/card';
-import { Text } from '../../components/text';
-import { Box } from '../../foundation';
+import { Card } from '../../features/card/public';
+import { Box } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SettingsRowProps } from './types';
 

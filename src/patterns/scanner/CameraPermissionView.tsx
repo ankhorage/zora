@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Button } from '../../components/button';
-import { Card } from '../../components/card';
-import { Text } from '../../components/text';
-import { Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Card } from '../../features/card/public';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { CameraPermissionViewProps } from './types';
 

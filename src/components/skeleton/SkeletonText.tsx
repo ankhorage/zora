@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Skeleton } from './Skeleton';
 import type { SkeletonTextProps } from './types';

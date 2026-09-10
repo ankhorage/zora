@@ -41,7 +41,7 @@ describe('InteractionPolicy declaration', () => {
       readComponent('breadcrumbs', 'types.ts'),
       readPattern('empty-state', 'types.ts'),
       readPattern('hero', 'types.ts'),
-      readPattern('product-card', 'types.ts'),
+      readSource('types/product-card.ts'),
       readPattern('reader', 'types.ts'),
       readPattern('scanner', 'types.ts'),
       readComponent('select', 'types.ts'),
@@ -66,7 +66,7 @@ describe('InteractionPolicy declaration', () => {
 
 describe('Surface wrapper propagation', () => {
   test('foundation Surface forwards interactionPolicy to Surface', () => {
-    const source = readSource('foundation/Surface.tsx');
+    const source = readSource('features/surface/adapters/inbound/Surface.tsx');
 
     expect(source).toContain('interactionPolicy: _interactionPolicy,');
     expect(source).toContain('<SurfaceSurface');
@@ -135,7 +135,7 @@ describe('Hero', () => {
 
 describe('ProductCard', () => {
   test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
-    const source = readPattern('product-card', 'types.ts');
+    const source = readSource('types/product-card.ts');
 
     expect(source).not.toMatch(
       /import type \{\s*InteractionPolicy\s*\} from '@ankhorage\/surface';/,
@@ -145,7 +145,7 @@ describe('ProductCard', () => {
   });
 
   test('forwards interactionPolicy to internal Buttons', () => {
-    const source = readPattern('product-card', 'ProductCard.tsx');
+    const source = readSource('features/card/adapters/inbound/ProductCard.tsx');
 
     expect(source).toMatch(
       /<Button[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{onPrimaryAction/,
@@ -187,14 +187,14 @@ describe('ReaderSurface', () => {
 
 describe('ContentRail', () => {
   test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
-    const source = readPattern('content-rail', 'types.ts');
+    const source = readSource('types/content-rail.ts');
 
     expect(source).toMatch(/export interface ContentRailProps extends ZoraBaseProps/);
     expect(source).not.toMatch(/interactionPolicy\?: InteractionPolicy;/);
   });
 
   test('suppresses scrolling and forwards interactionPolicy to owned controls', () => {
-    const source = readPattern('content-rail', 'ContentRail.tsx');
+    const source = readSource('features/layout/adapters/inbound/ContentRail.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toContain('scrollEnabled={!passive}');

@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import type { BoxProps } from '../../foundation';
+import type { BoxProps } from '../../features/layout/public';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type GradientColor = string;

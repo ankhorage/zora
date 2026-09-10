@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Text } from '../text';
 import { resolveProgressFraction } from './resolveProgressFraction';
 import { resolveProgressRingGeometry } from './resolveProgressRingGeometry';
 import { type ProgressRingProps, resolveProgressRole } from './types';

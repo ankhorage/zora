@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '../../foundation';
+import { Box } from '../../features/layout/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveProgressFraction } from './resolveProgressFraction';

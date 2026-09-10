@@ -1,6 +1,6 @@
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
-import { imageMeta } from '../components/image/meta';
+import { imageMeta } from '../features/image/imageMeta';
 import { readerSurfaceMeta } from '../patterns/reader/meta';
 
 export const ZORA_BINDABLE_COMPONENT_META = {

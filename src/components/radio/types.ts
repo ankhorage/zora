@@ -1,8 +1,8 @@
 import type { RadioProps as SurfaceRadioProps } from '@ankhorage/surface';
 import type React from 'react';
 
+import type { IconProps } from '../../features/icon/public';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { IconProps } from '../icon';
 
 export interface RadioProps extends ZoraBaseProps, Omit<SurfaceRadioProps, 'mode' | 'themeId'> {}
 

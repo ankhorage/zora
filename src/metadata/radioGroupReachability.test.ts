@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from './index';
+import { ZORA_COMPONENT_META } from '.';
 
 const containers = [
   ['Screen', ZORA_COMPONENT_META.Screen],

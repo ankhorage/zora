@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Button } from '../../components/button';
-import { IconButton } from '../../components/icon-button';
-import { Text } from '../../components/text';
-import { Box, Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { IconButton } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { CollectionEditorProps } from './types';

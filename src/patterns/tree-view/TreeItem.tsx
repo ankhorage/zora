@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IconButton } from '../../components/icon-button';
-import { Box, Stack } from '../../foundation';
+import { IconButton } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 import { SettingsRow } from '../settings-row';

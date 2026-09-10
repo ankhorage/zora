@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Card } from '../../components/card';
-import { resolveCardThemeRecipe } from '../../components/card/resolveCardThemeRecipe';
+import { Card } from '../../features/card/public';
+import { resolveCardThemeRecipe } from '../../features/card/utils/resolveCardThemeRecipe';
 import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { PanelProps } from './types';

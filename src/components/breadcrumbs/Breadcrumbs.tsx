@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { Button } from '../../features/button/public';
+import { Icon } from '../../features/icon/public';
+import { Text } from '../../features/typography/public';
 import { Inline } from '../../foundation';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Button } from '../button';
-import { Icon } from '../icon';
-import { Text } from '../text';
 import type { BreadcrumbItem, BreadcrumbsProps } from './types';
 
 type BreadcrumbRenderItem =

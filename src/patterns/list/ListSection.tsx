@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SectionHeader } from '../section-header';
 import { List } from './List';

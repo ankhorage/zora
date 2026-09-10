@@ -3,10 +3,10 @@ import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
 import { useBottomSheet } from '../../features/bottom-sheet/public';
-import { Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Button } from '../button';
-import { Text } from '../text';
 import type { TimePickerProps } from './types';
 
 const MINUTES_PER_DAY = 24 * 60;

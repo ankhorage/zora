@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../../components/button';
+import { Button } from '../../features/button/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveOAuthProviderIcon, resolveOAuthProviderLabel } from './oauthProviders';
 import type { OAuthProviderButtonProps } from './types';

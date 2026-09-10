@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Card } from '../../features/card/public';
+import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Card } from '../card';
 import type { ToolbarProps } from './types';
 
 function ToolbarInner({

@@ -9,16 +9,11 @@ const rootIndex = readFileSync(join(import.meta.dir, '..', 'index.ts'), 'utf8');
 describe('foundation exports', () => {
   it('defines a narrow ZORA foundation export layer', () => {
     expect(foundationIndex).toMatch(/export type \{/);
-    expect(foundationIndex).toMatch(/BoxProps/);
-    expect(foundationIndex).toMatch(/ContainerProps/);
-    expect(foundationIndex).toMatch(/GridProps/);
-    expect(foundationIndex).toMatch(/StackProps/);
-    expect(foundationIndex).toMatch(/SurfaceProps/);
-    expect(foundationIndex).toMatch(/Box/);
-    expect(foundationIndex).toMatch(/Container/);
-    expect(foundationIndex).toMatch(/Grid/);
-    expect(foundationIndex).toMatch(/Stack/);
-    expect(foundationIndex).toMatch(/Surface/);
+    expect(foundationIndex).toMatch(/CenterProps/);
+    expect(foundationIndex).toMatch(/InlineProps/);
+    expect(foundationIndex).toMatch(/ShowProps/);
+    expect(foundationIndex).toMatch(/SpacerProps/);
+    expect(foundationIndex).not.toMatch(/Box|Container|Grid|Stack|Surface/);
     expect(foundationIndex).not.toMatch(/@ankhorage\/surface/);
     expect(foundationIndex).not.toMatch(/Heading/);
     expect(foundationIndex).not.toMatch(/Text/);

@@ -2,8 +2,8 @@ import { useTheme } from '@ankhorage/surface';
 import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
-import { Icon } from '../icon';
-import { Text } from '../text';
+import { Icon } from '../../features/icon/public';
+import { Text } from '../../features/typography/public';
 import {
   handleRadioOptionKeyDown,
   type RadioOptionKeyboardTarget,
