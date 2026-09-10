@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- 44914bc: Remove obsolete navigation and UI chrome APIs now owned by `@ankhorage/navigator`: `Drawer`,
+  `NavigationItem`, `NavigationList`, `ResponsivePanel`, `ZoraDrawerContent`, and `ZoraTabBar`.
+
 ## 4.5.0
 
 ### Minor Changes
