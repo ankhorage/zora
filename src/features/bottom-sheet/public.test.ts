@@ -29,6 +29,7 @@ describe('ZORA BottomSheet public contract', () => {
     ]);
 
     expect(provider).toContain('<BottomSheetProvider>{children}</BottomSheetProvider>');
+    expect(provider).not.toContain('GestureHandlerRootView');
     expect(datePicker).toContain('useBottomSheet()');
     expect(timePicker).toContain('useBottomSheet()');
     expect(datePicker).not.toContain("from '../action-sheet'");
