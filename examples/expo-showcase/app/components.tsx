@@ -562,10 +562,7 @@ export function ComponentsPage() {
         <LayoutsShowcaseSection />
 
         <ScreenSection title="Overlays">
-          <SectionHeader
-            title="Modal"
-            description="Use overlays for focused decisions."
-          />
+          <SectionHeader title="Modal" description="Use overlays for focused decisions." />
           <ButtonGroup align="start">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
           </ButtonGroup>

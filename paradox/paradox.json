@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v4.4.1",
+      "value": "v4.5.0",
       "color": "cb3837"
     },
     {
@@ -587,36 +587,6 @@
       "exports": ["DatePickerProps", "DatePickerValue"]
     },
     {
-      "path": "src/components/drawer/Drawer.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/drawer/types.ts",
-        "src/components/heading/index.ts",
-        "src/components/text/index.ts",
-        "src/foundation/index.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["Drawer"]
-    },
-    {
-      "path": "src/components/drawer/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["Drawer", "DrawerProps"]
-    },
-    {
-      "path": "src/components/drawer/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["drawerMeta"]
-    },
-    {
-      "path": "src/components/drawer/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["DrawerProps"]
-    },
-    {
       "path": "src/components/form/Form.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -1098,65 +1068,6 @@
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["ModalProps"]
-    },
-    {
-      "path": "src/components/navigation-item/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": [
-        "NavigationItem",
-        "NavigationItemProps",
-        "ZoraNavigationRouteMetadata",
-        "ZoraNavigationRouteState"
-      ]
-    },
-    {
-      "path": "src/components/navigation-item/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["navigationItemMeta"]
-    },
-    {
-      "path": "src/components/navigation-item/NavigationItem.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/navigation-item/types.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["NavigationItem"]
-    },
-    {
-      "path": "src/components/navigation-item/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["NavigationItemProps", "ZoraNavigationRouteMetadata", "ZoraNavigationRouteState"]
-    },
-    {
-      "path": "src/components/navigation-list/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["NavigationList", "NavigationListProps", "ZoraNavigationRouteMap"]
-    },
-    {
-      "path": "src/components/navigation-list/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["navigationListMeta"]
-    },
-    {
-      "path": "src/components/navigation-list/NavigationList.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/navigation-list/types.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["NavigationList"]
-    },
-    {
-      "path": "src/components/navigation-list/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/components/navigation-item/index.ts", "src/theme/ZoraBaseProps.ts"],
-      "exports": ["NavigationListProps", "ZoraNavigationRouteMap"]
     },
     {
       "path": "src/components/pagination/index.ts",
@@ -1983,8 +1894,6 @@
         "DisclosureSectionProps",
         "Divider",
         "DividerProps",
-        "Drawer",
-        "DrawerProps",
         "DropdownMenu",
         "DropdownMenuProps",
         "EmptyState",
@@ -2083,10 +1992,6 @@
         "MissingElementProps",
         "Modal",
         "ModalProps",
-        "NavigationItem",
-        "NavigationItemProps",
-        "NavigationList",
-        "NavigationListProps",
         "Notice",
         "NoticeProps",
         "OAuthProviderButton",
@@ -2140,13 +2045,6 @@
         "resolveOAuthProviderIcon",
         "resolveOAuthProviderLabel",
         "resolveReaderProgress",
-        "ResponsivePanel",
-        "ResponsivePanelDesktopMode",
-        "ResponsivePanelMobileMode",
-        "ResponsivePanelProps",
-        "ResponsivePanelScroll",
-        "ResponsivePanelSide",
-        "ResponsivePanelSize",
         "ScanOverlay",
         "ScanOverlayProps",
         "Screen",
@@ -2295,14 +2193,9 @@
         "ZoraComputedTheme",
         "ZoraComputedThemeMode",
         "zoraDefaultTheme",
-        "ZoraDrawerContent",
-        "ZoraDrawerContentProps",
         "ZoraEmphasis",
         "ZoraImageAsset",
         "ZoraImageMetadata",
-        "ZoraNavigationRouteMap",
-        "ZoraNavigationRouteMetadata",
-        "ZoraNavigationRouteState",
         "ZoraPaletteColor",
         "ZoraPickedImage",
         "ZoraPluginCompositionError",
@@ -2313,8 +2206,6 @@
         "ZoraProvider",
         "ZoraProviderProps",
         "ZoraStatusColor",
-        "ZoraTabBar",
-        "ZoraTabBarProps",
         "ZoraTheme",
         "ZoraThemeCompilationDiagnostic",
         "ZoraThemeCompilationDiagnosticCode",
@@ -2371,27 +2262,6 @@
         "ZoraContentWidth",
         "ZoraControlSize",
         "ZoraEmphasis"
-      ]
-    },
-    {
-      "path": "src/internal/resolveZoraNavigationItems.ts",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/navigation-item/index.ts",
-        "src/components/navigation-list/index.ts"
-      ],
-      "exports": [
-        "createDrawerItemPressHandler",
-        "createTabBarItemPressHandler",
-        "resolveNavigationItems",
-        "resolveRouteLabel",
-        "ZoraDrawerNavigation",
-        "ZoraNavigationDescriptor",
-        "ZoraNavigationDescriptors",
-        "ZoraNavigationState",
-        "ZoraResolvedNavigationItem",
-        "ZoraRouteLabelSource",
-        "ZoraTabBarNavigation"
       ]
     },
     {
@@ -2609,7 +2479,6 @@
         "src/components/chip/meta.ts",
         "src/components/data-table/meta.ts",
         "src/components/date-picker/meta.ts",
-        "src/components/drawer/meta.ts",
         "src/components/form/meta.ts",
         "src/components/gradient/meta.ts",
         "src/components/heading/meta.ts",
@@ -2621,8 +2490,6 @@
         "src/components/menu/meta.ts",
         "src/components/metric-card/meta.ts",
         "src/components/modal/meta.ts",
-        "src/components/navigation-item/meta.ts",
-        "src/components/navigation-list/meta.ts",
         "src/components/pagination/meta.ts",
         "src/components/progress/meta.ts",
         "src/components/radio/meta.ts",
@@ -2665,7 +2532,6 @@
         "src/patterns/post-card/meta.ts",
         "src/patterns/product-card/meta.ts",
         "src/patterns/reader/meta.ts",
-        "src/patterns/responsive-panel/meta.ts",
         "src/patterns/scanner/meta.ts",
         "src/patterns/section-header/meta.ts",
         "src/patterns/selection/meta.ts",
@@ -2675,8 +2541,6 @@
         "src/patterns/tile-grid/meta.ts",
         "src/patterns/timeline/meta.ts",
         "src/patterns/tree-view/meta.ts",
-        "src/patterns/zora-drawer-content/meta.ts",
-        "src/patterns/zora-tab-bar/meta.ts",
         "src/theme/ThemeModeToggle.meta.ts"
       ],
       "exports": ["ZORA_COMPONENT_META"]
@@ -3751,52 +3615,6 @@
       ]
     },
     {
-      "path": "src/patterns/responsive-panel/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": [
-        "ResponsivePanel",
-        "ResponsivePanelDesktopMode",
-        "ResponsivePanelMobileMode",
-        "ResponsivePanelProps",
-        "ResponsivePanelScroll",
-        "ResponsivePanelSide",
-        "ResponsivePanelSize"
-      ]
-    },
-    {
-      "path": "src/patterns/responsive-panel/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["responsivePanelMeta"]
-    },
-    {
-      "path": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/drawer/index.ts",
-        "src/components/modal/index.ts",
-        "src/internal/recipes.ts",
-        "src/patterns/panel/index.ts",
-        "src/patterns/responsive-panel/types.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["ResponsivePanel"]
-    },
-    {
-      "path": "src/patterns/responsive-panel/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": [
-        "ResponsivePanelDesktopMode",
-        "ResponsivePanelMobileMode",
-        "ResponsivePanelProps",
-        "ResponsivePanelScroll",
-        "ResponsivePanelSide",
-        "ResponsivePanelSize"
-      ]
-    },
-    {
       "path": "src/patterns/scanner/BarcodeScannerView.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -4173,73 +3991,6 @@
       "exports": ["TreeItemNode", "TreeItemRenderProps", "TreeViewProps"]
     },
     {
-      "path": "src/patterns/zora-drawer-content/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["ZoraDrawerContent", "ZoraDrawerContentProps"]
-    },
-    {
-      "path": "src/patterns/zora-drawer-content/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["zoraDrawerContentMeta"]
-    },
-    {
-      "path": "src/patterns/zora-drawer-content/types.ts",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/navigation-list/index.ts",
-        "src/internal/resolveZoraNavigationItems.ts",
-        "src/theme/ZoraBaseProps.ts"
-      ],
-      "exports": ["ZoraDrawerContentProps"]
-    },
-    {
-      "path": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/internal/resolveZoraNavigationItems.ts",
-        "src/patterns/zora-drawer-content/types.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["ZoraDrawerContent"]
-    },
-    {
-      "path": "src/patterns/zora-tab-bar/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["ZoraTabBar", "ZoraTabBarProps"]
-    },
-    {
-      "path": "src/patterns/zora-tab-bar/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["zoraTabBarMeta"]
-    },
-    {
-      "path": "src/patterns/zora-tab-bar/types.ts",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/navigation-list/index.ts",
-        "src/internal/resolveZoraNavigationItems.ts",
-        "src/theme/ZoraBaseProps.ts"
-      ],
-      "exports": ["ZoraTabBarProps"]
-    },
-    {
-      "path": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/icon/index.ts",
-        "src/foundation/index.ts",
-        "src/internal/resolveZoraNavigationItems.ts",
-        "src/patterns/zora-tab-bar/types.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["ZoraTabBar"]
-    },
-    {
       "path": "src/pluginComposition.ts",
       "isEntrypoint": false,
       "dependencies": ["src/metadata/types.ts", "src/registry.ts"],
@@ -4273,7 +4024,6 @@
         "src/components/chip/index.ts",
         "src/components/data-table/index.ts",
         "src/components/date-picker/index.ts",
-        "src/components/drawer/index.ts",
         "src/components/form/index.ts",
         "src/components/gradient/index.ts",
         "src/components/heading/index.ts",
@@ -4285,8 +4035,6 @@
         "src/components/menu/index.ts",
         "src/components/metric-card/index.ts",
         "src/components/modal/index.ts",
-        "src/components/navigation-item/index.ts",
-        "src/components/navigation-list/index.ts",
         "src/components/pagination/index.ts",
         "src/components/progress/index.ts",
         "src/components/radio/index.ts",
@@ -4328,7 +4076,6 @@
         "src/patterns/post-card/index.ts",
         "src/patterns/product-card/index.ts",
         "src/patterns/reader/index.ts",
-        "src/patterns/responsive-panel/index.ts",
         "src/patterns/scanner/index.ts",
         "src/patterns/section-header/index.ts",
         "src/patterns/selection/index.ts",
@@ -4338,8 +4085,6 @@
         "src/patterns/tile-grid/index.ts",
         "src/patterns/timeline/index.ts",
         "src/patterns/tree-view/index.ts",
-        "src/patterns/zora-drawer-content/index.ts",
-        "src/patterns/zora-tab-bar/index.ts",
         "src/theme/ThemeModeToggle.tsx"
       ],
       "exports": ["ZORA_COMPONENT_REGISTRY", "ZoraComponentRegistry"]
@@ -11223,127 +10968,6 @@
       "structuredRows": []
     },
     {
-      "name": "Drawer",
-      "description": "Side panel overlay for navigation, settings, and secondary content.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/components/drawer/Drawer.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/drawer/Drawer.tsx",
-        "line": 59,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "DrawerProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/drawer/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/drawer/types.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "children",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "closeOnBackdrop",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onDismiss",
-          "kind": "property",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "position",
-          "kind": "property",
-          "type": "\"left\" | \"right\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "visible",
-          "kind": "property",
-          "type": "boolean",
-          "required": true,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
       "name": "DropdownMenu",
       "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
       "isReadme": false,
@@ -16275,235 +15899,6 @@
       "structuredRows": []
     },
     {
-      "name": "NavigationItem",
-      "description": "Renders a single navigation entry with active/disabled state support.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/components/navigation-item/NavigationItem.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/NavigationItem.tsx",
-        "line": 41,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "NavigationItemProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/navigation-item/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/types.ts",
-        "line": 20,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [
-        "ZoraNavigationRouteMetadata",
-        "ZoraNavigationRouteState",
-        "ZoraThemeMode"
-      ],
-      "signatures": [],
-      "members": [
-        {
-          "name": "active",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "metadata",
-          "kind": "property",
-          "type": "ZoraNavigationRouteMetadata | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onPress",
-          "kind": "property",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "route",
-          "kind": "property",
-          "type": "ZoraNavigationRouteState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "NavigationList",
-      "description": "Renders a navigation list from route metadata with active state mapping.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/components/navigation-list/NavigationList.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-list/NavigationList.tsx",
-        "line": 68,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "NavigationListProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/navigation-list/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-list/types.ts",
-        "line": 8,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [
-        "ZoraNavigationRouteMetadata",
-        "ZoraNavigationRouteState",
-        "ZoraThemeMode"
-      ],
-      "signatures": [],
-      "members": [
-        {
-          "name": "activeRouteKey",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "header",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onRoutePress",
-          "kind": "property",
-          "type": "((route: ZoraNavigationRouteState) => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "orientation",
-          "kind": "property",
-          "type": "\"horizontal\" | \"vertical\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "kind": "property",
-          "type": "Partial<Record<string, ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "routes",
-          "kind": "property",
-          "type": "readonly ZoraNavigationRouteState[]",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
       "name": "Notice",
       "description": "Notice pattern for inline feedback with tone, title, and actions.",
       "isReadme": false,
@@ -19714,265 +19109,6 @@
           "returnDescription": null
         }
       ],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanel",
-      "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
-      "isReadme": false,
-      "examples": [
-        {
-          "title": "Scrollable wide panel",
-          "language": "tsx",
-          "code": "<ResponsivePanel open title=\"APIs\" size=\"wide\" scroll=\"content\">...</ResponsivePanel>"
-        }
-      ],
-      "kind": "value",
-      "modulePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 172,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelDesktopMode",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelMobileMode",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 7,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 11,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [
-        "ResponsivePanelDesktopMode",
-        "ResponsivePanelMobileMode",
-        "ResponsivePanelScroll",
-        "ResponsivePanelSide",
-        "ResponsivePanelSize",
-        "ZoraThemeMode"
-      ],
-      "signatures": [],
-      "members": [
-        {
-          "name": "actions",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "desktopMode",
-          "kind": "property",
-          "type": "ResponsivePanelDesktopMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mobileMode",
-          "kind": "property",
-          "type": "ResponsivePanelMobileMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onOpenChange",
-          "kind": "property",
-          "type": "(open: boolean) => void",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "open",
-          "kind": "property",
-          "type": "boolean",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "scroll",
-          "kind": "property",
-          "type": "ResponsivePanelScroll | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "side",
-          "kind": "property",
-          "type": "ResponsivePanelSide | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "size",
-          "kind": "property",
-          "type": "ResponsivePanelSize | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelScroll",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 9,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelSide",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 5,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ResponsivePanelSize",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/patterns/responsive-panel/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/types.ts",
-        "line": 8,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
       "members": [],
       "structuredRows": []
     },
@@ -26629,7 +25765,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 101,
+        "line": 95,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -26647,7 +25783,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 247,
+        "line": 235,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -27437,7 +26573,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 105,
+        "line": 99,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -27622,120 +26758,6 @@
       "structuredRows": []
     },
     {
-      "name": "ZoraDrawerContent",
-      "description": "Standard drawer content pattern for ZORA navigation lists.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "line": 60,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraDrawerContentProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/patterns/zora-drawer-content/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-drawer-content/types.ts",
-        "line": 11,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "compact",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "descriptors",
-          "kind": "property",
-          "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "header",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "navigation",
-          "kind": "property",
-          "type": "ZoraDrawerNavigation",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "kind": "property",
-          "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "state",
-          "kind": "property",
-          "type": "ZoraNavigationState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
       "name": "ZoraEmphasis",
       "description": null,
       "isReadme": false,
@@ -27806,118 +26828,6 @@
           "kind": "property",
           "type": "number | undefined",
           "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraNavigationRouteMap",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/components/navigation-list/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-list/types.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraNavigationRouteMetadata",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/navigation-item/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/types.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [
-        {
-          "name": "accessibilityLabel",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "badge",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "disabled",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "icon",
-          "kind": "property",
-          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "label",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraNavigationRouteState",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/navigation-item/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/types.ts",
-        "line": 15,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [
-        {
-          "name": "key",
-          "kind": "property",
-          "type": "string",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "name",
-          "kind": "property",
-          "type": "string",
-          "required": true,
           "description": null
         }
       ],
@@ -28295,120 +27205,6 @@
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraTabBar",
-      "description": "Bottom tab bar pattern with badge support and active state styling.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "line": 157,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ZoraTabBarProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/patterns/zora-tab-bar/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-tab-bar/types.ts",
-        "line": 9,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["ZoraNavigationRouteMetadata", "ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "chrome",
-          "kind": "property",
-          "type": "\"none\" | \"raised\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "descriptors",
-          "kind": "property",
-          "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "insets",
-          "kind": "property",
-          "type": "{ top?: number; bottom?: number; left?: number; right?: number; } | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "navigation",
-          "kind": "property",
-          "type": "ZoraTabBarNavigation",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "kind": "property",
-          "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "state",
-          "kind": "property",
-          "type": "ZoraNavigationState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
       "structuredRows": []
     },
     {
@@ -33300,93 +32096,6 @@
       ]
     },
     {
-      "name": "Drawer",
-      "description": "Side panel overlay for navigation, settings, and secondary content.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/components/drawer/Drawer.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/drawer/Drawer.tsx",
-        "line": 59,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "children",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "closeOnBackdrop",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onDismiss",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "position",
-          "type": "\"left\" | \"right\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "visible",
-          "type": "boolean",
-          "required": true,
-          "description": null
-        }
-      ]
-    },
-    {
       "name": "DropdownMenu",
       "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
       "isReadme": false,
@@ -37377,162 +36086,6 @@
       ]
     },
     {
-      "name": "NavigationItem",
-      "description": "Renders a single navigation entry with active/disabled state support.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/components/navigation-item/NavigationItem.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/NavigationItem.tsx",
-        "line": 41,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "active",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "metadata",
-          "type": "ZoraNavigationRouteMetadata | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onPress",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "route",
-          "type": "ZoraNavigationRouteState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
-      "name": "NavigationList",
-      "description": "Renders a navigation list from route metadata with active state mapping.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/components/navigation-list/NavigationList.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/navigation-list/NavigationList.tsx",
-        "line": 68,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "activeRouteKey",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "header",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onRoutePress",
-          "type": "((route: ZoraNavigationRouteState) => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "orientation",
-          "type": "\"horizontal\" | \"vertical\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "type": "Partial<Record<string, ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "routes",
-          "type": "readonly ZoraNavigationRouteState[]",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
       "name": "Notice",
       "description": "Notice pattern for inline feedback with tone, title, and actions.",
       "isReadme": false,
@@ -39365,129 +37918,6 @@
         },
         {
           "name": "viewport",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
-      "name": "ResponsivePanel",
-      "description": "Adaptive secondary surface that can render as an inline panel, drawer, or modal.\n\nUse `ResponsivePanel` for tool panes and admin/detail flows that need the same\ncontent to work across compact mobile screens and wider desktop layouts.",
-      "isReadme": false,
-      "examples": [
-        {
-          "title": "Scrollable wide panel",
-          "language": "tsx",
-          "code": "<ResponsivePanel open title=\"APIs\" size=\"wide\" scroll=\"content\">...</ResponsivePanel>"
-        }
-      ],
-      "modulePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 172,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "actions",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "desktopMode",
-          "type": "ResponsivePanelDesktopMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mobileMode",
-          "type": "ResponsivePanelMobileMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onOpenChange",
-          "type": "(open: boolean) => void",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "open",
-          "type": "boolean",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "scroll",
-          "type": "ResponsivePanelScroll | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "side",
-          "type": "ResponsivePanelSide | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "size",
-          "type": "ResponsivePanelSize | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
           "type": "React.ReactNode",
           "required": false,
           "description": null
@@ -43577,87 +42007,6 @@
       ]
     },
     {
-      "name": "ZoraDrawerContent",
-      "description": "Standard drawer content pattern for ZORA navigation lists.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "line": 60,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "compact",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "descriptors",
-          "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "footer",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "header",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "navigation",
-          "type": "ZoraDrawerNavigation",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "state",
-          "type": "ZoraNavigationState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
       "name": "ZoraProvider",
       "description": null,
       "isReadme": false,
@@ -43693,87 +42042,6 @@
         {
           "name": "themeConfig",
           "type": "ThemeConfig | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
-      "name": "ZoraTabBar",
-      "description": "Bottom tab bar pattern with badge support and active state styling.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "line": 157,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "chrome",
-          "type": "\"none\" | \"raised\" | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "compact",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "descriptors",
-          "type": "Readonly<Record<string, import(\"../../internal/resolveZoraNavigationItems\").ZoraNavigationDescriptor | undefined>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "insets",
-          "type": "{ top?: number; bottom?: number; left?: number; right?: number; } | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "navigation",
-          "type": "ZoraTabBarNavigation",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "routeMap",
-          "type": "Partial<Record<string, import(\"../..\").ZoraNavigationRouteMetadata>> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "state",
-          "type": "ZoraNavigationState",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
           "required": false,
           "description": null
         }
@@ -44580,24 +42848,6 @@
       }
     },
     {
-      "name": "useStableCallback",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/drawer/Drawer.tsx",
-        "line": 10,
-        "column": 1
-      }
-    },
-    {
-      "name": "DrawerInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/drawer/Drawer.tsx",
-        "line": 22,
-        "column": 1
-      }
-    },
-    {
       "name": "FormInner",
       "description": null,
       "sourceLocation": {
@@ -45035,24 +43285,6 @@
       "sourceLocation": {
         "filePath": "src/components/modal/Modal.tsx",
         "line": 23,
-        "column": 1
-      }
-    },
-    {
-      "name": "NavigationItemInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/navigation-item/NavigationItem.tsx",
-        "line": 7,
-        "column": 1
-      }
-    },
-    {
-      "name": "NavigationListInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/navigation-list/NavigationList.tsx",
-        "line": 10,
         "column": 1
       }
     },
@@ -45863,42 +44095,6 @@
       "sourceLocation": {
         "filePath": "src/internal/recipes.ts",
         "line": 82,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveRouteLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 58,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveNavigationItems",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 87,
-        "column": 1
-      }
-    },
-    {
-      "name": "createTabBarItemPressHandler",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 116,
-        "column": 1
-      }
-    },
-    {
-      "name": "createDrawerItemPressHandler",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/internal/resolveZoraNavigationItems.ts",
-        "line": 142,
         "column": 1
       }
     },
@@ -46875,42 +45071,6 @@
       }
     },
     {
-      "name": "resolvePanelWidth",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 11,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveModalWidth",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 25,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderPanelBody",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 39,
-        "column": 1
-      }
-    },
-    {
-      "name": "ResponsivePanelInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "line": 58,
-        "column": 1
-      }
-    },
-    {
       "name": "BarcodeScannerViewInner",
       "description": null,
       "sourceLocation": {
@@ -47241,33 +45401,6 @@
         "filePath": "src/patterns/tree-view/TreeView.tsx",
         "line": 28,
         "column": 9
-      }
-    },
-    {
-      "name": "ZoraDrawerContentInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "line": 11,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveAccessibilityLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "line": 14,
-        "column": 1
-      }
-    },
-    {
-      "name": "ZoraTabBarInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "line": 33,
-        "column": 1
       }
     },
     {
@@ -47915,11 +46048,6 @@
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/components/drawer/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
         "toPath": "src/components/form/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -47971,16 +46099,6 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/components/modal/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/components/navigation-item/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/components/navigation-list/index.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -48210,11 +46328,6 @@
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/patterns/responsive-panel/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
         "toPath": "src/patterns/scanner/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -48256,16 +46369,6 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/patterns/tree-view/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/patterns/zora-drawer-content/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/patterns/zora-tab-bar/index.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -48365,11 +46468,6 @@
       },
       {
         "fromPath": "src/registry.ts",
-        "toPath": "src/components/drawer/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
         "toPath": "src/components/form/index.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -48421,16 +46519,6 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/components/modal/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/components/navigation-item/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/components/navigation-list/index.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -48640,11 +46728,6 @@
       },
       {
         "fromPath": "src/registry.ts",
-        "toPath": "src/patterns/responsive-panel/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
         "toPath": "src/patterns/scanner/index.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -48686,16 +46769,6 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/patterns/tree-view/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/patterns/zora-drawer-content/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/patterns/zora-tab-bar/index.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -48869,16 +46942,6 @@
         "sourcePath": "src/internal/recipes.ts"
       },
       {
-        "fromPath": "src/internal/resolveZoraNavigationItems.ts",
-        "toPath": "src/components/navigation-item/index.ts",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
-      },
-      {
-        "fromPath": "src/internal/resolveZoraNavigationItems.ts",
-        "toPath": "src/components/navigation-list/index.ts",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
-      },
-      {
         "fromPath": "src/metadata/bindableComponentMeta.ts",
         "toPath": "src/components/image/meta.ts",
         "sourcePath": "src/metadata/bindableComponentMeta.ts"
@@ -48960,11 +47023,6 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/drawer/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/form/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -49016,16 +47074,6 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/modal/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/navigation-item/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/navigation-list/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -49235,11 +47283,6 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/patterns/responsive-panel/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/scanner/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -49281,16 +47324,6 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/tree-view/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/patterns/zora-drawer-content/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/patterns/zora-tab-bar/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -50404,51 +48437,6 @@
         "sourcePath": "src/components/date-picker/types.ts"
       },
       {
-        "fromPath": "src/components/drawer/Drawer.tsx",
-        "toPath": "src/foundation/index.ts",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromPath": "src/components/drawer/Drawer.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromPath": "src/components/drawer/Drawer.tsx",
-        "toPath": "src/components/heading/index.ts",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromPath": "src/components/drawer/Drawer.tsx",
-        "toPath": "src/components/text/index.ts",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromPath": "src/components/drawer/Drawer.tsx",
-        "toPath": "src/components/drawer/types.ts",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromPath": "src/components/drawer/index.ts",
-        "toPath": "src/components/drawer/Drawer.tsx",
-        "sourcePath": "src/components/drawer/index.ts"
-      },
-      {
-        "fromPath": "src/components/drawer/index.ts",
-        "toPath": "src/components/drawer/types.ts",
-        "sourcePath": "src/components/drawer/index.ts"
-      },
-      {
-        "fromPath": "src/components/drawer/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/drawer/meta.ts"
-      },
-      {
-        "fromPath": "src/components/drawer/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/drawer/types.ts"
-      },
-      {
         "fromPath": "src/components/form/Form.tsx",
         "toPath": "src/foundation/index.ts",
         "sourcePath": "src/components/form/Form.tsx"
@@ -51152,71 +49140,6 @@
         "fromPath": "src/components/modal/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/modal/types.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-item/index.ts",
-        "toPath": "src/components/navigation-item/NavigationItem.tsx",
-        "sourcePath": "src/components/navigation-item/index.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-item/index.ts",
-        "toPath": "src/components/navigation-item/types.ts",
-        "sourcePath": "src/components/navigation-item/index.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-item/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/navigation-item/meta.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-item/NavigationItem.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/navigation-item/NavigationItem.tsx"
-      },
-      {
-        "fromPath": "src/components/navigation-item/NavigationItem.tsx",
-        "toPath": "src/components/navigation-item/types.ts",
-        "sourcePath": "src/components/navigation-item/NavigationItem.tsx"
-      },
-      {
-        "fromPath": "src/components/navigation-item/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-list/index.ts",
-        "toPath": "src/components/navigation-list/NavigationList.tsx",
-        "sourcePath": "src/components/navigation-list/index.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-list/index.ts",
-        "toPath": "src/components/navigation-list/types.ts",
-        "sourcePath": "src/components/navigation-list/index.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-list/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/navigation-list/meta.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-list/NavigationList.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/navigation-list/NavigationList.tsx"
-      },
-      {
-        "fromPath": "src/components/navigation-list/NavigationList.tsx",
-        "toPath": "src/components/navigation-list/types.ts",
-        "sourcePath": "src/components/navigation-list/NavigationList.tsx"
-      },
-      {
-        "fromPath": "src/components/navigation-list/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromPath": "src/components/navigation-list/types.ts",
-        "toPath": "src/components/navigation-item/index.ts",
-        "sourcePath": "src/components/navigation-list/types.ts"
       },
       {
         "fromPath": "src/components/pagination/index.ts",
@@ -53869,56 +51792,6 @@
         "sourcePath": "src/patterns/reader/types.ts"
       },
       {
-        "fromPath": "src/patterns/responsive-panel/index.ts",
-        "toPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "sourcePath": "src/patterns/responsive-panel/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/index.ts",
-        "toPath": "src/patterns/responsive-panel/types.ts",
-        "sourcePath": "src/patterns/responsive-panel/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/patterns/responsive-panel/meta.ts"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/components/drawer/index.ts",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/components/modal/index.ts",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/internal/recipes.ts",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/patterns/panel/index.ts",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toPath": "src/patterns/responsive-panel/types.ts",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromPath": "src/patterns/responsive-panel/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
         "fromPath": "src/patterns/scanner/BarcodeScannerView.tsx",
         "toPath": "src/components/card/index.ts",
         "sourcePath": "src/patterns/scanner/BarcodeScannerView.tsx"
@@ -54532,111 +52405,6 @@
         "fromPath": "src/patterns/tree-view/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/patterns/tree-view/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/index.ts",
-        "toPath": "src/patterns/zora-drawer-content/types.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/index.ts",
-        "toPath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "sourcePath": "src/patterns/zora-drawer-content/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/meta.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/types.ts",
-        "toPath": "src/components/navigation-list/index.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/types.ts",
-        "toPath": "src/internal/resolveZoraNavigationItems.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "toPath": "src/internal/resolveZoraNavigationItems.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "toPath": "src/patterns/zora-drawer-content/types.ts",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/index.ts",
-        "toPath": "src/patterns/zora-tab-bar/types.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/index.ts",
-        "toPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "sourcePath": "src/patterns/zora-tab-bar/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/meta.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/types.ts",
-        "toPath": "src/components/navigation-list/index.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/types.ts",
-        "toPath": "src/internal/resolveZoraNavigationItems.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/components/icon/index.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/foundation/index.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/internal/resolveZoraNavigationItems.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromPath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toPath": "src/patterns/zora-tab-bar/types.ts",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
       }
     ],
     "calls": [
@@ -54825,30 +52593,6 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/foundation/Surface.tsx"
-      },
-      {
-        "fromSymbol": "src/internal/resolveZoraNavigationItems.ts",
-        "toSymbol": "resolveRouteLabel",
-        "callExpression": "resolveRouteLabel",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
-      },
-      {
-        "fromSymbol": "src/internal/resolveZoraNavigationItems.ts",
-        "toSymbol": "emit",
-        "callExpression": "navigation.emit",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
-      },
-      {
-        "fromSymbol": "src/internal/resolveZoraNavigationItems.ts",
-        "toSymbol": "navigate",
-        "callExpression": "navigation.navigate",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
-      },
-      {
-        "fromSymbol": "src/internal/resolveZoraNavigationItems.ts",
-        "toSymbol": "closeDrawer",
-        "callExpression": "navigation.closeDrawer",
-        "sourcePath": "src/internal/resolveZoraNavigationItems.ts"
       },
       {
         "fromSymbol": "compileZoraTheme",
@@ -55745,36 +53489,6 @@
         "sourcePath": "src/components/date-picker/DatePicker.tsx"
       },
       {
-        "fromSymbol": "useStableCallback",
-        "toSymbol": "useRef",
-        "callExpression": "useRef",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromSymbol": "useStableCallback",
-        "toSymbol": "useEffect",
-        "callExpression": "useEffect",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromSymbol": "useStableCallback",
-        "toSymbol": "useCallback",
-        "callExpression": "useCallback",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromSymbol": "DrawerInner",
-        "toSymbol": "useStableCallback",
-        "callExpression": "useStableCallback",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
-        "fromSymbol": "src/components/drawer/Drawer.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/drawer/Drawer.tsx"
-      },
-      {
         "fromSymbol": "FormInner",
         "toSymbol": "useFormController",
         "callExpression": "useFormController",
@@ -56235,24 +53949,6 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/components/modal/Modal.tsx"
-      },
-      {
-        "fromSymbol": "src/components/navigation-item/NavigationItem.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/navigation-item/NavigationItem.tsx"
-      },
-      {
-        "fromSymbol": "src/components/navigation-list/NavigationList.tsx",
-        "toSymbol": "onRoutePress",
-        "callExpression": "onRoutePress",
-        "sourcePath": "src/components/navigation-list/NavigationList.tsx"
-      },
-      {
-        "fromSymbol": "src/components/navigation-list/NavigationList.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/navigation-list/NavigationList.tsx"
       },
       {
         "fromSymbol": "createPaginationItems",
@@ -57869,36 +55565,6 @@
         "sourcePath": "src/patterns/reader/ReaderSurface.tsx"
       },
       {
-        "fromSymbol": "ResponsivePanelInner",
-        "toSymbol": "renderPanelBody",
-        "callExpression": "renderPanelBody",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromSymbol": "ResponsivePanelInner",
-        "toSymbol": "resolveModalWidth",
-        "callExpression": "resolveModalWidth",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toSymbol": "onOpenChange",
-        "callExpression": "onOpenChange",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromSymbol": "ResponsivePanelInner",
-        "toSymbol": "resolvePanelWidth",
-        "callExpression": "resolvePanelWidth",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/responsive-panel/ResponsivePanel.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/patterns/responsive-panel/ResponsivePanel.tsx"
-      },
-      {
         "fromSymbol": "BarcodeScannerViewInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -58323,54 +55989,6 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/patterns/tree-view/TreeView.tsx"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentInner",
-        "toSymbol": "resolveNavigationItems",
-        "callExpression": "resolveNavigationItems",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "toSymbol": "createDrawerItemPressHandler",
-        "callExpression": "createDrawerItemPressHandler",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/patterns/zora-drawer-content/ZoraDrawerContent.tsx"
-      },
-      {
-        "fromSymbol": "ZoraTabBarInner",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromSymbol": "ZoraTabBarInner",
-        "toSymbol": "resolveNavigationItems",
-        "callExpression": "resolveNavigationItems",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toSymbol": "resolveAccessibilityLabel",
-        "callExpression": "resolveAccessibilityLabel",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toSymbol": "createTabBarItemPressHandler",
-        "callExpression": "createTabBarItemPressHandler",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/zora-tab-bar/ZoraTabBar.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/patterns/zora-tab-bar/ZoraTabBar.tsx"
       }
     ],
     "typeReferences": [
@@ -59045,26 +56663,6 @@
         "sourcePath": "src/components/date-picker/types.ts"
       },
       {
-        "fromSymbol": "DrawerProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/drawer/types.ts"
-      },
-      {
-        "fromSymbol": "DrawerProps",
-        "toType": "React",
-        "sourcePath": "src/components/drawer/types.ts"
-      },
-      {
-        "fromSymbol": "DrawerProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/drawer/types.ts"
-      },
-      {
-        "fromSymbol": "DrawerProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/drawer/types.ts"
-      },
-      {
         "fromSymbol": "FormActionsProps",
         "toType": "InteractionPolicy",
         "sourcePath": "src/components/form/types.ts"
@@ -59693,76 +57291,6 @@
         "fromSymbol": "ModalProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/modal/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationItemProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationItemProps",
-        "toType": "ZoraNavigationRouteMetadata",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationItemProps",
-        "toType": "ZoraNavigationRouteState",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationItemProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraNavigationRouteMetadata",
-        "toType": "IconSource",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraNavigationRouteMetadata",
-        "toType": "React",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraNavigationRouteMetadata",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/navigation-item/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "Partial",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "React",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "ZoraNavigationRouteMetadata",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "ZoraNavigationRouteState",
-        "sourcePath": "src/components/navigation-list/types.ts"
-      },
-      {
-        "fromSymbol": "NavigationListProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/navigation-list/types.ts"
       },
       {
         "fromSymbol": "PaginationProps",
@@ -62210,51 +59738,6 @@
         "sourcePath": "src/patterns/reader/types.ts"
       },
       {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "React",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ResponsivePanelDesktopMode",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ResponsivePanelMobileMode",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ResponsivePanelScroll",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ResponsivePanelSide",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ResponsivePanelSize",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
-        "fromSymbol": "ResponsivePanelProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/patterns/responsive-panel/types.ts"
-      },
-      {
         "fromSymbol": "BarcodeScannerViewProps",
         "toType": "BarcodeScanResult",
         "sourcePath": "src/patterns/scanner/types.ts"
@@ -62583,96 +60066,6 @@
         "fromSymbol": "TreeViewProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/patterns/tree-view/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "Partial",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "React",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "Readonly",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ZoraDrawerNavigation",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ZoraNavigationDescriptor",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ZoraNavigationRouteMetadata",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ZoraNavigationState",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraDrawerContentProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/patterns/zora-drawer-content/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "Partial",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "Readonly",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "ZoraNavigationDescriptor",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "ZoraNavigationRouteMetadata",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "ZoraNavigationState",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "ZoraTabBarNavigation",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
-      },
-      {
-        "fromSymbol": "ZoraTabBarProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/patterns/zora-tab-bar/types.ts"
       },
       {
         "fromSymbol": "ComposedZoraPluginCatalog",
