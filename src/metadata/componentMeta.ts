@@ -1,3 +1,4 @@
+import { actionSheetItemMeta, actionSheetMeta } from '../components/action-sheet/meta';
 import { appBarMeta } from '../components/app-bar/meta';
 import { avatarMeta } from '../components/avatar/meta';
 import { avatarGroupMeta } from '../components/avatar-group/meta';
@@ -64,6 +65,7 @@ import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { emptyStateMeta } from '../patterns/empty-state/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
 import { heroMeta } from '../patterns/hero/meta';
+import { imagePreviewMeta } from '../patterns/image-preview/meta';
 import { imageUploadFieldMeta } from '../patterns/image-upload-field/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
 import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
@@ -92,6 +94,8 @@ import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ...foundationMetas,
+  ActionSheet: actionSheetMeta,
+  ActionSheetItem: actionSheetItemMeta,
   AppBar: appBarMeta,
   Avatar: avatarMeta,
   AvatarGroup: avatarGroupMeta,
@@ -163,6 +167,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   EmptyState: emptyStateMeta,
   FilterBar: filterBarMeta,
   Hero: heroMeta,
+  ImagePreview: imagePreviewMeta,
   ImageUploadField: imageUploadFieldMeta,
   InspectorField: inspectorFieldMeta,
   List: listMeta,
