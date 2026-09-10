@@ -175,11 +175,10 @@ function DatePickerInner({
   );
 }
 
-interface DatePickerSheetProps
-  extends Pick<
-    DatePickerProps,
-    'description' | 'interactionPolicy' | 'label' | 'maxDate' | 'minDate' | 'testID' | 'value'
-  > {
+interface DatePickerSheetProps extends Pick<
+  DatePickerProps,
+  'description' | 'interactionPolicy' | 'label' | 'maxDate' | 'minDate' | 'testID' | 'value'
+> {
   onDismiss: () => void;
   onSelect: (value: Date) => void;
 }
