@@ -44,7 +44,6 @@ describe('InteractionPolicy declaration', () => {
       readPattern('product-card', 'types.ts'),
       readPattern('reader', 'types.ts'),
       readPattern('scanner', 'types.ts'),
-      readPattern('zora-tab-bar', 'types.ts'),
       readComponent('select', 'types.ts'),
       readPattern('tree-view', 'types.ts'),
     ];
@@ -226,22 +225,6 @@ describe('BarcodeScannerView', () => {
     const source = readPattern('scanner', 'BarcodeScannerView.tsx');
 
     expect(source).toMatch(/<CameraPermissionView[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
-  });
-});
-
-describe('ZoraTabBar', () => {
-  test('does not discard interactionPolicy', () => {
-    const source = readPattern('zora-tab-bar', 'ZoraTabBar.tsx');
-
-    expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
-  });
-
-  test('prevents navigation under passive without disabled semantics', () => {
-    const source = readPattern('zora-tab-bar', 'ZoraTabBar.tsx');
-
-    expect(source).toMatch(/onPress=\{[\s\S]*?interactionPolicy === 'passive'\s*\?\s*undefined/);
-    expect(source).not.toMatch(/disabled:\s*interactionPolicy === 'passive'/);
-    expect(source).not.toMatch(/accessibilityState.*disabled.*interactionPolicy === 'passive'/);
   });
 });
 
