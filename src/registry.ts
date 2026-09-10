@@ -15,7 +15,6 @@ import { Chip } from './components/chip';
 import { ChipGroup } from './components/chip-group';
 import { DataTable } from './components/data-table';
 import { DatePicker } from './components/date-picker';
-import { Drawer } from './components/drawer';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
 import { Heading } from './components/heading';
@@ -27,8 +26,6 @@ import { MediaCard } from './components/media-card';
 import { DropdownMenu, Menu } from './components/menu';
 import { MetricCard } from './components/metric-card';
 import { Modal } from './components/modal';
-import { NavigationItem } from './components/navigation-item';
-import { NavigationList } from './components/navigation-list';
 import { Pagination } from './components/pagination';
 import { Progress, ProgressRing } from './components/progress';
 import { Radio, RadioGroup } from './components/radio';
@@ -88,7 +85,6 @@ import { Panel } from './patterns/panel';
 import { PostCard } from './patterns/post-card';
 import { ProductCard } from './patterns/product-card';
 import { ReaderSurface } from './patterns/reader';
-import { ResponsivePanel } from './patterns/responsive-panel';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
 import { SelectableItem } from './patterns/selection';
@@ -98,8 +94,6 @@ import { ThemeComposer } from './patterns/theme-composer';
 import { PaletteItem, TileGrid } from './patterns/tile-grid';
 import { Timeline } from './patterns/timeline';
 import { TreeItem, TreeView } from './patterns/tree-view';
-import { ZoraDrawerContent } from './patterns/zora-drawer-content';
-import { ZoraTabBar } from './patterns/zora-tab-bar';
 import { ThemeModeToggle } from './theme/ThemeModeToggle';
 
 export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
@@ -144,7 +138,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   ChipGroup,
   DataTable,
   DatePicker,
-  Drawer,
   DropdownMenu,
   Form,
   FormActions,
@@ -160,8 +153,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Menu,
   MetricCard,
   Modal,
-  NavigationItem,
-  NavigationList,
   Pagination,
   Progress,
   ProgressRing,
@@ -225,7 +216,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Panel,
   PostCard,
   ProductCard,
-  ResponsivePanel,
   ReaderSurface,
   BarcodeScannerView,
   CameraPermissionView,
@@ -240,8 +230,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   Timeline,
   TreeItem,
   TreeView,
-  ZoraDrawerContent,
-  ZoraTabBar,
 } as const satisfies ZoraComponentRegistry;
 
 export const ZORA_COMPONENT_REGISTRY: ZoraComponentRegistry = _ZORA_COMPONENT_REGISTRY;

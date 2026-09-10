@@ -1578,37 +1578,6 @@ Source: `src/foundation/Divider.tsx:10:1`
 | top                | property | `Responsive<number> \| undefined`                                         | no       |             |
 | zIndex             | property | `Responsive<number> \| undefined`                                         | no       |             |
 
-## Drawer
-
-Kind: `value`
-Module: `src/components/drawer/Drawer.tsx`
-Source: `src/components/drawer/Drawer.tsx:59:14`
-
-Side panel overlay for navigation, settings, and secondary content.
-
-## DrawerProps
-
-Kind: `type`
-Module: `src/components/drawer/types.ts`
-Source: `src/components/drawer/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| children          | property | `React.ReactNode`                | no       |             |
-| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| footer            | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
-| position          | property | `"left" \| "right" \| undefined` | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| title             | property | `React.ReactNode`                | no       |             |
-| visible           | property | `boolean`                        | yes      |             |
-
 ## DropdownMenu
 
 Kind: `function`
@@ -2910,65 +2879,6 @@ Source: `src/components/modal/types.ts:7:1`
 | visible           | property | `boolean`                        | yes      |             |
 | width             | property | `ZoraContentWidth \| undefined`  | no       |             |
 
-## NavigationItem
-
-Kind: `value`
-Module: `src/components/navigation-item/NavigationItem.tsx`
-Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
-
-Renders a single navigation entry with active/disabled state support.
-
-## NavigationItemProps
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:20:1`
-
-### Members
-
-| Name              | Kind     | Type                                       | Required | Description |
-| ----------------- | -------- | ------------------------------------------ | -------- | ----------- |
-| active            | property | `boolean \| undefined`                     | no       |             |
-| compact           | property | `boolean \| undefined`                     | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`           | no       |             |
-| metadata          | property | `ZoraNavigationRouteMetadata \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`               | no       |             |
-| onPress           | property | `(() => void) \| undefined`                | no       |             |
-| route             | property | `ZoraNavigationRouteState`                 | yes      |             |
-| testID            | property | `string \| undefined`                      | no       |             |
-| themeId           | property | `string \| undefined`                      | no       |             |
-
-## NavigationList
-
-Kind: `value`
-Module: `src/components/navigation-list/NavigationList.tsx`
-Source: `src/components/navigation-list/NavigationList.tsx:68:14`
-
-Renders a navigation list from route metadata with active state mapping.
-
-## NavigationListProps
-
-Kind: `type`
-Module: `src/components/navigation-list/types.ts`
-Source: `src/components/navigation-list/types.ts:8:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------------- | -------- | ----------- |
-| activeRouteKey    | property | `string \| undefined`                                               | no       |             |
-| compact           | property | `boolean \| undefined`                                              | no       |             |
-| footer            | property | `React.ReactNode`                                                   | no       |             |
-| header            | property | `React.ReactNode`                                                   | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                    | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                        | no       |             |
-| onRoutePress      | property | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       |             |
-| orientation       | property | `"horizontal" \| "vertical" \| undefined`                           | no       |             |
-| routeMap          | property | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       |             |
-| routes            | property | `readonly ZoraNavigationRouteState[]`                               | yes      |             |
-| testID            | property | `string \| undefined`                                               | no       |             |
-| themeId           | property | `string \| undefined`                                               | no       |             |
-
 ## Notice
 
 Kind: `value`
@@ -3783,75 +3693,6 @@ pageCount,
     pageCount,
     }: `{ progress?: number; page?: number; pageCount?: number; }`
   - returns: `number`
-
-## ResponsivePanel
-
-Kind: `value`
-Module: `src/patterns/responsive-panel/ResponsivePanel.tsx`
-Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:172:14`
-
-Adaptive secondary surface that can render as an inline panel, drawer, or modal.
-
-Use `ResponsivePanel` for tool panes and admin/detail flows that need the same
-content to work across compact mobile screens and wider desktop layouts.
-
-## ResponsivePanelDesktopMode
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:6:1`
-
-## ResponsivePanelMobileMode
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:7:1`
-
-## ResponsivePanelProps
-
-Kind: `type`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                                      | Required | Description |
-| ----------------- | -------- | ----------------------------------------- | -------- | ----------- |
-| actions           | property | `React.ReactNode`                         | no       |             |
-| children          | property | `React.ReactNode`                         | no       |             |
-| compact           | property | `boolean \| undefined`                    | no       |             |
-| description       | property | `React.ReactNode`                         | no       |             |
-| desktopMode       | property | `ResponsivePanelDesktopMode \| undefined` | no       |             |
-| footer            | property | `React.ReactNode`                         | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`          | no       |             |
-| mobileMode        | property | `ResponsivePanelMobileMode \| undefined`  | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`              | no       |             |
-| onOpenChange      | property | `(open: boolean) => void`                 | yes      |             |
-| open              | property | `boolean`                                 | yes      |             |
-| scroll            | property | `ResponsivePanelScroll \| undefined`      | no       |             |
-| side              | property | `ResponsivePanelSide \| undefined`        | no       |             |
-| size              | property | `ResponsivePanelSize \| undefined`        | no       |             |
-| testID            | property | `string \| undefined`                     | no       |             |
-| themeId           | property | `string \| undefined`                     | no       |             |
-| title             | property | `React.ReactNode`                         | no       |             |
-
-## ResponsivePanelScroll
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:9:1`
-
-## ResponsivePanelSide
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:5:1`
-
-## ResponsivePanelSize
-
-Kind: `unknown`
-Module: `src/patterns/responsive-panel/types.ts`
-Source: `src/patterns/responsive-panel/types.ts:8:1`
 
 ## ScanOverlay
 
@@ -5612,13 +5453,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:101:14`
+Source: `src/metadata/componentMeta.ts:95:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:247:14`
+Source: `src/registry.ts:235:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5864,7 +5705,7 @@ Source: `src/metadata/types.ts:13:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:105:1`
+Source: `src/registry.ts:99:1`
 
 ## ZoraComponentSlotMeta
 
@@ -5918,36 +5759,6 @@ Kind: `value`
 Module: `src/theme/zoraDefaultTheme.ts`
 Source: `src/theme/zoraDefaultTheme.ts:3:14`
 
-## ZoraDrawerContent
-
-Kind: `value`
-Module: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx`
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:60:14`
-
-Standard drawer content pattern for ZORA navigation lists.
-
-## ZoraDrawerContentProps
-
-Kind: `type`
-Module: `src/patterns/zora-drawer-content/types.ts`
-Source: `src/patterns/zora-drawer-content/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                               | Required | Description |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
-| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
-| footer            | property | `React.ReactNode`                                                                                                                  | no       |             |
-| header            | property | `React.ReactNode`                                                                                                                  | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
-| navigation        | property | `ZoraDrawerNavigation`                                                                                                             | yes      |             |
-| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
-| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
-| testID            | property | `string \| undefined`                                                                                                              | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
-
 ## ZoraEmphasis
 
 Kind: `unknown`
@@ -5973,42 +5784,6 @@ Source: `src/patterns/image-preview/types.ts:6:1`
 | createdAt | property | `string \| undefined` | no       |             |
 | fileName  | property | `string \| undefined` | no       |             |
 | sizeBytes | property | `number \| undefined` | no       |             |
-
-## ZoraNavigationRouteMap
-
-Kind: `unknown`
-Module: `src/components/navigation-list/types.ts`
-Source: `src/components/navigation-list/types.ts:6:1`
-
-## ZoraNavigationRouteMetadata
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:6:1`
-
-### Members
-
-| Name               | Kind     | Type                                                   | Required | Description |
-| ------------------ | -------- | ------------------------------------------------------ | -------- | ----------- |
-| accessibilityLabel | property | `string \| undefined`                                  | no       |             |
-| badge              | property | `React.ReactNode`                                      | no       |             |
-| disabled           | property | `boolean \| undefined`                                 | no       |             |
-| icon               | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
-| label              | property | `React.ReactNode`                                      | no       |             |
-| testID             | property | `string \| undefined`                                  | no       |             |
-
-## ZoraNavigationRouteState
-
-Kind: `type`
-Module: `src/components/navigation-item/types.ts`
-Source: `src/components/navigation-item/types.ts:15:1`
-
-### Members
-
-| Name | Kind     | Type     | Required | Description |
-| ---- | -------- | -------- | -------- | ----------- |
-| key  | property | `string` | yes      |             |
-| name | property | `string` | yes      |             |
 
 ## ZoraPaletteColor
 
@@ -6137,36 +5912,6 @@ Source: `src/theme/ZoraProvider.tsx:10:1`
 Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:9:1`
-
-## ZoraTabBar
-
-Kind: `value`
-Module: `src/patterns/zora-tab-bar/ZoraTabBar.tsx`
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:157:14`
-
-Bottom tab bar pattern with badge support and active state styling.
-
-## ZoraTabBarProps
-
-Kind: `type`
-Module: `src/patterns/zora-tab-bar/types.ts`
-Source: `src/patterns/zora-tab-bar/types.ts:9:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                               | Required | Description |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| chrome            | property | `"none" \| "raised" \| undefined`                                                                                                  | no       |             |
-| compact           | property | `boolean \| undefined`                                                                                                             | no       |             |
-| descriptors       | property | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       |             |
-| insets            | property | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                   | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                   | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                       | no       |             |
-| navigation        | property | `ZoraTabBarNavigation`                                                                                                             | yes      |             |
-| routeMap          | property | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       |             |
-| state             | property | `ZoraNavigationState`                                                                                                              | yes      |             |
-| testID            | property | `string \| undefined`                                                                                                              | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                              | no       |             |
 
 ## ZoraTheme
 

@@ -9,7 +9,6 @@ import {
   CheckboxGroup,
   Chip,
   ChipGroup,
-  Drawer,
   Heading,
   IconButton,
   Input,
@@ -50,7 +49,6 @@ export function ComponentsPage() {
   const [chipFilter, setChipFilter] = React.useState<'all' | 'popular' | 'recent'>('all');
   const [channels, setChannels] = React.useState<('email' | 'push' | 'sms')[]>(['email']);
   const [modalOpen, setModalOpen] = React.useState(false);
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   return (
     <>
@@ -564,15 +562,9 @@ export function ComponentsPage() {
         <LayoutsShowcaseSection />
 
         <ScreenSection title="Overlays">
-          <SectionHeader
-            title="Modal and drawer"
-            description="Use overlays for focused decisions and contextual panels."
-          />
+          <SectionHeader title="Modal" description="Use overlays for focused decisions." />
           <ButtonGroup align="start">
             <Button onPress={() => setModalOpen(true)}>Open modal</Button>
-            <Button variant="soft" color="neutral" onPress={() => setDrawerOpen(true)}>
-              Open drawer
-            </Button>
           </ButtonGroup>
         </ScreenSection>
       </Screen>
@@ -587,23 +579,6 @@ export function ComponentsPage() {
           <Input placeholder="Type something..." />
         </Card>
       </Modal>
-
-      <Drawer
-        visible={drawerOpen}
-        onDismiss={() => setDrawerOpen(false)}
-        title="Drawer primitive"
-        description="Side overlay for contextual details."
-      >
-        <Select
-          value={select}
-          onValueChange={setSelect}
-          options={[
-            { value: 'starter', label: 'Starter' },
-            { value: 'team', label: 'Team' },
-            { value: 'enterprise', label: 'Enterprise' },
-          ]}
-        />
-      </Drawer>
     </>
   );
 }

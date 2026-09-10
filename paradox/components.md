@@ -945,29 +945,6 @@ Export paths: `src/index.ts`
 | top                | `Responsive<number> \| undefined`                                         | no       | —       |             |
 | zIndex             | `Responsive<number> \| undefined`                                         | no       | —       |             |
 
-## Drawer
-
-Source: `src/components/drawer/Drawer.tsx:59:14`
-
-Side panel overlay for navigation, settings, and secondary content.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                             | Required | Default | Description |
-| ----------------- | -------------------------------- | -------- | ------- | ----------- |
-| children          | `React.ReactNode`                | no       | —       |             |
-| closeOnBackdrop   | `boolean \| undefined`           | no       | —       |             |
-| description       | `React.ReactNode`                | no       | —       |             |
-| footer            | `React.ReactNode`                | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined` | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`     | no       | —       |             |
-| onDismiss         | `(() => void) \| undefined`      | no       | —       |             |
-| position          | `"left" \| "right" \| undefined` | no       | —       |             |
-| testID            | `string \| undefined`            | no       | —       |             |
-| themeId           | `string \| undefined`            | no       | —       |             |
-| title             | `React.ReactNode`                | no       | —       |             |
-| visible           | `boolean`                        | yes      | —       |             |
-
 ## DropdownMenu
 
 Source: `src/components/menu/DropdownMenu.tsx:9:1`
@@ -1898,49 +1875,6 @@ Export paths: `src/index.ts`
 | visible           | `boolean`                        | yes      | —       |             |
 | width             | `ZoraContentWidth \| undefined`  | no       | —       |             |
 
-## NavigationItem
-
-Source: `src/components/navigation-item/NavigationItem.tsx:41:14`
-
-Renders a single navigation entry with active/disabled state support.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                       | Required | Default | Description |
-| ----------------- | ------------------------------------------ | -------- | ------- | ----------- |
-| active            | `boolean \| undefined`                     | no       | —       |             |
-| compact           | `boolean \| undefined`                     | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`           | no       | —       |             |
-| metadata          | `ZoraNavigationRouteMetadata \| undefined` | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`               | no       | —       |             |
-| onPress           | `(() => void) \| undefined`                | no       | —       |             |
-| route             | `ZoraNavigationRouteState`                 | yes      | —       |             |
-| testID            | `string \| undefined`                      | no       | —       |             |
-| themeId           | `string \| undefined`                      | no       | —       |             |
-
-## NavigationList
-
-Source: `src/components/navigation-list/NavigationList.tsx:68:14`
-
-Renders a navigation list from route metadata with active state mapping.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                                                | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------- | -------- | ------- | ----------- |
-| activeRouteKey    | `string \| undefined`                                               | no       | —       |             |
-| compact           | `boolean \| undefined`                                              | no       | —       |             |
-| footer            | `React.ReactNode`                                                   | no       | —       |             |
-| header            | `React.ReactNode`                                                   | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                    | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                        | no       | —       |             |
-| onRoutePress      | `((route: ZoraNavigationRouteState) => void) \| undefined`          | no       | —       |             |
-| orientation       | `"horizontal" \| "vertical" \| undefined`                           | no       | —       |             |
-| routeMap          | `Partial<Record<string, ZoraNavigationRouteMetadata>> \| undefined` | no       | —       |             |
-| routes            | `readonly ZoraNavigationRouteState[]`                               | yes      | —       |             |
-| testID            | `string \| undefined`                                               | no       | —       |             |
-| themeId           | `string \| undefined`                                               | no       | —       |             |
-
 ## Notice
 
 Source: `src/patterns/notice/Notice.tsx:41:14`
@@ -2379,37 +2313,6 @@ Export paths: `src/index.ts`
 | title              | `string \| undefined`                                                        | no       | —       |             |
 | unavailableTitle   | `string \| undefined`                                                        | no       | —       |             |
 | viewport           | `React.ReactNode`                                                            | no       | —       |             |
-
-## ResponsivePanel
-
-Source: `src/patterns/responsive-panel/ResponsivePanel.tsx:172:14`
-
-Adaptive secondary surface that can render as an inline panel, drawer, or modal.
-
-Use `ResponsivePanel` for tool panes and admin/detail flows that need the same
-content to work across compact mobile screens and wider desktop layouts.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                      | Required | Default | Description |
-| ----------------- | ----------------------------------------- | -------- | ------- | ----------- |
-| actions           | `React.ReactNode`                         | no       | —       |             |
-| children          | `React.ReactNode`                         | no       | —       |             |
-| compact           | `boolean \| undefined`                    | no       | —       |             |
-| description       | `React.ReactNode`                         | no       | —       |             |
-| desktopMode       | `ResponsivePanelDesktopMode \| undefined` | no       | —       |             |
-| footer            | `React.ReactNode`                         | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`          | no       | —       |             |
-| mobileMode        | `ResponsivePanelMobileMode \| undefined`  | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`              | no       | —       |             |
-| onOpenChange      | `(open: boolean) => void`                 | yes      | —       |             |
-| open              | `boolean`                                 | yes      | —       |             |
-| scroll            | `ResponsivePanelScroll \| undefined`      | no       | —       |             |
-| side              | `ResponsivePanelSide \| undefined`        | no       | —       |             |
-| size              | `ResponsivePanelSize \| undefined`        | no       | —       |             |
-| testID            | `string \| undefined`                     | no       | —       |             |
-| themeId           | `string \| undefined`                     | no       | —       |             |
-| title             | `React.ReactNode`                         | no       | —       |             |
 
 ## ScanOverlay
 
@@ -3423,28 +3326,6 @@ Export paths: `src/index.ts`
 | testID             | `string \| undefined`                                           | no       | —       |             |
 | themeId            | `string \| undefined`                                           | no       | —       |             |
 
-## ZoraDrawerContent
-
-Source: `src/patterns/zora-drawer-content/ZoraDrawerContent.tsx:60:14`
-
-Standard drawer content pattern for ZORA navigation lists.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                                                                                                               | Required | Default | Description |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| compact           | `boolean \| undefined`                                                                                                             | no       | —       |             |
-| descriptors       | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| footer            | `React.ReactNode`                                                                                                                  | no       | —       |             |
-| header            | `React.ReactNode`                                                                                                                  | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                   | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                       | no       | —       |             |
-| navigation        | `ZoraDrawerNavigation`                                                                                                             | yes      | —       |             |
-| routeMap          | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       | —       |             |
-| state             | `ZoraNavigationState`                                                                                                              | yes      | —       |             |
-| testID            | `string \| undefined`                                                                                                              | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                              | no       | —       |             |
-
 ## ZoraProvider
 
 Source: `src/theme/ZoraProvider.tsx:18:1`
@@ -3457,28 +3338,6 @@ Export paths: `src/index.ts`
 | initialMode | `ZoraThemeMode \| undefined`   | no       | `'light'`          |             |
 | theme       | `ZoraTheme \| undefined`       | no       | `zoraDefaultTheme` |             |
 | themeConfig | `ThemeConfig \| undefined`     | no       | —                  |             |
-
-## ZoraTabBar
-
-Source: `src/patterns/zora-tab-bar/ZoraTabBar.tsx:157:14`
-
-Bottom tab bar pattern with badge support and active state styling.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                                                                                                               | Required | Default | Description |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| chrome            | `"none" \| "raised" \| undefined`                                                                                                  | no       | —       |             |
-| compact           | `boolean \| undefined`                                                                                                             | no       | —       |             |
-| descriptors       | `Readonly<Record<string, import("../../internal/resolveZoraNavigationItems").ZoraNavigationDescriptor \| undefined>> \| undefined` | no       | —       |             |
-| insets            | `{ top?: number; bottom?: number; left?: number; right?: number; } \| undefined`                                                   | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                                   | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                                       | no       | —       |             |
-| navigation        | `ZoraTabBarNavigation`                                                                                                             | yes      | —       |             |
-| routeMap          | `Partial<Record<string, import("../..").ZoraNavigationRouteMetadata>> \| undefined`                                                | no       | —       |             |
-| state             | `ZoraNavigationState`                                                                                                              | yes      | —       |             |
-| testID            | `string \| undefined`                                                                                                              | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                                              | no       | —       |             |
 
 ## ZoraThemeScope
 

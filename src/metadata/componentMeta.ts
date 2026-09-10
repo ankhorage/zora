@@ -12,7 +12,6 @@ import { chipMeta } from '../components/chip/meta';
 import { chipGroupMeta } from '../components/chip-group/meta';
 import { dataTableMeta } from '../components/data-table/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
-import { drawerMeta } from '../components/drawer/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { gradientMeta } from '../components/gradient/meta';
 import { headingMeta } from '../components/heading/meta';
@@ -24,8 +23,6 @@ import { mediaCardMeta } from '../components/media-card/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { metricCardMeta } from '../components/metric-card/meta';
 import { modalMeta } from '../components/modal/meta';
-import { navigationItemMeta } from '../components/navigation-item/meta';
-import { navigationListMeta } from '../components/navigation-list/meta';
 import { paginationMeta } from '../components/pagination/meta';
 import { progressMeta, progressRingMeta } from '../components/progress/meta';
 import { radioGroupMeta, radioMeta } from '../components/radio/meta';
@@ -79,7 +76,6 @@ import { panelMeta } from '../patterns/panel/meta';
 import { postCardMeta } from '../patterns/post-card/meta';
 import { productCardMeta } from '../patterns/product-card/meta';
 import { readerSurfaceMeta } from '../patterns/reader/meta';
-import { responsivePanelMeta } from '../patterns/responsive-panel/meta';
 import {
   barcodeScannerViewMeta,
   cameraPermissionViewMeta,
@@ -93,8 +89,6 @@ import { themeComposerMeta } from '../patterns/theme-composer/meta';
 import { paletteItemMeta, tileGridMeta } from '../patterns/tile-grid/meta';
 import { timelineMeta } from '../patterns/timeline/meta';
 import { treeItemMeta, treeViewMeta } from '../patterns/tree-view/meta';
-import { zoraDrawerContentMeta } from '../patterns/zora-drawer-content/meta';
-import { zoraTabBarMeta } from '../patterns/zora-tab-bar/meta';
 import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
 import type { ZoraComponentMetaRegistry } from './types';
 
@@ -116,7 +110,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ChipGroup: chipGroupMeta,
   DataTable: dataTableMeta,
   DatePicker: datePickerMeta,
-  Drawer: drawerMeta,
   DropdownMenu: dropdownMenuMeta,
   Form: formMeta,
   FormActions: formActionsMeta,
@@ -132,8 +125,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Menu: menuMeta,
   MetricCard: metricCardMeta,
   Modal: modalMeta,
-  NavigationItem: navigationItemMeta,
-  NavigationList: navigationListMeta,
   Pagination: paginationMeta,
   Progress: progressMeta,
   ProgressRing: progressRingMeta,
@@ -188,7 +179,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Panel: panelMeta,
   PostCard: postCardMeta,
   ProductCard: productCardMeta,
-  ResponsivePanel: responsivePanelMeta,
   ReaderSurface: readerSurfaceMeta,
   BarcodeScannerView: barcodeScannerViewMeta,
   CameraPermissionView: cameraPermissionViewMeta,
@@ -204,6 +194,4 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Timeline: timelineMeta,
   TreeItem: treeItemMeta,
   TreeView: treeViewMeta,
-  ZoraDrawerContent: zoraDrawerContentMeta,
-  ZoraTabBar: zoraTabBarMeta,
 };

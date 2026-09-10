@@ -28,7 +28,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'CheckboxGroup',
     'Chip',
     'ChipGroup',
-    'Drawer',
     'Form',
     'FormActions',
     'FormError',
@@ -41,8 +40,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'MediaCard',
     'MetricCard',
     'Modal',
-    'NavigationItem',
-    'NavigationList',
     'Progress',
     'ProgressRing',
     'Radio',
@@ -97,7 +94,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'ImageUploadField',
     'Notice',
     'Panel',
-    'ResponsivePanel',
     'ReaderSurface',
     'SectionHeader',
     'SettingsRow',
@@ -108,8 +104,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'TileGrid',
     'TreeItem',
     'TreeView',
-    'ZoraDrawerContent',
-    'ZoraTabBar',
   ],
 } as const;
 

@@ -1,19 +1,13 @@
-import { type ZoraNavigationRouteMap, ZoraTabBar } from '@ankhorage/zora';
 import { Tabs } from 'expo-router';
-
-const routeMap: ZoraNavigationRouteMap = {
-  index: { label: 'Home', icon: { name: 'restaurant-outline' } },
-  menu: { label: 'Menu', icon: { name: 'book-outline' } },
-  reservations: { label: 'Reserve', icon: { name: 'calendar-outline' } },
-  orders: { label: 'Orders', icon: { name: 'receipt-outline' } },
-  profile: { label: 'Profile', icon: { name: 'person-outline' } },
-};
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{ headerShown: false }}
-      tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />}
-    />
+    <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs.Screen name="index" options={{ title: 'Home' }} />
+      <Tabs.Screen name="menu" options={{ title: 'Menu' }} />
+      <Tabs.Screen name="reservations" options={{ title: 'Reserve' }} />
+      <Tabs.Screen name="orders" options={{ title: 'Orders' }} />
+      <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
+    </Tabs>
   );
 }
