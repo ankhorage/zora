@@ -1,3 +1,5 @@
+export type { ActionSheetItemProps, ActionSheetProps } from './components/action-sheet';
+export { ActionSheet, ActionSheetItem } from './components/action-sheet';
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
 export type { AvatarProps, AvatarShape, AvatarSize } from './components/avatar';
@@ -284,6 +286,12 @@ export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';
 export { Hero } from './patterns/hero';
+export type {
+  ImagePreviewProps,
+  ZoraImageAsset,
+  ZoraImageMetadata,
+} from './patterns/image-preview';
+export { ImagePreview } from './patterns/image-preview';
 export type {
   ImageUploadFieldProps,
   ImageUploadProgressContext,
