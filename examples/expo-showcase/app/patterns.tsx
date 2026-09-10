@@ -12,8 +12,7 @@ import {
   ForgotPasswordForm,
   FormField,
   IconButton,
-  ImagePreview,
-  ImageUploadField,
+  Image,
   Input,
   InspectorField,
   List,
@@ -35,14 +34,12 @@ import {
   TileGrid,
   Timeline,
   TreeView,
+  type UploadAsset,
+  Uploader,
   useSelection,
-  type ZoraImageAsset,
-  type ZoraPickedImage,
 } from '@ankhorage/zora';
 import React from 'react';
-import { Image as ReactNativeImage } from 'react-native';
 
-import iconPng from '../assets/icon.png';
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
@@ -137,7 +134,7 @@ export function PatternsPage() {
   const [verboseLogging, setVerboseLogging] = React.useState(true);
   const [filters, setFilters] = React.useState<'all' | 'favorites'>('all');
   const [query, setQuery] = React.useState('');
-  const [imageAsset, setImageAsset] = React.useState<ZoraImageAsset | null>(null);
+  const [imageAsset, setImageAsset] = React.useState<UploadAsset | null>(null);
   const [simulateUploadError, setSimulateUploadError] = React.useState(false);
   const [items, setItems] = React.useState<LayoutSection[]>([
     { id: '1', name: 'Header section' },
@@ -178,27 +175,11 @@ export function PatternsPage() {
   };
   const handleMockAction = React.useCallback(() => undefined, []);
 
-  const pickImage = React.useCallback((): Promise<ZoraPickedImage | null> => {
-    const resolved = ReactNativeImage.resolveAssetSource(iconPng);
-    const { uri } = resolved;
-
-    if (!uri) {
-      return Promise.resolve(null);
-    }
-
-    return Promise.resolve({
-      uri,
-      fileName: 'icon.png',
-      contentType: 'image/png',
-      sizeBytes: 180_000,
-    });
-  }, []);
-
   const uploadImage = React.useCallback(
     async (
-      picked: ZoraPickedImage,
+      picked: UploadAsset,
       { setProgress }: { setProgress: (progress: number | null) => void },
-    ): Promise<ZoraImageAsset> => {
+    ): Promise<UploadAsset> => {
       const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
       setProgress(0);
@@ -215,19 +196,24 @@ export function PatternsPage() {
         throw new Error('Simulated upload failure (showcase)');
       }
 
+      const publicUrl =
+        picked.kind === 'local'
+          ? picked.uri
+          : picked.kind === 'url'
+            ? picked.url
+            : picked.publicUrl;
+
       return {
         kind: 'storage',
         storageId: 'local-dev',
         bucket: 'showcase',
         path: `images/${Date.now()}-${picked.fileName ?? 'upload'}`,
-        publicUrl: picked.uri,
+        publicUrl,
+        fileName: picked.fileName,
+        sizeBytes: picked.sizeBytes,
         contentType: picked.contentType,
         width: picked.width,
         height: picked.height,
-        metadata: {
-          fileName: picked.fileName,
-          sizeBytes: picked.sizeBytes,
-        },
       };
     },
     [simulateUploadError],
@@ -255,10 +241,10 @@ export function PatternsPage() {
         </FilterBar>
       </ScreenSection>
 
-      <ScreenSection title="Scenario: Image upload field">
+      <ScreenSection title="Scenario: Generic uploader">
         <Card
           title="Provider-neutral upload"
-          description="Picking, uploading, and removal are injected via callbacks; ZORA owns only the UI."
+          description="ZORA selects the native picker; upload and removal remain consumer-owned callbacks."
           footer={
             <Stack direction={{ base: 'column', md: 'row' }} gap="s">
               <Button
@@ -280,16 +266,16 @@ export function PatternsPage() {
             </Stack>
           }
         >
-          <ImageUploadField
+          <Uploader
             accept="image/*"
             label="Project image"
             helperText="Showcase uses a local image asset and a fake upload function."
             maxSizeBytes={5_000_000}
             value={imageAsset}
             onChange={setImageAsset}
-            onPick={pickImage}
             onUpload={uploadImage}
             onRemove={removeImage}
+            type="image"
           />
         </Card>
 
@@ -298,8 +284,8 @@ export function PatternsPage() {
           description="Storage assets render only once a publicUrl is provided."
         >
           <Stack gap="m">
-            <ImagePreview
-              asset={{
+            <Image
+              source={{
                 kind: 'storage',
                 bucket: 'showcase',
                 path: 'pending/example.png',
@@ -313,32 +299,32 @@ export function PatternsPage() {
 
         <Card title="Disabled and read-only">
           <Stack gap="m">
-            <ImageUploadField
+            <Uploader
               label="Disabled field"
               value={imageAsset}
               onChange={setImageAsset}
-              onPick={pickImage}
               onUpload={uploadImage}
+              type="image"
               disabled
             />
-            <ImageUploadField
+            <Uploader
               label="Read-only field"
               value={imageAsset}
               onChange={setImageAsset}
-              onPick={pickImage}
               onUpload={uploadImage}
+              type="image"
               readOnly
             />
           </Stack>
         </Card>
 
         <Card title="External errorText wins">
-          <ImageUploadField
+          <Uploader
             label="Externally invalid"
             value={imageAsset}
             onChange={setImageAsset}
-            onPick={pickImage}
             onUpload={uploadImage}
+            type="image"
             errorText="External errorText overrides internal validation and upload errors."
           />
         </Card>

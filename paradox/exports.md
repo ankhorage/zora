@@ -2238,9 +2238,9 @@ Source: `src/components/icon/Icon.tsx:7:1`
 
 Kind: `value`
 Module: `src/components/image/Image.tsx`
-Source: `src/components/image/Image.tsx:21:14`
+Source: `src/components/image/Image.tsx:12:14`
 
-Displays an image with cross-platform source and fit handling.
+Displays an image asset and owns its missing, unrenderable, and failed presentation states.
 
 ## ImageFit
 
@@ -2248,39 +2248,11 @@ Kind: `unknown`
 Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
 Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
 
-## ImagePreview
-
-Kind: `value`
-Module: `src/patterns/image-preview/ImagePreview.tsx`
-Source: `src/patterns/image-preview/ImagePreview.tsx:82:14`
-
-Preview pattern for showing an image with optional metadata and actions.
-
-## ImagePreviewProps
-
-Kind: `type`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:35:1`
-
-### Members
-
-| Name              | Kind     | Type                                                  | Required | Description |
-| ----------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
-| aspectRatio       | property | `number \| undefined`                                 | no       |             |
-| asset             | property | `ZoraImageAsset \| null \| undefined`                 | no       |             |
-| emptyDescription  | property | `React.ReactNode`                                     | no       |             |
-| emptyTitle        | property | `React.ReactNode`                                     | no       |             |
-| fit               | property | `import("react-native").ImageResizeMode \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                      | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                          | no       |             |
-| testID            | property | `string \| undefined`                                 | no       |             |
-| themeId           | property | `string \| undefined`                                 | no       |             |
-
 ## ImageProps
 
 Kind: `type`
 Module: `src/components/image/types.ts`
-Source: `src/components/image/types.ts:7:1`
+Source: `src/components/image/types.ts:8:1`
 
 ### Members
 
@@ -2297,64 +2269,11 @@ Source: `src/components/image/types.ts:7:1`
 | onError            | property | `((error: import("react-native").ImageErrorEvent) => void) \| undefined` | no       |             |
 | radius             | property | `string \| number \| undefined`                                          | no       |             |
 | resizeMode         | property | `ImageResizeMode \| undefined`                                           | no       |             |
-| source             | property | `SurfaceImageSource \| null \| undefined`                                | no       |             |
+| source             | property | `SurfaceImageSource \| UploadAsset \| null \| undefined`                 | no       |             |
 | style              | property | `StyleProp<ImageStyle>`                                                  | no       |             |
 | testID             | property | `string \| undefined`                                                    | no       |             |
 | themeId            | property | `string \| undefined`                                                    | no       |             |
 | width              | property | `string \| number \| undefined`                                          | no       |             |
-
-## ImageUploadField
-
-Kind: `value`
-Module: `src/patterns/image-upload-field/ImageUploadField.tsx`
-Source: `src/patterns/image-upload-field/ImageUploadField.tsx:319:14`
-
-Form field pattern for picking, previewing, and uploading an image.
-
-## ImageUploadFieldProps
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:19:1`
-
-### Members
-
-| Name               | Kind     | Type                                                                                                       | Required | Description |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| accept             | property | `string \| undefined`                                                                                      | no       |             |
-| aspectRatio        | property | `number \| undefined`                                                                                      | no       |             |
-| description        | property | `React.ReactNode`                                                                                          | no       |             |
-| disabled           | property | `boolean \| undefined`                                                                                     | no       |             |
-| errorText          | property | `React.ReactNode`                                                                                          | no       |             |
-| helperText         | property | `React.ReactNode`                                                                                          | no       |             |
-| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                           | no       |             |
-| label              | property | `React.ReactNode`                                                                                          | yes      |             |
-| maxSizeBytes       | property | `number \| undefined`                                                                                      | no       |             |
-| mode               | property | `ZoraThemeMode \| undefined`                                                                               | no       |             |
-| onChange           | property | `(next: ZoraImageAsset \| null) => void`                                                                   | yes      |             |
-| onPick             | property | `() => Promise<ZoraPickedImage \| null>`                                                                   | yes      |             |
-| onRemove           | property | `((current: ZoraImageAsset) => void \| Promise<void>) \| undefined`                                        | no       |             |
-| onUpload           | property | `((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) \| undefined` | no       |             |
-| previewDescription | property | `React.ReactNode`                                                                                          | no       |             |
-| previewTitle       | property | `React.ReactNode`                                                                                          | no       |             |
-| readOnly           | property | `boolean \| undefined`                                                                                     | no       |             |
-| required           | property | `boolean \| undefined`                                                                                     | no       |             |
-| testID             | property | `string \| undefined`                                                                                      | no       |             |
-| themeId            | property | `string \| undefined`                                                                                      | no       |             |
-| validatePicked     | property | `((picked: ZoraPickedImage) => string \| undefined) \| undefined`                                          | no       |             |
-| value              | property | `ZoraImageAsset \| null`                                                                                   | yes      |             |
-
-## ImageUploadProgressContext
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:15:1`
-
-### Members
-
-| Name        | Kind     | Type                                 | Required | Description |
-| ----------- | -------- | ------------------------------------ | -------- | ----------- |
-| setProgress | property | `(progress: number \| null) => void` | yes      |             |
 
 ## Inline
 
@@ -5199,6 +5118,87 @@ Source: `src/patterns/tree-view/types.ts:24:1`
 | testID             | property | `string \| undefined`                                           | no       |             |
 | themeId            | property | `string \| undefined`                                           | no       |             |
 
+## UploadAsset
+
+Kind: `unknown`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:17:1`
+
+## UploadAssetBase
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:7:1`
+
+### Members
+
+| Name        | Kind     | Type                  | Required | Description |
+| ----------- | -------- | --------------------- | -------- | ----------- |
+| alt         | property | `string \| undefined` | no       |             |
+| contentType | property | `string \| undefined` | no       |             |
+| createdAt   | property | `string \| undefined` | no       |             |
+| fileName    | property | `string \| undefined` | no       |             |
+| height      | property | `number \| undefined` | no       |             |
+| sizeBytes   | property | `number \| undefined` | no       |             |
+| width       | property | `number \| undefined` | no       |             |
+
+## Uploader
+
+Kind: `value`
+Module: `src/features/uploader/adapters/inbound/Uploader.tsx`
+Source: `src/features/uploader/adapters/inbound/Uploader.tsx:17:14`
+
+Picks, validates, uploads, previews, and removes one generic file asset.
+
+## UploaderProps
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:45:1`
+
+### Members
+
+| Name              | Kind     | Type                                                                                          | Required | Description |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accept            | property | `string \| undefined`                                                                         | no       |             |
+| aspectRatio       | property | `number \| undefined`                                                                         | no       |             |
+| description       | property | `React.ReactNode`                                                                             | no       |             |
+| disabled          | property | `boolean \| undefined`                                                                        | no       |             |
+| errorText         | property | `React.ReactNode`                                                                             | no       |             |
+| helperText        | property | `React.ReactNode`                                                                             | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                              | no       |             |
+| label             | property | `React.ReactNode`                                                                             | yes      |             |
+| maxSizeBytes      | property | `number \| undefined`                                                                         | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                  | no       |             |
+| onChange          | property | `(next: UploadAsset \| null) => void`                                                         | yes      |             |
+| onRemove          | property | `((current: UploadAsset) => void \| Promise<void>) \| undefined`                              | no       |             |
+| onUpload          | property | `((asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>) \| undefined` | no       |             |
+| readOnly          | property | `boolean \| undefined`                                                                        | no       |             |
+| required          | property | `boolean \| undefined`                                                                        | no       |             |
+| testID            | property | `string \| undefined`                                                                         | no       |             |
+| themeId           | property | `string \| undefined`                                                                         | no       |             |
+| type              | property | `UploadType \| undefined`                                                                     | no       |             |
+| validatePicked    | property | `((asset: UploadAsset) => string \| undefined) \| undefined`                                  | no       |             |
+| value             | property | `UploadAsset \| null`                                                                         | yes      |             |
+
+## UploadProgressContext
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:34:1`
+
+### Members
+
+| Name        | Kind     | Type                                 | Required | Description |
+| ----------- | -------- | ------------------------------------ | -------- | ----------- |
+| setProgress | property | `(progress: number \| null) => void` | yes      |             |
+
+## UploadType
+
+Kind: `unknown`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:5:1`
+
 ## useFormController
 
 Kind: `function`
@@ -5344,6 +5344,45 @@ Source: `src/components/form/validation.ts:65:1`
   - values: `FormValues<TName>`
   - returns: `FormValidationResult<TName>`
 
+## validateUploadAsset
+
+Kind: `function`
+Module: `src/features/uploader/application/use-cases/validateUploadAsset.ts`
+Source: `src/features/uploader/application/use-cases/validateUploadAsset.ts:4:1`
+
+Validates a picked upload asset against MIME, extension, size, and caller rules.
+
+### Signatures
+
+- `({
+asset,
+accept,
+maxSizeBytes,
+validate,
+}: ValidateUploadAssetInput) => string | undefined`
+  - {
+    asset,
+    accept,
+    maxSizeBytes,
+    validate,
+    }: `ValidateUploadAssetInput`
+  - returns: `string | undefined`
+
+## ValidateUploadAssetInput
+
+Kind: `type`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:38:1`
+
+### Members
+
+| Name         | Kind     | Type                                                         | Required | Description |
+| ------------ | -------- | ------------------------------------------------------------ | -------- | ----------- |
+| accept       | property | `string \| undefined`                                        | no       |             |
+| asset        | property | `UploadAsset`                                                | yes      |             |
+| maxSizeBytes | property | `number \| undefined`                                        | no       |             |
+| validate     | property | `((asset: UploadAsset) => string \| undefined) \| undefined` | no       |             |
+
 ## validateValue
 
 Kind: `function`
@@ -5391,13 +5430,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:94:14`
+Source: `src/metadata/componentMeta.ts:93:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:232:14`
+Source: `src/registry.ts:230:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5624,7 +5663,7 @@ Source: `src/metadata/types.ts:34:1`
 | enum       | property | `readonly (string \| number)[] \| undefined`                                  | no       |             |
 | itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined`                    | no       |             |
 | label      | property | `string \| undefined`                                                         | no       |             |
-| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no       |             |
+| mediaKinds | property | `readonly ("image" \| "video" \| "file" \| "audio" \| "font")[] \| undefined` | no       |             |
 | type       | property | `UiComponentPropType`                                                         | yes      |             |
 
 ## ZoraComponentPropType
@@ -5643,7 +5682,7 @@ Source: `src/metadata/types.ts:13:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:98:1`
+Source: `src/registry.ts:97:1`
 
 ## ZoraComponentSlotMeta
 
@@ -5703,48 +5742,11 @@ Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:11:1`
 
-## ZoraImageAsset
-
-Kind: `unknown`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:12:1`
-
-## ZoraImageMetadata
-
-Kind: `type`
-Module: `src/patterns/image-preview/types.ts`
-Source: `src/patterns/image-preview/types.ts:6:1`
-
-### Members
-
-| Name      | Kind     | Type                  | Required | Description |
-| --------- | -------- | --------------------- | -------- | ----------- |
-| createdAt | property | `string \| undefined` | no       |             |
-| fileName  | property | `string \| undefined` | no       |             |
-| sizeBytes | property | `number \| undefined` | no       |             |
-
 ## ZoraPaletteColor
 
 Kind: `unknown`
 Module: `src/internal/colorModel.ts`
 Source: `src/internal/colorModel.ts:8:1`
-
-## ZoraPickedImage
-
-Kind: `type`
-Module: `src/patterns/image-upload-field/types.ts`
-Source: `src/patterns/image-upload-field/types.ts:6:1`
-
-### Members
-
-| Name        | Kind     | Type                  | Required | Description |
-| ----------- | -------- | --------------------- | -------- | ----------- |
-| contentType | property | `string \| undefined` | no       |             |
-| fileName    | property | `string \| undefined` | no       |             |
-| height      | property | `number \| undefined` | no       |             |
-| sizeBytes   | property | `number \| undefined` | no       |             |
-| uri         | property | `string`              | yes      |             |
-| width       | property | `number \| undefined` | no       |             |
 
 ## ZoraPluginCompositionError
 

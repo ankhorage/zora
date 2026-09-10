@@ -189,6 +189,15 @@ graph LR
   module_src_corePlugin_ts["src/corePlugin.ts"]
   module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
   module_src_features_bottom_sheet_public_ts["src/features/bottom-sheet/public.ts"]
+  module_src_features_uploader_adapters_inbound_Uploader_tsx["src/features/uploader/adapters/inbound/Uploader.tsx"]
+  module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts["src/features/uploader/adapters/outbound/pickDocumentOrFileAsync.ts"]
+  module_src_features_uploader_adapters_outbound_pickImageOrVideoAsync_ts["src/features/uploader/adapters/outbound/pickImageOrVideoAsync.ts"]
+  module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts["src/features/uploader/application/ports/outbound/UploadPickerPort.ts"]
+  module_src_features_uploader_application_use_cases_pickUploadAssetAsync_ts["src/features/uploader/application/use-cases/pickUploadAssetAsync.ts"]
+  module_src_features_uploader_application_use_cases_validateUploadAsset_ts["src/features/uploader/application/use-cases/validateUploadAsset.ts"]
+  module_src_features_uploader_composition_createUploadPicker_ts["src/features/uploader/composition/createUploadPicker.ts"]
+  module_src_features_uploader_meta_ts["src/features/uploader/meta.ts"]
+  module_src_features_uploader_public_ts["src/features/uploader/public.ts"]
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   module_src_foundation_Center_tsx["src/foundation/Center.tsx"]
   module_src_foundation_Container_tsx["src/foundation/Container.tsx"]
@@ -286,15 +295,6 @@ graph LR
   module_src_patterns_hero_index_ts["src/patterns/hero/index.ts"]
   module_src_patterns_hero_meta_ts["src/patterns/hero/meta.ts"]
   module_src_patterns_hero_types_ts["src/patterns/hero/types.ts"]
-  module_src_patterns_image_preview_ImagePreview_tsx["src/patterns/image-preview/ImagePreview.tsx"]
-  module_src_patterns_image_preview_index_ts["src/patterns/image-preview/index.ts"]
-  module_src_patterns_image_preview_meta_ts["src/patterns/image-preview/meta.ts"]
-  module_src_patterns_image_preview_types_ts["src/patterns/image-preview/types.ts"]
-  module_src_patterns_image_upload_field_ImageUploadField_tsx["src/patterns/image-upload-field/ImageUploadField.tsx"]
-  module_src_patterns_image_upload_field_index_ts["src/patterns/image-upload-field/index.ts"]
-  module_src_patterns_image_upload_field_meta_ts["src/patterns/image-upload-field/meta.ts"]
-  module_src_patterns_image_upload_field_types_ts["src/patterns/image-upload-field/types.ts"]
-  module_src_patterns_image_upload_field_uploadFlow_ts["src/patterns/image-upload-field/uploadFlow.ts"]
   module_src_patterns_inspector_field_index_ts["src/patterns/inspector-field/index.ts"]
   module_src_patterns_inspector_field_InspectorField_tsx["src/patterns/inspector-field/InspectorField.tsx"]
   module_src_patterns_inspector_field_meta_ts["src/patterns/inspector-field/meta.ts"]
@@ -399,6 +399,7 @@ graph LR
   module_src_theme_ZoraProvider_tsx["src/theme/ZoraProvider.tsx"]
   module_src_theme_ZoraThemeRuntimeContext_tsx["src/theme/ZoraThemeRuntimeContext.tsx"]
   module_src_theme_ZoraThemeScope_tsx["src/theme/ZoraThemeScope.tsx"]
+  module_src_types_upload_ts["src/types/upload.ts"]
   module_src_components_app_bar_AppBar_tsx --> module_src_components_app_bar_types_ts
   module_src_components_app_bar_AppBar_tsx --> module_src_components_heading_index_ts
   module_src_components_app_bar_AppBar_tsx --> module_src_components_icon_button_index_ts
@@ -583,10 +584,15 @@ graph LR
   module_src_components_icon_Icon_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_icon_Icon_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_components_icon_meta_ts --> module_src_metadata_index_ts
+  module_src_components_image_Image_tsx --> module_src_components_icon_index_ts
   module_src_components_image_Image_tsx --> module_src_components_image_types_ts
+  module_src_components_image_Image_tsx --> module_src_foundation_index_ts
+  module_src_components_image_Image_tsx --> module_src_theme_useZoraTheme_ts
   module_src_components_image_Image_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_components_image_Image_tsx --> module_src_types_upload_ts
   module_src_components_image_meta_ts --> module_src_metadata_index_ts
   module_src_components_image_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_components_image_types_ts --> module_src_types_upload_ts
   module_src_components_input_Input_tsx --> module_src_components_icon_button_index_ts
   module_src_components_input_Input_tsx --> module_src_components_input_types_ts
   module_src_components_input_Input_tsx --> module_src_internal_recipes_ts
@@ -797,6 +803,31 @@ graph LR
   module_src_corePluginMetadata_ts --> module_src_metadata_componentMeta_ts
   module_src_corePluginMetadata_ts --> module_src_metadata_types_ts
   module_src_corePluginMetadata_ts --> module_src_pluginComposition_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_button_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_icon_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_image_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_modal_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_progress_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_text_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_application_use_cases_validateUploadAsset_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_composition_createUploadPicker_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_foundation_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_patterns_form_field_index_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_types_upload_ts
+  module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts --> module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts
+  module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts --> module_src_types_upload_ts
+  module_src_features_uploader_adapters_outbound_pickImageOrVideoAsync_ts --> module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts
+  module_src_features_uploader_adapters_outbound_pickImageOrVideoAsync_ts --> module_src_types_upload_ts
+  module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts --> module_src_types_upload_ts
+  module_src_features_uploader_application_use_cases_pickUploadAssetAsync_ts --> module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts
+  module_src_features_uploader_application_use_cases_pickUploadAssetAsync_ts --> module_src_types_upload_ts
+  module_src_features_uploader_application_use_cases_validateUploadAsset_ts --> module_src_types_upload_ts
+  module_src_features_uploader_composition_createUploadPicker_ts --> module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts
+  module_src_features_uploader_composition_createUploadPicker_ts --> module_src_features_uploader_adapters_outbound_pickImageOrVideoAsync_ts
+  module_src_features_uploader_composition_createUploadPicker_ts --> module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts
+  module_src_features_uploader_composition_createUploadPicker_ts --> module_src_features_uploader_application_use_cases_pickUploadAssetAsync_ts
+  module_src_features_uploader_meta_ts --> module_src_metadata_index_ts
   module_src_foundation_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_foundation_Box_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_foundation_Center_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -900,6 +931,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_components_time_picker_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_toast_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_toolbar_meta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_uploader_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_foundation_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_layout_app_shell_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_layout_screen_section_meta_ts
@@ -917,8 +949,6 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_patterns_empty_state_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_filter_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_hero_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_patterns_image_preview_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_patterns_image_upload_field_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_inspector_field_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_list_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_message_bubble_meta_ts
@@ -1062,30 +1092,6 @@ graph LR
   module_src_patterns_hero_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_hero_types_ts --> module_src_internal_recipes_ts
   module_src_patterns_hero_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_components_image_index_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_components_text_index_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_foundation_index_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_patterns_image_preview_types_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_patterns_image_preview_ImagePreview_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_image_preview_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_image_preview_types_ts --> module_src_components_image_index_ts
-  module_src_patterns_image_preview_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_components_button_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_components_modal_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_components_progress_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_components_text_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_foundation_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_patterns_form_field_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_patterns_image_preview_index_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_patterns_image_upload_field_types_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_patterns_image_upload_field_uploadFlow_ts
-  module_src_patterns_image_upload_field_ImageUploadField_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_image_upload_field_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_image_upload_field_types_ts --> module_src_patterns_image_preview_index_ts
-  module_src_patterns_image_upload_field_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_image_upload_field_uploadFlow_ts --> module_src_patterns_image_preview_index_ts
-  module_src_patterns_image_upload_field_uploadFlow_ts --> module_src_patterns_image_upload_field_types_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_foundation_index_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_form_field_index_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_inspector_field_types_ts
@@ -1325,6 +1331,7 @@ graph LR
   module_src_registry_ts --> module_src_components_time_picker_index_ts
   module_src_registry_ts --> module_src_components_toast_index_ts
   module_src_registry_ts --> module_src_components_toolbar_index_ts
+  module_src_registry_ts --> module_src_features_uploader_public_ts
   module_src_registry_ts --> module_src_foundation_index_ts
   module_src_registry_ts --> module_src_layout_app_shell_index_ts
   module_src_registry_ts --> module_src_layout_screen_section_index_ts
@@ -1341,8 +1348,6 @@ graph LR
   module_src_registry_ts --> module_src_patterns_empty_state_index_ts
   module_src_registry_ts --> module_src_patterns_filter_bar_index_ts
   module_src_registry_ts --> module_src_patterns_hero_index_ts
-  module_src_registry_ts --> module_src_patterns_image_preview_index_ts
-  module_src_registry_ts --> module_src_patterns_image_upload_field_index_ts
   module_src_registry_ts --> module_src_patterns_inspector_field_index_ts
   module_src_registry_ts --> module_src_patterns_list_index_ts
   module_src_registry_ts --> module_src_patterns_message_bubble_index_ts
@@ -1390,3 +1395,4 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx --> module_src_theme_resolveZoraScopedThemeId_ts
   module_src_theme_ZoraThemeScope_tsx --> module_src_theme_types_ts
   module_src_theme_ZoraThemeScope_tsx --> module_src_theme_ZoraThemeRuntimeContext_tsx
+  module_src_types_upload_ts --> module_src_theme_ZoraBaseProps_ts

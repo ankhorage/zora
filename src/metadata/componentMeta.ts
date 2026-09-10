@@ -41,6 +41,7 @@ import { textareaMeta } from '../components/textarea/meta';
 import { timePickerMeta } from '../components/time-picker/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
+import { uploaderMeta } from '../features/uploader/meta';
 import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
 import { screenMeta } from '../layout/screen/meta';
@@ -64,8 +65,6 @@ import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { emptyStateMeta } from '../patterns/empty-state/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
 import { heroMeta } from '../patterns/hero/meta';
-import { imagePreviewMeta } from '../patterns/image-preview/meta';
-import { imageUploadFieldMeta } from '../patterns/image-upload-field/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
 import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
 import { messageBubbleMeta } from '../patterns/message-bubble/meta';
@@ -143,6 +142,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ToastProvider: toastProviderMeta,
   Toolbar: toolbarMeta,
   ToolbarAction: toolbarActionMeta,
+  Uploader: uploaderMeta,
   ThemeModeToggle: themeModeToggleMeta,
   AppShell: appShellMeta,
   Screen: screenMeta,
@@ -164,8 +164,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   EmptyState: emptyStateMeta,
   FilterBar: filterBarMeta,
   Hero: heroMeta,
-  ImagePreview: imagePreviewMeta,
-  ImageUploadField: imageUploadFieldMeta,
   InspectorField: inspectorFieldMeta,
   List: listMeta,
   ListRow: listRowMeta,

@@ -114,6 +114,14 @@ mock.module('@react-native-picker/picker', () => ({
   Picker: createMockComponent,
 }));
 
+mock.module('expo-document-picker', () => ({
+  getDocumentAsync: () => Promise.resolve({ canceled: true, assets: null }),
+}));
+
+mock.module('expo-image-picker', () => ({
+  launchImageLibraryAsync: () => Promise.resolve({ canceled: true, assets: null }),
+}));
+
 test('prints the canonical ZORA component registry snapshot', async () => {
   const { ZORA_COMPONENT_REGISTRY } = await import('../src/registry');
   const { ZORA_CORE_PLUGIN } = await import('../src/corePlugin');

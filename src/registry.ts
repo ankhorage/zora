@@ -39,6 +39,7 @@ import { Textarea } from './components/textarea';
 import { TimePicker } from './components/time-picker';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
+import { Uploader } from './features/uploader/public';
 import {
   Box,
   Center,
@@ -73,8 +74,6 @@ import { DisclosureSection } from './patterns/disclosure-section';
 import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
 import { Hero } from './patterns/hero';
-import { ImagePreview } from './patterns/image-preview';
-import { ImageUploadField } from './patterns/image-upload-field';
 import { InspectorField } from './patterns/inspector-field';
 import { List, ListRow, ListSection } from './patterns/list';
 import { MessageBubble } from './patterns/message-bubble';
@@ -170,6 +169,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Toast,
   Toolbar,
   ToolbarAction,
+  Uploader,
   ThemeModeToggle,
   Box,
   Center,
@@ -201,8 +201,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   EmptyState,
   FilterBar,
   Hero,
-  ImagePreview,
-  ImageUploadField,
   InspectorField,
   List,
   ListRow,

@@ -147,6 +147,15 @@ export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export type {
+  UploadAsset,
+  UploadAssetBase,
+  UploaderProps,
+  UploadProgressContext,
+  UploadType,
+  ValidateUploadAssetInput,
+} from './features/uploader/public';
+export { Uploader, validateUploadAsset } from './features/uploader/public';
+export type {
   BoxProps,
   CenterProps,
   ContainerProps,
@@ -284,18 +293,6 @@ export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';
 export { Hero } from './patterns/hero';
-export type {
-  ImagePreviewProps,
-  ZoraImageAsset,
-  ZoraImageMetadata,
-} from './patterns/image-preview';
-export { ImagePreview } from './patterns/image-preview';
-export type {
-  ImageUploadFieldProps,
-  ImageUploadProgressContext,
-  ZoraPickedImage,
-} from './patterns/image-upload-field';
-export { ImageUploadField } from './patterns/image-upload-field';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
 export type {

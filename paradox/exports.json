@@ -9127,14 +9127,14 @@
   },
   {
     "name": "Image",
-    "description": "Displays an image with cross-platform source and fit handling.",
+    "description": "Displays an image asset and owns its missing, unrenderable, and failed presentation states.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/image/Image.tsx",
     "sourceLocation": {
       "filePath": "src/components/image/Image.tsx",
-      "line": 21,
+      "line": 12,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -9162,106 +9162,6 @@
     "structuredRows": []
   },
   {
-    "name": "ImagePreview",
-    "description": "Preview pattern for showing an image with optional metadata and actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/image-preview/ImagePreview.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/ImagePreview.tsx",
-      "line": 82,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ImagePreviewProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 35,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraImageAsset", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "aspectRatio",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "asset",
-        "kind": "property",
-        "type": "ZoraImageAsset | null | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "emptyDescription",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "emptyTitle",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fit",
-        "kind": "property",
-        "type": "import(\"react-native\").ImageResizeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ImageProps",
     "description": null,
     "isReadme": false,
@@ -9270,11 +9170,11 @@
     "modulePath": "src/components/image/types.ts",
     "sourceLocation": {
       "filePath": "src/components/image/types.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SurfaceImageSource", "ZoraThemeMode"],
+    "relatedSymbols": ["SurfaceImageSource", "UploadAsset", "ZoraThemeMode"],
     "signatures": [],
     "members": [
       {
@@ -9357,7 +9257,7 @@
       {
         "name": "source",
         "kind": "property",
-        "type": "SurfaceImageSource | null | undefined",
+        "type": "SurfaceImageSource | UploadAsset | null | undefined",
         "required": false,
         "description": null
       },
@@ -9387,228 +9287,6 @@
         "kind": "property",
         "type": "string | number | undefined",
         "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadField",
-    "description": "Form field pattern for picking, previewing, and uploading an image.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/ImageUploadField.tsx",
-      "line": 319,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadFieldProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 19,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "ImageUploadProgressContext",
-      "ZoraImageAsset",
-      "ZoraPickedImage",
-      "ZoraThemeMode"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accept",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "aspectRatio",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "errorText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "helperText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "maxSizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onChange",
-        "kind": "property",
-        "type": "(next: ZoraImageAsset | null) => void",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "onPick",
-        "kind": "property",
-        "type": "() => Promise<ZoraPickedImage | null>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "onRemove",
-        "kind": "property",
-        "type": "((current: ZoraImageAsset) => void | Promise<void>) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onUpload",
-        "kind": "property",
-        "type": "((picked: ZoraPickedImage, context: ImageUploadProgressContext) => Promise<ZoraImageAsset>) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "previewDescription",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "previewTitle",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "readOnly",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "required",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "validatePicked",
-        "kind": "property",
-        "type": "((picked: ZoraPickedImage) => string | undefined) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "value",
-        "kind": "property",
-        "type": "ZoraImageAsset | null",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ImageUploadProgressContext",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 15,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "setProgress",
-        "kind": "property",
-        "type": "(progress: number | null) => void",
-        "required": true,
         "description": null
       }
     ],
@@ -20713,6 +20391,313 @@
     "structuredRows": []
   },
   {
+    "name": "UploadAsset",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadAssetBase",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "alt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "createdAt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fileName",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "sizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "Uploader",
+    "description": "Picks, validates, uploads, previews, and removes one generic file asset.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
+      "line": 17,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UploaderProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 45,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["UploadAsset", "UploadProgressContext", "UploadType", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accept",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aspectRatio",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "helperText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "maxSizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onChange",
+        "kind": "property",
+        "type": "(next: UploadAsset | null) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onRemove",
+        "kind": "property",
+        "type": "((current: UploadAsset) => void | Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onUpload",
+        "kind": "property",
+        "type": "((asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "UploadType | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "validatePicked",
+        "kind": "property",
+        "type": "((asset: UploadAsset) => string | undefined) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "UploadAsset | null",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadProgressContext",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "setProgress",
+        "kind": "property",
+        "type": "(progress: number | null) => void",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "UploadType",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "useFormController",
     "description": null,
     "isReadme": false,
@@ -21114,6 +21099,85 @@
     "structuredRows": []
   },
   {
+    "name": "validateUploadAsset",
+    "description": "Validates a picked upload asset against MIME, extension, size, and caller rules.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
+    "sourceLocation": {
+      "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ValidateUploadAssetInput"],
+    "signatures": [
+      {
+        "label": "({\n  asset,\n  accept,\n  maxSizeBytes,\n  validate,\n}: ValidateUploadAssetInput) => string | undefined",
+        "parameters": [
+          {
+            "name": "{\n  asset,\n  accept,\n  maxSizeBytes,\n  validate,\n}",
+            "type": "ValidateUploadAssetInput",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "string | undefined",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ValidateUploadAssetInput",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["UploadAsset"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accept",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "asset",
+        "kind": "property",
+        "type": "UploadAsset",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "maxSizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "validate",
+        "kind": "property",
+        "type": "((asset: UploadAsset) => string | undefined) | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "validateValue",
     "description": null,
     "isReadme": false,
@@ -21246,7 +21310,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 94,
+      "line": 93,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21264,7 +21328,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 232,
+      "line": 230,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21995,7 +22059,7 @@
       {
         "name": "mediaKinds",
         "kind": "property",
-        "type": "readonly (\"image\" | \"audio\" | \"video\" | \"font\" | \"file\")[] | undefined",
+        "type": "readonly (\"image\" | \"video\" | \"file\" | \"audio\" | \"font\")[] | undefined",
         "required": false,
         "description": null
       },
@@ -22054,7 +22118,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 98,
+      "line": 97,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22257,64 +22321,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZoraImageAsset",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 12,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraImageMetadata",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-preview/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-preview/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "createdAt",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fileName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ZoraPaletteColor",
     "description": null,
     "isReadme": false,
@@ -22330,67 +22336,6 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPickedImage",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/image-upload-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/image-upload-field/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "contentType",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "fileName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sizeBytes",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "uri",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
