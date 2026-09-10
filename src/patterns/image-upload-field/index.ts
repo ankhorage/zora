@@ -1,8 +1,2 @@
 export { ImageUploadField } from './ImageUploadField';
-export type {
-  ImageUploadFieldProps,
-  ImageUploadProgressContext,
-  ZoraImageAsset,
-  ZoraImageMetadata,
-  ZoraPickedImage,
-} from './types';
+export type { ImageUploadFieldProps, ImageUploadProgressContext, ZoraPickedImage } from './types';

@@ -1,4 +1,5 @@
-import type { ZoraImageAsset, ZoraPickedImage } from './types';
+import type { ZoraImageAsset } from '../image-preview';
+import type { ZoraPickedImage } from './types';
 
 function parseAccept(accept: string | undefined): readonly string[] {
   if (!accept) return [];
