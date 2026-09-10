@@ -12,13 +12,14 @@ describe('ZORA BottomSheet public contract', () => {
     expect(packageJson.exports['./bottom-sheet']).toBeDefined();
     expect(packageJson.dependencies['@ankhorage/surface']).toMatch(/^\^4\./u);
     expect(source).toContain("from '@ankhorage/surface/bottom-sheet'");
-    for (const peer of [
-      'react-native-gesture-handler',
-      'react-native-reanimated',
-      'react-native-worklets',
-    ]) {
-      expect(packageJson.peerDependencies[peer]).toBeDefined();
-    }
+    const {
+      'react-native-gesture-handler': gestureHandlerPeer,
+      'react-native-reanimated': reanimatedPeer,
+      'react-native-worklets': workletsPeer,
+    } = packageJson.peerDependencies;
+    expect(gestureHandlerPeer).toBeDefined();
+    expect(reanimatedPeer).toBeDefined();
+    expect(workletsPeer).toBeDefined();
   });
 
   test('installs the shared provider and removes picker ActionSheet dependencies', async () => {

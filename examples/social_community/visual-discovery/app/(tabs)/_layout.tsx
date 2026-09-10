@@ -1,19 +1,54 @@
-import { type ZoraNavigationRouteMap, ZoraTabBar } from '@ankhorage/zora';
-import { Tabs } from 'expo-router';
+import { NativeIoniconsFamily } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 
-const routeMap: ZoraNavigationRouteMap = {
-  index: { label: 'Discover', icon: { name: 'sparkles-outline' } },
-  boards: { label: 'Boards', icon: { name: 'albums-outline' } },
-  saved: { label: 'Saved', icon: { name: 'bookmark-outline' } },
-  trends: { label: 'Trends', icon: { name: 'trending-up-outline' } },
-  profile: { label: 'Profile', icon: { name: 'person-outline' } },
-};
+export const unstable_settings = { initialRouteName: 'index' };
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{ headerShown: false }}
-      tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />}
-    />
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Discover</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="sparkles-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="boards">
+        <NativeTabs.Trigger.Label>Boards</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="albums-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="saved">
+        <NativeTabs.Trigger.Label>Saved</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="bookmark-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="trends">
+        <NativeTabs.Trigger.Label>Trends</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name="trending-up-outline"
+            />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="profile">
+        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="person-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }

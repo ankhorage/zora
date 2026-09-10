@@ -7,6 +7,7 @@ import {
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const basicTheme: ZoraTheme = {
   id: 'basic-app',
@@ -27,14 +28,16 @@ const basicTheme: ZoraTheme = {
  */
 export default function BasicApp() {
   return (
-    <ZoraProvider initialMode="light" theme={basicTheme}>
-      <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
-        <Screen>
-          <ScreenSection>
-            <Text variant="lead">Build your app content inside the shell.</Text>
-          </ScreenSection>
-        </Screen>
-      </AppShell>
-    </ZoraProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ZoraProvider initialMode="light" theme={basicTheme}>
+        <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
+          <Screen>
+            <ScreenSection>
+              <Text variant="lead">Build your app content inside the shell.</Text>
+            </ScreenSection>
+          </Screen>
+        </AppShell>
+      </ZoraProvider>
+    </GestureHandlerRootView>
   );
 }

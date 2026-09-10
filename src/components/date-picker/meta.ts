@@ -5,6 +5,6 @@ export const datePickerMeta = {
   category: 'component',
   directManifestNode: false,
   allowedChildren: [],
-  note: 'Code-facing ActionSheet-backed date picker; not represented as a manifest node in v1.',
+  note: 'Code-facing BottomSheet-backed date picker; not represented as a manifest node in v1.',
   props: {},
 } as const satisfies ZoraComponentMeta;

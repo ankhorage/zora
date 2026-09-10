@@ -106,6 +106,10 @@ mock.module('@ankhorage/surface', () =>
   }),
 );
 
+mock.module('@ankhorage/surface/bottom-sheet', () =>
+  createRuntimeModuleMock('@ankhorage/surface/bottom-sheet'),
+);
+
 mock.module('@react-native-picker/picker', () => ({
   Picker: createMockComponent,
 }));

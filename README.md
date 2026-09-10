@@ -3,7 +3,7 @@
 
 # ZORA
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v4.4.1](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v4.5.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -26,6 +26,7 @@ import {
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const basicTheme: ZoraTheme = {
   id: 'basic-app',
@@ -37,15 +38,17 @@ const basicTheme: ZoraTheme = {
 
 export default function BasicApp() {
   return (
-    <ZoraProvider initialMode="light" theme={basicTheme}>
-      <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
-        <Screen>
-          <ScreenSection>
-            <Text variant="lead">Build your app content inside the shell.</Text>
-          </ScreenSection>
-        </Screen>
-      </AppShell>
-    </ZoraProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ZoraProvider initialMode="light" theme={basicTheme}>
+        <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
+          <Screen>
+            <ScreenSection>
+              <Text variant="lead">Build your app content inside the shell.</Text>
+            </ScreenSection>
+          </Screen>
+        </AppShell>
+      </ZoraProvider>
+    </GestureHandlerRootView>
   );
 }
 ```

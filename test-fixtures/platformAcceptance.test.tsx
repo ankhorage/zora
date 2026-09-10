@@ -19,6 +19,9 @@ await mock.module('react-native-svg', () => ({
       width,
     }),
 }));
+await mock.module('@ankhorage/surface/bottom-sheet', () => ({
+  BottomSheetProvider: ({ children }: React.PropsWithChildren) => children,
+}));
 
 const { Gradient } = await import('../src/components/gradient/Gradient');
 const { GradientRendererProvider } =
@@ -30,7 +33,7 @@ const { Show } = await import('../src/foundation/Show');
 const { AppShell } = await import('../src/layout/app-shell/AppShell');
 const { ZoraProvider } = await import('../src/theme/ZoraProvider');
 
-describe('Surface 3 icon integration', () => {
+describe('Surface 4 icon integration', () => {
   test('renders each supported provider/style used by ZORA', () => {
     const markup = renderToStaticMarkup(
       <ZoraProvider>

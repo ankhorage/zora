@@ -19,8 +19,6 @@ import {
   List,
   ListRow,
   ListSection,
-  NavigationItem,
-  NavigationList,
   Notice,
   OtpForm,
   PaletteItem,
@@ -38,10 +36,8 @@ import {
   Timeline,
   TreeView,
   useSelection,
-  ZoraDrawerContent,
   type ZoraImageAsset,
   type ZoraPickedImage,
-  ZoraTabBar,
 } from '@ankhorage/zora';
 import React from 'react';
 import { Image as ReactNativeImage } from 'react-native';
@@ -141,8 +137,6 @@ export function PatternsPage() {
   const [verboseLogging, setVerboseLogging] = React.useState(true);
   const [filters, setFilters] = React.useState<'all' | 'favorites'>('all');
   const [query, setQuery] = React.useState('');
-  const [activeNavIndex, setActiveNavIndex] = React.useState(0);
-  const [drawerStatus, setDrawerStatus] = React.useState('closed');
   const [imageAsset, setImageAsset] = React.useState<ZoraImageAsset | null>(null);
   const [simulateUploadError, setSimulateUploadError] = React.useState(false);
   const [items, setItems] = React.useState<LayoutSection[]>([
@@ -150,69 +144,6 @@ export function PatternsPage() {
     { id: '2', name: 'Main content' },
     { id: '3', name: 'Footer' },
   ]);
-
-  const navigationState = React.useMemo(
-    () => ({
-      index: activeNavIndex,
-      routes: [
-        { key: 'tab-home', name: 'home' },
-        { key: 'tab-inbox', name: 'inbox' },
-        { key: 'tab-settings', name: 'settings' },
-      ] as const,
-    }),
-    [activeNavIndex],
-  );
-
-  const navigationDescriptors = React.useMemo(
-    () => ({
-      'tab-home': { options: { title: 'Home' } },
-      'tab-inbox': { options: { title: 'Inbox' } },
-      'tab-settings': { options: { title: 'Settings' } },
-    }),
-    [],
-  );
-
-  const routeMap = React.useMemo(
-    () => ({
-      home: { label: 'Home', icon: { name: 'home-outline' as const } },
-      inbox: {
-        label: 'Inbox',
-        icon: { name: 'mail-unread-outline' as const },
-        badge: (
-          <Badge color="primary" variant="soft">
-            3
-          </Badge>
-        ),
-      },
-      settings: {
-        label: 'Settings',
-        icon: { name: 'settings-outline' as const },
-        disabled: true,
-      },
-    }),
-    [],
-  );
-
-  const tabNavigation = React.useMemo(
-    () => ({
-      emit: () => ({ defaultPrevented: false }),
-      navigate: (name: string) => {
-        const index = navigationState.routes.findIndex((route) => route.name === name);
-        if (index >= 0) {
-          setActiveNavIndex(index);
-        }
-      },
-    }),
-    [navigationState.routes],
-  );
-
-  const drawerNavigation = React.useMemo(
-    () => ({
-      navigate: tabNavigation.navigate,
-      closeDrawer: () => setDrawerStatus('closed'),
-    }),
-    [tabNavigation.navigate],
-  );
 
   const addItem = () => {
     setItems((currentItems) => [
@@ -494,68 +425,6 @@ export function PatternsPage() {
         </Card>
       </ScreenSection>
 
-      <ScreenSection title="Scenario: Navigation chrome (simulation)">
-        <Card
-          title="Expo Router chrome"
-          description="This section simulates navigator renderer props to demonstrate ZORA tab/drawer chrome. It is not real Expo Router navigation."
-        >
-          <Stack gap="m">
-            <Text emphasis="muted" variant="bodySmall">
-              Active tab: {navigationState.routes[navigationState.index]?.name}
-            </Text>
-            <ZoraTabBar
-              descriptors={navigationDescriptors}
-              navigation={tabNavigation}
-              routeMap={routeMap}
-              state={navigationState}
-              testID="showcase-tabbar"
-            />
-            <Text emphasis="muted" variant="bodySmall">
-              Drawer status: {drawerStatus}
-            </Text>
-            <ZoraDrawerContent
-              descriptors={navigationDescriptors}
-              footer={
-                <Text emphasis="subtle" variant="caption">
-                  Footer slot
-                </Text>
-              }
-              header={
-                <Text emphasis="subtle" variant="caption">
-                  Header slot
-                </Text>
-              }
-              navigation={drawerNavigation}
-              routeMap={routeMap}
-              state={navigationState}
-              testID="showcase-drawer"
-            />
-            <Card
-              title="Building blocks (Surface-backed)"
-              description="NavigationItem and NavigationList wrap Surface primitives; route metadata comes from routeMap."
-            >
-              <Stack gap="s">
-                <NavigationItem
-                  active
-                  metadata={routeMap.home}
-                  route={{ key: 'nav-home', name: 'home' }}
-                />
-                <NavigationList
-                  activeRouteKey="nav-inbox"
-                  onRoutePress={() => setDrawerStatus('open')}
-                  routeMap={routeMap}
-                  routes={[
-                    { key: 'nav-home', name: 'home' },
-                    { key: 'nav-inbox', name: 'inbox' },
-                    { key: 'nav-settings', name: 'settings' },
-                  ]}
-                />
-              </Stack>
-            </Card>
-          </Stack>
-        </Card>
-      </ScreenSection>
-
       <ScreenSection title="Scenario: Timeline">
         <Timeline
           items={[
@@ -618,6 +487,7 @@ export function PatternsPage() {
 
         <InspectorField
           label="Theme preset"
+          description="Controlled inspector field with a mock reset action."
           control={
             <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
           }

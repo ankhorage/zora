@@ -14,6 +14,14 @@ const EXPO_EXAMPLE_DIRS = [
   'examples/social_community/private-messaging',
   'examples/social_community/visual-discovery',
 ] as const;
+const ROUTER_EXAMPLE_DIRS = EXPO_EXAMPLE_DIRS.filter(
+  (directory) => directory !== 'examples/expo-showcase',
+);
+const ZORA_PROVIDER_HOSTS = [
+  ['examples/basic-app', 'App.tsx'],
+  ['examples/expo-showcase', 'App.tsx'],
+  ...ROUTER_EXAMPLE_DIRS.map((directory) => [directory, 'app', '_layout.tsx'] as const),
+] as const;
 const RNVI_PLUGINS = [
   '@react-native-vector-icons/fontawesome',
   '@react-native-vector-icons/fontawesome5',
@@ -63,6 +71,9 @@ describe('portable ZORA package boundary', () => {
     expect(readValue(peers, 'react-native-svg')).toBe('15.15.4');
     expect(readValue(development, 'react-native-svg')).toBe('15.15.4');
     expect(readValue(peers, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
+    expect(readValue(peers, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
+    expect(readValue(peers, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
+    expect(readValue(peers, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
     expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
 
     for (const expoPackage of ['@expo/vector-icons', 'expo-font', 'expo-linear-gradient']) {
@@ -101,6 +112,9 @@ describe('Expo 57 example boundary', () => {
       expect(expoVersion).toMatch(EXACT_SEMVER_VERSION);
       expect(dependencies.react).toMatch(EXACT_SEMVER_VERSION);
       expect(readValue(dependencies, 'react-native')).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
+      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
       expect(readValue(dependencies, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
       expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
       expect(readValue(dependencies, '@expo/vector-icons')).toBeUndefined();
@@ -117,6 +131,46 @@ describe('Expo 57 example boundary', () => {
       'utf8',
     );
     expect(scaffoldSource).toContain(`expo: '${expoVersion}',`);
+    expect(scaffoldSource).toContain("navigator: '^3.2.3'");
+    expect(scaffoldSource).toContain("from 'expo-router/unstable-native-tabs'");
+    expect(scaffoldSource).toContain('<GestureHandlerRootView style={{ flex: 1 }}>');
+    expect(scaffoldSource).not.toContain('ZoraTabBar');
+  });
+
+  test('uses Navigator native tabs in every router example', () => {
+    for (const directory of ROUTER_EXAMPLE_DIRS) {
+      const packageJson = readExamplePackage(directory);
+      const dependencies = readRecord(packageJson, 'dependencies');
+      const layoutSource = readFileSync(
+        join(ROOT, directory, 'app', '(tabs)', '_layout.tsx'),
+        'utf8',
+      );
+
+      expect(readValue(dependencies, '@ankhorage/navigator')).toMatch(CARET_SEMVER_RANGE);
+      expect(layoutSource).toContain("from '@ankhorage/navigator/tabs/native-icons'");
+      expect(layoutSource).toContain("from 'expo-router/unstable-native-tabs'");
+      expect(layoutSource).toContain('<NativeTabs>');
+      expect(layoutSource).not.toContain('ZoraTabBar');
+      expect(layoutSource).not.toContain('ZoraNavigationRouteMap');
+    }
+  });
+
+  test('keeps GestureHandlerRootView outside ZoraProvider in every host app', () => {
+    for (const sourcePath of ZORA_PROVIDER_HOSTS) {
+      const [directory] = sourcePath;
+      const source = readFileSync(join(ROOT, ...sourcePath), 'utf8');
+      const packageJson = readExamplePackage(directory);
+      const dependencies = readRecord(packageJson, 'dependencies');
+      const gestureRootPosition = source.indexOf('<GestureHandlerRootView');
+      const zoraProviderPosition = source.indexOf('<ZoraProvider');
+
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
+      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
+      expect(source).toContain("from 'react-native-gesture-handler'");
+      expect(gestureRootPosition).toBeGreaterThan(-1);
+      expect(zoraProviderPosition).toBeGreaterThan(gestureRootPosition);
+    }
   });
 
   test('registers all scoped RNVI packages in each Expo app config', () => {
