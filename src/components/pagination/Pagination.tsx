@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Button } from '../button';
-import { Text } from '../text';
 import type { PaginationProps } from './types';
 
 type PaginationItem = number | 'ellipsis';

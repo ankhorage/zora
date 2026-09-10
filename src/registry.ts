@@ -2,28 +2,13 @@ import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
 import { AppBar } from './components/app-bar';
-import { Avatar } from './components/avatar';
-import { AvatarGroup } from './components/avatar-group';
-import { Badge } from './components/badge';
 import { Breadcrumbs } from './components/breadcrumbs';
-import { Button } from './components/button';
-import { ButtonGroup } from './components/button-group';
-import { Card } from './components/card';
 import { Checkbox, CheckboxGroup } from './components/checkbox';
-import { Chip } from './components/chip';
-import { ChipGroup } from './components/chip-group';
-import { DataTable } from './components/data-table';
 import { DatePicker } from './components/date-picker';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
-import { Heading } from './components/heading';
-import { Icon } from './components/icon';
-import { IconButton } from './components/icon-button';
-import { Image } from './components/image';
 import { Input } from './components/input';
-import { MediaCard } from './components/media-card';
 import { DropdownMenu, Menu } from './components/menu';
-import { MetricCard } from './components/metric-card';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
 import { Progress, ProgressRing } from './components/progress';
@@ -32,26 +17,37 @@ import { Rating } from './components/rating';
 import { SearchBar } from './components/search-bar';
 import { Select } from './components/select';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
-import { SplashScreen } from './components/splash-screen';
 import { Tabs } from './components/tabs';
-import { Text } from './components/text';
 import { Textarea } from './components/textarea';
 import { TimePicker } from './components/time-picker';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
+import { Avatar } from './features/avatar/public';
+import { AvatarGroup } from './features/avatar/public';
+import { Badge } from './features/badge/public';
+import { BottomSheet } from './features/bottom-sheet/public';
+import { Button } from './features/button/public';
+import { ButtonGroup } from './features/button/public';
+import { IconButton } from './features/button/public';
+import { Card } from './features/card/public';
+import { MediaCard } from './features/card/public';
+import { MetricCard } from './features/card/public';
+import { PostCard } from './features/card/public';
+import { ProductCard } from './features/card/public';
+import { Chip } from './features/chip/public';
+import { ChipGroup } from './features/chip/public';
+import { DataTable } from './features/data-table/public';
+import { Icon } from './features/icon/public';
+import { Image } from './features/image/public';
+import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
+import { ContentRail } from './features/layout/public';
+import { FlatList, SectionList } from './features/list/public';
+import { SplashScreen } from './features/splash-screen/public';
+import { Surface } from './features/surface/public';
+import { Heading } from './features/typography/public';
+import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
-import {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Grid,
-  Inline,
-  Show,
-  Spacer,
-  Stack,
-  Surface,
-} from './foundation';
+import { Center, Inline, Show, Spacer } from './foundation';
 import { AppShell } from './layout/app-shell';
 import { Screen } from './layout/screen';
 import { ScreenSection } from './layout/screen-section';
@@ -69,7 +65,6 @@ import {
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
-import { ContentRail } from './patterns/content-rail';
 import { DisclosureSection } from './patterns/disclosure-section';
 import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
@@ -80,8 +75,6 @@ import { MessageBubble } from './patterns/message-bubble';
 import { MissingElement } from './patterns/missing-element';
 import { Notice } from './patterns/notice';
 import { Panel } from './patterns/panel';
-import { PostCard } from './patterns/post-card';
-import { ProductCard } from './patterns/product-card';
 import { ReaderSurface } from './patterns/reader';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
@@ -170,6 +163,9 @@ const _ZORA_COMPONENT_REGISTRY = {
   Toolbar,
   ToolbarAction,
   Uploader,
+  BottomSheet,
+  FlatList,
+  SectionList,
   ThemeModeToggle,
   Box,
   Center,

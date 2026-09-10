@@ -1,4 +1,4 @@
-import type { BoxProps, StackProps } from '../../foundation';
+import type { BoxProps, StackProps } from '../../features/layout/public';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 
 export type SkeletonRadius = BoxProps['radius'];

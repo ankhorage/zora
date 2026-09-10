@@ -1,10 +1,10 @@
 import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
+import { IconButton } from '../../features/button/public';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { IconButton } from '../icon-button';
 import type { InputProps } from './types';
 
 function InputInner({

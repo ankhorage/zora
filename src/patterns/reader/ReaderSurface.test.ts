@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { ReaderErrorEvent, ReaderLocationChangeEvent, ReaderSurfaceProps } from '../../index';
+import type { ReaderErrorEvent, ReaderLocationChangeEvent, ReaderSurfaceProps } from '../..';
 
 describe('ReaderSurface public contract', () => {
   test('exports the component and serializable adapter events from the package root', () => {

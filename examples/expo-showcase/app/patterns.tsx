@@ -40,6 +40,7 @@ import {
 } from '@ankhorage/zora';
 import React from 'react';
 
+import { ManifestFeaturesSection } from './sections/manifestFeatures';
 import { PatternGapsSection } from './sections/patternGaps';
 
 interface LayoutSection {
@@ -632,6 +633,9 @@ export function PatternsPage() {
       </ScreenSection>
 
       <PatternGapsSection />
+      <ScreenSection title="Manifest feature families">
+        <ManifestFeaturesSection />
+      </ScreenSection>
     </Screen>
   );
 }

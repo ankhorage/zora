@@ -2,10 +2,10 @@ import { Field } from '@ankhorage/surface';
 import React from 'react';
 
 import { useBottomSheet } from '../../features/bottom-sheet/public';
-import { Box, Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Button } from '../button';
-import { Text } from '../text';
 import type { DatePickerProps } from './types';
 
 const WEEKDAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;

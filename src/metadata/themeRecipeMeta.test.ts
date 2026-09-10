@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from './index';
+import { ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META, ZORA_THEME_TOKEN_FAMILIES } from '.';
 
 const tokenFamilies = new Set<string>(ZORA_THEME_TOKEN_FAMILIES);
 const recipeMetaByName = new Map(Object.entries(ZORA_THEME_RECIPE_META));

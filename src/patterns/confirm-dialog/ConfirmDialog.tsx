@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Button } from '../../components/button';
 import { Modal } from '../../components/modal';
-import { Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ConfirmDialogProps } from './types';
 

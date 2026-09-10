@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { ZoraComponentRegistry } from './index';
+import type { ZoraComponentRegistry } from '.';
 
 const NON_RUNTIME_COMPONENT_EXPORTS = new Set([
   'GradientRendererProvider',

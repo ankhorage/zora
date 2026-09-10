@@ -1,0 +1,110 @@
+import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
+import React from 'react';
+import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
+
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { useZoraThemeRecipe } from '../../../../theme/useZoraThemeRecipe';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { TextProps } from '../../../../types/text';
+import { resolveTextStyle } from '../../utils/resolveTextStyle';
+import { resolveTextThemeRecipe } from '../../utils/resolveTextThemeRecipe';
+/***
+ * Structured copy primitive for theme-aware app text.
+ *
+ * `Text` owns normal body, caption, label, code, and supporting-copy variants so
+ * consumers do not need to import lower-level Surface typography directly.
+ *
+ * @example Muted supporting copy
+ * ```tsx
+ * <Text variant="bodySmall" emphasis="muted">Updated just now</Text>
+ * ```
+ */
+export const Text = withZoraThemeScope(TextInner);
+
+const textLayoutStyle: TextStyle = {
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+  ...(Platform.OS === 'web'
+    ? {
+        overflowWrap: 'break-word',
+        whiteSpace: 'normal',
+        wordBreak: 'normal',
+      }
+    : null),
+};
+
+function resolveTextContent({
+  children,
+  text,
+  i18nKey,
+}: {
+  children: TextProps['children'];
+  text: TextProps['text'];
+  i18nKey: TextProps['i18nKey'];
+}): React.ReactNode {
+  if (children !== undefined) return children;
+  if (text !== undefined) return text;
+  if (i18nKey === undefined || i18nKey === '') return null;
+  return i18nKey;
+}
+
+function TextInner({
+  themeId: _themeId,
+  mode: _mode,
+  children,
+  text,
+  i18nKey,
+  variant,
+  color,
+  emphasis,
+  align,
+  weight,
+  italic,
+  numberOfLines,
+  ellipsizeMode,
+  selectable,
+  style,
+  accessibilityLabel,
+  accessibilityHint,
+  accessibilityRole,
+  accessibilityLiveRegion,
+  nativeID,
+  testID,
+  interactionPolicy: _interactionPolicy,
+}: TextProps) {
+  const { theme } = useZoraTheme();
+  const { breakpoint } = useResponsiveRuntime();
+  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe('Text'));
+  const content = resolveTextContent({ children, text, i18nKey });
+  const resolvedVariant = resolveResponsive(variant ?? themeRecipe.variant, breakpoint) ?? 'body';
+  const resolvedStyle = resolveTextStyle({
+    theme,
+    breakpoint,
+    variant: resolvedVariant,
+    color: color ?? themeRecipe.color,
+    emphasis: emphasis ?? themeRecipe.emphasis,
+    align: align ?? themeRecipe.align,
+    weight: weight ?? themeRecipe.weight,
+    italic: italic ?? themeRecipe.italic ?? false,
+  });
+
+  if (content === null || content === undefined) return null;
+
+  return (
+    <ReactNativeText
+      accessibilityHint={accessibilityHint}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityLiveRegion={accessibilityLiveRegion}
+      accessibilityRole={accessibilityRole}
+      ellipsizeMode={ellipsizeMode}
+      nativeID={nativeID}
+      numberOfLines={numberOfLines}
+      selectable={selectable}
+      testID={testID}
+      style={[textLayoutStyle, resolvedStyle, style]}
+    >
+      {content}
+    </ReactNativeText>
+  );
+}

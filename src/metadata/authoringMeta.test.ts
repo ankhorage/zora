@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META, type ZoraComponentPropAuthoring } from './index';
+import { ZORA_COMPONENT_META, type ZoraComponentPropAuthoring } from '.';
 
 const componentMetaByName = new Map(Object.entries(ZORA_COMPONENT_META));
 

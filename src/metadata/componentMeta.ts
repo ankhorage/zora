@@ -1,26 +1,11 @@
 import { appBarMeta } from '../components/app-bar/meta';
-import { avatarMeta } from '../components/avatar/meta';
-import { avatarGroupMeta } from '../components/avatar-group/meta';
-import { badgeMeta } from '../components/badge/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
-import { buttonMeta } from '../components/button/meta';
-import { buttonGroupMeta } from '../components/button-group/meta';
-import { cardMeta } from '../components/card/meta';
 import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
-import { chipMeta } from '../components/chip/meta';
-import { chipGroupMeta } from '../components/chip-group/meta';
-import { dataTableMeta } from '../components/data-table/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { gradientMeta } from '../components/gradient/meta';
-import { headingMeta } from '../components/heading/meta';
-import { iconMeta } from '../components/icon/meta';
-import { iconButtonMeta } from '../components/icon-button/meta';
-import { imageMeta } from '../components/image/meta';
 import { inputMeta } from '../components/input/meta';
-import { mediaCardMeta } from '../components/media-card/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
-import { metricCardMeta } from '../components/metric-card/meta';
 import { modalMeta } from '../components/modal/meta';
 import { paginationMeta } from '../components/pagination/meta';
 import { progressMeta, progressRingMeta } from '../components/progress/meta';
@@ -34,14 +19,41 @@ import {
   skeletonMeta,
   skeletonTextMeta,
 } from '../components/skeleton/meta';
-import { splashScreenMeta } from '../components/splash-screen/meta';
 import { tabsMeta } from '../components/tabs/meta';
-import { textMeta } from '../components/text/meta';
 import { textareaMeta } from '../components/textarea/meta';
 import { timePickerMeta } from '../components/time-picker/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
-import { uploaderMeta } from '../features/uploader/meta';
+import { avatarGroupMeta } from '../features/avatar/avatarGroupMeta';
+import { avatarMeta } from '../features/avatar/avatarMeta';
+import { badgeMeta } from '../features/badge/badgeMeta';
+import { bottomSheetMeta } from '../features/bottom-sheet/bottomSheetMeta';
+import { buttonGroupMeta } from '../features/button/buttonGroupMeta';
+import { buttonMeta } from '../features/button/buttonMeta';
+import { iconButtonMeta } from '../features/button/iconButtonMeta';
+import { cardMeta } from '../features/card/cardMeta';
+import { mediaCardMeta } from '../features/card/mediaCardMeta';
+import { metricCardMeta } from '../features/card/metricCardMeta';
+import { postCardMeta } from '../features/card/postCardMeta';
+import { productCardMeta } from '../features/card/productCardMeta';
+import { chipGroupMeta } from '../features/chip/chipGroupMeta';
+import { chipMeta } from '../features/chip/chipMeta';
+import { dataTableMeta } from '../features/data-table/dataTableMeta';
+import { iconMeta } from '../features/icon/iconMeta';
+import { imageMeta } from '../features/image/imageMeta';
+import { boxMeta } from '../features/layout/boxMeta';
+import { containerMeta } from '../features/layout/containerMeta';
+import { contentRailMeta } from '../features/layout/contentRailMeta';
+import { dividerMeta } from '../features/layout/dividerMeta';
+import { gridMeta } from '../features/layout/gridMeta';
+import { stackMeta } from '../features/layout/stackMeta';
+import { flatListMeta } from '../features/list/flatListMeta';
+import { sectionListMeta } from '../features/list/sectionListMeta';
+import { splashScreenMeta } from '../features/splash-screen/splashScreenMeta';
+import { surfaceMeta } from '../features/surface/surfaceMeta';
+import { headingMeta } from '../features/typography/headingMeta';
+import { textMeta } from '../features/typography/textMeta';
+import { uploaderMeta } from '../features/uploader/uploaderMeta';
 import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
 import { screenMeta } from '../layout/screen/meta';
@@ -60,7 +72,6 @@ import {
 import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
-import { contentRailMeta } from '../patterns/content-rail/meta';
 import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { emptyStateMeta } from '../patterns/empty-state/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
@@ -71,8 +82,6 @@ import { messageBubbleMeta } from '../patterns/message-bubble/meta';
 import { missingElementMeta } from '../patterns/missing-element/meta';
 import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
-import { postCardMeta } from '../patterns/post-card/meta';
-import { productCardMeta } from '../patterns/product-card/meta';
 import { readerSurfaceMeta } from '../patterns/reader/meta';
 import {
   barcodeScannerViewMeta,
@@ -88,10 +97,17 @@ import { paletteItemMeta, tileGridMeta } from '../patterns/tile-grid/meta';
 import { timelineMeta } from '../patterns/timeline/meta';
 import { treeItemMeta, treeViewMeta } from '../patterns/tree-view/meta';
 import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
+import { finalizeFeatureMetadata } from '../utils/finalizeFeatureMetadata';
 import type { ZoraComponentMetaRegistry } from './types';
 
-export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
+export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
   ...foundationMetas,
+  Box: boxMeta,
+  Container: containerMeta,
+  Stack: stackMeta,
+  Grid: gridMeta,
+  Divider: dividerMeta,
+  Surface: surfaceMeta,
   AppBar: appBarMeta,
   Avatar: avatarMeta,
   AvatarGroup: avatarGroupMeta,
@@ -143,6 +159,9 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Toolbar: toolbarMeta,
   ToolbarAction: toolbarActionMeta,
   Uploader: uploaderMeta,
+  BottomSheet: bottomSheetMeta,
+  FlatList: flatListMeta,
+  SectionList: sectionListMeta,
   ThemeModeToggle: themeModeToggleMeta,
   AppShell: appShellMeta,
   Screen: screenMeta,
@@ -189,4 +208,4 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   Timeline: timelineMeta,
   TreeItem: treeItemMeta,
   TreeView: treeViewMeta,
-};
+});

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Platform, Pressable, type TextStyle, type ViewStyle } from 'react-native';
 
-import { Heading } from '../../components/heading';
-import { IconButton } from '../../components/icon-button';
-import { Text } from '../../components/text';
-import { Box, Stack } from '../../foundation';
+import { IconButton } from '../../features/button/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Heading } from '../../features/typography/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
 import type { DisclosureSectionProps } from './types';

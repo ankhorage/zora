@@ -1,9 +1,10 @@
 import { ButtonBase } from '@ankhorage/surface';
 import React from 'react';
 
-import { Avatar } from '../../components/avatar';
-import { Text } from '../../components/text';
-import { Box, Inline, Stack } from '../../foundation';
+import { Avatar } from '../../features/avatar/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
+import { Inline } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type {

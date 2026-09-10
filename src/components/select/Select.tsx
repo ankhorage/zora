@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker';
 import React from 'react';
 import { View } from 'react-native';
 
-import { Box } from '../../foundation';
+import { Box } from '../../features/layout/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SelectProps } from './types';

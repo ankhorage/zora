@@ -1,10 +1,10 @@
 import { Field } from '@ankhorage/surface';
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Input } from '../input';
-import { Text } from '../text';
 import type { FormFieldConfig, FormFieldControlProps, FormFieldProps } from './types';
 import { hasRequiredRule } from './validation';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Badge } from '../../components/badge';
-import { Card } from '../../components/card';
-import { Box, Stack } from '../../foundation';
+import { Badge } from '../../features/badge/public';
+import { Card } from '../../features/card/public';
+import { Box, Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { NoticeProps } from './types';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Stack } from '../../foundation';
+import { Box, Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SidebarLayout } from '../sidebar-layout';
 import type { TopbarLayoutProps } from './types';

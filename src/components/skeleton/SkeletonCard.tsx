@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Stack } from '../../foundation';
+import { ButtonGroup } from '../../features/button/public';
+import { Card } from '../../features/card/public';
+import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { ButtonGroup } from '../button-group';
-import { Card } from '../card';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 import type { SkeletonCardProps } from './types';

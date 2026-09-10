@@ -1,11 +1,11 @@
 import { Menu as SurfaceMenu, type MenuAction as SurfaceMenuAction } from '@ankhorage/surface';
 import React, { useMemo } from 'react';
 
-import { Box } from '../../foundation';
+import { Icon } from '../../features/icon/public';
+import { Box } from '../../features/layout/public';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Icon } from '../icon';
 import type { MenuAction, MenuProps } from './types';
 
 function renderActionLeading(action: MenuAction, iconColor: string) {

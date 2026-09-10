@@ -3,8 +3,14 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'bun:test';
 
-const textSource = readFileSync(join(import.meta.dir, 'text', 'Text.tsx'), 'utf8');
-const headingSource = readFileSync(join(import.meta.dir, 'heading', 'Heading.tsx'), 'utf8');
+const textSource = readFileSync(
+  join(import.meta.dir, '../features/typography/adapters/inbound/Text.tsx'),
+  'utf8',
+);
+const headingSource = readFileSync(
+  join(import.meta.dir, '../features/typography/adapters/inbound/Heading.tsx'),
+  'utf8',
+);
 
 describe('content fallback ownership', () => {
   it('keeps Text free of translation context coupling', () => {

@@ -1,10 +1,11 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import React from 'react';
 
-import { Heading } from '../../components/heading';
-import { Icon } from '../../components/icon';
-import { Text } from '../../components/text';
-import { Box, Inline, Stack } from '../../foundation';
+import { Icon } from '../../features/icon/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Heading } from '../../features/typography/public';
+import { Text } from '../../features/typography/public';
+import { Inline } from '../../foundation';
 import type { ZoraColor } from '../../internal/recipes';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';

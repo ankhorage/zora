@@ -37,7 +37,16 @@ function mergeBindableMeta(
     Object.entries(componentMeta).map(([componentName, meta]) => [
       componentName,
       bindingsByComponent.get(componentName)
-        ? { ...meta, bindings: bindingsByComponent.get(componentName) }
+        ? {
+            ...meta,
+            bindings: {
+              props: { ...bindingsByComponent.get(componentName)?.props, ...meta.bindings?.props },
+              events: {
+                ...bindingsByComponent.get(componentName)?.events,
+                ...meta.bindings?.events,
+              },
+            },
+          }
         : meta,
     ]),
   );

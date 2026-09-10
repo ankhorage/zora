@@ -1,8 +1,8 @@
-import { buttonThemeRecipeMeta } from '../components/button/themeRecipeMeta';
-import { cardThemeRecipeMeta } from '../components/card/themeRecipeMeta';
-import { headingThemeRecipeMeta } from '../components/heading/themeRecipeMeta';
 import { radioGroupThemeRecipeMeta } from '../components/radio/themeRecipeMeta';
-import { textThemeRecipeMeta } from '../components/text/themeRecipeMeta';
+import { buttonThemeRecipeMeta } from '../features/button/utils/themeRecipeMeta';
+import { cardThemeRecipeMeta } from '../features/card/utils/themeRecipeMeta';
+import { headingThemeRecipeMeta } from '../features/typography/utils/headingThemeRecipeMeta';
+import { textThemeRecipeMeta } from '../features/typography/utils/textThemeRecipeMeta';
 import { panelThemeRecipeMeta } from '../patterns/panel/themeRecipeMeta';
 import type { ZoraThemeRecipeMetaRegistry } from './themeRecipeTypes';
 

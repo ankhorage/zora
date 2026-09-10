@@ -1,11 +1,11 @@
 import { Modal as SurfaceModal } from '@ankhorage/surface';
 import React, { useCallback, useEffect, useRef } from 'react';
 
-import { Box, Stack } from '../../foundation';
+import { Box, Stack } from '../../features/layout/public';
+import { Heading } from '../../features/typography/public';
+import { Text } from '../../features/typography/public';
 import { resolveDialogWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Heading } from '../heading';
-import { Text } from '../text';
 import type { ModalProps } from './types';
 
 function useStableCallback(callback: (() => void) | undefined): (() => void) | undefined {

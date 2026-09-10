@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Inline } from '../../foundation';
+import { Box } from '../../features/layout/public';
+import { Inline } from '../../foundation';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { FilterBarProps } from './types';
 

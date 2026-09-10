@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Card } from '../../components/card';
-import { Text } from '../../components/text';
-import { Box, Stack } from '../../foundation';
+import { Card } from '../../features/card/public';
+import { Box, Stack } from '../../features/layout/public';
+import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { CameraPermissionView } from './CameraPermissionView';

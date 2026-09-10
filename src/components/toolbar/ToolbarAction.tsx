@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { IconButton } from '../../features/button/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { IconButton } from '../icon-button';
 import type { ToolbarActionProps } from './types';
 
 function ToolbarActionInner({

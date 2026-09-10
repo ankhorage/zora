@@ -1,40 +1,9 @@
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
-export type { AvatarProps, AvatarShape, AvatarSize } from './components/avatar';
-export { Avatar, resolveAvatarInitials } from './components/avatar';
-export type { AvatarGroupItem, AvatarGroupProps } from './components/avatar-group';
-export { AvatarGroup } from './components/avatar-group';
-export type { BadgeProps } from './components/badge';
-export { Badge } from './components/badge';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
-export type { ButtonProps } from './components/button';
-export { Button } from './components/button';
-export type {
-  ButtonGroupAlign,
-  ButtonGroupOrientation,
-  ButtonGroupProps,
-} from './components/button-group';
-export { ButtonGroup } from './components/button-group';
-export type { CardProps } from './components/card';
-export { Card } from './components/card';
 export type { CheckboxGroupOption, CheckboxGroupProps, CheckboxProps } from './components/checkbox';
 export { Checkbox, CheckboxGroup } from './components/checkbox';
-export type { ChipProps } from './components/chip';
-export { Chip } from './components/chip';
-export type { ChipGroupItem, ChipGroupProps } from './components/chip-group';
-export { ChipGroup } from './components/chip-group';
-export type {
-  DataTableCellContext,
-  DataTableColumn,
-  DataTableColumnAlign,
-  DataTableDensity,
-  DataTableProps,
-  DataTableRowAction,
-  DataTableSortDirection,
-  DataTableSortState,
-} from './components/data-table';
-export { DataTable } from './components/data-table';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
 export { DatePicker } from './components/date-picker';
 export type {
@@ -75,30 +44,10 @@ export type {
   GradientRendererProviderProps,
 } from './components/gradient';
 export { Gradient, GradientRendererProvider } from './components/gradient';
-export type {
-  HeadingAlign,
-  HeadingColor,
-  HeadingEmphasis,
-  HeadingLevel,
-  HeadingProps,
-  HeadingSize,
-  HeadingWeight,
-} from './components/heading';
-export { Heading } from './components/heading';
-export type { IconProps } from './components/icon';
-export { Icon } from './components/icon';
-export type { IconButtonProps } from './components/icon-button';
-export { IconButton } from './components/icon-button';
-export type { ImageFit, ImageProps, SurfaceImageSource } from './components/image';
-export { Image } from './components/image';
 export type { InputProps, InputTrailingAction } from './components/input';
 export { Input } from './components/input';
-export type { MediaCardImageProps, MediaCardProps } from './components/media-card';
-export { MediaCard } from './components/media-card';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
 export { DropdownMenu, Menu } from './components/menu';
-export type { MetricCardProps } from './components/metric-card';
-export { MetricCard } from './components/metric-card';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
@@ -123,19 +72,8 @@ export type {
   SkeletonTextProps,
 } from './components/skeleton';
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
-export type { SplashScreenLogoShape, SplashScreenProps } from './components/splash-screen';
-export { SplashScreen } from './components/splash-screen';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type {
-  TextAlign,
-  TextColor,
-  TextEmphasis,
-  TextProps,
-  TextVariant,
-  TextWeight,
-} from './components/text';
-export { Text } from './components/text';
 export type { TextareaProps } from './components/textarea';
 export { Textarea } from './components/textarea';
 export type { TimePickerProps, TimePickerValue } from './components/time-picker';
@@ -146,6 +84,106 @@ export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './compon
 export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
+export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
+export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
+export { Avatar, resolveAvatarInitials } from './features/avatar/public';
+export { AvatarGroup } from './features/avatar/public';
+export type { BadgeProps } from './features/badge/public';
+export { Badge } from './features/badge/public';
+export type { BottomSheetProps } from './features/bottom-sheet/public';
+export { BottomSheet } from './features/bottom-sheet/public';
+export type { ButtonProps } from './features/button/public';
+export type {
+  ButtonGroupAlign,
+  ButtonGroupOrientation,
+  ButtonGroupProps,
+} from './features/button/public';
+export type { IconButtonProps } from './features/button/public';
+export { Button } from './features/button/public';
+export { ButtonGroup } from './features/button/public';
+export { IconButton } from './features/button/public';
+export type { CardProps } from './features/card/public';
+export type { MediaCardImageProps, MediaCardProps } from './features/card/public';
+export type { MetricCardProps } from './features/card/public';
+export type {
+  PostAction,
+  PostAuthor,
+  PostAuthorAvatar,
+  PostCardMedia,
+  PostCardProps,
+} from './features/card/public';
+export type { ProductCardProps } from './features/card/public';
+export { Card } from './features/card/public';
+export { MediaCard } from './features/card/public';
+export { MetricCard } from './features/card/public';
+export { PostCard } from './features/card/public';
+export { ProductCard } from './features/card/public';
+export type { ChipProps } from './features/chip/public';
+export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
+export { Chip } from './features/chip/public';
+export { ChipGroup } from './features/chip/public';
+export type {
+  DataTableCellContext,
+  DataTableColumn,
+  DataTableColumnAlign,
+  DataTableDensity,
+  DataTableProps,
+  DataTableRowAction,
+  DataTableSortDirection,
+  DataTableSortState,
+} from './features/data-table/public';
+export { DataTable } from './features/data-table/public';
+export type { IconProps } from './features/icon/public';
+export { Icon } from './features/icon/public';
+export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';
+export { Image } from './features/image/public';
+export type {
+  BoxProps,
+  ContainerProps,
+  DividerProps,
+  GridProps,
+  StackProps,
+} from './features/layout/public';
+export type {
+  ContentRailControlPressEvent,
+  ContentRailDirection,
+  ContentRailItemSize,
+  ContentRailMotion,
+  ContentRailProps,
+  ContentRailSpacing,
+  ContentRailVisibleRangeChangeEvent,
+} from './features/layout/public';
+export { Box, Container, Divider, Grid, Stack } from './features/layout/public';
+export { ContentRail } from './features/layout/public';
+export type {
+  ManifestListProps,
+  ManifestListSection,
+  ManifestSectionListProps,
+} from './features/list/public';
+export { FlatList, SectionList } from './features/list/public';
+export type { SplashScreenLogoShape, SplashScreenProps } from './features/splash-screen/public';
+export { SplashScreen } from './features/splash-screen/public';
+export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
+export { Surface } from './features/surface/public';
+export type {
+  HeadingAlign,
+  HeadingColor,
+  HeadingEmphasis,
+  HeadingLevel,
+  HeadingProps,
+  HeadingSize,
+  HeadingWeight,
+} from './features/typography/public';
+export type {
+  TextAlign,
+  TextColor,
+  TextEmphasis,
+  TextProps,
+  TextVariant,
+  TextWeight,
+} from './features/typography/public';
+export { Heading } from './features/typography/public';
+export { Text } from './features/typography/public';
 export type {
   UploadAsset,
   UploadAssetBase,
@@ -155,31 +193,8 @@ export type {
   ValidateUploadAssetInput,
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
-export type {
-  BoxProps,
-  CenterProps,
-  ContainerProps,
-  DividerProps,
-  GridProps,
-  InlineProps,
-  ShowProps,
-  SpacerProps,
-  StackProps,
-  SurfaceProps,
-  SurfaceVariant,
-} from './foundation';
-export {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Grid,
-  Inline,
-  Show,
-  Spacer,
-  Stack,
-  Surface,
-} from './foundation';
+export type { CenterProps, InlineProps, ShowProps, SpacerProps } from './foundation';
+export { Center, Inline, Show, Spacer } from './foundation';
 export type {
   ZoraColor,
   ZoraEmphasis,
@@ -275,16 +290,6 @@ export type {
 export { CollectionEditor } from './patterns/collection-editor';
 export type { ConfirmDialogProps } from './patterns/confirm-dialog';
 export { ConfirmDialog } from './patterns/confirm-dialog';
-export type {
-  ContentRailControlPressEvent,
-  ContentRailDirection,
-  ContentRailItemSize,
-  ContentRailMotion,
-  ContentRailProps,
-  ContentRailSpacing,
-  ContentRailVisibleRangeChangeEvent,
-} from './patterns/content-rail';
-export { ContentRail } from './patterns/content-rail';
 export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
 export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
@@ -317,16 +322,6 @@ export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';
 export { Panel } from './patterns/panel';
-export type {
-  PostAction,
-  PostAuthor,
-  PostAuthorAvatar,
-  PostCardMedia,
-  PostCardProps,
-} from './patterns/post-card';
-export { PostCard } from './patterns/post-card';
-export type { ProductCardProps } from './patterns/product-card';
-export { ProductCard } from './patterns/product-card';
 export type {
   ReaderColorScheme,
   ReaderDocumentFormat,

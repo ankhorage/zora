@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button } from '../../components/button';
-import { Card } from '../../components/card';
-import { Heading } from '../../components/heading';
-import { Text } from '../../components/text';
-import { Box, Grid, Stack } from '../../foundation';
+import { Button } from '../../features/button/public';
+import { Card } from '../../features/card/public';
+import { Box, Grid, Stack } from '../../features/layout/public';
+import { Heading } from '../../features/typography/public';
+import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { HeroAction, HeroAlign, HeroProps } from './types';
 
