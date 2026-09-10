@@ -1,6 +1,7 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
+import { ActionSheet, ActionSheetItem } from './components/action-sheet';
 import { AppBar } from './components/app-bar';
 import { Avatar } from './components/avatar';
 import { AvatarGroup } from './components/avatar-group';
@@ -73,6 +74,7 @@ import { DisclosureSection } from './patterns/disclosure-section';
 import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
 import { Hero } from './patterns/hero';
+import { ImagePreview } from './patterns/image-preview';
 import { ImageUploadField } from './patterns/image-upload-field';
 import { InspectorField } from './patterns/inspector-field';
 import { List, ListRow, ListSection } from './patterns/list';
@@ -120,6 +122,8 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
+  ActionSheet,
+  ActionSheetItem,
   AppBar,
   Avatar,
   AvatarGroup,
@@ -200,6 +204,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   EmptyState,
   FilterBar,
   Hero,
+  ImagePreview,
   ImageUploadField,
   InspectorField,
   List,
