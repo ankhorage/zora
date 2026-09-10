@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- 75d39e6: Replace `ImagePreview` and `ImageUploadField` with the canonical `Image` asset renderer and generic `Uploader`, backed by Expo image and document pickers.
+
 ## 6.0.0
 
 ### Major Changes
