@@ -1,7 +1,6 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import { ActionSheet, ActionSheetItem } from './components/action-sheet';
 import { AppBar } from './components/app-bar';
 import { Avatar } from './components/avatar';
 import { AvatarGroup } from './components/avatar-group';
@@ -122,8 +121,6 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
-  ActionSheet,
-  ActionSheetItem,
   AppBar,
   Avatar,
   AvatarGroup,

@@ -36,6 +36,7 @@ type AppCategory = (typeof APP_CATEGORIES)[number];
 // script-only projection aligned with its released Expo 57 contract without
 // adding Expo Runtime (and its required Expo peers) to portable ZORA tooling.
 const EXPO_57_SCAFFOLD_VERSIONS = {
+  navigator: '^3.2.3',
   expo: '57.0.20',
   expoConstants: '~57.0.13',
   expoFont: '~57.0.1',
@@ -45,9 +46,12 @@ const EXPO_57_SCAFFOLD_VERSIONS = {
   picker: '2.11.4',
   react: '19.2.3',
   reactNative: '0.86.3',
+  reactNativeGestureHandler: '~2.32.0',
+  reactNativeReanimated: '4.5.1',
   reactNativeSafeArea: '~5.7.0',
   reactNativeScreens: '~4.26.0',
   reactNativeSvg: '15.15.4',
+  reactNativeWorklets: '0.10.1',
   reactNativeWeb: '~0.21.0',
   reactNativeVectorIcons: '^13.1.3',
   typesReact: '~19.2.18',
@@ -234,13 +238,21 @@ function getRoutes(exampleId: string): readonly RouteSpec[] {
   return routePresets[exampleId] ?? defaultRoutes;
 }
 
-function createRouteMapSource(routes: readonly RouteSpec[]): string {
+function createNativeTabTriggersSource(routes: readonly RouteSpec[]): string {
   return routes
     .map(
       (route) =>
-        `  ${JSON.stringify(route.name)}: { label: ${JSON.stringify(route.label)}, icon: { name: ${JSON.stringify(
-          route.icon,
-        )} } },`,
+        `      <NativeTabs.Trigger name=${JSON.stringify(route.name)}>
+        <NativeTabs.Trigger.Label>${route.label}</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name=${JSON.stringify(route.icon)}
+            />
+          }
+        />
+      </NativeTabs.Trigger>`,
     )
     .join('\n');
 }
@@ -341,6 +353,7 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ankhorage/navigator": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.navigator)},
     "@ankhorage/zora": ${JSON.stringify(`^${zoraVersion}`)},
     "@react-native-picker/picker": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.picker)},
     "@react-native-vector-icons/fontawesome": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
@@ -356,9 +369,12 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion
     "react": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.react)},
     "react-dom": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.react)},
     "react-native": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNative)},
+    "react-native-gesture-handler": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeGestureHandler)},
+    "react-native-reanimated": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeReanimated)},
     "react-native-safe-area-context": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeSafeArea)},
     "react-native-screens": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeScreens)},
     "react-native-svg": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeSvg)},
+    "react-native-worklets": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeWorklets)},
     "react-native-web": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeWeb)}
   },
   "devDependencies": {
@@ -423,6 +439,7 @@ export function useZoraIconFonts(): boolean {
     join(appDir, '_layout.tsx'),
     `import { ZoraProvider } from '@ankhorage/zora';
 import { Stack } from 'expo-router';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { useZoraIconFonts } from '../src/hooks/use-zora-icon-fonts';
 
@@ -434,24 +451,34 @@ export default function RootLayout() {
   }
 
   return (
-    <ZoraProvider>
-      <Stack screenOptions={{ headerShown: false }} />
-    </ZoraProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ZoraProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+      </ZoraProvider>
+    </GestureHandlerRootView>
   );
 }`,
   );
 
   writeTextFile(
     join(appDir, '(tabs)', '_layout.tsx'),
-    `import { Tabs } from 'expo-router';
-import { ZoraTabBar, type ZoraNavigationRouteMap } from '@ankhorage/zora';
+    `import { NativeIoniconsFamily as NativeIoniconsFamilyRuntime } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Platform } from 'react-native';
 
-const routeMap: ZoraNavigationRouteMap = {
-${createRouteMapSource(routes)}
-};
+const NativeIoniconsFamily =
+  Platform.OS === 'web'
+    ? { getImageSource: () => Promise.resolve(null) }
+    : NativeIoniconsFamilyRuntime;
+
+export const unstable_settings = { initialRouteName: 'index' };
 
 export default function TabLayout() {
-  return <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />} />;
+  return (
+    <NativeTabs>
+${createNativeTabTriggersSource(routes)}
+    </NativeTabs>
+  );
 }`,
   );
 
@@ -474,10 +501,11 @@ bunx expo start
 
 ## Notes
 
-- Uses real Expo Router route files.
+- Uses real Expo Router route files and Navigator-backed native tabs.
 - Uses ZORA public exports for UI.
 - Does not use \`StyleSheet\` or direct Surface imports.
 - Installs the published \`@ankhorage/zora\` package.
+- Owns \`GestureHandlerRootView\` at the Expo host root, outside \`ZoraProvider\`.
 - Registers the four scoped RNVI packages for native development builds.
 - Loads the icon font faces used by ZORA on Web through an app-owned Expo Font hook.
 - Rebuild the Android/iOS development client after changing RNVI packages or plugins.

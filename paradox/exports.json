@@ -1,247 +1,5 @@
 [
   {
-    "name": "ActionSheet",
-    "description": "Presents a modal bottom sheet with a list of actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/action-sheet/ActionSheet.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/ActionSheet.tsx",
-      "line": 14,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetItem",
-    "description": "Renders a single selectable action row within an `ActionSheet`.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/components/action-sheet/ActionSheetItem.tsx",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/ActionSheetItem.tsx",
-      "line": 30,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetItemProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/action-sheet/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/types.ts",
-      "line": 16,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "color",
-        "kind": "property",
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "icon",
-        "kind": "property",
-        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "leading",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onPress",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "selected",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "trailing",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ActionSheetProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/action-sheet/types.ts",
-    "sourceLocation": {
-      "filePath": "src/components/action-sheet/types.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "cancelLabel",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "closeOnBackdrop",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onDismiss",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "visible",
-        "kind": "property",
-        "type": "boolean",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "AppBar",
     "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
     "isReadme": false,
@@ -2407,7 +2165,7 @@
       {
         "name": "manualEntryButtonProps",
         "kind": "property",
-        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "type": "Omit<ButtonProps, \"children\" | \"onPress\"> | undefined",
         "required": false,
         "description": null
       },
@@ -2442,7 +2200,7 @@
       {
         "name": "requestButtonProps",
         "kind": "property",
-        "type": "Omit<ButtonProps, \"onPress\" | \"children\"> | undefined",
+        "type": "Omit<ButtonProps, \"children\" | \"onPress\"> | undefined",
         "required": false,
         "description": null
       },
@@ -6020,7 +5778,7 @@
     "modulePath": "src/components/date-picker/DatePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/date-picker/DatePicker.tsx",
-      "line": 279,
+      "line": 347,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20044,14 +19802,14 @@
   },
   {
     "name": "TimePicker",
-    "description": "Time input control with wheel selection and formatted display value.",
+    "description": "Time input control with bottom-sheet selection and formatted display value.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/components/time-picker/TimePicker.tsx",
     "sourceLocation": {
       "filePath": "src/components/time-picker/TimePicker.tsx",
-      "line": 174,
+      "line": 261,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21270,9 +21028,9 @@
     "relatedSymbols": [],
     "signatures": [
       {
-        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "label": "() => { theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "parameters": [],
-        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/surface\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
+        "returnType": "{ theme: import(\"@ankhorage/surface\").SurfaceTheme; mode: \"light\" | \"dark\"; setThemeConfig: (config: Partial<import(\"@ankhorage/contracts\").ThemeConfig>) => void; setMode: (mode: \"light\" | \"dark\") => void; _hasProvider?: boolean; }",
         "returnDescription": null
       }
     ],
@@ -21488,7 +21246,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 95,
+      "line": 94,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21506,7 +21264,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 235,
+      "line": 232,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22296,7 +22054,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 99,
+      "line": 98,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22842,7 +22600,7 @@
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 18,
+      "line": 19,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22874,7 +22632,7 @@
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 10,
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

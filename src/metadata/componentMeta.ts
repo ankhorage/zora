@@ -1,4 +1,3 @@
-import { actionSheetItemMeta, actionSheetMeta } from '../components/action-sheet/meta';
 import { appBarMeta } from '../components/app-bar/meta';
 import { avatarMeta } from '../components/avatar/meta';
 import { avatarGroupMeta } from '../components/avatar-group/meta';
@@ -94,8 +93,6 @@ import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = {
   ...foundationMetas,
-  ActionSheet: actionSheetMeta,
-  ActionSheetItem: actionSheetItemMeta,
   AppBar: appBarMeta,
   Avatar: avatarMeta,
   AvatarGroup: avatarGroupMeta,

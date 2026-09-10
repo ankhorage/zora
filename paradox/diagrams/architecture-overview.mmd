@@ -2,26 +2,6 @@ graph TD
   package__ankhorage_zora["ZORA"]
   entrypoint_src_index_ts["src/index.ts"]
   package__ankhorage_zora --> entrypoint_src_index_ts
-  module_src_components_action_sheet_ActionSheet_tsx["src/components/action-sheet/ActionSheet.tsx"]
-  package__ankhorage_zora -.-> module_src_components_action_sheet_ActionSheet_tsx
-  module_src_components_action_sheet_ActionSheet_tsx --> module_src_components_action_sheet_types_ts
-  module_src_components_action_sheet_ActionSheet_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_action_sheet_ActionSheetItem_tsx["src/components/action-sheet/ActionSheetItem.tsx"]
-  package__ankhorage_zora -.-> module_src_components_action_sheet_ActionSheetItem_tsx
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_components_action_sheet_types_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_components_icon_index_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_internal_recipes_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_action_sheet_index_ts["src/components/action-sheet/index.ts"]
-  package__ankhorage_zora -.-> module_src_components_action_sheet_index_ts
-  module_src_components_action_sheet_meta_ts["src/components/action-sheet/meta.ts"]
-  package__ankhorage_zora -.-> module_src_components_action_sheet_meta_ts
-  module_src_components_action_sheet_meta_ts --> module_src_metadata_index_ts
-  module_src_components_action_sheet_types_ts["src/components/action-sheet/types.ts"]
-  package__ankhorage_zora -.-> module_src_components_action_sheet_types_ts
-  module_src_components_action_sheet_types_ts --> module_src_internal_recipes_ts
-  module_src_components_action_sheet_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_app_bar_AppBar_tsx["src/components/app-bar/AppBar.tsx"]
   package__ankhorage_zora -.-> module_src_components_app_bar_AppBar_tsx
   module_src_components_app_bar_AppBar_tsx --> module_src_components_app_bar_types_ts
@@ -251,10 +231,10 @@ graph TD
   module_src_components_data_table_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_date_picker_DatePicker_tsx["src/components/date-picker/DatePicker.tsx"]
   package__ankhorage_zora -.-> module_src_components_date_picker_DatePicker_tsx
-  module_src_components_date_picker_DatePicker_tsx --> module_src_components_action_sheet_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_button_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_date_picker_types_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_text_index_ts
+  module_src_components_date_picker_DatePicker_tsx --> module_src_features_bottom_sheet_public_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_foundation_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_date_picker_index_ts["src/components/date-picker/index.ts"]
@@ -742,10 +722,10 @@ graph TD
   module_src_components_time_picker_meta_ts --> module_src_metadata_index_ts
   module_src_components_time_picker_TimePicker_tsx["src/components/time-picker/TimePicker.tsx"]
   package__ankhorage_zora -.-> module_src_components_time_picker_TimePicker_tsx
-  module_src_components_time_picker_TimePicker_tsx --> module_src_components_action_sheet_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_button_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_text_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_time_picker_types_ts
+  module_src_components_time_picker_TimePicker_tsx --> module_src_features_bottom_sheet_public_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_foundation_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_time_picker_types_ts["src/components/time-picker/types.ts"]
@@ -798,6 +778,8 @@ graph TD
   module_src_corePluginMetadata_ts --> module_src_metadata_componentMeta_ts
   module_src_corePluginMetadata_ts --> module_src_metadata_types_ts
   module_src_corePluginMetadata_ts --> module_src_pluginComposition_ts
+  module_src_features_bottom_sheet_public_ts["src/features/bottom-sheet/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_bottom_sheet_public_ts
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   package__ankhorage_zora -.-> module_src_foundation_Box_tsx
   module_src_foundation_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -948,7 +930,6 @@ graph TD
   module_src_metadata_bindableComponentMeta_ts --> module_src_patterns_reader_meta_ts
   module_src_metadata_componentMeta_ts["src/metadata/componentMeta.ts"]
   package__ankhorage_zora -.-> module_src_metadata_componentMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_action_sheet_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_group_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_meta_ts
@@ -1670,7 +1651,6 @@ graph TD
   module_src_pluginComposition_ts --> module_src_registry_ts
   module_src_registry_ts["src/registry.ts"]
   package__ankhorage_zora -.-> module_src_registry_ts
-  module_src_registry_ts --> module_src_components_action_sheet_index_ts
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_avatar_group_index_ts
   module_src_registry_ts --> module_src_components_avatar_index_ts

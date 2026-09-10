@@ -1,5 +1,3 @@
-export type { ActionSheetItemProps, ActionSheetProps } from './components/action-sheet';
-export { ActionSheet, ActionSheetItem } from './components/action-sheet';
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
 export type { AvatarProps, AvatarShape, AvatarSize } from './components/avatar';

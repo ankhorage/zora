@@ -1,9 +1,4 @@
 graph LR
-  module_src_components_action_sheet_ActionSheet_tsx["src/components/action-sheet/ActionSheet.tsx"]
-  module_src_components_action_sheet_ActionSheetItem_tsx["src/components/action-sheet/ActionSheetItem.tsx"]
-  module_src_components_action_sheet_index_ts["src/components/action-sheet/index.ts"]
-  module_src_components_action_sheet_meta_ts["src/components/action-sheet/meta.ts"]
-  module_src_components_action_sheet_types_ts["src/components/action-sheet/types.ts"]
   module_src_components_app_bar_AppBar_tsx["src/components/app-bar/AppBar.tsx"]
   module_src_components_app_bar_index_ts["src/components/app-bar/index.ts"]
   module_src_components_app_bar_meta_ts["src/components/app-bar/meta.ts"]
@@ -193,6 +188,7 @@ graph LR
   module_src_constants_keyboard_ts["src/constants/keyboard.ts"]
   module_src_corePlugin_ts["src/corePlugin.ts"]
   module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
+  module_src_features_bottom_sheet_public_ts["src/features/bottom-sheet/public.ts"]
   module_src_foundation_Box_tsx["src/foundation/Box.tsx"]
   module_src_foundation_Center_tsx["src/foundation/Center.tsx"]
   module_src_foundation_Container_tsx["src/foundation/Container.tsx"]
@@ -403,16 +399,6 @@ graph LR
   module_src_theme_ZoraProvider_tsx["src/theme/ZoraProvider.tsx"]
   module_src_theme_ZoraThemeRuntimeContext_tsx["src/theme/ZoraThemeRuntimeContext.tsx"]
   module_src_theme_ZoraThemeScope_tsx["src/theme/ZoraThemeScope.tsx"]
-  module_src_components_action_sheet_ActionSheet_tsx --> module_src_components_action_sheet_types_ts
-  module_src_components_action_sheet_ActionSheet_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_components_action_sheet_types_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_components_icon_index_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_internal_recipes_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_components_action_sheet_ActionSheetItem_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_action_sheet_meta_ts --> module_src_metadata_index_ts
-  module_src_components_action_sheet_types_ts --> module_src_internal_recipes_ts
-  module_src_components_action_sheet_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_app_bar_AppBar_tsx --> module_src_components_app_bar_types_ts
   module_src_components_app_bar_AppBar_tsx --> module_src_components_heading_index_ts
   module_src_components_app_bar_AppBar_tsx --> module_src_components_icon_button_index_ts
@@ -530,10 +516,10 @@ graph LR
   module_src_components_data_table_meta_ts --> module_src_metadata_index_ts
   module_src_components_data_table_types_ts --> module_src_components_menu_index_ts
   module_src_components_data_table_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_date_picker_DatePicker_tsx --> module_src_components_action_sheet_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_button_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_date_picker_types_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_components_text_index_ts
+  module_src_components_date_picker_DatePicker_tsx --> module_src_features_bottom_sheet_public_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_foundation_index_ts
   module_src_components_date_picker_DatePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_date_picker_meta_ts --> module_src_metadata_index_ts
@@ -783,10 +769,10 @@ graph LR
   module_src_components_textarea_types_ts --> module_src_internal_recipes_ts
   module_src_components_textarea_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_time_picker_meta_ts --> module_src_metadata_index_ts
-  module_src_components_time_picker_TimePicker_tsx --> module_src_components_action_sheet_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_button_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_text_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_components_time_picker_types_ts
+  module_src_components_time_picker_TimePicker_tsx --> module_src_features_bottom_sheet_public_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_foundation_index_ts
   module_src_components_time_picker_TimePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_time_picker_types_ts --> module_src_theme_ZoraBaseProps_ts
@@ -876,7 +862,6 @@ graph LR
   module_src_layout_topbar_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_metadata_bindableComponentMeta_ts --> module_src_components_image_meta_ts
   module_src_metadata_bindableComponentMeta_ts --> module_src_patterns_reader_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_action_sheet_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_group_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_avatar_meta_ts
@@ -1302,7 +1287,6 @@ graph LR
   module_src_patterns_tree_view_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_pluginComposition_ts --> module_src_metadata_types_ts
   module_src_pluginComposition_ts --> module_src_registry_ts
-  module_src_registry_ts --> module_src_components_action_sheet_index_ts
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_avatar_group_index_ts
   module_src_registry_ts --> module_src_components_avatar_index_ts

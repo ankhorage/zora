@@ -1,13 +1,58 @@
-import { Tabs } from 'expo-router';
+import { NativeIoniconsFamily as NativeIoniconsFamilyRuntime } from '@ankhorage/navigator/tabs/native-icons';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Platform } from 'react-native';
+
+const NativeIoniconsFamily =
+  Platform.OS === 'web'
+    ? { getImageSource: () => Promise.resolve(null) }
+    : NativeIoniconsFamilyRuntime;
+
+export const unstable_settings = { initialRouteName: 'index' };
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
-      <Tabs.Screen name="index" options={{ title: 'Chats' }} />
-      <Tabs.Screen name="calls" options={{ title: 'Calls' }} />
-      <Tabs.Screen name="status" options={{ title: 'Status' }} />
-      <Tabs.Screen name="contacts" options={{ title: 'Contacts' }} />
-      <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
-    </Tabs>
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Chats</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon
+              family={NativeIoniconsFamily}
+              name="chatbubbles-outline"
+            />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="calls">
+        <NativeTabs.Trigger.Label>Calls</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={<NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="call-outline" />}
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="status">
+        <NativeTabs.Trigger.Label>Status</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="ellipse-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="contacts">
+        <NativeTabs.Trigger.Label>Contacts</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="people-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={
+            <NativeTabs.Trigger.VectorIcon family={NativeIoniconsFamily} name="settings-outline" />
+          }
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }

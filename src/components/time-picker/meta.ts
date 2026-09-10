@@ -5,6 +5,6 @@ export const timePickerMeta = {
   category: 'component',
   directManifestNode: false,
   allowedChildren: [],
-  note: 'Code-facing ActionSheet-backed time picker; not represented as a manifest node in v1.',
+  note: 'Code-facing BottomSheet-backed time picker; not represented as a manifest node in v1.',
   props: {},
 } as const satisfies ZoraComponentMeta;

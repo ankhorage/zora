@@ -1,67 +1,5 @@
 # Public API
 
-## ActionSheet
-
-Kind: `value`
-Module: `src/components/action-sheet/ActionSheet.tsx`
-Source: `src/components/action-sheet/ActionSheet.tsx:14:14`
-
-Presents a modal bottom sheet with a list of actions.
-
-## ActionSheetItem
-
-Kind: `value`
-Module: `src/components/action-sheet/ActionSheetItem.tsx`
-Source: `src/components/action-sheet/ActionSheetItem.tsx:30:14`
-
-Renders a single selectable action row within an `ActionSheet`.
-
-## ActionSheetItemProps
-
-Kind: `type`
-Module: `src/components/action-sheet/types.ts`
-Source: `src/components/action-sheet/types.ts:16:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                                          | Required | Description |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
-| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
-| disabled          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| icon              | property | `import("@ankhorage/surface").IconSource \| undefined`                                                                                        | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
-| label             | property | `React.ReactNode`                                                                                                                             | yes      |             |
-| leading           | property | `React.ReactNode`                                                                                                                             | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
-| onPress           | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
-| selected          | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| trailing          | property | `React.ReactNode`                                                                                                                             | no       |             |
-
-## ActionSheetProps
-
-Kind: `type`
-Module: `src/components/action-sheet/types.ts`
-Source: `src/components/action-sheet/types.ts:11:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| cancelLabel       | property | `React.ReactNode`                | no       |             |
-| children          | property | `React.ReactNode`                | no       |             |
-| closeOnBackdrop   | property | `boolean \| undefined`           | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| onDismiss         | property | `(() => void) \| undefined`      | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| title             | property | `React.ReactNode`                | no       |             |
-| visible           | property | `boolean`                        | yes      |             |
-
 ## AppBar
 
 Kind: `value`
@@ -597,12 +535,12 @@ Source: `src/patterns/scanner/types.ts:19:1`
 | deniedLabel            | property | `React.ReactNode`                                         | no       |             |
 | description            | property | `React.ReactNode`                                         | no       |             |
 | interactionPolicy      | property | `InteractionPolicy \| undefined`                          | no       |             |
-| manualEntryButtonProps | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| manualEntryButtonProps | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no       |             |
 | manualEntryLabel       | property | `React.ReactNode`                                         | no       |             |
 | mode                   | property | `ZoraThemeMode \| undefined`                              | no       |             |
 | onManualEntry          | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
 | onRequestPermission    | property | `(() => void \| Promise<void>) \| undefined`              | no       |             |
-| requestButtonProps     | property | `Omit<ButtonProps, "onPress" \| "children"> \| undefined` | no       |             |
+| requestButtonProps     | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no       |             |
 | requestLabel           | property | `React.ReactNode`                                         | no       |             |
 | status                 | property | `"unknown" \| "requesting" \| "denied"`                   | yes      |             |
 | testID                 | property | `string \| undefined`                                     | no       |             |
@@ -1437,7 +1375,7 @@ Source: `src/components/data-table/types.ts:11:1`
 
 Kind: `value`
 Module: `src/components/date-picker/DatePicker.tsx`
-Source: `src/components/date-picker/DatePicker.tsx:279:14`
+Source: `src/components/date-picker/DatePicker.tsx:347:14`
 
 Date input control with calendar selection and formatted display value.
 
@@ -4999,9 +4937,9 @@ Source: `src/patterns/timeline/types.ts:17:1`
 
 Kind: `value`
 Module: `src/components/time-picker/TimePicker.tsx`
-Source: `src/components/time-picker/TimePicker.tsx:174:14`
+Source: `src/components/time-picker/TimePicker.tsx:261:14`
 
-Time input control with wheel selection and formatted display value.
+Time input control with bottom-sheet selection and formatted display value.
 
 ## TimePickerProps
 
@@ -5377,8 +5315,8 @@ Source: `src/theme/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/surface").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
 
 ## validateField
 
@@ -5453,13 +5391,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:95:14`
+Source: `src/metadata/componentMeta.ts:94:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:235:14`
+Source: `src/registry.ts:232:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5705,7 +5643,7 @@ Source: `src/metadata/types.ts:13:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:99:1`
+Source: `src/registry.ts:98:1`
 
 ## ZoraComponentSlotMeta
 
@@ -5874,7 +5812,7 @@ Source: `src/pluginComposition.ts:16:1`
 
 Kind: `function`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:18:1`
+Source: `src/theme/ZoraProvider.tsx:19:1`
 
 ### Signatures
 
@@ -5896,7 +5834,7 @@ initialMode = 'light',
 
 Kind: `type`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:10:1`
+Source: `src/theme/ZoraProvider.tsx:11:1`
 
 ### Members
 
