@@ -1,9 +1,9 @@
 name: Repair #402 showcase consumers
 
 on:
-  push:
+  pull_request:
     branches:
-      - cleanup/remove-obsolete-ui-chrome
+      - main
 
 permissions:
   contents: write
@@ -91,9 +91,9 @@ jobs:
               r'\nfunction createRouteMapSource\(routes: readonly RouteSpec\[\]\): string \{[\s\S]*?\n\}\n\nfunction createScreenSource',
               '\nfunction createScreenSource',
           )
-          sub_once(
+          replace_once(
               scaffold,
-              r"`import \{ Tabs \} from 'expo-router';\\nimport \{ ZoraTabBar, type ZoraNavigationRouteMap \} from '@ankhorage/zora';\\n\\nconst routeMap: ZoraNavigationRouteMap = \{\\n\$\{createRouteMapSource\(routes\)\}\\n\};\\n\\nexport default function TabLayout\(\) \{\\n  return <Tabs screenOptions=\{\{ headerShown: false \}\} tabBar=\{\(props\) => <ZoraTabBar \{\.\.\.props\} routeMap=\{routeMap\} />\} />;\\n\}`",
+              "`import { Tabs } from 'expo-router';\\nimport { ZoraTabBar, type ZoraNavigationRouteMap } from '@ankhorage/zora';\\n\\nconst routeMap: ZoraNavigationRouteMap = {\\n${createRouteMapSource(routes)}\\n};\\n\\nexport default function TabLayout() {\\n  return <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <ZoraTabBar {...props} routeMap={routeMap} />} />;\\n}`",
               "`import { Tabs } from 'expo-router';\\n\\nexport default function TabLayout() {\\n  return <Tabs screenOptions={{ headerShown: false }} />;\\n}`",
           )
           PY
