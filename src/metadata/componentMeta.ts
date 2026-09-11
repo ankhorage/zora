@@ -1,4 +1,5 @@
 import { appBarMeta } from '../components/app-bar/meta';
+import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
@@ -101,6 +102,7 @@ import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
   ...foundationMetas,
+  ActivityIndicator: activityIndicatorMeta,
   Box: boxMeta,
   Container: containerMeta,
   Stack: stackMeta,

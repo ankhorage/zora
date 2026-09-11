@@ -1,4 +1,5 @@
 export const CONTAINER_ALLOWED_CHILDREN = [
+  'ActivityIndicator',
   'Surface',
   'Avatar',
   'AvatarGroup',

@@ -2,6 +2,7 @@ import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
 import { AppBar } from './components/app-bar';
+import { ActivityIndicator } from './features/activity-indicator/public';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { DatePicker } from './components/date-picker';
 import { Form, FormActions, FormError, FormField } from './components/form';
@@ -112,6 +113,7 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
+  ActivityIndicator,
   AppBar,
   Avatar,
   AvatarGroup,

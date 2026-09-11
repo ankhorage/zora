@@ -1,5 +1,9 @@
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
+export {
+  ActivityIndicator,
+  type ActivityIndicatorProps,
+} from './features/activity-indicator/public';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
