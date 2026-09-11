@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.0.0
+
+### Major Changes
+
+- bb78e49: Move EmptyState and progress nodes to feature owners, add form and feedback manifest nodes, and replace the Input and Textarea APIs with TextInput configurations.
+
 ## 8.0.0
 
 ### Major Changes
