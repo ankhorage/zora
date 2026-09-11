@@ -5,7 +5,7 @@ import {
   Notice,
   Screen,
   ScreenSection,
-  Textarea,
+  TextInput,
   Uploader,
 } from '@ankhorage/zora';
 
@@ -34,7 +34,7 @@ export default function CreateScreen() {
         </ScreenSection>
 
         <ScreenSection title="Caption" description="Structured inputs keep the app theme-aware.">
-          <Textarea placeholder="Write a caption..." />
+          <TextInput multiline placeholder="Write a caption..." />
           <Card
             title="Draft quality"
             description="Add a location, topic, and short caption before publishing."

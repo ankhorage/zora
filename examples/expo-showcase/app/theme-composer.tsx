@@ -3,7 +3,7 @@ import {
   Button,
   Card,
   EmptyState,
-  Input,
+  TextInput,
   Notice,
   Panel,
   Screen,
@@ -11,7 +11,6 @@ import {
   Stack,
   Tabs,
   Text,
-  Textarea,
   ThemeComposer,
   Toolbar,
   ToolbarAction,
@@ -192,8 +191,9 @@ export function ThemeComposerPage({
                 tone="subtle"
               >
                 <Stack gap="s">
-                  <Input value={theme.primaryColor} />
-                  <Textarea
+                  <TextInput value={theme.primaryColor} />
+                  <TextInput
+                    multiline
                     value="Theme notes, accessibility observations, and recipe QA details."
                     rows={3}
                   />

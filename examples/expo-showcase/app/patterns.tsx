@@ -13,7 +13,7 @@ import {
   FormField,
   IconButton,
   Image,
-  Input,
+  TextInput,
   InspectorField,
   List,
   ListRow,
@@ -455,7 +455,7 @@ export function PatternsPage() {
           description="Shown in shared projects and activity logs."
           helperText="Use a recognizable name for collaborators."
         >
-          <Input placeholder="Fabio Gartenmann" />
+          <TextInput placeholder="Fabio Gartenmann" />
         </FormField>
 
         <SwitchField
@@ -479,7 +479,7 @@ export function PatternsPage() {
             <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
           }
         >
-          <Input value="Ocean" />
+          <TextInput value="Ocean" />
         </InspectorField>
 
         <DisclosureSection

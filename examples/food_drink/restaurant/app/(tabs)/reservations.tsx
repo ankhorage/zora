@@ -2,12 +2,11 @@ import {
   Badge,
   Card,
   FormField,
-  Input,
+  TextInput,
   Notice,
   Screen,
   ScreenSection,
   Select,
-  Textarea,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
@@ -22,10 +21,10 @@ export default function ReservationsScreen() {
           description="A reservation form composed from ZORA inputs."
         >
           <FormField label="Date">
-            <Input placeholder="Friday, 24 May" />
+            <TextInput placeholder="Friday, 24 May" />
           </FormField>
           <FormField label="Time">
-            <Input placeholder="19:30" />
+            <TextInput placeholder="19:30" />
           </FormField>
           <FormField label="Party size">
             <Select
@@ -38,7 +37,10 @@ export default function ReservationsScreen() {
               ]}
             />
           </FormField>
-          <Textarea placeholder="Dietary notes, stroller, celebration, or seating preference..." />
+          <TextInput
+            multiline
+            placeholder="Dietary notes, stroller, celebration, or seating preference..."
+          />
         </ScreenSection>
 
         <ScreenSection title="Availability">
