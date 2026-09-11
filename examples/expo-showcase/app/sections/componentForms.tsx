@@ -9,13 +9,13 @@ import {
   Gradient,
   Icon,
   Inline,
-  TextInput,
   OAuthProviderList,
   Radio,
   RadioGroup,
   ScreenSection,
   Stack,
   Text,
+  TextInput,
 } from '@ankhorage/zora';
 import React from 'react';
 

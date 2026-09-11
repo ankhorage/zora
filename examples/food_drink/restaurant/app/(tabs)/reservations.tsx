@@ -2,11 +2,11 @@ import {
   Badge,
   Card,
   FormField,
-  TextInput,
   Notice,
   Screen,
   ScreenSection,
   Select,
+  TextInput,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';

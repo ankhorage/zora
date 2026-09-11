@@ -3,10 +3,10 @@ import {
   Button,
   Card,
   FormField,
-  TextInput,
   Notice,
   Screen,
   ScreenSection,
+  TextInput,
   Uploader,
 } from '@ankhorage/zora';
 

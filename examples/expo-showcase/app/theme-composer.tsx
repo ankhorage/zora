@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   EmptyState,
-  TextInput,
   Notice,
   Panel,
   Screen,
@@ -11,6 +10,7 @@ import {
   Stack,
   Tabs,
   Text,
+  TextInput,
   ThemeComposer,
   Toolbar,
   ToolbarAction,
@@ -195,7 +195,7 @@ export function ThemeComposerPage({
                   <TextInput
                     multiline
                     value="Theme notes, accessibility observations, and recipe QA details."
-                    rows={3}
+                    numberOfLines={3}
                   />
                   <Stack direction="row" gap="s" wrap="wrap">
                     <Button color="primary">Primary action</Button>

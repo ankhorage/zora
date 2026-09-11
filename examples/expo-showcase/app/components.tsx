@@ -11,7 +11,6 @@ import {
   ChipGroup,
   Heading,
   IconButton,
-  TextInput,
   MediaCard,
   MetricCard,
   Modal,
@@ -28,6 +27,7 @@ import {
   Surface,
   Tabs,
   Text,
+  TextInput,
   Toolbar,
   ToolbarAction,
 } from '@ankhorage/zora';
