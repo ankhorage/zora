@@ -72,7 +72,7 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'typography', 'adapters', 'inbound', 'Heading.tsx'),
   join(srcDir, 'features', 'icon', 'adapters', 'inbound', 'Icon.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'IconButton.tsx'),
-  join(srcDir, 'components', 'input', 'Input.tsx'),
+  join(srcDir, 'features', 'form', 'text-input', 'adapters', 'inbound', 'TextInput.tsx'),
   join(srcDir, 'components', 'modal', 'Modal.tsx'),
   join(srcDir, 'components', 'progress', 'Progress.tsx'),
   join(srcDir, 'components', 'radio', 'Radio.tsx'),
@@ -81,7 +81,6 @@ const scopedComponentFiles = [
   join(srcDir, 'components', 'select', 'Select.tsx'),
   join(srcDir, 'components', 'tabs', 'Tabs.tsx'),
   join(srcDir, 'features', 'typography', 'adapters', 'inbound', 'Text.tsx'),
-  join(srcDir, 'components', 'textarea', 'Textarea.tsx'),
   join(srcDir, 'components', 'toolbar', 'Toolbar.tsx'),
   join(srcDir, 'components', 'toolbar', 'ToolbarAction.tsx'),
 

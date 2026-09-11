@@ -4,7 +4,7 @@ import React from 'react';
 import { Stack } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Input } from '../input';
+import { TextInput } from '../../features/form/text-input/public';
 import type { FormFieldConfig, FormFieldControlProps, FormFieldProps } from './types';
 import { hasRequiredRule } from './validation';
 
@@ -131,7 +131,7 @@ function FormFieldInner<TName extends string = string>(props: FormFieldProps<TNa
       required={required}
       testID={testID ?? field.testID}
     >
-      <Input
+      <TextInput
         accessibilityLabel={typeof field.label === 'string' ? field.label : undefined}
         autoCapitalize={resolveAutoCapitalize(field)}
         autoComplete={field.autoComplete}

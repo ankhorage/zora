@@ -131,24 +131,24 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
   },
-  Input: {
-    name: 'Input',
+  TextInput: {
+    name: 'TextInput',
     category: 'component',
-    description: 'Captures a single-line string value.',
+    description: 'Captures a string value in single-line, multiline, or secure-entry modes.',
     directManifestNode: true,
     allowedChildren: [],
     bindings: {
       props: {
         value: {
           label: 'Value',
-          description: 'Current input value.',
+          description: 'Current text input value.',
           value: { type: 'string' },
           acceptsFallback: true,
           acceptsTransforms: true,
         },
         disabled: {
           label: 'Disabled',
-          description: 'Whether the input is disabled.',
+          description: 'Whether the text input is disabled.',
           value: { type: 'boolean' },
           acceptsFallback: true,
           acceptsTransforms: true,
@@ -159,7 +159,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           label: 'Change text',
           description: 'Runs when the input value changes.',
           payload: {
-            eventType: 'input.changeText',
+            eventType: 'textInput.changeText',
             fields: [{ path: 'value', type: 'string', label: 'Value' }],
           },
         },
@@ -168,63 +168,8 @@ export const ZORA_BINDABLE_COMPONENT_META = {
     events: {
       changeText: {
         label: 'Change text',
-        eventType: 'input.changeText',
+        eventType: 'textInput.changeText',
         description: 'Emitted when the input value changes.',
-        payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
-      },
-    },
-    props: {
-      value: {
-        type: 'string',
-        category: 'Content',
-        label: 'Value',
-      },
-      disabled: {
-        type: 'boolean',
-        category: 'State',
-        label: 'Disabled',
-      },
-    },
-  },
-  Textarea: {
-    name: 'Textarea',
-    category: 'component',
-    description: 'Captures a multiline string value.',
-    directManifestNode: true,
-    allowedChildren: [],
-    bindings: {
-      props: {
-        value: {
-          label: 'Value',
-          description: 'Current textarea value.',
-          value: { type: 'string' },
-          acceptsFallback: true,
-          acceptsTransforms: true,
-        },
-        disabled: {
-          label: 'Disabled',
-          description: 'Whether the textarea is disabled.',
-          value: { type: 'boolean' },
-          acceptsFallback: true,
-          acceptsTransforms: true,
-        },
-      },
-      events: {
-        changeText: {
-          label: 'Change text',
-          description: 'Runs when the textarea value changes.',
-          payload: {
-            eventType: 'textarea.changeText',
-            fields: [{ path: 'value', type: 'string', label: 'Value' }],
-          },
-        },
-      },
-    },
-    events: {
-      changeText: {
-        label: 'Change text',
-        eventType: 'textarea.changeText',
-        description: 'Emitted when the textarea value changes.',
         payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
       },
     },

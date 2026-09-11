@@ -1,12 +1,12 @@
-import type { ZoraComponentMeta } from '../../metadata';
+import type { ZoraComponentMeta } from '../../../metadata';
 
-export const inputMeta = {
-  name: 'Input',
+export const textInputMeta = {
+  name: 'TextInput',
   category: 'component',
   directManifestNode: true,
   allowedChildren: [],
   blueprint: {
-    label: 'Input',
+    label: 'Text input',
     defaultProps: {
       placeholder: 'Enter text…',
       value: '',
@@ -40,6 +40,18 @@ export const inputMeta = {
       type: 'boolean',
       category: 'State',
       label: 'Read-only',
+      default: false,
+    },
+    multiline: {
+      type: 'boolean',
+      category: 'Layout',
+      label: 'Multiline',
+      default: false,
+    },
+    secureTextEntry: {
+      type: 'boolean',
+      category: 'State',
+      label: 'Secure text entry',
       default: false,
     },
   },

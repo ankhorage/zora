@@ -46,7 +46,7 @@ export const formFieldMeta = {
   name: 'FormField',
   category: 'component',
   directManifestNode: true,
-  allowedChildren: ['Input', 'Textarea'],
+  allowedChildren: ['TextInput'],
   blueprint: {
     label: 'Form field',
     defaultProps: {

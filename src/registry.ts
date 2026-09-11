@@ -7,7 +7,6 @@ import { Checkbox, CheckboxGroup } from './components/checkbox';
 import { DatePicker } from './components/date-picker';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
-import { Input } from './components/input';
 import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
@@ -17,7 +16,7 @@ import { SearchBar } from './components/search-bar';
 import { Select } from './components/select';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 import { Tabs } from './components/tabs';
-import { Textarea } from './components/textarea';
+import { TextInput } from './features/form/text-input/public';
 import { TimePicker } from './components/time-picker';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
@@ -137,7 +136,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Icon,
   IconButton,
   Image,
-  Input,
+  TextInput,
   MediaCard,
   Menu,
   MetricCard,
@@ -157,7 +156,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   SplashScreen,
   Tabs,
   Text,
-  Textarea,
   TimePicker,
   Toast,
   Toolbar,

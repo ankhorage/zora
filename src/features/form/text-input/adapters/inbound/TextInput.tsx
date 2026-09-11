@@ -1,13 +1,13 @@
 import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
-import { IconButton } from '../../features/button/public';
-import { resolveIconSize } from '../../internal/recipes';
-import { useZoraTheme } from '../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { InputProps } from './types';
+import { IconButton } from '../../../../button/public';
+import { resolveIconSize } from '../../../../../internal/recipes';
+import { useZoraTheme } from '../../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
+import type { TextInputProps } from '../../../../../types/text-input';
 
-function InputInner({
+function TextInputInner({
   themeId: _themeId,
   mode: _mode,
   size = 'l',
@@ -18,7 +18,7 @@ function InputInner({
   readOnly,
   interactionPolicy,
   ...props
-}: InputProps) {
+}: TextInputProps) {
   const { theme } = useZoraTheme();
   const iconSize = resolveIconSize(size);
   const iconColor = theme.semantics.content.muted;
@@ -58,12 +58,11 @@ function InputInner({
 /***
  * Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
  *
- * Use `Input` for single-line form controls that need ZORA styling, disabled/read-only
- * handling, and accessible trailing actions without dropping into Surface directly.
+ * Use `TextInput` for single-line, multiline, and password form controls with ZORA styling.
  *
  * @example Search input
  * ```tsx
- * <Input placeholder="Search" leadingIcon={{ name: 'search-outline' }} />
+ * <TextInput placeholder="Search" leadingIcon={{ name: 'search-outline' }} />
  * ```
  */
-export const Input = withZoraThemeScope(InputInner);
+export const TextInput = withZoraThemeScope(TextInputInner);

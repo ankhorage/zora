@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { Input, type InputTrailingAction } from '../input';
+import { TextInput, type TextInputTrailingAction } from '../../features/form/text-input/public';
 import type { SearchBarProps } from './types';
 
 function SearchBarInner({
@@ -21,7 +21,7 @@ function SearchBarInner({
 }: SearchBarProps) {
   const passive = interactionPolicy === 'passive';
 
-  const trailingAction: InputTrailingAction | undefined =
+  const trailingAction: TextInputTrailingAction | undefined =
     clearable && value.length > 0
       ? {
           icon: { name: 'close-circle' },
@@ -36,7 +36,7 @@ function SearchBarInner({
       : undefined;
 
   return (
-    <Input
+    <TextInput
       disabled={disabled}
       interactionPolicy={interactionPolicy}
       leadingIcon={{ name: 'search-outline' }}

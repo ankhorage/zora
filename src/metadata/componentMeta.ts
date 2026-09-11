@@ -4,7 +4,6 @@ import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { gradientMeta } from '../components/gradient/meta';
-import { inputMeta } from '../components/input/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
 import { paginationMeta } from '../components/pagination/meta';
@@ -19,7 +18,7 @@ import {
   skeletonTextMeta,
 } from '../components/skeleton/meta';
 import { tabsMeta } from '../components/tabs/meta';
-import { textareaMeta } from '../components/textarea/meta';
+import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { timePickerMeta } from '../components/time-picker/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
@@ -132,7 +131,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Icon: iconMeta,
   IconButton: iconButtonMeta,
   Image: imageMeta,
-  Input: inputMeta,
+  TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
   Menu: menuMeta,
   MetricCard: metricCardMeta,
@@ -152,7 +151,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SplashScreen: splashScreenMeta,
   Tabs: tabsMeta,
   Text: textMeta,
-  Textarea: textareaMeta,
   TimePicker: timePickerMeta,
   Toast: toastMeta,
   ToastProvider: toastProviderMeta,

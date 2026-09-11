@@ -11,7 +11,7 @@ describe('ZORA bindable component metadata', () => {
     expect(registry.Text?.bindings?.props?.text?.value.type).toBe('string');
     expect(registry.Heading?.bindings?.props?.text?.value.type).toBe('string');
     expect(registry.Button?.bindings?.props?.children?.value.type).toBe('string');
-    expect(registry.Input?.bindings?.props?.value?.value.type).toBe('string');
+    expect(registry.TextInput?.bindings?.props?.value?.value.type).toBe('string');
     expect(registry.Select?.bindings?.props?.value?.value.type).toBe('string');
     expect(registry.Image?.bindings?.props?.source?.value.type).toBe('imageAsset');
     expect(registry.DataTable?.bindings?.props?.rows?.value.type).toBe('array');

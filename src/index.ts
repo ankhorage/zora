@@ -44,8 +44,6 @@ export type {
   GradientRendererProviderProps,
 } from './components/gradient';
 export { Gradient, GradientRendererProvider } from './components/gradient';
-export type { InputProps, InputTrailingAction } from './components/input';
-export { Input } from './components/input';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
 export { DropdownMenu, Menu } from './components/menu';
 export type { ModalProps } from './components/modal';
@@ -72,8 +70,11 @@ export type {
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type { TextareaProps } from './components/textarea';
-export { Textarea } from './components/textarea';
+export {
+  TextInput,
+  type TextInputProps,
+  type TextInputTrailingAction,
+} from './features/form/text-input/public';
 export type { TimePickerProps, TimePickerValue } from './components/time-picker';
 export { TimePicker } from './components/time-picker';
 export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';

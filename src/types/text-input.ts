@@ -1,25 +1,25 @@
 import type * as Surface from '@ankhorage/surface';
 
-import type { ZoraControlSize } from '../../internal/recipes';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraControlSize } from '../internal/recipes';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
-export interface InputTrailingAction {
+export interface TextInputTrailingAction {
   icon: Surface.ButtonIconSpec;
   label: string;
   onPress: () => void;
 }
 
-type InputTrailingProps =
+type TextInputTrailingProps =
   | {
       trailingIcon?: Surface.ButtonIconSpec;
       trailingAction?: never;
     }
   | {
       trailingIcon?: never;
-      trailingAction?: InputTrailingAction;
+      trailingAction?: TextInputTrailingAction;
     };
 
-interface InputBaseProps
+interface TextInputBaseProps
   extends
     ZoraBaseProps,
     Omit<
@@ -30,4 +30,4 @@ interface InputBaseProps
   leadingIcon?: Surface.ButtonIconSpec;
 }
 
-export type InputProps = InputBaseProps & InputTrailingProps;
+export type TextInputProps = TextInputBaseProps & TextInputTrailingProps;
