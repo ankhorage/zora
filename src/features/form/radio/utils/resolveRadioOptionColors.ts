@@ -1,6 +1,6 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import type { RadioGroupProps } from './types';
+import type { RadioGroupProps } from '../../../../types/radio';
 
 /*** Resolve selection-card decoration from the requested semantic role and field state. */
 export function resolveRadioOptionColors(

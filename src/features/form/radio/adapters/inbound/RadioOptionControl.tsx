@@ -2,14 +2,14 @@ import { useTheme } from '@ankhorage/surface';
 import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
-import { Icon } from '../../features/icon/public';
-import { Text } from '../../features/typography/public';
+import { Icon } from '../../../../icon/public';
+import { Text } from '../../../../typography/public';
 import {
   handleRadioOptionKeyDown,
   type RadioOptionKeyboardTarget,
-} from './handleRadioOptionKeyDown';
-import { resolveRadioOptionColors } from './resolveRadioOptionColors';
-import type { RadioGroupProps } from './types';
+} from '../../utils/handleRadioOptionKeyDown';
+import { resolveRadioOptionColors } from '../../utils/resolveRadioOptionColors';
+import type { RadioGroupProps } from '../../../../../types/radio';
 
 /*** Render a selectable icon radio option with one accessible radio target and a trailing check. */
 export function RadioOptionControl<TValue extends string>(props: RadioOptionControlProps<TValue>) {

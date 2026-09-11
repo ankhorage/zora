@@ -1,5 +1,5 @@
-import { ZORA_COLORS } from '../../internal/colorModel';
-import type { ZoraComponentMeta } from '../../metadata';
+import { ZORA_COLORS } from '../../../internal/colorModel';
+import type { ZoraComponentMeta } from '../../../metadata';
 
 const themeAuthoring = {
   authority: 'theme',
@@ -10,10 +10,14 @@ const themeAuthoring = {
 export const radioMeta = {
   name: 'Radio',
   category: 'component',
-  directManifestNode: false,
+  directManifestNode: true,
   allowedChildren: [],
-  note: 'Composition-level radio control; author repeated single-choice UI through RadioGroup.',
-  props: {},
+  blueprint: { label: 'Radio', defaultProps: { label: 'Option', checked: false } },
+  props: {
+    label: { type: 'string', category: 'Content', label: 'Label' },
+    checked: { type: 'boolean', category: 'State', label: 'Checked', default: false },
+    disabled: { type: 'boolean', category: 'State', label: 'Disabled', default: false },
+  },
 } as const satisfies ZoraComponentMeta;
 
 export const radioGroupMeta = {

@@ -2,10 +2,10 @@ import { Checkbox } from '@ankhorage/surface';
 import React from 'react';
 import { View } from 'react-native';
 
-import { Stack } from '../../features/layout/public';
-import { Text } from '../../features/typography/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { CheckboxGroupOption, CheckboxGroupProps } from './types';
+import { Stack } from '../../../../layout/public';
+import { Text } from '../../../../typography/public';
+import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
+import type { CheckboxGroupOption, CheckboxGroupProps } from '../../../../../types/checkbox';
 
 function CheckboxGroupInner<TValue extends string>({
   themeId: _themeId,

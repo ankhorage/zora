@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
+import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
 
 test('resolves RadioGroup theme defaults while preserving instance overrides', () => {
   expect(resolveRadioGroupThemeRecipe({ themeFields: {} })).toEqual({

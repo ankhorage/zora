@@ -2,8 +2,6 @@ export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components
 export { AppBar } from './components/app-bar';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
-export type { CheckboxGroupOption, CheckboxGroupProps, CheckboxProps } from './components/checkbox';
-export { Checkbox, CheckboxGroup } from './components/checkbox';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
 export { DatePicker } from './components/date-picker';
 export type {
@@ -50,8 +48,20 @@ export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
 export { Pagination } from './components/pagination';
-export type { RadioGroupOption, RadioGroupProps, RadioProps } from './components/radio';
-export { Radio, RadioGroup } from './components/radio';
+export {
+  Checkbox,
+  CheckboxGroup,
+  type CheckboxGroupOption,
+  type CheckboxGroupProps,
+  type CheckboxProps,
+} from './features/form/checkbox/public';
+export {
+  Radio,
+  RadioGroup,
+  type RadioGroupOption,
+  type RadioGroupProps,
+  type RadioProps,
+} from './features/form/radio/public';
 export type { RatingProps } from './components/rating';
 export { Rating } from './components/rating';
 export type { SearchBarProps } from './components/search-bar';

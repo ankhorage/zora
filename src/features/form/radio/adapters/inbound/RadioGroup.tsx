@@ -2,13 +2,13 @@ import { Radio } from '@ankhorage/surface';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Stack } from '../../features/layout/public';
-import { Text } from '../../features/typography/public';
-import { useZoraThemeRecipe } from '../../theme/useZoraThemeRecipe';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { Stack } from '../../../../layout/public';
+import { Text } from '../../../../typography/public';
+import { useZoraThemeRecipe } from '../../../../../theme/useZoraThemeRecipe';
+import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import { RadioOptionControl } from './RadioOptionControl';
-import { resolveRadioGroupThemeRecipe } from './resolveRadioGroupThemeRecipe';
-import type { RadioGroupProps } from './types';
+import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
+import type { RadioGroupProps } from '../../../../../types/radio';
 
 /*** Present one controlled single-choice group as inline radios or icon radio options. */
 export const RadioGroup = withZoraThemeScope(RadioGroupInner);

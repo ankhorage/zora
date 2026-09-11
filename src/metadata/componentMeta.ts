@@ -1,13 +1,13 @@
 import { appBarMeta } from '../components/app-bar/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
-import { checkboxGroupMeta, checkboxMeta } from '../components/checkbox/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
 import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { gradientMeta } from '../components/gradient/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
 import { paginationMeta } from '../components/pagination/meta';
-import { radioGroupMeta, radioMeta } from '../components/radio/meta';
+import { checkboxGroupMeta, checkboxMeta } from '../features/form/checkbox/checkboxMeta';
+import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
 import { selectMeta } from '../components/select/meta';

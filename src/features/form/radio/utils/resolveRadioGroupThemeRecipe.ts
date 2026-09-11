@@ -1,7 +1,7 @@
 import type { ThemeRecipeOverrideValue } from '@ankhorage/contracts';
 
-import type { ZoraColor } from '../../internal/colorModel';
-import type { RadioGroupProps } from './types';
+import type { ZoraColor } from '../../../../internal/colorModel';
+import type { RadioGroupProps } from '../../../../types/radio';
 
 type RadioGroupGap = NonNullable<RadioGroupProps<string>['gap']>;
 type RadioGroupSize = NonNullable<RadioGroupProps<string>['size']>;

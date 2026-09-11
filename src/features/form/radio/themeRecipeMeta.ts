@@ -1,5 +1,5 @@
-import { ZORA_COLORS } from '../../internal/colorModel';
-import type { ZoraThemeRecipeMeta } from '../../metadata/themeRecipeTypes';
+import { ZORA_COLORS } from '../../../internal/colorModel';
+import type { ZoraThemeRecipeMeta } from '../../../metadata/themeRecipeTypes';
 
 export const radioGroupThemeRecipeMeta = {
   name: 'RadioGroup',

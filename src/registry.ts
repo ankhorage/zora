@@ -3,14 +3,14 @@ import type React from 'react';
 
 import { AppBar } from './components/app-bar';
 import { Breadcrumbs } from './components/breadcrumbs';
-import { Checkbox, CheckboxGroup } from './components/checkbox';
 import { DatePicker } from './components/date-picker';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
 import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
-import { Radio, RadioGroup } from './components/radio';
+import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
+import { Radio, RadioGroup } from './features/form/radio/public';
 import { Rating } from './components/rating';
 import { SearchBar } from './components/search-bar';
 import { Select } from './components/select';

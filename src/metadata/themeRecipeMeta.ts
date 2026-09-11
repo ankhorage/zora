@@ -1,4 +1,4 @@
-import { radioGroupThemeRecipeMeta } from '../components/radio/themeRecipeMeta';
+import { radioGroupThemeRecipeMeta } from '../features/form/radio/themeRecipeMeta';
 import { buttonThemeRecipeMeta } from '../features/button/utils/themeRecipeMeta';
 import { cardThemeRecipeMeta } from '../features/card/utils/themeRecipeMeta';
 import { headingThemeRecipeMeta } from '../features/typography/utils/headingThemeRecipeMeta';
