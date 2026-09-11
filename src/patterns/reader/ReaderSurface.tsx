@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { AppBar } from '../../components/app-bar';
-import { Progress } from '../../components/progress';
 import { IconButton } from '../../features/button/public';
 import { Box, Stack } from '../../features/layout/public';
+import { Progress } from '../../features/progress/public';
 import { Surface } from '../../features/surface/public';
 import { Text } from '../../features/typography/public';
 import { Center, Inline } from '../../foundation';

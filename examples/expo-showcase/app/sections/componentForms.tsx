@@ -9,13 +9,13 @@ import {
   Gradient,
   Icon,
   Inline,
-  Input,
   OAuthProviderList,
   Radio,
   RadioGroup,
   ScreenSection,
   Stack,
   Text,
+  TextInput,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -136,7 +136,7 @@ export function ComponentFormsSection() {
           />
 
           <FormField label="Manual FormField" helperText="Useful when a custom control is needed.">
-            <Input placeholder="Manual field input" />
+            <TextInput placeholder="Manual field input" />
           </FormField>
 
           <FormError error="Standalone FormError coverage" />

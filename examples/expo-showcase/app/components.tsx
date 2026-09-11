@@ -11,7 +11,6 @@ import {
   ChipGroup,
   Heading,
   IconButton,
-  Input,
   MediaCard,
   MetricCard,
   Modal,
@@ -28,7 +27,7 @@ import {
   Surface,
   Tabs,
   Text,
-  Textarea,
+  TextInput,
   Toolbar,
   ToolbarAction,
 } from '@ankhorage/zora';
@@ -369,8 +368,8 @@ export function ComponentsPage() {
             ]}
           />
           <SearchBar placeholder="Search components" value={search} onValueChange={setSearch} />
-          <Input placeholder="Disabled input" disabled />
-          <Textarea placeholder="Textarea multi-line" rows={3} />
+          <TextInput placeholder="Disabled input" disabled />
+          <TextInput multiline numberOfLines={3} placeholder="Textarea multi-line" />
 
           <SectionHeader
             title="Radio groups"
@@ -576,7 +575,7 @@ export function ComponentsPage() {
         description="Centered overlay for focused tasks."
       >
         <Card tone="subtle" title="Inner content">
-          <Input placeholder="Type something..." />
+          <TextInput placeholder="Type something..." />
         </Card>
       </Modal>
     </>

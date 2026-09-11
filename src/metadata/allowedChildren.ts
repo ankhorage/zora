@@ -1,4 +1,5 @@
 export const CONTAINER_ALLOWED_CHILDREN = [
+  'ActivityIndicator',
   'Surface',
   'Avatar',
   'AvatarGroup',
@@ -28,8 +29,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'ButtonGroup',
   'RadioGroup',
   'ThemeModeToggle',
-  'Input',
-  'Textarea',
+  'TextInput',
   'FormField',
   'Card',
   'Panel',

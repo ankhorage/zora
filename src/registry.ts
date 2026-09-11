@@ -3,25 +3,21 @@ import type React from 'react';
 
 import { AppBar } from './components/app-bar';
 import { Breadcrumbs } from './components/breadcrumbs';
-import { Checkbox, CheckboxGroup } from './components/checkbox';
 import { DatePicker } from './components/date-picker';
 import { Form, FormActions, FormError, FormField } from './components/form';
 import { Gradient } from './components/gradient';
-import { Input } from './components/input';
 import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
-import { Progress, ProgressRing } from './components/progress';
-import { Radio, RadioGroup } from './components/radio';
 import { Rating } from './components/rating';
 import { SearchBar } from './components/search-bar';
 import { Select } from './components/select';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 import { Tabs } from './components/tabs';
-import { Textarea } from './components/textarea';
 import { TimePicker } from './components/time-picker';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
+import { ActivityIndicator } from './features/activity-indicator/public';
 import { Avatar } from './features/avatar/public';
 import { AvatarGroup } from './features/avatar/public';
 import { Badge } from './features/badge/public';
@@ -37,11 +33,16 @@ import { ProductCard } from './features/card/public';
 import { Chip } from './features/chip/public';
 import { ChipGroup } from './features/chip/public';
 import { DataTable } from './features/data-table/public';
+import { EmptyState } from './features/empty-state/public';
+import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
+import { Radio, RadioGroup } from './features/form/radio/public';
+import { TextInput } from './features/form/text-input/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
 import { ContentRail } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
+import { Progress, ProgressRing } from './features/progress/public';
 import { SplashScreen } from './features/splash-screen/public';
 import { Surface } from './features/surface/public';
 import { Heading } from './features/typography/public';
@@ -66,7 +67,6 @@ import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
 import { DisclosureSection } from './patterns/disclosure-section';
-import { EmptyState } from './patterns/empty-state';
 import { FilterBar } from './patterns/filter-bar';
 import { Hero } from './patterns/hero';
 import { InspectorField } from './patterns/inspector-field';
@@ -113,6 +113,7 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
+  ActivityIndicator,
   AppBar,
   Avatar,
   AvatarGroup,
@@ -137,7 +138,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Icon,
   IconButton,
   Image,
-  Input,
+  TextInput,
   MediaCard,
   Menu,
   MetricCard,
@@ -157,7 +158,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   SplashScreen,
   Tabs,
   Text,
-  Textarea,
   TimePicker,
   Toast,
   Toolbar,

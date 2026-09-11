@@ -3,12 +3,12 @@ import type { AppCategory } from '@ankhorage/contracts';
 import { APP_CATEGORIES } from '@ankhorage/contracts';
 import React from 'react';
 
-import { Input } from '../../components/input';
 import { Select } from '../../components/select';
 import { Tabs } from '../../components/tabs';
 import { Badge } from '../../features/badge/public';
 import { Button } from '../../features/button/public';
 import { Card } from '../../features/card/public';
+import { TextInput } from '../../features/form/text-input/public';
 import { Box, Stack } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';
 import { Text } from '../../features/typography/public';
@@ -140,7 +140,7 @@ function ThemeComposerInner({
         <Stack gap="m">
           <Stack gap="xs">
             <Text variant="label">Name</Text>
-            <Input
+            <TextInput
               value={nameDraft.inputValue}
               onChangeText={handleNameChange}
               placeholder="My theme"
@@ -182,7 +182,7 @@ function ThemeComposerInner({
         <Stack gap="m">
           <Stack direction="row" gap="m" align="center">
             <Box flex={1}>
-              <Input
+              <TextInput
                 value={hexDraft.inputValue}
                 onChangeText={handleHexChange}
                 placeholder={HEX_INPUT_PLACEHOLDER}

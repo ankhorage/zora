@@ -2,7 +2,7 @@ import type { FieldProps as SurfaceFieldProps } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { InputProps } from '../input';
+import type { TextInputProps } from '../../types/text-input';
 
 export type ValidationRule =
   | { kind: 'required'; message?: string }
@@ -25,14 +25,14 @@ export interface FormFieldConfig<TName extends string = string> {
   type?: FormFieldInputType;
   placeholder?: string;
   rules?: readonly ValidationRule[];
-  autoCapitalize?: InputProps['autoCapitalize'];
-  autoComplete?: InputProps['autoComplete'];
-  keyboardType?: InputProps['keyboardType'];
-  maxLength?: InputProps['maxLength'];
+  autoCapitalize?: TextInputProps['autoCapitalize'];
+  autoComplete?: TextInputProps['autoComplete'];
+  keyboardType?: TextInputProps['keyboardType'];
+  maxLength?: TextInputProps['maxLength'];
   readOnly?: boolean;
   required?: boolean;
   secureTextEntry?: boolean;
-  textContentType?: InputProps['textContentType'];
+  textContentType?: TextInputProps['textContentType'];
   disabled?: boolean;
   testID?: string;
 }

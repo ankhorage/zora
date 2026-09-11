@@ -39,7 +39,7 @@ describe('InteractionPolicy declaration', () => {
       readSource('theme/ZoraBaseProps.ts'),
       readComponent('app-bar', 'types.ts'),
       readComponent('breadcrumbs', 'types.ts'),
-      readPattern('empty-state', 'types.ts'),
+      readSource('types/empty-state.ts'),
       readPattern('hero', 'types.ts'),
       readSource('types/product-card.ts'),
       readPattern('reader', 'types.ts'),
@@ -100,7 +100,7 @@ describe('Breadcrumbs', () => {
 
 describe('EmptyState', () => {
   test('forwards interactionPolicy to Card and internal Buttons', () => {
-    const source = readPattern('empty-state', 'EmptyState.tsx');
+    const source = readSource('features/empty-state/adapters/inbound/EmptyState.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(/<Card[\s\S]*?interactionPolicy=\{interactionPolicy\}/);

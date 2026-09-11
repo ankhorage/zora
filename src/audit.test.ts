@@ -139,7 +139,7 @@ describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surfa
     join(SRC_ROOT, 'features', 'icon', 'adapters', 'inbound', 'Icon.tsx'),
     join(SRC_ROOT, 'features', 'button', 'adapters', 'inbound', 'IconButton.tsx'),
     join(SRC_ROOT, 'components', 'modal', 'Modal.tsx'),
-    join(SRC_ROOT, 'components', 'textarea', 'Textarea.tsx'),
+    join(SRC_ROOT, 'features', 'form', 'text-input', 'adapters', 'inbound', 'TextInput.tsx'),
     join(SRC_ROOT, 'features', 'typography', 'adapters', 'inbound', 'Text.tsx'),
     join(SRC_ROOT, 'components', 'form', 'FormField.tsx'),
     join(SRC_ROOT, 'patterns', 'form-field', 'FormField.tsx'),

@@ -3,11 +3,10 @@ import {
   Button,
   Card,
   FormField,
-  Input,
   Notice,
   Screen,
   ScreenSection,
-  Textarea,
+  TextInput,
   Uploader,
 } from '@ankhorage/zora';
 
@@ -37,12 +36,15 @@ export default function SellScreen() {
           description="A minimal listing form without local style objects."
         >
           <FormField label="Title">
-            <Input placeholder="Walnut lounge chair" />
+            <TextInput placeholder="Walnut lounge chair" />
           </FormField>
           <FormField label="Price">
-            <Input placeholder="CHF 420" />
+            <TextInput placeholder="CHF 420" />
           </FormField>
-          <Textarea placeholder="Describe condition, pickup details, and what is included..." />
+          <TextInput
+            multiline
+            placeholder="Describe condition, pickup details, and what is included..."
+          />
         </ScreenSection>
 
         <ScreenSection title="Readiness">

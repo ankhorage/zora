@@ -5,7 +5,6 @@ import { ScrollView, type ViewStyle } from 'react-native';
 import { DropdownMenu, type MenuAction } from '../../../../components/menu';
 import { SkeletonList } from '../../../../components/skeleton';
 import { Show } from '../../../../foundation';
-import { EmptyState } from '../../../../patterns/empty-state';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   DataTableCellContext,
@@ -19,6 +18,7 @@ import type {
 import { Button } from '../../../button/public';
 import { IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
+import { EmptyState } from '../../../empty-state/public';
 import { Box, Stack } from '../../../layout/public';
 import { Text, type TextAlign } from '../../../typography/public';
 import { resolveDataTableRowKey } from '../../utils/resolveDataTableRowKey';

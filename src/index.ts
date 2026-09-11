@@ -2,8 +2,6 @@ export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components
 export { AppBar } from './components/app-bar';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
-export type { CheckboxGroupOption, CheckboxGroupProps, CheckboxProps } from './components/checkbox';
-export { Checkbox, CheckboxGroup } from './components/checkbox';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
 export { DatePicker } from './components/date-picker';
 export type {
@@ -44,18 +42,12 @@ export type {
   GradientRendererProviderProps,
 } from './components/gradient';
 export { Gradient, GradientRendererProvider } from './components/gradient';
-export type { InputProps, InputTrailingAction } from './components/input';
-export { Input } from './components/input';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
 export { DropdownMenu, Menu } from './components/menu';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
 export { Pagination } from './components/pagination';
-export type { ProgressProps, ProgressRingProps } from './components/progress';
-export { Progress, ProgressRing } from './components/progress';
-export type { RadioGroupOption, RadioGroupProps, RadioProps } from './components/radio';
-export { Radio, RadioGroup } from './components/radio';
 export type { RatingProps } from './components/rating';
 export { Rating } from './components/rating';
 export type { SearchBarProps } from './components/search-bar';
@@ -74,8 +66,6 @@ export type {
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type { TextareaProps } from './components/textarea';
-export { Textarea } from './components/textarea';
 export type { TimePickerProps, TimePickerValue } from './components/time-picker';
 export { TimePicker } from './components/time-picker';
 export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';
@@ -84,6 +74,10 @@ export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './compon
 export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
+export {
+  ActivityIndicator,
+  type ActivityIndicatorProps,
+} from './features/activity-indicator/public';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -133,6 +127,30 @@ export type {
   DataTableSortState,
 } from './features/data-table/public';
 export { DataTable } from './features/data-table/public';
+export {
+  EmptyState,
+  type EmptyStateAction,
+  type EmptyStateProps,
+} from './features/empty-state/public';
+export {
+  Checkbox,
+  CheckboxGroup,
+  type CheckboxGroupOption,
+  type CheckboxGroupProps,
+  type CheckboxProps,
+} from './features/form/checkbox/public';
+export {
+  Radio,
+  RadioGroup,
+  type RadioGroupOption,
+  type RadioGroupProps,
+  type RadioProps,
+} from './features/form/radio/public';
+export {
+  TextInput,
+  type TextInputProps,
+  type TextInputTrailingAction,
+} from './features/form/text-input/public';
 export type { IconProps } from './features/icon/public';
 export { Icon } from './features/icon/public';
 export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';
@@ -161,6 +179,12 @@ export type {
   ManifestSectionListProps,
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
+export {
+  Progress,
+  type ProgressProps,
+  ProgressRing,
+  type ProgressRingProps,
+} from './features/progress/public';
 export type { SplashScreenLogoShape, SplashScreenProps } from './features/splash-screen/public';
 export { SplashScreen } from './features/splash-screen/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
@@ -292,8 +316,6 @@ export type { ConfirmDialogProps } from './patterns/confirm-dialog';
 export { ConfirmDialog } from './patterns/confirm-dialog';
 export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
-export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
-export { EmptyState } from './patterns/empty-state';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';

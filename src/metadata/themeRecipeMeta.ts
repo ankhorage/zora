@@ -1,6 +1,6 @@
-import { radioGroupThemeRecipeMeta } from '../components/radio/themeRecipeMeta';
 import { buttonThemeRecipeMeta } from '../features/button/utils/themeRecipeMeta';
 import { cardThemeRecipeMeta } from '../features/card/utils/themeRecipeMeta';
+import { radioGroupThemeRecipeMeta } from '../features/form/radio/themeRecipeMeta';
 import { headingThemeRecipeMeta } from '../features/typography/utils/headingThemeRecipeMeta';
 import { textThemeRecipeMeta } from '../features/typography/utils/textThemeRecipeMeta';
 import { panelThemeRecipeMeta } from '../patterns/panel/themeRecipeMeta';
