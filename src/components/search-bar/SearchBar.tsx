@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { TextInput, type TextInputTrailingAction } from '../../features/form/text-input/public';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SearchBarProps } from './types';
 
 function SearchBarInner({

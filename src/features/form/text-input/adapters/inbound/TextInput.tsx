@@ -1,11 +1,11 @@
 import * as Surface from '@ankhorage/surface';
 import React from 'react';
 
-import { IconButton } from '../../../../button/public';
 import { resolveIconSize } from '../../../../../internal/recipes';
 import { useZoraTheme } from '../../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { TextInputProps } from '../../../../../types/text-input';
+import { IconButton } from '../../../../button/public';
 
 function TextInputInner({
   themeId: _themeId,

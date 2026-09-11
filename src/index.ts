@@ -1,9 +1,5 @@
 export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
 export { AppBar } from './components/app-bar';
-export {
-  ActivityIndicator,
-  type ActivityIndicatorProps,
-} from './features/activity-indicator/public';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
@@ -52,20 +48,6 @@ export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
 export { Pagination } from './components/pagination';
-export {
-  Checkbox,
-  CheckboxGroup,
-  type CheckboxGroupOption,
-  type CheckboxGroupProps,
-  type CheckboxProps,
-} from './features/form/checkbox/public';
-export {
-  Radio,
-  RadioGroup,
-  type RadioGroupOption,
-  type RadioGroupProps,
-  type RadioProps,
-} from './features/form/radio/public';
 export type { RatingProps } from './components/rating';
 export { Rating } from './components/rating';
 export type { SearchBarProps } from './components/search-bar';
@@ -84,11 +66,6 @@ export type {
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export {
-  TextInput,
-  type TextInputProps,
-  type TextInputTrailingAction,
-} from './features/form/text-input/public';
 export type { TimePickerProps, TimePickerValue } from './components/time-picker';
 export { TimePicker } from './components/time-picker';
 export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';
@@ -97,6 +74,10 @@ export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './compon
 export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
+export {
+  ActivityIndicator,
+  type ActivityIndicatorProps,
+} from './features/activity-indicator/public';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -151,6 +132,25 @@ export {
   type EmptyStateAction,
   type EmptyStateProps,
 } from './features/empty-state/public';
+export {
+  Checkbox,
+  CheckboxGroup,
+  type CheckboxGroupOption,
+  type CheckboxGroupProps,
+  type CheckboxProps,
+} from './features/form/checkbox/public';
+export {
+  Radio,
+  RadioGroup,
+  type RadioGroupOption,
+  type RadioGroupProps,
+  type RadioProps,
+} from './features/form/radio/public';
+export {
+  TextInput,
+  type TextInputProps,
+  type TextInputTrailingAction,
+} from './features/form/text-input/public';
 export type { IconProps } from './features/icon/public';
 export { Icon } from './features/icon/public';
 export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';

@@ -121,6 +121,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
   test('direct manifest node leaf/container rules', () => {
     const expectedLeafNodes = new Set([
+      'ActivityIndicator',
       'Avatar',
       'AvatarGroup',
       'Badge',
@@ -135,6 +136,9 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'EmptyState',
       'Hero',
       'Button',
+      'Checkbox',
+      'CheckboxGroup',
+      'Radio',
       'RadioGroup',
       'ThemeModeToggle',
       'TextInput',

@@ -1,5 +1,6 @@
 import { expect, test } from 'bun:test';
 
+import { radioGroupMeta } from '../../radioMeta';
 import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
 
 test('resolves RadioGroup theme defaults while preserving instance overrides', () => {
@@ -19,8 +20,7 @@ test('resolves RadioGroup theme defaults while preserving instance overrides', (
   ).toEqual({ gap: 'l', color: 'danger', size: 's' });
 });
 
-test('icon radio options expose serializable authoring metadata', async () => {
-  const { radioGroupMeta } = await import('./meta');
+test('icon radio options expose serializable authoring metadata', () => {
   expect(radioGroupMeta.directManifestNode).toBe(true);
   expect(radioGroupMeta.blueprint.label).toBe('Radio button group');
   expect(radioGroupMeta.blueprint.defaultProps.options.map((option) => option.value)).toContain(

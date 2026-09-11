@@ -9,7 +9,7 @@ import {
   Gradient,
   Icon,
   Inline,
-  Input,
+  TextInput,
   OAuthProviderList,
   Radio,
   RadioGroup,
@@ -136,7 +136,7 @@ export function ComponentFormsSection() {
           />
 
           <FormField label="Manual FormField" helperText="Useful when a custom control is needed.">
-            <Input placeholder="Manual field input" />
+            <TextInput placeholder="Manual field input" />
           </FormField>
 
           <FormError error="Standalone FormError coverage" />

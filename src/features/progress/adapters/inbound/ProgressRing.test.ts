@@ -9,12 +9,13 @@ describe('ProgressRing public contract', () => {
       Bun.file('src/index.ts').text(),
     ]);
 
-    expect(componentIndex).toContain("export { ProgressRing } from './ProgressRing';");
-    expect(componentIndex).toContain('ProgressRingProps');
-    expect(rootIndex).toContain(
-      "export { Progress, ProgressRing } from './features/progress/public';",
+    expect(componentIndex).toContain(
+      "export { ProgressRing } from './adapters/inbound/ProgressRing';",
     );
-    expect(rootIndex).toContain('ProgressProps, ProgressRingProps');
+    expect(componentIndex).toContain('ProgressRingProps');
+    expect(rootIndex).toContain("} from './features/progress/public';");
+    expect(rootIndex).toContain('type ProgressProps');
+    expect(rootIndex).toContain('type ProgressRingProps');
   });
 
   test('exposes native progress semantics and uses canonical normalization and colors', async () => {

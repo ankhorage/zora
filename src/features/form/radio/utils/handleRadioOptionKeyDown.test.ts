@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 import type { KeyboardEvent } from 'react';
 
-import { DIRECTION_MODIFIERS } from '../../constants/keyboard';
+import { DIRECTION_MODIFIERS } from '../../../../constants/keyboard';
 import {
   handleRadioOptionKeyDown,
   type RadioOptionKeyboardTarget,
