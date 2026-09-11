@@ -52,8 +52,6 @@ export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
 export { Pagination } from './components/pagination';
-export type { ProgressProps, ProgressRingProps } from './components/progress';
-export { Progress, ProgressRing } from './components/progress';
 export type { RadioGroupOption, RadioGroupProps, RadioProps } from './components/radio';
 export { Radio, RadioGroup } from './components/radio';
 export type { RatingProps } from './components/rating';
@@ -133,6 +131,11 @@ export type {
   DataTableSortState,
 } from './features/data-table/public';
 export { DataTable } from './features/data-table/public';
+export {
+  EmptyState,
+  type EmptyStateAction,
+  type EmptyStateProps,
+} from './features/empty-state/public';
 export type { IconProps } from './features/icon/public';
 export { Icon } from './features/icon/public';
 export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';
@@ -161,6 +164,12 @@ export type {
   ManifestSectionListProps,
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
+export {
+  Progress,
+  type ProgressProps,
+  ProgressRing,
+  type ProgressRingProps,
+} from './features/progress/public';
 export type { SplashScreenLogoShape, SplashScreenProps } from './features/splash-screen/public';
 export { SplashScreen } from './features/splash-screen/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
@@ -292,8 +301,6 @@ export type { ConfirmDialogProps } from './patterns/confirm-dialog';
 export { ConfirmDialog } from './patterns/confirm-dialog';
 export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
-export type { EmptyStateAction, EmptyStateProps } from './patterns/empty-state';
-export { EmptyState } from './patterns/empty-state';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';

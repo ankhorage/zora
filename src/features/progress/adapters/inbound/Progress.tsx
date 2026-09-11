@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Box } from '../../features/layout/public';
-import { useZoraTheme } from '../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { resolveProgressFraction } from './resolveProgressFraction';
-import { type ProgressProps, resolveProgressRole } from './types';
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import { type ProgressProps, resolveProgressRole } from '../../../../types/progress';
+import { Box } from '../../../layout/public';
+import { resolveProgressFraction } from '../../utils/resolveProgressFraction';
 
 function resolveProgressHeight(size: NonNullable<ProgressProps['size']>): number {
   switch (size) {

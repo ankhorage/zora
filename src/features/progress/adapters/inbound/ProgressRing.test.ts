@@ -1,22 +1,24 @@
 import { describe, expect, test } from 'bun:test';
 
-import { progressRingMeta } from './meta';
+import { progressRingMeta } from '../../progressMeta';
 
 describe('ProgressRing public contract', () => {
   test('is exported from the component and package entrypoints', async () => {
     const [componentIndex, rootIndex] = await Promise.all([
-      Bun.file('src/components/progress/index.ts').text(),
+      Bun.file('src/features/progress/public.ts').text(),
       Bun.file('src/index.ts').text(),
     ]);
 
     expect(componentIndex).toContain("export { ProgressRing } from './ProgressRing';");
     expect(componentIndex).toContain('ProgressRingProps');
-    expect(rootIndex).toContain("export { Progress, ProgressRing } from './components/progress';");
+    expect(rootIndex).toContain(
+      "export { Progress, ProgressRing } from './features/progress/public';",
+    );
     expect(rootIndex).toContain('ProgressProps, ProgressRingProps');
   });
 
   test('exposes native progress semantics and uses canonical normalization and colors', async () => {
-    const source = await Bun.file('src/components/progress/ProgressRing.tsx').text();
+    const source = await Bun.file('src/features/progress/adapters/inbound/ProgressRing.tsx').text();
 
     expect(source).toContain('accessibilityRole="progressbar"');
     expect(source).toContain('accessibilityValue={{');

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { Card } from '../../features/card/public';
-import { Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { EmptyStateProps } from './types';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { EmptyStateProps } from '../../../../types/empty-state';
+import { Button } from '../../../button/public';
+import { Card } from '../../../card/public';
+import { Stack } from '../../../layout/public';
 
 function EmptyStateInner({
   themeId: _themeId,

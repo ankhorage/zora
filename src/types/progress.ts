@@ -1,7 +1,7 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import type { ZoraColor, ZoraControlSize } from '../../internal/recipes';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraColor, ZoraControlSize } from '../internal/recipes';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface ProgressProps extends ZoraBaseProps {
   value: number;

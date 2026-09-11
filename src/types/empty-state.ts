@@ -1,7 +1,7 @@
 import type React from 'react';
 
-import type { ZoraButtonVariant, ZoraColor } from '../../internal/recipes';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraButtonVariant, ZoraColor } from '../internal/recipes';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface EmptyStateAction {
   label: React.ReactNode;

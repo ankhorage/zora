@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Stack } from '../../features/layout/public';
-import { Text } from '../../features/typography/public';
-import { useZoraTheme } from '../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { resolveProgressFraction } from './resolveProgressFraction';
-import { resolveProgressRingGeometry } from './resolveProgressRingGeometry';
-import { type ProgressRingProps, resolveProgressRole } from './types';
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import { type ProgressRingProps, resolveProgressRole } from '../../../../types/progress';
+import { Stack } from '../../../layout/public';
+import { Text } from '../../../typography/public';
+import { resolveProgressFraction } from '../../utils/resolveProgressFraction';
+import { resolveProgressRingGeometry } from '../../utils/resolveProgressRingGeometry';
 
 function ProgressRingInner({
   themeId: _themeId,
