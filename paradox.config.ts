@@ -4,7 +4,6 @@ export default defineParadoxConfig({
   mode: 'write',
 
   docs: {
-    title: 'ZORA',
     usage: {
       entrypoints: ['examples/basic-app/App.tsx'],
     },
