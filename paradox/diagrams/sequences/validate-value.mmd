@@ -1,8 +1,5 @@
 sequenceDiagram
   participant participant_isEmail as isEmail
-  participant participant_validateField as validateField
   participant participant_validateValue as validateValue
-  participant_validateField->>participant_validateValue: validateValue()
   participant_validateValue->>participant_isEmail: isEmail()
   participant_isEmail-->>participant_validateValue: return
-  participant_validateValue-->>participant_validateField: return

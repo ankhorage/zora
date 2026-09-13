@@ -3,7 +3,7 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v10.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v11.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -73,3 +73,4 @@ export default function BasicApp() {
 - [validateField sequence](././paradox/diagrams/sequences/validate-field.mmd)
 - [validateFields sequence](././paradox/diagrams/sequences/validate-fields.mmd)
 - [validateUploadAsset sequence](././paradox/diagrams/sequences/validate-upload-asset.mmd)
+- [validateValue sequence](././paradox/diagrams/sequences/validate-value.mmd)

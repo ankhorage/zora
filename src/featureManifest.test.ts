@@ -24,6 +24,18 @@ test('form composition has one canonical feature owner', () => {
   expect(existsSync('src/patterns/form-field')).toBe(false);
 });
 
+test('migrated picker and presentation elements have one canonical feature owner', () => {
+  for (const legacyPath of [
+    'src/components/date-picker',
+    'src/components/skeleton',
+    'src/components/time-picker',
+    'src/patterns/hero',
+    'src/patterns/missing-element',
+  ]) {
+    expect(existsSync(legacyPath), legacyPath).toBe(false);
+  }
+});
+
 test('interactive authoring retains state and event payload bindings after plugin composition', () => {
   const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
   expect(meta.DataTable?.bindings?.props?.sort?.value.type).toBe('object');

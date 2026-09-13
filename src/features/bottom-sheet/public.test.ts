@@ -25,8 +25,8 @@ describe('ZORA BottomSheet public contract', () => {
   test('installs the shared provider and removes picker ActionSheet dependencies', async () => {
     const [provider, datePicker, timePicker] = await Promise.all([
       Bun.file('src/theme/ZoraProvider.tsx').text(),
-      Bun.file('src/components/date-picker/DatePicker.tsx').text(),
-      Bun.file('src/components/time-picker/TimePicker.tsx').text(),
+      Bun.file('src/features/date-picker/adapters/inbound/DatePicker.tsx').text(),
+      Bun.file('src/features/time-picker/adapters/inbound/TimePicker.tsx').text(),
     ]);
 
     expect(provider).toContain('<BottomSheetProvider>{children}</BottomSheetProvider>');

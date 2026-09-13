@@ -143,6 +143,11 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Chip',
       'ChipGroup',
       'DataTable',
+      'DatePicker',
+      'Skeleton',
+      'SkeletonCard',
+      'SkeletonList',
+      'SkeletonText',
       'IconButton',
       'MetricCard',
       'Uploader',
@@ -171,6 +176,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ProgressRing',
       'ReaderSurface',
       'MissingElement',
+      'TimePicker',
     ]);
 
     const expectedContainerNodes = new Set([

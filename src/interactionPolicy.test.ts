@@ -40,7 +40,7 @@ describe('InteractionPolicy declaration', () => {
       readComponent('app-bar', 'types.ts'),
       readComponent('breadcrumbs', 'types.ts'),
       readSource('types/empty-state.ts'),
-      readPattern('hero', 'types.ts'),
+      readSource('types/hero.ts'),
       readSource('types/product-card.ts'),
       readPattern('reader', 'types.ts'),
       readPattern('scanner', 'types.ts'),
@@ -115,14 +115,14 @@ describe('EmptyState', () => {
 
 describe('Hero', () => {
   test('forwards interactionPolicy to Card', () => {
-    const source = readPattern('hero', 'Hero.tsx');
+    const source = readSource('features/hero/adapters/inbound/Hero.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(/<Card[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
   });
 
   test('passes interactionPolicy through renderAction to internal Buttons', () => {
-    const source = readPattern('hero', 'Hero.tsx');
+    const source = readSource('features/hero/adapters/inbound/Hero.tsx');
 
     expect(source).toMatch(
       /function renderAction\([\s\S]*?interactionPolicy: HeroProps\['interactionPolicy'\]/,
