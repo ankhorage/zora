@@ -12,6 +12,9 @@ describe('form validation', () => {
 
   test('validates email fields', () => {
     expect(validateValue('not-email', [{ kind: 'email' }])).toBe('Enter a valid email address.');
+    expect(validateValue('person@exam_ple.com', [{ kind: 'email' }])).toBe(
+      'Enter a valid email address.',
+    );
     expect(validateValue('person@example.com', [{ kind: 'email' }])).toBeUndefined();
   });
 

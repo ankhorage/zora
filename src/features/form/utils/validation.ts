@@ -1,3 +1,5 @@
+import { isEmail } from '@ankhorage/utility/regex';
+
 import type {
   FormFieldConfig,
   FormValidationErrors,
@@ -5,8 +7,6 @@ import type {
   FormValues,
   ValidationRule,
 } from '../../../types/form';
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function hasRequiredRule(rules: readonly ValidationRule[] | undefined): boolean {
   return rules?.some((rule) => rule.kind === 'required') ?? false;
@@ -27,11 +27,7 @@ export function validateValue(
       return rule.message ?? 'This field is required.';
     }
 
-    if (
-      rule.kind === 'email' &&
-      normalizedValue.length > 0 &&
-      !emailPattern.test(normalizedValue)
-    ) {
+    if (rule.kind === 'email' && normalizedValue.length > 0 && !isEmail(normalizedValue)) {
       return rule.message ?? 'Enter a valid email address.';
     }
 
