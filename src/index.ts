@@ -155,6 +155,11 @@ export type { IconProps } from './features/icon/public';
 export { Icon } from './features/icon/public';
 export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';
 export { Image } from './features/image/public';
+export {
+  KeyboardAvoidingView,
+  type KeyboardAvoidingViewBehavior,
+  type KeyboardAvoidingViewProps,
+} from './features/keyboard-avoiding-view/public';
 export type {
   BoxProps,
   ContainerProps,
@@ -185,8 +190,6 @@ export {
   ProgressRing,
   type ProgressRingProps,
 } from './features/progress/public';
-export type { SplashScreenLogoShape, SplashScreenProps } from './features/splash-screen/public';
-export { SplashScreen } from './features/splash-screen/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
 export { Surface } from './features/surface/public';
 export type {

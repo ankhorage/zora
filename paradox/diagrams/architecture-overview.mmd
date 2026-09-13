@@ -1,5 +1,5 @@
 graph TD
-  package__ankhorage_zora["ZORA"]
+  package__ankhorage_zora["@ankhorage/zora"]
   entrypoint_src_index_ts["src/index.ts"]
   package__ankhorage_zora --> entrypoint_src_index_ts
   module_src_components_app_bar_AppBar_tsx["src/components/app-bar/AppBar.tsx"]
@@ -661,6 +661,16 @@ graph TD
   module_src_features_image_imageMeta_ts --> module_src_metadata_index_ts
   module_src_features_image_public_ts["src/features/image/public.ts"]
   package__ankhorage_zora -.-> module_src_features_image_public_ts
+  module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx["src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx"]
+  package__ankhorage_zora -.-> module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx
+  module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx --> module_src_types_keyboard_avoiding_view_ts
+  module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts["src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts
+  module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_metadata_types_ts
+  module_src_features_keyboard_avoiding_view_public_ts["src/features/keyboard-avoiding-view/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_keyboard_avoiding_view_public_ts
   module_src_features_layout_adapters_inbound_Box_tsx["src/features/layout/adapters/inbound/Box.tsx"]
   package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Box_tsx
   module_src_features_layout_adapters_inbound_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -808,20 +818,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_progress_utils_resolveProgressFraction_ts
   module_src_features_progress_utils_resolveProgressRingGeometry_ts["src/features/progress/utils/resolveProgressRingGeometry.ts"]
   package__ankhorage_zora -.-> module_src_features_progress_utils_resolveProgressRingGeometry_ts
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx["src/features/splash-screen/adapters/inbound/SplashScreen.tsx"]
-  package__ankhorage_zora -.-> module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_features_layout_public_ts
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_features_typography_public_ts
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_foundation_index_ts
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_splash_screen_adapters_inbound_SplashScreen_tsx --> module_src_types_splash_screen_ts
-  module_src_features_splash_screen_public_ts["src/features/splash-screen/public.ts"]
-  package__ankhorage_zora -.-> module_src_features_splash_screen_public_ts
-  module_src_features_splash_screen_splashScreenMeta_ts["src/features/splash-screen/splashScreenMeta.ts"]
-  package__ankhorage_zora -.-> module_src_features_splash_screen_splashScreenMeta_ts
-  module_src_features_splash_screen_splashScreenMeta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_features_splash_screen_splashScreenMeta_ts --> module_src_metadata_types_ts
   module_src_features_surface_adapters_inbound_Surface_tsx["src/features/surface/adapters/inbound/Surface.tsx"]
   package__ankhorage_zora -.-> module_src_features_surface_adapters_inbound_Surface_tsx
   module_src_features_surface_adapters_inbound_Surface_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1092,6 +1088,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_icon_iconMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_image_imageMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_layout_boxMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_layout_containerMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_layout_contentRailMeta_ts
@@ -1101,7 +1098,6 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_progress_progressMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_features_splash_screen_splashScreenMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_surface_surfaceMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_typography_headingMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_typography_textMeta_ts
@@ -1685,10 +1681,10 @@ graph TD
   module_src_registry_ts --> module_src_features_form_text_input_public_ts
   module_src_registry_ts --> module_src_features_icon_public_ts
   module_src_registry_ts --> module_src_features_image_public_ts
+  module_src_registry_ts --> module_src_features_keyboard_avoiding_view_public_ts
   module_src_registry_ts --> module_src_features_layout_public_ts
   module_src_registry_ts --> module_src_features_list_public_ts
   module_src_registry_ts --> module_src_features_progress_public_ts
-  module_src_registry_ts --> module_src_features_splash_screen_public_ts
   module_src_registry_ts --> module_src_features_surface_public_ts
   module_src_registry_ts --> module_src_features_typography_public_ts
   module_src_registry_ts --> module_src_features_uploader_public_ts
@@ -1854,6 +1850,9 @@ graph TD
   package__ankhorage_zora -.-> module_src_types_image_ts
   module_src_types_image_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_image_ts --> module_src_types_upload_ts
+  module_src_types_keyboard_avoiding_view_ts["src/types/keyboard-avoiding-view.ts"]
+  package__ankhorage_zora -.-> module_src_types_keyboard_avoiding_view_ts
+  module_src_types_keyboard_avoiding_view_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_layout_ts["src/types/layout.ts"]
   package__ankhorage_zora -.-> module_src_types_layout_ts
   module_src_types_layout_ts --> module_src_theme_ZoraBaseProps_ts
@@ -1887,10 +1886,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_types_radio_ts
   module_src_types_radio_ts --> module_src_features_icon_public_ts
   module_src_types_radio_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_types_splash_screen_ts["src/types/splash-screen.ts"]
-  package__ankhorage_zora -.-> module_src_types_splash_screen_ts
-  module_src_types_splash_screen_ts --> module_src_features_layout_public_ts
-  module_src_types_splash_screen_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_surface_ts["src/types/surface.ts"]
   package__ankhorage_zora -.-> module_src_types_surface_ts
   module_src_types_surface_ts --> module_src_theme_ZoraBaseProps_ts

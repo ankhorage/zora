@@ -36,6 +36,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'Icon',
     'IconButton',
     'Image',
+    'KeyboardAvoidingView',
     'TextInput',
     'MediaCard',
     'MetricCard',

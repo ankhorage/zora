@@ -41,6 +41,7 @@ import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { iconMeta } from '../features/icon/iconMeta';
 import { imageMeta } from '../features/image/imageMeta';
+import { keyboardAvoidingViewMeta } from '../features/keyboard-avoiding-view/keyboardAvoidingViewMeta';
 import { boxMeta } from '../features/layout/boxMeta';
 import { containerMeta } from '../features/layout/containerMeta';
 import { contentRailMeta } from '../features/layout/contentRailMeta';
@@ -50,7 +51,6 @@ import { stackMeta } from '../features/layout/stackMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
-import { splashScreenMeta } from '../features/splash-screen/splashScreenMeta';
 import { surfaceMeta } from '../features/surface/surfaceMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
@@ -133,6 +133,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Icon: iconMeta,
   IconButton: iconButtonMeta,
   Image: imageMeta,
+  KeyboardAvoidingView: keyboardAvoidingViewMeta,
   TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
   Menu: menuMeta,
@@ -150,7 +151,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SkeletonCard: skeletonCardMeta,
   SkeletonList: skeletonListMeta,
   SkeletonText: skeletonTextMeta,
-  SplashScreen: splashScreenMeta,
   Tabs: tabsMeta,
   Text: textMeta,
   TimePicker: timePickerMeta,

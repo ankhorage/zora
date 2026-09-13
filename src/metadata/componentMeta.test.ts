@@ -160,10 +160,10 @@ describe('ZORA_COMPONENT_META invariants', () => {
     const expectedContainerNodes = new Set([
       'Surface',
       'MediaCard',
-      'SplashScreen',
       'FlatList',
       'SectionList',
       'BottomSheet',
+      'KeyboardAvoidingView',
       'FormField',
       'ButtonGroup',
       'Screen',
@@ -242,6 +242,19 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.ThemeModeToggle.directManifestNode).toBe(true);
     expect(ZORA_COMPONENT_META.ThemeModeToggle.allowedChildren).toEqual([]);
     expect(ZORA_COMPONENT_META.ThemeModeToggle.blueprint?.defaultProps).toEqual({ size: 'm' });
+  });
+
+  test('KeyboardAvoidingView is a direct manifest container with native behavior props', () => {
+    const keyboardAvoidingView = ZORA_COMPONENT_META.KeyboardAvoidingView;
+
+    expect(keyboardAvoidingView.directManifestNode).toBe(true);
+    expect(keyboardAvoidingView.allowedChildren.length).toBeGreaterThan(0);
+    expect(keyboardAvoidingView.blueprint?.defaultProps).toEqual({
+      behavior: 'padding',
+      enabled: true,
+      keyboardVerticalOffset: 0,
+    });
+    expect(keyboardAvoidingView.props.behavior?.enum).toEqual(['height', 'position', 'padding']);
   });
 
   test('Progress is a direct manifest leaf with serializable defaults', () => {

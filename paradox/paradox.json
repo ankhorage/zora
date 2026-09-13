@@ -1,5 +1,5 @@
 {
-  "packageName": "ZORA",
+  "packageName": "@ankhorage/zora",
   "packageId": "@ankhorage/zora",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "collaborators": null,
@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v8.0.0",
+      "value": "v9.0.1",
       "color": "cb3837"
     },
     {
@@ -1453,6 +1453,28 @@
       "exports": ["Image", "ImageFit", "ImageProps", "SurfaceImageSource"]
     },
     {
+      "path": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/withZoraThemeScope.tsx", "src/types/keyboard-avoiding-view.ts"],
+      "exports": ["KeyboardAvoidingView"]
+    },
+    {
+      "path": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/types.ts"],
+      "exports": ["keyboardAvoidingViewMeta"]
+    },
+    {
+      "path": "src/features/keyboard-avoiding-view/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "KeyboardAvoidingView",
+        "KeyboardAvoidingViewBehavior",
+        "KeyboardAvoidingViewProps"
+      ]
+    },
+    {
       "path": "src/features/layout/adapters/inbound/Box.tsx",
       "isEntrypoint": false,
       "dependencies": ["src/theme/withZoraThemeScope.tsx", "src/types/layout.ts"],
@@ -1742,31 +1764,6 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": ["resolveProgressRingGeometry"]
-    },
-    {
-      "path": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
-        "src/foundation/index.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx",
-        "src/types/splash-screen.ts"
-      ],
-      "exports": ["SplashScreen"]
-    },
-    {
-      "path": "src/features/splash-screen/public.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["SplashScreen", "SplashScreenLogoShape", "SplashScreenProps"]
-    },
-    {
-      "path": "src/features/splash-screen/splashScreenMeta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/types.ts"],
-      "exports": ["splashScreenMeta"]
     },
     {
       "path": "src/features/surface/adapters/inbound/Surface.tsx",
@@ -2193,6 +2190,9 @@
         "InlineProps",
         "InspectorField",
         "InspectorFieldProps",
+        "KeyboardAvoidingView",
+        "KeyboardAvoidingViewBehavior",
+        "KeyboardAvoidingViewProps",
         "List",
         "ListChildrenProps",
         "ListItemsProps",
@@ -2325,9 +2325,6 @@
         "SkeletonTextProps",
         "Spacer",
         "SpacerProps",
-        "SplashScreen",
-        "SplashScreenLogoShape",
-        "SplashScreenProps",
         "Stack",
         "StackProps",
         "Surface",
@@ -2741,6 +2738,7 @@
         "src/features/form/text-input/textInputMeta.ts",
         "src/features/icon/iconMeta.ts",
         "src/features/image/imageMeta.ts",
+        "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts",
         "src/features/layout/boxMeta.ts",
         "src/features/layout/containerMeta.ts",
         "src/features/layout/contentRailMeta.ts",
@@ -2750,7 +2748,6 @@
         "src/features/list/flatListMeta.ts",
         "src/features/list/sectionListMeta.ts",
         "src/features/progress/progressMeta.ts",
-        "src/features/splash-screen/splashScreenMeta.ts",
         "src/features/surface/surfaceMeta.ts",
         "src/features/typography/headingMeta.ts",
         "src/features/typography/textMeta.ts",
@@ -4008,10 +4005,10 @@
         "src/features/form/text-input/public.ts",
         "src/features/icon/public.ts",
         "src/features/image/public.ts",
+        "src/features/keyboard-avoiding-view/public.ts",
         "src/features/layout/public.ts",
         "src/features/list/public.ts",
         "src/features/progress/public.ts",
-        "src/features/splash-screen/public.ts",
         "src/features/surface/public.ts",
         "src/features/typography/public.ts",
         "src/features/uploader/public.ts",
@@ -4366,6 +4363,12 @@
       "exports": ["ImageFit", "ImageProps", "SurfaceImageSource"]
     },
     {
+      "path": "src/types/keyboard-avoiding-view.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["KeyboardAvoidingViewBehavior", "KeyboardAvoidingViewProps"]
+    },
+    {
       "path": "src/types/layout.ts",
       "isEntrypoint": false,
       "dependencies": ["src/theme/ZoraBaseProps.ts"],
@@ -4429,12 +4432,6 @@
       "isEntrypoint": false,
       "dependencies": ["src/features/icon/public.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["RadioGroupOption", "RadioGroupProps", "RadioProps"]
-    },
-    {
-      "path": "src/types/splash-screen.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/features/layout/public.ts", "src/theme/ZoraBaseProps.ts"],
-      "exports": ["SplashScreenLogoShape", "SplashScreenProps"]
     },
     {
       "path": "src/types/surface.ts",
@@ -15226,6 +15223,740 @@
       "structuredRows": []
     },
     {
+      "name": "KeyboardAvoidingView",
+      "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "line": 8,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "KeyboardAvoidingViewBehavior",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/keyboard-avoiding-view.ts",
+      "sourceLocation": {
+        "filePath": "src/types/keyboard-avoiding-view.ts",
+        "line": 5,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "KeyboardAvoidingViewProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/keyboard-avoiding-view.ts",
+      "sourceLocation": {
+        "filePath": "src/types/keyboard-avoiding-view.ts",
+        "line": 9,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "accessibilityActions",
+          "kind": "property",
+          "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityElementsHidden",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityHint",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityIgnoresInvertColors",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabelledBy",
+          "kind": "property",
+          "type": "string | string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLanguage",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLargeContentTitle",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLiveRegion",
+          "kind": "property",
+          "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRespondsToUserInteraction",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRole",
+          "kind": "property",
+          "type": "AccessibilityRole | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityShowsLargeContentViewer",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityState",
+          "kind": "property",
+          "type": "AccessibilityState | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValue",
+          "kind": "property",
+          "type": "AccessibilityValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityViewIsModal",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessible",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-busy",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-checked",
+          "kind": "property",
+          "type": "boolean | \"mixed\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-expanded",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-hidden",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-label",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-labelledby",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-live",
+          "kind": "property",
+          "type": "\"off\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-modal",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-selected",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemax",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemin",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuenow",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuetext",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "behavior",
+          "kind": "property",
+          "type": "\"height\" | \"position\" | \"padding\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsable",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsableChildren",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "contentContainerStyle",
+          "kind": "property",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "enabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "focusable",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hasTVPreferredFocus",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hitSlop",
+          "kind": "property",
+          "type": "number | Insets | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "importantForAccessibility",
+          "kind": "property",
+          "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isTVSelectable",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "keyboardVerticalOffset",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nativeID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "needsOffscreenAlphaCompositing",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityAction",
+          "kind": "property",
+          "type": "((event: AccessibilityActionEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityEscape",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityTap",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBlur",
+          "kind": "property",
+          "type": "((e: BlurEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onFocus",
+          "kind": "property",
+          "type": "((e: FocusEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onLayout",
+          "kind": "property",
+          "type": "((event: LayoutChangeEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMagicTap",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponder",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponderCapture",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancel",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancelCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDown",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDownCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnter",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnterCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeave",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeaveCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMove",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMoveCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUp",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUpCapture",
+          "kind": "property",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderEnd",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderGrant",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderMove",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderReject",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderRelease",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderStart",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminate",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminationRequest",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponder",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponderCapture",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchCancel",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEnd",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEndCapture",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchMove",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchStart",
+          "kind": "property",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "pointerEvents",
+          "kind": "property",
+          "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "removeClippedSubviews",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderToHardwareTextureAndroid",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "role",
+          "kind": "property",
+          "type": "Role | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "screenReaderFocusable",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "shouldRasterizeIOS",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "kind": "property",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tabIndex",
+          "kind": "property",
+          "type": "0 | -1 | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxMagnification",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceX",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceY",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxTiltAngle",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "List",
       "description": "List container pattern for composing `ListRow` and `ListSection`.",
       "isReadme": false,
@@ -22087,152 +22818,6 @@
           "name": "themeId",
           "kind": "property",
           "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "SplashScreen",
-      "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-      "sourceLocation": {
-        "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "line": 17,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "SplashScreenLogoShape",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/types/splash-screen.ts",
-      "sourceLocation": {
-        "filePath": "src/types/splash-screen.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "SplashScreenProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/types/splash-screen.ts",
-      "sourceLocation": {
-        "filePath": "src/types/splash-screen.ts",
-        "line": 8,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["SplashScreenLogoShape", "ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "backgroundColor",
-          "kind": "property",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logo",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoLabel",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoShape",
-          "kind": "property",
-          "type": "SplashScreenLogoShape | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoSize",
-          "kind": "property",
-          "type": "number | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "minHeight",
-          "kind": "property",
-          "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "subtitle",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "kind": "property",
-          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -34839,6 +35424,603 @@
       ]
     },
     {
+      "name": "KeyboardAvoidingView",
+      "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "line": 8,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "accessibilityActions",
+          "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityElementsHidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityHint",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityIgnoresInvertColors",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabelledBy",
+          "type": "string | string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLanguage",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLargeContentTitle",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLiveRegion",
+          "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRespondsToUserInteraction",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRole",
+          "type": "AccessibilityRole | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityShowsLargeContentViewer",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityState",
+          "type": "AccessibilityState | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValue",
+          "type": "AccessibilityValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityViewIsModal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessible",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-busy",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-checked",
+          "type": "boolean | \"mixed\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-expanded",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-hidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-label",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-live",
+          "type": "\"off\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-modal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-selected",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemax",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemin",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuenow",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuetext",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "behavior",
+          "type": "\"height\" | \"position\" | \"padding\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsableChildren",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "contentContainerStyle",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "enabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "focusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hasTVPreferredFocus",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hitSlop",
+          "type": "number | Insets | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "importantForAccessibility",
+          "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isTVSelectable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "keyboardVerticalOffset",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nativeID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "needsOffscreenAlphaCompositing",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityAction",
+          "type": "((event: AccessibilityActionEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityEscape",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBlur",
+          "type": "((e: BlurEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onFocus",
+          "type": "((e: FocusEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onLayout",
+          "type": "((event: LayoutChangeEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMagicTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancel",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancelCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDown",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDownCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnter",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnterCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeave",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeaveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMove",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMoveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUp",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUpCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderGrant",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderReject",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderRelease",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminate",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminationRequest",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchCancel",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEndCapture",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "pointerEvents",
+          "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "removeClippedSubviews",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderToHardwareTextureAndroid",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "role",
+          "type": "Role | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "screenReaderFocusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "shouldRasterizeIOS",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tabIndex",
+          "type": "0 | -1 | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxMagnification",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceX",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceY",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxTiltAngle",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "List",
       "description": "List container pattern for composing `ListRow` and `ListSection`.",
       "isReadme": false,
@@ -38896,99 +40078,6 @@
         {
           "name": "themeId",
           "type": "string | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
-      "name": "SplashScreen",
-      "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-      "sourceLocation": {
-        "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "line": 17,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "backgroundColor",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logo",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoLabel",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoShape",
-          "type": "SplashScreenLogoShape | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "logoSize",
-          "type": "number | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "minHeight",
-          "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "subtitle",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -43653,6 +44742,15 @@
       }
     },
     {
+      "name": "KeyboardAvoidingViewInner",
+      "description": "Forwards React Native keyboard avoidance and view props without adding platform behavior.",
+      "sourceLocation": {
+        "filePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
       "name": "BoxInner",
       "description": "Forwards presentation props to the published Surface boundary.",
       "sourceLocation": {
@@ -43901,33 +44999,6 @@
       "sourceLocation": {
         "filePath": "src/features/progress/utils/resolveProgressRingGeometry.ts",
         "line": 38,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveLogoRadius",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "line": 25,
-        "column": 1
-      }
-    },
-    {
-      "name": "PlaceholderLogo",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "line": 37,
-        "column": 1
-      }
-    },
-    {
-      "name": "SplashScreenInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "line": 56,
         "column": 1
       }
     },
@@ -46213,6 +47284,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/keyboard-avoiding-view/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -46224,11 +47300,6 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/features/progress/public.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/features/splash-screen/public.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -46583,6 +47654,11 @@
       },
       {
         "fromPath": "src/registry.ts",
+        "toPath": "src/features/keyboard-avoiding-view/public.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -46594,11 +47670,6 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/features/progress/public.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/features/splash-screen/public.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -47043,6 +48114,11 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/layout/boxMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -47084,11 +48160,6 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/progress/progressMeta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/features/splash-screen/splashScreenMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -47702,6 +48773,11 @@
         "sourcePath": "src/types/image.ts"
       },
       {
+        "fromPath": "src/types/keyboard-avoiding-view.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
         "fromPath": "src/types/layout.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/types/layout.ts"
@@ -47775,16 +48851,6 @@
         "fromPath": "src/types/radio.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/types/radio.ts"
-      },
-      {
-        "fromPath": "src/types/splash-screen.ts",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromPath": "src/types/splash-screen.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/types/splash-screen.ts"
       },
       {
         "fromPath": "src/types/surface.ts",
@@ -49207,6 +50273,26 @@
         "sourcePath": "src/features/image/public.ts"
       },
       {
+        "fromPath": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts",
+        "toPath": "src/metadata/allowedChildren.ts",
+        "sourcePath": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts"
+      },
+      {
+        "fromPath": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts",
+        "toPath": "src/metadata/types.ts",
+        "sourcePath": "src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts"
+      },
+      {
+        "fromPath": "src/features/keyboard-avoiding-view/public.ts",
+        "toPath": "src/types/keyboard-avoiding-view.ts",
+        "sourcePath": "src/features/keyboard-avoiding-view/public.ts"
+      },
+      {
+        "fromPath": "src/features/keyboard-avoiding-view/public.ts",
+        "toPath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "sourcePath": "src/features/keyboard-avoiding-view/public.ts"
+      },
+      {
         "fromPath": "src/features/layout/boxMeta.ts",
         "toPath": "src/metadata/allowedChildren.ts",
         "sourcePath": "src/features/layout/boxMeta.ts"
@@ -49395,26 +50481,6 @@
         "fromPath": "src/features/progress/public.ts",
         "toPath": "src/features/progress/adapters/inbound/ProgressRing.tsx",
         "sourcePath": "src/features/progress/public.ts"
-      },
-      {
-        "fromPath": "src/features/splash-screen/public.ts",
-        "toPath": "src/types/splash-screen.ts",
-        "sourcePath": "src/features/splash-screen/public.ts"
-      },
-      {
-        "fromPath": "src/features/splash-screen/public.ts",
-        "toPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "sourcePath": "src/features/splash-screen/public.ts"
-      },
-      {
-        "fromPath": "src/features/splash-screen/splashScreenMeta.ts",
-        "toPath": "src/metadata/allowedChildren.ts",
-        "sourcePath": "src/features/splash-screen/splashScreenMeta.ts"
-      },
-      {
-        "fromPath": "src/features/splash-screen/splashScreenMeta.ts",
-        "toPath": "src/metadata/types.ts",
-        "sourcePath": "src/features/splash-screen/splashScreenMeta.ts"
       },
       {
         "fromPath": "src/features/surface/public.ts",
@@ -52192,6 +53258,16 @@
         "sourcePath": "src/features/image/adapters/inbound/Image.tsx"
       },
       {
+        "fromPath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx"
+      },
+      {
+        "fromPath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "toPath": "src/types/keyboard-avoiding-view.ts",
+        "sourcePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx"
+      },
+      {
         "fromPath": "src/features/layout/adapters/inbound/Box.tsx",
         "toPath": "src/theme/withZoraThemeScope.tsx",
         "sourcePath": "src/features/layout/adapters/inbound/Box.tsx"
@@ -52455,36 +53531,6 @@
         "fromPath": "src/features/progress/adapters/inbound/ProgressRing.tsx",
         "toPath": "src/features/progress/utils/resolveProgressRingGeometry.ts",
         "sourcePath": "src/features/progress/adapters/inbound/ProgressRing.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/foundation/index.ts",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/types/splash-screen.ts",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromPath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toPath": "src/features/typography/public.ts",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
       },
       {
         "fromPath": "src/features/surface/adapters/inbound/Surface.tsx",
@@ -55807,6 +56853,12 @@
         "sourcePath": "src/features/image/adapters/inbound/Image.tsx"
       },
       {
+        "fromSymbol": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx"
+      },
+      {
         "fromSymbol": "src/features/layout/adapters/inbound/Box.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
@@ -56051,30 +57103,6 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/features/progress/adapters/inbound/ProgressRing.tsx"
-      },
-      {
-        "fromSymbol": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromSymbol": "PlaceholderLogo",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromSymbol": "PlaceholderLogo",
-        "toSymbol": "resolveLogoRadius",
-        "callExpression": "resolveLogoRadius",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
-      },
-      {
-        "fromSymbol": "SplashScreenInner",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx"
       },
       {
         "fromSymbol": "src/features/surface/adapters/inbound/Surface.tsx",
@@ -58378,6 +59406,101 @@
         "sourcePath": "src/types/image.ts"
       },
       {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "AccessibilityActionEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "AccessibilityActionName",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "AccessibilityRole",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "AccessibilityState",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "AccessibilityValue",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "BlurEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "FocusEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "GestureResponderEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "Insets",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "LayoutChangeEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "PointerEvent",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "React",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "Readonly",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "Role",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "StyleProp",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "ViewStyle",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
+        "fromSymbol": "KeyboardAvoidingViewProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/keyboard-avoiding-view.ts"
+      },
+      {
         "fromSymbol": "BoxProps",
         "toType": "AccessibilityRole",
         "sourcePath": "src/types/layout.ts"
@@ -58816,41 +59939,6 @@
         "fromSymbol": "ProgressRingProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/progress.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "ColorValue",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "React",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "Responsive",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "SplashScreenLogoShape",
-        "sourcePath": "src/types/splash-screen.ts"
-      },
-      {
-        "fromSymbol": "SplashScreenProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/types/splash-screen.ts"
       },
       {
         "fromSymbol": "SurfaceProps",
