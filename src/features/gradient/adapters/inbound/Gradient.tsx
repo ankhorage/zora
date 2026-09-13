@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Box } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { GradientProps } from '../../../../types/gradient';
+import { Box } from '../../../layout/public';
 import { useGradientRenderer } from './GradientRendererContext';
-import type { GradientProps } from './types';
 
 function GradientInner({
   themeId: _themeId,

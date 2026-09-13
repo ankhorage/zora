@@ -1,5 +1,3 @@
-export { Gradient } from './Gradient';
-export { GradientRendererProvider } from './GradientRendererContext';
 export type {
   GradientColor,
   GradientColors,
@@ -9,4 +7,6 @@ export type {
   GradientRenderer,
   GradientRendererProps,
   GradientRendererProviderProps,
-} from './types';
+} from '../../types/gradient';
+export { Gradient } from './adapters/inbound/Gradient';
+export { GradientRendererProvider } from './adapters/inbound/GradientRendererContext';

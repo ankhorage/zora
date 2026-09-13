@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { FormFieldConfig, FormValues } from '../../types/form';
-import { AuthForm } from './AuthForm';
-import type { ForgotPasswordFormProps } from './types';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { ForgotPasswordFormProps } from '../../../../types/auth';
+import type { FormFieldConfig, FormValues } from '../../../../types/form';
+import { Button } from '../../../button/public';
+import { Stack } from '../../../layout/public';
 import {
   defaultIdentifiers,
   normalizeIdentifierKind,
   resolveIdentifierLabel,
   resolveIdentifierRules,
   resolveIdentifierType,
-} from './utils';
+} from '../../utils/authForm';
+import { AuthForm } from './AuthForm';
 
 type ForgotPasswordFieldName = 'identifier';
 
@@ -49,7 +49,7 @@ function ForgotPasswordFormInner({
 
   const handleSubmit = React.useCallback(
     (formValues: FormValues<ForgotPasswordFieldName>) =>
-      onSubmit({
+      onSubmit?.({
         identifier: formValues.identifier.trim(),
         identifierKind: normalizeIdentifierKind(formValues.identifier, identifiers),
       }),

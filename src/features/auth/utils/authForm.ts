@@ -1,5 +1,5 @@
-import type { FormFieldConfig, ValidationRule } from '../../types/form';
-import type { AuthIdentifierKind } from './types';
+import type { AuthIdentifierKind } from '../../../types/auth';
+import type { FormFieldConfig, ValidationRule } from '../../../types/form';
 
 export const defaultIdentifiers = ['email'] as const satisfies readonly AuthIdentifierKind[];
 

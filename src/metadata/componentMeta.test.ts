@@ -137,6 +137,12 @@ describe('ZORA_COMPONENT_META invariants', () => {
   test('direct manifest node leaf/container rules', () => {
     const expectedLeafNodes = new Set([
       'ActivityIndicator',
+      'ForgotPasswordForm',
+      'OAuthProviderButton',
+      'OAuthProviderList',
+      'OtpForm',
+      'SignInForm',
+      'SignUpForm',
       'Avatar',
       'AvatarGroup',
       'Badge',
@@ -181,6 +187,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
 
     const expectedContainerNodes = new Set([
       'Form',
+      'Gradient',
       'Surface',
       'MediaCard',
       'FlatList',

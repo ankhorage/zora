@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { FormFieldConfig, FormValues } from '../../types/form';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { OtpFormProps } from '../../../../types/auth';
+import type { FormFieldConfig, FormValues } from '../../../../types/form';
+import { Button } from '../../../button/public';
+import { Stack } from '../../../layout/public';
 import { AuthForm } from './AuthForm';
-import type { OtpFormProps } from './types';
 
 type OtpFieldName = 'otp';
 
@@ -45,7 +45,7 @@ function OtpFormInner({
 
   const handleSubmit = React.useCallback(
     (formValues: FormValues<OtpFieldName>) =>
-      onSubmit({
+      onSubmit?.({
         otp: formValues.otp.trim(),
       }),
     [onSubmit],

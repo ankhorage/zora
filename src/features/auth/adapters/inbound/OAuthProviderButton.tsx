@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { resolveOAuthProviderIcon, resolveOAuthProviderLabel } from './oauthProviders';
-import type { OAuthProviderButtonProps } from './types';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { OAuthProviderButtonProps } from '../../../../types/auth';
+import { Button } from '../../../button/public';
+import { resolveOAuthProviderIcon, resolveOAuthProviderLabel } from '../../utils/oauthProviders';
 
 function OAuthProviderButtonInner({
   themeId: _themeId,

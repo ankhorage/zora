@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { FormFieldConfig, FormValues } from '../../types/form';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { SignUpFormProps } from '../../../../types/auth';
+import type { FormFieldConfig, FormValues } from '../../../../types/form';
+import { Button } from '../../../button/public';
+import { Stack } from '../../../layout/public';
 import { AuthForm } from './AuthForm';
-import type { SignUpFormProps } from './types';
 
 const defaultSignUpFields = [
   {

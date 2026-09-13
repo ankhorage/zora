@@ -2,17 +2,6 @@ export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components
 export { AppBar } from './components/app-bar';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
-export type {
-  GradientColor,
-  GradientColors,
-  GradientLocations,
-  GradientPoint,
-  GradientProps,
-  GradientRenderer,
-  GradientRendererProps,
-  GradientRendererProviderProps,
-} from './components/gradient';
-export { Gradient, GradientRendererProvider } from './components/gradient';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
 export { DropdownMenu, Menu } from './components/menu';
 export type { ModalProps } from './components/modal';
@@ -37,6 +26,35 @@ export {
   ActivityIndicator,
   type ActivityIndicatorProps,
 } from './features/activity-indicator/public';
+export type {
+  AuthFormBaseProps,
+  AuthIdentifierKind,
+  ForgotPasswordFormProps,
+  ForgotPasswordFormValues,
+  OAuthProviderButtonProps,
+  OAuthProviderIconSpec,
+  OAuthProviderItem,
+  OAuthProviderListLayout,
+  OAuthProviderListProps,
+  OtpFormProps,
+  OtpFormValues,
+  SignInFormProps,
+  SignInFormValues,
+  SignUpFormField,
+  SignUpFormProps,
+  SignUpFormValues,
+} from './features/auth/public';
+export {
+  DEFAULT_OAUTH_PROVIDER_ICONS,
+  ForgotPasswordForm,
+  OAuthProviderButton,
+  OAuthProviderList,
+  OtpForm,
+  resolveOAuthProviderIcon,
+  resolveOAuthProviderLabel,
+  SignInForm,
+  SignUpForm,
+} from './features/auth/public';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -141,6 +159,17 @@ export {
   type TextInputProps,
   type TextInputTrailingAction,
 } from './features/form/text-input/public';
+export type {
+  GradientColor,
+  GradientColors,
+  GradientLocations,
+  GradientPoint,
+  GradientProps,
+  GradientRenderer,
+  GradientRendererProps,
+  GradientRendererProviderProps,
+} from './features/gradient/public';
+export { Gradient, GradientRendererProvider } from './features/gradient/public';
 export {
   Hero,
   type HeroAction,
@@ -296,35 +325,6 @@ export {
   ZORA_THEME_RECIPE_META,
   ZORA_THEME_TOKEN_FAMILIES,
 } from './metadata';
-export type {
-  AuthFormBaseProps,
-  AuthIdentifierKind,
-  ForgotPasswordFormProps,
-  ForgotPasswordFormValues,
-  OAuthProviderButtonProps,
-  OAuthProviderIconSpec,
-  OAuthProviderItem,
-  OAuthProviderListLayout,
-  OAuthProviderListProps,
-  OtpFormProps,
-  OtpFormValues,
-  SignInFormProps,
-  SignInFormValues,
-  SignUpFormField,
-  SignUpFormProps,
-  SignUpFormValues,
-} from './patterns/auth';
-export {
-  DEFAULT_OAUTH_PROVIDER_ICONS,
-  ForgotPasswordForm,
-  OAuthProviderButton,
-  OAuthProviderList,
-  OtpForm,
-  resolveOAuthProviderIcon,
-  resolveOAuthProviderLabel,
-  SignInForm,
-  SignUpForm,
-} from './patterns/auth';
 export type { ChatListAvatar, ChatListItemProps } from './patterns/chat-list-item';
 export { ChatListItem } from './patterns/chat-list-item';
 export type {
