@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.1.0
+
+### Minor Changes
+
+- ca23e34: Move the complete Auth solution and Gradient to canonical feature ownership.
+
+  ForgotPasswordForm, OtpForm, SignInForm, SignUpForm, OAuthProviderButton, OAuthProviderList, and Gradient are now direct manifest nodes with serializable authoring metadata. Gradient remains renderer-agnostic through GradientRendererProvider.
+
 ## 12.0.0
 
 ### Major Changes
