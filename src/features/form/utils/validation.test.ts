@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { FormFieldConfig, FormValues } from './types';
+import type { FormFieldConfig, FormValues } from '../../../types/form';
 import { validateFields, validateValue } from './validation';
 
 describe('form validation', () => {

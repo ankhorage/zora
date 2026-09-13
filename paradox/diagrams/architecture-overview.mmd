@@ -53,52 +53,6 @@ graph TD
   module_src_components_date_picker_types_ts["src/components/date-picker/types.ts"]
   package__ankhorage_zora -.-> module_src_components_date_picker_types_ts
   module_src_components_date_picker_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_form_Form_tsx["src/components/form/Form.tsx"]
-  package__ankhorage_zora -.-> module_src_components_form_Form_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_FormActions_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_FormError_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_FormField_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_types_ts
-  module_src_components_form_Form_tsx --> module_src_components_form_useFormController_ts
-  module_src_components_form_Form_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_Form_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormActions_tsx["src/components/form/FormActions.tsx"]
-  package__ankhorage_zora -.-> module_src_components_form_FormActions_tsx
-  module_src_components_form_FormActions_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormActions_tsx --> module_src_features_button_public_ts
-  module_src_components_form_FormActions_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormActions_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormError_tsx["src/components/form/FormError.tsx"]
-  package__ankhorage_zora -.-> module_src_components_form_FormError_tsx
-  module_src_components_form_FormError_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormError_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormError_tsx --> module_src_features_typography_public_ts
-  module_src_components_form_FormError_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_components_form_FormError_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormField_tsx["src/components/form/FormField.tsx"]
-  package__ankhorage_zora -.-> module_src_components_form_FormField_tsx
-  module_src_components_form_FormField_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormField_tsx --> module_src_components_form_validation_ts
-  module_src_components_form_FormField_tsx --> module_src_features_form_text_input_public_ts
-  module_src_components_form_FormField_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormField_tsx --> module_src_features_typography_public_ts
-  module_src_components_form_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_index_ts["src/components/form/index.ts"]
-  package__ankhorage_zora -.-> module_src_components_form_index_ts
-  module_src_components_form_meta_ts["src/components/form/meta.ts"]
-  package__ankhorage_zora -.-> module_src_components_form_meta_ts
-  module_src_components_form_meta_ts --> module_src_metadata_index_ts
-  module_src_components_form_types_ts["src/components/form/types.ts"]
-  package__ankhorage_zora -.-> module_src_components_form_types_ts
-  module_src_components_form_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_form_types_ts --> module_src_types_text_input_ts
-  module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
-  package__ankhorage_zora -.-> module_src_components_form_useFormController_ts
-  module_src_components_form_useFormController_ts --> module_src_components_form_types_ts
-  module_src_components_form_useFormController_ts --> module_src_components_form_validation_ts
-  module_src_components_form_validation_ts["src/components/form/validation.ts"]
-  package__ankhorage_zora -.-> module_src_components_form_validation_ts
-  module_src_components_form_validation_ts --> module_src_components_form_types_ts
   module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
   package__ankhorage_zora -.-> module_src_components_gradient_Gradient_tsx
   module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_GradientRendererContext_tsx
@@ -572,6 +526,31 @@ graph TD
   module_src_features_empty_state_emptyStateMeta_ts --> module_src_metadata_index_ts
   module_src_features_empty_state_public_ts["src/features/empty-state/public.ts"]
   package__ankhorage_zora -.-> module_src_features_empty_state_public_ts
+  module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
+  package__ankhorage_zora -.-> module_src_features_form_adapters_inbound_Form_tsx
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_form_adapters_inbound_FormActions_tsx
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
+  package__ankhorage_zora -.-> module_src_features_form_adapters_inbound_FormActions_tsx
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_features_button_public_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
+  package__ankhorage_zora -.-> module_src_features_form_adapters_inbound_FormError_tsx
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_features_typography_public_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormField_tsx["src/features/form/adapters/inbound/FormField.tsx"]
+  package__ankhorage_zora -.-> module_src_features_form_adapters_inbound_FormField_tsx
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_features_typography_public_ts
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_types_form_ts
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx["src/features/form/checkbox/adapters/inbound/Checkbox.tsx"]
   package__ankhorage_zora -.-> module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -587,6 +566,20 @@ graph TD
   module_src_features_form_checkbox_checkboxMeta_ts --> module_src_metadata_index_ts
   module_src_features_form_checkbox_public_ts["src/features/form/checkbox/public.ts"]
   package__ankhorage_zora -.-> module_src_features_form_checkbox_public_ts
+  module_src_features_form_formActionsMeta_ts["src/features/form/formActionsMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_formActionsMeta_ts
+  module_src_features_form_formActionsMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formErrorMeta_ts["src/features/form/formErrorMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_formErrorMeta_ts
+  module_src_features_form_formErrorMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formFieldMeta_ts["src/features/form/formFieldMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_formFieldMeta_ts
+  module_src_features_form_formFieldMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formMeta_ts["src/features/form/formMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_formMeta_ts
+  module_src_features_form_formMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_public_ts["src/features/form/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_public_ts
   module_src_features_form_radio_adapters_inbound_Radio_tsx["src/features/form/radio/adapters/inbound/Radio.tsx"]
   package__ankhorage_zora -.-> module_src_features_form_radio_adapters_inbound_Radio_tsx
   module_src_features_form_radio_adapters_inbound_Radio_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -639,6 +632,13 @@ graph TD
   module_src_features_form_text_input_textInputMeta_ts["src/features/form/text-input/textInputMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_form_text_input_textInputMeta_ts
   module_src_features_form_text_input_textInputMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_useFormController_ts["src/features/form/useFormController.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_useFormController_ts
+  module_src_features_form_useFormController_ts --> module_src_features_form_utils_validation_ts
+  module_src_features_form_useFormController_ts --> module_src_types_form_ts
+  module_src_features_form_utils_validation_ts["src/features/form/utils/validation.ts"]
+  package__ankhorage_zora -.-> module_src_features_form_utils_validation_ts
+  module_src_features_form_utils_validation_ts --> module_src_types_form_ts
   module_src_features_icon_adapters_inbound_Icon_tsx["src/features/icon/adapters/inbound/Icon.tsx"]
   package__ankhorage_zora -.-> module_src_features_icon_adapters_inbound_Icon_tsx
   module_src_features_icon_adapters_inbound_Icon_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -886,6 +886,7 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_uploader_adapters_inbound_Uploader_tsx
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_modal_index_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_button_public_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_form_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_icon_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_image_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_layout_public_ts
@@ -893,7 +894,6 @@ graph TD
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_typography_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_application_use_cases_validateUploadAsset_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_composition_createUploadPicker_ts
-  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_patterns_form_field_index_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_types_upload_ts
   module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts["src/features/uploader/adapters/outbound/pickDocumentOrFileAsync.ts"]
@@ -1053,7 +1053,6 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_date_picker_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_form_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_gradient_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_modal_meta_ts
@@ -1084,6 +1083,10 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_data_table_dataTableMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_empty_state_emptyStateMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_checkbox_checkboxMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formActionsMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formErrorMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formFieldMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_radio_radioMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_icon_iconMeta_ts
@@ -1150,14 +1153,28 @@ graph TD
   package__ankhorage_zora -.-> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_types_ts["src/metadata/types.ts"]
   package__ankhorage_zora -.-> module_src_metadata_types_ts
+  module_src_patterns_auth_AuthForm_tsx["src/patterns/auth/AuthForm.tsx"]
+  package__ankhorage_zora -.-> module_src_patterns_auth_AuthForm_tsx
+  module_src_patterns_auth_AuthForm_tsx --> module_src_features_form_public_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_patterns_auth_AuthFormField_tsx
+  module_src_patterns_auth_AuthForm_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_types_form_ts
+  module_src_patterns_auth_AuthFormField_tsx["src/patterns/auth/AuthFormField.tsx"]
+  package__ankhorage_zora -.-> module_src_patterns_auth_AuthFormField_tsx
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_public_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_types_form_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_auth_ForgotPasswordForm_tsx
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_utils_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
   package__ankhorage_zora -.-> module_src_patterns_auth_index_ts
   module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
@@ -1180,35 +1197,38 @@ graph TD
   module_src_patterns_auth_oauthProviders_ts --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_OtpForm_tsx["src/patterns/auth/OtpForm.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_auth_OtpForm_tsx
-  module_src_patterns_auth_OtpForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_OtpForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_SignInForm_tsx["src/patterns/auth/SignInForm.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_auth_SignInForm_tsx
-  module_src_patterns_auth_SignInForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_utils_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_SignInForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_SignUpForm_tsx["src/patterns/auth/SignUpForm.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_auth_SignUpForm_tsx
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_SignUpForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_types_ts["src/patterns/auth/types.ts"]
   package__ankhorage_zora -.-> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_types_ts --> module_src_components_form_index_ts
   module_src_patterns_auth_types_ts --> module_src_features_button_public_ts
   module_src_patterns_auth_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_auth_types_ts --> module_src_types_form_ts
   module_src_patterns_auth_utils_ts["src/patterns/auth/utils.ts"]
   package__ankhorage_zora -.-> module_src_patterns_auth_utils_ts
-  module_src_patterns_auth_utils_ts --> module_src_components_form_index_ts
   module_src_patterns_auth_utils_ts --> module_src_patterns_auth_types_ts
+  module_src_patterns_auth_utils_ts --> module_src_types_form_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx["src/patterns/chat-list-item/ChatListItem.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_chat_list_item_ChatListItem_tsx
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_avatar_public_ts
@@ -1291,17 +1311,6 @@ graph TD
   module_src_patterns_filter_bar_types_ts["src/patterns/filter-bar/types.ts"]
   package__ankhorage_zora -.-> module_src_patterns_filter_bar_types_ts
   module_src_patterns_filter_bar_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_form_field_FormField_tsx["src/patterns/form-field/FormField.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_form_field_FormField_tsx
-  module_src_patterns_form_field_FormField_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_patterns_form_field_types_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_form_field_index_ts["src/patterns/form-field/index.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_form_field_index_ts
-  module_src_patterns_form_field_types_ts["src/patterns/form-field/types.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_form_field_types_ts
-  module_src_patterns_form_field_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_hero_Hero_tsx["src/patterns/hero/Hero.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_hero_Hero_tsx
   module_src_patterns_hero_Hero_tsx --> module_src_features_button_public_ts
@@ -1323,8 +1332,8 @@ graph TD
   package__ankhorage_zora -.-> module_src_patterns_inspector_field_index_ts
   module_src_patterns_inspector_field_InspectorField_tsx["src/patterns/inspector-field/InspectorField.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_inspector_field_InspectorField_tsx
+  module_src_patterns_inspector_field_InspectorField_tsx --> module_src_features_form_public_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_form_field_index_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_inspector_field_types_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_inspector_field_meta_ts["src/patterns/inspector-field/meta.ts"]
@@ -1654,7 +1663,6 @@ graph TD
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_breadcrumbs_index_ts
   module_src_registry_ts --> module_src_components_date_picker_index_ts
-  module_src_registry_ts --> module_src_components_form_index_ts
   module_src_registry_ts --> module_src_components_gradient_index_ts
   module_src_registry_ts --> module_src_components_menu_index_ts
   module_src_registry_ts --> module_src_components_modal_index_ts
@@ -1677,6 +1685,7 @@ graph TD
   module_src_registry_ts --> module_src_features_data_table_public_ts
   module_src_registry_ts --> module_src_features_empty_state_public_ts
   module_src_registry_ts --> module_src_features_form_checkbox_public_ts
+  module_src_registry_ts --> module_src_features_form_public_ts
   module_src_registry_ts --> module_src_features_form_radio_public_ts
   module_src_registry_ts --> module_src_features_form_text_input_public_ts
   module_src_registry_ts --> module_src_features_icon_public_ts
@@ -1835,6 +1844,10 @@ graph TD
   package__ankhorage_zora -.-> module_src_types_empty_state_ts
   module_src_types_empty_state_ts --> module_src_internal_recipes_ts
   module_src_types_empty_state_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_form_ts["src/types/form.ts"]
+  package__ankhorage_zora -.-> module_src_types_form_ts
+  module_src_types_form_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_form_ts --> module_src_types_text_input_ts
   module_src_types_heading_ts["src/types/heading.ts"]
   package__ankhorage_zora -.-> module_src_types_heading_ts
   module_src_types_heading_ts --> module_src_internal_recipes_ts

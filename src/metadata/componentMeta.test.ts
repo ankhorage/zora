@@ -51,7 +51,7 @@ describe('ZORA_COMPONENT_META event metadata', () => {
     const eventType: ZoraComponentEventPayloadKind = event?.eventType ?? 'form.submit';
 
     expect(eventType).toBe('form.submit');
-    expect(event?.payloadFields?.map((field) => field.path)).toEqual(['payload.values']);
+    expect(event?.payloadFields).toEqual([]);
   });
 
   test('declares button event metadata', () => {
@@ -100,6 +100,21 @@ describe('ZORA_COMPONENT_META requirement metadata', () => {
 });
 
 describe('ZORA_COMPONENT_META invariants', () => {
+  test('keeps form nodes in their canonical hierarchy', () => {
+    expect(ZORA_COMPONENT_META.Form.allowedChildren).toEqual(['FormError', 'FormField']);
+    expect(ZORA_COMPONENT_META.FormField.allowedChildren).toEqual([
+      'Checkbox',
+      'CheckboxGroup',
+      'RadioGroup',
+      'TextInput',
+    ]);
+    for (const [name, meta] of Object.entries(ZORA_COMPONENT_META)) {
+      if (name === 'Form') continue;
+      expect(meta.allowedChildren).not.toContain('FormError');
+      expect(meta.allowedChildren).not.toContain('FormField');
+    }
+  });
+
   test('every key matches meta.name', () => {
     for (const [key, meta] of Object.entries(ZORA_COMPONENT_META)) {
       expect(meta.name).toBe(key);
@@ -136,6 +151,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'EmptyState',
       'Hero',
       'Button',
+      'FormError',
       'Checkbox',
       'CheckboxGroup',
       'Radio',
@@ -158,6 +174,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
     ]);
 
     const expectedContainerNodes = new Set([
+      'Form',
       'Surface',
       'MediaCard',
       'FlatList',

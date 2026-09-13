@@ -5,33 +5,6 @@ export { Breadcrumbs } from './components/breadcrumbs';
 export type { DatePickerProps, DatePickerValue } from './components/date-picker';
 export { DatePicker } from './components/date-picker';
 export type {
-  FormActionsProps,
-  FormErrorProps,
-  FormErrors,
-  FormFieldConfig,
-  FormFieldControlProps,
-  FormFieldInputType,
-  FormFieldProps,
-  FormProps,
-  FormValidationErrors,
-  FormValidationResult,
-  FormValues,
-  UseFormControllerOptions,
-  UseFormControllerResult,
-  ValidationRule,
-} from './components/form';
-export {
-  Form,
-  FormActions,
-  FormError,
-  FormField,
-  hasRequiredRule,
-  useFormController,
-  validateField,
-  validateFields,
-  validateValue,
-} from './components/form';
-export type {
   GradientColor,
   GradientColors,
   GradientLocations,
@@ -139,6 +112,32 @@ export {
   type CheckboxGroupProps,
   type CheckboxProps,
 } from './features/form/checkbox/public';
+export type {
+  FormActionsProps,
+  FormErrorProps,
+  FormErrors,
+  FormFieldConfig,
+  FormFieldInputType,
+  FormFieldProps,
+  FormProps,
+  FormValidationErrors,
+  FormValidationResult,
+  FormValues,
+  UseFormControllerOptions,
+  UseFormControllerResult,
+  ValidationRule,
+} from './features/form/public';
+export {
+  Form,
+  FormActions,
+  FormError,
+  FormField,
+  hasRequiredRule,
+  useFormController,
+  validateField,
+  validateFields,
+  validateValue,
+} from './features/form/public';
 export {
   Radio,
   RadioGroup,

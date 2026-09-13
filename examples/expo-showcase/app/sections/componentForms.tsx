@@ -113,33 +113,31 @@ export function ComponentFormsSection() {
         description="Compact coverage for Form, FormField, FormActions, and FormError."
       >
         <Stack gap="m">
-          <Form
-            fields={[
-              {
-                name: 'email',
-                label: 'Email',
-                type: 'email',
-                placeholder: 'hello@example.com',
-                rules: [{ kind: 'required' }, { kind: 'email' }],
-              },
-              {
-                name: 'project',
-                label: 'Project name',
-                placeholder: 'Showcase refresh',
-              },
-            ]}
-            values={formValues}
-            onChange={setFormValues}
-            onSubmit={() => undefined}
-            error="Example form-level error"
-            submitLabel="Save form"
-          />
+          <Form onSubmit={() => undefined} submitLabel="Save form">
+            <FormError error="Example form-level error" />
+            <FormField label="Email" required>
+              <TextInput
+                value={formValues.email}
+                onChangeText={(email) => setFormValues((values) => ({ ...values, email }))}
+              />
+            </FormField>
+            <FormField label="Project name">
+              <TextInput
+                value={formValues.project}
+                onChangeText={(project) => setFormValues((values) => ({ ...values, project }))}
+              />
+            </FormField>
+          </Form>
 
-          <FormField label="Manual FormField" helperText="Useful when a custom control is needed.">
-            <TextInput placeholder="Manual field input" />
-          </FormField>
-
-          <FormError error="Standalone FormError coverage" />
+          <Form submitLabel="Save manual form">
+            <FormError error="Standalone FormError coverage" />
+            <FormField
+              label="Manual FormField"
+              helperText="Useful when a custom control is needed."
+            >
+              <TextInput placeholder="Manual field input" />
+            </FormField>
+          </Form>
 
           <FormActions submitLabel="Save manually" onSubmit={() => undefined}>
             <Button variant="ghost" color="neutral">

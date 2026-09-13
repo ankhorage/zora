@@ -6,8 +6,8 @@ import type {
   FormValues,
   UseFormControllerOptions,
   UseFormControllerResult,
-} from './types';
-import { validateFields } from './validation';
+} from '../../types/form';
+import { validateFields } from './utils/validation';
 
 function createInitialValues<TName extends string>(
   fields: readonly { name: TName }[],

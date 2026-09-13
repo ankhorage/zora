@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Modal } from '../../../../components/modal';
-import { FormField } from '../../../../patterns/form-field';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
+import { FormField } from '../../../form/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
 import { Box, Stack } from '../../../layout/public';

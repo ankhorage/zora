@@ -4,7 +4,7 @@ import type {
   FormValidationResult,
   FormValues,
   ValidationRule,
-} from './types';
+} from '../../../types/form';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

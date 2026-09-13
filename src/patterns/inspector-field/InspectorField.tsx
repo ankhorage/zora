@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { FormField } from '../../features/form/public';
 import { Box, Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { FormField } from '../form-field';
 import type { InspectorFieldProps } from './types';
 
 function InspectorFieldInner({
