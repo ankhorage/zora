@@ -2,8 +2,6 @@ export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components
 export { AppBar } from './components/app-bar';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
-export type { DatePickerProps, DatePickerValue } from './components/date-picker';
-export { DatePicker } from './components/date-picker';
 export type {
   GradientColor,
   GradientColors,
@@ -27,20 +25,8 @@ export type { SearchBarProps } from './components/search-bar';
 export { SearchBar } from './components/search-bar';
 export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
-export type {
-  SkeletonCardProps,
-  SkeletonDimension,
-  SkeletonListProps,
-  SkeletonListVariant,
-  SkeletonProps,
-  SkeletonRadius,
-  SkeletonTextProps,
-} from './components/skeleton';
-export { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './components/skeleton';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type { TimePickerProps, TimePickerValue } from './components/time-picker';
-export { TimePicker } from './components/time-picker';
 export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';
 export { Toast, ToastProvider, useToast } from './components/toast';
 export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
@@ -101,6 +87,11 @@ export type {
 } from './features/data-table/public';
 export { DataTable } from './features/data-table/public';
 export {
+  DatePicker,
+  type DatePickerProps,
+  type DatePickerValue,
+} from './features/date-picker/public';
+export {
   EmptyState,
   type EmptyStateAction,
   type EmptyStateProps,
@@ -150,6 +141,14 @@ export {
   type TextInputProps,
   type TextInputTrailingAction,
 } from './features/form/text-input/public';
+export {
+  Hero,
+  type HeroAction,
+  type HeroAlign,
+  type HeroLayout,
+  type HeroProps,
+  type HeroTone,
+} from './features/hero/public';
 export type { IconProps } from './features/icon/public';
 export { Icon } from './features/icon/public';
 export type { ImageFit, ImageProps, SurfaceImageSource } from './features/image/public';
@@ -183,14 +182,33 @@ export type {
   ManifestSectionListProps,
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
+export { MissingElement, type MissingElementProps } from './features/missing-element/public';
 export {
   Progress,
   type ProgressProps,
   ProgressRing,
   type ProgressRingProps,
 } from './features/progress/public';
+export {
+  Skeleton,
+  SkeletonCard,
+  type SkeletonCardProps,
+  type SkeletonDimension,
+  SkeletonList,
+  type SkeletonListProps,
+  type SkeletonListVariant,
+  type SkeletonProps,
+  type SkeletonRadius,
+  SkeletonText,
+  type SkeletonTextProps,
+} from './features/skeleton/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
 export { Surface } from './features/surface/public';
+export {
+  TimePicker,
+  type TimePickerProps,
+  type TimePickerValue,
+} from './features/time-picker/public';
 export type {
   HeadingAlign,
   HeadingColor,
@@ -320,8 +338,6 @@ export type { DisclosureSectionProps } from './patterns/disclosure-section';
 export { DisclosureSection } from './patterns/disclosure-section';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
-export type { HeroAction, HeroAlign, HeroLayout, HeroProps, HeroTone } from './patterns/hero';
-export { Hero } from './patterns/hero';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
 export type {
@@ -340,8 +356,6 @@ export type {
   MessageBubbleStatus,
 } from './patterns/message-bubble';
 export { MessageBubble } from './patterns/message-bubble';
-export type { MissingElementProps } from './patterns/missing-element';
-export { MissingElement } from './patterns/missing-element';
 export type { NoticeProps } from './patterns/notice';
 export { Notice } from './patterns/notice';
 export type { PanelProps } from './patterns/panel';

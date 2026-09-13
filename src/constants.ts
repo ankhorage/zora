@@ -11,6 +11,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   card: ['Card', 'MediaCard', 'MetricCard', 'PostCard', 'ProductCard'],
   chip: ['Chip', 'ChipGroup'],
   'data-table': ['DataTable'],
+  'date-picker': ['DatePicker'],
   form: ['Form', 'FormError', 'FormField'],
   button: ['Button', 'IconButton', 'ButtonGroup'],
   icon: ['Icon'],
@@ -18,7 +19,9 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   'keyboard-avoiding-view': ['KeyboardAvoidingView'],
   layout: ['Box', 'Container', 'ContentRail', 'Divider', 'Grid', 'Stack'],
   list: ['FlatList', 'SectionList'],
+  skeleton: ['Skeleton', 'SkeletonCard', 'SkeletonList', 'SkeletonText'],
   typography: ['Heading', 'Text'],
+  'time-picker': ['TimePicker'],
   uploader: ['Uploader'],
   'bottom-sheet': ['BottomSheet'],
 } as const;

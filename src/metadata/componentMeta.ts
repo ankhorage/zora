@@ -1,6 +1,5 @@
 import { appBarMeta } from '../components/app-bar/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
-import { datePickerMeta } from '../components/date-picker/meta';
 import { gradientMeta } from '../components/gradient/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
@@ -8,14 +7,7 @@ import { paginationMeta } from '../components/pagination/meta';
 import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
 import { selectMeta } from '../components/select/meta';
-import {
-  skeletonCardMeta,
-  skeletonListMeta,
-  skeletonMeta,
-  skeletonTextMeta,
-} from '../components/skeleton/meta';
 import { tabsMeta } from '../components/tabs/meta';
-import { timePickerMeta } from '../components/time-picker/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
@@ -34,6 +26,7 @@ import { productCardMeta } from '../features/card/productCardMeta';
 import { chipGroupMeta } from '../features/chip/chipGroupMeta';
 import { chipMeta } from '../features/chip/chipMeta';
 import { dataTableMeta } from '../features/data-table/dataTableMeta';
+import { datePickerMeta } from '../features/date-picker/datePickerMeta';
 import { emptyStateMeta } from '../features/empty-state/emptyStateMeta';
 import { checkboxGroupMeta, checkboxMeta } from '../features/form/checkbox/checkboxMeta';
 import { formActionsMeta } from '../features/form/formActionsMeta';
@@ -42,6 +35,7 @@ import { formFieldMeta } from '../features/form/formFieldMeta';
 import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
+import { heroMeta } from '../features/hero/heroMeta';
 import { iconMeta } from '../features/icon/iconMeta';
 import { imageMeta } from '../features/image/imageMeta';
 import { keyboardAvoidingViewMeta } from '../features/keyboard-avoiding-view/keyboardAvoidingViewMeta';
@@ -53,8 +47,16 @@ import { gridMeta } from '../features/layout/gridMeta';
 import { stackMeta } from '../features/layout/stackMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
+import { missingElementMeta } from '../features/missing-element/missingElementMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
+import {
+  skeletonCardMeta,
+  skeletonListMeta,
+  skeletonMeta,
+  skeletonTextMeta,
+} from '../features/skeleton/skeletonMeta';
 import { surfaceMeta } from '../features/surface/surfaceMeta';
+import { timePickerMeta } from '../features/time-picker/timePickerMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';
@@ -78,11 +80,9 @@ import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
 import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
-import { heroMeta } from '../patterns/hero/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
 import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
 import { messageBubbleMeta } from '../patterns/message-bubble/meta';
-import { missingElementMeta } from '../patterns/missing-element/meta';
 import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
 import { readerSurfaceMeta } from '../patterns/reader/meta';
