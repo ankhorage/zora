@@ -11,6 +11,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   card: ['Card', 'MediaCard', 'MetricCard', 'PostCard', 'ProductCard'],
   chip: ['Chip', 'ChipGroup'],
   'data-table': ['DataTable'],
+  form: ['Form', 'FormError', 'FormField'],
   button: ['Button', 'IconButton', 'ButtonGroup'],
   icon: ['Icon'],
   image: ['Image'],

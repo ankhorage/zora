@@ -1,11 +1,12 @@
 import {
   Badge,
   Card,
+  Form,
   FormField,
   Notice,
+  RadioGroup,
   Screen,
   ScreenSection,
-  Select,
   TextInput,
 } from '@ankhorage/zora';
 
@@ -20,27 +21,31 @@ export default function ReservationsScreen() {
           title="Booking details"
           description="A reservation form composed from ZORA inputs."
         >
-          <FormField label="Date">
-            <TextInput placeholder="Friday, 24 May" />
-          </FormField>
-          <FormField label="Time">
-            <TextInput placeholder="19:30" />
-          </FormField>
-          <FormField label="Party size">
-            <Select
-              value="2"
-              onValueChange={() => undefined}
-              options={[
-                { label: '2 guests', value: '2' },
-                { label: '4 guests', value: '4' },
-                { label: '6 guests', value: '6' },
-              ]}
-            />
-          </FormField>
-          <TextInput
-            multiline
-            placeholder="Dietary notes, stroller, celebration, or seating preference..."
-          />
+          <Form submitLabel="Reserve">
+            <FormField label="Date">
+              <TextInput placeholder="Friday, 24 May" />
+            </FormField>
+            <FormField label="Time">
+              <TextInput placeholder="19:30" />
+            </FormField>
+            <FormField label="Party size">
+              <RadioGroup
+                defaultValue="2"
+                onValueChange={() => undefined}
+                options={[
+                  { label: '2 guests', value: '2' },
+                  { label: '4 guests', value: '4' },
+                  { label: '6 guests', value: '6' },
+                ]}
+              />
+            </FormField>
+            <FormField label="Notes">
+              <TextInput
+                multiline
+                placeholder="Dietary notes, stroller, celebration, or seating preference..."
+              />
+            </FormField>
+          </Form>
         </ScreenSection>
 
         <ScreenSection title="Availability">

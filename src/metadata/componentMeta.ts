@@ -1,7 +1,6 @@
 import { appBarMeta } from '../components/app-bar/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
 import { datePickerMeta } from '../components/date-picker/meta';
-import { formActionsMeta, formErrorMeta, formFieldMeta, formMeta } from '../components/form/meta';
 import { gradientMeta } from '../components/gradient/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
@@ -37,6 +36,10 @@ import { chipMeta } from '../features/chip/chipMeta';
 import { dataTableMeta } from '../features/data-table/dataTableMeta';
 import { emptyStateMeta } from '../features/empty-state/emptyStateMeta';
 import { checkboxGroupMeta, checkboxMeta } from '../features/form/checkbox/checkboxMeta';
+import { formActionsMeta } from '../features/form/formActionsMeta';
+import { formErrorMeta } from '../features/form/formErrorMeta';
+import { formFieldMeta } from '../features/form/formFieldMeta';
+import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { iconMeta } from '../features/icon/iconMeta';

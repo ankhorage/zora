@@ -141,17 +141,15 @@ describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surfa
     join(SRC_ROOT, 'components', 'modal', 'Modal.tsx'),
     join(SRC_ROOT, 'features', 'form', 'text-input', 'adapters', 'inbound', 'TextInput.tsx'),
     join(SRC_ROOT, 'features', 'typography', 'adapters', 'inbound', 'Text.tsx'),
-    join(SRC_ROOT, 'components', 'form', 'FormField.tsx'),
-    join(SRC_ROOT, 'patterns', 'form-field', 'FormField.tsx'),
+    join(SRC_ROOT, 'features', 'form', 'adapters', 'inbound', 'FormField.tsx'),
     // Type-only imports that intentionally expose Surface-compatible prop specs.
     join(SRC_ROOT, 'components', 'checkbox', 'types.ts'),
-    join(SRC_ROOT, 'components', 'form', 'types.ts'),
+    join(SRC_ROOT, 'types', 'form.ts'),
     join(SRC_ROOT, 'types', 'icon-button.ts'),
     join(SRC_ROOT, 'components', 'tabs', 'types.ts'),
     join(SRC_ROOT, 'types', 'text.ts'),
     join(SRC_ROOT, 'components', 'textarea', 'types.ts'),
     join(SRC_ROOT, 'components', 'toolbar', 'types.ts'),
-    join(SRC_ROOT, 'patterns', 'form-field', 'types.ts'),
     join(SRC_ROOT, 'patterns', 'tile-grid', 'types.ts'),
   ]);
 

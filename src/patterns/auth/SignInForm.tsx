@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
 import { Button } from '../../features/button/public';
 import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import type { FormFieldConfig, FormValues } from '../../types/form';
+import { AuthForm } from './AuthForm';
 import type { SignInFormProps } from './types';
 import {
   defaultIdentifiers,
@@ -68,7 +69,7 @@ function SignInFormInner({
   );
 
   return (
-    <Form
+    <AuthForm
       actions={
         hasActions ? (
           <Stack direction="row" gap="s" wrap="wrap">

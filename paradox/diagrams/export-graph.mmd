@@ -11,15 +11,6 @@ graph LR
   module_src_components_date_picker_index_ts["src/components/date-picker/index.ts"]
   module_src_components_date_picker_meta_ts["src/components/date-picker/meta.ts"]
   module_src_components_date_picker_types_ts["src/components/date-picker/types.ts"]
-  module_src_components_form_Form_tsx["src/components/form/Form.tsx"]
-  module_src_components_form_FormActions_tsx["src/components/form/FormActions.tsx"]
-  module_src_components_form_FormError_tsx["src/components/form/FormError.tsx"]
-  module_src_components_form_FormField_tsx["src/components/form/FormField.tsx"]
-  module_src_components_form_index_ts["src/components/form/index.ts"]
-  module_src_components_form_meta_ts["src/components/form/meta.ts"]
-  module_src_components_form_types_ts["src/components/form/types.ts"]
-  module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
-  module_src_components_form_validation_ts["src/components/form/validation.ts"]
   module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
   module_src_components_gradient_GradientRendererContext_tsx["src/components/gradient/GradientRendererContext.tsx"]
   module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
@@ -130,10 +121,19 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx["src/features/empty-state/adapters/inbound/EmptyState.tsx"]
   module_src_features_empty_state_emptyStateMeta_ts["src/features/empty-state/emptyStateMeta.ts"]
   module_src_features_empty_state_public_ts["src/features/empty-state/public.ts"]
+  module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
+  module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
+  module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
+  module_src_features_form_adapters_inbound_FormField_tsx["src/features/form/adapters/inbound/FormField.tsx"]
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx["src/features/form/checkbox/adapters/inbound/Checkbox.tsx"]
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx["src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx"]
   module_src_features_form_checkbox_checkboxMeta_ts["src/features/form/checkbox/checkboxMeta.ts"]
   module_src_features_form_checkbox_public_ts["src/features/form/checkbox/public.ts"]
+  module_src_features_form_formActionsMeta_ts["src/features/form/formActionsMeta.ts"]
+  module_src_features_form_formErrorMeta_ts["src/features/form/formErrorMeta.ts"]
+  module_src_features_form_formFieldMeta_ts["src/features/form/formFieldMeta.ts"]
+  module_src_features_form_formMeta_ts["src/features/form/formMeta.ts"]
+  module_src_features_form_public_ts["src/features/form/public.ts"]
   module_src_features_form_radio_adapters_inbound_Radio_tsx["src/features/form/radio/adapters/inbound/Radio.tsx"]
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx["src/features/form/radio/adapters/inbound/RadioGroup.tsx"]
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx["src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"]
@@ -146,6 +146,8 @@ graph LR
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx["src/features/form/text-input/adapters/inbound/TextInput.tsx"]
   module_src_features_form_text_input_public_ts["src/features/form/text-input/public.ts"]
   module_src_features_form_text_input_textInputMeta_ts["src/features/form/text-input/textInputMeta.ts"]
+  module_src_features_form_useFormController_ts["src/features/form/useFormController.ts"]
+  module_src_features_form_utils_validation_ts["src/features/form/utils/validation.ts"]
   module_src_features_icon_adapters_inbound_Icon_tsx["src/features/icon/adapters/inbound/Icon.tsx"]
   module_src_features_icon_iconMeta_ts["src/features/icon/iconMeta.ts"]
   module_src_features_icon_public_ts["src/features/icon/public.ts"]
@@ -254,6 +256,8 @@ graph LR
   module_src_metadata_themeRecipeMeta_ts["src/metadata/themeRecipeMeta.ts"]
   module_src_metadata_themeRecipeTypes_ts["src/metadata/themeRecipeTypes.ts"]
   module_src_metadata_types_ts["src/metadata/types.ts"]
+  module_src_patterns_auth_AuthForm_tsx["src/patterns/auth/AuthForm.tsx"]
+  module_src_patterns_auth_AuthFormField_tsx["src/patterns/auth/AuthFormField.tsx"]
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
   module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
@@ -285,9 +289,6 @@ graph LR
   module_src_patterns_filter_bar_index_ts["src/patterns/filter-bar/index.ts"]
   module_src_patterns_filter_bar_meta_ts["src/patterns/filter-bar/meta.ts"]
   module_src_patterns_filter_bar_types_ts["src/patterns/filter-bar/types.ts"]
-  module_src_patterns_form_field_FormField_tsx["src/patterns/form-field/FormField.tsx"]
-  module_src_patterns_form_field_index_ts["src/patterns/form-field/index.ts"]
-  module_src_patterns_form_field_types_ts["src/patterns/form-field/types.ts"]
   module_src_patterns_hero_Hero_tsx["src/patterns/hero/Hero.tsx"]
   module_src_patterns_hero_index_ts["src/patterns/hero/index.ts"]
   module_src_patterns_hero_meta_ts["src/patterns/hero/meta.ts"]
@@ -401,6 +402,7 @@ graph LR
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   module_src_types_data_table_ts["src/types/data-table.ts"]
   module_src_types_empty_state_ts["src/types/empty-state.ts"]
+  module_src_types_form_ts["src/types/form.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_icon_button_ts["src/types/icon-button.ts"]
   module_src_types_icon_ts["src/types/icon.ts"]
@@ -709,44 +711,39 @@ graph LR
   module_src_patterns_auth_types_ts --> export_ForgotPasswordFormValues
   export_ForgotPasswordFormValues -.-> export_AuthIdentifierKind
   export_Form["Form"]
-  module_src_components_form_Form_tsx --> export_Form
+  module_src_features_form_adapters_inbound_Form_tsx --> export_Form
   export_FormActions["FormActions"]
-  module_src_components_form_FormActions_tsx --> export_FormActions
+  module_src_features_form_adapters_inbound_FormActions_tsx --> export_FormActions
   export_FormActionsProps["FormActionsProps"]
-  module_src_components_form_types_ts --> export_FormActionsProps
+  module_src_types_form_ts --> export_FormActionsProps
   export_FormActionsProps -.-> export_ZoraThemeMode
   export_FormError["FormError"]
-  module_src_components_form_FormError_tsx --> export_FormError
+  module_src_features_form_adapters_inbound_FormError_tsx --> export_FormError
   export_FormErrorProps["FormErrorProps"]
-  module_src_components_form_types_ts --> export_FormErrorProps
+  module_src_types_form_ts --> export_FormErrorProps
   export_FormErrorProps -.-> export_ZoraThemeMode
   export_FormErrors["FormErrors"]
-  module_src_components_form_types_ts --> export_FormErrors
+  module_src_types_form_ts --> export_FormErrors
   export_FormField["FormField"]
-  module_src_components_form_FormField_tsx --> export_FormField
+  module_src_features_form_adapters_inbound_FormField_tsx --> export_FormField
   export_FormFieldConfig["FormFieldConfig"]
-  module_src_components_form_types_ts --> export_FormFieldConfig
+  module_src_types_form_ts --> export_FormFieldConfig
   export_FormFieldConfig -.-> export_FormFieldInputType
   export_FormFieldConfig -.-> export_ValidationRule
-  export_FormFieldControlProps["FormFieldControlProps"]
-  module_src_components_form_types_ts --> export_FormFieldControlProps
-  export_FormFieldControlProps -.-> export_FormFieldConfig
-  export_FormFieldControlProps -.-> export_ZoraThemeMode
   export_FormFieldInputType["FormFieldInputType"]
-  module_src_components_form_types_ts --> export_FormFieldInputType
+  module_src_types_form_ts --> export_FormFieldInputType
   export_FormFieldProps["FormFieldProps"]
-  module_src_components_form_types_ts --> export_FormFieldProps
+  module_src_types_form_ts --> export_FormFieldProps
+  export_FormFieldProps -.-> export_ZoraThemeMode
   export_FormProps["FormProps"]
-  module_src_components_form_types_ts --> export_FormProps
-  export_FormProps -.-> export_FormFieldConfig
-  export_FormProps -.-> export_FormValues
+  module_src_types_form_ts --> export_FormProps
   export_FormProps -.-> export_ZoraThemeMode
   export_FormValidationErrors["FormValidationErrors"]
-  module_src_components_form_types_ts --> export_FormValidationErrors
+  module_src_types_form_ts --> export_FormValidationErrors
   export_FormValidationResult["FormValidationResult"]
-  module_src_components_form_types_ts --> export_FormValidationResult
+  module_src_types_form_ts --> export_FormValidationResult
   export_FormValues["FormValues"]
-  module_src_components_form_types_ts --> export_FormValues
+  module_src_types_form_ts --> export_FormValues
   export_Gradient["Gradient"]
   module_src_components_gradient_Gradient_tsx --> export_Gradient
   export_GradientColor["GradientColor"]
@@ -782,7 +779,7 @@ graph LR
   module_src_types_layout_ts --> export_GridProps
   export_GridProps -.-> export_ZoraThemeMode
   export_hasRequiredRule["hasRequiredRule"]
-  module_src_components_form_validation_ts --> export_hasRequiredRule
+  module_src_features_form_utils_validation_ts --> export_hasRequiredRule
   export_hasRequiredRule -.-> export_ValidationRule
   export_Heading["Heading"]
   module_src_features_typography_adapters_inbound_Heading_tsx --> export_Heading
@@ -1358,15 +1355,15 @@ graph LR
   export_UploadType["UploadType"]
   module_src_types_upload_ts --> export_UploadType
   export_useFormController["useFormController"]
-  module_src_components_form_useFormController_ts --> export_useFormController
+  module_src_features_form_useFormController_ts --> export_useFormController
   export_useFormController -.-> export_UseFormControllerOptions
   export_useFormController -.-> export_UseFormControllerResult
   export_UseFormControllerOptions["UseFormControllerOptions"]
-  module_src_components_form_types_ts --> export_UseFormControllerOptions
+  module_src_types_form_ts --> export_UseFormControllerOptions
   export_UseFormControllerOptions -.-> export_FormFieldConfig
   export_UseFormControllerOptions -.-> export_FormValues
   export_UseFormControllerResult["UseFormControllerResult"]
-  module_src_components_form_types_ts --> export_UseFormControllerResult
+  module_src_types_form_ts --> export_UseFormControllerResult
   export_UseFormControllerResult -.-> export_FormValidationResult
   export_UseFormControllerResult -.-> export_FormValues
   export_useSelection["useSelection"]
@@ -1380,11 +1377,11 @@ graph LR
   export_useZoraTheme["useZoraTheme"]
   module_src_theme_useZoraTheme_ts --> export_useZoraTheme
   export_validateField["validateField"]
-  module_src_components_form_validation_ts --> export_validateField
+  module_src_features_form_utils_validation_ts --> export_validateField
   export_validateField -.-> export_FormFieldConfig
   export_validateField -.-> export_FormValues
   export_validateFields["validateFields"]
-  module_src_components_form_validation_ts --> export_validateFields
+  module_src_features_form_utils_validation_ts --> export_validateFields
   export_validateFields -.-> export_FormFieldConfig
   export_validateFields -.-> export_FormValidationResult
   export_validateFields -.-> export_FormValues
@@ -1395,10 +1392,10 @@ graph LR
   module_src_types_upload_ts --> export_ValidateUploadAssetInput
   export_ValidateUploadAssetInput -.-> export_UploadAsset
   export_validateValue["validateValue"]
-  module_src_components_form_validation_ts --> export_validateValue
+  module_src_features_form_utils_validation_ts --> export_validateValue
   export_validateValue -.-> export_ValidationRule
   export_ValidationRule["ValidationRule"]
-  module_src_components_form_types_ts --> export_ValidationRule
+  module_src_types_form_ts --> export_ValidationRule
   export_withZoraThemeScope["withZoraThemeScope"]
   module_src_theme_withZoraThemeScope_tsx --> export_withZoraThemeScope
   export_ZORA_BINDABLE_COMPONENT_META["ZORA_BINDABLE_COMPONENT_META"]

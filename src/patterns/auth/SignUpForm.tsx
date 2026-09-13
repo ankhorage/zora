@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Form, type FormFieldConfig, type FormValues } from '../../components/form';
 import { Button } from '../../features/button/public';
 import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import type { FormFieldConfig, FormValues } from '../../types/form';
+import { AuthForm } from './AuthForm';
 import type { SignUpFormProps } from './types';
 
 const defaultSignUpFields = [
@@ -48,7 +49,7 @@ function SignUpFormInner({
   const [values, setValues] = React.useState<FormValues>(() => createValues(fields));
 
   return (
-    <Form
+    <AuthForm
       actions={
         onSignIn ? (
           <Stack direction="row" gap="s" wrap="wrap">

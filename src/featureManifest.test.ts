@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+
 import { expect, test } from 'bun:test';
 
 import { FEATURE_MANIFEST_ELEMENTS } from './constants';
@@ -15,6 +17,11 @@ test('every selected feature element is directly authorable through its canonica
       expect(source, name).toContain(name);
     }
   }
+});
+
+test('form composition has one canonical feature owner', () => {
+  expect(existsSync('src/components/form')).toBe(false);
+  expect(existsSync('src/patterns/form-field')).toBe(false);
 });
 
 test('interactive authoring retains state and event payload bindings after plugin composition', () => {

@@ -30,7 +30,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'RadioGroup',
   'ThemeModeToggle',
   'TextInput',
-  'FormField',
+  'Form',
   'Card',
   'Panel',
   'Notice',

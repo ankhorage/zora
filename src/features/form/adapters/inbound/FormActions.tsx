@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Button } from '../../features/button/public';
-import { Box, Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { FormActionsProps } from './types';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { FormActionsProps } from '../../../../types/form';
+import { Button } from '../../../button/public';
+import { Box, Stack } from '../../../layout/public';
 
 function FormActionsInner({
   themeId: _themeId,

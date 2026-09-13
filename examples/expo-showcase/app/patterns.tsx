@@ -10,6 +10,7 @@ import {
   EmptyState,
   FilterBar,
   ForgotPasswordForm,
+  Form,
   FormField,
   IconButton,
   Image,
@@ -450,13 +451,15 @@ export function PatternsPage() {
           color="primary"
         />
 
-        <FormField
-          label="Display name"
-          description="Shown in shared projects and activity logs."
-          helperText="Use a recognizable name for collaborators."
-        >
-          <TextInput placeholder="Fabio Gartenmann" />
-        </FormField>
+        <Form>
+          <FormField
+            label="Display name"
+            description="Shown in shared projects and activity logs."
+            helperText="Use a recognizable name for collaborators."
+          >
+            <TextInput placeholder="Fabio Gartenmann" />
+          </FormField>
+        </Form>
 
         <SwitchField
           label="Enable notifications"

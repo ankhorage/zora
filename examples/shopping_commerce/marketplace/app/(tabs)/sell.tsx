@@ -2,6 +2,7 @@ import {
   Badge,
   Button,
   Card,
+  Form,
   FormField,
   Notice,
   Screen,
@@ -35,16 +36,20 @@ export default function SellScreen() {
           title="Details"
           description="A minimal listing form without local style objects."
         >
-          <FormField label="Title">
-            <TextInput placeholder="Walnut lounge chair" />
-          </FormField>
-          <FormField label="Price">
-            <TextInput placeholder="CHF 420" />
-          </FormField>
-          <TextInput
-            multiline
-            placeholder="Describe condition, pickup details, and what is included..."
-          />
+          <Form submitLabel="Publish">
+            <FormField label="Title">
+              <TextInput placeholder="Walnut lounge chair" />
+            </FormField>
+            <FormField label="Price">
+              <TextInput placeholder="CHF 420" />
+            </FormField>
+            <FormField label="Description">
+              <TextInput
+                multiline
+                placeholder="Describe condition, pickup details, and what is included..."
+              />
+            </FormField>
+          </Form>
         </ScreenSection>
 
         <ScreenSection title="Readiness">

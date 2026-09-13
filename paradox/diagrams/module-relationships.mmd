@@ -11,15 +11,6 @@ graph LR
   module_src_components_date_picker_index_ts["src/components/date-picker/index.ts"]
   module_src_components_date_picker_meta_ts["src/components/date-picker/meta.ts"]
   module_src_components_date_picker_types_ts["src/components/date-picker/types.ts"]
-  module_src_components_form_Form_tsx["src/components/form/Form.tsx"]
-  module_src_components_form_FormActions_tsx["src/components/form/FormActions.tsx"]
-  module_src_components_form_FormError_tsx["src/components/form/FormError.tsx"]
-  module_src_components_form_FormField_tsx["src/components/form/FormField.tsx"]
-  module_src_components_form_index_ts["src/components/form/index.ts"]
-  module_src_components_form_meta_ts["src/components/form/meta.ts"]
-  module_src_components_form_types_ts["src/components/form/types.ts"]
-  module_src_components_form_useFormController_ts["src/components/form/useFormController.ts"]
-  module_src_components_form_validation_ts["src/components/form/validation.ts"]
   module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
   module_src_components_gradient_GradientRendererContext_tsx["src/components/gradient/GradientRendererContext.tsx"]
   module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
@@ -130,10 +121,19 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx["src/features/empty-state/adapters/inbound/EmptyState.tsx"]
   module_src_features_empty_state_emptyStateMeta_ts["src/features/empty-state/emptyStateMeta.ts"]
   module_src_features_empty_state_public_ts["src/features/empty-state/public.ts"]
+  module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
+  module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
+  module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
+  module_src_features_form_adapters_inbound_FormField_tsx["src/features/form/adapters/inbound/FormField.tsx"]
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx["src/features/form/checkbox/adapters/inbound/Checkbox.tsx"]
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx["src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx"]
   module_src_features_form_checkbox_checkboxMeta_ts["src/features/form/checkbox/checkboxMeta.ts"]
   module_src_features_form_checkbox_public_ts["src/features/form/checkbox/public.ts"]
+  module_src_features_form_formActionsMeta_ts["src/features/form/formActionsMeta.ts"]
+  module_src_features_form_formErrorMeta_ts["src/features/form/formErrorMeta.ts"]
+  module_src_features_form_formFieldMeta_ts["src/features/form/formFieldMeta.ts"]
+  module_src_features_form_formMeta_ts["src/features/form/formMeta.ts"]
+  module_src_features_form_public_ts["src/features/form/public.ts"]
   module_src_features_form_radio_adapters_inbound_Radio_tsx["src/features/form/radio/adapters/inbound/Radio.tsx"]
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx["src/features/form/radio/adapters/inbound/RadioGroup.tsx"]
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx["src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"]
@@ -146,6 +146,8 @@ graph LR
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx["src/features/form/text-input/adapters/inbound/TextInput.tsx"]
   module_src_features_form_text_input_public_ts["src/features/form/text-input/public.ts"]
   module_src_features_form_text_input_textInputMeta_ts["src/features/form/text-input/textInputMeta.ts"]
+  module_src_features_form_useFormController_ts["src/features/form/useFormController.ts"]
+  module_src_features_form_utils_validation_ts["src/features/form/utils/validation.ts"]
   module_src_features_icon_adapters_inbound_Icon_tsx["src/features/icon/adapters/inbound/Icon.tsx"]
   module_src_features_icon_iconMeta_ts["src/features/icon/iconMeta.ts"]
   module_src_features_icon_public_ts["src/features/icon/public.ts"]
@@ -254,6 +256,8 @@ graph LR
   module_src_metadata_themeRecipeMeta_ts["src/metadata/themeRecipeMeta.ts"]
   module_src_metadata_themeRecipeTypes_ts["src/metadata/themeRecipeTypes.ts"]
   module_src_metadata_types_ts["src/metadata/types.ts"]
+  module_src_patterns_auth_AuthForm_tsx["src/patterns/auth/AuthForm.tsx"]
+  module_src_patterns_auth_AuthFormField_tsx["src/patterns/auth/AuthFormField.tsx"]
   module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
   module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
   module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
@@ -285,9 +289,6 @@ graph LR
   module_src_patterns_filter_bar_index_ts["src/patterns/filter-bar/index.ts"]
   module_src_patterns_filter_bar_meta_ts["src/patterns/filter-bar/meta.ts"]
   module_src_patterns_filter_bar_types_ts["src/patterns/filter-bar/types.ts"]
-  module_src_patterns_form_field_FormField_tsx["src/patterns/form-field/FormField.tsx"]
-  module_src_patterns_form_field_index_ts["src/patterns/form-field/index.ts"]
-  module_src_patterns_form_field_types_ts["src/patterns/form-field/types.ts"]
   module_src_patterns_hero_Hero_tsx["src/patterns/hero/Hero.tsx"]
   module_src_patterns_hero_index_ts["src/patterns/hero/index.ts"]
   module_src_patterns_hero_meta_ts["src/patterns/hero/meta.ts"]
@@ -401,6 +402,7 @@ graph LR
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   module_src_types_data_table_ts["src/types/data-table.ts"]
   module_src_types_empty_state_ts["src/types/empty-state.ts"]
+  module_src_types_form_ts["src/types/form.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_icon_button_ts["src/types/icon-button.ts"]
   module_src_types_icon_ts["src/types/icon.ts"]
@@ -448,34 +450,6 @@ graph LR
   module_src_components_date_picker_DatePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_date_picker_meta_ts --> module_src_metadata_index_ts
   module_src_components_date_picker_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_form_Form_tsx --> module_src_components_form_FormActions_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_FormError_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_FormField_tsx
-  module_src_components_form_Form_tsx --> module_src_components_form_types_ts
-  module_src_components_form_Form_tsx --> module_src_components_form_useFormController_ts
-  module_src_components_form_Form_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_Form_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormActions_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormActions_tsx --> module_src_features_button_public_ts
-  module_src_components_form_FormActions_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormActions_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormError_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormError_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormError_tsx --> module_src_features_typography_public_ts
-  module_src_components_form_FormError_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_components_form_FormError_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_FormField_tsx --> module_src_components_form_types_ts
-  module_src_components_form_FormField_tsx --> module_src_components_form_validation_ts
-  module_src_components_form_FormField_tsx --> module_src_features_form_text_input_public_ts
-  module_src_components_form_FormField_tsx --> module_src_features_layout_public_ts
-  module_src_components_form_FormField_tsx --> module_src_features_typography_public_ts
-  module_src_components_form_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_form_meta_ts --> module_src_metadata_index_ts
-  module_src_components_form_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_form_types_ts --> module_src_types_text_input_ts
-  module_src_components_form_useFormController_ts --> module_src_components_form_types_ts
-  module_src_components_form_useFormController_ts --> module_src_components_form_validation_ts
-  module_src_components_form_validation_ts --> module_src_components_form_types_ts
   module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_GradientRendererContext_tsx
   module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_types_ts
   module_src_components_gradient_Gradient_tsx --> module_src_features_layout_public_ts
@@ -729,6 +703,23 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_types_empty_state_ts
   module_src_features_empty_state_emptyStateMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_form_adapters_inbound_FormActions_tsx
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_Form_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_features_button_public_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormActions_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_features_typography_public_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormError_tsx --> module_src_types_form_ts
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_features_layout_public_ts
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_features_typography_public_ts
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_form_adapters_inbound_FormField_tsx --> module_src_types_form_ts
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx --> module_src_types_checkbox_ts
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_features_layout_public_ts
@@ -736,6 +727,10 @@ graph LR
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_types_checkbox_ts
   module_src_features_form_checkbox_checkboxMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formActionsMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formErrorMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formFieldMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_formMeta_ts --> module_src_metadata_index_ts
   module_src_features_form_radio_adapters_inbound_Radio_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_form_radio_adapters_inbound_Radio_tsx --> module_src_types_radio_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx
@@ -764,6 +759,9 @@ graph LR
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_types_text_input_ts
   module_src_features_form_text_input_textInputMeta_ts --> module_src_metadata_index_ts
+  module_src_features_form_useFormController_ts --> module_src_features_form_utils_validation_ts
+  module_src_features_form_useFormController_ts --> module_src_types_form_ts
+  module_src_features_form_utils_validation_ts --> module_src_types_form_ts
   module_src_features_icon_adapters_inbound_Icon_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_icon_adapters_inbound_Icon_tsx --> module_src_types_icon_ts
   module_src_features_icon_iconMeta_ts --> module_src_metadata_index_ts
@@ -893,6 +891,7 @@ graph LR
   module_src_features_typography_utils_textThemeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_components_modal_index_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_button_public_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_form_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_icon_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_image_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_layout_public_ts
@@ -900,7 +899,6 @@ graph LR
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_typography_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_application_use_cases_validateUploadAsset_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_uploader_composition_createUploadPicker_ts
-  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_patterns_form_field_index_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_types_upload_ts
   module_src_features_uploader_adapters_outbound_pickDocumentOrFileAsync_ts --> module_src_features_uploader_application_ports_outbound_UploadPickerPort_ts
@@ -971,7 +969,6 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_date_picker_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_form_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_gradient_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_modal_meta_ts
@@ -1002,6 +999,10 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_features_data_table_dataTableMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_empty_state_emptyStateMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_checkbox_checkboxMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formActionsMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formErrorMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formFieldMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_form_formMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_radio_radioMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_icon_iconMeta_ts
@@ -1060,12 +1061,22 @@ graph LR
   module_src_metadata_themeRecipeMeta_ts --> module_src_features_typography_utils_textThemeRecipeMeta_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_themeRecipeMeta_ts --> module_src_patterns_panel_themeRecipeMeta_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_components_form_index_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_features_form_public_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_patterns_auth_AuthFormField_tsx
+  module_src_patterns_auth_AuthForm_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_auth_AuthForm_tsx --> module_src_types_form_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_public_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_auth_AuthFormField_tsx --> module_src_types_form_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_utils_ts
   module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_patterns_auth_oauthProviders_ts
@@ -1076,27 +1087,30 @@ graph LR
   module_src_patterns_auth_OAuthProviderList_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_OAuthProviderList_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_auth_oauthProviders_ts --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_OtpForm_tsx --> module_src_components_form_index_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_OtpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_SignInForm_tsx --> module_src_components_form_index_ts
+  module_src_patterns_auth_OtpForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_utils_ts
   module_src_patterns_auth_SignInForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_components_form_index_ts
+  module_src_patterns_auth_SignInForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_features_button_public_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_features_layout_public_ts
+  module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
   module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_types_ts
   module_src_patterns_auth_SignUpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_types_ts --> module_src_components_form_index_ts
+  module_src_patterns_auth_SignUpForm_tsx --> module_src_types_form_ts
   module_src_patterns_auth_types_ts --> module_src_features_button_public_ts
   module_src_patterns_auth_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_auth_utils_ts --> module_src_components_form_index_ts
+  module_src_patterns_auth_types_ts --> module_src_types_form_ts
   module_src_patterns_auth_utils_ts --> module_src_patterns_auth_types_ts
+  module_src_patterns_auth_utils_ts --> module_src_types_form_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_avatar_public_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_badge_public_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_layout_public_ts
@@ -1139,11 +1153,6 @@ graph LR
   module_src_patterns_filter_bar_FilterBar_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_filter_bar_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_filter_bar_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_patterns_form_field_types_ts
-  module_src_patterns_form_field_FormField_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_form_field_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_hero_Hero_tsx --> module_src_features_button_public_ts
   module_src_patterns_hero_Hero_tsx --> module_src_features_card_public_ts
   module_src_patterns_hero_Hero_tsx --> module_src_features_layout_public_ts
@@ -1153,8 +1162,8 @@ graph LR
   module_src_patterns_hero_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_hero_types_ts --> module_src_internal_recipes_ts
   module_src_patterns_hero_types_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_patterns_inspector_field_InspectorField_tsx --> module_src_features_form_public_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_form_field_index_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_patterns_inspector_field_types_ts
   module_src_patterns_inspector_field_InspectorField_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_inspector_field_meta_ts --> module_src_metadata_index_ts
@@ -1334,7 +1343,6 @@ graph LR
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_breadcrumbs_index_ts
   module_src_registry_ts --> module_src_components_date_picker_index_ts
-  module_src_registry_ts --> module_src_components_form_index_ts
   module_src_registry_ts --> module_src_components_gradient_index_ts
   module_src_registry_ts --> module_src_components_menu_index_ts
   module_src_registry_ts --> module_src_components_modal_index_ts
@@ -1357,6 +1365,7 @@ graph LR
   module_src_registry_ts --> module_src_features_data_table_public_ts
   module_src_registry_ts --> module_src_features_empty_state_public_ts
   module_src_registry_ts --> module_src_features_form_checkbox_public_ts
+  module_src_registry_ts --> module_src_features_form_public_ts
   module_src_registry_ts --> module_src_features_form_radio_public_ts
   module_src_registry_ts --> module_src_features_form_text_input_public_ts
   module_src_registry_ts --> module_src_features_icon_public_ts
@@ -1451,6 +1460,8 @@ graph LR
   module_src_types_data_table_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_empty_state_ts --> module_src_internal_recipes_ts
   module_src_types_empty_state_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_form_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_form_ts --> module_src_types_text_input_ts
   module_src_types_heading_ts --> module_src_internal_recipes_ts
   module_src_types_heading_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_icon_button_ts --> module_src_internal_recipes_ts
