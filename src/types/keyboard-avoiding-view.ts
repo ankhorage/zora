@@ -1,10 +1,10 @@
-import type { KeyboardAvoidingViewProps as ReactNativeKeyboardAvoidingViewProps } from 'react-native';
+import type { KeyboardAvoidingViewProps as SurfaceKeyboardAvoidingViewProps } from '@ankhorage/surface';
 
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export type KeyboardAvoidingViewBehavior = NonNullable<
-  ReactNativeKeyboardAvoidingViewProps['behavior']
+  SurfaceKeyboardAvoidingViewProps['behavior']
 >;
 
 export interface KeyboardAvoidingViewProps
-  extends ZoraBaseProps, Omit<ReactNativeKeyboardAvoidingViewProps, keyof ZoraBaseProps> {}
+  extends ZoraBaseProps, Omit<SurfaceKeyboardAvoidingViewProps, keyof ZoraBaseProps> {}

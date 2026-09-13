@@ -1,5 +1,5 @@
+import { KeyboardAvoidingView as SurfaceKeyboardAvoidingView } from '@ankhorage/surface';
 import React from 'react';
-import { KeyboardAvoidingView as ReactNativeKeyboardAvoidingView } from 'react-native';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { KeyboardAvoidingViewProps } from '../../../../types/keyboard-avoiding-view';
@@ -14,5 +14,5 @@ function KeyboardAvoidingViewInner({
   interactionPolicy: _interactionPolicy,
   ...props
 }: KeyboardAvoidingViewProps) {
-  return <ReactNativeKeyboardAvoidingView {...props} />;
+  return <SurfaceKeyboardAvoidingView {...props} />;
 }
