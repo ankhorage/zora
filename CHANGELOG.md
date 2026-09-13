@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.0.0
+
+### Major Changes
+
+- 8e3d5db: Add a manifest-authorable KeyboardAvoidingView feature backed by the Surface layout primitive, and
+  remove the obsolete React-rendered SplashScreen API.
+
 ## 9.0.1
 
 ### Patch Changes
