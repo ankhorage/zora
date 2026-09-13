@@ -6,7 +6,7 @@ import {
   resolveOAuthProviderLabel,
 } from './oauthProviders';
 
-describe('OAuth provider UI helpers', () => {
+describe('Auth OAuth provider helpers', () => {
   it('resolves known provider labels', () => {
     expect(resolveOAuthProviderLabel('google')).toBe('Google');
     expect(resolveOAuthProviderLabel('github')).toBe('GitHub');

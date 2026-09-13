@@ -1,6 +1,5 @@
 import { appBarMeta } from '../components/app-bar/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
-import { gradientMeta } from '../components/gradient/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
 import { paginationMeta } from '../components/pagination/meta';
@@ -11,6 +10,12 @@ import { tabsMeta } from '../components/tabs/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
+import { forgotPasswordFormMeta } from '../features/auth/forgotPasswordFormMeta';
+import { oauthProviderButtonMeta } from '../features/auth/oauthProviderButtonMeta';
+import { oauthProviderListMeta } from '../features/auth/oauthProviderListMeta';
+import { otpFormMeta } from '../features/auth/otpFormMeta';
+import { signInFormMeta } from '../features/auth/signInFormMeta';
+import { signUpFormMeta } from '../features/auth/signUpFormMeta';
 import { avatarGroupMeta } from '../features/avatar/avatarGroupMeta';
 import { avatarMeta } from '../features/avatar/avatarMeta';
 import { badgeMeta } from '../features/badge/badgeMeta';
@@ -35,6 +40,7 @@ import { formFieldMeta } from '../features/form/formFieldMeta';
 import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
+import { gradientMeta } from '../features/gradient/gradientMeta';
 import { heroMeta } from '../features/hero/heroMeta';
 import { iconMeta } from '../features/icon/iconMeta';
 import { imageMeta } from '../features/image/imageMeta';
@@ -67,14 +73,6 @@ import { screenSectionMeta } from '../layout/screen-section/meta';
 import { settingsLayoutMeta } from '../layout/settings-layout/meta';
 import { sidebarLayoutMeta } from '../layout/sidebar-layout/meta';
 import { topbarLayoutMeta } from '../layout/topbar-layout/meta';
-import {
-  forgotPasswordFormMeta,
-  oauthProviderButtonMeta,
-  oauthProviderListMeta,
-  otpFormMeta,
-  signInFormMeta,
-  signUpFormMeta,
-} from '../patterns/auth/meta';
 import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';

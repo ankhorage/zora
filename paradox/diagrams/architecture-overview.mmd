@@ -37,24 +37,6 @@ graph TD
   module_src_components_breadcrumbs_types_ts["src/components/breadcrumbs/types.ts"]
   package__ankhorage_zora -.-> module_src_components_breadcrumbs_types_ts
   module_src_components_breadcrumbs_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_gradient_Gradient_tsx["src/components/gradient/Gradient.tsx"]
-  package__ankhorage_zora -.-> module_src_components_gradient_Gradient_tsx
-  module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_GradientRendererContext_tsx
-  module_src_components_gradient_Gradient_tsx --> module_src_components_gradient_types_ts
-  module_src_components_gradient_Gradient_tsx --> module_src_features_layout_public_ts
-  module_src_components_gradient_Gradient_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_gradient_GradientRendererContext_tsx["src/components/gradient/GradientRendererContext.tsx"]
-  package__ankhorage_zora -.-> module_src_components_gradient_GradientRendererContext_tsx
-  module_src_components_gradient_GradientRendererContext_tsx --> module_src_components_gradient_types_ts
-  module_src_components_gradient_index_ts["src/components/gradient/index.ts"]
-  package__ankhorage_zora -.-> module_src_components_gradient_index_ts
-  module_src_components_gradient_meta_ts["src/components/gradient/meta.ts"]
-  package__ankhorage_zora -.-> module_src_components_gradient_meta_ts
-  module_src_components_gradient_meta_ts --> module_src_metadata_index_ts
-  module_src_components_gradient_types_ts["src/components/gradient/types.ts"]
-  package__ankhorage_zora -.-> module_src_components_gradient_types_ts
-  module_src_components_gradient_types_ts --> module_src_features_layout_public_ts
-  module_src_components_gradient_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_menu_DropdownMenu_tsx["src/components/menu/DropdownMenu.tsx"]
   package__ankhorage_zora -.-> module_src_components_menu_DropdownMenu_tsx
   module_src_components_menu_DropdownMenu_tsx --> module_src_components_menu_Menu_tsx
@@ -230,6 +212,94 @@ graph TD
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
   package__ankhorage_zora -.-> module_src_features_activity_indicator_public_ts
+  module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_AuthForm_tsx
+  module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_auth_adapters_inbound_AuthFormField_tsx
+  module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_form_public_ts
+  module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_AuthFormField_tsx
+  module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_features_form_public_ts
+  module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
+  module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_theme_ZoraBaseProps_ts
+  module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx["src/features/auth/adapters/inbound/ForgotPasswordForm.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_auth_utils_authForm_ts
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_button_public_ts
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx["src/features/auth/adapters/inbound/OAuthProviderButton.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx
+  module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx --> module_src_features_auth_utils_oauthProviders_ts
+  module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx --> module_src_features_button_public_ts
+  module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_OAuthProviderList_tsx["src/features/auth/adapters/inbound/OAuthProviderList.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_OAuthProviderList_tsx
+  module_src_features_auth_adapters_inbound_OAuthProviderList_tsx --> module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx
+  module_src_features_auth_adapters_inbound_OAuthProviderList_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_OAuthProviderList_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_OAuthProviderList_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_OtpForm_tsx["src/features/auth/adapters/inbound/OtpForm.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_OtpForm_tsx
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_features_button_public_ts
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_OtpForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_SignInForm_tsx["src/features/auth/adapters/inbound/SignInForm.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_SignInForm_tsx
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_features_auth_utils_authForm_ts
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_features_button_public_ts
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_SignInForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx["src/features/auth/adapters/inbound/SignUpForm.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_SignUpForm_tsx
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_button_public_ts
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_auth_ts
+  module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_forgotPasswordFormMeta_ts["src/features/auth/forgotPasswordFormMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_forgotPasswordFormMeta_ts
+  module_src_features_auth_forgotPasswordFormMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_oauthProviderButtonMeta_ts["src/features/auth/oauthProviderButtonMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_oauthProviderButtonMeta_ts
+  module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_internal_colorModel_ts
+  module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_oauthProviderListMeta_ts["src/features/auth/oauthProviderListMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_oauthProviderListMeta_ts
+  module_src_features_auth_oauthProviderListMeta_ts --> module_src_internal_colorModel_ts
+  module_src_features_auth_oauthProviderListMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_otpFormMeta_ts["src/features/auth/otpFormMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_otpFormMeta_ts
+  module_src_features_auth_otpFormMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_public_ts["src/features/auth/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_public_ts
+  module_src_features_auth_signInFormMeta_ts["src/features/auth/signInFormMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_signInFormMeta_ts
+  module_src_features_auth_signInFormMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_signUpFormMeta_ts["src/features/auth/signUpFormMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_signUpFormMeta_ts
+  module_src_features_auth_signUpFormMeta_ts --> module_src_metadata_index_ts
+  module_src_features_auth_utils_authForm_ts["src/features/auth/utils/authForm.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_utils_authForm_ts
+  module_src_features_auth_utils_authForm_ts --> module_src_types_auth_ts
+  module_src_features_auth_utils_authForm_ts --> module_src_types_form_ts
+  module_src_features_auth_utils_oauthProviders_ts["src/features/auth/utils/oauthProviders.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_utils_oauthProviders_ts
+  module_src_features_auth_utils_oauthProviders_ts --> module_src_types_auth_ts
   module_src_features_avatar_adapters_inbound_Avatar_tsx["src/features/avatar/adapters/inbound/Avatar.tsx"]
   package__ankhorage_zora -.-> module_src_features_avatar_adapters_inbound_Avatar_tsx
   module_src_features_avatar_adapters_inbound_Avatar_tsx --> module_src_features_avatar_utils_resolveAvatarInitials_ts
@@ -586,6 +656,21 @@ graph TD
   module_src_features_form_utils_validation_ts["src/features/form/utils/validation.ts"]
   package__ankhorage_zora -.-> module_src_features_form_utils_validation_ts
   module_src_features_form_utils_validation_ts --> module_src_types_form_ts
+  module_src_features_gradient_adapters_inbound_Gradient_tsx["src/features/gradient/adapters/inbound/Gradient.tsx"]
+  package__ankhorage_zora -.-> module_src_features_gradient_adapters_inbound_Gradient_tsx
+  module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx
+  module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_layout_public_ts
+  module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_types_gradient_ts
+  module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx["src/features/gradient/adapters/inbound/GradientRendererContext.tsx"]
+  package__ankhorage_zora -.-> module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx
+  module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx --> module_src_types_gradient_ts
+  module_src_features_gradient_gradientMeta_ts["src/features/gradient/gradientMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_gradient_gradientMeta_ts
+  module_src_features_gradient_gradientMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_gradient_gradientMeta_ts --> module_src_metadata_index_ts
+  module_src_features_gradient_public_ts["src/features/gradient/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_gradient_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx["src/features/hero/adapters/inbound/Hero.tsx"]
   package__ankhorage_zora -.-> module_src_features_hero_adapters_inbound_Hero_tsx
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_button_public_ts
@@ -1071,7 +1156,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_metadata_componentMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_breadcrumbs_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_gradient_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_modal_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_pagination_meta_ts
@@ -1082,6 +1166,12 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_components_toast_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_toolbar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_otpFormMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_signInFormMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_auth_signUpFormMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_avatar_avatarGroupMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_avatar_avatarMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_badge_badgeMeta_ts
@@ -1106,6 +1196,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_form_formMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_radio_radioMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_hero_heroMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_icon_iconMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_image_imageMeta_ts
@@ -1134,7 +1225,6 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_layout_sidebar_layout_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_layout_topbar_layout_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_metadata_types_ts
-  module_src_metadata_componentMeta_ts --> module_src_patterns_auth_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_chat_list_item_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_collection_editor_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_confirm_dialog_meta_ts
@@ -1172,82 +1262,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_metadata_themeRecipeTypes_ts
   module_src_metadata_types_ts["src/metadata/types.ts"]
   package__ankhorage_zora -.-> module_src_metadata_types_ts
-  module_src_patterns_auth_AuthForm_tsx["src/patterns/auth/AuthForm.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_AuthForm_tsx
-  module_src_patterns_auth_AuthForm_tsx --> module_src_features_form_public_ts
-  module_src_patterns_auth_AuthForm_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_AuthForm_tsx --> module_src_patterns_auth_AuthFormField_tsx
-  module_src_patterns_auth_AuthForm_tsx --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_auth_AuthForm_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_AuthFormField_tsx["src/patterns/auth/AuthFormField.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_AuthFormField_tsx
-  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_public_ts
-  module_src_patterns_auth_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
-  module_src_patterns_auth_AuthFormField_tsx --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_auth_AuthFormField_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx["src/patterns/auth/ForgotPasswordForm.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_ForgotPasswordForm_tsx
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_button_public_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_AuthForm_tsx
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_patterns_auth_utils_ts
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_ForgotPasswordForm_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_index_ts["src/patterns/auth/index.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_index_ts
-  module_src_patterns_auth_meta_ts["src/patterns/auth/meta.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_meta_ts
-  module_src_patterns_auth_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_auth_OAuthProviderButton_tsx["src/patterns/auth/OAuthProviderButton.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_OAuthProviderButton_tsx
-  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_features_button_public_ts
-  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_patterns_auth_oauthProviders_ts
-  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_OAuthProviderButton_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_OAuthProviderList_tsx["src/patterns/auth/OAuthProviderList.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_OAuthProviderList_tsx
-  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_patterns_auth_OAuthProviderButton_tsx
-  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_OAuthProviderList_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_oauthProviders_ts["src/patterns/auth/oauthProviders.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_oauthProviders_ts
-  module_src_patterns_auth_oauthProviders_ts --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_OtpForm_tsx["src/patterns/auth/OtpForm.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_OtpForm_tsx
-  module_src_patterns_auth_OtpForm_tsx --> module_src_features_button_public_ts
-  module_src_patterns_auth_OtpForm_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
-  module_src_patterns_auth_OtpForm_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_OtpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_OtpForm_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_SignInForm_tsx["src/patterns/auth/SignInForm.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_SignInForm_tsx
-  module_src_patterns_auth_SignInForm_tsx --> module_src_features_button_public_ts
-  module_src_patterns_auth_SignInForm_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_AuthForm_tsx
-  module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_SignInForm_tsx --> module_src_patterns_auth_utils_ts
-  module_src_patterns_auth_SignInForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_SignInForm_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_SignUpForm_tsx["src/patterns/auth/SignUpForm.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_SignUpForm_tsx
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_features_button_public_ts
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_AuthForm_tsx
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_auth_SignUpForm_tsx --> module_src_types_form_ts
-  module_src_patterns_auth_types_ts["src/patterns/auth/types.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_types_ts --> module_src_features_button_public_ts
-  module_src_patterns_auth_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_auth_types_ts --> module_src_types_form_ts
-  module_src_patterns_auth_utils_ts["src/patterns/auth/utils.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_auth_utils_ts
-  module_src_patterns_auth_utils_ts --> module_src_patterns_auth_types_ts
-  module_src_patterns_auth_utils_ts --> module_src_types_form_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx["src/patterns/chat-list-item/ChatListItem.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_chat_list_item_ChatListItem_tsx
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_avatar_public_ts
@@ -1648,7 +1662,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_registry_ts
   module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_breadcrumbs_index_ts
-  module_src_registry_ts --> module_src_components_gradient_index_ts
   module_src_registry_ts --> module_src_components_menu_index_ts
   module_src_registry_ts --> module_src_components_modal_index_ts
   module_src_registry_ts --> module_src_components_pagination_index_ts
@@ -1659,6 +1672,7 @@ graph TD
   module_src_registry_ts --> module_src_components_toast_index_ts
   module_src_registry_ts --> module_src_components_toolbar_index_ts
   module_src_registry_ts --> module_src_features_activity_indicator_public_ts
+  module_src_registry_ts --> module_src_features_auth_public_ts
   module_src_registry_ts --> module_src_features_avatar_public_ts
   module_src_registry_ts --> module_src_features_badge_public_ts
   module_src_registry_ts --> module_src_features_bottom_sheet_public_ts
@@ -1672,6 +1686,7 @@ graph TD
   module_src_registry_ts --> module_src_features_form_public_ts
   module_src_registry_ts --> module_src_features_form_radio_public_ts
   module_src_registry_ts --> module_src_features_form_text_input_public_ts
+  module_src_registry_ts --> module_src_features_gradient_public_ts
   module_src_registry_ts --> module_src_features_hero_public_ts
   module_src_registry_ts --> module_src_features_icon_public_ts
   module_src_registry_ts --> module_src_features_image_public_ts
@@ -1692,7 +1707,6 @@ graph TD
   module_src_registry_ts --> module_src_layout_settings_layout_index_ts
   module_src_registry_ts --> module_src_layout_sidebar_layout_index_ts
   module_src_registry_ts --> module_src_layout_topbar_layout_index_ts
-  module_src_registry_ts --> module_src_patterns_auth_index_ts
   module_src_registry_ts --> module_src_patterns_chat_list_item_index_ts
   module_src_registry_ts --> module_src_patterns_collection_editor_index_ts
   module_src_registry_ts --> module_src_patterns_confirm_dialog_index_ts
@@ -1783,6 +1797,11 @@ graph TD
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
   package__ankhorage_zora -.-> module_src_types_activity_indicator_ts
   module_src_types_activity_indicator_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_auth_ts["src/types/auth.ts"]
+  package__ankhorage_zora -.-> module_src_types_auth_ts
+  module_src_types_auth_ts --> module_src_features_button_public_ts
+  module_src_types_auth_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_auth_ts --> module_src_types_form_ts
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
   package__ankhorage_zora -.-> module_src_types_avatar_group_ts
   module_src_types_avatar_group_ts --> module_src_features_avatar_public_ts
@@ -1837,6 +1856,10 @@ graph TD
   package__ankhorage_zora -.-> module_src_types_form_ts
   module_src_types_form_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_form_ts --> module_src_types_text_input_ts
+  module_src_types_gradient_ts["src/types/gradient.ts"]
+  package__ankhorage_zora -.-> module_src_types_gradient_ts
+  module_src_types_gradient_ts --> module_src_features_layout_public_ts
+  module_src_types_gradient_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_heading_ts["src/types/heading.ts"]
   package__ankhorage_zora -.-> module_src_types_heading_ts
   module_src_types_heading_ts --> module_src_internal_recipes_ts

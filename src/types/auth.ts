@@ -1,9 +1,9 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ButtonProps } from '../../features/button/public';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { FormFieldConfig, FormValues } from '../../types/form';
+import type { ButtonProps } from '../features/button/public';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { FormFieldConfig, FormValues } from './form';
 
 export type AuthIdentifierKind = 'email' | 'phone' | 'username';
 
@@ -26,7 +26,7 @@ export interface SignInFormProps extends AuthFormBaseProps {
   secretLabel?: React.ReactNode;
   forgotPasswordLabel?: React.ReactNode;
   signUpLabel?: React.ReactNode;
-  onSubmit: (values: SignInFormValues) => void | Promise<void>;
+  onSubmit?: (values: SignInFormValues) => void | Promise<void>;
   onForgotPassword?: () => void | Promise<void>;
   onSignUp?: () => void | Promise<void>;
 }
@@ -37,7 +37,7 @@ export type SignUpFormField = FormFieldConfig;
 export interface SignUpFormProps extends AuthFormBaseProps {
   fields?: readonly SignUpFormField[];
   signInLabel?: React.ReactNode;
-  onSubmit: (values: SignUpFormValues) => void | Promise<void>;
+  onSubmit?: (values: SignUpFormValues) => void | Promise<void>;
   onSignIn?: () => void | Promise<void>;
 }
 
@@ -50,7 +50,7 @@ export interface ForgotPasswordFormProps extends AuthFormBaseProps {
   identifiers?: readonly AuthIdentifierKind[];
   identifierLabel?: React.ReactNode;
   signInLabel?: React.ReactNode;
-  onSubmit: (values: ForgotPasswordFormValues) => void | Promise<void>;
+  onSubmit?: (values: ForgotPasswordFormValues) => void | Promise<void>;
   onSignIn?: () => void | Promise<void>;
 }
 
@@ -64,7 +64,7 @@ export interface OtpFormProps extends AuthFormBaseProps {
   resendLabel?: React.ReactNode;
   resendDisabled?: boolean;
   resendLoading?: boolean;
-  onSubmit: (values: OtpFormValues) => void | Promise<void>;
+  onSubmit?: (values: OtpFormValues) => void | Promise<void>;
   onResend?: () => void | Promise<void>;
 }
 

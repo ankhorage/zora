@@ -610,7 +610,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -1013,9 +1013,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 10,
       "column": 1
     },
@@ -1088,9 +1088,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 8,
       "column": 1
     },
@@ -2131,7 +2131,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -3409,7 +3409,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -3803,7 +3803,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -5763,7 +5763,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -6814,9 +6814,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/oauthProviders.ts",
+    "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/oauthProviders.ts",
+      "filePath": "src/features/auth/utils/oauthProviders.ts",
       "line": 3,
       "column": 14
     },
@@ -7229,7 +7229,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -7654,9 +7654,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/ForgotPasswordForm.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/ForgotPasswordForm.tsx",
+      "filePath": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
       "line": 98,
       "column": 14
     },
@@ -7672,9 +7672,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 49,
       "column": 1
     },
@@ -7741,8 +7741,8 @@
       {
         "name": "onSubmit",
         "kind": "property",
-        "type": "(values: ForgotPasswordFormValues) => void | Promise<void>",
-        "required": true,
+        "type": "((values: ForgotPasswordFormValues) => void | Promise<void>) | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -7782,9 +7782,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 44,
       "column": 1
     },
@@ -8061,7 +8061,7 @@
       {
         "name": "autoComplete",
         "kind": "property",
-        "type": "\"off\" | \"name\" | \"email\" | \"password\" | \"tel\" | \"url\" | \"2fa-app-otp\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"email-otp\" | \"flight-confirmation-code\" | \"flight-number\" | \"family-name\" | \"gender\" | \"gift-card-number\" | \"gift-card-pin\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"loyalty-account-number\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-dependent-locality\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-address-unit\" | \"postal-code\" | \"promo-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"upi-vpa\" | \"wifi-password\" | \"username\" | \"username-new\" | undefined",
+        "type": "\"off\" | \"email\" | \"username\" | \"name\" | \"password\" | \"tel\" | \"url\" | \"2fa-app-otp\" | \"additional-name\" | \"address-line1\" | \"address-line2\" | \"birthdate-day\" | \"birthdate-full\" | \"birthdate-month\" | \"birthdate-year\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-day\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-number\" | \"cc-name\" | \"cc-given-name\" | \"cc-middle-name\" | \"cc-family-name\" | \"cc-type\" | \"country\" | \"current-password\" | \"email-otp\" | \"flight-confirmation-code\" | \"flight-number\" | \"family-name\" | \"gender\" | \"gift-card-number\" | \"gift-card-pin\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"loyalty-account-number\" | \"name-family\" | \"name-given\" | \"name-middle\" | \"name-middle-initial\" | \"name-prefix\" | \"name-suffix\" | \"new-password\" | \"nickname\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"password-new\" | \"postal-address\" | \"postal-address-country\" | \"postal-address-dependent-locality\" | \"postal-address-extended\" | \"postal-address-extended-postal-code\" | \"postal-address-locality\" | \"postal-address-region\" | \"postal-address-unit\" | \"postal-code\" | \"promo-code\" | \"street-address\" | \"sms-otp\" | \"tel-country-code\" | \"tel-national\" | \"tel-device\" | \"upi-vpa\" | \"wifi-password\" | \"username-new\" | undefined",
         "required": false,
         "description": null
       },
@@ -8159,7 +8159,7 @@
       {
         "name": "textContentType",
         "kind": "property",
-        "type": "\"none\" | \"name\" | \"location\" | \"password\" | \"nickname\" | \"username\" | \"URL\" | \"addressCity\" | \"addressCityAndState\" | \"addressState\" | \"countryName\" | \"creditCardNumber\" | \"creditCardExpiration\" | \"creditCardExpirationMonth\" | \"creditCardExpirationYear\" | \"creditCardSecurityCode\" | \"creditCardType\" | \"creditCardName\" | \"creditCardGivenName\" | \"creditCardMiddleName\" | \"creditCardFamilyName\" | \"emailAddress\" | \"familyName\" | \"fullStreetAddress\" | \"givenName\" | \"jobTitle\" | \"middleName\" | \"namePrefix\" | \"nameSuffix\" | \"organizationName\" | \"postalCode\" | \"streetAddressLine1\" | \"streetAddressLine2\" | \"sublocality\" | \"telephoneNumber\" | \"newPassword\" | \"oneTimeCode\" | \"birthdate\" | \"birthdateDay\" | \"birthdateMonth\" | \"birthdateYear\" | \"cellularEID\" | \"cellularIMEI\" | \"dateTime\" | \"flightNumber\" | \"shipmentTrackingNumber\" | undefined",
+        "type": "\"none\" | \"username\" | \"name\" | \"location\" | \"password\" | \"nickname\" | \"URL\" | \"addressCity\" | \"addressCityAndState\" | \"addressState\" | \"countryName\" | \"creditCardNumber\" | \"creditCardExpiration\" | \"creditCardExpirationMonth\" | \"creditCardExpirationYear\" | \"creditCardSecurityCode\" | \"creditCardType\" | \"creditCardName\" | \"creditCardGivenName\" | \"creditCardMiddleName\" | \"creditCardFamilyName\" | \"emailAddress\" | \"familyName\" | \"fullStreetAddress\" | \"givenName\" | \"jobTitle\" | \"middleName\" | \"namePrefix\" | \"nameSuffix\" | \"organizationName\" | \"postalCode\" | \"streetAddressLine1\" | \"streetAddressLine2\" | \"sublocality\" | \"telephoneNumber\" | \"newPassword\" | \"oneTimeCode\" | \"birthdate\" | \"birthdateDay\" | \"birthdateMonth\" | \"birthdateYear\" | \"cellularEID\" | \"cellularIMEI\" | \"dateTime\" | \"flightNumber\" | \"shipmentTrackingNumber\" | undefined",
         "required": false,
         "description": null
       },
@@ -8465,9 +8465,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/components/gradient/Gradient.tsx",
+    "modulePath": "src/features/gradient/adapters/inbound/Gradient.tsx",
     "sourceLocation": {
-      "filePath": "src/components/gradient/Gradient.tsx",
+      "filePath": "src/features/gradient/adapters/inbound/Gradient.tsx",
       "line": 58,
       "column": 14
     },
@@ -8483,9 +8483,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 7,
       "column": 1
     },
@@ -8501,9 +8501,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 8,
       "column": 1
     },
@@ -8519,9 +8519,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 9,
       "column": 1
     },
@@ -8537,9 +8537,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 11,
       "column": 1
     },
@@ -8570,9 +8570,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 32,
       "column": 1
     },
@@ -8687,9 +8687,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 25,
       "column": 1
     },
@@ -8705,9 +8705,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 16,
       "column": 1
     },
@@ -8762,13 +8762,13 @@
   },
   {
     "name": "GradientRendererProvider",
-    "description": null,
+    "description": "Supplies the host-owned renderer used by `Gradient`.\n\nExpo apps can adapt `expo-linear-gradient` here, while standalone React\nNative hosts can inject another compatible implementation.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/components/gradient/GradientRendererContext.tsx",
+    "modulePath": "src/features/gradient/adapters/inbound/GradientRendererContext.tsx",
     "sourceLocation": {
-      "filePath": "src/components/gradient/GradientRendererContext.tsx",
+      "filePath": "src/features/gradient/adapters/inbound/GradientRendererContext.tsx",
       "line": 13,
       "column": 1
     },
@@ -8798,9 +8798,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/gradient/types.ts",
+    "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
-      "filePath": "src/components/gradient/types.ts",
+      "filePath": "src/types/gradient.ts",
       "line": 27,
       "column": 1
     },
@@ -9128,7 +9128,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -10014,9 +10014,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+    "modulePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
     "sourceLocation": {
-      "filePath": "../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+      "filePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
       "line": 5,
       "column": 1
     },
@@ -10453,7 +10453,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -11329,7 +11329,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -13052,9 +13052,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/OAuthProviderButton.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/OAuthProviderButton.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/OAuthProviderButton.tsx",
+      "filePath": "src/features/auth/adapters/inbound/OAuthProviderButton.tsx",
       "line": 53,
       "column": 14
     },
@@ -13070,9 +13070,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 81,
       "column": 1
     },
@@ -13153,7 +13153,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"../../internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"../internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -13174,7 +13174,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"../../internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"../internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -13187,9 +13187,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 71,
       "column": 1
     },
@@ -13205,9 +13205,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 73,
       "column": 1
     },
@@ -13259,9 +13259,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/OAuthProviderList.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/OAuthProviderList.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/OAuthProviderList.tsx",
+      "filePath": "src/features/auth/adapters/inbound/OAuthProviderList.tsx",
       "line": 56,
       "column": 14
     },
@@ -13277,9 +13277,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 94,
       "column": 1
     },
@@ -13295,9 +13295,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 96,
       "column": 1
     },
@@ -13371,7 +13371,7 @@
       {
         "name": "size",
         "kind": "property",
-        "type": "import(\"../../internal/recipes\").ZoraControlSize | undefined",
+        "type": "import(\"../internal/recipes\").ZoraControlSize | undefined",
         "required": false,
         "description": null
       },
@@ -13392,7 +13392,7 @@
       {
         "name": "variant",
         "kind": "property",
-        "type": "import(\"../../internal/recipes\").ZoraButtonVariant | undefined",
+        "type": "import(\"../internal/recipes\").ZoraButtonVariant | undefined",
         "required": false,
         "description": null
       }
@@ -13405,9 +13405,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/OtpForm.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/OtpForm.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/OtpForm.tsx",
+      "filePath": "src/features/auth/adapters/inbound/OtpForm.tsx",
       "line": 94,
       "column": 14
     },
@@ -13423,9 +13423,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 61,
       "column": 1
     },
@@ -13485,8 +13485,8 @@
       {
         "name": "onSubmit",
         "kind": "property",
-        "type": "(values: OtpFormValues) => void | Promise<void>",
-        "required": true,
+        "type": "((values: OtpFormValues) => void | Promise<void>) | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -13547,9 +13547,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 57,
       "column": 1
     },
@@ -16070,9 +16070,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/auth/oauthProviders.ts",
+    "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/oauthProviders.ts",
+      "filePath": "src/features/auth/utils/oauthProviders.ts",
       "line": 52,
       "column": 1
     },
@@ -16102,9 +16102,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/auth/oauthProviders.ts",
+    "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/oauthProviders.ts",
+      "filePath": "src/features/auth/utils/oauthProviders.ts",
       "line": 56,
       "column": 1
     },
@@ -17436,9 +17436,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/SignInForm.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/SignInForm.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/SignInForm.tsx",
+      "filePath": "src/features/auth/adapters/inbound/SignInForm.tsx",
       "line": 126,
       "column": 14
     },
@@ -17454,9 +17454,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 23,
       "column": 1
     },
@@ -17537,8 +17537,8 @@
       {
         "name": "onSubmit",
         "kind": "property",
-        "type": "(values: SignInFormValues) => void | Promise<void>",
-        "required": true,
+        "type": "((values: SignInFormValues) => void | Promise<void>) | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -17585,9 +17585,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 17,
       "column": 1
     },
@@ -17625,9 +17625,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/auth/SignUpForm.tsx",
+    "modulePath": "src/features/auth/adapters/inbound/SignUpForm.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/SignUpForm.tsx",
+      "filePath": "src/features/auth/adapters/inbound/SignUpForm.tsx",
       "line": 90,
       "column": 14
     },
@@ -17643,9 +17643,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 35,
       "column": 1
     },
@@ -17661,9 +17661,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 37,
       "column": 1
     },
@@ -17723,8 +17723,8 @@
       {
         "name": "onSubmit",
         "kind": "property",
-        "type": "(values: SignUpFormValues) => void | Promise<void>",
-        "required": true,
+        "type": "((values: SignUpFormValues) => void | Promise<void>) | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -17764,9 +17764,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/auth/types.ts",
+    "modulePath": "src/types/auth.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/auth/types.ts",
+      "filePath": "src/types/auth.ts",
       "line": 34,
       "column": 1
     },
@@ -18598,7 +18598,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -18727,9 +18727,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+    "modulePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
     "sourceLocation": {
-      "filePath": "../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+      "filePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
       "line": 4,
       "column": 1
     },
@@ -18975,7 +18975,7 @@
       {
         "name": "pointerEvents",
         "kind": "property",
-        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
         "required": false,
         "description": null
       },
@@ -19086,9 +19086,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "../zora/node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
+    "modulePath": "node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
     "sourceLocation": {
-      "filePath": "../zora/node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
+      "filePath": "node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
       "line": 3,
       "column": 1
     },
@@ -21678,9 +21678,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "../zora/node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
+    "modulePath": "node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
     "sourceLocation": {
-      "filePath": "../zora/node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
+      "filePath": "node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
       "line": 11,
       "column": 1
     },
@@ -22010,7 +22010,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 106,
+      "line": 104,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -23810,7 +23810,7 @@
       {
         "name": "tokenFamily",
         "kind": "property",
-        "type": "\"radii\" | \"spacing\" | \"colors\" | \"typography\" | \"shadows\"",
+        "type": "\"spacing\" | \"colors\" | \"radii\" | \"typography\" | \"shadows\"",
         "required": true,
         "description": null
       },

@@ -4,7 +4,7 @@ import React, { act } from 'react';
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
 import * as ReactNativeWeb from 'react-native-web';
 
-import type { GradientRendererProps } from '../src/components/gradient/types';
+import type { GradientRendererProps } from '../src/types/gradient';
 import type { UploadAsset } from '../src/types/upload';
 import type { BottomSheetPresentOptions } from '@ankhorage/surface/bottom-sheet';
 
@@ -51,9 +51,9 @@ await mock.module('expo-image-picker', () => ({
   launchImageLibraryAsync: async () => ({ canceled: true, assets: [] }),
 }));
 
-const { Gradient } = await import('../src/components/gradient/Gradient');
+const { Gradient } = await import('../src/features/gradient/adapters/inbound/Gradient');
 const { GradientRendererProvider } =
-  await import('../src/components/gradient/GradientRendererContext');
+  await import('../src/features/gradient/adapters/inbound/GradientRendererContext');
 const { Icon } = await import('../src/features/icon/adapters/inbound/Icon');
 const { KeyboardAvoidingView } = await import('../src/features/keyboard-avoiding-view/public');
 const { Container } = await import('../src/features/layout/adapters/inbound/Container');

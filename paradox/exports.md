@@ -100,7 +100,7 @@ Source: `src/types/activity-indicator.ts:5:1`
 | onTouchEndCapture                      | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
 | onTouchMove                            | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
 | onTouchStart                           | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
-| pointerEvents                          | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`                                                   | no       |             |
+| pointerEvents                          | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                   | no       |             |
 | removeClippedSubviews                  | property | `boolean \| undefined`                                                                                        | no       |             |
 | renderToHardwareTextureAndroid         | property | `boolean \| undefined`                                                                                        | no       |             |
 | role                                   | property | `Role \| undefined`                                                                                           | no       |             |
@@ -202,8 +202,8 @@ Source: `src/layout/app-shell/types.ts:5:1`
 ## AuthFormBaseProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:10:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:10:1`
 
 ### Members
 
@@ -221,8 +221,8 @@ Source: `src/patterns/auth/types.ts:10:1`
 ## AuthIdentifierKind
 
 Kind: `unknown`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:8:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:8:1`
 
 ## Avatar
 
@@ -479,7 +479,7 @@ Source: `src/types/layout.ts:11:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -756,7 +756,7 @@ Source: `src/types/card.ts:7:1`
 | padding            | property | `string \| undefined`                                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -826,7 +826,7 @@ Source: `src/foundation/Center.tsx:10:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -1290,7 +1290,7 @@ Source: `src/types/layout.ts:12:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -1567,8 +1567,8 @@ Source: `src/types/date-picker.ts:5:1`
 ## DEFAULT_OAUTH_PROVIDER_ICONS
 
 Kind: `value`
-Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:3:14`
+Module: `src/features/auth/utils/oauthProviders.ts`
+Source: `src/features/auth/utils/oauthProviders.ts:3:14`
 
 ## DisclosureSection
 
@@ -1654,7 +1654,7 @@ Source: `src/types/layout.ts:14:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -1774,40 +1774,40 @@ Virtualizes keyed manifest children using React Native FlatList and the Runtime 
 ## ForgotPasswordForm
 
 Kind: `value`
-Module: `src/patterns/auth/ForgotPasswordForm.tsx`
-Source: `src/patterns/auth/ForgotPasswordForm.tsx:98:14`
+Module: `src/features/auth/adapters/inbound/ForgotPasswordForm.tsx`
+Source: `src/features/auth/adapters/inbound/ForgotPasswordForm.tsx:98:14`
 
 Password reset form pattern with validation and submit actions.
 
 ## ForgotPasswordFormProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:49:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:49:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                          | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------- | -------- | ----------- |
-| disabled          | property | `boolean \| undefined`                                        | no       |             |
-| error             | property | `React.ReactNode`                                             | no       |             |
-| identifierLabel   | property | `React.ReactNode`                                             | no       |             |
-| identifiers       | property | `readonly AuthIdentifierKind[] \| undefined`                  | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                              | no       |             |
-| loading           | property | `boolean \| undefined`                                        | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                  | no       |             |
-| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`                  | no       |             |
-| onSubmit          | property | `(values: ForgotPasswordFormValues) => void \| Promise<void>` | yes      |             |
-| signInLabel       | property | `React.ReactNode`                                             | no       |             |
-| submitLabel       | property | `React.ReactNode`                                             | no       |             |
-| testID            | property | `string \| undefined`                                         | no       |             |
-| themeId           | property | `string \| undefined`                                         | no       |             |
+| Name              | Kind     | Type                                                                         | Required | Description |
+| ----------------- | -------- | ---------------------------------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                                                       | no       |             |
+| error             | property | `React.ReactNode`                                                            | no       |             |
+| identifierLabel   | property | `React.ReactNode`                                                            | no       |             |
+| identifiers       | property | `readonly AuthIdentifierKind[] \| undefined`                                 | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                             | no       |             |
+| loading           | property | `boolean \| undefined`                                                       | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                 | no       |             |
+| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`                                 | no       |             |
+| onSubmit          | property | `((values: ForgotPasswordFormValues) => void \| Promise<void>) \| undefined` | no       |             |
+| signInLabel       | property | `React.ReactNode`                                                            | no       |             |
+| submitLabel       | property | `React.ReactNode`                                                            | no       |             |
+| testID            | property | `string \| undefined`                                                        | no       |             |
+| themeId           | property | `string \| undefined`                                                        | no       |             |
 
 ## ForgotPasswordFormValues
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:44:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:44:1`
 
 ### Members
 
@@ -1901,7 +1901,7 @@ Source: `src/types/form.ts:18:1`
 | Name            | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Required | Description |
 | --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
 | autoCapitalize  | property | `"none" \| "sentences" \| "words" \| "characters" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | no       |             |
-| autoComplete    | property | `"off" \| "name" \| "email" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username" \| "username-new" \| undefined` | no       |             |
+| autoComplete    | property | `"off" \| "email" \| "username" \| "name" \| "password" \| "tel" \| "url" \| "2fa-app-otp" \| "additional-name" \| "address-line1" \| "address-line2" \| "birthdate-day" \| "birthdate-full" \| "birthdate-month" \| "birthdate-year" \| "cc-csc" \| "cc-exp" \| "cc-exp-day" \| "cc-exp-month" \| "cc-exp-year" \| "cc-number" \| "cc-name" \| "cc-given-name" \| "cc-middle-name" \| "cc-family-name" \| "cc-type" \| "country" \| "current-password" \| "email-otp" \| "flight-confirmation-code" \| "flight-number" \| "family-name" \| "gender" \| "gift-card-number" \| "gift-card-pin" \| "given-name" \| "honorific-prefix" \| "honorific-suffix" \| "loyalty-account-number" \| "name-family" \| "name-given" \| "name-middle" \| "name-middle-initial" \| "name-prefix" \| "name-suffix" \| "new-password" \| "nickname" \| "one-time-code" \| "organization" \| "organization-title" \| "password-new" \| "postal-address" \| "postal-address-country" \| "postal-address-dependent-locality" \| "postal-address-extended" \| "postal-address-extended-postal-code" \| "postal-address-locality" \| "postal-address-region" \| "postal-address-unit" \| "postal-code" \| "promo-code" \| "street-address" \| "sms-otp" \| "tel-country-code" \| "tel-national" \| "tel-device" \| "upi-vpa" \| "wifi-password" \| "username-new" \| undefined` | no       |             |
 | description     | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
 | disabled        | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
 | helperText      | property | `React.ReactNode`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
@@ -1915,7 +1915,7 @@ Source: `src/types/form.ts:18:1`
 | rules           | property | `readonly ValidationRule[] \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | no       |             |
 | secureTextEntry | property | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
 | testID          | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | no       |             |
-| textContentType | property | `"none" \| "name" \| "location" \| "password" \| "nickname" \| "username" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
+| textContentType | property | `"none" \| "username" \| "name" \| "location" \| "password" \| "nickname" \| "URL" \| "addressCity" \| "addressCityAndState" \| "addressState" \| "countryName" \| "creditCardNumber" \| "creditCardExpiration" \| "creditCardExpirationMonth" \| "creditCardExpirationYear" \| "creditCardSecurityCode" \| "creditCardType" \| "creditCardName" \| "creditCardGivenName" \| "creditCardMiddleName" \| "creditCardFamilyName" \| "emailAddress" \| "familyName" \| "fullStreetAddress" \| "givenName" \| "jobTitle" \| "middleName" \| "namePrefix" \| "nameSuffix" \| "organizationName" \| "postalCode" \| "streetAddressLine1" \| "streetAddressLine2" \| "sublocality" \| "telephoneNumber" \| "newPassword" \| "oneTimeCode" \| "birthdate" \| "birthdateDay" \| "birthdateMonth" \| "birthdateYear" \| "cellularEID" \| "cellularIMEI" \| "dateTime" \| "flightNumber" \| "shipmentTrackingNumber" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                    | no       |             |
 | type            | property | `FormFieldInputType \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | no       |             |
 
 ## FormFieldInputType
@@ -1997,8 +1997,8 @@ Source: `src/types/form.ts:13:1`
 ## Gradient
 
 Kind: `value`
-Module: `src/components/gradient/Gradient.tsx`
-Source: `src/components/gradient/Gradient.tsx:58:14`
+Module: `src/features/gradient/adapters/inbound/Gradient.tsx`
+Source: `src/features/gradient/adapters/inbound/Gradient.tsx:58:14`
 
 Gradient background container for branded loading surfaces, hero blocks, and previews.
 
@@ -2008,26 +2008,26 @@ The host supplies a platform-compatible renderer through
 ## GradientColor
 
 Kind: `unknown`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:7:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:7:1`
 
 ## GradientColors
 
 Kind: `unknown`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:8:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:8:1`
 
 ## GradientLocations
 
 Kind: `unknown`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:9:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:9:1`
 
 ## GradientPoint
 
 Kind: `type`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:11:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:11:1`
 
 ### Members
 
@@ -2039,8 +2039,8 @@ Source: `src/components/gradient/types.ts:11:1`
 ## GradientProps
 
 Kind: `type`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:32:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:32:1`
 
 ### Members
 
@@ -2064,14 +2064,14 @@ Source: `src/components/gradient/types.ts:32:1`
 ## GradientRenderer
 
 Kind: `unknown`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:25:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:25:1`
 
 ## GradientRendererProps
 
 Kind: `type`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:16:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:16:1`
 
 ### Members
 
@@ -2087,8 +2087,13 @@ Source: `src/components/gradient/types.ts:16:1`
 ## GradientRendererProvider
 
 Kind: `function`
-Module: `src/components/gradient/GradientRendererContext.tsx`
-Source: `src/components/gradient/GradientRendererContext.tsx:13:1`
+Module: `src/features/gradient/adapters/inbound/GradientRendererContext.tsx`
+Source: `src/features/gradient/adapters/inbound/GradientRendererContext.tsx:13:1`
+
+Supplies the host-owned renderer used by `Gradient`.
+
+Expo apps can adapt `expo-linear-gradient` here, while standalone React
+Native hosts can inject another compatible implementation.
 
 ### Signatures
 
@@ -2099,8 +2104,8 @@ Source: `src/components/gradient/GradientRendererContext.tsx:13:1`
 ## GradientRendererProviderProps
 
 Kind: `type`
-Module: `src/components/gradient/types.ts`
-Source: `src/components/gradient/types.ts:27:1`
+Module: `src/types/gradient.ts`
+Source: `src/types/gradient.ts:27:1`
 
 ### Members
 
@@ -2165,7 +2170,7 @@ Source: `src/types/layout.ts:16:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -2398,8 +2403,8 @@ Displays an image asset and owns its missing, unrenderable, and failed presentat
 ## ImageFit
 
 Kind: `unknown`
-Module: `../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
-Source: `../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
+Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
 
 ## ImageProps
 
@@ -2483,7 +2488,7 @@ Source: `src/foundation/Inline.tsx:10:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`                                                              | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                              | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                          | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
@@ -2639,7 +2644,7 @@ Source: `src/types/keyboard-avoiding-view.ts:9:1`
 | onTouchEndCapture                      | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
 | onTouchMove                            | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
 | onTouchStart                           | property | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       |             |
-| pointerEvents                          | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`                                                   | no       |             |
+| pointerEvents                          | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                   | no       |             |
 | removeClippedSubviews                  | property | `boolean \| undefined`                                                                                        | no       |             |
 | renderToHardwareTextureAndroid         | property | `boolean \| undefined`                                                                                        | no       |             |
 | role                                   | property | `Role \| undefined`                                                                                           | no       |             |
@@ -3089,8 +3094,8 @@ Source: `src/patterns/notice/types.ts:6:1`
 ## OAuthProviderButton
 
 Kind: `value`
-Module: `src/patterns/auth/OAuthProviderButton.tsx`
-Source: `src/patterns/auth/OAuthProviderButton.tsx:53:14`
+Module: `src/features/auth/adapters/inbound/OAuthProviderButton.tsx`
+Source: `src/features/auth/adapters/inbound/OAuthProviderButton.tsx:53:14`
 
 Renders a provider-branded OAuth action button without owning auth behavior.
 
@@ -3100,8 +3105,8 @@ Adapters, redirects, and callback handling belong to app/runtime layers.
 ## OAuthProviderButtonProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:81:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:81:1`
 
 ### Members
 
@@ -3117,22 +3122,22 @@ Source: `src/patterns/auth/types.ts:81:1`
 | mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
 | onPress           | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
 | providerId        | property | `string`                                                                                                                                      | yes      |             |
-| size              | property | `import("../../internal/recipes").ZoraControlSize \| undefined`                                                                               | no       |             |
+| size              | property | `import("../internal/recipes").ZoraControlSize \| undefined`                                                                                  | no       |             |
 | testID            | property | `string \| undefined`                                                                                                                         | no       |             |
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| variant           | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined`                                                                             | no       |             |
+| variant           | property | `import("../internal/recipes").ZoraButtonVariant \| undefined`                                                                                | no       |             |
 
 ## OAuthProviderIconSpec
 
 Kind: `unknown`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:71:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:71:1`
 
 ## OAuthProviderItem
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:73:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:73:1`
 
 ### Members
 
@@ -3147,22 +3152,22 @@ Source: `src/patterns/auth/types.ts:73:1`
 ## OAuthProviderList
 
 Kind: `value`
-Module: `src/patterns/auth/OAuthProviderList.tsx`
-Source: `src/patterns/auth/OAuthProviderList.tsx:56:14`
+Module: `src/features/auth/adapters/inbound/OAuthProviderList.tsx`
+Source: `src/features/auth/adapters/inbound/OAuthProviderList.tsx:56:14`
 
 Renders a group of OAuth provider buttons for sign-in and auth settings flows.
 
 ## OAuthProviderListLayout
 
 Kind: `unknown`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:94:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:94:1`
 
 ## OAuthProviderListProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:96:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:96:1`
 
 ### Members
 
@@ -3177,50 +3182,50 @@ Source: `src/patterns/auth/types.ts:96:1`
 | mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
 | onProviderPress   | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
 | providers         | property | `readonly OAuthProviderItem[]`                                                                                                                | yes      |             |
-| size              | property | `import("../../internal/recipes").ZoraControlSize \| undefined`                                                                               | no       |             |
+| size              | property | `import("../internal/recipes").ZoraControlSize \| undefined`                                                                                  | no       |             |
 | testID            | property | `string \| undefined`                                                                                                                         | no       |             |
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| variant           | property | `import("../../internal/recipes").ZoraButtonVariant \| undefined`                                                                             | no       |             |
+| variant           | property | `import("../internal/recipes").ZoraButtonVariant \| undefined`                                                                                | no       |             |
 
 ## OtpForm
 
 Kind: `value`
-Module: `src/patterns/auth/OtpForm.tsx`
-Source: `src/patterns/auth/OtpForm.tsx:94:14`
+Module: `src/features/auth/adapters/inbound/OtpForm.tsx`
+Source: `src/features/auth/adapters/inbound/OtpForm.tsx:94:14`
 
 One-time passcode form pattern with digit input and submit actions.
 
 ## OtpFormProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:61:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:61:1`
 
 ### Members
 
-| Name              | Kind     | Type                                               | Required | Description |
-| ----------------- | -------- | -------------------------------------------------- | -------- | ----------- |
-| disabled          | property | `boolean \| undefined`                             | no       |             |
-| error             | property | `React.ReactNode`                                  | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                   | no       |             |
-| length            | property | `number \| undefined`                              | no       |             |
-| loading           | property | `boolean \| undefined`                             | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                       | no       |             |
-| onResend          | property | `(() => void \| Promise<void>) \| undefined`       | no       |             |
-| onSubmit          | property | `(values: OtpFormValues) => void \| Promise<void>` | yes      |             |
-| otpLabel          | property | `React.ReactNode`                                  | no       |             |
-| resendDisabled    | property | `boolean \| undefined`                             | no       |             |
-| resendLabel       | property | `React.ReactNode`                                  | no       |             |
-| resendLoading     | property | `boolean \| undefined`                             | no       |             |
-| submitLabel       | property | `React.ReactNode`                                  | no       |             |
-| testID            | property | `string \| undefined`                              | no       |             |
-| themeId           | property | `string \| undefined`                              | no       |             |
+| Name              | Kind     | Type                                                              | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                                            | no       |             |
+| error             | property | `React.ReactNode`                                                 | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                  | no       |             |
+| length            | property | `number \| undefined`                                             | no       |             |
+| loading           | property | `boolean \| undefined`                                            | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                      | no       |             |
+| onResend          | property | `(() => void \| Promise<void>) \| undefined`                      | no       |             |
+| onSubmit          | property | `((values: OtpFormValues) => void \| Promise<void>) \| undefined` | no       |             |
+| otpLabel          | property | `React.ReactNode`                                                 | no       |             |
+| resendDisabled    | property | `boolean \| undefined`                                            | no       |             |
+| resendLabel       | property | `React.ReactNode`                                                 | no       |             |
+| resendLoading     | property | `boolean \| undefined`                                            | no       |             |
+| submitLabel       | property | `React.ReactNode`                                                 | no       |             |
+| testID            | property | `string \| undefined`                                             | no       |             |
+| themeId           | property | `string \| undefined`                                             | no       |             |
 
 ## OtpFormValues
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:57:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:57:1`
 
 ### Members
 
@@ -3832,8 +3837,8 @@ Source: `src/features/avatar/utils/resolveAvatarInitials.ts:20:1`
 ## resolveOAuthProviderIcon
 
 Kind: `function`
-Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:52:1`
+Module: `src/features/auth/utils/oauthProviders.ts`
+Source: `src/features/auth/utils/oauthProviders.ts:52:1`
 
 ### Signatures
 
@@ -3844,8 +3849,8 @@ Source: `src/patterns/auth/oauthProviders.ts:52:1`
 ## resolveOAuthProviderLabel
 
 Kind: `function`
-Module: `src/patterns/auth/oauthProviders.ts`
-Source: `src/patterns/auth/oauthProviders.ts:56:1`
+Module: `src/features/auth/utils/oauthProviders.ts`
+Source: `src/features/auth/utils/oauthProviders.ts:56:1`
 
 ### Signatures
 
@@ -4287,43 +4292,43 @@ Source: `src/layout/sidebar-layout/types.ts:7:1`
 ## SignInForm
 
 Kind: `value`
-Module: `src/patterns/auth/SignInForm.tsx`
-Source: `src/patterns/auth/SignInForm.tsx:126:14`
+Module: `src/features/auth/adapters/inbound/SignInForm.tsx`
+Source: `src/features/auth/adapters/inbound/SignInForm.tsx:126:14`
 
 Sign-in form pattern with identifier and password fields.
 
 ## SignInFormProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:23:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:23:1`
 
 ### Members
 
-| Name                | Kind     | Type                                                  | Required | Description |
-| ------------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
-| disabled            | property | `boolean \| undefined`                                | no       |             |
-| error               | property | `React.ReactNode`                                     | no       |             |
-| forgotPasswordLabel | property | `React.ReactNode`                                     | no       |             |
-| identifierLabel     | property | `React.ReactNode`                                     | no       |             |
-| identifiers         | property | `readonly AuthIdentifierKind[] \| undefined`          | no       |             |
-| interactionPolicy   | property | `InteractionPolicy \| undefined`                      | no       |             |
-| loading             | property | `boolean \| undefined`                                | no       |             |
-| mode                | property | `ZoraThemeMode \| undefined`                          | no       |             |
-| onForgotPassword    | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
-| onSignUp            | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
-| onSubmit            | property | `(values: SignInFormValues) => void \| Promise<void>` | yes      |             |
-| secretLabel         | property | `React.ReactNode`                                     | no       |             |
-| signUpLabel         | property | `React.ReactNode`                                     | no       |             |
-| submitLabel         | property | `React.ReactNode`                                     | no       |             |
-| testID              | property | `string \| undefined`                                 | no       |             |
-| themeId             | property | `string \| undefined`                                 | no       |             |
+| Name                | Kind     | Type                                                                 | Required | Description |
+| ------------------- | -------- | -------------------------------------------------------------------- | -------- | ----------- |
+| disabled            | property | `boolean \| undefined`                                               | no       |             |
+| error               | property | `React.ReactNode`                                                    | no       |             |
+| forgotPasswordLabel | property | `React.ReactNode`                                                    | no       |             |
+| identifierLabel     | property | `React.ReactNode`                                                    | no       |             |
+| identifiers         | property | `readonly AuthIdentifierKind[] \| undefined`                         | no       |             |
+| interactionPolicy   | property | `InteractionPolicy \| undefined`                                     | no       |             |
+| loading             | property | `boolean \| undefined`                                               | no       |             |
+| mode                | property | `ZoraThemeMode \| undefined`                                         | no       |             |
+| onForgotPassword    | property | `(() => void \| Promise<void>) \| undefined`                         | no       |             |
+| onSignUp            | property | `(() => void \| Promise<void>) \| undefined`                         | no       |             |
+| onSubmit            | property | `((values: SignInFormValues) => void \| Promise<void>) \| undefined` | no       |             |
+| secretLabel         | property | `React.ReactNode`                                                    | no       |             |
+| signUpLabel         | property | `React.ReactNode`                                                    | no       |             |
+| submitLabel         | property | `React.ReactNode`                                                    | no       |             |
+| testID              | property | `string \| undefined`                                                | no       |             |
+| themeId             | property | `string \| undefined`                                                | no       |             |
 
 ## SignInFormValues
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:17:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:17:1`
 
 ### Members
 
@@ -4336,45 +4341,45 @@ Source: `src/patterns/auth/types.ts:17:1`
 ## SignUpForm
 
 Kind: `value`
-Module: `src/patterns/auth/SignUpForm.tsx`
-Source: `src/patterns/auth/SignUpForm.tsx:90:14`
+Module: `src/features/auth/adapters/inbound/SignUpForm.tsx`
+Source: `src/features/auth/adapters/inbound/SignUpForm.tsx:90:14`
 
 Sign-up form pattern with structured fields and validation.
 
 ## SignUpFormField
 
 Kind: `unknown`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:35:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:35:1`
 
 ## SignUpFormProps
 
 Kind: `type`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:37:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:37:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                  | Required | Description |
-| ----------------- | -------- | ----------------------------------------------------- | -------- | ----------- |
-| disabled          | property | `boolean \| undefined`                                | no       |             |
-| error             | property | `React.ReactNode`                                     | no       |             |
-| fields            | property | `readonly SignUpFormField[] \| undefined`             | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                      | no       |             |
-| loading           | property | `boolean \| undefined`                                | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                          | no       |             |
-| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`          | no       |             |
-| onSubmit          | property | `(values: SignUpFormValues) => void \| Promise<void>` | yes      |             |
-| signInLabel       | property | `React.ReactNode`                                     | no       |             |
-| submitLabel       | property | `React.ReactNode`                                     | no       |             |
-| testID            | property | `string \| undefined`                                 | no       |             |
-| themeId           | property | `string \| undefined`                                 | no       |             |
+| Name              | Kind     | Type                                                                 | Required | Description |
+| ----------------- | -------- | -------------------------------------------------------------------- | -------- | ----------- |
+| disabled          | property | `boolean \| undefined`                                               | no       |             |
+| error             | property | `React.ReactNode`                                                    | no       |             |
+| fields            | property | `readonly SignUpFormField[] \| undefined`                            | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                     | no       |             |
+| loading           | property | `boolean \| undefined`                                               | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                         | no       |             |
+| onSignIn          | property | `(() => void \| Promise<void>) \| undefined`                         | no       |             |
+| onSubmit          | property | `((values: SignUpFormValues) => void \| Promise<void>) \| undefined` | no       |             |
+| signInLabel       | property | `React.ReactNode`                                                    | no       |             |
+| submitLabel       | property | `React.ReactNode`                                                    | no       |             |
+| testID            | property | `string \| undefined`                                                | no       |             |
+| themeId           | property | `string \| undefined`                                                | no       |             |
 
 ## SignUpFormValues
 
 Kind: `unknown`
-Module: `src/patterns/auth/types.ts`
-Source: `src/patterns/auth/types.ts:34:1`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:34:1`
 
 ## Skeleton
 
@@ -4585,7 +4590,7 @@ Source: `src/types/layout.ts:17:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`                                                              | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                              | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                          | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                    | no       |             |
@@ -4612,8 +4617,8 @@ Adapts the themed Surface Surface primitive to ZORA scope and interaction props.
 ## SurfaceImageSource
 
 Kind: `unknown`
-Module: `../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
-Source: `../zora/node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:4:1`
+Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:4:1`
 
 ## SurfaceProps
 
@@ -4656,7 +4661,7 @@ Source: `src/types/surface.ts:6:1`
 | p                  | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pb                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pl                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
-| pointerEvents      | property | `"none" \| "box-none" \| "box-only" \| "auto" \| undefined`               | no       |             |
+| pointerEvents      | property | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`               | no       |             |
 | position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`           | no       |             |
 | pr                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
 | pt                 | property | `Responsive<SpaceValue> \| undefined`                                     | no       |             |
@@ -4675,8 +4680,8 @@ Source: `src/types/surface.ts:6:1`
 ## SurfaceVariant
 
 Kind: `unknown`
-Module: `../zora/node_modules/@ankhorage/surface/dist/layout/Surface.d.ts`
-Source: `../zora/node_modules/@ankhorage/surface/dist/layout/Surface.d.ts:3:1`
+Module: `node_modules/@ankhorage/surface/dist/layout/Surface.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/layout/Surface.d.ts:3:1`
 
 ## SwitchField
 
@@ -5440,8 +5445,8 @@ Source: `src/patterns/selection/types.ts:18:1`
 ## useToast
 
 Kind: `function`
-Module: `../zora/node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts`
-Source: `../zora/node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts:11:1`
+Module: `node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts:11:1`
 
 ### Signatures
 
@@ -5571,7 +5576,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:106:14`
+Source: `src/metadata/componentMeta.ts:104:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
@@ -6148,7 +6153,7 @@ Source: `src/metadata/themeRecipeTypes.ts:18:1`
 | default     | property | `string \| undefined`                                           | no       |             |
 | description | property | `string \| undefined`                                           | no       |             |
 | label       | property | `string`                                                        | yes      |             |
-| tokenFamily | property | `"radii" \| "spacing" \| "colors" \| "typography" \| "shadows"` | yes      |             |
+| tokenFamily | property | `"spacing" \| "colors" \| "radii" \| "typography" \| "shadows"` | yes      |             |
 | type        | property | `"token"`                                                       | yes      |             |
 
 ## ZoraThemeScope

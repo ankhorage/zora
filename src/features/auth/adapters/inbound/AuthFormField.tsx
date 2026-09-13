@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { FormField, hasRequiredRule } from '../../features/form/public';
-import { TextInput } from '../../features/form/text-input/public';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { FormFieldConfig, FormFieldValue } from '../../types/form';
+import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { FormFieldConfig, FormFieldValue } from '../../../../types/form';
+import { FormField, hasRequiredRule } from '../../../form/public';
+import { TextInput } from '../../../form/text-input/public';
 
 interface AuthFormFieldProps<TName extends string> {
   field: FormFieldConfig<TName>;

@@ -1,4 +1,4 @@
-import type { OAuthProviderIconSpec } from './types';
+import type { OAuthProviderIconSpec } from '../../../types/auth';
 
 export const DEFAULT_OAUTH_PROVIDER_ICONS = {
   apple: { provider: 'FontAwesome', name: 'apple' },

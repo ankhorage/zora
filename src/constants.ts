@@ -5,6 +5,14 @@ export const COMPONENT_THEME_AUTHORING = {
 } as const;
 
 export const FEATURE_MANIFEST_ELEMENTS = {
+  auth: [
+    'ForgotPasswordForm',
+    'OAuthProviderButton',
+    'OAuthProviderList',
+    'OtpForm',
+    'SignInForm',
+    'SignUpForm',
+  ],
   surface: ['Surface'],
   avatar: ['Avatar', 'AvatarGroup'],
   badge: ['Badge'],
@@ -13,6 +21,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   'data-table': ['DataTable'],
   'date-picker': ['DatePicker'],
   form: ['Form', 'FormError', 'FormField'],
+  gradient: ['Gradient'],
   button: ['Button', 'IconButton', 'ButtonGroup'],
   icon: ['Icon'],
   image: ['Image'],

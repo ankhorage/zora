@@ -26,11 +26,13 @@ test('form composition has one canonical feature owner', () => {
 
 test('migrated picker and presentation elements have one canonical feature owner', () => {
   for (const legacyPath of [
+    'src/components/gradient',
     'src/components/date-picker',
     'src/components/skeleton',
     'src/components/time-picker',
     'src/patterns/hero',
     'src/patterns/missing-element',
+    'src/patterns/auth',
   ]) {
     expect(existsSync(legacyPath), legacyPath).toBe(false);
   }

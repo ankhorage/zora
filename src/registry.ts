@@ -3,7 +3,6 @@ import type React from 'react';
 
 import { AppBar } from './components/app-bar';
 import { Breadcrumbs } from './components/breadcrumbs';
-import { Gradient } from './components/gradient';
 import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
@@ -14,6 +13,14 @@ import { Tabs } from './components/tabs';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
 import { ActivityIndicator } from './features/activity-indicator/public';
+import {
+  ForgotPasswordForm,
+  OAuthProviderButton,
+  OAuthProviderList,
+  OtpForm,
+  SignInForm,
+  SignUpForm,
+} from './features/auth/public';
 import { Avatar } from './features/avatar/public';
 import { AvatarGroup } from './features/avatar/public';
 import { Badge } from './features/badge/public';
@@ -35,6 +42,7 @@ import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
 import { Form, FormActions, FormError, FormField } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
 import { TextInput } from './features/form/text-input/public';
+import { Gradient } from './features/gradient/public';
 import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
@@ -57,14 +65,6 @@ import { ScreenSection } from './layout/screen-section';
 import { SettingsLayout } from './layout/settings-layout';
 import { SidebarLayout } from './layout/sidebar-layout';
 import { TopbarLayout } from './layout/topbar-layout';
-import {
-  ForgotPasswordForm,
-  OAuthProviderButton,
-  OAuthProviderList,
-  OtpForm,
-  SignInForm,
-  SignUpForm,
-} from './patterns/auth';
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';

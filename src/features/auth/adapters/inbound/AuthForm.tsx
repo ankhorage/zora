@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { FormActions, FormError, useFormController } from '../../features/form/public';
-import { Stack } from '../../features/layout/public';
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import type { FormErrors, FormFieldConfig, FormValues } from '../../types/form';
+import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { FormErrors, FormFieldConfig, FormValues } from '../../../../types/form';
+import { FormActions, FormError, useFormController } from '../../../form/public';
+import { Stack } from '../../../layout/public';
 import { AuthFormField } from './AuthFormField';
 
 interface AuthFormProps<TName extends string> {
   fields: readonly FormFieldConfig<TName>[];
   values: FormValues<TName>;
   onChange: (values: FormValues<TName>) => void;
-  onSubmit: (values: FormValues<TName>) => void | Promise<void>;
+  onSubmit?: (values: FormValues<TName>) => void | Promise<void>;
   errors?: FormErrors<TName>;
   error?: React.ReactNode;
   loading?: boolean;

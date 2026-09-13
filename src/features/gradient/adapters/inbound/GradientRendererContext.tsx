@@ -1,10 +1,10 @@
 import React, { createContext, use } from 'react';
 
-import type { GradientRenderer, GradientRendererProviderProps } from './types';
+import type { GradientRenderer, GradientRendererProviderProps } from '../../../../types/gradient';
 
 const GradientRendererContext = createContext<GradientRenderer | null>(null);
 
-/**
+/***
  * Supplies the host-owned renderer used by `Gradient`.
  *
  * Expo apps can adapt `expo-linear-gradient` here, while standalone React
@@ -14,6 +14,7 @@ export function GradientRendererProvider({ children, renderer }: GradientRendere
   return <GradientRendererContext value={renderer}>{children}</GradientRendererContext>;
 }
 
+/*** Resolves the host-owned gradient renderer for a Gradient instance. */
 export function useGradientRenderer(): GradientRenderer {
   const renderer = use(GradientRendererContext);
 

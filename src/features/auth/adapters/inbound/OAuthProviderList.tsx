@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Stack } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { OAuthProviderListProps } from '../../../../types/auth';
+import { Stack } from '../../../layout/public';
 import { OAuthProviderButton } from './OAuthProviderButton';
-import type { OAuthProviderListProps } from './types';
 
 function OAuthProviderListInner({
   themeId: _themeId,

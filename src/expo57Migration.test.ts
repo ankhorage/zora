@@ -84,7 +84,7 @@ describe('portable ZORA package boundary', () => {
 
   test('contains no Expo runtime import or removed RN 0.85 style API', () => {
     const runtimeSource = readFileSync(
-      join(ROOT, 'src', 'components', 'gradient', 'Gradient.tsx'),
+      join(ROOT, 'src', 'features', 'gradient', 'adapters', 'inbound', 'Gradient.tsx'),
       'utf8',
     );
     const shellSource = readFileSync(
