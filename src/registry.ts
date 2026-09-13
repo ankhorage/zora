@@ -39,11 +39,11 @@ import { Radio, RadioGroup } from './features/form/radio/public';
 import { TextInput } from './features/form/text-input/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
+import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
 import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
 import { ContentRail } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
 import { Progress, ProgressRing } from './features/progress/public';
-import { SplashScreen } from './features/splash-screen/public';
 import { Surface } from './features/surface/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
@@ -138,6 +138,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Icon,
   IconButton,
   Image,
+  KeyboardAvoidingView,
   TextInput,
   MediaCard,
   Menu,
@@ -155,7 +156,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   SkeletonCard,
   SkeletonList,
   SkeletonText,
-  SplashScreen,
   Tabs,
   Text,
   TimePicker,

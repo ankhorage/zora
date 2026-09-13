@@ -10733,6 +10733,740 @@
     "structuredRows": []
   },
   {
+    "name": "KeyboardAvoidingView",
+    "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
+      "line": 8,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "KeyboardAvoidingViewBehavior",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/keyboard-avoiding-view.ts",
+    "sourceLocation": {
+      "filePath": "src/types/keyboard-avoiding-view.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "KeyboardAvoidingViewProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/keyboard-avoiding-view.ts",
+    "sourceLocation": {
+      "filePath": "src/types/keyboard-avoiding-view.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityActions",
+        "kind": "property",
+        "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityElementsHidden",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityHint",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityIgnoresInvertColors",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLabelledBy",
+        "kind": "property",
+        "type": "string | string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLanguage",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLargeContentTitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLiveRegion",
+        "kind": "property",
+        "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityRespondsToUserInteraction",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityRole",
+        "kind": "property",
+        "type": "AccessibilityRole | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityShowsLargeContentViewer",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityState",
+        "kind": "property",
+        "type": "AccessibilityState | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityValue",
+        "kind": "property",
+        "type": "AccessibilityValue | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityViewIsModal",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessible",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-busy",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-checked",
+        "kind": "property",
+        "type": "boolean | \"mixed\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-expanded",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-hidden",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-label",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-labelledby",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-live",
+        "kind": "property",
+        "type": "\"off\" | \"polite\" | \"assertive\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-modal",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-selected",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuemax",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuemin",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuenow",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuetext",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "behavior",
+        "kind": "property",
+        "type": "\"height\" | \"position\" | \"padding\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "collapsable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "collapsableChildren",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentContainerStyle",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "enabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "focusable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hasTVPreferredFocus",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hitSlop",
+        "kind": "property",
+        "type": "number | Insets | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "importantForAccessibility",
+        "kind": "property",
+        "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isTVSelectable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "keyboardVerticalOffset",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "nativeID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "needsOffscreenAlphaCompositing",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityAction",
+        "kind": "property",
+        "type": "((event: AccessibilityActionEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityEscape",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityTap",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onBlur",
+        "kind": "property",
+        "type": "((e: BlurEvent) => void) | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onFocus",
+        "kind": "property",
+        "type": "((e: FocusEvent) => void) | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onLayout",
+        "kind": "property",
+        "type": "((event: LayoutChangeEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMagicTap",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMoveShouldSetResponder",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMoveShouldSetResponderCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerCancel",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerCancelCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerDown",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerDownCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerEnter",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerEnterCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerLeave",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerLeaveCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerMove",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerMoveCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerUp",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerUpCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderEnd",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderGrant",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderMove",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderReject",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderRelease",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderStart",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderTerminate",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderTerminationRequest",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onStartShouldSetResponder",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onStartShouldSetResponderCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchCancel",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchEnd",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchEndCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchMove",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchStart",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pointerEvents",
+        "kind": "property",
+        "type": "\"none\" | \"box-none\" | \"box-only\" | \"auto\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "removeClippedSubviews",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderToHardwareTextureAndroid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "role",
+        "kind": "property",
+        "type": "Role | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "screenReaderFocusable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "shouldRasterizeIOS",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tabIndex",
+        "kind": "property",
+        "type": "0 | -1 | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxMagnification",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxShiftDistanceX",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxShiftDistanceY",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxTiltAngle",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "List",
     "description": "List container pattern for composing `ListRow` and `ListSection`.",
     "isReadme": false,
@@ -17594,152 +18328,6 @@
         "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "SplashScreen",
-    "description": "Branded launch/loading surface for previews, web fallbacks, and app bootstrap states.\n\n`SplashScreen` is a React-rendered component. It intentionally does not manage\nExpo's native splash screen lifecycle or replace generated `expo-splash-screen`\nconfiguration.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/splash-screen/adapters/inbound/SplashScreen.tsx",
-      "line": 17,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SplashScreenLogoShape",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/types/splash-screen.ts",
-    "sourceLocation": {
-      "filePath": "src/types/splash-screen.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SplashScreenProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/types/splash-screen.ts",
-    "sourceLocation": {
-      "filePath": "src/types/splash-screen.ts",
-      "line": 8,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["SplashScreenLogoShape", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "backgroundColor",
-        "kind": "property",
-        "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "logo",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "logoLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "logoShape",
-        "kind": "property",
-        "type": "SplashScreenLogoShape | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "logoSize",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "import(\"@ankhorage/surface\").Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "subtitle",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
         "required": false,
         "description": null
       }

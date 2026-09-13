@@ -55,6 +55,7 @@ const { Gradient } = await import('../src/components/gradient/Gradient');
 const { GradientRendererProvider } =
   await import('../src/components/gradient/GradientRendererContext');
 const { Icon } = await import('../src/features/icon/adapters/inbound/Icon');
+const { KeyboardAvoidingView } = await import('../src/features/keyboard-avoiding-view/public');
 const { Container } = await import('../src/features/layout/adapters/inbound/Container');
 const { Grid } = await import('../src/features/layout/adapters/inbound/Grid');
 const { Show } = await import('../src/foundation/Show');
@@ -182,6 +183,22 @@ test('native lists render arbitrary children and declarative sections through pu
     'Intrinsic item',
   ])
     expect(markup).toContain(label);
+});
+
+test('keyboard avoiding view renders portable content through the native boundary', () => {
+  const markup = renderToStaticMarkup(
+    <KeyboardAvoidingView
+      behavior="padding"
+      enabled
+      keyboardVerticalOffset={24}
+      testID="keyboard-safe"
+    >
+      <ReactNativeWeb.Text>Keyboard-safe content</ReactNativeWeb.Text>
+    </KeyboardAvoidingView>,
+  );
+
+  expect(markup).toContain('data-testid="keyboard-safe"');
+  expect(markup).toContain('Keyboard-safe content');
 });
 
 test('declarative BottomSheet opens, updates children, closes, reopens, and remains passive', async () => {

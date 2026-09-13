@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Center,
+  KeyboardAvoidingView,
   ScreenSection,
   SettingsLayout,
   SidebarLayout,
@@ -20,19 +21,21 @@ export function LayoutsShowcaseSection() {
         title="Focused composition"
         description="Use Center, Card, and Stack directly for compact focused flows."
       >
-        <Center px="m" py="xl">
-          <Card
-            compact
-            eyebrow="Secure area"
-            title="Welcome back"
-            description="Focused auth flows can be composed with primitives."
-            footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
-          >
-            <Stack gap="m">
-              <Button size="s">Continue</Button>
-            </Stack>
-          </Card>
-        </Center>
+        <KeyboardAvoidingView behavior="padding">
+          <Center px="m" py="xl">
+            <Card
+              compact
+              eyebrow="Secure area"
+              title="Welcome back"
+              description="Focused auth flows can be composed with primitives."
+              footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
+            >
+              <Stack gap="m">
+                <Button size="s">Continue</Button>
+              </Stack>
+            </Card>
+          </Center>
+        </KeyboardAvoidingView>
       </Card>
 
       <Card
