@@ -237,7 +237,15 @@ function verifyCandidateGraph(
   );
   assert(
     existsSync(
-      join(installedZoraRoot, 'dist', 'components', 'gradient', 'GradientRendererContext.js'),
+      join(
+        installedZoraRoot,
+        'dist',
+        'features',
+        'gradient',
+        'adapters',
+        'inbound',
+        'GradientRendererContext.js',
+      ),
     ),
     'Installed ZORA lacks the candidate-only GradientRendererProvider implementation.',
   );
