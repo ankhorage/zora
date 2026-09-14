@@ -1,12 +1,6 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import { Modal } from './components/modal';
-import { Pagination } from './components/pagination';
-import { Rating } from './components/rating';
-import { SearchBar } from './components/search-bar';
-import { Tabs } from './components/tabs';
-import { Toolbar, ToolbarAction } from './components/toolbar';
 import { Accordion, AccordionItem } from './features/accordion/public';
 import { ActivityIndicator } from './features/activity-indicator/public';
 import { AppBar } from './features/app-bar/public';
@@ -35,10 +29,12 @@ import { Chip } from './features/chip/public';
 import { ChipGroup } from './features/chip/public';
 import { DataTable } from './features/data-table/public';
 import { DatePicker } from './features/date-picker/public';
+import { Dialog } from './features/dialog/public';
 import { EmptyState } from './features/empty-state/public';
 import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
 import { Form, FormActions, FormError, FormField } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
+import { SearchInput } from './features/form/search-input/public';
 import { Select } from './features/form/select/public';
 import { TextInput } from './features/form/text-input/public';
 import { Gradient } from './features/gradient/public';
@@ -50,12 +46,16 @@ import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
 import { ContentRail } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
+import { Pagination } from './features/pagination/public';
 import { PopoverMenu } from './features/popover-menu/public';
 import { Progress, ProgressRing } from './features/progress/public';
+import { Rating } from './features/rating/public';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './features/skeleton/public';
 import { Surface } from './features/surface/public';
+import { Tab, TabList, TabPanel, Tabs } from './features/tabs/public';
 import { TimePicker } from './features/time-picker/public';
 import { Toast } from './features/toast/public';
+import { Toolbar } from './features/toolbar/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
@@ -130,6 +130,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   ChipGroup,
   DataTable,
   DatePicker,
+  Dialog,
   Form,
   FormActions,
   FormError,
@@ -143,7 +144,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   TextInput,
   MediaCard,
   MetricCard,
-  Modal,
   Pagination,
   PopoverMenu,
   Progress,
@@ -151,18 +151,20 @@ const _ZORA_COMPONENT_REGISTRY = {
   Radio,
   RadioGroup,
   Rating,
-  SearchBar,
+  SearchInput,
   Select,
   Skeleton,
   SkeletonCard,
   SkeletonList,
   SkeletonText,
+  Tab,
+  TabList,
+  TabPanel,
   Tabs,
   Text,
   TimePicker,
   Toast,
   Toolbar,
-  ToolbarAction,
   Uploader,
   BottomSheet,
   FlatList,
