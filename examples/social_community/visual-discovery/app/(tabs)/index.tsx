@@ -5,7 +5,7 @@ import {
   Notice,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
   Text,
 } from '@ankhorage/zora';
 
@@ -51,7 +51,7 @@ export default function DiscoverScreen() {
           title="Search"
           description="Visual discovery starts with a broad idea or mood."
         >
-          <SearchBar
+          <SearchInput
             value=""
             onValueChange={() => {
               /* no-op */
