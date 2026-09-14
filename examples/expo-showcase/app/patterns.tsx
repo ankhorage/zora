@@ -486,11 +486,11 @@ export function PatternsPage() {
           <TextInput value="Ocean" />
         </InspectorField>
 
-        <Accordion type="single" defaultValue="advanced" collapsible>
+        <Accordion collapsible defaultValue="advanced" type="single">
           <AccordionItem
-            value="advanced"
-            title="Advanced diagnostics"
             description="Developer-oriented settings for debugging rendering and logs."
+            title="Advanced diagnostics"
+            value="advanced"
           >
             <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
             <SwitchField
