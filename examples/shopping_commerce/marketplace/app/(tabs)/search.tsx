@@ -1,4 +1,4 @@
-import { Badge, ListSection, Screen, ScreenSection, SearchBar } from '@ankhorage/zora';
+import { Badge, ListSection, Screen, ScreenSection, SearchInput } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -33,7 +33,7 @@ export default function SearchScreen() {
           description="Search stays inside the ZORA component surface."
           actions={<Badge color="neutral">Filters later</Badge>}
         >
-          <SearchBar value="" placeholder="Search marketplace" onValueChange={() => undefined} />
+          <SearchInput value="" placeholder="Search marketplace" onValueChange={() => undefined} />
         </ScreenSection>
 
         <ListSection
