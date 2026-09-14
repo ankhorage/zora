@@ -354,7 +354,7 @@ export function PatternsPage() {
               title: 'Build pipeline',
               description: 'Main branch build succeeded.',
               meta: 'Today',
-              leading: <Avatar initials="CI" size="s" />,
+              leading: <Avatar initials="CI" size="s" color="primary" />,
               action: <IconButton icon={{ name: 'download-outline' }} label="Download artifacts" />,
             },
             {
