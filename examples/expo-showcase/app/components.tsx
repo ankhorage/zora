@@ -3,36 +3,39 @@ import {
   Avatar,
   AvatarGroup,
   Badge,
+  Box,
   Button,
   ButtonGroup,
   Card,
   CheckboxGroup,
   Chip,
   ChipGroup,
+  Dialog,
   Heading,
   IconButton,
   MediaCard,
   MetricCard,
-  Modal,
+  Pagination,
   Progress,
   ProgressRing,
   RadioGroup,
   Rating,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
   SectionHeader,
   Select,
   Stack,
   Surface,
+  Tab,
+  TabList,
+  TabPanel,
   Tabs,
   Text,
   TextInput,
   Toolbar,
-  ToolbarAction,
 } from '@ankhorage/zora';
 import React from 'react';
-import { View } from 'react-native';
 
 import { ComponentFormsSection } from './sections/componentForms';
 import { FoundationPrimitivesSection } from './sections/foundationPrimitives';
@@ -47,7 +50,7 @@ export function ComponentsPage() {
   );
   const [chipFilter, setChipFilter] = React.useState<'all' | 'popular' | 'recent'>('all');
   const [channels, setChannels] = React.useState<('email' | 'push' | 'sms')[]>(['email']);
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   return (
     <>
@@ -224,45 +227,27 @@ export function ComponentsPage() {
 
         <ScreenSection title="Tabs">
           <SectionHeader
-            title="Underline"
-            description="Default tab style for page-level navigation."
+            title="Accessible tabs"
+            description="Tabs switch one active content panel; chips remain value and filter controls."
           />
-          <Tabs
-            value={tab}
-            onValueChange={setTab}
-            items={[
-              { value: 'overview', label: 'Overview' },
-              { value: 'details', label: 'Details' },
-              { value: 'settings', label: 'Settings' },
-            ]}
-          />
+          <Tabs value={tab} onValueChange={setTab}>
+            <TabList>
+              <Tab label="Overview" value="overview" />
+              <Tab label="Details" value="details" />
+              <Tab label="Settings" value="settings" />
+            </TabList>
+            <TabPanel value="overview">
+              <Text emphasis="muted">Overview panel content.</Text>
+            </TabPanel>
+            <TabPanel value="details">
+              <Text emphasis="muted">Details panel content.</Text>
+            </TabPanel>
+            <TabPanel value="settings">
+              <Text emphasis="muted">Settings panel content.</Text>
+            </TabPanel>
+          </Tabs>
 
-          <SectionHeader title="Pill" description="Soft grouped navigation." />
-          <Tabs
-            variant="pill"
-            value={tab}
-            onValueChange={setTab}
-            items={[
-              { value: 'overview', label: 'Overview' },
-              { value: 'details', label: 'Details' },
-              { value: 'settings', label: 'Settings' },
-            ]}
-          />
-
-          <SectionHeader title="Segmented" description="Compact segmented control style." />
-          <Tabs
-            variant="segmented"
-            size="s"
-            value={tab}
-            onValueChange={setTab}
-            items={[
-              { value: 'overview', label: 'Overview' },
-              { value: 'details', label: 'Details' },
-              { value: 'settings', label: 'Settings' },
-            ]}
-          />
-
-          <SectionHeader title="Chips" description="Compact filters and segments." />
+          <SectionHeader title="Chips" description="Compact filters and value selection." />
           <Stack gap="s">
             <ChipGroup
               value={chipFilter}
@@ -280,6 +265,19 @@ export function ComponentsPage() {
               <Chip>Static chip</Chip>
             </Stack>
           </Stack>
+        </ScreenSection>
+
+        <ScreenSection title="Pagination">
+          <SectionHeader
+            title="Paged results"
+            description="Pagination changes a data page, not an application route."
+          />
+          <Pagination
+            page={4}
+            pageCount={12}
+            onPageChange={() => undefined}
+            showFirstLast
+          />
         </ScreenSection>
 
         <ScreenSection title="App bars">
@@ -348,20 +346,28 @@ export function ComponentsPage() {
         </ScreenSection>
 
         <ScreenSection title="Toolbars">
-          <SectionHeader title="Inline toolbar" description="Useful for local page actions." />
-          <Toolbar position="inline">
-            <ToolbarAction icon={{ name: 'play-outline' }} label="Run" />
-            <ToolbarAction icon={{ name: 'pause-outline' }} label="Pause" />
-            <ToolbarAction icon={{ name: 'stop-outline' }} label="Stop" />
-            <View style={{ flex: 1 }} />
-            <ToolbarAction icon={{ name: 'download-outline' }} label="Export" />
+          <SectionHeader
+            title="Visible actions"
+            description="Toolbar groups visible contextual controls; layout decides where it is placed."
+          />
+          <Toolbar>
+            <IconButton icon={{ name: 'play-outline' }} label="Run" />
+            <IconButton icon={{ name: 'pause-outline' }} label="Pause" />
+            <IconButton icon={{ name: 'stop-outline' }} label="Stop" />
+            <Box flex={1} />
+            <IconButton icon={{ name: 'download-outline' }} label="Export" />
           </Toolbar>
 
-          <SectionHeader title="Floating toolbar" description="Useful for editor-like surfaces." />
-          <Toolbar position="inline" floating>
-            <ToolbarAction active icon={{ name: 'brush-outline' }} label="Design" />
-            <ToolbarAction icon={{ name: 'code-outline' }} label="Code" />
-            <ToolbarAction icon={{ name: 'eye-outline' }} label="Preview" />
+          <SectionHeader title="Floating tone" description="Floating only changes presentation." />
+          <Toolbar floating>
+            <IconButton
+              color="primary"
+              icon={{ name: 'brush-outline' }}
+              label="Design"
+              variant="soft"
+            />
+            <IconButton icon={{ name: 'code-outline' }} label="Code" />
+            <IconButton icon={{ name: 'eye-outline' }} label="Preview" />
           </Toolbar>
         </ScreenSection>
 
@@ -379,7 +385,7 @@ export function ComponentsPage() {
               { value: 'enterprise', label: 'Enterprise' },
             ]}
           />
-          <SearchBar placeholder="Search components" value={search} onValueChange={setSearch} />
+          <SearchInput placeholder="Search components" value={search} onValueChange={setSearch} />
           <TextInput placeholder="Disabled input" disabled />
           <TextInput multiline numberOfLines={3} placeholder="Textarea multi-line" />
 
@@ -573,23 +579,23 @@ export function ComponentsPage() {
         <LayoutsShowcaseSection />
 
         <ScreenSection title="Overlays">
-          <SectionHeader title="Modal" description="Use overlays for focused decisions." />
+          <SectionHeader title="Dialog" description="Use dialogs for focused decisions." />
           <ButtonGroup align="start">
-            <Button onPress={() => setModalOpen(true)}>Open modal</Button>
+            <Button onPress={() => setDialogOpen(true)}>Open dialog</Button>
           </ButtonGroup>
         </ScreenSection>
       </Screen>
 
-      <Modal
-        visible={modalOpen}
-        onDismiss={() => setModalOpen(false)}
-        title="Modal primitive"
-        description="Centered overlay for focused tasks."
+      <Dialog
+        visible={dialogOpen}
+        onDismiss={() => setDialogOpen(false)}
+        title="Dialog"
+        description="Product-level dialog composition backed by the Surface modal primitive."
       >
         <Card tone="subtle" title="Inner content">
           <TextInput placeholder="Type something..." />
         </Card>
-      </Modal>
+      </Dialog>
     </>
   );
 }
