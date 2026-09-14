@@ -106,6 +106,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Checkbox',
       'CheckboxGroup',
       'RadioGroup',
+      'Select',
       'TextInput',
     ]);
     for (const [name, meta] of Object.entries(ZORA_COMPONENT_META)) {
@@ -146,6 +147,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Avatar',
       'AvatarGroup',
       'Badge',
+      'Breadcrumbs',
       'Chip',
       'ChipGroup',
       'DataTable',
@@ -167,6 +169,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'CheckboxGroup',
       'Radio',
       'RadioGroup',
+      'Select',
       'ThemeModeToggle',
       'TextInput',
       'Text',
