@@ -17,6 +17,8 @@ const IGNORED_DIRECTORY_NAMES = new Set([
 
 const REQUIRED_SHOWCASE_COVERAGE = {
   components: [
+    'Accordion',
+    'AccordionItem',
     'AppBar',
     'Avatar',
     'AvatarGroup',
@@ -81,7 +83,6 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'SignUpForm',
     'CollectionEditor',
     'ConfirmDialog',
-    'DisclosureSection',
     'EmptyState',
     'FilterBar',
     'SelectableItem',
