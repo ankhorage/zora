@@ -3,16 +3,17 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v12.1.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v13.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
 ## Usage
 
-### Minimal ZORA app root.
+### ZORA app root with optional runtime capabilities.
 
-Use `ZoraProvider` once at the application root, place `AppShell` inside it,
-and use `AppBar` as the default header slot for a simple app frame.
+Use `ZoraProvider` once at the application root. Enable `toast` when descendants use
+`useToast()`. Enable `bottomSheet` for native BottomSheet-backed interactions such as native
+DatePicker and TimePicker; web pickers use Popover instead. Omit capabilities the app does not use.
 
 Source: `examples/basic-app/App.tsx`
 
@@ -39,7 +40,12 @@ const basicTheme: ZoraTheme = {
 export default function BasicApp() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ZoraProvider initialMode="light" theme={basicTheme}>
+      <ZoraProvider
+        bottomSheet
+        initialMode="light"
+        theme={basicTheme}
+        toast={{ defaultDuration: 4000 }}
+      >
         <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
           <Screen>
             <ScreenSection>

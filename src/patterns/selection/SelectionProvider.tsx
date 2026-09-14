@@ -10,21 +10,21 @@ type SelectionContextValue = UseSelectionResult;
 
 const SelectionContext = React.createContext<SelectionContextValue | null>(null);
 
+/*** Resolve the effective selection mode. */
 function resolveMode(mode: SelectionMode | undefined): SelectionMode {
   return mode ?? 'single';
 }
 
+/*** Resolve the effective disabled state. */
 function resolveDisabled(disabled: boolean | undefined): boolean {
   return disabled ?? false;
 }
 
 /***
  * Accesses selection state provided by `SelectionProvider`.
- *
- 
  */
 export function useSelection(): UseSelectionResult {
-  const value = React.useContext(SelectionContext);
+  const value = React.use(SelectionContext);
   if (!value) {
     throw new Error(MISSING_CONTEXT_MESSAGE);
   }
@@ -34,8 +34,6 @@ export function useSelection(): UseSelectionResult {
 
 /***
  * Provides selection state for building selectable lists and grids.
- *
- 
  */
 export function SelectionProvider({
   children,
@@ -110,5 +108,5 @@ export function SelectionProvider({
     };
   }, [clear, currentNormalizedIds, resolvedDisabled, resolvedMode, select, selectedIdSet, toggle]);
 
-  return <SelectionContext.Provider value={value}>{children}</SelectionContext.Provider>;
+  return <SelectionContext value={value}>{children}</SelectionContext>;
 }

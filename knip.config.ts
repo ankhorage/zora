@@ -5,6 +5,7 @@ export default createKnipConfig({
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
     'examples/basic-app/App.tsx',
+    'src/**/*.native.tsx',
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
   ],

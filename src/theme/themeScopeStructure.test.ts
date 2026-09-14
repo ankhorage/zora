@@ -65,6 +65,8 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'card', 'adapters', 'inbound', 'Card.tsx'),
   join(srcDir, 'features', 'card', 'adapters', 'inbound', 'MediaCard.tsx'),
   join(srcDir, 'features', 'card', 'adapters', 'inbound', 'MetricCard.tsx'),
+  join(srcDir, 'features', 'date-picker', 'adapters', 'inbound', 'DatePicker.native.tsx'),
+  join(srcDir, 'features', 'date-picker', 'adapters', 'inbound', 'DatePicker.web.tsx'),
   join(srcDir, 'features', 'form', 'checkbox', 'adapters', 'inbound', 'Checkbox.tsx'),
   join(srcDir, 'features', 'form', 'checkbox', 'adapters', 'inbound', 'CheckboxGroup.tsx'),
   join(srcDir, 'features', 'form', 'adapters', 'inbound', 'Form.tsx'),
@@ -82,6 +84,9 @@ const scopedComponentFiles = [
   join(srcDir, 'components', 'rating', 'Rating.tsx'),
   join(srcDir, 'components', 'select', 'Select.tsx'),
   join(srcDir, 'components', 'tabs', 'Tabs.tsx'),
+  join(srcDir, 'features', 'time-picker', 'adapters', 'inbound', 'TimePicker.native.tsx'),
+  join(srcDir, 'features', 'time-picker', 'adapters', 'inbound', 'TimePicker.web.tsx'),
+  join(srcDir, 'features', 'toast', 'adapters', 'inbound', 'Toast.tsx'),
   join(srcDir, 'features', 'typography', 'adapters', 'inbound', 'Text.tsx'),
   join(srcDir, 'components', 'toolbar', 'Toolbar.tsx'),
   join(srcDir, 'components', 'toolbar', 'ToolbarAction.tsx'),
@@ -138,6 +143,7 @@ const scopedPropTypeFiles = [
   join(srcDir, 'types', 'media-card.ts'),
   join(srcDir, 'types', 'metric-card.ts'),
   join(srcDir, 'types', 'checkbox.ts'),
+  join(srcDir, 'types', 'date-picker.ts'),
   join(srcDir, 'types', 'form.ts'),
   join(srcDir, 'types', 'heading.ts'),
   join(srcDir, 'types', 'icon.ts'),
@@ -150,6 +156,8 @@ const scopedPropTypeFiles = [
   join(srcDir, 'components', 'select', 'types.ts'),
   join(srcDir, 'components', 'tabs', 'types.ts'),
   join(srcDir, 'types', 'text.ts'),
+  join(srcDir, 'types', 'time-picker.ts'),
+  join(srcDir, 'types', 'toast.ts'),
   join(srcDir, 'components', 'toolbar', 'types.ts'),
 
   join(srcDir, 'layout', 'app-shell', 'types.ts'),
@@ -179,46 +187,46 @@ const scopedPropTypeFiles = [
 describe('theme scope structure', () => {
   it('keeps ZoraProvider lightweight (no extra ResponsiveProvider nesting)', () => {
     expect(zoraProviderSource).toMatch(/ThemeProvider/);
-    expect(zoraProviderSource).toMatch(/ZoraThemeRuntimeContext\.Provider/);
+    expect(zoraProviderSource).toMatch(/<ZoraThemeRuntimeContext\s+value=/u);
     expect(zoraProviderSource).not.toMatch(/ResponsiveProvider/);
   });
 
   it('implements nested scopes without nesting Surface ThemeProvider', () => {
-    expect(themeScopeSource).toMatch(/ThemeContext\.Provider/);
-    expect(themeScopeSource).toMatch(/createTheme\(/);
+    expect(themeScopeSource).toMatch(/<ThemeContext\s+value=/u);
+    expect(themeScopeSource).toMatch(/createTheme\(/u);
     expect(themeScopeSource).not.toMatch(/ThemeProvider/);
   });
 
   it('wraps components only when mode/themeId overrides are present', () => {
-    expect(hocSource).toMatch(/props\.mode === undefined/);
-    expect(hocSource).toMatch(/props\.themeId === undefined/);
-    expect(hocSource).toMatch(/<ZoraThemeScope/);
+    expect(hocSource).toMatch(/props\.mode === undefined/u);
+    expect(hocSource).toMatch(/props\.themeId === undefined/u);
+    expect(hocSource).toMatch(/<ZoraThemeScope/u);
   });
 
   it('adopts the inner + HOC pattern across the public surface', () => {
     for (const filePath of scopedComponentFiles) {
       const source = readFileSync(filePath, 'utf8');
-      expect(source).toMatch(/themeId: _themeId/);
-      expect(source).toMatch(/mode: _mode/);
-      expect(source).toMatch(/withZoraThemeScope/);
+      expect(source).toMatch(/themeId: _themeId/u);
+      expect(source).toMatch(/mode: _mode/u);
+      expect(source).toMatch(/withZoraThemeScope/u);
     }
   });
 
   it('adds ZoraBaseProps to public component prop types', () => {
     for (const filePath of scopedPropTypeFiles) {
       const source = readFileSync(filePath, 'utf8');
-      expect(source).toMatch(/ZoraBaseProps/);
-      expect(source).toMatch(/extends\s+ZoraBaseProps|ZoraBaseProps\s*&|&\s*ZoraBaseProps/);
+      expect(source).toMatch(/ZoraBaseProps/u);
+      expect(source).toMatch(/extends\s+ZoraBaseProps|ZoraBaseProps\s*&|&\s*ZoraBaseProps/u);
     }
   });
 
   it('does not implement theme scoping outside the theme module', () => {
     for (const filePath of scopeGuardFiles) {
       const source = readFileSync(filePath, 'utf8');
-      expect(source).not.toMatch(/ThemeContext\.Provider/);
-      expect(source).not.toMatch(/ThemeProvider/);
-      expect(source).not.toMatch(/<ZoraThemeScope/);
-      expect(source).not.toMatch(/createTheme\(/);
+      expect(source).not.toMatch(/<ThemeContext(?:\.Provider)?\b/u);
+      expect(source).not.toMatch(/ThemeProvider/u);
+      expect(source).not.toMatch(/<ZoraThemeScope/u);
+      expect(source).not.toMatch(/createTheme\(/u);
     }
   });
 
@@ -226,7 +234,7 @@ describe('theme scope structure', () => {
     const srcFiles = collectSourceFiles(srcDir);
     for (const filePath of srcFiles) {
       const source = readFileSync(filePath, 'utf8');
-      expect(source).not.toMatch(/useZoraTheme\(\s*\{/);
+      expect(source).not.toMatch(/useZoraTheme\(\s*\{/u);
     }
   });
 });

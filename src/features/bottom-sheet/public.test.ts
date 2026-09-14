@@ -22,18 +22,21 @@ describe('ZORA BottomSheet public contract', () => {
     expect(workletsPeer).toBeDefined();
   });
 
-  test('installs the shared provider and removes picker ActionSheet dependencies', async () => {
-    const [provider, datePicker, timePicker] = await Promise.all([
-      Bun.file('src/theme/ZoraProvider.tsx').text(),
-      Bun.file('src/features/date-picker/adapters/inbound/DatePicker.tsx').text(),
-      Bun.file('src/features/time-picker/adapters/inbound/TimePicker.tsx').text(),
-    ]);
+  test('installs BottomSheet only in the enabled native runtime capability host', async () => {
+    const [provider, nativeCapabilities, webCapabilities, nativeDatePicker, nativeTimePicker] =
+      await Promise.all([
+        Bun.file('src/theme/ZoraProvider.tsx').text(),
+        Bun.file('src/theme/ZoraRuntimeCapabilities.native.tsx').text(),
+        Bun.file('src/theme/ZoraRuntimeCapabilities.web.tsx').text(),
+        Bun.file('src/features/date-picker/adapters/inbound/DatePicker.native.tsx').text(),
+        Bun.file('src/features/time-picker/adapters/inbound/TimePicker.native.tsx').text(),
+      ]);
 
-    expect(provider).toContain('<BottomSheetProvider>{children}</BottomSheetProvider>');
-    expect(provider).not.toContain('GestureHandlerRootView');
-    expect(datePicker).toContain('useBottomSheet()');
-    expect(timePicker).toContain('useBottomSheet()');
-    expect(datePicker).not.toContain("from '../action-sheet'");
-    expect(timePicker).not.toContain("from '../action-sheet'");
+    expect(provider).toContain('<ZoraRuntimeCapabilities');
+    expect(provider).not.toContain('BottomSheetProvider');
+    expect(nativeCapabilities).toContain('<BottomSheetProvider>');
+    expect(webCapabilities).not.toContain('BottomSheetProvider');
+    expect(nativeDatePicker).toContain('useBottomSheet()');
+    expect(nativeTimePicker).toContain('useBottomSheet()');
   });
 });

@@ -37,11 +37,6 @@ graph LR
   module_src_components_tabs_meta_ts["src/components/tabs/meta.ts"]
   module_src_components_tabs_Tabs_tsx["src/components/tabs/Tabs.tsx"]
   module_src_components_tabs_types_ts["src/components/tabs/types.ts"]
-  module_src_components_toast_index_ts["src/components/toast/index.ts"]
-  module_src_components_toast_meta_ts["src/components/toast/meta.ts"]
-  module_src_components_toast_Toast_tsx["src/components/toast/Toast.tsx"]
-  module_src_components_toast_ToastProvider_tsx["src/components/toast/ToastProvider.tsx"]
-  module_src_components_toast_types_ts["src/components/toast/types.ts"]
   module_src_components_toolbar_index_ts["src/components/toolbar/index.ts"]
   module_src_components_toolbar_meta_ts["src/components/toolbar/meta.ts"]
   module_src_components_toolbar_Toolbar_tsx["src/components/toolbar/Toolbar.tsx"]
@@ -121,7 +116,12 @@ graph LR
   module_src_features_data_table_dataTableMeta_ts["src/features/data-table/dataTableMeta.ts"]
   module_src_features_data_table_public_ts["src/features/data-table/public.ts"]
   module_src_features_data_table_utils_resolveDataTableRowKey_ts["src/features/data-table/utils/resolveDataTableRowKey.ts"]
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx["src/features/date-picker/adapters/inbound/DatePicker.native.tsx"]
   module_src_features_date_picker_adapters_inbound_DatePicker_tsx["src/features/date-picker/adapters/inbound/DatePicker.tsx"]
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx["src/features/date-picker/adapters/inbound/DatePicker.web.tsx"]
+  module_src_features_date_picker_composition_DatePickerContent_tsx["src/features/date-picker/composition/DatePickerContent.tsx"]
+  module_src_features_date_picker_composition_DatePickerField_tsx["src/features/date-picker/composition/DatePickerField.tsx"]
+  module_src_features_date_picker_composition_DatePickerTrigger_tsx["src/features/date-picker/composition/DatePickerTrigger.tsx"]
   module_src_features_date_picker_datePickerMeta_ts["src/features/date-picker/datePickerMeta.ts"]
   module_src_features_date_picker_public_ts["src/features/date-picker/public.ts"]
   module_src_features_date_picker_utils_localDate_ts["src/features/date-picker/utils/localDate.ts"]
@@ -217,9 +217,19 @@ graph LR
   module_src_features_surface_adapters_inbound_Surface_tsx["src/features/surface/adapters/inbound/Surface.tsx"]
   module_src_features_surface_public_ts["src/features/surface/public.ts"]
   module_src_features_surface_surfaceMeta_ts["src/features/surface/surfaceMeta.ts"]
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx["src/features/time-picker/adapters/inbound/TimePicker.native.tsx"]
   module_src_features_time_picker_adapters_inbound_TimePicker_tsx["src/features/time-picker/adapters/inbound/TimePicker.tsx"]
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx["src/features/time-picker/adapters/inbound/TimePicker.web.tsx"]
+  module_src_features_time_picker_composition_TimePickerContent_tsx["src/features/time-picker/composition/TimePickerContent.tsx"]
+  module_src_features_time_picker_composition_TimePickerField_tsx["src/features/time-picker/composition/TimePickerField.tsx"]
+  module_src_features_time_picker_composition_TimePickerTrigger_tsx["src/features/time-picker/composition/TimePickerTrigger.tsx"]
   module_src_features_time_picker_public_ts["src/features/time-picker/public.ts"]
   module_src_features_time_picker_timePickerMeta_ts["src/features/time-picker/timePickerMeta.ts"]
+  module_src_features_toast_adapters_inbound_Toast_tsx["src/features/toast/adapters/inbound/Toast.tsx"]
+  module_src_features_toast_adapters_inbound_ToastProvider_tsx["src/features/toast/adapters/inbound/ToastProvider.tsx"]
+  module_src_features_toast_public_ts["src/features/toast/public.ts"]
+  module_src_features_toast_toastMeta_ts["src/features/toast/toastMeta.ts"]
+  module_src_features_toast_toastProviderMeta_ts["src/features/toast/toastProviderMeta.ts"]
   module_src_features_typography_adapters_inbound_Heading_tsx["src/features/typography/adapters/inbound/Heading.tsx"]
   module_src_features_typography_adapters_inbound_Text_tsx["src/features/typography/adapters/inbound/Text.tsx"]
   module_src_features_typography_headingMeta_ts["src/features/typography/headingMeta.ts"]
@@ -388,6 +398,9 @@ graph LR
   module_src_theme_ZoraBaseProps_ts["src/theme/ZoraBaseProps.ts"]
   module_src_theme_zoraDefaultTheme_ts["src/theme/zoraDefaultTheme.ts"]
   module_src_theme_ZoraProvider_tsx["src/theme/ZoraProvider.tsx"]
+  module_src_theme_ZoraRuntimeCapabilities_native_tsx["src/theme/ZoraRuntimeCapabilities.native.tsx"]
+  module_src_theme_ZoraRuntimeCapabilities_tsx["src/theme/ZoraRuntimeCapabilities.tsx"]
+  module_src_theme_ZoraRuntimeCapabilities_web_tsx["src/theme/ZoraRuntimeCapabilities.web.tsx"]
   module_src_theme_ZoraThemeRuntimeContext_tsx["src/theme/ZoraThemeRuntimeContext.tsx"]
   module_src_theme_ZoraThemeScope_tsx["src/theme/ZoraThemeScope.tsx"]
   module_src_types_accordion_ts["src/types/accordion.ts"]
@@ -423,12 +436,14 @@ graph LR
   module_src_types_post_card_ts["src/types/post-card.ts"]
   module_src_types_product_card_ts["src/types/product-card.ts"]
   module_src_types_progress_ts["src/types/progress.ts"]
+  module_src_types_provider_ts["src/types/provider.ts"]
   module_src_types_radio_ts["src/types/radio.ts"]
   module_src_types_skeleton_ts["src/types/skeleton.ts"]
   module_src_types_surface_ts["src/types/surface.ts"]
   module_src_types_text_input_ts["src/types/text-input.ts"]
   module_src_types_text_ts["src/types/text.ts"]
   module_src_types_time_picker_ts["src/types/time-picker.ts"]
+  module_src_types_toast_ts["src/types/toast.ts"]
   module_src_types_upload_ts["src/types/upload.ts"]
   module_src_utils_createManifestBindings_ts["src/utils/createManifestBindings.ts"]
   module_src_utils_finalizeFeatureMetadata_ts["src/utils/finalizeFeatureMetadata.ts"]
@@ -507,11 +522,6 @@ graph LR
   module_src_components_tabs_Tabs_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_components_tabs_types_ts --> module_src_internal_recipes_ts
   module_src_components_tabs_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_components_toast_meta_ts --> module_src_metadata_index_ts
-  module_src_components_toast_Toast_tsx --> module_src_components_toast_types_ts
-  module_src_components_toast_Toast_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_toast_ToastProvider_tsx --> module_src_components_toast_types_ts
-  module_src_components_toast_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_toolbar_meta_ts --> module_src_metadata_index_ts
   module_src_components_toolbar_Toolbar_tsx --> module_src_components_toolbar_types_ts
   module_src_components_toolbar_Toolbar_tsx --> module_src_features_card_public_ts
@@ -726,13 +736,31 @@ graph LR
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_types_data_table_ts
   module_src_features_data_table_dataTableMeta_ts --> module_src_metadata_types_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_features_bottom_sheet_public_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_features_button_public_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_features_date_picker_utils_localDate_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_features_layout_public_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_features_typography_public_ts
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_date_picker_adapters_inbound_DatePicker_tsx --> module_src_types_date_picker_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_features_bottom_sheet_public_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_features_date_picker_composition_DatePickerContent_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_features_date_picker_composition_DatePickerField_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_features_date_picker_composition_DatePickerTrigger_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_features_date_picker_utils_localDate_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_native_tsx --> module_src_types_date_picker_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_date_picker_composition_DatePickerContent_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_date_picker_composition_DatePickerField_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_date_picker_composition_DatePickerTrigger_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_date_picker_utils_localDate_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_surface_public_ts
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_types_date_picker_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_button_public_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_date_picker_utils_localDate_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_layout_public_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_typography_public_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_types_date_picker_ts
+  module_src_features_date_picker_composition_DatePickerField_tsx --> module_src_features_layout_public_ts
+  module_src_features_date_picker_composition_DatePickerField_tsx --> module_src_features_typography_public_ts
+  module_src_features_date_picker_composition_DatePickerField_tsx --> module_src_types_date_picker_ts
+  module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_features_button_public_ts
+  module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_features_date_picker_utils_localDate_ts
+  module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_types_date_picker_ts
   module_src_features_date_picker_datePickerMeta_ts --> module_src_metadata_index_ts
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_button_public_ts
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_card_public_ts
@@ -939,13 +967,33 @@ graph LR
   module_src_features_surface_surfaceMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_metadata_allowedChildren_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_metadata_types_ts
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_features_bottom_sheet_public_ts
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_features_button_public_ts
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_features_layout_public_ts
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_features_typography_public_ts
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_time_picker_adapters_inbound_TimePicker_tsx --> module_src_types_time_picker_ts
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_features_bottom_sheet_public_ts
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_features_time_picker_composition_TimePickerContent_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_features_time_picker_composition_TimePickerField_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_features_time_picker_composition_TimePickerTrigger_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_types_time_picker_ts
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_features_surface_public_ts
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_features_time_picker_composition_TimePickerContent_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_features_time_picker_composition_TimePickerField_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_features_time_picker_composition_TimePickerTrigger_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx --> module_src_types_time_picker_ts
+  module_src_features_time_picker_composition_TimePickerContent_tsx --> module_src_features_button_public_ts
+  module_src_features_time_picker_composition_TimePickerContent_tsx --> module_src_features_layout_public_ts
+  module_src_features_time_picker_composition_TimePickerContent_tsx --> module_src_features_typography_public_ts
+  module_src_features_time_picker_composition_TimePickerContent_tsx --> module_src_types_time_picker_ts
+  module_src_features_time_picker_composition_TimePickerField_tsx --> module_src_features_layout_public_ts
+  module_src_features_time_picker_composition_TimePickerField_tsx --> module_src_features_typography_public_ts
+  module_src_features_time_picker_composition_TimePickerField_tsx --> module_src_types_time_picker_ts
+  module_src_features_time_picker_composition_TimePickerTrigger_tsx --> module_src_features_button_public_ts
+  module_src_features_time_picker_composition_TimePickerTrigger_tsx --> module_src_types_time_picker_ts
   module_src_features_time_picker_timePickerMeta_ts --> module_src_metadata_index_ts
+  module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_types_toast_ts
+  module_src_features_toast_adapters_inbound_ToastProvider_tsx --> module_src_types_toast_ts
+  module_src_features_toast_toastMeta_ts --> module_src_metadata_index_ts
+  module_src_features_toast_toastProviderMeta_ts --> module_src_metadata_index_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingRecipe_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingSizeFromLevel_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingThemeRecipe_ts
@@ -1061,7 +1109,6 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_components_search_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_select_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_tabs_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_toast_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_toolbar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_accordion_accordionItemMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
@@ -1114,6 +1161,8 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_features_skeleton_skeletonMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_surface_surfaceMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_time_picker_timePickerMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_toast_toastMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_toast_toastProviderMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_typography_headingMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_typography_textMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
@@ -1366,7 +1415,6 @@ graph LR
   module_src_registry_ts --> module_src_components_search_bar_index_ts
   module_src_registry_ts --> module_src_components_select_index_ts
   module_src_registry_ts --> module_src_components_tabs_index_ts
-  module_src_registry_ts --> module_src_components_toast_index_ts
   module_src_registry_ts --> module_src_components_toolbar_index_ts
   module_src_registry_ts --> module_src_features_accordion_public_ts
   module_src_registry_ts --> module_src_features_activity_indicator_public_ts
@@ -1396,6 +1444,7 @@ graph LR
   module_src_registry_ts --> module_src_features_skeleton_public_ts
   module_src_registry_ts --> module_src_features_surface_public_ts
   module_src_registry_ts --> module_src_features_time_picker_public_ts
+  module_src_registry_ts --> module_src_features_toast_public_ts
   module_src_registry_ts --> module_src_features_typography_public_ts
   module_src_registry_ts --> module_src_features_uploader_public_ts
   module_src_registry_ts --> module_src_foundation_index_ts
@@ -1445,9 +1494,12 @@ graph LR
   module_src_theme_ZoraBaseProps_ts --> module_src_theme_types_ts
   module_src_theme_zoraDefaultTheme_ts --> module_src_theme_types_ts
   module_src_theme_ZoraProvider_tsx --> module_src_theme_createZoraThemeConfig_ts
-  module_src_theme_ZoraProvider_tsx --> module_src_theme_types_ts
   module_src_theme_ZoraProvider_tsx --> module_src_theme_zoraDefaultTheme_ts
+  module_src_theme_ZoraProvider_tsx --> module_src_theme_ZoraRuntimeCapabilities_tsx
   module_src_theme_ZoraProvider_tsx --> module_src_theme_ZoraThemeRuntimeContext_tsx
+  module_src_theme_ZoraProvider_tsx --> module_src_types_provider_ts
+  module_src_theme_ZoraRuntimeCapabilities_native_tsx --> module_src_types_provider_ts
+  module_src_theme_ZoraRuntimeCapabilities_web_tsx --> module_src_types_provider_ts
   module_src_theme_ZoraThemeRuntimeContext_tsx --> module_src_theme_types_ts
   module_src_theme_ZoraThemeRuntimeContext_tsx --> module_src_theme_zoraDefaultTheme_ts
   module_src_theme_ZoraThemeScope_tsx --> module_src_theme_resolveZoraScopedThemeId_ts
@@ -1510,6 +1562,7 @@ graph LR
   module_src_types_product_card_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_progress_ts --> module_src_internal_recipes_ts
   module_src_types_progress_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_provider_ts --> module_src_theme_types_ts
   module_src_types_radio_ts --> module_src_features_icon_public_ts
   module_src_types_radio_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_skeleton_ts --> module_src_features_layout_public_ts
@@ -1520,6 +1573,7 @@ graph LR
   module_src_types_text_ts --> module_src_internal_recipes_ts
   module_src_types_text_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_time_picker_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_toast_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_upload_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_utils_createManifestBindings_ts --> module_src_metadata_types_ts
   module_src_utils_finalizeFeatureMetadata_ts --> module_src_constants_ts

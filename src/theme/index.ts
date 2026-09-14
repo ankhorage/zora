@@ -4,7 +4,7 @@ export type { ThemeModeToggleProps } from './ThemeModeToggleProps';
 export { useZoraTheme } from './useZoraTheme';
 export { withZoraThemeScope } from './withZoraThemeScope';
 export type { ZoraBaseProps } from './ZoraBaseProps';
-export type { ZoraProviderProps } from './ZoraProvider';
+export type { ZoraProviderProps, ZoraToastCapability } from './ZoraProvider';
 export { ZoraProvider } from './ZoraProvider';
 export type { ZoraThemeScopeProps } from './ZoraThemeScope';
 export { ZoraThemeScope } from './ZoraThemeScope';

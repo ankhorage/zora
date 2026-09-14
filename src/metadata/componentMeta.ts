@@ -7,7 +7,6 @@ import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
 import { selectMeta } from '../components/select/meta';
 import { tabsMeta } from '../components/tabs/meta';
-import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { accordionItemMeta } from '../features/accordion/accordionItemMeta';
 import { accordionMeta } from '../features/accordion/accordionMeta';
@@ -65,6 +64,8 @@ import {
 } from '../features/skeleton/skeletonMeta';
 import { surfaceMeta } from '../features/surface/surfaceMeta';
 import { timePickerMeta } from '../features/time-picker/timePickerMeta';
+import { toastMeta } from '../features/toast/toastMeta';
+import { toastProviderMeta } from '../features/toast/toastProviderMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';

@@ -1,26 +1,22 @@
-import type { ThemeConfig } from '@ankhorage/contracts';
 import { ThemeProvider } from '@ankhorage/surface';
-import { BottomSheetProvider } from '@ankhorage/surface/bottom-sheet';
 import React from 'react';
 
+import type { ZoraProviderProps } from '../types/provider';
 import { createZoraThemeConfig } from './createZoraThemeConfig';
-import type { ZoraTheme, ZoraThemeMode } from './types';
 import { zoraDefaultTheme } from './zoraDefaultTheme';
+import { ZoraRuntimeCapabilities } from './ZoraRuntimeCapabilities';
 import { ZoraThemeRuntimeContext } from './ZoraThemeRuntimeContext';
 
-export interface ZoraProviderProps {
-  children: React.ReactNode;
-  theme?: ZoraTheme;
-  themeConfig?: ThemeConfig;
-  initialMode?: ZoraThemeMode;
-}
+export type { ZoraProviderProps, ZoraToastCapability } from '../types/provider';
 
-/** Installs the ZORA theme runtime, Surface theme, and shared bottom-sheet controller. */
+/*** Installs the core ZORA theme runtime and explicitly enabled optional capabilities. */
 export function ZoraProvider({
+  bottomSheet = false,
   children,
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = 'light',
+  toast = false,
 }: ZoraProviderProps) {
   const resolvedConfig = React.useMemo(
     () => themeConfig ?? createZoraThemeConfig(theme),
@@ -29,10 +25,12 @@ export function ZoraProvider({
   const runtimeValue = React.useMemo(() => ({ themeId: resolvedConfig.id }), [resolvedConfig.id]);
 
   return (
-    <ZoraThemeRuntimeContext.Provider value={runtimeValue}>
+    <ZoraThemeRuntimeContext value={runtimeValue}>
       <ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>
-        <BottomSheetProvider>{children}</BottomSheetProvider>
+        <ZoraRuntimeCapabilities bottomSheet={bottomSheet} toast={toast}>
+          {children}
+        </ZoraRuntimeCapabilities>
       </ThemeProvider>
-    </ZoraThemeRuntimeContext.Provider>
+    </ZoraThemeRuntimeContext>
   );
 }

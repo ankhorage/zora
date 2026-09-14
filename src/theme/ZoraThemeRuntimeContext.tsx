@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, use } from 'react';
 
 import type { ZoraThemeId } from './types';
 import { zoraDefaultTheme } from './zoraDefaultTheme';
@@ -11,6 +11,7 @@ export const ZoraThemeRuntimeContext = createContext<ZoraThemeRuntime>({
   themeId: zoraDefaultTheme.id,
 });
 
+/*** Returns the active ZORA theme runtime. */
 export function useZoraThemeRuntime(): ZoraThemeRuntime {
-  return useContext(ZoraThemeRuntimeContext);
+  return use(ZoraThemeRuntimeContext);
 }

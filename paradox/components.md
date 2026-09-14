@@ -1149,9 +1149,9 @@ Export paths: `src/index.ts`
 
 ## DatePicker
 
-Source: `src/features/date-picker/adapters/inbound/DatePicker.tsx:356:14`
+Source: `src/features/date-picker/adapters/inbound/DatePicker.web.tsx:13:14`
 
-Date input control with calendar selection and formatted display value.
+Renders DatePicker with anchored web Popover presentation.
 
 Export paths: `src/index.ts`
 
@@ -2423,7 +2423,7 @@ Export paths: `src/index.ts`
 | Prop               | Type                                                                                                                                          | Required | Default | Description |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
 | color              | `"danger" \| "primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| undefined` | no       | —       |             |
-| columns            | `4 \| 1 \| 2 \| 3 \| undefined`                                                                                                               | no       | —       |             |
+| columns            | `1 \| 2 \| 3 \| 4 \| undefined`                                                                                                               | no       | —       |             |
 | contentOrientation | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       | —       |             |
 | defaultValue       | `TValue \| undefined`                                                                                                                         | no       | —       |             |
 | disabled           | `boolean \| undefined`                                                                                                                        | no       | —       |             |
@@ -2687,7 +2687,7 @@ Export paths: `src/index.ts`
 
 ## SelectionProvider
 
-Source: `src/patterns/selection/SelectionProvider.tsx:40:1`
+Source: `src/patterns/selection/SelectionProvider.tsx:38:1`
 
 Provides selection state for building selectable lists and grids.
 
@@ -3378,9 +3378,9 @@ Export paths: `src/index.ts`
 
 ## TimePicker
 
-Source: `src/features/time-picker/adapters/inbound/TimePicker.tsx:258:14`
+Source: `src/features/time-picker/adapters/inbound/TimePicker.web.tsx:12:14`
 
-Time input control with bottom-sheet selection and formatted display value.
+Renders TimePicker with anchored web Popover presentation.
 
 Export paths: `src/index.ts`
 
@@ -3405,9 +3405,9 @@ Export paths: `src/index.ts`
 
 ## Toast
 
-Source: `src/components/toast/Toast.tsx:16:14`
+Source: `src/features/toast/adapters/inbound/Toast.tsx:8:14`
 
-Renders a toast notification message.
+Renders a toast notification message with ZORA theme scoping.
 
 Export paths: `src/index.ts`
 
@@ -3424,9 +3424,9 @@ Export paths: `src/index.ts`
 
 ## ToastProvider
 
-Source: `src/components/toast/ToastProvider.tsx:11:1`
+Source: `src/features/toast/adapters/inbound/ToastProvider.tsx:7:1`
 
-Provides toast state and rendering context for `useToast` and `Toast`.
+Provides toast state and rendering context through the Surface runtime host.
 
 Export paths: `src/index.ts`
 
@@ -3575,20 +3575,26 @@ Export paths: `src/index.ts`
 
 ## ZoraProvider
 
-Source: `src/theme/ZoraProvider.tsx:19:1`
+Source: `src/theme/ZoraProvider.tsx:13:1`
+
+Installs the core ZORA theme runtime and explicitly enabled optional capabilities.
 
 Export paths: `src/index.ts`
 
-| Prop        | Type                           | Required | Default            | Description |
-| ----------- | ------------------------------ | -------- | ------------------ | ----------- |
-| children    | `React.ReactNode \| undefined` | no       | —                  |             |
-| initialMode | `ZoraThemeMode \| undefined`   | no       | `'light'`          |             |
-| theme       | `ZoraTheme \| undefined`       | no       | `zoraDefaultTheme` |             |
-| themeConfig | `ThemeConfig \| undefined`     | no       | —                  |             |
+| Prop        | Type                               | Required | Default            | Description |
+| ----------- | ---------------------------------- | -------- | ------------------ | ----------- |
+| bottomSheet | `boolean \| undefined`             | no       | `false`            |             |
+| children    | `React.ReactNode \| undefined`     | no       | —                  |             |
+| initialMode | `ZoraThemeMode \| undefined`       | no       | `'light'`          |             |
+| theme       | `ZoraTheme \| undefined`           | no       | `zoraDefaultTheme` |             |
+| themeConfig | `ThemeConfig \| undefined`         | no       | —                  |             |
+| toast       | `ZoraToastCapability \| undefined` | no       | `false`            |             |
 
 ## ZoraThemeScope
 
-Source: `src/theme/ZoraThemeScope.tsx:47:1`
+Source: `src/theme/ZoraThemeScope.tsx:15:1`
+
+Applies nested ZORA theme overrides without installing another Surface ThemeProvider.
 
 Export paths: `src/index.ts`
 
