@@ -1,7 +1,7 @@
-import { Card } from '../../../card/public';
-import { Stack } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ToolbarProps } from '../../../../types/toolbar';
+import { Card } from '../../../card/public';
+import { Stack } from '../../../layout/public';
 
 /*** Renders a visible horizontal group of contextual actions and controls. */
 export const Toolbar = withZoraThemeScope(ToolbarInner);

@@ -1,12 +1,12 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import { Icon } from '../../../icon/public';
 import { Inline } from '../../../../foundation';
 import type { ZoraColor } from '../../../../internal/recipes';
 import { resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { RatingProps } from '../../../../types/rating';
+import { Icon } from '../../../icon/public';
 import { resolveRatingSegments } from '../../utils/resolveRatingSegments';
 
 /*** Displays a read-only star rating with optional half steps. */
@@ -34,7 +34,9 @@ function RatingInner({
         const name =
           segment === 'full' ? 'star' : segment === 'half' ? 'star-half' : 'star-outline';
         const segmentColor = segment === 'empty' ? theme.semantics.content.muted : role.base;
-        return <Icon key={`${index}-${segment}`} color={segmentColor} name={name} size={iconSize} />;
+        return (
+          <Icon key={`${index}-${segment}`} color={segmentColor} name={name} size={iconSize} />
+        );
       })}
     </Inline>
   );

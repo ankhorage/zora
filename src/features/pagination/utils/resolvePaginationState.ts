@@ -66,7 +66,5 @@ function createRange(start: number, end: number): number[] {
 
 /*** Normalizes optional pagination counts to finite non-negative integers. */
 function normalizeCount(value: number | undefined, fallback: number): number {
-  return value === undefined || !Number.isFinite(value)
-    ? fallback
-    : Math.max(0, Math.trunc(value));
+  return value === undefined || !Number.isFinite(value) ? fallback : Math.max(0, Math.trunc(value));
 }

@@ -2,11 +2,11 @@ import { Modal as SurfaceModal } from '@ankhorage/surface';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Box, Stack } from '../../../layout/public';
-import { Heading, Text } from '../../../typography/public';
 import { resolveDialogWidth } from '../../../../internal/recipes';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { DialogProps } from '../../../../types/dialog';
+import { Box, Stack } from '../../../layout/public';
+import { Heading, Text } from '../../../typography/public';
 
 /*** Renders the product-level dialog composition on top of the Surface modal primitive. */
 export const Dialog = withZoraThemeScope(DialogInner);

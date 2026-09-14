@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { PaginationProps } from '../../../../types/pagination';
 import { Button } from '../../../button/public';
 import { Stack } from '../../../layout/public';
 import { Text } from '../../../typography/public';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { PaginationProps } from '../../../../types/pagination';
 import { resolvePaginationPage } from '../../utils/resolvePaginationPage';
 import { resolvePaginationState } from '../../utils/resolvePaginationState';
 

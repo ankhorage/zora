@@ -272,12 +272,7 @@ export function ComponentsPage() {
             title="Paged results"
             description="Pagination changes a data page, not an application route."
           />
-          <Pagination
-            page={4}
-            pageCount={12}
-            onPageChange={() => undefined}
-            showFirstLast
-          />
+          <Pagination page={4} pageCount={12} onPageChange={() => undefined} showFirstLast />
         </ScreenSection>
 
         <ScreenSection title="App bars">

@@ -3,7 +3,14 @@ export const formFieldMeta = {
   name: 'FormField',
   category: 'component',
   directManifestNode: true,
-  allowedChildren: ['Checkbox', 'CheckboxGroup', 'RadioGroup', 'SearchInput', 'Select', 'TextInput'],
+  allowedChildren: [
+    'Checkbox',
+    'CheckboxGroup',
+    'RadioGroup',
+    'SearchInput',
+    'Select',
+    'TextInput',
+  ],
   blueprint: { label: 'Form field', defaultProps: { label: 'Label' } },
   bindings: {
     props: {

@@ -19,10 +19,7 @@ function TabInner({
   const inheritedInteractionPolicy = React.use(TabsInteractionPolicyContext);
 
   return (
-    <SurfaceTab
-      {...props}
-      interactionPolicy={interactionPolicy ?? inheritedInteractionPolicy}
-    >
+    <SurfaceTab {...props} interactionPolicy={interactionPolicy ?? inheritedInteractionPolicy}>
       {label}
     </SurfaceTab>
   );

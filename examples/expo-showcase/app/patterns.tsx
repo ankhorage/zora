@@ -237,7 +237,9 @@ export function PatternsPage() {
     <Screen>
       <ScreenSection title="Scenario: Search and filters">
         <FilterBar
-          leading={<SearchInput placeholder="Search items" value={query} onValueChange={setQuery} />}
+          leading={
+            <SearchInput placeholder="Search items" value={query} onValueChange={setQuery} />
+          }
         >
           <ChipGroup
             value={filters}

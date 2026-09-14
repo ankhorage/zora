@@ -1,6 +1,6 @@
-import { TextInput, type TextInputTrailingAction } from '../../../text-input/public';
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SearchInputProps } from '../../../../../types/search-input';
+import { TextInput, type TextInputTrailingAction } from '../../../text-input/public';
 
 /*** Renders a search-focused text input with clear and submit behavior. */
 export const SearchInput = withZoraThemeScope(SearchInputInner);
