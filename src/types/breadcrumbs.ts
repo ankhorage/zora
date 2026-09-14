@@ -1,21 +1,24 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
-import type React from 'react';
 
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface BreadcrumbItem {
   id: string;
-  label: React.ReactNode;
+  label: string;
   icon?: ButtonIconSpec;
-  onPress?: () => void;
   disabled?: boolean;
+}
+
+export interface BreadcrumbPressEvent {
+  id: string;
 }
 
 export interface BreadcrumbsProps extends ZoraBaseProps {
   items: readonly BreadcrumbItem[];
-  separator?: React.ReactNode;
+  separator?: string;
   maxItems?: number;
   compact?: boolean;
   disabled?: boolean;
+  onItemPress?: (event: BreadcrumbPressEvent) => void;
   testID?: string;
 }

@@ -190,7 +190,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
     name: 'Select',
     category: 'component',
     description: 'Captures one selected string value.',
-    directManifestNode: false,
+    directManifestNode: true,
     allowedChildren: [],
     bindings: {
       props: {
@@ -228,7 +228,6 @@ export const ZORA_BINDABLE_COMPONENT_META = {
         payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
       },
     },
-    note: 'Form control component; not represented as a manifest node in v1.',
     props: {
       value: {
         type: 'string',

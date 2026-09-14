@@ -1,4 +1,4 @@
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface SelectOption<TValue extends string = string> {
   value: TValue;
@@ -7,9 +7,17 @@ export interface SelectOption<TValue extends string = string> {
 }
 
 export interface SelectProps<TValue extends string = string> extends ZoraBaseProps {
-  value: TValue;
+  value?: TValue;
+  defaultValue?: TValue;
   options: readonly SelectOption<TValue>[];
-  onValueChange: (value: TValue) => void;
+  onValueChange?: (value: TValue) => void;
+  label?: string;
+  helperText?: string;
+  errorText?: string;
+  placeholder?: string;
+  required?: boolean;
   disabled?: boolean;
+  readOnly?: boolean;
   invalid?: boolean;
+  testID?: string;
 }

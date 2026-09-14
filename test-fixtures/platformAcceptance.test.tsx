@@ -36,7 +36,12 @@ await mock.module('react-native-svg', () => ({
     }),
 }));
 await mock.module('@ankhorage/surface/bottom-sheet', () => ({
+  BottomSheetFlatList: ReactNativeWeb.View,
   BottomSheetProvider: ({ children }: React.PropsWithChildren) => children,
+  BottomSheetScrollView: ReactNativeWeb.View,
+  BottomSheetSectionList: ReactNativeWeb.View,
+  BottomSheetView: ReactNativeWeb.View,
+  BottomSheetVirtualizedList: ReactNativeWeb.View,
   useBottomSheet: () => sheetController,
 }));
 await mock.module('expo-document-picker', () => ({
@@ -255,7 +260,7 @@ test('declarative BottomSheet opens, updates children, closes, reopens, and rema
   }
 });
 
-describe('Surface 4 icon integration', () => {
+describe('Surface 5 icon integration', () => {
   test('renders each supported provider/style used by ZORA', () => {
     const markup = renderToStaticMarkup(
       <ZoraProvider>

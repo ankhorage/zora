@@ -1,10 +1,10 @@
 import type { ZoraComponentMeta } from '../../metadata';
 
-export const selectMeta = {
-  name: 'Select',
+export const popoverMenuMeta = {
+  name: 'PopoverMenu',
   category: 'component',
   directManifestNode: false,
   allowedChildren: [],
-  note: 'Form control component; not represented as a manifest node in v1.',
+  note: 'Code-facing anchored action menu; the trigger is a render prop and is not serialized as a direct manifest node.',
   props: {},
 } as const satisfies ZoraComponentMeta;

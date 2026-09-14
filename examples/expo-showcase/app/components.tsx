@@ -304,7 +304,13 @@ export function ComponentsPage() {
                 onPress={() => undefined}
               />
             }
-            overflow={{ label: 'More actions', onPress: () => undefined }}
+            overflow={{
+              label: 'More actions',
+              actions: [
+                { id: 'archive', title: 'Archive', onPress: () => undefined },
+                { id: 'mark-unread', title: 'Mark unread', onPress: () => undefined },
+              ],
+            }}
             subtitle="All conversations"
             title="Inbox"
           />
@@ -331,7 +337,13 @@ export function ComponentsPage() {
               count: 3,
               onCancel: () => undefined,
             }}
-            overflow={{ label: 'More selection actions', onPress: () => undefined }}
+            overflow={{
+              label: 'More selection actions',
+              actions: [
+                { id: 'move', title: 'Move selected', onPress: () => undefined },
+                { id: 'archive', title: 'Archive selected', onPress: () => undefined },
+              ],
+            }}
           />
         </ScreenSection>
 

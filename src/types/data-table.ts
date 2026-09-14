@@ -1,8 +1,8 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { MenuActionIntent } from '../components/menu';
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { PopoverMenuActionIntent } from './popover-menu';
 
 export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableDensity = 'comfortable' | 'compact';
@@ -36,7 +36,7 @@ export interface DataTableRowAction<TRow extends object> {
   title: React.ReactNode;
   description?: React.ReactNode;
   icon?: ButtonIconSpec;
-  intent?: MenuActionIntent;
+  intent?: PopoverMenuActionIntent;
   disabled?: boolean;
   onPress?: (row: TRow) => void;
 }

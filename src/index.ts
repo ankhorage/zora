@@ -1,7 +1,3 @@
-export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
-export { Breadcrumbs } from './components/breadcrumbs';
-export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
-export { DropdownMenu, Menu } from './components/menu';
 export type { ModalProps } from './components/modal';
 export { Modal } from './components/modal';
 export type { PaginationProps } from './components/pagination';
@@ -10,8 +6,6 @@ export type { RatingProps } from './components/rating';
 export { Rating } from './components/rating';
 export type { SearchBarProps } from './components/search-bar';
 export { SearchBar } from './components/search-bar';
-export type { SelectOption, SelectProps } from './components/select';
-export { Select } from './components/select';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
 export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
@@ -31,7 +25,7 @@ export {
   ActivityIndicator,
   type ActivityIndicatorProps,
 } from './features/activity-indicator/public';
-export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './features/app-bar/public';
+export type { AppBarMode, AppBarOverflowMenu, AppBarProps } from './features/app-bar/public';
 export { AppBar } from './features/app-bar/public';
 export type {
   AuthFormBaseProps,
@@ -70,6 +64,12 @@ export type { BadgeProps } from './features/badge/public';
 export { Badge } from './features/badge/public';
 export type { BottomSheetProps } from './features/bottom-sheet/public';
 export { BottomSheet } from './features/bottom-sheet/public';
+export {
+  type BreadcrumbItem,
+  type BreadcrumbPressEvent,
+  Breadcrumbs,
+  type BreadcrumbsProps,
+} from './features/breadcrumbs/public';
 export type { ButtonProps } from './features/button/public';
 export type {
   ButtonGroupAlign,
@@ -161,6 +161,7 @@ export {
   type RadioGroupProps,
   type RadioProps,
 } from './features/form/radio/public';
+export { Select, type SelectOption, type SelectProps } from './features/form/select/public';
 export {
   TextInput,
   type TextInputProps,
@@ -219,6 +220,12 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
+export {
+  PopoverMenu,
+  type PopoverMenuAction,
+  type PopoverMenuActionIntent,
+  type PopoverMenuProps,
+} from './features/popover-menu/public';
 export {
   Progress,
   type ProgressProps,

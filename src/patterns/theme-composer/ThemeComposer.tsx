@@ -3,11 +3,11 @@ import type { AppCategory } from '@ankhorage/contracts';
 import { APP_CATEGORIES } from '@ankhorage/contracts';
 import React from 'react';
 
-import { Select } from '../../components/select';
 import { Tabs } from '../../components/tabs';
 import { Badge } from '../../features/badge/public';
 import { Button } from '../../features/button/public';
 import { Card } from '../../features/card/public';
+import { Select } from '../../features/form/select/public';
 import { TextInput } from '../../features/form/text-input/public';
 import { Box, Stack } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';

@@ -1,13 +1,10 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import { Breadcrumbs } from './components/breadcrumbs';
-import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
 import { Rating } from './components/rating';
 import { SearchBar } from './components/search-bar';
-import { Select } from './components/select';
 import { Tabs } from './components/tabs';
 import { Toolbar, ToolbarAction } from './components/toolbar';
 import { Accordion, AccordionItem } from './features/accordion/public';
@@ -25,6 +22,7 @@ import { Avatar } from './features/avatar/public';
 import { AvatarGroup } from './features/avatar/public';
 import { Badge } from './features/badge/public';
 import { BottomSheet } from './features/bottom-sheet/public';
+import { Breadcrumbs } from './features/breadcrumbs/public';
 import { Button } from './features/button/public';
 import { ButtonGroup } from './features/button/public';
 import { IconButton } from './features/button/public';
@@ -41,6 +39,7 @@ import { EmptyState } from './features/empty-state/public';
 import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
 import { Form, FormActions, FormError, FormField } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
+import { Select } from './features/form/select/public';
 import { TextInput } from './features/form/text-input/public';
 import { Gradient } from './features/gradient/public';
 import { Hero } from './features/hero/public';
@@ -51,6 +50,7 @@ import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
 import { ContentRail } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
+import { PopoverMenu } from './features/popover-menu/public';
 import { Progress, ProgressRing } from './features/progress/public';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './features/skeleton/public';
 import { Surface } from './features/surface/public';
@@ -130,7 +130,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   ChipGroup,
   DataTable,
   DatePicker,
-  DropdownMenu,
   Form,
   FormActions,
   FormError,
@@ -143,10 +142,10 @@ const _ZORA_COMPONENT_REGISTRY = {
   KeyboardAvoidingView,
   TextInput,
   MediaCard,
-  Menu,
   MetricCard,
   Modal,
   Pagination,
+  PopoverMenu,
   Progress,
   ProgressRing,
   Radio,

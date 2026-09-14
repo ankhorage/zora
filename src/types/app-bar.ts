@@ -2,6 +2,7 @@ import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { PopoverMenuAction } from './popover-menu';
 
 export type AppBarMode =
   | {
@@ -16,11 +17,13 @@ export type AppBarMode =
       cancelIcon?: ButtonIconSpec;
     };
 
-export interface AppBarOverflowAction {
-  onPress: () => void;
+export interface AppBarOverflowMenu {
+  actions: readonly PopoverMenuAction[];
   label?: string;
   icon?: ButtonIconSpec;
   disabled?: boolean;
+  closeOnSelect?: boolean;
+  onDismiss?: () => void;
 }
 
 export interface AppBarProps extends ZoraBaseProps {
@@ -28,7 +31,7 @@ export interface AppBarProps extends ZoraBaseProps {
   subtitle?: React.ReactNode;
   leading?: React.ReactNode;
   actions?: React.ReactNode;
-  overflow?: AppBarOverflowAction;
+  overflow?: AppBarOverflowMenu;
   appMode?: AppBarMode;
   children?: React.ReactNode;
   safeAreaTop?: boolean;

@@ -17,6 +17,14 @@ describe('ZORA bindable component metadata', () => {
     expect(registry.DataTable?.bindings?.props?.rows?.value.type).toBe('array');
   });
 
+  it('keeps Select direct-manifest ownership aligned across metadata registries', () => {
+    const select = ZORA_BINDABLE_COMPONENT_META.Select;
+
+    expect(select.directManifestNode).toBe(true);
+    expect(select.directManifestNode).toBe(ZORA_COMPONENT_META.Select.directManifestNode);
+    expect(select.bindings.events.valueChange.payload.eventType).toBe('select.valueChange');
+  });
+
   it('shares canonical Image authoring metadata while preserving dynamic image bindings', () => {
     const image = ZORA_BINDABLE_COMPONENT_META.Image;
 

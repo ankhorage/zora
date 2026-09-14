@@ -7,7 +7,7 @@
       "dependencies": {
         "@ankhorage/color-theory": "^0.3.0",
         "@ankhorage/contracts": "^12.0.1",
-        "@ankhorage/surface": "^4.4.0",
+        "@ankhorage/surface": "^5.0.0",
         "@ankhorage/utility": "^0.8.0",
         "expo-document-picker": "~57.0.1",
         "expo-image-picker": "~57.0.16",
@@ -15,7 +15,6 @@
       "devDependencies": {
         "@ankhorage/devtools": "^1.13.0",
         "@ankhorage/paradox": "^0.1.24",
-        "@react-native-picker/picker": "2.11.4",
         "@react-native-vector-icons/fontawesome": "^13.1.3",
         "@react-native-vector-icons/fontawesome5": "^13.1.3",
         "@react-native-vector-icons/fontawesome6": "^13.1.3",
@@ -38,7 +37,6 @@
         "typescript": "~6.0.3",
       },
       "peerDependencies": {
-        "@react-native-picker/picker": "2.11.4",
         "@react-native-vector-icons/fontawesome": "^13.1.3",
         "@react-native-vector-icons/fontawesome5": "^13.1.3",
         "@react-native-vector-icons/fontawesome6": "^13.1.3",
@@ -63,7 +61,7 @@
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.1.25", "", { "dependencies": { "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-brgElQE2VEv1E3MN4NbevdpaWiog8CA0lPKw/xtSz5VpX2Yy1BoxA5xhh2OMlJ0H4iA5fkFXnBeCoKiStTqa/A=="],
 
-    "@ankhorage/surface": ["@ankhorage/surface@4.4.1", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.0", "@ankhorage/contracts": "^12.0.1", "@gorhom/bottom-sheet": "^5.2.13" }, "peerDependencies": { "@react-native-vector-icons/fontawesome": "^13.1.3", "@react-native-vector-icons/fontawesome5": "^13.1.3", "@react-native-vector-icons/fontawesome6": "^13.1.3", "@react-native-vector-icons/ionicons": "^13.1.3", "@react-native-vector-icons/material-design-icons": "^13.1.3", "react": "19.2.3", "react-native": "0.86.x", "react-native-gesture-handler": "~2.32.0", "react-native-reanimated": "4.5.1", "react-native-safe-area-context": "~5.7.0", "react-native-svg": "15.15.4", "react-native-web": "~0.21.0", "react-native-worklets": "0.10.1" } }, "sha512-SqayCK5H4R8ry2qYP+OS6ZyMLlJjcqgGQwgUeiMx7zwhAjL6t5Xy4rwOREoD6SJdUqcVOamafZQ1pOsvrjo04w=="],
+    "@ankhorage/surface": ["@ankhorage/surface@5.0.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.0", "@ankhorage/contracts": "^12.0.1", "@gorhom/bottom-sheet": "^5.2.13" }, "peerDependencies": { "@react-native-vector-icons/fontawesome": "^13.1.3", "@react-native-vector-icons/fontawesome5": "^13.1.3", "@react-native-vector-icons/fontawesome6": "^13.1.3", "@react-native-vector-icons/ionicons": "^13.1.3", "@react-native-vector-icons/material-design-icons": "^13.1.3", "react": "19.2.3", "react-native": "0.86.x", "react-native-gesture-handler": "~2.32.0", "react-native-reanimated": "4.5.1", "react-native-safe-area-context": "~5.7.0", "react-native-svg": "15.15.4", "react-native-web": "~0.21.0", "react-native-worklets": "0.10.1" } }, "sha512-DRAFJHX8dccIZtmWFdV4NxuF/zI0C8QYiAWScDoUC8baU5WYIZ+62a1v6KJSrK1E3aM9gG98trTZut6DKrM5tA=="],
 
     "@ankhorage/utility": ["@ankhorage/utility@0.8.0", "", {}, "sha512-0ywzdqu1pO+n9yNhbJE5+JD4CeUQ1GEvMGbh8pccr8ieLFlYgTKMFWxH3XUk0Mw6P2ngelQU+PHC+kjJ/xL8Uw=="],
 
@@ -462,8 +460,6 @@
     "@pkgr/core": ["@pkgr/core@0.3.6", "", {}, "sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA=="],
 
     "@pnpm/deps.graph-sequencer": ["@pnpm/deps.graph-sequencer@1100.0.1", "", {}, "sha512-pOr5+q1fLYKwFN3LAJuGZEnfXDcQ73zqgDHMtGy+K+uIoUqyY+6MeDCWFwfu+4EFuq76I5EPFofoNAI+Bmmq4A=="],
-
-    "@react-native-picker/picker": ["@react-native-picker/picker@2.11.4", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-Kf8h1AMnBo54b1fdiVylP2P/iFcZqzpMYcglC28EEFB1DEnOjsNr6Ucqc+3R9e91vHxEDnhZFbYDmAe79P2gjA=="],
 
     "@react-native-vector-icons/common": ["@react-native-vector-icons/common@13.0.3", "", { "dependencies": { "find-up": "^8.0.0", "picocolors": "^1.1.1", "plist": "^3.1.0" }, "peerDependencies": { "@react-native-vector-icons/get-image": "^13.0.1", "@react-native/assets-registry": "*", "expo-font": "*", "react": "*", "react-native": "*" }, "optionalPeers": ["@react-native-vector-icons/get-image", "@react-native/assets-registry", "expo-font"], "bin": { "rnvi-update-plist": "lib/commonjs/scripts/updatePlist.js" } }, "sha512-Ty47I/INab3IjPonvo2xlRN1pB/sG5/jCuq49/Vq8Q4MchQ6jSh8vdq5KVcJer3XIyc0DJyC6fKVxN2CGx78YQ=="],
 

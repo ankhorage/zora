@@ -2,7 +2,7 @@
  * Interaction policy regression guards.
  *
  * These tests verify that internally owned interactions respect the passive
- * policy returned by the canonical Surface type.  They use static source
+ * policy returned by the canonical Surface type. They use static source
  * inspection so they run fast and do not require a renderer.
  */
 
@@ -16,10 +16,6 @@ const SRC_ROOT = join(ROOT, 'src');
 
 function readSource(relativePath: string): string {
   return readFileSync(join(SRC_ROOT, relativePath), 'utf8');
-}
-
-function readComponent(...segments: string[]): string {
-  return readSource(join('components', ...segments));
 }
 
 function readFeature(...segments: string[]): string {
@@ -42,13 +38,13 @@ describe('InteractionPolicy declaration', () => {
     const files = [
       readSource('theme/ZoraBaseProps.ts'),
       readSource('types/app-bar.ts'),
-      readComponent('breadcrumbs', 'types.ts'),
+      readSource('types/breadcrumbs.ts'),
       readSource('types/empty-state.ts'),
       readSource('types/hero.ts'),
       readSource('types/product-card.ts'),
       readPattern('reader', 'types.ts'),
       readPattern('scanner', 'types.ts'),
-      readComponent('select', 'types.ts'),
+      readSource('types/select.ts'),
       readPattern('tree-view', 'types.ts'),
     ];
 
@@ -78,26 +74,27 @@ describe('Surface wrapper propagation', () => {
 });
 
 describe('AppBar', () => {
-  test('forwards interactionPolicy to internal IconButtons', () => {
+  test('forwards interactionPolicy to selection and overflow controls', () => {
     const source = readFeature('app-bar', 'adapters', 'inbound', 'AppBar.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(
       /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{mode\.onCancel\}/,
     );
+    expect(source).toMatch(/<PopoverMenu[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
     expect(source).toMatch(
-      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{overflow\.onPress\}/,
+      /trigger=\{\(\{ toggle \}\) => \([\s\S]*?<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{toggle\}/,
     );
   });
 });
 
 describe('Breadcrumbs', () => {
-  test('forwards interactionPolicy to internal Buttons', () => {
-    const source = readComponent('breadcrumbs', 'Breadcrumbs.tsx');
+  test('forwards interactionPolicy and emits item ids from internal Buttons', () => {
+    const source = readFeature('breadcrumbs', 'adapters', 'inbound', 'Breadcrumbs.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(
-      /<Button[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{item\.onPress\}/,
+      /<Button[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{\(\) => onItemPress\(\{ id: item\.id \}\)\}/,
     );
   });
 });
@@ -233,19 +230,20 @@ describe('BarcodeScannerView', () => {
 });
 
 describe('Select', () => {
-  test('keeps Picker enabled controlled only by real disabled prop', () => {
-    const source = readComponent('select', 'Select.tsx');
+  test('web forwards interactionPolicy to Popover and option controls', () => {
+    const webSource = readFeature('form', 'select', 'adapters', 'inbound', 'Select.web.tsx');
+    const optionSource = readFeature('form', 'select', 'composition', 'SelectOptionRow.tsx');
 
-    expect(source).toMatch(/enabled=\{!disabled\}/);
+    expect(webSource).toContain('interactionPolicy={props.interactionPolicy}');
+    expect(optionSource).toContain('interactionPolicy={interactionPolicy}');
   });
 
-  test('prevents pointer/touch interaction with Picker subtree while passive', () => {
-    const source = readComponent('select', 'Select.tsx');
+  test('native suppresses opening while passive', () => {
+    const nativeSource = readFeature('form', 'select', 'adapters', 'inbound', 'Select.native.tsx');
 
-    expect(source).toMatch(/pointerEvents:\s*passive \? 'none' : 'auto'/);
-    expect(source).toMatch(
-      /onValueChange=\{\s*\(\s*itemValue\s*\)\s*=>\s*\{\s*if\s*\(\s*!passive\s*\)/,
-    );
+    expect(nativeSource).toContain("props.interactionPolicy === 'passive'");
+    expect(nativeSource).toContain("contentMode: 'direct'");
+    expect(nativeSource).toContain('<BottomSheetFlatList');
   });
 });
 
