@@ -6,30 +6,16 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function findRecordValue(record: Record<string, unknown>, key: string): unknown {
-  for (const [entryKey, entryValue] of Object.entries(record)) {
-    if (entryKey === key) {
-      return entryValue;
-    }
-  }
-
-  return undefined;
-}
-
-function isOptionalPeer(metadata: unknown, packageName: string): boolean {
-  if (!isRecord(metadata)) return false;
-  const peerMetadata = findRecordValue(metadata, packageName);
-  return isRecord(peerMetadata) && peerMetadata.optional === true;
-}
-
-test('root-entry native imports are required portable peers', async () => {
+test('root-entry native imports expose only required portable peers', async () => {
   const packageJson = JSON.parse(
     await readFile(new URL('../package.json', import.meta.url), 'utf8'),
   ) as unknown;
   if (!isRecord(packageJson)) throw new Error('Expected package.json to contain an object.');
 
-  const { peerDependencies, peerDependenciesMeta } = packageJson;
-  expect(isOptionalPeer(peerDependenciesMeta, '@react-native-picker/picker')).toBe(false);
+  const { peerDependencies } = packageJson;
+  expect(
+    isRecord(peerDependencies) && peerDependencies['@react-native-picker/picker'],
+  ).toBeUndefined();
   expect(isRecord(peerDependencies) && peerDependencies['expo-linear-gradient']).toBeUndefined();
   expect(isRecord(peerDependencies) && peerDependencies['expo-font']).toBeUndefined();
   expect(isRecord(peerDependencies) && peerDependencies['@expo/vector-icons']).toBeUndefined();
