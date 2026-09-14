@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, type ListRenderItemInfo } from 'react-native';
 
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
-import type { SelectProps } from '../../../../../types/select';
+import type { SelectOption, SelectProps } from '../../../../../types/select';
 import { BottomSheetFlatList, useBottomSheet } from '../../../../bottom-sheet/public';
 import { SelectField } from '../../composition/SelectField';
 import { SelectOptionRow } from '../../composition/SelectOptionRow';
@@ -21,10 +21,33 @@ function SelectInner<TValue extends string = string>({
   ...props
 }: SelectProps<TValue>) {
   const { dismiss, present } = useBottomSheet();
-  const controller = useSelectController(props);
+  const { select, selectedOption, value } = useSelectController(props);
+  const { disabled, interactionPolicy, options, readOnly, testID } = props;
+  const listData = React.useMemo(() => [...options], [options]);
+
+  const handleSelect = React.useCallback(
+    (nextValue: TValue) => {
+      select(nextValue);
+      dismiss();
+    },
+    [dismiss, select],
+  );
+
+  const renderOption = React.useCallback(
+    ({ item }: ListRenderItemInfo<SelectOption<TValue>>) => (
+      <SelectOptionRow
+        interactionPolicy={interactionPolicy}
+        onSelect={handleSelect}
+        option={item}
+        selected={value === item.value}
+        testID={testID}
+      />
+    ),
+    [handleSelect, interactionPolicy, testID, value],
+  );
 
   const openSelect = React.useCallback(() => {
-    if (props.disabled || props.readOnly || props.interactionPolicy === 'passive') return;
+    if (disabled || readOnly || interactionPolicy === 'passive') return;
 
     present({
       contentMode: 'direct',
@@ -32,32 +55,17 @@ function SelectInner<TValue extends string = string>({
       content: (
         <BottomSheetFlatList
           contentContainerStyle={styles.listContent}
-          data={[...props.options]}
+          data={listData}
           keyExtractor={(item) => item.value}
-          renderItem={({ item }) => (
-            <SelectOptionRow
-              interactionPolicy={props.interactionPolicy}
-              onSelect={(value) => {
-                controller.select(value);
-                dismiss();
-              }}
-              option={item}
-              selected={controller.value === item.value}
-              testID={props.testID}
-            />
-          )}
+          renderItem={renderOption}
         />
       ),
     });
-  }, [controller, dismiss, present, props]);
+  }, [disabled, interactionPolicy, listData, present, readOnly, renderOption]);
 
   return (
     <SelectField props={props}>
-      <SelectTrigger
-        displayLabel={controller.selectedOption?.label}
-        onPress={openSelect}
-        props={props}
-      />
+      <SelectTrigger displayLabel={selectedOption?.label} onPress={openSelect} props={props} />
     </SelectField>
   );
 }
