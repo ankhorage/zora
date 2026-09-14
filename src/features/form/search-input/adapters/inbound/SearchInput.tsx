@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TextInput, type TextInputTrailingAction } from '../../../text-input/public';
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SearchInputProps } from '../../../../../types/search-input';
