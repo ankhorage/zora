@@ -7,7 +7,7 @@ import { ZoraRuntimeCapabilities } from './ZoraRuntimeCapabilities';
 import { zoraDefaultTheme } from './zoraDefaultTheme';
 import { ZoraThemeRuntimeContext } from './ZoraThemeRuntimeContext';
 
-export type { ZoraProviderProps } from '../types/provider';
+export type { ZoraProviderProps, ZoraToastCapability } from '../types/provider';
 
 /*** Installs the core ZORA theme runtime and explicitly enabled optional capabilities. */
 export function ZoraProvider({
