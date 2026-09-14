@@ -1,5 +1,4 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
-import React from 'react';
 
 import { Icon } from '../../../icon/public';
 import { Inline } from '../../../../foundation';
