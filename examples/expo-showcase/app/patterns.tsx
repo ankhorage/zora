@@ -66,7 +66,13 @@ function SelectionScenario() {
               }
             : undefined
         }
-        overflow={{ label: 'More selection actions', onPress: () => undefined }}
+        overflow={{
+          label: 'More selection actions',
+          actions: [
+            { id: 'archive', title: 'Archive selected', onPress: () => undefined },
+            { id: 'move', title: 'Move selected', onPress: () => undefined },
+          ],
+        }}
         title={selection.hasSelection ? undefined : 'Selection region'}
         subtitle={
           selection.hasSelection ? undefined : 'Press/longPress/manual triggers are opt-in.'
