@@ -5,7 +5,7 @@ import {
   ListSection,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
 } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
@@ -62,7 +62,7 @@ export default function ContactsScreen() {
           title="Find people"
           description="A searchable contact directory without local input styling."
         >
-          <SearchBar
+          <SearchInput
             onValueChange={() => {
               /* no-op */
             }}
