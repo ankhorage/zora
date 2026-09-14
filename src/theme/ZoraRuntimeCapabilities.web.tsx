@@ -6,7 +6,5 @@ import type { ZoraRuntimeCapabilitiesProps } from '../types/provider';
 export function ZoraRuntimeCapabilities({ children, toast }: ZoraRuntimeCapabilitiesProps) {
   if (!toast) return children;
 
-  return (
-    <SurfaceToastProvider {...(toast === true ? {} : toast)}>{children}</SurfaceToastProvider>
-  );
+  return <SurfaceToastProvider {...(toast === true ? {} : toast)}>{children}</SurfaceToastProvider>;
 }

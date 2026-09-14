@@ -1,5 +1,5 @@
-import type { ToastProviderProps as SurfaceToastProviderProps } from '@ankhorage/surface';
 import type { ThemeConfig } from '@ankhorage/contracts';
+import type { ToastProviderProps as SurfaceToastProviderProps } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { ZoraTheme, ZoraThemeMode } from '../theme/types';

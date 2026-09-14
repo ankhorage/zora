@@ -27,10 +27,9 @@ export function TimePickerTrigger({
   );
 }
 
-interface TimePickerTriggerProps
-  extends Pick<
-    TimePickerProps,
-    'disabled' | 'formatTime' | 'interactionPolicy' | 'placeholder' | 'testID' | 'value'
-  > {
+interface TimePickerTriggerProps extends Pick<
+  TimePickerProps,
+  'disabled' | 'formatTime' | 'interactionPolicy' | 'placeholder' | 'testID' | 'value'
+> {
   onPress: () => void;
 }

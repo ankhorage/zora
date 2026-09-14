@@ -34,11 +34,10 @@ export function DatePickerTrigger({
   );
 }
 
-interface DatePickerTriggerProps
-  extends Pick<
-    DatePickerProps,
-    'disabled' | 'formatDate' | 'interactionPolicy' | 'placeholder' | 'testID' | 'value'
-  > {
+interface DatePickerTriggerProps extends Pick<
+  DatePickerProps,
+  'disabled' | 'formatDate' | 'interactionPolicy' | 'placeholder' | 'testID' | 'value'
+> {
   onPress: () => void;
 }
 

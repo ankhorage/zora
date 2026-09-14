@@ -29,8 +29,10 @@ export function DatePickerField({
   );
 }
 
-interface DatePickerFieldProps
-  extends Pick<DatePickerProps, 'description' | 'disabled' | 'error' | 'label' | 'required' | 'testID'> {
+interface DatePickerFieldProps extends Pick<
+  DatePickerProps,
+  'description' | 'disabled' | 'error' | 'label' | 'required' | 'testID'
+> {
   children: React.ReactNode;
 }
 

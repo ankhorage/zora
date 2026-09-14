@@ -29,8 +29,10 @@ export function TimePickerField({
   );
 }
 
-interface TimePickerFieldProps
-  extends Pick<TimePickerProps, 'description' | 'disabled' | 'error' | 'label' | 'required' | 'testID'> {
+interface TimePickerFieldProps extends Pick<
+  TimePickerProps,
+  'description' | 'disabled' | 'error' | 'label' | 'required' | 'testID'
+> {
   children: React.ReactNode;
 }
 

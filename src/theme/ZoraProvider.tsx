@@ -3,8 +3,8 @@ import React from 'react';
 
 import type { ZoraProviderProps } from '../types/provider';
 import { createZoraThemeConfig } from './createZoraThemeConfig';
-import { ZoraRuntimeCapabilities } from './ZoraRuntimeCapabilities';
 import { zoraDefaultTheme } from './zoraDefaultTheme';
+import { ZoraRuntimeCapabilities } from './ZoraRuntimeCapabilities';
 import { ZoraThemeRuntimeContext } from './ZoraThemeRuntimeContext';
 
 export type { ZoraProviderProps, ZoraToastCapability } from '../types/provider';

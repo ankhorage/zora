@@ -53,19 +53,18 @@ export function TimePickerContent({
   );
 }
 
-interface TimePickerContentProps
-  extends Pick<
-    TimePickerProps,
-    | 'description'
-    | 'formatTime'
-    | 'interactionPolicy'
-    | 'label'
-    | 'maxTime'
-    | 'minTime'
-    | 'stepMinutes'
-    | 'testID'
-    | 'value'
-  > {
+interface TimePickerContentProps extends Pick<
+  TimePickerProps,
+  | 'description'
+  | 'formatTime'
+  | 'interactionPolicy'
+  | 'label'
+  | 'maxTime'
+  | 'minTime'
+  | 'stepMinutes'
+  | 'testID'
+  | 'value'
+> {
   onDismiss: () => void;
   onSelect: (value: string) => void;
 }

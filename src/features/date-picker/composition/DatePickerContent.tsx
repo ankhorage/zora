@@ -53,11 +53,10 @@ export function DatePickerContent({
   );
 }
 
-interface DatePickerContentProps
-  extends Pick<
-    DatePickerProps,
-    'description' | 'interactionPolicy' | 'label' | 'maxDate' | 'minDate' | 'testID' | 'value'
-  > {
+interface DatePickerContentProps extends Pick<
+  DatePickerProps,
+  'description' | 'interactionPolicy' | 'label' | 'maxDate' | 'minDate' | 'testID' | 'value'
+> {
   onDismiss: () => void;
   onSelect: (value: Date) => void;
 }
@@ -207,7 +206,11 @@ function isAfterLocalDay(left: Date, right: Date): boolean {
 }
 
 /*** Reports whether a date falls outside the configured picker range. */
-function isDateDisabled(value: Date, minDate: Date | undefined, maxDate: Date | undefined): boolean {
+function isDateDisabled(
+  value: Date,
+  minDate: Date | undefined,
+  maxDate: Date | undefined,
+): boolean {
   if (minDate && isBeforeLocalDay(value, minDate)) return true;
   if (maxDate && isAfterLocalDay(value, maxDate)) return true;
   return false;
