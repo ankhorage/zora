@@ -11,6 +11,17 @@ export interface ZoraThemeScopeProps {
   mode?: ZoraThemeMode;
 }
 
+/*** Applies nested ZORA theme overrides without installing another Surface ThemeProvider. */
+export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
+  if (mode === undefined && themeId === undefined) return children;
+  return (
+    <ZoraThemeScopeInner mode={mode} themeId={themeId}>
+      {children}
+    </ZoraThemeScopeInner>
+  );
+}
+
+/*** Resolves and provides the scoped Surface and ZORA theme runtime values. */
 function ZoraThemeScopeInner({ children, themeId, mode }: ZoraThemeScopeProps) {
   const parentSurface = useTheme();
   const parentRuntime = useZoraThemeRuntime();
@@ -38,17 +49,8 @@ function ZoraThemeScopeInner({ children, themeId, mode }: ZoraThemeScopeProps) {
   const scopedRuntimeValue = useMemo(() => ({ themeId: scopedThemeId }), [scopedThemeId]);
 
   return (
-    <ZoraThemeRuntimeContext.Provider value={scopedRuntimeValue}>
-      <ThemeContext.Provider value={scopedSurfaceValue}>{children}</ThemeContext.Provider>
-    </ZoraThemeRuntimeContext.Provider>
-  );
-}
-
-export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
-  if (mode === undefined && themeId === undefined) return children;
-  return (
-    <ZoraThemeScopeInner mode={mode} themeId={themeId}>
-      {children}
-    </ZoraThemeScopeInner>
+    <ZoraThemeRuntimeContext value={scopedRuntimeValue}>
+      <ThemeContext value={scopedSurfaceValue}>{children}</ThemeContext>
+    </ZoraThemeRuntimeContext>
   );
 }
