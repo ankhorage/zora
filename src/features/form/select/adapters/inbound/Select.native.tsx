@@ -22,6 +22,7 @@ function SelectInner<TValue extends string = string>({
 }: SelectProps<TValue>) {
   const { dismiss, present } = useBottomSheet();
   const { select, selectedOption, value } = useSelectController(props);
+  const passive = props.interactionPolicy === 'passive';
   const { disabled, interactionPolicy, options, readOnly, testID } = props;
   const listData = React.useMemo(() => [...options], [options]);
 
@@ -47,7 +48,7 @@ function SelectInner<TValue extends string = string>({
   );
 
   const openSelect = React.useCallback(() => {
-    if (disabled || readOnly || interactionPolicy === 'passive') return;
+    if (disabled || readOnly || passive) return;
 
     present({
       contentMode: 'direct',
@@ -61,7 +62,7 @@ function SelectInner<TValue extends string = string>({
         />
       ),
     });
-  }, [disabled, interactionPolicy, listData, present, readOnly, renderOption]);
+  }, [disabled, listData, passive, present, readOnly, renderOption]);
 
   return (
     <SelectField props={props}>
