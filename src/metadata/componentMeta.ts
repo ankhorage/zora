@@ -9,6 +9,8 @@ import { selectMeta } from '../components/select/meta';
 import { tabsMeta } from '../components/tabs/meta';
 import { toastMeta, toastProviderMeta } from '../components/toast/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
+import { accordionItemMeta } from '../features/accordion/accordionItemMeta';
+import { accordionMeta } from '../features/accordion/accordionMeta';
 import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
 import { forgotPasswordFormMeta } from '../features/auth/forgotPasswordFormMeta';
 import { oauthProviderButtonMeta } from '../features/auth/oauthProviderButtonMeta';
@@ -76,7 +78,6 @@ import { topbarLayoutMeta } from '../layout/topbar-layout/meta';
 import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
-import { disclosureSectionMeta } from '../patterns/disclosure-section/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
 import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
@@ -103,6 +104,8 @@ import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
   ...foundationMetas,
+  Accordion: accordionMeta,
+  AccordionItem: accordionItemMeta,
   ActivityIndicator: activityIndicatorMeta,
   Box: boxMeta,
   Container: containerMeta,
@@ -180,7 +183,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   CollectionEditor: collectionEditorMeta,
   ConfirmDialog: confirmDialogMeta,
   ContentRail: contentRailMeta,
-  DisclosureSection: disclosureSectionMeta,
   EmptyState: emptyStateMeta,
   FilterBar: filterBarMeta,
   Hero: heroMeta,
