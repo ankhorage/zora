@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppBar } from '../../components/app-bar';
+import { AppBar } from '../../features/app-bar/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Screen } from '../screen';
 import { SidebarLayout } from '../sidebar-layout';
@@ -29,7 +29,5 @@ function SettingsLayoutInner({
 
 /***
  * Settings page layout with app bar, sidebar, and scrollable content area.
- *
- 
  */
 export const SettingsLayout = withZoraThemeScope(SettingsLayoutInner);
