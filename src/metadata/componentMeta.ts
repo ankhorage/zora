@@ -1,4 +1,3 @@
-import { appBarMeta } from '../components/app-bar/meta';
 import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
 import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
@@ -11,6 +10,7 @@ import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { accordionItemMeta } from '../features/accordion/accordionItemMeta';
 import { accordionMeta } from '../features/accordion/accordionMeta';
 import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
+import { appBarMeta } from '../features/app-bar/appBarMeta';
 import { forgotPasswordFormMeta } from '../features/auth/forgotPasswordFormMeta';
 import { oauthProviderButtonMeta } from '../features/auth/oauthProviderButtonMeta';
 import { oauthProviderListMeta } from '../features/auth/oauthProviderListMeta';
