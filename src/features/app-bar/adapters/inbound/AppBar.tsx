@@ -4,34 +4,14 @@ import React from 'react';
 import { Inline } from '../../../../foundation';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { AppBarMode, AppBarOverflowAction, AppBarProps } from '../../../../types/app-bar';
+import type { AppBarMode, AppBarOverflowMenu, AppBarProps } from '../../../../types/app-bar';
 import { IconButton } from '../../../button/public';
 import { Box, Stack } from '../../../layout/public';
+import { PopoverMenu } from '../../../popover-menu/public';
 import { Heading, Text } from '../../../typography/public';
 
 const DEFAULT_CANCEL_ICON = { name: 'close-outline' } satisfies ButtonIconSpec;
 const DEFAULT_OVERFLOW_ICON = { name: 'ellipsis-vertical' } satisfies ButtonIconSpec;
-
-/*** Resolves the effective AppBar mode. */
-function resolveMode(mode: AppBarMode | undefined): AppBarMode {
-  return mode ?? { type: 'default' };
-}
-
-/*** Formats the active selection label with its optional count. */
-function resolveSelectionLabel({ count, label }: { count?: number; label: string }): string {
-  if (count === undefined) return label;
-  return `${label} (${count})`;
-}
-
-/*** Resolves the accessible label for the overflow action. */
-function resolveOverflowLabel(overflow: AppBarOverflowAction): string {
-  return overflow.label ?? 'More options';
-}
-
-/*** Resolves the accessible label for leaving selection mode. */
-function resolveCancelLabel(mode: Extract<AppBarMode, { type: 'selection' }>): string {
-  return mode.cancelLabel ?? 'Cancel selection';
-}
 
 /*** Renders a top app bar with title/subtitle and optional leading/trailing actions. */
 export const AppBar = withZoraThemeScope(AppBarInner);
@@ -56,8 +36,8 @@ function AppBarInner({
   const resolvedMode = resolveMode(appMode);
   const isSelectionMode = resolvedMode.type === 'selection';
   const resolvedLeading = leading ?? resolveSelectionLeading(resolvedMode, interactionPolicy);
-  const overflowButton = resolveOverflowButton(overflow, interactionPolicy);
-  const resolvedTrailing = resolveTrailing(actions, overflowButton);
+  const overflowMenu = resolveOverflowMenu(overflow, interactionPolicy, testID);
+  const resolvedTrailing = resolveTrailing(actions, overflowMenu);
   const resolvedCenter = resolveCenter({
     children,
     isSelectionMode,
@@ -80,6 +60,27 @@ function AppBarInner({
   );
 }
 
+/*** Resolves the effective AppBar mode. */
+function resolveMode(mode: AppBarMode | undefined): AppBarMode {
+  return mode ?? { type: 'default' };
+}
+
+/*** Formats the active selection label with its optional count. */
+function resolveSelectionLabel({ count, label }: { count?: number; label: string }): string {
+  if (count === undefined) return label;
+  return `${label} (${count})`;
+}
+
+/*** Resolves the accessible label for the overflow menu trigger. */
+function resolveOverflowLabel(overflow: AppBarOverflowMenu): string {
+  return overflow.label ?? 'More options';
+}
+
+/*** Resolves the accessible label for leaving selection mode. */
+function resolveCancelLabel(mode: Extract<AppBarMode, { type: 'selection' }>): string {
+  return mode.cancelLabel ?? 'Cancel selection';
+}
+
 /*** Resolves the selection action shown at the leading edge. */
 function resolveSelectionLeading(
   mode: AppBarMode,
@@ -100,37 +101,44 @@ function resolveSelectionLeading(
   );
 }
 
-/*** Resolves the optional overflow action. */
-function resolveOverflowButton(
-  overflow: AppBarOverflowAction | undefined,
+/*** Resolves the optional AppBar overflow action menu. */
+function resolveOverflowMenu(
+  overflow: AppBarOverflowMenu | undefined,
   interactionPolicy: AppBarProps['interactionPolicy'],
+  testID: string | undefined,
 ): React.ReactNode {
-  if (!overflow?.onPress) return null;
+  if (overflow === undefined || overflow.actions.length === 0) return null;
 
   return (
-    <IconButton
-      color="neutral"
-      disabled={overflow.disabled}
-      icon={overflow.icon ?? DEFAULT_OVERFLOW_ICON}
+    <PopoverMenu
+      actions={overflow.actions}
+      closeOnSelect={overflow.closeOnSelect}
       interactionPolicy={interactionPolicy}
-      label={resolveOverflowLabel(overflow)}
-      onPress={overflow.onPress}
-      size="m"
-      variant="ghost"
+      onDismiss={overflow.onDismiss}
+      testID={testID ? `${testID}-overflow` : undefined}
+      trigger={({ toggle }) => (
+        <IconButton
+          color="neutral"
+          disabled={overflow.disabled}
+          icon={overflow.icon ?? DEFAULT_OVERFLOW_ICON}
+          interactionPolicy={interactionPolicy}
+          label={resolveOverflowLabel(overflow)}
+          onPress={toggle}
+          size="m"
+          variant="ghost"
+        />
+      )}
     />
   );
 }
 
 /*** Composes trailing actions and overflow controls. */
-function resolveTrailing(
-  actions: React.ReactNode,
-  overflowButton: React.ReactNode,
-): React.ReactNode {
-  if (!actions && !overflowButton) return undefined;
+function resolveTrailing(actions: React.ReactNode, overflowMenu: React.ReactNode): React.ReactNode {
+  if (!actions && !overflowMenu) return undefined;
   return (
     <Inline align="center" gap="s" wrap="nowrap">
       {actions}
-      {overflowButton}
+      {overflowMenu}
     </Inline>
   );
 }
