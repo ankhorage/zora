@@ -16,8 +16,6 @@ export type { SelectOption, SelectProps } from './components/select';
 export { Select } from './components/select';
 export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
 export { Tabs } from './components/tabs';
-export type { ToastOptions, ToastProps, ToastProviderProps, ToastStatus } from './components/toast';
-export { Toast, ToastProvider, useToast } from './components/toast';
 export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
 export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
@@ -247,6 +245,14 @@ export {
   type TimePickerProps,
   type TimePickerValue,
 } from './features/time-picker/public';
+export type {
+  ToastController,
+  ToastOptions,
+  ToastProps,
+  ToastProviderProps,
+  ToastStatus,
+} from './features/toast/public';
+export { Toast, ToastProvider, useToast } from './features/toast/public';
 export type {
   HeadingAlign,
   HeadingColor,
