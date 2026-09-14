@@ -56,7 +56,7 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'FlatList.tsx'),
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'SectionList.tsx'),
   join(srcDir, 'features', 'bottom-sheet', 'adapters', 'inbound', 'BottomSheet.tsx'),
-  join(srcDir, 'components', 'app-bar', 'AppBar.tsx'),
+  join(srcDir, 'features', 'app-bar', 'adapters', 'inbound', 'AppBar.tsx'),
   join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'Accordion.tsx'),
   join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'AccordionItem.tsx'),
   join(srcDir, 'features', 'badge', 'adapters', 'inbound', 'Badge.tsx'),
@@ -134,7 +134,7 @@ const scopedComponentFiles = [
 ] as const;
 
 const scopedPropTypeFiles = [
-  join(srcDir, 'components', 'app-bar', 'types.ts'),
+  join(srcDir, 'types', 'app-bar.ts'),
   join(srcDir, 'types', 'accordion.ts'),
   join(srcDir, 'types', 'badge.ts'),
   join(srcDir, 'types', 'button.ts'),
