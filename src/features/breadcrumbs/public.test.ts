@@ -16,7 +16,7 @@ test('Breadcrumbs keeps current-location derivation and callbacks outside item d
     Bun.file('src/types/breadcrumbs.ts').text(),
   ]);
 
-  expect(source).toContain("const currentItemId = items.at(-1)?.id;");
+  expect(source).toContain('const currentItemId = items.at(-1)?.id;');
   expect(source).toContain('onItemPress({ id: item.id })');
   expect(types).not.toContain('onPress?:');
 });

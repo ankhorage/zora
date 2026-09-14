@@ -8,8 +8,8 @@ import { resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { PopoverMenuAction, PopoverMenuProps } from '../../../../types/popover-menu';
-import { Box } from '../../../layout/public';
 import { Icon } from '../../../icon/public';
+import { Box } from '../../../layout/public';
 
 /*** Presents a ZORA-styled action list through the Surface PopoverMenu capability. */
 export const PopoverMenu = withZoraThemeScope(PopoverMenuInner);

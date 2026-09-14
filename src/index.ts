@@ -65,9 +65,9 @@ export { Badge } from './features/badge/public';
 export type { BottomSheetProps } from './features/bottom-sheet/public';
 export { BottomSheet } from './features/bottom-sheet/public';
 export {
-  Breadcrumbs,
   type BreadcrumbItem,
   type BreadcrumbPressEvent,
+  Breadcrumbs,
   type BreadcrumbsProps,
 } from './features/breadcrumbs/public';
 export type { ButtonProps } from './features/button/public';

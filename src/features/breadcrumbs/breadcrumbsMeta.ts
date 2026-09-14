@@ -3,8 +3,7 @@ import type { ZoraComponentMeta } from '../../metadata';
 export const breadcrumbsMeta = {
   name: 'Breadcrumbs',
   category: 'component',
-  description:
-    'Hierarchical route context where the final item represents the current location.',
+  description: 'Hierarchical route context where the final item represents the current location.',
   directManifestNode: true,
   allowedChildren: [],
   blueprint: {

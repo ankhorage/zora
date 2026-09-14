@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, type ListRenderItemInfo } from 'react-native';
+import { type ListRenderItemInfo, StyleSheet } from 'react-native';
 
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SelectOption, SelectProps } from '../../../../../types/select';
