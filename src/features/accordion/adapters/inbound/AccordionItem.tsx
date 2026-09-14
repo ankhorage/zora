@@ -33,7 +33,7 @@ function AccordionItemInner({
   value,
   ...surfaceItemProps
 }: AccordionItemProps) {
-  const presentation = React.useContext(AccordionPresentationContext);
+  const presentation = React.use(AccordionPresentationContext);
   if (!presentation) {
     throw new Error('AccordionItem must be rendered inside Accordion.');
   }
