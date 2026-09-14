@@ -14,6 +14,6 @@ test('Toast stays imperative and installs its host only when the ZoraProvider ca
   expect(ZORA_COMPONENT_META.ToastProvider?.directManifestNode).toBe(false);
   expect(publicSource).toContain("useToast } from '@ankhorage/surface'");
   expect(providerSource).toContain('toast = false');
-  expect(webCapabilities).toContain('toast ?');
+  expect(webCapabilities).toContain('if (!toast)');
   expect(nativeCapabilities).toContain('toast ?');
 });
