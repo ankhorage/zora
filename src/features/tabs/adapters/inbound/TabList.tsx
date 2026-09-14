@@ -1,5 +1,4 @@
 import { TabList as SurfaceTabList } from '@ankhorage/surface';
-import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabListProps } from '../../../../types/tabs';
