@@ -37,7 +37,7 @@ function SelectInner<TValue extends string = string>({
         anchor={({ toggle }) => (
           <SelectTrigger displayLabel={selectedOption?.label} onPress={toggle} props={props} />
         )}
-        interactionPolicy={interactionPolicy}
+        interactionPolicy={props.interactionPolicy}
         onOpenChange={setOpen}
         open={open}
         placement="bottom-start"
