@@ -1,10 +1,7 @@
-import { breadcrumbsMeta } from '../components/breadcrumbs/meta';
-import { dropdownMenuMeta, menuMeta } from '../components/menu/meta';
 import { modalMeta } from '../components/modal/meta';
 import { paginationMeta } from '../components/pagination/meta';
 import { ratingMeta } from '../components/rating/meta';
 import { searchBarMeta } from '../components/search-bar/meta';
-import { selectMeta } from '../components/select/meta';
 import { tabsMeta } from '../components/tabs/meta';
 import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { accordionItemMeta } from '../features/accordion/accordionItemMeta';
@@ -21,6 +18,7 @@ import { avatarGroupMeta } from '../features/avatar/avatarGroupMeta';
 import { avatarMeta } from '../features/avatar/avatarMeta';
 import { badgeMeta } from '../features/badge/badgeMeta';
 import { bottomSheetMeta } from '../features/bottom-sheet/bottomSheetMeta';
+import { breadcrumbsMeta } from '../features/breadcrumbs/breadcrumbsMeta';
 import { buttonGroupMeta } from '../features/button/buttonGroupMeta';
 import { buttonMeta } from '../features/button/buttonMeta';
 import { iconButtonMeta } from '../features/button/iconButtonMeta';
@@ -40,6 +38,7 @@ import { formErrorMeta } from '../features/form/formErrorMeta';
 import { formFieldMeta } from '../features/form/formFieldMeta';
 import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
+import { selectMeta } from '../features/form/select/selectMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { gradientMeta } from '../features/gradient/gradientMeta';
 import { heroMeta } from '../features/hero/heroMeta';
@@ -55,6 +54,7 @@ import { stackMeta } from '../features/layout/stackMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
 import { missingElementMeta } from '../features/missing-element/missingElementMeta';
+import { popoverMenuMeta } from '../features/popover-menu/popoverMenuMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
 import {
   skeletonCardMeta,
@@ -128,7 +128,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   ChipGroup: chipGroupMeta,
   DataTable: dataTableMeta,
   DatePicker: datePickerMeta,
-  DropdownMenu: dropdownMenuMeta,
   Form: formMeta,
   FormActions: formActionsMeta,
   FormError: formErrorMeta,
@@ -141,10 +140,10 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   KeyboardAvoidingView: keyboardAvoidingViewMeta,
   TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
-  Menu: menuMeta,
   MetricCard: metricCardMeta,
   Modal: modalMeta,
   Pagination: paginationMeta,
+  PopoverMenu: popoverMenuMeta,
   Progress: progressMeta,
   ProgressRing: progressRingMeta,
   Radio: radioMeta,
