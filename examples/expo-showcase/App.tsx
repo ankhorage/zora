@@ -1,11 +1,15 @@
 import {
   AppBar,
   AppShell,
+  Box,
   type GradientRendererProps,
   GradientRendererProvider,
+  IconButton,
+  Tab,
+  TabList,
+  TabPanel,
   Tabs,
   Toolbar,
-  ToolbarAction,
   ZoraProvider,
   type ZoraTheme,
   type ZoraThemeMode,
@@ -13,7 +17,6 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -27,6 +30,15 @@ import { useZoraIconFonts } from './useZoraIconFonts';
 
 type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'chats' | 'theme';
 type ColorMode = ZoraThemeMode;
+
+const SHOWCASE_TABS = [
+  { value: 'home', label: 'Home' },
+  { value: 'components', label: 'Components' },
+  { value: 'patterns', label: 'Patterns' },
+  { value: 'posts', label: 'Posts' },
+  { value: 'chats', label: 'Chats' },
+  { value: 'theme', label: 'Theme' },
+] as const;
 
 const initialShowcaseTheme: ZoraTheme = {
   id: 'showcase',
@@ -45,41 +57,12 @@ function AppWrapper() {
   const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');
   const [colorMode, setColorMode] = React.useState<ColorMode>('light');
   const [showcaseTheme, setShowcaseTheme] = React.useState<ZoraTheme>(initialShowcaseTheme);
-
   const isDark = colorMode === 'dark';
 
-  if (!iconFontsLoaded) {
-    return null;
-  }
+  if (!iconFontsLoaded) return null;
 
   const toggleColorMode = () => {
     setColorMode((currentMode) => (currentMode === 'dark' ? 'light' : 'dark'));
-  };
-
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'home':
-        return <HomePage onNavigate={setActiveTab} />;
-      case 'components':
-        return <ComponentsPage />;
-      case 'patterns':
-        return <PatternsPage />;
-      case 'posts':
-        return <PostsPage />;
-      case 'chats':
-        return <ChatsPage />;
-      case 'theme':
-        return (
-          <ThemeComposerPage
-            mode={colorMode}
-            onModeChange={setColorMode}
-            onThemeChange={setShowcaseTheme}
-            theme={showcaseTheme}
-          />
-        );
-      default:
-        return <HomePage onNavigate={setActiveTab} />;
-    }
   };
 
   return (
@@ -88,43 +71,76 @@ function AppWrapper() {
         <GradientRendererProvider renderer={ExpoGradientRenderer}>
           <SafeAreaProvider>
             <StatusBar style={isDark ? 'light' : 'dark'} />
-
-            <AppShell
-              header={
-                <AppBar>
-                  <Toolbar position="inline" compact={false}>
-                    <Tabs
-                      variant="segmented"
-                      size="s"
-                      value={activeTab}
-                      onValueChange={setActiveTab}
-                      items={[
-                        { value: 'home', label: 'Home' },
-                        { value: 'components', label: 'Components' },
-                        { value: 'patterns', label: 'Patterns' },
-                        { value: 'posts', label: 'Posts' },
-                        { value: 'chats', label: 'Chats' },
-                        { value: 'theme', label: 'Theme' },
-                      ]}
-                    />
-                    <View style={{ flex: 1 }} />
-                    <ToolbarAction
-                      active={isDark}
-                      icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
-                      label={isDark ? 'Use light mode' : 'Use dark mode'}
-                      onPress={toggleColorMode}
-                    />
-                  </Toolbar>
-                </AppBar>
-              }
-            >
-              {renderContent()}
-            </AppShell>
+            <Tabs value={activeTab} onValueChange={selectShowcaseTab(setActiveTab)}>
+              <AppShell
+                header={
+                  <AppBar>
+                    <Toolbar compact={false}>
+                      <TabList>
+                        {SHOWCASE_TABS.map((tab) => (
+                          <Tab key={tab.value} label={tab.label} value={tab.value} />
+                        ))}
+                      </TabList>
+                      <Box flex={1} />
+                      <IconButton
+                        color={isDark ? 'primary' : 'neutral'}
+                        icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}
+                        label={isDark ? 'Use light mode' : 'Use dark mode'}
+                        onPress={toggleColorMode}
+                        variant={isDark ? 'soft' : 'ghost'}
+                      />
+                    </Toolbar>
+                  </AppBar>
+                }
+              >
+                <TabPanel value="home">
+                  <HomePage onNavigate={setActiveTab} />
+                </TabPanel>
+                <TabPanel value="components">
+                  <ComponentsPage />
+                </TabPanel>
+                <TabPanel value="patterns">
+                  <PatternsPage />
+                </TabPanel>
+                <TabPanel value="posts">
+                  <PostsPage />
+                </TabPanel>
+                <TabPanel value="chats">
+                  <ChatsPage />
+                </TabPanel>
+                <TabPanel value="theme">
+                  <ThemeComposerPage
+                    mode={colorMode}
+                    onModeChange={setColorMode}
+                    onThemeChange={setShowcaseTheme}
+                    theme={showcaseTheme}
+                  />
+                </TabPanel>
+              </AppShell>
+            </Tabs>
           </SafeAreaProvider>
         </GradientRendererProvider>
       </ZoraProvider>
     </GestureHandlerRootView>
   );
+}
+
+/*** Narrows Surface string tab values before updating the showcase page state. */
+function selectShowcaseTab(
+  setActiveTab: React.Dispatch<React.SetStateAction<ShowcaseTab>>,
+): (value: string) => void {
+  return (value) => {
+    switch (value) {
+      case 'home':
+      case 'components':
+      case 'patterns':
+      case 'posts':
+      case 'chats':
+      case 'theme':
+        setActiveTab(value);
+        break;
+    }
+  };
 }
 
 export default function App() {
