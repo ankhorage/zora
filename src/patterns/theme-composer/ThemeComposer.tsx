@@ -119,97 +119,204 @@ function ThemeComposerInner({
 
     onSubmit?.({
       ...value,
-      name: nameDraft.inputValue.trim(),
+      name: nameDraft.inputValue,
       primaryColor: hexDraft.inputValue,
     });
   }
 
+  const activeMode = mode ?? 'light';
+  const categoryOptions = (appCategories ?? APP_CATEGORIES).map((c) => ({
+    value: c,
+    label: formatAppCategoryLabel(c),
+  }));
+
   return (
     <Stack gap="l" testID={testID}>
-      <Stack direction="row" align="center" justify="space-between" gap="m" wrap="wrap">
-        <Stack gap="xxs">
-          <Heading level={2}>Theme Composer</Heading>
-          <Text emphasis="muted" variant="bodySmall">
-            Tune the core identity and preview it against the current semantic theme.
-          </Text>
-        </Stack>
-        <Tabs
-          items={MODE_TABS}
-          value={mode}
-          onValueChange={onModeChange}
-          variant="segmented"
-        />
-      </Stack>
-
-      <Card title="Identity" description="Name the theme and choose its primary color.">
+      {/* Section: Theme identity */}
+      <Card
+        title="Theme identity"
+        description="Name your theme. The ID is assigned automatically and shown for reference."
+      >
         <Stack gap="m">
-          <TextInput
-            label="Theme name"
-            value={nameDraft.inputValue}
-            onChangeText={handleNameChange}
-            invalid={Boolean(nameDraft.error)}
-            errorText={nameDraft.error}
-          />
-          <TextInput
-            label="Primary color"
-            value={hexDraft.inputValue}
-            onChangeText={handleHexChange}
-            placeholder={HEX_INPUT_PLACEHOLDER}
-            invalid={Boolean(hexDraft.error)}
-            errorText={hexDraft.error}
-          />
-          <Box
-            bg={theme.semantics.surface.raised}
-            borderColor={theme.semantics.neutral.divider}
-            borderWidth={1}
-            radius="m"
-            p="m"
-          >
-            <Stack direction="row" align="center" gap="m">
-              <Box
-                bg={isValidHex(hexDraft.inputValue) ? hexDraft.inputValue : value.primaryColor}
-                height={48}
-                radius="m"
-                width={48}
-              />
-              <Stack gap="xxs">
-                <Text variant="label" weight="semiBold">
-                  Current primary
-                </Text>
-                <Text emphasis="muted" variant="caption">
-                  {hexDraft.inputValue}
-                </Text>
-              </Stack>
-            </Stack>
-          </Box>
+          <Stack gap="xs">
+            <Text variant="label">Name</Text>
+            <TextInput
+              value={nameDraft.inputValue}
+              onChangeText={handleNameChange}
+              placeholder="My theme"
+              autoCorrect={false}
+              invalid={nameDraft.error !== undefined}
+              testID={testID ? `${testID}-name-input` : undefined}
+            />
+            {nameDraft.error ? (
+              <Text color="danger" variant="bodySmall">
+                {nameDraft.error}
+              </Text>
+            ) : null}
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">ID</Text>
+            <Text
+              emphasis="muted"
+              variant="bodySmall"
+              testID={testID ? `${testID}-id-display` : undefined}
+            >
+              {value.id}
+            </Text>
+          </Stack>
         </Stack>
       </Card>
 
+      {/* Section: App category */}
       <Card title="App category" description="Choose the category that best describes this app.">
         <Select
           value={value.appCategory}
-          onValueChange={(appCategory) => onChange({ ...value, appCategory })}
-          options={(appCategories ?? APP_CATEGORIES).map((category) => ({
-            value: category,
-            label: formatAppCategoryLabel(category),
-          }))}
+          options={categoryOptions}
+          onValueChange={(c) => onChange({ ...value, appCategory: c })}
+          testID={testID ? `${testID}-category-select` : undefined}
         />
       </Card>
 
-      <Card title="Color harmony" description="Select the harmony used to derive supporting colors.">
+      {/* Section: Primary Color */}
+      <Card title="Primary color" description="Set the seed color for your theme palette.">
+        <Stack gap="m">
+          <Stack direction="row" gap="m" align="center">
+            <Box flex={1}>
+              <TextInput
+                value={hexDraft.inputValue}
+                onChangeText={handleHexChange}
+                placeholder={HEX_INPUT_PLACEHOLDER}
+                autoCapitalize="none"
+                autoCorrect={false}
+                maxLength={7}
+                invalid={hexDraft.error !== undefined}
+                testID={testID ? `${testID}-hex-input` : undefined}
+              />
+            </Box>
+            {/* Color preview chip */}
+            <Box
+              width={36}
+              height={36}
+              radius="m"
+              style={{
+                backgroundColor: isValidHex(hexDraft.inputValue)
+                  ? hexDraft.inputValue
+                  : theme.colors.border,
+                borderWidth: 1,
+                borderColor: theme.colors.border,
+              }}
+            />
+          </Stack>
+          {hexDraft.error ? (
+            <Text color="danger" variant="bodySmall">
+              {hexDraft.error}
+            </Text>
+          ) : null}
+        </Stack>
+      </Card>
+
+      {/* Section: Harmony */}
+      <Card
+        title="Harmony"
+        description="Choose how accent hues are generated from your primary color."
+      >
         <Select
           value={value.harmony}
-          onValueChange={(harmony) => onChange({ ...value, harmony })}
           options={HARMONY_OPTIONS}
+          onValueChange={(h) => onChange({ ...value, harmony: h })}
+          testID={testID ? `${testID}-harmony-select` : undefined}
         />
       </Card>
 
-      <Button onPress={handleSubmit}>Save theme</Button>
+      {/* Section: Mode */}
+      <Card title="Mode" description="Switch between light and dark presentation.">
+        <Tabs
+          value={activeMode}
+          items={MODE_TABS}
+          onValueChange={(m) => onModeChange?.(m)}
+          variant="segmented"
+          testID={testID ? `${testID}-mode-tabs` : undefined}
+        />
+      </Card>
+
+      {/* Section: Preview */}
+      <Card title="Preview" description="A quick look at how your theme renders common controls.">
+        <Stack gap="m">
+          <Stack gap="xs">
+            <Text variant="label">Name</Text>
+            <Text>{value.name}</Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Category</Text>
+            <Text>{formatAppCategoryLabel(value.appCategory)}</Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Primary color</Text>
+            <Text emphasis="muted" variant="bodySmall">
+              {value.primaryColor}
+            </Text>
+          </Stack>
+          <Stack gap="xs">
+            <Text variant="label">Harmony</Text>
+            <Text emphasis="muted" variant="bodySmall">
+              {value.harmony}
+            </Text>
+          </Stack>
+          <Heading level={4}>Heading</Heading>
+          <Text>Body text — this shows default text color and weight.</Text>
+          <Text emphasis="muted" variant="bodySmall">
+            Muted caption text.
+          </Text>
+          <Stack direction="row" gap="s" align="center">
+            <Button color="primary" variant="solid" size="m">
+              Primary
+            </Button>
+            <Button color="neutral" variant="soft" size="m">
+              Neutral
+            </Button>
+            <Button color="danger" variant="ghost" size="m">
+              Danger
+            </Button>
+          </Stack>
+          <Stack direction="row" gap="s" align="center">
+            <Badge color="primary">Primary</Badge>
+            <Badge color="success" variant="soft">
+              Success
+            </Badge>
+            <Badge color="warning" variant="soft">
+              Warning
+            </Badge>
+            <Badge color="danger" variant="soft">
+              Danger
+            </Badge>
+          </Stack>
+          <Card
+            tone="subtle"
+            title="Nested card"
+            description="Subtle tone inside the preview."
+            compact
+          />
+        </Stack>
+      </Card>
+
+      {/* Submit */}
+      {onSubmit ? (
+        <Button
+          color="primary"
+          variant="solid"
+          onPress={handleSubmit}
+          testID={testID ? `${testID}-submit` : undefined}
+        >
+          Apply theme
+        </Button>
+      ) : null}
     </Stack>
   );
 }
 
 /***
- * ZORA theme editing surface for app identity and core color harmony.
+ * UI for composing and applying a theme via structured controls.
+ *
+ *
  */
 export const ThemeComposer = withZoraThemeScope(ThemeComposerInner);
