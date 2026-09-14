@@ -1,5 +1,5 @@
-export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './components/app-bar';
-export { AppBar } from './components/app-bar';
+export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './features/app-bar/public';
+export { AppBar } from './features/app-bar/public';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
