@@ -1,5 +1,4 @@
 import { Tabs as SurfaceTabs } from '@ankhorage/surface';
-import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabsProps } from '../../../../types/tabs';
