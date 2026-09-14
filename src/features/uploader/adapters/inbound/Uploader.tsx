@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Modal } from '../../../../components/modal';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
+import { Dialog } from '../../../dialog/public';
 import { FormField } from '../../../form/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
@@ -288,7 +288,7 @@ function UploaderInner({
       </FormField>
 
       {canPreviewImage ? (
-        <Modal
+        <Dialog
           closeOnBackdrop
           interactionPolicy={interactionPolicy}
           onDismiss={() => setPreviewOpen(false)}
@@ -308,7 +308,7 @@ function UploaderInner({
               </Button>
             </Stack>
           </Stack>
-        </Modal>
+        </Dialog>
       ) : null}
     </>
   );
