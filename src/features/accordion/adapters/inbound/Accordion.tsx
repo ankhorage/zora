@@ -38,7 +38,7 @@ function MultipleAccordion({
   const openValues = value ?? presentationValues;
 
   return (
-    <AccordionPresentationContext.Provider value={{ mode: 'multiple', openValues }}>
+    <AccordionPresentationContext value={{ mode: 'multiple', openValues }}>
       <SurfaceAccordion
         {...surfaceProps}
         defaultValue={defaultValue}
@@ -52,7 +52,7 @@ function MultipleAccordion({
       >
         {children}
       </SurfaceAccordion>
-    </AccordionPresentationContext.Provider>
+    </AccordionPresentationContext>
   );
 }
 
@@ -75,7 +75,7 @@ function SingleAccordion({
   const openValues = openValue === undefined ? [] : [openValue];
 
   return (
-    <AccordionPresentationContext.Provider value={{ mode: 'single', openValues }}>
+    <AccordionPresentationContext value={{ mode: 'single', openValues }}>
       <SurfaceAccordion
         {...surfaceProps}
         defaultValue={defaultValue}
@@ -89,6 +89,6 @@ function SingleAccordion({
       >
         {children}
       </SurfaceAccordion>
-    </AccordionPresentationContext.Provider>
+    </AccordionPresentationContext>
   );
 }
