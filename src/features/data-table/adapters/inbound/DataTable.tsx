@@ -2,7 +2,6 @@ import type { InteractionPolicy } from '@ankhorage/surface';
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 
-import { DropdownMenu, type MenuAction } from '../../../../components/menu';
 import { Show } from '../../../../foundation';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
@@ -19,6 +18,7 @@ import { IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { EmptyState } from '../../../empty-state/public';
 import { Box, Stack } from '../../../layout/public';
+import { PopoverMenu, type PopoverMenuAction } from '../../../popover-menu/public';
 import { SkeletonList } from '../../../skeleton/public';
 import { Text, type TextAlign } from '../../../typography/public';
 import { resolveDataTableRowKey } from '../../utils/resolveDataTableRowKey';
@@ -139,10 +139,11 @@ function resolveNextSortDirection(
   return current === 'asc' ? 'desc' : 'asc';
 }
 
+/*** Maps row-scoped DataTable actions into the shared PopoverMenu action contract. */
 function mapRowActions<TRow extends object>(
   row: TRow,
   actions: readonly DataTableRowAction<TRow>[],
-): readonly MenuAction[] {
+): readonly PopoverMenuAction[] {
   return actions.map((action) => ({
     description: action.description,
     disabled: action.disabled,
@@ -154,6 +155,7 @@ function mapRowActions<TRow extends object>(
   }));
 }
 
+/*** Renders the row action trigger and anchored PopoverMenu when actions exist. */
 function renderRowActions<TRow extends object>({
   row,
   rowIndex,
@@ -174,18 +176,20 @@ function renderRowActions<TRow extends object>({
   }
 
   return (
-    <DropdownMenu
+    <PopoverMenu
       actions={mapRowActions(row, actions)}
       interactionPolicy={interactionPolicy}
       testID={testID ? `${testID}-row-actions-${rowIndex}` : undefined}
-      trigger={
+      trigger={({ toggle }) => (
         <IconButton
           icon={{ name: 'ellipsis-horizontal' }}
+          interactionPolicy={interactionPolicy}
           label="Row actions"
+          onPress={toggle}
           size="s"
           variant="ghost"
         />
-      }
+      )}
     />
   );
 }
