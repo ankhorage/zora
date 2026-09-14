@@ -8,8 +8,8 @@ export interface DialogProps extends ZoraBaseProps {
   onDismiss?: () => void;
   closeOnBackdrop?: boolean;
   children?: React.ReactNode;
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   footer?: React.ReactNode;
   width?: ZoraContentWidth;
 }
