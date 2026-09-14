@@ -11,7 +11,7 @@ export interface ZoraThemeScopeProps {
   mode?: ZoraThemeMode;
 }
 
-/*** Applies nested ZORA theme overrides without installing another Surface ThemeProvider. */
+/*** Applies nested ZORA theme overrides without installing another Surface theme runtime. */
 export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
   if (mode === undefined && themeId === undefined) return children;
   return (
