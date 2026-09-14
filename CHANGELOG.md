@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.0.1
+
+### Patch Changes
+
+- be83fc0: Move AppBar into canonical `src/features/app-bar` ownership while preserving the public root API, and expand the Paradox Usage source with toast, adaptive picker, and direct native BottomSheet examples.
+
 ## 14.0.0
 
 ### Major Changes
