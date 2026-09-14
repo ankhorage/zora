@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.0.0
+
+### Major Changes
+
+- c2e5080: Replace the legacy `DisclosureSection` pattern with feature-owned `Accordion` and `AccordionItem` manifest components backed by the published Surface accordion foundation.
+
+  BREAKING CHANGE: `DisclosureSection` and `DisclosureSectionProps` are no longer exported. Use `Accordion` with one or more `AccordionItem` children instead.
+
 ## 12.1.0
 
 ### Minor Changes
