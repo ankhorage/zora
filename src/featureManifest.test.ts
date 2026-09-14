@@ -19,6 +19,10 @@ test('every selected feature element is directly authorable through its canonica
   }
 });
 
+test('feature ownership has no remaining legacy components directory', () => {
+  expect(existsSync('src/components')).toBe(false);
+});
+
 test('form composition has one canonical feature owner', () => {
   expect(existsSync('src/components/form')).toBe(false);
   expect(existsSync('src/patterns/form-field')).toBe(false);
