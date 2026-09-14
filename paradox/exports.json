@@ -847,10 +847,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/components/app-bar/AppBar.tsx",
+    "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
     "sourceLocation": {
-      "filePath": "src/components/app-bar/AppBar.tsx",
-      "line": 140,
+      "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+      "line": 37,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -865,9 +865,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/app-bar/types.ts",
+    "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
-      "filePath": "src/components/app-bar/types.ts",
+      "filePath": "src/types/app-bar.ts",
       "line": 6,
       "column": 1
     },
@@ -883,9 +883,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/app-bar/types.ts",
+    "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
-      "filePath": "src/components/app-bar/types.ts",
+      "filePath": "src/types/app-bar.ts",
       "line": 19,
       "column": 1
     },
@@ -930,9 +930,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/app-bar/types.ts",
+    "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
-      "filePath": "src/components/app-bar/types.ts",
+      "filePath": "src/types/app-bar.ts",
       "line": 26,
       "column": 1
     },
@@ -17108,7 +17108,7 @@
     "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
     "sourceLocation": {
       "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-      "line": 35,
+      "line": 33,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -23841,7 +23841,7 @@
   },
   {
     "name": "ZoraThemeScope",
-    "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
+    "description": "Applies nested ZORA theme overrides without installing another Surface theme runtime.",
     "isReadme": false,
     "examples": [],
     "kind": "function",

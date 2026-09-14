@@ -330,7 +330,7 @@ Export paths: `src/index.ts`
 
 ## AppBar
 
-Source: `src/components/app-bar/AppBar.tsx:140:14`
+Source: `src/features/app-bar/adapters/inbound/AppBar.tsx:37:14`
 
 Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
@@ -2705,7 +2705,7 @@ Export paths: `src/index.ts`
 
 ## SettingsLayout
 
-Source: `src/layout/settings-layout/SettingsLayout.tsx:35:14`
+Source: `src/layout/settings-layout/SettingsLayout.tsx:33:14`
 
 Settings page layout with app bar, sidebar, and scrollable content area.
 
@@ -3594,7 +3594,7 @@ Export paths: `src/index.ts`
 
 Source: `src/theme/ZoraThemeScope.tsx:15:1`
 
-Applies nested ZORA theme overrides without installing another Surface ThemeProvider.
+Applies nested ZORA theme overrides without installing another Surface theme runtime.
 
 Export paths: `src/index.ts`
 

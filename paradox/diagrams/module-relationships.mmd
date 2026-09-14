@@ -1,8 +1,4 @@
 graph LR
-  module_src_components_app_bar_AppBar_tsx["src/components/app-bar/AppBar.tsx"]
-  module_src_components_app_bar_index_ts["src/components/app-bar/index.ts"]
-  module_src_components_app_bar_meta_ts["src/components/app-bar/meta.ts"]
-  module_src_components_app_bar_types_ts["src/components/app-bar/types.ts"]
   module_src_components_breadcrumbs_Breadcrumbs_tsx["src/components/breadcrumbs/Breadcrumbs.tsx"]
   module_src_components_breadcrumbs_index_ts["src/components/breadcrumbs/index.ts"]
   module_src_components_breadcrumbs_meta_ts["src/components/breadcrumbs/meta.ts"]
@@ -55,6 +51,9 @@ graph LR
   module_src_features_activity_indicator_activityIndicatorMeta_ts["src/features/activity-indicator/activityIndicatorMeta.ts"]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"]
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
+  module_src_features_app_bar_appBarMeta_ts["src/features/app-bar/appBarMeta.ts"]
+  module_src_features_app_bar_public_ts["src/features/app-bar/public.ts"]
   module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx["src/features/auth/adapters/inbound/ForgotPasswordForm.tsx"]
@@ -405,6 +404,7 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx["src/theme/ZoraThemeScope.tsx"]
   module_src_types_accordion_ts["src/types/accordion.ts"]
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
+  module_src_types_app_bar_ts["src/types/app-bar.ts"]
   module_src_types_auth_ts["src/types/auth.ts"]
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
   module_src_types_avatar_ts["src/types/avatar.ts"]
@@ -447,15 +447,6 @@ graph LR
   module_src_types_upload_ts["src/types/upload.ts"]
   module_src_utils_createManifestBindings_ts["src/utils/createManifestBindings.ts"]
   module_src_utils_finalizeFeatureMetadata_ts["src/utils/finalizeFeatureMetadata.ts"]
-  module_src_components_app_bar_AppBar_tsx --> module_src_components_app_bar_types_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_features_button_public_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_features_layout_public_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_features_typography_public_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_foundation_index_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_components_app_bar_AppBar_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_components_app_bar_meta_ts --> module_src_metadata_index_ts
-  module_src_components_app_bar_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_components_breadcrumbs_types_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_features_button_public_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --> module_src_features_icon_public_ts
@@ -555,6 +546,14 @@ graph LR
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_button_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_layout_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_typography_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_foundation_index_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_types_app_bar_ts
+  module_src_features_app_bar_appBarMeta_ts --> module_src_metadata_index_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_auth_adapters_inbound_AuthFormField_tsx
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_form_public_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_layout_public_ts
@@ -1079,7 +1078,7 @@ graph LR
   module_src_layout_screen_types_ts --> module_src_internal_recipes_ts
   module_src_layout_screen_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_layout_settings_layout_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_components_app_bar_index_ts
+  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_features_app_bar_public_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_screen_index_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_settings_layout_types_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_sidebar_layout_index_ts
@@ -1100,7 +1099,6 @@ graph LR
   module_src_layout_topbar_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_metadata_bindableComponentMeta_ts --> module_src_features_image_imageMeta_ts
   module_src_metadata_bindableComponentMeta_ts --> module_src_patterns_reader_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_components_modal_meta_ts
@@ -1113,6 +1111,7 @@ graph LR
   module_src_metadata_componentMeta_ts --> module_src_features_accordion_accordionItemMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts
@@ -1295,7 +1294,7 @@ graph LR
   module_src_patterns_panel_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_reader_meta_ts --> module_src_metadata_allowedChildren_ts
   module_src_patterns_reader_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_reader_ReaderSurface_tsx --> module_src_components_app_bar_index_ts
+  module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_app_bar_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_button_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_layout_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_progress_public_ts
@@ -1406,7 +1405,6 @@ graph LR
   module_src_patterns_tree_view_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_pluginComposition_ts --> module_src_metadata_types_ts
   module_src_pluginComposition_ts --> module_src_registry_ts
-  module_src_registry_ts --> module_src_components_app_bar_index_ts
   module_src_registry_ts --> module_src_components_breadcrumbs_index_ts
   module_src_registry_ts --> module_src_components_menu_index_ts
   module_src_registry_ts --> module_src_components_modal_index_ts
@@ -1418,6 +1416,7 @@ graph LR
   module_src_registry_ts --> module_src_components_toolbar_index_ts
   module_src_registry_ts --> module_src_features_accordion_public_ts
   module_src_registry_ts --> module_src_features_activity_indicator_public_ts
+  module_src_registry_ts --> module_src_features_app_bar_public_ts
   module_src_registry_ts --> module_src_features_auth_public_ts
   module_src_registry_ts --> module_src_features_avatar_public_ts
   module_src_registry_ts --> module_src_features_badge_public_ts
@@ -1507,6 +1506,7 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx --> module_src_theme_ZoraThemeRuntimeContext_tsx
   module_src_types_accordion_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_activity_indicator_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_app_bar_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_auth_ts --> module_src_features_button_public_ts
   module_src_types_auth_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_auth_ts --> module_src_types_form_ts

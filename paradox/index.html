@@ -199,16 +199,6 @@
               <button
                 class="nav-button"
                 type="button"
-                data-target="src/components/app-bar/AppBar.tsx"
-              >
-                src/components/app-bar/AppBar.tsx
-                <small>5 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
                 data-target="src/components/breadcrumbs/Breadcrumbs.tsx"
               >
                 src/components/breadcrumbs/Breadcrumbs.tsx
@@ -353,6 +343,16 @@
               >
                 src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx
                 <small>1 function</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/app-bar/adapters/inbound/AppBar.tsx"
+              >
+                src/features/app-bar/adapters/inbound/AppBar.tsx
+                <small>9 functions</small>
               </button>
             </li>
             <li>
@@ -1950,55 +1950,6 @@
             <h2>Modules</h2>
             <article
               class="item"
-              data-search="src/components/app-bar/AppBar.tsx src/components/app-bar/types.ts src/features/button/public.ts src/features/layout/public.ts src/features/typography/public.ts src/foundation/index.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx AppBar"
-            >
-              <h3>src/components/app-bar/AppBar.tsx</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/components/app-bar/types.ts</code>,
-                <code>src/features/button/public.ts</code>,
-                <code>src/features/layout/public.ts</code>,
-                <code>src/features/typography/public.ts</code>,
-                <code>src/foundation/index.ts</code>, <code>src/theme/useZoraTheme.ts</code>,
-                <code>src/theme/withZoraThemeScope.tsx</code>
-              </p>
-              <p><strong>Exports:</strong> <code>AppBar</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/components/app-bar/index.ts AppBar AppBarMode AppBarOverflowAction AppBarProps"
-            >
-              <h3>src/components/app-bar/index.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>AppBar</code>, <code>AppBarMode</code>,
-                <code>AppBarOverflowAction</code>, <code>AppBarProps</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/components/app-bar/meta.ts src/metadata/index.ts appBarMeta"
-            >
-              <h3>src/components/app-bar/meta.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>src/metadata/index.ts</code></p>
-              <p><strong>Exports:</strong> <code>appBarMeta</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/components/app-bar/types.ts src/theme/ZoraBaseProps.ts AppBarMode AppBarOverflowAction AppBarProps"
-            >
-              <h3>src/components/app-bar/types.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>src/theme/ZoraBaseProps.ts</code></p>
-              <p>
-                <strong>Exports:</strong> <code>AppBarMode</code>,
-                <code>AppBarOverflowAction</code>, <code>AppBarProps</code>
-              </p>
-            </article>
-            <article
-              class="item"
               data-search="src/components/breadcrumbs/Breadcrumbs.tsx src/components/breadcrumbs/types.ts src/features/button/public.ts src/features/icon/public.ts src/features/typography/public.ts src/foundation/index.ts src/internal/recipes.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx Breadcrumbs"
             >
               <h3>src/components/breadcrumbs/Breadcrumbs.tsx</h3>
@@ -2593,6 +2544,42 @@
               <p>
                 <strong>Exports:</strong> <code>ActivityIndicator</code>,
                 <code>ActivityIndicatorProps</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/app-bar/adapters/inbound/AppBar.tsx src/features/button/public.ts src/features/layout/public.ts src/features/typography/public.ts src/foundation/index.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx src/types/app-bar.ts AppBar"
+            >
+              <h3>src/features/app-bar/adapters/inbound/AppBar.tsx</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong> <code>src/features/button/public.ts</code>,
+                <code>src/features/layout/public.ts</code>,
+                <code>src/features/typography/public.ts</code>,
+                <code>src/foundation/index.ts</code>, <code>src/theme/useZoraTheme.ts</code>,
+                <code>src/theme/withZoraThemeScope.tsx</code>, <code>src/types/app-bar.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>AppBar</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/app-bar/appBarMeta.ts src/metadata/index.ts appBarMeta"
+            >
+              <h3>src/features/app-bar/appBarMeta.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/metadata/index.ts</code></p>
+              <p><strong>Exports:</strong> <code>appBarMeta</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/app-bar/public.ts AppBar AppBarMode AppBarOverflowAction AppBarProps"
+            >
+              <h3>src/features/app-bar/public.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>AppBar</code>, <code>AppBarMode</code>,
+                <code>AppBarOverflowAction</code>, <code>AppBarProps</code>
               </p>
             </article>
             <article
@@ -5479,12 +5466,12 @@
             </article>
             <article
               class="item"
-              data-search="src/layout/settings-layout/SettingsLayout.tsx src/components/app-bar/index.ts src/layout/screen/index.ts src/layout/settings-layout/types.ts src/layout/sidebar-layout/index.ts src/theme/withZoraThemeScope.tsx SettingsLayout"
+              data-search="src/layout/settings-layout/SettingsLayout.tsx src/features/app-bar/public.ts src/layout/screen/index.ts src/layout/settings-layout/types.ts src/layout/sidebar-layout/index.ts src/theme/withZoraThemeScope.tsx SettingsLayout"
             >
               <h3>src/layout/settings-layout/SettingsLayout.tsx</h3>
               <p class="muted">Referenced module</p>
               <p>
-                <strong>Dependencies:</strong> <code>src/components/app-bar/index.ts</code>,
+                <strong>Dependencies:</strong> <code>src/features/app-bar/public.ts</code>,
                 <code>src/layout/screen/index.ts</code>,
                 <code>src/layout/settings-layout/types.ts</code>,
                 <code>src/layout/sidebar-layout/index.ts</code>,
@@ -5630,13 +5617,12 @@
             </article>
             <article
               class="item"
-              data-search="src/metadata/componentMeta.ts src/components/app-bar/meta.ts src/components/breadcrumbs/meta.ts src/components/menu/meta.ts src/components/modal/meta.ts src/components/pagination/meta.ts src/components/rating/meta.ts src/components/search-bar/meta.ts src/components/select/meta.ts src/components/tabs/meta.ts src/components/toolbar/meta.ts src/features/accordion/accordionItemMeta.ts src/features/accordion/accordionMeta.ts src/features/activity-indicator/activityIndicatorMeta.ts src/features/auth/forgotPasswordFormMeta.ts src/features/auth/oauthProviderButtonMeta.ts src/features/auth/oauthProviderListMeta.ts src/features/auth/otpFormMeta.ts src/features/auth/signInFormMeta.ts src/features/auth/signUpFormMeta.ts src/features/avatar/avatarGroupMeta.ts src/features/avatar/avatarMeta.ts src/features/badge/badgeMeta.ts src/features/bottom-sheet/bottomSheetMeta.ts src/features/button/buttonGroupMeta.ts src/features/button/buttonMeta.ts src/features/button/iconButtonMeta.ts src/features/card/cardMeta.ts src/features/card/mediaCardMeta.ts src/features/card/metricCardMeta.ts src/features/card/postCardMeta.ts src/features/card/productCardMeta.ts src/features/chip/chipGroupMeta.ts src/features/chip/chipMeta.ts src/features/data-table/dataTableMeta.ts src/features/date-picker/datePickerMeta.ts src/features/empty-state/emptyStateMeta.ts src/features/form/checkbox/checkboxMeta.ts src/features/form/formActionsMeta.ts src/features/form/formErrorMeta.ts src/features/form/formFieldMeta.ts src/features/form/formMeta.ts src/features/form/radio/radioMeta.ts src/features/form/text-input/textInputMeta.ts src/features/gradient/gradientMeta.ts src/features/hero/heroMeta.ts src/features/icon/iconMeta.ts src/features/image/imageMeta.ts src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts src/features/layout/boxMeta.ts src/features/layout/containerMeta.ts src/features/layout/contentRailMeta.ts src/features/layout/dividerMeta.ts src/features/layout/gridMeta.ts src/features/layout/stackMeta.ts src/features/list/flatListMeta.ts src/features/list/sectionListMeta.ts src/features/missing-element/missingElementMeta.ts src/features/progress/progressMeta.ts src/features/skeleton/skeletonMeta.ts src/features/surface/surfaceMeta.ts src/features/time-picker/timePickerMeta.ts src/features/toast/toastMeta.ts src/features/toast/toastProviderMeta.ts src/features/typography/headingMeta.ts src/features/typography/textMeta.ts src/features/uploader/uploaderMeta.ts src/foundation/meta.ts src/layout/app-shell/meta.ts src/layout/screen-section/meta.ts src/layout/screen/meta.ts src/layout/settings-layout/meta.ts src/layout/sidebar-layout/meta.ts src/layout/topbar-layout/meta.ts src/metadata/types.ts src/patterns/chat-list-item/meta.ts src/patterns/collection-editor/meta.ts src/patterns/confirm-dialog/meta.ts src/patterns/filter-bar/meta.ts src/patterns/inspector-field/meta.ts src/patterns/list/meta.ts src/patterns/message-bubble/meta.ts src/patterns/notice/meta.ts src/patterns/panel/meta.ts src/patterns/reader/meta.ts src/patterns/scanner/meta.ts src/patterns/section-header/meta.ts src/patterns/selection/meta.ts src/patterns/settings-row/meta.ts src/patterns/switch-field/meta.ts src/patterns/theme-composer/meta.ts src/patterns/tile-grid/meta.ts src/patterns/timeline/meta.ts src/patterns/tree-view/meta.ts src/theme/ThemeModeToggle.meta.ts src/utils/finalizeFeatureMetadata.ts ZORA_COMPONENT_META"
+              data-search="src/metadata/componentMeta.ts src/components/breadcrumbs/meta.ts src/components/menu/meta.ts src/components/modal/meta.ts src/components/pagination/meta.ts src/components/rating/meta.ts src/components/search-bar/meta.ts src/components/select/meta.ts src/components/tabs/meta.ts src/components/toolbar/meta.ts src/features/accordion/accordionItemMeta.ts src/features/accordion/accordionMeta.ts src/features/activity-indicator/activityIndicatorMeta.ts src/features/app-bar/appBarMeta.ts src/features/auth/forgotPasswordFormMeta.ts src/features/auth/oauthProviderButtonMeta.ts src/features/auth/oauthProviderListMeta.ts src/features/auth/otpFormMeta.ts src/features/auth/signInFormMeta.ts src/features/auth/signUpFormMeta.ts src/features/avatar/avatarGroupMeta.ts src/features/avatar/avatarMeta.ts src/features/badge/badgeMeta.ts src/features/bottom-sheet/bottomSheetMeta.ts src/features/button/buttonGroupMeta.ts src/features/button/buttonMeta.ts src/features/button/iconButtonMeta.ts src/features/card/cardMeta.ts src/features/card/mediaCardMeta.ts src/features/card/metricCardMeta.ts src/features/card/postCardMeta.ts src/features/card/productCardMeta.ts src/features/chip/chipGroupMeta.ts src/features/chip/chipMeta.ts src/features/data-table/dataTableMeta.ts src/features/date-picker/datePickerMeta.ts src/features/empty-state/emptyStateMeta.ts src/features/form/checkbox/checkboxMeta.ts src/features/form/formActionsMeta.ts src/features/form/formErrorMeta.ts src/features/form/formFieldMeta.ts src/features/form/formMeta.ts src/features/form/radio/radioMeta.ts src/features/form/text-input/textInputMeta.ts src/features/gradient/gradientMeta.ts src/features/hero/heroMeta.ts src/features/icon/iconMeta.ts src/features/image/imageMeta.ts src/features/keyboard-avoiding-view/keyboardAvoidingViewMeta.ts src/features/layout/boxMeta.ts src/features/layout/containerMeta.ts src/features/layout/contentRailMeta.ts src/features/layout/dividerMeta.ts src/features/layout/gridMeta.ts src/features/layout/stackMeta.ts src/features/list/flatListMeta.ts src/features/list/sectionListMeta.ts src/features/missing-element/missingElementMeta.ts src/features/progress/progressMeta.ts src/features/skeleton/skeletonMeta.ts src/features/surface/surfaceMeta.ts src/features/time-picker/timePickerMeta.ts src/features/toast/toastMeta.ts src/features/toast/toastProviderMeta.ts src/features/typography/headingMeta.ts src/features/typography/textMeta.ts src/features/uploader/uploaderMeta.ts src/foundation/meta.ts src/layout/app-shell/meta.ts src/layout/screen-section/meta.ts src/layout/screen/meta.ts src/layout/settings-layout/meta.ts src/layout/sidebar-layout/meta.ts src/layout/topbar-layout/meta.ts src/metadata/types.ts src/patterns/chat-list-item/meta.ts src/patterns/collection-editor/meta.ts src/patterns/confirm-dialog/meta.ts src/patterns/filter-bar/meta.ts src/patterns/inspector-field/meta.ts src/patterns/list/meta.ts src/patterns/message-bubble/meta.ts src/patterns/notice/meta.ts src/patterns/panel/meta.ts src/patterns/reader/meta.ts src/patterns/scanner/meta.ts src/patterns/section-header/meta.ts src/patterns/selection/meta.ts src/patterns/settings-row/meta.ts src/patterns/switch-field/meta.ts src/patterns/theme-composer/meta.ts src/patterns/tile-grid/meta.ts src/patterns/timeline/meta.ts src/patterns/tree-view/meta.ts src/theme/ThemeModeToggle.meta.ts src/utils/finalizeFeatureMetadata.ts ZORA_COMPONENT_META"
             >
               <h3>src/metadata/componentMeta.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
-                <strong>Dependencies:</strong> <code>src/components/app-bar/meta.ts</code>,
-                <code>src/components/breadcrumbs/meta.ts</code>,
+                <strong>Dependencies:</strong> <code>src/components/breadcrumbs/meta.ts</code>,
                 <code>src/components/menu/meta.ts</code>, <code>src/components/modal/meta.ts</code>,
                 <code>src/components/pagination/meta.ts</code>,
                 <code>src/components/rating/meta.ts</code>,
@@ -5647,6 +5633,7 @@
                 <code>src/features/accordion/accordionItemMeta.ts</code>,
                 <code>src/features/accordion/accordionMeta.ts</code>,
                 <code>src/features/activity-indicator/activityIndicatorMeta.ts</code>,
+                <code>src/features/app-bar/appBarMeta.ts</code>,
                 <code>src/features/auth/forgotPasswordFormMeta.ts</code>,
                 <code>src/features/auth/oauthProviderButtonMeta.ts</code>,
                 <code>src/features/auth/oauthProviderListMeta.ts</code>,
@@ -6329,12 +6316,12 @@
             </article>
             <article
               class="item"
-              data-search="src/patterns/reader/ReaderSurface.tsx src/components/app-bar/index.ts src/features/button/public.ts src/features/layout/public.ts src/features/progress/public.ts src/features/surface/public.ts src/features/typography/public.ts src/foundation/index.ts src/patterns/reader/resolveReaderProgress.ts src/patterns/reader/types.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx ReaderSurface"
+              data-search="src/patterns/reader/ReaderSurface.tsx src/features/app-bar/public.ts src/features/button/public.ts src/features/layout/public.ts src/features/progress/public.ts src/features/surface/public.ts src/features/typography/public.ts src/foundation/index.ts src/patterns/reader/resolveReaderProgress.ts src/patterns/reader/types.ts src/theme/useZoraTheme.ts src/theme/withZoraThemeScope.tsx ReaderSurface"
             >
               <h3>src/patterns/reader/ReaderSurface.tsx</h3>
               <p class="muted">Referenced module</p>
               <p>
-                <strong>Dependencies:</strong> <code>src/components/app-bar/index.ts</code>,
+                <strong>Dependencies:</strong> <code>src/features/app-bar/public.ts</code>,
                 <code>src/features/button/public.ts</code>,
                 <code>src/features/layout/public.ts</code>,
                 <code>src/features/progress/public.ts</code>,
@@ -6927,13 +6914,12 @@
             </article>
             <article
               class="item"
-              data-search="src/registry.ts src/components/app-bar/index.ts src/components/breadcrumbs/index.ts src/components/menu/index.ts src/components/modal/index.ts src/components/pagination/index.ts src/components/rating/index.ts src/components/search-bar/index.ts src/components/select/index.ts src/components/tabs/index.ts src/components/toolbar/index.ts src/features/accordion/public.ts src/features/activity-indicator/public.ts src/features/auth/public.ts src/features/avatar/public.ts src/features/badge/public.ts src/features/bottom-sheet/public.ts src/features/button/public.ts src/features/card/public.ts src/features/chip/public.ts src/features/data-table/public.ts src/features/date-picker/public.ts src/features/empty-state/public.ts src/features/form/checkbox/public.ts src/features/form/public.ts src/features/form/radio/public.ts src/features/form/text-input/public.ts src/features/gradient/public.ts src/features/hero/public.ts src/features/icon/public.ts src/features/image/public.ts src/features/keyboard-avoiding-view/public.ts src/features/layout/public.ts src/features/list/public.ts src/features/missing-element/public.ts src/features/progress/public.ts src/features/skeleton/public.ts src/features/surface/public.ts src/features/time-picker/public.ts src/features/toast/public.ts src/features/typography/public.ts src/features/uploader/public.ts src/foundation/index.ts src/layout/app-shell/index.ts src/layout/screen-section/index.ts src/layout/screen/index.ts src/layout/settings-layout/index.ts src/layout/sidebar-layout/index.ts src/layout/topbar-layout/index.ts src/patterns/chat-list-item/index.ts src/patterns/collection-editor/index.ts src/patterns/confirm-dialog/index.ts src/patterns/filter-bar/index.ts src/patterns/inspector-field/index.ts src/patterns/list/index.ts src/patterns/message-bubble/index.ts src/patterns/notice/index.ts src/patterns/panel/index.ts src/patterns/reader/index.ts src/patterns/scanner/index.ts src/patterns/section-header/index.ts src/patterns/selection/index.ts src/patterns/settings-row/index.ts src/patterns/switch-field/index.ts src/patterns/theme-composer/index.ts src/patterns/tile-grid/index.ts src/patterns/timeline/index.ts src/patterns/tree-view/index.ts src/theme/ThemeModeToggle.tsx ZORA_COMPONENT_REGISTRY ZoraComponentRegistry"
+              data-search="src/registry.ts src/components/breadcrumbs/index.ts src/components/menu/index.ts src/components/modal/index.ts src/components/pagination/index.ts src/components/rating/index.ts src/components/search-bar/index.ts src/components/select/index.ts src/components/tabs/index.ts src/components/toolbar/index.ts src/features/accordion/public.ts src/features/activity-indicator/public.ts src/features/app-bar/public.ts src/features/auth/public.ts src/features/avatar/public.ts src/features/badge/public.ts src/features/bottom-sheet/public.ts src/features/button/public.ts src/features/card/public.ts src/features/chip/public.ts src/features/data-table/public.ts src/features/date-picker/public.ts src/features/empty-state/public.ts src/features/form/checkbox/public.ts src/features/form/public.ts src/features/form/radio/public.ts src/features/form/text-input/public.ts src/features/gradient/public.ts src/features/hero/public.ts src/features/icon/public.ts src/features/image/public.ts src/features/keyboard-avoiding-view/public.ts src/features/layout/public.ts src/features/list/public.ts src/features/missing-element/public.ts src/features/progress/public.ts src/features/skeleton/public.ts src/features/surface/public.ts src/features/time-picker/public.ts src/features/toast/public.ts src/features/typography/public.ts src/features/uploader/public.ts src/foundation/index.ts src/layout/app-shell/index.ts src/layout/screen-section/index.ts src/layout/screen/index.ts src/layout/settings-layout/index.ts src/layout/sidebar-layout/index.ts src/layout/topbar-layout/index.ts src/patterns/chat-list-item/index.ts src/patterns/collection-editor/index.ts src/patterns/confirm-dialog/index.ts src/patterns/filter-bar/index.ts src/patterns/inspector-field/index.ts src/patterns/list/index.ts src/patterns/message-bubble/index.ts src/patterns/notice/index.ts src/patterns/panel/index.ts src/patterns/reader/index.ts src/patterns/scanner/index.ts src/patterns/section-header/index.ts src/patterns/selection/index.ts src/patterns/settings-row/index.ts src/patterns/switch-field/index.ts src/patterns/theme-composer/index.ts src/patterns/tile-grid/index.ts src/patterns/timeline/index.ts src/patterns/tree-view/index.ts src/theme/ThemeModeToggle.tsx ZORA_COMPONENT_REGISTRY ZoraComponentRegistry"
             >
               <h3>src/registry.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
-                <strong>Dependencies:</strong> <code>src/components/app-bar/index.ts</code>,
-                <code>src/components/breadcrumbs/index.ts</code>,
+                <strong>Dependencies:</strong> <code>src/components/breadcrumbs/index.ts</code>,
                 <code>src/components/menu/index.ts</code>,
                 <code>src/components/modal/index.ts</code>,
                 <code>src/components/pagination/index.ts</code>,
@@ -6944,6 +6930,7 @@
                 <code>src/components/toolbar/index.ts</code>,
                 <code>src/features/accordion/public.ts</code>,
                 <code>src/features/activity-indicator/public.ts</code>,
+                <code>src/features/app-bar/public.ts</code>,
                 <code>src/features/auth/public.ts</code>,
                 <code>src/features/avatar/public.ts</code>,
                 <code>src/features/badge/public.ts</code>,
@@ -7292,6 +7279,18 @@
               <p class="muted">Referenced module</p>
               <p><strong>Dependencies:</strong> <code>src/theme/ZoraBaseProps.ts</code></p>
               <p><strong>Exports:</strong> <code>ActivityIndicatorProps</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/types/app-bar.ts src/theme/ZoraBaseProps.ts AppBarMode AppBarOverflowAction AppBarProps"
+            >
+              <h3>src/types/app-bar.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/theme/ZoraBaseProps.ts</code></p>
+              <p>
+                <strong>Exports:</strong> <code>AppBarMode</code>,
+                <code>AppBarOverflowAction</code>, <code>AppBarProps</code>
+              </p>
             </article>
             <article
               class="item"
@@ -7958,214 +7957,6 @@
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-            </section>
-            <section>
-              <h3>src/components/app-bar/AppBar.tsx</h3>
-              <article
-                class="item"
-                id="symbol-appbar"
-                data-search="AppBar value src/components/app-bar/AppBar.tsx Renders a top app bar with title/subtitle and optional leading/trailing actions."
-              >
-                <h4>AppBar</h4>
-                <p class="muted">value • <code>src/components/app-bar/AppBar.tsx:140:14</code></p>
-                <p>
-                  Renders a top app bar with title/subtitle and optional leading/trailing actions.
-                </p>
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-            </section>
-            <section>
-              <h3>src/components/app-bar/types.ts</h3>
-              <article
-                class="item"
-                id="symbol-appbarmode"
-                data-search="AppBarMode unknown src/components/app-bar/types.ts "
-              >
-                <h4>AppBarMode</h4>
-                <p class="muted">unknown • <code>src/components/app-bar/types.ts:6:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-appbaroverflowaction"
-                data-search="AppBarOverflowAction type src/components/app-bar/types.ts "
-              >
-                <h4>AppBarOverflowAction</h4>
-                <p class="muted">type • <code>src/components/app-bar/types.ts:19:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>disabled</code></td>
-                      <td>property</td>
-                      <td><code>boolean | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>icon</code></td>
-                      <td>property</td>
-                      <td>
-                        <code>import(&quot;@ankhorage/surface&quot;).IconSource | undefined</code>
-                      </td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>label</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>onPress</code></td>
-                      <td>property</td>
-                      <td><code>() =&gt; void</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-              <article
-                class="item"
-                id="symbol-appbarprops"
-                data-search="AppBarProps type src/components/app-bar/types.ts  AppBarMode AppBarOverflowAction ZoraThemeMode"
-              >
-                <h4>AppBarProps</h4>
-                <p class="muted">type • <code>src/components/app-bar/types.ts:26:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">AppBarMode</li>
-                    <li class="chip">AppBarOverflowAction</li>
-                    <li class="chip">ZoraThemeMode</li>
-                  </ul>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>actions</code></td>
-                      <td>property</td>
-                      <td><code>React.ReactNode</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>appMode</code></td>
-                      <td>property</td>
-                      <td><code>AppBarMode | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>children</code></td>
-                      <td>property</td>
-                      <td><code>React.ReactNode</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>divider</code></td>
-                      <td>property</td>
-                      <td><code>boolean | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>interactionPolicy</code></td>
-                      <td>property</td>
-                      <td><code>InteractionPolicy | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>leading</code></td>
-                      <td>property</td>
-                      <td><code>React.ReactNode</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>mode</code></td>
-                      <td>property</td>
-                      <td><code>ZoraThemeMode | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>overflow</code></td>
-                      <td>property</td>
-                      <td><code>AppBarOverflowAction | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>safeAreaTop</code></td>
-                      <td>property</td>
-                      <td><code>boolean | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>subtitle</code></td>
-                      <td>property</td>
-                      <td><code>React.ReactNode</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>testID</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>themeId</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>title</code></td>
-                      <td>property</td>
-                      <td><code>React.ReactNode</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
               </article>
             </section>
             <section>
@@ -9816,6 +9607,24 @@
                   >
                 </p>
                 <p>Native activity indicator exposed as a serializable ZORA feedback node.</p>
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+            </section>
+            <section>
+              <h3>src/features/app-bar/adapters/inbound/AppBar.tsx</h3>
+              <article
+                class="item"
+                id="symbol-appbar"
+                data-search="AppBar value src/features/app-bar/adapters/inbound/AppBar.tsx Renders a top app bar with title/subtitle and optional leading/trailing actions."
+              >
+                <h4>AppBar</h4>
+                <p class="muted">
+                  value • <code>src/features/app-bar/adapters/inbound/AppBar.tsx:37:14</code>
+                </p>
+                <p>
+                  Renders a top app bar with title/subtitle and optional leading/trailing actions.
+                </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
               </article>
@@ -12836,7 +12645,7 @@
               >
                 <h4>SettingsLayout</h4>
                 <p class="muted">
-                  value • <code>src/layout/settings-layout/SettingsLayout.tsx:35:14</code>
+                  value • <code>src/layout/settings-layout/SettingsLayout.tsx:33:14</code>
                 </p>
                 <p>Settings page layout with app bar, sidebar, and scrollable content area.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -19998,13 +19807,13 @@
               <article
                 class="item"
                 id="symbol-zorathemescope"
-                data-search="ZoraThemeScope function src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface ThemeProvider. ZoraThemeScopeProps ({ children, themeId, mode }: ZoraThemeScopeProps) =&gt; string | number | bigint | boolean | Iterable&lt;React.ReactNode&gt; | Promise&lt;string | number | bigint | boolean | React.ReactPortal | React.ReactElement&lt;unknown, string | React.JSXElementConstructor&lt;any&gt;&gt; | Iterable&lt;React.ReactNode&gt; | null | undefined&gt; | React.JSX.Element | null | undefined"
+                data-search="ZoraThemeScope function src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface theme runtime. ZoraThemeScopeProps ({ children, themeId, mode }: ZoraThemeScopeProps) =&gt; string | number | bigint | boolean | Iterable&lt;React.ReactNode&gt; | Promise&lt;string | number | bigint | boolean | React.ReactPortal | React.ReactElement&lt;unknown, string | React.JSXElementConstructor&lt;any&gt;&gt; | Iterable&lt;React.ReactNode&gt; | null | undefined&gt; | React.JSX.Element | null | undefined"
               >
                 <h4>ZoraThemeScope</h4>
                 <p class="muted">function • <code>src/theme/ZoraThemeScope.tsx:15:1</code></p>
                 <p>
-                  Applies nested ZORA theme overrides without installing another Surface
-                  ThemeProvider.
+                  Applies nested ZORA theme overrides without installing another Surface theme
+                  runtime.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -20890,6 +20699,198 @@
                       <td><code>tvParallaxTiltAngle</code></td>
                       <td>property</td>
                       <td><code>number | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+            <section>
+              <h3>src/types/app-bar.ts</h3>
+              <article
+                class="item"
+                id="symbol-appbarmode"
+                data-search="AppBarMode unknown src/types/app-bar.ts "
+              >
+                <h4>AppBarMode</h4>
+                <p class="muted">unknown • <code>src/types/app-bar.ts:6:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
+                id="symbol-appbaroverflowaction"
+                data-search="AppBarOverflowAction type src/types/app-bar.ts "
+              >
+                <h4>AppBarOverflowAction</h4>
+                <p class="muted">type • <code>src/types/app-bar.ts:19:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>disabled</code></td>
+                      <td>property</td>
+                      <td><code>boolean | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>icon</code></td>
+                      <td>property</td>
+                      <td>
+                        <code>import(&quot;@ankhorage/surface&quot;).IconSource | undefined</code>
+                      </td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>label</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>onPress</code></td>
+                      <td>property</td>
+                      <td><code>() =&gt; void</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-appbarprops"
+                data-search="AppBarProps type src/types/app-bar.ts  AppBarMode AppBarOverflowAction ZoraThemeMode"
+              >
+                <h4>AppBarProps</h4>
+                <p class="muted">type • <code>src/types/app-bar.ts:26:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">AppBarMode</li>
+                    <li class="chip">AppBarOverflowAction</li>
+                    <li class="chip">ZoraThemeMode</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>actions</code></td>
+                      <td>property</td>
+                      <td><code>React.ReactNode</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>appMode</code></td>
+                      <td>property</td>
+                      <td><code>AppBarMode | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>children</code></td>
+                      <td>property</td>
+                      <td><code>React.ReactNode</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>divider</code></td>
+                      <td>property</td>
+                      <td><code>boolean | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>interactionPolicy</code></td>
+                      <td>property</td>
+                      <td><code>InteractionPolicy | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>leading</code></td>
+                      <td>property</td>
+                      <td><code>React.ReactNode</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>mode</code></td>
+                      <td>property</td>
+                      <td><code>ZoraThemeMode | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>overflow</code></td>
+                      <td>property</td>
+                      <td><code>AppBarOverflowAction | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>safeAreaTop</code></td>
+                      <td>property</td>
+                      <td><code>boolean | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>subtitle</code></td>
+                      <td>property</td>
+                      <td><code>React.ReactNode</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>testID</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>themeId</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>title</code></td>
+                      <td>property</td>
+                      <td><code>React.ReactNode</code></td>
                       <td>no</td>
                       <td></td>
                     </tr>
@@ -37034,10 +37035,12 @@
             <article
               class="item"
               id="component-appbar"
-              data-search="AppBar src/components/app-bar/AppBar.tsx Renders a top app bar with title/subtitle and optional leading/trailing actions. actions React.ReactNode appMode AppBarMode | undefined children React.ReactNode divider boolean | undefined interactionPolicy InteractionPolicy | undefined leading React.ReactNode mode ZoraThemeMode | undefined overflow AppBarOverflowAction | undefined safeAreaTop boolean | undefined subtitle React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode"
+              data-search="AppBar src/features/app-bar/adapters/inbound/AppBar.tsx Renders a top app bar with title/subtitle and optional leading/trailing actions. actions React.ReactNode appMode AppBarMode | undefined children React.ReactNode divider boolean | undefined interactionPolicy InteractionPolicy | undefined leading React.ReactNode mode ZoraThemeMode | undefined overflow AppBarOverflowAction | undefined safeAreaTop boolean | undefined subtitle React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode"
             >
               <h3>AppBar</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:140:14</code></p>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:37:14</code>
+              </p>
               <p>
                 Renders a top app bar with title/subtitle and optional leading/trailing actions.
               </p>
@@ -53866,7 +53869,7 @@
               data-search="SettingsLayout src/layout/settings-layout/SettingsLayout.tsx Settings page layout with app bar, sidebar, and scrollable content area. actions React.ReactNode children React.ReactNode description React.ReactNode interactionPolicy InteractionPolicy | undefined mode ZoraThemeMode | undefined sidebar React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode"
             >
               <h3>SettingsLayout</h3>
-              <p class="muted"><code>src/layout/settings-layout/SettingsLayout.tsx:35:14</code></p>
+              <p class="muted"><code>src/layout/settings-layout/SettingsLayout.tsx:33:14</code></p>
               <p>Settings page layout with app bar, sidebar, and scrollable content area.</p>
               <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
               <table>
@@ -58151,13 +58154,13 @@
             <article
               class="item"
               id="component-zorathemescope"
-              data-search="ZoraThemeScope src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface ThemeProvider. children React.ReactNode | undefined mode ZoraThemeMode | undefined themeId ZoraThemeId | undefined"
+              data-search="ZoraThemeScope src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface theme runtime. children React.ReactNode | undefined mode ZoraThemeMode | undefined themeId ZoraThemeId | undefined"
             >
               <h3>ZoraThemeScope</h3>
               <p class="muted"><code>src/theme/ZoraThemeScope.tsx:15:1</code></p>
               <p>
-                Applies nested ZORA theme overrides without installing another Surface
-                ThemeProvider.
+                Applies nested ZORA theme overrides without installing another Surface theme
+                runtime.
               </p>
               <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
               <table>
@@ -58204,25 +58207,6 @@
                 graph TD package__ankhorage_zora[&quot;@ankhorage/zora&quot;]
                 entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_zora --&gt;
                 entrypoint_src_index_ts
-                module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-                package__ankhorage_zora -.-&gt; module_src_components_app_bar_AppBar_tsx
-                module_src_components_app_bar_AppBar_tsx --&gt;
-                module_src_components_app_bar_types_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_button_public_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_layout_public_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_typography_public_ts
-                module_src_components_app_bar_AppBar_tsx --&gt; module_src_foundation_index_ts
-                module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
-                module_src_components_app_bar_AppBar_tsx --&gt;
-                module_src_theme_withZoraThemeScope_tsx
-                module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-                package__ankhorage_zora -.-&gt; module_src_components_app_bar_index_ts
-                module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-                package__ankhorage_zora -.-&gt; module_src_components_app_bar_meta_ts
-                module_src_components_app_bar_meta_ts --&gt; module_src_metadata_index_ts
-                module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
-                package__ankhorage_zora -.-&gt; module_src_components_app_bar_types_ts
-                module_src_components_app_bar_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
                 module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_components_breadcrumbs_Breadcrumbs_tsx
                 module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt;
@@ -58469,6 +58453,28 @@
                 module_src_types_activity_indicator_ts
                 module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_features_activity_indicator_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+                package__ankhorage_zora -.-&gt;
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_button_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_layout_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_typography_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_foundation_index_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_theme_useZoraTheme_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_theme_withZoraThemeScope_tsx
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_types_app_bar_ts
+                module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+                package__ankhorage_zora -.-&gt; module_src_features_app_bar_appBarMeta_ts
+                module_src_features_app_bar_appBarMeta_ts --&gt; module_src_metadata_index_ts
+                module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
+                package__ankhorage_zora -.-&gt; module_src_features_app_bar_public_ts
                 module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
                 package__ankhorage_zora -.-&gt;
                 module_src_features_auth_adapters_inbound_AuthForm_tsx
@@ -59950,7 +59956,7 @@
                 module_src_layout_settings_layout_SettingsLayout_tsx[&quot;src/layout/settings-layout/SettingsLayout.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_layout_settings_layout_SettingsLayout_tsx
                 module_src_layout_settings_layout_SettingsLayout_tsx --&gt;
-                module_src_components_app_bar_index_ts
+                module_src_features_app_bar_public_ts
                 module_src_layout_settings_layout_SettingsLayout_tsx --&gt;
                 module_src_layout_screen_index_ts
                 module_src_layout_settings_layout_SettingsLayout_tsx --&gt;
@@ -60012,7 +60018,6 @@
                 --&gt; module_src_patterns_reader_meta_ts
                 module_src_metadata_componentMeta_ts[&quot;src/metadata/componentMeta.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_metadata_componentMeta_ts
-                module_src_metadata_componentMeta_ts --&gt; module_src_components_app_bar_meta_ts
                 module_src_metadata_componentMeta_ts --&gt;
                 module_src_components_breadcrumbs_meta_ts module_src_metadata_componentMeta_ts
                 --&gt; module_src_components_menu_meta_ts module_src_metadata_componentMeta_ts
@@ -60028,7 +60033,8 @@
                 module_src_features_accordion_accordionMeta_ts module_src_metadata_componentMeta_ts
                 --&gt; module_src_features_activity_indicator_activityIndicatorMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
-                module_src_features_auth_forgotPasswordFormMeta_ts
+                module_src_features_app_bar_appBarMeta_ts module_src_metadata_componentMeta_ts
+                --&gt; module_src_features_auth_forgotPasswordFormMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
                 module_src_features_auth_oauthProviderButtonMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
@@ -60377,7 +60383,7 @@
                 module_src_patterns_reader_ReaderSurface_tsx[&quot;src/patterns/reader/ReaderSurface.tsx&quot;]
                 package__ankhorage_zora -.-&gt; module_src_patterns_reader_ReaderSurface_tsx
                 module_src_patterns_reader_ReaderSurface_tsx --&gt;
-                module_src_components_app_bar_index_ts module_src_patterns_reader_ReaderSurface_tsx
+                module_src_features_app_bar_public_ts module_src_patterns_reader_ReaderSurface_tsx
                 --&gt; module_src_features_button_public_ts
                 module_src_patterns_reader_ReaderSurface_tsx --&gt;
                 module_src_features_layout_public_ts module_src_patterns_reader_ReaderSurface_tsx
@@ -60641,7 +60647,6 @@
                 module_src_pluginComposition_ts --&gt; module_src_registry_ts
                 module_src_registry_ts[&quot;src/registry.ts&quot;] package__ankhorage_zora -.-&gt;
                 module_src_registry_ts module_src_registry_ts --&gt;
-                module_src_components_app_bar_index_ts module_src_registry_ts --&gt;
                 module_src_components_breadcrumbs_index_ts module_src_registry_ts --&gt;
                 module_src_components_menu_index_ts module_src_registry_ts --&gt;
                 module_src_components_modal_index_ts module_src_registry_ts --&gt;
@@ -60653,6 +60658,7 @@
                 module_src_components_toolbar_index_ts module_src_registry_ts --&gt;
                 module_src_features_accordion_public_ts module_src_registry_ts --&gt;
                 module_src_features_activity_indicator_public_ts module_src_registry_ts --&gt;
+                module_src_features_app_bar_public_ts module_src_registry_ts --&gt;
                 module_src_features_auth_public_ts module_src_registry_ts --&gt;
                 module_src_features_avatar_public_ts module_src_registry_ts --&gt;
                 module_src_features_badge_public_ts module_src_registry_ts --&gt;
@@ -60798,6 +60804,9 @@
                 module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
                 package__ankhorage_zora -.-&gt; module_src_types_activity_indicator_ts
                 module_src_types_activity_indicator_ts --&gt; module_src_theme_ZoraBaseProps_ts
+                module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
+                package__ankhorage_zora -.-&gt; module_src_types_app_bar_ts
+                module_src_types_app_bar_ts --&gt; module_src_theme_ZoraBaseProps_ts
                 module_src_types_auth_ts[&quot;src/types/auth.ts&quot;] package__ankhorage_zora
                 -.-&gt; module_src_types_auth_ts module_src_types_auth_ts --&gt;
                 module_src_features_button_public_ts module_src_types_auth_ts --&gt;
@@ -60963,23 +60972,6 @@ graph TD
   package__ankhorage_zora[&quot;@ankhorage/zora&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_zora --&gt; entrypoint_src_index_ts
-  module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-  package__ankhorage_zora -.-&gt; module_src_components_app_bar_AppBar_tsx
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_components_app_bar_types_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_button_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_layout_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_typography_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_foundation_index_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
-  module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_components_app_bar_index_ts
-  module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_components_app_bar_meta_ts
-  module_src_components_app_bar_meta_ts --&gt; module_src_metadata_index_ts
-  module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_components_app_bar_types_ts
-  module_src_components_app_bar_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_components_breadcrumbs_Breadcrumbs_tsx
   module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt; module_src_components_breadcrumbs_types_ts
@@ -61183,6 +61175,20 @@ graph TD
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --&gt; module_src_types_activity_indicator_ts
   module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_activity_indicator_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_app_bar_adapters_inbound_AppBar_tsx
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_typography_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_foundation_index_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_types_app_bar_ts
+  module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_app_bar_appBarMeta_ts
+  module_src_features_app_bar_appBarMeta_ts --&gt; module_src_metadata_index_ts
+  module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_app_bar_public_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_auth_adapters_inbound_AuthForm_tsx
   module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt; module_src_features_auth_adapters_inbound_AuthFormField_tsx
@@ -62146,7 +62152,7 @@ graph TD
   module_src_layout_settings_layout_meta_ts --&gt; module_src_metadata_index_ts
   module_src_layout_settings_layout_SettingsLayout_tsx[&quot;src/layout/settings-layout/SettingsLayout.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_layout_settings_layout_SettingsLayout_tsx
-  module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_components_app_bar_index_ts
+  module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_features_app_bar_public_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_screen_index_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_settings_layout_types_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_sidebar_layout_index_ts
@@ -62193,7 +62199,6 @@ graph TD
   module_src_metadata_bindableComponentMeta_ts --&gt; module_src_patterns_reader_meta_ts
   module_src_metadata_componentMeta_ts[&quot;src/metadata/componentMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_metadata_componentMeta_ts
-  module_src_metadata_componentMeta_ts --&gt; module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_modal_meta_ts
@@ -62206,6 +62211,7 @@ graph TD
   module_src_metadata_componentMeta_ts --&gt; module_src_features_accordion_accordionItemMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_accordion_accordionMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_activity_indicator_activityIndicatorMeta_ts
+  module_src_metadata_componentMeta_ts --&gt; module_src_features_app_bar_appBarMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_oauthProviderButtonMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_oauthProviderListMeta_ts
@@ -62482,7 +62488,7 @@ graph TD
   module_src_patterns_reader_meta_ts --&gt; module_src_metadata_index_ts
   module_src_patterns_reader_ReaderSurface_tsx[&quot;src/patterns/reader/ReaderSurface.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_patterns_reader_ReaderSurface_tsx
-  module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_components_app_bar_index_ts
+  module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_app_bar_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_button_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_layout_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_progress_public_ts
@@ -62685,7 +62691,6 @@ graph TD
   module_src_pluginComposition_ts --&gt; module_src_registry_ts
   module_src_registry_ts[&quot;src/registry.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_registry_ts
-  module_src_registry_ts --&gt; module_src_components_app_bar_index_ts
   module_src_registry_ts --&gt; module_src_components_breadcrumbs_index_ts
   module_src_registry_ts --&gt; module_src_components_menu_index_ts
   module_src_registry_ts --&gt; module_src_components_modal_index_ts
@@ -62697,6 +62702,7 @@ graph TD
   module_src_registry_ts --&gt; module_src_components_toolbar_index_ts
   module_src_registry_ts --&gt; module_src_features_accordion_public_ts
   module_src_registry_ts --&gt; module_src_features_activity_indicator_public_ts
+  module_src_registry_ts --&gt; module_src_features_app_bar_public_ts
   module_src_registry_ts --&gt; module_src_features_auth_public_ts
   module_src_registry_ts --&gt; module_src_features_avatar_public_ts
   module_src_registry_ts --&gt; module_src_features_badge_public_ts
@@ -62834,6 +62840,9 @@ graph TD
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_activity_indicator_ts
   module_src_types_activity_indicator_ts --&gt; module_src_theme_ZoraBaseProps_ts
+  module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_types_app_bar_ts
+  module_src_types_app_bar_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_types_auth_ts[&quot;src/types/auth.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_auth_ts
   module_src_types_auth_ts --&gt; module_src_features_button_public_ts
@@ -63001,10 +63010,6 @@ graph TD
               <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
               <div class="mermaid">
                 graph LR
-                module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-                module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-                module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-                module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
                 module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
                 module_src_components_breadcrumbs_index_ts[&quot;src/components/breadcrumbs/index.ts&quot;]
                 module_src_components_breadcrumbs_meta_ts[&quot;src/components/breadcrumbs/meta.ts&quot;]
@@ -63057,6 +63062,9 @@ graph TD
                 module_src_features_activity_indicator_activityIndicatorMeta_ts[&quot;src/features/activity-indicator/activityIndicatorMeta.ts&quot;]
                 module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx[&quot;src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx&quot;]
                 module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+                module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+                module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
                 module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
                 module_src_features_auth_adapters_inbound_AuthFormField_tsx[&quot;src/features/auth/adapters/inbound/AuthFormField.tsx&quot;]
                 module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx[&quot;src/features/auth/adapters/inbound/ForgotPasswordForm.tsx&quot;]
@@ -63407,6 +63415,7 @@ graph TD
                 module_src_theme_ZoraThemeScope_tsx[&quot;src/theme/ZoraThemeScope.tsx&quot;]
                 module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
                 module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
+                module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
                 module_src_types_auth_ts[&quot;src/types/auth.ts&quot;]
                 module_src_types_avatar_group_ts[&quot;src/types/avatar-group.ts&quot;]
                 module_src_types_avatar_ts[&quot;src/types/avatar.ts&quot;]
@@ -63449,18 +63458,8 @@ graph TD
                 module_src_types_upload_ts[&quot;src/types/upload.ts&quot;]
                 module_src_utils_createManifestBindings_ts[&quot;src/utils/createManifestBindings.ts&quot;]
                 module_src_utils_finalizeFeatureMetadata_ts[&quot;src/utils/finalizeFeatureMetadata.ts&quot;]
-                module_src_components_app_bar_AppBar_tsx --&gt;
-                module_src_components_app_bar_types_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_button_public_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_layout_public_ts module_src_components_app_bar_AppBar_tsx
-                --&gt; module_src_features_typography_public_ts
-                module_src_components_app_bar_AppBar_tsx --&gt; module_src_foundation_index_ts
-                module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
-                module_src_components_app_bar_AppBar_tsx --&gt;
-                module_src_theme_withZoraThemeScope_tsx module_src_components_app_bar_meta_ts --&gt;
-                module_src_metadata_index_ts module_src_components_app_bar_types_ts --&gt;
-                module_src_theme_ZoraBaseProps_ts module_src_components_breadcrumbs_Breadcrumbs_tsx
-                --&gt; module_src_components_breadcrumbs_types_ts
+                module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt;
+                module_src_components_breadcrumbs_types_ts
                 module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt;
                 module_src_features_button_public_ts
                 module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt;
@@ -63589,8 +63588,22 @@ graph TD
                 module_src_theme_withZoraThemeScope_tsx
                 module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --&gt;
                 module_src_types_activity_indicator_ts
-                module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt;
-                module_src_features_auth_adapters_inbound_AuthFormField_tsx
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_button_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_layout_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_features_typography_public_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_foundation_index_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_theme_useZoraTheme_ts
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_theme_withZoraThemeScope_tsx
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt;
+                module_src_types_app_bar_ts module_src_features_app_bar_appBarMeta_ts --&gt;
+                module_src_metadata_index_ts module_src_features_auth_adapters_inbound_AuthForm_tsx
+                --&gt; module_src_features_auth_adapters_inbound_AuthFormField_tsx
                 module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt;
                 module_src_features_form_public_ts
                 module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt;
@@ -64497,7 +64510,7 @@ graph TD
                 module_src_internal_recipes_ts module_src_layout_screen_types_ts --&gt;
                 module_src_theme_ZoraBaseProps_ts module_src_layout_settings_layout_meta_ts --&gt;
                 module_src_metadata_index_ts module_src_layout_settings_layout_SettingsLayout_tsx
-                --&gt; module_src_components_app_bar_index_ts
+                --&gt; module_src_features_app_bar_public_ts
                 module_src_layout_settings_layout_SettingsLayout_tsx --&gt;
                 module_src_layout_screen_index_ts
                 module_src_layout_settings_layout_SettingsLayout_tsx --&gt;
@@ -64531,7 +64544,6 @@ graph TD
                 module_src_metadata_bindableComponentMeta_ts --&gt;
                 module_src_features_image_imageMeta_ts module_src_metadata_bindableComponentMeta_ts
                 --&gt; module_src_patterns_reader_meta_ts module_src_metadata_componentMeta_ts
-                --&gt; module_src_components_app_bar_meta_ts module_src_metadata_componentMeta_ts
                 --&gt; module_src_components_breadcrumbs_meta_ts
                 module_src_metadata_componentMeta_ts --&gt; module_src_components_menu_meta_ts
                 module_src_metadata_componentMeta_ts --&gt; module_src_components_modal_meta_ts
@@ -64547,7 +64559,8 @@ graph TD
                 module_src_features_accordion_accordionMeta_ts module_src_metadata_componentMeta_ts
                 --&gt; module_src_features_activity_indicator_activityIndicatorMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
-                module_src_features_auth_forgotPasswordFormMeta_ts
+                module_src_features_app_bar_appBarMeta_ts module_src_metadata_componentMeta_ts
+                --&gt; module_src_features_auth_forgotPasswordFormMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
                 module_src_features_auth_oauthProviderButtonMeta_ts
                 module_src_metadata_componentMeta_ts --&gt;
@@ -64793,7 +64806,7 @@ graph TD
                 module_src_theme_ZoraBaseProps_ts module_src_patterns_reader_meta_ts --&gt;
                 module_src_metadata_allowedChildren_ts module_src_patterns_reader_meta_ts --&gt;
                 module_src_metadata_index_ts module_src_patterns_reader_ReaderSurface_tsx --&gt;
-                module_src_components_app_bar_index_ts module_src_patterns_reader_ReaderSurface_tsx
+                module_src_features_app_bar_public_ts module_src_patterns_reader_ReaderSurface_tsx
                 --&gt; module_src_features_button_public_ts
                 module_src_patterns_reader_ReaderSurface_tsx --&gt;
                 module_src_features_layout_public_ts module_src_patterns_reader_ReaderSurface_tsx
@@ -64958,8 +64971,7 @@ graph TD
                 module_src_patterns_tree_view_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
                 module_src_pluginComposition_ts --&gt; module_src_metadata_types_ts
                 module_src_pluginComposition_ts --&gt; module_src_registry_ts module_src_registry_ts
-                --&gt; module_src_components_app_bar_index_ts module_src_registry_ts --&gt;
-                module_src_components_breadcrumbs_index_ts module_src_registry_ts --&gt;
+                --&gt; module_src_components_breadcrumbs_index_ts module_src_registry_ts --&gt;
                 module_src_components_menu_index_ts module_src_registry_ts --&gt;
                 module_src_components_modal_index_ts module_src_registry_ts --&gt;
                 module_src_components_pagination_index_ts module_src_registry_ts --&gt;
@@ -64970,6 +64982,7 @@ graph TD
                 module_src_components_toolbar_index_ts module_src_registry_ts --&gt;
                 module_src_features_accordion_public_ts module_src_registry_ts --&gt;
                 module_src_features_activity_indicator_public_ts module_src_registry_ts --&gt;
+                module_src_features_app_bar_public_ts module_src_registry_ts --&gt;
                 module_src_features_auth_public_ts module_src_registry_ts --&gt;
                 module_src_features_avatar_public_ts module_src_registry_ts --&gt;
                 module_src_features_badge_public_ts module_src_registry_ts --&gt;
@@ -65061,6 +65074,7 @@ graph TD
                 --&gt; module_src_theme_types_ts module_src_theme_ZoraThemeScope_tsx --&gt;
                 module_src_theme_ZoraThemeRuntimeContext_tsx module_src_types_accordion_ts --&gt;
                 module_src_theme_ZoraBaseProps_ts module_src_types_activity_indicator_ts --&gt;
+                module_src_theme_ZoraBaseProps_ts module_src_types_app_bar_ts --&gt;
                 module_src_theme_ZoraBaseProps_ts module_src_types_auth_ts --&gt;
                 module_src_features_button_public_ts module_src_types_auth_ts --&gt;
                 module_src_theme_ZoraBaseProps_ts module_src_types_auth_ts --&gt;
@@ -65139,10 +65153,6 @@ graph TD
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
-  module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-  module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-  module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-  module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
   module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
   module_src_components_breadcrumbs_index_ts[&quot;src/components/breadcrumbs/index.ts&quot;]
   module_src_components_breadcrumbs_meta_ts[&quot;src/components/breadcrumbs/meta.ts&quot;]
@@ -65195,6 +65205,9 @@ graph LR
   module_src_features_activity_indicator_activityIndicatorMeta_ts[&quot;src/features/activity-indicator/activityIndicatorMeta.ts&quot;]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx[&quot;src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx&quot;]
   module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+  module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+  module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
   module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx[&quot;src/features/auth/adapters/inbound/AuthFormField.tsx&quot;]
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx[&quot;src/features/auth/adapters/inbound/ForgotPasswordForm.tsx&quot;]
@@ -65545,6 +65558,7 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx[&quot;src/theme/ZoraThemeScope.tsx&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
+  module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
   module_src_types_auth_ts[&quot;src/types/auth.ts&quot;]
   module_src_types_avatar_group_ts[&quot;src/types/avatar-group.ts&quot;]
   module_src_types_avatar_ts[&quot;src/types/avatar.ts&quot;]
@@ -65587,15 +65601,6 @@ graph LR
   module_src_types_upload_ts[&quot;src/types/upload.ts&quot;]
   module_src_utils_createManifestBindings_ts[&quot;src/utils/createManifestBindings.ts&quot;]
   module_src_utils_finalizeFeatureMetadata_ts[&quot;src/utils/finalizeFeatureMetadata.ts&quot;]
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_components_app_bar_types_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_button_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_layout_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_features_typography_public_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_foundation_index_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
-  module_src_components_app_bar_AppBar_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
-  module_src_components_app_bar_meta_ts --&gt; module_src_metadata_index_ts
-  module_src_components_app_bar_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt; module_src_components_breadcrumbs_types_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt; module_src_features_button_public_ts
   module_src_components_breadcrumbs_Breadcrumbs_tsx --&gt; module_src_features_icon_public_ts
@@ -65695,6 +65700,14 @@ graph LR
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --&gt; module_src_theme_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --&gt; module_src_types_activity_indicator_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_features_typography_public_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_foundation_index_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_theme_useZoraTheme_ts
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_theme_withZoraThemeScope_tsx
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; module_src_types_app_bar_ts
+  module_src_features_app_bar_appBarMeta_ts --&gt; module_src_metadata_index_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt; module_src_features_auth_adapters_inbound_AuthFormField_tsx
   module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt; module_src_features_form_public_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --&gt; module_src_features_layout_public_ts
@@ -66219,7 +66232,7 @@ graph LR
   module_src_layout_screen_types_ts --&gt; module_src_internal_recipes_ts
   module_src_layout_screen_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_layout_settings_layout_meta_ts --&gt; module_src_metadata_index_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_components_app_bar_index_ts
+  module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_features_app_bar_public_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_screen_index_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_settings_layout_types_ts
   module_src_layout_settings_layout_SettingsLayout_tsx --&gt; module_src_layout_sidebar_layout_index_ts
@@ -66240,7 +66253,6 @@ graph LR
   module_src_layout_topbar_layout_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_metadata_bindableComponentMeta_ts --&gt; module_src_features_image_imageMeta_ts
   module_src_metadata_bindableComponentMeta_ts --&gt; module_src_patterns_reader_meta_ts
-  module_src_metadata_componentMeta_ts --&gt; module_src_components_app_bar_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_breadcrumbs_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_menu_meta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_components_modal_meta_ts
@@ -66253,6 +66265,7 @@ graph LR
   module_src_metadata_componentMeta_ts --&gt; module_src_features_accordion_accordionItemMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_accordion_accordionMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_activity_indicator_activityIndicatorMeta_ts
+  module_src_metadata_componentMeta_ts --&gt; module_src_features_app_bar_appBarMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_oauthProviderButtonMeta_ts
   module_src_metadata_componentMeta_ts --&gt; module_src_features_auth_oauthProviderListMeta_ts
@@ -66435,7 +66448,7 @@ graph LR
   module_src_patterns_panel_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_patterns_reader_meta_ts --&gt; module_src_metadata_allowedChildren_ts
   module_src_patterns_reader_meta_ts --&gt; module_src_metadata_index_ts
-  module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_components_app_bar_index_ts
+  module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_app_bar_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_button_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_layout_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --&gt; module_src_features_progress_public_ts
@@ -66546,7 +66559,6 @@ graph LR
   module_src_patterns_tree_view_types_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_pluginComposition_ts --&gt; module_src_metadata_types_ts
   module_src_pluginComposition_ts --&gt; module_src_registry_ts
-  module_src_registry_ts --&gt; module_src_components_app_bar_index_ts
   module_src_registry_ts --&gt; module_src_components_breadcrumbs_index_ts
   module_src_registry_ts --&gt; module_src_components_menu_index_ts
   module_src_registry_ts --&gt; module_src_components_modal_index_ts
@@ -66558,6 +66570,7 @@ graph LR
   module_src_registry_ts --&gt; module_src_components_toolbar_index_ts
   module_src_registry_ts --&gt; module_src_features_accordion_public_ts
   module_src_registry_ts --&gt; module_src_features_activity_indicator_public_ts
+  module_src_registry_ts --&gt; module_src_features_app_bar_public_ts
   module_src_registry_ts --&gt; module_src_features_auth_public_ts
   module_src_registry_ts --&gt; module_src_features_avatar_public_ts
   module_src_registry_ts --&gt; module_src_features_badge_public_ts
@@ -66647,6 +66660,7 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx --&gt; module_src_theme_ZoraThemeRuntimeContext_tsx
   module_src_types_accordion_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_types_activity_indicator_ts --&gt; module_src_theme_ZoraBaseProps_ts
+  module_src_types_app_bar_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_types_auth_ts --&gt; module_src_features_button_public_ts
   module_src_types_auth_ts --&gt; module_src_theme_ZoraBaseProps_ts
   module_src_types_auth_ts --&gt; module_src_types_form_ts
@@ -66727,10 +66741,6 @@ graph LR
               <p class="muted"><code>diagrams/export-graph.mmd</code></p>
               <div class="mermaid">
                 graph LR
-                module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-                module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-                module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-                module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
                 module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
                 module_src_components_breadcrumbs_index_ts[&quot;src/components/breadcrumbs/index.ts&quot;]
                 module_src_components_breadcrumbs_meta_ts[&quot;src/components/breadcrumbs/meta.ts&quot;]
@@ -66783,6 +66793,9 @@ graph LR
                 module_src_features_activity_indicator_activityIndicatorMeta_ts[&quot;src/features/activity-indicator/activityIndicatorMeta.ts&quot;]
                 module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx[&quot;src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx&quot;]
                 module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+                module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+                module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
                 module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
                 module_src_features_auth_adapters_inbound_AuthFormField_tsx[&quot;src/features/auth/adapters/inbound/AuthFormField.tsx&quot;]
                 module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx[&quot;src/features/auth/adapters/inbound/ForgotPasswordForm.tsx&quot;]
@@ -67133,6 +67146,7 @@ graph LR
                 module_src_theme_ZoraThemeScope_tsx[&quot;src/theme/ZoraThemeScope.tsx&quot;]
                 module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
                 module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
+                module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
                 module_src_types_auth_ts[&quot;src/types/auth.ts&quot;]
                 module_src_types_avatar_group_ts[&quot;src/types/avatar-group.ts&quot;]
                 module_src_types_avatar_ts[&quot;src/types/avatar.ts&quot;]
@@ -67196,18 +67210,18 @@ graph LR
                 export_ActivityIndicatorProps[&quot;ActivityIndicatorProps&quot;]
                 module_src_types_activity_indicator_ts --&gt; export_ActivityIndicatorProps
                 export_ActivityIndicatorProps -.-&gt; export_ZoraThemeMode
-                export_AppBar[&quot;AppBar&quot;] module_src_components_app_bar_AppBar_tsx --&gt;
-                export_AppBar export_AppBarMode[&quot;AppBarMode&quot;]
-                module_src_components_app_bar_types_ts --&gt; export_AppBarMode
-                export_AppBarOverflowAction[&quot;AppBarOverflowAction&quot;]
-                module_src_components_app_bar_types_ts --&gt; export_AppBarOverflowAction
-                export_AppBarProps[&quot;AppBarProps&quot;] module_src_components_app_bar_types_ts
-                --&gt; export_AppBarProps export_AppBarProps -.-&gt; export_AppBarMode
-                export_AppBarProps -.-&gt; export_AppBarOverflowAction export_AppBarProps -.-&gt;
-                export_ZoraThemeMode export_AppShell[&quot;AppShell&quot;]
-                module_src_layout_app_shell_AppShell_tsx --&gt; export_AppShell
-                export_AppShellProps[&quot;AppShellProps&quot;] module_src_layout_app_shell_types_ts
-                --&gt; export_AppShellProps export_AppShellProps -.-&gt; export_ZoraThemeMode
+                export_AppBar[&quot;AppBar&quot;]
+                module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; export_AppBar
+                export_AppBarMode[&quot;AppBarMode&quot;] module_src_types_app_bar_ts --&gt;
+                export_AppBarMode export_AppBarOverflowAction[&quot;AppBarOverflowAction&quot;]
+                module_src_types_app_bar_ts --&gt; export_AppBarOverflowAction
+                export_AppBarProps[&quot;AppBarProps&quot;] module_src_types_app_bar_ts --&gt;
+                export_AppBarProps export_AppBarProps -.-&gt; export_AppBarMode export_AppBarProps
+                -.-&gt; export_AppBarOverflowAction export_AppBarProps -.-&gt; export_ZoraThemeMode
+                export_AppShell[&quot;AppShell&quot;] module_src_layout_app_shell_AppShell_tsx
+                --&gt; export_AppShell export_AppShellProps[&quot;AppShellProps&quot;]
+                module_src_layout_app_shell_types_ts --&gt; export_AppShellProps
+                export_AppShellProps -.-&gt; export_ZoraThemeMode
                 export_AuthFormBaseProps[&quot;AuthFormBaseProps&quot;] module_src_types_auth_ts
                 --&gt; export_AuthFormBaseProps export_AuthFormBaseProps -.-&gt;
                 export_ZoraThemeMode export_AuthIdentifierKind[&quot;AuthIdentifierKind&quot;]
@@ -68204,10 +68218,6 @@ graph LR
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
-  module_src_components_app_bar_AppBar_tsx[&quot;src/components/app-bar/AppBar.tsx&quot;]
-  module_src_components_app_bar_index_ts[&quot;src/components/app-bar/index.ts&quot;]
-  module_src_components_app_bar_meta_ts[&quot;src/components/app-bar/meta.ts&quot;]
-  module_src_components_app_bar_types_ts[&quot;src/components/app-bar/types.ts&quot;]
   module_src_components_breadcrumbs_Breadcrumbs_tsx[&quot;src/components/breadcrumbs/Breadcrumbs.tsx&quot;]
   module_src_components_breadcrumbs_index_ts[&quot;src/components/breadcrumbs/index.ts&quot;]
   module_src_components_breadcrumbs_meta_ts[&quot;src/components/breadcrumbs/meta.ts&quot;]
@@ -68260,6 +68270,9 @@ graph LR
   module_src_features_activity_indicator_activityIndicatorMeta_ts[&quot;src/features/activity-indicator/activityIndicatorMeta.ts&quot;]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx[&quot;src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx&quot;]
   module_src_features_activity_indicator_public_ts[&quot;src/features/activity-indicator/public.ts&quot;]
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx[&quot;src/features/app-bar/adapters/inbound/AppBar.tsx&quot;]
+  module_src_features_app_bar_appBarMeta_ts[&quot;src/features/app-bar/appBarMeta.ts&quot;]
+  module_src_features_app_bar_public_ts[&quot;src/features/app-bar/public.ts&quot;]
   module_src_features_auth_adapters_inbound_AuthForm_tsx[&quot;src/features/auth/adapters/inbound/AuthForm.tsx&quot;]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx[&quot;src/features/auth/adapters/inbound/AuthFormField.tsx&quot;]
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx[&quot;src/features/auth/adapters/inbound/ForgotPasswordForm.tsx&quot;]
@@ -68610,6 +68623,7 @@ graph LR
   module_src_theme_ZoraThemeScope_tsx[&quot;src/theme/ZoraThemeScope.tsx&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
+  module_src_types_app_bar_ts[&quot;src/types/app-bar.ts&quot;]
   module_src_types_auth_ts[&quot;src/types/auth.ts&quot;]
   module_src_types_avatar_group_ts[&quot;src/types/avatar-group.ts&quot;]
   module_src_types_avatar_ts[&quot;src/types/avatar.ts&quot;]
@@ -68672,13 +68686,13 @@ graph LR
   module_src_types_activity_indicator_ts --&gt; export_ActivityIndicatorProps
   export_ActivityIndicatorProps -.-&gt; export_ZoraThemeMode
   export_AppBar[&quot;AppBar&quot;]
-  module_src_components_app_bar_AppBar_tsx --&gt; export_AppBar
+  module_src_features_app_bar_adapters_inbound_AppBar_tsx --&gt; export_AppBar
   export_AppBarMode[&quot;AppBarMode&quot;]
-  module_src_components_app_bar_types_ts --&gt; export_AppBarMode
+  module_src_types_app_bar_ts --&gt; export_AppBarMode
   export_AppBarOverflowAction[&quot;AppBarOverflowAction&quot;]
-  module_src_components_app_bar_types_ts --&gt; export_AppBarOverflowAction
+  module_src_types_app_bar_ts --&gt; export_AppBarOverflowAction
   export_AppBarProps[&quot;AppBarProps&quot;]
-  module_src_components_app_bar_types_ts --&gt; export_AppBarProps
+  module_src_types_app_bar_ts --&gt; export_AppBarProps
   export_AppBarProps -.-&gt; export_AppBarMode
   export_AppBarProps -.-&gt; export_AppBarOverflowAction
   export_AppBarProps -.-&gt; export_ZoraThemeMode
@@ -70264,50 +70278,6 @@ sequenceDiagram
           </section>
         </section>
         <section
-          id="view-src-components-app-bar-appbar-tsx"
-          class="view"
-          data-view="src/components/app-bar/AppBar.tsx"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/components/app-bar/AppBar.tsx</h2>
-            <article class="item" data-search="resolveMode src/components/app-bar/AppBar.tsx ">
-              <h3>resolveMode</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:16:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="resolveSelectionLabel src/components/app-bar/AppBar.tsx "
-            >
-              <h3>resolveSelectionLabel</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:20:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="resolveOverflowLabel src/components/app-bar/AppBar.tsx "
-            >
-              <h3>resolveOverflowLabel</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:28:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="resolveCancelLabel src/components/app-bar/AppBar.tsx "
-            >
-              <h3>resolveCancelLabel</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:32:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="AppBarInner src/components/app-bar/AppBar.tsx ">
-              <h3>AppBarInner</h3>
-              <p class="muted"><code>src/components/app-bar/AppBar.tsx:36:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
           id="view-src-components-breadcrumbs-breadcrumbs-tsx"
           class="view"
           data-view="src/components/breadcrumbs/Breadcrumbs.tsx"
@@ -70711,6 +70681,106 @@ sequenceDiagram
                 >
               </p>
               <p>Render native loading feedback with a semantic ZORA fallback color.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-app-bar-adapters-inbound-appbar-tsx"
+          class="view"
+          data-view="src/features/app-bar/adapters/inbound/AppBar.tsx"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/app-bar/adapters/inbound/AppBar.tsx</h2>
+            <article
+              class="item"
+              data-search="resolveMode src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the effective AppBar mode."
+            >
+              <h3>resolveMode</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:16:1</code>
+              </p>
+              <p>Resolves the effective AppBar mode.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveSelectionLabel src/features/app-bar/adapters/inbound/AppBar.tsx Formats the active selection label with its optional count."
+            >
+              <h3>resolveSelectionLabel</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:21:1</code>
+              </p>
+              <p>Formats the active selection label with its optional count.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveOverflowLabel src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the accessible label for the overflow action."
+            >
+              <h3>resolveOverflowLabel</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:27:1</code>
+              </p>
+              <p>Resolves the accessible label for the overflow action.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveCancelLabel src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the accessible label for leaving selection mode."
+            >
+              <h3>resolveCancelLabel</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:32:1</code>
+              </p>
+              <p>Resolves the accessible label for leaving selection mode.</p>
+            </article>
+            <article
+              class="item"
+              data-search="AppBarInner src/features/app-bar/adapters/inbound/AppBar.tsx Composes the opinionated ZORA AppBar over the Surface layout primitive."
+            >
+              <h3>AppBarInner</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:40:1</code>
+              </p>
+              <p>Composes the opinionated ZORA AppBar over the Surface layout primitive.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveSelectionLeading src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the selection action shown at the leading edge."
+            >
+              <h3>resolveSelectionLeading</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:84:1</code>
+              </p>
+              <p>Resolves the selection action shown at the leading edge.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveOverflowButton src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the optional overflow action."
+            >
+              <h3>resolveOverflowButton</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:104:1</code>
+              </p>
+              <p>Resolves the optional overflow action.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveTrailing src/features/app-bar/adapters/inbound/AppBar.tsx Composes trailing actions and overflow controls."
+            >
+              <h3>resolveTrailing</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:125:1</code>
+              </p>
+              <p>Composes trailing actions and overflow controls.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resolveCenter src/features/app-bar/adapters/inbound/AppBar.tsx Resolves the center content for default and selection modes."
+            >
+              <h3>resolveCenter</h3>
+              <p class="muted">
+                <code>src/features/app-bar/adapters/inbound/AppBar.tsx:139:1</code>
+              </p>
+              <p>Resolves the center content for default and selection modes.</p>
             </article>
           </section>
         </section>
@@ -75831,13 +75901,13 @@ sequenceDiagram
             <h2>src/theme/ZoraThemeScope.tsx</h2>
             <article
               class="item"
-              data-search="ZoraThemeScope src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface ThemeProvider."
+              data-search="ZoraThemeScope src/theme/ZoraThemeScope.tsx Applies nested ZORA theme overrides without installing another Surface theme runtime."
             >
               <h3>ZoraThemeScope</h3>
               <p class="muted"><code>src/theme/ZoraThemeScope.tsx:15:1</code></p>
               <p>
-                Applies nested ZORA theme overrides without installing another Surface
-                ThemeProvider.
+                Applies nested ZORA theme overrides without installing another Surface theme
+                runtime.
               </p>
             </article>
             <article

@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v13.0.0",
+      "value": "v14.0.0",
       "color": "cb3837"
     },
     {
@@ -64,10 +64,17 @@
   "readmeUsageDescription": null,
   "readmeUsage": [
     {
-      "title": "ZORA app root with optional runtime capabilities.",
-      "description": "ZORA app root with optional runtime capabilities.\n\nUse `ZoraProvider` once at the application root. Enable `toast` when descendants use\n`useToast()`. Enable `bottomSheet` for native BottomSheet-backed interactions such as native\nDatePicker and TimePicker; web pickers use Popover instead. Omit capabilities the app does not use.",
+      "title": "ZORA app root with optional runtime capabilities and adaptive UI.",
+      "description": "ZORA app root with optional runtime capabilities and adaptive UI.\n\nEnable only the runtime capabilities the app uses. `toast` installs the host consumed by\n`useToast()`. `bottomSheet` installs the native BottomSheet host; DatePicker and TimePicker use\nthat host on native and automatically use Popover on web.",
       "language": "tsx",
-      "code": "import {\n  AppBar,\n  AppShell,\n  Screen,\n  ScreenSection,\n  Text,\n  ZoraProvider,\n  type ZoraTheme,\n} from '@ankhorage/zora';\nimport { GestureHandlerRootView } from 'react-native-gesture-handler';\n\nconst basicTheme: ZoraTheme = {\n  id: 'basic-app',\n  name: 'Basic app',\n  appCategory: 'developer_tools',\n  primaryColor: '#0b6e99',\n  harmony: 'analogous',\n};\n\nexport default function BasicApp() {\n  return (\n    <GestureHandlerRootView style={{ flex: 1 }}>\n      <ZoraProvider\n        bottomSheet\n        initialMode=\"light\"\n        theme={basicTheme}\n        toast={{ defaultDuration: 4000 }}\n      >\n        <AppShell header={<AppBar title=\"Dashboard\" subtitle=\"Welcome to ZORA\" />}>\n          <Screen>\n            <ScreenSection>\n              <Text variant=\"lead\">Build your app content inside the shell.</Text>\n            </ScreenSection>\n          </Screen>\n        </AppShell>\n      </ZoraProvider>\n    </GestureHandlerRootView>\n  );\n}",
+      "code": "import {\n  AppBar,\n  AppShell,\n  BottomSheet,\n  Button,\n  DatePicker,\n  Screen,\n  ScreenSection,\n  Stack,\n  Text,\n  TimePicker,\n  useToast,\n  ZoraProvider,\n  type ZoraTheme,\n} from '@ankhorage/zora';\nimport React from 'react';\nimport { GestureHandlerRootView } from 'react-native-gesture-handler';\n\nconst basicTheme: ZoraTheme = {\n  id: 'basic-app',\n  name: 'Basic app',\n  appCategory: 'developer_tools',\n  primaryColor: '#0b6e99',\n  harmony: 'analogous',\n};\n\nexport default function BasicApp() {\n  return (\n    <GestureHandlerRootView style={{ flex: 1 }}>\n      <ZoraProvider\n        bottomSheet\n        initialMode=\"light\"\n        theme={basicTheme}\n        toast={{ defaultDuration: 4000 }}\n      >\n        <AppShell header={<AppBar title=\"Dashboard\" subtitle=\"Welcome to ZORA\" />}>\n          <Screen>\n            <ScreenSection>\n              <UsageContent />\n            </ScreenSection>\n          </Screen>\n        </AppShell>\n      </ZoraProvider>\n    </GestureHandlerRootView>\n  );\n}\n\n/*** Demonstrates toast feedback and adaptive picker presentation. */\nfunction UsageContent() {\n  const { showToast } = useToast();\n  const [date, setDate] = React.useState<string | null>(null);\n  const [time, setTime] = React.useState<string | null>(null);\n\n  return (\n    <Stack gap=\"m\">\n      <Text variant=\"lead\">Runtime capabilities are opt-in at the app root.</Text>\n      <Button\n        onPress={() =>\n          showToast({\n            description: 'ToastProvider is installed by ZoraProvider.',\n            status: 'success',\n            title: 'Saved',\n          })\n        }\n      >\n        Show toast\n      </Button>\n      <DatePicker label=\"Date\" onValueChange={setDate} value={date} />\n      <TimePicker label=\"Time\" onValueChange={setTime} value={time} />\n    </Stack>\n  );\n}\n\n/***\n * Direct native BottomSheet usage.\n *\n * Render this inside `<ZoraProvider bottomSheet>` on native. Web pickers do not need this host;\n * their platform adapters use Popover instead.\n *\n * @usage\n * @readme\n */\nexport function NativeBottomSheetExample() {\n  const [open, setOpen] = React.useState(false);\n\n  return (\n    <Stack gap=\"m\">\n      <Button onPress={() => setOpen(true)}>Open native bottom sheet</Button>\n      <BottomSheet onDismiss={() => setOpen(false)} open={open}>\n        <Stack gap=\"s\" p=\"m\">\n          <Text variant=\"label\">Bottom sheet content</Text>\n          <Button onPress={() => setOpen(false)} variant=\"ghost\">\n            Close\n          </Button>\n        </Stack>\n      </BottomSheet>\n    </Stack>\n  );\n}",
+      "sourcePath": "examples/basic-app/App.tsx"
+    },
+    {
+      "title": "Direct native BottomSheet usage.",
+      "description": "Direct native BottomSheet usage.\n\nRender this inside `<ZoraProvider bottomSheet>` on native. Web pickers do not need this host;\ntheir platform adapters use Popover instead.",
+      "language": "tsx",
+      "code": "import {\n  AppBar,\n  AppShell,\n  BottomSheet,\n  Button,\n  DatePicker,\n  Screen,\n  ScreenSection,\n  Stack,\n  Text,\n  TimePicker,\n  useToast,\n  ZoraProvider,\n  type ZoraTheme,\n} from '@ankhorage/zora';\nimport React from 'react';\nimport { GestureHandlerRootView } from 'react-native-gesture-handler';\n\nconst basicTheme: ZoraTheme = {\n  id: 'basic-app',\n  name: 'Basic app',\n  appCategory: 'developer_tools',\n  primaryColor: '#0b6e99',\n  harmony: 'analogous',\n};\n\n/***\n * ZORA app root with optional runtime capabilities and adaptive UI.\n *\n * Enable only the runtime capabilities the app uses. `toast` installs the host consumed by\n * `useToast()`. `bottomSheet` installs the native BottomSheet host; DatePicker and TimePicker use\n * that host on native and automatically use Popover on web.\n *\n * @usage\n * @readme\n */\nexport default function BasicApp() {\n  return (\n    <GestureHandlerRootView style={{ flex: 1 }}>\n      <ZoraProvider\n        bottomSheet\n        initialMode=\"light\"\n        theme={basicTheme}\n        toast={{ defaultDuration: 4000 }}\n      >\n        <AppShell header={<AppBar title=\"Dashboard\" subtitle=\"Welcome to ZORA\" />}>\n          <Screen>\n            <ScreenSection>\n              <UsageContent />\n            </ScreenSection>\n          </Screen>\n        </AppShell>\n      </ZoraProvider>\n    </GestureHandlerRootView>\n  );\n}\n\n/*** Demonstrates toast feedback and adaptive picker presentation. */\nfunction UsageContent() {\n  const { showToast } = useToast();\n  const [date, setDate] = React.useState<string | null>(null);\n  const [time, setTime] = React.useState<string | null>(null);\n\n  return (\n    <Stack gap=\"m\">\n      <Text variant=\"lead\">Runtime capabilities are opt-in at the app root.</Text>\n      <Button\n        onPress={() =>\n          showToast({\n            description: 'ToastProvider is installed by ZoraProvider.',\n            status: 'success',\n            title: 'Saved',\n          })\n        }\n      >\n        Show toast\n      </Button>\n      <DatePicker label=\"Date\" onValueChange={setDate} value={date} />\n      <TimePicker label=\"Time\" onValueChange={setTime} value={time} />\n    </Stack>\n  );\n}\n\nexport function NativeBottomSheetExample() {\n  const [open, setOpen] = React.useState(false);\n\n  return (\n    <Stack gap=\"m\">\n      <Button onPress={() => setOpen(true)}>Open native bottom sheet</Button>\n      <BottomSheet onDismiss={() => setOpen(false)} open={open}>\n        <Stack gap=\"s\" p=\"m\">\n          <Text variant=\"label\">Bottom sheet content</Text>\n          <Button onPress={() => setOpen(false)} variant=\"ghost\">\n            Close\n          </Button>\n        </Stack>\n      </BottomSheet>\n    </Stack>\n  );\n}",
       "sourcePath": "examples/basic-app/App.tsx"
     }
   ],
@@ -76,38 +83,6 @@
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
-    {
-      "path": "src/components/app-bar/AppBar.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/app-bar/types.ts",
-        "src/features/button/public.ts",
-        "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
-        "src/foundation/index.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["AppBar"]
-    },
-    {
-      "path": "src/components/app-bar/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["AppBar", "AppBarMode", "AppBarOverflowAction", "AppBarProps"]
-    },
-    {
-      "path": "src/components/app-bar/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["appBarMeta"]
-    },
-    {
-      "path": "src/components/app-bar/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["AppBarMode", "AppBarOverflowAction", "AppBarProps"]
-    },
     {
       "path": "src/components/breadcrumbs/Breadcrumbs.tsx",
       "isEntrypoint": false,
@@ -521,6 +496,32 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": ["ActivityIndicator", "ActivityIndicatorProps"]
+    },
+    {
+      "path": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/button/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/typography/public.ts",
+        "src/foundation/index.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/app-bar.ts"
+      ],
+      "exports": ["AppBar"]
+    },
+    {
+      "path": "src/features/app-bar/appBarMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["appBarMeta"]
+    },
+    {
+      "path": "src/features/app-bar/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["AppBar", "AppBarMode", "AppBarOverflowAction", "AppBarProps"]
     },
     {
       "path": "src/features/auth/adapters/inbound/AuthForm.tsx",
@@ -2956,7 +2957,7 @@
       "path": "src/layout/settings-layout/SettingsLayout.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/app-bar/index.ts",
+        "src/features/app-bar/public.ts",
         "src/layout/screen/index.ts",
         "src/layout/settings-layout/types.ts",
         "src/layout/sidebar-layout/index.ts",
@@ -3055,7 +3056,6 @@
       "path": "src/metadata/componentMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/app-bar/meta.ts",
         "src/components/breadcrumbs/meta.ts",
         "src/components/menu/meta.ts",
         "src/components/modal/meta.ts",
@@ -3068,6 +3068,7 @@
         "src/features/accordion/accordionItemMeta.ts",
         "src/features/accordion/accordionMeta.ts",
         "src/features/activity-indicator/activityIndicatorMeta.ts",
+        "src/features/app-bar/appBarMeta.ts",
         "src/features/auth/forgotPasswordFormMeta.ts",
         "src/features/auth/oauthProviderButtonMeta.ts",
         "src/features/auth/oauthProviderListMeta.ts",
@@ -3627,7 +3628,7 @@
       "path": "src/patterns/reader/ReaderSurface.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/app-bar/index.ts",
+        "src/features/app-bar/public.ts",
         "src/features/button/public.ts",
         "src/features/layout/public.ts",
         "src/features/progress/public.ts",
@@ -4058,7 +4059,6 @@
       "path": "src/registry.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/app-bar/index.ts",
         "src/components/breadcrumbs/index.ts",
         "src/components/menu/index.ts",
         "src/components/modal/index.ts",
@@ -4070,6 +4070,7 @@
         "src/components/toolbar/index.ts",
         "src/features/accordion/public.ts",
         "src/features/activity-indicator/public.ts",
+        "src/features/app-bar/public.ts",
         "src/features/auth/public.ts",
         "src/features/avatar/public.ts",
         "src/features/badge/public.ts",
@@ -4352,6 +4353,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/theme/ZoraBaseProps.ts"],
       "exports": ["ActivityIndicatorProps"]
+    },
+    {
+      "path": "src/types/app-bar.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["AppBarMode", "AppBarOverflowAction", "AppBarProps"]
     },
     {
       "path": "src/types/auth.ts",
@@ -5572,10 +5579,10 @@
       "isReadme": false,
       "examples": [],
       "kind": "value",
-      "modulePath": "src/components/app-bar/AppBar.tsx",
+      "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
       "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 140,
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 37,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -5590,9 +5597,9 @@
       "isReadme": false,
       "examples": [],
       "kind": "unknown",
-      "modulePath": "src/components/app-bar/types.ts",
+      "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
-        "filePath": "src/components/app-bar/types.ts",
+        "filePath": "src/types/app-bar.ts",
         "line": 6,
         "column": 1
       },
@@ -5608,9 +5615,9 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/app-bar/types.ts",
+      "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
-        "filePath": "src/components/app-bar/types.ts",
+        "filePath": "src/types/app-bar.ts",
         "line": 19,
         "column": 1
       },
@@ -5655,9 +5662,9 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/app-bar/types.ts",
+      "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
-        "filePath": "src/components/app-bar/types.ts",
+        "filePath": "src/types/app-bar.ts",
         "line": 26,
         "column": 1
       },
@@ -21833,7 +21840,7 @@
       "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
       "sourceLocation": {
         "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-        "line": 35,
+        "line": 33,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -28566,7 +28573,7 @@
     },
     {
       "name": "ZoraThemeScope",
-      "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
+      "description": "Applies nested ZORA theme overrides without installing another Surface theme runtime.",
       "isReadme": false,
       "examples": [],
       "kind": "function",
@@ -30617,10 +30624,10 @@
       "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
       "isReadme": false,
       "examples": [],
-      "modulePath": "src/components/app-bar/AppBar.tsx",
+      "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
       "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 140,
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 37,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -40668,7 +40675,7 @@
       "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
       "sourceLocation": {
         "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-        "line": 35,
+        "line": 33,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -44378,7 +44385,7 @@
     },
     {
       "name": "ZoraThemeScope",
-      "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
+      "description": "Applies nested ZORA theme overrides without installing another Surface theme runtime.",
       "isReadme": false,
       "examples": [],
       "modulePath": "src/theme/ZoraThemeScope.tsx",
@@ -44411,51 +44418,6 @@
     }
   ],
   "sourceFunctions": [
-    {
-      "name": "resolveMode",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 16,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveSelectionLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 20,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveOverflowLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 28,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveCancelLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 32,
-        "column": 1
-      }
-    },
-    {
-      "name": "AppBarInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/app-bar/AppBar.tsx",
-        "line": 36,
-        "column": 1
-      }
-    },
     {
       "name": "normalizeMaxItems",
       "description": null,
@@ -44750,6 +44712,87 @@
       "sourceLocation": {
         "filePath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx",
         "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveMode",
+      "description": "Resolves the effective AppBar mode.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveSelectionLabel",
+      "description": "Formats the active selection label with its optional count.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveOverflowLabel",
+      "description": "Resolves the accessible label for the overflow action.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 27,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveCancelLabel",
+      "description": "Resolves the accessible label for leaving selection mode.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "AppBarInner",
+      "description": "Composes the opinionated ZORA AppBar over the Surface layout primitive.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 40,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveSelectionLeading",
+      "description": "Resolves the selection action shown at the leading edge.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 84,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveOverflowButton",
+      "description": "Resolves the optional overflow action.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 104,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveTrailing",
+      "description": "Composes trailing actions and overflow controls.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 125,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveCenter",
+      "description": "Resolves the center content for default and selection modes.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 139,
         "column": 1
       }
     },
@@ -48274,7 +48317,7 @@
     },
     {
       "name": "ZoraThemeScope",
-      "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
+      "description": "Applies nested ZORA theme overrides without installing another Surface theme runtime.",
       "sourceLocation": {
         "filePath": "src/theme/ZoraThemeScope.tsx",
         "line": 15,
@@ -48524,7 +48567,7 @@
       "name": "ZoraThemeScope",
       "sourcePath": "src/theme/ZoraThemeScope.tsx",
       "symbolName": "ZoraThemeScope",
-      "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
+      "description": "Applies nested ZORA theme overrides without installing another Surface theme runtime.",
       "isReadme": false
     }
   ],
@@ -48564,11 +48607,6 @@
         "fromPath": "src/corePluginMetadata.ts",
         "toPath": "src/pluginComposition.ts",
         "sourcePath": "src/corePluginMetadata.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/components/app-bar/index.ts",
-        "sourcePath": "src/index.ts"
       },
       {
         "fromPath": "src/index.ts",
@@ -48633,6 +48671,11 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/features/activity-indicator/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/app-bar/public.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -48947,11 +48990,6 @@
       },
       {
         "fromPath": "src/registry.ts",
-        "toPath": "src/components/app-bar/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
         "toPath": "src/components/breadcrumbs/index.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -49003,6 +49041,11 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/features/activity-indicator/public.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/features/app-bar/public.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -49367,11 +49410,6 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/app-bar/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/breadcrumbs/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -49428,6 +49466,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/activity-indicator/activityIndicatorMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/app-bar/appBarMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -50141,6 +50184,11 @@
         "sourcePath": "src/types/activity-indicator.ts"
       },
       {
+        "fromPath": "src/types/app-bar.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
         "fromPath": "src/types/auth.ts",
         "toPath": "src/features/button/public.ts",
         "sourcePath": "src/types/auth.ts"
@@ -50499,61 +50547,6 @@
         "fromPath": "src/utils/finalizeFeatureMetadata.ts",
         "toPath": "src/utils/createManifestBindings.ts",
         "sourcePath": "src/utils/finalizeFeatureMetadata.ts"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/features/button/public.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/features/typography/public.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/foundation/index.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/AppBar.tsx",
-        "toPath": "src/components/app-bar/types.ts",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromPath": "src/components/app-bar/index.ts",
-        "toPath": "src/components/app-bar/AppBar.tsx",
-        "sourcePath": "src/components/app-bar/index.ts"
-      },
-      {
-        "fromPath": "src/components/app-bar/index.ts",
-        "toPath": "src/components/app-bar/types.ts",
-        "sourcePath": "src/components/app-bar/index.ts"
-      },
-      {
-        "fromPath": "src/components/app-bar/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/app-bar/meta.ts"
-      },
-      {
-        "fromPath": "src/components/app-bar/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/app-bar/types.ts"
       },
       {
         "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
@@ -51074,6 +51067,21 @@
         "fromPath": "src/features/activity-indicator/public.ts",
         "toPath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx",
         "sourcePath": "src/features/activity-indicator/public.ts"
+      },
+      {
+        "fromPath": "src/features/app-bar/appBarMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/app-bar/appBarMeta.ts"
+      },
+      {
+        "fromPath": "src/features/app-bar/public.ts",
+        "toPath": "src/types/app-bar.ts",
+        "sourcePath": "src/features/app-bar/public.ts"
+      },
+      {
+        "fromPath": "src/features/app-bar/public.ts",
+        "toPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "sourcePath": "src/features/app-bar/public.ts"
       },
       {
         "fromPath": "src/features/auth/forgotPasswordFormMeta.ts",
@@ -52127,7 +52135,7 @@
       },
       {
         "fromPath": "src/layout/settings-layout/SettingsLayout.tsx",
-        "toPath": "src/components/app-bar/index.ts",
+        "toPath": "src/features/app-bar/public.ts",
         "sourcePath": "src/layout/settings-layout/SettingsLayout.tsx"
       },
       {
@@ -52822,7 +52830,7 @@
       },
       {
         "fromPath": "src/patterns/reader/ReaderSurface.tsx",
-        "toPath": "src/components/app-bar/index.ts",
+        "toPath": "src/features/app-bar/public.ts",
         "sourcePath": "src/patterns/reader/ReaderSurface.tsx"
       },
       {
@@ -53849,6 +53857,41 @@
         "fromPath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx",
         "toPath": "src/types/activity-indicator.ts",
         "sourcePath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/types/app-bar.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
       },
       {
         "fromPath": "src/features/auth/adapters/inbound/AuthForm.tsx",
@@ -55974,48 +56017,6 @@
         "sourcePath": "src/utils/finalizeFeatureMetadata.ts"
       },
       {
-        "fromSymbol": "AppBarInner",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "AppBarInner",
-        "toSymbol": "resolveMode",
-        "callExpression": "resolveMode",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "AppBarInner",
-        "toSymbol": "resolveCancelLabel",
-        "callExpression": "resolveCancelLabel",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "AppBarInner",
-        "toSymbol": "resolveOverflowLabel",
-        "callExpression": "resolveOverflowLabel",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "AppBarInner",
-        "toSymbol": "__function",
-        "callExpression": "(() => {\n    if (children !== undefined) {\n      return children;\n    }\n\n    if (isSelectionMode) {\n      return (\n        <Text numberOfLines={1} emphasis=\"default\" variant=\"label\" weight=\"semiBold\">\n          {resolveSelectionLabel(resolvedMode)}\n        </Text>\n      );\n    }\n\n    if (title == null && subtitle == null) {\n      return null;\n    }\n\n    return (\n      <Stack gap=\"xs\">\n        {title != null ? (\n          <Heading ellipsizeMode=\"tail\" level={3} numberOfLines={1} size=\"h5\">\n            {title}\n          </Heading>\n        ) : null}\n        {subtitle != null ? (\n          <Text ellipsizeMode=\"tail\" numberOfLines={1} emphasis=\"muted\" variant=\"bodySmall\">\n            {subtitle}\n          </Text>\n        ) : null}\n      </Stack>\n    );\n  })",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "src/components/app-bar/AppBar.tsx",
-        "toSymbol": "resolveSelectionLabel",
-        "callExpression": "resolveSelectionLabel",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
-        "fromSymbol": "src/components/app-bar/AppBar.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/app-bar/AppBar.tsx"
-      },
-      {
         "fromSymbol": "BreadcrumbLabel",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -57598,6 +57599,66 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"
+      },
+      {
+        "fromSymbol": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "resolveMode",
+        "callExpression": "resolveMode",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "resolveSelectionLeading",
+        "callExpression": "resolveSelectionLeading",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "resolveOverflowButton",
+        "callExpression": "resolveOverflowButton",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "resolveTrailing",
+        "callExpression": "resolveTrailing",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "AppBarInner",
+        "toSymbol": "resolveCenter",
+        "callExpression": "resolveCenter",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "resolveSelectionLeading",
+        "toSymbol": "resolveCancelLabel",
+        "callExpression": "resolveCancelLabel",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "resolveOverflowButton",
+        "toSymbol": "resolveOverflowLabel",
+        "callExpression": "resolveOverflowLabel",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromSymbol": "resolveCenter",
+        "toSymbol": "resolveSelectionLabel",
+        "callExpression": "resolveSelectionLabel",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
       },
       {
         "fromSymbol": "AuthForm",
@@ -59402,41 +59463,6 @@
     ],
     "typeReferences": [
       {
-        "fromSymbol": "AppBarOverflowAction",
-        "toType": "IconSource",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "AppBarMode",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "AppBarOverflowAction",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "React",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
-        "fromSymbol": "AppBarProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/app-bar/types.ts"
-      },
-      {
         "fromSymbol": "BreadcrumbItem",
         "toType": "IconSource",
         "sourcePath": "src/components/breadcrumbs/types.ts"
@@ -59815,6 +59841,41 @@
         "fromSymbol": "ActivityIndicatorProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/activity-indicator.ts"
+      },
+      {
+        "fromSymbol": "AppBarOverflowAction",
+        "toType": "IconSource",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "AppBarMode",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "AppBarOverflowAction",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "React",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/app-bar.ts"
       },
       {
         "fromSymbol": "AuthFormBaseProps",

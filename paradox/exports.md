@@ -165,22 +165,22 @@ Source: `src/types/activity-indicator.ts:5:1`
 ## AppBar
 
 Kind: `value`
-Module: `src/components/app-bar/AppBar.tsx`
-Source: `src/components/app-bar/AppBar.tsx:140:14`
+Module: `src/features/app-bar/adapters/inbound/AppBar.tsx`
+Source: `src/features/app-bar/adapters/inbound/AppBar.tsx:37:14`
 
 Renders a top app bar with title/subtitle and optional leading/trailing actions.
 
 ## AppBarMode
 
 Kind: `unknown`
-Module: `src/components/app-bar/types.ts`
-Source: `src/components/app-bar/types.ts:6:1`
+Module: `src/types/app-bar.ts`
+Source: `src/types/app-bar.ts:6:1`
 
 ## AppBarOverflowAction
 
 Kind: `type`
-Module: `src/components/app-bar/types.ts`
-Source: `src/components/app-bar/types.ts:19:1`
+Module: `src/types/app-bar.ts`
+Source: `src/types/app-bar.ts:19:1`
 
 ### Members
 
@@ -194,8 +194,8 @@ Source: `src/components/app-bar/types.ts:19:1`
 ## AppBarProps
 
 Kind: `type`
-Module: `src/components/app-bar/types.ts`
-Source: `src/components/app-bar/types.ts:26:1`
+Module: `src/types/app-bar.ts`
+Source: `src/types/app-bar.ts:26:1`
 
 ### Members
 
@@ -4206,7 +4206,7 @@ Source: `src/components/select/types.ts:9:1`
 
 Kind: `value`
 Module: `src/layout/settings-layout/SettingsLayout.tsx`
-Source: `src/layout/settings-layout/SettingsLayout.tsx:35:14`
+Source: `src/layout/settings-layout/SettingsLayout.tsx:33:14`
 
 Settings page layout with app bar, sidebar, and scrollable content area.
 
@@ -6185,7 +6185,7 @@ Kind: `function`
 Module: `src/theme/ZoraThemeScope.tsx`
 Source: `src/theme/ZoraThemeScope.tsx:15:1`
 
-Applies nested ZORA theme overrides without installing another Surface ThemeProvider.
+Applies nested ZORA theme overrides without installing another Surface theme runtime.
 
 ### Signatures
 
