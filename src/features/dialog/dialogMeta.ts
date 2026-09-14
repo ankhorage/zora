@@ -14,6 +14,13 @@ export const dialogMeta = {
   events: {
     dismiss: { label: 'Dismiss', eventType: 'dialog.dismiss', payloadFields: [] },
   },
+  slots: {
+    children: { label: 'Content', allowedChildren: [...CONTAINER_ALLOWED_CHILDREN] },
+    footer: {
+      label: 'Footer',
+      allowedChildren: ['Button', 'ButtonGroup', 'Stack', 'Toolbar'],
+    },
+  },
   props: {
     visible: { type: 'boolean', category: 'State', label: 'Visible', default: false },
     title: { type: 'string', category: 'Content', label: 'Title' },
