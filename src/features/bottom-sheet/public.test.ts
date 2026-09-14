@@ -10,8 +10,17 @@ describe('ZORA BottomSheet public contract', () => {
     const source = await Bun.file('src/features/bottom-sheet/public.ts').text();
 
     expect(packageJson.exports['./bottom-sheet']).toBeDefined();
-    expect(packageJson.dependencies['@ankhorage/surface']).toMatch(/^\^4\./u);
+    expect(packageJson.dependencies['@ankhorage/surface']).toMatch(/^\^5\./u);
     expect(source).toContain("from '@ankhorage/surface/bottom-sheet'");
+    for (const name of [
+      'BottomSheetFlatList',
+      'BottomSheetScrollView',
+      'BottomSheetSectionList',
+      'BottomSheetView',
+      'BottomSheetVirtualizedList',
+    ]) {
+      expect(source).toContain(name);
+    }
     const {
       'react-native-gesture-handler': gestureHandlerPeer,
       'react-native-reanimated': reanimatedPeer,
