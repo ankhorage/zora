@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Card } from '../../../card/public';
 import { Stack } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
