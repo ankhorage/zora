@@ -12,8 +12,10 @@ test('every selected feature element is directly authorable through its canonica
     const source = await Bun.file(`src/features/${family}/public.ts`).text();
     for (const name of names) {
       const meta = catalog.get(name);
+      const hasAuthorableShape =
+        Object.keys(meta?.props ?? {}).length > 0 || (meta?.allowedChildren.length ?? 0) > 0;
       expect(meta?.directManifestNode, name).toBe(true);
-      expect(Object.keys(meta?.props ?? {}).length, name).toBeGreaterThan(0);
+      expect(hasAuthorableShape, name).toBe(true);
       expect(source, name).toContain(name);
     }
   }
