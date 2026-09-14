@@ -1,15 +1,18 @@
-export type { ModalProps } from './components/modal';
-export { Modal } from './components/modal';
-export type { PaginationProps } from './components/pagination';
-export { Pagination } from './components/pagination';
-export type { RatingProps } from './components/rating';
-export { Rating } from './components/rating';
-export type { SearchBarProps } from './components/search-bar';
-export { SearchBar } from './components/search-bar';
-export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
-export { Tabs } from './components/tabs';
-export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
-export { Toolbar, ToolbarAction } from './components/toolbar';
+export { Dialog, type DialogProps } from './features/dialog/public';
+export { Pagination, type PaginationProps } from './features/pagination/public';
+export { Rating, type RatingProps } from './features/rating/public';
+export { SearchInput, type SearchInputProps } from './features/form/search-input/public';
+export {
+  Tab,
+  TabList,
+  type TabListProps,
+  TabPanel,
+  type TabPanelProps,
+  type TabProps,
+  Tabs,
+  type TabsProps,
+} from './features/tabs/public';
+export { Toolbar, type ToolbarProps } from './features/toolbar/public';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
