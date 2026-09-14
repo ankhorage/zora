@@ -11,6 +11,24 @@ export const dialogMeta = {
     label: 'Dialog',
     defaultProps: { closeOnBackdrop: true, visible: false, width: 'default' },
   },
+  bindings: {
+    props: {
+      visible: {
+        label: 'Visible',
+        description: 'Whether the dialog is currently visible.',
+        value: { type: 'boolean' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+    events: {
+      dismiss: {
+        label: 'Dismiss',
+        description: 'Runs when the dialog requests dismissal.',
+        payload: { eventType: 'dialog.dismiss', fields: [] },
+      },
+    },
+  },
   events: {
     dismiss: { label: 'Dismiss', eventType: 'dialog.dismiss', payloadFields: [] },
   },
