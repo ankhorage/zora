@@ -1,25 +1,25 @@
 import {
   Badge,
+  Box,
   Button,
   Card,
+  ChipGroup,
   EmptyState,
+  IconButton,
   Notice,
   Panel,
   Screen,
   ScreenSection,
   Stack,
-  Tabs,
   Text,
   TextInput,
   ThemeComposer,
   Toolbar,
-  ToolbarAction,
   type ZoraTheme,
   type ZoraThemeMode,
   ZoraThemeScope,
 } from '@ankhorage/zora';
 import React from 'react';
-import { View } from 'react-native';
 
 interface ThemeComposerPageProps {
   theme: ZoraTheme;
@@ -81,13 +81,19 @@ const recipeThemes: readonly { label: string; theme: ZoraTheme }[] = [
   },
 ];
 
+const PREVIEW_OPTIONS = [
+  { value: 'overview', label: 'Overview' },
+  { value: 'inputs', label: 'Inputs' },
+  { value: 'states', label: 'States' },
+] as const;
+
 export function ThemeComposerPage({
   theme,
   mode,
   onThemeChange,
   onModeChange,
 }: ThemeComposerPageProps) {
-  const [previewTab, setPreviewTab] = React.useState('overview');
+  const [previewMode, setPreviewMode] = React.useState('overview');
 
   return (
     <Screen>
@@ -129,23 +135,23 @@ export function ThemeComposerPage({
             description="Panel, toolbar, cards, badges, form controls, and navigation should remain legible across the target recipe combinations."
           >
             <Stack gap="m">
-              <Toolbar position="inline">
-                <ToolbarAction active icon={{ name: 'color-palette-outline' }} label="Design" />
-                <ToolbarAction icon={{ name: 'sparkles-outline' }} label="Generate" />
-                <ToolbarAction icon={{ name: 'eye-outline' }} label="Preview" />
-                <View style={{ flex: 1 }} />
-                <ToolbarAction icon={{ name: 'save-outline' }} label="Save" />
+              <Toolbar>
+                <IconButton
+                  color="primary"
+                  icon={{ name: 'color-palette-outline' }}
+                  label="Design"
+                  variant="soft"
+                />
+                <IconButton icon={{ name: 'sparkles-outline' }} label="Generate" />
+                <IconButton icon={{ name: 'eye-outline' }} label="Preview" />
+                <Box flex={1} />
+                <IconButton icon={{ name: 'save-outline' }} label="Save" />
               </Toolbar>
 
-              <Tabs
-                value={previewTab}
-                onValueChange={setPreviewTab}
-                variant="segmented"
-                items={[
-                  { value: 'overview', label: 'Overview' },
-                  { value: 'inputs', label: 'Inputs' },
-                  { value: 'states', label: 'States' },
-                ]}
+              <ChipGroup
+                value={previewMode}
+                onValueChange={setPreviewMode}
+                items={PREVIEW_OPTIONS}
               />
 
               <Card
