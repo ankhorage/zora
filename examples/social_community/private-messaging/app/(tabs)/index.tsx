@@ -5,7 +5,7 @@ import {
   ChatListItem,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
   Text,
 } from '@ankhorage/zora';
 
@@ -48,7 +48,7 @@ export default function ChatsScreen() {
           title="Search"
           description="Search is a first-class ZORA component, not local input glue."
         >
-          <SearchBar
+          <SearchInput
             onValueChange={() => {
               /* no-op */
             }}
