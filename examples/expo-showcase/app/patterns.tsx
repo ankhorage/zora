@@ -1,4 +1,6 @@
 import {
+  Accordion,
+  AccordionItem,
   AppBar,
   Avatar,
   Badge,
@@ -6,7 +8,6 @@ import {
   Card,
   ChipGroup,
   CollectionEditor,
-  DisclosureSection,
   EmptyState,
   FilterBar,
   ForgotPasswordForm,
@@ -353,7 +354,7 @@ export function PatternsPage() {
               title: 'Build pipeline',
               description: 'Main branch build succeeded.',
               meta: 'Today',
-              leading: <Avatar initials="CI" size="s" color="primary" />,
+              leading: <Avatar initials="CI" size="s" />,
               action: <IconButton icon={{ name: 'download-outline' }} label="Download artifacts" />,
             },
             {
@@ -447,7 +448,7 @@ export function PatternsPage() {
       <ScreenSection title="Scenario: App settings">
         <Notice
           title="Settings saved locally"
-          description="This scenario combines form fields, switches, inspector-style controls, and disclosure sections."
+          description="This scenario combines form fields, switches, inspector-style controls, and accordion sections."
           color="primary"
         />
 
@@ -485,17 +486,20 @@ export function PatternsPage() {
           <TextInput value="Ocean" />
         </InspectorField>
 
-        <DisclosureSection
-          title="Advanced diagnostics"
-          description="Developer-oriented settings for debugging rendering and logs."
-        >
-          <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
-          <SwitchField
-            label="Verbose logging"
-            value={verboseLogging}
-            onValueChange={setVerboseLogging}
-          />
-        </DisclosureSection>
+        <Accordion type="single" defaultValue="advanced" collapsible>
+          <AccordionItem
+            value="advanced"
+            title="Advanced diagnostics"
+            description="Developer-oriented settings for debugging rendering and logs."
+          >
+            <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
+            <SwitchField
+              label="Verbose logging"
+              value={verboseLogging}
+              onValueChange={setVerboseLogging}
+            />
+          </AccordionItem>
+        </Accordion>
       </ScreenSection>
 
       <ScreenSection title="Scenario: Auth forms">
