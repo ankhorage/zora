@@ -1,5 +1,4 @@
 import { TabPanel as SurfaceTabPanel } from '@ankhorage/surface';
-import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabPanelProps } from '../../../../types/tabs';
