@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v14.0.0",
+      "value": "v14.0.1",
       "color": "cb3837"
     },
     {
@@ -83,83 +83,6 @@
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
-    {
-      "path": "src/components/breadcrumbs/Breadcrumbs.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/breadcrumbs/types.ts",
-        "src/features/button/public.ts",
-        "src/features/icon/public.ts",
-        "src/features/typography/public.ts",
-        "src/foundation/index.ts",
-        "src/internal/recipes.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["Breadcrumbs"]
-    },
-    {
-      "path": "src/components/breadcrumbs/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["BreadcrumbItem", "Breadcrumbs", "BreadcrumbsProps"]
-    },
-    {
-      "path": "src/components/breadcrumbs/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["breadcrumbsMeta"]
-    },
-    {
-      "path": "src/components/breadcrumbs/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["BreadcrumbItem", "BreadcrumbsProps"]
-    },
-    {
-      "path": "src/components/menu/DropdownMenu.tsx",
-      "isEntrypoint": false,
-      "dependencies": ["src/components/menu/Menu.tsx", "src/components/menu/types.ts"],
-      "exports": ["DropdownMenu"]
-    },
-    {
-      "path": "src/components/menu/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": [
-        "DropdownMenu",
-        "DropdownMenuProps",
-        "Menu",
-        "MenuAction",
-        "MenuActionIntent",
-        "MenuProps"
-      ]
-    },
-    {
-      "path": "src/components/menu/Menu.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/menu/types.ts",
-        "src/features/icon/public.ts",
-        "src/features/layout/public.ts",
-        "src/internal/recipes.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["Menu"]
-    },
-    {
-      "path": "src/components/menu/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["dropdownMenuMeta", "menuMeta"]
-    },
-    {
-      "path": "src/components/menu/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["DropdownMenuProps", "MenuAction", "MenuActionIntent", "MenuProps"]
-    },
     {
       "path": "src/components/modal/index.ts",
       "isEntrypoint": false,
@@ -285,35 +208,6 @@
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["SearchBarProps"]
-    },
-    {
-      "path": "src/components/select/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["Select", "SelectOption", "SelectProps"]
-    },
-    {
-      "path": "src/components/select/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["selectMeta"]
-    },
-    {
-      "path": "src/components/select/Select.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/components/select/types.ts",
-        "src/features/layout/public.ts",
-        "src/theme/useZoraTheme.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["Select"]
-    },
-    {
-      "path": "src/components/select/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["SelectOption", "SelectProps"]
     },
     {
       "path": "src/components/tabs/index.ts",
@@ -503,6 +397,7 @@
       "dependencies": [
         "src/features/button/public.ts",
         "src/features/layout/public.ts",
+        "src/features/popover-menu/public.ts",
         "src/features/typography/public.ts",
         "src/foundation/index.ts",
         "src/theme/useZoraTheme.ts",
@@ -521,7 +416,7 @@
       "path": "src/features/app-bar/public.ts",
       "isEntrypoint": false,
       "dependencies": [],
-      "exports": ["AppBar", "AppBarMode", "AppBarOverflowAction", "AppBarProps"]
+      "exports": ["AppBar", "AppBarMode", "AppBarOverflowMenu", "AppBarProps"]
     },
     {
       "path": "src/features/auth/adapters/inbound/AuthForm.tsx",
@@ -818,11 +713,44 @@
       "dependencies": [],
       "exports": [
         "BottomSheet",
+        "BottomSheetContentMode",
         "BottomSheetController",
+        "BottomSheetFlatList",
         "BottomSheetPresentOptions",
         "BottomSheetProps",
+        "BottomSheetScrollView",
+        "BottomSheetSectionList",
+        "BottomSheetView",
+        "BottomSheetVirtualizedList",
         "useBottomSheet"
       ]
+    },
+    {
+      "path": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/button/public.ts",
+        "src/features/icon/public.ts",
+        "src/features/typography/public.ts",
+        "src/foundation/index.ts",
+        "src/internal/recipes.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/breadcrumbs.ts"
+      ],
+      "exports": ["Breadcrumbs"]
+    },
+    {
+      "path": "src/features/breadcrumbs/breadcrumbsMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["breadcrumbsMeta"]
+    },
+    {
+      "path": "src/features/breadcrumbs/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["BreadcrumbItem", "BreadcrumbPressEvent", "Breadcrumbs", "BreadcrumbsProps"]
     },
     {
       "path": "src/features/button/adapters/inbound/Button.tsx",
@@ -1100,12 +1028,12 @@
       "path": "src/features/data-table/adapters/inbound/DataTable.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/menu/index.ts",
         "src/features/button/public.ts",
         "src/features/card/public.ts",
         "src/features/data-table/utils/resolveDataTableRowKey.ts",
         "src/features/empty-state/public.ts",
         "src/features/layout/public.ts",
+        "src/features/popover-menu/public.ts",
         "src/features/skeleton/public.ts",
         "src/features/typography/public.ts",
         "src/foundation/index.ts",
@@ -1450,6 +1378,77 @@
       "isEntrypoint": false,
       "dependencies": ["src/types/radio.ts"],
       "exports": ["resolveRadioOptionColors"]
+    },
+    {
+      "path": "src/features/form/select/adapters/inbound/Select.native.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/bottom-sheet/public.ts",
+        "src/features/form/select/composition/SelectField.tsx",
+        "src/features/form/select/composition/SelectOptionRow.tsx",
+        "src/features/form/select/composition/SelectTrigger.tsx",
+        "src/features/form/select/composition/useSelectController.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/select.ts"
+      ],
+      "exports": ["Select"]
+    },
+    {
+      "path": "src/features/form/select/adapters/inbound/Select.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["Select"]
+    },
+    {
+      "path": "src/features/form/select/adapters/inbound/Select.web.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/form/select/composition/SelectField.tsx",
+        "src/features/form/select/composition/SelectOptionRow.tsx",
+        "src/features/form/select/composition/SelectTrigger.tsx",
+        "src/features/form/select/composition/useSelectController.ts",
+        "src/features/layout/public.ts",
+        "src/features/surface/public.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/select.ts"
+      ],
+      "exports": ["Select"]
+    },
+    {
+      "path": "src/features/form/select/composition/SelectField.tsx",
+      "isEntrypoint": false,
+      "dependencies": ["src/types/select.ts"],
+      "exports": ["SelectField"]
+    },
+    {
+      "path": "src/features/form/select/composition/SelectOptionRow.tsx",
+      "isEntrypoint": false,
+      "dependencies": ["src/features/button/public.ts", "src/types/select.ts"],
+      "exports": ["SelectOptionRow"]
+    },
+    {
+      "path": "src/features/form/select/composition/SelectTrigger.tsx",
+      "isEntrypoint": false,
+      "dependencies": ["src/features/button/public.ts", "src/types/select.ts"],
+      "exports": ["SelectTrigger"]
+    },
+    {
+      "path": "src/features/form/select/composition/useSelectController.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/types/select.ts"],
+      "exports": ["useSelectController"]
+    },
+    {
+      "path": "src/features/form/select/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["Select", "SelectOption", "SelectProps"]
+    },
+    {
+      "path": "src/features/form/select/selectMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["selectMeta"]
     },
     {
       "path": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
@@ -1882,6 +1881,31 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": ["MissingElement", "MissingElementProps"]
+    },
+    {
+      "path": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/icon/public.ts",
+        "src/features/layout/public.ts",
+        "src/internal/recipes.ts",
+        "src/theme/useZoraTheme.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/popover-menu.ts"
+      ],
+      "exports": ["PopoverMenu"]
+    },
+    {
+      "path": "src/features/popover-menu/popoverMenuMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["popoverMenuMeta"]
+    },
+    {
+      "path": "src/features/popover-menu/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["PopoverMenu", "PopoverMenuAction", "PopoverMenuActionIntent", "PopoverMenuProps"]
     },
     {
       "path": "src/features/progress/adapters/inbound/Progress.tsx",
@@ -2394,7 +2418,7 @@
         "ActivityIndicatorProps",
         "AppBar",
         "AppBarMode",
-        "AppBarOverflowAction",
+        "AppBarOverflowMenu",
         "AppBarProps",
         "AppShell",
         "AppShellProps",
@@ -2417,6 +2441,7 @@
         "Box",
         "BoxProps",
         "BreadcrumbItem",
+        "BreadcrumbPressEvent",
         "Breadcrumbs",
         "BreadcrumbsProps",
         "Button",
@@ -2481,8 +2506,6 @@
         "DEFAULT_OAUTH_PROVIDER_ICONS",
         "Divider",
         "DividerProps",
-        "DropdownMenu",
-        "DropdownMenuProps",
         "EmptyState",
         "EmptyStateAction",
         "EmptyStateProps",
@@ -2561,10 +2584,6 @@
         "MediaCard",
         "MediaCardImageProps",
         "MediaCardProps",
-        "Menu",
-        "MenuAction",
-        "MenuActionIntent",
-        "MenuProps",
         "MessageBubble",
         "MessageBubbleAuthor",
         "MessageBubbleAvatar",
@@ -2595,6 +2614,10 @@
         "PaletteItemProps",
         "Panel",
         "PanelProps",
+        "PopoverMenu",
+        "PopoverMenuAction",
+        "PopoverMenuActionIntent",
+        "PopoverMenuProps",
         "PostAction",
         "PostAuthor",
         "PostAuthorAvatar",
@@ -3056,13 +3079,10 @@
       "path": "src/metadata/componentMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/breadcrumbs/meta.ts",
-        "src/components/menu/meta.ts",
         "src/components/modal/meta.ts",
         "src/components/pagination/meta.ts",
         "src/components/rating/meta.ts",
         "src/components/search-bar/meta.ts",
-        "src/components/select/meta.ts",
         "src/components/tabs/meta.ts",
         "src/components/toolbar/meta.ts",
         "src/features/accordion/accordionItemMeta.ts",
@@ -3079,6 +3099,7 @@
         "src/features/avatar/avatarMeta.ts",
         "src/features/badge/badgeMeta.ts",
         "src/features/bottom-sheet/bottomSheetMeta.ts",
+        "src/features/breadcrumbs/breadcrumbsMeta.ts",
         "src/features/button/buttonGroupMeta.ts",
         "src/features/button/buttonMeta.ts",
         "src/features/button/iconButtonMeta.ts",
@@ -3098,6 +3119,7 @@
         "src/features/form/formFieldMeta.ts",
         "src/features/form/formMeta.ts",
         "src/features/form/radio/radioMeta.ts",
+        "src/features/form/select/selectMeta.ts",
         "src/features/form/text-input/textInputMeta.ts",
         "src/features/gradient/gradientMeta.ts",
         "src/features/hero/heroMeta.ts",
@@ -3113,6 +3135,7 @@
         "src/features/list/flatListMeta.ts",
         "src/features/list/sectionListMeta.ts",
         "src/features/missing-element/missingElementMeta.ts",
+        "src/features/popover-menu/popoverMenuMeta.ts",
         "src/features/progress/progressMeta.ts",
         "src/features/skeleton/skeletonMeta.ts",
         "src/features/surface/surfaceMeta.ts",
@@ -3902,11 +3925,11 @@
       "path": "src/patterns/theme-composer/ThemeComposer.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/select/index.ts",
         "src/components/tabs/index.ts",
         "src/features/badge/public.ts",
         "src/features/button/public.ts",
         "src/features/card/public.ts",
+        "src/features/form/select/public.ts",
         "src/features/form/text-input/public.ts",
         "src/features/layout/public.ts",
         "src/features/typography/public.ts",
@@ -4059,13 +4082,10 @@
       "path": "src/registry.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/components/breadcrumbs/index.ts",
-        "src/components/menu/index.ts",
         "src/components/modal/index.ts",
         "src/components/pagination/index.ts",
         "src/components/rating/index.ts",
         "src/components/search-bar/index.ts",
-        "src/components/select/index.ts",
         "src/components/tabs/index.ts",
         "src/components/toolbar/index.ts",
         "src/features/accordion/public.ts",
@@ -4075,6 +4095,7 @@
         "src/features/avatar/public.ts",
         "src/features/badge/public.ts",
         "src/features/bottom-sheet/public.ts",
+        "src/features/breadcrumbs/public.ts",
         "src/features/button/public.ts",
         "src/features/card/public.ts",
         "src/features/chip/public.ts",
@@ -4084,6 +4105,7 @@
         "src/features/form/checkbox/public.ts",
         "src/features/form/public.ts",
         "src/features/form/radio/public.ts",
+        "src/features/form/select/public.ts",
         "src/features/form/text-input/public.ts",
         "src/features/gradient/public.ts",
         "src/features/hero/public.ts",
@@ -4093,6 +4115,7 @@
         "src/features/layout/public.ts",
         "src/features/list/public.ts",
         "src/features/missing-element/public.ts",
+        "src/features/popover-menu/public.ts",
         "src/features/progress/public.ts",
         "src/features/skeleton/public.ts",
         "src/features/surface/public.ts",
@@ -4357,8 +4380,8 @@
     {
       "path": "src/types/app-bar.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["AppBarMode", "AppBarOverflowAction", "AppBarProps"]
+      "dependencies": ["src/theme/ZoraBaseProps.ts", "src/types/popover-menu.ts"],
+      "exports": ["AppBarMode", "AppBarOverflowMenu", "AppBarProps"]
     },
     {
       "path": "src/types/auth.ts",
@@ -4408,6 +4431,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["BadgeProps"]
+    },
+    {
+      "path": "src/types/breadcrumbs.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["BreadcrumbItem", "BreadcrumbPressEvent", "BreadcrumbsProps"]
     },
     {
       "path": "src/types/button-group.ts",
@@ -4462,7 +4491,7 @@
     {
       "path": "src/types/data-table.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/components/menu/index.ts", "src/theme/ZoraBaseProps.ts"],
+      "dependencies": ["src/theme/ZoraBaseProps.ts", "src/types/popover-menu.ts"],
       "exports": [
         "DataTableCellContext",
         "DataTableColumn",
@@ -4603,6 +4632,12 @@
       "exports": ["MissingElementProps"]
     },
     {
+      "path": "src/types/popover-menu.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["PopoverMenuAction", "PopoverMenuActionIntent", "PopoverMenuProps"]
+    },
+    {
       "path": "src/types/post-card.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -4642,6 +4677,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/features/icon/public.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["RadioGroupOption", "RadioGroupProps", "RadioProps"]
+    },
+    {
+      "path": "src/types/select.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": ["SelectOption", "SelectProps"]
     },
     {
       "path": "src/types/skeleton.ts",
@@ -5582,7 +5623,7 @@
       "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 37,
+        "line": 17,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -5600,7 +5641,7 @@
       "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
         "filePath": "src/types/app-bar.ts",
-        "line": 6,
+        "line": 7,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -5610,7 +5651,7 @@
       "structuredRows": []
     },
     {
-      "name": "AppBarOverflowAction",
+      "name": "AppBarOverflowMenu",
       "description": null,
       "isReadme": false,
       "examples": [],
@@ -5618,13 +5659,27 @@
       "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
         "filePath": "src/types/app-bar.ts",
-        "line": 19,
+        "line": 20,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
+      "relatedSymbols": ["PopoverMenuAction"],
       "signatures": [],
       "members": [
+        {
+          "name": "actions",
+          "kind": "property",
+          "type": "readonly PopoverMenuAction[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "closeOnSelect",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
         {
           "name": "disabled",
           "kind": "property",
@@ -5647,10 +5702,10 @@
           "description": null
         },
         {
-          "name": "onPress",
+          "name": "onDismiss",
           "kind": "property",
-          "type": "() => void",
-          "required": true,
+          "type": "(() => void) | undefined",
+          "required": false,
           "description": null
         }
       ],
@@ -5665,11 +5720,11 @@
       "modulePath": "src/types/app-bar.ts",
       "sourceLocation": {
         "filePath": "src/types/app-bar.ts",
-        "line": 26,
+        "line": 29,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["AppBarMode", "AppBarOverflowAction", "ZoraThemeMode"],
+      "relatedSymbols": ["AppBarMode", "AppBarOverflowMenu", "ZoraThemeMode"],
       "signatures": [],
       "members": [
         {
@@ -5724,7 +5779,7 @@
         {
           "name": "overflow",
           "kind": "property",
-          "type": "AppBarOverflowAction | undefined",
+          "type": "AppBarOverflowMenu | undefined",
           "required": false,
           "description": null
         },
@@ -6013,7 +6068,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -6163,7 +6218,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -6327,7 +6382,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -7093,10 +7148,10 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/breadcrumbs/types.ts",
+      "modulePath": "src/types/breadcrumbs.ts",
       "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/types.ts",
-        "line": 6,
+        "filePath": "src/types/breadcrumbs.ts",
+        "line": 5,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -7127,15 +7182,34 @@
         {
           "name": "label",
           "kind": "property",
-          "type": "React.ReactNode",
+          "type": "string",
           "required": true,
           "description": null
-        },
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "BreadcrumbPressEvent",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/breadcrumbs.ts",
+      "sourceLocation": {
+        "filePath": "src/types/breadcrumbs.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
         {
-          "name": "onPress",
+          "name": "id",
           "kind": "property",
-          "type": "(() => void) | undefined",
-          "required": false,
+          "type": "string",
+          "required": true,
           "description": null
         }
       ],
@@ -7143,14 +7217,14 @@
     },
     {
       "name": "Breadcrumbs",
-      "description": "Renders a breadcrumb trail for hierarchical navigation.",
+      "description": "Renders a breadcrumb trail whose final item represents the current location.",
       "isReadme": false,
       "examples": [],
       "kind": "value",
-      "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+      "modulePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
       "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 147,
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 17,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -7165,14 +7239,14 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/breadcrumbs/types.ts",
+      "modulePath": "src/types/breadcrumbs.ts",
       "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/types.ts",
-        "line": 14,
+        "filePath": "src/types/breadcrumbs.ts",
+        "line": 16,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["BreadcrumbItem", "ZoraThemeMode"],
+      "relatedSymbols": ["BreadcrumbItem", "BreadcrumbPressEvent", "ZoraThemeMode"],
       "signatures": [],
       "members": [
         {
@@ -7218,9 +7292,16 @@
           "description": null
         },
         {
+          "name": "onItemPress",
+          "kind": "property",
+          "type": "((event: BreadcrumbPressEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "separator",
           "kind": "property",
-          "type": "React.ReactNode",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -7483,7 +7564,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -8778,7 +8859,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -9099,7 +9180,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -9279,7 +9360,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -9721,7 +9802,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -10262,7 +10343,7 @@
         {
           "name": "confirmColor",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -11400,7 +11481,7 @@
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["MenuActionIntent"],
+      "relatedSymbols": ["PopoverMenuActionIntent"],
       "signatures": [],
       "members": [
         {
@@ -11434,7 +11515,7 @@
         {
           "name": "intent",
           "kind": "property",
-          "type": "import(\"@ankhorage/surface\").MenuActionIntent | undefined",
+          "type": "import(\"@ankhorage/surface\").PopoverMenuActionIntent | undefined",
           "required": false,
           "description": null
         },
@@ -12058,56 +12139,6 @@
       "structuredRows": []
     },
     {
-      "name": "DropdownMenu",
-      "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "function",
-      "modulePath": "src/components/menu/DropdownMenu.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/menu/DropdownMenu.tsx",
-        "line": 9,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["MenuProps"],
-      "signatures": [
-        {
-          "label": "(props: import(\"./types\").MenuProps) => React.JSX.Element",
-          "parameters": [
-            {
-              "name": "props",
-              "type": "import(\"./types\").MenuProps",
-              "required": true,
-              "description": null
-            }
-          ],
-          "returnType": "React.JSX.Element",
-          "returnDescription": null
-        }
-      ],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "DropdownMenuProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/components/menu/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/menu/types.ts",
-        "line": 31,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
       "name": "EmptyState",
       "description": "Reusable fallback state for empty lists, missing data, or first-run experiences.\n\n`EmptyState` combines concise copy with optional primary and secondary actions\nso apps can guide users without custom card and button wiring.",
       "isReadme": false,
@@ -12150,7 +12181,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -14151,7 +14182,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "Responsive<\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\"> | undefined",
+          "type": "Responsive<\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\"> | undefined",
           "required": false,
           "description": null
         },
@@ -14343,7 +14374,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -14611,7 +14642,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -16814,206 +16845,6 @@
       "structuredRows": []
     },
     {
-      "name": "Menu",
-      "description": "Presents a list of actions as a menu with optional icons and intent styling.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/components/menu/Menu.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 59,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "MenuAction",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/menu/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/menu/types.ts",
-        "line": 12,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [
-        {
-          "name": "description",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "disabled",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "icon",
-          "kind": "property",
-          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "id",
-          "kind": "property",
-          "type": "string",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "intent",
-          "kind": "property",
-          "type": "SurfaceMenuActionIntent | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "leading",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onPress",
-          "kind": "property",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "selected",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "trailing",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
-      "name": "MenuActionIntent",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "unknown",
-      "modulePath": "src/components/menu/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/menu/types.ts",
-        "line": 10,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "MenuProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/components/menu/types.ts",
-      "sourceLocation": {
-        "filePath": "src/components/menu/types.ts",
-        "line": 25,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["MenuAction", "ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "actions",
-          "kind": "property",
-          "type": "readonly MenuAction[]",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "closeOnSelect",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onDismiss",
-          "kind": "property",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "trigger",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
       "name": "MessageBubble",
       "description": "Message bubble pattern for chat UIs with direction and status styling.",
       "isReadme": false,
@@ -17083,7 +16914,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -17378,7 +17209,7 @@
         {
           "name": "deltaColor",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -17727,7 +17558,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -17813,7 +17644,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -18038,7 +17869,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -18696,6 +18527,206 @@
       "structuredRows": []
     },
     {
+      "name": "PopoverMenu",
+      "description": "Presents a ZORA-styled action list through the Surface PopoverMenu capability.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 15,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "PopoverMenuAction",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/popover-menu.ts",
+      "sourceLocation": {
+        "filePath": "src/types/popover-menu.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "kind": "property",
+          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "intent",
+          "kind": "property",
+          "type": "SurfacePopoverMenuActionIntent | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "leading",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "selected",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "trailing",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "PopoverMenuActionIntent",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/popover-menu.ts",
+      "sourceLocation": {
+        "filePath": "src/types/popover-menu.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "PopoverMenuProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/popover-menu.ts",
+      "sourceLocation": {
+        "filePath": "src/types/popover-menu.ts",
+        "line": 25,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["PopoverMenuAction", "ZoraThemeMode"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "actions",
+          "kind": "property",
+          "type": "readonly PopoverMenuAction[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "closeOnSelect",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDismiss",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "trigger",
+          "kind": "property",
+          "type": "(controls: PopoverAnchorRenderProps) => React.ReactNode",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "PostAction",
       "description": null,
       "isReadme": false,
@@ -18822,7 +18853,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -19245,7 +19276,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -19366,7 +19397,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -19422,7 +19453,7 @@
         {
           "name": "trackColor",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -19552,7 +19583,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -19760,7 +19791,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -20105,7 +20136,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -21403,14 +21434,14 @@
     },
     {
       "name": "Select",
-      "description": "Select control for choosing a value from a list of options.",
+      "description": "Renders Select with anchored Popover presentation on web.",
       "isReadme": false,
       "examples": [],
       "kind": "value",
-      "modulePath": "src/components/select/Select.tsx",
+      "modulePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
       "sourceLocation": {
-        "filePath": "src/components/select/Select.tsx",
-        "line": 67,
+        "filePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "line": 14,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -21715,9 +21746,9 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/select/types.ts",
+      "modulePath": "src/types/select.ts",
       "sourceLocation": {
-        "filePath": "src/components/select/types.ts",
+        "filePath": "src/types/select.ts",
         "line": 3,
         "column": 1
       },
@@ -21755,9 +21786,9 @@
       "isReadme": false,
       "examples": [],
       "kind": "type",
-      "modulePath": "src/components/select/types.ts",
+      "modulePath": "src/types/select.ts",
       "sourceLocation": {
-        "filePath": "src/components/select/types.ts",
+        "filePath": "src/types/select.ts",
         "line": 9,
         "column": 1
       },
@@ -21766,9 +21797,30 @@
       "signatures": [],
       "members": [
         {
+          "name": "defaultValue",
+          "kind": "property",
+          "type": "TValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "disabled",
           "kind": "property",
           "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "errorText",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "helperText",
+          "kind": "property",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -21787,6 +21839,13 @@
           "description": null
         },
         {
+          "name": "label",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "mode",
           "kind": "property",
           "type": "ZoraThemeMode | undefined",
@@ -21796,8 +21855,8 @@
         {
           "name": "onValueChange",
           "kind": "property",
-          "type": "(value: TValue) => void",
-          "required": true,
+          "type": "((value: TValue) => void) | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -21805,6 +21864,27 @@
           "kind": "property",
           "type": "readonly SelectOption<TValue>[]",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "placeholder",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "readOnly",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "required",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -21824,8 +21904,8 @@
         {
           "name": "value",
           "kind": "property",
-          "type": "TValue",
-          "required": true,
+          "type": "TValue | undefined",
+          "required": false,
           "description": null
         }
       ],
@@ -24335,7 +24415,7 @@
         {
           "name": "color",
           "kind": "property",
-          "type": "Responsive<\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\"> | undefined",
+          "type": "Responsive<\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\"> | undefined",
           "required": false,
           "description": null
         },
@@ -24784,7 +24864,7 @@
         {
           "name": "status",
           "kind": "property",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -26761,7 +26841,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 227,
+        "line": 226,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -26952,7 +27032,7 @@
       "modulePath": "src/metadata/bindableComponentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/bindableComponentMeta.ts",
-        "line": 514,
+        "line": 513,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -30627,7 +30707,7 @@
       "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 37,
+        "line": 17,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -30676,7 +30756,7 @@
         },
         {
           "name": "overflow",
-          "type": "AppBarOverflowAction | undefined",
+          "type": "AppBarOverflowMenu | undefined",
           "required": false,
           "description": null
         },
@@ -30796,7 +30876,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -30958,7 +31038,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -31533,13 +31613,13 @@
     },
     {
       "name": "Breadcrumbs",
-      "description": "Renders a breadcrumb trail for hierarchical navigation.",
+      "description": "Renders a breadcrumb trail whose final item represents the current location.",
       "isReadme": false,
       "examples": [],
-      "modulePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
+      "modulePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
       "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 147,
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 17,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -31581,8 +31661,14 @@
           "description": null
         },
         {
+          "name": "onItemPress",
+          "type": "((event: BreadcrumbPressEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "separator",
-          "type": "React.ReactNode",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -31675,7 +31761,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -32965,7 +33051,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -33244,7 +33330,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -33349,7 +33435,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -33424,7 +33510,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -33634,7 +33720,7 @@
         },
         {
           "name": "confirmColor",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -34652,69 +34738,6 @@
         {
           "name": "zIndex",
           "type": "Responsive<number> | undefined",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
-      "name": "DropdownMenu",
-      "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/components/menu/DropdownMenu.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/menu/DropdownMenu.tsx",
-        "line": 9,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "actions",
-          "type": "readonly MenuAction[]",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "closeOnSelect",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onDismiss",
-          "type": "() => void | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "ZoraThemeId | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "trigger",
-          "type": "React.ReactNode | undefined",
           "required": false,
           "description": null
         }
@@ -35884,7 +35907,7 @@
         },
         {
           "name": "color",
-          "type": "Responsive<\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\"> | undefined",
+          "type": "Responsive<\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\"> | undefined",
           "required": false,
           "description": null
         },
@@ -36181,7 +36204,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -37724,69 +37747,6 @@
       ]
     },
     {
-      "name": "Menu",
-      "description": "Presents a list of actions as a menu with optional icons and intent styling.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/components/menu/Menu.tsx",
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 59,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "actions",
-          "type": "readonly MenuAction[]",
-          "required": true,
-          "description": null
-        },
-        {
-          "name": "closeOnSelect",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onDismiss",
-          "type": "(() => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "trigger",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
-        }
-      ]
-    },
-    {
       "name": "MessageBubble",
       "description": "Message bubble pattern for chat UIs with direction and status styling.",
       "isReadme": false,
@@ -37948,7 +37908,7 @@
         },
         {
           "name": "deltaColor",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -38197,7 +38157,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -38254,7 +38214,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -38353,7 +38313,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -38828,6 +38788,69 @@
       ]
     },
     {
+      "name": "PopoverMenu",
+      "description": "Presents a ZORA-styled action list through the Surface PopoverMenu capability.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 15,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "actions",
+          "type": "readonly PopoverMenuAction[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDismiss",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "trigger",
+          "type": "(controls: PopoverAnchorRenderProps) => React.ReactNode",
+          "required": true,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "PostCard",
       "description": "Social-style post card pattern with author, content, media, and actions.",
       "isReadme": false,
@@ -39082,7 +39105,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -39169,7 +39192,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -39217,7 +39240,7 @@
         },
         {
           "name": "trackColor",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -39298,7 +39321,7 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -39577,7 +39600,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -39700,7 +39723,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
           "required": false,
           "description": null
         },
@@ -40497,20 +40520,38 @@
     },
     {
       "name": "Select",
-      "description": "Select control for choosing a value from a list of options.",
+      "description": "Renders Select with anchored Popover presentation on web.",
       "isReadme": false,
       "examples": [],
-      "modulePath": "src/components/select/Select.tsx",
+      "modulePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
       "sourceLocation": {
-        "filePath": "src/components/select/Select.tsx",
-        "line": 67,
+        "filePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "line": 14,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
       "props": [
         {
+          "name": "defaultValue",
+          "type": "TValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "disabled",
           "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "errorText",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
           "required": false,
           "description": null
         },
@@ -40527,6 +40568,12 @@
           "description": null
         },
         {
+          "name": "label",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "mode",
           "type": "ZoraThemeMode | undefined",
           "required": false,
@@ -40534,14 +40581,32 @@
         },
         {
           "name": "onValueChange",
-          "type": "(value: TValue) => void",
-          "required": true,
+          "type": "((value: TValue) => void) | undefined",
+          "required": false,
           "description": null
         },
         {
           "name": "options",
           "type": "readonly SelectOption<TValue>[]",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "required",
+          "type": "boolean | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -40558,8 +40623,8 @@
         },
         {
           "name": "value",
-          "type": "TValue",
-          "required": true,
+          "type": "TValue | undefined",
+          "required": false,
           "description": null
         }
       ]
@@ -42281,7 +42346,7 @@
         },
         {
           "name": "color",
-          "type": "Responsive<\"danger\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\"> | undefined",
+          "type": "Responsive<\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\"> | undefined",
           "required": false,
           "description": null
         },
@@ -42788,7 +42853,7 @@
         },
         {
           "name": "keyboardAppearance",
-          "type": "\"light\" | \"dark\" | \"default\" | undefined",
+          "type": "\"default\" | \"light\" | \"dark\" | undefined",
           "required": false,
           "description": null
         },
@@ -44419,96 +44484,6 @@
   ],
   "sourceFunctions": [
     {
-      "name": "normalizeMaxItems",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 21,
-        "column": 1
-      }
-    },
-    {
-      "name": "createRenderItems",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 29,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderSeparator",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 52,
-        "column": 1
-      }
-    },
-    {
-      "name": "BreadcrumbLabel",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 60,
-        "column": 1
-      }
-    },
-    {
-      "name": "BreadcrumbsInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "line": 79,
-        "column": 1
-      }
-    },
-    {
-      "name": "DropdownMenu",
-      "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
-      "sourceLocation": {
-        "filePath": "src/components/menu/DropdownMenu.tsx",
-        "line": 9,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderActionLeading",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 11,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderActionTrailing",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 23,
-        "column": 1
-      }
-    },
-    {
-      "name": "toSurfaceAction",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 31,
-        "column": 1
-      }
-    },
-    {
-      "name": "MenuInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/menu/Menu.tsx",
-        "line": 45,
-        "column": 1
-      }
-    },
-    {
       "name": "useStableCallback",
       "description": null,
       "sourceLocation": {
@@ -44617,15 +44592,6 @@
       }
     },
     {
-      "name": "SelectInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/components/select/Select.tsx",
-        "line": 10,
-        "column": 1
-      }
-    },
-    {
       "name": "TabsInner",
       "description": null,
       "sourceLocation": {
@@ -44716,11 +44682,20 @@
       }
     },
     {
+      "name": "AppBarInner",
+      "description": "Composes the opinionated ZORA AppBar over the Surface layout primitive.",
+      "sourceLocation": {
+        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveMode",
       "description": "Resolves the effective AppBar mode.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 16,
+        "line": 64,
         "column": 1
       }
     },
@@ -44729,16 +44704,16 @@
       "description": "Formats the active selection label with its optional count.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 21,
+        "line": 69,
         "column": 1
       }
     },
     {
       "name": "resolveOverflowLabel",
-      "description": "Resolves the accessible label for the overflow action.",
+      "description": "Resolves the accessible label for the overflow menu trigger.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 27,
+        "line": 75,
         "column": 1
       }
     },
@@ -44747,16 +44722,7 @@
       "description": "Resolves the accessible label for leaving selection mode.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 32,
-        "column": 1
-      }
-    },
-    {
-      "name": "AppBarInner",
-      "description": "Composes the opinionated ZORA AppBar over the Surface layout primitive.",
-      "sourceLocation": {
-        "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 40,
+        "line": 80,
         "column": 1
       }
     },
@@ -44765,16 +44731,16 @@
       "description": "Resolves the selection action shown at the leading edge.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 84,
+        "line": 85,
         "column": 1
       }
     },
     {
-      "name": "resolveOverflowButton",
-      "description": "Resolves the optional overflow action.",
+      "name": "resolveOverflowMenu",
+      "description": "Resolves the optional AppBar overflow action menu.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 104,
+        "line": 105,
         "column": 1
       }
     },
@@ -44783,7 +44749,7 @@
       "description": "Composes trailing actions and overflow controls.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 125,
+        "line": 136,
         "column": 1
       }
     },
@@ -44792,7 +44758,7 @@
       "description": "Resolves the center content for default and selection modes.",
       "sourceLocation": {
         "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-        "line": 139,
+        "line": 147,
         "column": 1
       }
     },
@@ -45117,6 +45083,60 @@
       "sourceLocation": {
         "filePath": "src/features/bottom-sheet/adapters/inbound/BottomSheet.tsx",
         "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "BreadcrumbsInner",
+      "description": "Connects serializable breadcrumb items to the component-level item press event.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 29,
+        "column": 1
+      }
+    },
+    {
+      "name": "BreadcrumbItemView",
+      "description": "Renders one breadcrumb item and its optional following separator.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 82,
+        "column": 1
+      }
+    },
+    {
+      "name": "BreadcrumbLabel",
+      "description": "Renders one non-interactive breadcrumb label.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 126,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderSeparator",
+      "description": "Renders the configured separator with muted breadcrumb styling.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 146,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeMaxItems",
+      "description": "Normalizes an optional maximum breadcrumb item count.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 155,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRenderItems",
+      "description": "Collapses middle breadcrumb items into one ellipsis when required.",
+      "sourceLocation": {
+        "filePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "line": 161,
         "column": 1
       }
     },
@@ -45599,19 +45619,19 @@
     },
     {
       "name": "mapRowActions",
-      "description": null,
+      "description": "Maps row-scoped DataTable actions into the shared PopoverMenu action contract.",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 142,
+        "line": 143,
         "column": 1
       }
     },
     {
       "name": "renderRowActions",
-      "description": null,
+      "description": "Renders the row action trigger and anchored PopoverMenu when actions exist.",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 157,
+        "line": 159,
         "column": 1
       }
     },
@@ -45620,7 +45640,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 193,
+        "line": 197,
         "column": 1
       }
     },
@@ -45629,7 +45649,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 257,
+        "line": 261,
         "column": 1
       }
     },
@@ -45638,7 +45658,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 320,
+        "line": 324,
         "column": 1
       }
     },
@@ -45647,7 +45667,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 371,
+        "line": 375,
         "column": 1
       }
     },
@@ -46075,6 +46095,60 @@
       }
     },
     {
+      "name": "SelectInner",
+      "description": "Connects shared Select state and controls to the native BottomSheet host.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "line": 18,
+        "column": 1
+      }
+    },
+    {
+      "name": "SelectInner",
+      "description": "Connects shared Select state and controls to the web Popover host.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "line": 17,
+        "column": 1
+      }
+    },
+    {
+      "name": "SelectField",
+      "description": "Wraps Select presentation in the canonical Surface form-field semantics.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/composition/SelectField.tsx",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "SelectOptionRow",
+      "description": "Renders one Select option with shared web/native selection semantics.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "SelectTrigger",
+      "description": "Renders the shared Select trigger with the resolved option label or placeholder.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "useSelectController",
+      "description": "Resolves controlled or uncontrolled Select value state and the selected option.",
+      "sourceLocation": {
+        "filePath": "src/features/form/select/composition/useSelectController.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
       "name": "TextInputInner",
       "description": null,
       "sourceLocation": {
@@ -46449,6 +46523,42 @@
       "sourceLocation": {
         "filePath": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
         "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "PopoverMenuInner",
+      "description": "Maps ZORA action presentation into the Surface action-menu boundary.",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 18,
+        "column": 1
+      }
+    },
+    {
+      "name": "toSurfaceAction",
+      "description": "Maps one ZORA PopoverMenu action to the Surface action contract.",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 36,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderActionLeading",
+      "description": "Resolves explicit leading content or the configured action icon.",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 51,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderActionTrailing",
+      "description": "Wraps optional trailing action content in the ZORA layout boundary.",
+      "sourceLocation": {
+        "filePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "line": 58,
         "column": 1
       }
     },
@@ -48396,14 +48506,6 @@
     },
     {
       "kind": "export",
-      "name": "DropdownMenu",
-      "sourcePath": "src/components/menu/DropdownMenu.tsx",
-      "symbolName": "DropdownMenu",
-      "description": "Convenience wrapper for rendering a `Menu` as a dropdown.",
-      "isReadme": false
-    },
-    {
-      "kind": "export",
       "name": "GradientRendererProvider",
       "sourcePath": "src/features/gradient/adapters/inbound/GradientRendererContext.tsx",
       "symbolName": "GradientRendererProvider",
@@ -48610,16 +48712,6 @@
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/components/breadcrumbs/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/components/menu/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
         "toPath": "src/components/modal/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -48636,11 +48728,6 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/components/search-bar/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/components/select/index.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -48700,6 +48787,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/breadcrumbs/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/button/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -48745,6 +48837,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/form/select/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/form/text-input/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -48786,6 +48883,11 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/features/missing-element/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/popover-menu/public.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -48990,16 +49092,6 @@
       },
       {
         "fromPath": "src/registry.ts",
-        "toPath": "src/components/breadcrumbs/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/components/menu/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
         "toPath": "src/components/modal/index.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -49016,11 +49108,6 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/components/search-bar/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/components/select/index.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -49070,6 +49157,11 @@
       },
       {
         "fromPath": "src/registry.ts",
+        "toPath": "src/features/breadcrumbs/public.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
         "toPath": "src/features/button/public.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -49115,6 +49207,11 @@
       },
       {
         "fromPath": "src/registry.ts",
+        "toPath": "src/features/form/select/public.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
         "toPath": "src/features/form/text-input/public.ts",
         "sourcePath": "src/registry.ts"
       },
@@ -49156,6 +49253,11 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/features/missing-element/public.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/features/popover-menu/public.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -49410,16 +49512,6 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/breadcrumbs/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/menu/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/modal/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -49436,11 +49528,6 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/search-bar/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/components/select/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -49521,6 +49608,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/bottom-sheet/bottomSheetMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/breadcrumbs/breadcrumbsMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -49620,6 +49712,11 @@
       },
       {
         "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/form/select/selectMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/form/text-input/textInputMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
@@ -49691,6 +49788,11 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/features/missing-element/missingElementMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/popover-menu/popoverMenuMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -50189,6 +50291,11 @@
         "sourcePath": "src/types/app-bar.ts"
       },
       {
+        "fromPath": "src/types/app-bar.ts",
+        "toPath": "src/types/popover-menu.ts",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
         "fromPath": "src/types/auth.ts",
         "toPath": "src/features/button/public.ts",
         "sourcePath": "src/types/auth.ts"
@@ -50237,6 +50344,11 @@
         "fromPath": "src/types/badge.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/types/badge.ts"
+      },
+      {
+        "fromPath": "src/types/breadcrumbs.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/breadcrumbs.ts"
       },
       {
         "fromPath": "src/types/button-group.ts",
@@ -50300,12 +50412,12 @@
       },
       {
         "fromPath": "src/types/data-table.ts",
-        "toPath": "src/components/menu/index.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/types/data-table.ts"
       },
       {
         "fromPath": "src/types/data-table.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
+        "toPath": "src/types/popover-menu.ts",
         "sourcePath": "src/types/data-table.ts"
       },
       {
@@ -50434,6 +50546,11 @@
         "sourcePath": "src/types/missing-element.ts"
       },
       {
+        "fromPath": "src/types/popover-menu.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
         "fromPath": "src/types/post-card.ts",
         "toPath": "src/features/avatar/public.ts",
         "sourcePath": "src/types/post-card.ts"
@@ -50477,6 +50594,11 @@
         "fromPath": "src/types/radio.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/types/radio.ts"
+      },
+      {
+        "fromPath": "src/types/select.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/select.ts"
       },
       {
         "fromPath": "src/types/skeleton.ts",
@@ -50547,131 +50669,6 @@
         "fromPath": "src/utils/finalizeFeatureMetadata.ts",
         "toPath": "src/utils/createManifestBindings.ts",
         "sourcePath": "src/utils/finalizeFeatureMetadata.ts"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/features/button/public.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/features/icon/public.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/features/typography/public.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/foundation/index.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/internal/recipes.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toPath": "src/components/breadcrumbs/types.ts",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/index.ts",
-        "toPath": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "sourcePath": "src/components/breadcrumbs/index.ts"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/index.ts",
-        "toPath": "src/components/breadcrumbs/types.ts",
-        "sourcePath": "src/components/breadcrumbs/index.ts"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/breadcrumbs/meta.ts"
-      },
-      {
-        "fromPath": "src/components/breadcrumbs/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromPath": "src/components/menu/DropdownMenu.tsx",
-        "toPath": "src/components/menu/Menu.tsx",
-        "sourcePath": "src/components/menu/DropdownMenu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/DropdownMenu.tsx",
-        "toPath": "src/components/menu/types.ts",
-        "sourcePath": "src/components/menu/DropdownMenu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/index.ts",
-        "toPath": "src/components/menu/DropdownMenu.tsx",
-        "sourcePath": "src/components/menu/index.ts"
-      },
-      {
-        "fromPath": "src/components/menu/index.ts",
-        "toPath": "src/components/menu/Menu.tsx",
-        "sourcePath": "src/components/menu/index.ts"
-      },
-      {
-        "fromPath": "src/components/menu/index.ts",
-        "toPath": "src/components/menu/types.ts",
-        "sourcePath": "src/components/menu/index.ts"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/features/icon/public.ts",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/internal/recipes.ts",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/Menu.tsx",
-        "toPath": "src/components/menu/types.ts",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromPath": "src/components/menu/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/menu/meta.ts"
-      },
-      {
-        "fromPath": "src/components/menu/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/menu/types.ts"
       },
       {
         "fromPath": "src/components/modal/index.ts",
@@ -50867,46 +50864,6 @@
         "fromPath": "src/components/search-bar/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/search-bar/types.ts"
-      },
-      {
-        "fromPath": "src/components/select/index.ts",
-        "toPath": "src/components/select/Select.tsx",
-        "sourcePath": "src/components/select/index.ts"
-      },
-      {
-        "fromPath": "src/components/select/index.ts",
-        "toPath": "src/components/select/types.ts",
-        "sourcePath": "src/components/select/index.ts"
-      },
-      {
-        "fromPath": "src/components/select/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/components/select/meta.ts"
-      },
-      {
-        "fromPath": "src/components/select/Select.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromPath": "src/components/select/Select.tsx",
-        "toPath": "src/theme/useZoraTheme.ts",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromPath": "src/components/select/Select.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromPath": "src/components/select/Select.tsx",
-        "toPath": "src/components/select/types.ts",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromPath": "src/components/select/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/components/select/types.ts"
       },
       {
         "fromPath": "src/components/tabs/index.ts",
@@ -51237,6 +51194,21 @@
         "fromPath": "src/features/bottom-sheet/public.ts",
         "toPath": "src/features/bottom-sheet/adapters/inbound/BottomSheet.tsx",
         "sourcePath": "src/features/bottom-sheet/public.ts"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/breadcrumbsMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/breadcrumbs/breadcrumbsMeta.ts"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/public.ts",
+        "toPath": "src/types/breadcrumbs.ts",
+        "sourcePath": "src/features/breadcrumbs/public.ts"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/public.ts",
+        "toPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "sourcePath": "src/features/breadcrumbs/public.ts"
       },
       {
         "fromPath": "src/features/button/buttonGroupMeta.ts",
@@ -51797,6 +51769,21 @@
         "fromPath": "src/features/missing-element/public.ts",
         "toPath": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
         "sourcePath": "src/features/missing-element/public.ts"
+      },
+      {
+        "fromPath": "src/features/popover-menu/popoverMenuMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/popover-menu/popoverMenuMeta.ts"
+      },
+      {
+        "fromPath": "src/features/popover-menu/public.ts",
+        "toPath": "src/types/popover-menu.ts",
+        "sourcePath": "src/features/popover-menu/public.ts"
+      },
+      {
+        "fromPath": "src/features/popover-menu/public.ts",
+        "toPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "sourcePath": "src/features/popover-menu/public.ts"
       },
       {
         "fromPath": "src/features/progress/progressMeta.ts",
@@ -53210,11 +53197,6 @@
       },
       {
         "fromPath": "src/patterns/theme-composer/ThemeComposer.tsx",
-        "toPath": "src/components/select/index.ts",
-        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
-      },
-      {
-        "fromPath": "src/patterns/theme-composer/ThemeComposer.tsx",
         "toPath": "src/components/tabs/index.ts",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
@@ -53231,6 +53213,11 @@
       {
         "fromPath": "src/patterns/theme-composer/ThemeComposer.tsx",
         "toPath": "src/features/card/public.ts",
+        "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
+      },
+      {
+        "fromPath": "src/patterns/theme-composer/ThemeComposer.tsx",
+        "toPath": "src/features/form/select/public.ts",
         "sourcePath": "src/patterns/theme-composer/ThemeComposer.tsx"
       },
       {
@@ -53654,6 +53641,21 @@
         "sourcePath": "src/features/form/radio/themeRecipeMeta.ts"
       },
       {
+        "fromPath": "src/features/form/select/public.ts",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/public.ts"
+      },
+      {
+        "fromPath": "src/features/form/select/public.ts",
+        "toPath": "src/features/form/select/adapters/inbound/Select.tsx",
+        "sourcePath": "src/features/form/select/public.ts"
+      },
+      {
+        "fromPath": "src/features/form/select/selectMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/form/select/selectMeta.ts"
+      },
+      {
         "fromPath": "src/features/form/text-input/public.ts",
         "toPath": "src/types/text-input.ts",
         "sourcePath": "src/features/form/text-input/public.ts"
@@ -53886,6 +53888,11 @@
       {
         "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
         "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
+      },
+      {
+        "fromPath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
+        "toPath": "src/features/popover-menu/public.ts",
         "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
       },
       {
@@ -54214,6 +54221,46 @@
         "sourcePath": "src/features/bottom-sheet/adapters/inbound/BottomSheet.tsx"
       },
       {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/foundation/index.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/internal/recipes.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/types/breadcrumbs.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromPath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
         "fromPath": "src/features/button/adapters/inbound/Button.tsx",
         "toPath": "src/theme/useZoraThemeRecipe.ts",
         "sourcePath": "src/features/button/adapters/inbound/Button.tsx"
@@ -54540,11 +54587,6 @@
       },
       {
         "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "toPath": "src/components/menu/index.ts",
-        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
-      },
-      {
-        "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toPath": "src/foundation/index.ts",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
@@ -54576,6 +54618,11 @@
       {
         "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toPath": "src/features/popover-menu/public.ts",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -54797,6 +54844,36 @@
         "fromPath": "src/features/form/radio/utils/resolveRadioOptionColors.ts",
         "toPath": "src/types/radio.ts",
         "sourcePath": "src/features/form/radio/utils/resolveRadioOptionColors.ts"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectField.tsx",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/composition/SelectField.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/useSelectController.ts",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/composition/useSelectController.ts"
       },
       {
         "fromPath": "src/features/gradient/adapters/inbound/Gradient.tsx",
@@ -55137,6 +55214,36 @@
         "fromPath": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
         "toPath": "src/features/typography/public.ts",
         "sourcePath": "src/features/missing-element/adapters/inbound/MissingElement.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/internal/recipes.ts",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/theme/useZoraTheme.ts",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/types/popover-menu.ts",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromPath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
       },
       {
         "fromPath": "src/features/progress/adapters/inbound/Progress.tsx",
@@ -55649,6 +55756,86 @@
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
       },
       {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/features/bottom-sheet/public.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/features/form/select/composition/SelectField.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toPath": "src/features/form/select/composition/useSelectController.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.tsx",
+        "toPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/types/select.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/surface/public.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/form/select/composition/SelectField.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toPath": "src/features/form/select/composition/useSelectController.ts",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
         "fromPath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
         "toPath": "src/internal/recipes.ts",
         "sourcePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx"
@@ -56017,84 +56204,6 @@
         "sourcePath": "src/utils/finalizeFeatureMetadata.ts"
       },
       {
-        "fromSymbol": "BreadcrumbLabel",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "BreadcrumbLabel",
-        "toSymbol": "resolveIconSize",
-        "callExpression": "resolveIconSize",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "BreadcrumbsInner",
-        "toSymbol": "normalizeMaxItems",
-        "callExpression": "normalizeMaxItems",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "BreadcrumbsInner",
-        "toSymbol": "createRenderItems",
-        "callExpression": "createRenderItems",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toSymbol": "renderSeparator",
-        "callExpression": "renderSeparator",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "src/components/breadcrumbs/Breadcrumbs.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/breadcrumbs/Breadcrumbs.tsx"
-      },
-      {
-        "fromSymbol": "renderActionLeading",
-        "toSymbol": "resolveIconSize",
-        "callExpression": "resolveIconSize",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "toSurfaceAction",
-        "toSymbol": "renderActionLeading",
-        "callExpression": "renderActionLeading",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "toSurfaceAction",
-        "toSymbol": "renderActionTrailing",
-        "callExpression": "renderActionTrailing",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "MenuInner",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "MenuInner",
-        "toSymbol": "useMemo",
-        "callExpression": "useMemo",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "src/components/menu/Menu.tsx",
-        "toSymbol": "toSurfaceAction",
-        "callExpression": "toSurfaceAction",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
-        "fromSymbol": "src/components/menu/Menu.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/menu/Menu.tsx"
-      },
-      {
         "fromSymbol": "useStableCallback",
         "toSymbol": "useRef",
         "callExpression": "useRef",
@@ -56231,24 +56340,6 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/components/search-bar/SearchBar.tsx"
-      },
-      {
-        "fromSymbol": "SelectInner",
-        "toSymbol": "useZoraTheme",
-        "callExpression": "useZoraTheme",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromSymbol": "src/components/select/Select.tsx",
-        "toSymbol": "onValueChange",
-        "callExpression": "onValueChange",
-        "sourcePath": "src/components/select/Select.tsx"
-      },
-      {
-        "fromSymbol": "src/components/select/Select.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/components/select/Select.tsx"
       },
       {
         "fromSymbol": "TabsInner",
@@ -57626,8 +57717,8 @@
       },
       {
         "fromSymbol": "AppBarInner",
-        "toSymbol": "resolveOverflowButton",
-        "callExpression": "resolveOverflowButton",
+        "toSymbol": "resolveOverflowMenu",
+        "callExpression": "resolveOverflowMenu",
         "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
       },
       {
@@ -57649,7 +57740,7 @@
         "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
       },
       {
-        "fromSymbol": "resolveOverflowButton",
+        "fromSymbol": "src/features/app-bar/adapters/inbound/AppBar.tsx",
         "toSymbol": "resolveOverflowLabel",
         "callExpression": "resolveOverflowLabel",
         "sourcePath": "src/features/app-bar/adapters/inbound/AppBar.tsx"
@@ -57983,6 +58074,54 @@
         "toSymbol": "onIndexChange",
         "callExpression": "onIndexChange",
         "sourcePath": "src/features/bottom-sheet/adapters/inbound/BottomSheet.tsx"
+      },
+      {
+        "fromSymbol": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbsInner",
+        "toSymbol": "normalizeMaxItems",
+        "callExpression": "normalizeMaxItems",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbsInner",
+        "toSymbol": "createRenderItems",
+        "callExpression": "createRenderItems",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toSymbol": "renderSeparator",
+        "callExpression": "renderSeparator",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
+        "toSymbol": "onItemPress",
+        "callExpression": "onItemPress",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbItemView",
+        "toSymbol": "renderSeparator",
+        "callExpression": "renderSeparator",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbLabel",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
+      },
+      {
+        "fromSymbol": "BreadcrumbLabel",
+        "toSymbol": "resolveIconSize",
+        "callExpression": "resolveIconSize",
+        "sourcePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx"
       },
       {
         "fromSymbol": "src/features/button/adapters/inbound/Button.tsx",
@@ -58549,6 +58688,24 @@
         "sourcePath": "src/features/form/radio/utils/resolveRadioGroupThemeRecipe.ts"
       },
       {
+        "fromSymbol": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toSymbol": "onSelect",
+        "callExpression": "onSelect",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/composition/useSelectController.ts",
+        "toSymbol": "setLocalValue",
+        "callExpression": "setLocalValue",
+        "sourcePath": "src/features/form/select/composition/useSelectController.ts"
+      },
+      {
+        "fromSymbol": "src/features/form/select/composition/useSelectController.ts",
+        "toSymbol": "onValueChange",
+        "callExpression": "props.onValueChange",
+        "sourcePath": "src/features/form/select/composition/useSelectController.ts"
+      },
+      {
         "fromSymbol": "GradientInner",
         "toSymbol": "useGradientRenderer",
         "callExpression": "useGradientRenderer",
@@ -58853,6 +59010,42 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/features/missing-element/adapters/inbound/MissingElement.tsx"
+      },
+      {
+        "fromSymbol": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromSymbol": "PopoverMenuInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromSymbol": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
+        "toSymbol": "toSurfaceAction",
+        "callExpression": "toSurfaceAction",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromSymbol": "toSurfaceAction",
+        "toSymbol": "renderActionLeading",
+        "callExpression": "renderActionLeading",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromSymbol": "toSurfaceAction",
+        "toSymbol": "renderActionTrailing",
+        "callExpression": "renderActionTrailing",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
+      },
+      {
+        "fromSymbol": "renderActionLeading",
+        "toSymbol": "resolveIconSize",
+        "callExpression": "resolveIconSize",
+        "sourcePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"
       },
       {
         "fromSymbol": "ProgressInner",
@@ -59443,6 +59636,66 @@
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
       },
       {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "SelectInner",
+        "toSymbol": "useBottomSheet",
+        "callExpression": "useBottomSheet",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "SelectInner",
+        "toSymbol": "useSelectController",
+        "callExpression": "useSelectController",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toSymbol": "select",
+        "callExpression": "select",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toSymbol": "dismiss",
+        "callExpression": "dismiss",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.native.tsx",
+        "toSymbol": "present",
+        "callExpression": "present",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.native.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromSymbol": "SelectInner",
+        "toSymbol": "useSelectController",
+        "callExpression": "useSelectController",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toSymbol": "select",
+        "callExpression": "select",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/select/adapters/inbound/Select.web.tsx",
+        "toSymbol": "setOpen",
+        "callExpression": "setOpen",
+        "sourcePath": "src/features/form/select/adapters/inbound/Select.web.tsx"
+      },
+      {
         "fromSymbol": "TextInputInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -59462,101 +59715,6 @@
       }
     ],
     "typeReferences": [
-      {
-        "fromSymbol": "BreadcrumbItem",
-        "toType": "IconSource",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbItem",
-        "toType": "React",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbItem",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbsProps",
-        "toType": "BreadcrumbItem",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbsProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbsProps",
-        "toType": "React",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbsProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "BreadcrumbsProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/breadcrumbs/types.ts"
-      },
-      {
-        "fromSymbol": "MenuAction",
-        "toType": "IconSource",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuAction",
-        "toType": "React",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuAction",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuAction",
-        "toType": "SurfaceMenuActionIntent",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuProps",
-        "toType": "MenuAction",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuProps",
-        "toType": "React",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "MenuProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/menu/types.ts"
-      },
-      {
-        "fromSymbol": "DropdownMenu",
-        "toType": "MenuProps",
-        "sourcePath": "src/components/menu/DropdownMenu.tsx"
-      },
-      {
-        "fromSymbol": "DropdownMenu",
-        "toType": "React",
-        "sourcePath": "src/components/menu/DropdownMenu.tsx"
-      },
       {
         "fromSymbol": "ModalProps",
         "toType": "InteractionPolicy",
@@ -59631,31 +59789,6 @@
         "fromSymbol": "SearchBarProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/components/search-bar/types.ts"
-      },
-      {
-        "fromSymbol": "SelectOption",
-        "toType": "TValue",
-        "sourcePath": "src/components/select/types.ts"
-      },
-      {
-        "fromSymbol": "SelectProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/components/select/types.ts"
-      },
-      {
-        "fromSymbol": "SelectProps",
-        "toType": "SelectOption",
-        "sourcePath": "src/components/select/types.ts"
-      },
-      {
-        "fromSymbol": "SelectProps",
-        "toType": "TValue",
-        "sourcePath": "src/components/select/types.ts"
-      },
-      {
-        "fromSymbol": "SelectProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/components/select/types.ts"
       },
       {
         "fromSymbol": "TabItem",
@@ -59843,8 +59976,13 @@
         "sourcePath": "src/types/activity-indicator.ts"
       },
       {
-        "fromSymbol": "AppBarOverflowAction",
+        "fromSymbol": "AppBarOverflowMenu",
         "toType": "IconSource",
+        "sourcePath": "src/types/app-bar.ts"
+      },
+      {
+        "fromSymbol": "AppBarOverflowMenu",
+        "toType": "PopoverMenuAction",
         "sourcePath": "src/types/app-bar.ts"
       },
       {
@@ -59854,7 +59992,7 @@
       },
       {
         "fromSymbol": "AppBarProps",
-        "toType": "AppBarOverflowAction",
+        "toType": "AppBarOverflowMenu",
         "sourcePath": "src/types/app-bar.ts"
       },
       {
@@ -60221,6 +60359,31 @@
         "fromSymbol": "BottomSheetProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/manifest-bottom-sheet.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbItem",
+        "toType": "IconSource",
+        "sourcePath": "src/types/breadcrumbs.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "BreadcrumbItem",
+        "sourcePath": "src/types/breadcrumbs.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "BreadcrumbPressEvent",
+        "sourcePath": "src/types/breadcrumbs.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/breadcrumbs.ts"
+      },
+      {
+        "fromSymbol": "BreadcrumbsProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/breadcrumbs.ts"
       },
       {
         "fromSymbol": "ButtonProps",
@@ -60689,7 +60852,7 @@
       },
       {
         "fromSymbol": "DataTableRowAction",
-        "toType": "MenuActionIntent",
+        "toType": "PopoverMenuActionIntent",
         "sourcePath": "src/types/data-table.ts"
       },
       {
@@ -61221,6 +61384,31 @@
         "fromSymbol": "RadioProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/radio.ts"
+      },
+      {
+        "fromSymbol": "SelectOption",
+        "toType": "TValue",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
+        "toType": "SelectOption",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
+        "toType": "TValue",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/select.ts"
       },
       {
         "fromSymbol": "TextInputTrailingAction",
@@ -61951,6 +62139,56 @@
         "fromSymbol": "MissingElementProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/missing-element.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuAction",
+        "toType": "IconSource",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuAction",
+        "toType": "React",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuAction",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuAction",
+        "toType": "SurfacePopoverMenuActionIntent",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "PopoverAnchorRenderProps",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "PopoverMenuAction",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "React",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/popover-menu.ts"
+      },
+      {
+        "fromSymbol": "PopoverMenuProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/popover-menu.ts"
       },
       {
         "fromSymbol": "ProgressProps",
@@ -63819,12 +64057,6 @@
       }
     ],
     "componentComposition": [
-      {
-        "fromComponent": "DropdownMenu",
-        "toComponent": "Menu",
-        "jsxElement": "<Menu {...props} />",
-        "sourcePath": "src/components/menu/DropdownMenu.tsx"
-      },
       {
         "fromComponent": "GradientRendererProvider",
         "toComponent": "GradientRendererContext",
