@@ -20,42 +20,39 @@ function SelectInner<TValue extends string = string>({
   ...props
 }: SelectProps<TValue>) {
   const [open, setOpen] = React.useState(false);
-  const controller = useSelectController(props);
+  const { select, selectedOption, value } = useSelectController(props);
+  const { interactionPolicy, options, testID } = props;
 
   const selectAndClose = React.useCallback(
-    (value: TValue) => {
-      controller.select(value);
+    (nextValue: TValue) => {
+      select(nextValue);
       setOpen(false);
     },
-    [controller.select],
+    [select],
   );
 
   return (
     <SelectField props={props}>
       <Popover
         anchor={({ toggle }) => (
-          <SelectTrigger
-            displayLabel={controller.selectedOption?.label}
-            onPress={toggle}
-            props={props}
-          />
+          <SelectTrigger displayLabel={selectedOption?.label} onPress={toggle} props={props} />
         )}
-        interactionPolicy={props.interactionPolicy}
+        interactionPolicy={interactionPolicy}
         onOpenChange={setOpen}
         open={open}
         placement="bottom-start"
-        testID={props.testID ? `${props.testID}-popover` : undefined}
+        testID={testID ? `${testID}-popover` : undefined}
       >
         <Surface variant="raised">
           <Stack gap="xs" p="xs">
-            {props.options.map((option) => (
+            {options.map((option) => (
               <SelectOptionRow
-                interactionPolicy={props.interactionPolicy}
+                interactionPolicy={interactionPolicy}
                 key={option.value}
                 onSelect={selectAndClose}
                 option={option}
-                selected={controller.value === option.value}
-                testID={props.testID}
+                selected={value === option.value}
+                testID={testID}
               />
             ))}
           </Stack>
