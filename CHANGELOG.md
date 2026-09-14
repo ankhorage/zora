@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.0
+
+### Major Changes
+
+- 08a7095: Finish ZORA feature ownership by replacing `Modal` with `Dialog`, `SearchBar` with `SearchInput`, removing `ToolbarAction`, rebuilding Tabs on the released Surface tab primitives, and migrating Pagination, Rating, and Toolbar out of `src/components`.
+
 ## 15.0.0
 
 ### Major Changes
