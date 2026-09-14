@@ -52,6 +52,17 @@ test('interactive authoring retains state and event payload bindings after plugi
     type: 'object',
   });
   expect(meta.BottomSheet?.bindings?.props?.open?.value.type).toBe('boolean');
+  expect(meta.Dialog?.bindings?.props?.visible?.value.type).toBe('boolean');
+  expect(meta.Dialog?.bindings?.events?.dismiss?.payload?.eventType).toBe('dialog.dismiss');
+  expect(meta.Pagination?.bindings?.props?.page?.value.type).toBe('number');
+  expect(meta.Pagination?.bindings?.events?.pageChange?.payload?.eventType).toBe(
+    'pagination.pageChange',
+  );
+  expect(meta.Rating?.bindings?.props?.value?.value.type).toBe('number');
+  expect(meta.SearchInput?.bindings?.props?.value?.value.type).toBe('string');
+  expect(meta.SearchInput?.bindings?.events?.submit?.payload?.eventType).toBe('searchInput.submit');
+  expect(meta.Tabs?.bindings?.props?.value?.value.type).toBe('string');
+  expect(meta.Tabs?.bindings?.events?.valueChange?.payload?.eventType).toBe('tabs.valueChange');
   expect(meta.Heading?.bindings?.props?.level?.value.type).toBe('number');
   expect(meta.Image?.bindings?.props?.radius?.value.type).toBe('unknown');
 });
