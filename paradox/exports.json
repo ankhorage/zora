@@ -6776,14 +6776,14 @@
   },
   {
     "name": "DatePicker",
-    "description": "Date input control with calendar selection and formatted display value.",
+    "description": "Renders DatePicker with anchored web Popover presentation.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/features/date-picker/adapters/inbound/DatePicker.tsx",
+    "modulePath": "src/features/date-picker/adapters/inbound/DatePicker.web.tsx",
     "sourceLocation": {
-      "filePath": "src/features/date-picker/adapters/inbound/DatePicker.tsx",
-      "line": 356,
+      "filePath": "src/features/date-picker/adapters/inbound/DatePicker.web.tsx",
+      "line": 13,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14827,7 +14827,7 @@
       {
         "name": "columns",
         "kind": "property",
-        "type": "4 | 1 | 2 | 3 | undefined",
+        "type": "1 | 2 | 3 | 4 | undefined",
         "required": false,
         "description": null
       },
@@ -16868,7 +16868,7 @@
     "modulePath": "src/patterns/selection/SelectionProvider.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/selection/SelectionProvider.tsx",
-      "line": 40,
+      "line": 38,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20136,14 +20136,14 @@
   },
   {
     "name": "TimePicker",
-    "description": "Time input control with bottom-sheet selection and formatted display value.",
+    "description": "Renders TimePicker with anchored web Popover presentation.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/features/time-picker/adapters/inbound/TimePicker.tsx",
+    "modulePath": "src/features/time-picker/adapters/inbound/TimePicker.web.tsx",
     "sourceLocation": {
-      "filePath": "src/features/time-picker/adapters/inbound/TimePicker.tsx",
-      "line": 258,
+      "filePath": "src/features/time-picker/adapters/inbound/TimePicker.web.tsx",
+      "line": 12,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20303,15 +20303,33 @@
   },
   {
     "name": "Toast",
-    "description": "Renders a toast notification message.",
+    "description": "Renders a toast notification message with ZORA theme scoping.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/components/toast/Toast.tsx",
+    "modulePath": "src/features/toast/adapters/inbound/Toast.tsx",
     "sourceLocation": {
-      "filePath": "src/components/toast/Toast.tsx",
-      "line": 16,
+      "filePath": "src/features/toast/adapters/inbound/Toast.tsx",
+      "line": 8,
       "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ToastController",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/toast.ts",
+    "sourceLocation": {
+      "filePath": "src/types/toast.ts",
+      "line": 13,
+      "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
@@ -20325,10 +20343,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/toast/types.ts",
+    "modulePath": "src/types/toast.ts",
     "sourceLocation": {
-      "filePath": "src/components/toast/types.ts",
-      "line": 11,
+      "filePath": "src/types/toast.ts",
+      "line": 12,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20343,10 +20361,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/components/toast/types.ts",
+    "modulePath": "src/types/toast.ts",
     "sourceLocation": {
-      "filePath": "src/components/toast/types.ts",
-      "line": 13,
+      "filePath": "src/types/toast.ts",
+      "line": 16,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20414,25 +20432,25 @@
   },
   {
     "name": "ToastProvider",
-    "description": "Provides toast state and rendering context for `useToast` and `Toast`.",
+    "description": "Provides toast state and rendering context through the Surface runtime host.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/components/toast/ToastProvider.tsx",
+    "modulePath": "src/features/toast/adapters/inbound/ToastProvider.tsx",
     "sourceLocation": {
-      "filePath": "src/components/toast/ToastProvider.tsx",
-      "line": 11,
+      "filePath": "src/features/toast/adapters/inbound/ToastProvider.tsx",
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": ["ToastProviderProps"],
     "signatures": [
       {
-        "label": "({ children, defaultDuration }: ToastProviderProps) => React.JSX.Element",
+        "label": "(props: import(\"@ankhorage/surface\").ToastProviderProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{ children, defaultDuration }",
-            "type": "ToastProviderProps",
+            "name": "props",
+            "type": "import(\"@ankhorage/surface\").ToastProviderProps",
             "required": true,
             "description": null
           }
@@ -20449,32 +20467,17 @@
     "description": null,
     "isReadme": false,
     "examples": [],
-    "kind": "type",
-    "modulePath": "src/components/toast/types.ts",
+    "kind": "unknown",
+    "modulePath": "src/types/toast.ts",
     "sourceLocation": {
-      "filePath": "src/components/toast/types.ts",
-      "line": 15,
+      "filePath": "src/types/toast.ts",
+      "line": 14,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "defaultDuration",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -20483,10 +20486,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/components/toast/types.ts",
+    "modulePath": "src/types/toast.ts",
     "sourceLocation": {
-      "filePath": "src/components/toast/types.ts",
-      "line": 10,
+      "filePath": "src/types/toast.ts",
+      "line": 11,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -21672,23 +21675,23 @@
   },
   {
     "name": "useToast",
-    "description": null,
+    "description": "Returns the toast controller installed by ToastProvider.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
+    "modulePath": "node_modules/@ankhorage/surface/dist/features/toast/adapters/inbound/useToast.d.ts",
     "sourceLocation": {
-      "filePath": "node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts",
-      "line": 11,
+      "filePath": "node_modules/@ankhorage/surface/dist/features/toast/adapters/inbound/useToast.d.ts",
+      "line": 3,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
+    "relatedSymbols": ["ToastController"],
     "signatures": [
       {
-        "label": "() => ToastContextValue",
+        "label": "() => ToastController",
         "parameters": [],
-        "returnType": "ToastContextValue",
+        "returnType": "ToastController",
         "returnDescription": null
       }
     ],
@@ -22008,7 +22011,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 105,
+      "line": 106,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -23236,24 +23239,24 @@
   },
   {
     "name": "ZoraProvider",
-    "description": null,
+    "description": "Installs the core ZORA theme runtime and explicitly enabled optional capabilities.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/theme/ZoraProvider.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 19,
+      "line": 13,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": ["ZoraProviderProps"],
     "signatures": [
       {
-        "label": "({\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n}: ZoraProviderProps) => React.JSX.Element",
+        "label": "({\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}: ZoraProviderProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n}",
+            "name": "{\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}",
             "type": "ZoraProviderProps",
             "required": true,
             "description": null
@@ -23272,16 +23275,23 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/theme/ZoraProvider.tsx",
+    "modulePath": "src/types/provider.ts",
     "sourceLocation": {
-      "filePath": "src/theme/ZoraProvider.tsx",
-      "line": 11,
+      "filePath": "src/types/provider.ts",
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
+    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode", "ZoraToastCapability"],
     "signatures": [],
     "members": [
+      {
+        "name": "bottomSheet",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
       {
         "name": "children",
         "kind": "property",
@@ -23307,6 +23317,13 @@
         "name": "themeConfig",
         "kind": "property",
         "type": "ThemeConfig | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "toast",
+        "kind": "property",
+        "type": "ZoraToastCapability | undefined",
         "required": false,
         "description": null
       }
@@ -23824,14 +23841,14 @@
   },
   {
     "name": "ZoraThemeScope",
-    "description": null,
+    "description": "Applies nested ZORA theme overrides without installing another Surface ThemeProvider.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/theme/ZoraThemeScope.tsx",
     "sourceLocation": {
       "filePath": "src/theme/ZoraThemeScope.tsx",
-      "line": 47,
+      "line": 15,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -24027,6 +24044,24 @@
     "sourceLocation": {
       "filePath": "src/theme/types.ts",
       "line": 56,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ZoraToastCapability",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/provider.ts",
+    "sourceLocation": {
+      "filePath": "src/types/provider.ts",
+      "line": 7,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

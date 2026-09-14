@@ -1573,10 +1573,10 @@ Source: `src/types/data-table.ts:11:1`
 ## DatePicker
 
 Kind: `value`
-Module: `src/features/date-picker/adapters/inbound/DatePicker.tsx`
-Source: `src/features/date-picker/adapters/inbound/DatePicker.tsx:356:14`
+Module: `src/features/date-picker/adapters/inbound/DatePicker.web.tsx`
+Source: `src/features/date-picker/adapters/inbound/DatePicker.web.tsx:13:14`
 
-Date input control with calendar selection and formatted display value.
+Renders DatePicker with anchored web Popover presentation.
 
 ## DatePickerProps
 
@@ -3576,7 +3576,7 @@ Source: `src/types/radio.ts:19:1`
 | Name               | Kind     | Type                                                                                                                                          | Required | Description |
 | ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
 | color              | property | `"danger" \| "primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| undefined` | no       |             |
-| columns            | property | `4 \| 1 \| 2 \| 3 \| undefined`                                                                                                               | no       |             |
+| columns            | property | `1 \| 2 \| 3 \| 4 \| undefined`                                                                                                               | no       |             |
 | contentOrientation | property | `"horizontal" \| "vertical" \| undefined`                                                                                                     | no       |             |
 | defaultValue       | property | `TValue \| undefined`                                                                                                                         | no       |             |
 | disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
@@ -4118,7 +4118,7 @@ Source: `src/patterns/selection/types.ts:4:1`
 
 Kind: `function`
 Module: `src/patterns/selection/SelectionProvider.tsx`
-Source: `src/patterns/selection/SelectionProvider.tsx:40:1`
+Source: `src/patterns/selection/SelectionProvider.tsx:38:1`
 
 Provides selection state for building selectable lists and grids.
 
@@ -5009,10 +5009,10 @@ Source: `src/patterns/timeline/types.ts:17:1`
 ## TimePicker
 
 Kind: `value`
-Module: `src/features/time-picker/adapters/inbound/TimePicker.tsx`
-Source: `src/features/time-picker/adapters/inbound/TimePicker.tsx:258:14`
+Module: `src/features/time-picker/adapters/inbound/TimePicker.web.tsx`
+Source: `src/features/time-picker/adapters/inbound/TimePicker.web.tsx:12:14`
 
-Time input control with bottom-sheet selection and formatted display value.
+Renders TimePicker with anchored web Popover presentation.
 
 ## TimePickerProps
 
@@ -5050,22 +5050,28 @@ Source: `src/types/time-picker.ts:5:1`
 ## Toast
 
 Kind: `value`
-Module: `src/components/toast/Toast.tsx`
-Source: `src/components/toast/Toast.tsx:16:14`
+Module: `src/features/toast/adapters/inbound/Toast.tsx`
+Source: `src/features/toast/adapters/inbound/Toast.tsx:8:14`
 
-Renders a toast notification message.
+Renders a toast notification message with ZORA theme scoping.
+
+## ToastController
+
+Kind: `unknown`
+Module: `src/types/toast.ts`
+Source: `src/types/toast.ts:13:1`
 
 ## ToastOptions
 
 Kind: `unknown`
-Module: `src/components/toast/types.ts`
-Source: `src/components/toast/types.ts:11:1`
+Module: `src/types/toast.ts`
+Source: `src/types/toast.ts:12:1`
 
 ## ToastProps
 
 Kind: `type`
-Module: `src/components/toast/types.ts`
-Source: `src/components/toast/types.ts:13:1`
+Module: `src/types/toast.ts`
+Source: `src/types/toast.ts:16:1`
 
 ### Members
 
@@ -5083,35 +5089,28 @@ Source: `src/components/toast/types.ts:13:1`
 ## ToastProvider
 
 Kind: `function`
-Module: `src/components/toast/ToastProvider.tsx`
-Source: `src/components/toast/ToastProvider.tsx:11:1`
+Module: `src/features/toast/adapters/inbound/ToastProvider.tsx`
+Source: `src/features/toast/adapters/inbound/ToastProvider.tsx:7:1`
 
-Provides toast state and rendering context for `useToast` and `Toast`.
+Provides toast state and rendering context through the Surface runtime host.
 
 ### Signatures
 
-- `({ children, defaultDuration }: ToastProviderProps) => React.JSX.Element`
-  - { children, defaultDuration }: `ToastProviderProps`
+- `(props: import("@ankhorage/surface").ToastProviderProps) => React.JSX.Element`
+  - props: `import("@ankhorage/surface").ToastProviderProps`
   - returns: `React.JSX.Element`
 
 ## ToastProviderProps
 
-Kind: `type`
-Module: `src/components/toast/types.ts`
-Source: `src/components/toast/types.ts:15:1`
-
-### Members
-
-| Name            | Kind     | Type                  | Required | Description |
-| --------------- | -------- | --------------------- | -------- | ----------- |
-| children        | property | `React.ReactNode`     | yes      |             |
-| defaultDuration | property | `number \| undefined` | no       |             |
+Kind: `unknown`
+Module: `src/types/toast.ts`
+Source: `src/types/toast.ts:14:1`
 
 ## ToastStatus
 
 Kind: `unknown`
-Module: `src/components/toast/types.ts`
-Source: `src/components/toast/types.ts:10:1`
+Module: `src/types/toast.ts`
+Source: `src/types/toast.ts:11:1`
 
 ## Toolbar
 
@@ -5459,13 +5458,15 @@ Source: `src/patterns/selection/types.ts:18:1`
 ## useToast
 
 Kind: `function`
-Module: `node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts`
-Source: `node_modules/@ankhorage/surface/dist/components/toast/ToastProvider.d.ts:11:1`
+Module: `node_modules/@ankhorage/surface/dist/features/toast/adapters/inbound/useToast.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/features/toast/adapters/inbound/useToast.d.ts:3:1`
+
+Returns the toast controller installed by ToastProvider.
 
 ### Signatures
 
-- `() => ToastContextValue`
-  - returns: `ToastContextValue`
+- `() => ToastController`
+  - returns: `ToastController`
 
 ## useZoraTheme
 
@@ -5590,7 +5591,7 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:105:14`
+Source: `src/metadata/componentMeta.ts:106:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
@@ -5974,38 +5975,46 @@ Source: `src/pluginComposition.ts:16:1`
 
 Kind: `function`
 Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:19:1`
+Source: `src/theme/ZoraProvider.tsx:13:1`
+
+Installs the core ZORA theme runtime and explicitly enabled optional capabilities.
 
 ### Signatures
 
 - `({
+bottomSheet = false,
 children,
 theme = zoraDefaultTheme,
 themeConfig,
 initialMode = 'light',
+toast = false,
 }: ZoraProviderProps) => React.JSX.Element`
   - {
+    bottomSheet = false,
     children,
     theme = zoraDefaultTheme,
     themeConfig,
     initialMode = 'light',
+    toast = false,
     }: `ZoraProviderProps`
   - returns: `React.JSX.Element`
 
 ## ZoraProviderProps
 
 Kind: `type`
-Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:11:1`
+Module: `src/types/provider.ts`
+Source: `src/types/provider.ts:9:1`
 
 ### Members
 
-| Name        | Kind     | Type                         | Required | Description |
-| ----------- | -------- | ---------------------------- | -------- | ----------- |
-| children    | property | `React.ReactNode`            | yes      |             |
-| initialMode | property | `ZoraThemeMode \| undefined` | no       |             |
-| theme       | property | `ZoraTheme \| undefined`     | no       |             |
-| themeConfig | property | `ThemeConfig \| undefined`   | no       |             |
+| Name        | Kind     | Type                               | Required | Description |
+| ----------- | -------- | ---------------------------------- | -------- | ----------- |
+| bottomSheet | property | `boolean \| undefined`             | no       |             |
+| children    | property | `React.ReactNode`                  | yes      |             |
+| initialMode | property | `ZoraThemeMode \| undefined`       | no       |             |
+| theme       | property | `ZoraTheme \| undefined`           | no       |             |
+| themeConfig | property | `ThemeConfig \| undefined`         | no       |             |
+| toast       | property | `ZoraToastCapability \| undefined` | no       |             |
 
 ## ZoraStatusColor
 
@@ -6174,7 +6183,9 @@ Source: `src/metadata/themeRecipeTypes.ts:18:1`
 
 Kind: `function`
 Module: `src/theme/ZoraThemeScope.tsx`
-Source: `src/theme/ZoraThemeScope.tsx:47:1`
+Source: `src/theme/ZoraThemeScope.tsx:15:1`
+
+Applies nested ZORA theme overrides without installing another Surface ThemeProvider.
 
 ### Signatures
 
@@ -6242,3 +6253,9 @@ Source: `src/metadata/themeRecipeTypes.ts:9:1`
 Kind: `unknown`
 Module: `src/theme/types.ts`
 Source: `src/theme/types.ts:56:1`
+
+## ZoraToastCapability
+
+Kind: `unknown`
+Module: `src/types/provider.ts`
+Source: `src/types/provider.ts:7:1`
