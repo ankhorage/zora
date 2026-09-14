@@ -60,6 +60,7 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'Accordion.tsx'),
   join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'AccordionItem.tsx'),
   join(srcDir, 'features', 'badge', 'adapters', 'inbound', 'Badge.tsx'),
+  join(srcDir, 'features', 'breadcrumbs', 'adapters', 'inbound', 'Breadcrumbs.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'Button.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'ButtonGroup.tsx'),
   join(srcDir, 'features', 'card', 'adapters', 'inbound', 'Card.tsx'),
@@ -73,16 +74,18 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'form', 'adapters', 'inbound', 'FormActions.tsx'),
   join(srcDir, 'features', 'form', 'adapters', 'inbound', 'FormError.tsx'),
   join(srcDir, 'features', 'form', 'adapters', 'inbound', 'FormField.tsx'),
+  join(srcDir, 'features', 'form', 'select', 'adapters', 'inbound', 'Select.native.tsx'),
+  join(srcDir, 'features', 'form', 'select', 'adapters', 'inbound', 'Select.web.tsx'),
   join(srcDir, 'features', 'typography', 'adapters', 'inbound', 'Heading.tsx'),
   join(srcDir, 'features', 'icon', 'adapters', 'inbound', 'Icon.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'IconButton.tsx'),
   join(srcDir, 'features', 'form', 'text-input', 'adapters', 'inbound', 'TextInput.tsx'),
   join(srcDir, 'components', 'modal', 'Modal.tsx'),
+  join(srcDir, 'features', 'popover-menu', 'adapters', 'inbound', 'PopoverMenu.tsx'),
   join(srcDir, 'features', 'progress', 'adapters', 'inbound', 'Progress.tsx'),
   join(srcDir, 'features', 'form', 'radio', 'adapters', 'inbound', 'Radio.tsx'),
   join(srcDir, 'features', 'form', 'radio', 'adapters', 'inbound', 'RadioGroup.tsx'),
   join(srcDir, 'components', 'rating', 'Rating.tsx'),
-  join(srcDir, 'components', 'select', 'Select.tsx'),
   join(srcDir, 'components', 'tabs', 'Tabs.tsx'),
   join(srcDir, 'features', 'time-picker', 'adapters', 'inbound', 'TimePicker.native.tsx'),
   join(srcDir, 'features', 'time-picker', 'adapters', 'inbound', 'TimePicker.web.tsx'),
@@ -137,6 +140,7 @@ const scopedPropTypeFiles = [
   join(srcDir, 'types', 'app-bar.ts'),
   join(srcDir, 'types', 'accordion.ts'),
   join(srcDir, 'types', 'badge.ts'),
+  join(srcDir, 'types', 'breadcrumbs.ts'),
   join(srcDir, 'types', 'button.ts'),
   join(srcDir, 'types', 'button-group.ts'),
   join(srcDir, 'types', 'card.ts'),
@@ -150,10 +154,11 @@ const scopedPropTypeFiles = [
   join(srcDir, 'types', 'icon-button.ts'),
   join(srcDir, 'types', 'text-input.ts'),
   join(srcDir, 'components', 'modal', 'types.ts'),
+  join(srcDir, 'types', 'popover-menu.ts'),
   join(srcDir, 'types', 'progress.ts'),
   join(srcDir, 'types', 'radio.ts'),
   join(srcDir, 'components', 'rating', 'types.ts'),
-  join(srcDir, 'components', 'select', 'types.ts'),
+  join(srcDir, 'types', 'select.ts'),
   join(srcDir, 'components', 'tabs', 'types.ts'),
   join(srcDir, 'types', 'text.ts'),
   join(srcDir, 'types', 'time-picker.ts'),
@@ -194,7 +199,7 @@ describe('theme scope structure', () => {
   it('implements nested scopes without nesting Surface ThemeProvider', () => {
     expect(themeScopeSource).toMatch(/<ThemeContext\s+value=/u);
     expect(themeScopeSource).toMatch(/createTheme\(/u);
-    expect(themeScopeSource).not.toMatch(/ThemeProvider/);
+    expect(themeScopeSource).not.toMatch(/<ThemeProvider\b/u);
   });
 
   it('wraps components only when mode/themeId overrides are present', () => {
