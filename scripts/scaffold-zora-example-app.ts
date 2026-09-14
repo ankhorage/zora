@@ -43,7 +43,6 @@ const EXPO_57_SCAFFOLD_VERSIONS = {
   expoLinking: '~57.0.7',
   expoRouter: '~57.0.15',
   expoStatusBar: '~57.0.1',
-  picker: '2.11.4',
   react: '19.2.3',
   reactNative: '0.86.3',
   reactNativeGestureHandler: '~2.32.0',
@@ -355,7 +354,6 @@ function createAppFiles(options: ScaffoldOptions, targetDir: string, zoraVersion
   "dependencies": {
     "@ankhorage/navigator": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.navigator)},
     "@ankhorage/zora": ${JSON.stringify(`^${zoraVersion}`)},
-    "@react-native-picker/picker": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.picker)},
     "@react-native-vector-icons/fontawesome": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
     "@react-native-vector-icons/fontawesome5": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
     "@react-native-vector-icons/fontawesome6": ${JSON.stringify(EXPO_57_SCAFFOLD_VERSIONS.reactNativeVectorIcons)},
