@@ -186,6 +186,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
     ]);
 
     const expectedContainerNodes = new Set([
+      'Accordion',
+      'AccordionItem',
       'Form',
       'Gradient',
       'Surface',
@@ -232,6 +234,13 @@ describe('ZORA_COMPONENT_META invariants', () => {
         `Direct manifest node '${key}' must be categorized as leaf or container in the test.`,
       );
     }
+  });
+
+  test('Accordion constrains authored items to its canonical hierarchy', () => {
+    expect(ZORA_COMPONENT_META.Accordion.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.Accordion.allowedChildren).toEqual(['AccordionItem']);
+    expect(ZORA_COMPONENT_META.AccordionItem.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.AccordionItem.allowedChildren).not.toContain('AccordionItem');
   });
 
   test('Image is a direct manifest leaf with canonical media authoring metadata', () => {

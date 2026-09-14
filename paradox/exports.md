@@ -1,5 +1,51 @@
 # Public API
 
+## Accordion
+
+Kind: `value`
+Module: `src/features/accordion/adapters/inbound/Accordion.tsx`
+Source: `src/features/accordion/adapters/inbound/Accordion.tsx:13:14`
+
+Renders a ZORA accordion backed by Surface expansion and accessibility mechanics.
+
+## AccordionItem
+
+Kind: `value`
+Module: `src/features/accordion/adapters/inbound/AccordionItem.tsx`
+Source: `src/features/accordion/adapters/inbound/AccordionItem.tsx:17:14`
+
+Renders one opinionated ZORA accordion item over Surface trigger/content primitives.
+
+## AccordionItemProps
+
+Kind: `unknown`
+Module: `src/types/accordion.ts`
+Source: `src/types/accordion.ts:26:1`
+
+## AccordionMode
+
+Kind: `unknown`
+Module: `node_modules/@ankhorage/surface/dist/types/accordion.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/types/accordion.d.ts:4:1`
+
+## AccordionMultipleProps
+
+Kind: `unknown`
+Module: `src/types/accordion.ts`
+Source: `src/types/accordion.ts:19:1`
+
+## AccordionProps
+
+Kind: `unknown`
+Module: `src/types/accordion.ts`
+Source: `src/types/accordion.ts:24:1`
+
+## AccordionSingleProps
+
+Kind: `unknown`
+Module: `src/types/accordion.ts`
+Source: `src/types/accordion.ts:14:1`
+
 ## ActivityIndicator
 
 Kind: `value`
@@ -577,17 +623,17 @@ Source: `src/types/button-group.ts:9:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                                                                                | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| align             | property | `ButtonGroupAlign \| undefined`                                                                                     | no       |             |
-| children          | property | `React.ReactNode`                                                                                                   | no       |             |
-| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
-| orientation       | property | `ButtonGroupOrientation \| undefined`                                                                               | no       |             |
-| reverse           | property | `boolean \| undefined`                                                                                              | no       |             |
-| testID            | property | `string \| undefined`                                                                                               | no       |             |
-| themeId           | property | `string \| undefined`                                                                                               | no       |             |
+| Name              | Kind     | Type                                                                                                              | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| align             | property | `ButtonGroupAlign \| undefined`                                                                                   | no       |             |
+| children          | property | `React.ReactNode`                                                                                                 | no       |             |
+| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                  | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                      | no       |             |
+| orientation       | property | `ButtonGroupOrientation \| undefined`                                                                             | no       |             |
+| reverse           | property | `boolean \| undefined`                                                                                            | no       |             |
+| testID            | property | `string \| undefined`                                                                                             | no       |             |
+| themeId           | property | `string \| undefined`                                                                                             | no       |             |
 
 ## ButtonProps
 
@@ -1570,38 +1616,6 @@ Kind: `value`
 Module: `src/features/auth/utils/oauthProviders.ts`
 Source: `src/features/auth/utils/oauthProviders.ts:3:14`
 
-## DisclosureSection
-
-Kind: `value`
-Module: `src/patterns/disclosure-section/DisclosureSection.tsx`
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:130:14`
-
-Expandable section pattern with a summary header and collapsible content.
-
-## DisclosureSectionProps
-
-Kind: `type`
-Module: `src/patterns/disclosure-section/types.ts`
-Source: `src/patterns/disclosure-section/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                                                   | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------ | -------- | ----------- |
-| actions           | property | `ReactNode`                                            | no       |             |
-| children          | property | `ReactNode`                                            | no       |             |
-| defaultOpen       | property | `boolean \| undefined`                                 | no       |             |
-| description       | property | `ReactNode`                                            | no       |             |
-| disabled          | property | `boolean \| undefined`                                 | no       |             |
-| icon              | property | `import("@ankhorage/surface").IconSource \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                       | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                           | no       |             |
-| onOpenChange      | property | `((open: boolean) => void) \| undefined`               | no       |             |
-| open              | property | `boolean \| undefined`                                 | no       |             |
-| testID            | property | `string \| undefined`                                  | no       |             |
-| themeId           | property | `string \| undefined`                                  | no       |             |
-| title             | property | `ReactNode`                                            | yes      |             |
-
 ## Divider
 
 Kind: `value`
@@ -2044,22 +2058,22 @@ Source: `src/types/gradient.ts:32:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                                                                                | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| children          | property | `React.ReactNode`                                                                                                   | no       |             |
-| colors            | property | `GradientColors`                                                                                                    | yes      |             |
-| end               | property | `GradientPoint \| undefined`                                                                                        | no       |             |
-| height            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
-| locations         | property | `GradientLocations \| undefined`                                                                                    | no       |             |
-| minHeight         | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
-| p                 | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
-| radius            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
-| start             | property | `GradientPoint \| undefined`                                                                                        | no       |             |
-| testID            | property | `string \| undefined`                                                                                               | no       |             |
-| themeId           | property | `string \| undefined`                                                                                               | no       |             |
-| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| Name              | Kind     | Type                                                                                                              | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                                                                                                 | no       |             |
+| colors            | property | `GradientColors`                                                                                                  | yes      |             |
+| end               | property | `GradientPoint \| undefined`                                                                                      | no       |             |
+| height            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                  | no       |             |
+| locations         | property | `GradientLocations \| undefined`                                                                                  | no       |             |
+| minHeight         | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                      | no       |             |
+| p                 | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       |             |
+| radius            | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
+| start             | property | `GradientPoint \| undefined`                                                                                      | no       |             |
+| testID            | property | `string \| undefined`                                                                                             | no       |             |
+| themeId           | property | `string \| undefined`                                                                                             | no       |             |
+| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
 
 ## GradientRenderer
 
@@ -2403,8 +2417,8 @@ Displays an image asset and owns its missing, unrenderable, and failed presentat
 ## ImageFit
 
 Kind: `unknown`
-Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
-Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:5:1`
+Module: `node_modules/@ankhorage/surface/dist/types/image.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/types/image.d.ts:4:1`
 
 ## ImageProps
 
@@ -4497,17 +4511,17 @@ Source: `src/types/skeleton.ts:14:1`
 
 ### Members
 
-| Name              | Kind     | Type                                                                                                                | Required | Description |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                    | no       |             |
-| lastLineWidth     | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
-| lineHeight        | property | `number \| undefined`                                                                                               | no       |             |
-| lines             | property | `number \| undefined`                                                                                               | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                        | no       |             |
-| testID            | property | `string \| undefined`                                                                                               | no       |             |
-| themeId           | property | `string \| undefined`                                                                                               | no       |             |
-| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       |             |
+| Name              | Kind     | Type                                                                                                              | Required | Description |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| gap               | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                  | no       |             |
+| lastLineWidth     | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
+| lineHeight        | property | `number \| undefined`                                                                                             | no       |             |
+| lines             | property | `number \| undefined`                                                                                             | no       |             |
+| mode              | property | `ZoraThemeMode \| undefined`                                                                                      | no       |             |
+| testID            | property | `string \| undefined`                                                                                             | no       |             |
+| themeId           | property | `string \| undefined`                                                                                             | no       |             |
+| width             | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       |             |
 
 ## Spacer
 
@@ -4617,8 +4631,8 @@ Adapts the themed Surface Surface primitive to ZORA scope and interaction props.
 ## SurfaceImageSource
 
 Kind: `unknown`
-Module: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts`
-Source: `node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts:4:1`
+Module: `node_modules/@ankhorage/surface/dist/types/image.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/types/image.d.ts:3:1`
 
 ## SurfaceProps
 
@@ -4680,8 +4694,8 @@ Source: `src/types/surface.ts:6:1`
 ## SurfaceVariant
 
 Kind: `unknown`
-Module: `node_modules/@ankhorage/surface/dist/layout/Surface.d.ts`
-Source: `node_modules/@ankhorage/surface/dist/layout/Surface.d.ts:3:1`
+Module: `node_modules/@ankhorage/surface/dist/types/surface.d.ts`
+Source: `node_modules/@ankhorage/surface/dist/types/surface.d.ts:2:1`
 
 ## SwitchField
 
@@ -5576,13 +5590,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:104:14`
+Source: `src/metadata/componentMeta.ts:105:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:226:14`
+Source: `src/registry.ts:227:14`
 
 ## ZORA_CORE_PLUGIN
 

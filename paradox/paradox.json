@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v12.0.0",
+      "value": "v12.1.0",
       "color": "cb3837"
     },
     {
@@ -482,6 +482,61 @@
         "src/pluginComposition.ts"
       ],
       "exports": ["ZORA_CORE_PLUGIN_METADATA"]
+    },
+    {
+      "path": "src/features/accordion/accordionItemMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/allowedChildren.ts", "src/metadata/index.ts"],
+      "exports": ["accordionItemMeta"]
+    },
+    {
+      "path": "src/features/accordion/accordionMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/metadata/index.ts"],
+      "exports": ["accordionMeta"]
+    },
+    {
+      "path": "src/features/accordion/adapters/inbound/Accordion.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/accordion/composition/AccordionPresentationContext.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/accordion.ts"
+      ],
+      "exports": ["Accordion"]
+    },
+    {
+      "path": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/accordion/composition/AccordionPresentationContext.ts",
+        "src/features/icon/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/typography/public.ts",
+        "src/theme/withZoraThemeScope.tsx",
+        "src/types/accordion.ts"
+      ],
+      "exports": ["AccordionItem"]
+    },
+    {
+      "path": "src/features/accordion/composition/AccordionPresentationContext.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/types/accordion.ts"],
+      "exports": ["AccordionPresentationContext"]
+    },
+    {
+      "path": "src/features/accordion/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "Accordion",
+        "AccordionItem",
+        "AccordionItemProps",
+        "AccordionMode",
+        "AccordionMultipleProps",
+        "AccordionProps",
+        "AccordionSingleProps"
+      ]
     },
     {
       "path": "src/features/activity-indicator/activityIndicatorMeta.ts",
@@ -2228,6 +2283,13 @@
       "isEntrypoint": true,
       "dependencies": [],
       "exports": [
+        "Accordion",
+        "AccordionItem",
+        "AccordionItemProps",
+        "AccordionMode",
+        "AccordionMultipleProps",
+        "AccordionProps",
+        "AccordionSingleProps",
         "ActivityIndicator",
         "ActivityIndicatorProps",
         "AppBar",
@@ -2317,8 +2379,6 @@
         "DatePickerProps",
         "DatePickerValue",
         "DEFAULT_OAUTH_PROVIDER_ICONS",
-        "DisclosureSection",
-        "DisclosureSectionProps",
         "Divider",
         "DividerProps",
         "DropdownMenu",
@@ -2905,6 +2965,8 @@
         "src/components/tabs/meta.ts",
         "src/components/toast/meta.ts",
         "src/components/toolbar/meta.ts",
+        "src/features/accordion/accordionItemMeta.ts",
+        "src/features/accordion/accordionMeta.ts",
         "src/features/activity-indicator/activityIndicatorMeta.ts",
         "src/features/auth/forgotPasswordFormMeta.ts",
         "src/features/auth/oauthProviderButtonMeta.ts",
@@ -2968,7 +3030,6 @@
         "src/patterns/chat-list-item/meta.ts",
         "src/patterns/collection-editor/meta.ts",
         "src/patterns/confirm-dialog/meta.ts",
-        "src/patterns/disclosure-section/meta.ts",
         "src/patterns/filter-bar/meta.ts",
         "src/patterns/inspector-field/meta.ts",
         "src/patterns/list/meta.ts",
@@ -3182,37 +3243,6 @@
       "isEntrypoint": false,
       "dependencies": ["src/internal/recipes.ts", "src/theme/ZoraBaseProps.ts"],
       "exports": ["ConfirmDialogProps"]
-    },
-    {
-      "path": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "isEntrypoint": false,
-      "dependencies": [
-        "src/features/button/public.ts",
-        "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
-        "src/patterns/disclosure-section/types.ts",
-        "src/patterns/panel/index.ts",
-        "src/theme/withZoraThemeScope.tsx"
-      ],
-      "exports": ["DisclosureSection"]
-    },
-    {
-      "path": "src/patterns/disclosure-section/index.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["DisclosureSection", "DisclosureSectionProps"]
-    },
-    {
-      "path": "src/patterns/disclosure-section/meta.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/metadata/index.ts"],
-      "exports": ["disclosureSectionMeta"]
-    },
-    {
-      "path": "src/patterns/disclosure-section/types.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/theme/ZoraBaseProps.ts"],
-      "exports": ["DisclosureSectionProps"]
     },
     {
       "path": "src/patterns/filter-bar/FilterBar.tsx",
@@ -3937,6 +3967,7 @@
         "src/components/tabs/index.ts",
         "src/components/toast/index.ts",
         "src/components/toolbar/index.ts",
+        "src/features/accordion/public.ts",
         "src/features/activity-indicator/public.ts",
         "src/features/auth/public.ts",
         "src/features/avatar/public.ts",
@@ -3976,7 +4007,6 @@
         "src/patterns/chat-list-item/index.ts",
         "src/patterns/collection-editor/index.ts",
         "src/patterns/confirm-dialog/index.ts",
-        "src/patterns/disclosure-section/index.ts",
         "src/patterns/filter-bar/index.ts",
         "src/patterns/inspector-field/index.ts",
         "src/patterns/list/index.ts",
@@ -4181,6 +4211,19 @@
         "src/theme/ZoraThemeRuntimeContext.tsx"
       ],
       "exports": ["ZoraThemeScope", "ZoraThemeScopeProps"]
+    },
+    {
+      "path": "src/types/accordion.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/theme/ZoraBaseProps.ts"],
+      "exports": [
+        "AccordionItemProps",
+        "AccordionMode",
+        "AccordionMultipleProps",
+        "AccordionPresentationContextValue",
+        "AccordionProps",
+        "AccordionSingleProps"
+      ]
     },
     {
       "path": "src/types/activity-indicator.ts",
@@ -4541,6 +4584,132 @@
     }
   ],
   "exports": [
+    {
+      "name": "Accordion",
+      "description": "Renders a ZORA accordion backed by Surface expansion and accessibility mechanics.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "line": 13,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionItem",
+      "description": "Renders one opinionated ZORA accordion item over Surface trigger/content primitives.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "line": 17,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionItemProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/accordion.ts",
+      "sourceLocation": {
+        "filePath": "src/types/accordion.ts",
+        "line": 26,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionMode",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "node_modules/@ankhorage/surface/dist/types/accordion.d.ts",
+      "sourceLocation": {
+        "filePath": "node_modules/@ankhorage/surface/dist/types/accordion.d.ts",
+        "line": 4,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionMultipleProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/accordion.ts",
+      "sourceLocation": {
+        "filePath": "src/types/accordion.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/accordion.ts",
+      "sourceLocation": {
+        "filePath": "src/types/accordion.ts",
+        "line": 24,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AccordionSingleProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/accordion.ts",
+      "sourceLocation": {
+        "filePath": "src/types/accordion.ts",
+        "line": 14,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
     {
       "name": "ActivityIndicator",
       "description": "Native activity indicator exposed as a serializable ZORA feedback node.",
@@ -7036,7 +7205,7 @@
         {
           "name": "gap",
           "kind": "property",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -11369,134 +11538,6 @@
       "structuredRows": []
     },
     {
-      "name": "DisclosureSection",
-      "description": "Expandable section pattern with a summary header and collapsible content.",
-      "isReadme": false,
-      "examples": [],
-      "kind": "value",
-      "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 130,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "DisclosureSectionProps",
-      "description": null,
-      "isReadme": false,
-      "examples": [],
-      "kind": "type",
-      "modulePath": "src/patterns/disclosure-section/types.ts",
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/types.ts",
-        "line": 6,
-        "column": 1
-      },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["ZoraThemeMode"],
-      "signatures": [],
-      "members": [
-        {
-          "name": "actions",
-          "kind": "property",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "kind": "property",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "defaultOpen",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "kind": "property",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "disabled",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "icon",
-          "kind": "property",
-          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "kind": "property",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "kind": "property",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onOpenChange",
-          "kind": "property",
-          "type": "((open: boolean) => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "open",
-          "kind": "property",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "kind": "property",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "kind": "property",
-          "type": "ReactNode",
-          "required": true,
-          "description": null
-        }
-      ],
-      "structuredRows": []
-    },
-    {
       "name": "Divider",
       "description": "Adapts the themed Surface Divider primitive to ZORA scope and interaction props.",
       "isReadme": false,
@@ -13181,7 +13222,7 @@
         {
           "name": "p",
           "kind": "property",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -14556,10 +14597,10 @@
       "isReadme": false,
       "examples": [],
       "kind": "unknown",
-      "modulePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+      "modulePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
       "sourceLocation": {
-        "filePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
-        "line": 5,
+        "filePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
+        "line": 4,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -22695,7 +22736,7 @@
         {
           "name": "gap",
           "kind": "property",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -23269,10 +23310,10 @@
       "isReadme": false,
       "examples": [],
       "kind": "unknown",
-      "modulePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
+      "modulePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
       "sourceLocation": {
-        "filePath": "node_modules/@ankhorage/surface/dist/primitives/image/types.d.ts",
-        "line": 4,
+        "filePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
+        "line": 3,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -23628,10 +23669,10 @@
       "isReadme": false,
       "examples": [],
       "kind": "unknown",
-      "modulePath": "node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
+      "modulePath": "node_modules/@ankhorage/surface/dist/types/surface.d.ts",
       "sourceLocation": {
-        "filePath": "node_modules/@ankhorage/surface/dist/layout/Surface.d.ts",
-        "line": 3,
+        "filePath": "node_modules/@ankhorage/surface/dist/types/surface.d.ts",
+        "line": 2,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -26552,7 +26593,7 @@
       "modulePath": "src/metadata/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/metadata/componentMeta.ts",
-        "line": 104,
+        "line": 105,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -26570,7 +26611,7 @@
       "modulePath": "src/registry.ts",
       "sourceLocation": {
         "filePath": "src/registry.ts",
-        "line": 226,
+        "line": 227,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -28582,6 +28623,1224 @@
   ],
   "components": [
     {
+      "name": "Accordion",
+      "description": "Renders a ZORA accordion backed by Surface expansion and accessibility mechanics.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "line": 13,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "accessibilityActions",
+          "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityElementsHidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityHint",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityIgnoresInvertColors",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabelledBy",
+          "type": "string | string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLanguage",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLargeContentTitle",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLiveRegion",
+          "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRespondsToUserInteraction",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRole",
+          "type": "AccessibilityRole | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityShowsLargeContentViewer",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityState",
+          "type": "AccessibilityState | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValue",
+          "type": "AccessibilityValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityViewIsModal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessible",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-busy",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-checked",
+          "type": "boolean | \"mixed\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-expanded",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-hidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-label",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-live",
+          "type": "\"polite\" | \"assertive\" | \"off\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-modal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-selected",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemax",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemin",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuenow",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuetext",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsableChildren",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "defaultValue",
+          "type": "string | readonly string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "focusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hasTVPreferredFocus",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hitSlop",
+          "type": "number | Insets | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "importantForAccessibility",
+          "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isTVSelectable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nativeID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "needsOffscreenAlphaCompositing",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityAction",
+          "type": "((event: AccessibilityActionEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityEscape",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBlur",
+          "type": "((e: BlurEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onFocus",
+          "type": "((e: FocusEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onLayout",
+          "type": "((event: LayoutChangeEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMagicTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancel",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancelCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDown",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDownCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnter",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnterCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeave",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeaveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMove",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMoveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUp",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUpCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderGrant",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderReject",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderRelease",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminate",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminationRequest",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchCancel",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEndCapture",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string | undefined) => void) | ((value: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "pointerEvents",
+          "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "removeClippedSubviews",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderToHardwareTextureAndroid",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "role",
+          "type": "Role | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "screenReaderFocusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "shouldRasterizeIOS",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tabIndex",
+          "type": "0 | -1 | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxMagnification",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceX",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceY",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxTiltAngle",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "type",
+          "type": "\"single\" | \"multiple\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "value",
+          "type": "string | readonly string[] | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "AccordionItem",
+      "description": "Renders one opinionated ZORA accordion item over Surface trigger/content primitives.",
+      "isReadme": false,
+      "examples": [],
+      "modulePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "line": 17,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "props": [
+        {
+          "name": "accessibilityActions",
+          "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityElementsHidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityHint",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityIgnoresInvertColors",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabelledBy",
+          "type": "string | string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLanguage",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLargeContentTitle",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityLiveRegion",
+          "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRespondsToUserInteraction",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityRole",
+          "type": "AccessibilityRole | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityShowsLargeContentViewer",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityState",
+          "type": "AccessibilityState | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityValue",
+          "type": "AccessibilityValue | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessibilityViewIsModal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "accessible",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "actions",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-busy",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-checked",
+          "type": "boolean | \"mixed\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-expanded",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-hidden",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-label",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-live",
+          "type": "\"polite\" | \"assertive\" | \"off\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-modal",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-selected",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemax",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuemin",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuenow",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "aria-valuetext",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "collapsableChildren",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "focusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hasTVPreferredFocus",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "hitSlop",
+          "type": "number | Insets | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "importantForAccessibility",
+          "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isTVSelectable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "nativeID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "needsOffscreenAlphaCompositing",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityAction",
+          "type": "((event: AccessibilityActionEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityEscape",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onAccessibilityTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onBlur",
+          "type": "((e: BlurEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onFocus",
+          "type": "((e: FocusEvent) => void) | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onLayout",
+          "type": "((event: LayoutChangeEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMagicTap",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onMoveShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancel",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerCancelCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDown",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerDownCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnter",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerEnterCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeave",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerLeaveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMove",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerMoveCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUp",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onPointerUpCapture",
+          "type": "((event: PointerEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderGrant",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderReject",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderRelease",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminate",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onResponderTerminationRequest",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponder",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onStartShouldSetResponderCapture",
+          "type": "((event: GestureResponderEvent) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchCancel",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEnd",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchEndCapture",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchMove",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onTouchStart",
+          "type": "((event: GestureResponderEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "pointerEvents",
+          "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "removeClippedSubviews",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderToHardwareTextureAndroid",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "role",
+          "type": "Role | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "screenReaderFocusable",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "shouldRasterizeIOS",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "style",
+          "type": "StyleProp<ViewStyle>",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tabIndex",
+          "type": "0 | -1 | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "tvParallaxMagnification",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceX",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxShiftDistanceY",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "tvParallaxTiltAngle",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "ActivityIndicator",
       "description": "Native activity indicator exposed as a serializable ZORA feedback node.",
       "isReadme": false,
@@ -30537,7 +31796,7 @@
         },
         {
           "name": "gap",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -32914,99 +34173,6 @@
       ]
     },
     {
-      "name": "DisclosureSection",
-      "description": "Expandable section pattern with a summary header and collapsible content.",
-      "isReadme": false,
-      "examples": [],
-      "modulePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 130,
-        "column": 14
-      },
-      "exportPaths": ["src/index.ts"],
-      "props": [
-        {
-          "name": "actions",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "children",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "defaultOpen",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "description",
-          "type": "ReactNode",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "disabled",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "icon",
-          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "interactionPolicy",
-          "type": "InteractionPolicy | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "mode",
-          "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onOpenChange",
-          "type": "((open: boolean) => void) | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "open",
-          "type": "boolean | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "testID",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "themeId",
-          "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "title",
-          "type": "ReactNode",
-          "required": true,
-          "description": null
-        }
-      ]
-    },
-    {
       "name": "Divider",
       "description": "Adapts the themed Surface Divider primitive to ZORA scope and interaction props.",
       "isReadme": false,
@@ -34089,7 +35255,7 @@
         },
         {
           "name": "p",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -40003,7 +41169,7 @@
       "props": [
         {
           "name": "gap",
-          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/layout/helpers\").SpaceValue> | undefined",
+          "type": "import(\"@ankhorage/surface\").Responsive<import(\"@ankhorage/surface/dist/types/layout\").SpaceValue> | undefined",
           "required": false,
           "description": null
         },
@@ -43372,6 +44538,42 @@
       }
     },
     {
+      "name": "AccordionInner",
+      "description": "Routes the public accordion union to its single or multiple Surface contract.",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "MultipleAccordion",
+      "description": "Mirrors Surface multiple-value state for ZORA presentation only.",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "SingleAccordion",
+      "description": "Mirrors Surface single-value state for ZORA presentation only.",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "line": 60,
+        "column": 1
+      }
+    },
+    {
+      "name": "AccordionItemInner",
+      "description": "Composes the item header, optional actions, expanded content, and separator.",
+      "sourceLocation": {
+        "filePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "line": 22,
+        "column": 1
+      }
+    },
+    {
       "name": "ActivityIndicatorInner",
       "description": "Render native loading feedback with a semantic ZORA fallback color.",
       "sourceLocation": {
@@ -45901,33 +47103,6 @@
       }
     },
     {
-      "name": "getTriggerStyle",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 28,
-        "column": 7
-      }
-    },
-    {
-      "name": "DisclosureSectionInner",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 42,
-        "column": 1
-      }
-    },
-    {
-      "name": "toggleOpen",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "line": 65,
-        "column": 9
-      }
-    },
-    {
       "name": "FilterBarInner",
       "description": null,
       "sourceLocation": {
@@ -47214,6 +48389,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/accordion/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/activity-indicator/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -47419,11 +48599,6 @@
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/patterns/disclosure-section/index.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
         "toPath": "src/patterns/filter-bar/index.ts",
         "sourcePath": "src/index.ts"
       },
@@ -47580,6 +48755,11 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/components/toolbar/index.ts",
+        "sourcePath": "src/registry.ts"
+      },
+      {
+        "fromPath": "src/registry.ts",
+        "toPath": "src/features/accordion/public.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -47775,11 +48955,6 @@
       {
         "fromPath": "src/registry.ts",
         "toPath": "src/patterns/confirm-dialog/index.ts",
-        "sourcePath": "src/registry.ts"
-      },
-      {
-        "fromPath": "src/registry.ts",
-        "toPath": "src/patterns/disclosure-section/index.ts",
         "sourcePath": "src/registry.ts"
       },
       {
@@ -48000,6 +49175,16 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/components/toolbar/meta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/accordion/accordionItemMeta.ts",
+        "sourcePath": "src/metadata/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/metadata/componentMeta.ts",
+        "toPath": "src/features/accordion/accordionMeta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -48310,11 +49495,6 @@
       {
         "fromPath": "src/metadata/componentMeta.ts",
         "toPath": "src/patterns/confirm-dialog/meta.ts",
-        "sourcePath": "src/metadata/componentMeta.ts"
-      },
-      {
-        "fromPath": "src/metadata/componentMeta.ts",
-        "toPath": "src/patterns/disclosure-section/meta.ts",
         "sourcePath": "src/metadata/componentMeta.ts"
       },
       {
@@ -48681,6 +49861,11 @@
         "fromPath": "src/theme/ZoraThemeScope.tsx",
         "toPath": "src/theme/ZoraThemeRuntimeContext.tsx",
         "sourcePath": "src/theme/ZoraThemeScope.tsx"
+      },
+      {
+        "fromPath": "src/types/accordion.ts",
+        "toPath": "src/theme/ZoraBaseProps.ts",
+        "sourcePath": "src/types/accordion.ts"
       },
       {
         "fromPath": "src/types/activity-indicator.ts",
@@ -49606,6 +50791,36 @@
         "fromPath": "src/components/toolbar/types.ts",
         "toPath": "src/theme/ZoraBaseProps.ts",
         "sourcePath": "src/components/toolbar/types.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/accordionItemMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/accordion/accordionItemMeta.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/accordionItemMeta.ts",
+        "toPath": "src/metadata/allowedChildren.ts",
+        "sourcePath": "src/features/accordion/accordionItemMeta.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/accordionMeta.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/features/accordion/accordionMeta.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/public.ts",
+        "toPath": "src/types/accordion.ts",
+        "sourcePath": "src/features/accordion/public.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/public.ts",
+        "toPath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "sourcePath": "src/features/accordion/public.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/public.ts",
+        "toPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "sourcePath": "src/features/accordion/public.ts"
       },
       {
         "fromPath": "src/features/activity-indicator/activityIndicatorMeta.ts",
@@ -50933,56 +52148,6 @@
         "sourcePath": "src/patterns/confirm-dialog/types.ts"
       },
       {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/features/button/public.ts",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/features/typography/public.ts",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/theme/withZoraThemeScope.tsx",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/patterns/panel/index.ts",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toPath": "src/patterns/disclosure-section/types.ts",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/index.ts",
-        "toPath": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "sourcePath": "src/patterns/disclosure-section/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/index.ts",
-        "toPath": "src/patterns/disclosure-section/types.ts",
-        "sourcePath": "src/patterns/disclosure-section/index.ts"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/meta.ts",
-        "toPath": "src/metadata/index.ts",
-        "sourcePath": "src/patterns/disclosure-section/meta.ts"
-      },
-      {
-        "fromPath": "src/patterns/disclosure-section/types.ts",
-        "toPath": "src/theme/ZoraBaseProps.ts",
-        "sourcePath": "src/patterns/disclosure-section/types.ts"
-      },
-      {
         "fromPath": "src/patterns/filter-bar/FilterBar.tsx",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/patterns/filter-bar/FilterBar.tsx"
@@ -52053,6 +53218,11 @@
         "sourcePath": "src/patterns/tree-view/types.ts"
       },
       {
+        "fromPath": "src/features/accordion/composition/AccordionPresentationContext.ts",
+        "toPath": "src/types/accordion.ts",
+        "sourcePath": "src/features/accordion/composition/AccordionPresentationContext.ts"
+      },
+      {
         "fromPath": "src/features/auth/utils/authForm.ts",
         "toPath": "src/types/auth.ts",
         "sourcePath": "src/features/auth/utils/authForm.ts"
@@ -52256,6 +53426,51 @@
         "fromPath": "src/features/uploader/composition/createUploadPicker.ts",
         "toPath": "src/features/uploader/application/use-cases/pickUploadAssetAsync.ts",
         "sourcePath": "src/features/uploader/composition/createUploadPicker.ts"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toPath": "src/types/accordion.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toPath": "src/features/accordion/composition/AccordionPresentationContext.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/theme/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/types/accordion.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
+      },
+      {
+        "fromPath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toPath": "src/features/accordion/composition/AccordionPresentationContext.ts",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
       },
       {
         "fromPath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx",
@@ -54810,30 +56025,6 @@
         "sourcePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx"
       },
       {
-        "fromSymbol": "toggleOpen",
-        "toSymbol": "onOpenChange",
-        "callExpression": "onOpenChange",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromSymbol": "toggleOpen",
-        "toSymbol": "setInternalOpen",
-        "callExpression": "setInternalOpen",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromSymbol": "DisclosureSectionInner",
-        "toSymbol": "getTriggerStyle",
-        "callExpression": "getTriggerStyle",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
-        "fromSymbol": "src/patterns/disclosure-section/DisclosureSection.tsx",
-        "toSymbol": "withZoraThemeScope",
-        "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/patterns/disclosure-section/DisclosureSection.tsx"
-      },
-      {
         "fromSymbol": "src/patterns/filter-bar/FilterBar.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
@@ -55750,6 +56941,36 @@
         "toSymbol": "pickUploadAssetAsync",
         "callExpression": "pickUploadAssetAsync",
         "sourcePath": "src/features/uploader/composition/createUploadPicker.ts"
+      },
+      {
+        "fromSymbol": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromSymbol": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toSymbol": "setPresentationValues",
+        "callExpression": "setPresentationValues",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromSymbol": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toSymbol": "onValueChange",
+        "callExpression": "onValueChange",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromSymbol": "src/features/accordion/adapters/inbound/Accordion.tsx",
+        "toSymbol": "setPresentationValue",
+        "callExpression": "setPresentationValue",
+        "sourcePath": "src/features/accordion/adapters/inbound/Accordion.tsx"
+      },
+      {
+        "fromSymbol": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx"
       },
       {
         "fromSymbol": "ActivityIndicatorInner",
@@ -61074,26 +62295,6 @@
         "fromSymbol": "ConfirmDialogProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/patterns/confirm-dialog/types.ts"
-      },
-      {
-        "fromSymbol": "DisclosureSectionProps",
-        "toType": "IconSource",
-        "sourcePath": "src/patterns/disclosure-section/types.ts"
-      },
-      {
-        "fromSymbol": "DisclosureSectionProps",
-        "toType": "InteractionPolicy",
-        "sourcePath": "src/patterns/disclosure-section/types.ts"
-      },
-      {
-        "fromSymbol": "DisclosureSectionProps",
-        "toType": "ReactNode",
-        "sourcePath": "src/patterns/disclosure-section/types.ts"
-      },
-      {
-        "fromSymbol": "DisclosureSectionProps",
-        "toType": "ZoraThemeMode",
-        "sourcePath": "src/patterns/disclosure-section/types.ts"
       },
       {
         "fromSymbol": "FilterBarProps",

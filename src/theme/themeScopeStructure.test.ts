@@ -57,6 +57,8 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'SectionList.tsx'),
   join(srcDir, 'features', 'bottom-sheet', 'adapters', 'inbound', 'BottomSheet.tsx'),
   join(srcDir, 'components', 'app-bar', 'AppBar.tsx'),
+  join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'Accordion.tsx'),
+  join(srcDir, 'features', 'accordion', 'adapters', 'inbound', 'AccordionItem.tsx'),
   join(srcDir, 'features', 'badge', 'adapters', 'inbound', 'Badge.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'Button.tsx'),
   join(srcDir, 'features', 'button', 'adapters', 'inbound', 'ButtonGroup.tsx'),
@@ -98,7 +100,6 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'gradient', 'adapters', 'inbound', 'Gradient.tsx'),
   join(srcDir, 'patterns', 'collection-editor', 'CollectionEditor.tsx'),
   join(srcDir, 'patterns', 'confirm-dialog', 'ConfirmDialog.tsx'),
-  join(srcDir, 'patterns', 'disclosure-section', 'DisclosureSection.tsx'),
   join(srcDir, 'features', 'empty-state', 'adapters', 'inbound', 'EmptyState.tsx'),
   join(srcDir, 'patterns', 'inspector-field', 'InspectorField.tsx'),
   join(srcDir, 'patterns', 'list', 'List.tsx'),
@@ -129,6 +130,7 @@ const scopedComponentFiles = [
 
 const scopedPropTypeFiles = [
   join(srcDir, 'components', 'app-bar', 'types.ts'),
+  join(srcDir, 'types', 'accordion.ts'),
   join(srcDir, 'types', 'badge.ts'),
   join(srcDir, 'types', 'button.ts'),
   join(srcDir, 'types', 'button-group.ts'),
@@ -161,7 +163,6 @@ const scopedPropTypeFiles = [
   join(srcDir, 'types', 'gradient.ts'),
   join(srcDir, 'patterns', 'collection-editor', 'types.ts'),
   join(srcDir, 'patterns', 'confirm-dialog', 'types.ts'),
-  join(srcDir, 'patterns', 'disclosure-section', 'types.ts'),
   join(srcDir, 'types', 'empty-state.ts'),
   join(srcDir, 'patterns', 'inspector-field', 'types.ts'),
   join(srcDir, 'patterns', 'list', 'types.ts'),

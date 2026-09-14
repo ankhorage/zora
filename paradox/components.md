@@ -1,5 +1,225 @@
 # Components
 
+## Accordion
+
+Source: `src/features/accordion/adapters/inbound/Accordion.tsx:13:14`
+
+Renders a ZORA accordion backed by Surface expansion and accessibility mechanics.
+
+Export paths: `src/index.ts`
+
+| Prop                                   | Type                                                                                                          | Required | Default | Description |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| accessibilityActions                   | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined` | no       | —       |             |
+| accessibilityElementsHidden            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityHint                      | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityIgnoresInvertColors       | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityLabel                     | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLabelledBy                | `string \| string[] \| undefined`                                                                             | no       | —       |             |
+| accessibilityLanguage                  | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLargeContentTitle         | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLiveRegion                | `"none" \| "polite" \| "assertive" \| undefined`                                                              | no       | —       |             |
+| accessibilityRespondsToUserInteraction | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityRole                      | `AccessibilityRole \| undefined`                                                                              | no       | —       |             |
+| accessibilityShowsLargeContentViewer   | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityState                     | `AccessibilityState \| undefined`                                                                             | no       | —       |             |
+| accessibilityValue                     | `AccessibilityValue \| undefined`                                                                             | no       | —       |             |
+| accessibilityViewIsModal               | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessible                             | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-busy                              | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-checked                           | `boolean \| "mixed" \| undefined`                                                                             | no       | —       |             |
+| aria-disabled                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-expanded                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-hidden                            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-label                             | `string \| undefined`                                                                                         | no       | —       |             |
+| aria-labelledby                        | `string \| undefined`                                                                                         | no       | —       |             |
+| aria-live                              | `"polite" \| "assertive" \| "off" \| undefined`                                                               | no       | —       |             |
+| aria-modal                             | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-selected                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-valuemax                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuemin                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuenow                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuetext                         | `string \| undefined`                                                                                         | no       | —       |             |
+| children                               | `React.ReactNode`                                                                                             | no       | —       |             |
+| collapsable                            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| collapsableChildren                    | `boolean \| undefined`                                                                                        | no       | —       |             |
+| collapsible                            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| defaultValue                           | `string \| readonly string[] \| undefined`                                                                    | no       | —       |             |
+| disabled                               | `boolean \| undefined`                                                                                        | no       | —       |             |
+| focusable                              | `boolean \| undefined`                                                                                        | no       | —       |             |
+| hasTVPreferredFocus                    | `boolean \| undefined`                                                                                        | no       | —       |             |
+| hitSlop                                | `number \| Insets \| null \| undefined`                                                                       | no       | —       |             |
+| id                                     | `string \| undefined`                                                                                         | no       | —       |             |
+| importantForAccessibility              | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined`                                               | no       | —       |             |
+| interactionPolicy                      | `InteractionPolicy \| undefined`                                                                              | no       | —       |             |
+| isTVSelectable                         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| mode                                   | `ZoraThemeMode \| undefined`                                                                                  | no       | —       |             |
+| nativeID                               | `string \| undefined`                                                                                         | no       | —       |             |
+| needsOffscreenAlphaCompositing         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| onAccessibilityAction                  | `((event: AccessibilityActionEvent) => void) \| undefined`                                                    | no       | —       |             |
+| onAccessibilityEscape                  | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onAccessibilityTap                     | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onBlur                                 | `((e: BlurEvent) => void) \| null \| undefined`                                                               | no       | —       |             |
+| onFocus                                | `((e: FocusEvent) => void) \| null \| undefined`                                                              | no       | —       |             |
+| onLayout                               | `((event: LayoutChangeEvent) => void) \| undefined`                                                           | no       | —       |             |
+| onMagicTap                             | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onMoveShouldSetResponder               | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onMoveShouldSetResponderCapture        | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onPointerCancel                        | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerCancelCapture                 | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerDown                          | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerDownCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerEnter                         | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerEnterCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerLeave                         | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerLeaveCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerMove                          | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerMoveCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerUp                            | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerUpCapture                     | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onResponderEnd                         | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderGrant                       | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderMove                        | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderReject                      | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderRelease                     | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderStart                       | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderTerminate                   | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderTerminationRequest          | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onStartShouldSetResponder              | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onStartShouldSetResponderCapture       | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onTouchCancel                          | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchEnd                             | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchEndCapture                      | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchMove                            | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchStart                           | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onValueChange                          | `((value: string \| undefined) => void) \| ((value: readonly string[]) => void) \| undefined`                 | no       | —       |             |
+| pointerEvents                          | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                   | no       | —       |             |
+| removeClippedSubviews                  | `boolean \| undefined`                                                                                        | no       | —       |             |
+| renderToHardwareTextureAndroid         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| role                                   | `Role \| undefined`                                                                                           | no       | —       |             |
+| screenReaderFocusable                  | `boolean \| undefined`                                                                                        | no       | —       |             |
+| shouldRasterizeIOS                     | `boolean \| undefined`                                                                                        | no       | —       |             |
+| style                                  | `StyleProp<ViewStyle>`                                                                                        | no       | —       |             |
+| tabIndex                               | `0 \| -1 \| undefined`                                                                                        | no       | —       |             |
+| testID                                 | `string \| undefined`                                                                                         | no       | —       |             |
+| themeId                                | `string \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxMagnification                | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxShiftDistanceX               | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxShiftDistanceY               | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxTiltAngle                    | `number \| undefined`                                                                                         | no       | —       |             |
+| type                                   | `"single" \| "multiple" \| undefined`                                                                         | no       | —       |             |
+| value                                  | `string \| readonly string[] \| undefined`                                                                    | no       | —       |             |
+
+## AccordionItem
+
+Source: `src/features/accordion/adapters/inbound/AccordionItem.tsx:17:14`
+
+Renders one opinionated ZORA accordion item over Surface trigger/content primitives.
+
+Export paths: `src/index.ts`
+
+| Prop                                   | Type                                                                                                          | Required | Default | Description |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| accessibilityActions                   | `readonly Readonly<{ name: AccessibilityActionName \| string; label?: string \| undefined; }>[] \| undefined` | no       | —       |             |
+| accessibilityElementsHidden            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityHint                      | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityIgnoresInvertColors       | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityLabel                     | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLabelledBy                | `string \| string[] \| undefined`                                                                             | no       | —       |             |
+| accessibilityLanguage                  | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLargeContentTitle         | `string \| undefined`                                                                                         | no       | —       |             |
+| accessibilityLiveRegion                | `"none" \| "polite" \| "assertive" \| undefined`                                                              | no       | —       |             |
+| accessibilityRespondsToUserInteraction | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityRole                      | `AccessibilityRole \| undefined`                                                                              | no       | —       |             |
+| accessibilityShowsLargeContentViewer   | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessibilityState                     | `AccessibilityState \| undefined`                                                                             | no       | —       |             |
+| accessibilityValue                     | `AccessibilityValue \| undefined`                                                                             | no       | —       |             |
+| accessibilityViewIsModal               | `boolean \| undefined`                                                                                        | no       | —       |             |
+| accessible                             | `boolean \| undefined`                                                                                        | no       | —       |             |
+| actions                                | `React.ReactNode`                                                                                             | no       | —       |             |
+| aria-busy                              | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-checked                           | `boolean \| "mixed" \| undefined`                                                                             | no       | —       |             |
+| aria-disabled                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-expanded                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-hidden                            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-label                             | `string \| undefined`                                                                                         | no       | —       |             |
+| aria-labelledby                        | `string \| undefined`                                                                                         | no       | —       |             |
+| aria-live                              | `"polite" \| "assertive" \| "off" \| undefined`                                                               | no       | —       |             |
+| aria-modal                             | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-selected                          | `boolean \| undefined`                                                                                        | no       | —       |             |
+| aria-valuemax                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuemin                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuenow                          | `number \| undefined`                                                                                         | no       | —       |             |
+| aria-valuetext                         | `string \| undefined`                                                                                         | no       | —       |             |
+| children                               | `React.ReactNode`                                                                                             | no       | —       |             |
+| collapsable                            | `boolean \| undefined`                                                                                        | no       | —       |             |
+| collapsableChildren                    | `boolean \| undefined`                                                                                        | no       | —       |             |
+| description                            | `React.ReactNode`                                                                                             | no       | —       |             |
+| disabled                               | `boolean \| undefined`                                                                                        | no       | —       |             |
+| focusable                              | `boolean \| undefined`                                                                                        | no       | —       |             |
+| hasTVPreferredFocus                    | `boolean \| undefined`                                                                                        | no       | —       |             |
+| hitSlop                                | `number \| Insets \| null \| undefined`                                                                       | no       | —       |             |
+| icon                                   | `import("@ankhorage/surface").IconSource \| undefined`                                                        | no       | —       |             |
+| id                                     | `string \| undefined`                                                                                         | no       | —       |             |
+| importantForAccessibility              | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined`                                               | no       | —       |             |
+| interactionPolicy                      | `InteractionPolicy \| undefined`                                                                              | no       | —       |             |
+| isTVSelectable                         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| mode                                   | `ZoraThemeMode \| undefined`                                                                                  | no       | —       |             |
+| nativeID                               | `string \| undefined`                                                                                         | no       | —       |             |
+| needsOffscreenAlphaCompositing         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| onAccessibilityAction                  | `((event: AccessibilityActionEvent) => void) \| undefined`                                                    | no       | —       |             |
+| onAccessibilityEscape                  | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onAccessibilityTap                     | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onBlur                                 | `((e: BlurEvent) => void) \| null \| undefined`                                                               | no       | —       |             |
+| onFocus                                | `((e: FocusEvent) => void) \| null \| undefined`                                                              | no       | —       |             |
+| onLayout                               | `((event: LayoutChangeEvent) => void) \| undefined`                                                           | no       | —       |             |
+| onMagicTap                             | `(() => void) \| undefined`                                                                                   | no       | —       |             |
+| onMoveShouldSetResponder               | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onMoveShouldSetResponderCapture        | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onPointerCancel                        | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerCancelCapture                 | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerDown                          | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerDownCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerEnter                         | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerEnterCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerLeave                         | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerLeaveCapture                  | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerMove                          | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerMoveCapture                   | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerUp                            | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onPointerUpCapture                     | `((event: PointerEvent) => void) \| undefined`                                                                | no       | —       |             |
+| onResponderEnd                         | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderGrant                       | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderMove                        | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderReject                      | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderRelease                     | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderStart                       | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderTerminate                   | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onResponderTerminationRequest          | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onStartShouldSetResponder              | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onStartShouldSetResponderCapture       | `((event: GestureResponderEvent) => boolean) \| undefined`                                                    | no       | —       |             |
+| onTouchCancel                          | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchEnd                             | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchEndCapture                      | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchMove                            | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| onTouchStart                           | `((event: GestureResponderEvent) => void) \| undefined`                                                       | no       | —       |             |
+| pointerEvents                          | `"box-none" \| "none" \| "box-only" \| "auto" \| undefined`                                                   | no       | —       |             |
+| removeClippedSubviews                  | `boolean \| undefined`                                                                                        | no       | —       |             |
+| renderToHardwareTextureAndroid         | `boolean \| undefined`                                                                                        | no       | —       |             |
+| role                                   | `Role \| undefined`                                                                                           | no       | —       |             |
+| screenReaderFocusable                  | `boolean \| undefined`                                                                                        | no       | —       |             |
+| shouldRasterizeIOS                     | `boolean \| undefined`                                                                                        | no       | —       |             |
+| style                                  | `StyleProp<ViewStyle>`                                                                                        | no       | —       |             |
+| tabIndex                               | `0 \| -1 \| undefined`                                                                                        | no       | —       |             |
+| testID                                 | `string \| undefined`                                                                                         | no       | —       |             |
+| themeId                                | `string \| undefined`                                                                                         | no       | —       |             |
+| title                                  | `React.ReactNode`                                                                                             | yes      | —       |             |
+| tvParallaxMagnification                | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxShiftDistanceX               | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxShiftDistanceY               | `number \| undefined`                                                                                         | no       | —       |             |
+| tvParallaxTiltAngle                    | `number \| undefined`                                                                                         | no       | —       |             |
+| value                                  | `string`                                                                                                      | yes      | —       |             |
+
 ## ActivityIndicator
 
 Source: `src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx:21:14`
@@ -430,17 +650,17 @@ Groups multiple `Button` elements with consistent spacing and alignment.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| align             | `ButtonGroupAlign \| undefined`                                                                                     | no       | —       |             |
-| children          | `React.ReactNode`                                                                                                   | no       | —       |             |
-| gap               | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                    | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                        | no       | —       |             |
-| orientation       | `ButtonGroupOrientation \| undefined`                                                                               | no       | —       |             |
-| reverse           | `boolean \| undefined`                                                                                              | no       | —       |             |
-| testID            | `string \| undefined`                                                                                               | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                               | no       | —       |             |
+| Prop              | Type                                                                                                              | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| align             | `ButtonGroupAlign \| undefined`                                                                                   | no       | —       |             |
+| children          | `React.ReactNode`                                                                                                 | no       | —       |             |
+| gap               | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                  | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                      | no       | —       |             |
+| orientation       | `ButtonGroupOrientation \| undefined`                                                                             | no       | —       |             |
+| reverse           | `boolean \| undefined`                                                                                            | no       | —       |             |
+| testID            | `string \| undefined`                                                                                             | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                             | no       | —       |             |
 
 ## CameraPermissionView
 
@@ -953,30 +1173,6 @@ Export paths: `src/index.ts`
 | themeId           | `string \| undefined`                               | no       | —       |             |
 | value             | `DatePickerValue`                                   | yes      | —       |             |
 
-## DisclosureSection
-
-Source: `src/patterns/disclosure-section/DisclosureSection.tsx:130:14`
-
-Expandable section pattern with a summary header and collapsible content.
-
-Export paths: `src/index.ts`
-
-| Prop              | Type                                                   | Required | Default | Description |
-| ----------------- | ------------------------------------------------------ | -------- | ------- | ----------- |
-| actions           | `ReactNode`                                            | no       | —       |             |
-| children          | `ReactNode`                                            | no       | —       |             |
-| defaultOpen       | `boolean \| undefined`                                 | no       | —       |             |
-| description       | `ReactNode`                                            | no       | —       |             |
-| disabled          | `boolean \| undefined`                                 | no       | —       |             |
-| icon              | `import("@ankhorage/surface").IconSource \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                       | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                           | no       | —       |             |
-| onOpenChange      | `((open: boolean) => void) \| undefined`               | no       | —       |             |
-| open              | `boolean \| undefined`                                 | no       | —       |             |
-| testID            | `string \| undefined`                                  | no       | —       |             |
-| themeId           | `string \| undefined`                                  | no       | —       |             |
-| title             | `ReactNode`                                            | yes      | —       |             |
-
 ## Divider
 
 Source: `src/features/layout/adapters/inbound/Divider.tsx:8:14`
@@ -1245,22 +1441,22 @@ The host supplies a platform-compatible renderer through
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| children          | `React.ReactNode`                                                                                                   | no       | —       |             |
-| colors            | `GradientColors`                                                                                                    | yes      | —       |             |
-| end               | `GradientPoint \| undefined`                                                                                        | no       | —       |             |
-| height            | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                    | no       | —       |             |
-| locations         | `GradientLocations \| undefined`                                                                                    | no       | —       |             |
-| minHeight         | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                        | no       | —       |             |
-| p                 | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| radius            | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
-| start             | `GradientPoint \| undefined`                                                                                        | no       | —       |             |
-| testID            | `string \| undefined`                                                                                               | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                               | no       | —       |             |
-| width             | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
+| Prop              | Type                                                                                                              | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| children          | `React.ReactNode`                                                                                                 | no       | —       |             |
+| colors            | `GradientColors`                                                                                                  | yes      | —       |             |
+| end               | `GradientPoint \| undefined`                                                                                      | no       | —       |             |
+| height            | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                  | no       | —       |             |
+| locations         | `GradientLocations \| undefined`                                                                                  | no       | —       |             |
+| minHeight         | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                      | no       | —       |             |
+| p                 | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       | —       |             |
+| radius            | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
+| start             | `GradientPoint \| undefined`                                                                                      | no       | —       |             |
+| testID            | `string \| undefined`                                                                                             | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                             | no       | —       |             |
+| width             | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
 
 ## GradientRendererProvider
 
@@ -2707,17 +2903,17 @@ Multi-line skeleton placeholder for text content.
 
 Export paths: `src/index.ts`
 
-| Prop              | Type                                                                                                                | Required | Default | Description |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
-| gap               | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/layout/helpers").SpaceValue> \| undefined` | no       | —       |             |
-| interactionPolicy | `InteractionPolicy \| undefined`                                                                                    | no       | —       |             |
-| lastLineWidth     | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
-| lineHeight        | `number \| undefined`                                                                                               | no       | —       |             |
-| lines             | `number \| undefined`                                                                                               | no       | —       |             |
-| mode              | `ZoraThemeMode \| undefined`                                                                                        | no       | —       |             |
-| testID            | `string \| undefined`                                                                                               | no       | —       |             |
-| themeId           | `string \| undefined`                                                                                               | no       | —       |             |
-| width             | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                            | no       | —       |             |
+| Prop              | Type                                                                                                              | Required | Default | Description |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------- |
+| gap               | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no       | —       |             |
+| interactionPolicy | `InteractionPolicy \| undefined`                                                                                  | no       | —       |             |
+| lastLineWidth     | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
+| lineHeight        | `number \| undefined`                                                                                             | no       | —       |             |
+| lines             | `number \| undefined`                                                                                             | no       | —       |             |
+| mode              | `ZoraThemeMode \| undefined`                                                                                      | no       | —       |             |
+| testID            | `string \| undefined`                                                                                             | no       | —       |             |
+| themeId           | `string \| undefined`                                                                                             | no       | —       |             |
+| width             | `import("@ankhorage/surface").Responsive<string \| number> \| undefined`                                          | no       | —       |             |
 
 ## Spacer
 

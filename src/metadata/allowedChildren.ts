@@ -6,6 +6,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'OtpForm',
   'SignInForm',
   'SignUpForm',
+  'Accordion',
   'Surface',
   'Avatar',
   'AvatarGroup',

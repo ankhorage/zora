@@ -51,6 +51,12 @@ graph LR
   module_src_constants_keyboard_ts["src/constants/keyboard.ts"]
   module_src_corePlugin_ts["src/corePlugin.ts"]
   module_src_corePluginMetadata_ts["src/corePluginMetadata.ts"]
+  module_src_features_accordion_accordionItemMeta_ts["src/features/accordion/accordionItemMeta.ts"]
+  module_src_features_accordion_accordionMeta_ts["src/features/accordion/accordionMeta.ts"]
+  module_src_features_accordion_adapters_inbound_Accordion_tsx["src/features/accordion/adapters/inbound/Accordion.tsx"]
+  module_src_features_accordion_adapters_inbound_AccordionItem_tsx["src/features/accordion/adapters/inbound/AccordionItem.tsx"]
+  module_src_features_accordion_composition_AccordionPresentationContext_ts["src/features/accordion/composition/AccordionPresentationContext.ts"]
+  module_src_features_accordion_public_ts["src/features/accordion/public.ts"]
   module_src_features_activity_indicator_activityIndicatorMeta_ts["src/features/activity-indicator/activityIndicatorMeta.ts"]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"]
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
@@ -288,10 +294,6 @@ graph LR
   module_src_patterns_confirm_dialog_index_ts["src/patterns/confirm-dialog/index.ts"]
   module_src_patterns_confirm_dialog_meta_ts["src/patterns/confirm-dialog/meta.ts"]
   module_src_patterns_confirm_dialog_types_ts["src/patterns/confirm-dialog/types.ts"]
-  module_src_patterns_disclosure_section_DisclosureSection_tsx["src/patterns/disclosure-section/DisclosureSection.tsx"]
-  module_src_patterns_disclosure_section_index_ts["src/patterns/disclosure-section/index.ts"]
-  module_src_patterns_disclosure_section_meta_ts["src/patterns/disclosure-section/meta.ts"]
-  module_src_patterns_disclosure_section_types_ts["src/patterns/disclosure-section/types.ts"]
   module_src_patterns_filter_bar_FilterBar_tsx["src/patterns/filter-bar/FilterBar.tsx"]
   module_src_patterns_filter_bar_index_ts["src/patterns/filter-bar/index.ts"]
   module_src_patterns_filter_bar_meta_ts["src/patterns/filter-bar/meta.ts"]
@@ -388,6 +390,7 @@ graph LR
   module_src_theme_ZoraProvider_tsx["src/theme/ZoraProvider.tsx"]
   module_src_theme_ZoraThemeRuntimeContext_tsx["src/theme/ZoraThemeRuntimeContext.tsx"]
   module_src_theme_ZoraThemeScope_tsx["src/theme/ZoraThemeScope.tsx"]
+  module_src_types_accordion_ts["src/types/accordion.ts"]
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
   module_src_types_auth_ts["src/types/auth.ts"]
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
@@ -429,6 +432,20 @@ graph LR
   module_src_types_upload_ts["src/types/upload.ts"]
   module_src_utils_createManifestBindings_ts["src/utils/createManifestBindings.ts"]
   module_src_utils_finalizeFeatureMetadata_ts["src/utils/finalizeFeatureMetadata.ts"]
+  export_Accordion["Accordion"]
+  module_src_features_accordion_adapters_inbound_Accordion_tsx --> export_Accordion
+  export_AccordionItem["AccordionItem"]
+  module_src_features_accordion_adapters_inbound_AccordionItem_tsx --> export_AccordionItem
+  export_AccordionItemProps["AccordionItemProps"]
+  module_src_types_accordion_ts --> export_AccordionItemProps
+  export_AccordionMode["AccordionMode"]
+  module_node_modules__ankhorage_surface_dist_types_accordion_d_ts --> export_AccordionMode
+  export_AccordionMultipleProps["AccordionMultipleProps"]
+  module_src_types_accordion_ts --> export_AccordionMultipleProps
+  export_AccordionProps["AccordionProps"]
+  module_src_types_accordion_ts --> export_AccordionProps
+  export_AccordionSingleProps["AccordionSingleProps"]
+  module_src_types_accordion_ts --> export_AccordionSingleProps
   export_ActivityIndicator["ActivityIndicator"]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> export_ActivityIndicator
   export_ActivityIndicatorProps["ActivityIndicatorProps"]
@@ -676,11 +693,6 @@ graph LR
   module_src_types_date_picker_ts --> export_DatePickerValue
   export_DEFAULT_OAUTH_PROVIDER_ICONS["DEFAULT_OAUTH_PROVIDER_ICONS"]
   module_src_features_auth_utils_oauthProviders_ts --> export_DEFAULT_OAUTH_PROVIDER_ICONS
-  export_DisclosureSection["DisclosureSection"]
-  module_src_patterns_disclosure_section_DisclosureSection_tsx --> export_DisclosureSection
-  export_DisclosureSectionProps["DisclosureSectionProps"]
-  module_src_patterns_disclosure_section_types_ts --> export_DisclosureSectionProps
-  export_DisclosureSectionProps -.-> export_ZoraThemeMode
   export_Divider["Divider"]
   module_src_features_layout_adapters_inbound_Divider_tsx --> export_Divider
   export_DividerProps["DividerProps"]
@@ -837,7 +849,7 @@ graph LR
   export_Image["Image"]
   module_src_features_image_adapters_inbound_Image_tsx --> export_Image
   export_ImageFit["ImageFit"]
-  module_node_modules__ankhorage_surface_dist_primitives_image_types_d_ts --> export_ImageFit
+  module_node_modules__ankhorage_surface_dist_types_image_d_ts --> export_ImageFit
   export_ImageProps["ImageProps"]
   module_src_types_image_ts --> export_ImageProps
   export_ImageProps -.-> export_SurfaceImageSource
@@ -1217,13 +1229,13 @@ graph LR
   export_Surface["Surface"]
   module_src_features_surface_adapters_inbound_Surface_tsx --> export_Surface
   export_SurfaceImageSource["SurfaceImageSource"]
-  module_node_modules__ankhorage_surface_dist_primitives_image_types_d_ts --> export_SurfaceImageSource
+  module_node_modules__ankhorage_surface_dist_types_image_d_ts --> export_SurfaceImageSource
   export_SurfaceProps["SurfaceProps"]
   module_src_types_surface_ts --> export_SurfaceProps
   export_SurfaceProps -.-> export_SurfaceVariant
   export_SurfaceProps -.-> export_ZoraThemeMode
   export_SurfaceVariant["SurfaceVariant"]
-  module_node_modules__ankhorage_surface_dist_layout_Surface_d_ts --> export_SurfaceVariant
+  module_node_modules__ankhorage_surface_dist_types_surface_d_ts --> export_SurfaceVariant
   export_SwitchField["SwitchField"]
   module_src_patterns_switch_field_SwitchField_tsx --> export_SwitchField
   export_SwitchFieldProps["SwitchFieldProps"]

@@ -12,6 +12,7 @@ import { Select } from './components/select';
 import { Tabs } from './components/tabs';
 import { Toast } from './components/toast';
 import { Toolbar, ToolbarAction } from './components/toolbar';
+import { Accordion, AccordionItem } from './features/accordion/public';
 import { ActivityIndicator } from './features/activity-indicator/public';
 import {
   ForgotPasswordForm,
@@ -68,7 +69,6 @@ import { TopbarLayout } from './layout/topbar-layout';
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
-import { DisclosureSection } from './patterns/disclosure-section';
 import { FilterBar } from './patterns/filter-bar';
 import { InspectorField } from './patterns/inspector-field';
 import { List, ListRow, ListSection } from './patterns/list';
@@ -113,6 +113,8 @@ type _RegistryInteractionPolicyCheck = _AssertTrue<
 >;
 
 const _ZORA_COMPONENT_REGISTRY = {
+  Accordion,
+  AccordionItem,
   ActivityIndicator,
   AppBar,
   Avatar,
@@ -193,7 +195,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   CollectionEditor,
   ConfirmDialog,
   ContentRail,
-  DisclosureSection,
   EmptyState,
   FilterBar,
   Hero,

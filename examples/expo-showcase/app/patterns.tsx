@@ -1,4 +1,6 @@
 import {
+  Accordion,
+  AccordionItem,
   AppBar,
   Avatar,
   Badge,
@@ -6,7 +8,6 @@ import {
   Card,
   ChipGroup,
   CollectionEditor,
-  DisclosureSection,
   EmptyState,
   FilterBar,
   ForgotPasswordForm,
@@ -447,7 +448,7 @@ export function PatternsPage() {
       <ScreenSection title="Scenario: App settings">
         <Notice
           title="Settings saved locally"
-          description="This scenario combines form fields, switches, inspector-style controls, and disclosure sections."
+          description="This scenario combines form fields, switches, inspector-style controls, and accordion sections."
           color="primary"
         />
 
@@ -485,17 +486,20 @@ export function PatternsPage() {
           <TextInput value="Ocean" />
         </InspectorField>
 
-        <DisclosureSection
-          title="Advanced diagnostics"
-          description="Developer-oriented settings for debugging rendering and logs."
-        >
-          <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
-          <SwitchField
-            label="Verbose logging"
-            value={verboseLogging}
-            onValueChange={setVerboseLogging}
-          />
-        </DisclosureSection>
+        <Accordion collapsible defaultValue="advanced" type="single">
+          <AccordionItem
+            description="Developer-oriented settings for debugging rendering and logs."
+            title="Advanced diagnostics"
+            value="advanced"
+          >
+            <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
+            <SwitchField
+              label="Verbose logging"
+              value={verboseLogging}
+              onValueChange={setVerboseLogging}
+            />
+          </AccordionItem>
+        </Accordion>
       </ScreenSection>
 
       <ScreenSection title="Scenario: Auth forms">

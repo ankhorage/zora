@@ -23,6 +23,15 @@ export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
+  Accordion,
+  AccordionItem,
+  type AccordionItemProps,
+  type AccordionMode,
+  type AccordionMultipleProps,
+  type AccordionProps,
+  type AccordionSingleProps,
+} from './features/accordion/public';
+export {
   ActivityIndicator,
   type ActivityIndicatorProps,
 } from './features/activity-indicator/public';
@@ -334,8 +343,6 @@ export type {
 export { CollectionEditor } from './patterns/collection-editor';
 export type { ConfirmDialogProps } from './patterns/confirm-dialog';
 export { ConfirmDialog } from './patterns/confirm-dialog';
-export type { DisclosureSectionProps } from './patterns/disclosure-section';
-export { DisclosureSection } from './patterns/disclosure-section';
 export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { InspectorFieldProps } from './patterns/inspector-field';
