@@ -4,12 +4,15 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'bun:test';
 
 const themeDir = import.meta.dir;
+const srcDir = join(themeDir, '..');
 
 describe('canonical ThemeConfig scope propagation', () => {
   test('provider accepts the canonical ThemeConfig without duplicating live config state', () => {
     const provider = readFileSync(join(themeDir, 'ZoraProvider.tsx'), 'utf8');
+    const providerTypes = readFileSync(join(srcDir, 'types', 'provider.ts'), 'utf8');
     const context = readFileSync(join(themeDir, 'ZoraThemeRuntimeContext.tsx'), 'utf8');
-    expect(provider).toContain('themeConfig?: ThemeConfig');
+
+    expect(providerTypes).toContain('themeConfig?: ThemeConfig');
     expect(provider).toContain('themeConfig ?? createZoraThemeConfig(theme)');
     expect(context).not.toContain('ThemeConfig');
     expect(context).not.toContain('sourceTheme');
