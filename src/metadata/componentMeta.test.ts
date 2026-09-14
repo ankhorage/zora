@@ -106,6 +106,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Checkbox',
       'CheckboxGroup',
       'RadioGroup',
+      'SearchInput',
       'Select',
       'TextInput',
     ]);
@@ -152,6 +153,10 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ChipGroup',
       'DataTable',
       'DatePicker',
+      'Pagination',
+      'Rating',
+      'SearchInput',
+      'Tab',
       'Skeleton',
       'SkeletonCard',
       'SkeletonList',
@@ -191,6 +196,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
     const expectedContainerNodes = new Set([
       'Accordion',
       'AccordionItem',
+      'Dialog',
       'Form',
       'Gradient',
       'Surface',
@@ -209,12 +215,15 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'PostCard',
       'MessageBubble',
       'Box',
-
       'Stack',
       'Grid',
       'Container',
       'BarcodeScannerView',
       'ContentRail',
+      'Tabs',
+      'TabList',
+      'TabPanel',
+      'Toolbar',
     ]);
 
     for (const [key, meta] of Object.entries(ZORA_COMPONENT_META)) {
@@ -237,6 +246,14 @@ describe('ZORA_COMPONENT_META invariants', () => {
         `Direct manifest node '${key}' must be categorized as leaf or container in the test.`,
       );
     }
+  });
+
+  test('Tabs constrain authored content to the accessible tab hierarchy', () => {
+    expect(ZORA_COMPONENT_META.Tabs.allowedChildren).toEqual(['TabList', 'TabPanel']);
+    expect(ZORA_COMPONENT_META.TabList.allowedChildren).toEqual(['Tab']);
+    expect(ZORA_COMPONENT_META.Tab.allowedChildren).toEqual([]);
+    expect(ZORA_COMPONENT_META.TabPanel.allowedChildren.length).toBeGreaterThan(0);
+    expect(ZORA_COMPONENT_META.Tabs.events?.valueChange?.eventType).toBe('tabs.valueChange');
   });
 
   test('Accordion constrains authored items to its canonical hierarchy', () => {

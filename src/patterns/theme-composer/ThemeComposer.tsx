@@ -3,10 +3,10 @@ import type { AppCategory } from '@ankhorage/contracts';
 import { APP_CATEGORIES } from '@ankhorage/contracts';
 import React from 'react';
 
-import { Tabs } from '../../components/tabs';
 import { Badge } from '../../features/badge/public';
 import { Button } from '../../features/button/public';
 import { Card } from '../../features/card/public';
+import { ChipGroup } from '../../features/chip/public';
 import { Select } from '../../features/form/select/public';
 import { TextInput } from '../../features/form/text-input/public';
 import { Box, Stack } from '../../features/layout/public';
@@ -48,7 +48,7 @@ function formatAppCategoryLabel(category: AppCategory): string {
 
 const HARMONY_OPTIONS = COLOR_HARMONIES.map((h) => ({ value: h, label: h }));
 
-const MODE_TABS = [
+const MODE_OPTIONS = [
   { value: 'light' as ZoraThemeMode, label: 'Light' },
   { value: 'dark' as ZoraThemeMode, label: 'Dark' },
 ];
@@ -230,12 +230,11 @@ function ThemeComposerInner({
 
       {/* Section: Mode */}
       <Card title="Mode" description="Switch between light and dark presentation.">
-        <Tabs
+        <ChipGroup
           value={activeMode}
-          items={MODE_TABS}
-          onValueChange={(m) => onModeChange?.(m)}
-          variant="segmented"
-          testID={testID ? `${testID}-mode-tabs` : undefined}
+          items={MODE_OPTIONS}
+          onValueChange={(nextMode) => onModeChange?.(nextMode)}
+          testID={testID ? `${testID}-mode` : undefined}
         />
       </Card>
 

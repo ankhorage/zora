@@ -1,9 +1,3 @@
-import { modalMeta } from '../components/modal/meta';
-import { paginationMeta } from '../components/pagination/meta';
-import { ratingMeta } from '../components/rating/meta';
-import { searchBarMeta } from '../components/search-bar/meta';
-import { tabsMeta } from '../components/tabs/meta';
-import { toolbarActionMeta, toolbarMeta } from '../components/toolbar/meta';
 import { accordionItemMeta } from '../features/accordion/accordionItemMeta';
 import { accordionMeta } from '../features/accordion/accordionMeta';
 import { activityIndicatorMeta } from '../features/activity-indicator/activityIndicatorMeta';
@@ -31,6 +25,7 @@ import { chipGroupMeta } from '../features/chip/chipGroupMeta';
 import { chipMeta } from '../features/chip/chipMeta';
 import { dataTableMeta } from '../features/data-table/dataTableMeta';
 import { datePickerMeta } from '../features/date-picker/datePickerMeta';
+import { dialogMeta } from '../features/dialog/dialogMeta';
 import { emptyStateMeta } from '../features/empty-state/emptyStateMeta';
 import { checkboxGroupMeta, checkboxMeta } from '../features/form/checkbox/checkboxMeta';
 import { formActionsMeta } from '../features/form/formActionsMeta';
@@ -38,6 +33,7 @@ import { formErrorMeta } from '../features/form/formErrorMeta';
 import { formFieldMeta } from '../features/form/formFieldMeta';
 import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
+import { searchInputMeta } from '../features/form/search-input/searchInputMeta';
 import { selectMeta } from '../features/form/select/selectMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { gradientMeta } from '../features/gradient/gradientMeta';
@@ -54,8 +50,10 @@ import { stackMeta } from '../features/layout/stackMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
 import { missingElementMeta } from '../features/missing-element/missingElementMeta';
+import { paginationMeta } from '../features/pagination/paginationMeta';
 import { popoverMenuMeta } from '../features/popover-menu/popoverMenuMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
+import { ratingMeta } from '../features/rating/ratingMeta';
 import {
   skeletonCardMeta,
   skeletonListMeta,
@@ -63,9 +61,14 @@ import {
   skeletonTextMeta,
 } from '../features/skeleton/skeletonMeta';
 import { surfaceMeta } from '../features/surface/surfaceMeta';
+import { tabListMeta } from '../features/tabs/tabListMeta';
+import { tabMeta } from '../features/tabs/tabMeta';
+import { tabPanelMeta } from '../features/tabs/tabPanelMeta';
+import { tabsMeta } from '../features/tabs/tabsMeta';
 import { timePickerMeta } from '../features/time-picker/timePickerMeta';
 import { toastMeta } from '../features/toast/toastMeta';
 import { toastProviderMeta } from '../features/toast/toastProviderMeta';
+import { toolbarMeta } from '../features/toolbar/toolbarMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';
@@ -128,6 +131,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   ChipGroup: chipGroupMeta,
   DataTable: dataTableMeta,
   DatePicker: datePickerMeta,
+  Dialog: dialogMeta,
   Form: formMeta,
   FormActions: formActionsMeta,
   FormError: formErrorMeta,
@@ -141,7 +145,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
   MetricCard: metricCardMeta,
-  Modal: modalMeta,
   Pagination: paginationMeta,
   PopoverMenu: popoverMenuMeta,
   Progress: progressMeta,
@@ -149,19 +152,21 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Radio: radioMeta,
   RadioGroup: radioGroupMeta,
   Rating: ratingMeta,
-  SearchBar: searchBarMeta,
+  SearchInput: searchInputMeta,
   Select: selectMeta,
   Skeleton: skeletonMeta,
   SkeletonCard: skeletonCardMeta,
   SkeletonList: skeletonListMeta,
   SkeletonText: skeletonTextMeta,
+  Tab: tabMeta,
+  TabList: tabListMeta,
+  TabPanel: tabPanelMeta,
   Tabs: tabsMeta,
   Text: textMeta,
   TimePicker: timePickerMeta,
   Toast: toastMeta,
   ToastProvider: toastProviderMeta,
   Toolbar: toolbarMeta,
-  ToolbarAction: toolbarActionMeta,
   Uploader: uploaderMeta,
   BottomSheet: bottomSheetMeta,
   FlatList: flatListMeta,

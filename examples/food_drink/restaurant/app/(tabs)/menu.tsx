@@ -4,7 +4,7 @@ import {
   MediaCard,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
   Text,
 } from '@ankhorage/zora';
 
@@ -37,7 +37,7 @@ export default function MenuScreen() {
       <ExampleAppBar title="Menu" />
       <Screen>
         <ScreenSection title="Search" description="Search dishes and dietary options.">
-          <SearchBar
+          <SearchInput
             onValueChange={() => {
               /* no-op */
             }}

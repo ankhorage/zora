@@ -12,11 +12,17 @@ test('every selected feature element is directly authorable through its canonica
     const source = await Bun.file(`src/features/${family}/public.ts`).text();
     for (const name of names) {
       const meta = catalog.get(name);
+      const hasAuthorableShape =
+        Object.keys(meta?.props ?? {}).length > 0 || (meta?.allowedChildren.length ?? 0) > 0;
       expect(meta?.directManifestNode, name).toBe(true);
-      expect(Object.keys(meta?.props ?? {}).length, name).toBeGreaterThan(0);
+      expect(hasAuthorableShape, name).toBe(true);
       expect(source, name).toContain(name);
     }
   }
+});
+
+test('feature ownership has no remaining legacy components directory', () => {
+  expect(existsSync('src/components')).toBe(false);
 });
 
 test('form composition has one canonical feature owner', () => {
@@ -38,7 +44,7 @@ test('migrated picker and presentation elements have one canonical feature owner
   }
 });
 
-test('interactive authoring retains state and event payload bindings after plugin composition', () => {
+test('existing interactive authoring retains bindings after plugin composition', () => {
   const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
   expect(meta.DataTable?.bindings?.props?.sort?.value.type).toBe('object');
   expect(meta.DataTable?.bindings?.props?.rows?.value.type).toBe('array');
@@ -48,6 +54,29 @@ test('interactive authoring retains state and event payload bindings after plugi
     type: 'object',
   });
   expect(meta.BottomSheet?.bindings?.props?.open?.value.type).toBe('boolean');
+});
+
+test('final ownership data components retain bindings after plugin composition', () => {
+  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+  expect(meta.Dialog?.bindings?.props?.visible?.value.type).toBe('boolean');
+  expect(meta.Dialog?.bindings?.events?.dismiss?.payload?.eventType).toBe('dialog.dismiss');
+  expect(meta.Pagination?.bindings?.props?.page?.value.type).toBe('number');
+  expect(meta.Pagination?.bindings?.events?.pageChange?.payload?.eventType).toBe(
+    'pagination.pageChange',
+  );
+  expect(meta.Rating?.bindings?.props?.value?.value.type).toBe('number');
+});
+
+test('final ownership form and tab components retain bindings after plugin composition', () => {
+  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+  expect(meta.SearchInput?.bindings?.props?.value?.value.type).toBe('string');
+  expect(meta.SearchInput?.bindings?.events?.submit?.payload?.eventType).toBe('searchInput.submit');
+  expect(meta.Tabs?.bindings?.props?.value?.value.type).toBe('string');
+  expect(meta.Tabs?.bindings?.events?.valueChange?.payload?.eventType).toBe('tabs.valueChange');
+});
+
+test('existing scalar authoring bindings remain available after plugin composition', () => {
+  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
   expect(meta.Heading?.bindings?.props?.level?.value.type).toBe('number');
   expect(meta.Image?.bindings?.props?.radius?.value.type).toBe('unknown');
 });

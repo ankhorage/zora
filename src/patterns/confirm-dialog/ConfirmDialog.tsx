@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Modal } from '../../components/modal';
 import { Button } from '../../features/button/public';
+import { Dialog } from '../../features/dialog/public';
 import { Stack } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ConfirmDialogProps } from './types';
@@ -25,7 +25,7 @@ function ConfirmDialogInner({
   interactionPolicy,
 }: ConfirmDialogProps) {
   return (
-    <Modal
+    <Dialog
       closeOnBackdrop={closeOnBackdrop}
       description={description}
       interactionPolicy={interactionPolicy}
@@ -57,7 +57,7 @@ function ConfirmDialogInner({
       width="narrow"
     >
       {children}
-    </Modal>
+    </Dialog>
   );
 }
 

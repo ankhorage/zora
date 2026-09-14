@@ -24,7 +24,7 @@ import {
   PaletteItem,
   Screen,
   ScreenSection,
-  SearchBar,
+  SearchInput,
   SelectableItem,
   SelectionProvider,
   SignInForm,
@@ -237,7 +237,9 @@ export function PatternsPage() {
     <Screen>
       <ScreenSection title="Scenario: Search and filters">
         <FilterBar
-          leading={<SearchBar placeholder="Search items" value={query} onValueChange={setQuery} />}
+          leading={
+            <SearchInput placeholder="Search items" value={query} onValueChange={setQuery} />
+          }
         >
           <ChipGroup
             value={filters}

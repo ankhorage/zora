@@ -1,15 +1,3 @@
-export type { ModalProps } from './components/modal';
-export { Modal } from './components/modal';
-export type { PaginationProps } from './components/pagination';
-export { Pagination } from './components/pagination';
-export type { RatingProps } from './components/rating';
-export { Rating } from './components/rating';
-export type { SearchBarProps } from './components/search-bar';
-export { SearchBar } from './components/search-bar';
-export type { TabItem, TabsProps, TabsVariant } from './components/tabs';
-export { Tabs } from './components/tabs';
-export type { ToolbarActionProps, ToolbarPosition, ToolbarProps } from './components/toolbar';
-export { Toolbar, ToolbarAction } from './components/toolbar';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
@@ -116,6 +104,7 @@ export {
   type DatePickerProps,
   type DatePickerValue,
 } from './features/date-picker/public';
+export { Dialog, type DialogProps } from './features/dialog/public';
 export {
   EmptyState,
   type EmptyStateAction,
@@ -161,6 +150,7 @@ export {
   type RadioGroupProps,
   type RadioProps,
 } from './features/form/radio/public';
+export { SearchInput, type SearchInputProps } from './features/form/search-input/public';
 export { Select, type SelectOption, type SelectProps } from './features/form/select/public';
 export {
   TextInput,
@@ -220,6 +210,7 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
+export { Pagination, type PaginationProps } from './features/pagination/public';
 export {
   PopoverMenu,
   type PopoverMenuAction,
@@ -232,6 +223,7 @@ export {
   ProgressRing,
   type ProgressRingProps,
 } from './features/progress/public';
+export { Rating, type RatingProps } from './features/rating/public';
 export {
   Skeleton,
   SkeletonCard,
@@ -248,6 +240,16 @@ export {
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
 export { Surface } from './features/surface/public';
 export {
+  Tab,
+  TabList,
+  type TabListProps,
+  TabPanel,
+  type TabPanelProps,
+  type TabProps,
+  Tabs,
+  type TabsProps,
+} from './features/tabs/public';
+export {
   TimePicker,
   type TimePickerProps,
   type TimePickerValue,
@@ -260,6 +262,7 @@ export type {
   ToastStatus,
 } from './features/toast/public';
 export { Toast, ToastProvider, useToast } from './features/toast/public';
+export { Toolbar, type ToolbarProps } from './features/toolbar/public';
 export type {
   HeadingAlign,
   HeadingColor,

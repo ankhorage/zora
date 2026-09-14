@@ -120,62 +120,23 @@ describe('Plan 5 audit — no showcase bridge or direct Surface imports in examp
 
 describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surface directly', () => {
   /**
-   * Components, layouts, and patterns that compose ZORA primitives should import
-   * foundation primitives from the local ZORA foundation layer, not directly
-   * from @ankhorage/surface.
-   *
-   * Foundation wrappers, theme infrastructure, internal recipes, and explicit
-   * Surface-wrapping boundary components are exempt.
+   * Features, layouts, and patterns that compose ZORA primitives should import
+   * foundation primitives from ZORA, not directly from @ankhorage/surface.
+   * The feature-owned layout adapters are the deliberate Surface foundation boundary.
    */
-  const EXEMPT_PATHS = new Set([
-    // Foundation wrappers — they ARE the Surface abstraction layer.
-    join(SRC_ROOT, 'foundation'),
-    // Theme infrastructure legitimately integrates with Surface theme/runtime types.
-    join(SRC_ROOT, 'theme'),
-    // Internal recipes may consume SurfaceTheme types as the typed recipe boundary.
-    join(SRC_ROOT, 'internal'),
-    // Explicit Surface primitive wrappers.
-    join(SRC_ROOT, 'components', 'checkbox', 'Checkbox.tsx'),
-    join(SRC_ROOT, 'features', 'icon', 'adapters', 'inbound', 'Icon.tsx'),
-    join(SRC_ROOT, 'features', 'button', 'adapters', 'inbound', 'IconButton.tsx'),
-    join(SRC_ROOT, 'components', 'modal', 'Modal.tsx'),
-    join(SRC_ROOT, 'features', 'form', 'text-input', 'adapters', 'inbound', 'TextInput.tsx'),
-    join(SRC_ROOT, 'features', 'typography', 'adapters', 'inbound', 'Text.tsx'),
-    join(SRC_ROOT, 'features', 'form', 'adapters', 'inbound', 'FormField.tsx'),
-    // Type-only imports that intentionally expose Surface-compatible prop specs.
-    join(SRC_ROOT, 'components', 'checkbox', 'types.ts'),
-    join(SRC_ROOT, 'types', 'form.ts'),
-    join(SRC_ROOT, 'types', 'icon-button.ts'),
-    join(SRC_ROOT, 'components', 'tabs', 'types.ts'),
-    join(SRC_ROOT, 'types', 'text.ts'),
-    join(SRC_ROOT, 'components', 'textarea', 'types.ts'),
-    join(SRC_ROOT, 'components', 'toolbar', 'types.ts'),
-    join(SRC_ROOT, 'patterns', 'tile-grid', 'types.ts'),
-  ]);
-
-  function isExempt(filePath: string): boolean {
-    for (const exemptPath of EXEMPT_PATHS) {
-      if (isPathWithin(filePath, exemptPath)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
+  const SURFACE_FOUNDATION_BOUNDARY = join(SRC_ROOT, 'features', 'layout');
   const PRODUCT_FACING_DIRS = [
-    join(SRC_ROOT, 'components'),
+    join(SRC_ROOT, 'features'),
     join(SRC_ROOT, 'layout'),
     join(SRC_ROOT, 'patterns'),
   ];
-
   const FOUNDATION_PRIMITIVES_PATTERN =
     /import \{[^}]*\b(Box|Stack|Center|Container|Grid|Inline|Spacer|Divider)\b[^}]*\} from '@ankhorage\/surface'/;
 
-  test('component, layout, and pattern files do not import foundation primitives directly from @ankhorage/surface', () => {
+  test('feature, layout, and pattern files do not import foundation primitives directly from @ankhorage/surface', () => {
     for (const dir of PRODUCT_FACING_DIRS) {
       for (const filePath of listFiles(dir)) {
-        if (isExempt(filePath)) continue;
+        if (isPathWithin(filePath, SURFACE_FOUNDATION_BOUNDARY)) continue;
 
         const source = readFileSync(filePath, 'utf8');
         const match = FOUNDATION_PRIMITIVES_PATTERN.exec(source);
@@ -183,7 +144,7 @@ describe('Plan 5 audit — product-facing src imports ZORA foundation, not Surfa
         expect(
           match,
           `${filePath} imports Surface foundation primitive '${match?.[1]}' directly. ` +
-            `Use the ZORA foundation import ('../../foundation') instead.`,
+            'Use the feature-owned ZORA layout/foundation API instead.',
         ).toBeNull();
       }
     }

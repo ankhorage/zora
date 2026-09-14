@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Screen, ScreenSection, SearchInput, Text } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -39,7 +39,7 @@ export default function ProductsScreen() {
           description="Filtering is static for now, but the UI surface is real."
           actions={<Badge color="primary">42 items</Badge>}
         >
-          <SearchBar
+          <SearchInput
             onValueChange={() => {
               /* no-op */
             }}
