@@ -12,19 +12,23 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 const DEFAULT_CANCEL_ICON = { name: 'close-outline' } satisfies ButtonIconSpec;
 const DEFAULT_OVERFLOW_ICON = { name: 'ellipsis-vertical' } satisfies ButtonIconSpec;
 
+/*** Resolves the effective AppBar mode. */
 function resolveMode(mode: AppBarMode | undefined): AppBarMode {
   return mode ?? { type: 'default' };
 }
 
+/*** Formats the active selection label with its optional count. */
 function resolveSelectionLabel({ count, label }: { count?: number; label: string }): string {
   if (count === undefined) return label;
   return `${label} (${count})`;
 }
 
+/*** Resolves the accessible label for the overflow action. */
 function resolveOverflowLabel(overflow: AppBarOverflowAction): string {
   return overflow.label ?? 'More options';
 }
 
+/*** Resolves the accessible label for leaving selection mode. */
 function resolveCancelLabel(mode: Extract<AppBarMode, { type: 'selection' }>): string {
   return mode.cancelLabel ?? 'Cancel selection';
 }
@@ -32,6 +36,7 @@ function resolveCancelLabel(mode: Extract<AppBarMode, { type: 'selection' }>): s
 /*** Renders a top app bar with title/subtitle and optional leading/trailing actions. */
 export const AppBar = withZoraThemeScope(AppBarInner);
 
+/*** Composes the opinionated ZORA AppBar over the Surface layout primitive. */
 function AppBarInner({
   themeId: _themeId,
   mode: _mode,
@@ -69,7 +74,7 @@ function AppBarInner({
   );
 }
 
-/*** Resolves the selection cancel action shown at the leading edge. */
+/*** Resolves the selection action shown at the leading edge. */
 function resolveSelectionLeading(
   mode: AppBarMode,
   interactionPolicy: AppBarProps['interactionPolicy'],
