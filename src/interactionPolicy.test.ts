@@ -22,6 +22,10 @@ function readComponent(...segments: string[]): string {
   return readSource(join('components', ...segments));
 }
 
+function readFeature(...segments: string[]): string {
+  return readSource(join('features', ...segments));
+}
+
 function readPattern(...segments: string[]): string {
   return readSource(join('patterns', ...segments));
 }
@@ -37,7 +41,7 @@ describe('InteractionPolicy declaration', () => {
   test('no duplicate local InteractionPolicy type declarations in ZORA source', () => {
     const files = [
       readSource('theme/ZoraBaseProps.ts'),
-      readComponent('app-bar', 'types.ts'),
+      readSource('types/app-bar.ts'),
       readComponent('breadcrumbs', 'types.ts'),
       readSource('types/empty-state.ts'),
       readSource('types/hero.ts'),
@@ -75,11 +79,11 @@ describe('Surface wrapper propagation', () => {
 
 describe('AppBar', () => {
   test('forwards interactionPolicy to internal IconButtons', () => {
-    const source = readComponent('app-bar', 'AppBar.tsx');
+    const source = readFeature('app-bar', 'adapters', 'inbound', 'AppBar.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(
-      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{resolvedMode\.onCancel\}/,
+      /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{mode\.onCancel\}/,
     );
     expect(source).toMatch(
       /<IconButton[\s\S]*?interactionPolicy=\{interactionPolicy\}[\s\S]*?onPress=\{overflow\.onPress\}/,
