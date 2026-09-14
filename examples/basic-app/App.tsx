@@ -18,10 +18,11 @@ const basicTheme: ZoraTheme = {
 };
 
 /***
- * Minimal ZORA app root.
+ * ZORA app root with optional runtime capabilities.
  *
- * Use `ZoraProvider` once at the application root, place `AppShell` inside it,
- * and use `AppBar` as the default header slot for a simple app frame.
+ * Use `ZoraProvider` once at the application root. Enable `toast` when descendants use
+ * `useToast()`. Enable `bottomSheet` for native BottomSheet-backed interactions such as native
+ * DatePicker and TimePicker; web pickers use Popover instead. Omit capabilities the app does not use.
  *
  * @usage
  * @readme
@@ -29,7 +30,12 @@ const basicTheme: ZoraTheme = {
 export default function BasicApp() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ZoraProvider initialMode="light" theme={basicTheme}>
+      <ZoraProvider
+        bottomSheet
+        initialMode="light"
+        theme={basicTheme}
+        toast={{ defaultDuration: 4000 }}
+      >
         <AppShell header={<AppBar title="Dashboard" subtitle="Welcome to ZORA" />}>
           <Screen>
             <ScreenSection>
