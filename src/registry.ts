@@ -1,7 +1,6 @@
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import { AppBar } from './components/app-bar';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { DropdownMenu, Menu } from './components/menu';
 import { Modal } from './components/modal';
@@ -13,6 +12,7 @@ import { Tabs } from './components/tabs';
 import { Toolbar, ToolbarAction } from './components/toolbar';
 import { Accordion, AccordionItem } from './features/accordion/public';
 import { ActivityIndicator } from './features/activity-indicator/public';
+import { AppBar } from './features/app-bar/public';
 import {
   ForgotPasswordForm,
   OAuthProviderButton,

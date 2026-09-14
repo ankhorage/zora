@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppBar } from '../../components/app-bar';
+import { AppBar } from '../../features/app-bar/public';
 import { IconButton } from '../../features/button/public';
 import { Box, Stack } from '../../features/layout/public';
 import { Progress } from '../../features/progress/public';
