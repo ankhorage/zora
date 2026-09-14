@@ -1,5 +1,3 @@
-export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './features/app-bar/public';
-export { AppBar } from './features/app-bar/public';
 export type { BreadcrumbItem, BreadcrumbsProps } from './components/breadcrumbs';
 export { Breadcrumbs } from './components/breadcrumbs';
 export type { DropdownMenuProps, MenuAction, MenuActionIntent, MenuProps } from './components/menu';
@@ -33,6 +31,8 @@ export {
   ActivityIndicator,
   type ActivityIndicatorProps,
 } from './features/activity-indicator/public';
+export type { AppBarMode, AppBarOverflowAction, AppBarProps } from './features/app-bar/public';
+export { AppBar } from './features/app-bar/public';
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,

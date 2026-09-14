@@ -1,13 +1,13 @@
 import { AppBar as SurfaceAppBar, type ButtonIconSpec } from '@ankhorage/surface';
 import React from 'react';
 
+import { Inline } from '../../../../foundation';
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AppBarMode, AppBarOverflowAction, AppBarProps } from '../../../../types/app-bar';
 import { IconButton } from '../../../button/public';
 import { Box, Stack } from '../../../layout/public';
 import { Heading, Text } from '../../../typography/public';
-import { Inline } from '../../../../foundation';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
 
 const DEFAULT_CANCEL_ICON = { name: 'close-outline' } satisfies ButtonIconSpec;
 const DEFAULT_OVERFLOW_ICON = { name: 'ellipsis-vertical' } satisfies ButtonIconSpec;
@@ -58,7 +58,13 @@ function AppBarInner({
   const resolvedLeading = leading ?? resolveSelectionLeading(resolvedMode, interactionPolicy);
   const overflowButton = resolveOverflowButton(overflow, interactionPolicy);
   const resolvedTrailing = resolveTrailing(actions, overflowButton);
-  const resolvedCenter = resolveCenter({ children, isSelectionMode, resolvedMode, subtitle, title });
+  const resolvedCenter = resolveCenter({
+    children,
+    isSelectionMode,
+    resolvedMode,
+    subtitle,
+    title,
+  });
 
   return (
     <SurfaceAppBar
@@ -116,7 +122,10 @@ function resolveOverflowButton(
 }
 
 /*** Composes trailing actions and overflow controls. */
-function resolveTrailing(actions: React.ReactNode, overflowButton: React.ReactNode): React.ReactNode {
+function resolveTrailing(
+  actions: React.ReactNode,
+  overflowButton: React.ReactNode,
+): React.ReactNode {
   if (!actions && !overflowButton) return undefined;
   return (
     <Inline align="center" gap="s" wrap="nowrap">
