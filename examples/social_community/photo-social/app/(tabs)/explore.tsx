@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Screen, ScreenSection, SearchBar, Text } from '@ankhorage/zora';
+import { Badge, MediaCard, Screen, ScreenSection, SearchInput, Text } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -42,7 +42,7 @@ export default function ExploreScreen() {
           title="Search"
           description="The search control is part of the ZORA component surface."
         >
-          <SearchBar
+          <SearchInput
             onValueChange={() => {
               /* no-op */
             }}
