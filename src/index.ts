@@ -224,6 +224,7 @@ export type {
   ListItemsProps,
   ListItemVariant,
   ListProps,
+  ListSectionProps,
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { List, ListItem, ListSection } from './features/list/public';
