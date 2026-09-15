@@ -1,4 +1,4 @@
-import { ButtonBase } from '@ankhorage/surface';
+import { Pressable } from '@ankhorage/surface';
 import React from 'react';
 
 import { Avatar } from '../../features/avatar/public';
@@ -221,7 +221,7 @@ function MessageBubbleInner({
   };
 
   const bubbleContent = isInteractive ? (
-    <ButtonBase
+    <Pressable
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
       accessibilityState={{ disabled, selected }}
@@ -232,7 +232,7 @@ function MessageBubbleInner({
       testID={testID}
     >
       {(state) => renderBubble({ pressed: state.pressed, hovered: state.hovered })}
-    </ButtonBase>
+    </Pressable>
   ) : (
     <View testID={testID}>{renderBubble({ pressed: false, hovered: false })}</View>
   );

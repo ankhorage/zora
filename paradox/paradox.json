@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v17.0.0",
+      "value": "v18.0.0",
       "color": "cb3837"
     },
     {
@@ -1163,7 +1163,7 @@
       "path": "src/features/form/field/public.ts",
       "isEntrypoint": false,
       "dependencies": [],
-      "exports": ["Field", "FieldProps"]
+      "exports": ["Field"]
     },
     {
       "path": "src/features/form/formActionsMeta.ts",
@@ -2674,6 +2674,7 @@
         "ListItemVariant",
         "ListProps",
         "ListSection",
+        "ListSectionProps",
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps",
@@ -15039,6 +15040,24 @@
       "structuredRows": []
     },
     {
+      "name": "ListSectionProps",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types/list.ts",
+      "sourceLocation": {
+        "filePath": "src/types/list.ts",
+        "line": 66,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "ManifestListProps",
       "description": null,
       "isReadme": false,
@@ -23114,7 +23133,7 @@
     },
     {
       "name": "SwitchField",
-      "description": "Labeled switch field pattern built on `ListItem`.",
+      "description": "Labeled switch field pattern built on the card-style `ListItem` presentation.",
       "isReadme": false,
       "examples": [],
       "kind": "value",
@@ -41197,7 +41216,7 @@
     },
     {
       "name": "SwitchField",
-      "description": "Labeled switch field pattern built on `ListItem`.",
+      "description": "Labeled switch field pattern built on the card-style `ListItem` presentation.",
       "isReadme": false,
       "examples": [],
       "modulePath": "src/patterns/switch-field/SwitchField.tsx",
@@ -52110,11 +52129,6 @@
       },
       {
         "fromPath": "src/features/form/field/public.ts",
-        "toPath": "src/types/form.ts",
-        "sourcePath": "src/features/form/field/public.ts"
-      },
-      {
-        "fromPath": "src/features/form/field/public.ts",
         "toPath": "src/features/form/field/adapters/inbound/Field.tsx",
         "sourcePath": "src/features/form/field/public.ts"
       },
@@ -62599,8 +62613,8 @@
       },
       {
         "fromComponent": "SelectableItem",
-        "toComponent": "ButtonBase",
-        "jsxElement": "<ButtonBase\n      interactionPolicy={interactionPolicy}\n      accessibilityRole=\"button\"\n      accessibilityState={{ disabled: resolvedDisabled, selected }}\n      disabled={resolvedDisabled}\n      onLongPress={resolvedTrigger === 'longPress' ? handleLongPress : undefined}\n      onPress={resolvedTrigger === 'press' ? handlePress : undefined}\n    >",
+        "toComponent": "Pressable",
+        "jsxElement": "<Pressable\n      interactionPolicy={interactionPolicy}\n      accessibilityRole=\"button\"\n      accessibilityState={{ disabled: resolvedDisabled, selected }}\n      disabled={resolvedDisabled}\n      onLongPress={resolvedTrigger === 'longPress' ? handleLongPress : undefined}\n      onPress={resolvedTrigger === 'press' ? handlePress : undefined}\n    >",
         "sourcePath": "src/patterns/selection/SelectableItem.tsx"
       },
       {

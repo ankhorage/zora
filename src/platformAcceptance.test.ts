@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-test('passes the isolated Surface 6 and RN Web 0.21 acceptance suite', () => {
+test('passes the isolated Surface and RN Web 0.21 acceptance suite', () => {
   const subprocess = Bun.spawnSync({
     cmd: [process.execPath, 'test', 'test-fixtures/platformAcceptance.test.tsx'],
     stderr: 'pipe',

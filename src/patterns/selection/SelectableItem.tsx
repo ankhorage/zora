@@ -1,4 +1,4 @@
-import { ButtonBase } from '@ankhorage/surface';
+import { Pressable } from '@ankhorage/surface';
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 
@@ -63,7 +63,7 @@ export function SelectableItem({
   }, [clear, id, resolvedDisabled, select, selected, selection.mode, toggle]);
 
   // IMPORTANT:
-  // Do not pass `children` directly into ButtonBase. ButtonBase also supports function children,
+  // Do not pass `children` directly into Pressable. Pressable also supports function children,
   // but its function signature receives interaction state, not SelectableItemState.
   const content = isRenderProp(children) ? children(itemState) : children;
 
@@ -96,7 +96,7 @@ export function SelectableItem({
   };
 
   return (
-    <ButtonBase
+    <Pressable
       interactionPolicy={interactionPolicy}
       accessibilityRole="button"
       accessibilityState={{ disabled: resolvedDisabled, selected }}
@@ -105,6 +105,6 @@ export function SelectableItem({
       onPress={resolvedTrigger === 'press' ? handlePress : undefined}
     >
       {content}
-    </ButtonBase>
+    </Pressable>
   );
 }

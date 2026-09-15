@@ -2531,6 +2531,12 @@ Source: `src/features/list/adapters/inbound/ListSection.tsx:36:14`
 
 Section wrapper for lists with optional ZORA section-heading semantics.
 
+## ListSectionProps
+
+Kind: `unknown`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:66:1`
+
 ## ManifestListProps
 
 Kind: `type`
@@ -4496,7 +4502,7 @@ Kind: `value`
 Module: `src/patterns/switch-field/SwitchField.tsx`
 Source: `src/patterns/switch-field/SwitchField.tsx:42:14`
 
-Labeled switch field pattern built on `ListItem`.
+Labeled switch field pattern built on the card-style `ListItem` presentation.
 
 ## SwitchFieldProps
 
