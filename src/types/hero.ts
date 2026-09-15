@@ -1,7 +1,8 @@
 import type React from 'react';
 
-import type { ZoraButtonVariant, ZoraColor } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraButtonVariant } from './button';
+import type { ZoraColor } from './theme';
 
 export type HeroAlign = 'start' | 'center';
 export type HeroLayout = 'stack' | 'split' | 'mediaFirst';

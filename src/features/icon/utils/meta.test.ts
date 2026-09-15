@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../../metadata/componentMeta';
+import { ZORA_COMPONENT_META } from '../../authoring/componentMeta';
 
 test('permits media-backed Icon and Image content in ordinary screen containers', () => {
   const icon = ZORA_COMPONENT_META.Icon;

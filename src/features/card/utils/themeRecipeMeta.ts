@@ -1,4 +1,4 @@
-import type { ZoraThemeRecipeMeta } from '../../../metadata/themeRecipeTypes';
+import type { ZoraThemeRecipeMeta } from '../../../types/theme-recipe';
 
 export const cardThemeRecipeMeta = {
   name: 'Card',

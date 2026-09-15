@@ -7,14 +7,14 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   ContentRailProps,
   ContentRailVisibleRangeChangeEvent,
 } from '../../../../types/content-rail';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 import { resolveContentRailItemWidth } from '../../utils/resolveContentRailItemWidth';
 import { resolveContentRailPhysicalOffset } from '../../utils/resolveContentRailPhysicalOffset';

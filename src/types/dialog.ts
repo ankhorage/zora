@@ -1,7 +1,7 @@
 import type React from 'react';
 
-import type { ZoraContentWidth } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraContentWidth } from './layout';
 
 export interface DialogProps extends ZoraBaseProps {
   visible: boolean;

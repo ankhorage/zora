@@ -1,6 +1,6 @@
 import type { ImageProps as SurfaceImageProps, SurfaceImageSource } from '@ankhorage/surface';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 import type { UploadAsset } from './upload';
 
 export type { ImageFit, SurfaceImageSource } from '@ankhorage/surface';

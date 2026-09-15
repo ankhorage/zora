@@ -1,9 +1,9 @@
 import { Popover } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TimePickerProps } from '../../../../types/time-picker';
 import { Surface } from '../../../surface/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { TimePickerContent } from '../../composition/TimePickerContent';
 import { TimePickerField } from '../../composition/TimePickerField';
 import { TimePickerTrigger } from '../../composition/TimePickerTrigger';

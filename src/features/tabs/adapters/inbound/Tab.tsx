@@ -1,8 +1,8 @@
 import { Tab as SurfaceTab } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabProps } from '../../../../types/tabs';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { TabsInteractionPolicyContext } from '../../composition/TabsInteractionPolicyContext';
 
 /*** Renders one labeled selectable tab backed by Surface accessibility semantics. */

@@ -1,10 +1,10 @@
 import { Popover } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SelectProps } from '../../../../../types/select';
 import { View } from '../../../../layout/public';
 import { Surface } from '../../../../surface/public';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { SelectField } from '../../composition/SelectField';
 import { SelectOptionRow } from '../../composition/SelectOptionRow';
 import { SelectTrigger } from '../../composition/SelectTrigger';

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { resolvePageMaxWidth } from '../../../../internal/recipes';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ScreenProps } from '../../../../types/layout';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { resolvePageMaxWidth } from '../../utils/resolvePageMaxWidth';
 import { ScrollView } from './ScrollView';
 import { View } from './View';
 

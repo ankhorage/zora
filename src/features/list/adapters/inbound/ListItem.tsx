@@ -1,10 +1,10 @@
 import { ListItem as SurfaceListItem } from '@ankhorage/surface';
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ListItemProps, ListItemVariant } from '../../../../types/list';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 
 function ListItemInner({

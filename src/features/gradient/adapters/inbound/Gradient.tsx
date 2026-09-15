@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { GradientProps } from '../../../../types/gradient';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useGradientRenderer } from './GradientRendererContext';
 
 function GradientInner({

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonListProps } from '../../../../types/skeleton';
 import { List, type ListItemProps } from '../../../list/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 

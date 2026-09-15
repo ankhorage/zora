@@ -1,12 +1,12 @@
 import { Image as SurfaceImage, type SurfaceImageSource } from '@ankhorage/surface';
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ImageProps } from '../../../../types/image';
 import type { UploadAsset } from '../../../../types/upload';
 import { Icon } from '../../../icon/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 
 /*** Displays an image asset and owns its missing, unrenderable, and failed presentation states. */
 export const Image = withZoraThemeScope(ImageInner);

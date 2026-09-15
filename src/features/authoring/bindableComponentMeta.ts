@@ -1,0 +1,505 @@
+import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
+
+import { imageMeta } from '../image/imageMeta';
+import { readerSurfaceMeta } from '../reader/meta';
+
+export const ZORA_BINDABLE_COMPONENT_META = {
+  Text: {
+    name: 'Text',
+    category: 'component',
+    description: 'Displays app-facing text content.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        text: {
+          label: 'Text',
+          description: 'Text content rendered by the component.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+    },
+    props: {
+      text: {
+        type: 'string',
+        category: 'Content',
+        label: 'Text',
+      },
+    },
+  },
+  Heading: {
+    name: 'Heading',
+    category: 'component',
+    description: 'Displays semantic heading text.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        text: {
+          label: 'Text',
+          description: 'Heading text rendered by the component.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+    },
+    props: {
+      text: {
+        type: 'string',
+        category: 'Content',
+        label: 'Text',
+      },
+    },
+  },
+  Button: {
+    name: 'Button',
+    category: 'component',
+    description: 'Runs an action when pressed.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        children: {
+          label: 'Label',
+          description: 'Button label text.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        disabled: {
+          label: 'Disabled',
+          description: 'Whether the button is disabled.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        press: {
+          label: 'Press',
+          description: 'Runs when the button is pressed.',
+          payload: {
+            eventType: 'button.press',
+            fields: [],
+          },
+        },
+      },
+    },
+    events: {
+      press: {
+        label: 'Press',
+        eventType: 'button.press',
+        description: 'Emitted when the button action runs.',
+        payloadFields: [],
+      },
+    },
+    props: {
+      children: {
+        type: 'string',
+        category: 'Content',
+        label: 'Label',
+      },
+      disabled: {
+        type: 'boolean',
+        category: 'State',
+        label: 'Disabled',
+      },
+    },
+  },
+  Image: {
+    ...imageMeta,
+    bindings: {
+      props: {
+        source: {
+          label: 'Source',
+          description: 'Dynamic image source or asset descriptor.',
+          value: {
+            type: 'imageAsset',
+            fields: [
+              { path: 'uri', type: 'string', label: 'URI' },
+              { path: 'width', type: 'number', label: 'Width' },
+              { path: 'height', type: 'number', label: 'Height' },
+              { path: 'alt', type: 'string', label: 'Alt text' },
+            ],
+          },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+    },
+  },
+  TextInput: {
+    name: 'TextInput',
+    category: 'component',
+    description: 'Captures a string value in single-line, multiline, or secure-entry modes.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        value: {
+          label: 'Value',
+          description: 'Current text input value.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        disabled: {
+          label: 'Disabled',
+          description: 'Whether the text input is disabled.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        changeText: {
+          label: 'Change text',
+          description: 'Runs when the input value changes.',
+          payload: {
+            eventType: 'textInput.changeText',
+            fields: [{ path: 'value', type: 'string', label: 'Value' }],
+          },
+        },
+      },
+    },
+    events: {
+      changeText: {
+        label: 'Change text',
+        eventType: 'textInput.changeText',
+        description: 'Emitted when the input value changes.',
+        payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
+      },
+    },
+    props: {
+      value: {
+        type: 'string',
+        category: 'Content',
+        label: 'Value',
+      },
+      disabled: {
+        type: 'boolean',
+        category: 'State',
+        label: 'Disabled',
+      },
+    },
+  },
+  Select: {
+    name: 'Select',
+    category: 'component',
+    description: 'Captures one selected string value.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        value: {
+          label: 'Value',
+          description: 'Current selected value.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        disabled: {
+          label: 'Disabled',
+          description: 'Whether the select is disabled.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        valueChange: {
+          label: 'Value change',
+          description: 'Runs when the selected value changes.',
+          payload: {
+            eventType: 'select.valueChange',
+            fields: [{ path: 'value', type: 'string', label: 'Value' }],
+          },
+        },
+      },
+    },
+    events: {
+      valueChange: {
+        label: 'Value change',
+        eventType: 'select.valueChange',
+        description: 'Emitted when the selected value changes.',
+        payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
+      },
+    },
+    props: {
+      value: {
+        type: 'string',
+        category: 'Content',
+        label: 'Value',
+      },
+      disabled: {
+        type: 'boolean',
+        category: 'State',
+        label: 'Disabled',
+      },
+    },
+  },
+  Checkbox: {
+    name: 'Checkbox',
+    category: 'component',
+    description: 'Captures a boolean checked state.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        checked: {
+          label: 'Checked',
+          description: 'Current checked state.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        disabled: {
+          label: 'Disabled',
+          description: 'Whether the checkbox is disabled.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        checkedChange: {
+          label: 'Checked change',
+          description: 'Runs when checked state changes.',
+          payload: {
+            eventType: 'checkbox.checkedChange',
+            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+          },
+        },
+      },
+    },
+    events: {
+      checkedChange: {
+        label: 'Checked change',
+        eventType: 'checkbox.checkedChange',
+        description: 'Emitted when the checked state changes.',
+        payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+      },
+    },
+    props: {
+      checked: {
+        type: 'boolean',
+        category: 'State',
+        label: 'Checked',
+      },
+      disabled: {
+        type: 'boolean',
+        category: 'State',
+        label: 'Disabled',
+      },
+    },
+  },
+  Switch: {
+    name: 'Switch',
+    category: 'component',
+    description: 'Captures a boolean checked state.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        checked: {
+          label: 'Checked',
+          description: 'Current checked state.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        disabled: {
+          label: 'Disabled',
+          description: 'Whether the switch is disabled.',
+          value: { type: 'boolean' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        checkedChange: {
+          label: 'Checked change',
+          description: 'Runs when checked state changes.',
+          payload: {
+            eventType: 'switch.checkedChange',
+            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+          },
+        },
+      },
+    },
+    events: {
+      checkedChange: {
+        label: 'Checked change',
+        eventType: 'switch.checkedChange',
+        description: 'Emitted when the checked state changes.',
+        payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+      },
+    },
+    props: {
+      checked: { type: 'boolean', category: 'State', label: 'Checked' },
+      disabled: { type: 'boolean', category: 'State', label: 'Disabled' },
+    },
+  },
+  List: {
+    name: 'List',
+    category: 'pattern',
+    description: 'Renders a collection of list items.',
+    directManifestNode: true,
+    allowedChildren: ['ListSection', 'ListItem'],
+    bindings: {
+      props: {
+        items: {
+          label: 'Items',
+          description: 'Collection rendered by the list.',
+          value: {
+            type: 'array',
+            itemType: 'object',
+          },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+    },
+    props: {
+      items: {
+        type: 'array',
+        category: 'Data',
+        label: 'Items',
+      },
+    },
+  },
+  DataTable: {
+    name: 'DataTable',
+    category: 'component',
+    description: 'Renders tabular records.',
+    directManifestNode: true,
+    allowedChildren: [],
+    bindings: {
+      props: {
+        rows: {
+          label: 'Rows',
+          description: 'Rows rendered by the table.',
+          value: {
+            type: 'array',
+            itemType: 'record',
+          },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+    },
+    props: {
+      rows: {
+        type: 'array',
+        category: 'Data',
+        label: 'Rows',
+      },
+    },
+  },
+  ReaderSurface: {
+    ...readerSurfaceMeta,
+    bindings: {
+      props: {
+        location: {
+          label: 'Location',
+          description: 'Opaque adapter locator to restore.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        page: {
+          label: 'Page',
+          description: 'One-based visible page.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        pageCount: {
+          label: 'Page count',
+          description: 'Current number of logical pages.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        progress: {
+          label: 'Progress',
+          description: 'Reading progression clamped from zero to one.',
+          value: { type: 'number' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+        status: {
+          label: 'Status',
+          description: 'Current reader loading status.',
+          value: { type: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        previousPage: {
+          label: 'Previous page',
+          description: 'Requests navigation to the previous page.',
+          payload: { eventType: 'reader.previousPage', fields: [] },
+        },
+        nextPage: {
+          label: 'Next page',
+          description: 'Requests navigation to the next page.',
+          payload: { eventType: 'reader.nextPage', fields: [] },
+        },
+        locationChange: {
+          label: 'Location change',
+          description: 'Runs after the adapter displays a destination.',
+          payload: {
+            eventType: 'reader.locationChange',
+            fields: [
+              { path: 'format', type: 'string', label: 'Format' },
+              { path: 'locator', type: 'string', label: 'Opaque locator' },
+              { path: 'page', type: 'number', label: 'Page' },
+              { path: 'pageCount', type: 'number', label: 'Page count' },
+              { path: 'progression', type: 'number', label: 'Progression' },
+              { path: 'chapterId', type: 'string', label: 'Chapter ID' },
+              { path: 'chapterTitle', type: 'string', label: 'Chapter title' },
+              { path: 'trigger', type: 'string', label: 'Navigation trigger' },
+            ],
+          },
+        },
+        openContents: {
+          label: 'Open contents',
+          payload: { eventType: 'reader.openContents', fields: [] },
+        },
+        openAppearance: {
+          label: 'Open appearance',
+          payload: { eventType: 'reader.openAppearance', fields: [] },
+        },
+        toggleHighlight: {
+          label: 'Toggle highlight',
+          payload: { eventType: 'reader.toggleHighlight', fields: [] },
+        },
+        openExternalLink: {
+          label: 'Open external link',
+          payload: {
+            eventType: 'reader.openExternalLink',
+            fields: [{ path: 'url', type: 'string', label: 'URL' }],
+          },
+        },
+        readerError: {
+          label: 'Reader error',
+          payload: {
+            eventType: 'reader.error',
+            fields: [
+              { path: 'code', type: 'string', label: 'Error code' },
+              { path: 'format', type: 'string', label: 'Format' },
+              { path: 'message', type: 'string', label: 'Message' },
+            ],
+          },
+        },
+      },
+    },
+  },
+} as const satisfies UiComponentMetaRegistry;
+
+export type ZoraBindableComponentType = keyof typeof ZORA_BINDABLE_COMPONENT_META;

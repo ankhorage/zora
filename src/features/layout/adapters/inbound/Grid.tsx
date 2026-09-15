@@ -1,8 +1,8 @@
 import { Grid as SurfaceGrid } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { GridProps } from '../../../../types/layout';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Adapts the themed Surface Grid primitive to ZORA scope and interaction props. */
 export const Grid = withZoraThemeScope(GridInner);

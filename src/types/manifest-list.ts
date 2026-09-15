@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface ManifestListProps extends ZoraBaseProps {
   children?: React.ReactNode;

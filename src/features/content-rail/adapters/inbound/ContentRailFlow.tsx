@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import type { ContentRailProps } from '../../../../types/content-rail';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 
 /*** Wraps intrinsically sized content in a free horizontal native scroll view. */
 export function ContentRailFlow({

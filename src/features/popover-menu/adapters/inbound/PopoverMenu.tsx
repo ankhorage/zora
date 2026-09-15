@@ -4,12 +4,12 @@ import {
 } from '@ankhorage/surface';
 import React from 'react';
 
-import { resolveIconSize } from '../../../../internal/recipes';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { PopoverMenuAction, PopoverMenuProps } from '../../../../types/popover-menu';
 import { Icon } from '../../../icon/public';
+import { resolveIconSize } from '../../../icon/utils/resolveIconSize';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 
 /*** Presents a ZORA-styled action list through the Surface PopoverMenu capability. */
 export const PopoverMenu = withZoraThemeScope(PopoverMenuInner);

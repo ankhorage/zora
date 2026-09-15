@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 import type { PopoverMenuActionIntent } from './popover-menu';
 
 export type DataTableColumnAlign = 'start' | 'center' | 'end';

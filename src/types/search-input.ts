@@ -1,5 +1,5 @@
-import type { ZoraControlSize } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraControlSize } from './control';
 
 export interface SearchInputProps extends ZoraBaseProps {
   value?: string;

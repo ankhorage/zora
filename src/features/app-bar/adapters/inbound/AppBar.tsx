@@ -1,12 +1,12 @@
 import { AppBar as SurfaceAppBar, type ButtonIconSpec } from '@ankhorage/surface';
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AppBarMode, AppBarOverflowMenu, AppBarProps } from '../../../../types/app-bar';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
 import { PopoverMenu } from '../../../popover-menu/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Heading, Text } from '../../../typography/public';
 
 const DEFAULT_CANCEL_ICON = { name: 'close-outline' } satisfies ButtonIconSpec;

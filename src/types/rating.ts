@@ -1,5 +1,6 @@
-import type { ZoraColor, ZoraControlSize } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraControlSize } from './control';
+import type { ZoraColor } from './theme';
 
 export interface RatingProps extends ZoraBaseProps {
   value: number;

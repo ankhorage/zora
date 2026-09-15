@@ -1,5 +1,5 @@
-import type { ZoraComponentMeta } from '../../metadata';
-import { CONTENT_RAIL_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
+import type { ZoraComponentMeta } from '../authoring';
+import { CONTENT_RAIL_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
 import { CONTENT_RAIL_SPACING_VALUES } from './constants';
 
 export const contentRailMeta = {

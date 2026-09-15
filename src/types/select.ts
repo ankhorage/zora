@@ -1,4 +1,4 @@
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface SelectOption<TValue extends string = string> {
   value: TValue;

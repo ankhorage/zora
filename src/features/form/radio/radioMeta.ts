@@ -1,5 +1,5 @@
-import { ZORA_COLORS } from '../../../internal/colorModel';
-import type { ZoraComponentMeta } from '../../../metadata';
+import type { ZoraComponentMeta } from '../../authoring';
+import { ZORA_COLORS } from '../../theme/colorModel';
 
 const themeAuthoring = {
   authority: 'theme',

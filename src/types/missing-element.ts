@@ -1,4 +1,4 @@
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface MissingElementProps extends ZoraBaseProps {
   requestedCapability: string;

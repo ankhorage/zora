@@ -1,6 +1,6 @@
-import { COMPONENT_THEME_AUTHORING } from '../../constants';
-import type { ZoraComponentMeta } from '../../metadata';
-import { CONTAINER_ALLOWED_CHILDREN } from '../../metadata/allowedChildren';
+import type { ZoraComponentMeta } from '../authoring';
+import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import { COMPONENT_THEME_AUTHORING } from '../authoring/constants';
 
 export const cardMeta = {
   name: 'Card',

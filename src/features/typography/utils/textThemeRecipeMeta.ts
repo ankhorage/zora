@@ -1,5 +1,5 @@
-import { ZORA_COLORS, ZORA_EMPHASES } from '../../../internal/colorModel';
-import type { ZoraThemeRecipeMeta } from '../../../metadata/themeRecipeTypes';
+import type { ZoraThemeRecipeMeta } from '../../../types/theme-recipe';
+import { ZORA_COLORS, ZORA_EMPHASES } from '../../theme/colorModel';
 
 export const textThemeRecipeMeta = {
   name: 'Text',

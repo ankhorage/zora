@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonCardProps } from '../../../../types/skeleton';
 import { ButtonGroup } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 

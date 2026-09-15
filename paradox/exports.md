@@ -229,7 +229,7 @@ Root application frame with explicit header, content, footer, and overlay slots.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:19:1`
+Source: `src/types/layout.ts:20:1`
 
 ### Members
 
@@ -370,7 +370,7 @@ Shows a small status, label, or count indicator.
 
 Kind: `type`
 Module: `src/types/badge.ts`
-Source: `src/types/badge.ts:7:1`
+Source: `src/types/badge.ts:10:1`
 
 ### Members
 
@@ -583,7 +583,7 @@ Source: `src/types/button-group.ts:9:1`
 
 Kind: `type`
 Module: `src/types/button.ts`
-Source: `src/types/button.ts:7:1`
+Source: `src/types/button.ts:10:1`
 
 ### Members
 
@@ -709,7 +709,7 @@ radius, tone, and responsive header layout without hand-assembling primitives.
 
 Kind: `type`
 Module: `src/types/card.ts`
-Source: `src/types/card.ts:7:1`
+Source: `src/types/card.ts:8:1`
 
 ### Members
 
@@ -980,7 +980,7 @@ Renders a row or wrap layout of `Chip` items.
 
 Kind: `type`
 Module: `src/types/chip-group.ts`
-Source: `src/types/chip-group.ts:7:1`
+Source: `src/types/chip-group.ts:8:1`
 
 ### Members
 
@@ -996,13 +996,13 @@ Source: `src/types/chip-group.ts:7:1`
 
 Kind: `unknown`
 Module: `src/types/chip-group.ts`
-Source: `src/types/chip-group.ts:35:1`
+Source: `src/types/chip-group.ts:36:1`
 
 ## ChipProps
 
 Kind: `type`
 Module: `src/types/chip.ts`
-Source: `src/types/chip.ts:7:1`
+Source: `src/types/chip.ts:8:1`
 
 ### Members
 
@@ -1074,8 +1074,8 @@ Source: `src/types/collection-editor.ts:5:1`
 ## compileZoraTheme
 
 Kind: `function`
-Module: `src/theme/compileZoraTheme.ts`
-Source: `src/theme/compileZoraTheme.ts:25:1`
+Module: `src/features/theme/application/use-cases/compileZoraTheme.ts`
+Source: `src/features/theme/application/use-cases/compileZoraTheme.ts:26:1`
 
 Compile canonical theme source into Color Theory evidence and resolved Surface themes.
 This function is pure and does not mount React or reproduce owner algorithms.
@@ -1090,15 +1090,15 @@ This function is pure and does not mount React or reproduce owner algorithms.
 ## ComposedZoraPluginCatalog
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:41:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:41:1`
 
 ### Members
 
 | Name                                 | Kind     | Type                                                                                                      | Required | Description |
 | ------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------- | -------- | ----------- |
 | bindableComponentMeta                | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>`                                | yes      |             |
-| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                                                             | yes      |             |
+| componentMeta                        | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>`                                       | yes      |             |
 | componentRegistry                    | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes      |             |
 | interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>`                                                                          | yes      |             |
 | packageManifests                     | property | `readonly UiComponentPackageManifest[]`                                                                   | yes      |             |
@@ -1106,23 +1106,23 @@ Source: `src/pluginComposition.ts:41:1`
 ## ComposedZoraPluginMetadataCatalog
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:34:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:34:1`
 
 ### Members
 
 | Name                                 | Kind     | Type                                                                       | Required | Description |
 | ------------------------------------ | -------- | -------------------------------------------------------------------------- | -------- | ----------- |
 | bindableComponentMeta                | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>` | yes      |             |
-| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                              | yes      |             |
+| componentMeta                        | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>`        | yes      |             |
 | interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>`                                           | yes      |             |
 | packageManifests                     | property | `readonly UiComponentPackageManifest[]`                                    | yes      |             |
 
 ## composeZoraPluginMetadata
 
 Kind: `function`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:66:1`
+Module: `src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts`
+Source: `src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts:11:1`
 
 Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.
 
@@ -1135,8 +1135,8 @@ Compose a selected ZORA metadata set for authoring tools that must not load Reac
 ## composeZoraPlugins
 
 Kind: `function`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:112:1`
+Module: `src/features/plugin/application/use-cases/composeZoraPlugins.ts`
+Source: `src/features/plugin/application/use-cases/composeZoraPlugins.ts:11:1`
 
 Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.
 
@@ -1236,8 +1236,8 @@ Source: `src/types/content-rail.ts:15:1`
 ## createZoraThemeConfig
 
 Kind: `function`
-Module: `src/theme/createZoraThemeConfig.ts`
-Source: `src/theme/createZoraThemeConfig.ts:8:1`
+Module: `src/features/theme/application/use-cases/createZoraThemeConfig.ts`
+Source: `src/features/theme/application/use-cases/createZoraThemeConfig.ts:8:1`
 
 Convert the concise ZORA design seed into canonical persisted theme source.
 
@@ -1454,7 +1454,7 @@ Adapts the themed Surface Divider primitive to ZORA scope and interaction props.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:15:1`
+Source: `src/types/layout.ts:16:1`
 
 ### Members
 
@@ -1531,7 +1531,7 @@ so apps can guide users without custom card and button wiring.
 
 Kind: `type`
 Module: `src/types/empty-state.ts`
-Source: `src/types/empty-state.ts:6:1`
+Source: `src/types/empty-state.ts:7:1`
 
 ### Members
 
@@ -1546,7 +1546,7 @@ Source: `src/types/empty-state.ts:6:1`
 
 Kind: `type`
 Module: `src/types/empty-state.ts`
-Source: `src/types/empty-state.ts:13:1`
+Source: `src/types/empty-state.ts:14:1`
 
 ### Members
 
@@ -1926,7 +1926,7 @@ Adapts the themed Surface Grid primitive to ZORA scope and interaction props.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:17:1`
+Source: `src/types/layout.ts:18:1`
 
 ### Members
 
@@ -2095,7 +2095,7 @@ Hero section pattern for prominent page introductions with actions.
 
 Kind: `type`
 Module: `src/types/hero.ts`
-Source: `src/types/hero.ts:10:1`
+Source: `src/types/hero.ts:11:1`
 
 ### Members
 
@@ -2111,19 +2111,19 @@ Source: `src/types/hero.ts:10:1`
 
 Kind: `unknown`
 Module: `src/types/hero.ts`
-Source: `src/types/hero.ts:6:1`
+Source: `src/types/hero.ts:7:1`
 
 ## HeroLayout
 
 Kind: `unknown`
 Module: `src/types/hero.ts`
-Source: `src/types/hero.ts:7:1`
+Source: `src/types/hero.ts:8:1`
 
 ## HeroProps
 
 Kind: `type`
 Module: `src/types/hero.ts`
-Source: `src/types/hero.ts:18:1`
+Source: `src/types/hero.ts:19:1`
 
 ### Members
 
@@ -2149,7 +2149,7 @@ Source: `src/types/hero.ts:18:1`
 
 Kind: `unknown`
 Module: `src/types/hero.ts`
-Source: `src/types/hero.ts:8:1`
+Source: `src/types/hero.ts:9:1`
 
 ## Icon
 
@@ -2171,7 +2171,7 @@ Icon-only button for compact actions; requires an accessible `label`.
 
 Kind: `type`
 Module: `src/types/icon-button.ts`
-Source: `src/types/icon-button.ts:6:1`
+Source: `src/types/icon-button.ts:8:1`
 
 ### Members
 
@@ -2625,7 +2625,7 @@ Source: `src/types/chat.ts:36:1`
 
 Kind: `value`
 Module: `src/features/card/adapters/inbound/MetricCard.tsx`
-Source: `src/features/card/adapters/inbound/MetricCard.tsx:16:14`
+Source: `src/features/card/adapters/inbound/MetricCard.tsx:17:14`
 
 Highlights a key metric with label, value, and optional trend/actions.
 
@@ -2633,7 +2633,7 @@ Highlights a key metric with label, value, and optional trend/actions.
 
 Kind: `type`
 Module: `src/types/metric-card.ts`
-Source: `src/types/metric-card.ts:7:1`
+Source: `src/types/metric-card.ts:8:1`
 
 ### Members
 
@@ -2716,10 +2716,10 @@ Source: `src/types/auth.ts:81:1`
 | mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
 | onPress           | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
 | providerId        | property | `string`                                                                                                                                      | yes      |             |
-| size              | property | `import("../internal/recipes").ZoraControlSize \| undefined`                                                                                  | no       |             |
+| size              | property | `import("./control").ZoraControlSize \| undefined`                                                                                            | no       |             |
 | testID            | property | `string \| undefined`                                                                                                                         | no       |             |
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| variant           | property | `import("../internal/recipes").ZoraButtonVariant \| undefined`                                                                                | no       |             |
+| variant           | property | `import("./button").ZoraButtonVariant \| undefined`                                                                                           | no       |             |
 
 ## OAuthProviderIconSpec
 
@@ -2776,10 +2776,10 @@ Source: `src/types/auth.ts:96:1`
 | mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
 | onProviderPress   | property | `((providerId: string) => void \| Promise<void>) \| undefined`                                                                                | no       |             |
 | providers         | property | `readonly OAuthProviderItem[]`                                                                                                                | yes      |             |
-| size              | property | `import("../internal/recipes").ZoraControlSize \| undefined`                                                                                  | no       |             |
+| size              | property | `import("./control").ZoraControlSize \| undefined`                                                                                            | no       |             |
 | testID            | property | `string \| undefined`                                                                                                                         | no       |             |
 | themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| variant           | property | `import("../internal/recipes").ZoraButtonVariant \| undefined`                                                                                | no       |             |
+| variant           | property | `import("./button").ZoraButtonVariant \| undefined`                                                                                           | no       |             |
 
 ## OtpForm
 
@@ -2950,7 +2950,7 @@ Source: `src/types/popover-menu.ts:25:1`
 
 Kind: `type`
 Module: `src/types/post-card.ts`
-Source: `src/types/post-card.ts:41:1`
+Source: `src/types/post-card.ts:42:1`
 
 ### Members
 
@@ -2968,7 +2968,7 @@ Source: `src/types/post-card.ts:41:1`
 
 Kind: `type`
 Module: `src/types/post-card.ts`
-Source: `src/types/post-card.ts:19:1`
+Source: `src/types/post-card.ts:20:1`
 
 ### Members
 
@@ -2982,7 +2982,7 @@ Source: `src/types/post-card.ts:19:1`
 
 Kind: `type`
 Module: `src/types/post-card.ts`
-Source: `src/types/post-card.ts:9:1`
+Source: `src/types/post-card.ts:10:1`
 
 ### Members
 
@@ -3008,13 +3008,13 @@ Social-style post card pattern with author, content, media, and actions.
 
 Kind: `unknown`
 Module: `src/types/post-card.ts`
-Source: `src/types/post-card.ts:39:1`
+Source: `src/types/post-card.ts:40:1`
 
 ## PostCardProps
 
 Kind: `type`
 Module: `src/types/post-card.ts`
-Source: `src/types/post-card.ts:59:1`
+Source: `src/types/post-card.ts:60:1`
 
 ### Members
 
@@ -3085,7 +3085,7 @@ Progress indicator for determinate and indeterminate loading states.
 
 Kind: `type`
 Module: `src/types/progress.ts`
-Source: `src/types/progress.ts:6:1`
+Source: `src/types/progress.ts:7:1`
 
 ### Members
 
@@ -3112,7 +3112,7 @@ Circular determinate progress with optional serializable center value and label 
 
 Kind: `type`
 Module: `src/types/progress.ts`
-Source: `src/types/progress.ts:13:1`
+Source: `src/types/progress.ts:14:1`
 
 ### Members
 
@@ -3278,7 +3278,7 @@ Displays a read-only star rating with optional half steps.
 
 Kind: `type`
 Module: `src/types/rating.ts`
-Source: `src/types/rating.ts:4:1`
+Source: `src/types/rating.ts:5:1`
 
 ### Members
 
@@ -3541,7 +3541,7 @@ Screen content boundary with independent width policy and scroll ownership.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:26:1`
+Source: `src/types/layout.ts:27:1`
 
 ### Members
 
@@ -3595,7 +3595,7 @@ Adapts the token-aware Surface ScrollView primitive to ZORA theme scope.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:13:1`
+Source: `src/types/layout.ts:14:1`
 
 ### Members
 
@@ -4628,8 +4628,8 @@ Source: `src/types/text.ts:18:1`
 ## ThemeModeToggle
 
 Kind: `function`
-Module: `src/theme/ThemeModeToggle.tsx`
-Source: `src/theme/ThemeModeToggle.tsx:6:1`
+Module: `src/features/theme/adapters/inbound/ThemeModeToggle.tsx`
+Source: `src/features/theme/adapters/inbound/ThemeModeToggle.tsx:6:1`
 
 ### Signatures
 
@@ -4650,8 +4650,8 @@ testID,
 ## ThemeModeToggleProps
 
 Kind: `unknown`
-Module: `src/theme/ThemeModeToggleProps.ts`
-Source: `src/theme/ThemeModeToggleProps.ts:3:1`
+Module: `src/types/theme-mode-toggle.ts`
+Source: `src/types/theme-mode-toggle.ts:3:1`
 
 ## Timeline
 
@@ -5100,13 +5100,13 @@ Returns the toast controller installed by ToastProvider.
 ## useZoraTheme
 
 Kind: `function`
-Module: `src/theme/useZoraTheme.ts`
-Source: `src/theme/useZoraTheme.ts:3:1`
+Module: `src/features/theme/composition/useZoraTheme.ts`
+Source: `src/features/theme/composition/useZoraTheme.ts:3:1`
 
 ### Signatures
 
-- `() => { theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
-  - returns: `{ theme: import("@ankhorage/surface").SurfaceTheme; mode: "light" | "dark"; setThemeConfig: (config: Partial<import("@ankhorage/contracts").ThemeConfig>) => void; setMode: (mode: "light" | "dark") => void; _hasProvider?: boolean; }`
+- `() => import("@ankhorage/surface").ThemeRuntime`
+  - returns: `import("@ankhorage/surface").ThemeRuntime`
 
 ## validateField
 
@@ -5204,7 +5204,7 @@ Adapts the token-aware Surface View primitive to ZORA theme scope.
 
 Kind: `type`
 Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:12:1`
+Source: `src/types/layout.ts:13:1`
 
 ### Members
 
@@ -5269,8 +5269,8 @@ Source: `src/types/layout.ts:12:1`
 ## withZoraThemeScope
 
 Kind: `function`
-Module: `src/theme/withZoraThemeScope.tsx`
-Source: `src/theme/withZoraThemeScope.tsx:6:1`
+Module: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx`
+Source: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx:6:1`
 
 ### Signatures
 
@@ -5281,76 +5281,76 @@ Source: `src/theme/withZoraThemeScope.tsx:6:1`
 ## ZORA_BINDABLE_COMPONENT_META
 
 Kind: `value`
-Module: `src/metadata/bindableComponentMeta.ts`
-Source: `src/metadata/bindableComponentMeta.ts:6:14`
+Module: `src/features/authoring/bindableComponentMeta.ts`
+Source: `src/features/authoring/bindableComponentMeta.ts:6:14`
 
 ## ZORA_COLORS
 
 Kind: `value`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:28:14`
+Module: `src/features/theme/colorModel.ts`
+Source: `src/features/theme/colorModel.ts:12:14`
 
 ## ZORA_COMPONENT_META
 
 Kind: `value`
-Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:97:14`
+Module: `src/features/authoring/componentMeta.ts`
+Source: `src/features/authoring/componentMeta.ts:93:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
-Module: `src/registry.ts`
-Source: `src/registry.ts:197:14`
+Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:186:14`
 
 ## ZORA_CORE_PLUGIN
 
 Kind: `value`
-Module: `src/corePlugin.ts`
-Source: `src/corePlugin.ts:6:14`
+Module: `src/features/plugin/ZORA_CORE_PLUGIN.ts`
+Source: `src/features/plugin/ZORA_CORE_PLUGIN.ts:6:14`
 
 Describe the complete ZORA core runtime and authoring surface through the public plugin contract.
 
 ## ZORA_CORE_PLUGIN_METADATA
 
 Kind: `value`
-Module: `src/corePluginMetadata.ts`
-Source: `src/corePluginMetadata.ts:18:14`
+Module: `src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts`
+Source: `src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts:18:14`
 
 ## ZORA_EMPHASES
 
 Kind: `value`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:34:14`
+Module: `src/features/theme/colorModel.ts`
+Source: `src/features/theme/colorModel.ts:13:14`
 
 ## ZORA_PALETTE_COLORS
 
 Kind: `value`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:13:14`
+Module: `src/features/theme/colorModel.ts`
+Source: `src/features/theme/colorModel.ts:10:14`
 
 ## ZORA_STATUS_COLORS
 
 Kind: `value`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:21:14`
+Module: `src/features/theme/colorModel.ts`
+Source: `src/features/theme/colorModel.ts:11:14`
 
 ## ZORA_THEME_RECIPE_META
 
 Kind: `value`
-Module: `src/metadata/themeRecipeMeta.ts`
-Source: `src/metadata/themeRecipeMeta.ts:8:14`
+Module: `src/features/authoring/themeRecipeMeta.ts`
+Source: `src/features/authoring/themeRecipeMeta.ts:8:14`
 
 ## ZORA_THEME_TOKEN_FAMILIES
 
 Kind: `value`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:1:14`
+Module: `src/features/authoring/constants.ts`
+Source: `src/features/authoring/constants.ts:47:14`
 
 ## ZoraBaseProps
 
 Kind: `type`
-Module: `src/theme/ZoraBaseProps.ts`
-Source: `src/theme/ZoraBaseProps.ts:5:1`
+Module: `src/types/base.ts`
+Source: `src/types/base.ts:5:1`
 
 ### Members
 
@@ -5364,20 +5364,20 @@ Source: `src/theme/ZoraBaseProps.ts:5:1`
 ## ZoraBindableComponentType
 
 Kind: `unknown`
-Module: `src/metadata/bindableComponentMeta.ts`
-Source: `src/metadata/bindableComponentMeta.ts:505:1`
+Module: `src/features/authoring/bindableComponentMeta.ts`
+Source: `src/features/authoring/bindableComponentMeta.ts:505:1`
 
 ## ZoraColor
 
 Kind: `unknown`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:10:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:90:1`
 
 ## ZoraComponentBlueprint
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:45:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:45:1`
 
 ### Members
 
@@ -5390,14 +5390,14 @@ Source: `src/metadata/types.ts:45:1`
 ## ZoraComponentCategory
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:9:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:9:1`
 
 ## ZoraComponentEventMeta
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:66:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:66:1`
 
 ### Members
 
@@ -5411,8 +5411,8 @@ Source: `src/metadata/types.ts:66:1`
 ## ZoraComponentEventPayloadFieldMeta
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:59:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:59:1`
 
 ### Members
 
@@ -5426,20 +5426,20 @@ Source: `src/metadata/types.ts:59:1`
 ## ZoraComponentEventPayloadFieldType
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:56:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:56:1`
 
 ## ZoraComponentEventPayloadKind
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:55:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:55:1`
 
 ## ZoraComponentI18nMeta
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:51:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:51:1`
 
 ### Members
 
@@ -5450,8 +5450,8 @@ Source: `src/metadata/types.ts:51:1`
 ## ZoraComponentManifestPolicy
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:78:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:78:1`
 
 ### Members
 
@@ -5464,8 +5464,8 @@ Source: `src/metadata/types.ts:78:1`
 ## ZoraComponentMeta
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:84:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:84:1`
 
 ### Members
 
@@ -5489,14 +5489,14 @@ Source: `src/metadata/types.ts:84:1`
 ## ZoraComponentMetaRegistry
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:101:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:101:1`
 
 ## ZoraComponentPropArrayItemSchema
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:29:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:29:1`
 
 ### Members
 
@@ -5508,14 +5508,14 @@ Source: `src/metadata/types.ts:29:1`
 ## ZoraComponentPropAuthoring
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:21:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:21:1`
 
 ## ZoraComponentPropSchema
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:34:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:34:1`
 
 ### Members
 
@@ -5527,32 +5527,32 @@ Source: `src/metadata/types.ts:34:1`
 | enum       | property | `readonly (string \| number)[] \| undefined`                                  | no       |             |
 | itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined`                    | no       |             |
 | label      | property | `string \| undefined`                                                         | no       |             |
-| mediaKinds | property | `readonly ("image" \| "video" \| "file" \| "audio" \| "font")[] \| undefined` | no       |             |
+| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no       |             |
 | type       | property | `UiComponentPropType`                                                         | yes      |             |
 
 ## ZoraComponentPropType
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:11:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:11:1`
 
 ## ZoraComponentPropValue
 
 Kind: `unknown`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:13:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:13:1`
 
 ## ZoraComponentRegistry
 
 Kind: `unknown`
-Module: `src/registry.ts`
-Source: `src/registry.ts:75:1`
+Module: `src/types/registry.ts`
+Source: `src/types/registry.ts:3:1`
 
 ## ZoraComponentSlotMeta
 
 Kind: `type`
-Module: `src/metadata/types.ts`
-Source: `src/metadata/types.ts:73:1`
+Module: `src/types/authoring.ts`
+Source: `src/types/authoring.ts:73:1`
 
 ### Members
 
@@ -5564,8 +5564,8 @@ Source: `src/metadata/types.ts:73:1`
 ## ZoraComputedTheme
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:74:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:80:1`
 
 ### Members
 
@@ -5580,8 +5580,8 @@ Source: `src/theme/types.ts:74:1`
 ## ZoraComputedThemeMode
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:65:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:71:1`
 
 ### Members
 
@@ -5597,46 +5597,46 @@ Source: `src/theme/types.ts:65:1`
 ## zoraDefaultTheme
 
 Kind: `value`
-Module: `src/theme/zoraDefaultTheme.ts`
-Source: `src/theme/zoraDefaultTheme.ts:3:14`
+Module: `src/features/theme/zoraDefaultTheme.ts`
+Source: `src/features/theme/zoraDefaultTheme.ts:3:14`
 
 ## ZoraEmphasis
 
 Kind: `unknown`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:11:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:91:1`
 
 ## ZoraPaletteColor
 
 Kind: `unknown`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:8:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:88:1`
 
 ## ZoraPluginCompositionError
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:46:1`
+Module: `src/features/plugin/domain/ZoraPluginCompositionError.ts`
+Source: `src/features/plugin/domain/ZoraPluginCompositionError.ts:4:1`
 
 Report one deterministic plugin composition contract violation.
 
 ## ZoraPluginCompositionErrorCode
 
 Kind: `unknown`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:6:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:6:1`
 
 ## ZoraPluginDescriptor
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:30:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:30:1`
 
 ### Members
 
 | Name                                 | Kind     | Type                                                                                                      | Required | Description |
 | ------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>`                                                             | yes      |             |
+| componentMeta                        | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>`                                       | yes      |             |
 | componentRegistry                    | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes      |             |
 | displayName                          | property | `string \| undefined`                                                                                     | no       |             |
 | extensionHosts                       | property | `readonly string[] \| undefined`                                                                          | no       |             |
@@ -5647,25 +5647,25 @@ Source: `src/pluginComposition.ts:30:1`
 ## ZoraPluginMetadata
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:21:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:21:1`
 
 ### Members
 
-| Name                                 | Kind     | Type                                          | Required | Description |
-| ------------------------------------ | -------- | --------------------------------------------- | -------- | ----------- |
-| componentMeta                        | property | `Readonly<Record<string, ZoraComponentMeta>>` | yes      |             |
-| displayName                          | property | `string \| undefined`                         | no       |             |
-| extensionHosts                       | property | `readonly string[] \| undefined`              | no       |             |
-| interactionPolicySupportedComponents | property | `readonly string[] \| undefined`              | no       |             |
-| packageName                          | property | `string`                                      | yes      |             |
-| placements                           | property | `readonly ZoraPluginPlacement[] \| undefined` | no       |             |
+| Name                                 | Kind     | Type                                                                | Required | Description |
+| ------------------------------------ | -------- | ------------------------------------------------------------------- | -------- | ----------- |
+| componentMeta                        | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>` | yes      |             |
+| displayName                          | property | `string \| undefined`                                               | no       |             |
+| extensionHosts                       | property | `readonly string[] \| undefined`                                    | no       |             |
+| interactionPolicySupportedComponents | property | `readonly string[] \| undefined`                                    | no       |             |
+| packageName                          | property | `string`                                                            | yes      |             |
+| placements                           | property | `readonly ZoraPluginPlacement[] \| undefined`                       | no       |             |
 
 ## ZoraPluginPlacement
 
 Kind: `type`
-Module: `src/pluginComposition.ts`
-Source: `src/pluginComposition.ts:16:1`
+Module: `src/types/plugin.ts`
+Source: `src/types/plugin.ts:16:1`
 
 ### Members
 
@@ -5677,8 +5677,8 @@ Source: `src/pluginComposition.ts:16:1`
 ## ZoraProvider
 
 Kind: `function`
-Module: `src/theme/ZoraProvider.tsx`
-Source: `src/theme/ZoraProvider.tsx:13:1`
+Module: `src/features/theme/adapters/inbound/ZoraProvider.tsx`
+Source: `src/features/theme/adapters/inbound/ZoraProvider.tsx:13:1`
 
 Installs the core ZORA theme runtime and explicitly enabled optional capabilities.
 
@@ -5722,14 +5722,14 @@ Source: `src/types/provider.ts:9:1`
 ## ZoraStatusColor
 
 Kind: `unknown`
-Module: `src/internal/colorModel.ts`
-Source: `src/internal/colorModel.ts:9:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:89:1`
 
 ## ZoraTheme
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:17:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:23:1`
 
 ### Members
 
@@ -5744,8 +5744,8 @@ Source: `src/theme/types.ts:17:1`
 ## ZoraThemeCompilationDiagnostic
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:48:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:54:1`
 
 ### Members
 
@@ -5760,14 +5760,14 @@ Source: `src/theme/types.ts:48:1`
 ## ZoraThemeCompilationDiagnosticCode
 
 Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:45:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:51:1`
 
 ## ZoraThemeCompilationOptions
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:36:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:42:1`
 
 ### Members
 
@@ -5778,20 +5778,20 @@ Source: `src/theme/types.ts:36:1`
 ## ZoraThemeId
 
 Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:13:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:19:1`
 
 ## ZoraThemeMode
 
 Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:15:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:21:1`
 
 ## ZoraThemeProvenanceEntry
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:58:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:64:1`
 
 ### Members
 
@@ -5805,8 +5805,8 @@ Source: `src/theme/types.ts:58:1`
 ## ZoraThemeRecipeBooleanFieldMeta
 
 Kind: `type`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:30:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:22:1`
 
 ### Members
 
@@ -5820,8 +5820,8 @@ Source: `src/metadata/themeRecipeTypes.ts:30:1`
 ## ZoraThemeRecipeChoiceFieldMeta
 
 Kind: `type`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:24:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:16:1`
 
 ### Members
 
@@ -5836,20 +5836,20 @@ Source: `src/metadata/themeRecipeTypes.ts:24:1`
 ## ZoraThemeRecipeFieldMeta
 
 Kind: `unknown`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:35:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:27:1`
 
 ## ZoraThemeRecipeKind
 
 Kind: `unknown`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:11:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:3:1`
 
 ## ZoraThemeRecipeMeta
 
 Kind: `type`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:38:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:30:1`
 
 ### Members
 
@@ -5863,32 +5863,32 @@ Source: `src/metadata/themeRecipeTypes.ts:38:1`
 ## ZoraThemeRecipeMetaRegistry
 
 Kind: `unknown`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:45:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:37:1`
 
 ## ZoraThemeRecipeTokenFieldMeta
 
 Kind: `type`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:18:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:10:1`
 
 ### Members
 
-| Name        | Kind     | Type                                                            | Required | Description |
-| ----------- | -------- | --------------------------------------------------------------- | -------- | ----------- |
-| default     | property | `string \| undefined`                                           | no       |             |
-| description | property | `string \| undefined`                                           | no       |             |
-| label       | property | `string`                                                        | yes      |             |
-| tokenFamily | property | `"spacing" \| "colors" \| "radii" \| "typography" \| "shadows"` | yes      |             |
-| type        | property | `"token"`                                                       | yes      |             |
+| Name        | Kind     | Type                   | Required | Description |
+| ----------- | -------- | ---------------------- | -------- | ----------- |
+| default     | property | `string \| undefined`  | no       |             |
+| description | property | `string \| undefined`  | no       |             |
+| label       | property | `string`               | yes      |             |
+| tokenFamily | property | `ZoraThemeTokenFamily` | yes      |             |
+| type        | property | `"token"`              | yes      |             |
 
 ## ZoraThemeScope
 
 Kind: `function`
-Module: `src/theme/ZoraThemeScope.tsx`
-Source: `src/theme/ZoraThemeScope.tsx:15:1`
+Module: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx`
+Source: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx:18:1`
 
-Applies nested ZORA theme overrides without installing another Surface theme runtime.
+Applies nested ZORA theme overrides through the public Surface theme scope.
 
 ### Signatures
 
@@ -5899,8 +5899,8 @@ Applies nested ZORA theme overrides without installing another Surface theme run
 ## ZoraThemeScopeProps
 
 Kind: `type`
-Module: `src/theme/ZoraThemeScope.tsx`
-Source: `src/theme/ZoraThemeScope.tsx:8:1`
+Module: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx`
+Source: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx:11:1`
 
 ### Members
 
@@ -5913,8 +5913,8 @@ Source: `src/theme/ZoraThemeScope.tsx:8:1`
 ## ZoraThemeSelectionResult
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:40:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:46:1`
 
 ### Members
 
@@ -5926,8 +5926,8 @@ Source: `src/theme/types.ts:40:1`
 ## ZoraThemeSelectionTarget
 
 Kind: `type`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:28:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:34:1`
 
 ### Members
 
@@ -5942,20 +5942,20 @@ Source: `src/theme/types.ts:28:1`
 ## ZoraThemeSwatchRole
 
 Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:25:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:31:1`
 
 ## ZoraThemeTokenFamily
 
 Kind: `unknown`
-Module: `src/metadata/themeRecipeTypes.ts`
-Source: `src/metadata/themeRecipeTypes.ts:9:1`
+Module: `src/types/theme-recipe.ts`
+Source: `src/types/theme-recipe.ts:1:1`
 
 ## ZoraThemeValueOrigin
 
 Kind: `unknown`
-Module: `src/theme/types.ts`
-Source: `src/theme/types.ts:56:1`
+Module: `src/types/theme.ts`
+Source: `src/types/theme.ts:62:1`
 
 ## ZoraToastCapability
 

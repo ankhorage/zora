@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../../../../types/base';
 import type { FormFieldConfig, FormFieldValue } from '../../../../types/form';
 import { Field, hasRequiredRule } from '../../../form/public';
 import { TextInput } from '../../../form/text-input/public';

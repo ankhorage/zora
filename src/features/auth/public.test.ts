@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../metadata/componentMeta';
+import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
 
 const AUTH_MANIFEST_ELEMENTS = [
   'ForgotPasswordForm',

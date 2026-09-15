@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AvatarGroupItem, AvatarGroupProps } from '../../../../types/avatar-group';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Avatar } from '../../public';
 /***
  * Renders a compact group of avatars with optional overflow handling.

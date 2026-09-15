@@ -1,12 +1,12 @@
 import { Accordion as SurfaceAccordion } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   AccordionMultipleProps,
   AccordionProps,
   AccordionSingleProps,
 } from '../../../../types/accordion';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { AccordionPresentationContext } from '../../composition/AccordionPresentationContext';
 
 /*** Renders a ZORA accordion backed by Surface expansion and accessibility mechanics. */

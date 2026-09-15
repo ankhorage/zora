@@ -34,9 +34,9 @@ describe('ZORA BottomSheet public contract', () => {
   test('installs BottomSheet only in the enabled native runtime capability host', async () => {
     const [provider, nativeCapabilities, webCapabilities, nativeDatePicker, nativeTimePicker] =
       await Promise.all([
-        Bun.file('src/theme/ZoraProvider.tsx').text(),
-        Bun.file('src/theme/ZoraRuntimeCapabilities.native.tsx').text(),
-        Bun.file('src/theme/ZoraRuntimeCapabilities.web.tsx').text(),
+        Bun.file('src/features/theme/adapters/inbound/ZoraProvider.tsx').text(),
+        Bun.file('src/features/theme/composition/ZoraRuntimeCapabilities.native.tsx').text(),
+        Bun.file('src/features/theme/composition/ZoraRuntimeCapabilities.web.tsx').text(),
         Bun.file('src/features/date-picker/adapters/inbound/DatePicker.native.tsx').text(),
         Bun.file('src/features/time-picker/adapters/inbound/TimePicker.native.tsx').text(),
       ]);

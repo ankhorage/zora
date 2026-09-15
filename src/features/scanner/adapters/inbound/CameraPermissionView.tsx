@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { CameraPermissionViewProps } from '../../../../types/scanner';
 import { Button } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 
 function resolvePermissionCopy(status: CameraPermissionViewProps['status']) {

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image as ReactNativeImage } from 'react-native';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   PostAction,
   PostAuthor,
@@ -13,6 +11,8 @@ import type {
 import { Avatar } from '../../../avatar/public';
 import { Button } from '../../../button/public';
 import { Divider, View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
 /***

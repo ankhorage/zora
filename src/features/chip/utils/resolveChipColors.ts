@@ -1,7 +1,7 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import type { ZoraColor } from '../../../internal/recipes';
 import type { ChipColors, ChipInteractionState } from '../../../types/chip';
+import type { ZoraColor } from '../../../types/theme';
 export function resolveChipColors({
   theme,
   color,

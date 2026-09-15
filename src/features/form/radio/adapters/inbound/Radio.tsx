@@ -1,8 +1,8 @@
 import { Radio as SurfaceRadio } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { RadioProps } from '../../../../../types/radio';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 
 function RadioInner({ themeId: _themeId, mode: _mode, interactionPolicy, ...props }: RadioProps) {
   return <SurfaceRadio {...props} interactionPolicy={interactionPolicy} />;

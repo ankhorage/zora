@@ -2,12 +2,12 @@ import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import React from 'react';
 import { Image } from 'react-native';
 
-import type { ZoraColor } from '../../../../internal/recipes';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AvatarProps, AvatarShape, AvatarSize } from '../../../../types/avatar';
+import type { ZoraColor } from '../../../../types/theme';
 import { Icon } from '../../../icon/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text, type TextVariant } from '../../../typography/public';
 import { resolveAvatarInitials } from '../../utils/resolveAvatarInitials';
 /***

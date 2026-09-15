@@ -6,8 +6,9 @@ import type {
 } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraContentWidth } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+
+export type ZoraContentWidth = 'narrow' | 'default' | 'wide';
 
 export interface ViewProps extends ZoraBaseProps, Omit<SurfaceViewProps, 'mode' | 'themeId'> {}
 export interface ScrollViewProps

@@ -6,10 +6,10 @@ import {
 import React from 'react';
 import type { ViewStyle } from 'react-native';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AccordionItemProps } from '../../../../types/accordion';
 import { Icon } from '../../../icon/public';
 import { Divider, View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Heading, Text } from '../../../typography/public';
 import { AccordionPresentationContext } from '../../composition/AccordionPresentationContext';
 

@@ -1,7 +1,7 @@
 import type { FieldProps as SurfaceFieldProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 import type { TextInputProps } from './text-input';
 
 export type ValidationRule =

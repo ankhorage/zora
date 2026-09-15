@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   ButtonGroupAlign,
   ButtonGroupOrientation,
   ButtonGroupProps,
 } from '../../../../types/button-group';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 /***
  * Groups multiple `Button` elements with consistent spacing and alignment.
  */

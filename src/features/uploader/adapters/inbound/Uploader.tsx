@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
 import { Dialog } from '../../../dialog/public';
@@ -9,6 +8,7 @@ import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
 import { View } from '../../../layout/public';
 import { Progress } from '../../../progress/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 import { validateUploadAsset } from '../../application/use-cases/validateUploadAsset';
 import { createUploadPicker } from '../../composition/createUploadPicker';

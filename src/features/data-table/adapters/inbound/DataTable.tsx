@@ -3,7 +3,6 @@ import { Show } from '@ankhorage/surface';
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   DataTableCellContext,
   DataTableColumn,
@@ -20,6 +19,7 @@ import { EmptyState } from '../../../empty-state/public';
 import { View } from '../../../layout/public';
 import { PopoverMenu, type PopoverMenuAction } from '../../../popover-menu/public';
 import { SkeletonList } from '../../../skeleton/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text, type TextAlign } from '../../../typography/public';
 import { resolveDataTableRowKey } from '../../utils/resolveDataTableRowKey';
 /***

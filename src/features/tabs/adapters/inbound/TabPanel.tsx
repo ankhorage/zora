@@ -1,7 +1,7 @@
 import { TabPanel as SurfaceTabPanel } from '@ankhorage/surface';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabPanelProps } from '../../../../types/tabs';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Renders content associated with one selected Tab. */
 export const TabPanel = withZoraThemeScope(TabPanelInner);
