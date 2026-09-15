@@ -1,6 +1,5 @@
 import {
   Badge,
-  View,
   Button,
   Card,
   ChipGroup,
@@ -14,6 +13,7 @@ import {
   TextInput,
   ThemeComposer,
   Toolbar,
+  View,
   type ZoraTheme,
   type ZoraThemeMode,
   ZoraThemeScope,

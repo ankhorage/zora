@@ -12,9 +12,9 @@ import {
   Radio,
   RadioGroup,
   ScreenSection,
-  View,
   Text,
   TextInput,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { Badge, View, Card, Divider, Grid, ScreenSection, Surface, Text } from '@ankhorage/zora';
+import { Badge, Card, Divider, Grid, ScreenSection, Surface, Text, View } from '@ankhorage/zora';
 import React from 'react';
 
 export function FoundationPrimitivesSection() {

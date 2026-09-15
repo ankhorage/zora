@@ -5,17 +5,16 @@ import {
   ConfirmDialog,
   ContentRail,
   IconButton,
+  ListRow,
   MissingElement,
   Notice,
   Panel,
   ReaderSurface,
   ScreenSection,
   SectionHeader,
-  ListRow,
-  View,
-  SwitchField,
   Text,
   TreeItem,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 

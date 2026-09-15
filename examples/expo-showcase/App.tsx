@@ -1,7 +1,6 @@
 import {
   AppBar,
   AppShell,
-  View,
   type GradientRendererProps,
   GradientRendererProvider,
   IconButton,
@@ -10,6 +9,7 @@ import {
   TabPanel,
   Tabs,
   Toolbar,
+  View,
   ZoraProvider,
   type ZoraTheme,
   type ZoraThemeMode,

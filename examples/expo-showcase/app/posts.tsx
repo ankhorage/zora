@@ -1,4 +1,4 @@
-import { Badge, IconButton, PostCard, Screen, ScreenSection, View, Text } from '@ankhorage/zora';
+import { Badge, IconButton, PostCard, Screen, ScreenSection, Text, View } from '@ankhorage/zora';
 import React from 'react';
 
 import iconPng from '../assets/icon.png';

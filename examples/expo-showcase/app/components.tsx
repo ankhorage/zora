@@ -3,7 +3,6 @@ import {
   Avatar,
   AvatarGroup,
   Badge,
-  View,
   Button,
   ButtonGroup,
   Card,
@@ -33,6 +32,7 @@ import {
   Text,
   TextInput,
   Toolbar,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 

@@ -5,8 +5,8 @@ import {
   MessageBubble,
   Screen,
   ScreenSection,
-  View,
   Text,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 

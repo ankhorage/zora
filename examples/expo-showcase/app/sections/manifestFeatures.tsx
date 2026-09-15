@@ -1,6 +1,5 @@
 import {
   BottomSheet,
-  View,
   Button,
   Card,
   ChipGroup,
@@ -8,6 +7,7 @@ import {
   FlatList,
   SectionList,
   Text,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
