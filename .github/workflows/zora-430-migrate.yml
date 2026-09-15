@@ -26,11 +26,11 @@ jobs:
       - name: Install current dependencies
         run: bun install --frozen-lockfile
       - name: Apply migration
-        run: bun scripts/migrate-zora-430.ts
+        run: bun scripts/migrate-zora-430-v2.ts
       - name: Install Surface 7 and refresh lockfile
         run: bun install
       - name: Remove migration tooling
-        run: rm scripts/migrate-zora-430.ts .github/workflows/zora-430-migrate.yml
+        run: rm scripts/migrate-zora-430.ts scripts/migrate-zora-430-v2.ts .github/workflows/zora-430-migrate.yml
       - name: Format
         run: bun run format
       - name: Build
