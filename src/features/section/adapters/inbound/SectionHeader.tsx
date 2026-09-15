@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SectionHeaderProps } from '../../../../types/section';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 

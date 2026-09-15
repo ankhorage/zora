@@ -1,8 +1,8 @@
 import React from 'react';
 import { SectionList as NativeSectionList } from 'react-native';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ManifestSectionListProps } from '../../../../types/manifest-list';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 import { partitionListSections } from '../../application/use-cases/partitionListSections';
 import { HorizontalListSeparator } from './HorizontalListSeparator';

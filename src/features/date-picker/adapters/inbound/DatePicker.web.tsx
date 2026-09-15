@@ -1,9 +1,9 @@
 import { Popover } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { DatePickerProps } from '../../../../types/date-picker';
 import { Surface } from '../../../surface/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { DatePickerContent } from '../../composition/DatePickerContent';
 import { DatePickerField } from '../../composition/DatePickerField';
 import { DatePickerTrigger } from '../../composition/DatePickerTrigger';

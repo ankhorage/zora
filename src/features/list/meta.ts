@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../../metadata';
+import type { ZoraComponentMeta } from '../authoring';
 
 const LIST_NOTE =
   'List feature component; collection authoring is represented through List metadata.';

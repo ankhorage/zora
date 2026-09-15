@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { resolveIconSize } from '../../../../internal/recipes';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   BreadcrumbItem,
   BreadcrumbPressEvent,
@@ -10,7 +7,10 @@ import type {
 } from '../../../../types/breadcrumbs';
 import { Button } from '../../../button/public';
 import { Icon } from '../../../icon/public';
+import { resolveIconSize } from '../../../icon/utils/resolveIconSize';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 
 /*** Renders a breadcrumb trail whose final item represents the current location. */

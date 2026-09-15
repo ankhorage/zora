@@ -22,8 +22,8 @@ describe('ZORA Uploader public contract', () => {
   test('removes the superseded image preview and upload field APIs', async () => {
     const [rootSource, registrySource, metadataSource] = await Promise.all([
       Bun.file('src/index.ts').text(),
-      Bun.file('src/registry.ts').text(),
-      Bun.file('src/metadata/componentMeta.ts').text(),
+      Bun.file('src/features/registry/ZORA_COMPONENT_REGISTRY.ts').text(),
+      Bun.file('src/features/authoring/componentMeta.ts').text(),
     ]);
     const publicSurface = `${rootSource}\n${registrySource}\n${metadataSource}`;
 

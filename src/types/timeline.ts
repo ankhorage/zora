@@ -1,8 +1,8 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraColor } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraColor } from './theme';
 
 export interface TimelineItem {
   id: string;

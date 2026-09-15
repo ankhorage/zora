@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { resolveBadgeRecipe, resolveIconSize } from '../../../../internal/recipes';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { MetricCardProps } from '../../../../types/metric-card';
 import { Badge } from '../../../badge/public';
+import { resolveBadgeRecipe } from '../../../badge/utils/resolveBadgeRecipe';
 import { Icon } from '../../../icon/public';
+import { resolveIconSize } from '../../../icon/utils/resolveIconSize';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';

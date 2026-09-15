@@ -1,9 +1,9 @@
 import React from 'react';
 import { type ListRenderItemInfo, StyleSheet } from 'react-native';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SelectOption, SelectProps } from '../../../../../types/select';
 import { BottomSheetFlatList, useBottomSheet } from '../../../../bottom-sheet/public';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { SelectField } from '../../composition/SelectField';
 import { SelectOptionRow } from '../../composition/SelectOptionRow';
 import { SelectTrigger } from '../../composition/SelectTrigger';

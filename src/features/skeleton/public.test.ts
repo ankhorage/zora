@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../metadata/componentMeta';
+import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
 
 test('skeletons support direct authoring and automatic feature loading states', async () => {
   const [dataTableSource, publicSource] = await Promise.all([

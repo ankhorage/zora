@@ -1,8 +1,8 @@
 import { Toast as SurfaceToast } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ToastProps } from '../../../../types/toast';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Renders a toast notification message with ZORA theme scoping. */
 export const Toast = withZoraThemeScope(ToastInner);

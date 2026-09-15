@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../metadata/componentMeta';
+import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
 
 test('DatePicker keeps one manifest contract across native and web presentation hosts', async () => {
   const nativeSource = await Bun.file(

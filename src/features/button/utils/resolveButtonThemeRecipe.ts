@@ -1,11 +1,9 @@
 import type { ThemeRecipeOverrideValue } from '@ankhorage/contracts';
 
-import {
-  resolveButtonRecipe,
-  type ZoraButtonVariant,
-  type ZoraColor,
-  type ZoraControlSize,
-} from '../../../internal/recipes';
+import type { ZoraButtonVariant } from '../../../types/button';
+import type { ZoraControlSize } from '../../../types/control';
+import type { ZoraColor } from '../../../types/theme';
+import { resolveButtonRecipe } from './resolveButtonRecipe';
 
 export function resolveButtonThemeRecipe(input: {
   readonly color?: ZoraColor;

@@ -1,7 +1,7 @@
 import type { CheckboxProps as SurfaceCheckboxProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface CheckboxProps
   extends ZoraBaseProps, Omit<SurfaceCheckboxProps, 'mode' | 'themeId'> {}

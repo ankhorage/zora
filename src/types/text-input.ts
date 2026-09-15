@@ -1,7 +1,7 @@
 import type * as Surface from '@ankhorage/surface';
 
-import type { ZoraControlSize } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraControlSize } from './control';
 
 export interface TextInputTrailingAction {
   icon: Surface.ButtonIconSpec;

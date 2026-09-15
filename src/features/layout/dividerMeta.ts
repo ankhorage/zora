@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../../metadata/types';
+import type { ZoraComponentMeta } from '../../types/authoring';
 import { LAYOUT_PROPS } from './constants';
 
 export const dividerMeta = {

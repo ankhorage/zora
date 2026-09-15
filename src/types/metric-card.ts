@@ -1,8 +1,9 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraCardTone, ZoraColor } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraCardTone } from './card';
+import type { ZoraColor } from './theme';
 
 export interface MetricCardProps extends ZoraBaseProps {
   label: React.ReactNode;

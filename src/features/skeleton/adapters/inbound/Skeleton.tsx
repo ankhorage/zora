@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonProps } from '../../../../types/skeleton';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 
 function SkeletonInner({
   themeId: _themeId,

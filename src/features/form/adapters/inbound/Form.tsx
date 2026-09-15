@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { FormProps } from '../../../../types/form';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { FormActions } from './FormActions';
 
 function FormInner({

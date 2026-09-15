@@ -7,8 +7,8 @@ import type {
   TextStyle,
 } from 'react-native';
 
-import type { ZoraColor, ZoraEmphasis } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraColor, ZoraEmphasis } from './theme';
 
 export type TextVariant = 'body' | 'lead' | 'bodySmall' | 'caption' | 'label' | 'eyebrow' | 'code';
 

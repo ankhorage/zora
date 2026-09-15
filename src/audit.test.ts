@@ -151,7 +151,7 @@ describe('Plan 5 audit — no hard-coded runtime colors', () => {
   const RUNTIME_COLOR_LITERAL_PATTERN = /#[0-9A-Fa-f]{3,8}|rgba?\(|hsla?\(/;
   const EXEMPT_COLOR_LITERAL_FILES = new Set([
     // This is source-theme data, not component chrome. Plan 5 explicitly allows theme seed literals.
-    join(SRC_ROOT, 'theme', 'zoraDefaultTheme.ts'),
+    join(SRC_ROOT, 'features', 'theme', 'zoraDefaultTheme.ts'),
   ]);
 
   test('non-test src files do not contain raw runtime color literals', () => {

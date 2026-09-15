@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../../../../types/base';
 import type { ProductCardProps } from '../../../../types/product-card';
 import { Badge } from '../../../badge/public';
 import { Button } from '../../../button/public';
 import { Image } from '../../../image/public';
 import { Divider, View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';

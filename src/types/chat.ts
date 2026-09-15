@@ -2,8 +2,8 @@ import type React from 'react';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { AvatarShape, AvatarSize } from '../features/avatar/public';
-import type { ZoraColor } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraColor } from './theme';
 
 export interface ChatListAvatar {
   source?: ImageSourcePropType;

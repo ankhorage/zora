@@ -1,7 +1,7 @@
 import { Tabs as SurfaceTabs } from '@ankhorage/surface';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabsProps } from '../../../../types/tabs';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { TabsInteractionPolicyContext } from '../../composition/TabsInteractionPolicyContext';
 
 /*** Provides accessible tab state and interaction policy through the Surface Tabs primitive. */

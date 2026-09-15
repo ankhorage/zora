@@ -6,7 +6,7 @@ import type {
   ToastStatus as SurfaceToastStatus,
 } from '@ankhorage/surface';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export type ToastStatus = SurfaceToastStatus;
 export type ToastOptions = SurfaceToastOptions;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { HeroAction, HeroAlign, HeroProps } from '../../../../types/hero';
 import { Button } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { Grid, View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Heading, Text } from '../../../typography/public';
 
 function HeroInner({

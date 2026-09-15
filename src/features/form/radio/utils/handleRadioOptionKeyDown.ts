@@ -1,6 +1,6 @@
 import type { KeyboardEvent } from 'react';
 
-import { DIRECTION_MODIFIERS } from '../../../../constants/keyboard';
+import { DIRECTION_MODIFIERS } from '../constants';
 
 /*** Support Space and directional navigation for web radio options without affecting native presses. */
 export function handleRadioOptionKeyDown(

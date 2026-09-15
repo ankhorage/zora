@@ -1,8 +1,8 @@
 import { Surface as SurfaceSurface } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SurfaceProps } from '../../../../types/surface';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Adapts the themed Surface Surface primitive to ZORA scope and interaction props. */
 export const Surface = withZoraThemeScope(SurfaceInner);

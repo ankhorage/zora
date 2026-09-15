@@ -1,9 +1,9 @@
 import { IconButton as SurfaceIconButton } from '@ankhorage/surface';
 import React from 'react';
 
-import { resolveButtonRecipe } from '../../../../internal/recipes';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { IconButtonProps } from '../../../../types/icon-button';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { resolveButtonRecipe } from '../../utils/resolveButtonRecipe';
 /***
  * Icon-only button for compact actions; requires an accessible `label`.
  */

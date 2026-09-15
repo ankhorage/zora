@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList as NativeFlatList } from 'react-native';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ManifestListProps } from '../../../../types/manifest-list';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 import { HorizontalListSeparator } from './HorizontalListSeparator';
 import { useListVisibility } from './useListVisibility';

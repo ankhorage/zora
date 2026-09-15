@@ -1,9 +1,9 @@
 import React from 'react';
 import { ActivityIndicator as ReactNativeActivityIndicator } from 'react-native';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ActivityIndicatorProps } from '../../../../types/activity-indicator';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 
 /*** Render native loading feedback with a semantic ZORA fallback color. */
 function ActivityIndicatorInner({

@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../../metadata';
+import type { ZoraComponentMeta } from '../authoring';
 
 export const timelineMeta = {
   name: 'Timeline',

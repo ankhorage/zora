@@ -1,7 +1,7 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type { ReactNode } from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface TreeItemNode<TId extends string = string> {
   id: TId;

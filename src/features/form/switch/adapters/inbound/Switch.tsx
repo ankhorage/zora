@@ -1,8 +1,8 @@
 import { Switch as SurfaceSwitch } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SwitchProps } from '../../../../../types/switch';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Renders the ZORA switch while preserving the canonical Surface switch contract. */
 export const Switch = withZoraThemeScope(SwitchInner);

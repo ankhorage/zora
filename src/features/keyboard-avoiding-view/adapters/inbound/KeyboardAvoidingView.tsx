@@ -1,8 +1,8 @@
 import { KeyboardAvoidingView as SurfaceKeyboardAvoidingView } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { KeyboardAvoidingViewProps } from '../../../../types/keyboard-avoiding-view';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Native keyboard-aware container exposed through the canonical ZORA feature boundary. */
 export const KeyboardAvoidingView = withZoraThemeScope(KeyboardAvoidingViewInner);

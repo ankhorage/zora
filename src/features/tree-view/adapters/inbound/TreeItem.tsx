@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../../../../types/base';
 import type { TreeItemNode, TreeItemRenderProps } from '../../../../types/tree-view';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
 import { ListItem } from '../../../list/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
   node: TreeItemNode<TId>;

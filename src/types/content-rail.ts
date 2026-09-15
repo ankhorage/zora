@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export type ContentRailDirection = 'auto' | 'ltr' | 'rtl';
 export type ContentRailItemSize = 'compact' | 'regular' | 'wide' | 'responsive' | 'content';

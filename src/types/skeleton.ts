@@ -1,5 +1,5 @@
 import type { ViewProps } from '../features/layout/public';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export type SkeletonRadius = ViewProps['radius'];
 export type SkeletonDimension = ViewProps['width'];

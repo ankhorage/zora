@@ -1,13 +1,13 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import React from 'react';
 
-import type { ZoraColor } from '../../../../internal/recipes';
-import { resolveIconSize } from '../../../../internal/recipes';
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { ZoraColor } from '../../../../types/theme';
 import type { TimelineItem, TimelineProps } from '../../../../types/timeline';
 import { Icon } from '../../../icon/public';
+import { resolveIconSize } from '../../../icon/utils/resolveIconSize';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 

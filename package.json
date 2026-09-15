@@ -41,8 +41,8 @@
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.0",
     "@ankhorage/contracts": "^12.0.1",
-    "@ankhorage/surface": "^8.0.0",
-    "@ankhorage/utility": "^0.8.0",
+    "@ankhorage/surface": "^9.0.1",
+    "@ankhorage/utility": "^1.2.0",
     "expo-document-picker": "~57.0.1",
     "expo-image-picker": "~57.0.16"
   },
@@ -77,19 +77,19 @@
       "default": "./dist/features/uploader/public.js"
     },
     "./metadata": {
-      "react-native": "./src/metadata/index.ts",
-      "browser": "./src/metadata/index.ts",
-      "types": "./dist/metadata/index.d.ts",
-      "import": "./dist/metadata/index.js",
-      "default": "./dist/metadata/index.js"
+      "react-native": "./src/features/authoring/index.ts",
+      "browser": "./src/features/authoring/index.ts",
+      "types": "./dist/features/authoring/index.d.ts",
+      "import": "./dist/features/authoring/index.js",
+      "default": "./dist/features/authoring/index.js"
     },
     "./theme": {
-      "bun": "./src/theme/public.ts",
-      "react-native": "./src/theme/public.ts",
-      "browser": "./src/theme/public.ts",
-      "types": "./dist/theme/public.d.ts",
-      "import": "./dist/theme/public.js",
-      "default": "./dist/theme/public.js"
+      "bun": "./src/features/theme/public.ts",
+      "react-native": "./src/features/theme/public.ts",
+      "browser": "./src/features/theme/public.ts",
+      "types": "./dist/features/theme/public.d.ts",
+      "import": "./dist/features/theme/public.js",
+      "default": "./dist/features/theme/public.js"
     },
     "./package.json": "./package.json"
   },

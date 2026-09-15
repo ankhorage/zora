@@ -1,6 +1,6 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
 
 export interface BreadcrumbItem {
   id: string;

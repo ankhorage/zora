@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { CollectionEditorProps } from '../../../../types/collection-editor';
 import { Button } from '../../../button/public';
 import { IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 
 function CollectionEditorInner<TItem>({

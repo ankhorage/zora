@@ -1,14 +1,14 @@
 import { Card as SurfaceCard } from '@ankhorage/surface';
 import React from 'react';
 
-import { resolveCardVariant } from '../../../../internal/recipes';
-import { useZoraThemeRecipe } from '../../../../theme/useZoraThemeRecipe';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { CardProps } from '../../../../types/card';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { resolveCardThemeRecipe } from '../../utils/resolveCardThemeRecipe';
+import { resolveCardVariant } from '../../utils/resolveCardVariant';
 /***
  * Structured content container with built-in heading, description, actions, and footer slots.
  *

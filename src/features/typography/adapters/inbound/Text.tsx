@@ -2,10 +2,10 @@ import { resolveResponsive, useResponsiveRuntime } from '@ankhorage/surface';
 import React from 'react';
 import { Platform, Text as ReactNativeText, type TextStyle } from 'react-native';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { useZoraThemeRecipe } from '../../../../theme/useZoraThemeRecipe';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TextProps } from '../../../../types/text';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
+import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
 import { resolveTextStyle } from '../../utils/resolveTextStyle';
 import { resolveTextThemeRecipe } from '../../utils/resolveTextThemeRecipe';
 /***

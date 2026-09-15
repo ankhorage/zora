@@ -1,8 +1,9 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraColor, ZoraControlSize } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraControlSize } from './control';
+import type { ZoraColor } from './theme';
 
 export interface ChipProps extends ZoraBaseProps {
   children: React.ReactNode;

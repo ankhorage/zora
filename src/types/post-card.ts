@@ -3,8 +3,9 @@ import type React from 'react';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { AvatarShape, AvatarSize } from '../features/avatar/public';
-import type { ZoraCardTone, ZoraColor } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraCardTone } from './card';
+import type { ZoraColor } from './theme';
 
 export interface PostAuthorAvatar {
   source?: ImageSourcePropType;

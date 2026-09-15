@@ -1,7 +1,7 @@
 import { TabList as SurfaceTabList } from '@ankhorage/surface';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { TabListProps } from '../../../../types/tabs';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Renders the accessible list of tabs for a Tabs composition. */
 export const TabList = withZoraThemeScope(TabListInner);

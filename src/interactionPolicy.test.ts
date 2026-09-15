@@ -24,7 +24,7 @@ function readFeature(...segments: string[]): string {
 
 describe('InteractionPolicy declaration', () => {
   test('ZoraBaseProps uses the canonical Surface type', () => {
-    const source = readSource('theme/ZoraBaseProps.ts');
+    const source = readSource('types/base.ts');
 
     expect(source).toContain("import type { InteractionPolicy } from '@ankhorage/surface';");
     expect(source).toContain('interactionPolicy?: InteractionPolicy;');
@@ -32,7 +32,7 @@ describe('InteractionPolicy declaration', () => {
 
   test('no duplicate local InteractionPolicy type declarations in ZORA source', () => {
     const files = [
-      readSource('theme/ZoraBaseProps.ts'),
+      readSource('types/base.ts'),
       readSource('types/app-bar.ts'),
       readSource('types/breadcrumbs.ts'),
       readSource('types/empty-state.ts'),
@@ -50,7 +50,7 @@ describe('InteractionPolicy declaration', () => {
   });
 
   test('registry contract is compile-time only', () => {
-    const registrySource = readSource('registry.ts');
+    const registrySource = readFeature('registry', 'ZORA_COMPONENT_REGISTRY.ts');
 
     expect(registrySource).not.toMatch(/type\s+InteractionPolicy/);
     expect(registrySource).toContain(

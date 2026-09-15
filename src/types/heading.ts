@@ -2,8 +2,8 @@ import type { Responsive } from '@ankhorage/surface';
 import type React from 'react';
 import type { AccessibilityRole, StyleProp, TextStyle } from 'react-native';
 
-import type { ZoraColor, ZoraEmphasis } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraColor, ZoraEmphasis } from './theme';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 

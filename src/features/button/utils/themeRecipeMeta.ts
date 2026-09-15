@@ -1,5 +1,5 @@
-import { ZORA_COLORS } from '../../../internal/colorModel';
-import type { ZoraThemeRecipeMeta } from '../../../metadata/themeRecipeTypes';
+import type { ZoraThemeRecipeMeta } from '../../../types/theme-recipe';
+import { ZORA_COLORS } from '../../theme/colorModel';
 
 export const buttonThemeRecipeMeta = {
   name: 'Button',

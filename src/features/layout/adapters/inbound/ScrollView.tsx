@@ -1,8 +1,8 @@
 import { ScrollView as SurfaceScrollView } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ScrollViewProps } from '../../../../types/layout';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Adapts the token-aware Surface ScrollView primitive to ZORA theme scope. */
 export const ScrollView = withZoraThemeScope(ScrollViewInner);

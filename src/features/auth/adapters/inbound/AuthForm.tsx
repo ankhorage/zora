@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../../../../types/base';
 import type { FormErrors, FormFieldConfig, FormValues } from '../../../../types/form';
 import { FormActions, FormError, useFormController } from '../../../form/public';
 import { View } from '../../../layout/public';

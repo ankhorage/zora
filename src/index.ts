@@ -1,5 +1,3 @@
-export { ZORA_CORE_PLUGIN } from './corePlugin';
-export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
   Accordion,
   AccordionItem,
@@ -44,6 +42,39 @@ export {
   SignInForm,
   SignUpForm,
 } from './features/auth/public';
+export type {
+  ZoraBindableComponentType,
+  ZoraComponentBlueprint,
+  ZoraComponentCategory,
+  ZoraComponentEventMeta,
+  ZoraComponentEventPayloadFieldMeta,
+  ZoraComponentEventPayloadFieldType,
+  ZoraComponentEventPayloadKind,
+  ZoraComponentI18nMeta,
+  ZoraComponentManifestPolicy,
+  ZoraComponentMeta,
+  ZoraComponentMetaRegistry,
+  ZoraComponentPropArrayItemSchema,
+  ZoraComponentPropAuthoring,
+  ZoraComponentPropSchema,
+  ZoraComponentPropType,
+  ZoraComponentPropValue,
+  ZoraComponentSlotMeta,
+  ZoraThemeRecipeBooleanFieldMeta,
+  ZoraThemeRecipeChoiceFieldMeta,
+  ZoraThemeRecipeFieldMeta,
+  ZoraThemeRecipeKind,
+  ZoraThemeRecipeMeta,
+  ZoraThemeRecipeMetaRegistry,
+  ZoraThemeRecipeTokenFieldMeta,
+  ZoraThemeTokenFamily,
+} from './features/authoring';
+export {
+  ZORA_BINDABLE_COMPONENT_META,
+  ZORA_COMPONENT_META,
+  ZORA_THEME_RECIPE_META,
+  ZORA_THEME_TOKEN_FAMILIES,
+} from './features/authoring';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -240,6 +271,12 @@ export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
 export { PaletteItem } from './features/palette-item/public';
 export {
+  composeZoraPluginMetadata,
+  ZORA_CORE_PLUGIN_METADATA,
+  ZoraPluginCompositionError,
+} from './features/plugin/public';
+export { composeZoraPlugins, ZORA_CORE_PLUGIN } from './features/plugin/runtime';
+export {
   PopoverMenu,
   type PopoverMenuAction,
   type PopoverMenuActionIntent,
@@ -266,6 +303,7 @@ export type {
   ReaderSurfaceProps,
 } from './features/reader/public';
 export { ReaderSurface, resolveReaderProgress } from './features/reader/public';
+export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
 export type {
   BarcodeScannerViewProps,
   BarcodeScanResult,
@@ -314,6 +352,20 @@ export {
   Tabs,
   type TabsProps,
 } from './features/tabs/public';
+export type {
+  ZoraColor,
+  ZoraEmphasis,
+  ZoraPaletteColor,
+  ZoraStatusColor,
+} from './features/theme/colorModel';
+export {
+  ZORA_COLORS,
+  ZORA_EMPHASES,
+  ZORA_PALETTE_COLORS,
+  ZORA_STATUS_COLORS,
+} from './features/theme/colorModel';
+export * from './features/theme/public';
+export * from './features/theme/runtime';
 export {
   TimePicker,
   type TimePickerProps,
@@ -361,63 +413,11 @@ export type {
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
 export type {
-  ZoraColor,
-  ZoraEmphasis,
-  ZoraPaletteColor,
-  ZoraStatusColor,
-} from './internal/colorModel';
-export {
-  ZORA_COLORS,
-  ZORA_EMPHASES,
-  ZORA_PALETTE_COLORS,
-  ZORA_STATUS_COLORS,
-} from './internal/colorModel';
-export type {
-  ZoraBindableComponentType,
-  ZoraComponentBlueprint,
-  ZoraComponentCategory,
-  ZoraComponentEventMeta,
-  ZoraComponentEventPayloadFieldMeta,
-  ZoraComponentEventPayloadFieldType,
-  ZoraComponentEventPayloadKind,
-  ZoraComponentI18nMeta,
-  ZoraComponentManifestPolicy,
-  ZoraComponentMeta,
-  ZoraComponentMetaRegistry,
-  ZoraComponentPropArrayItemSchema,
-  ZoraComponentPropAuthoring,
-  ZoraComponentPropSchema,
-  ZoraComponentPropType,
-  ZoraComponentPropValue,
-  ZoraComponentSlotMeta,
-  ZoraThemeRecipeBooleanFieldMeta,
-  ZoraThemeRecipeChoiceFieldMeta,
-  ZoraThemeRecipeFieldMeta,
-  ZoraThemeRecipeKind,
-  ZoraThemeRecipeMeta,
-  ZoraThemeRecipeMetaRegistry,
-  ZoraThemeRecipeTokenFieldMeta,
-  ZoraThemeTokenFamily,
-} from './metadata';
-export {
-  ZORA_BINDABLE_COMPONENT_META,
-  ZORA_COMPONENT_META,
-  ZORA_THEME_RECIPE_META,
-  ZORA_THEME_TOKEN_FAMILIES,
-} from './metadata';
-export type {
   ComposedZoraPluginCatalog,
   ComposedZoraPluginMetadataCatalog,
   ZoraPluginCompositionErrorCode,
   ZoraPluginDescriptor,
   ZoraPluginMetadata,
   ZoraPluginPlacement,
-} from './pluginComposition';
-export {
-  composeZoraPluginMetadata,
-  composeZoraPlugins,
-  ZoraPluginCompositionError,
-} from './pluginComposition';
-export type { ZoraComponentRegistry } from './registry';
-export { ZORA_COMPONENT_REGISTRY } from './registry';
-export * from './theme';
+} from './types/plugin';
+export type { ZoraComponentRegistry } from './types/registry';

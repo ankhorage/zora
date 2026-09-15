@@ -1,7 +1,6 @@
 import { List as SurfaceList } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   ListItemProps,
   ListItemsProps,
@@ -9,6 +8,7 @@ import type {
   ListProps,
 } from '../../../../types/list';
 import { Divider, View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { resolveListSeparator } from '../../utils/resolveListSeparator';
 import { ListItem } from './ListItem';
 

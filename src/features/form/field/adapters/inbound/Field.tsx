@@ -1,9 +1,9 @@
 import { Field as SurfaceField } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { FieldProps } from '../../../../../types/form';
 import { View } from '../../../../layout/public';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../../typography/public';
 
 function FieldInner({

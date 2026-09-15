@@ -1,6 +1,6 @@
 import type { ThemeRecipeOverrideValue } from '@ankhorage/contracts';
 
-import type { ZoraCardTone } from '../../../internal/recipes';
+import type { ZoraCardTone } from '../../../types/card';
 
 export function resolveCardThemeRecipe(input: {
   readonly tone?: ZoraCardTone;

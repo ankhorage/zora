@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../../../metadata';
+import { ZORA_COMPONENT_META } from '../../../authoring';
 
 describe('PostCard', () => {
   test('is registered as a public ZORA pattern', () => {

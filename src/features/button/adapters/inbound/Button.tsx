@@ -1,9 +1,9 @@
 import { Button as SurfaceButton } from '@ankhorage/surface';
 import React from 'react';
 
-import { useZoraThemeRecipe } from '../../../../theme/useZoraThemeRecipe';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ButtonProps } from '../../../../types/button';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
 import { resolveButtonThemeRecipe } from '../../utils/resolveButtonThemeRecipe';
 /***
  * Theme-aware action control for primary, secondary, destructive, and neutral actions.

@@ -1,8 +1,6 @@
 import { Pressable } from '@ankhorage/surface';
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   MessageBubbleAvatar,
   MessageBubbleDirection,
@@ -11,6 +9,8 @@ import type {
 } from '../../../../types/chat';
 import { Avatar } from '../../../avatar/public';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 
 function resolveAvatarName({

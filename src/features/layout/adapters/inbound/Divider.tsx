@@ -1,8 +1,8 @@
 import { Divider as SurfaceDivider } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { DividerProps } from '../../../../types/layout';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Adapts the themed Surface Divider primitive to ZORA scope and interaction props. */
 export const Divider = withZoraThemeScope(DividerInner);

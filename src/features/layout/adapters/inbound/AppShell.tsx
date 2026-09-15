@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AppShellProps } from '../../../../types/layout';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { View } from './View';
 
 function AppShellInner({

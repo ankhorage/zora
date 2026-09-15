@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useZoraTheme } from '../../../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ReaderStatus, ReaderSurfaceProps } from '../../../../types/reader';
 import { AppBar } from '../../../app-bar/public';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
 import { Progress } from '../../../progress/public';
 import { Surface } from '../../../surface/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 import { resolveReaderProgress } from '../../utils/resolveReaderProgress';
 

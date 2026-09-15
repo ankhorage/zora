@@ -1,8 +1,8 @@
 import { Checkbox as SurfaceCheckbox } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { CheckboxProps } from '../../../../../types/checkbox';
+import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 
 function CheckboxInner({
   themeId: _themeId,

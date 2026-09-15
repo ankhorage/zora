@@ -1,8 +1,8 @@
 import type React from 'react';
 import type { ImageSourcePropType } from 'react-native';
 
-import type { ZoraCardTone } from '../internal/recipes';
-import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from './base';
+import type { ZoraCardTone } from './card';
 
 interface MediaCardWithImageSource {
   imageSource: ImageSourcePropType;
