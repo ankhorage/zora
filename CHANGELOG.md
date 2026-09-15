@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.0.0
+
+### Major Changes
+
+- 57e6020: Align form and list capabilities with Surface 7. Rename FormField to Field and ListRow to ListItem, move list ownership into src/features/list, and compose Surface Field, List, and ListItem directly without compatibility aliases.
+
 ## 17.0.0
 
 ### Major Changes
