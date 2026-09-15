@@ -1,4 +1,4 @@
-import { ButtonBase } from '@ankhorage/surface';
+import { Pressable } from '@ankhorage/surface';
 import React from 'react';
 
 import { Avatar } from '../../features/avatar/public';
@@ -199,7 +199,7 @@ function ChatListItemInner({
   }
 
   return (
-    <ButtonBase
+    <Pressable
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
       accessibilityState={{ disabled, selected }}
@@ -215,7 +215,7 @@ function ChatListItemInner({
           hovered: state.hovered,
         })
       }
-    </ButtonBase>
+    </Pressable>
   );
 }
 
