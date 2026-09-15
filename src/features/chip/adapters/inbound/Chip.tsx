@@ -1,4 +1,4 @@
-import { ButtonBase } from '@ankhorage/surface';
+import { Pressable } from '@ankhorage/surface';
 import React from 'react';
 
 import { resolveIconSize } from '../../../../internal/recipes';
@@ -83,7 +83,7 @@ function ChipInner({
   }
 
   return (
-    <ButtonBase
+    <Pressable
       disabled={disabled}
       interactionPolicy={interactionPolicy}
       onPress={onPress}
@@ -91,6 +91,6 @@ function ChipInner({
       testID={testID}
     >
       {(state) => renderContent(state)}
-    </ButtonBase>
+    </Pressable>
   );
 }
