@@ -2895,7 +2895,7 @@ Export paths: `src/index.ts`
 
 Source: `src/patterns/switch-field/SwitchField.tsx:42:14`
 
-Labeled switch field pattern built on `ListItem`.
+Labeled switch field pattern built on the card-style `ListItem` presentation.
 
 Export paths: `src/index.ts`
 

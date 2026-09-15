@@ -10465,6 +10465,24 @@
     "structuredRows": []
   },
   {
+    "name": "ListSectionProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/list.ts",
+    "sourceLocation": {
+      "filePath": "src/types/list.ts",
+      "line": 66,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ManifestListProps",
     "description": null,
     "isReadme": false,
@@ -18540,7 +18558,7 @@
   },
   {
     "name": "SwitchField",
-    "description": "Labeled switch field pattern built on `ListItem`.",
+    "description": "Labeled switch field pattern built on the card-style `ListItem` presentation.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
