@@ -28,8 +28,16 @@ jobs:
         run: bun scripts/fix-zora-430-gates.ts
       - name: Autofix source lint
         run: bun run lint:fix
-      - name: Autofix example lint
-        run: bunx ankhorage-eslint examples --config eslint.examples.config.mjs --fix --max-warnings=0
+      - name: Autofix changed example imports
+        run: >-
+          bunx ankhorage-eslint
+          examples/expo-showcase/app/patterns.tsx
+          examples/expo-showcase/app/sections/componentForms.tsx
+          'examples/food_drink/restaurant/app/(tabs)/reservations.tsx'
+          'examples/shopping_commerce/marketplace/app/(tabs)/sell.tsx'
+          --config eslint.examples.config.mjs
+          --fix
+          --max-warnings=0
       - name: Format
         run: bun run format
       - name: Remove temporary tooling
