@@ -33,6 +33,9 @@ jobs:
       - name: Apply semantic layout migration
         run: python3 .github/phase2_layout.py
 
+      - name: Normalize migrated imports
+        run: python3 .github/fix_phase2_output.py
+
       - name: Format migrated sources
         run: bun run format
 
