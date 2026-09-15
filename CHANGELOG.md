@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.0.1
+
+### Patch Changes
+
+- a68a5fc: Migrate interactive ZORA consumers from the removed Surface `ButtonBase` API to the native-aligned `Pressable` API and require `@ankhorage/surface` 8.
+
 ## 18.0.0
 
 ### Major Changes
