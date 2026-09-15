@@ -1598,6 +1598,38 @@ Source: `src/types/empty-state.ts:13:1`
 | themeId           | property | `string \| undefined`            | no       |             |
 | title             | property | `React.ReactNode`                | yes      |             |
 
+## Field
+
+Kind: `value`
+Module: `src/features/form/field/adapters/inbound/Field.tsx`
+Source: `src/features/form/field/adapters/inbound/Field.tsx:42:14`
+
+Groups one form control with its label, description, helper text, and field error.
+
+## FieldProps
+
+Kind: `type`
+Module: `src/types/form.ts`
+Source: `src/types/form.ts:47:1`
+
+### Members
+
+| Name              | Kind     | Type                             | Required | Description |
+| ----------------- | -------- | -------------------------------- | -------- | ----------- |
+| children          | property | `React.ReactNode`                | no       |             |
+| description       | property | `React.ReactNode`                | no       |             |
+| disabled          | property | `boolean \| undefined`           | no       |             |
+| errorText         | property | `React.ReactNode`                | no       |             |
+| helperText        | property | `React.ReactNode`                | no       |             |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
+| invalid           | property | `boolean \| undefined`           | no       |             |
+| label             | property | `React.ReactNode`                | yes      |             |
+| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
+| readOnly          | property | `boolean \| undefined`           | no       |             |
+| required          | property | `boolean \| undefined`           | no       |             |
+| testID            | property | `string \| undefined`            | no       |             |
+| themeId           | property | `string \| undefined`            | no       |             |
+
 ## FilterBar
 
 Kind: `value`
@@ -1744,14 +1776,6 @@ Kind: `unknown`
 Module: `src/types/form.ts`
 Source: `src/types/form.ts:14:1`
 
-## FormField
-
-Kind: `value`
-Module: `src/features/form/adapters/inbound/FormField.tsx`
-Source: `src/features/form/adapters/inbound/FormField.tsx:42:14`
-
-Groups one form control with its label, description, helper text, and field error.
-
 ## FormFieldConfig
 
 Kind: `type`
@@ -1785,30 +1809,6 @@ Source: `src/types/form.ts:18:1`
 Kind: `unknown`
 Module: `src/types/form.ts`
 Source: `src/types/form.ts:16:1`
-
-## FormFieldProps
-
-Kind: `type`
-Module: `src/types/form.ts`
-Source: `src/types/form.ts:47:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| children          | property | `React.ReactNode`                | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| disabled          | property | `boolean \| undefined`           | no       |             |
-| errorText         | property | `React.ReactNode`                | no       |             |
-| helperText        | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| invalid           | property | `boolean \| undefined`           | no       |             |
-| label             | property | `React.ReactNode`                | yes      |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| readOnly          | property | `boolean \| undefined`           | no       |             |
-| required          | property | `boolean \| undefined`           | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
 
 ## FormProps
 
@@ -2458,16 +2458,16 @@ Source: `src/types/keyboard-avoiding-view.ts:9:1`
 ## List
 
 Kind: `value`
-Module: `src/patterns/list/List.tsx`
-Source: `src/patterns/list/List.tsx:77:14`
+Module: `src/features/list/adapters/inbound/List.tsx`
+Source: `src/features/list/adapters/inbound/List.tsx:77:14`
 
-List container pattern for composing `ListRow` and `ListSection`.
+List composition built on the Surface list boundary with ZORA item/separator policy.
 
 ## ListChildrenProps
 
 Kind: `type`
-Module: `src/patterns/list/types.ts`
-Source: `src/patterns/list/types.ts:43:1`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:42:1`
 
 ### Members
 
@@ -2479,11 +2479,25 @@ Source: `src/patterns/list/types.ts:43:1`
 | testID            | property | `string \| undefined`            | no       |             |
 | themeId           | property | `string \| undefined`            | no       |             |
 
+## ListItem
+
+Kind: `value`
+Module: `src/features/list/adapters/inbound/ListItem.tsx`
+Source: `src/features/list/adapters/inbound/ListItem.tsx:89:14`
+
+Opinionated list item built on the Surface list-item interaction and geometry boundary.
+
+## ListItemProps
+
+Kind: `unknown`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:33:1`
+
 ## ListItemsProps
 
 Kind: `type`
-Module: `src/patterns/list/types.ts`
-Source: `src/patterns/list/types.ts:37:1`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:36:1`
 
 ### Members
 
@@ -2491,45 +2505,31 @@ Source: `src/patterns/list/types.ts:37:1`
 | ----------------- | -------- | -------------------------------- | -------- | ----------- |
 | compact           | property | `boolean \| undefined`           | no       |             |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| items             | property | `readonly ListRowProps[]`        | yes      |             |
+| items             | property | `readonly ListItemProps[]`       | yes      |             |
+| itemVariant       | property | `ListItemVariant \| undefined`   | no       |             |
 | mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| rowVariant        | property | `ListRowVariant \| undefined`    | no       |             |
 | testID            | property | `string \| undefined`            | no       |             |
 | themeId           | property | `string \| undefined`            | no       |             |
+
+## ListItemVariant
+
+Kind: `unknown`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:6:1`
 
 ## ListProps
 
 Kind: `unknown`
-Module: `src/patterns/list/types.ts`
-Source: `src/patterns/list/types.ts:47:1`
-
-## ListRow
-
-Kind: `value`
-Module: `src/patterns/list/ListRow.tsx`
-Source: `src/patterns/list/ListRow.tsx:198:14`
-
-Row pattern for lists with leading/trailing slots and optional press behavior.
-
-## ListRowProps
-
-Kind: `unknown`
-Module: `src/patterns/list/types.ts`
-Source: `src/patterns/list/types.ts:34:1`
-
-## ListRowVariant
-
-Kind: `unknown`
-Module: `src/patterns/list/types.ts`
-Source: `src/patterns/list/types.ts:5:1`
+Module: `src/types/list.ts`
+Source: `src/types/list.ts:46:1`
 
 ## ListSection
 
 Kind: `value`
-Module: `src/patterns/list/ListSection.tsx`
-Source: `src/patterns/list/ListSection.tsx:41:14`
+Module: `src/features/list/adapters/inbound/ListSection.tsx`
+Source: `src/features/list/adapters/inbound/ListSection.tsx:36:14`
 
-Section wrapper for lists with optional title and description.
+Section wrapper for lists with optional ZORA section-heading semantics.
 
 ## ManifestListProps
 
@@ -4496,7 +4496,7 @@ Kind: `value`
 Module: `src/patterns/switch-field/SwitchField.tsx`
 Source: `src/patterns/switch-field/SwitchField.tsx:42:14`
 
-Labeled switch field pattern built on `ListRow`.
+Labeled switch field pattern built on `ListItem`.
 
 ## SwitchFieldProps
 

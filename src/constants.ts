@@ -21,7 +21,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   'data-table': ['DataTable'],
   'date-picker': ['DatePicker'],
   dialog: ['Dialog'],
-  form: ['Form', 'FormError', 'FormField'],
+  form: ['Form', 'FormError', 'Field'],
   gradient: ['Gradient'],
   button: ['Button', 'IconButton', 'ButtonGroup'],
   icon: ['Icon'],

@@ -3,7 +3,7 @@ export const formMeta = {
   name: 'Form',
   category: 'component',
   directManifestNode: true,
-  allowedChildren: ['FormError', 'FormField'],
+  allowedChildren: ['FormError', 'Field'],
   blueprint: {
     label: 'Form',
     defaultProps: { submitLabel: 'Submit', loading: false, disabled: false },

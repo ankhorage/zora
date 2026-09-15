@@ -1,8 +1,8 @@
 import {
   Badge,
   Card,
+  Field,
   Form,
-  FormField,
   Notice,
   RadioGroup,
   Screen,
@@ -22,13 +22,13 @@ export default function ReservationsScreen() {
           description="A reservation form composed from ZORA inputs."
         >
           <Form submitLabel="Reserve">
-            <FormField label="Date">
+            <Field label="Date">
               <TextInput placeholder="Friday, 24 May" />
-            </FormField>
-            <FormField label="Time">
+            </Field>
+            <Field label="Time">
               <TextInput placeholder="19:30" />
-            </FormField>
-            <FormField label="Party size">
+            </Field>
+            <Field label="Party size">
               <RadioGroup
                 defaultValue="2"
                 onValueChange={() => undefined}
@@ -38,13 +38,13 @@ export default function ReservationsScreen() {
                   { label: '6 guests', value: '6' },
                 ]}
               />
-            </FormField>
-            <FormField label="Notes">
+            </Field>
+            <Field label="Notes">
               <TextInput
                 multiline
                 placeholder="Dietary notes, stroller, celebration, or seating preference..."
               />
-            </FormField>
+            </Field>
           </Form>
         </ScreenSection>
 

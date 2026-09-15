@@ -63,7 +63,7 @@ describe('ZORA_COMPONENT_META event metadata', () => {
   });
 
   test('declares collection item metadata for list rows', () => {
-    const event = ZORA_COMPONENT_META.ListRow.events?.itemPress;
+    const event = ZORA_COMPONENT_META.ListItem.events?.itemPress;
     const eventType: ZoraComponentEventPayloadKind = event?.eventType ?? 'collection.itemPress';
 
     expect(eventType).toBe('collection.itemPress');
@@ -101,8 +101,8 @@ describe('ZORA_COMPONENT_META requirement metadata', () => {
 
 describe('ZORA_COMPONENT_META invariants', () => {
   test('keeps form nodes in their canonical hierarchy', () => {
-    expect(ZORA_COMPONENT_META.Form.allowedChildren).toEqual(['FormError', 'FormField']);
-    expect(ZORA_COMPONENT_META.FormField.allowedChildren).toEqual([
+    expect(ZORA_COMPONENT_META.Form.allowedChildren).toEqual(['FormError', 'Field']);
+    expect(ZORA_COMPONENT_META.Field.allowedChildren).toEqual([
       'Checkbox',
       'CheckboxGroup',
       'RadioGroup',
@@ -113,7 +113,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
     for (const [name, meta] of Object.entries(ZORA_COMPONENT_META)) {
       if (name === 'Form') continue;
       expect(meta.allowedChildren).not.toContain('FormError');
-      expect(meta.allowedChildren).not.toContain('FormField');
+      expect(meta.allowedChildren).not.toContain('Field');
     }
   });
 
@@ -204,7 +204,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'SectionList',
       'BottomSheet',
       'KeyboardAvoidingView',
-      'FormField',
+      'Field',
       'ButtonGroup',
       'Screen',
       'ScreenSection',

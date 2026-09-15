@@ -128,12 +128,12 @@ export {
   type CheckboxProps,
 } from './features/form/checkbox/public';
 export type {
+  FieldProps,
   FormActionsProps,
   FormErrorProps,
   FormErrors,
   FormFieldConfig,
   FormFieldInputType,
-  FormFieldProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,
@@ -143,10 +143,10 @@ export type {
   ValidationRule,
 } from './features/form/public';
 export {
+  Field,
   Form,
   FormActions,
   FormError,
-  FormField,
   hasRequiredRule,
   useFormController,
   validateField,
@@ -218,7 +218,16 @@ export type {
   ManifestListSection,
   ManifestSectionListProps,
 } from './features/list/public';
+export type {
+  ListChildrenProps,
+  ListItemProps,
+  ListItemsProps,
+  ListItemVariant,
+  ListProps,
+  ListSectionProps,
+} from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
+export { List, ListItem, ListSection } from './features/list/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
 export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
@@ -361,14 +370,6 @@ export type { FilterBarProps } from './patterns/filter-bar';
 export { FilterBar } from './patterns/filter-bar';
 export type { InspectorFieldProps } from './patterns/inspector-field';
 export { InspectorField } from './patterns/inspector-field';
-export type {
-  ListChildrenProps,
-  ListItemsProps,
-  ListProps,
-  ListRowProps,
-  ListRowVariant,
-} from './patterns/list';
-export { List, ListRow, ListSection } from './patterns/list';
 export type {
   MessageBubbleAuthor,
   MessageBubbleAvatar,

@@ -1,6 +1,7 @@
 import type { ZoraComponentMeta } from '../../metadata';
 
-const LIST_NOTE = 'List pattern component; not represented as a manifest node in v1.';
+const LIST_NOTE =
+  'List feature component; collection authoring is represented through List metadata.';
 
 export const listMeta = {
   name: 'List',
@@ -11,8 +12,8 @@ export const listMeta = {
   props: {},
 } as const satisfies ZoraComponentMeta;
 
-export const listRowMeta = {
-  name: 'ListRow',
+export const listItemMeta = {
+  name: 'ListItem',
   category: 'pattern',
   directManifestNode: false,
   allowedChildren: [],
@@ -21,18 +22,10 @@ export const listRowMeta = {
     itemPress: {
       label: 'Item press',
       eventType: 'collection.itemPress',
-      description: 'Emitted when a collection item row is selected.',
+      description: 'Emitted when a collection item is selected.',
       payloadFields: [
-        {
-          path: 'payload.itemId',
-          type: 'string',
-          label: 'Item ID',
-        },
-        {
-          path: 'payload.item',
-          type: 'record',
-          label: 'Item',
-        },
+        { path: 'payload.itemId', type: 'string', label: 'Item ID' },
+        { path: 'payload.item', type: 'record', label: 'Item' },
       ],
     },
   },

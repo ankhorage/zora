@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
 import type { FormFieldConfig, FormFieldValue } from '../../../../types/form';
-import { FormField, hasRequiredRule } from '../../../form/public';
+import { Field, hasRequiredRule } from '../../../form/public';
 import { TextInput } from '../../../form/text-input/public';
 
 interface AuthFormFieldProps<TName extends string> {
@@ -27,7 +27,7 @@ export function AuthFormField<TName extends string>({
 }: AuthFormFieldProps<TName>) {
   const fieldDisabled = disabled || loading || field.disabled;
   return (
-    <FormField
+    <Field
       description={field.description}
       disabled={fieldDisabled}
       errorText={error}
@@ -57,7 +57,7 @@ export function AuthFormField<TName extends string>({
         textContentType={resolveTextContentType(field)}
         value={value}
       />
-    </FormField>
+    </Field>
   );
 }
 

@@ -44,7 +44,7 @@ export interface FormProps extends ZoraBaseProps {
   actions?: React.ReactNode;
 }
 
-export interface FormFieldProps
+export interface FieldProps
   extends
     ZoraBaseProps,
     Pick<

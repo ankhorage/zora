@@ -1,6 +1,7 @@
-import type { ZoraComponentMeta } from '../../metadata';
-export const formFieldMeta = {
-  name: 'FormField',
+import type { ZoraComponentMeta } from '../../../metadata';
+
+export const fieldMeta = {
+  name: 'Field',
   category: 'component',
   directManifestNode: true,
   allowedChildren: [
@@ -11,7 +12,7 @@ export const formFieldMeta = {
     'Select',
     'TextInput',
   ],
-  blueprint: { label: 'Form field', defaultProps: { label: 'Label' } },
+  blueprint: { label: 'Field', defaultProps: { label: 'Label' } },
   bindings: {
     props: {
       errorText: {

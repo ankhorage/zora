@@ -1,12 +1,12 @@
-import { Field } from '@ankhorage/surface';
+import { Field as SurfaceField } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
-import type { FormFieldProps } from '../../../../types/form';
-import { View } from '../../../layout/public';
-import { Text } from '../../../typography/public';
+import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
+import type { FieldProps } from '../../../../../types/form';
+import { View } from '../../../../layout/public';
+import { Text } from '../../../../typography/public';
 
-function FormFieldInner({
+function FieldInner({
   themeId: _themeId,
   mode: _mode,
   label,
@@ -15,9 +15,9 @@ function FormFieldInner({
   children,
   interactionPolicy: _interactionPolicy,
   ...props
-}: FormFieldProps) {
+}: FieldProps) {
   return (
-    <Field
+    <SurfaceField
       {...props}
       helperText={helperText}
       label={
@@ -34,9 +34,9 @@ function FormFieldInner({
       }
     >
       {children}
-    </Field>
+    </SurfaceField>
   );
 }
 
 /*** Groups one form control with its label, description, helper text, and field error. */
-export const FormField = withZoraThemeScope(FormFieldInner);
+export const Field = withZoraThemeScope(FieldInner);

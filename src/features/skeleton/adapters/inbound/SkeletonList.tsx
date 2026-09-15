@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { List, type ListRowProps } from '../../../../patterns/list';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonListProps } from '../../../../types/skeleton';
+import { List, type ListItemProps } from '../../../list/public';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 
@@ -38,7 +38,7 @@ function SkeletonListInner({
   compact = false,
 }: SkeletonListProps) {
   const rowCount = clampRows(rows);
-  const items: ListRowProps[] = Array.from({ length: rowCount }).map(() => ({
+  const items: ListItemProps[] = Array.from({ length: rowCount }).map(() => ({
     compact,
     description: <SkeletonText lines={lines} />,
     leading: renderLeading({ avatar, media }),
@@ -46,7 +46,7 @@ function SkeletonListInner({
     variant,
   }));
 
-  return <List compact={compact} items={items} rowVariant={variant} testID={testID} />;
+  return <List compact={compact} items={items} itemVariant={variant} testID={testID} />;
 }
 
 /***
