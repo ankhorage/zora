@@ -1,0 +1,45 @@
+name: Layout Autofix
+
+on:
+  push:
+    branches:
+      - refactor/surface-6-layout-primitives
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refactor/surface-6-layout-primitives
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Apply canonical lint fixes
+        run: bun run lint:fix
+
+      - name: Apply canonical formatting
+        run: bun run format
+
+      - name: Remove temporary workflow
+        run: rm .github/workflows/layout-autofix.yml
+
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "style(layout): apply canonical formatting"
+          git push origin HEAD:refactor/surface-6-layout-primitives
