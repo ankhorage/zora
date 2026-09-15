@@ -1,42 +1,41 @@
+import type { ListItemProps as SurfaceListItemProps } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
+import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
-export type ListRowVariant = 'divider' | 'card';
+export type ListItemVariant = 'divider' | 'card';
 
-interface ListRowBaseProps extends ZoraBaseProps {
+interface ListItemBaseProps
+  extends
+    ZoraBaseProps,
+    Pick<SurfaceListItemProps, 'compact' | 'disabled' | 'leading' | 'selected' | 'trailing'> {
   title: React.ReactNode;
   description?: React.ReactNode;
   meta?: React.ReactNode;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  selected?: boolean;
-  disabled?: boolean;
-  compact?: boolean;
-  variant?: ListRowVariant;
+  variant?: ListItemVariant;
 }
 
-interface ListRowPressableProps {
+interface ListItemPressableProps {
   onPress: () => void;
   action?: never;
 }
 
-interface ListRowActionProps {
+interface ListItemActionProps {
   action: React.ReactNode;
   onPress?: never;
 }
 
-interface ListRowStaticProps {
+interface ListItemStaticProps {
   action?: never;
   onPress?: never;
 }
 
-export type ListRowProps = ListRowBaseProps &
-  (ListRowPressableProps | ListRowActionProps | ListRowStaticProps);
+export type ListItemProps = ListItemBaseProps &
+  (ListItemPressableProps | ListItemActionProps | ListItemStaticProps);
 
 export interface ListItemsProps extends ZoraBaseProps {
-  items: readonly ListRowProps[];
-  rowVariant?: ListRowVariant;
+  items: readonly ListItemProps[];
+  itemVariant?: ListItemVariant;
   compact?: boolean;
 }
 
@@ -51,8 +50,8 @@ interface ListSectionItemsProps extends ZoraBaseProps {
   description?: React.ReactNode;
   eyebrow?: React.ReactNode;
   actions?: React.ReactNode;
-  items: readonly ListRowProps[];
-  rowVariant?: ListRowVariant;
+  items: readonly ListItemProps[];
+  itemVariant?: ListItemVariant;
   compact?: boolean;
 }
 

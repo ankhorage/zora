@@ -31,7 +31,7 @@ import { emptyStateMeta } from '../features/empty-state/emptyStateMeta';
 import { checkboxGroupMeta, checkboxMeta } from '../features/form/checkbox/checkboxMeta';
 import { formActionsMeta } from '../features/form/formActionsMeta';
 import { formErrorMeta } from '../features/form/formErrorMeta';
-import { formFieldMeta } from '../features/form/formFieldMeta';
+import { fieldMeta } from '../features/form/field/meta';
 import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { searchInputMeta } from '../features/form/search-input/searchInputMeta';
@@ -80,7 +80,7 @@ import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
 import { filterBarMeta } from '../patterns/filter-bar/meta';
 import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
-import { listMeta, listRowMeta, listSectionMeta } from '../patterns/list/meta';
+import { listMeta, listItemMeta, listSectionMeta } from '../features/list/meta';
 import { messageBubbleMeta } from '../patterns/message-bubble/meta';
 import { noticeMeta } from '../patterns/notice/meta';
 import { panelMeta } from '../patterns/panel/meta';
@@ -127,7 +127,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Form: formMeta,
   FormActions: formActionsMeta,
   FormError: formErrorMeta,
-  FormField: formFieldMeta,
+  Field: fieldMeta,
   Gradient: gradientMeta,
   Heading: headingMeta,
   Icon: iconMeta,
@@ -182,7 +182,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Hero: heroMeta,
   InspectorField: inspectorFieldMeta,
   List: listMeta,
-  ListRow: listRowMeta,
+  ListItem: listItemMeta,
   ListSection: listSectionMeta,
   MessageBubble: messageBubbleMeta,
   MissingElement: missingElementMeta,

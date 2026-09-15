@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { View } from '../../features/layout/public';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { SectionHeader } from '../section-header';
+import { SectionHeader } from '../../../../patterns/section-header';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { ListSectionProps } from '../../../../types/list';
+import { View } from '../../../layout/public';
 import { List } from './List';
-import type { ListSectionProps } from './types';
 
 function ListSectionInner({
   themeId: _themeId,
@@ -17,7 +17,6 @@ function ListSectionInner({
   ...props
 }: ListSectionProps) {
   const hasHeader = title !== undefined;
-
   return (
     <View gap="s" testID={testID}>
       {hasHeader ? (
@@ -33,9 +32,5 @@ function ListSectionInner({
   );
 }
 
-/***
- * Section wrapper for lists with optional title and description.
- *
- 
- */
+/*** Section wrapper for lists with optional ZORA section-heading semantics. */
 export const ListSection = withZoraThemeScope(ListSectionInner);

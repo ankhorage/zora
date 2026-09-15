@@ -5,7 +5,7 @@ import {
   Form,
   FormActions,
   FormError,
-  FormField,
+  Field,
   Gradient,
   Icon,
   OAuthProviderList,
@@ -109,33 +109,30 @@ export function ComponentFormsSection() {
 
       <Card
         title="Form wrapper"
-        description="Compact coverage for Form, FormField, FormActions, and FormError."
+        description="Compact coverage for Form, Field, FormActions, and FormError."
       >
         <View gap="m">
           <Form onSubmit={() => undefined} submitLabel="Save form">
             <FormError error="Example form-level error" />
-            <FormField label="Email" required>
+            <Field label="Email" required>
               <TextInput
                 value={formValues.email}
                 onChangeText={(email) => setFormValues((values) => ({ ...values, email }))}
               />
-            </FormField>
-            <FormField label="Project name">
+            </Field>
+            <Field label="Project name">
               <TextInput
                 value={formValues.project}
                 onChangeText={(project) => setFormValues((values) => ({ ...values, project }))}
               />
-            </FormField>
+            </Field>
           </Form>
 
           <Form submitLabel="Save manual form">
             <FormError error="Standalone FormError coverage" />
-            <FormField
-              label="Manual FormField"
-              helperText="Useful when a custom control is needed."
-            >
+            <Field label="Manual Field" helperText="Useful when a custom control is needed.">
               <TextInput placeholder="Manual field input" />
-            </FormField>
+            </Field>
           </Form>
 
           <FormActions submitLabel="Save manually" onSubmit={() => undefined}>

@@ -12,13 +12,13 @@ import {
   FilterBar,
   ForgotPasswordForm,
   Form,
-  FormField,
+  Field,
   Grid,
   IconButton,
   Image,
   InspectorField,
   List,
-  ListRow,
+  ListItem,
   ListSection,
   Notice,
   OtpForm,
@@ -383,7 +383,7 @@ export function PatternsPage() {
         <ListSection
           title="Card rows"
           description="Card rows work well for dashboard-style lists."
-          rowVariant="card"
+          itemVariant="card"
           items={[
             {
               title: 'Revenue',
@@ -402,7 +402,7 @@ export function PatternsPage() {
         />
 
         <List>
-          <ListRow
+          <ListItem
             title="Children mode"
             description="List can also render custom children."
             leading={<Avatar initials="Z" size="s" />}
@@ -461,13 +461,13 @@ export function PatternsPage() {
         />
 
         <Form>
-          <FormField
+          <Field
             label="Display name"
             description="Shown in shared projects and activity logs."
             helperText="Use a recognizable name for collaborators."
           >
             <TextInput placeholder="Fabio Gartenmann" />
-          </FormField>
+          </Field>
         </Form>
 
         <SwitchField

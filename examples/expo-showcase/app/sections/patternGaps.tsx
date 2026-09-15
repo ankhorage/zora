@@ -5,7 +5,7 @@ import {
   ConfirmDialog,
   ContentRail,
   IconButton,
-  ListRow,
+  ListItem,
   MissingElement,
   Notice,
   Panel,
@@ -119,22 +119,22 @@ export function PatternGapsSection() {
 
       <SectionHeader
         title="List rows"
-        description="ListRow covers static, pressable, metadata, and trailing-action rows."
+        description="ListItem covers static, pressable, metadata, and trailing-action rows."
       />
-      <Card title="ListRow" tone="subtle">
+      <Card title="ListItem" tone="subtle">
         <View gap="s">
-          <ListRow
+          <ListItem
             title="Account plan"
             description="Static metadata row."
             meta={<Badge color="primary">Pro</Badge>}
           />
-          <ListRow
+          <ListItem
             title="Open billing"
             description="Pressable row with a mock action."
             onPress={() => undefined}
             meta="⌘B"
           />
-          <ListRow
+          <ListItem
             title="Background sync"
             description={syncEnabled ? 'Enabled' : 'Disabled'}
             action={

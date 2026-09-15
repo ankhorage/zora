@@ -2,7 +2,7 @@ import { Switch } from '@ankhorage/surface';
 import React from 'react';
 
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import { ListRow } from '../list';
+import { ListItem } from '../../features/list/public';
 import type { SwitchFieldProps } from './types';
 
 function SwitchFieldInner({
@@ -17,7 +17,7 @@ function SwitchFieldInner({
   interactionPolicy,
 }: SwitchFieldProps) {
   return (
-    <ListRow
+    <ListItem
       title={label}
       description={description}
       disabled={disabled}
@@ -35,7 +35,7 @@ function SwitchFieldInner({
 }
 
 /***
- * Labeled switch field pattern built on `ListRow`.
+ * Labeled switch field pattern built on `ListItem`.
  *
  
  */

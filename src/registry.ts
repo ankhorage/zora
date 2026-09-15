@@ -33,7 +33,7 @@ import { DatePicker } from './features/date-picker/public';
 import { Dialog } from './features/dialog/public';
 import { EmptyState } from './features/empty-state/public';
 import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
-import { Form, FormActions, FormError, FormField } from './features/form/public';
+import { Form, FormActions, FormError, Field } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
 import { SearchInput } from './features/form/search-input/public';
 import { Select } from './features/form/select/public';
@@ -73,7 +73,7 @@ import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
 import { FilterBar } from './patterns/filter-bar';
 import { InspectorField } from './patterns/inspector-field';
-import { List, ListRow, ListSection } from './patterns/list';
+import { List, ListItem, ListSection } from './features/list/public';
 import { MessageBubble } from './patterns/message-bubble';
 import { Notice } from './patterns/notice';
 import { Panel } from './patterns/panel';
@@ -134,7 +134,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Form,
   FormActions,
   FormError,
-  FormField,
+  Field,
   Gradient,
   Heading,
   Icon,
@@ -193,7 +193,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Hero,
   InspectorField,
   List,
-  ListRow,
+  ListItem,
   ListSection,
   MessageBubble,
   MissingElement,

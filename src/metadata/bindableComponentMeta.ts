@@ -356,7 +356,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
     category: 'pattern',
     description: 'Renders a collection of list items.',
     directManifestNode: true,
-    allowedChildren: ['ListSection', 'ListRow'],
+    allowedChildren: ['ListSection', 'ListItem'],
     bindings: {
       props: {
         items: {

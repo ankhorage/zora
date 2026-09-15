@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
 import { Dialog } from '../../../dialog/public';
-import { FormField } from '../../../form/public';
+import { Field } from '../../../form/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
 import { View } from '../../../layout/public';
@@ -206,7 +206,7 @@ function UploaderInner({
 
   return (
     <>
-      <FormField
+      <Field
         description={description}
         disabled={disabled}
         errorText={effectiveError}
@@ -285,7 +285,7 @@ function UploaderInner({
             ) : null}
           </View>
         </View>
-      </FormField>
+      </Field>
 
       {canPreviewImage ? (
         <Dialog

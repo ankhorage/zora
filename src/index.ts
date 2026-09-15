@@ -133,7 +133,7 @@ export type {
   FormErrors,
   FormFieldConfig,
   FormFieldInputType,
-  FormFieldProps,
+  FieldProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,
@@ -146,7 +146,7 @@ export {
   Form,
   FormActions,
   FormError,
-  FormField,
+  Field,
   hasRequiredRule,
   useFormController,
   validateField,
@@ -365,10 +365,10 @@ export type {
   ListChildrenProps,
   ListItemsProps,
   ListProps,
-  ListRowProps,
-  ListRowVariant,
-} from './patterns/list';
-export { List, ListRow, ListSection } from './patterns/list';
+  ListItemProps,
+  ListItemVariant,
+} from './features/list/public';
+export { List, ListItem, ListSection } from './features/list/public';
 export type {
   MessageBubbleAuthor,
   MessageBubbleAvatar,

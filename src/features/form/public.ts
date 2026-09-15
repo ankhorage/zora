@@ -4,7 +4,7 @@ export type {
   FormErrors,
   FormFieldConfig,
   FormFieldInputType,
-  FormFieldProps,
+  FieldProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,
@@ -16,6 +16,6 @@ export type {
 export { Form } from './adapters/inbound/Form';
 export { FormActions } from './adapters/inbound/FormActions';
 export { FormError } from './adapters/inbound/FormError';
-export { FormField } from './adapters/inbound/FormField';
+export { Field } from './field/public';
 export { useFormController } from './useFormController';
 export { hasRequiredRule, validateField, validateFields, validateValue } from './utils/validation';
