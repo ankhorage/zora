@@ -1,3 +1,4 @@
+import type { BottomSheetPresentOptions } from '@ankhorage/surface/bottom-sheet';
 import { describe, expect, mock, test } from 'bun:test';
 import { Window } from 'happy-dom';
 import React, { act } from 'react';
@@ -6,7 +7,6 @@ import * as ReactNativeWeb from 'react-native-web';
 
 import type { GradientRendererProps } from '../src/types/gradient';
 import type { UploadAsset } from '../src/types/upload';
-import type { BottomSheetPresentOptions } from '@ankhorage/surface/bottom-sheet';
 
 let sheetRequest: BottomSheetPresentOptions | undefined;
 let sheetPresents = 0;
@@ -61,14 +61,11 @@ const { GradientRendererProvider } =
   await import('../src/features/gradient/adapters/inbound/GradientRendererContext');
 const { Icon } = await import('../src/features/icon/adapters/inbound/Icon');
 const { KeyboardAvoidingView } = await import('../src/features/keyboard-avoiding-view/public');
-const { Container } = await import('../src/features/layout/adapters/inbound/Container');
-const { Grid } = await import('../src/features/layout/adapters/inbound/Grid');
-const { Show } = await import('../src/foundation/Show');
-const { AppShell } = await import('../src/layout/app-shell/AppShell');
+const { ContentRail } = await import('../src/features/content-rail/public');
+const { AppShell, Grid, View } = await import('../src/features/layout/public');
 const { ZoraProvider } = await import('../src/theme/ZoraProvider');
 const { BottomSheet } = await import('../src/features/bottom-sheet/public');
 const { FlatList, SectionList } = await import('../src/features/list/public');
-const { ContentRail } = await import('../src/features/layout/public');
 const { Uploader } = await import('../src/features/uploader/public');
 const { ChipGroup } = await import('../src/features/chip/public');
 
@@ -260,7 +257,7 @@ test('declarative BottomSheet opens, updates children, closes, reopens, and rema
   }
 });
 
-describe('Surface 5 icon integration', () => {
+describe('Surface icon integration', () => {
   test('renders each supported provider/style used by ZORA', () => {
     const markup = renderToStaticMarkup(
       <ZoraProvider>
@@ -328,18 +325,13 @@ function ResponsiveAcceptanceTree() {
   return (
     <ZoraProvider>
       <AppShell overlay={<ReactNativeWeb.View testID="overlay" />} testID="app-shell">
-        <Container maxWidth={{ base: 640, md: 960 }} px={{ base: 12, md: 24 }} testID="container">
+        <View maxWidth={{ base: 640, md: 960 }} px={{ base: 12, md: 24 }} testID="container">
           <Grid cols={{ base: 1, md: 2 }} gap={{ base: 8, md: 16 }} testID="grid">
             <ReactNativeWeb.View testID="grid-first" />
             <ReactNativeWeb.View testID="grid-second" />
           </Grid>
-          <Show
-            fallback={<ReactNativeWeb.Text>static-fallback</ReactNativeWeb.Text>}
-            when={{ base: false, md: true }}
-          >
-            <ReactNativeWeb.Text>wide-content</ReactNativeWeb.Text>
-          </Show>
-        </Container>
+          <ReactNativeWeb.Text>responsive-content</ReactNativeWeb.Text>
+        </View>
       </AppShell>
     </ZoraProvider>
   );
@@ -351,8 +343,7 @@ test('RN Web 0.21 statically renders and hydrates ZORA layout/theme behavior', a
   expect(markup).toContain('data-testid="app-shell"');
   expect(markup).toContain('data-testid="overlay"');
   expect(markup).toContain('data-testid="container"');
-  expect(markup).toContain('static-fallback');
-  expect(markup).not.toContain('wide-content');
+  expect(markup).toContain('responsive-content');
 
   const browserWindow = new Window({ url: 'https://zora.test/' });
   Object.assign(globalThis, {
