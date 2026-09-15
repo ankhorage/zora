@@ -3,7 +3,7 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v15.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v16.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -26,10 +26,10 @@ import {
   DatePicker,
   Screen,
   ScreenSection,
-  Stack,
   Text,
   TimePicker,
   useToast,
+  View,
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
@@ -72,7 +72,7 @@ function UsageContent() {
   const [time, setTime] = React.useState<string | null>(null);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Text variant="lead">Runtime capabilities are opt-in at the app root.</Text>
       <Button
         onPress={() =>
@@ -87,7 +87,7 @@ function UsageContent() {
       </Button>
       <DatePicker label="Date" onValueChange={setDate} value={date} />
       <TimePicker label="Time" onValueChange={setTime} value={time} />
-    </Stack>
+    </View>
   );
 }
 
@@ -104,17 +104,17 @@ export function NativeBottomSheetExample() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Button onPress={() => setOpen(true)}>Open native bottom sheet</Button>
       <BottomSheet onDismiss={() => setOpen(false)} open={open}>
-        <Stack gap="s" p="m">
+        <View gap="s" p="m">
           <Text variant="label">Bottom sheet content</Text>
           <Button onPress={() => setOpen(false)} variant="ghost">
             Close
           </Button>
-        </Stack>
+        </View>
       </BottomSheet>
-    </Stack>
+    </View>
   );
 }
 ```
@@ -135,10 +135,10 @@ import {
   DatePicker,
   Screen,
   ScreenSection,
-  Stack,
   Text,
   TimePicker,
   useToast,
+  View,
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
@@ -191,7 +191,7 @@ function UsageContent() {
   const [time, setTime] = React.useState<string | null>(null);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Text variant="lead">Runtime capabilities are opt-in at the app root.</Text>
       <Button
         onPress={() =>
@@ -206,7 +206,7 @@ function UsageContent() {
       </Button>
       <DatePicker label="Date" onValueChange={setDate} value={date} />
       <TimePicker label="Time" onValueChange={setTime} value={time} />
-    </Stack>
+    </View>
   );
 }
 
@@ -214,17 +214,17 @@ export function NativeBottomSheetExample() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Button onPress={() => setOpen(true)}>Open native bottom sheet</Button>
       <BottomSheet onDismiss={() => setOpen(false)} open={open}>
-        <Stack gap="s" p="m">
+        <View gap="s" p="m">
           <Text variant="label">Bottom sheet content</Text>
           <Button onPress={() => setOpen(false)} variant="ghost">
             Close
           </Button>
-        </Stack>
+        </View>
       </BottomSheet>
-    </Stack>
+    </View>
   );
 }
 ```

@@ -58,7 +58,6 @@ graph TD
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_layout_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_popover_menu_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_typography_public_ts
-  module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_foundation_index_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_types_app_bar_ts
@@ -210,8 +209,8 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_button_public_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_icon_public_ts
+  module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_layout_public_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_typography_public_ts
-  module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_foundation_index_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_internal_recipes_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -281,7 +280,6 @@ graph TD
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_features_icon_public_ts
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_features_layout_public_ts
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_features_typography_public_ts
-  module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_foundation_index_ts
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_internal_recipes_ts
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_card_adapters_inbound_MetricCard_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -293,7 +291,6 @@ graph TD
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_features_card_public_ts
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_features_layout_public_ts
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_features_typography_public_ts
-  module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_foundation_index_ts
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_card_adapters_inbound_PostCard_tsx --> module_src_types_post_card_ts
@@ -305,7 +302,6 @@ graph TD
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_features_image_public_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_features_layout_public_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_features_typography_public_ts
-  module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_foundation_index_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_types_product_card_ts
@@ -342,7 +338,6 @@ graph TD
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_icon_public_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_layout_public_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_typography_public_ts
-  module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_foundation_index_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_internal_recipes_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -350,7 +345,7 @@ graph TD
   module_src_features_chip_adapters_inbound_ChipGroup_tsx["src/features/chip/adapters/inbound/ChipGroup.tsx"]
   package__ankhorage_zora -.-> module_src_features_chip_adapters_inbound_ChipGroup_tsx
   module_src_features_chip_adapters_inbound_ChipGroup_tsx --> module_src_features_chip_public_ts
-  module_src_features_chip_adapters_inbound_ChipGroup_tsx --> module_src_foundation_index_ts
+  module_src_features_chip_adapters_inbound_ChipGroup_tsx --> module_src_features_layout_public_ts
   module_src_features_chip_adapters_inbound_ChipGroup_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_chip_adapters_inbound_ChipGroup_tsx --> module_src_types_chip_group_ts
   module_src_features_chip_chipGroupMeta_ts["src/features/chip/chipGroupMeta.ts"]
@@ -365,6 +360,42 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_chip_utils_resolveChipColors_ts
   module_src_features_chip_utils_resolveChipColors_ts --> module_src_internal_recipes_ts
   module_src_features_chip_utils_resolveChipColors_ts --> module_src_types_chip_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx["src/features/content-rail/adapters/inbound/ContentRail.tsx"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_adapters_inbound_ContentRail_tsx
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_resolveContentRailItemWidth_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_resolveContentRailPhysicalOffset_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_resolveContentRailState_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_useContentRailReducedMotion_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_layout_public_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_typography_public_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_content_rail_ts
+  module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx["src/features/content-rail/adapters/inbound/ContentRailFlow.tsx"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx
+  module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_types_content_rail_ts
+  module_src_features_content_rail_constants_ts["src/features/content-rail/constants.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_constants_ts
+  module_src_features_content_rail_contentRailMeta_ts["src/features/content-rail/contentRailMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_contentRailMeta_ts
+  module_src_features_content_rail_contentRailMeta_ts --> module_src_features_content_rail_constants_ts
+  module_src_features_content_rail_contentRailMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_content_rail_contentRailMeta_ts --> module_src_metadata_index_ts
+  module_src_features_content_rail_public_ts["src/features/content-rail/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_public_ts
+  module_src_features_content_rail_utils_resolveContentRailItemWidth_ts["src/features/content-rail/utils/resolveContentRailItemWidth.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_utils_resolveContentRailItemWidth_ts
+  module_src_features_content_rail_utils_resolveContentRailItemWidth_ts --> module_src_types_content_rail_ts
+  module_src_features_content_rail_utils_resolveContentRailPhysicalOffset_ts["src/features/content-rail/utils/resolveContentRailPhysicalOffset.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_utils_resolveContentRailPhysicalOffset_ts
+  module_src_features_content_rail_utils_resolveContentRailState_ts["src/features/content-rail/utils/resolveContentRailState.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_utils_resolveContentRailState_ts
+  module_src_features_content_rail_utils_useContentRailReducedMotion_ts["src/features/content-rail/utils/useContentRailReducedMotion.ts"]
+  package__ankhorage_zora -.-> module_src_features_content_rail_utils_useContentRailReducedMotion_ts
+  module_src_features_content_rail_utils_useContentRailReducedMotion_ts --> module_src_types_content_rail_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx["src/features/data-table/adapters/inbound/DataTable.tsx"]
   package__ankhorage_zora -.-> module_src_features_data_table_adapters_inbound_DataTable_tsx
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_button_public_ts
@@ -375,7 +406,6 @@ graph TD
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_popover_menu_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_skeleton_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_typography_public_ts
-  module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_foundation_index_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_types_data_table_ts
   module_src_features_data_table_dataTableMeta_ts["src/features/data-table/dataTableMeta.ts"]
@@ -677,32 +707,11 @@ graph TD
   module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_metadata_types_ts
   module_src_features_keyboard_avoiding_view_public_ts["src/features/keyboard-avoiding-view/public.ts"]
   package__ankhorage_zora -.-> module_src_features_keyboard_avoiding_view_public_ts
-  module_src_features_layout_adapters_inbound_Box_tsx["src/features/layout/adapters/inbound/Box.tsx"]
-  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Box_tsx
-  module_src_features_layout_adapters_inbound_Box_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_layout_adapters_inbound_Box_tsx --> module_src_types_layout_ts
-  module_src_features_layout_adapters_inbound_Container_tsx["src/features/layout/adapters/inbound/Container.tsx"]
-  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Container_tsx
-  module_src_features_layout_adapters_inbound_Container_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_layout_adapters_inbound_Container_tsx --> module_src_types_layout_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx["src/features/layout/adapters/inbound/ContentRail.tsx"]
-  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_ContentRail_tsx
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_adapters_inbound_ContentRailFlow_tsx
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_public_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_utils_resolveContentRailItemWidth_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_utils_resolveContentRailPhysicalOffset_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_utils_resolveContentRailState_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_layout_utils_useContentRailReducedMotion_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_features_typography_public_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_foundation_index_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_layout_adapters_inbound_ContentRail_tsx --> module_src_types_content_rail_ts
-  module_src_features_layout_adapters_inbound_ContentRailFlow_tsx["src/features/layout/adapters/inbound/ContentRailFlow.tsx"]
-  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_ContentRailFlow_tsx
-  module_src_features_layout_adapters_inbound_ContentRailFlow_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_features_layout_adapters_inbound_ContentRailFlow_tsx --> module_src_types_content_rail_ts
+  module_src_features_layout_adapters_inbound_AppShell_tsx["src/features/layout/adapters/inbound/AppShell.tsx"]
+  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_AppShell_tsx
+  module_src_features_layout_adapters_inbound_AppShell_tsx --> module_src_features_layout_adapters_inbound_View_tsx
+  module_src_features_layout_adapters_inbound_AppShell_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_layout_adapters_inbound_AppShell_tsx --> module_src_types_layout_ts
   module_src_features_layout_adapters_inbound_Divider_tsx["src/features/layout/adapters/inbound/Divider.tsx"]
   package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Divider_tsx
   module_src_features_layout_adapters_inbound_Divider_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -711,28 +720,33 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Grid_tsx
   module_src_features_layout_adapters_inbound_Grid_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_features_layout_adapters_inbound_Grid_tsx --> module_src_types_layout_ts
-  module_src_features_layout_adapters_inbound_Stack_tsx["src/features/layout/adapters/inbound/Stack.tsx"]
-  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Stack_tsx
-  module_src_features_layout_adapters_inbound_Stack_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_features_layout_adapters_inbound_Stack_tsx --> module_src_types_layout_ts
-  module_src_features_layout_boxMeta_ts["src/features/layout/boxMeta.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_boxMeta_ts
-  module_src_features_layout_boxMeta_ts --> module_src_features_layout_constants_ts
-  module_src_features_layout_boxMeta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_features_layout_boxMeta_ts --> module_src_metadata_types_ts
+  module_src_features_layout_adapters_inbound_Screen_tsx["src/features/layout/adapters/inbound/Screen.tsx"]
+  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_Screen_tsx
+  module_src_features_layout_adapters_inbound_Screen_tsx --> module_src_features_layout_adapters_inbound_ScrollView_tsx
+  module_src_features_layout_adapters_inbound_Screen_tsx --> module_src_features_layout_adapters_inbound_View_tsx
+  module_src_features_layout_adapters_inbound_Screen_tsx --> module_src_internal_recipes_ts
+  module_src_features_layout_adapters_inbound_Screen_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_layout_adapters_inbound_Screen_tsx --> module_src_types_layout_ts
+  module_src_features_layout_adapters_inbound_ScreenSection_tsx["src/features/layout/adapters/inbound/ScreenSection.tsx"]
+  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_ScreenSection_tsx
+  module_src_features_layout_adapters_inbound_ScreenSection_tsx --> module_src_features_layout_adapters_inbound_View_tsx
+  module_src_features_layout_adapters_inbound_ScreenSection_tsx --> module_src_patterns_section_header_index_ts
+  module_src_features_layout_adapters_inbound_ScreenSection_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_layout_adapters_inbound_ScreenSection_tsx --> module_src_types_layout_ts
+  module_src_features_layout_adapters_inbound_ScrollView_tsx["src/features/layout/adapters/inbound/ScrollView.tsx"]
+  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_ScrollView_tsx
+  module_src_features_layout_adapters_inbound_ScrollView_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_layout_adapters_inbound_ScrollView_tsx --> module_src_types_layout_ts
+  module_src_features_layout_adapters_inbound_View_tsx["src/features/layout/adapters/inbound/View.tsx"]
+  package__ankhorage_zora -.-> module_src_features_layout_adapters_inbound_View_tsx
+  module_src_features_layout_adapters_inbound_View_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_layout_adapters_inbound_View_tsx --> module_src_types_layout_ts
+  module_src_features_layout_appShellMeta_ts["src/features/layout/appShellMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_layout_appShellMeta_ts
+  module_src_features_layout_appShellMeta_ts --> module_src_metadata_index_ts
   module_src_features_layout_constants_ts["src/features/layout/constants.ts"]
   package__ankhorage_zora -.-> module_src_features_layout_constants_ts
   module_src_features_layout_constants_ts --> module_src_metadata_types_ts
-  module_src_features_layout_containerMeta_ts["src/features/layout/containerMeta.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_containerMeta_ts
-  module_src_features_layout_containerMeta_ts --> module_src_features_layout_constants_ts
-  module_src_features_layout_containerMeta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_features_layout_containerMeta_ts --> module_src_metadata_types_ts
-  module_src_features_layout_contentRailMeta_ts["src/features/layout/contentRailMeta.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_contentRailMeta_ts
-  module_src_features_layout_contentRailMeta_ts --> module_src_features_layout_constants_ts
-  module_src_features_layout_contentRailMeta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_features_layout_contentRailMeta_ts --> module_src_metadata_index_ts
   module_src_features_layout_dividerMeta_ts["src/features/layout/dividerMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_layout_dividerMeta_ts
   module_src_features_layout_dividerMeta_ts --> module_src_features_layout_constants_ts
@@ -744,21 +758,24 @@ graph TD
   module_src_features_layout_gridMeta_ts --> module_src_metadata_types_ts
   module_src_features_layout_public_ts["src/features/layout/public.ts"]
   package__ankhorage_zora -.-> module_src_features_layout_public_ts
-  module_src_features_layout_stackMeta_ts["src/features/layout/stackMeta.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_stackMeta_ts
-  module_src_features_layout_stackMeta_ts --> module_src_features_layout_constants_ts
-  module_src_features_layout_stackMeta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_features_layout_stackMeta_ts --> module_src_metadata_types_ts
-  module_src_features_layout_utils_resolveContentRailItemWidth_ts["src/features/layout/utils/resolveContentRailItemWidth.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_utils_resolveContentRailItemWidth_ts
-  module_src_features_layout_utils_resolveContentRailItemWidth_ts --> module_src_types_content_rail_ts
-  module_src_features_layout_utils_resolveContentRailPhysicalOffset_ts["src/features/layout/utils/resolveContentRailPhysicalOffset.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_utils_resolveContentRailPhysicalOffset_ts
-  module_src_features_layout_utils_resolveContentRailState_ts["src/features/layout/utils/resolveContentRailState.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_utils_resolveContentRailState_ts
-  module_src_features_layout_utils_useContentRailReducedMotion_ts["src/features/layout/utils/useContentRailReducedMotion.ts"]
-  package__ankhorage_zora -.-> module_src_features_layout_utils_useContentRailReducedMotion_ts
-  module_src_features_layout_utils_useContentRailReducedMotion_ts --> module_src_types_content_rail_ts
+  module_src_features_layout_screenMeta_ts["src/features/layout/screenMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_layout_screenMeta_ts
+  module_src_features_layout_screenMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_layout_screenMeta_ts --> module_src_metadata_index_ts
+  module_src_features_layout_screenSectionMeta_ts["src/features/layout/screenSectionMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_layout_screenSectionMeta_ts
+  module_src_features_layout_screenSectionMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_layout_screenSectionMeta_ts --> module_src_metadata_index_ts
+  module_src_features_layout_scrollViewMeta_ts["src/features/layout/scrollViewMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_layout_scrollViewMeta_ts
+  module_src_features_layout_scrollViewMeta_ts --> module_src_features_layout_constants_ts
+  module_src_features_layout_scrollViewMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_layout_scrollViewMeta_ts --> module_src_metadata_types_ts
+  module_src_features_layout_viewMeta_ts["src/features/layout/viewMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_layout_viewMeta_ts
+  module_src_features_layout_viewMeta_ts --> module_src_features_layout_constants_ts
+  module_src_features_layout_viewMeta_ts --> module_src_metadata_allowedChildren_ts
+  module_src_features_layout_viewMeta_ts --> module_src_metadata_types_ts
   module_src_features_list_adapters_inbound_FlatList_tsx["src/features/list/adapters/inbound/FlatList.tsx"]
   package__ankhorage_zora -.-> module_src_features_list_adapters_inbound_FlatList_tsx
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_adapters_inbound_HorizontalListSeparator_tsx
@@ -830,6 +847,19 @@ graph TD
   module_src_features_pagination_utils_resolvePaginationState_ts["src/features/pagination/utils/resolvePaginationState.ts"]
   package__ankhorage_zora -.-> module_src_features_pagination_utils_resolvePaginationState_ts
   module_src_features_pagination_utils_resolvePaginationState_ts --> module_src_features_pagination_utils_resolvePaginationPage_ts
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx["src/features/palette-item/adapters/inbound/PaletteItem.tsx"]
+  package__ankhorage_zora -.-> module_src_features_palette_item_adapters_inbound_PaletteItem_tsx
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_card_public_ts
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_layout_public_ts
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_typography_public_ts
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_theme_useZoraTheme_ts
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_theme_withZoraThemeScope_tsx
+  module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_types_palette_item_ts
+  module_src_features_palette_item_paletteItemMeta_ts["src/features/palette-item/paletteItemMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_palette_item_paletteItemMeta_ts
+  module_src_features_palette_item_paletteItemMeta_ts --> module_src_metadata_index_ts
+  module_src_features_palette_item_public_ts["src/features/palette-item/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_palette_item_public_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx["src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"]
   package__ankhorage_zora -.-> module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_public_ts
@@ -872,8 +902,8 @@ graph TD
   module_src_features_rating_adapters_inbound_Rating_tsx["src/features/rating/adapters/inbound/Rating.tsx"]
   package__ankhorage_zora -.-> module_src_features_rating_adapters_inbound_Rating_tsx
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_icon_public_ts
+  module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_layout_public_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_rating_utils_resolveRatingSegments_ts
-  module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_foundation_index_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_internal_recipes_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_theme_useZoraTheme_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1124,123 +1154,12 @@ graph TD
   module_src_features_uploader_uploaderMeta_ts["src/features/uploader/uploaderMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_uploader_uploaderMeta_ts
   module_src_features_uploader_uploaderMeta_ts --> module_src_metadata_types_ts
-  module_src_foundation_Center_tsx["src/foundation/Center.tsx"]
-  package__ankhorage_zora -.-> module_src_foundation_Center_tsx
-  module_src_foundation_Center_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_foundation_Center_tsx --> module_src_theme_ZoraBaseProps_ts
-  module_src_foundation_index_ts["src/foundation/index.ts"]
-  package__ankhorage_zora -.-> module_src_foundation_index_ts
-  module_src_foundation_Inline_tsx["src/foundation/Inline.tsx"]
-  package__ankhorage_zora -.-> module_src_foundation_Inline_tsx
-  module_src_foundation_Inline_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_foundation_Inline_tsx --> module_src_theme_ZoraBaseProps_ts
-  module_src_foundation_meta_ts["src/foundation/meta.ts"]
-  package__ankhorage_zora -.-> module_src_foundation_meta_ts
-  module_src_foundation_meta_ts --> module_src_metadata_index_ts
-  module_src_foundation_Show_tsx["src/foundation/Show.tsx"]
-  package__ankhorage_zora -.-> module_src_foundation_Show_tsx
-  module_src_foundation_Show_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_foundation_Show_tsx --> module_src_theme_ZoraBaseProps_ts
-  module_src_foundation_Spacer_tsx["src/foundation/Spacer.tsx"]
-  package__ankhorage_zora -.-> module_src_foundation_Spacer_tsx
-  module_src_foundation_Spacer_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_foundation_Spacer_tsx --> module_src_theme_ZoraBaseProps_ts
   module_src_index_ts["src/index.ts"]
   module_src_internal_colorModel_ts["src/internal/colorModel.ts"]
   package__ankhorage_zora -.-> module_src_internal_colorModel_ts
   module_src_internal_recipes_ts["src/internal/recipes.ts"]
   package__ankhorage_zora -.-> module_src_internal_recipes_ts
   module_src_internal_recipes_ts --> module_src_internal_colorModel_ts
-  module_src_layout_app_shell_AppShell_tsx["src/layout/app-shell/AppShell.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_app_shell_AppShell_tsx
-  module_src_layout_app_shell_AppShell_tsx --> module_src_features_layout_public_ts
-  module_src_layout_app_shell_AppShell_tsx --> module_src_layout_app_shell_types_ts
-  module_src_layout_app_shell_AppShell_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_app_shell_index_ts["src/layout/app-shell/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_app_shell_index_ts
-  module_src_layout_app_shell_meta_ts["src/layout/app-shell/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_app_shell_meta_ts
-  module_src_layout_app_shell_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_app_shell_types_ts["src/layout/app-shell/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_app_shell_types_ts
-  module_src_layout_app_shell_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_layout_screen_section_index_ts["src/layout/screen-section/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_section_index_ts
-  module_src_layout_screen_section_meta_ts["src/layout/screen-section/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_section_meta_ts
-  module_src_layout_screen_section_meta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_layout_screen_section_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_screen_section_ScreenSection_tsx["src/layout/screen-section/ScreenSection.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_screen_section_ScreenSection_tsx
-  module_src_layout_screen_section_ScreenSection_tsx --> module_src_features_layout_public_ts
-  module_src_layout_screen_section_ScreenSection_tsx --> module_src_layout_screen_section_types_ts
-  module_src_layout_screen_section_ScreenSection_tsx --> module_src_patterns_section_header_index_ts
-  module_src_layout_screen_section_ScreenSection_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_screen_section_types_ts["src/layout/screen-section/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_section_types_ts
-  module_src_layout_screen_section_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_layout_screen_index_ts["src/layout/screen/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_index_ts
-  module_src_layout_screen_meta_ts["src/layout/screen/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_meta_ts
-  module_src_layout_screen_meta_ts --> module_src_metadata_allowedChildren_ts
-  module_src_layout_screen_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_screen_Screen_tsx["src/layout/screen/Screen.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_screen_Screen_tsx
-  module_src_layout_screen_Screen_tsx --> module_src_features_layout_public_ts
-  module_src_layout_screen_Screen_tsx --> module_src_internal_recipes_ts
-  module_src_layout_screen_Screen_tsx --> module_src_layout_screen_types_ts
-  module_src_layout_screen_Screen_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_screen_types_ts["src/layout/screen/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_screen_types_ts
-  module_src_layout_screen_types_ts --> module_src_internal_recipes_ts
-  module_src_layout_screen_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_layout_settings_layout_index_ts["src/layout/settings-layout/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_settings_layout_index_ts
-  module_src_layout_settings_layout_meta_ts["src/layout/settings-layout/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_settings_layout_meta_ts
-  module_src_layout_settings_layout_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx["src/layout/settings-layout/SettingsLayout.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_settings_layout_SettingsLayout_tsx
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_features_app_bar_public_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_screen_index_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_settings_layout_types_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_layout_sidebar_layout_index_ts
-  module_src_layout_settings_layout_SettingsLayout_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_settings_layout_types_ts["src/layout/settings-layout/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_settings_layout_types_ts
-  module_src_layout_settings_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_layout_sidebar_layout_index_ts["src/layout/sidebar-layout/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_sidebar_layout_index_ts
-  module_src_layout_sidebar_layout_meta_ts["src/layout/sidebar-layout/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_sidebar_layout_meta_ts
-  module_src_layout_sidebar_layout_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts["src/layout/sidebar-layout/resolveSidebarLayoutSizing.ts"]
-  package__ankhorage_zora -.-> module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts
-  module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts --> module_src_layout_sidebar_layout_types_ts
-  module_src_layout_sidebar_layout_SidebarLayout_tsx["src/layout/sidebar-layout/SidebarLayout.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_sidebar_layout_SidebarLayout_tsx
-  module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_features_layout_public_ts
-  module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_layout_sidebar_layout_resolveSidebarLayoutSizing_ts
-  module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_layout_sidebar_layout_types_ts
-  module_src_layout_sidebar_layout_SidebarLayout_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_sidebar_layout_types_ts["src/layout/sidebar-layout/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_sidebar_layout_types_ts
-  module_src_layout_sidebar_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_layout_topbar_layout_index_ts["src/layout/topbar-layout/index.ts"]
-  package__ankhorage_zora -.-> module_src_layout_topbar_layout_index_ts
-  module_src_layout_topbar_layout_meta_ts["src/layout/topbar-layout/meta.ts"]
-  package__ankhorage_zora -.-> module_src_layout_topbar_layout_meta_ts
-  module_src_layout_topbar_layout_meta_ts --> module_src_metadata_index_ts
-  module_src_layout_topbar_layout_TopbarLayout_tsx["src/layout/topbar-layout/TopbarLayout.tsx"]
-  package__ankhorage_zora -.-> module_src_layout_topbar_layout_TopbarLayout_tsx
-  module_src_layout_topbar_layout_TopbarLayout_tsx --> module_src_features_layout_public_ts
-  module_src_layout_topbar_layout_TopbarLayout_tsx --> module_src_layout_sidebar_layout_index_ts
-  module_src_layout_topbar_layout_TopbarLayout_tsx --> module_src_layout_topbar_layout_types_ts
-  module_src_layout_topbar_layout_TopbarLayout_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_layout_topbar_layout_types_ts["src/layout/topbar-layout/types.ts"]
-  package__ankhorage_zora -.-> module_src_layout_topbar_layout_types_ts
-  module_src_layout_topbar_layout_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_metadata_allowedChildren_ts["src/metadata/allowedChildren.ts"]
   package__ankhorage_zora -.-> module_src_metadata_allowedChildren_ts
   module_src_metadata_bindableComponentMeta_ts["src/metadata/bindableComponentMeta.ts"]
@@ -1274,6 +1193,7 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_card_productCardMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_chip_chipGroupMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_chip_chipMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_content_rail_contentRailMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_data_table_dataTableMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_date_picker_datePickerMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_dialog_dialogMeta_ts
@@ -1292,16 +1212,18 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_icon_iconMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_image_imageMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_features_layout_boxMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_features_layout_containerMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_features_layout_contentRailMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_layout_appShellMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_layout_dividerMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_layout_gridMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_features_layout_stackMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_layout_screenMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_layout_screenSectionMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_layout_scrollViewMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_layout_viewMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_missing_element_missingElementMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_pagination_paginationMeta_ts
+  module_src_metadata_componentMeta_ts --> module_src_features_palette_item_paletteItemMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_popover_menu_popoverMenuMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_progress_progressMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_rating_ratingMeta_ts
@@ -1318,13 +1240,6 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_features_typography_headingMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_typography_textMeta_ts
   module_src_metadata_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
-  module_src_metadata_componentMeta_ts --> module_src_foundation_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_app_shell_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_screen_section_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_screen_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_settings_layout_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_sidebar_layout_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_layout_topbar_layout_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_metadata_types_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_chat_list_item_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_collection_editor_meta_ts
@@ -1339,10 +1254,8 @@ graph TD
   module_src_metadata_componentMeta_ts --> module_src_patterns_scanner_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_section_header_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_selection_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_patterns_settings_row_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_switch_field_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_theme_composer_meta_ts
-  module_src_metadata_componentMeta_ts --> module_src_patterns_tile_grid_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_timeline_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_patterns_tree_view_meta_ts
   module_src_metadata_componentMeta_ts --> module_src_theme_ThemeModeToggle_meta_ts
@@ -1368,7 +1281,6 @@ graph TD
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_badge_public_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_layout_public_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_foundation_index_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_patterns_chat_list_item_types_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_chat_list_item_ChatListItem_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1417,7 +1329,6 @@ graph TD
   module_src_patterns_filter_bar_FilterBar_tsx["src/patterns/filter-bar/FilterBar.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_filter_bar_FilterBar_tsx
   module_src_patterns_filter_bar_FilterBar_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_filter_bar_FilterBar_tsx --> module_src_foundation_index_ts
   module_src_patterns_filter_bar_FilterBar_tsx --> module_src_patterns_filter_bar_types_ts
   module_src_patterns_filter_bar_FilterBar_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_filter_bar_index_ts["src/patterns/filter-bar/index.ts"]
@@ -1447,7 +1358,6 @@ graph TD
   module_src_patterns_list_List_tsx["src/patterns/list/List.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_list_List_tsx
   module_src_patterns_list_List_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_list_List_tsx --> module_src_foundation_index_ts
   module_src_patterns_list_List_tsx --> module_src_patterns_list_ListRow_tsx
   module_src_patterns_list_List_tsx --> module_src_patterns_list_resolveListSeparator_ts
   module_src_patterns_list_List_tsx --> module_src_patterns_list_types_ts
@@ -1456,7 +1366,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_patterns_list_ListRow_tsx
   module_src_patterns_list_ListRow_tsx --> module_src_features_layout_public_ts
   module_src_patterns_list_ListRow_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_list_ListRow_tsx --> module_src_foundation_index_ts
   module_src_patterns_list_ListRow_tsx --> module_src_patterns_list_types_ts
   module_src_patterns_list_ListRow_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_list_ListRow_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1483,7 +1392,6 @@ graph TD
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_features_avatar_public_ts
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_features_layout_public_ts
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_foundation_index_ts
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_patterns_message_bubble_types_ts
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_theme_useZoraTheme_ts
   module_src_patterns_message_bubble_MessageBubble_tsx --> module_src_theme_withZoraThemeScope_tsx
@@ -1547,7 +1455,6 @@ graph TD
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_progress_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_surface_public_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_reader_ReaderSurface_tsx --> module_src_foundation_index_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_patterns_reader_resolveReaderProgress_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_patterns_reader_types_ts
   module_src_patterns_reader_ReaderSurface_tsx --> module_src_theme_useZoraTheme_ts
@@ -1625,21 +1532,6 @@ graph TD
   module_src_patterns_selection_SelectionProvider_tsx --> module_src_patterns_selection_types_ts
   module_src_patterns_selection_types_ts["src/patterns/selection/types.ts"]
   package__ankhorage_zora -.-> module_src_patterns_selection_types_ts
-  module_src_patterns_settings_row_index_ts["src/patterns/settings-row/index.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_settings_row_index_ts
-  module_src_patterns_settings_row_meta_ts["src/patterns/settings-row/meta.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_settings_row_meta_ts
-  module_src_patterns_settings_row_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_settings_row_SettingsRow_tsx["src/patterns/settings-row/SettingsRow.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_settings_row_SettingsRow_tsx
-  module_src_patterns_settings_row_SettingsRow_tsx --> module_src_features_card_public_ts
-  module_src_patterns_settings_row_SettingsRow_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_settings_row_SettingsRow_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_settings_row_SettingsRow_tsx --> module_src_patterns_settings_row_types_ts
-  module_src_patterns_settings_row_SettingsRow_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_settings_row_types_ts["src/patterns/settings-row/types.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_settings_row_types_ts
-  module_src_patterns_settings_row_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_switch_field_index_ts["src/patterns/switch-field/index.ts"]
   package__ankhorage_zora -.-> module_src_patterns_switch_field_index_ts
   module_src_patterns_switch_field_meta_ts["src/patterns/switch-field/meta.ts"]
@@ -1647,7 +1539,7 @@ graph TD
   module_src_patterns_switch_field_meta_ts --> module_src_metadata_index_ts
   module_src_patterns_switch_field_SwitchField_tsx["src/patterns/switch-field/SwitchField.tsx"]
   package__ankhorage_zora -.-> module_src_patterns_switch_field_SwitchField_tsx
-  module_src_patterns_switch_field_SwitchField_tsx --> module_src_patterns_settings_row_index_ts
+  module_src_patterns_switch_field_SwitchField_tsx --> module_src_patterns_list_index_ts
   module_src_patterns_switch_field_SwitchField_tsx --> module_src_patterns_switch_field_types_ts
   module_src_patterns_switch_field_SwitchField_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_switch_field_types_ts["src/patterns/switch-field/types.ts"]
@@ -1676,27 +1568,6 @@ graph TD
   package__ankhorage_zora -.-> module_src_patterns_theme_composer_types_ts
   module_src_patterns_theme_composer_types_ts --> module_src_theme_types_ts
   module_src_patterns_theme_composer_types_ts --> module_src_theme_ZoraBaseProps_ts
-  module_src_patterns_tile_grid_index_ts["src/patterns/tile-grid/index.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_tile_grid_index_ts
-  module_src_patterns_tile_grid_meta_ts["src/patterns/tile-grid/meta.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_tile_grid_meta_ts
-  module_src_patterns_tile_grid_meta_ts --> module_src_metadata_index_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx["src/patterns/tile-grid/PaletteItem.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_tile_grid_PaletteItem_tsx
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_features_card_public_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_patterns_tile_grid_types_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_theme_useZoraTheme_ts
-  module_src_patterns_tile_grid_PaletteItem_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_tile_grid_TileGrid_tsx["src/patterns/tile-grid/TileGrid.tsx"]
-  package__ankhorage_zora -.-> module_src_patterns_tile_grid_TileGrid_tsx
-  module_src_patterns_tile_grid_TileGrid_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_tile_grid_TileGrid_tsx --> module_src_patterns_tile_grid_types_ts
-  module_src_patterns_tile_grid_TileGrid_tsx --> module_src_theme_withZoraThemeScope_tsx
-  module_src_patterns_tile_grid_types_ts["src/patterns/tile-grid/types.ts"]
-  package__ankhorage_zora -.-> module_src_patterns_tile_grid_types_ts
-  module_src_patterns_tile_grid_types_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_patterns_timeline_index_ts["src/patterns/timeline/index.ts"]
   package__ankhorage_zora -.-> module_src_patterns_timeline_index_ts
   module_src_patterns_timeline_meta_ts["src/patterns/timeline/meta.ts"]
@@ -1707,7 +1578,6 @@ graph TD
   module_src_patterns_timeline_Timeline_tsx --> module_src_features_icon_public_ts
   module_src_patterns_timeline_Timeline_tsx --> module_src_features_layout_public_ts
   module_src_patterns_timeline_Timeline_tsx --> module_src_features_typography_public_ts
-  module_src_patterns_timeline_Timeline_tsx --> module_src_foundation_index_ts
   module_src_patterns_timeline_Timeline_tsx --> module_src_internal_recipes_ts
   module_src_patterns_timeline_Timeline_tsx --> module_src_patterns_timeline_types_ts
   module_src_patterns_timeline_Timeline_tsx --> module_src_theme_useZoraTheme_ts
@@ -1725,7 +1595,7 @@ graph TD
   package__ankhorage_zora -.-> module_src_patterns_tree_view_TreeItem_tsx
   module_src_patterns_tree_view_TreeItem_tsx --> module_src_features_button_public_ts
   module_src_patterns_tree_view_TreeItem_tsx --> module_src_features_layout_public_ts
-  module_src_patterns_tree_view_TreeItem_tsx --> module_src_patterns_settings_row_index_ts
+  module_src_patterns_tree_view_TreeItem_tsx --> module_src_patterns_list_index_ts
   module_src_patterns_tree_view_TreeItem_tsx --> module_src_patterns_tree_view_types_ts
   module_src_patterns_tree_view_TreeItem_tsx --> module_src_theme_withZoraThemeScope_tsx
   module_src_patterns_tree_view_TreeItem_tsx --> module_src_theme_ZoraBaseProps_ts
@@ -1755,6 +1625,7 @@ graph TD
   module_src_registry_ts --> module_src_features_button_public_ts
   module_src_registry_ts --> module_src_features_card_public_ts
   module_src_registry_ts --> module_src_features_chip_public_ts
+  module_src_registry_ts --> module_src_features_content_rail_public_ts
   module_src_registry_ts --> module_src_features_data_table_public_ts
   module_src_registry_ts --> module_src_features_date_picker_public_ts
   module_src_registry_ts --> module_src_features_dialog_public_ts
@@ -1774,6 +1645,7 @@ graph TD
   module_src_registry_ts --> module_src_features_list_public_ts
   module_src_registry_ts --> module_src_features_missing_element_public_ts
   module_src_registry_ts --> module_src_features_pagination_public_ts
+  module_src_registry_ts --> module_src_features_palette_item_public_ts
   module_src_registry_ts --> module_src_features_popover_menu_public_ts
   module_src_registry_ts --> module_src_features_progress_public_ts
   module_src_registry_ts --> module_src_features_rating_public_ts
@@ -1785,13 +1657,6 @@ graph TD
   module_src_registry_ts --> module_src_features_toolbar_public_ts
   module_src_registry_ts --> module_src_features_typography_public_ts
   module_src_registry_ts --> module_src_features_uploader_public_ts
-  module_src_registry_ts --> module_src_foundation_index_ts
-  module_src_registry_ts --> module_src_layout_app_shell_index_ts
-  module_src_registry_ts --> module_src_layout_screen_section_index_ts
-  module_src_registry_ts --> module_src_layout_screen_index_ts
-  module_src_registry_ts --> module_src_layout_settings_layout_index_ts
-  module_src_registry_ts --> module_src_layout_sidebar_layout_index_ts
-  module_src_registry_ts --> module_src_layout_topbar_layout_index_ts
   module_src_registry_ts --> module_src_patterns_chat_list_item_index_ts
   module_src_registry_ts --> module_src_patterns_collection_editor_index_ts
   module_src_registry_ts --> module_src_patterns_confirm_dialog_index_ts
@@ -1805,10 +1670,8 @@ graph TD
   module_src_registry_ts --> module_src_patterns_scanner_index_ts
   module_src_registry_ts --> module_src_patterns_section_header_index_ts
   module_src_registry_ts --> module_src_patterns_selection_index_ts
-  module_src_registry_ts --> module_src_patterns_settings_row_index_ts
   module_src_registry_ts --> module_src_patterns_switch_field_index_ts
   module_src_registry_ts --> module_src_patterns_theme_composer_index_ts
-  module_src_registry_ts --> module_src_patterns_tile_grid_index_ts
   module_src_registry_ts --> module_src_patterns_timeline_index_ts
   module_src_registry_ts --> module_src_patterns_tree_view_index_ts
   module_src_registry_ts --> module_src_theme_ThemeModeToggle_tsx
@@ -1991,6 +1854,7 @@ graph TD
   module_src_types_keyboard_avoiding_view_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_layout_ts["src/types/layout.ts"]
   package__ankhorage_zora -.-> module_src_types_layout_ts
+  module_src_types_layout_ts --> module_src_internal_recipes_ts
   module_src_types_layout_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_manifest_bottom_sheet_ts["src/types/manifest-bottom-sheet.ts"]
   package__ankhorage_zora -.-> module_src_types_manifest_bottom_sheet_ts
@@ -2012,6 +1876,9 @@ graph TD
   module_src_types_pagination_ts["src/types/pagination.ts"]
   package__ankhorage_zora -.-> module_src_types_pagination_ts
   module_src_types_pagination_ts --> module_src_theme_ZoraBaseProps_ts
+  module_src_types_palette_item_ts["src/types/palette-item.ts"]
+  package__ankhorage_zora -.-> module_src_types_palette_item_ts
+  module_src_types_palette_item_ts --> module_src_theme_ZoraBaseProps_ts
   module_src_types_popover_menu_ts["src/types/popover-menu.ts"]
   package__ankhorage_zora -.-> module_src_types_popover_menu_ts
   module_src_types_popover_menu_ts --> module_src_theme_ZoraBaseProps_ts
