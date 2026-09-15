@@ -1,5 +1,5 @@
-import { Show } from '@ankhorage/surface';
 import type { InteractionPolicy } from '@ankhorage/surface';
+import { Show } from '@ankhorage/surface';
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 

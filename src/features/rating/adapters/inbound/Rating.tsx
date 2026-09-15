@@ -1,4 +1,3 @@
-import { View } from '../../../layout/public';
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
 import type { ZoraColor } from '../../../../internal/recipes';
@@ -7,6 +6,7 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { RatingProps } from '../../../../types/rating';
 import { Icon } from '../../../icon/public';
+import { View } from '../../../layout/public';
 import { resolveRatingSegments } from '../../utils/resolveRatingSegments';
 
 /*** Displays a read-only star rating with optional half steps. */

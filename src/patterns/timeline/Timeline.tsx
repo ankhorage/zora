@@ -5,7 +5,6 @@ import { Icon } from '../../features/icon/public';
 import { View } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';
 import { Text } from '../../features/typography/public';
-
 import type { ZoraColor } from '../../internal/recipes';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';

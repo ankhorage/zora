@@ -5,7 +5,6 @@ import { Avatar } from '../../features/avatar/public';
 import { Badge } from '../../features/badge/public';
 import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
-
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ChatListAvatar, ChatListItemProps } from './types';

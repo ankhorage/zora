@@ -14,8 +14,8 @@ import type {
   ContentRailVisibleRangeChangeEvent,
 } from '../../../../types/content-rail';
 import { IconButton } from '../../../button/public';
-import { Text } from '../../../typography/public';
 import { View } from '../../../layout/public';
+import { Text } from '../../../typography/public';
 import { resolveContentRailItemWidth } from '../../utils/resolveContentRailItemWidth';
 import { resolveContentRailPhysicalOffset } from '../../utils/resolveContentRailPhysicalOffset';
 import { resolveContentRailState } from '../../utils/resolveContentRailState';

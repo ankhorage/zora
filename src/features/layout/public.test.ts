@@ -23,7 +23,15 @@ const removedPublicNames = [
 
 describe('canonical layout boundary', () => {
   test('exports only the current layout primitives and semantic screen composition', () => {
-    for (const name of ['AppShell', 'Divider', 'Grid', 'Screen', 'ScreenSection', 'ScrollView', 'View']) {
+    for (const name of [
+      'AppShell',
+      'Divider',
+      'Grid',
+      'Screen',
+      'ScreenSection',
+      'ScrollView',
+      'View',
+    ]) {
       expect(publicSource).toMatch(new RegExp(`\\b${name}\\b`, 'u'));
     }
 

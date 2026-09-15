@@ -3,7 +3,6 @@ import React from 'react';
 
 import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
-
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ListRowProps, ListRowVariant } from './types';

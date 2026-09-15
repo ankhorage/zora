@@ -12,7 +12,7 @@ import type {
 } from '../../../../types/post-card';
 import { Avatar } from '../../../avatar/public';
 import { Button } from '../../../button/public';
-import { View, Divider } from '../../../layout/public';
+import { Divider, View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
 /***

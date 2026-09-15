@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Divider, View } from '../../features/layout/public';
-
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { ListRow } from './ListRow';
 import { resolveListSeparator } from './resolveListSeparator';

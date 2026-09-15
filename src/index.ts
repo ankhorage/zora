@@ -1,13 +1,3 @@
-export type {
-  ContentRailControlPressEvent,
-  ContentRailDirection,
-  ContentRailItemSize,
-  ContentRailMotion,
-  ContentRailProps,
-  ContentRailSpacing,
-  ContentRailVisibleRangeChangeEvent,
-} from './features/content-rail/public';
-export { ContentRail } from './features/content-rail/public';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
@@ -98,6 +88,16 @@ export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
 export { Chip } from './features/chip/public';
 export { ChipGroup } from './features/chip/public';
+export type {
+  ContentRailControlPressEvent,
+  ContentRailDirection,
+  ContentRailItemSize,
+  ContentRailMotion,
+  ContentRailProps,
+  ContentRailSpacing,
+  ContentRailVisibleRangeChangeEvent,
+} from './features/content-rail/public';
+export { ContentRail } from './features/content-rail/public';
 export type {
   DataTableCellContext,
   DataTableColumn,
@@ -220,9 +220,9 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
+export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
 export { PaletteItem } from './features/palette-item/public';
-export { Pagination, type PaginationProps } from './features/pagination/public';
 export {
   PopoverMenu,
   type PopoverMenuAction,

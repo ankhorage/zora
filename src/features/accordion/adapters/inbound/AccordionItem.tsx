@@ -9,7 +9,7 @@ import type { ViewStyle } from 'react-native';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AccordionItemProps } from '../../../../types/accordion';
 import { Icon } from '../../../icon/public';
-import { View, Divider } from '../../../layout/public';
+import { Divider, View } from '../../../layout/public';
 import { Heading, Text } from '../../../typography/public';
 import { AccordionPresentationContext } from '../../composition/AccordionPresentationContext';
 

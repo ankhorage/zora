@@ -1,4 +1,3 @@
-import { View } from '../../../layout/public';
 import React from 'react';
 
 import { resolveIconSize } from '../../../../internal/recipes';
@@ -11,6 +10,7 @@ import type {
 } from '../../../../types/breadcrumbs';
 import { Button } from '../../../button/public';
 import { Icon } from '../../../icon/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 
 /*** Renders a breadcrumb trail whose final item represents the current location. */

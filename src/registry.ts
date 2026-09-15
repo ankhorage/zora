@@ -27,6 +27,7 @@ import { PostCard } from './features/card/public';
 import { ProductCard } from './features/card/public';
 import { Chip } from './features/chip/public';
 import { ChipGroup } from './features/chip/public';
+import { ContentRail } from './features/content-rail/public';
 import { DataTable } from './features/data-table/public';
 import { DatePicker } from './features/date-picker/public';
 import { Dialog } from './features/dialog/public';
@@ -42,8 +43,6 @@ import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
-import { ContentRail } from './features/content-rail/public';
-import { PaletteItem } from './features/palette-item/public';
 import {
   AppShell,
   Divider,
@@ -56,6 +55,7 @@ import {
 import { FlatList, SectionList } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
 import { Pagination } from './features/pagination/public';
+import { PaletteItem } from './features/palette-item/public';
 import { PopoverMenu } from './features/popover-menu/public';
 import { Progress, ProgressRing } from './features/progress/public';
 import { Rating } from './features/rating/public';
@@ -68,7 +68,6 @@ import { Toolbar } from './features/toolbar/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
-
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';

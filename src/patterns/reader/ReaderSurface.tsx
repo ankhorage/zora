@@ -6,7 +6,6 @@ import { View } from '../../features/layout/public';
 import { Progress } from '../../features/progress/public';
 import { Surface } from '../../features/surface/public';
 import { Text } from '../../features/typography/public';
-
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveReaderProgress } from './resolveReaderProgress';

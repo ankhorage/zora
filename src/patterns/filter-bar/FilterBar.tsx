@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { View } from '../../features/layout/public';
-
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { FilterBarProps } from './types';
 
