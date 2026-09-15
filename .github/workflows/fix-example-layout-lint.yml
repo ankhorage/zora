@@ -27,8 +27,23 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Apply example lint fixes
-        run: bunx ankhorage-eslint examples --config eslint.examples.config.mjs --fix --max-warnings=0
+      - name: Apply migration lint fixes
+        run: |
+          bunx ankhorage-eslint \
+            examples/basic-app/App.tsx \
+            examples/expo-showcase/App.tsx \
+            examples/expo-showcase/app/chats.tsx \
+            examples/expo-showcase/app/components.tsx \
+            examples/expo-showcase/app/patterns.tsx \
+            examples/expo-showcase/app/posts.tsx \
+            examples/expo-showcase/app/sections/componentForms.tsx \
+            examples/expo-showcase/app/sections/foundationPrimitives.tsx \
+            examples/expo-showcase/app/sections/manifestFeatures.tsx \
+            examples/expo-showcase/app/sections/patternGaps.tsx \
+            examples/expo-showcase/app/theme-composer.tsx \
+            --config eslint.examples.config.mjs \
+            --fix \
+            --max-warnings=0
 
       - name: Format
         run: bun run format
