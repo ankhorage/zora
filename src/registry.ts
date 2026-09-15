@@ -25,8 +25,10 @@ import { MediaCard } from './features/card/public';
 import { MetricCard } from './features/card/public';
 import { PostCard } from './features/card/public';
 import { ProductCard } from './features/card/public';
+import { ChatListItem, MessageBubble } from './features/chat/public';
 import { Chip } from './features/chip/public';
 import { ChipGroup } from './features/chip/public';
+import { CollectionEditor } from './features/collection-editor/public';
 import { ContentRail } from './features/content-rail/public';
 import { DataTable } from './features/data-table/public';
 import { DatePicker } from './features/date-picker/public';
@@ -37,21 +39,14 @@ import { Field, Form, FormActions, FormError } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
 import { SearchInput } from './features/form/search-input/public';
 import { Select } from './features/form/select/public';
+import { Switch } from './features/form/switch/public';
 import { TextInput } from './features/form/text-input/public';
 import { Gradient } from './features/gradient/public';
 import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
-import {
-  AppShell,
-  Divider,
-  Grid,
-  Screen,
-  ScreenSection,
-  ScrollView,
-  View,
-} from './features/layout/public';
+import { AppShell, Divider, Grid, Screen, ScrollView, View } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
 import { List, ListItem, ListSection } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
@@ -60,31 +55,21 @@ import { PaletteItem } from './features/palette-item/public';
 import { PopoverMenu } from './features/popover-menu/public';
 import { Progress, ProgressRing } from './features/progress/public';
 import { Rating } from './features/rating/public';
+import { ReaderSurface } from './features/reader/public';
+import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './features/scanner/public';
+import { ScreenSection, SectionHeader } from './features/section/public';
+import { SelectableItem } from './features/selection/public';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from './features/skeleton/public';
 import { Surface } from './features/surface/public';
 import { Tab, TabList, TabPanel, Tabs } from './features/tabs/public';
 import { TimePicker } from './features/time-picker/public';
+import { Timeline } from './features/timeline/public';
 import { Toast } from './features/toast/public';
 import { Toolbar } from './features/toolbar/public';
+import { TreeItem, TreeView } from './features/tree-view/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
-import { ChatListItem } from './patterns/chat-list-item';
-import { CollectionEditor } from './patterns/collection-editor';
-import { ConfirmDialog } from './patterns/confirm-dialog';
-import { FilterBar } from './patterns/filter-bar';
-import { InspectorField } from './patterns/inspector-field';
-import { MessageBubble } from './patterns/message-bubble';
-import { Notice } from './patterns/notice';
-import { Panel } from './patterns/panel';
-import { ReaderSurface } from './patterns/reader';
-import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
-import { SectionHeader } from './patterns/section-header';
-import { SelectableItem } from './patterns/selection';
-import { SwitchField } from './patterns/switch-field';
-import { ThemeComposer } from './patterns/theme-composer';
-import { Timeline } from './patterns/timeline';
-import { TreeItem, TreeView } from './patterns/tree-view';
 import { ThemeModeToggle } from './theme/ThemeModeToggle';
 
 export type ZoraComponentRegistry = Readonly<Record<string, React.ElementType>>;
@@ -153,6 +138,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   Rating,
   SearchInput,
   Select,
+  Switch,
   Skeleton,
   SkeletonCard,
   SkeletonList,
@@ -186,19 +172,14 @@ const _ZORA_COMPONENT_REGISTRY = {
   SignUpForm,
   ChatListItem,
   CollectionEditor,
-  ConfirmDialog,
   ContentRail,
   EmptyState,
-  FilterBar,
   Hero,
-  InspectorField,
   List,
   ListItem,
   ListSection,
   MessageBubble,
   MissingElement,
-  Notice,
-  Panel,
   PostCard,
   ProductCard,
   ReaderSurface,
@@ -207,8 +188,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   ScanOverlay,
   SectionHeader,
   SelectableItem,
-  SwitchField,
-  ThemeComposer,
   PaletteItem,
   Timeline,
   TreeItem,

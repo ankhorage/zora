@@ -13,7 +13,6 @@ describe('ZORA_THEME_RECIPE_META', () => {
       'Heading',
       'RadioGroup',
       'Text',
-      'Panel',
     ]);
 
     for (const [name, componentMeta] of Object.entries(ZORA_COMPONENT_META)) {

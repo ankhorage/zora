@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Avatar, Badge, Button, Card, ListSection, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -51,10 +51,11 @@ export default function CallsScreen() {
       />
       <Screen>
         <ScreenSection title="Availability">
-          <Notice
+          <Card
             title="Call history only"
             description="The example models the UI surface. Real voice/video infrastructure belongs outside ZORA."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
 

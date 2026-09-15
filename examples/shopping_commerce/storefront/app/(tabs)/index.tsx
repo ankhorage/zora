@@ -2,8 +2,8 @@ import {
   AvatarGroup,
   Badge,
   Button,
+  Card,
   MediaCard,
-  Notice,
   Screen,
   ScreenSection,
   Text,
@@ -50,10 +50,11 @@ export default function HomeScreen() {
         </ScreenSection>
 
         <ScreenSection title="Social proof" actions={<Badge color="primary">Spring edit</Badge>}>
-          <Notice
+          <Card
             title="1,248 happy customers"
             description="Static trust messaging for the example. Reviews and payments belong in app/backend layers later."
-            color="success"
+            eyebrow={<Badge color="success">SUCCESS</Badge>}
+            tone="subtle"
           />
           <AvatarGroup
             items={[

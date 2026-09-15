@@ -3,7 +3,6 @@ import {
   Card,
   Field,
   Form,
-  Notice,
   RadioGroup,
   Screen,
   ScreenSection,
@@ -54,10 +53,11 @@ export default function ReservationsScreen() {
             description="Tables available at 18:00, 19:30, and 21:00."
             actions={<Badge color="success">Open slots</Badge>}
           />
-          <Notice
+          <Card
             title="Static reservation flow"
             description="Calendar availability, confirmation emails, and table management belong in a later backend example."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>

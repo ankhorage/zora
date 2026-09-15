@@ -13,7 +13,7 @@ describe('MissingElement draft contract', () => {
       availability: 'draft-only',
       releaseGate: 'blocked',
     });
-    expect(ZORA_COMPONENT_META.Notice.manifestPolicy).toBeUndefined();
+    expect(ZORA_COMPONENT_META.Card.manifestPolicy).toBeUndefined();
     expect(ZORA_COMPONENT_META.EmptyState.manifestPolicy).toBeUndefined();
   });
 
@@ -63,6 +63,6 @@ describe('MissingElement draft contract', () => {
     expect(types).toContain('MissingElementProps extends ZoraBaseProps');
     expect(source).toContain('interactionPolicy: _interactionPolicy');
     expect(source).not.toMatch(/onPress|onLongPress|onChange|onSubmit/);
-    expect(source).not.toMatch(/<Button|<IconButton|<Notice|<EmptyState/);
+    expect(source).not.toMatch(/<Button|<IconButton|<EmptyState/);
   });
 });

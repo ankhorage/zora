@@ -1,12 +1,4 @@
-import {
-  AvatarGroup,
-  Badge,
-  MediaCard,
-  Notice,
-  Screen,
-  ScreenSection,
-  Text,
-} from '@ankhorage/zora';
+import { AvatarGroup, Badge, Card, MediaCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -41,10 +33,11 @@ export default function HomeScreen() {
         </ScreenSection>
 
         <ScreenSection title="Guest note">
-          <Notice
+          <Card
             title="Reservations available"
             description="Tables are open from 18:00. Booking persistence is intentionally outside this static UI example."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
           <Text emphasis="muted">
             A dedicated RestaurantHero or MenuFeature pattern would make this app stronger later.

@@ -1,4 +1,4 @@
-import { Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -29,10 +29,11 @@ export default function SettingsScreen() {
       <ExampleAppBar title="Settings" />
       <Screen>
         <ScreenSection title="Status">
-          <Notice
+          <Card
             title="Template-ready settings"
             description="This route is intentionally static. Data binding belongs in a later template/runtime step."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
 

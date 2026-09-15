@@ -84,10 +84,25 @@ export { MediaCard } from './features/card/public';
 export { MetricCard } from './features/card/public';
 export { PostCard } from './features/card/public';
 export { ProductCard } from './features/card/public';
+export type {
+  ChatListAvatar,
+  ChatListItemProps,
+  MessageBubbleAuthor,
+  MessageBubbleAvatar,
+  MessageBubbleDirection,
+  MessageBubbleProps,
+  MessageBubbleStatus,
+} from './features/chat/public';
+export { ChatListItem, MessageBubble } from './features/chat/public';
 export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
 export { Chip } from './features/chip/public';
 export { ChipGroup } from './features/chip/public';
+export type {
+  CollectionEditorProps,
+  CollectionEditorRenderItemProps,
+} from './features/collection-editor/public';
+export { CollectionEditor } from './features/collection-editor/public';
 export type {
   ContentRailControlPressEvent,
   ContentRailDirection,
@@ -162,6 +177,7 @@ export {
 } from './features/form/radio/public';
 export { SearchInput, type SearchInputProps } from './features/form/search-input/public';
 export { Select, type SelectOption, type SelectProps } from './features/form/select/public';
+export { Switch, type SwitchProps } from './features/form/switch/public';
 export {
   TextInput,
   type TextInputProps,
@@ -200,19 +216,10 @@ export type {
   DividerProps,
   GridProps,
   ScreenProps,
-  ScreenSectionProps,
   ScrollViewProps,
   ViewProps,
 } from './features/layout/public';
-export {
-  AppShell,
-  Divider,
-  Grid,
-  Screen,
-  ScreenSection,
-  ScrollView,
-  View,
-} from './features/layout/public';
+export { AppShell, Divider, Grid, Screen, ScrollView, View } from './features/layout/public';
 export type {
   ManifestListProps,
   ManifestListSection,
@@ -245,6 +252,43 @@ export {
   type ProgressRingProps,
 } from './features/progress/public';
 export { Rating, type RatingProps } from './features/rating/public';
+export type {
+  ReaderColorScheme,
+  ReaderDocumentFormat,
+  ReaderErrorCode,
+  ReaderErrorEvent,
+  ReaderExternalLinkEvent,
+  ReaderLineHeight,
+  ReaderLocationChangeEvent,
+  ReaderNavigationTrigger,
+  ReaderResolvedSource,
+  ReaderStatus,
+  ReaderSurfaceProps,
+} from './features/reader/public';
+export { ReaderSurface, resolveReaderProgress } from './features/reader/public';
+export type {
+  BarcodeScannerViewProps,
+  BarcodeScanResult,
+  CameraPermissionStatus,
+  CameraPermissionViewProps,
+  ScanOverlayProps,
+} from './features/scanner/public';
+export { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './features/scanner/public';
+export {
+  ScreenSection,
+  type ScreenSectionProps,
+  SectionHeader,
+  type SectionHeaderProps,
+} from './features/section/public';
+export type {
+  SelectableItemProps,
+  SelectableItemState,
+  SelectionMode,
+  SelectionProviderProps,
+  SelectionTrigger,
+  UseSelectionResult,
+} from './features/selection/public';
+export { SelectableItem, SelectionProvider, useSelection } from './features/selection/public';
 export {
   Skeleton,
   SkeletonCard,
@@ -275,6 +319,8 @@ export {
   type TimePickerProps,
   type TimePickerValue,
 } from './features/time-picker/public';
+export type { TimelineItem, TimelineProps } from './features/timeline/public';
+export { Timeline } from './features/timeline/public';
 export type {
   ToastController,
   ToastOptions,
@@ -284,6 +330,8 @@ export type {
 } from './features/toast/public';
 export { Toast, ToastProvider, useToast } from './features/toast/public';
 export { Toolbar, type ToolbarProps } from './features/toolbar/public';
+export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './features/tree-view/public';
+export { TreeItem, TreeView } from './features/tree-view/public';
 export type {
   HeadingAlign,
   HeadingColor,
@@ -357,72 +405,6 @@ export {
   ZORA_THEME_RECIPE_META,
   ZORA_THEME_TOKEN_FAMILIES,
 } from './metadata';
-export type { ChatListAvatar, ChatListItemProps } from './patterns/chat-list-item';
-export { ChatListItem } from './patterns/chat-list-item';
-export type {
-  CollectionEditorProps,
-  CollectionEditorRenderItemProps,
-} from './patterns/collection-editor';
-export { CollectionEditor } from './patterns/collection-editor';
-export type { ConfirmDialogProps } from './patterns/confirm-dialog';
-export { ConfirmDialog } from './patterns/confirm-dialog';
-export type { FilterBarProps } from './patterns/filter-bar';
-export { FilterBar } from './patterns/filter-bar';
-export type { InspectorFieldProps } from './patterns/inspector-field';
-export { InspectorField } from './patterns/inspector-field';
-export type {
-  MessageBubbleAuthor,
-  MessageBubbleAvatar,
-  MessageBubbleDirection,
-  MessageBubbleProps,
-  MessageBubbleStatus,
-} from './patterns/message-bubble';
-export { MessageBubble } from './patterns/message-bubble';
-export type { NoticeProps } from './patterns/notice';
-export { Notice } from './patterns/notice';
-export type { PanelProps } from './patterns/panel';
-export { Panel } from './patterns/panel';
-export type {
-  ReaderColorScheme,
-  ReaderDocumentFormat,
-  ReaderErrorCode,
-  ReaderErrorEvent,
-  ReaderExternalLinkEvent,
-  ReaderLineHeight,
-  ReaderLocationChangeEvent,
-  ReaderNavigationTrigger,
-  ReaderResolvedSource,
-  ReaderStatus,
-  ReaderSurfaceProps,
-} from './patterns/reader';
-export { ReaderSurface, resolveReaderProgress } from './patterns/reader';
-export type {
-  BarcodeScannerViewProps,
-  BarcodeScanResult,
-  CameraPermissionStatus,
-  CameraPermissionViewProps,
-  ScanOverlayProps,
-} from './patterns/scanner';
-export { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
-export type { SectionHeaderProps } from './patterns/section-header';
-export { SectionHeader } from './patterns/section-header';
-export type {
-  SelectableItemProps,
-  SelectableItemState,
-  SelectionMode,
-  SelectionProviderProps,
-  SelectionTrigger,
-  UseSelectionResult,
-} from './patterns/selection';
-export { SelectableItem, SelectionProvider, useSelection } from './patterns/selection';
-export type { SwitchFieldProps } from './patterns/switch-field';
-export { SwitchField } from './patterns/switch-field';
-export type { ThemeComposerProps } from './patterns/theme-composer';
-export { ThemeComposer } from './patterns/theme-composer';
-export type { TimelineItem, TimelineProps } from './patterns/timeline';
-export { Timeline } from './patterns/timeline';
-export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';
-export { TreeItem, TreeView } from './patterns/tree-view';
 export type {
   ComposedZoraPluginCatalog,
   ComposedZoraPluginMetadataCatalog,

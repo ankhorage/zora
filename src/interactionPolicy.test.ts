@@ -22,10 +22,6 @@ function readFeature(...segments: string[]): string {
   return readSource(join('features', ...segments));
 }
 
-function readPattern(...segments: string[]): string {
-  return readSource(join('patterns', ...segments));
-}
-
 describe('InteractionPolicy declaration', () => {
   test('ZoraBaseProps uses the canonical Surface type', () => {
     const source = readSource('theme/ZoraBaseProps.ts');
@@ -42,10 +38,10 @@ describe('InteractionPolicy declaration', () => {
       readSource('types/empty-state.ts'),
       readSource('types/hero.ts'),
       readSource('types/product-card.ts'),
-      readPattern('reader', 'types.ts'),
-      readPattern('scanner', 'types.ts'),
+      readSource('types/reader.ts'),
+      readSource('types/scanner.ts'),
       readSource('types/select.ts'),
-      readPattern('tree-view', 'types.ts'),
+      readSource('types/tree-view.ts'),
     ];
 
     for (const source of files) {
@@ -159,7 +155,7 @@ describe('ProductCard', () => {
 
 describe('ReaderSurface', () => {
   test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
-    const source = readPattern('reader', 'types.ts');
+    const source = readSource('types/reader.ts');
 
     expect(source).not.toMatch(
       /import type \{\s*InteractionPolicy\s*\} from '@ankhorage\/surface';/,
@@ -169,7 +165,7 @@ describe('ReaderSurface', () => {
   });
 
   test('forwards interactionPolicy to its owned interactive controls', () => {
-    const source = readPattern('reader', 'ReaderSurface.tsx');
+    const source = readFeature('reader', 'adapters', 'inbound', 'ReaderSurface.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(
@@ -210,7 +206,7 @@ describe('ContentRail', () => {
 
 describe('CameraPermissionView', () => {
   test('forwards interactionPolicy to internal Buttons after prop spreads', () => {
-    const source = readPattern('scanner', 'CameraPermissionView.tsx');
+    const source = readFeature('scanner', 'adapters', 'inbound', 'CameraPermissionView.tsx');
 
     expect(source).toMatch(
       /<Button[\s\S]*?\{\s*\.\.\.requestButtonProps\s*\}[\s\S]*?interactionPolicy=\{interactionPolicy\}/,
@@ -223,7 +219,7 @@ describe('CameraPermissionView', () => {
 
 describe('BarcodeScannerView', () => {
   test('passes interactionPolicy to CameraPermissionView in non-granted states', () => {
-    const source = readPattern('scanner', 'BarcodeScannerView.tsx');
+    const source = readFeature('scanner', 'adapters', 'inbound', 'BarcodeScannerView.tsx');
 
     expect(source).toMatch(/<CameraPermissionView[\s\S]*?interactionPolicy=\{interactionPolicy\}/);
   });
@@ -249,7 +245,7 @@ describe('Select', () => {
 
 describe('TreeItem', () => {
   test('accepts and forwards interactionPolicy to owned and recursive controls', () => {
-    const source = readPattern('tree-view', 'TreeItem.tsx');
+    const source = readFeature('tree-view', 'adapters', 'inbound', 'TreeItem.tsx');
 
     expect(source).toMatch(/interface TreeItemProps[\s\S]*?extends ZoraBaseProps/);
     expect(source).toMatch(/function TreeItemInner[\s\S]*?interactionPolicy,/);

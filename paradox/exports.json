@@ -1658,9 +1658,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+    "modulePath": "src/features/scanner/adapters/inbound/BarcodeScannerView.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/BarcodeScannerView.tsx",
+      "filePath": "src/features/scanner/adapters/inbound/BarcodeScannerView.tsx",
       "line": 130,
       "column": 14
     },
@@ -1676,9 +1676,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/scanner/types.ts",
+    "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/types.ts",
+      "filePath": "src/types/scanner.ts",
       "line": 32,
       "column": 1
     },
@@ -1821,9 +1821,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/scanner/types.ts",
+    "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/types.ts",
+      "filePath": "src/types/scanner.ts",
       "line": 8,
       "column": 1
     },
@@ -2789,9 +2789,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/scanner/types.ts",
+    "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/types.ts",
+      "filePath": "src/types/scanner.ts",
       "line": 6,
       "column": 1
     },
@@ -2807,9 +2807,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/scanner/CameraPermissionView.tsx",
+    "modulePath": "src/features/scanner/adapters/inbound/CameraPermissionView.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/CameraPermissionView.tsx",
+      "filePath": "src/features/scanner/adapters/inbound/CameraPermissionView.tsx",
       "line": 112,
       "column": 14
     },
@@ -2825,9 +2825,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/scanner/types.ts",
+    "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/types.ts",
+      "filePath": "src/types/scanner.ts",
       "line": 19,
       "column": 1
     },
@@ -3412,9 +3412,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/chat-list-item/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/chat-list-item/types.ts",
+      "filePath": "src/types/chat.ts",
       "line": 8,
       "column": 1
     },
@@ -3480,9 +3480,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/chat-list-item/ChatListItem.tsx",
+    "modulePath": "src/features/chat/adapters/inbound/ChatListItem.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/chat-list-item/ChatListItem.tsx",
+      "filePath": "src/features/chat/adapters/inbound/ChatListItem.tsx",
       "line": 227,
       "column": 14
     },
@@ -3498,9 +3498,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/chat-list-item/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/chat-list-item/types.ts",
+      "filePath": "src/types/chat.ts",
       "line": 18,
       "column": 1
     },
@@ -4493,9 +4493,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/collection-editor/CollectionEditor.tsx",
+    "modulePath": "src/features/collection-editor/adapters/inbound/CollectionEditor.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/collection-editor/CollectionEditor.tsx",
+      "filePath": "src/features/collection-editor/adapters/inbound/CollectionEditor.tsx",
       "line": 122,
       "column": 14
     },
@@ -4511,9 +4511,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/collection-editor/types.ts",
+    "modulePath": "src/types/collection-editor.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/collection-editor/types.ts",
+      "filePath": "src/types/collection-editor.ts",
       "line": 15,
       "column": 1
     },
@@ -4628,10 +4628,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/collection-editor/types.ts",
+    "modulePath": "src/types/collection-editor.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/collection-editor/types.ts",
-      "line": 3,
+      "filePath": "src/types/collection-editor.ts",
+      "line": 5,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -4891,155 +4891,6 @@
       }
     ],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ConfirmDialog",
-    "description": "Confirmation dialog pattern with cancel/confirm actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/confirm-dialog/ConfirmDialog.tsx",
-      "line": 69,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ConfirmDialogProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/confirm-dialog/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/confirm-dialog/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "busy",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "cancelLabel",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "closeOnBackdrop",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "confirmColor",
-        "kind": "property",
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "confirmLabel",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "confirmVariant",
-        "kind": "property",
-        "type": "ZoraButtonVariant | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onCancel",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onConfirm",
-        "kind": "property",
-        "type": "(() => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "visible",
-        "kind": "property",
-        "type": "boolean",
-        "required": true,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
@@ -6832,99 +6683,6 @@
         "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "FilterBar",
-    "description": "Horizontal filter/action bar layout with leading/trailing slots.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/filter-bar/FilterBar.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/filter-bar/FilterBar.tsx",
-      "line": 31,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "FilterBarProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/filter-bar/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/filter-bar/types.ts",
-      "line": 5,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "leading",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "trailing",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "wrap",
-        "kind": "property",
-        "type": "boolean | undefined",
         "required": false,
         "description": null
       }
@@ -9366,141 +9124,6 @@
     "structuredRows": []
   },
   {
-    "name": "InspectorField",
-    "description": "Inspector row pattern with label, description, and control slot.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/inspector-field/InspectorField.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/inspector-field/InspectorField.tsx",
-      "line": 32,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "InspectorFieldProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/inspector-field/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/inspector-field/types.ts",
-      "line": 5,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "control",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "errorText",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "helperText",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "invalid",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "readOnly",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "required",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "KeyboardAvoidingView",
     "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
     "isReadme": false,
@@ -10914,9 +10537,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/message-bubble/MessageBubble.tsx",
+    "modulePath": "src/features/chat/adapters/inbound/MessageBubble.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/MessageBubble.tsx",
+      "filePath": "src/features/chat/adapters/inbound/MessageBubble.tsx",
       "line": 276,
       "column": 14
     },
@@ -10932,10 +10555,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/message-bubble/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/types.ts",
-      "line": 22,
+      "filePath": "src/types/chat.ts",
+      "line": 49,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -10965,10 +10588,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/message-bubble/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/types.ts",
-      "line": 12,
+      "filePath": "src/types/chat.ts",
+      "line": 39,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11033,10 +10656,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/message-bubble/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/types.ts",
-      "line": 8,
+      "filePath": "src/types/chat.ts",
+      "line": 35,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11051,10 +10674,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/message-bubble/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/types.ts",
-      "line": 27,
+      "filePath": "src/types/chat.ts",
+      "line": 54,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11203,10 +10826,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/message-bubble/types.ts",
+    "modulePath": "src/types/chat.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/message-bubble/types.ts",
-      "line": 9,
+      "filePath": "src/types/chat.ts",
+      "line": 36,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -11445,106 +11068,6 @@
         "kind": "property",
         "type": "string | undefined",
         "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "Notice",
-    "description": "Notice pattern for inline feedback with tone, title, and actions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/notice/Notice.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/notice/Notice.tsx",
-      "line": 41,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "NoticeProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/notice/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/notice/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "actions",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "color",
-        "kind": "property",
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
         "description": null
       }
     ],
@@ -12329,141 +11852,6 @@
         "kind": "property",
         "type": "React.ReactNode",
         "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "Panel",
-    "description": "Semantic wrapper around `Card` for panel-style page sections.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/panel/Panel.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/panel/Panel.tsx",
-      "line": 26,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "PanelProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/panel/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/panel/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "actions",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "eyebrow",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "footer",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "padding",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "tone",
-        "kind": "property",
-        "type": "ZoraCardTone | undefined",
-        "required": false,
         "description": null
       }
     ],
@@ -14190,9 +13578,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 32,
       "column": 1
     },
@@ -14208,9 +13596,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 5,
       "column": 1
     },
@@ -14226,9 +13614,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 23,
       "column": 1
     },
@@ -14244,9 +13632,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 26,
       "column": 1
     },
@@ -14284,9 +13672,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 38,
       "column": 1
     },
@@ -14310,9 +13698,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 34,
       "column": 1
     },
@@ -14328,9 +13716,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 12,
       "column": 1
     },
@@ -14403,9 +13791,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 9,
       "column": 1
     },
@@ -14421,9 +13809,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 36,
       "column": 1
     },
@@ -14439,9 +13827,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 7,
       "column": 1
     },
@@ -14457,9 +13845,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/reader/ReaderSurface.tsx",
+    "modulePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/ReaderSurface.tsx",
+      "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
       "line": 349,
       "column": 14
     },
@@ -14475,9 +13863,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/reader/types.ts",
+    "modulePath": "src/types/reader.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/types.ts",
+      "filePath": "src/types/reader.ts",
       "line": 42,
       "column": 1
     },
@@ -14887,9 +14275,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/reader/resolveReaderProgress.ts",
+    "modulePath": "src/features/reader/utils/resolveReaderProgress.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/reader/resolveReaderProgress.ts",
+      "filePath": "src/features/reader/utils/resolveReaderProgress.ts",
       "line": 1,
       "column": 1
     },
@@ -14919,9 +14307,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/scanner/ScanOverlay.tsx",
+    "modulePath": "src/features/scanner/adapters/inbound/ScanOverlay.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/ScanOverlay.tsx",
+      "filePath": "src/features/scanner/adapters/inbound/ScanOverlay.tsx",
       "line": 100,
       "column": 14
     },
@@ -14937,9 +14325,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/scanner/types.ts",
+    "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/scanner/types.ts",
+      "filePath": "src/types/scanner.ts",
       "line": 13,
       "column": 1
     },
@@ -15098,9 +14486,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/features/layout/adapters/inbound/ScreenSection.tsx",
+    "modulePath": "src/features/section/adapters/inbound/ScreenSection.tsx",
     "sourceLocation": {
-      "filePath": "src/features/layout/adapters/inbound/ScreenSection.tsx",
+      "filePath": "src/features/section/adapters/inbound/ScreenSection.tsx",
       "line": 27,
       "column": 14
     },
@@ -15116,10 +14504,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/types/layout.ts",
+    "modulePath": "src/types/section.ts",
     "sourceLocation": {
-      "filePath": "src/types/layout.ts",
-      "line": 33,
+      "filePath": "src/types/section.ts",
+      "line": 12,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -16742,9 +16130,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/section-header/SectionHeader.tsx",
+    "modulePath": "src/features/section/adapters/inbound/SectionHeader.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/section-header/SectionHeader.tsx",
+      "filePath": "src/features/section/adapters/inbound/SectionHeader.tsx",
       "line": 52,
       "column": 14
     },
@@ -16760,9 +16148,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/section-header/types.ts",
+    "modulePath": "src/types/section.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/section-header/types.ts",
+      "filePath": "src/types/section.ts",
       "line": 5,
       "column": 1
     },
@@ -16871,10 +16259,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/selection/SelectableItem.tsx",
+    "modulePath": "src/features/selection/adapters/inbound/SelectableItem.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/SelectableItem.tsx",
-      "line": 23,
+      "filePath": "src/features/selection/adapters/inbound/SelectableItem.tsx",
+      "line": 27,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -16903,9 +16291,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 40,
       "column": 1
     },
@@ -16957,9 +16345,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 30,
       "column": 1
     },
@@ -17025,9 +16413,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 4,
       "column": 1
     },
@@ -17043,10 +16431,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/selection/SelectionProvider.tsx",
+    "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/SelectionProvider.tsx",
-      "line": 38,
+      "filePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
+      "line": 48,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -17075,9 +16463,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 8,
       "column": 1
     },
@@ -17143,9 +16531,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 6,
       "column": 1
     },
@@ -18557,15 +17945,15 @@
     "structuredRows": []
   },
   {
-    "name": "SwitchField",
-    "description": "Labeled switch field pattern built on the card-style `ListItem` presentation.",
+    "name": "Switch",
+    "description": "Renders the ZORA switch while preserving the canonical Surface switch contract.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/switch-field/SwitchField.tsx",
+    "modulePath": "src/features/form/switch/adapters/inbound/Switch.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/switch-field/SwitchField.tsx",
-      "line": 42,
+      "filePath": "src/features/form/switch/adapters/inbound/Switch.tsx",
+      "line": 8,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18575,14 +17963,14 @@
     "structuredRows": []
   },
   {
-    "name": "SwitchFieldProps",
+    "name": "SwitchProps",
     "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/switch-field/types.ts",
+    "modulePath": "src/types/switch.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/switch-field/types.ts",
+      "filePath": "src/types/switch.ts",
       "line": 5,
       "column": 1
     },
@@ -18591,9 +17979,100 @@
     "signatures": [],
     "members": [
       {
-        "name": "description",
+        "name": "accessibilityLabel",
         "kind": "property",
-        "type": "ReactNode",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessible",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "alignSelf",
+        "kind": "property",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bg",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderColor",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderWidth",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bottom",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "checked",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "color",
+        "kind": "property",
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "defaultChecked",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
         "required": false,
         "description": null
       },
@@ -18605,6 +18084,48 @@
         "description": null
       },
       {
+        "name": "flex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexBasis",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexGrow",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexShrink",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
@@ -18612,10 +18133,73 @@
         "description": null
       },
       {
-        "name": "label",
+        "name": "invalid",
         "kind": "property",
-        "type": "ReactNode",
-        "required": true,
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "left",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "m",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ml",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -18626,10 +18210,150 @@
         "description": null
       },
       {
-        "name": "onValueChange",
+        "name": "mr",
         "kind": "property",
-        "type": "(value: boolean) => void",
-        "required": true,
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mx",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "my",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onCheckedChange",
+        "kind": "property",
+        "type": "((checked: boolean) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onLongPress",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "opacity",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overflow",
+        "kind": "property",
+        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "p",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pl",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "position",
+        "kind": "property",
+        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pr",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "px",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "py",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "radius",
+        "kind": "property",
+        "type": "Responsive<RadiusValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "right",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "ControlSize | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -18647,10 +18371,31 @@
         "description": null
       },
       {
-        "name": "value",
+        "name": "top",
         "kind": "property",
-        "type": "boolean",
-        "required": true,
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
         "description": null
       }
     ],
@@ -19356,106 +19101,6 @@
     "structuredRows": []
   },
   {
-    "name": "ThemeComposer",
-    "description": "UI for composing and applying a theme via structured controls.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/theme-composer/ThemeComposer.tsx",
-      "line": 321,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ThemeComposerProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/theme-composer/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/theme-composer/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraTheme", "ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "appCategories",
-        "kind": "property",
-        "type": "readonly (\"medical\" | \"books_reading\" | \"business_productivity\" | \"developer_tools\" | \"education_learning\" | \"entertainment_media\" | \"finance_money\" | \"food_drink\" | \"games\" | \"graphics_design\" | \"health_fitness\" | \"kids_family\" | \"lifestyle\" | \"music_audio\" | \"navigation_travel\" | \"news_magazines\" | \"photo_video\" | \"reference\" | \"shopping_commerce\" | \"social_community\" | \"sports\" | \"utilities_tools\" | \"weather\")[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onChange",
-        "kind": "property",
-        "type": "(theme: ZoraTheme) => void",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "onModeChange",
-        "kind": "property",
-        "type": "((mode: ZoraThemeMode) => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onSubmit",
-        "kind": "property",
-        "type": "((theme: ZoraTheme) => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "value",
-        "kind": "property",
-        "type": "ZoraTheme",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ThemeModeToggle",
     "description": null,
     "isReadme": false,
@@ -19511,9 +19156,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/timeline/Timeline.tsx",
+    "modulePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/timeline/Timeline.tsx",
+      "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
       "line": 127,
       "column": 14
     },
@@ -19529,9 +19174,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/timeline/types.ts",
+    "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/timeline/types.ts",
+      "filePath": "src/types/timeline.ts",
       "line": 7,
       "column": 1
     },
@@ -19597,9 +19242,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/timeline/types.ts",
+    "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/timeline/types.ts",
+      "filePath": "src/types/timeline.ts",
       "line": 17,
       "column": 1
     },
@@ -20108,9 +19753,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/tree-view/TreeItem.tsx",
+    "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/tree-view/TreeItem.tsx",
+      "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
       "line": 102,
       "column": 14
     },
@@ -20126,9 +19771,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/tree-view/types.ts",
+    "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/tree-view/types.ts",
+      "filePath": "src/types/tree-view.ts",
       "line": 6,
       "column": 1
     },
@@ -20194,9 +19839,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/tree-view/types.ts",
+    "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/tree-view/types.ts",
+      "filePath": "src/types/tree-view.ts",
       "line": 16,
       "column": 1
     },
@@ -20248,9 +19893,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/tree-view/TreeView.tsx",
+    "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/tree-view/TreeView.tsx",
+      "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
       "line": 63,
       "column": 14
     },
@@ -20266,9 +19911,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/tree-view/types.ts",
+    "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/tree-view/types.ts",
+      "filePath": "src/types/tree-view.ts",
       "line": 24,
       "column": 1
     },
@@ -20879,10 +20524,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/patterns/selection/SelectionProvider.tsx",
+    "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/SelectionProvider.tsx",
-      "line": 26,
+      "filePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
+      "line": 36,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -20904,9 +20549,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/selection/types.ts",
+    "modulePath": "src/types/selection.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/selection/types.ts",
+      "filePath": "src/types/selection.ts",
       "line": 18,
       "column": 1
     },
@@ -21740,7 +21385,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 103,
+      "line": 97,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21758,7 +21403,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 218,
+      "line": 197,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21794,7 +21439,7 @@
     "modulePath": "src/corePluginMetadata.ts",
     "sourceLocation": {
       "filePath": "src/corePluginMetadata.ts",
-      "line": 22,
+      "line": 18,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21866,7 +21511,7 @@
     "modulePath": "src/metadata/themeRecipeMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/themeRecipeMeta.ts",
-      "line": 9,
+      "line": 8,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21949,7 +21594,7 @@
     "modulePath": "src/metadata/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/bindableComponentMeta.ts",
-      "line": 513,
+      "line": 505,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -22548,7 +22193,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 90,
+      "line": 75,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],

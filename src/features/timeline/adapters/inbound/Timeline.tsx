@@ -1,0 +1,127 @@
+import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
+import React from 'react';
+
+import type { ZoraColor } from '../../../../internal/recipes';
+import { resolveIconSize } from '../../../../internal/recipes';
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { TimelineItem, TimelineProps } from '../../../../types/timeline';
+import { Icon } from '../../../icon/public';
+import { View } from '../../../layout/public';
+import { Heading } from '../../../typography/public';
+import { Text } from '../../../typography/public';
+
+function resolveRoleSemantics(theme: SurfaceTheme, color: ZoraColor): RoleSemantics {
+  switch (color) {
+    case 'secondary':
+      return theme.semantics.secondary;
+    case 'tertiary':
+      return theme.semantics.accent;
+    case 'quaternary':
+      return theme.semantics.highlight;
+    case 'error':
+      return theme.semantics.error;
+    case 'info':
+      return theme.semantics.info;
+    case 'primary':
+      return theme.semantics.action.primary;
+    case 'danger':
+      return theme.semantics.action.danger;
+    case 'success':
+      return theme.semantics.success;
+    case 'warning':
+      return theme.semantics.warning;
+    case 'neutral':
+    default:
+      return theme.semantics.action.neutral;
+  }
+}
+
+function TimelineInner({
+  themeId: _themeId,
+  mode: _mode,
+  interactionPolicy: _interactionPolicy,
+  testID,
+  items,
+  compact = false,
+}: TimelineProps) {
+  const { theme } = useZoraTheme();
+  const gap = compact ? 'm' : 'l';
+  const connectorHeight = compact ? 20 : 36;
+
+  const renderItem = (item: TimelineItem, index: number) => {
+    const status = item.status ?? 'neutral';
+    const role = resolveRoleSemantics(theme, status);
+    const showConnector = index < items.length - 1;
+    const iconSize = Math.max(12, resolveIconSize('s'));
+
+    return (
+      <View
+        direction="row"
+        key={item.id}
+        align="flex-start"
+        gap="m"
+        testID={item.testID}
+        wrap="nowrap"
+      >
+        <View align="center" flexShrink={0} gap="xs" style={{ width: 24 }}>
+          <View
+            bg={status === 'neutral' ? theme.semantics.neutral.surface : role.softBg}
+            borderColor={status === 'neutral' ? theme.semantics.neutral.divider : role.base}
+            borderWidth={1}
+            height={20}
+            radius="full"
+            width={20}
+            style={{ alignItems: 'center', justifyContent: 'center' }}
+          >
+            {item.icon ? (
+              <Icon
+                {...item.icon}
+                color={status === 'neutral' ? theme.semantics.content.muted : role.base}
+                size={iconSize}
+              />
+            ) : null}
+          </View>
+
+          {showConnector ? (
+            <View
+              bg={theme.semantics.neutral.divider}
+              height={connectorHeight}
+              radius="full"
+              style={{ width: 2 }}
+            />
+          ) : null}
+        </View>
+
+        <View flex={1} gap="xs" testID={testID}>
+          <View direction="row" align="flex-start" gap="s" justify="space-between" wrap="wrap">
+            <Heading level={compact ? 4 : 3}>{item.title}</Heading>
+            {item.meta ? (
+              <Text emphasis="muted" variant="caption">
+                {item.meta}
+              </Text>
+            ) : null}
+          </View>
+          {item.description ? (
+            <Text emphasis="muted" variant="bodySmall">
+              {item.description}
+            </Text>
+          ) : null}
+        </View>
+      </View>
+    );
+  };
+
+  return (
+    <View gap={gap} testID={testID}>
+      {items.map(renderItem)}
+    </View>
+  );
+}
+
+/***
+ * Timeline pattern for displaying a sequence of events.
+ *
+ 
+ */
+export const Timeline = withZoraThemeScope(TimelineInner);

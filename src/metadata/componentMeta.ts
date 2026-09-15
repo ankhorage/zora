@@ -21,8 +21,11 @@ import { mediaCardMeta } from '../features/card/mediaCardMeta';
 import { metricCardMeta } from '../features/card/metricCardMeta';
 import { postCardMeta } from '../features/card/postCardMeta';
 import { productCardMeta } from '../features/card/productCardMeta';
+import { chatListItemMeta } from '../features/chat/chatListItemMeta';
+import { messageBubbleMeta } from '../features/chat/messageBubbleMeta';
 import { chipGroupMeta } from '../features/chip/chipGroupMeta';
 import { chipMeta } from '../features/chip/chipMeta';
+import { collectionEditorMeta } from '../features/collection-editor/meta';
 import { contentRailMeta } from '../features/content-rail/contentRailMeta';
 import { dataTableMeta } from '../features/data-table/dataTableMeta';
 import { datePickerMeta } from '../features/date-picker/datePickerMeta';
@@ -36,6 +39,7 @@ import { formMeta } from '../features/form/formMeta';
 import { radioGroupMeta, radioMeta } from '../features/form/radio/radioMeta';
 import { searchInputMeta } from '../features/form/search-input/searchInputMeta';
 import { selectMeta } from '../features/form/select/selectMeta';
+import { switchMeta } from '../features/form/switch/switchMeta';
 import { textInputMeta } from '../features/form/text-input/textInputMeta';
 import { gradientMeta } from '../features/gradient/gradientMeta';
 import { heroMeta } from '../features/hero/heroMeta';
@@ -46,7 +50,6 @@ import { appShellMeta } from '../features/layout/appShellMeta';
 import { dividerMeta } from '../features/layout/dividerMeta';
 import { gridMeta } from '../features/layout/gridMeta';
 import { screenMeta } from '../features/layout/screenMeta';
-import { screenSectionMeta } from '../features/layout/screenSectionMeta';
 import { scrollViewMeta } from '../features/layout/scrollViewMeta';
 import { viewMeta } from '../features/layout/viewMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
@@ -58,6 +61,15 @@ import { paletteItemMeta } from '../features/palette-item/paletteItemMeta';
 import { popoverMenuMeta } from '../features/popover-menu/popoverMenuMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
 import { ratingMeta } from '../features/rating/ratingMeta';
+import { readerSurfaceMeta } from '../features/reader/meta';
+import {
+  barcodeScannerViewMeta,
+  cameraPermissionViewMeta,
+  scanOverlayMeta,
+} from '../features/scanner/meta';
+import { screenSectionMeta } from '../features/section/screenSectionMeta';
+import { sectionHeaderMeta } from '../features/section/sectionHeaderMeta';
+import { selectableItemMeta, selectionProviderMeta } from '../features/selection/meta';
 import {
   skeletonCardMeta,
   skeletonListMeta,
@@ -70,32 +82,14 @@ import { tabMeta } from '../features/tabs/tabMeta';
 import { tabPanelMeta } from '../features/tabs/tabPanelMeta';
 import { tabsMeta } from '../features/tabs/tabsMeta';
 import { timePickerMeta } from '../features/time-picker/timePickerMeta';
+import { timelineMeta } from '../features/timeline/meta';
 import { toastMeta } from '../features/toast/toastMeta';
 import { toastProviderMeta } from '../features/toast/toastProviderMeta';
 import { toolbarMeta } from '../features/toolbar/toolbarMeta';
+import { treeItemMeta, treeViewMeta } from '../features/tree-view/meta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';
-import { chatListItemMeta } from '../patterns/chat-list-item/meta';
-import { collectionEditorMeta } from '../patterns/collection-editor/meta';
-import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
-import { filterBarMeta } from '../patterns/filter-bar/meta';
-import { inspectorFieldMeta } from '../patterns/inspector-field/meta';
-import { messageBubbleMeta } from '../patterns/message-bubble/meta';
-import { noticeMeta } from '../patterns/notice/meta';
-import { panelMeta } from '../patterns/panel/meta';
-import { readerSurfaceMeta } from '../patterns/reader/meta';
-import {
-  barcodeScannerViewMeta,
-  cameraPermissionViewMeta,
-  scanOverlayMeta,
-} from '../patterns/scanner/meta';
-import { sectionHeaderMeta } from '../patterns/section-header/meta';
-import { selectableItemMeta, selectionProviderMeta } from '../patterns/selection/meta';
-import { switchFieldMeta } from '../patterns/switch-field/meta';
-import { themeComposerMeta } from '../patterns/theme-composer/meta';
-import { timelineMeta } from '../patterns/timeline/meta';
-import { treeItemMeta, treeViewMeta } from '../patterns/tree-view/meta';
 import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
 import { finalizeFeatureMetadata } from '../utils/finalizeFeatureMetadata';
 import type { ZoraComponentMetaRegistry } from './types';
@@ -146,6 +140,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Rating: ratingMeta,
   SearchInput: searchInputMeta,
   Select: selectMeta,
+  Switch: switchMeta,
   Skeleton: skeletonMeta,
   SkeletonCard: skeletonCardMeta,
   SkeletonList: skeletonListMeta,
@@ -175,19 +170,14 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SignUpForm: signUpFormMeta,
   ChatListItem: chatListItemMeta,
   CollectionEditor: collectionEditorMeta,
-  ConfirmDialog: confirmDialogMeta,
   ContentRail: contentRailMeta,
   EmptyState: emptyStateMeta,
-  FilterBar: filterBarMeta,
   Hero: heroMeta,
-  InspectorField: inspectorFieldMeta,
   List: listMeta,
   ListItem: listItemMeta,
   ListSection: listSectionMeta,
   MessageBubble: messageBubbleMeta,
   MissingElement: missingElementMeta,
-  Notice: noticeMeta,
-  Panel: panelMeta,
   PostCard: postCardMeta,
   ProductCard: productCardMeta,
   ReaderSurface: readerSurfaceMeta,
@@ -197,8 +187,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SectionHeader: sectionHeaderMeta,
   SelectableItem: selectableItemMeta,
   SelectionProvider: selectionProviderMeta,
-  SwitchField: switchFieldMeta,
-  ThemeComposer: themeComposerMeta,
   PaletteItem: paletteItemMeta,
   Timeline: timelineMeta,
   TreeItem: treeItemMeta,

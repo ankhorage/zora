@@ -23,15 +23,7 @@ const removedPublicNames = [
 
 describe('canonical layout boundary', () => {
   test('exports only the current layout primitives and semantic screen composition', () => {
-    for (const name of [
-      'AppShell',
-      'Divider',
-      'Grid',
-      'Screen',
-      'ScreenSection',
-      'ScrollView',
-      'View',
-    ]) {
+    for (const name of ['AppShell', 'Divider', 'Grid', 'Screen', 'ScrollView', 'View']) {
       expect(publicSource).toMatch(new RegExp(`\\b${name}\\b`, 'u'));
     }
 
@@ -44,12 +36,12 @@ describe('canonical layout boundary', () => {
   test('does not retain the legacy layout or foundation ownership roots', () => {
     expect(existsSync(join(srcDir, 'layout'))).toBe(false);
     expect(existsSync(join(srcDir, 'foundation'))).toBe(false);
-    expect(existsSync(join(srcDir, 'patterns', 'settings-row'))).toBe(false);
-    expect(existsSync(join(srcDir, 'patterns', 'tile-grid'))).toBe(false);
+    expect(existsSync(join(srcDir, 'patterns'))).toBe(false);
   });
 
   test('keeps moved capabilities with their singular feature owners', () => {
     expect(existsSync(join(srcDir, 'features', 'content-rail', 'public.ts'))).toBe(true);
     expect(existsSync(join(srcDir, 'features', 'palette-item', 'public.ts'))).toBe(true);
+    expect(existsSync(join(srcDir, 'features', 'section', 'public.ts'))).toBe(true);
   });
 });

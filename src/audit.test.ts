@@ -120,16 +120,16 @@ describe('Plan 5 audit — no showcase bridge or direct Surface imports in examp
 
 describe('Plan 5 audit — product-facing src imports ZORA layout primitives, not Surface directly', () => {
   /**
-   * Features and patterns that compose ZORA layout primitives should import them from ZORA,
+   * Product-facing features that compose ZORA layout primitives should import them from ZORA,
    * not directly from @ankhorage/surface. The feature-owned layout adapters are the deliberate
    * Surface foundation boundary.
    */
   const SURFACE_FOUNDATION_BOUNDARY = join(SRC_ROOT, 'features', 'layout');
-  const PRODUCT_FACING_DIRS = [join(SRC_ROOT, 'features'), join(SRC_ROOT, 'patterns')];
+  const PRODUCT_FACING_DIRS = [join(SRC_ROOT, 'features')];
   const FOUNDATION_PRIMITIVES_PATTERN =
     /import \{[^}]*\b(View|ScrollView|Grid|Divider)\b[^}]*\} from '@ankhorage\/surface'/;
 
-  test('feature, layout, and pattern files do not import foundation primitives directly from @ankhorage/surface', () => {
+  test('product-facing feature files do not import foundation primitives directly from @ankhorage/surface', () => {
     for (const dir of PRODUCT_FACING_DIRS) {
       for (const filePath of listFiles(dir)) {
         if (isPathWithin(filePath, SURFACE_FOUNDATION_BOUNDARY)) continue;

@@ -25,10 +25,9 @@ import { ComponentsPage } from './app/components';
 import { HomePage } from './app/home';
 import { PatternsPage } from './app/patterns';
 import { PostsPage } from './app/posts';
-import { ThemeComposerPage } from './app/theme-composer';
 import { useZoraIconFonts } from './useZoraIconFonts';
 
-type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'chats' | 'theme';
+type ShowcaseTab = 'home' | 'components' | 'patterns' | 'posts' | 'chats';
 type ColorMode = ZoraThemeMode;
 
 const SHOWCASE_TABS = [
@@ -37,7 +36,6 @@ const SHOWCASE_TABS = [
   { value: 'patterns', label: 'Patterns' },
   { value: 'posts', label: 'Posts' },
   { value: 'chats', label: 'Chats' },
-  { value: 'theme', label: 'Theme' },
 ] as const;
 
 const initialShowcaseTheme: ZoraTheme = {
@@ -56,7 +54,6 @@ function AppWrapper() {
   const iconFontsLoaded = useZoraIconFonts();
   const [activeTab, setActiveTab] = React.useState<ShowcaseTab>('home');
   const [colorMode, setColorMode] = React.useState<ColorMode>('light');
-  const [showcaseTheme, setShowcaseTheme] = React.useState<ZoraTheme>(initialShowcaseTheme);
   const isDark = colorMode === 'dark';
 
   if (!iconFontsLoaded) return null;
@@ -67,7 +64,7 @@ function AppWrapper() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ZoraProvider key={colorMode} initialMode={colorMode} theme={showcaseTheme}>
+      <ZoraProvider key={colorMode} initialMode={colorMode} theme={initialShowcaseTheme}>
         <GradientRendererProvider renderer={ExpoGradientRenderer}>
           <SafeAreaProvider>
             <StatusBar style={isDark ? 'light' : 'dark'} />
@@ -108,14 +105,6 @@ function AppWrapper() {
                 <TabPanel value="chats">
                   <ChatsPage />
                 </TabPanel>
-                <TabPanel value="theme">
-                  <ThemeComposerPage
-                    mode={colorMode}
-                    onModeChange={setColorMode}
-                    onThemeChange={setShowcaseTheme}
-                    theme={showcaseTheme}
-                  />
-                </TabPanel>
               </AppShell>
             </Tabs>
           </SafeAreaProvider>
@@ -136,7 +125,6 @@ function selectShowcaseTab(
       case 'patterns':
       case 'posts':
       case 'chats':
-      case 'theme':
         setActiveTab(value);
         break;
     }

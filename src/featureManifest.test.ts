@@ -21,8 +21,9 @@ test('every selected feature element is directly authorable through its canonica
   }
 });
 
-test('feature ownership has no remaining legacy components directory', () => {
+test('feature ownership has no remaining legacy ownership roots', () => {
   expect(existsSync('src/components')).toBe(false);
+  expect(existsSync('src/patterns')).toBe(false);
 });
 
 test('form composition has one canonical feature owner', () => {

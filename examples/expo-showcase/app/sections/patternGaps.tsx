@@ -2,13 +2,11 @@ import {
   Badge,
   Button,
   Card,
-  ConfirmDialog,
   ContentRail,
+  Dialog,
   IconButton,
   ListItem,
   MissingElement,
-  Notice,
-  Panel,
   ReaderSurface,
   ScreenSection,
   SectionHeader,
@@ -86,8 +84,8 @@ export function PatternGapsSection() {
       />
 
       <SectionHeader
-        title="Dialogs and panels"
-        description="Focused confirmation and contextual panel patterns."
+        title="Dialogs and cards"
+        description="Compose confirmation actions directly with Dialog and Card."
       />
 
       <Card
@@ -104,18 +102,16 @@ export function PatternGapsSection() {
         </Text>
       </Card>
 
-      <Panel
-        title="Panel"
-        description="Panels compose title, description, actions, footer, and content."
-        actions={<IconButton icon={{ name: 'settings-outline' }} label="Panel settings" size="s" />}
+      <Card
+        title="Composed card"
+        description="Cards already own title, description, actions, footer, and content."
+        actions={<IconButton icon={{ name: 'settings-outline' }} label="Card settings" size="s" />}
         footer={<Badge color="success">Ready</Badge>}
       >
-        <Notice
-          color="primary"
-          title="Panel content"
-          description="This is a compact panel example inside the pattern catalog."
-        />
-      </Panel>
+        <Text emphasis="muted" variant="bodySmall">
+          No additional Panel or Notice wrapper is required.
+        </Text>
+      </Card>
 
       <SectionHeader
         title="List rows"
@@ -161,15 +157,26 @@ export function PatternGapsSection() {
         />
       </Card>
 
-      <ConfirmDialog
+      <Dialog
         visible={confirmOpen}
         title="Delete showcase item?"
-        description="This is a mock confirmation dialog for visual coverage."
-        confirmLabel="Delete"
-        confirmColor="danger"
-        onCancel={() => setConfirmOpen(false)}
-        onConfirm={() => setConfirmOpen(false)}
-      />
+        description="This is a mock confirmation dialog composed from the canonical Dialog API."
+        onDismiss={() => setConfirmOpen(false)}
+        footer={
+          <View direction={{ base: 'column', md: 'row' }} gap="s" justify="flex-end">
+            <Button variant="soft" color="neutral" onPress={() => setConfirmOpen(false)}>
+              Cancel
+            </Button>
+            <Button color="danger" onPress={() => setConfirmOpen(false)}>
+              Delete
+            </Button>
+          </View>
+        }
+      >
+        <Text emphasis="muted" variant="bodySmall">
+          Consumers compose confirmation actions explicitly instead of using a preset wrapper.
+        </Text>
+      </Dialog>
     </ScreenSection>
   );
 }

@@ -43,14 +43,14 @@ const zoraProviderSource = readSource('ZoraProvider.tsx');
 const themeScopeSource = readSource('ZoraThemeScope.tsx');
 const hocSource = readSource('withZoraThemeScope.tsx');
 
-const scopeGuardDirs = [join(srcDir, 'patterns')] as const;
+const scopeGuardDirs = [join(srcDir, 'features')] as const;
 
 const scopeGuardFiles = scopeGuardDirs.flatMap(collectSourceFiles);
 
 const scopedComponentFiles = [
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'AppShell.tsx'),
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'Screen.tsx'),
-  join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'ScreenSection.tsx'),
+  join(srcDir, 'features', 'section', 'adapters', 'inbound', 'ScreenSection.tsx'),
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'ScrollView.tsx'),
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'View.tsx'),
   join(srcDir, 'features', 'content-rail', 'adapters', 'inbound', 'ContentRail.tsx'),
@@ -105,20 +105,16 @@ const scopedComponentFiles = [
   join(srcDir, 'features', 'auth', 'adapters', 'inbound', 'SignInForm.tsx'),
   join(srcDir, 'features', 'auth', 'adapters', 'inbound', 'SignUpForm.tsx'),
   join(srcDir, 'features', 'gradient', 'adapters', 'inbound', 'Gradient.tsx'),
-  join(srcDir, 'patterns', 'collection-editor', 'CollectionEditor.tsx'),
-  join(srcDir, 'patterns', 'confirm-dialog', 'ConfirmDialog.tsx'),
+  join(srcDir, 'features', 'collection-editor', 'adapters', 'inbound', 'CollectionEditor.tsx'),
   join(srcDir, 'features', 'empty-state', 'adapters', 'inbound', 'EmptyState.tsx'),
-  join(srcDir, 'patterns', 'inspector-field', 'InspectorField.tsx'),
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'List.tsx'),
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'ListItem.tsx'),
   join(srcDir, 'features', 'list', 'adapters', 'inbound', 'ListSection.tsx'),
-  join(srcDir, 'patterns', 'notice', 'Notice.tsx'),
-  join(srcDir, 'patterns', 'panel', 'Panel.tsx'),
-  join(srcDir, 'patterns', 'section-header', 'SectionHeader.tsx'),
-  join(srcDir, 'patterns', 'switch-field', 'SwitchField.tsx'),
-  join(srcDir, 'patterns', 'timeline', 'Timeline.tsx'),
-  join(srcDir, 'patterns', 'tree-view', 'TreeItem.tsx'),
-  join(srcDir, 'patterns', 'tree-view', 'TreeView.tsx'),
+  join(srcDir, 'features', 'section', 'adapters', 'inbound', 'SectionHeader.tsx'),
+  join(srcDir, 'features', 'form', 'switch', 'adapters', 'inbound', 'Switch.tsx'),
+  join(srcDir, 'features', 'timeline', 'adapters', 'inbound', 'Timeline.tsx'),
+  join(srcDir, 'features', 'tree-view', 'adapters', 'inbound', 'TreeItem.tsx'),
+  join(srcDir, 'features', 'tree-view', 'adapters', 'inbound', 'TreeView.tsx'),
 
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'Divider.tsx'),
   join(srcDir, 'features', 'layout', 'adapters', 'inbound', 'Grid.tsx'),
@@ -160,17 +156,13 @@ const scopedPropTypeFiles = [
 
   join(srcDir, 'types', 'auth.ts'),
   join(srcDir, 'types', 'gradient.ts'),
-  join(srcDir, 'patterns', 'collection-editor', 'types.ts'),
-  join(srcDir, 'patterns', 'confirm-dialog', 'types.ts'),
+  join(srcDir, 'types', 'collection-editor.ts'),
   join(srcDir, 'types', 'empty-state.ts'),
-  join(srcDir, 'patterns', 'inspector-field', 'types.ts'),
   join(srcDir, 'types', 'list.ts'),
-  join(srcDir, 'patterns', 'notice', 'types.ts'),
-  join(srcDir, 'patterns', 'panel', 'types.ts'),
-  join(srcDir, 'patterns', 'section-header', 'types.ts'),
-  join(srcDir, 'patterns', 'switch-field', 'types.ts'),
-  join(srcDir, 'patterns', 'timeline', 'types.ts'),
-  join(srcDir, 'patterns', 'tree-view', 'types.ts'),
+  join(srcDir, 'types', 'section.ts'),
+  join(srcDir, 'types', 'switch.ts'),
+  join(srcDir, 'types', 'timeline.ts'),
+  join(srcDir, 'types', 'tree-view.ts'),
 ] as const;
 
 describe('theme scope structure', () => {

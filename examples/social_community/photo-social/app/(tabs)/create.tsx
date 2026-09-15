@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Button,
-  Card,
-  Notice,
-  Screen,
-  ScreenSection,
-  TextInput,
-  Uploader,
-} from '@ankhorage/zora';
+import { Badge, Button, Card, Screen, ScreenSection, TextInput, Uploader } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -44,10 +35,11 @@ export default function CreateScreen() {
         </ScreenSection>
 
         <ScreenSection title="Guidance">
-          <Notice
+          <Card
             title="Static example only"
             description="This route demonstrates the composition surface. Upload persistence belongs in app/backend examples later."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>

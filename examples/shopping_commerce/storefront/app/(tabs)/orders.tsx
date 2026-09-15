@@ -1,4 +1,4 @@
-import { Badge, ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, MetricCard, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -47,10 +47,11 @@ export default function OrdersScreen() {
         />
 
         <ScreenSection title="Product note">
-          <Notice
+          <Card
             title="Fulfillment is static"
             description="Tracking, refunds, returns, and notifications belong in later app/backend examples."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>

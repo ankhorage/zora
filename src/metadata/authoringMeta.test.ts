@@ -23,7 +23,7 @@ describe('ZORA component prop authoring authority', () => {
   });
 
   test('marks recipe props theme-owned while allowing explicit instance overrides', () => {
-    for (const name of ['Button', 'Card', 'Heading', 'Text', 'Panel']) {
+    for (const name of ['Button', 'Card', 'Heading', 'Text']) {
       const meta = componentMetaByName.get(name);
       expect(meta, name).toBeDefined();
       for (const prop of Object.values(meta?.props ?? {})) {

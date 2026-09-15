@@ -1,4 +1,4 @@
-import { Badge, Button, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Button, Card, ListSection, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -40,10 +40,11 @@ export default function CartScreen() {
             description="CHF 201 · shipping calculated later"
             actions={<Badge color="primary">3 items</Badge>}
           />
-          <Notice
+          <Card
             title="Checkout is out of scope"
             description="The UI is static. Payments, taxes, shipping, and inventory reservation belong in app/backend examples later."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>
