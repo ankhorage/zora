@@ -1,22 +1,12 @@
-import {
-  Badge,
-  View,
-  Card,
-  Divider,
-  Grid,
-  ScreenSection,
-  Show,
-  Surface,
-  Text,
-} from '@ankhorage/zora';
+import { Badge, View, Card, Divider, Grid, ScreenSection, Surface, Text } from '@ankhorage/zora';
 import React from 'react';
 
 export function FoundationPrimitivesSection() {
   return (
     <ScreenSection title="Foundation primitives">
       <Card
-        title="Stack and Inline"
-        description="Use Stack for vertical rhythm and Inline for wrapped horizontal groups."
+        title="View flow"
+        description="Use View for vertical rhythm and responsive horizontal groups."
       >
         <View gap="m">
           <View gap="s">
@@ -40,8 +30,8 @@ export function FoundationPrimitivesSection() {
       </Card>
 
       <Card
-        title="Grid and Container"
-        description="Responsive containers and grids keep catalog surfaces aligned."
+        title="Grid and bounded View"
+        description="Responsive View constraints and grids keep catalog surfaces aligned."
       >
         <View maxWidth={720} px="s">
           <Grid cols={{ base: 1, md: 3 }} gap="s">
@@ -58,13 +48,10 @@ export function FoundationPrimitivesSection() {
         </View>
       </Card>
 
-      <Card
-        title="Center and Box"
-        description="Box is the flexible primitive; Center aligns its children."
-      >
+      <Card title="View alignment" description="View owns flexible geometry and alignment.">
         <View align="center" justify="center" minHeight={96} p="m">
           <View p="m" radius="m" bg="surface">
-            <Text weight="semiBold">Centered Box</Text>
+            <Text weight="semiBold">Centered View</Text>
           </View>
         </View>
       </Card>
@@ -90,22 +77,14 @@ export function FoundationPrimitivesSection() {
       </Card>
 
       <Card
-        title="Divider, Spacer, and Show"
-        description="Small layout utilities keep examples readable."
+        title="Divider and spacing"
+        description="View gap and dimensions cover ordinary spacing without helper components."
       >
         <View gap="s">
           <Text>First block</Text>
           <Divider />
           <View height="s" />
-          <Text>Second block after a spacer</Text>
-          <Show
-            when={{ base: true, md: false }}
-            fallback={<Badge color="neutral">Desktop fallback</Badge>}
-          >
-            <Badge color="primary" variant="soft">
-              Visible on base breakpoint
-            </Badge>
-          </Show>
+          <Text>Second block after explicit spacing</Text>
         </View>
       </Card>
     </ScreenSection>

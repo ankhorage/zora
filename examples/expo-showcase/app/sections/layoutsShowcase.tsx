@@ -1,15 +1,15 @@
 import {
+  AppShell,
   Badge,
   Button,
   Card,
+  Grid,
   KeyboardAvoidingView,
   ScreenSection,
-  SettingsLayout,
-  SidebarLayout,
-  View,
+  ScrollView,
   Surface,
   Text,
-  TopbarLayout,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export function LayoutsShowcaseSection() {
     <ScreenSection title="Layouts">
       <Card
         title="Focused composition"
-        description="Use Center, Card, and Stack directly for compact focused flows."
+        description="View composes alignment, spacing, and responsive direction without layout-specific wrappers."
       >
         <KeyboardAvoidingView behavior="padding">
           <View align="center" justify="center" px="m" py="xl">
@@ -26,7 +26,7 @@ export function LayoutsShowcaseSection() {
               compact
               eyebrow="Secure area"
               title="Welcome back"
-              description="Focused auth flows can be composed with primitives."
+              description="Focused auth flows compose directly from canonical primitives."
               footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
             >
               <View gap="m">
@@ -38,60 +38,78 @@ export function LayoutsShowcaseSection() {
       </Card>
 
       <Card
-        title="SettingsLayout"
-        description="Settings pages can pair navigation with focused content."
+        title="Responsive regions"
+        description="The owning feature decides what each region means; View owns only geometry."
       >
-        <SettingsLayout
-          title="Workspace settings"
-          description="Compact showcase example."
-          sidebar={
+        <View direction={{ base: 'column', lg: 'row' }} gap="m">
+          <Surface variant="outline" p="m" width={{ base: '100%', lg: 220 }}>
             <View gap="s">
-              <Badge color="primary">General</Badge>
-              <Badge color="neutral" variant="soft">
-                Members
-              </Badge>
+              <Text weight="semiBold">Supporting region</Text>
+              <Badge color="neutral">Navigation or tools</Badge>
             </View>
-          }
-          actions={<Button size="s">Save</Button>}
-        >
-          <Surface variant="subtle" p="m">
-            <Text>Settings content area</Text>
           </Surface>
-        </SettingsLayout>
-      </Card>
-
-      <Card title="SidebarLayout" description="Sidebar, content, and optional aside regions.">
-        <SidebarLayout
-          sidebar={
-            <View gap="s">
-              <Text weight="semiBold">Sidebar</Text>
-              <Badge color="neutral">Navigation</Badge>
-            </View>
-          }
-          aside={<Text emphasis="muted">Aside</Text>}
-        >
-          <Surface variant="subtle" p="m">
-            <Text>Main content</Text>
+          <Surface flex={1} variant="subtle" p="m">
+            <Text>Main content remains the semantic owner's responsibility.</Text>
           </Surface>
-        </SidebarLayout>
+        </View>
       </Card>
 
       <Card
-        title="TopbarLayout"
-        description="Topbar plus optional sidebar for editor-style screens."
+        title="Auto-fit grid"
+        description="Grid fills available width from a minimum item size."
       >
-        <TopbarLayout
-          topbar={
-            <Surface variant="outline" p="s">
-              <Text weight="semiBold">Topbar</Text>
-            </Surface>
-          }
-          sidebar={<Badge color="primary">Tools</Badge>}
-        >
+        <Grid minItemWidth={160} gap="m">
           <Surface variant="subtle" p="m">
-            <Text>Topbar content area</Text>
+            <Text>One</Text>
           </Surface>
-        </TopbarLayout>
+          <Surface variant="subtle" p="m">
+            <Text>Two</Text>
+          </Surface>
+          <Surface variant="subtle" p="m">
+            <Text>Three</Text>
+          </Surface>
+        </Grid>
+      </Card>
+
+      <Card
+        title="Bounded scrolling"
+        description="ScrollView is explicit when a nested region owns scrolling."
+      >
+        <View height={150}>
+          <ScrollView>
+            <View gap="s" p="s">
+              {Array.from({ length: 8 }, (_, index) => (
+                <Surface key={index} variant="outline" p="s">
+                  <Text>Scrollable item {index + 1}</Text>
+                </Surface>
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+      </Card>
+
+      <Card
+        title="App shell"
+        description="AppShell provides only stable app-frame slots, not navigation semantics."
+      >
+        <View height={220}>
+          <AppShell
+            header={
+              <Surface p="s" variant="outline">
+                <Text weight="semiBold">Header</Text>
+              </Surface>
+            }
+            footer={
+              <Surface p="s" variant="outline">
+                <Text emphasis="muted">Footer</Text>
+              </Surface>
+            }
+          >
+            <View flex={1} p="m">
+              <Text>Shell content</Text>
+            </View>
+          </AppShell>
+        </View>
       </Card>
     </ScreenSection>
   );

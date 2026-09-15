@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import type { BoxProps } from '../features/layout/public';
+import type { ViewProps } from '../features/layout/public';
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export type GradientColor = string;
@@ -35,9 +35,9 @@ export interface GradientProps extends ZoraBaseProps {
   locations?: GradientLocations;
   start?: GradientPoint;
   end?: GradientPoint;
-  width?: BoxProps['width'];
-  height?: BoxProps['height'];
-  minHeight?: BoxProps['minHeight'];
-  radius?: BoxProps['radius'];
-  p?: BoxProps['p'];
+  width?: ViewProps['width'];
+  height?: ViewProps['height'];
+  minHeight?: ViewProps['minHeight'];
+  radius?: ViewProps['radius'];
+  p?: ViewProps['p'];
 }

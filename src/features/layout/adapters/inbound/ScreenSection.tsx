@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { View } from '../../features/layout/public';
-import { SectionHeader } from '../../patterns/section-header';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { ScreenSectionProps } from './types';
+import { SectionHeader } from '../../../../patterns/section-header';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { ScreenSectionProps } from '../../../../types/layout';
+import { View } from './View';
 
 function ScreenSectionInner({
   themeId: _themeId,
@@ -23,9 +23,5 @@ function ScreenSectionInner({
   );
 }
 
-/***
- * Screen section layout with optional title, description, and actions.
- *
- 
- */
+/*** Screen section with optional heading, description, actions, and content. */
 export const ScreenSection = withZoraThemeScope(ScreenSectionInner);

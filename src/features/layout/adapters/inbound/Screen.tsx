@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { ScrollView, View } from '../../features/layout/public';
-import { resolvePageMaxWidth } from '../../internal/recipes';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { ScreenProps } from './types';
+import { resolvePageMaxWidth } from '../../../../internal/recipes';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { ScreenProps } from '../../../../types/layout';
+import { ScrollView } from './ScrollView';
+import { View } from './View';
 
 function ScreenInner({
   themeId: _themeId,
@@ -45,11 +46,5 @@ function ScreenInner({
   );
 }
 
-/**
- * Outer content boundary for one app screen.
- *
- * By default Screen owns normal vertical scrolling. Set `scroll={false}` to preserve a bounded
- * viewport and delegate scroll or gesture ownership to specialized children such as lists, maps,
- * chats, canvases, or editors. Content width and page spacing remain stable in both modes.
- */
+/*** Screen content boundary with independent width policy and scroll ownership. */
 export const Screen = withZoraThemeScope(ScreenInner);

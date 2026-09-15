@@ -1,3 +1,13 @@
+export type {
+  ContentRailControlPressEvent,
+  ContentRailDirection,
+  ContentRailItemSize,
+  ContentRailMotion,
+  ContentRailProps,
+  ContentRailSpacing,
+  ContentRailVisibleRangeChangeEvent,
+} from './features/content-rail/public';
+export { ContentRail } from './features/content-rail/public';
 export { ZORA_CORE_PLUGIN } from './corePlugin';
 export { ZORA_CORE_PLUGIN_METADATA } from './corePluginMetadata';
 export {
@@ -185,18 +195,24 @@ export {
   type KeyboardAvoidingViewBehavior,
   type KeyboardAvoidingViewProps,
 } from './features/keyboard-avoiding-view/public';
-export type { DividerProps, GridProps, ScrollViewProps, ViewProps } from './features/layout/public';
 export type {
-  ContentRailControlPressEvent,
-  ContentRailDirection,
-  ContentRailItemSize,
-  ContentRailMotion,
-  ContentRailProps,
-  ContentRailSpacing,
-  ContentRailVisibleRangeChangeEvent,
+  AppShellProps,
+  DividerProps,
+  GridProps,
+  ScreenProps,
+  ScreenSectionProps,
+  ScrollViewProps,
+  ViewProps,
 } from './features/layout/public';
-export { Divider, Grid, ScrollView, View } from './features/layout/public';
-export { ContentRail } from './features/layout/public';
+export {
+  AppShell,
+  Divider,
+  Grid,
+  Screen,
+  ScreenSection,
+  ScrollView,
+  View,
+} from './features/layout/public';
 export type {
   ManifestListProps,
   ManifestListSection,
@@ -204,6 +220,8 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
+export type { PaletteItemProps } from './features/palette-item/public';
+export { PaletteItem } from './features/palette-item/public';
 export { Pagination, type PaginationProps } from './features/pagination/public';
 export {
   PopoverMenu,
@@ -297,18 +315,6 @@ export {
   ZORA_PALETTE_COLORS,
   ZORA_STATUS_COLORS,
 } from './internal/colorModel';
-export type { AppShellProps } from './layout/app-shell';
-export { AppShell } from './layout/app-shell';
-export type { ScreenProps } from './layout/screen';
-export { Screen } from './layout/screen';
-export type { ScreenSectionProps } from './layout/screen-section';
-export { ScreenSection } from './layout/screen-section';
-export type { SettingsLayoutProps } from './layout/settings-layout';
-export { SettingsLayout } from './layout/settings-layout';
-export type { SidebarLayoutProps } from './layout/sidebar-layout';
-export { SidebarLayout } from './layout/sidebar-layout';
-export type { TopbarLayoutProps } from './layout/topbar-layout';
-export { TopbarLayout } from './layout/topbar-layout';
 export type {
   ZoraBindableComponentType,
   ZoraComponentBlueprint,
@@ -408,14 +414,10 @@ export type {
   UseSelectionResult,
 } from './patterns/selection';
 export { SelectableItem, SelectionProvider, useSelection } from './patterns/selection';
-export type { SettingsRowProps } from './patterns/settings-row';
-export { SettingsRow } from './patterns/settings-row';
 export type { SwitchFieldProps } from './patterns/switch-field';
 export { SwitchField } from './patterns/switch-field';
 export type { ThemeComposerProps } from './patterns/theme-composer';
 export { ThemeComposer } from './patterns/theme-composer';
-export type { PaletteItemProps, TileGridProps } from './patterns/tile-grid';
-export { PaletteItem, TileGrid } from './patterns/tile-grid';
 export type { TimelineItem, TimelineProps } from './patterns/timeline';
 export { Timeline } from './patterns/timeline';
 export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './patterns/tree-view';

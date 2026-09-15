@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Card } from '../../features/card/public';
-import { View } from '../../features/layout/public';
-import { Heading } from '../../features/typography/public';
-import { Text } from '../../features/typography/public';
-import { useZoraTheme } from '../../theme/useZoraTheme';
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
-import type { PaletteItemProps } from './types';
+import { Card } from '../../../card/public';
+import { View } from '../../../layout/public';
+import { Heading } from '../../../typography/public';
+import { Text } from '../../../typography/public';
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { PaletteItemProps } from '../../../../types/palette-item';
 
 function PaletteItemInner({
   themeId: _themeId,

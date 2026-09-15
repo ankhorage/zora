@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View as ReactNativeView } from 'react-native';
 
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
@@ -36,7 +36,7 @@ function ProgressRingInner({
   const segments = Array.from({ length: geometry.filledSegmentCount });
 
   return (
-    <View
+    <ReactNativeView
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="progressbar"
       accessibilityValue={{
@@ -49,7 +49,7 @@ function ProgressRingInner({
       style={{ height: geometry.diameter, width: geometry.diameter }}
       testID={testID}
     >
-      <View
+      <ReactNativeView
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={styles.visual}
@@ -86,10 +86,10 @@ function ProgressRingInner({
             />
           </View>
         ))}
-      </View>
+      </ReactNativeView>
 
       {centerValue !== undefined || centerLabel !== undefined ? (
-        <View
+        <ReactNativeView
           importantForAccessibility="no-hide-descendants"
           pointerEvents="none"
           style={styles.center}
@@ -106,9 +106,9 @@ function ProgressRingInner({
               </Text>
             ) : null}
           </View>
-        </View>
+        </ReactNativeView>
       ) : null}
-    </View>
+    </ReactNativeView>
   );
 }
 

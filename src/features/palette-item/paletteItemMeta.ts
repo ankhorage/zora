@@ -1,10 +1,10 @@
 import type { ZoraComponentMeta } from '../../metadata';
 
-export const topbarLayoutMeta = {
-  name: 'TopbarLayout',
-  category: 'layout',
+export const paletteItemMeta = {
+  name: 'PaletteItem',
+  category: 'pattern',
   directManifestNode: false,
   allowedChildren: [],
-  note: 'Application layout; not represented as a manifest node in v1.',
+  note: 'Palette option pattern; not represented as a manifest node in v1.',
   props: {},
 } as const satisfies ZoraComponentMeta;

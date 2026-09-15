@@ -1,4 +1,3 @@
-import { Show } from '@ankhorage/surface';
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
@@ -43,9 +42,18 @@ import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
-import { View, Divider, Grid } from './features/layout/public';
-import { ContentRail } from './features/layout/public';
-import { FlatList, SectionList, ScrollView, View } from './features/list/public';
+import { ContentRail } from './features/content-rail/public';
+import { PaletteItem } from './features/palette-item/public';
+import {
+  AppShell,
+  Divider,
+  Grid,
+  Screen,
+  ScreenSection,
+  ScrollView,
+  View,
+} from './features/layout/public';
+import { FlatList, SectionList } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
 import { Pagination } from './features/pagination/public';
 import { PopoverMenu } from './features/popover-menu/public';
@@ -61,12 +69,6 @@ import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
 
-import { AppShell } from './layout/app-shell';
-import { Screen } from './layout/screen';
-import { ScreenSection } from './layout/screen-section';
-import { SettingsLayout } from './layout/settings-layout';
-import { SidebarLayout } from './layout/sidebar-layout';
-import { TopbarLayout } from './layout/topbar-layout';
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
@@ -80,10 +82,8 @@ import { ReaderSurface } from './patterns/reader';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
 import { SelectableItem } from './patterns/selection';
-import { SettingsRow } from './patterns/settings-row';
 import { SwitchField } from './patterns/switch-field';
 import { ThemeComposer } from './patterns/theme-composer';
-import { PaletteItem, TileGrid } from './patterns/tile-grid';
 import { Timeline } from './patterns/timeline';
 import { TreeItem, TreeView } from './patterns/tree-view';
 import { ThemeModeToggle } from './theme/ThemeModeToggle';
@@ -170,6 +170,8 @@ const _ZORA_COMPONENT_REGISTRY = {
   BottomSheet,
   FlatList,
   SectionList,
+  ScrollView,
+  View,
   ThemeModeToggle,
   Divider,
   Grid,
@@ -177,9 +179,6 @@ const _ZORA_COMPONENT_REGISTRY = {
   AppShell,
   Screen,
   ScreenSection,
-  SettingsLayout,
-  SidebarLayout,
-  TopbarLayout,
   ForgotPasswordForm,
   OAuthProviderButton,
   OAuthProviderList,
@@ -209,11 +208,9 @@ const _ZORA_COMPONENT_REGISTRY = {
   ScanOverlay,
   SectionHeader,
   SelectableItem,
-  SettingsRow,
   SwitchField,
   ThemeComposer,
   PaletteItem,
-  TileGrid,
   Timeline,
   TreeItem,
   TreeView,

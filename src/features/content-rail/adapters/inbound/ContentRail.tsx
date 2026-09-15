@@ -15,7 +15,7 @@ import type {
 } from '../../../../types/content-rail';
 import { IconButton } from '../../../button/public';
 import { Text } from '../../../typography/public';
-import { Box, Stack, View } from '../../public';
+import { View } from '../../../layout/public';
 import { resolveContentRailItemWidth } from '../../utils/resolveContentRailItemWidth';
 import { resolveContentRailPhysicalOffset } from '../../utils/resolveContentRailPhysicalOffset';
 import { resolveContentRailState } from '../../utils/resolveContentRailState';
@@ -189,7 +189,7 @@ function ContentRailCarousel({
   };
 
   return (
-    <Stack gap="s" testID={testID}>
+    <View gap="s" testID={testID}>
       {showControls && hasOverflow ? (
         <View direction="row" justify="space-between" wrap="nowrap">
           <Text accessibilityLiveRegion="polite" emphasis="muted" variant="caption">
@@ -239,12 +239,12 @@ function ContentRailCarousel({
         snapToInterval={itemWidth > 0 ? itemWidth + gapValue : undefined}
       >
         {items.map((item, index) => (
-          <Box key={index} style={{ flexShrink: 0, width: itemWidth || undefined }}>
+          <View key={index} style={{ flexShrink: 0, width: itemWidth || undefined }}>
             {item}
-          </Box>
+          </View>
         ))}
       </ScrollView>
-    </Stack>
+    </View>
   );
 }
 

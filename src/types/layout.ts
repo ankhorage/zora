@@ -4,7 +4,9 @@ import type {
   ScrollViewProps as SurfaceScrollViewProps,
   ViewProps as SurfaceViewProps,
 } from '@ankhorage/surface';
+import type React from 'react';
 
+import type { ZoraContentWidth } from '../internal/recipes';
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
 export interface ViewProps extends ZoraBaseProps, Omit<SurfaceViewProps, 'mode' | 'themeId'> {}
@@ -13,3 +15,24 @@ export interface ScrollViewProps
 export interface DividerProps
   extends ZoraBaseProps, Omit<SurfaceDividerProps, 'mode' | 'themeId'> {}
 export interface GridProps extends ZoraBaseProps, Omit<SurfaceGridProps, 'mode' | 'themeId'> {}
+
+export interface AppShellProps extends ZoraBaseProps {
+  children?: React.ReactNode;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+  overlay?: React.ReactNode;
+}
+
+export interface ScreenProps extends ZoraBaseProps {
+  children?: React.ReactNode;
+  footer?: React.ReactNode;
+  scroll?: boolean;
+  width?: ZoraContentWidth;
+}
+
+export interface ScreenSectionProps extends ZoraBaseProps {
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  actions?: React.ReactNode;
+  children?: React.ReactNode;
+}

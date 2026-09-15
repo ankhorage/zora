@@ -1,7 +1,5 @@
 import type { ZoraComponentMeta } from '../../metadata/types';
 
-export const CONTENT_RAIL_SPACING_VALUES = ['none', 'xs', 's', 'm', 'l', 'xl'] as const;
-
 export const LAYOUT_PROPS = {
   p: { type: 'spacing', category: 'Spacing' },
   px: { type: 'spacing', category: 'Spacing' },

@@ -4,7 +4,7 @@ import { IconButton } from '../../features/button/public';
 import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import { SettingsRow } from '../settings-row';
+import { ListRow } from '../list';
 import type { TreeItemNode, TreeItemRenderProps } from './types';
 
 interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
@@ -46,9 +46,9 @@ function TreeItemInner<TId extends string = string>({
     }
 
     return (
-      <SettingsRow
+      <ListRow
         title={node.label}
-        control={
+        action={
           <View direction="row" gap="xs" align="center">
             {node.actions}
             {hasChildren ? (
@@ -65,6 +65,7 @@ function TreeItemInner<TId extends string = string>({
         }
         meta={node.meta}
         disabled={node.disabled}
+        selected={isSelected}
       />
     );
   };

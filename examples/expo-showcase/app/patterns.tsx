@@ -33,7 +33,7 @@ import {
   SwitchField,
   Text,
   TextInput,
-  TileGrid,
+  Grid,
   Timeline,
   TreeView,
   type UploadAsset,
@@ -603,7 +603,7 @@ export function PatternsPage() {
       </ScreenSection>
 
       <ScreenSection title="Scenario: Theme picker">
-        <TileGrid columns={4}>
+        <Grid cols={4} gap="m">
           <PaletteItem
             title="Ocean"
             description="Blue primary"
@@ -633,7 +633,7 @@ export function PatternsPage() {
               </Badge>
             }
           />
-        </TileGrid>
+        </Grid>
       </ScreenSection>
 
       <ScreenSection title="Scenario: Empty workflow state">

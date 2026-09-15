@@ -1,6 +1,6 @@
 import { Radio } from '@ankhorage/surface';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { useZoraThemeRecipe } from '../../../../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';

@@ -1,6 +1,5 @@
 import { Checkbox } from '@ankhorage/surface';
 import React from 'react';
-import { View } from 'react-native';
 
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { CheckboxGroupOption, CheckboxGroupProps } from '../../../../../types/checkbox';

@@ -11,7 +11,7 @@ import {
   ReaderSurface,
   ScreenSection,
   SectionHeader,
-  SettingsRow,
+  ListRow,
   View,
   SwitchField,
   Text,
@@ -119,30 +119,30 @@ export function PatternGapsSection() {
       </Panel>
 
       <SectionHeader
-        title="Settings rows"
-        description="SettingsRow works for static, pressable, and controlled settings content."
+        title="List rows"
+        description="ListRow covers static, pressable, metadata, and trailing-action rows."
       />
-      <Card title="SettingsRow" tone="subtle">
+      <Card title="ListRow" tone="subtle">
         <View gap="s">
-          <SettingsRow
+          <ListRow
             title="Account plan"
             description="Static metadata row."
             meta={<Badge color="primary">Pro</Badge>}
           />
-          <SettingsRow
+          <ListRow
             title="Open billing"
             description="Pressable row with a mock action."
             onPress={() => undefined}
             meta="⌘B"
           />
-          <SettingsRow
+          <ListRow
             title="Background sync"
-            description="Controlled settings row."
-            control={
-              <SwitchField
-                label="Background sync"
-                value={syncEnabled}
-                onValueChange={setSyncEnabled}
+            description={syncEnabled ? 'Enabled' : 'Disabled'}
+            action={
+              <IconButton
+                icon={{ name: syncEnabled ? 'pause-outline' : 'play-outline' }}
+                label={syncEnabled ? 'Disable background sync' : 'Enable background sync'}
+                onPress={() => setSyncEnabled((enabled) => !enabled)}
               />
             }
           />
