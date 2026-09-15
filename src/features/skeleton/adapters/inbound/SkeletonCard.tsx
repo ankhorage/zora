@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonCardProps } from '../../../../types/skeleton';
 import { ButtonGroup } from '../../../button/public';
 import { Card } from '../../../card/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Skeleton } from './Skeleton';
 import { SkeletonText } from './SkeletonText';
 
@@ -19,19 +19,19 @@ function SkeletonCardInner({
 }: SkeletonCardProps) {
   return (
     <Card compact={compact} testID={testID} tone="default">
-      <Stack gap={compact ? 's' : 'm'}>
+      <View gap={compact ? 's' : 'm'}>
         {media ? <Skeleton height={compact ? 120 : 180} radius="m" /> : null}
-        <Stack gap="s">
+        <View gap="s">
           <Skeleton height={18} radius="full" width="54%" />
           <SkeletonText lines={lines} />
-        </Stack>
+        </View>
         {actions ? (
           <ButtonGroup align="end">
             <Skeleton height={36} radius="m" width={88} />
             <Skeleton height={36} radius="m" width={120} />
           </ButtonGroup>
         ) : null}
-      </Stack>
+      </View>
     </Card>
   );
 }

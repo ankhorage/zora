@@ -41,12 +41,11 @@ import { heroMeta } from '../features/hero/heroMeta';
 import { iconMeta } from '../features/icon/iconMeta';
 import { imageMeta } from '../features/image/imageMeta';
 import { keyboardAvoidingViewMeta } from '../features/keyboard-avoiding-view/keyboardAvoidingViewMeta';
-import { boxMeta } from '../features/layout/boxMeta';
-import { containerMeta } from '../features/layout/containerMeta';
 import { contentRailMeta } from '../features/layout/contentRailMeta';
 import { dividerMeta } from '../features/layout/dividerMeta';
 import { gridMeta } from '../features/layout/gridMeta';
-import { stackMeta } from '../features/layout/stackMeta';
+import { scrollViewMeta } from '../features/layout/scrollViewMeta';
+import { viewMeta } from '../features/layout/viewMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
 import { missingElementMeta } from '../features/missing-element/missingElementMeta';
@@ -72,7 +71,6 @@ import { toolbarMeta } from '../features/toolbar/toolbarMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';
-import { foundationMetas } from '../foundation/meta';
 import { appShellMeta } from '../layout/app-shell/meta';
 import { screenMeta } from '../layout/screen/meta';
 import { screenSectionMeta } from '../layout/screen-section/meta';
@@ -107,13 +105,11 @@ import { finalizeFeatureMetadata } from '../utils/finalizeFeatureMetadata';
 import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
-  ...foundationMetas,
   Accordion: accordionMeta,
   AccordionItem: accordionItemMeta,
   ActivityIndicator: activityIndicatorMeta,
-  Box: boxMeta,
-  Container: containerMeta,
-  Stack: stackMeta,
+  View: viewMeta,
+  ScrollView: scrollViewMeta,
   Grid: gridMeta,
   Divider: dividerMeta,
   Surface: surfaceMeta,

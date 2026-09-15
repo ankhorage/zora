@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Divider, Stack } from '../../features/layout/public';
-import { Spacer } from '../../foundation';
+import { Divider, View } from '../../features/layout/public';
+
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { ListRow } from './ListRow';
 import { resolveListSeparator } from './resolveListSeparator';
@@ -36,7 +36,7 @@ function ListItemsInner({
   compact,
 }: ListItemsProps) {
   return (
-    <Stack gap="none" testID={testID}>
+    <View gap="none" testID={testID}>
       {items.map((item, index) => {
         const effectiveVariant = resolveRowVariant({ item, defaultVariant: rowVariant });
         const separator = resolveListSeparator(effectiveVariant, index);
@@ -44,7 +44,7 @@ function ListItemsInner({
         return (
           <React.Fragment key={`${index}`}>
             {separator === 'divider' ? <Divider /> : null}
-            {separator === 'spacer' ? <Spacer size="s" /> : null}
+            {separator === 'spacer' ? <View height="s" /> : null}
             <ListRow
               {...item}
               compact={resolveRowCompact({ item, compact })}
@@ -53,7 +53,7 @@ function ListItemsInner({
           </React.Fragment>
         );
       })}
-    </Stack>
+    </View>
   );
 }
 
@@ -64,9 +64,9 @@ function ListInner(props: ListProps) {
 
   const { themeId: _themeId, mode: _mode, children, testID } = props;
   return (
-    <Stack gap="none" testID={testID}>
+    <View gap="none" testID={testID}>
       {children}
-    </Stack>
+    </View>
   );
 }
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { PaginationProps } from '../../../../types/pagination';
 import { Button } from '../../../button/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { resolvePaginationPage } from '../../utils/resolvePaginationPage';
 import { resolvePaginationState } from '../../utils/resolvePaginationState';
@@ -46,7 +46,7 @@ function PaginationInner({
   );
 
   return (
-    <Stack align="center" direction="row" gap="xs" testID={testID}>
+    <View align="center" direction="row" gap="xs" testID={testID}>
       {showFirstLast ? (
         <Button
           disabled={navigationDisabled || state.currentPage === 1}
@@ -111,6 +111,6 @@ function PaginationInner({
           {lastLabel}
         </Button>
       ) : null}
-    </Stack>
+    </View>
   );
 }

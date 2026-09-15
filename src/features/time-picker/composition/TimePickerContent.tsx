@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import type { TimePickerProps } from '../../../types/time-picker';
 import { Button } from '../../button/public';
-import { Stack } from '../../layout/public';
+import { View } from '../../layout/public';
 import { Text } from '../../typography/public';
 
 const MINUTES_PER_DAY = 24 * 60;
@@ -29,10 +29,10 @@ export function TimePickerContent({
   );
 
   return (
-    <Stack gap="m" p="m" testID={testID ? `${testID}-content` : undefined}>
+    <View gap="m" p="m" testID={testID ? `${testID}-content` : undefined}>
       <PickerHeader description={description} title={label ?? 'Choose time'} />
       <ScrollView style={styles.options}>
-        <Stack gap="xxs">
+        <View gap="xxs">
           {options.map((option) => (
             <TimePickerOption
               formatTime={formatTime}
@@ -44,12 +44,12 @@ export function TimePickerContent({
               testID={testID}
             />
           ))}
-        </Stack>
+        </View>
       </ScrollView>
       <Button fullWidth interactionPolicy={interactionPolicy} onPress={onDismiss} variant="ghost">
         Cancel
       </Button>
-    </Stack>
+    </View>
   );
 }
 
@@ -78,7 +78,7 @@ function PickerHeader({
   title: React.ReactNode;
 }) {
   return (
-    <Stack gap="xxs">
+    <View gap="xxs">
       <Text align="center" variant="label" weight="semiBold">
         {title}
       </Text>
@@ -87,7 +87,7 @@ function PickerHeader({
           {description}
         </Text>
       ) : null}
-    </Stack>
+    </View>
   );
 }
 

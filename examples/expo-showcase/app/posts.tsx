@@ -1,4 +1,4 @@
-import { Badge, IconButton, PostCard, Screen, ScreenSection, Stack, Text } from '@ankhorage/zora';
+import { Badge, IconButton, PostCard, Screen, ScreenSection, View, Text } from '@ankhorage/zora';
 import React from 'react';
 
 import iconPng from '../assets/icon.png';
@@ -12,7 +12,7 @@ export function PostsPage() {
         title="Stacked posts"
         description="Use Stack for short/static groups. App-owned FlatList or a future Collection can render the same PostCard for long feeds."
       >
-        <Stack gap="m">
+        <View gap="m">
           <PostCard
             author={{
               name: 'Ada Lovelace',
@@ -91,12 +91,12 @@ export function PostsPage() {
             media={{
               label: 'Custom media placeholder',
               children: (
-                <Stack gap="s">
+                <View gap="s">
                   <Badge color="primary">Custom media slot</Badge>
                   <Text emphasis="muted" variant="bodySmall">
                     Consumers can render any ZORA-safe media preview here.
                   </Text>
-                </Stack>
+                </View>
               ),
             }}
             actions={[
@@ -109,7 +109,7 @@ export function PostsPage() {
               },
             ]}
           />
-        </Stack>
+        </View>
       </ScreenSection>
     </Screen>
   );

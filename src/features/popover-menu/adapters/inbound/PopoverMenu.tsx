@@ -9,7 +9,7 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { PopoverMenuAction, PopoverMenuProps } from '../../../../types/popover-menu';
 import { Icon } from '../../../icon/public';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 /*** Presents a ZORA-styled action list through the Surface PopoverMenu capability. */
 export const PopoverMenu = withZoraThemeScope(PopoverMenuInner);
@@ -56,5 +56,5 @@ function renderActionLeading(action: PopoverMenuAction, iconColor: string): Reac
 
 /*** Wraps optional trailing action content in the ZORA layout boundary. */
 function renderActionTrailing(action: PopoverMenuAction): React.ReactNode {
-  return action.trailing === undefined ? undefined : <Box>{action.trailing}</Box>;
+  return action.trailing === undefined ? undefined : <View>{action.trailing}</View>;
 }

@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import { type ProgressRingProps, resolveProgressRole } from '../../../../types/progress';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { resolveProgressFraction } from '../../utils/resolveProgressFraction';
 import { resolveProgressRingGeometry } from '../../utils/resolveProgressRingGeometry';
@@ -94,7 +94,7 @@ function ProgressRingInner({
           pointerEvents="none"
           style={styles.center}
         >
-          <Stack align="center" gap="xxs" px="s">
+          <View align="center" gap="xxs" px="s">
             {centerValue !== undefined ? (
               <Text align="center" variant="lead" weight="bold">
                 {centerValue}
@@ -105,7 +105,7 @@ function ProgressRingInner({
                 {centerLabel}
               </Text>
             ) : null}
-          </Stack>
+          </View>
         </View>
       ) : null}
     </View>

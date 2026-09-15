@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '../../features/button/public';
 import { IconButton } from '../../features/button/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { Panel } from '../panel';
@@ -47,18 +47,18 @@ function CollectionEditorInner<TItem>({
         ) : null
       }
     >
-      <Stack gap="s">
+      <View gap="s">
         {isEmpty ? (
-          <Box py="m">
+          <View py="m">
             <Text align="center" emphasis="muted">
               {emptyLabel}
             </Text>
-          </Box>
+          </View>
         ) : (
           items.map((item, index) => (
-            <Box key={index} bg="subtle" p="s" radius="m" borderColor="border" borderWidth={1}>
-              <Stack direction="row" gap="m" align="center">
-                <Box flex={1}>
+            <View key={index} bg="subtle" p="s" radius="m" borderColor="border" borderWidth={1}>
+              <View direction="row" gap="m" align="center">
+                <View flex={1}>
                   {renderItem({
                     item,
                     index,
@@ -68,8 +68,8 @@ function CollectionEditorInner<TItem>({
                     canMoveUp: index > 0,
                     canMoveDown: index < items.length - 1,
                   })}
-                </Box>
-                <Stack direction="row" gap="xs">
+                </View>
+                <View direction="row" gap="xs">
                   {onMove ? (
                     <>
                       <IconButton
@@ -104,12 +104,12 @@ function CollectionEditorInner<TItem>({
                       variant="ghost"
                     />
                   ) : null}
-                </Stack>
-              </Stack>
-            </Box>
+                </View>
+              </View>
+            </View>
           ))
         )}
-      </Stack>
+      </View>
     </Panel>
   );
 }

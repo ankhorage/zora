@@ -1,6 +1,6 @@
+import { View } from '../../../layout/public';
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ChipGroupItem, ChipGroupProps } from '../../../../types/chip-group';
 import { Chip } from '../../public';
@@ -66,8 +66,8 @@ function ChipGroupInner<TValue extends string = string>({
   };
 
   return (
-    <Inline align="center" gap="s" testID={testID} wrap={wrap ? 'wrap' : 'nowrap'}>
+    <View direction="row" align="center" gap="s" testID={testID} wrap={wrap ? 'wrap' : 'nowrap'}>
       {items.map(renderChip)}
-    </Inline>
+    </View>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { TileGridProps } from './types';
 
@@ -14,7 +14,7 @@ function TileGridInner({
   testID,
 }: TileGridProps) {
   return (
-    <Box
+    <View
       testID={testID}
       style={{
         flexDirection: 'row',
@@ -26,7 +26,7 @@ function TileGridInner({
         if (!child) return null;
 
         return (
-          <Box
+          <View
             style={
               columns === 'responsive'
                 ? {
@@ -40,10 +40,10 @@ function TileGridInner({
             }
           >
             {child}
-          </Box>
+          </View>
         );
       })}
-    </Box>
+    </View>
   );
 }
 

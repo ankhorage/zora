@@ -1,16 +1,11 @@
 import {
   Badge,
-  Box,
+  View,
   Card,
-  Center,
-  Container,
   Divider,
   Grid,
-  Inline,
   ScreenSection,
   Show,
-  Spacer,
-  Stack,
   Surface,
   Text,
 } from '@ankhorage/zora';
@@ -23,16 +18,16 @@ export function FoundationPrimitivesSection() {
         title="Stack and Inline"
         description="Use Stack for vertical rhythm and Inline for wrapped horizontal groups."
       >
-        <Stack gap="m">
-          <Stack gap="s">
+        <View gap="m">
+          <View gap="s">
             <Surface variant="subtle" p="m">
               <Text weight="semiBold">Stack item</Text>
             </Surface>
             <Surface variant="subtle" p="m">
               <Text weight="semiBold">Second stack item</Text>
             </Surface>
-          </Stack>
-          <Inline gap="s">
+          </View>
+          <View direction="row" gap="s">
             <Badge color="primary">Inline</Badge>
             <Badge color="success" variant="soft">
               Wrapped
@@ -40,15 +35,15 @@ export function FoundationPrimitivesSection() {
             <Badge color="warning" variant="soft">
               Metadata
             </Badge>
-          </Inline>
-        </Stack>
+          </View>
+        </View>
       </Card>
 
       <Card
         title="Grid and Container"
         description="Responsive containers and grids keep catalog surfaces aligned."
       >
-        <Container maxWidth={720} px="s">
+        <View maxWidth={720} px="s">
           <Grid cols={{ base: 1, md: 3 }} gap="s">
             <Surface variant="outline" p="m">
               <Text>Grid cell A</Text>
@@ -60,18 +55,18 @@ export function FoundationPrimitivesSection() {
               <Text>Grid cell C</Text>
             </Surface>
           </Grid>
-        </Container>
+        </View>
       </Card>
 
       <Card
         title="Center and Box"
         description="Box is the flexible primitive; Center aligns its children."
       >
-        <Center minHeight={96} p="m">
-          <Box p="m" radius="m" bg="surface">
+        <View align="center" justify="center" minHeight={96} p="m">
+          <View p="m" radius="m" bg="surface">
             <Text weight="semiBold">Centered Box</Text>
-          </Box>
-        </Center>
+          </View>
+        </View>
       </Card>
 
       <Card
@@ -98,10 +93,10 @@ export function FoundationPrimitivesSection() {
         title="Divider, Spacer, and Show"
         description="Small layout utilities keep examples readable."
       >
-        <Stack gap="s">
+        <View gap="s">
           <Text>First block</Text>
           <Divider />
-          <Spacer size="s" />
+          <View height="s" />
           <Text>Second block after a spacer</Text>
           <Show
             when={{ base: true, md: false }}
@@ -111,7 +106,7 @@ export function FoundationPrimitivesSection() {
               Visible on base breakpoint
             </Badge>
           </Show>
-        </Stack>
+        </View>
       </Card>
     </ScreenSection>
   );

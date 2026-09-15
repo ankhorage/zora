@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card } from '../../features/card/public';
-import { Box } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';
 import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
@@ -38,8 +38,8 @@ function PaletteItemInner({
           : undefined
       }
     >
-      <Box p="xs" style={{ alignItems: 'center' }}>
-        {icon ? <Box pb="s">{/* Icon spec here */}</Box> : null}
+      <View p="xs" style={{ alignItems: 'center' }}>
+        {icon ? <View pb="s">{/* Icon spec here */}</View> : null}
         <Heading level={5} align="center">
           {title}
         </Heading>
@@ -48,8 +48,8 @@ function PaletteItemInner({
             {description}
           </Text>
         ) : null}
-        {badge ? <Box pt="xs">{badge}</Box> : null}
-      </Box>
+        {badge ? <View pt="xs">{badge}</View> : null}
+      </View>
     </Card>
   );
 }

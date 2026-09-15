@@ -1,9 +1,9 @@
 import { ButtonBase } from '@ankhorage/surface';
 import React from 'react';
 
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
-import { Inline, Spacer } from '../../foundation';
+
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ListRowProps, ListRowVariant } from './types';
@@ -80,7 +80,7 @@ function ListRowInner({
   const isInteractive = Boolean(onPress) && !action;
 
   const content = (
-    <Stack
+    <View
       align="center"
       direction="row"
       style={{
@@ -89,13 +89,13 @@ function ListRowInner({
     >
       {leading ? (
         <>
-          <Box>{leading}</Box>
-          <Spacer axis="horizontal" size="m" />
+          <View>{leading}</View>
+          <View width="m" />
         </>
       ) : null}
 
-      <Box flex={1}>
-        <Stack gap="xxs">
+      <View flex={1}>
+        <View gap="xxs">
           <Text variant="body" weight={selected ? 'semiBold' : 'medium'}>
             {title}
           </Text>
@@ -109,19 +109,19 @@ function ListRowInner({
               {meta}
             </Text>
           ) : null}
-        </Stack>
-      </Box>
+        </View>
+      </View>
 
       {trailing || action ? (
         <>
-          <Spacer axis="horizontal" size="m" />
-          <Inline align="center" gap="s" wrap="nowrap">
+          <View width="m" />
+          <View direction="row" align="center" gap="s" wrap="nowrap">
             {trailing}
             {action}
-          </Inline>
+          </View>
         </>
       ) : null}
-    </Stack>
+    </View>
   );
 
   if (!isInteractive) {
@@ -135,7 +135,7 @@ function ListRowInner({
     });
 
     return (
-      <Box
+      <View
         bg={styles.bg}
         borderColor={styles.borderColor}
         borderWidth={styles.borderWidth}
@@ -148,7 +148,7 @@ function ListRowInner({
         }}
       >
         {content}
-      </Box>
+      </View>
     );
   }
 
@@ -172,7 +172,7 @@ function ListRowInner({
         });
 
         return (
-          <Box
+          <View
             bg={styles.bg}
             borderColor={styles.borderColor}
             borderWidth={styles.borderWidth}
@@ -184,7 +184,7 @@ function ListRowInner({
             }}
           >
             {content}
-          </Box>
+          </View>
         );
       }}
     </ButtonBase>

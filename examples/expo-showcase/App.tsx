@@ -1,7 +1,7 @@
 import {
   AppBar,
   AppShell,
-  Box,
+  View,
   type GradientRendererProps,
   GradientRendererProvider,
   IconButton,
@@ -81,7 +81,7 @@ function AppWrapper() {
                           <Tab key={tab.value} label={tab.label} value={tab.value} />
                         ))}
                       </TabList>
-                      <Box flex={1} />
+                      <View flex={1} />
                       <IconButton
                         color={isDark ? 'primary' : 'neutral'}
                         icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}

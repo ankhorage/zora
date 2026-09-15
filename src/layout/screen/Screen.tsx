@@ -1,7 +1,6 @@
-import { ScrollArea } from '@ankhorage/surface';
 import React from 'react';
 
-import { Box, Container, Stack } from '../../features/layout/public';
+import { ScrollView, View } from '../../features/layout/public';
 import { resolvePageMaxWidth } from '../../internal/recipes';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScreenProps } from './types';
@@ -16,24 +15,33 @@ function ScreenInner({
   width = 'default',
   testID,
 }: ScreenProps) {
+  const content = (
+    <View
+      alignSelf="center"
+      gap="l"
+      maxWidth={resolvePageMaxWidth(width)}
+      px={{ base: 16, md: 24, lg: 32 }}
+      py="xl"
+      testID={testID}
+      width="100%"
+    >
+      {children}
+      {footer}
+    </View>
+  );
+
   if (!scroll) {
     return (
-      <Box bg="background" flex={1} minHeight={0} minWidth={0} testID={testID}>
-        {children}
-        {footer}
-      </Box>
+      <View bg="background" flex={1} minHeight={0} minWidth={0}>
+        {content}
+      </View>
     );
   }
 
   return (
-    <ScrollArea bg="background" style={{ flex: 1, minHeight: 0, minWidth: 0 }}>
-      <Container maxWidth={resolvePageMaxWidth(width)} py="xl" testID={testID}>
-        <Stack gap="l">
-          {children}
-          {footer}
-        </Stack>
-      </Container>
-    </ScrollArea>
+    <ScrollView bg="background" flex={1} minHeight={0} minWidth={0}>
+      {content}
+    </ScrollView>
   );
 }
 
@@ -42,6 +50,6 @@ function ScreenInner({
  *
  * By default Screen owns normal vertical scrolling. Set `scroll={false}` to preserve a bounded
  * viewport and delegate scroll or gesture ownership to specialized children such as lists, maps,
- * chats, canvases, or editors.
+ * chats, canvases, or editors. Content width and page spacing remain stable in both modes.
  */
 export const Screen = withZoraThemeScope(ScreenInner);

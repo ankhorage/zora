@@ -9,7 +9,7 @@ import type { ViewStyle } from 'react-native';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AccordionItemProps } from '../../../../types/accordion';
 import { Icon } from '../../../icon/public';
-import { Box, Divider, Stack } from '../../../layout/public';
+import { View, Divider } from '../../../layout/public';
 import { Heading, Text } from '../../../typography/public';
 import { AccordionPresentationContext } from '../../composition/AccordionPresentationContext';
 
@@ -48,39 +48,39 @@ function AccordionItemInner({
       testID={testID}
       value={value}
     >
-      <Stack gap="none">
-        <Stack align="center" direction="row" gap="s">
-          <Box flex={1}>
+      <View gap="none">
+        <View align="center" direction="row" gap="s">
+          <View flex={1}>
             <SurfaceAccordionTrigger interactionPolicy={interactionPolicy} style={triggerStyle}>
-              <Box px="m" py="m">
-                <Stack align="center" direction="row" gap="m">
+              <View px="m" py="m">
+                <View align="center" direction="row" gap="m">
                   {icon ? <Icon {...icon} /> : null}
-                  <Box flex={1}>
-                    <Stack gap="xs">
+                  <View flex={1}>
+                    <View gap="xs">
                       <Heading level={4}>{title}</Heading>
                       {description ? (
                         <Text emphasis="muted" variant="bodySmall">
                           {description}
                         </Text>
                       ) : null}
-                    </Stack>
-                  </Box>
+                    </View>
+                  </View>
                   <Icon name={open ? 'chevron-up-outline' : 'chevron-down-outline'} size="m" />
-                </Stack>
-              </Box>
+                </View>
+              </View>
             </SurfaceAccordionTrigger>
-          </Box>
-          {actions ? <Box pr="m">{actions}</Box> : null}
-        </Stack>
+          </View>
+          {actions ? <View pr="m">{actions}</View> : null}
+        </View>
 
         <SurfaceAccordionContent>
-          <Box px="m" pb="m">
-            <Stack gap="m">{children}</Stack>
-          </Box>
+          <View px="m" pb="m">
+            <View gap="m">{children}</View>
+          </View>
         </SurfaceAccordionContent>
 
         <Divider />
-      </Stack>
+      </View>
     </SurfaceAccordionItem>
   );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image as ReactNativeImage } from 'react-native';
 
-import { Inline } from '../../../../foundation';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
@@ -13,7 +12,7 @@ import type {
 } from '../../../../types/post-card';
 import { Avatar } from '../../../avatar/public';
 import { Button } from '../../../button/public';
-import { Box, Divider, Stack } from '../../../layout/public';
+import { View, Divider } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
 /***
@@ -58,7 +57,7 @@ function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compa
   const { avatar } = author;
 
   return (
-    <Inline align="center" gap="s" wrap="nowrap">
+    <View direction="row" align="center" gap="s" wrap="nowrap">
       <Avatar
         initials={avatar?.initials}
         label={avatar?.label ?? avatarName}
@@ -68,8 +67,8 @@ function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compa
         source={avatar?.source}
         color={avatar?.color}
       />
-      <Box flex={1}>
-        <Stack gap="xxs">
+      <View flex={1}>
+        <View gap="xxs">
           <Text variant="bodySmall" weight="semiBold">
             {author.name}
           </Text>
@@ -78,9 +77,9 @@ function PostCardAuthor({ author, compact = false }: { author: PostAuthor; compa
               {author.subtitle}
             </Text>
           ) : null}
-        </Stack>
-      </Box>
-    </Inline>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -90,22 +89,22 @@ function PostCardMediaItem({ media }: { media: PostCardMedia }) {
 
   if (!('source' in media)) {
     return (
-      <Box radius="m" style={{ overflow: 'hidden' }}>
+      <View radius="m" style={{ overflow: 'hidden' }}>
         {media.children}
-      </Box>
+      </View>
     );
   }
 
   return (
-    <Box bg={theme.semantics.neutral.surface} radius="m" style={{ overflow: 'hidden' }}>
-      <Box style={{ aspectRatio, width: '100%' }}>
+    <View bg={theme.semantics.neutral.surface} radius="m" style={{ overflow: 'hidden' }}>
+      <View style={{ aspectRatio, width: '100%' }}>
         <ReactNativeImage
           accessibilityLabel={media.label}
           source={media.source}
           style={{ height: '100%', width: '100%' }}
         />
-      </Box>
-    </Box>
+      </View>
+    </View>
   );
 }
 
@@ -127,7 +126,7 @@ function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
   }
 
   return (
-    <Inline align="center" gap="s" wrap="wrap">
+    <View direction="row" align="center" gap="s" wrap="wrap">
       {actions.map((action) => (
         <Button
           key={action.id}
@@ -141,26 +140,26 @@ function PostCardActions({ actions }: { actions: readonly PostAction[] }) {
           <PostActionLabel action={action} />
         </Button>
       ))}
-    </Inline>
+    </View>
   );
 }
 
 function PostCommentPreviewItem({ comment }: { comment: PostCommentPreview }) {
   return (
-    <Inline align="flex-start" gap="s" wrap="nowrap">
+    <View direction="row" align="flex-start" gap="s" wrap="nowrap">
       {comment.author ? <PostCardAuthor author={comment.author} compact /> : null}
-      <Box flex={1}>
-        <Stack gap="xxs">
+      <View flex={1}>
+        <View gap="xxs">
           <Text variant="bodySmall">{comment.text}</Text>
           {comment.meta ? (
             <Text emphasis="subtle" variant="caption">
               {comment.meta}
             </Text>
           ) : null}
-          {comment.action ? <Box>{comment.action}</Box> : null}
-        </Stack>
-      </Box>
-    </Inline>
+          {comment.action ? <View>{comment.action}</View> : null}
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -170,11 +169,11 @@ function PostCardComments({ comments }: { comments: readonly PostCommentPreview[
   }
 
   return (
-    <Stack gap="s">
+    <View gap="s">
       {comments.map((comment) => (
         <PostCommentPreviewItem key={comment.id} comment={comment} />
       ))}
-    </Stack>
+    </View>
   );
 }
 
@@ -209,33 +208,33 @@ function PostCardInner({
       testID={testID}
       tone={tone}
     >
-      <Stack gap={gap}>
-        <Inline align="center" gap="m" justify="space-between" wrap="nowrap">
-          <Box flex={1}>
+      <View gap={gap}>
+        <View direction="row" align="center" gap="m" justify="space-between" wrap="nowrap">
+          <View flex={1}>
             <PostCardAuthor author={author} compact={compact} />
-          </Box>
-          {headerAction ? <Box>{headerAction}</Box> : null}
-        </Inline>
+          </View>
+          {headerAction ? <View>{headerAction}</View> : null}
+        </View>
 
         {hasBody ? (
-          <Stack gap={gap}>
+          <View gap={gap}>
             {text ? <Text variant="body">{text}</Text> : null}
-            {children ? <Box>{children}</Box> : null}
+            {children ? <View>{children}</View> : null}
             {mediaItems.length > 0 ? (
-              <Stack gap="s">
+              <View gap="s">
                 {mediaItems.map((item, index) => (
                   <PostCardMediaItem key={`${index}`} media={item} />
                 ))}
-              </Stack>
+              </View>
             ) : null}
-          </Stack>
+          </View>
         ) : null}
 
         {hasEngagement ? <Divider /> : null}
         <PostCardActions actions={actions} />
         <PostCardComments comments={comments} />
-        {footer ? <Box pt="xs">{footer}</Box> : null}
-      </Stack>
+        {footer ? <View pt="xs">{footer}</View> : null}
+      </View>
     </Card>
   );
 }

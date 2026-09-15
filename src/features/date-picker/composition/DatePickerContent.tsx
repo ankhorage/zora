@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { DatePickerProps } from '../../../types/date-picker';
 import { Button } from '../../button/public';
-import { Box, Stack } from '../../layout/public';
+import { View } from '../../layout/public';
 import { Text } from '../../typography/public';
 import { formatLocalDate, parseLocalDate } from '../utils/localDate';
 
@@ -27,7 +27,7 @@ export function DatePickerContent({
   const resolvedMinDate = React.useMemo(() => parseLocalDate(minDate), [minDate]);
 
   return (
-    <Stack gap="m" p="m" testID={testID ? `${testID}-content` : undefined}>
+    <View gap="m" p="m" testID={testID ? `${testID}-content` : undefined}>
       <PickerHeader description={description} title={label ?? 'Choose date'} />
       <DatePickerMonthNavigation
         displayMonth={displayMonth}
@@ -49,7 +49,7 @@ export function DatePickerContent({
       <Button fullWidth interactionPolicy={interactionPolicy} onPress={onDismiss} variant="ghost">
         Cancel
       </Button>
-    </Stack>
+    </View>
   );
 }
 
@@ -70,7 +70,7 @@ function PickerHeader({
   title: React.ReactNode;
 }) {
   return (
-    <Stack gap="xxs">
+    <View gap="xxs">
       <Text align="center" variant="label" weight="semiBold">
         {title}
       </Text>
@@ -79,7 +79,7 @@ function PickerHeader({
           {description}
         </Text>
       ) : null}
-    </Stack>
+    </View>
   );
 }
 
@@ -101,7 +101,7 @@ function DatePickerMonthNavigation({
   const nextMonth = new Date(displayMonth.getFullYear(), displayMonth.getMonth() + 1, 1);
 
   return (
-    <Stack align="center" direction="row" justify="space-between">
+    <View align="center" direction="row" justify="space-between">
       <Button
         disabled={!canNavigateToMonth(previousMonth, minDate, maxDate)}
         interactionPolicy={interactionPolicy}
@@ -123,22 +123,22 @@ function DatePickerMonthNavigation({
       >
         Next
       </Button>
-    </Stack>
+    </View>
   );
 }
 
 /*** Renders weekday headings for the calendar grid. */
 function DatePickerWeekdays() {
   return (
-    <Stack direction="row" justify="space-between">
+    <View direction="row" justify="space-between">
       {WEEKDAY_LABELS.map((weekday) => (
-        <Box key={weekday} width={DAY_CELL_WIDTH}>
+        <View key={weekday} width={DAY_CELL_WIDTH}>
           <Text align="center" emphasis="muted" variant="caption" weight="semiBold">
             {weekday}
           </Text>
-        </Box>
+        </View>
       ))}
-    </Stack>
+    </View>
   );
 }
 
@@ -161,12 +161,12 @@ function DatePickerCalendar({
   value: DatePickerProps['value'];
 }) {
   return (
-    <Stack direction="row" gap="xs" wrap="wrap">
+    <View direction="row" gap="xs" wrap="wrap">
       {monthDays.map((day, index) => {
-        if (!day) return <Box key={`empty-${index}`} width={DAY_CELL_WIDTH} />;
+        if (!day) return <View key={`empty-${index}`} width={DAY_CELL_WIDTH} />;
         const selected = isSameLocalDay(value, day);
         return (
-          <Box key={day.toISOString()} width={DAY_CELL_WIDTH}>
+          <View key={day.toISOString()} width={DAY_CELL_WIDTH}>
             <Button
               color={selected ? 'primary' : 'neutral'}
               disabled={isDateDisabled(day, minDate, maxDate)}
@@ -178,10 +178,10 @@ function DatePickerCalendar({
             >
               {day.getDate()}
             </Button>
-          </Box>
+          </View>
         );
       })}
-    </Stack>
+    </View>
   );
 }
 

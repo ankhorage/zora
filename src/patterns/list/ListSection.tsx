@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SectionHeader } from '../section-header';
 import { List } from './List';
@@ -19,7 +19,7 @@ function ListSectionInner({
   const hasHeader = title !== undefined;
 
   return (
-    <Stack gap="s" testID={testID}>
+    <View gap="s" testID={testID}>
       {hasHeader ? (
         <SectionHeader
           actions={actions}
@@ -29,7 +29,7 @@ function ListSectionInner({
         />
       ) : null}
       <List {...props} />
-    </Stack>
+    </View>
   );
 }
 

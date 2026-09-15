@@ -6,7 +6,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ImageProps } from '../../../../types/image';
 import type { UploadAsset } from '../../../../types/upload';
 import { Icon } from '../../../icon/public';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 /*** Displays an image asset and owns its missing, unrenderable, and failed presentation states. */
 export const Image = withZoraThemeScope(ImageInner);
@@ -40,7 +40,7 @@ function ImageInner({
 
   if (showPlaceholder) {
     return (
-      <Box
+      <View
         accessibilityLabel={placeholderLabel}
         accessibilityRole={placeholderLabel ? 'image' : undefined}
         accessible={Boolean(placeholderLabel)}
@@ -62,7 +62,7 @@ function ImageInner({
         ]}
       >
         <Icon color={theme.semantics.content.muted} name="image-outline" size={24} />
-      </Box>
+      </View>
     );
   }
 

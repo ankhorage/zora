@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveSidebarLayoutSizing } from './resolveSidebarLayoutSizing';
 import type { SidebarLayoutProps } from './types';
@@ -20,19 +20,19 @@ function SidebarLayoutInner({
   const layoutSizing = resolveSidebarLayoutSizing(sizing);
 
   return (
-    <Stack {...layoutSizing.root} direction={{ base: 'column', lg: 'row' }} gap="l" testID={testID}>
-      <Box {...layoutSizing.child} width={{ base: '100%', lg: sidebarWidth }}>
+    <View {...layoutSizing.root} direction={{ base: 'column', lg: 'row' }} gap="l" testID={testID}>
+      <View {...layoutSizing.child} width={{ base: '100%', lg: sidebarWidth }}>
         {sidebar}
-      </Box>
-      <Box {...layoutSizing.child} flex={1} width="100%">
+      </View>
+      <View {...layoutSizing.child} flex={1} width="100%">
         {children}
-      </Box>
+      </View>
       {aside ? (
-        <Box {...layoutSizing.child} width={{ base: '100%', lg: asideWidth }}>
+        <View {...layoutSizing.child} width={{ base: '100%', lg: asideWidth }}>
           {aside}
-        </Box>
+        </View>
       ) : null}
-    </Stack>
+    </View>
   );
 }
 

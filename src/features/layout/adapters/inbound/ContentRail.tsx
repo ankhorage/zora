@@ -7,7 +7,6 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { Inline } from '../../../../foundation';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
@@ -16,7 +15,7 @@ import type {
 } from '../../../../types/content-rail';
 import { IconButton } from '../../../button/public';
 import { Text } from '../../../typography/public';
-import { Box, Stack } from '../../public';
+import { Box, Stack, View } from '../../public';
 import { resolveContentRailItemWidth } from '../../utils/resolveContentRailItemWidth';
 import { resolveContentRailPhysicalOffset } from '../../utils/resolveContentRailPhysicalOffset';
 import { resolveContentRailState } from '../../utils/resolveContentRailState';
@@ -192,11 +191,11 @@ function ContentRailCarousel({
   return (
     <Stack gap="s" testID={testID}>
       {showControls && hasOverflow ? (
-        <Inline justify="space-between" wrap="nowrap">
+        <View direction="row" justify="space-between" wrap="nowrap">
           <Text accessibilityLiveRegion="polite" emphasis="muted" variant="caption">
             {rangeLabel}
           </Text>
-          <Inline gap="xs" wrap="nowrap">
+          <View direction="row" gap="xs" wrap="nowrap">
             <IconButton
               disabled={passive || !railState.canGoPrevious}
               icon={{ name: isRtl ? 'chevron-forward' : 'chevron-back' }}
@@ -213,8 +212,8 @@ function ContentRailCarousel({
               onPress={() => scrollToIndex(railState.anchorIndex + 1, 'next')}
               size="l"
             />
-          </Inline>
-        </Inline>
+          </View>
+        </View>
       ) : null}
       <ScrollView
         accessibilityLabel={accessibilityLabel}

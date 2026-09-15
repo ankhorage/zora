@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { EmptyStateProps } from '../../../../types/empty-state';
 import { Button } from '../../../button/public';
 import { Card } from '../../../card/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 function EmptyStateInner({
   themeId: _themeId,
@@ -28,9 +28,9 @@ function EmptyStateInner({
       title={title}
       tone="subtle"
     >
-      <Stack gap="m">
+      <View gap="m">
         {primaryAction || secondaryAction ? (
-          <Stack direction={{ base: 'column', md: 'row' }} gap="s">
+          <View direction={{ base: 'column', md: 'row' }} gap="s">
             {primaryAction ? (
               <Button
                 interactionPolicy={interactionPolicy}
@@ -51,10 +51,10 @@ function EmptyStateInner({
                 {secondaryAction.label}
               </Button>
             ) : null}
-          </Stack>
+          </View>
         ) : null}
         {footer}
-      </Stack>
+      </View>
     </Card>
   );
 }

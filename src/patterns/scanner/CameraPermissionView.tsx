@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '../../features/button/public';
 import { Card } from '../../features/card/public';
-import { Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { CameraPermissionViewProps } from './types';
@@ -69,11 +69,11 @@ function CameraPermissionViewInner({
       title={title ?? copy.title}
       tone="subtle"
     >
-      <Stack gap="m">
+      <View gap="m">
         <Text emphasis="muted" variant="bodySmall">
           Permission state: {status}
         </Text>
-        <Stack direction={{ base: 'column', md: 'row' }} gap="s">
+        <View direction={{ base: 'column', md: 'row' }} gap="s">
           {handleRequestPermission ? (
             <Button
               color="primary"
@@ -96,8 +96,8 @@ function CameraPermissionViewInner({
               {manualEntryLabel}
             </Button>
           ) : null}
-        </Stack>
-      </Stack>
+        </View>
+      </View>
     </Card>
   );
 }

@@ -1,7 +1,7 @@
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ToolbarProps } from '../../../../types/toolbar';
 import { Card } from '../../../card/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 /*** Renders a visible horizontal group of contextual actions and controls. */
 export const Toolbar = withZoraThemeScope(ToolbarInner);
@@ -23,9 +23,9 @@ function ToolbarInner({
       tone={floating ? 'default' : 'subtle'}
       testID={testID}
     >
-      <Stack align="center" direction="row" gap="s">
+      <View align="center" direction="row" gap="s">
         {children}
-      </Stack>
+      </View>
     </Card>
   );
 }

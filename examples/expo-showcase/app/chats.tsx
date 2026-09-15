@@ -5,7 +5,7 @@ import {
   MessageBubble,
   Screen,
   ScreenSection,
-  Stack,
+  View,
   Text,
 } from '@ankhorage/zora';
 import React from 'react';
@@ -19,7 +19,7 @@ export function ChatsPage() {
         title="Stacked conversation previews"
         description="Use Stack for short/static groups. App-owned FlatList or a future Collection can render the same ChatListItem for long chat lists."
       >
-        <Stack gap="none">
+        <View gap="none">
           <ChatListItem
             accessibilityLabel="Ada Lovelace, unread, 3 new messages, Can you review the new PostCard API?, 2 minutes ago"
             avatar={{ name: 'Ada Lovelace', color: 'primary' }}
@@ -72,14 +72,14 @@ export function ChatsPage() {
             timestamp="Mon"
             title="Archived thread"
           />
-        </Stack>
+        </View>
       </ScreenSection>
 
       <ScreenSection
         title="Stacked message bubbles"
         description="MessageBubble owns one message. The surrounding screen owns scrolling, keyboard handling, realtime updates, pagination, and composer behavior."
       >
-        <Stack gap="s">
+        <View gap="s">
           <MessageBubble
             author={{
               name: 'Ada Lovelace',
@@ -128,7 +128,7 @@ export function ChatsPage() {
             text="Disabled and failed states can be previewed without adding delivery logic."
             timestamp="10:46"
           />
-        </Stack>
+        </View>
       </ScreenSection>
 
       <ScreenSection title="Usage note">

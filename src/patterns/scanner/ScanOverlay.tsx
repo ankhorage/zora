@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Badge } from '../../features/badge/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
@@ -26,8 +26,8 @@ function ScanOverlayInner({
   };
 
   return (
-    <Box testID={testID}>
-      <Stack gap="m">
+    <View testID={testID}>
+      <View gap="m">
         <View accessibilityRole="image" style={[styles.frame, frameStyle]}>
           <View style={[styles.corner, styles.topLeft, cornerStyle]} />
           <View style={[styles.corner, styles.topRight, cornerStyle]} />
@@ -35,16 +35,16 @@ function ScanOverlayInner({
           <View style={[styles.corner, styles.bottomRight, cornerStyle]} />
           <Badge color="primary">{cornerLabel}</Badge>
         </View>
-        <Stack gap="xs">
+        <View gap="xs">
           <Text align="center" variant="label" weight="semiBold">
             {title}
           </Text>
           <Text align="center" emphasis="muted" variant="bodySmall">
             {description}
           </Text>
-        </Stack>
-      </Stack>
-    </Box>
+        </View>
+      </View>
+    </View>
   );
 }
 

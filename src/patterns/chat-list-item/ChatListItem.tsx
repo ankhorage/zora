@@ -3,9 +3,9 @@ import React from 'react';
 
 import { Avatar } from '../../features/avatar/public';
 import { Badge } from '../../features/badge/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
-import { Inline } from '../../foundation';
+
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ChatListAvatar, ChatListItemProps } from './types';
@@ -110,7 +110,7 @@ function ChatListItemInner({
     });
 
     return (
-      <Box
+      <View
         bg={styles.bg}
         borderColor={styles.borderColor}
         borderWidth={styles.borderWidth}
@@ -119,7 +119,7 @@ function ChatListItemInner({
         radius="m"
         style={{ opacity: styles.opacity }}
       >
-        <Inline align="center" gap="m" wrap="nowrap">
+        <View direction="row" align="center" gap="m" wrap="nowrap">
           {leading ?? (
             <Avatar
               initials={avatar?.initials}
@@ -132,10 +132,10 @@ function ChatListItemInner({
             />
           )}
 
-          <Box flex={1}>
-            <Stack gap="xxs">
-              <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
-                <Box flex={1}>
+          <View flex={1}>
+            <View gap="xxs">
+              <View direction="row" align="center" gap="s" justify="space-between" wrap="nowrap">
+                <View flex={1}>
                   <Text
                     numberOfLines={1}
                     emphasis={disabled ? 'muted' : 'default'}
@@ -144,7 +144,7 @@ function ChatListItemInner({
                   >
                     {title}
                   </Text>
-                </Box>
+                </View>
                 {hasTimestamp ? (
                   <Text
                     numberOfLines={1}
@@ -156,12 +156,12 @@ function ChatListItemInner({
                     {timestamp}
                   </Text>
                 ) : null}
-              </Inline>
+              </View>
 
               {hasSecondaryRow ? (
-                <Inline align="center" gap="s" justify="space-between" wrap="nowrap">
-                  <Box flex={1}>
-                    <Stack gap="xxs">
+                <View direction="row" align="center" gap="s" justify="space-between" wrap="nowrap">
+                  <View flex={1}>
+                    <View gap="xxs">
                       {hasPreview ? (
                         <Text
                           numberOfLines={1}
@@ -177,26 +177,26 @@ function ChatListItemInner({
                           {meta}
                         </Text>
                       ) : null}
-                    </Stack>
-                  </Box>
+                    </View>
+                  </View>
 
                   {hasUnreadCount || hasTrailing ? (
-                    <Inline align="center" gap="s" wrap="nowrap">
+                    <View direction="row" align="center" gap="s" wrap="nowrap">
                       {renderUnreadCount(unreadCount)}
                       {trailing}
-                    </Inline>
+                    </View>
                   ) : null}
-                </Inline>
+                </View>
               ) : null}
-            </Stack>
-          </Box>
-        </Inline>
-      </Box>
+            </View>
+          </View>
+        </View>
+      </View>
     );
   };
 
   if (!isInteractive) {
-    return <Box testID={testID}>{content({ pressed: false, hovered: false })}</Box>;
+    return <View testID={testID}>{content({ pressed: false, hovered: false })}</View>;
   }
 
   return (

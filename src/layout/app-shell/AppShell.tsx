@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Box } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { AppShellProps } from './types';
 
@@ -16,7 +16,7 @@ function AppShellInner({
   testID,
 }: AppShellProps) {
   return (
-    <Box bg="background" flex={1} testID={testID}>
+    <View bg="background" flex={1} testID={testID}>
       <View style={styles.root}>
         {header ? <View style={styles.slot}>{header}</View> : null}
 
@@ -26,7 +26,7 @@ function AppShellInner({
 
         {overlay ? <View style={[StyleSheet.absoluteFill, styles.overlay]}>{overlay}</View> : null}
       </View>
-    </Box>
+    </View>
   );
 }
 

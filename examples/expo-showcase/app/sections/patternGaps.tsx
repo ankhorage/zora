@@ -12,7 +12,7 @@ import {
   ScreenSection,
   SectionHeader,
   SettingsRow,
-  Stack,
+  View,
   SwitchField,
   Text,
   TreeItem,
@@ -64,14 +64,14 @@ export function PatternGapsSection() {
         subtitle="EPUB preview"
         title="The North Wind"
         viewport={
-          <Stack gap="m" p="l">
+          <View gap="m" p="l">
             <Text variant="eyebrow">Chapter one</Text>
             <Text variant="lead">A quiet beginning</Text>
             <Text>
               This static page stands in for the platform renderer. The ReaderSurface owns the
               chrome while the Expo adapter will own EPUB/PDF rendering and swipe gestures.
             </Text>
-          </Stack>
+          </View>
         }
       />
 
@@ -123,7 +123,7 @@ export function PatternGapsSection() {
         description="SettingsRow works for static, pressable, and controlled settings content."
       />
       <Card title="SettingsRow" tone="subtle">
-        <Stack gap="s">
+        <View gap="s">
           <SettingsRow
             title="Account plan"
             description="Static metadata row."
@@ -146,7 +146,7 @@ export function PatternGapsSection() {
               />
             }
           />
-        </Stack>
+        </View>
       </Card>
 
       <SectionHeader

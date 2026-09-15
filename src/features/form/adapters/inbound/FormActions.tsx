@@ -3,7 +3,7 @@ import React from 'react';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { FormActionsProps } from '../../../../types/form';
 import { Button } from '../../../button/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 function FormActionsInner({
   themeId: _themeId,
@@ -17,7 +17,7 @@ function FormActionsInner({
   interactionPolicy,
 }: FormActionsProps) {
   return (
-    <Stack gap="s" testID={testID}>
+    <View gap="s" testID={testID}>
       <Button
         disabled={disabled}
         fullWidth
@@ -27,8 +27,8 @@ function FormActionsInner({
       >
         {submitLabel}
       </Button>
-      {children ? <Box>{children}</Box> : null}
-    </Stack>
+      {children ? <View>{children}</View> : null}
+    </View>
   );
 }
 

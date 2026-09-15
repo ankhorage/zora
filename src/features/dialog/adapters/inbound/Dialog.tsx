@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 import { resolveDialogWidth } from '../../../../internal/recipes';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { DialogProps } from '../../../../types/dialog';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Heading, Text } from '../../../typography/public';
 
 /*** Renders the product-level dialog composition on top of the Surface modal primitive. */
@@ -29,22 +29,22 @@ function DialogInner({
 
   return (
     <SurfaceModal {...props} onDismiss={stableOnDismiss} interactionPolicy={interactionPolicy}>
-      <Box maxWidth={resolveDialogWidth(width)} style={styles.content}>
-        <Stack gap="m">
+      <View maxWidth={resolveDialogWidth(width)} style={styles.content}>
+        <View gap="m">
           {hasHeader ? (
-            <Stack gap="xs">
+            <View gap="xs">
               {title !== undefined ? <Heading level={3}>{title}</Heading> : null}
               {description !== undefined ? (
                 <Text emphasis="muted" variant="bodySmall">
                   {description}
                 </Text>
               ) : null}
-            </Stack>
+            </View>
           ) : null}
-          {children ? <Box>{children}</Box> : null}
-          {footer ? <Box pt="xs">{footer}</Box> : null}
-        </Stack>
-      </Box>
+          {children ? <View>{children}</View> : null}
+          {footer ? <View pt="xs">{footer}</View> : null}
+        </View>
+      </View>
     </SurfaceModal>
   );
 }

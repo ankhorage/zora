@@ -2,12 +2,11 @@ import {
   Badge,
   Button,
   Card,
-  Center,
   KeyboardAvoidingView,
   ScreenSection,
   SettingsLayout,
   SidebarLayout,
-  Stack,
+  View,
   Surface,
   Text,
   TopbarLayout,
@@ -22,7 +21,7 @@ export function LayoutsShowcaseSection() {
         description="Use Center, Card, and Stack directly for compact focused flows."
       >
         <KeyboardAvoidingView behavior="padding">
-          <Center px="m" py="xl">
+          <View align="center" justify="center" px="m" py="xl">
             <Card
               compact
               eyebrow="Secure area"
@@ -30,11 +29,11 @@ export function LayoutsShowcaseSection() {
               description="Focused auth flows can be composed with primitives."
               footer={<Text emphasis="muted">Need access? Contact an admin.</Text>}
             >
-              <Stack gap="m">
+              <View gap="m">
                 <Button size="s">Continue</Button>
-              </Stack>
+              </View>
             </Card>
-          </Center>
+          </View>
         </KeyboardAvoidingView>
       </Card>
 
@@ -46,12 +45,12 @@ export function LayoutsShowcaseSection() {
           title="Workspace settings"
           description="Compact showcase example."
           sidebar={
-            <Stack gap="s">
+            <View gap="s">
               <Badge color="primary">General</Badge>
               <Badge color="neutral" variant="soft">
                 Members
               </Badge>
-            </Stack>
+            </View>
           }
           actions={<Button size="s">Save</Button>}
         >
@@ -64,10 +63,10 @@ export function LayoutsShowcaseSection() {
       <Card title="SidebarLayout" description="Sidebar, content, and optional aside regions.">
         <SidebarLayout
           sidebar={
-            <Stack gap="s">
+            <View gap="s">
               <Text weight="semiBold">Sidebar</Text>
               <Badge color="neutral">Navigation</Badge>
-            </Stack>
+            </View>
           }
           aside={<Text emphasis="muted">Aside</Text>}
         >

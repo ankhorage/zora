@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card } from '../../features/card/public';
-import { Box } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SettingsRowProps } from './types';
@@ -35,11 +35,11 @@ function SettingsRowInner({
       tone="subtle"
     >
       {meta ? (
-        <Box pt="xs">
+        <View pt="xs">
           <Text emphasis="muted" variant="caption">
             {meta}
           </Text>
-        </Box>
+        </View>
       ) : null}
     </Card>
   );

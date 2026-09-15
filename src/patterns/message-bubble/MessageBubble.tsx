@@ -2,9 +2,9 @@ import { ButtonBase } from '@ankhorage/surface';
 import React from 'react';
 
 import { Avatar } from '../../features/avatar/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
-import { Inline } from '../../foundation';
+
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type {
@@ -166,7 +166,7 @@ function MessageBubbleInner({
     const styles = resolveBubbleStyles({ direction, disabled, hovered, pressed, selected, theme });
 
     return (
-      <Box
+      <View
         bg={styles.bg}
         borderColor={styles.borderColor}
         borderWidth={styles.borderWidth}
@@ -175,7 +175,7 @@ function MessageBubbleInner({
         radius={isSystem ? 'm' : 'l'}
         style={{ maxWidth: compact ? 420 : 560, opacity: styles.opacity }}
       >
-        <Stack align={isSystem ? 'center' : 'flex-start'} gap={compact ? 'xxs' : 'xs'}>
+        <View align={isSystem ? 'center' : 'flex-start'} gap={compact ? 'xxs' : 'xs'}>
           {hasAuthorName ? (
             <Text emphasis="muted" variant="caption" weight="semiBold">
               {authorName}
@@ -186,9 +186,10 @@ function MessageBubbleInner({
               {text}
             </Text>
           ) : null}
-          {children != null ? <Box width="100%">{children}</Box> : null}
+          {children != null ? <View width="100%">{children}</View> : null}
           {hasMetaRow ? (
-            <Inline
+            <View
+              direction="row"
               align="center"
               gap="xs"
               justify={isOutgoing ? 'flex-end' : isSystem ? 'center' : 'flex-start'}
@@ -213,10 +214,10 @@ function MessageBubbleInner({
                   {renderedStatus}
                 </Text>
               ) : null}
-            </Inline>
+            </View>
           ) : null}
-        </Stack>
-      </Box>
+        </View>
+      </View>
     );
   };
 
@@ -234,34 +235,37 @@ function MessageBubbleInner({
       {(state) => renderBubble({ pressed: state.pressed, hovered: state.hovered })}
     </ButtonBase>
   ) : (
-    <Box testID={testID}>{renderBubble({ pressed: false, hovered: false })}</Box>
+    <View testID={testID}>{renderBubble({ pressed: false, hovered: false })}</View>
   );
 
   return (
-    <Stack gap="xs" style={{ width: '100%' }}>
-      <Inline
+    <View gap="xs" style={{ width: '100%' }}>
+      <View
+        direction="row"
         align="flex-end"
         gap="s"
         justify={isSystem ? 'center' : isOutgoing ? 'flex-end' : 'flex-start'}
         wrap="nowrap"
       >
         {!isOutgoing && !isSystem ? (
-          <Box>
+          <View>
             {leading ??
               (hasAvatar ? (
                 <MessageAvatar avatar={authorAvatar} authorName={authorName} compact={compact} />
               ) : null)}
-          </Box>
+          </View>
         ) : null}
-        {isOutgoing && trailing ? <Box>{trailing}</Box> : null}
+        {isOutgoing && trailing ? <View>{trailing}</View> : null}
         {bubbleContent}
-        {isOutgoing && leading ? <Box>{leading}</Box> : null}
-        {!isOutgoing && !isSystem && trailing ? <Box>{trailing}</Box> : null}
-      </Inline>
+        {isOutgoing && leading ? <View>{leading}</View> : null}
+        {!isOutgoing && !isSystem && trailing ? <View>{trailing}</View> : null}
+      </View>
       {footer != null ? (
-        <Box alignSelf={isOutgoing ? 'flex-end' : isSystem ? 'center' : 'flex-start'}>{footer}</Box>
+        <View alignSelf={isOutgoing ? 'flex-end' : isSystem ? 'center' : 'flex-start'}>
+          {footer}
+        </View>
       ) : null}
-    </Stack>
+    </View>
   );
 }
 

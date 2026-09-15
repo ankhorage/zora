@@ -5,7 +5,7 @@ import { resolveCardVariant } from '../../../../internal/recipes';
 import { useZoraThemeRecipe } from '../../../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { CardProps } from '../../../../types/card';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { resolveCardThemeRecipe } from '../../utils/resolveCardThemeRecipe';
@@ -55,16 +55,16 @@ function CardInner({
       radius={recipe.radius}
       variant={resolveCardVariant(recipe.tone)}
     >
-      <Stack gap={gap}>
+      <View gap={gap}>
         {hasHeader ? (
-          <Stack
+          <View
             align={{ base: 'flex-start', md: 'center' }}
             direction={{ base: 'column', md: 'row' }}
             gap="m"
             justify="space-between"
           >
-            <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
-              <Stack gap="xs">
+            <View flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
+              <View gap="xs">
                 {eyebrow ? (
                   <Text emphasis="muted" variant="caption" weight="semiBold">
                     {eyebrow}
@@ -76,16 +76,16 @@ function CardInner({
                     {description}
                   </Text>
                 ) : null}
-              </Stack>
-            </Box>
-            {actions ? <Box>{actions}</Box> : null}
-          </Stack>
+              </View>
+            </View>
+            {actions ? <View>{actions}</View> : null}
+          </View>
         ) : null}
 
-        {children ? <Box>{children}</Box> : null}
+        {children ? <View>{children}</View> : null}
 
-        {hasFooter ? <Box pt="xs">{footer}</Box> : null}
-      </Stack>
+        {hasFooter ? <View pt="xs">{footer}</View> : null}
+      </View>
     </SurfaceCard>
   );
 }

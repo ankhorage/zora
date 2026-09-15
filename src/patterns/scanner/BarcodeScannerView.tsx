@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Card } from '../../features/card/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Text } from '../../features/typography/public';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
@@ -62,8 +62,8 @@ function BarcodeScannerViewInner({
       title={title}
       tone="subtle"
     >
-      <Stack gap="m">
-        <Box>
+      <View gap="m">
+        <View>
           <View style={[styles.viewport, viewportStyle]}>
             {camera ? (
               <View style={styles.cameraSlot}>{camera}</View>
@@ -78,13 +78,13 @@ function BarcodeScannerViewInner({
               />
             </View>
           </View>
-        </Box>
-        {children ? <Box>{children}</Box> : null}
+        </View>
+        {children ? <View>{children}</View> : null}
         <Text emphasis="muted" variant="caption">
           Native scanning belongs to an app adapter such as expo-camera. ZORA owns this visible
           scanner surface.
         </Text>
-      </Stack>
+      </View>
     </Card>
   );
 }

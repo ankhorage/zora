@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { resolveBadgeRecipe, resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { MetricCardProps } from '../../../../types/metric-card';
 import { Badge } from '../../../badge/public';
 import { Icon } from '../../../icon/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
@@ -46,10 +45,10 @@ function MetricCardInner({
       testID={testID}
       tone={tone}
     >
-      <Stack gap={compact ? 's' : 'm'}>
-        <Inline align="flex-start" gap="m" justify="space-between">
-          <Stack flex={1} gap="xs">
-            <Inline align="center" gap="xs" wrap="wrap">
+      <View gap={compact ? 's' : 'm'}>
+        <View direction="row" align="flex-start" gap="m" justify="space-between">
+          <View flex={1} gap="xs">
+            <View direction="row" align="center" gap="xs" wrap="wrap">
               {icon ? <Icon {...icon} color={iconColor} size={resolveIconSize('s')} /> : null}
               <Text emphasis="muted" variant="caption" weight="semiBold">
                 {label}
@@ -63,7 +62,7 @@ function MetricCardInner({
                   {delta}
                 </Badge>
               ) : null}
-            </Inline>
+            </View>
 
             <Heading level={compact ? 3 : 2}>{value}</Heading>
 
@@ -72,11 +71,11 @@ function MetricCardInner({
                 {description}
               </Text>
             ) : null}
-          </Stack>
+          </View>
 
-          {actions ? <Box>{actions}</Box> : null}
-        </Inline>
-      </Stack>
+          {actions ? <View>{actions}</View> : null}
+        </View>
+      </View>
     </Card>
   );
 }

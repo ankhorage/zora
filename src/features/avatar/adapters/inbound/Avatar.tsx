@@ -7,7 +7,7 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AvatarProps, AvatarShape, AvatarSize } from '../../../../types/avatar';
 import { Icon } from '../../../icon/public';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text, type TextVariant } from '../../../typography/public';
 import { resolveAvatarInitials } from '../../utils/resolveAvatarInitials';
 /***
@@ -120,7 +120,7 @@ function AvatarInner({
   };
 
   return (
-    <Box
+    <View
       accessibilityLabel={label}
       bg={backgroundColor}
       height={resolvedSize}
@@ -142,6 +142,6 @@ function AvatarInner({
       ) : (
         renderFallback()
       )}
-    </Box>
+    </View>
   );
 }

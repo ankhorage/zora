@@ -5,7 +5,7 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import { useZoraThemeRuntime } from '../../../../theme/ZoraThemeRuntimeContext';
 import type { BottomSheetProps } from '../../../../types/manifest-bottom-sheet';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 /*** Presents declarative manifest children through the shared Surface sheet host. */
 export const BottomSheet = withZoraThemeScope(BottomSheetInner);
@@ -46,9 +46,9 @@ function BottomSheetInner({
     if (!active || dismissed.current) return;
     present({
       content: (
-        <Box mode={mode} themeId={themeId} testID={testID}>
+        <View mode={mode} themeId={themeId} testID={testID}>
           {children}
-        </Box>
+        </View>
       ),
       snapPoints,
       initialIndex,

@@ -1,17 +1,15 @@
 import type {
-  BoxProps as SurfaceBoxProps,
-  ContainerProps as SurfaceContainerProps,
   DividerProps as SurfaceDividerProps,
   GridProps as SurfaceGridProps,
-  StackProps as SurfaceStackProps,
+  ScrollViewProps as SurfaceScrollViewProps,
+  ViewProps as SurfaceViewProps,
 } from '@ankhorage/surface';
 
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
-export interface BoxProps extends ZoraBaseProps, Omit<SurfaceBoxProps, 'mode' | 'themeId'> {}
-export interface ContainerProps
-  extends ZoraBaseProps, Omit<SurfaceContainerProps, 'mode' | 'themeId'> {}
+export interface ViewProps extends ZoraBaseProps, Omit<SurfaceViewProps, 'mode' | 'themeId'> {}
+export interface ScrollViewProps
+  extends ZoraBaseProps, Omit<SurfaceScrollViewProps, 'mode' | 'themeId'> {}
 export interface DividerProps
   extends ZoraBaseProps, Omit<SurfaceDividerProps, 'mode' | 'themeId'> {}
 export interface GridProps extends ZoraBaseProps, Omit<SurfaceGridProps, 'mode' | 'themeId'> {}
-export interface StackProps extends ZoraBaseProps, Omit<SurfaceStackProps, 'mode' | 'themeId'> {}

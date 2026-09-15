@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box } from '../../features/layout/public';
-import { Inline } from '../../foundation';
+import { View } from '../../features/layout/public';
+
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { FilterBarProps } from './types';
 
@@ -16,11 +16,11 @@ function FilterBarInner({
   wrap = true,
 }: FilterBarProps) {
   return (
-    <Inline align="center" gap="s" testID={testID} wrap={wrap ? 'wrap' : 'nowrap'}>
-      {leading ? <Box>{leading}</Box> : null}
-      <Box flex={1}>{children}</Box>
-      {trailing ? <Box>{trailing}</Box> : null}
-    </Inline>
+    <View direction="row" align="center" gap="s" testID={testID} wrap={wrap ? 'wrap' : 'nowrap'}>
+      {leading ? <View>{leading}</View> : null}
+      <View flex={1}>{children}</View>
+      {trailing ? <View>{trailing}</View> : null}
+    </View>
   );
 }
 

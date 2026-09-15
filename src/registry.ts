@@ -1,3 +1,4 @@
+import { Show } from '@ankhorage/surface';
 import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
 
@@ -42,9 +43,9 @@ import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
-import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
+import { View, Divider, Grid } from './features/layout/public';
 import { ContentRail } from './features/layout/public';
-import { FlatList, SectionList } from './features/list/public';
+import { FlatList, SectionList, ScrollView, View } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
 import { Pagination } from './features/pagination/public';
 import { PopoverMenu } from './features/popover-menu/public';
@@ -59,7 +60,7 @@ import { Toolbar } from './features/toolbar/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
-import { Center, Inline, Show, Spacer } from './foundation';
+
 import { AppShell } from './layout/app-shell';
 import { Screen } from './layout/screen';
 import { ScreenSection } from './layout/screen-section';
@@ -170,15 +171,8 @@ const _ZORA_COMPONENT_REGISTRY = {
   FlatList,
   SectionList,
   ThemeModeToggle,
-  Box,
-  Center,
-  Container,
   Divider,
   Grid,
-  Inline,
-  Show,
-  Spacer,
-  Stack,
   Surface,
   AppShell,
   Screen,

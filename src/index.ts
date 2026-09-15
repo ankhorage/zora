@@ -185,13 +185,7 @@ export {
   type KeyboardAvoidingViewBehavior,
   type KeyboardAvoidingViewProps,
 } from './features/keyboard-avoiding-view/public';
-export type {
-  BoxProps,
-  ContainerProps,
-  DividerProps,
-  GridProps,
-  StackProps,
-} from './features/layout/public';
+export type { DividerProps, GridProps, ScrollViewProps, ViewProps } from './features/layout/public';
 export type {
   ContentRailControlPressEvent,
   ContentRailDirection,
@@ -201,7 +195,7 @@ export type {
   ContentRailSpacing,
   ContentRailVisibleRangeChangeEvent,
 } from './features/layout/public';
-export { Box, Container, Divider, Grid, Stack } from './features/layout/public';
+export { Divider, Grid, ScrollView, View } from './features/layout/public';
 export { ContentRail } from './features/layout/public';
 export type {
   ManifestListProps,
@@ -291,8 +285,6 @@ export type {
   ValidateUploadAssetInput,
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
-export type { CenterProps, InlineProps, ShowProps, SpacerProps } from './foundation';
-export { Center, Inline, Show, Spacer } from './foundation';
 export type {
   ZoraColor,
   ZoraEmphasis,

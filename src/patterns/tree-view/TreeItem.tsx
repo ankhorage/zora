@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IconButton } from '../../features/button/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
 import { SettingsRow } from '../settings-row';
@@ -49,7 +49,7 @@ function TreeItemInner<TId extends string = string>({
       <SettingsRow
         title={node.label}
         control={
-          <Stack direction="row" gap="xs" align="center">
+          <View direction="row" gap="xs" align="center">
             {node.actions}
             {hasChildren ? (
               <IconButton
@@ -61,7 +61,7 @@ function TreeItemInner<TId extends string = string>({
                 variant="ghost"
               />
             ) : null}
-          </Stack>
+          </View>
         }
         meta={node.meta}
         disabled={node.disabled}
@@ -70,10 +70,10 @@ function TreeItemInner<TId extends string = string>({
   };
 
   return (
-    <Box testID={testID}>
-      <Box style={{ paddingLeft: depth * 16 }}>{renderContent()}</Box>
+    <View testID={testID}>
+      <View style={{ paddingLeft: depth * 16 }}>{renderContent()}</View>
       {hasChildren && isExpanded ? (
-        <Box>
+        <View>
           {node.children?.map((child) => (
             <TreeItem
               key={child.id}
@@ -87,9 +87,9 @@ function TreeItemInner<TId extends string = string>({
               selectedId={selectedId}
             />
           ))}
-        </Box>
+        </View>
       ) : null}
-    </Box>
+    </View>
   );
 }
 

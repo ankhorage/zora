@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
 import type { ProductCardProps } from '../../../../types/product-card';
 import { Badge } from '../../../badge/public';
 import { Button } from '../../../button/public';
 import { Image } from '../../../image/public';
-import { Divider, Stack } from '../../../layout/public';
+import { Divider, View } from '../../../layout/public';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
@@ -46,7 +45,7 @@ function ProductCardInner({
       interactionPolicy={interactionPolicy}
       {...rest}
     >
-      <Stack gap="m">
+      <View gap="m">
         {imageUrl ? (
           <Image
             accessibilityLabel={imageAlt ?? title}
@@ -56,9 +55,9 @@ function ProductCardInner({
           />
         ) : null}
 
-        <Stack gap="s">
+        <View gap="s">
           {hasHeaderInfo ? (
-            <Stack gap="xxs">
+            <View gap="xxs">
               {eyebrow ? (
                 <Text variant="caption" weight="semiBold" emphasis="muted">
                   {eyebrow}
@@ -70,19 +69,19 @@ function ProductCardInner({
                   {subtitle}
                 </Text>
               ) : null}
-            </Stack>
+            </View>
           ) : null}
 
           {description ? <Text variant="bodySmall">{description}</Text> : null}
 
           {badges && badges.length > 0 ? (
-            <Inline gap="xs" wrap="wrap">
+            <View direction="row" gap="xs" wrap="wrap">
               {badges.map((badge, index) => (
                 <Badge key={`${badge}-${index}`}>{badge}</Badge>
               ))}
-            </Inline>
+            </View>
           ) : null}
-        </Stack>
+        </View>
 
         {price ? (
           <Text variant="bodySmall" weight="bold">
@@ -92,25 +91,25 @@ function ProductCardInner({
         ) : null}
 
         {hasMeta ? (
-          <Stack gap="xs">
+          <View gap="xs">
             <Divider />
             {meta.map((item, index) => (
-              <Inline key={`${item.label}-${index}`} justify="space-between">
+              <View direction="row" key={`${item.label}-${index}`} justify="space-between">
                 <Text variant="bodySmall" emphasis="muted">
                   {item.label}
                 </Text>
                 <Text variant="bodySmall" weight="semiBold">
                   {item.value}
                 </Text>
-              </Inline>
+              </View>
             ))}
-          </Stack>
+          </View>
         ) : null}
 
         {hasActions ? (
-          <Stack gap="s">
+          <View gap="s">
             <Divider />
-            <Inline gap="s">
+            <View direction="row" gap="s">
               {secondaryActionLabel ? (
                 <Button
                   interactionPolicy={interactionPolicy}
@@ -132,10 +131,10 @@ function ProductCardInner({
                   {primaryActionLabel}
                 </Button>
               ) : null}
-            </Inline>
-          </Stack>
+            </View>
+          </View>
         ) : null}
-      </Stack>
+      </View>
     </Card>
   );
 }

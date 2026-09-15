@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { SectionHeader } from '../../patterns/section-header';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ScreenSectionProps } from './types';
@@ -16,10 +16,10 @@ function ScreenSectionInner({
   testID,
 }: ScreenSectionProps) {
   return (
-    <Stack gap="m" testID={testID}>
+    <View gap="m" testID={testID}>
       {title ? <SectionHeader actions={actions} description={description} title={title} /> : null}
       {children}
-    </Stack>
+    </View>
   );
 }
 

@@ -3,7 +3,7 @@ import React from 'react';
 import type { ZoraBaseProps } from '../../../../theme/ZoraBaseProps';
 import type { FormErrors, FormFieldConfig, FormValues } from '../../../../types/form';
 import { FormActions, FormError, useFormController } from '../../../form/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { AuthFormField } from './AuthFormField';
 
 interface AuthFormProps<TName extends string> {
@@ -38,7 +38,7 @@ export function AuthForm<TName extends string>({
 }: AuthFormProps<TName>) {
   const controller = useFormController({ fields, values, errors, onChange, onSubmit });
   return (
-    <Stack gap="m" testID={testID}>
+    <View gap="m" testID={testID}>
       <FormError error={error} />
       {fields.map((field) => (
         <AuthFormField
@@ -63,6 +63,6 @@ export function AuthForm<TName extends string>({
       >
         {actions}
       </FormActions>
-    </Stack>
+    </View>
   );
 }

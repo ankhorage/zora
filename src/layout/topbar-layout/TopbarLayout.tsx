@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { SidebarLayout } from '../sidebar-layout';
 import type { TopbarLayoutProps } from './types';
@@ -15,10 +15,10 @@ function TopbarLayoutInner({
   testID,
 }: TopbarLayoutProps) {
   return (
-    <Stack gap="l" testID={testID}>
-      <Box>{topbar}</Box>
+    <View gap="l" testID={testID}>
+      <View>{topbar}</View>
       {sidebar ? <SidebarLayout sidebar={sidebar}>{children}</SidebarLayout> : children}
-    </Stack>
+    </View>
   );
 }
 

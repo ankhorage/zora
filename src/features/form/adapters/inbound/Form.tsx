@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { FormProps } from '../../../../types/form';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { FormActions } from './FormActions';
 
 function FormInner({
@@ -18,7 +18,7 @@ function FormInner({
   interactionPolicy,
 }: FormProps) {
   return (
-    <Stack gap="m" testID={testID}>
+    <View gap="m" testID={testID}>
       {children}
       <FormActions
         disabled={disabled}
@@ -31,7 +31,7 @@ function FormInner({
       >
         {actions}
       </FormActions>
-    </Stack>
+    </View>
   );
 }
 
