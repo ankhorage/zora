@@ -20,6 +20,16 @@ replace(
     "      join(ROOT, 'src', 'layout', 'app-shell', 'AppShell.tsx'),",
     "      join(ROOT, 'src', 'features', 'layout', 'adapters', 'inbound', 'AppShell.tsx'),",
 )
+replace(
+    'src/expo57Migration.test.ts',
+    "  test('contains no Expo runtime import or removed RN 0.85 style API', () => {",
+    "  test('contains no Expo runtime import or direct React Native layout API', () => {",
+)
+replace(
+    'src/expo57Migration.test.ts',
+    "    expect(shellSource).not.toContain('absoluteFillObject');\n    expect(shellSource).not.toMatch(/pointerEvents=/);",
+    "    expect(shellSource).not.toContain(\"from 'react-native'\");\n    expect(shellSource).not.toContain('absoluteFillObject');\n    expect(shellSource).toContain('pointerEvents=\"box-none\"');",
+)
 
 replace(
     'src/interactionPolicy.test.ts',
