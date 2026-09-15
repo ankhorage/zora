@@ -18,10 +18,6 @@ function SwitchFieldInner({
 }: SwitchFieldProps) {
   return (
     <ListItem
-      title={label}
-      description={description}
-      disabled={disabled}
-      testID={testID}
       action={
         <Switch
           checked={value}
@@ -30,13 +26,17 @@ function SwitchFieldInner({
           onCheckedChange={onValueChange}
         />
       }
+      description={description}
+      disabled={disabled}
+      testID={testID}
+      title={label}
+      variant="card"
     />
   );
 }
 
 /***
- * Labeled switch field pattern built on `ListItem`.
+ * Labeled switch field pattern built on the card-style `ListItem` presentation.
  *
- 
  */
 export const SwitchField = withZoraThemeScope(SwitchFieldInner);
