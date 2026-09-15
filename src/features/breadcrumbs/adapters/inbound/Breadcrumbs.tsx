@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
@@ -11,6 +10,7 @@ import type {
 } from '../../../../types/breadcrumbs';
 import { Button } from '../../../button/public';
 import { Icon } from '../../../icon/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 
 /*** Renders a breadcrumb trail whose final item represents the current location. */
@@ -45,7 +45,7 @@ function BreadcrumbsInner({
   if (items.length === 0) return null;
 
   return (
-    <Inline align="center" gap={compact ? 'xs' : 's'} testID={testID} wrap="wrap">
+    <View direction="row" align="center" gap={compact ? 'xs' : 's'} testID={testID} wrap="wrap">
       {renderItems.map((renderItem, index) => {
         const showSeparator = index !== renderItems.length - 1;
 
@@ -74,7 +74,7 @@ function BreadcrumbsInner({
           />
         );
       })}
-    </Inline>
+    </View>
   );
 }
 
@@ -127,7 +127,7 @@ function BreadcrumbLabel({ item, compact }: { item: BreadcrumbItem; compact: boo
   const { theme } = useZoraTheme();
 
   return (
-    <Inline align="center" gap="xs" wrap="nowrap">
+    <View direction="row" align="center" gap="xs" wrap="nowrap">
       {item.icon ? (
         <Icon
           {...item.icon}
@@ -138,7 +138,7 @@ function BreadcrumbLabel({ item, compact }: { item: BreadcrumbItem; compact: boo
       <Text emphasis="muted" variant={compact ? 'caption' : 'bodySmall'}>
         {item.label}
       </Text>
-    </Inline>
+    </View>
   );
 }
 

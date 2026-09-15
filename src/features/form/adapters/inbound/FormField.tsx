@@ -3,7 +3,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { FormFieldProps } from '../../../../types/form';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 
 function FormFieldInner({
@@ -21,7 +21,7 @@ function FormFieldInner({
       {...props}
       helperText={helperText}
       label={
-        <Stack gap="xs">
+        <View gap="xs">
           <Text variant="label" weight="semiBold">
             {label}
           </Text>
@@ -30,7 +30,7 @@ function FormFieldInner({
               {description}
             </Text>
           ) : null}
-        </Stack>
+        </View>
       }
     >
       {children}

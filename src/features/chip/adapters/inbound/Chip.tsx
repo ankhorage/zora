@@ -1,13 +1,12 @@
 import { ButtonBase } from '@ankhorage/surface';
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ChipInteractionState, ChipProps } from '../../../../types/chip';
 import { Icon } from '../../../icon/public';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { resolveChipColors } from '../../utils/resolveChipColors';
 /***
@@ -57,7 +56,7 @@ function ChipInner({
     const textEmphasis = state.disabled ? 'muted' : 'default';
 
     return (
-      <Box
+      <View
         bg={colors.backgroundColor}
         borderColor={colors.borderColor}
         borderWidth={1}
@@ -69,13 +68,13 @@ function ChipInner({
           opacity: colors.opacity,
         }}
       >
-        <Inline align="center" gap="xs" wrap="nowrap">
+        <View direction="row" align="center" gap="xs" wrap="nowrap">
           {icon ? <Icon {...icon} color={colors.contentColor} size={iconSize} /> : null}
           <Text color={textColor} emphasis={textEmphasis} variant="label">
             {children}
           </Text>
-        </Inline>
-      </Box>
+        </View>
+      </View>
     );
   };
 

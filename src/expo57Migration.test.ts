@@ -82,19 +82,20 @@ describe('portable ZORA package boundary', () => {
     }
   });
 
-  test('contains no Expo runtime import or removed RN 0.85 style API', () => {
+  test('contains no Expo runtime import or direct React Native layout API', () => {
     const runtimeSource = readFileSync(
       join(ROOT, 'src', 'features', 'gradient', 'adapters', 'inbound', 'Gradient.tsx'),
       'utf8',
     );
     const shellSource = readFileSync(
-      join(ROOT, 'src', 'layout', 'app-shell', 'AppShell.tsx'),
+      join(ROOT, 'src', 'features', 'layout', 'adapters', 'inbound', 'AppShell.tsx'),
       'utf8',
     );
 
     expect(runtimeSource).not.toContain("from 'expo");
+    expect(shellSource).not.toContain("from 'react-native'");
     expect(shellSource).not.toContain('absoluteFillObject');
-    expect(shellSource).not.toMatch(/pointerEvents=/);
+    expect(shellSource).toContain('pointerEvents="box-none"');
   });
 });
 

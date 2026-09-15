@@ -23,6 +23,7 @@ import { postCardMeta } from '../features/card/postCardMeta';
 import { productCardMeta } from '../features/card/productCardMeta';
 import { chipGroupMeta } from '../features/chip/chipGroupMeta';
 import { chipMeta } from '../features/chip/chipMeta';
+import { contentRailMeta } from '../features/content-rail/contentRailMeta';
 import { dataTableMeta } from '../features/data-table/dataTableMeta';
 import { datePickerMeta } from '../features/date-picker/datePickerMeta';
 import { dialogMeta } from '../features/dialog/dialogMeta';
@@ -41,16 +42,18 @@ import { heroMeta } from '../features/hero/heroMeta';
 import { iconMeta } from '../features/icon/iconMeta';
 import { imageMeta } from '../features/image/imageMeta';
 import { keyboardAvoidingViewMeta } from '../features/keyboard-avoiding-view/keyboardAvoidingViewMeta';
-import { boxMeta } from '../features/layout/boxMeta';
-import { containerMeta } from '../features/layout/containerMeta';
-import { contentRailMeta } from '../features/layout/contentRailMeta';
+import { appShellMeta } from '../features/layout/appShellMeta';
 import { dividerMeta } from '../features/layout/dividerMeta';
 import { gridMeta } from '../features/layout/gridMeta';
-import { stackMeta } from '../features/layout/stackMeta';
+import { screenMeta } from '../features/layout/screenMeta';
+import { screenSectionMeta } from '../features/layout/screenSectionMeta';
+import { scrollViewMeta } from '../features/layout/scrollViewMeta';
+import { viewMeta } from '../features/layout/viewMeta';
 import { flatListMeta } from '../features/list/flatListMeta';
 import { sectionListMeta } from '../features/list/sectionListMeta';
 import { missingElementMeta } from '../features/missing-element/missingElementMeta';
 import { paginationMeta } from '../features/pagination/paginationMeta';
+import { paletteItemMeta } from '../features/palette-item/paletteItemMeta';
 import { popoverMenuMeta } from '../features/popover-menu/popoverMenuMeta';
 import { progressMeta, progressRingMeta } from '../features/progress/progressMeta';
 import { ratingMeta } from '../features/rating/ratingMeta';
@@ -72,13 +75,6 @@ import { toolbarMeta } from '../features/toolbar/toolbarMeta';
 import { headingMeta } from '../features/typography/headingMeta';
 import { textMeta } from '../features/typography/textMeta';
 import { uploaderMeta } from '../features/uploader/uploaderMeta';
-import { foundationMetas } from '../foundation/meta';
-import { appShellMeta } from '../layout/app-shell/meta';
-import { screenMeta } from '../layout/screen/meta';
-import { screenSectionMeta } from '../layout/screen-section/meta';
-import { settingsLayoutMeta } from '../layout/settings-layout/meta';
-import { sidebarLayoutMeta } from '../layout/sidebar-layout/meta';
-import { topbarLayoutMeta } from '../layout/topbar-layout/meta';
 import { chatListItemMeta } from '../patterns/chat-list-item/meta';
 import { collectionEditorMeta } from '../patterns/collection-editor/meta';
 import { confirmDialogMeta } from '../patterns/confirm-dialog/meta';
@@ -96,10 +92,8 @@ import {
 } from '../patterns/scanner/meta';
 import { sectionHeaderMeta } from '../patterns/section-header/meta';
 import { selectableItemMeta, selectionProviderMeta } from '../patterns/selection/meta';
-import { settingsRowMeta } from '../patterns/settings-row/meta';
 import { switchFieldMeta } from '../patterns/switch-field/meta';
 import { themeComposerMeta } from '../patterns/theme-composer/meta';
-import { paletteItemMeta, tileGridMeta } from '../patterns/tile-grid/meta';
 import { timelineMeta } from '../patterns/timeline/meta';
 import { treeItemMeta, treeViewMeta } from '../patterns/tree-view/meta';
 import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
@@ -107,13 +101,11 @@ import { finalizeFeatureMetadata } from '../utils/finalizeFeatureMetadata';
 import type { ZoraComponentMetaRegistry } from './types';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
-  ...foundationMetas,
   Accordion: accordionMeta,
   AccordionItem: accordionItemMeta,
   ActivityIndicator: activityIndicatorMeta,
-  Box: boxMeta,
-  Container: containerMeta,
-  Stack: stackMeta,
+  View: viewMeta,
+  ScrollView: scrollViewMeta,
   Grid: gridMeta,
   Divider: dividerMeta,
   Surface: surfaceMeta,
@@ -175,9 +167,6 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   AppShell: appShellMeta,
   Screen: screenMeta,
   ScreenSection: screenSectionMeta,
-  SettingsLayout: settingsLayoutMeta,
-  SidebarLayout: sidebarLayoutMeta,
-  TopbarLayout: topbarLayoutMeta,
   ForgotPasswordForm: forgotPasswordFormMeta,
   OAuthProviderButton: oauthProviderButtonMeta,
   OAuthProviderList: oauthProviderListMeta,
@@ -208,11 +197,9 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SectionHeader: sectionHeaderMeta,
   SelectableItem: selectableItemMeta,
   SelectionProvider: selectionProviderMeta,
-  SettingsRow: settingsRowMeta,
   SwitchField: switchFieldMeta,
   ThemeComposer: themeComposerMeta,
   PaletteItem: paletteItemMeta,
-  TileGrid: tileGridMeta,
   Timeline: timelineMeta,
   TreeItem: treeItemMeta,
   TreeView: treeViewMeta,

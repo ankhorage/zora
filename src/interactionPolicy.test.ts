@@ -195,7 +195,7 @@ describe('ContentRail', () => {
   });
 
   test('suppresses scrolling and forwards interactionPolicy to owned controls', () => {
-    const source = readSource('features/layout/adapters/inbound/ContentRail.tsx');
+    const source = readSource('features/content-rail/adapters/inbound/ContentRail.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toContain('scrollEnabled={!passive}');

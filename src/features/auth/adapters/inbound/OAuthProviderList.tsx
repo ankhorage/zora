@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { OAuthProviderListProps } from '../../../../types/auth';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { OAuthProviderButton } from './OAuthProviderButton';
 
 function OAuthProviderListInner({
@@ -24,7 +24,7 @@ function OAuthProviderListInner({
   const resolvedFullWidth = fullWidth ?? layout === 'stack';
 
   return (
-    <Stack
+    <View
       direction={direction}
       gap="s"
       testID={testID}
@@ -46,7 +46,7 @@ function OAuthProviderListInner({
           interactionPolicy={interactionPolicy}
         />
       ))}
-    </Stack>
+    </View>
   );
 }
 

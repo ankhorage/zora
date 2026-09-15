@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { HeroAction, HeroAlign, HeroProps } from '../../../../types/hero';
 import { Button } from '../../../button/public';
 import { Card } from '../../../card/public';
-import { Box, Grid, Stack } from '../../../layout/public';
+import { Grid, View } from '../../../layout/public';
 import { Heading, Text } from '../../../typography/public';
 
 function HeroInner({
@@ -31,9 +31,9 @@ function HeroInner({
   const mediaFirst = layout === 'mediaFirst';
 
   const content = (
-    <Box width="100%">
-      <Stack align={contentAlign} gap={compact ? 's' : 'm'}>
-        <Stack align={contentAlign} gap="xs">
+    <View width="100%">
+      <View align={contentAlign} gap={compact ? 's' : 'm'}>
+        <View align={contentAlign} gap="xs">
           {eyebrow !== undefined ? (
             <Text align={textAlign} color="primary" variant="eyebrow">
               {eyebrow}
@@ -55,10 +55,10 @@ function HeroInner({
               {description}
             </Text>
           ) : null}
-        </Stack>
+        </View>
 
         {hasActions ? (
-          <Stack
+          <View
             align={contentAlign}
             direction={{ base: 'column', md: 'row' }}
             gap="s"
@@ -70,15 +70,15 @@ function HeroInner({
             {secondaryAction !== undefined
               ? renderAction(secondaryAction, 'secondary', interactionPolicy)
               : null}
-          </Stack>
+          </View>
         ) : null}
 
         {footer}
-      </Stack>
-    </Box>
+      </View>
+    </View>
   );
 
-  const mediaSlot = hasMedia ? <Box width="100%">{media}</Box> : null;
+  const mediaSlot = hasMedia ? <View width="100%">{media}</View> : null;
 
   const body =
     hasMedia && layout !== 'stack' ? (
@@ -87,10 +87,10 @@ function HeroInner({
         {mediaFirst ? content : mediaSlot}
       </Grid>
     ) : (
-      <Stack align="center" direction="column" gap={compact ? 'm' : 'l'}>
+      <View align="center" direction="column" gap={compact ? 'm' : 'l'}>
         {mediaFirst ? mediaSlot : content}
         {mediaFirst ? content : mediaSlot}
-      </Stack>
+      </View>
     );
 
   return (

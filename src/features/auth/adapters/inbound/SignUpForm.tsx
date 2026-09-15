@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SignUpFormProps } from '../../../../types/auth';
 import type { FormFieldConfig, FormValues } from '../../../../types/form';
 import { Button } from '../../../button/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { AuthForm } from './AuthForm';
 
 const defaultSignUpFields = [
@@ -52,7 +52,7 @@ function SignUpFormInner({
     <AuthForm
       actions={
         onSignIn ? (
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Button
               disabled={disabled || loading}
               variant="ghost"
@@ -65,7 +65,7 @@ function SignUpFormInner({
             >
               {signInLabel}
             </Button>
-          </Stack>
+          </View>
         ) : undefined
       }
       disabled={disabled}

@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ForgotPasswordFormProps } from '../../../../types/auth';
 import type { FormFieldConfig, FormValues } from '../../../../types/form';
 import { Button } from '../../../button/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import {
   defaultIdentifiers,
   normalizeIdentifierKind,
@@ -60,7 +60,7 @@ function ForgotPasswordFormInner({
     <AuthForm
       actions={
         onSignIn ? (
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Button
               disabled={disabled || loading}
               variant="ghost"
@@ -73,7 +73,7 @@ function ForgotPasswordFormInner({
             >
               {signInLabel}
             </Button>
-          </Stack>
+          </View>
         ) : undefined
       }
       disabled={disabled}

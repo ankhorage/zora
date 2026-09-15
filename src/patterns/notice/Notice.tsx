@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Badge } from '../../features/badge/public';
 import { Card } from '../../features/card/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { NoticeProps } from './types';
 
@@ -25,10 +25,10 @@ function NoticeInner({
       title={title}
       tone="subtle"
     >
-      <Stack gap="m">
-        {children ? <Box>{children}</Box> : null}
-        {actions ? <Box>{actions}</Box> : null}
-      </Stack>
+      <View gap="m">
+        {children ? <View>{children}</View> : null}
+        {actions ? <View>{actions}</View> : null}
+      </View>
     </Card>
   );
 }

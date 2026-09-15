@@ -3,7 +3,6 @@ import {
   Avatar,
   AvatarGroup,
   Badge,
-  Box,
   Button,
   ButtonGroup,
   Card,
@@ -25,7 +24,6 @@ import {
   SearchInput,
   SectionHeader,
   Select,
-  Stack,
   Surface,
   Tab,
   TabList,
@@ -34,6 +32,7 @@ import {
   Text,
   TextInput,
   Toolbar,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -67,7 +66,7 @@ export function ComponentsPage() {
             description="Semantic heading levels can use responsive visual sizes and tones."
           />
           <Card title="Heading scale" description="Titles stay theme-aware without raw styles.">
-            <Stack gap="s">
+            <View gap="s">
               <Heading level={1} size={{ base: 'h2', md: 'h1' }}>
                 Dashboard overview
               </Heading>
@@ -77,7 +76,7 @@ export function ComponentsPage() {
               <Heading level={3} size="h4" emphasis="muted">
                 Compact section title
               </Heading>
-            </Stack>
+            </View>
           </Card>
 
           <SectionHeader
@@ -85,7 +84,7 @@ export function ComponentsPage() {
             description="Structured body copy, labels, captions, and mono snippets rendered through ZORA."
           />
           <Card title="Variants" description="Recipes stay aligned with the active theme.">
-            <Stack gap="s">
+            <View gap="s">
               <Text variant="lead" emphasis="muted">
                 Lead copy introduces a screen or important section with a larger measure.
               </Text>
@@ -106,14 +105,14 @@ export function ComponentsPage() {
                 Eyebrow text
               </Text>
               <Text variant="code">zora.text.variant</Text>
-            </Stack>
+            </View>
           </Card>
 
           <Card
             title="Tones and responsive props"
             description="Tone and layout can adapt by breakpoint."
           >
-            <Stack gap="s">
+            <View gap="s">
               <Text color="primary" weight="semiBold">
                 Primary tone
               </Text>
@@ -131,7 +130,7 @@ export function ComponentsPage() {
                 This intentionally long line demonstrates numberOfLines truncation for text that
                 needs to fit in constrained product surfaces without exposing raw styles.
               </Text>
-            </Stack>
+            </View>
           </Card>
         </ScreenSection>
 
@@ -140,7 +139,7 @@ export function ComponentsPage() {
             title="Emphasis"
             description="Use emphasis to communicate action strength."
           />
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Button leadingIcon={{ name: 'add-outline' }}>Primary</Button>
             <Button variant="soft" color="neutral">
               Soft neutral
@@ -149,13 +148,13 @@ export function ComponentsPage() {
               Outline danger
             </Button>
             <Button disabled>Disabled</Button>
-          </Stack>
+          </View>
 
           <SectionHeader
             title="Sizes and icons"
             description="Buttons can be compact or icon-enhanced."
           />
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Button size="s" leadingIcon={{ name: 'flash-outline' }}>
               Small
             </Button>
@@ -163,7 +162,7 @@ export function ComponentsPage() {
             <Button variant="soft" color="primary" leadingIcon={{ name: 'sparkles-outline' }}>
               Suggested
             </Button>
-          </Stack>
+          </View>
 
           <SectionHeader
             title="Button groups"
@@ -194,7 +193,7 @@ export function ComponentsPage() {
             title="Standalone actions"
             description="Use IconButton for compact toolbar, card, and row actions."
           />
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <IconButton icon={{ name: 'settings-outline' }} label="Settings" />
             <IconButton icon={{ name: 'share-outline' }} label="Share" variant="soft" />
             <IconButton
@@ -204,7 +203,7 @@ export function ComponentsPage() {
               color="danger"
             />
             <IconButton icon={{ name: 'lock-closed-outline' }} label="Locked" disabled />
-          </Stack>
+          </View>
         </ScreenSection>
 
         <ScreenSection title="Badges">
@@ -212,7 +211,7 @@ export function ComponentsPage() {
             title="Status labels"
             description="Badges work well for state, category, and compact metadata."
           />
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Badge color="primary">Primary</Badge>
             <Badge color="success">Success</Badge>
             <Badge color="warning" variant="soft">
@@ -222,7 +221,7 @@ export function ComponentsPage() {
               Danger outline
             </Badge>
             <Badge color="neutral">Neutral</Badge>
-          </Stack>
+          </View>
         </ScreenSection>
 
         <ScreenSection title="Tabs">
@@ -248,7 +247,7 @@ export function ComponentsPage() {
           </Tabs>
 
           <SectionHeader title="Chips" description="Compact filters and value selection." />
-          <Stack gap="s">
+          <View gap="s">
             <ChipGroup
               value={chipFilter}
               onValueChange={setChipFilter}
@@ -258,13 +257,13 @@ export function ComponentsPage() {
                 { value: 'recent', label: 'Recent' },
               ]}
             />
-            <Stack direction="row" gap="s" wrap="wrap">
+            <View direction="row" gap="s" wrap="wrap">
               <Chip selected color="primary">
                 Selected chip
               </Chip>
               <Chip>Static chip</Chip>
-            </Stack>
-          </Stack>
+            </View>
+          </View>
         </ScreenSection>
 
         <ScreenSection title="Pagination">
@@ -349,7 +348,7 @@ export function ComponentsPage() {
             <IconButton icon={{ name: 'play-outline' }} label="Run" />
             <IconButton icon={{ name: 'pause-outline' }} label="Pause" />
             <IconButton icon={{ name: 'stop-outline' }} label="Stop" />
-            <Box flex={1} />
+            <View flex={1} />
             <IconButton icon={{ name: 'download-outline' }} label="Export" />
           </Toolbar>
 
@@ -450,7 +449,7 @@ export function ComponentsPage() {
             description="A neutral card with descriptive content and a status footer."
             footer={<Badge color="success">Active</Badge>}
           >
-            <Stack direction="row" gap="s" wrap="wrap" align="center">
+            <View direction="row" gap="s" wrap="wrap" align="center">
               <Avatar name="Zora Kit" />
               <AvatarGroup
                 items={[
@@ -461,13 +460,13 @@ export function ComponentsPage() {
                   { id: '5', name: 'Lynn Conway', color: 'danger' },
                 ]}
               />
-            </Stack>
-            <Stack direction="row" gap="s" wrap="wrap">
+            </View>
+            <View direction="row" gap="s" wrap="wrap">
               <Badge color="primary">Catalog</Badge>
               <Badge color="neutral" variant="soft">
                 Stable
               </Badge>
-            </Stack>
+            </View>
           </Card>
 
           <Card
@@ -492,19 +491,19 @@ export function ComponentsPage() {
           />
           <MediaCard
             badges={
-              <Stack direction="row" gap="s" wrap="wrap">
+              <View direction="row" gap="s" wrap="wrap">
                 <Badge color="primary">Featured</Badge>
                 <Badge color="neutral" variant="soft">
                   Cross-platform
                 </Badge>
-              </Stack>
+              </View>
             }
             description="Compose an image slot, title/description, badges, actions, footer metadata, and optional children."
             footer={
-              <Stack direction="row" gap="s" wrap="wrap">
+              <View direction="row" gap="s" wrap="wrap">
                 <Rating value={4.5} />
                 <Badge color="success">Open</Badge>
-              </Stack>
+              </View>
             }
             image={
               <Surface
@@ -519,7 +518,7 @@ export function ComponentsPage() {
             title="MediaCard"
           />
 
-          <Stack direction={{ base: 'column', md: 'row' }} gap="m" wrap="wrap">
+          <View direction={{ base: 'column', md: 'row' }} gap="m" wrap="wrap">
             <MetricCard
               delta="+4.1%"
               deltaColor="success"
@@ -536,21 +535,21 @@ export function ComponentsPage() {
               label="Conversion"
               value="3.7%"
             />
-          </Stack>
+          </View>
 
           <Card title="Progress" description="Linear progress v1 using semantic tones.">
-            <Stack gap="m">
+            <View gap="m">
               <Progress value={72} />
               <Progress color="success" value={38} />
               <Progress color="warning" value={55} />
-            </Stack>
+            </View>
           </Card>
 
           <Card
             title="Progress rings"
             description="Circular determinate progress supports serializable center value and label compositions."
           >
-            <Stack direction="row" gap="l" wrap="wrap">
+            <View direction="row" gap="l" wrap="wrap">
               <ProgressRing
                 accessibilityLabel="Library read"
                 accessibilityValueText="68% of your library read"
@@ -567,7 +566,7 @@ export function ComponentsPage() {
                 max={24}
                 value={16}
               />
-            </Stack>
+            </View>
           </Card>
         </ScreenSection>
 

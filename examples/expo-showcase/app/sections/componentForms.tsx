@@ -8,14 +8,13 @@ import {
   FormField,
   Gradient,
   Icon,
-  Inline,
   OAuthProviderList,
   Radio,
   RadioGroup,
   ScreenSection,
-  Stack,
   Text,
   TextInput,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -34,7 +33,7 @@ export function ComponentFormsSection() {
         title="Standalone Checkbox and Radio"
         description="Single controls are available outside grouped inputs."
       >
-        <Stack gap="s">
+        <View gap="s">
           <Checkbox checked={standaloneChecked} onCheckedChange={setStandaloneChecked}>
             Standalone checkbox
           </Checkbox>
@@ -45,7 +44,7 @@ export function ComponentFormsSection() {
             Standalone radio
           </Radio>
           <Radio disabled>Disabled radio</Radio>
-        </Stack>
+        </View>
       </Card>
 
       <Card
@@ -101,18 +100,18 @@ export function ComponentFormsSection() {
         title="Plain Icon"
         description="Icon is useful for metadata and decorative affordances."
       >
-        <Inline gap="m">
+        <View direction="row" gap="m">
           <Icon name="sparkles-outline" size={18} />
           <Icon name="color-palette-outline" size={24} />
           <Icon name="rocket-outline" size={32} />
-        </Inline>
+        </View>
       </Card>
 
       <Card
         title="Form wrapper"
         description="Compact coverage for Form, FormField, FormActions, and FormError."
       >
-        <Stack gap="m">
+        <View gap="m">
           <Form onSubmit={() => undefined} submitLabel="Save form">
             <FormError error="Example form-level error" />
             <FormField label="Email" required>
@@ -148,7 +147,7 @@ export function ComponentFormsSection() {
           <Text emphasis="muted" variant="bodySmall">
             Form values: {formValues.email} / {formValues.project}
           </Text>
-        </Stack>
+        </View>
       </Card>
     </ScreenSection>
   );

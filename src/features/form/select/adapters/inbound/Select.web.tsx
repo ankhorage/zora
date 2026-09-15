@@ -3,7 +3,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { SelectProps } from '../../../../../types/select';
-import { Stack } from '../../../../layout/public';
+import { View } from '../../../../layout/public';
 import { Surface } from '../../../../surface/public';
 import { SelectField } from '../../composition/SelectField';
 import { SelectOptionRow } from '../../composition/SelectOptionRow';
@@ -44,7 +44,7 @@ function SelectInner<TValue extends string = string>({
         testID={testID ? `${testID}-popover` : undefined}
       >
         <Surface variant="raised">
-          <Stack gap="xs" p="xs">
+          <View gap="xs" p="xs">
             {options.map((option) => (
               <SelectOptionRow
                 interactionPolicy={interactionPolicy}
@@ -55,7 +55,7 @@ function SelectInner<TValue extends string = string>({
                 testID={testID}
               />
             ))}
-          </Stack>
+          </View>
         </Surface>
       </Popover>
     </SelectField>

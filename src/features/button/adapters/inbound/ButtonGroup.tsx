@@ -6,7 +6,7 @@ import type {
   ButtonGroupOrientation,
   ButtonGroupProps,
 } from '../../../../types/button-group';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 /***
  * Groups multiple `Button` elements with consistent spacing and alignment.
  */
@@ -99,7 +99,7 @@ function ButtonGroupInner({
   const orderedItems = reverse ? items.reverse() : items;
 
   return (
-    <Stack
+    <View
       align={resolveStackAlign(align, orientation)}
       direction={resolveDirection(orientation)}
       gap={gap}
@@ -107,6 +107,6 @@ function ButtonGroupInner({
       testID={testID}
     >
       {orderedItems}
-    </Stack>
+    </View>
   );
 }

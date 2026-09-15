@@ -27,6 +27,7 @@ import { PostCard } from './features/card/public';
 import { ProductCard } from './features/card/public';
 import { Chip } from './features/chip/public';
 import { ChipGroup } from './features/chip/public';
+import { ContentRail } from './features/content-rail/public';
 import { DataTable } from './features/data-table/public';
 import { DatePicker } from './features/date-picker/public';
 import { Dialog } from './features/dialog/public';
@@ -42,11 +43,19 @@ import { Hero } from './features/hero/public';
 import { Icon } from './features/icon/public';
 import { Image } from './features/image/public';
 import { KeyboardAvoidingView } from './features/keyboard-avoiding-view/public';
-import { Box, Container, Divider, Grid, Stack } from './features/layout/public';
-import { ContentRail } from './features/layout/public';
+import {
+  AppShell,
+  Divider,
+  Grid,
+  Screen,
+  ScreenSection,
+  ScrollView,
+  View,
+} from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
 import { Pagination } from './features/pagination/public';
+import { PaletteItem } from './features/palette-item/public';
 import { PopoverMenu } from './features/popover-menu/public';
 import { Progress, ProgressRing } from './features/progress/public';
 import { Rating } from './features/rating/public';
@@ -59,13 +68,6 @@ import { Toolbar } from './features/toolbar/public';
 import { Heading } from './features/typography/public';
 import { Text } from './features/typography/public';
 import { Uploader } from './features/uploader/public';
-import { Center, Inline, Show, Spacer } from './foundation';
-import { AppShell } from './layout/app-shell';
-import { Screen } from './layout/screen';
-import { ScreenSection } from './layout/screen-section';
-import { SettingsLayout } from './layout/settings-layout';
-import { SidebarLayout } from './layout/sidebar-layout';
-import { TopbarLayout } from './layout/topbar-layout';
 import { ChatListItem } from './patterns/chat-list-item';
 import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
@@ -79,10 +81,8 @@ import { ReaderSurface } from './patterns/reader';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from './patterns/scanner';
 import { SectionHeader } from './patterns/section-header';
 import { SelectableItem } from './patterns/selection';
-import { SettingsRow } from './patterns/settings-row';
 import { SwitchField } from './patterns/switch-field';
 import { ThemeComposer } from './patterns/theme-composer';
-import { PaletteItem, TileGrid } from './patterns/tile-grid';
 import { Timeline } from './patterns/timeline';
 import { TreeItem, TreeView } from './patterns/tree-view';
 import { ThemeModeToggle } from './theme/ThemeModeToggle';
@@ -169,23 +169,15 @@ const _ZORA_COMPONENT_REGISTRY = {
   BottomSheet,
   FlatList,
   SectionList,
+  ScrollView,
+  View,
   ThemeModeToggle,
-  Box,
-  Center,
-  Container,
   Divider,
   Grid,
-  Inline,
-  Show,
-  Spacer,
-  Stack,
   Surface,
   AppShell,
   Screen,
   ScreenSection,
-  SettingsLayout,
-  SidebarLayout,
-  TopbarLayout,
   ForgotPasswordForm,
   OAuthProviderButton,
   OAuthProviderList,
@@ -215,11 +207,9 @@ const _ZORA_COMPONENT_REGISTRY = {
   ScanOverlay,
   SectionHeader,
   SelectableItem,
-  SettingsRow,
   SwitchField,
   ThemeComposer,
   PaletteItem,
-  TileGrid,
   Timeline,
   TreeItem,
   TreeView,

@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View as ReactNativeView } from 'react-native';
 
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import { type ProgressRingProps, resolveProgressRole } from '../../../../types/progress';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 import { resolveProgressFraction } from '../../utils/resolveProgressFraction';
 import { resolveProgressRingGeometry } from '../../utils/resolveProgressRingGeometry';
@@ -36,7 +36,7 @@ function ProgressRingInner({
   const segments = Array.from({ length: geometry.filledSegmentCount });
 
   return (
-    <View
+    <ReactNativeView
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="progressbar"
       accessibilityValue={{
@@ -49,7 +49,7 @@ function ProgressRingInner({
       style={{ height: geometry.diameter, width: geometry.diameter }}
       testID={testID}
     >
-      <View
+      <ReactNativeView
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={styles.visual}
@@ -86,15 +86,15 @@ function ProgressRingInner({
             />
           </View>
         ))}
-      </View>
+      </ReactNativeView>
 
       {centerValue !== undefined || centerLabel !== undefined ? (
-        <View
+        <ReactNativeView
           importantForAccessibility="no-hide-descendants"
           pointerEvents="none"
           style={styles.center}
         >
-          <Stack align="center" gap="xxs" px="s">
+          <View align="center" gap="xxs" px="s">
             {centerValue !== undefined ? (
               <Text align="center" variant="lead" weight="bold">
                 {centerValue}
@@ -105,10 +105,10 @@ function ProgressRingInner({
                 {centerLabel}
               </Text>
             ) : null}
-          </Stack>
-        </View>
+          </View>
+        </ReactNativeView>
       ) : null}
-    </View>
+    </ReactNativeView>
   );
 }
 

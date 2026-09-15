@@ -850,7 +850,7 @@
     "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
     "sourceLocation": {
       "filePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
-      "line": 17,
+      "line": 16,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1050,20 +1050,14 @@
   },
   {
     "name": "AppShell",
-    "description": "Root application shell with stable header, content, footer, and overlay slots.\n\n`AppShell` provides the top-level layout frame for cross-platform apps while\nleaving navigation, toolbars, and overlays composable through explicit slots.",
+    "description": "Root application frame with explicit header, content, footer, and overlay slots.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "App frame",
-        "language": "tsx",
-        "code": "<AppShell header={<AppBar title=\"Dashboard\" />}>...</AppShell>"
-      }
-    ],
+    "examples": [],
     "kind": "value",
-    "modulePath": "src/layout/app-shell/AppShell.tsx",
+    "modulePath": "src/features/layout/adapters/inbound/AppShell.tsx",
     "sourceLocation": {
-      "filePath": "src/layout/app-shell/AppShell.tsx",
-      "line": 45,
+      "filePath": "src/features/layout/adapters/inbound/AppShell.tsx",
+      "line": 44,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -1078,10 +1072,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/layout/app-shell/types.ts",
+    "modulePath": "src/types/layout.ts",
     "sourceLocation": {
-      "filePath": "src/layout/app-shell/types.ts",
-      "line": 5,
+      "filePath": "src/types/layout.ts",
+      "line": 19,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -1997,379 +1991,6 @@
     "structuredRows": []
   },
   {
-    "name": "Box",
-    "description": "Adapts the themed Surface Box primitive to ZORA scope and interaction props.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/features/layout/adapters/inbound/Box.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/layout/adapters/inbound/Box.tsx",
-      "line": 8,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "BoxProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/types/layout.ts",
-    "sourceLocation": {
-      "filePath": "src/types/layout.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityRole",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityRole | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityState",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityState | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessible",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "alignSelf",
-        "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bg",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderColor",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bottom",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexBasis",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexGrow",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexShrink",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "left",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "m",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "ml",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mx",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "my",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "opacity",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "overflow",
-        "kind": "property",
-        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "p",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pl",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pointerEvents",
-        "kind": "property",
-        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "px",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "py",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "Responsive<RadiusValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "right",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<ViewStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "top",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "zIndex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "BreadcrumbItem",
     "description": null,
     "isReadme": false,
@@ -2747,6 +2368,13 @@
         "description": null
       },
       {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "alignSelf",
         "kind": "property",
         "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
@@ -2796,6 +2424,20 @@
         "description": null
       },
       {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
@@ -2838,6 +2480,13 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
@@ -2848,6 +2497,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -3055,6 +2711,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "size",
         "kind": "property",
         "type": "ZoraControlSize | undefined",
@@ -3100,6 +2763,13 @@
         "name": "width",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
         "required": false,
         "description": null
       },
@@ -3342,6 +3012,13 @@
         "description": null
       },
       {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "alignSelf",
         "kind": "property",
         "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
@@ -3363,6 +3040,13 @@
         "description": null
       },
       {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "compact",
         "kind": "property",
         "type": "boolean | undefined",
@@ -3373,6 +3057,13 @@
         "name": "description",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
         "required": false,
         "description": null
       },
@@ -3426,6 +3117,13 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
@@ -3436,6 +3134,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -3629,6 +3334,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "style",
         "kind": "property",
         "type": "StyleProp<ViewStyle>",
@@ -3678,382 +3390,9 @@
         "description": null
       },
       {
-        "name": "zIndex",
+        "name": "wrap",
         "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "Center",
-    "description": "Centers children horizontally and vertically within the available space.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/foundation/Center.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Center.tsx",
-      "line": 26,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "CenterProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/foundation/Center.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Center.tsx",
-      "line": 10,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityRole",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityRole | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityState",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityState | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessible",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "alignSelf",
-        "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "axis",
-        "kind": "property",
-        "type": "\"horizontal\" | \"vertical\" | \"both\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bg",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderColor",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bottom",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexBasis",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexGrow",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexShrink",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "left",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "m",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "ml",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mx",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "my",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "opacity",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "overflow",
-        "kind": "property",
-        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "p",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pl",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pointerEvents",
-        "kind": "property",
-        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "px",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "py",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "Responsive<RadiusValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "right",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<ViewStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "top",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
         "required": false,
         "description": null
       },
@@ -4144,7 +3483,7 @@
     "modulePath": "src/patterns/chat-list-item/ChatListItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/chat-list-item/ChatListItem.tsx",
-      "line": 228,
+      "line": 227,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4325,7 +3664,7 @@
     "modulePath": "src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx",
     "sourceLocation": {
       "filePath": "src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx",
-      "line": 65,
+      "line": 64,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -4536,6 +3875,13 @@
         "description": null
       },
       {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "alignSelf",
         "kind": "property",
         "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
@@ -4592,9 +3938,23 @@
         "description": null
       },
       {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "defaultChecked",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
         "required": false,
         "description": null
       },
@@ -4634,6 +3994,13 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
@@ -4651,6 +4018,13 @@
         "name": "invalid",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -4851,6 +4225,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "size",
         "kind": "property",
         "type": "ControlSize | undefined",
@@ -4886,6 +4267,13 @@
         "description": null
       },
       {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "zIndex",
         "kind": "property",
         "type": "Responsive<number> | undefined",
@@ -4904,7 +4292,7 @@
     "modulePath": "src/features/chip/adapters/inbound/Chip.tsx",
     "sourceLocation": {
       "filePath": "src/features/chip/adapters/inbound/Chip.tsx",
-      "line": 16,
+      "line": 15,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -5655,388 +5043,15 @@
     "structuredRows": []
   },
   {
-    "name": "Container",
-    "description": "Adapts the themed Surface Container primitive to ZORA scope and interaction props.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/features/layout/adapters/inbound/Container.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/layout/adapters/inbound/Container.tsx",
-      "line": 8,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ContainerProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/types/layout.ts",
-    "sourceLocation": {
-      "filePath": "src/types/layout.ts",
-      "line": 12,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityRole",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityRole | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityState",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityState | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessible",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "alignSelf",
-        "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bg",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderColor",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bottom",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexBasis",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexGrow",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexShrink",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "left",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "m",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "ml",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mx",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "my",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "opacity",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "overflow",
-        "kind": "property",
-        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "p",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pl",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pointerEvents",
-        "kind": "property",
-        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "px",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "py",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "Responsive<RadiusValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "right",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<ViewStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "top",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "zIndex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "ContentRail",
     "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/features/layout/adapters/inbound/ContentRail.tsx",
+    "modulePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
     "sourceLocation": {
-      "filePath": "src/features/layout/adapters/inbound/ContentRail.tsx",
-      "line": 31,
+      "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
+      "line": 30,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -7140,7 +6155,7 @@
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
       "filePath": "src/types/layout.ts",
-      "line": 14,
+      "line": 15,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -7172,6 +6187,13 @@
         "name": "accessible",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
         "required": false,
         "description": null
       },
@@ -7218,6 +6240,20 @@
         "description": null
       },
       {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "flex",
         "kind": "property",
         "type": "Responsive<number> | undefined",
@@ -7246,9 +6282,23 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -7442,6 +6492,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "style",
         "kind": "property",
         "type": "StyleProp<ViewStyle>",
@@ -7473,6 +6530,13 @@
         "name": "top",
         "kind": "property",
         "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
         "required": false,
         "description": null
       },
@@ -7655,7 +6719,7 @@
     "modulePath": "src/patterns/filter-bar/FilterBar.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/filter-bar/FilterBar.tsx",
-      "line": 32,
+      "line": 31,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -8961,7 +8025,7 @@
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
       "filePath": "src/types/layout.ts",
-      "line": 16,
+      "line": 17,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -8993,6 +8057,13 @@
         "name": "accessible",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
         "required": false,
         "description": null
       },
@@ -9048,8 +8119,22 @@
       {
         "name": "cols",
         "kind": "property",
-        "type": "Responsive<number>",
-        "required": true,
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -9098,6 +8183,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -9329,6 +8421,13 @@
         "name": "width",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
         "required": false,
         "description": null
       },
@@ -10267,407 +9366,6 @@
     "structuredRows": []
   },
   {
-    "name": "Inline",
-    "description": "Arranges children inline with spacing and wrapping behavior.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/foundation/Inline.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Inline.tsx",
-      "line": 26,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "InlineProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/foundation/Inline.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Inline.tsx",
-      "line": 10,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityRole",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityRole | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityState",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityState | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessible",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "align",
-        "kind": "property",
-        "type": "Responsive<\"flex-start\" | \"flex-end\" | \"center\" | \"stretch\" | \"baseline\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "alignSelf",
-        "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bg",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderColor",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bottom",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexBasis",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexGrow",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexShrink",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "gap",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "justify",
-        "kind": "property",
-        "type": "Responsive<\"flex-start\" | \"flex-end\" | \"center\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "left",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "m",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "ml",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mx",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "my",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "opacity",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "overflow",
-        "kind": "property",
-        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "p",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pl",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pointerEvents",
-        "kind": "property",
-        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "px",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "py",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "Responsive<RadiusValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "right",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<ViewStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "top",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "wrap",
-        "kind": "property",
-        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "zIndex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "InspectorField",
     "description": "Inspector row pattern with label, description, and control slot.",
     "isReadme": false,
@@ -11545,7 +10243,7 @@
     "modulePath": "src/patterns/list/List.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/list/List.tsx",
-      "line": 78,
+      "line": 77,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -11703,7 +10401,7 @@
     "modulePath": "src/patterns/list/ListRow.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/list/ListRow.tsx",
-      "line": 199,
+      "line": 198,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12201,7 +10899,7 @@
     "modulePath": "src/patterns/message-bubble/MessageBubble.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/message-bubble/MessageBubble.tsx",
-      "line": 273,
+      "line": 276,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -12508,7 +11206,7 @@
     "modulePath": "src/features/card/adapters/inbound/MetricCard.tsx",
     "sourceLocation": {
       "filePath": "src/features/card/adapters/inbound/MetricCard.tsx",
-      "line": 17,
+      "line": 16,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -13510,9 +12208,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/tile-grid/PaletteItem.tsx",
+    "modulePath": "src/features/palette-item/adapters/inbound/PaletteItem.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/tile-grid/PaletteItem.tsx",
+      "filePath": "src/features/palette-item/adapters/inbound/PaletteItem.tsx",
       "line": 62,
       "column": 14
     },
@@ -13528,10 +12226,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/tile-grid/types.ts",
+    "modulePath": "src/types/palette-item.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/tile-grid/types.ts",
-      "line": 12,
+      "filePath": "src/types/palette-item.ts",
+      "line": 6,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -13541,14 +12239,14 @@
       {
         "name": "badge",
         "kind": "property",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "required": false,
         "description": null
       },
       {
         "name": "description",
         "kind": "property",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "required": false,
         "description": null
       },
@@ -13611,7 +12309,7 @@
       {
         "name": "title",
         "kind": "property",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "required": true,
         "description": null
       }
@@ -14138,7 +12836,7 @@
     "modulePath": "src/features/card/adapters/inbound/PostCard.tsx",
     "sourceLocation": {
       "filePath": "src/features/card/adapters/inbound/PostCard.tsx",
-      "line": 24,
+      "line": 23,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14298,7 +12996,7 @@
     "modulePath": "src/features/card/adapters/inbound/ProductCard.tsx",
     "sourceLocation": {
       "filePath": "src/features/card/adapters/inbound/ProductCard.tsx",
-      "line": 14,
+      "line": 13,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -14967,6 +13665,13 @@
         "description": null
       },
       {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "alignSelf",
         "kind": "property",
         "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
@@ -15023,9 +13728,23 @@
         "description": null
       },
       {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "defaultChecked",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
         "required": false,
         "description": null
       },
@@ -15065,6 +13784,13 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
@@ -15082,6 +13808,13 @@
         "name": "invalid",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -15282,6 +14015,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "size",
         "kind": "property",
         "type": "ControlSize | undefined",
@@ -15313,6 +14053,13 @@
         "name": "width",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
         "required": false,
         "description": null
       },
@@ -15695,7 +14442,7 @@
     "modulePath": "src/patterns/reader/ReaderSurface.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/reader/ReaderSurface.tsx",
-      "line": 350,
+      "line": 349,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16236,14 +14983,14 @@
   },
   {
     "name": "Screen",
-    "description": null,
+    "description": "Screen content boundary with independent width policy and scroll ownership.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/layout/screen/Screen.tsx",
+    "modulePath": "src/features/layout/adapters/inbound/Screen.tsx",
     "sourceLocation": {
-      "filePath": "src/layout/screen/Screen.tsx",
-      "line": 47,
+      "filePath": "src/features/layout/adapters/inbound/Screen.tsx",
+      "line": 50,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16258,10 +15005,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/layout/screen/types.ts",
+    "modulePath": "src/types/layout.ts",
     "sourceLocation": {
-      "filePath": "src/layout/screen/types.ts",
-      "line": 6,
+      "filePath": "src/types/layout.ts",
+      "line": 26,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -16329,14 +15076,14 @@
   },
   {
     "name": "ScreenSection",
-    "description": "Screen section layout with optional title, description, and actions.",
+    "description": "Screen section with optional heading, description, actions, and content.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/layout/screen-section/ScreenSection.tsx",
+    "modulePath": "src/features/layout/adapters/inbound/ScreenSection.tsx",
     "sourceLocation": {
-      "filePath": "src/layout/screen-section/ScreenSection.tsx",
-      "line": 31,
+      "filePath": "src/features/layout/adapters/inbound/ScreenSection.tsx",
+      "line": 27,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -16351,10 +15098,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/layout/screen-section/types.ts",
+    "modulePath": "src/types/layout.ts",
     "sourceLocation": {
-      "filePath": "src/layout/screen-section/types.ts",
-      "line": 5,
+      "filePath": "src/types/layout.ts",
+      "line": 33,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -16414,6 +15161,1429 @@
         "name": "title",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ScrollView",
+    "description": "Adapts the token-aware Surface ScrollView primitive to ZORA theme scope.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
+      "line": 8,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ScrollViewProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/layout.ts",
+    "sourceLocation": {
+      "filePath": "src/types/layout.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ScrollView", "View", "ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityActions",
+        "kind": "property",
+        "type": "readonly Readonly<{ name: AccessibilityActionName | string; label?: string | undefined; }>[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityElementsHidden",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityHint",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityIgnoresInvertColors",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLabelledBy",
+        "kind": "property",
+        "type": "string | string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLanguage",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLargeContentTitle",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityLiveRegion",
+        "kind": "property",
+        "type": "\"none\" | \"polite\" | \"assertive\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityRespondsToUserInteraction",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityRole",
+        "kind": "property",
+        "type": "AccessibilityRole | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityShowsLargeContentViewer",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityState",
+        "kind": "property",
+        "type": "AccessibilityState | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityValue",
+        "kind": "property",
+        "type": "AccessibilityValue | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityViewIsModal",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessible",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "alignSelf",
+        "kind": "property",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "alwaysBounceHorizontal",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "alwaysBounceVertical",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-busy",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-checked",
+        "kind": "property",
+        "type": "boolean | \"mixed\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-expanded",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-hidden",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-label",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-labelledby",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-live",
+        "kind": "property",
+        "type": "\"polite\" | \"assertive\" | \"off\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-modal",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-selected",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuemax",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuemin",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuenow",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aria-valuetext",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "automaticallyAdjustContentInsets",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "automaticallyAdjustKeyboardInsets",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "automaticallyAdjustsScrollIndicatorInsets",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bg",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderColor",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderWidth",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bottom",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bounces",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bouncesZoom",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "canCancelContentTouches",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerContent",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "collapsable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "collapsableChildren",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentContainerStyle",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentInset",
+        "kind": "property",
+        "type": "Insets | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentInsetAdjustmentBehavior",
+        "kind": "property",
+        "type": "\"always\" | \"never\" | \"automatic\" | \"scrollableAxes\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "contentOffset",
+        "kind": "property",
+        "type": "PointProp | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "decelerationRate",
+        "kind": "property",
+        "type": "number | \"fast\" | \"normal\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "directionalLockEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disableIntervalMomentum",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disableScrollViewPanResponder",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "endFillColor",
+        "kind": "property",
+        "type": "ColorValue | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fadingEdgeLength",
+        "kind": "property",
+        "type": "number | { start: number; end: number; } | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexBasis",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexGrow",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexShrink",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "focusable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hasTVPreferredFocus",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hitSlop",
+        "kind": "property",
+        "type": "number | Insets | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "horizontal",
+        "kind": "property",
+        "type": "boolean | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "importantForAccessibility",
+        "kind": "property",
+        "type": "\"auto\" | \"yes\" | \"no\" | \"no-hide-descendants\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "indicatorStyle",
+        "kind": "property",
+        "type": "\"default\" | \"black\" | \"white\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "innerViewRef",
+        "kind": "property",
+        "type": "React.RefObject<View> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "invertStickyHeaders",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isTVSelectable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "keyboardDismissMode",
+        "kind": "property",
+        "type": "\"none\" | \"interactive\" | \"on-drag\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "keyboardShouldPersistTaps",
+        "kind": "property",
+        "type": "boolean | \"always\" | \"never\" | \"handled\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "left",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "m",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maintainVisibleContentPosition",
+        "kind": "property",
+        "type": "{ autoscrollToTopThreshold?: number | null | undefined; minIndexForVisible: number; } | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maximumZoomScale",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minimumZoomScale",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ml",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mr",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mx",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "my",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "nativeID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "needsOffscreenAlphaCompositing",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "nestedScrollEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityAction",
+        "kind": "property",
+        "type": "((event: AccessibilityActionEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityEscape",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onAccessibilityTap",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onBlur",
+        "kind": "property",
+        "type": "((e: BlurEvent) => void) | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onContentSizeChange",
+        "kind": "property",
+        "type": "((contentWidth: number, contentHeight: number) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onFocus",
+        "kind": "property",
+        "type": "((e: FocusEvent) => void) | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onLayout",
+        "kind": "property",
+        "type": "((event: LayoutChangeEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMagicTap",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMomentumScrollBegin",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMomentumScrollEnd",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMoveShouldSetResponder",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMoveShouldSetResponderCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerCancel",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerCancelCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerDown",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerDownCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerEnter",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerEnterCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerLeave",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerLeaveCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerMove",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerMoveCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerUp",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onPointerUpCapture",
+        "kind": "property",
+        "type": "((event: PointerEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderEnd",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderGrant",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderMove",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderReject",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderRelease",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderStart",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderTerminate",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onResponderTerminationRequest",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onScroll",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onScrollAnimationEnd",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onScrollBeginDrag",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onScrollEndDrag",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onScrollToTop",
+        "kind": "property",
+        "type": "((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onStartShouldSetResponder",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onStartShouldSetResponderCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchCancel",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchEnd",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchEndCapture",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchMove",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onTouchStart",
+        "kind": "property",
+        "type": "((event: GestureResponderEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "opacity",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overflow",
+        "kind": "property",
+        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overScrollMode",
+        "kind": "property",
+        "type": "\"auto\" | \"always\" | \"never\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "p",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pagingEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "persistentScrollbar",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pinchGestureEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pl",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pointerEvents",
+        "kind": "property",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "position",
+        "kind": "property",
+        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pr",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "px",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "py",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "radius",
+        "kind": "property",
+        "type": "Responsive<RadiusValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "refreshControl",
+        "kind": "property",
+        "type": "React.ReactElement<RefreshControlProps, string | React.JSXElementConstructor<any>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "removeClippedSubviews",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderToHardwareTextureAndroid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "right",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "role",
+        "kind": "property",
+        "type": "Role | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "screenReaderFocusable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollEventThrottle",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollIndicatorInsets",
+        "kind": "property",
+        "type": "Insets | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollPerfTag",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollsChildToFocus",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollsToTop",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollToOverflowEnabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scrollViewRef",
+        "kind": "property",
+        "type": "React.RefObject<ScrollView> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "shouldRasterizeIOS",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "showsHorizontalScrollIndicator",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "showsVerticalScrollIndicator",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snapToAlignment",
+        "kind": "property",
+        "type": "\"center\" | \"start\" | \"end\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snapToEnd",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snapToInterval",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snapToOffsets",
+        "kind": "property",
+        "type": "number[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snapToStart",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "StickyHeaderComponent",
+        "kind": "property",
+        "type": "React.ComponentType<any> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "stickyHeaderHiddenOnScroll",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "stickyHeaderIndices",
+        "kind": "property",
+        "type": "number[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tabIndex",
+        "kind": "property",
+        "type": "0 | -1 | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "top",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxMagnification",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxShiftDistanceX",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxShiftDistanceY",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tvParallaxTiltAngle",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoomScale",
+        "kind": "property",
+        "type": "number | undefined",
         "required": false,
         "description": null
       }
@@ -17132,335 +17302,6 @@
         "name": "value",
         "kind": "property",
         "type": "TValue | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "SettingsLayout",
-    "description": "Settings page layout with app bar, sidebar, and scrollable content area.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/layout/settings-layout/SettingsLayout.tsx",
-    "sourceLocation": {
-      "filePath": "src/layout/settings-layout/SettingsLayout.tsx",
-      "line": 33,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SettingsLayoutProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/layout/settings-layout/types.ts",
-    "sourceLocation": {
-      "filePath": "src/layout/settings-layout/types.ts",
-      "line": 5,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "actions",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sidebar",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "title",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "SettingsRow",
-    "description": "Settings row pattern with title, description/meta, and optional trailing content.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/settings-row/SettingsRow.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/settings-row/SettingsRow.tsx",
-      "line": 53,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SettingsRowProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/settings-row/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/settings-row/types.ts",
-      "line": 27,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "Show",
-    "description": "Conditionally renders children for responsive display and breakpoint-based visibility.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/foundation/Show.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Show.tsx",
-      "line": 23,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ShowProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/foundation/Show.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Show.tsx",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "fallback",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "when",
-        "kind": "property",
-        "type": "Responsive<boolean>",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "SidebarLayout",
-    "description": "Responsive layout with a sidebar and main content area (and optional aside).\n\n`sizing=\"content\"` keeps normal content-flow behavior. Use `sizing=\"fill\"` when the layout\nshould fill an already bounded parent so sidebar/content children receive the available space\nfor their own scrolling or gesture ownership.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
-    "sourceLocation": {
-      "filePath": "src/layout/sidebar-layout/SidebarLayout.tsx",
-      "line": 46,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SidebarLayoutProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/layout/sidebar-layout/types.ts",
-    "sourceLocation": {
-      "filePath": "src/layout/sidebar-layout/types.ts",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "aside",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "asideWidth",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sidebar",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "sidebarWidth",
-        "kind": "property",
-        "type": "number | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sizing",
-        "kind": "property",
-        "type": "SidebarLayoutSizing | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
         "required": false,
         "description": null
       }
@@ -18254,493 +18095,6 @@
     "structuredRows": []
   },
   {
-    "name": "Spacer",
-    "description": "Adds flexible or fixed empty space in layout compositions.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/foundation/Spacer.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Spacer.tsx",
-      "line": 26,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "SpacerProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/foundation/Spacer.tsx",
-    "sourceLocation": {
-      "filePath": "src/foundation/Spacer.tsx",
-      "line": 10,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "axis",
-        "kind": "property",
-        "type": "\"horizontal\" | \"vertical\" | \"both\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "size",
-        "kind": "property",
-        "type": "SpaceValue | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "Stack",
-    "description": "Adapts the themed Surface Stack primitive to ZORA scope and interaction props.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/features/layout/adapters/inbound/Stack.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/layout/adapters/inbound/Stack.tsx",
-      "line": 8,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "StackProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/types/layout.ts",
-    "sourceLocation": {
-      "filePath": "src/types/layout.ts",
-      "line": 17,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "accessibilityLabel",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityRole",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityRole | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessibilityState",
-        "kind": "property",
-        "type": "import(\"react-native\").AccessibilityState | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "accessible",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "align",
-        "kind": "property",
-        "type": "Responsive<\"flex-start\" | \"flex-end\" | \"center\" | \"stretch\" | \"baseline\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "alignSelf",
-        "kind": "property",
-        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bg",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderColor",
-        "kind": "property",
-        "type": "Responsive<ColorValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "borderWidth",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "bottom",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "direction",
-        "kind": "property",
-        "type": "Responsive<\"row\" | \"column\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexBasis",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexGrow",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "flexShrink",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "gap",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "height",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "justify",
-        "kind": "property",
-        "type": "Responsive<\"flex-start\" | \"flex-end\" | \"center\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "left",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "m",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "maxWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minHeight",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "minWidth",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "ml",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mx",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "my",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "opacity",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "overflow",
-        "kind": "property",
-        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "p",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pb",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pl",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pointerEvents",
-        "kind": "property",
-        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "position",
-        "kind": "property",
-        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pr",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "pt",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "px",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "py",
-        "kind": "property",
-        "type": "Responsive<SpaceValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "radius",
-        "kind": "property",
-        "type": "Responsive<RadiusValue> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "right",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "style",
-        "kind": "property",
-        "type": "StyleProp<ViewStyle>",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "top",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "width",
-        "kind": "property",
-        "type": "Responsive<string | number> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "wrap",
-        "kind": "property",
-        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "zIndex",
-        "kind": "property",
-        "type": "Responsive<number> | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "Surface",
     "description": "Adapts the themed Surface Surface primitive to ZORA scope and interaction props.",
     "isReadme": false,
@@ -18821,6 +18175,13 @@
         "description": null
       },
       {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "alignSelf",
         "kind": "property",
         "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
@@ -18838,6 +18199,20 @@
         "name": "children",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
         "required": false,
         "description": null
       },
@@ -18870,6 +18245,13 @@
         "description": null
       },
       {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",
@@ -18880,6 +18262,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
         "required": false,
         "description": null
       },
@@ -19066,6 +18455,13 @@
         "description": null
       },
       {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "style",
         "kind": "property",
         "type": "StyleProp<ViewStyle>",
@@ -19108,6 +18504,13 @@
         "description": null
       },
       {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "zIndex",
         "kind": "property",
         "type": "Responsive<number> | undefined",
@@ -19137,7 +18540,7 @@
   },
   {
     "name": "SwitchField",
-    "description": "Labeled switch field pattern built on `SettingsRow`.",
+    "description": "Labeled switch field pattern built on `ListRow`.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
@@ -20085,92 +19488,6 @@
     "structuredRows": []
   },
   {
-    "name": "TileGrid",
-    "description": "Responsive grid layout for arranging tile content.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/tile-grid/TileGrid.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/tile-grid/TileGrid.tsx",
-      "line": 55,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "TileGridProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/patterns/tile-grid/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/tile-grid/types.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "columns",
-        "kind": "property",
-        "type": "number | \"responsive\" | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "compact",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "Timeline",
     "description": "Timeline pattern for displaying a sequence of events.",
     "isReadme": false,
@@ -20179,7 +19496,7 @@
     "modulePath": "src/patterns/timeline/Timeline.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/timeline/Timeline.tsx",
-      "line": 121,
+      "line": 127,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -20768,92 +20085,6 @@
     "structuredRows": []
   },
   {
-    "name": "TopbarLayout",
-    "description": "Layout that composes a top bar with optional sidebar and content.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/layout/topbar-layout/TopbarLayout.tsx",
-    "sourceLocation": {
-      "filePath": "src/layout/topbar-layout/TopbarLayout.tsx",
-      "line": 30,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "TopbarLayoutProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/layout/topbar-layout/types.ts",
-    "sourceLocation": {
-      "filePath": "src/layout/topbar-layout/types.ts",
-      "line": 5,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "sidebar",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "topbar",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
     "name": "TreeItem",
     "description": "Single tree node row used within `TreeView`.",
     "isReadme": false,
@@ -20862,7 +20093,7 @@
     "modulePath": "src/patterns/tree-view/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/patterns/tree-view/TreeItem.tsx",
-      "line": 101,
+      "line": 102,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -21993,6 +21224,428 @@
     "structuredRows": []
   },
   {
+    "name": "View",
+    "description": "Adapts the token-aware Surface View primitive to ZORA theme scope.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/layout/adapters/inbound/View.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/layout/adapters/inbound/View.tsx",
+      "line": 8,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ViewProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/layout.ts",
+    "sourceLocation": {
+      "filePath": "src/types/layout.ts",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityRole",
+        "kind": "property",
+        "type": "import(\"react-native\").AccessibilityRole | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessibilityState",
+        "kind": "property",
+        "type": "import(\"react-native\").AccessibilityState | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "accessible",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "align",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"baseline\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "alignSelf",
+        "kind": "property",
+        "type": "Responsive<\"auto\" | import(\"react-native\").FlexAlignType | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bg",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderColor",
+        "kind": "property",
+        "type": "Responsive<ColorValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "borderWidth",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bottom",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "columnGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "direction",
+        "kind": "property",
+        "type": "Responsive<\"row\" | \"column\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexBasis",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexGrow",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "flexShrink",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "gap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "justify",
+        "kind": "property",
+        "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "left",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "m",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minWidth",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ml",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mr",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mx",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "my",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "opacity",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overflow",
+        "kind": "property",
+        "type": "Responsive<\"visible\" | \"hidden\" | \"scroll\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "p",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pb",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pl",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pointerEvents",
+        "kind": "property",
+        "type": "\"box-none\" | \"none\" | \"box-only\" | \"auto\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "position",
+        "kind": "property",
+        "type": "Responsive<\"absolute\" | \"relative\" | \"static\" | undefined>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pr",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pt",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "px",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "py",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "radius",
+        "kind": "property",
+        "type": "Responsive<RadiusValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "right",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rowGap",
+        "kind": "property",
+        "type": "Responsive<SpaceValue> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "style",
+        "kind": "property",
+        "type": "StyleProp<ViewStyle>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "top",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "Responsive<string | number> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "wrap",
+        "kind": "property",
+        "type": "Responsive<\"wrap\" | \"nowrap\"> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "Responsive<number> | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "withZoraThemeScope",
     "description": null,
     "isReadme": false,
@@ -22069,7 +21722,7 @@
     "modulePath": "src/metadata/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/metadata/componentMeta.ts",
-      "line": 109,
+      "line": 103,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -22087,7 +21740,7 @@
     "modulePath": "src/registry.ts",
     "sourceLocation": {
       "filePath": "src/registry.ts",
-      "line": 228,
+      "line": 218,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],

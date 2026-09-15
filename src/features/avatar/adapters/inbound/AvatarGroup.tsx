@@ -3,7 +3,7 @@ import React from 'react';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AvatarGroupItem, AvatarGroupProps } from '../../../../types/avatar-group';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Avatar } from '../../public';
 /***
  * Renders a compact group of avatars with optional overflow handling.
@@ -34,7 +34,7 @@ function AvatarGroupInner({
   const borderColor = theme.semantics.surface.default;
 
   const renderItem = (item: AvatarGroupItem, index: number) => (
-    <Box
+    <View
       key={item.id ?? `${index}`}
       ml={index === 0 ? 0 : -overlap}
       radius="full"
@@ -51,14 +51,14 @@ function AvatarGroupInner({
         source={item.source}
         color={item.color}
       />
-    </Box>
+    </View>
   );
 
   return (
-    <Stack align="center" direction="row" testID={testID} wrap="nowrap">
+    <View align="center" direction="row" testID={testID} wrap="nowrap">
       {visibleItems.map(renderItem)}
       {overflowCount > 0 ? (
-        <Box
+        <View
           ml={visibleItems.length === 0 ? 0 : -overlap}
           radius="full"
           borderWidth={2}
@@ -70,8 +70,8 @@ function AvatarGroupInner({
             shape={shape}
             color="neutral"
           />
-        </Box>
+        </View>
       ) : null}
-    </Stack>
+    </View>
   );
 }

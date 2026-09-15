@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SignInFormProps } from '../../../../types/auth';
 import type { FormFieldConfig, FormValues } from '../../../../types/form';
 import { Button } from '../../../button/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import {
   defaultIdentifiers,
   normalizeIdentifierKind,
@@ -72,7 +72,7 @@ function SignInFormInner({
     <AuthForm
       actions={
         hasActions ? (
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             {onForgotPassword ? (
               <Button
                 disabled={disabled || loading}
@@ -101,7 +101,7 @@ function SignInFormInner({
                 {signUpLabel}
               </Button>
             ) : null}
-          </Stack>
+          </View>
         ) : undefined
       }
       disabled={disabled}

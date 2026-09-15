@@ -1,20 +1,20 @@
-import type { BoxProps, StackProps } from '../features/layout/public';
+import type { ViewProps } from '../features/layout/public';
 import type { ZoraBaseProps } from '../theme/ZoraBaseProps';
 
-export type SkeletonRadius = BoxProps['radius'];
-export type SkeletonDimension = BoxProps['width'];
+export type SkeletonRadius = ViewProps['radius'];
+export type SkeletonDimension = ViewProps['width'];
 export type SkeletonListVariant = 'divider' | 'card';
 
 export interface SkeletonProps extends ZoraBaseProps {
   width?: SkeletonDimension;
-  height?: BoxProps['height'];
+  height?: ViewProps['height'];
   radius?: SkeletonRadius;
 }
 
 export interface SkeletonTextProps extends ZoraBaseProps {
   lines?: number;
   lineHeight?: number;
-  gap?: StackProps['gap'];
+  gap?: ViewProps['gap'];
   width?: SkeletonDimension;
   lastLineWidth?: SkeletonDimension;
 }

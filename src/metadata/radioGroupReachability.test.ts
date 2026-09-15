@@ -5,8 +5,8 @@ import { ZORA_COMPONENT_META } from '.';
 const containers = [
   ['Screen', ZORA_COMPONENT_META.Screen],
   ['ScreenSection', ZORA_COMPONENT_META.ScreenSection],
-  ['Box', ZORA_COMPONENT_META.Box],
-  ['Stack', ZORA_COMPONENT_META.Stack],
+  ['View', ZORA_COMPONENT_META.View],
+  ['ScrollView', ZORA_COMPONENT_META.ScrollView],
   ['Card', ZORA_COMPONENT_META.Card],
   ['Panel', ZORA_COMPONENT_META.Panel],
 ] as const;

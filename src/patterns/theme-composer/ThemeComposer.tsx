@@ -9,7 +9,7 @@ import { Card } from '../../features/card/public';
 import { ChipGroup } from '../../features/chip/public';
 import { Select } from '../../features/form/select/public';
 import { TextInput } from '../../features/form/text-input/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';
 import { Text } from '../../features/typography/public';
 import type { ZoraThemeMode } from '../../theme/types';
@@ -131,14 +131,14 @@ function ThemeComposerInner({
   }));
 
   return (
-    <Stack gap="l" testID={testID}>
+    <View gap="l" testID={testID}>
       {/* Section: Theme identity */}
       <Card
         title="Theme identity"
         description="Name your theme. The ID is assigned automatically and shown for reference."
       >
-        <Stack gap="m">
-          <Stack gap="xs">
+        <View gap="m">
+          <View gap="xs">
             <Text variant="label">Name</Text>
             <TextInput
               value={nameDraft.inputValue}
@@ -153,8 +153,8 @@ function ThemeComposerInner({
                 {nameDraft.error}
               </Text>
             ) : null}
-          </Stack>
-          <Stack gap="xs">
+          </View>
+          <View gap="xs">
             <Text variant="label">ID</Text>
             <Text
               emphasis="muted"
@@ -163,8 +163,8 @@ function ThemeComposerInner({
             >
               {value.id}
             </Text>
-          </Stack>
-        </Stack>
+          </View>
+        </View>
       </Card>
 
       {/* Section: App category */}
@@ -179,9 +179,9 @@ function ThemeComposerInner({
 
       {/* Section: Primary Color */}
       <Card title="Primary color" description="Set the seed color for your theme palette.">
-        <Stack gap="m">
-          <Stack direction="row" gap="m" align="center">
-            <Box flex={1}>
+        <View gap="m">
+          <View direction="row" gap="m" align="center">
+            <View flex={1}>
               <TextInput
                 value={hexDraft.inputValue}
                 onChangeText={handleHexChange}
@@ -192,9 +192,9 @@ function ThemeComposerInner({
                 invalid={hexDraft.error !== undefined}
                 testID={testID ? `${testID}-hex-input` : undefined}
               />
-            </Box>
+            </View>
             {/* Color preview chip */}
-            <Box
+            <View
               width={36}
               height={36}
               radius="m"
@@ -206,13 +206,13 @@ function ThemeComposerInner({
                 borderColor: theme.colors.border,
               }}
             />
-          </Stack>
+          </View>
           {hexDraft.error ? (
             <Text color="danger" variant="bodySmall">
               {hexDraft.error}
             </Text>
           ) : null}
-        </Stack>
+        </View>
       </Card>
 
       {/* Section: Harmony */}
@@ -240,33 +240,33 @@ function ThemeComposerInner({
 
       {/* Section: Preview */}
       <Card title="Preview" description="A quick look at how your theme renders common controls.">
-        <Stack gap="m">
-          <Stack gap="xs">
+        <View gap="m">
+          <View gap="xs">
             <Text variant="label">Name</Text>
             <Text>{value.name}</Text>
-          </Stack>
-          <Stack gap="xs">
+          </View>
+          <View gap="xs">
             <Text variant="label">Category</Text>
             <Text>{formatAppCategoryLabel(value.appCategory)}</Text>
-          </Stack>
-          <Stack gap="xs">
+          </View>
+          <View gap="xs">
             <Text variant="label">Primary color</Text>
             <Text emphasis="muted" variant="bodySmall">
               {value.primaryColor}
             </Text>
-          </Stack>
-          <Stack gap="xs">
+          </View>
+          <View gap="xs">
             <Text variant="label">Harmony</Text>
             <Text emphasis="muted" variant="bodySmall">
               {value.harmony}
             </Text>
-          </Stack>
+          </View>
           <Heading level={4}>Heading</Heading>
           <Text>Body text — this shows default text color and weight.</Text>
           <Text emphasis="muted" variant="bodySmall">
             Muted caption text.
           </Text>
-          <Stack direction="row" gap="s" align="center">
+          <View direction="row" gap="s" align="center">
             <Button color="primary" variant="solid" size="m">
               Primary
             </Button>
@@ -276,8 +276,8 @@ function ThemeComposerInner({
             <Button color="danger" variant="ghost" size="m">
               Danger
             </Button>
-          </Stack>
-          <Stack direction="row" gap="s" align="center">
+          </View>
+          <View direction="row" gap="s" align="center">
             <Badge color="primary">Primary</Badge>
             <Badge color="success" variant="soft">
               Success
@@ -288,14 +288,14 @@ function ThemeComposerInner({
             <Badge color="danger" variant="soft">
               Danger
             </Badge>
-          </Stack>
+          </View>
           <Card
             tone="subtle"
             title="Nested card"
             description="Subtle tone inside the preview."
             compact
           />
-        </Stack>
+        </View>
       </Card>
 
       {/* Submit */}
@@ -309,7 +309,7 @@ function ThemeComposerInner({
           Apply theme
         </Button>
       ) : null}
-    </Stack>
+    </View>
   );
 }
 

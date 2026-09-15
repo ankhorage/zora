@@ -2,11 +2,10 @@ import React from 'react';
 
 import { AppBar } from '../../features/app-bar/public';
 import { IconButton } from '../../features/button/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Progress } from '../../features/progress/public';
 import { Surface } from '../../features/surface/public';
 import { Text } from '../../features/typography/public';
-import { Center, Inline } from '../../foundation';
 import { useZoraTheme } from '../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { resolveReaderProgress } from './resolveReaderProgress';
@@ -50,11 +49,11 @@ function ReaderEmptyState({
     status === 'loading' ? loadingLabel : status === 'error' ? errorTitle : unavailableTitle;
 
   return (
-    <Center flex={1} minHeight={360} p="l">
+    <View align="center" justify="center" flex={1} minHeight={360} p="l">
       <Text align="center" emphasis="muted" variant="bodySmall">
         {title}
       </Text>
-    </Center>
+    </View>
   );
 }
 
@@ -90,7 +89,7 @@ function ReaderHeader({
 >) {
   const actions =
     onOpenContents || onOpenAppearance || onToggleHighlight || headerActions ? (
-      <Inline align="center" gap="xs" wrap="nowrap">
+      <View direction="row" align="center" gap="xs" wrap="nowrap">
         {onOpenContents ? (
           <IconButton
             icon={{ name: 'list-outline' }}
@@ -120,7 +119,7 @@ function ReaderHeader({
           />
         ) : null}
         {headerActions}
-      </Inline>
+      </View>
     ) : undefined;
 
   return (
@@ -176,7 +175,7 @@ function ReaderFooter({
     status === 'ready' && Boolean(onNextPage) && resolveCanGoNext({ canGoNext, page, pageCount });
 
   return (
-    <Stack
+    <View
       bg={theme.semantics.surface.raised}
       borderColor={theme.semantics.neutral.divider}
       borderWidth={1}
@@ -184,7 +183,7 @@ function ReaderFooter({
       p="m"
     >
       <Progress value={resolvedProgress} max={1} size="s" />
-      <Stack align="center" direction="row" gap="m" justify="space-between" wrap="nowrap">
+      <View align="center" direction="row" gap="m" justify="space-between" wrap="nowrap">
         <IconButton
           disabled={!previousEnabled}
           icon={{ name: 'chevron-back' }}
@@ -193,8 +192,8 @@ function ReaderFooter({
           onPress={() => invokeReaderAction(onPreviousPage)}
           size="l"
         />
-        <Box flex={1} minWidth={0}>
-          <Stack align="center" gap="xs">
+        <View flex={1} minWidth={0}>
+          <View align="center" gap="xs">
             {chapterLabel ? (
               <Text
                 align="center"
@@ -216,8 +215,8 @@ function ReaderFooter({
                 {resolvedPageLabel}
               </Text>
             ) : null}
-          </Stack>
-        </Box>
+          </View>
+        </View>
         <IconButton
           disabled={!nextEnabled}
           icon={{ name: 'chevron-forward' }}
@@ -226,9 +225,9 @@ function ReaderFooter({
           onPress={() => invokeReaderAction(onNextPage)}
           size="l"
         />
-      </Stack>
-      {footerActions ? <Box>{footerActions}</Box> : null}
-    </Stack>
+      </View>
+      {footerActions ? <View>{footerActions}</View> : null}
+    </View>
   );
 }
 
@@ -296,7 +295,7 @@ function ReaderSurfaceInner({
       variant="default"
       style={{ minHeight: 480, overflow: 'hidden' }}
     >
-      <Stack flex={1} gap={0}>
+      <View flex={1} gap={0}>
         {showChrome ? (
           <ReaderHeader
             appearanceLabel={appearanceLabel}
@@ -313,9 +312,9 @@ function ReaderSurfaceInner({
           />
         ) : null}
 
-        <Box bg={theme.semantics.surface.default} flex={1} minHeight={360} overflow="hidden">
+        <View bg={theme.semantics.surface.default} flex={1} minHeight={360} overflow="hidden">
           {viewportContent}
-        </Box>
+        </View>
 
         {showChrome ? (
           <ReaderFooter
@@ -335,7 +334,7 @@ function ReaderSurfaceInner({
             status={status}
           />
         ) : null}
-      </Stack>
+      </View>
     </Surface>
   );
 }

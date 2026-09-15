@@ -1,12 +1,11 @@
 import { AppBar as SurfaceAppBar, type ButtonIconSpec } from '@ankhorage/surface';
 import React from 'react';
 
-import { Inline } from '../../../../foundation';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { AppBarMode, AppBarOverflowMenu, AppBarProps } from '../../../../types/app-bar';
 import { IconButton } from '../../../button/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { PopoverMenu } from '../../../popover-menu/public';
 import { Heading, Text } from '../../../typography/public';
 
@@ -55,7 +54,7 @@ function AppBarInner({
       testID={testID}
       trailing={resolvedTrailing}
     >
-      {resolvedCenter ? <Box style={{ minWidth: 0 }}>{resolvedCenter}</Box> : null}
+      {resolvedCenter ? <View style={{ minWidth: 0 }}>{resolvedCenter}</View> : null}
     </SurfaceAppBar>
   );
 }
@@ -136,10 +135,10 @@ function resolveOverflowMenu(
 function resolveTrailing(actions: React.ReactNode, overflowMenu: React.ReactNode): React.ReactNode {
   if (!actions && !overflowMenu) return undefined;
   return (
-    <Inline align="center" gap="s" wrap="nowrap">
+    <View direction="row" align="center" gap="s" wrap="nowrap">
       {actions}
       {overflowMenu}
-    </Inline>
+    </View>
   );
 }
 
@@ -168,7 +167,7 @@ function resolveCenter({
   if (title == null && subtitle == null) return null;
 
   return (
-    <Stack gap="xs">
+    <View gap="xs">
       {title != null ? (
         <Heading ellipsizeMode="tail" level={3} numberOfLines={1} size="h5">
           {title}
@@ -179,6 +178,6 @@ function resolveCenter({
           {subtitle}
         </Text>
       ) : null}
-    </Stack>
+    </View>
   );
 }

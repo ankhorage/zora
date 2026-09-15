@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { MediaCardProps } from '../../../../types/media-card';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { Card } from '../../public';
@@ -51,9 +51,9 @@ function MediaCardInner({
   const renderImage = () => {
     if (image) {
       return (
-        <Box radius="m" style={{ overflow: 'hidden' }}>
+        <View radius="m" style={{ overflow: 'hidden' }}>
           {image}
-        </Box>
+        </View>
       );
     }
 
@@ -62,15 +62,15 @@ function MediaCardInner({
     }
 
     return (
-      <Box bg={theme.semantics.neutral.surface} radius="m" style={{ overflow: 'hidden' }}>
-        <Box style={{ aspectRatio: resolvedAspectRatio, width: '100%' }}>
+      <View bg={theme.semantics.neutral.surface} radius="m" style={{ overflow: 'hidden' }}>
+        <View style={{ aspectRatio: resolvedAspectRatio, width: '100%' }}>
           <Image
             accessibilityLabel={imageLabel}
             source={imageSource}
             style={{ height: '100%', width: '100%' }}
           />
-        </Box>
-      </Box>
+        </View>
+      </View>
     );
   };
 
@@ -84,41 +84,41 @@ function MediaCardInner({
       testID={testID}
       tone={tone}
     >
-      <Stack gap={gap}>
+      <View gap={gap}>
         {renderImage()}
 
         {hasHeader ? (
-          <Stack
+          <View
             align={{ base: 'flex-start', md: 'center' }}
             direction={{ base: 'column', md: 'row' }}
             gap="m"
             justify="space-between"
           >
-            <Box flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
-              <Stack gap="xs">
+            <View flex={{ md: 1 }} width={{ base: '100%', md: 'auto' }}>
+              <View gap="xs">
                 {eyebrow ? (
                   <Text emphasis="muted" variant="caption" weight="semiBold">
                     {eyebrow}
                   </Text>
                 ) : null}
-                <Stack gap="xs">
+                <View gap="xs">
                   <Heading level={compact ? 4 : 3}>{title}</Heading>
-                  {badges ? <Box>{badges}</Box> : null}
-                </Stack>
+                  {badges ? <View>{badges}</View> : null}
+                </View>
                 {description ? (
                   <Text emphasis="muted" variant="bodySmall">
                     {description}
                   </Text>
                 ) : null}
-              </Stack>
-            </Box>
-            {actions ? <Box>{actions}</Box> : null}
-          </Stack>
+              </View>
+            </View>
+            {actions ? <View>{actions}</View> : null}
+          </View>
         ) : null}
 
-        {children ? <Box>{children}</Box> : null}
-        {footer ? <Box pt="xs">{footer}</Box> : null}
-      </Stack>
+        {children ? <View>{children}</View> : null}
+        {footer ? <View pt="xs">{footer}</View> : null}
+      </View>
     </Card>
   );
 }

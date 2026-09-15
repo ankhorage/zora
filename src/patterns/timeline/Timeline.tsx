@@ -2,10 +2,9 @@ import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 import React from 'react';
 
 import { Icon } from '../../features/icon/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { Heading } from '../../features/typography/public';
 import { Text } from '../../features/typography/public';
-import { Inline } from '../../foundation';
 import type { ZoraColor } from '../../internal/recipes';
 import { resolveIconSize } from '../../internal/recipes';
 import { useZoraTheme } from '../../theme/useZoraTheme';
@@ -57,9 +56,16 @@ function TimelineInner({
     const iconSize = Math.max(12, resolveIconSize('s'));
 
     return (
-      <Inline key={item.id} align="flex-start" gap="m" testID={item.testID} wrap="nowrap">
-        <Stack align="center" flexShrink={0} gap="xs" style={{ width: 24 }}>
-          <Box
+      <View
+        direction="row"
+        key={item.id}
+        align="flex-start"
+        gap="m"
+        testID={item.testID}
+        wrap="nowrap"
+      >
+        <View align="center" flexShrink={0} gap="xs" style={{ width: 24 }}>
+          <View
             bg={status === 'neutral' ? theme.semantics.neutral.surface : role.softBg}
             borderColor={status === 'neutral' ? theme.semantics.neutral.divider : role.base}
             borderWidth={1}
@@ -75,41 +81,41 @@ function TimelineInner({
                 size={iconSize}
               />
             ) : null}
-          </Box>
+          </View>
 
           {showConnector ? (
-            <Box
+            <View
               bg={theme.semantics.neutral.divider}
               height={connectorHeight}
               radius="full"
               style={{ width: 2 }}
             />
           ) : null}
-        </Stack>
+        </View>
 
-        <Stack flex={1} gap="xs" testID={testID}>
-          <Inline align="flex-start" gap="s" justify="space-between" wrap="wrap">
+        <View flex={1} gap="xs" testID={testID}>
+          <View direction="row" align="flex-start" gap="s" justify="space-between" wrap="wrap">
             <Heading level={compact ? 4 : 3}>{item.title}</Heading>
             {item.meta ? (
               <Text emphasis="muted" variant="caption">
                 {item.meta}
               </Text>
             ) : null}
-          </Inline>
+          </View>
           {item.description ? (
             <Text emphasis="muted" variant="bodySmall">
               {item.description}
             </Text>
           ) : null}
-        </Stack>
-      </Inline>
+        </View>
+      </View>
     );
   };
 
   return (
-    <Stack gap={gap} testID={testID}>
+    <View gap={gap} testID={testID}>
       {items.map(renderItem)}
-    </Stack>
+    </View>
   );
 }
 

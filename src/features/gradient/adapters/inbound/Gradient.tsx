@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { GradientProps } from '../../../../types/gradient';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { useGradientRenderer } from './GradientRendererContext';
 
 function GradientInner({
@@ -24,7 +24,7 @@ function GradientInner({
   const gradientRenderer = useGradientRenderer();
 
   return (
-    <Box
+    <View
       height={height}
       minHeight={minHeight}
       radius={radius}
@@ -41,11 +41,11 @@ function GradientInner({
           start,
           style: { flex: 1 },
         },
-        <Box p={p} style={{ flex: 1 }}>
+        <View p={p} style={{ flex: 1 }}>
           {children}
-        </Box>,
+        </View>,
       )}
-    </Box>
+    </View>
   );
 }
 

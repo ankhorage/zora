@@ -3,7 +3,7 @@ import React from 'react';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonProps } from '../../../../types/skeleton';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 
 function SkeletonInner({
   themeId: _themeId,
@@ -16,7 +16,7 @@ function SkeletonInner({
   const { theme } = useZoraTheme();
 
   return (
-    <Box
+    <View
       accessibilityLabel="Loading"
       accessibilityRole="text"
       bg={theme.semantics.neutral.surfaceHover}

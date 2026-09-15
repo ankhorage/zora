@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { TreeItem } from './TreeItem';
 import type { TreeViewProps } from './types';
@@ -37,7 +37,7 @@ function TreeViewInner<TId extends string = string>({
   };
 
   return (
-    <Stack gap="none" testID={testID}>
+    <View gap="none" testID={testID}>
       {nodes.map((node) => (
         <TreeItem
           key={node.id}
@@ -51,7 +51,7 @@ function TreeViewInner<TId extends string = string>({
           interactionPolicy={interactionPolicy}
         />
       ))}
-    </Stack>
+    </View>
   );
 }
 

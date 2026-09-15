@@ -5,7 +5,7 @@ import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { MissingElementProps } from '../../../../types/missing-element';
 import { Badge } from '../../../badge/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Text } from '../../../typography/public';
 
 /***
@@ -26,7 +26,7 @@ function MissingElementInner({
   const accessibilityLabel = `Missing element: ${requestedCapability}. ${reason}`;
 
   return (
-    <Box
+    <View
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="text"
       accessible
@@ -40,7 +40,7 @@ function MissingElementInner({
       style={styles.root}
       testID={testID}
     >
-      <Stack gap="xs">
+      <View gap="xs">
         <Badge color="warning">Missing element</Badge>
         <Text variant="label" weight="semiBold">
           {requestedCapability}
@@ -53,8 +53,8 @@ function MissingElementInner({
             Evidence: {evidenceId}
           </Text>
         ) : null}
-      </Stack>
-    </Box>
+      </View>
+    </View>
   );
 }
 

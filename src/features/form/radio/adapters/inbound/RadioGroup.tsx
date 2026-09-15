@@ -1,11 +1,11 @@
 import { Radio } from '@ankhorage/surface';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { useZoraThemeRecipe } from '../../../../../theme/useZoraThemeRecipe';
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { RadioGroupProps } from '../../../../../types/radio';
-import { Stack } from '../../../../layout/public';
+import { View } from '../../../../layout/public';
 import { Text } from '../../../../typography/public';
 import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
 import { RadioOptionControl } from './RadioOptionControl';
@@ -35,9 +35,9 @@ function RadioGroupInner<TValue extends string>({
   );
   return (
     <View testID={props.testID} accessibilityRole="radiogroup">
-      <Stack gap={recipe.gap}>
+      <View gap={recipe.gap}>
         {rows.map((options, index) => (
-          <Stack key={index} direction="row" gap={recipe.gap}>
+          <View key={index} direction="row" gap={recipe.gap}>
             {options.map((option) => (
               <View key={option.value} style={styles.option}>
                 <RadioGroupItem {...selectedProps} {...recipe} option={option} />
@@ -46,9 +46,9 @@ function RadioGroupInner<TValue extends string>({
             {Array.from({ length: columns - options.length }, (_, slot) => (
               <View key={`empty-${slot}`} style={styles.option} />
             ))}
-          </Stack>
+          </View>
         ))}
-      </Stack>
+      </View>
     </View>
   );
 }
@@ -57,7 +57,7 @@ function RadioGroupInner<TValue extends string>({
 function RadioGroupInline<TValue extends string>(props: RadioGroupProps<TValue>) {
   return (
     <View testID={props.testID} accessibilityRole="radiogroup">
-      <Stack
+      <View
         direction={props.orientation === 'horizontal' ? 'row' : 'column'}
         gap={props.gap}
         wrap="wrap"
@@ -65,7 +65,7 @@ function RadioGroupInline<TValue extends string>(props: RadioGroupProps<TValue>)
         {props.options.map((option) => (
           <RadioGroupItem key={option.value} {...props} option={option} />
         ))}
-      </Stack>
+      </View>
     </View>
   );
 }
@@ -110,14 +110,14 @@ function RadioGroupItem<TValue extends string>(
       testID={option.testID}
       onCheckedChange={onSelect}
     >
-      <Stack gap="xs">
+      <View gap="xs">
         <Text>{option.label}</Text>
         {option.description ? (
           <Text emphasis="muted" variant="caption">
             {option.description}
           </Text>
         ) : null}
-      </Stack>
+      </View>
     </Radio>
   );
 }

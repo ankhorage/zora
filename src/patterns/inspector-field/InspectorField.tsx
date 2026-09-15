@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FormField } from '../../features/form/public';
-import { Box, Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { InspectorFieldProps } from './types';
 
@@ -16,10 +16,10 @@ function InspectorFieldInner({
 }: InspectorFieldProps) {
   return (
     <FormField {...props} label={label}>
-      <Stack direction="row" gap="s" align="center">
-        <Box flex={1}>{children}</Box>
-        {control ? <Box>{control}</Box> : null}
-      </Stack>
+      <View direction="row" gap="s" align="center">
+        <View flex={1}>{children}</View>
+        {control ? <View>{control}</View> : null}
+      </View>
     </FormField>
   );
 }

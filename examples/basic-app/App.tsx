@@ -6,10 +6,10 @@ import {
   DatePicker,
   Screen,
   ScreenSection,
-  Stack,
   Text,
   TimePicker,
   useToast,
+  View,
   ZoraProvider,
   type ZoraTheme,
 } from '@ankhorage/zora';
@@ -62,7 +62,7 @@ function UsageContent() {
   const [time, setTime] = React.useState<string | null>(null);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Text variant="lead">Runtime capabilities are opt-in at the app root.</Text>
       <Button
         onPress={() =>
@@ -77,7 +77,7 @@ function UsageContent() {
       </Button>
       <DatePicker label="Date" onValueChange={setDate} value={date} />
       <TimePicker label="Time" onValueChange={setTime} value={time} />
-    </Stack>
+    </View>
   );
 }
 
@@ -94,16 +94,16 @@ export function NativeBottomSheetExample() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <Button onPress={() => setOpen(true)}>Open native bottom sheet</Button>
       <BottomSheet onDismiss={() => setOpen(false)} open={open}>
-        <Stack gap="s" p="m">
+        <View gap="s" p="m">
           <Text variant="label">Bottom sheet content</Text>
           <Button onPress={() => setOpen(false)} variant="ghost">
             Close
           </Button>
-        </Stack>
+        </View>
       </BottomSheet>
-    </Stack>
+    </View>
   );
 }

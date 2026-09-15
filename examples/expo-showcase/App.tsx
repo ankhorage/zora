@@ -1,7 +1,6 @@
 import {
   AppBar,
   AppShell,
-  Box,
   type GradientRendererProps,
   GradientRendererProvider,
   IconButton,
@@ -10,6 +9,7 @@ import {
   TabPanel,
   Tabs,
   Toolbar,
+  View,
   ZoraProvider,
   type ZoraTheme,
   type ZoraThemeMode,
@@ -81,7 +81,7 @@ function AppWrapper() {
                           <Tab key={tab.value} label={tab.label} value={tab.value} />
                         ))}
                       </TabList>
-                      <Box flex={1} />
+                      <View flex={1} />
                       <IconButton
                         color={isDark ? 'primary' : 'neutral'}
                         icon={{ name: isDark ? 'sunny-outline' : 'moon-outline' }}

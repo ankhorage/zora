@@ -1,10 +1,9 @@
 import { Checkbox } from '@ankhorage/surface';
 import React from 'react';
-import { View } from 'react-native';
 
 import { withZoraThemeScope } from '../../../../../theme/withZoraThemeScope';
 import type { CheckboxGroupOption, CheckboxGroupProps } from '../../../../../types/checkbox';
-import { Stack } from '../../../../layout/public';
+import { View } from '../../../../layout/public';
 import { Text } from '../../../../typography/public';
 
 function CheckboxGroupInner<TValue extends string>({
@@ -34,7 +33,7 @@ function CheckboxGroupInner<TValue extends string>({
         flexWrap: isHorizontal ? 'wrap' : 'nowrap',
       }}
     >
-      <Stack
+      <View
         direction={isHorizontal ? 'row' : 'column'}
         gap={gap}
         wrap={isHorizontal ? 'wrap' : 'nowrap'}
@@ -54,7 +53,7 @@ function CheckboxGroupInner<TValue extends string>({
             interactionPolicy={interactionPolicy}
           />
         ))}
-      </Stack>
+      </View>
     </View>
   );
 }
@@ -108,14 +107,14 @@ function CheckboxGroupItem<TValue extends string>({
         onValueChange(nextValue);
       }}
     >
-      <Stack gap="xs">
+      <View gap="xs">
         <Text>{option.label}</Text>
         {option.description ? (
           <Text emphasis="muted" variant="caption">
             {option.description}
           </Text>
         ) : null}
-      </Stack>
+      </View>
     </Checkbox>
   );
 }

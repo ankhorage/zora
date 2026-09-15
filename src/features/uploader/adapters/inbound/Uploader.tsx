@@ -7,7 +7,7 @@ import { Dialog } from '../../../dialog/public';
 import { FormField } from '../../../form/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Progress } from '../../../progress/public';
 import { Text } from '../../../typography/public';
 import { validateUploadAsset } from '../../application/use-cases/validateUploadAsset';
@@ -218,11 +218,11 @@ function UploaderInner({
         required={required}
         testID={testID}
       >
-        <Stack gap="m">
+        <View gap="m">
           <UploadPresentation asset={value} aspectRatio={aspectRatio} type={type} />
 
           {resolvedAccept || maxSizeBytes ? (
-            <Stack gap="xs">
+            <View gap="xs">
               {resolvedAccept ? (
                 <Text emphasis="muted" variant="caption">
                   Accepted: {resolvedAccept}
@@ -233,21 +233,21 @@ function UploaderInner({
                   Max size: {formatBytes(maxSizeBytes)}
                 </Text>
               ) : null}
-            </Stack>
+            </View>
           ) : null}
 
           {uploading ? (
-            <Stack gap="xs">
+            <View gap="xs">
               <Text emphasis="muted" variant="caption">
                 Uploading…
               </Text>
               {uploadProgress !== undefined || progress !== null ? (
                 <Progress max={1} value={clampProgress(uploadProgress ?? progress) ?? 0} />
               ) : null}
-            </Stack>
+            </View>
           ) : null}
 
-          <Stack direction={{ base: 'column', md: 'row' }} gap="s">
+          <View direction={{ base: 'column', md: 'row' }} gap="s">
             <Button
               disabled={actionsDisabled || uploading || removing}
               interactionPolicy={interactionPolicy}
@@ -283,8 +283,8 @@ function UploaderInner({
                 Preview
               </Button>
             ) : null}
-          </Stack>
-        </Stack>
+          </View>
+        </View>
       </FormField>
 
       {canPreviewImage ? (
@@ -295,9 +295,9 @@ function UploaderInner({
           title="Image preview"
           visible={previewOpen}
         >
-          <Stack gap="m">
+          <View gap="m">
             <Image aspectRatio={aspectRatio} fit="contain" source={value} />
-            <Stack direction="row" justify="flex-end">
+            <View direction="row" justify="flex-end">
               <Button
                 color="neutral"
                 interactionPolicy={interactionPolicy}
@@ -306,8 +306,8 @@ function UploaderInner({
               >
                 Close
               </Button>
-            </Stack>
-          </Stack>
+            </View>
+          </View>
         </Dialog>
       ) : null}
     </>
@@ -329,10 +329,10 @@ function UploadPresentation({
   }
 
   return (
-    <Box borderWidth={1} p="m" radius="m">
-      <Stack direction="row" gap="s">
+    <View borderWidth={1} p="m" radius="m">
+      <View direction="row" gap="s">
         <Icon name={resolveUploadIcon(type)} size={22} />
-        <Stack gap="xs">
+        <View gap="xs">
           <Text variant="label" weight="semiBold">
             {asset?.fileName ?? 'No file selected'}
           </Text>
@@ -341,9 +341,9 @@ function UploadPresentation({
               {asset.contentType}
             </Text>
           ) : null}
-        </Stack>
-      </Stack>
-    </Box>
+        </View>
+      </View>
+    </View>
   );
 }
 

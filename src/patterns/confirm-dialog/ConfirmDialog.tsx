@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '../../features/button/public';
 import { Dialog } from '../../features/dialog/public';
-import { Stack } from '../../features/layout/public';
+import { View } from '../../features/layout/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ConfirmDialogProps } from './types';
 
@@ -30,7 +30,7 @@ function ConfirmDialogInner({
       description={description}
       interactionPolicy={interactionPolicy}
       footer={
-        <Stack direction={{ base: 'column', md: 'row' }} gap="s" justify="flex-end">
+        <View direction={{ base: 'column', md: 'row' }} gap="s" justify="flex-end">
           <Button
             variant="soft"
             interactionPolicy={interactionPolicy}
@@ -48,7 +48,7 @@ function ConfirmDialogInner({
           >
             {confirmLabel}
           </Button>
-        </Stack>
+        </View>
       }
       onDismiss={onCancel}
       testID={testID}

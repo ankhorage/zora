@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { SkeletonTextProps } from '../../../../types/skeleton';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { Skeleton } from './Skeleton';
 
 function clampLines(lines: number): number {
@@ -26,7 +26,7 @@ function SkeletonTextInner({
   const lineCount = clampLines(lines);
 
   return (
-    <Stack gap={gap} testID={testID}>
+    <View gap={gap} testID={testID}>
       {Array.from({ length: lineCount }).map((_, index) => {
         const isLastLine = index === lineCount - 1;
         return (
@@ -38,7 +38,7 @@ function SkeletonTextInner({
           />
         );
       })}
-    </Stack>
+    </View>
   );
 }
 

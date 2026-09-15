@@ -2,7 +2,7 @@ import { Field } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { TimePickerProps } from '../../../types/time-picker';
-import { Stack } from '../../layout/public';
+import { View } from '../../layout/public';
 import { Text } from '../../typography/public';
 
 /*** Renders the shared TimePicker field frame around a platform-specific trigger. */
@@ -39,7 +39,7 @@ interface TimePickerFieldProps extends Pick<
 /*** Renders the picker label and optional supporting description. */
 function renderLabel(label: React.ReactNode, description: React.ReactNode | undefined) {
   return (
-    <Stack gap="xs">
+    <View gap="xs">
       <Text variant="label" weight="semiBold">
         {label}
       </Text>
@@ -48,6 +48,6 @@ function renderLabel(label: React.ReactNode, description: React.ReactNode | unde
           {description}
         </Text>
       ) : null}
-    </Stack>
+    </View>
   );
 }

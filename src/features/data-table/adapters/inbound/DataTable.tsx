@@ -1,8 +1,8 @@
 import type { InteractionPolicy } from '@ankhorage/surface';
+import { Show } from '@ankhorage/surface';
 import React from 'react';
 import { ScrollView, type ViewStyle } from 'react-native';
 
-import { Show } from '../../../../foundation';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type {
   DataTableCellContext,
@@ -17,7 +17,7 @@ import { Button } from '../../../button/public';
 import { IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { EmptyState } from '../../../empty-state/public';
-import { Box, Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { PopoverMenu, type PopoverMenuAction } from '../../../popover-menu/public';
 import { SkeletonList } from '../../../skeleton/public';
 import { Text, type TextAlign } from '../../../typography/public';
@@ -207,8 +207,8 @@ function DataTableHeader<TRow extends object>({
   const passive = interactionPolicy === 'passive';
 
   return (
-    <Box bg="subtle" borderColor="border" borderWidth={1} radius="m">
-      <Stack direction="row" align="center">
+    <View bg="subtle" borderColor="border" borderWidth={1} radius="m">
+      <View direction="row" align="center">
         {columns.map((column) => {
           const currentDirection = sort?.columnId === column.id ? sort.direction : undefined;
           const sortable = Boolean(column.sortable && onSortChange);
@@ -216,7 +216,7 @@ function DataTableHeader<TRow extends object>({
             currentDirection === undefined ? '' : currentDirection === 'asc' ? ' ↑' : ' ↓';
 
           return (
-            <Box key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
+            <View key={column.id} px={padding.px} py={padding.py} style={resolveCellStyle(column)}>
               {sortable ? (
                 <Button
                   color="primary"
@@ -245,16 +245,16 @@ function DataTableHeader<TRow extends object>({
                   {column.header}
                 </Text>
               )}
-            </Box>
+            </View>
           );
         })}
-        <Box px={padding.px} py={padding.py} style={{ minWidth: 56, width: 56 }}>
+        <View px={padding.px} py={padding.py} style={{ minWidth: 56, width: 56 }}>
           <Text align="right" emphasis="muted" variant="caption" weight="semiBold">
             Actions
           </Text>
-        </Box>
-      </Stack>
-    </Box>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -274,8 +274,8 @@ function DataTableDesktop<TRow extends object>({
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      <Box minWidth={720} style={{ width: '100%' }}>
-        <Stack gap="xs">
+      <View minWidth={720} style={{ width: '100%' }}>
+        <View gap="xs">
           <DataTableHeader
             columns={columns}
             density={density}
@@ -283,9 +283,9 @@ function DataTableDesktop<TRow extends object>({
             onSortChange={onSortChange}
             sort={sort}
           />
-          <Stack gap="xs">
+          <View gap="xs">
             {rows.map((row, rowIndex) => (
-              <Box
+              <View
                 bg="surface"
                 borderColor="border"
                 borderWidth={1}
@@ -293,30 +293,30 @@ function DataTableDesktop<TRow extends object>({
                 radius="m"
                 testID={testID ? `${testID}-row-${rowIndex}` : undefined}
               >
-                <Stack direction="row" align="center">
+                <View direction="row" align="center">
                   {columns.map((column) => (
-                    <Box
+                    <View
                       key={column.id}
                       px={padding.px}
                       py={padding.py}
                       style={resolveCellStyle(column)}
                     >
                       {renderTableCell(column, row, rowIndex)}
-                    </Box>
+                    </View>
                   ))}
-                  <Box
+                  <View
                     px={padding.px}
                     py={padding.py}
                     style={{ alignItems: 'flex-end', minWidth: 56, width: 56 }}
                   >
                     {renderRowActions({ row, rowActions, rowIndex, testID, interactionPolicy })}
-                  </Box>
-                </Stack>
-              </Box>
+                  </View>
+                </View>
+              </View>
             ))}
-          </Stack>
-        </Stack>
-      </Box>
+          </View>
+        </View>
+      </View>
     </ScrollView>
   );
 }
@@ -333,7 +333,7 @@ function DataTableMobile<TRow extends object>({
   const [primaryColumn, ...detailColumns] = columns;
 
   return (
-    <Stack gap="s">
+    <View gap="s">
       {rows.map((row, rowIndex) => {
         const title = primaryColumn
           ? renderCell(primaryColumn, row, rowIndex)
@@ -349,9 +349,9 @@ function DataTableMobile<TRow extends object>({
             testID={testID ? `${testID}-card-${rowIndex}` : undefined}
             title={title}
           >
-            <Stack gap="s">
+            <View gap="s">
               {detailColumns.map((column) => (
-                <Stack gap="xxs" key={column.id}>
+                <View gap="xxs" key={column.id}>
                   <Text emphasis="muted" variant="caption" weight="semiBold">
                     {column.header}
                   </Text>
@@ -362,13 +362,13 @@ function DataTableMobile<TRow extends object>({
                       {renderDefaultCell(resolveAccessorValue(row, column))}
                     </Text>
                   )}
-                </Stack>
+                </View>
               ))}
-            </Stack>
+            </View>
           </Card>
         );
       })}
-    </Stack>
+    </View>
   );
 }
 
@@ -406,10 +406,10 @@ function DataTableInner<TRow extends object>({
   };
 
   return (
-    <Box testID={testID}>
+    <View testID={testID}>
       <Show when={{ base: false, md: true }} fallback={<DataTableMobile {...tableProps} />}>
         <DataTableDesktop {...tableProps} />
       </Show>
-    </Box>
+    </View>
   );
 }

@@ -13,6 +13,7 @@ import {
   ForgotPasswordForm,
   Form,
   FormField,
+  Grid,
   IconButton,
   Image,
   InspectorField,
@@ -29,16 +30,15 @@ import {
   SelectionProvider,
   SignInForm,
   SignUpForm,
-  Stack,
   SwitchField,
   Text,
   TextInput,
-  TileGrid,
   Timeline,
   TreeView,
   type UploadAsset,
   Uploader,
   useSelection,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -54,7 +54,7 @@ function SelectionScenario() {
   const selection = useSelection();
 
   return (
-    <Stack gap="m">
+    <View gap="m">
       <AppBar
         appMode={
           selection.hasSelection
@@ -79,7 +79,7 @@ function SelectionScenario() {
         }
       />
 
-      <Stack gap="s">
+      <View gap="s">
         <SelectableItem id="press-item" trigger="press">
           {({ selected }) => (
             <Card
@@ -107,7 +107,7 @@ function SelectionScenario() {
               description="Trigger: manual (consumer-owned interactions)"
               title={selected ? 'Selected (manual)' : 'Manual selection'}
               actions={
-                <Stack direction="row" gap="s" align="center">
+                <View direction="row" gap="s" align="center">
                   <IconButton
                     icon={{ name: selected ? 'checkbox-outline' : 'square-outline' }}
                     label={selected ? 'Deselect item' : 'Select item'}
@@ -122,7 +122,7 @@ function SelectionScenario() {
                       variant="ghost"
                     />
                   ) : null}
-                </Stack>
+                </View>
               }
             >
               <Text emphasis="muted" variant="bodySmall">
@@ -131,8 +131,8 @@ function SelectionScenario() {
             </Card>
           )}
         </SelectableItem>
-      </Stack>
-    </Stack>
+      </View>
+    </View>
   );
 }
 
@@ -257,7 +257,7 @@ export function PatternsPage() {
           title="Provider-neutral upload"
           description="ZORA selects the native picker; upload and removal remain consumer-owned callbacks."
           footer={
-            <Stack direction={{ base: 'column', md: 'row' }} gap="s">
+            <View direction={{ base: 'column', md: 'row' }} gap="s">
               <Button
                 variant="soft"
                 color="neutral"
@@ -274,7 +274,7 @@ export function PatternsPage() {
               >
                 Reset value
               </Button>
-            </Stack>
+            </View>
           }
         >
           <Uploader
@@ -294,7 +294,7 @@ export function PatternsPage() {
           title="Storage render rule"
           description="Storage assets render only once a publicUrl is provided."
         >
-          <Stack gap="m">
+          <View gap="m">
             <Image
               source={{
                 kind: 'storage',
@@ -305,11 +305,11 @@ export function PatternsPage() {
             <Text emphasis="muted" variant="caption">
               Consumers are responsible for resolving storage references into public URLs.
             </Text>
-          </Stack>
+          </View>
         </Card>
 
         <Card title="Disabled and read-only">
-          <Stack gap="m">
+          <View gap="m">
             <Uploader
               label="Disabled field"
               value={imageAsset}
@@ -326,7 +326,7 @@ export function PatternsPage() {
               type="image"
               readOnly
             />
-          </Stack>
+          </View>
         </Card>
 
         <Card title="External errorText wins">
@@ -603,7 +603,7 @@ export function PatternsPage() {
       </ScreenSection>
 
       <ScreenSection title="Scenario: Theme picker">
-        <TileGrid columns={4}>
+        <Grid cols={4} gap="m">
           <PaletteItem
             title="Ocean"
             description="Blue primary"
@@ -633,7 +633,7 @@ export function PatternsPage() {
               </Badge>
             }
           />
-        </TileGrid>
+        </Grid>
       </ScreenSection>
 
       <ScreenSection title="Scenario: Empty workflow state">

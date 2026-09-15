@@ -3,7 +3,7 @@ import React from 'react';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import { type ProgressProps, resolveProgressRole } from '../../../../types/progress';
-import { Box } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { resolveProgressFraction } from '../../utils/resolveProgressFraction';
 
 function resolveProgressHeight(size: NonNullable<ProgressProps['size']>): number {
@@ -34,7 +34,7 @@ function ProgressInner({
   const role = resolveProgressRole(theme, color);
 
   return (
-    <Box
+    <View
       accessibilityRole="progressbar"
       bg={theme.semantics.neutral.surface}
       borderColor={theme.semantics.neutral.divider}
@@ -43,8 +43,8 @@ function ProgressInner({
       testID={testID}
       style={{ height, overflow: 'hidden' }}
     >
-      <Box bg={role.base} style={{ height: '100%', width: `${fraction * 100}%` }} />
-    </Box>
+      <View bg={role.base} style={{ height: '100%', width: `${fraction * 100}%` }} />
+    </View>
   );
 }
 

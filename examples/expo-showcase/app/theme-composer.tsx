@@ -1,6 +1,5 @@
 import {
   Badge,
-  Box,
   Button,
   Card,
   ChipGroup,
@@ -10,11 +9,11 @@ import {
   Panel,
   Screen,
   ScreenSection,
-  Stack,
   Text,
   TextInput,
   ThemeComposer,
   Toolbar,
+  View,
   type ZoraTheme,
   type ZoraThemeMode,
   ZoraThemeScope,
@@ -107,7 +106,7 @@ export function ThemeComposerPage({
       </ScreenSection>
 
       <ScreenSection title="Recipe presets">
-        <Stack direction="row" gap="s" wrap="wrap">
+        <View direction="row" gap="s" wrap="wrap">
           {recipeThemes.map((preset) => (
             <Button
               key={preset.theme.id}
@@ -119,7 +118,7 @@ export function ThemeComposerPage({
               {preset.label}
             </Button>
           ))}
-        </Stack>
+        </View>
       </ScreenSection>
 
       <ZoraThemeScope mode={mode}>
@@ -134,7 +133,7 @@ export function ThemeComposerPage({
             title="Surface area"
             description="Panel, toolbar, cards, badges, form controls, and navigation should remain legible across the target recipe combinations."
           >
-            <Stack gap="m">
+            <View gap="m">
               <Toolbar>
                 <IconButton
                   color="primary"
@@ -144,7 +143,7 @@ export function ThemeComposerPage({
                 />
                 <IconButton icon={{ name: 'sparkles-outline' }} label="Generate" />
                 <IconButton icon={{ name: 'eye-outline' }} label="Preview" />
-                <Box flex={1} />
+                <View flex={1} />
                 <IconButton icon={{ name: 'save-outline' }} label="Save" />
               </Toolbar>
 
@@ -163,7 +162,7 @@ export function ThemeComposerPage({
                   </Button>
                 }
                 footer={
-                  <Stack direction="row" gap="s" wrap="wrap">
+                  <View direction="row" gap="s" wrap="wrap">
                     <Badge color="primary">Primary</Badge>
                     <Badge color="success" variant="soft">
                       Success
@@ -174,10 +173,10 @@ export function ThemeComposerPage({
                     <Badge color="danger" variant="outline">
                       Danger
                     </Badge>
-                  </Stack>
+                  </View>
                 }
               >
-                <Stack gap="s">
+                <View gap="s">
                   <Text variant="lead" emphasis="muted">
                     Theme: {theme.name} · Category: {theme.appCategory}
                   </Text>
@@ -188,7 +187,7 @@ export function ThemeComposerPage({
                     Use this surface to catch contrast, tint, nested card, and action-color issues
                     before generated apps consume the theme.
                   </Text>
-                </Stack>
+                </View>
               </Card>
 
               <Card
@@ -196,14 +195,14 @@ export function ThemeComposerPage({
                 description="Inputs and textareas should stay readable on themed surfaces."
                 tone="subtle"
               >
-                <Stack gap="s">
+                <View gap="s">
                   <TextInput value={theme.primaryColor} />
                   <TextInput
                     multiline
                     value="Theme notes, accessibility observations, and recipe QA details."
                     numberOfLines={3}
                   />
-                  <Stack direction="row" gap="s" wrap="wrap">
+                  <View direction="row" gap="s" wrap="wrap">
                     <Button color="primary">Primary action</Button>
                     <Button color="neutral" variant="soft">
                       Secondary
@@ -211,10 +210,10 @@ export function ThemeComposerPage({
                     <Button color="danger" variant="ghost">
                       Danger ghost
                     </Button>
-                  </Stack>
-                </Stack>
+                  </View>
+                </View>
               </Card>
-            </Stack>
+            </View>
           </Panel>
         </ScreenSection>
 

@@ -1,38 +1,23 @@
-import {
-  Badge,
-  Box,
-  Card,
-  Center,
-  Container,
-  Divider,
-  Grid,
-  Inline,
-  ScreenSection,
-  Show,
-  Spacer,
-  Stack,
-  Surface,
-  Text,
-} from '@ankhorage/zora';
+import { Badge, Card, Divider, Grid, ScreenSection, Surface, Text, View } from '@ankhorage/zora';
 import React from 'react';
 
 export function FoundationPrimitivesSection() {
   return (
     <ScreenSection title="Foundation primitives">
       <Card
-        title="Stack and Inline"
-        description="Use Stack for vertical rhythm and Inline for wrapped horizontal groups."
+        title="View flow"
+        description="Use View for vertical rhythm and responsive horizontal groups."
       >
-        <Stack gap="m">
-          <Stack gap="s">
+        <View gap="m">
+          <View gap="s">
             <Surface variant="subtle" p="m">
               <Text weight="semiBold">Stack item</Text>
             </Surface>
             <Surface variant="subtle" p="m">
               <Text weight="semiBold">Second stack item</Text>
             </Surface>
-          </Stack>
-          <Inline gap="s">
+          </View>
+          <View direction="row" gap="s">
             <Badge color="primary">Inline</Badge>
             <Badge color="success" variant="soft">
               Wrapped
@@ -40,15 +25,15 @@ export function FoundationPrimitivesSection() {
             <Badge color="warning" variant="soft">
               Metadata
             </Badge>
-          </Inline>
-        </Stack>
+          </View>
+        </View>
       </Card>
 
       <Card
-        title="Grid and Container"
-        description="Responsive containers and grids keep catalog surfaces aligned."
+        title="Grid and bounded View"
+        description="Responsive View constraints and grids keep catalog surfaces aligned."
       >
-        <Container maxWidth={720} px="s">
+        <View maxWidth={720} px="s">
           <Grid cols={{ base: 1, md: 3 }} gap="s">
             <Surface variant="outline" p="m">
               <Text>Grid cell A</Text>
@@ -60,18 +45,15 @@ export function FoundationPrimitivesSection() {
               <Text>Grid cell C</Text>
             </Surface>
           </Grid>
-        </Container>
+        </View>
       </Card>
 
-      <Card
-        title="Center and Box"
-        description="Box is the flexible primitive; Center aligns its children."
-      >
-        <Center minHeight={96} p="m">
-          <Box p="m" radius="m" bg="surface">
-            <Text weight="semiBold">Centered Box</Text>
-          </Box>
-        </Center>
+      <Card title="View alignment" description="View owns flexible geometry and alignment.">
+        <View align="center" justify="center" minHeight={96} p="m">
+          <View p="m" radius="m" bg="surface">
+            <Text weight="semiBold">Centered View</Text>
+          </View>
+        </View>
       </Card>
 
       <Card
@@ -95,23 +77,15 @@ export function FoundationPrimitivesSection() {
       </Card>
 
       <Card
-        title="Divider, Spacer, and Show"
-        description="Small layout utilities keep examples readable."
+        title="Divider and spacing"
+        description="View gap and dimensions cover ordinary spacing without helper components."
       >
-        <Stack gap="s">
+        <View gap="s">
           <Text>First block</Text>
           <Divider />
-          <Spacer size="s" />
-          <Text>Second block after a spacer</Text>
-          <Show
-            when={{ base: true, md: false }}
-            fallback={<Badge color="neutral">Desktop fallback</Badge>}
-          >
-            <Badge color="primary" variant="soft">
-              Visible on base breakpoint
-            </Badge>
-          </Show>
-        </Stack>
+          <View height="s" />
+          <Text>Second block after explicit spacing</Text>
+        </View>
       </Card>
     </ScreenSection>
   );

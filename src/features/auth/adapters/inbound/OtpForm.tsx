@@ -4,7 +4,7 @@ import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { OtpFormProps } from '../../../../types/auth';
 import type { FormFieldConfig, FormValues } from '../../../../types/form';
 import { Button } from '../../../button/public';
-import { Stack } from '../../../layout/public';
+import { View } from '../../../layout/public';
 import { AuthForm } from './AuthForm';
 
 type OtpFieldName = 'otp';
@@ -55,7 +55,7 @@ function OtpFormInner({
     <AuthForm
       actions={
         onResend ? (
-          <Stack direction="row" gap="s" wrap="wrap">
+          <View direction="row" gap="s" wrap="wrap">
             <Button
               disabled={disabled || loading || resendDisabled}
               variant="ghost"
@@ -69,7 +69,7 @@ function OtpFormInner({
             >
               {resendLabel}
             </Button>
-          </Stack>
+          </View>
         ) : undefined
       }
       disabled={disabled}

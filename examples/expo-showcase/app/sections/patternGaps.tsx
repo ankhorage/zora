@@ -5,17 +5,16 @@ import {
   ConfirmDialog,
   ContentRail,
   IconButton,
+  ListRow,
   MissingElement,
   Notice,
   Panel,
   ReaderSurface,
   ScreenSection,
   SectionHeader,
-  SettingsRow,
-  Stack,
-  SwitchField,
   Text,
   TreeItem,
+  View,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -64,14 +63,14 @@ export function PatternGapsSection() {
         subtitle="EPUB preview"
         title="The North Wind"
         viewport={
-          <Stack gap="m" p="l">
+          <View gap="m" p="l">
             <Text variant="eyebrow">Chapter one</Text>
             <Text variant="lead">A quiet beginning</Text>
             <Text>
               This static page stands in for the platform renderer. The ReaderSurface owns the
               chrome while the Expo adapter will own EPUB/PDF rendering and swipe gestures.
             </Text>
-          </Stack>
+          </View>
         }
       />
 
@@ -119,34 +118,34 @@ export function PatternGapsSection() {
       </Panel>
 
       <SectionHeader
-        title="Settings rows"
-        description="SettingsRow works for static, pressable, and controlled settings content."
+        title="List rows"
+        description="ListRow covers static, pressable, metadata, and trailing-action rows."
       />
-      <Card title="SettingsRow" tone="subtle">
-        <Stack gap="s">
-          <SettingsRow
+      <Card title="ListRow" tone="subtle">
+        <View gap="s">
+          <ListRow
             title="Account plan"
             description="Static metadata row."
             meta={<Badge color="primary">Pro</Badge>}
           />
-          <SettingsRow
+          <ListRow
             title="Open billing"
             description="Pressable row with a mock action."
             onPress={() => undefined}
             meta="⌘B"
           />
-          <SettingsRow
+          <ListRow
             title="Background sync"
-            description="Controlled settings row."
-            control={
-              <SwitchField
-                label="Background sync"
-                value={syncEnabled}
-                onValueChange={setSyncEnabled}
+            description={syncEnabled ? 'Enabled' : 'Disabled'}
+            action={
+              <IconButton
+                icon={{ name: syncEnabled ? 'pause-outline' : 'play-outline' }}
+                label={syncEnabled ? 'Disable background sync' : 'Enable background sync'}
+                onPress={() => setSyncEnabled((enabled) => !enabled)}
               />
             }
           />
-        </Stack>
+        </View>
       </Card>
 
       <SectionHeader

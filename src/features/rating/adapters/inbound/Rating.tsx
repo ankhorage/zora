@@ -1,12 +1,12 @@
 import type { RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import { Inline } from '../../../../foundation';
 import type { ZoraColor } from '../../../../internal/recipes';
 import { resolveIconSize } from '../../../../internal/recipes';
 import { useZoraTheme } from '../../../../theme/useZoraTheme';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { RatingProps } from '../../../../types/rating';
 import { Icon } from '../../../icon/public';
+import { View } from '../../../layout/public';
 import { resolveRatingSegments } from '../../utils/resolveRatingSegments';
 
 /*** Displays a read-only star rating with optional half steps. */
@@ -29,7 +29,7 @@ function RatingInner({
   const iconSize = resolveIconSize(size);
 
   return (
-    <Inline align="center" gap="xxs" testID={testID} wrap="nowrap">
+    <View direction="row" align="center" gap="xxs" testID={testID} wrap="nowrap">
       {segments.map((segment, index) => {
         const name =
           segment === 'full' ? 'star' : segment === 'half' ? 'star-half' : 'star-outline';
@@ -38,7 +38,7 @@ function RatingInner({
           <Icon key={`${index}-${segment}`} color={segmentColor} name={name} size={iconSize} />
         );
       })}
-    </Inline>
+    </View>
   );
 }
 
