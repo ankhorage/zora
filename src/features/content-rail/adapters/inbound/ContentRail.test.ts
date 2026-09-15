@@ -30,7 +30,9 @@ describe('ContentRail public contract', () => {
   });
 
   test('keeps product data, navigation, and platform coupling outside the pattern', async () => {
-    const source = await Bun.file('src/features/layout/adapters/inbound/ContentRail.tsx').text();
+    const source = await Bun.file(
+      'src/features/content-rail/adapters/inbound/ContentRail.tsx',
+    ).text();
 
     expect(source).toContain('ScrollView');
     expect(source).toContain('I18nManager.isRTL');
