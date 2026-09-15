@@ -1,6 +1,9 @@
 name: ZORA 430 migrate
 
 on:
+  push:
+    branches:
+      - refactor/surface-7-form-list
   workflow_dispatch:
 
 permissions:
