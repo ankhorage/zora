@@ -106,14 +106,15 @@ graph LR
   module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
   module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
   module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
-  module_src_features_form_adapters_inbound_FormField_tsx["src/features/form/adapters/inbound/FormField.tsx"]
   module_src_features_form_checkbox_adapters_inbound_Checkbox_tsx["src/features/form/checkbox/adapters/inbound/Checkbox.tsx"]
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx["src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx"]
   module_src_features_form_checkbox_checkboxMeta_ts["src/features/form/checkbox/checkboxMeta.ts"]
   module_src_features_form_checkbox_public_ts["src/features/form/checkbox/public.ts"]
+  module_src_features_form_field_adapters_inbound_Field_tsx["src/features/form/field/adapters/inbound/Field.tsx"]
+  module_src_features_form_field_meta_ts["src/features/form/field/meta.ts"]
+  module_src_features_form_field_public_ts["src/features/form/field/public.ts"]
   module_src_features_form_formActionsMeta_ts["src/features/form/formActionsMeta.ts"]
   module_src_features_form_formErrorMeta_ts["src/features/form/formErrorMeta.ts"]
-  module_src_features_form_formFieldMeta_ts["src/features/form/formFieldMeta.ts"]
   module_src_features_form_formMeta_ts["src/features/form/formMeta.ts"]
   module_src_features_form_public_ts["src/features/form/public.ts"]
   module_src_features_form_radio_adapters_inbound_Radio_tsx["src/features/form/radio/adapters/inbound/Radio.tsx"]
@@ -176,13 +177,18 @@ graph LR
   module_src_features_layout_viewMeta_ts["src/features/layout/viewMeta.ts"]
   module_src_features_list_adapters_inbound_FlatList_tsx["src/features/list/adapters/inbound/FlatList.tsx"]
   module_src_features_list_adapters_inbound_HorizontalListSeparator_tsx["src/features/list/adapters/inbound/HorizontalListSeparator.tsx"]
+  module_src_features_list_adapters_inbound_List_tsx["src/features/list/adapters/inbound/List.tsx"]
+  module_src_features_list_adapters_inbound_ListItem_tsx["src/features/list/adapters/inbound/ListItem.tsx"]
+  module_src_features_list_adapters_inbound_ListSection_tsx["src/features/list/adapters/inbound/ListSection.tsx"]
   module_src_features_list_adapters_inbound_SectionList_tsx["src/features/list/adapters/inbound/SectionList.tsx"]
   module_src_features_list_adapters_inbound_useListVisibility_ts["src/features/list/adapters/inbound/useListVisibility.ts"]
   module_src_features_list_adapters_inbound_VerticalListSeparator_tsx["src/features/list/adapters/inbound/VerticalListSeparator.tsx"]
   module_src_features_list_application_use_cases_partitionListSections_ts["src/features/list/application/use-cases/partitionListSections.ts"]
   module_src_features_list_flatListMeta_ts["src/features/list/flatListMeta.ts"]
+  module_src_features_list_meta_ts["src/features/list/meta.ts"]
   module_src_features_list_public_ts["src/features/list/public.ts"]
   module_src_features_list_sectionListMeta_ts["src/features/list/sectionListMeta.ts"]
+  module_src_features_list_utils_resolveListSeparator_ts["src/features/list/utils/resolveListSeparator.ts"]
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx["src/features/missing-element/adapters/inbound/MissingElement.tsx"]
   module_src_features_missing_element_missingElementMeta_ts["src/features/missing-element/missingElementMeta.ts"]
   module_src_features_missing_element_public_ts["src/features/missing-element/public.ts"]
@@ -293,13 +299,6 @@ graph LR
   module_src_patterns_inspector_field_InspectorField_tsx["src/patterns/inspector-field/InspectorField.tsx"]
   module_src_patterns_inspector_field_meta_ts["src/patterns/inspector-field/meta.ts"]
   module_src_patterns_inspector_field_types_ts["src/patterns/inspector-field/types.ts"]
-  module_src_patterns_list_index_ts["src/patterns/list/index.ts"]
-  module_src_patterns_list_List_tsx["src/patterns/list/List.tsx"]
-  module_src_patterns_list_ListRow_tsx["src/patterns/list/ListRow.tsx"]
-  module_src_patterns_list_ListSection_tsx["src/patterns/list/ListSection.tsx"]
-  module_src_patterns_list_meta_ts["src/patterns/list/meta.ts"]
-  module_src_patterns_list_resolveListSeparator_ts["src/patterns/list/resolveListSeparator.ts"]
-  module_src_patterns_list_types_ts["src/patterns/list/types.ts"]
   module_src_patterns_message_bubble_index_ts["src/patterns/message-bubble/index.ts"]
   module_src_patterns_message_bubble_MessageBubble_tsx["src/patterns/message-bubble/MessageBubble.tsx"]
   module_src_patterns_message_bubble_meta_ts["src/patterns/message-bubble/meta.ts"]
@@ -403,6 +402,7 @@ graph LR
   module_src_types_image_ts["src/types/image.ts"]
   module_src_types_keyboard_avoiding_view_ts["src/types/keyboard-avoiding-view.ts"]
   module_src_types_layout_ts["src/types/layout.ts"]
+  module_src_types_list_ts["src/types/list.ts"]
   module_src_types_manifest_bottom_sheet_ts["src/types/manifest-bottom-sheet.ts"]
   module_src_types_manifest_list_ts["src/types/manifest-list.ts"]
   module_src_types_media_card_ts["src/types/media-card.ts"]
@@ -698,6 +698,11 @@ graph LR
   module_src_types_empty_state_ts --> export_EmptyStateProps
   export_EmptyStateProps -.-> export_EmptyStateAction
   export_EmptyStateProps -.-> export_ZoraThemeMode
+  export_Field["Field"]
+  module_src_features_form_field_adapters_inbound_Field_tsx --> export_Field
+  export_FieldProps["FieldProps"]
+  module_src_types_form_ts --> export_FieldProps
+  export_FieldProps -.-> export_ZoraThemeMode
   export_FilterBar["FilterBar"]
   module_src_patterns_filter_bar_FilterBar_tsx --> export_FilterBar
   export_FilterBarProps["FilterBarProps"]
@@ -729,17 +734,12 @@ graph LR
   export_FormErrorProps -.-> export_ZoraThemeMode
   export_FormErrors["FormErrors"]
   module_src_types_form_ts --> export_FormErrors
-  export_FormField["FormField"]
-  module_src_features_form_adapters_inbound_FormField_tsx --> export_FormField
   export_FormFieldConfig["FormFieldConfig"]
   module_src_types_form_ts --> export_FormFieldConfig
   export_FormFieldConfig -.-> export_FormFieldInputType
   export_FormFieldConfig -.-> export_ValidationRule
   export_FormFieldInputType["FormFieldInputType"]
   module_src_types_form_ts --> export_FormFieldInputType
-  export_FormFieldProps["FormFieldProps"]
-  module_src_types_form_ts --> export_FormFieldProps
-  export_FormFieldProps -.-> export_ZoraThemeMode
   export_FormProps["FormProps"]
   module_src_types_form_ts --> export_FormProps
   export_FormProps -.-> export_ZoraThemeMode
@@ -855,25 +855,25 @@ graph LR
   module_src_types_keyboard_avoiding_view_ts --> export_KeyboardAvoidingViewProps
   export_KeyboardAvoidingViewProps -.-> export_ZoraThemeMode
   export_List["List"]
-  module_src_patterns_list_List_tsx --> export_List
+  module_src_features_list_adapters_inbound_List_tsx --> export_List
   export_ListChildrenProps["ListChildrenProps"]
-  module_src_patterns_list_types_ts --> export_ListChildrenProps
+  module_src_types_list_ts --> export_ListChildrenProps
   export_ListChildrenProps -.-> export_ZoraThemeMode
+  export_ListItem["ListItem"]
+  module_src_features_list_adapters_inbound_ListItem_tsx --> export_ListItem
+  export_ListItemProps["ListItemProps"]
+  module_src_types_list_ts --> export_ListItemProps
   export_ListItemsProps["ListItemsProps"]
-  module_src_patterns_list_types_ts --> export_ListItemsProps
-  export_ListItemsProps -.-> export_ListRowProps
-  export_ListItemsProps -.-> export_ListRowVariant
+  module_src_types_list_ts --> export_ListItemsProps
+  export_ListItemsProps -.-> export_ListItemProps
+  export_ListItemsProps -.-> export_ListItemVariant
   export_ListItemsProps -.-> export_ZoraThemeMode
+  export_ListItemVariant["ListItemVariant"]
+  module_src_types_list_ts --> export_ListItemVariant
   export_ListProps["ListProps"]
-  module_src_patterns_list_types_ts --> export_ListProps
-  export_ListRow["ListRow"]
-  module_src_patterns_list_ListRow_tsx --> export_ListRow
-  export_ListRowProps["ListRowProps"]
-  module_src_patterns_list_types_ts --> export_ListRowProps
-  export_ListRowVariant["ListRowVariant"]
-  module_src_patterns_list_types_ts --> export_ListRowVariant
+  module_src_types_list_ts --> export_ListProps
   export_ListSection["ListSection"]
-  module_src_patterns_list_ListSection_tsx --> export_ListSection
+  module_src_features_list_adapters_inbound_ListSection_tsx --> export_ListSection
   export_ManifestListProps["ManifestListProps"]
   module_src_types_manifest_list_ts --> export_ManifestListProps
   export_ManifestListProps -.-> export_ZoraThemeMode

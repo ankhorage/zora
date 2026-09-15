@@ -2,9 +2,9 @@ import React from 'react';
 
 import { IconButton } from '../../features/button/public';
 import { View } from '../../features/layout/public';
+import { ListItem } from '../../features/list/public';
 import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { ZoraBaseProps } from '../../theme/ZoraBaseProps';
-import { ListItem } from '../../features/list/public';
 import type { TreeItemNode, TreeItemRenderProps } from './types';
 
 interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {

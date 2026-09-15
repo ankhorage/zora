@@ -6711,6 +6711,134 @@
     "structuredRows": []
   },
   {
+    "name": "Field",
+    "description": "Groups one form control with its label, description, helper text, and field error.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/form/field/adapters/inbound/Field.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/form/field/adapters/inbound/Field.tsx",
+      "line": 42,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "FieldProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/form.ts",
+    "sourceLocation": {
+      "filePath": "src/types/form.ts",
+      "line": 47,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["ZoraThemeMode"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "helperText",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "FilterBar",
     "description": "Horizontal filter/action bar layout with leading/trailing slots.",
     "isReadme": false,
@@ -7191,24 +7319,6 @@
     "structuredRows": []
   },
   {
-    "name": "FormField",
-    "description": "Groups one form control with its label, description, helper text, and field error.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/features/form/adapters/inbound/FormField.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/form/adapters/inbound/FormField.tsx",
-      "line": 42,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "FormFieldConfig",
     "description": null,
     "isReadme": false,
@@ -7362,116 +7472,6 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "FormFieldProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "type",
-    "modulePath": "src/types/form.ts",
-    "sourceLocation": {
-      "filePath": "src/types/form.ts",
-      "line": 47,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ZoraThemeMode"],
-    "signatures": [],
-    "members": [
-      {
-        "name": "children",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "description",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "disabled",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "errorText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "helperText",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicy",
-        "kind": "property",
-        "type": "InteractionPolicy | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "invalid",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "label",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "mode",
-        "kind": "property",
-        "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "readOnly",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "required",
-        "kind": "property",
-        "type": "boolean | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "testID",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "themeId",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
@@ -10236,13 +10236,13 @@
   },
   {
     "name": "List",
-    "description": "List container pattern for composing `ListRow` and `ListSection`.",
+    "description": "List composition built on the Surface list boundary with ZORA item/separator policy.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/list/List.tsx",
+    "modulePath": "src/features/list/adapters/inbound/List.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/list/List.tsx",
+      "filePath": "src/features/list/adapters/inbound/List.tsx",
       "line": 77,
       "column": 14
     },
@@ -10258,10 +10258,10 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/list/types.ts",
+    "modulePath": "src/types/list.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/list/types.ts",
-      "line": 43,
+      "filePath": "src/types/list.ts",
+      "line": 42,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -10307,19 +10307,55 @@
     "structuredRows": []
   },
   {
+    "name": "ListItem",
+    "description": "Opinionated list item built on the Surface list-item interaction and geometry boundary.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/features/list/adapters/inbound/ListItem.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
+      "line": 89,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ListItemProps",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/list.ts",
+    "sourceLocation": {
+      "filePath": "src/types/list.ts",
+      "line": 33,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ListItemsProps",
     "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/patterns/list/types.ts",
+    "modulePath": "src/types/list.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/list/types.ts",
-      "line": 37,
+      "filePath": "src/types/list.ts",
+      "line": 36,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["ListRowProps", "ListRowVariant", "ZoraThemeMode"],
+    "relatedSymbols": ["ListItemProps", "ListItemVariant", "ZoraThemeMode"],
     "signatures": [],
     "members": [
       {
@@ -10339,21 +10375,21 @@
       {
         "name": "items",
         "kind": "property",
-        "type": "readonly ListRowProps[]",
+        "type": "readonly ListItemProps[]",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "itemVariant",
+        "kind": "property",
+        "type": "ListItemVariant | undefined",
+        "required": false,
         "description": null
       },
       {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "rowVariant",
-        "kind": "property",
-        "type": "ListRowVariant | undefined",
         "required": false,
         "description": null
       },
@@ -10375,69 +10411,33 @@
     "structuredRows": []
   },
   {
+    "name": "ListItemVariant",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/types/list.ts",
+    "sourceLocation": {
+      "filePath": "src/types/list.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ListProps",
     "description": null,
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/patterns/list/types.ts",
+    "modulePath": "src/types/list.ts",
     "sourceLocation": {
-      "filePath": "src/patterns/list/types.ts",
-      "line": 47,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ListRow",
-    "description": "Row pattern for lists with leading/trailing slots and optional press behavior.",
-    "isReadme": false,
-    "examples": [],
-    "kind": "value",
-    "modulePath": "src/patterns/list/ListRow.tsx",
-    "sourceLocation": {
-      "filePath": "src/patterns/list/ListRow.tsx",
-      "line": 198,
-      "column": 14
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ListRowProps",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/list/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/list/types.ts",
-      "line": 34,
-      "column": 1
-    },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ListRowVariant",
-    "description": null,
-    "isReadme": false,
-    "examples": [],
-    "kind": "unknown",
-    "modulePath": "src/patterns/list/types.ts",
-    "sourceLocation": {
-      "filePath": "src/patterns/list/types.ts",
-      "line": 5,
+      "filePath": "src/types/list.ts",
+      "line": 46,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -10448,14 +10448,14 @@
   },
   {
     "name": "ListSection",
-    "description": "Section wrapper for lists with optional title and description.",
+    "description": "Section wrapper for lists with optional ZORA section-heading semantics.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
-    "modulePath": "src/patterns/list/ListSection.tsx",
+    "modulePath": "src/features/list/adapters/inbound/ListSection.tsx",
     "sourceLocation": {
-      "filePath": "src/patterns/list/ListSection.tsx",
-      "line": 41,
+      "filePath": "src/features/list/adapters/inbound/ListSection.tsx",
+      "line": 36,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -18540,7 +18540,7 @@
   },
   {
     "name": "SwitchField",
-    "description": "Labeled switch field pattern built on `ListRow`.",
+    "description": "Labeled switch field pattern built on `ListItem`.",
     "isReadme": false,
     "examples": [],
     "kind": "value",

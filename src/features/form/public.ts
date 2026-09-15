@@ -1,10 +1,10 @@
 export type {
+  FieldProps,
   FormActionsProps,
   FormErrorProps,
   FormErrors,
   FormFieldConfig,
   FormFieldInputType,
-  FieldProps,
   FormProps,
   FormValidationErrors,
   FormValidationResult,

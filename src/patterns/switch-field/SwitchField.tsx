@@ -1,8 +1,8 @@
 import { Switch } from '@ankhorage/surface';
 import React from 'react';
 
-import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import { ListItem } from '../../features/list/public';
+import { withZoraThemeScope } from '../../theme/withZoraThemeScope';
 import type { SwitchFieldProps } from './types';
 
 function SwitchFieldInner({

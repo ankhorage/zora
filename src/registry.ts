@@ -33,7 +33,7 @@ import { DatePicker } from './features/date-picker/public';
 import { Dialog } from './features/dialog/public';
 import { EmptyState } from './features/empty-state/public';
 import { Checkbox, CheckboxGroup } from './features/form/checkbox/public';
-import { Form, FormActions, FormError, Field } from './features/form/public';
+import { Field, Form, FormActions, FormError } from './features/form/public';
 import { Radio, RadioGroup } from './features/form/radio/public';
 import { SearchInput } from './features/form/search-input/public';
 import { Select } from './features/form/select/public';
@@ -53,6 +53,7 @@ import {
   View,
 } from './features/layout/public';
 import { FlatList, SectionList } from './features/list/public';
+import { List, ListItem, ListSection } from './features/list/public';
 import { MissingElement } from './features/missing-element/public';
 import { Pagination } from './features/pagination/public';
 import { PaletteItem } from './features/palette-item/public';
@@ -73,7 +74,6 @@ import { CollectionEditor } from './patterns/collection-editor';
 import { ConfirmDialog } from './patterns/confirm-dialog';
 import { FilterBar } from './patterns/filter-bar';
 import { InspectorField } from './patterns/inspector-field';
-import { List, ListItem, ListSection } from './features/list/public';
 import { MessageBubble } from './patterns/message-bubble';
 import { Notice } from './patterns/notice';
 import { Panel } from './patterns/panel';

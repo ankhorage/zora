@@ -1,9 +1,4 @@
 export type {
-  ManifestListProps,
-  ManifestListSection,
-  ManifestSectionListProps,
-} from '../../types/manifest-list';
-export type {
   ListChildrenProps,
   ListItemProps,
   ListItemsProps,
@@ -11,6 +6,11 @@ export type {
   ListProps,
   ListSectionProps,
 } from '../../types/list';
+export type {
+  ManifestListProps,
+  ManifestListSection,
+  ManifestSectionListProps,
+} from '../../types/manifest-list';
 export { FlatList } from './adapters/inbound/FlatList';
 export { List } from './adapters/inbound/List';
 export { ListItem } from './adapters/inbound/ListItem';
