@@ -1,4 +1,4 @@
-import { Avatar, Badge, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Avatar, Badge, Card, ListSection, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -36,10 +36,11 @@ export default function ActivityScreen() {
       />
       <Screen>
         <ScreenSection title="Highlights">
-          <Notice
+          <Card
             title="Audience is active"
             description="Your last photo story is driving more saves than comments today."
-            color="success"
+            eyebrow={<Badge color="success">SUCCESS</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
 

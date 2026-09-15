@@ -388,8 +388,8 @@ Source: `src/types/badge.ts:7:1`
 ## BarcodeScannerView
 
 Kind: `value`
-Module: `src/patterns/scanner/BarcodeScannerView.tsx`
-Source: `src/patterns/scanner/BarcodeScannerView.tsx:130:14`
+Module: `src/features/scanner/adapters/inbound/BarcodeScannerView.tsx`
+Source: `src/features/scanner/adapters/inbound/BarcodeScannerView.tsx:130:14`
 
 Composed ZORA scanner shell for barcode scanning experiences.
 
@@ -399,8 +399,8 @@ or test camera element through `camera`; keep permission and fallback UI here.
 ## BarcodeScannerViewProps
 
 Kind: `type`
-Module: `src/patterns/scanner/types.ts`
-Source: `src/patterns/scanner/types.ts:32:1`
+Module: `src/types/scanner.ts`
+Source: `src/types/scanner.ts:32:1`
 
 ### Members
 
@@ -428,8 +428,8 @@ Source: `src/patterns/scanner/types.ts:32:1`
 ## BarcodeScanResult
 
 Kind: `type`
-Module: `src/patterns/scanner/types.ts`
-Source: `src/patterns/scanner/types.ts:8:1`
+Module: `src/types/scanner.ts`
+Source: `src/types/scanner.ts:8:1`
 
 ### Members
 
@@ -655,14 +655,14 @@ Source: `src/types/button.ts:7:1`
 ## CameraPermissionStatus
 
 Kind: `unknown`
-Module: `src/patterns/scanner/types.ts`
-Source: `src/patterns/scanner/types.ts:6:1`
+Module: `src/types/scanner.ts`
+Source: `src/types/scanner.ts:6:1`
 
 ## CameraPermissionView
 
 Kind: `value`
-Module: `src/patterns/scanner/CameraPermissionView.tsx`
-Source: `src/patterns/scanner/CameraPermissionView.tsx:112:14`
+Module: `src/features/scanner/adapters/inbound/CameraPermissionView.tsx`
+Source: `src/features/scanner/adapters/inbound/CameraPermissionView.tsx:112:14`
 
 ZORA-owned camera permission state for scanner flows.
 
@@ -672,8 +672,8 @@ request, denied, requesting, and manual-entry surfaces consistently.
 ## CameraPermissionViewProps
 
 Kind: `type`
-Module: `src/patterns/scanner/types.ts`
-Source: `src/patterns/scanner/types.ts:19:1`
+Module: `src/types/scanner.ts`
+Source: `src/types/scanner.ts:19:1`
 
 ### Members
 
@@ -780,8 +780,8 @@ Source: `src/types/card.ts:7:1`
 ## ChatListAvatar
 
 Kind: `type`
-Module: `src/patterns/chat-list-item/types.ts`
-Source: `src/patterns/chat-list-item/types.ts:8:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:8:1`
 
 ### Members
 
@@ -798,16 +798,16 @@ Source: `src/patterns/chat-list-item/types.ts:8:1`
 ## ChatListItem
 
 Kind: `value`
-Module: `src/patterns/chat-list-item/ChatListItem.tsx`
-Source: `src/patterns/chat-list-item/ChatListItem.tsx:227:14`
+Module: `src/features/chat/adapters/inbound/ChatListItem.tsx`
+Source: `src/features/chat/adapters/inbound/ChatListItem.tsx:227:14`
 
 Chat-style list row with avatar, title, preview text, and unread indicators.
 
 ## ChatListItemProps
 
 Kind: `type`
-Module: `src/patterns/chat-list-item/types.ts`
-Source: `src/patterns/chat-list-item/types.ts:18:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:18:1`
 
 ### Members
 
@@ -1023,16 +1023,16 @@ Source: `src/types/chip.ts:7:1`
 ## CollectionEditor
 
 Kind: `value`
-Module: `src/patterns/collection-editor/CollectionEditor.tsx`
-Source: `src/patterns/collection-editor/CollectionEditor.tsx:122:14`
+Module: `src/features/collection-editor/adapters/inbound/CollectionEditor.tsx`
+Source: `src/features/collection-editor/adapters/inbound/CollectionEditor.tsx:122:14`
 
 Editor pattern for adding, removing, and reordering a collection of items.
 
 ## CollectionEditorProps
 
 Kind: `type`
-Module: `src/patterns/collection-editor/types.ts`
-Source: `src/patterns/collection-editor/types.ts:15:1`
+Module: `src/types/collection-editor.ts`
+Source: `src/types/collection-editor.ts:15:1`
 
 ### Members
 
@@ -1056,8 +1056,8 @@ Source: `src/patterns/collection-editor/types.ts:15:1`
 ## CollectionEditorRenderItemProps
 
 Kind: `type`
-Module: `src/patterns/collection-editor/types.ts`
-Source: `src/patterns/collection-editor/types.ts:3:1`
+Module: `src/types/collection-editor.ts`
+Source: `src/types/collection-editor.ts:5:1`
 
 ### Members
 
@@ -1145,41 +1145,6 @@ Compose a selected ZORA core/plugin descriptor set into one validated authoring/
 - `(plugins: readonly ZoraPluginDescriptor[]) => ComposedZoraPluginCatalog`
   - plugins: `readonly ZoraPluginDescriptor[]`
   - returns: `ComposedZoraPluginCatalog`
-
-## ConfirmDialog
-
-Kind: `value`
-Module: `src/patterns/confirm-dialog/ConfirmDialog.tsx`
-Source: `src/patterns/confirm-dialog/ConfirmDialog.tsx:69:14`
-
-Confirmation dialog pattern with cancel/confirm actions.
-
-## ConfirmDialogProps
-
-Kind: `type`
-Module: `src/patterns/confirm-dialog/types.ts`
-Source: `src/patterns/confirm-dialog/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                                          | Required | Description |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| busy              | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| cancelLabel       | property | `React.ReactNode`                                                                                                                             | no       |             |
-| children          | property | `React.ReactNode`                                                                                                                             | no       |             |
-| closeOnBackdrop   | property | `boolean \| undefined`                                                                                                                        | no       |             |
-| confirmColor      | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
-| confirmLabel      | property | `React.ReactNode`                                                                                                                             | no       |             |
-| confirmVariant    | property | `ZoraButtonVariant \| undefined`                                                                                                              | no       |             |
-| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
-| onCancel          | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
-| onConfirm         | property | `(() => void) \| undefined`                                                                                                                   | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| title             | property | `React.ReactNode`                                                                                                                             | yes      |             |
-| visible           | property | `boolean`                                                                                                                                     | yes      |             |
 
 ## ContentRail
 
@@ -1629,33 +1594,6 @@ Source: `src/types/form.ts:47:1`
 | required          | property | `boolean \| undefined`           | no       |             |
 | testID            | property | `string \| undefined`            | no       |             |
 | themeId           | property | `string \| undefined`            | no       |             |
-
-## FilterBar
-
-Kind: `value`
-Module: `src/patterns/filter-bar/FilterBar.tsx`
-Source: `src/patterns/filter-bar/FilterBar.tsx:31:14`
-
-Horizontal filter/action bar layout with leading/trailing slots.
-
-## FilterBarProps
-
-Kind: `type`
-Module: `src/patterns/filter-bar/types.ts`
-Source: `src/patterns/filter-bar/types.ts:5:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| children          | property | `React.ReactNode`                | yes      |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| leading           | property | `React.ReactNode`                | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| trailing          | property | `React.ReactNode`                | no       |             |
-| wrap              | property | `boolean \| undefined`           | no       |             |
 
 ## FlatList
 
@@ -2300,39 +2238,6 @@ Source: `src/types/image.ts:8:1`
 | themeId            | property | `string \| undefined`                                                    | no       |             |
 | width              | property | `string \| number \| undefined`                                          | no       |             |
 
-## InspectorField
-
-Kind: `value`
-Module: `src/patterns/inspector-field/InspectorField.tsx`
-Source: `src/patterns/inspector-field/InspectorField.tsx:32:14`
-
-Inspector row pattern with label, description, and control slot.
-
-## InspectorFieldProps
-
-Kind: `type`
-Module: `src/patterns/inspector-field/types.ts`
-Source: `src/patterns/inspector-field/types.ts:5:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| children          | property | `ReactNode`                      | no       |             |
-| control           | property | `ReactNode`                      | no       |             |
-| description       | property | `ReactNode`                      | no       |             |
-| disabled          | property | `boolean \| undefined`           | no       |             |
-| errorText         | property | `ReactNode`                      | no       |             |
-| helperText        | property | `ReactNode`                      | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| invalid           | property | `boolean \| undefined`           | no       |             |
-| label             | property | `ReactNode`                      | yes      |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| readOnly          | property | `boolean \| undefined`           | no       |             |
-| required          | property | `boolean \| undefined`           | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-
 ## KeyboardAvoidingView
 
 Kind: `value`
@@ -2638,16 +2543,16 @@ Source: `src/types/media-card.ts:42:1`
 ## MessageBubble
 
 Kind: `value`
-Module: `src/patterns/message-bubble/MessageBubble.tsx`
-Source: `src/patterns/message-bubble/MessageBubble.tsx:276:14`
+Module: `src/features/chat/adapters/inbound/MessageBubble.tsx`
+Source: `src/features/chat/adapters/inbound/MessageBubble.tsx:276:14`
 
 Message bubble pattern for chat UIs with direction and status styling.
 
 ## MessageBubbleAuthor
 
 Kind: `type`
-Module: `src/patterns/message-bubble/types.ts`
-Source: `src/patterns/message-bubble/types.ts:22:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:49:1`
 
 ### Members
 
@@ -2659,8 +2564,8 @@ Source: `src/patterns/message-bubble/types.ts:22:1`
 ## MessageBubbleAvatar
 
 Kind: `type`
-Module: `src/patterns/message-bubble/types.ts`
-Source: `src/patterns/message-bubble/types.ts:12:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:39:1`
 
 ### Members
 
@@ -2677,14 +2582,14 @@ Source: `src/patterns/message-bubble/types.ts:12:1`
 ## MessageBubbleDirection
 
 Kind: `unknown`
-Module: `src/patterns/message-bubble/types.ts`
-Source: `src/patterns/message-bubble/types.ts:8:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:35:1`
 
 ## MessageBubbleProps
 
 Kind: `type`
-Module: `src/patterns/message-bubble/types.ts`
-Source: `src/patterns/message-bubble/types.ts:27:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:54:1`
 
 ### Members
 
@@ -2713,8 +2618,8 @@ Source: `src/patterns/message-bubble/types.ts:27:1`
 ## MessageBubbleStatus
 
 Kind: `unknown`
-Module: `src/patterns/message-bubble/types.ts`
-Source: `src/patterns/message-bubble/types.ts:9:1`
+Module: `src/types/chat.ts`
+Source: `src/types/chat.ts:36:1`
 
 ## MetricCard
 
@@ -2779,34 +2684,6 @@ Source: `src/types/missing-element.ts:3:1`
 | requestedCapability | property | `string`                         | yes      |             |
 | testID              | property | `string \| undefined`            | no       |             |
 | themeId             | property | `string \| undefined`            | no       |             |
-
-## Notice
-
-Kind: `value`
-Module: `src/patterns/notice/Notice.tsx`
-Source: `src/patterns/notice/Notice.tsx:41:14`
-
-Notice pattern for inline feedback with tone, title, and actions.
-
-## NoticeProps
-
-Kind: `type`
-Module: `src/patterns/notice/types.ts`
-Source: `src/patterns/notice/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                                          | Required | Description |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| actions           | property | `React.ReactNode`                                                                                                                             | no       |             |
-| children          | property | `React.ReactNode`                                                                                                                             | no       |             |
-| color             | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
-| description       | property | `React.ReactNode`                                                                                                                             | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                         | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                         | no       |             |
-| title             | property | `React.ReactNode`                                                                                                                             | yes      |             |
 
 ## OAuthProviderButton
 
@@ -3014,39 +2891,6 @@ Source: `src/types/palette-item.ts:6:1`
 | testID            | property | `string \| undefined`                                  | no       |             |
 | themeId           | property | `string \| undefined`                                  | no       |             |
 | title             | property | `React.ReactNode`                                      | yes      |             |
-
-## Panel
-
-Kind: `value`
-Module: `src/patterns/panel/Panel.tsx`
-Source: `src/patterns/panel/Panel.tsx:26:14`
-
-Semantic wrapper around `Card` for panel-style page sections.
-
-## PanelProps
-
-Kind: `type`
-Module: `src/patterns/panel/types.ts`
-Source: `src/patterns/panel/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| actions           | property | `React.ReactNode`                | no       |             |
-| children          | property | `React.ReactNode`                | no       |             |
-| compact           | property | `boolean \| undefined`           | no       |             |
-| description       | property | `React.ReactNode`                | no       |             |
-| eyebrow           | property | `React.ReactNode`                | no       |             |
-| footer            | property | `React.ReactNode`                | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| padding           | property | `string \| undefined`            | no       |             |
-| radius            | property | `string \| undefined`            | no       |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| title             | property | `React.ReactNode`                | no       |             |
-| tone              | property | `ZoraCardTone \| undefined`      | no       |             |
 
 ## PopoverMenu
 
@@ -3452,26 +3296,26 @@ Source: `src/types/rating.ts:4:1`
 ## ReaderColorScheme
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:32:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:32:1`
 
 ## ReaderDocumentFormat
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:5:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:5:1`
 
 ## ReaderErrorCode
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:23:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:23:1`
 
 ## ReaderErrorEvent
 
 Kind: `type`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:26:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:26:1`
 
 ### Members
 
@@ -3484,8 +3328,8 @@ Source: `src/patterns/reader/types.ts:26:1`
 ## ReaderExternalLinkEvent
 
 Kind: `type`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:38:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:38:1`
 
 ### Members
 
@@ -3496,14 +3340,14 @@ Source: `src/patterns/reader/types.ts:38:1`
 ## ReaderLineHeight
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:34:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:34:1`
 
 ## ReaderLocationChangeEvent
 
 Kind: `type`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:12:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:12:1`
 
 ### Members
 
@@ -3521,26 +3365,26 @@ Source: `src/patterns/reader/types.ts:12:1`
 ## ReaderNavigationTrigger
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:9:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:9:1`
 
 ## ReaderResolvedSource
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:36:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:36:1`
 
 ## ReaderStatus
 
 Kind: `unknown`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:7:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:7:1`
 
 ## ReaderSurface
 
 Kind: `value`
-Module: `src/patterns/reader/ReaderSurface.tsx`
-Source: `src/patterns/reader/ReaderSurface.tsx:349:14`
+Module: `src/features/reader/adapters/inbound/ReaderSurface.tsx`
+Source: `src/features/reader/adapters/inbound/ReaderSurface.tsx:349:14`
 
 Adapter-neutral reader shell for EPUB and PDF experiences.
 
@@ -3551,8 +3395,8 @@ adapter callbacks.
 ## ReaderSurfaceProps
 
 Kind: `type`
-Module: `src/patterns/reader/types.ts`
-Source: `src/patterns/reader/types.ts:42:1`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:42:1`
 
 ### Members
 
@@ -3639,8 +3483,8 @@ Source: `src/features/auth/utils/oauthProviders.ts:56:1`
 ## resolveReaderProgress
 
 Kind: `function`
-Module: `src/patterns/reader/resolveReaderProgress.ts`
-Source: `src/patterns/reader/resolveReaderProgress.ts:1:1`
+Module: `src/features/reader/utils/resolveReaderProgress.ts`
+Source: `src/features/reader/utils/resolveReaderProgress.ts:1:1`
 
 ### Signatures
 
@@ -3659,8 +3503,8 @@ pageCount,
 ## ScanOverlay
 
 Kind: `value`
-Module: `src/patterns/scanner/ScanOverlay.tsx`
-Source: `src/patterns/scanner/ScanOverlay.tsx:100:14`
+Module: `src/features/scanner/adapters/inbound/ScanOverlay.tsx`
+Source: `src/features/scanner/adapters/inbound/ScanOverlay.tsx:100:14`
 
 Camera-agnostic scan frame overlay for barcode and QR scanning flows.
 
@@ -3670,8 +3514,8 @@ capability separately while ZORA owns the visible scan affordance.
 ## ScanOverlayProps
 
 Kind: `type`
-Module: `src/patterns/scanner/types.ts`
-Source: `src/patterns/scanner/types.ts:13:1`
+Module: `src/types/scanner.ts`
+Source: `src/types/scanner.ts:13:1`
 
 ### Members
 
@@ -3715,16 +3559,16 @@ Source: `src/types/layout.ts:26:1`
 ## ScreenSection
 
 Kind: `value`
-Module: `src/features/layout/adapters/inbound/ScreenSection.tsx`
-Source: `src/features/layout/adapters/inbound/ScreenSection.tsx:27:14`
+Module: `src/features/section/adapters/inbound/ScreenSection.tsx`
+Source: `src/features/section/adapters/inbound/ScreenSection.tsx:27:14`
 
 Screen section with optional heading, description, actions, and content.
 
 ## ScreenSectionProps
 
 Kind: `type`
-Module: `src/types/layout.ts`
-Source: `src/types/layout.ts:33:1`
+Module: `src/types/section.ts`
+Source: `src/types/section.ts:12:1`
 
 ### Members
 
@@ -3991,16 +3835,16 @@ Source: `src/types/search-input.ts:4:1`
 ## SectionHeader
 
 Kind: `value`
-Module: `src/patterns/section-header/SectionHeader.tsx`
-Source: `src/patterns/section-header/SectionHeader.tsx:52:14`
+Module: `src/features/section/adapters/inbound/SectionHeader.tsx`
+Source: `src/features/section/adapters/inbound/SectionHeader.tsx:52:14`
 
 Section heading pattern with optional description and action slot.
 
 ## SectionHeaderProps
 
 Kind: `type`
-Module: `src/patterns/section-header/types.ts`
-Source: `src/patterns/section-header/types.ts:5:1`
+Module: `src/types/section.ts`
+Source: `src/types/section.ts:5:1`
 
 ### Members
 
@@ -4034,8 +3878,8 @@ Renders Select with anchored Popover presentation on web.
 ## SelectableItem
 
 Kind: `function`
-Module: `src/patterns/selection/SelectableItem.tsx`
-Source: `src/patterns/selection/SelectableItem.tsx:23:1`
+Module: `src/features/selection/adapters/inbound/SelectableItem.tsx`
+Source: `src/features/selection/adapters/inbound/SelectableItem.tsx:27:1`
 
 Adds selection behavior to arbitrary child content via render props.
 
@@ -4060,8 +3904,8 @@ children,
 ## SelectableItemProps
 
 Kind: `type`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:40:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:40:1`
 
 ### Members
 
@@ -4076,8 +3920,8 @@ Source: `src/patterns/selection/types.ts:40:1`
 ## SelectableItemState
 
 Kind: `type`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:30:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:30:1`
 
 ### Members
 
@@ -4094,14 +3938,14 @@ Source: `src/patterns/selection/types.ts:30:1`
 ## SelectionMode
 
 Kind: `unknown`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:4:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:4:1`
 
 ## SelectionProvider
 
 Kind: `function`
-Module: `src/patterns/selection/SelectionProvider.tsx`
-Source: `src/patterns/selection/SelectionProvider.tsx:38:1`
+Module: `src/features/selection/adapters/inbound/SelectionProvider.tsx`
+Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:48:1`
 
 Provides selection state for building selectable lists and grids.
 
@@ -4130,8 +3974,8 @@ interactionPolicy,
 ## SelectionProviderProps
 
 Kind: `type`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:8:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:8:1`
 
 ### Members
 
@@ -4148,8 +3992,8 @@ Source: `src/patterns/selection/types.ts:8:1`
 ## SelectionTrigger
 
 Kind: `unknown`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:6:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:6:1`
 
 ## SelectOption
 
@@ -4496,33 +4340,84 @@ Kind: `unknown`
 Module: `node_modules/@ankhorage/surface/dist/types/surface.d.ts`
 Source: `node_modules/@ankhorage/surface/dist/types/surface.d.ts:2:1`
 
-## SwitchField
+## Switch
 
 Kind: `value`
-Module: `src/patterns/switch-field/SwitchField.tsx`
-Source: `src/patterns/switch-field/SwitchField.tsx:42:14`
+Module: `src/features/form/switch/adapters/inbound/Switch.tsx`
+Source: `src/features/form/switch/adapters/inbound/Switch.tsx:8:14`
 
-Labeled switch field pattern built on the card-style `ListItem` presentation.
+Renders the ZORA switch while preserving the canonical Surface switch contract.
 
-## SwitchFieldProps
+## SwitchProps
 
 Kind: `type`
-Module: `src/patterns/switch-field/types.ts`
-Source: `src/patterns/switch-field/types.ts:5:1`
+Module: `src/types/switch.ts`
+Source: `src/types/switch.ts:5:1`
 
 ### Members
 
-| Name              | Kind     | Type                             | Required | Description |
-| ----------------- | -------- | -------------------------------- | -------- | ----------- |
-| description       | property | `ReactNode`                      | no       |             |
-| disabled          | property | `boolean \| undefined`           | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined` | no       |             |
-| label             | property | `ReactNode`                      | yes      |             |
-| mode              | property | `ZoraThemeMode \| undefined`     | no       |             |
-| onValueChange     | property | `(value: boolean) => void`       | yes      |             |
-| testID            | property | `string \| undefined`            | no       |             |
-| themeId           | property | `string \| undefined`            | no       |             |
-| value             | property | `boolean`                        | yes      |             |
+| Name               | Kind     | Type                                                                                                                                          | Required | Description |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| accessibilityLabel | property | `string \| undefined`                                                                                                                         | no       |             |
+| accessible         | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| align              | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined`                                                  | no       |             |
+| alignSelf          | property | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>`                                                                     | no       |             |
+| bg                 | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderColor        | property | `Responsive<ColorValue> \| undefined`                                                                                                         | no       |             |
+| borderWidth        | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| bottom             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| checked            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| children           | property | `React.ReactNode`                                                                                                                             | no       |             |
+| color              | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no       |             |
+| columnGap          | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| defaultChecked     | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| direction          | property | `Responsive<"row" \| "column"> \| undefined`                                                                                                  | no       |             |
+| disabled           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| flex               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexBasis          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| flexGrow           | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| flexShrink         | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| gap                | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| height             | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| interactionPolicy  | property | `InteractionPolicy \| undefined`                                                                                                              | no       |             |
+| invalid            | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| justify            | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined`                      | no       |             |
+| left               | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| m                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| maxHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| maxWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| mb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| minHeight          | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| minWidth           | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| ml                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mode               | property | `ZoraThemeMode \| undefined`                                                                                                                  | no       |             |
+| mr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| mx                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| my                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| onCheckedChange    | property | `((checked: boolean) => void) \| undefined`                                                                                                   | no       |             |
+| onLongPress        | property | `((event: GestureResponderEvent) => void) \| undefined`                                                                                       | no       |             |
+| opacity            | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| overflow           | property | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>`                                                                                  | no       |             |
+| p                  | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pb                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pl                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| position           | property | `Responsive<"absolute" \| "relative" \| "static" \| undefined>`                                                                               | no       |             |
+| pr                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| pt                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| px                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| py                 | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| radius             | property | `Responsive<RadiusValue> \| undefined`                                                                                                        | no       |             |
+| readOnly           | property | `boolean \| undefined`                                                                                                                        | no       |             |
+| right              | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| rowGap             | property | `Responsive<SpaceValue> \| undefined`                                                                                                         | no       |             |
+| size               | property | `ControlSize \| undefined`                                                                                                                    | no       |             |
+| testID             | property | `string \| undefined`                                                                                                                         | no       |             |
+| themeId            | property | `string \| undefined`                                                                                                                         | no       |             |
+| top                | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
+| width              | property | `Responsive<string \| number> \| undefined`                                                                                                   | no       |             |
+| wrap               | property | `Responsive<"wrap" \| "nowrap"> \| undefined`                                                                                                 | no       |             |
+| zIndex             | property | `Responsive<number> \| undefined`                                                                                                             | no       |             |
 
 ## Tab
 
@@ -4730,34 +4625,6 @@ Kind: `unknown`
 Module: `src/types/text.ts`
 Source: `src/types/text.ts:18:1`
 
-## ThemeComposer
-
-Kind: `value`
-Module: `src/patterns/theme-composer/ThemeComposer.tsx`
-Source: `src/patterns/theme-composer/ThemeComposer.tsx:321:14`
-
-UI for composing and applying a theme via structured controls.
-
-## ThemeComposerProps
-
-Kind: `type`
-Module: `src/patterns/theme-composer/types.ts`
-Source: `src/patterns/theme-composer/types.ts:6:1`
-
-### Members
-
-| Name              | Kind     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Required | Description |
-| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| appCategories     | property | `readonly ("medical" \| "books_reading" \| "business_productivity" \| "developer_tools" \| "education_learning" \| "entertainment_media" \| "finance_money" \| "food_drink" \| "games" \| "graphics_design" \| "health_fitness" \| "kids_family" \| "lifestyle" \| "music_audio" \| "navigation_travel" \| "news_magazines" \| "photo_video" \| "reference" \| "shopping_commerce" \| "social_community" \| "sports" \| "utilities_tools" \| "weather")[] \| undefined` | no       |             |
-| interactionPolicy | property | `InteractionPolicy \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                        | no       |             |
-| mode              | property | `ZoraThemeMode \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                            | no       |             |
-| onChange          | property | `(theme: ZoraTheme) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                            | yes      |             |
-| onModeChange      | property | `((mode: ZoraThemeMode) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                          | no       |             |
-| onSubmit          | property | `((theme: ZoraTheme) => void) \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                             | no       |             |
-| testID            | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
-| themeId           | property | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | no       |             |
-| value             | property | `ZoraTheme`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | yes      |             |
-
 ## ThemeModeToggle
 
 Kind: `function`
@@ -4789,16 +4656,16 @@ Source: `src/theme/ThemeModeToggleProps.ts:3:1`
 ## Timeline
 
 Kind: `value`
-Module: `src/patterns/timeline/Timeline.tsx`
-Source: `src/patterns/timeline/Timeline.tsx:127:14`
+Module: `src/features/timeline/adapters/inbound/Timeline.tsx`
+Source: `src/features/timeline/adapters/inbound/Timeline.tsx:127:14`
 
 Timeline pattern for displaying a sequence of events.
 
 ## TimelineItem
 
 Kind: `type`
-Module: `src/patterns/timeline/types.ts`
-Source: `src/patterns/timeline/types.ts:7:1`
+Module: `src/types/timeline.ts`
+Source: `src/types/timeline.ts:7:1`
 
 ### Members
 
@@ -4815,8 +4682,8 @@ Source: `src/patterns/timeline/types.ts:7:1`
 ## TimelineProps
 
 Kind: `type`
-Module: `src/patterns/timeline/types.ts`
-Source: `src/patterns/timeline/types.ts:17:1`
+Module: `src/types/timeline.ts`
+Source: `src/types/timeline.ts:17:1`
 
 ### Members
 
@@ -4964,16 +4831,16 @@ Source: `src/types/toolbar.ts:5:1`
 ## TreeItem
 
 Kind: `value`
-Module: `src/patterns/tree-view/TreeItem.tsx`
-Source: `src/patterns/tree-view/TreeItem.tsx:102:14`
+Module: `src/features/tree-view/adapters/inbound/TreeItem.tsx`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:102:14`
 
 Single tree node row used within `TreeView`.
 
 ## TreeItemNode
 
 Kind: `type`
-Module: `src/patterns/tree-view/types.ts`
-Source: `src/patterns/tree-view/types.ts:6:1`
+Module: `src/types/tree-view.ts`
+Source: `src/types/tree-view.ts:6:1`
 
 ### Members
 
@@ -4990,8 +4857,8 @@ Source: `src/patterns/tree-view/types.ts:6:1`
 ## TreeItemRenderProps
 
 Kind: `type`
-Module: `src/patterns/tree-view/types.ts`
-Source: `src/patterns/tree-view/types.ts:16:1`
+Module: `src/types/tree-view.ts`
+Source: `src/types/tree-view.ts:16:1`
 
 ### Members
 
@@ -5006,16 +4873,16 @@ Source: `src/patterns/tree-view/types.ts:16:1`
 ## TreeView
 
 Kind: `value`
-Module: `src/patterns/tree-view/TreeView.tsx`
-Source: `src/patterns/tree-view/TreeView.tsx:63:14`
+Module: `src/features/tree-view/adapters/inbound/TreeView.tsx`
+Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:63:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
 
 ## TreeViewProps
 
 Kind: `type`
-Module: `src/patterns/tree-view/types.ts`
-Source: `src/patterns/tree-view/types.ts:24:1`
+Module: `src/types/tree-view.ts`
+Source: `src/types/tree-view.ts:24:1`
 
 ### Members
 
@@ -5187,8 +5054,8 @@ Source: `src/types/form.ts:82:1`
 ## useSelection
 
 Kind: `function`
-Module: `src/patterns/selection/SelectionProvider.tsx`
-Source: `src/patterns/selection/SelectionProvider.tsx:26:1`
+Module: `src/features/selection/adapters/inbound/SelectionProvider.tsx`
+Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:36:1`
 
 Accesses selection state provided by `SelectionProvider`.
 
@@ -5200,8 +5067,8 @@ Accesses selection state provided by `SelectionProvider`.
 ## UseSelectionResult
 
 Kind: `type`
-Module: `src/patterns/selection/types.ts`
-Source: `src/patterns/selection/types.ts:18:1`
+Module: `src/types/selection.ts`
+Source: `src/types/selection.ts:18:1`
 
 ### Members
 
@@ -5427,13 +5294,13 @@ Source: `src/internal/colorModel.ts:28:14`
 
 Kind: `value`
 Module: `src/metadata/componentMeta.ts`
-Source: `src/metadata/componentMeta.ts:103:14`
+Source: `src/metadata/componentMeta.ts:97:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/registry.ts`
-Source: `src/registry.ts:218:14`
+Source: `src/registry.ts:197:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5447,7 +5314,7 @@ Describe the complete ZORA core runtime and authoring surface through the public
 
 Kind: `value`
 Module: `src/corePluginMetadata.ts`
-Source: `src/corePluginMetadata.ts:22:14`
+Source: `src/corePluginMetadata.ts:18:14`
 
 ## ZORA_EMPHASES
 
@@ -5471,7 +5338,7 @@ Source: `src/internal/colorModel.ts:21:14`
 
 Kind: `value`
 Module: `src/metadata/themeRecipeMeta.ts`
-Source: `src/metadata/themeRecipeMeta.ts:9:14`
+Source: `src/metadata/themeRecipeMeta.ts:8:14`
 
 ## ZORA_THEME_TOKEN_FAMILIES
 
@@ -5498,7 +5365,7 @@ Source: `src/theme/ZoraBaseProps.ts:5:1`
 
 Kind: `unknown`
 Module: `src/metadata/bindableComponentMeta.ts`
-Source: `src/metadata/bindableComponentMeta.ts:513:1`
+Source: `src/metadata/bindableComponentMeta.ts:505:1`
 
 ## ZoraColor
 
@@ -5679,7 +5546,7 @@ Source: `src/metadata/types.ts:13:1`
 
 Kind: `unknown`
 Module: `src/registry.ts`
-Source: `src/registry.ts:90:1`
+Source: `src/registry.ts:75:1`
 
 ## ZoraComponentSlotMeta
 

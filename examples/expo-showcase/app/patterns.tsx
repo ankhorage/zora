@@ -10,17 +10,14 @@ import {
   CollectionEditor,
   EmptyState,
   Field,
-  FilterBar,
   ForgotPasswordForm,
   Form,
   Grid,
   IconButton,
   Image,
-  InspectorField,
   List,
   ListItem,
   ListSection,
-  Notice,
   OtpForm,
   PaletteItem,
   Screen,
@@ -30,7 +27,7 @@ import {
   SelectionProvider,
   SignInForm,
   SignUpForm,
-  SwitchField,
+  Switch,
   Text,
   TextInput,
   Timeline,
@@ -236,11 +233,10 @@ export function PatternsPage() {
   return (
     <Screen>
       <ScreenSection title="Scenario: Search and filters">
-        <FilterBar
-          leading={
+        <View direction={{ base: 'column', md: 'row' }} align={{ md: 'center' }} gap="s">
+          <View flex={1}>
             <SearchInput placeholder="Search items" value={query} onValueChange={setQuery} />
-          }
-        >
+          </View>
           <ChipGroup
             value={filters}
             onValueChange={setFilters}
@@ -249,7 +245,7 @@ export function PatternsPage() {
               { value: 'favorites', label: 'Favorites' },
             ]}
           />
-        </FilterBar>
+        </View>
       </ScreenSection>
 
       <ScreenSection title="Scenario: Generic uploader">
@@ -454,10 +450,10 @@ export function PatternsPage() {
       </ScreenSection>
 
       <ScreenSection title="Scenario: App settings">
-        <Notice
+        <Card
           title="Settings saved locally"
-          description="This scenario combines form fields, switches, inspector-style controls, and accordion sections."
-          color="primary"
+          description="This scenario combines fields, switches, list rows, and accordion sections."
+          tone="subtle"
         />
 
         <Form>
@@ -470,29 +466,30 @@ export function PatternsPage() {
           </Field>
         </Form>
 
-        <SwitchField
-          label="Enable notifications"
+        <ListItem
+          title="Enable notifications"
           description="Receive product updates, editor events, and important alerts."
-          value={notificationsEnabled}
-          onValueChange={setNotificationsEnabled}
-        />
-
-        <SwitchField
-          label="Share anonymous analytics"
-          description="Help improve the product without sending personal content."
-          value={analyticsEnabled}
-          onValueChange={setAnalyticsEnabled}
-        />
-
-        <InspectorField
-          label="Theme preset"
-          description="Controlled inspector field with a mock reset action."
-          control={
-            <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
+          action={
+            <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
           }
-        >
-          <TextInput value="Ocean" />
-        </InspectorField>
+          variant="card"
+        />
+
+        <ListItem
+          title="Share anonymous analytics"
+          description="Help improve the product without sending personal content."
+          action={<Switch checked={analyticsEnabled} onCheckedChange={setAnalyticsEnabled} />}
+          variant="card"
+        />
+
+        <Field label="Theme preset" description="Controlled field with a mock reset action.">
+          <View direction="row" gap="s" align="center">
+            <View flex={1}>
+              <TextInput value="Ocean" />
+            </View>
+            <IconButton icon={{ name: 'refresh-outline' }} label="Reset theme" variant="soft" />
+          </View>
+        </Field>
 
         <Accordion collapsible defaultValue="advanced" type="single">
           <AccordionItem
@@ -500,11 +497,13 @@ export function PatternsPage() {
             title="Advanced diagnostics"
             value="advanced"
           >
-            <SwitchField label="Debug mode" value={debugMode} onValueChange={setDebugMode} />
-            <SwitchField
-              label="Verbose logging"
-              value={verboseLogging}
-              onValueChange={setVerboseLogging}
+            <ListItem
+              title="Debug mode"
+              action={<Switch checked={debugMode} onCheckedChange={setDebugMode} />}
+            />
+            <ListItem
+              title="Verbose logging"
+              action={<Switch checked={verboseLogging} onCheckedChange={setVerboseLogging} />}
             />
           </AccordionItem>
         </Accordion>

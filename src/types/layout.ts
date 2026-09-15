@@ -29,10 +29,3 @@ export interface ScreenProps extends ZoraBaseProps {
   scroll?: boolean;
   width?: ZoraContentWidth;
 }
-
-export interface ScreenSectionProps extends ZoraBaseProps {
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  actions?: React.ReactNode;
-  children?: React.ReactNode;
-}

@@ -1,7 +1,7 @@
 import { Badge, Button, Card, Hero, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 interface HomePageProps {
-  onNavigate: (tab: 'components' | 'patterns' | 'theme') => void;
+  onNavigate: (tab: 'components' | 'patterns') => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
@@ -10,7 +10,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <Hero
         eyebrow="ZORA Showcase"
         title="Build polished Expo and React Native Web interfaces"
-        description="Explore ZORA components, scenario-based patterns, and live theme recipes in one small showcase app."
+        description="Explore ZORA components and scenario-based compositions in one small showcase app."
         primaryAction={{ label: 'View patterns', onPress: () => onNavigate('patterns') }}
         secondaryAction={{
           label: 'Browse components',
@@ -47,21 +47,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </Button>
           }
           footer={<Badge color="success">Composed UI</Badge>}
-        />
-
-        <Card
-          title="Theme Composer"
-          description="Edit a ZORA theme seed live and inspect how harmony, primary color, and mode affect real UI surfaces."
-          actions={
-            <Button size="s" onPress={() => onNavigate('theme')}>
-              Open theme lab
-            </Button>
-          }
-          footer={
-            <Badge color="warning" variant="soft">
-              Theme lab
-            </Badge>
-          }
         />
       </ScreenSection>
     </Screen>

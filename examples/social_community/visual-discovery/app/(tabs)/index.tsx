@@ -1,8 +1,8 @@
 import {
   Badge,
   Button,
+  Card,
   MediaCard,
-  Notice,
   Screen,
   ScreenSection,
   SearchInput,
@@ -71,10 +71,11 @@ export default function DiscoverScreen() {
         </ScreenSection>
 
         <ScreenSection title="ZORA pressure point">
-          <Notice
+          <Card
             title="Needs a visual wall pattern"
             description="The app works, but a Pinterest-style template should eventually use a dedicated Wall/Grid or Masonry pattern instead of a simple card flow."
-            color="warning"
+            eyebrow={<Badge color="warning">WARNING</Badge>}
+            tone="subtle"
           />
           <Text emphasis="muted">
             This example captures the product need without adding local layout tricks.

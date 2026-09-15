@@ -1,4 +1,4 @@
-import { Badge, MediaCard, Notice, Screen, ScreenSection, Text } from '@ankhorage/zora';
+import { Badge, Card, MediaCard, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -52,10 +52,11 @@ export default function BrowseScreen() {
         </ScreenSection>
 
         <ScreenSection title="ZORA pressure point">
-          <Notice
+          <Card
             title="Needs commerce-specific cards"
             description="A real marketplace should have ProductCard/ProductGrid patterns for price, seller, distance, condition, and favorite state."
-            color="warning"
+            eyebrow={<Badge color="warning">WARNING</Badge>}
+            tone="subtle"
           />
           <Text emphasis="muted">
             This example records the product need without adding local card wrappers.

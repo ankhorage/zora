@@ -8,7 +8,6 @@ const containers = [
   ['View', ZORA_COMPONENT_META.View],
   ['ScrollView', ZORA_COMPONENT_META.ScrollView],
   ['Card', ZORA_COMPONENT_META.Card],
-  ['Panel', ZORA_COMPONENT_META.Panel],
 ] as const;
 
 test('keeps manifest RadioGroup reachable through canonical container composition', () => {

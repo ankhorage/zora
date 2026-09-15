@@ -1,0 +1,130 @@
+import React from 'react';
+import { StyleSheet } from 'react-native';
+
+import { useZoraTheme } from '../../../../theme/useZoraTheme';
+import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
+import type { BarcodeScannerViewProps } from '../../../../types/scanner';
+import { Card } from '../../../card/public';
+import { View } from '../../../layout/public';
+import { Text } from '../../../typography/public';
+import { CameraPermissionView } from './CameraPermissionView';
+import { ScanOverlay } from './ScanOverlay';
+
+function BarcodeScannerViewInner({
+  themeId: _themeId,
+  interactionPolicy,
+  mode: _mode,
+  permissionStatus,
+  camera,
+  children,
+  title = 'Scan barcode',
+  description = 'Point the camera at a barcode to continue.',
+  overlayTitle,
+  overlayDescription,
+  cornerLabel,
+  requestPermissionLabel,
+  deniedPermissionLabel,
+  manualEntryLabel,
+  onRequestPermission,
+  onManualEntry,
+  testID,
+}: BarcodeScannerViewProps) {
+  const { theme } = useZoraTheme();
+  const viewportStyle = {
+    backgroundColor: theme.semantics.surface.default,
+  };
+  const placeholderStyle = {
+    backgroundColor: theme.semantics.surface.default,
+  };
+
+  if (permissionStatus !== 'granted') {
+    return (
+      <CameraPermissionView
+        deniedLabel={deniedPermissionLabel}
+        manualEntryLabel={manualEntryLabel}
+        onManualEntry={onManualEntry}
+        onRequestPermission={onRequestPermission}
+        requestLabel={requestPermissionLabel}
+        status={permissionStatus}
+        testID={testID}
+        interactionPolicy={interactionPolicy}
+      />
+    );
+  }
+
+  return (
+    <Card
+      compact
+      description={description}
+      eyebrow="Scanner"
+      interactionPolicy={interactionPolicy}
+      testID={testID}
+      title={title}
+      tone="subtle"
+    >
+      <View gap="m">
+        <View>
+          <View style={[styles.viewport, viewportStyle]}>
+            {camera ? (
+              <View style={styles.cameraSlot}>{camera}</View>
+            ) : (
+              <View style={[styles.placeholder, placeholderStyle]} />
+            )}
+            <View style={[styles.overlay, { pointerEvents: 'none' }]}>
+              <ScanOverlay
+                cornerLabel={cornerLabel}
+                description={overlayDescription}
+                title={overlayTitle}
+              />
+            </View>
+          </View>
+        </View>
+        {children ? <View>{children}</View> : null}
+        <Text emphasis="muted" variant="caption">
+          Native scanning belongs to an app adapter such as expo-camera. ZORA owns this visible
+          scanner surface.
+        </Text>
+      </View>
+    </Card>
+  );
+}
+
+const styles = StyleSheet.create({
+  viewport: {
+    aspectRatio: 0.72,
+    borderRadius: 28,
+    minHeight: 360,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  cameraSlot: {
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  placeholder: {
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  overlay: {
+    bottom: 24,
+    left: 24,
+    position: 'absolute',
+    right: 24,
+    top: 24,
+  },
+});
+
+/***
+ * Composed ZORA scanner shell for barcode scanning experiences.
+ *
+ * `BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,
+ * or test camera element through `camera`; keep permission and fallback UI here.
+ *
+ */
+export const BarcodeScannerView = withZoraThemeScope(BarcodeScannerViewInner);

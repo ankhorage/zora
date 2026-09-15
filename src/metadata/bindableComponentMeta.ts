@@ -1,7 +1,7 @@
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
 import { imageMeta } from '../features/image/imageMeta';
-import { readerSurfaceMeta } from '../patterns/reader/meta';
+import { readerSurfaceMeta } from '../features/reader/meta';
 
 export const ZORA_BINDABLE_COMPONENT_META = {
   Text: {
@@ -296,17 +296,17 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
   },
-  SwitchField: {
-    name: 'SwitchField',
-    category: 'pattern',
-    description: 'Captures a boolean switch value with a label.',
+  Switch: {
+    name: 'Switch',
+    category: 'component',
+    description: 'Captures a boolean checked state.',
     directManifestNode: true,
     allowedChildren: [],
     bindings: {
       props: {
-        value: {
-          label: 'Value',
-          description: 'Current switch value.',
+        checked: {
+          label: 'Checked',
+          description: 'Current checked state.',
           value: { type: 'boolean' },
           acceptsFallback: true,
           acceptsTransforms: true,
@@ -320,35 +320,27 @@ export const ZORA_BINDABLE_COMPONENT_META = {
         },
       },
       events: {
-        valueChange: {
-          label: 'Value change',
-          description: 'Runs when the switch value changes.',
+        checkedChange: {
+          label: 'Checked change',
+          description: 'Runs when checked state changes.',
           payload: {
-            eventType: 'switchField.valueChange',
-            fields: [{ path: 'value', type: 'boolean', label: 'Value' }],
+            eventType: 'switch.checkedChange',
+            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
           },
         },
       },
     },
     events: {
-      valueChange: {
-        label: 'Value change',
-        eventType: 'switchField.valueChange',
-        description: 'Emitted when the switch value changes.',
-        payloadFields: [{ path: 'value', type: 'boolean', label: 'Value' }],
+      checkedChange: {
+        label: 'Checked change',
+        eventType: 'switch.checkedChange',
+        description: 'Emitted when the checked state changes.',
+        payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
       },
     },
     props: {
-      value: {
-        type: 'boolean',
-        category: 'State',
-        label: 'Value',
-      },
-      disabled: {
-        type: 'boolean',
-        category: 'State',
-        label: 'Disabled',
-      },
+      checked: { type: 'boolean', category: 'State', label: 'Checked' },
+      disabled: { type: 'boolean', category: 'State', label: 'Disabled' },
     },
   },
   List: {

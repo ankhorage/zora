@@ -10,6 +10,7 @@ export const fieldMeta = {
     'RadioGroup',
     'SearchInput',
     'Select',
+    'Switch',
     'TextInput',
   ],
   blueprint: { label: 'Field', defaultProps: { label: 'Label' } },

@@ -1,4 +1,4 @@
-import { Avatar, Badge, ListSection, Panel, Screen, ScreenSection, Text } from '@ankhorage/zora';
+import { Avatar, Badge, Card, ListSection, Screen, ScreenSection, Text } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -33,10 +33,10 @@ export default function MessagesScreen() {
       <Screen>
         <ScreenSection
           title="Pinned"
-          description="The first message preview uses a reusable ZORA panel."
+          description="The first message preview uses a reusable ZORA card."
           actions={<Badge color="primary">3 unread</Badge>}
         >
-          <Panel
+          <Card
             title="Mia Chen"
             description="Sent feedback on the onboarding flow two minutes ago."
           >
@@ -44,7 +44,7 @@ export default function MessagesScreen() {
               The next iteration can replace this with a dedicated ChatList pattern when the app
               needs richer message states.
             </Text>
-          </Panel>
+          </Card>
         </ScreenSection>
 
         <ListSection

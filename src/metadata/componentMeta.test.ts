@@ -108,6 +108,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'RadioGroup',
       'SearchInput',
       'Select',
+      'Switch',
       'TextInput',
     ]);
     for (const [name, meta] of Object.entries(ZORA_COMPONENT_META)) {
@@ -175,6 +176,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'RadioGroup',
       'Select',
       'ThemeModeToggle',
+      'Switch',
       'TextInput',
       'Text',
       'Heading',
@@ -209,8 +211,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Screen',
       'ScreenSection',
       'Card',
-      'Panel',
-      'Notice',
       'PostCard',
       'MessageBubble',
       'View',
@@ -387,7 +387,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'View',
       'ScrollView',
       'Card',
-      'Panel',
       'Image',
       'ProductCard',
       'PostCard',

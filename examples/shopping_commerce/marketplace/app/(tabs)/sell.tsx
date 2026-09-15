@@ -4,7 +4,6 @@ import {
   Card,
   Field,
   Form,
-  Notice,
   Screen,
   ScreenSection,
   TextInput,
@@ -59,10 +58,11 @@ export default function SellScreen() {
             actions={<Badge color="warning">Draft</Badge>}
             tone="subtle"
           />
-          <Notice
+          <Card
             title="Static commerce example"
             description="Payments, checkout, and seller verification belong outside this ZORA UI example."
-            color="primary"
+            eyebrow={<Badge color="primary">PRIMARY</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>

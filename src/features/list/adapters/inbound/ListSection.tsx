@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { SectionHeader } from '../../../../patterns/section-header';
 import { withZoraThemeScope } from '../../../../theme/withZoraThemeScope';
 import type { ListSectionProps } from '../../../../types/list';
 import { View } from '../../../layout/public';
+import { SectionHeader } from '../../../section/public';
 import { List } from './List';
 
 function ListSectionInner({

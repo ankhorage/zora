@@ -6,17 +6,13 @@ import type { ZoraComponentMetaRegistry } from './metadata/types';
 import type { ZoraPluginMetadata } from './pluginComposition';
 
 const CORE_EXTENSION_HOSTS = [
-  'Box',
   'Card',
-  'Container',
   'Grid',
   'MessageBubble',
-  'Notice',
-  'Panel',
   'PostCard',
   'Screen',
   'ScreenSection',
-  'Stack',
+  'View',
 ] as const;
 
 export const ZORA_CORE_PLUGIN_METADATA: ZoraPluginMetadata = {

@@ -1,4 +1,4 @@
-import { Badge, ListSection, MetricCard, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, MetricCard, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -61,10 +61,11 @@ export default function TrendsScreen() {
         />
 
         <ScreenSection title="Product note">
-          <Notice
+          <Card
             title="Trend cards are a future pattern"
             description="A real visual discovery product likely needs richer trend cards with thumbnails, stats, and related boards."
-            color="warning"
+            eyebrow={<Badge color="warning">WARNING</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
       </Screen>

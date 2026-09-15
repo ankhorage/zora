@@ -1,4 +1,4 @@
-import { Badge, Card, ListSection, Notice, Screen, ScreenSection } from '@ankhorage/zora';
+import { Badge, Card, ListSection, Screen, ScreenSection } from '@ankhorage/zora';
 
 import { ExampleAppBar } from '../../src/components/example-app-bar';
 
@@ -33,10 +33,11 @@ export default function SettingsScreen() {
       />
       <Screen>
         <ScreenSection title="Security">
-          <Notice
+          <Card
             title="End-to-end encryption placeholder"
             description="The example models the UI, not cryptography or messaging infrastructure."
-            color="success"
+            eyebrow={<Badge color="success">SUCCESS</Badge>}
+            tone="subtle"
           />
         </ScreenSection>
 
