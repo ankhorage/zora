@@ -16,13 +16,14 @@
     "url": "git+https://github.com/ankhorage/zora.git"
   },
   "keywords": [
+    "ankhorage",
+    "components",
+    "design-system",
+    "expo",
     "react-native",
     "react-native-web",
-    "expo",
-    "ui-kit",
-    "design-system",
     "surface",
-    "components"
+    "ui-kit"
   ],
   "peerDependencies": {
     "@react-native-vector-icons/fontawesome": "^13.1.3",
