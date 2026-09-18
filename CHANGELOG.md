@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.0.0
+
+### Major Changes
+
+- 6fbcac7: Migrate published component requirement metadata to the canonical Contracts 22 serializable set representation.
+
 ## 19.0.1
 
 ### Patch Changes
