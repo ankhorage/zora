@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.0.1
+
+### Patch Changes
+
+- 61dec14: Update Ankhorage dependencies: `@ankhorage/color-theory`, `@ankhorage/contracts`, `@ankhorage/paradox`.
+
 ## 20.0.0
 
 ### Major Changes
