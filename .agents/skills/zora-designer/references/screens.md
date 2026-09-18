@@ -4,6 +4,11 @@ Read this reference for `screen` and `screens` after the interactive configurati
 Generated images are concept evidence; the manifest and ZORA metadata remain implementation
 authority.
 
+When the starting point is a supplied existing screen image, run `recognize` first through
+[screen-analysis.md](screen-analysis.md). Treat its canonical `ScreenSpec`, visual graph, confidence,
+alternatives, and unresolved diagnostics as structural evidence, then use this reference for the
+semantic and behavioral refinement that pixels cannot establish.
+
 ## Preconditions
 
 Do not generate or implement a screen until these are resolved:
@@ -29,6 +34,10 @@ For every screen record:
 5. exact metadata-backed ZORA elements, supported events/actions, data needs, and capability gaps;
 6. safe areas, keyboard/overlay behavior, scroll ownership, and narrow/wide behavior;
 7. every SVG icon and real image region, its reusable asset ID, and its intended manifest usage.
+
+For a recognized supplied image, preserve every high-confidence metadata-backed subtree unless the
+user's stated intent provides stronger semantic evidence. Resolve ambiguous candidates explicitly;
+do not silently replace the analyzer's tree with a visually similar primitive decomposition.
 
 Read [runtime-assets.md](runtime-assets.md). Produce and inspect the separate icons and images before
 concept rendering, use them as screen references, and deliver their checked bundle with the screens.

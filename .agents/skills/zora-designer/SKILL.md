@@ -1,16 +1,16 @@
 ---
 name: zora-designer
 description: >
-  Configure an owner-backed application design, generate one screen or a coherent screen series,
-  audit supplied evidence, and author portable Ankhorage templates. Use for category-driven design
-  decisions, ZORA screen generation, visual audits, or template creation.
+  Configure an owner-backed application design, generate or recognize screens, audit supplied
+  evidence, and author portable Ankhorage templates. Use for category-driven design decisions,
+  ZORA screen generation or reconstruction, visual audits, or template creation.
 ---
 
 # ZORA Designer
 
-Design, audit, and author through the target repository's released owner APIs. The complete
-`AppManifest` is runtime authority; `zora-designer.md` and generated screen images are design
-evidence.
+Design, recognize, audit, and author through the target repository's released owner APIs. The
+complete `AppManifest` is runtime authority; `zora-designer.md` and generated screen images are
+design evidence.
 
 ## Route the request
 
@@ -20,6 +20,10 @@ evidence.
   screen.
 - `screens`: resolve the configuration, then read [screens.md](references/screens.md) and design an
   ordered series with shared navigation, state, geometry, and tokens.
+- `recognize`: when the user supplies an existing UI screenshot/screen design and asks to
+  reconstruct it, determine ZORA components, or convert it to a manifest screen, read
+  [screen-analysis.md](references/screen-analysis.md) and run programmatic recognition before
+  free-form visual interpretation.
 - `audit`: read [audit.md](references/audit.md) and evaluate supplied image or runtime evidence.
 - `template`: resolve the configuration and screen model, then author one portable template through
   the workflow below.
@@ -45,6 +49,10 @@ skill.
 The inspection composes metadata-only descriptors from every installed `@ankhorage/zora-*` plugin;
 use those plugin elements exactly like ZORA core elements and keep their package provenance.
 
+For supplied-screen reconstruction, continue through `recognize` and treat the local analyzer's
+`ScreenSpec`, visual graph, confidence, alternatives, and unresolved diagnostics as the structural
+evidence baseline. Do not ask an image model to redo deterministic geometry/component matching.
+
 Compile chosen values with the same helper before composing screens. Inspect both computed modes,
 including their resolved Surface themes and all owner diagnostics. Never hand-calculate a value the
 owner exposes.
@@ -52,9 +60,15 @@ owner exposes.
 ## Preserve the complete UX
 
 For every screen region, prefer the exact semantic ZORA element supported by current metadata.
-Visual resemblance alone is insufficient. If no exact element exists, preserve the requested UX
-with an obvious supported placeholder such as a secondary-surface `Box`, and record the capability
-gap. Do not invent props, application components, or successful behavior.
+Visual resemblance alone is insufficient. If programmatic recognition leaves multiple plausible
+candidates, resolve them from semantic responsibility and stated product intent while preserving the
+ranked alternatives as evidence.
+
+If no exact element exists, preserve the requested UX with an explicit owner-supported unresolved
+placeholder when available, and record the capability gap. For ordinary design composition where no
+unresolved manifest element is applicable, use an obvious supported placeholder such as a
+secondary-surface `Box` and record the capability gap. Do not invent props, application components,
+or successful behavior.
 
 Bind every interaction expressible by installed Contracts and ZORA event metadata. Leave an
 unsupported interaction visibly present and explicitly unbound without blocking unrelated design
@@ -98,6 +112,8 @@ barrels.
 
 - confirm the interactive decision sequence completed or the user explicitly accepted remaining
   recommendations;
+- for supplied image reconstruction, run `recognize` before semantic refinement and retain its
+  confidence/alternative/gap evidence;
 - compile light and dark independently through installed owner APIs;
 - validate selected ZORA nodes, props, events, actions, and complete manifest contracts;
 - run the screen composition gate from [screens.md](references/screens.md) before returning screen

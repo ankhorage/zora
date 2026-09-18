@@ -120,10 +120,10 @@ interface LoadedOwnerModule {
 }
 
 const OWNER_RELEASES = {
-  colorTheory: { packageName: '@ankhorage/color-theory', minimumVersion: '0.3.0' },
-  contracts: { packageName: '@ankhorage/contracts', minimumVersion: '10.1.0' },
-  templates: { packageName: '@ankhorage/templates', minimumVersion: '9.3.0' },
-  zora: { packageName: '@ankhorage/zora', minimumVersion: '4.3.0' },
+  colorTheory: { packageName: '@ankhorage/color-theory', minimumVersion: '0.3.1' },
+  contracts: { packageName: '@ankhorage/contracts', minimumVersion: '22.0.2' },
+  templates: { packageName: '@ankhorage/templates', minimumVersion: '12.0.0' },
+  zora: { packageName: '@ankhorage/zora', minimumVersion: '20.0.1' },
 };
 
 const OWNER_REQUIREMENTS = {
@@ -231,12 +231,7 @@ async function loadInstalledZoraPluginMetadata(
 
   const loaded: { metadata: Record<string, unknown>; packageName: string; version: string }[] = [];
   for (const packageName of [...packageNames].filter(isZoraPluginPackage).sort()) {
-    const minimumVersion =
-      packageName === '@ankhorage/zora-chess'
-        ? '0.2.0'
-        : packageName === '@ankhorage/zora-tabletop'
-          ? '0.1.0'
-          : '0.0.0';
+    const minimumVersion = resolvePluginMinimumVersion(targetManifest, packageName);
     const requirement: OwnerRequirement = {
       packageName,
       minimumVersion,
@@ -253,6 +248,42 @@ async function loadInstalledZoraPluginMetadata(
 
 function isZoraPluginPackage(packageName: string): boolean {
   return packageName.startsWith('@ankhorage/zora-') && packageName !== '@ankhorage/zora';
+}
+
+/*** Resolve one ZORA plugin minimum version from the target package declaration or owner package itself. */
+function resolvePluginMinimumVersion(
+  targetManifest: Record<string, unknown>,
+  packageName: string,
+): string {
+  if (targetManifest.name === packageName) {
+    const { version } = targetManifest;
+    if (typeof version === 'string' && parseVersion(version)[0] >= 0) return version;
+    throw new Error(`ZORA plugin owner package ${packageName} must declare a semantic version.`);
+  }
+
+  for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    const dependencies = targetManifest[field];
+    if (!isRecord(dependencies)) continue;
+    const specifier = dependencies[packageName];
+    if (typeof specifier === 'string') {
+      return readPluginMinimumVersion(packageName, specifier);
+    }
+  }
+
+  throw new Error(`ZORA plugin ${packageName} must be declared by the target package.`);
+}
+
+/*** Read the semantic lower bound from one supported published dependency specifier. */
+function readPluginMinimumVersion(packageName: string, specifier: string): string {
+  const normalized = specifier.trim().replace(/^workspace:/u, '');
+  const match = /^(?:\^|~|>=)?(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)$/u.exec(normalized);
+  const minimumVersion = match?.[1];
+  if (minimumVersion === undefined) {
+    throw new Error(
+      `ZORA plugin ${packageName} must use an exact, caret, tilde, or >= semantic dependency range; found ${specifier}.`,
+    );
+  }
+  return minimumVersion;
 }
 
 /*** Load only Contracts for tooling that runs before another owner package has been built. */
@@ -325,7 +356,6 @@ export async function composeDesign(input: unknown, targetDirectory = process.cw
     dataSources: input.dataSources,
     dataBindings: input.dataBindings,
     modules: input.modules,
-    modulesConfig: input.modulesConfig,
     theme: input.theme,
     authoringState: requestedAuthoringState,
   });
