@@ -77,20 +77,20 @@ describe('ZORA_COMPONENT_META event metadata', () => {
 describe('ZORA_COMPONENT_META requirement metadata', () => {
   test('declares camera permission metadata for camera permission UI', () => {
     expect(ZORA_COMPONENT_META.CameraPermissionView.requirements).toEqual({
-      permissions: [{ permission: 'camera' }],
+      permissions: { camera: true },
     });
   });
 
   test('declares camera and barcode scanner metadata for barcode scanner UI', () => {
     expect(ZORA_COMPONENT_META.BarcodeScannerView.requirements).toEqual({
-      permissions: [{ permission: 'camera' }],
-      capabilities: [{ capability: 'barcodeScanner' }],
+      permissions: { camera: true },
+      capabilities: { barcodeScanner: true },
     });
   });
 
   test('declares ebook reader capability metadata for ReaderSurface', () => {
     expect(ZORA_COMPONENT_META.ReaderSurface.requirements).toEqual({
-      capabilities: [{ capability: 'ebookReader' }],
+      capabilities: { ebookReader: true },
     });
   });
 
