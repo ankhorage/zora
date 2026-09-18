@@ -10,7 +10,7 @@ export const readerSurfaceMeta = {
     'Adapter-neutral EPUB and PDF reader shell with controlled chrome, progress, and navigation events.',
   directManifestNode: true,
   requirements: {
-    capabilities: [{ capability: 'ebookReader' }],
+    capabilities: { ebookReader: true },
   },
   allowedChildren: [],
   blueprint: {

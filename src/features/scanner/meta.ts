@@ -44,7 +44,7 @@ export const cameraPermissionViewMeta = {
   directManifestNode: true,
   allowedChildren: [],
   requirements: {
-    permissions: [{ permission: 'camera' }],
+    permissions: { camera: true },
   },
   blueprint: {
     label: 'Camera permission',
@@ -111,8 +111,8 @@ export const barcodeScannerViewMeta = {
   directManifestNode: true,
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   requirements: {
-    permissions: [{ permission: 'camera' }],
-    capabilities: [{ capability: 'barcodeScanner' }],
+    permissions: { camera: true },
+    capabilities: { barcodeScanner: true },
   },
   blueprint: {
     label: 'Barcode scanner',
