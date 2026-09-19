@@ -3,17 +3,12 @@
 import type { CytoscapeOptions } from 'cytoscape';
 import React from 'react';
 
-import { GraphNodeOverlay } from './GraphNodeOverlay';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
+import { GraphNodeOverlay } from './GraphNodeOverlay';
 
 export type GraphViewLayoutName = 'breadthfirst' | 'circle' | 'concentric' | 'elk' | 'grid';
 export type GraphViewElementEventType =
-  | 'press'
-  | 'double-press'
-  | 'select'
-  | 'unselect'
-  | 'pointer-enter'
-  | 'pointer-leave';
+  'press' | 'double-press' | 'select' | 'unselect' | 'pointer-enter' | 'pointer-leave';
 
 export interface GraphViewNode {
   readonly id: string;
@@ -150,9 +145,8 @@ export function GraphView(props: GraphViewProps) {
 function useGraphViewRuntime(props: GraphViewProps) {
   const containerRef = React.useRef<GraphContainer | null>(null);
   const runtimeRef = React.useRef<GraphRuntime | null>(null);
-  const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
+  const callbacksRef = useGraphCallbacksRef(props);
   const [renderedNodes, setRenderedNodes] = React.useState<readonly GraphViewRenderedNode[]>([]);
-  callbacksRef.current = readCallbacks(props);
 
   useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef);
   useRuntimeGraphUpdate(runtimeRef, props);
@@ -163,11 +157,35 @@ function useGraphViewRuntime(props: GraphViewProps) {
   return { containerRef, renderedNodes, runtimeRef };
 }
 
+/*** Keep the callback ref current without mutating refs during render. */
+function useGraphCallbacksRef(props: GraphViewProps) {
+  const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
+  const {
+    onEdgeEvent,
+    onLayoutComplete,
+    onNodeEvent,
+    onReady,
+    onViewportChange,
+  } = props;
+
+  React.useEffect(() => {
+    callbacksRef.current = {
+      onEdgeEvent,
+      onLayoutComplete,
+      onNodeEvent,
+      onReady,
+      onViewportChange,
+    };
+  }, [onEdgeEvent, onLayoutComplete, onNodeEvent, onReady, onViewportChange]);
+
+  return callbacksRef;
+}
+
 /*** Create and dispose the runtime only with the underlying browser container lifetime. */
 function useRuntimeLifecycle(
   containerRef: { current: GraphContainer | null },
   runtimeRef: { current: GraphRuntime | null },
-  callbacksRef: { current: GraphViewCallbacks }
+  callbacksRef: { current: GraphViewCallbacks },
 ) {
   React.useEffect(() => {
     const container = containerRef.current;
@@ -184,7 +202,7 @@ function useRuntimeLifecycle(
 /*** Synchronize graph data and layout policy without exposing Cytoscape to React. */
 function useRuntimeGraphUpdate(
   runtimeRef: { current: GraphRuntime | null },
-  props: GraphViewProps
+  props: GraphViewProps,
 ) {
   const {
     edges,
@@ -198,6 +216,7 @@ function useRuntimeGraphUpdate(
     spacingFactor,
     styleRules,
   } = props;
+
   React.useEffect(() => {
     runtimeRef.current?.update({
       edges,
@@ -229,7 +248,7 @@ function useRuntimeGraphUpdate(
 /*** Synchronize optional controlled selection independently from graph layout. */
 function useRuntimeSelection(
   runtimeRef: { current: GraphRuntime | null },
-  selectedNodeIds: readonly string[] | undefined
+  selectedNodeIds: readonly string[] | undefined,
 ) {
   React.useEffect(() => {
     runtimeRef.current?.setSelectedNodeIds(selectedNodeIds);
@@ -240,7 +259,7 @@ function useRuntimeSelection(
 function useRenderedNodeSubscription(
   runtimeRef: { current: GraphRuntime | null },
   renderNode: GraphViewProps['renderNode'],
-  setRenderedNodes: (nodes: readonly GraphViewRenderedNode[]) => void
+  setRenderedNodes: (nodes: readonly GraphViewRenderedNode[]) => void,
 ) {
   React.useEffect(() => {
     const runtime = runtimeRef.current;
@@ -256,7 +275,7 @@ function useRenderedNodeSubscription(
 function useKnownNodeSizes(
   runtimeRef: { current: GraphRuntime | null },
   nodes: readonly GraphViewNode[],
-  getNodeSize: GraphViewProps['getNodeSize']
+  getNodeSize: GraphViewProps['getNodeSize'],
 ) {
   React.useEffect(() => {
     const runtime = runtimeRef.current;
@@ -268,7 +287,7 @@ function useKnownNodeSizes(
   }, [getNodeSize, nodes, runtimeRef]);
 }
 
-/*** Read callback props separately so callback changes never restart the graph runtime. */
+/*** Read callback props for the initial runtime callback-ref value. */
 function readCallbacks(props: GraphViewProps): GraphViewCallbacks {
   return {
     onEdgeEvent: props.onEdgeEvent,
