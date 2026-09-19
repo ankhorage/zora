@@ -2,7 +2,11 @@ import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, relative } from 'node:path';
 
 import { createWebBuildPlugins } from './createWebBuildPlugins';
-import type { WebArtifactRuntimeExport, WebArtifactTarget } from './types';
+import type {
+  WebArtifactManifestEntry,
+  WebArtifactRuntimeExport,
+  WebArtifactTarget,
+} from './types';
 
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
@@ -16,7 +20,7 @@ interface BuildWebArtifactPaths {
 export async function buildWebArtifact(
   target: WebArtifactTarget,
   paths: BuildWebArtifactPaths,
-): Promise<void> {
+): Promise<WebArtifactManifestEntry> {
   const outputDirectory = join(paths.webDistRoot, target.component);
   const entrypointDirectory = join(paths.cacheRoot, target.component);
   const entrypoint = join(entrypointDirectory, `${target.exportName}.ts`);
@@ -33,6 +37,19 @@ export async function buildWebArtifact(
   } finally {
     await rm(entrypointDirectory, { force: true, recursive: true });
   }
+
+  return createManifestEntry(target);
+}
+
+/*** Create the catalog entry owned by one generated artifact directory. */
+function createManifestEntry(target: WebArtifactTarget): WebArtifactManifestEntry {
+  return {
+    component: target.component,
+    exportName: target.exportName,
+    featurePath: target.featurePath,
+    files: [`${target.exportName}.js`, `${target.exportName}.d.ts`],
+    sourceKind: target.sourceKind,
+  };
 }
 
 /*** Create one feature-runtime entrypoint so composing exports share their internal contexts. */
@@ -169,13 +186,7 @@ async function writeArtifactManifest(
   await writeFile(
     join(outputDirectory, 'artifact.json'),
     `${JSON.stringify(
-      {
-        component: target.component,
-        exportName: target.exportName,
-        featurePath: target.featurePath,
-        sourceKind: target.sourceKind,
-        files: [`${target.exportName}.js`, `${target.exportName}.d.ts`],
-      },
+      createManifestEntry(target),
       null,
       2,
     )}\n`,
