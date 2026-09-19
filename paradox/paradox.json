@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.1.6",
+      "value": "v20.2.0",
       "color": "cb3837"
     },
     {
@@ -2281,6 +2281,153 @@
         "GradientRendererProps",
         "GradientRendererProvider",
         "GradientRendererProviderProps"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "bindGraphEvents"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "createGraphController"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts"
+      ],
+      "exports": [
+        "createGraphResizeObserver",
+        "GraphResizeObserver"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+      ],
+      "exports": [
+        "createGraphRuntime",
+        "GraphRuntime"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "createRenderableGraphElements"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "fitGraphViewport"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "GraphNodeOverlay"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      ],
+      "exports": [
+        "GraphView",
+        "GraphViewCallbacks",
+        "GraphViewController",
+        "GraphViewEdge",
+        "GraphViewElementEvent",
+        "GraphViewElementEventType",
+        "GraphViewFitOptions",
+        "GraphViewLayoutName",
+        "GraphViewNode",
+        "GraphViewNodeRenderContext",
+        "GraphViewPoint",
+        "GraphViewProps",
+        "GraphViewRenderedNode",
+        "GraphViewSize",
+        "GraphViewStyleRule",
+        "GraphViewViewport"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "readGraphRenderedNodes"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "runGraphLayout"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "scheduleGraphFrame"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "syncGraphElements"
       ]
     },
     {
@@ -47981,6 +48128,492 @@
       }
     },
     {
+      "name": "bindGraphEvents",
+      "description": "Bind stable Cytoscape events that always read the latest React callbacks.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "viewportHandler",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 18,
+        "column": 9
+      }
+    },
+    {
+      "name": "bindElementEvents",
+      "description": "Bind one selector's translated event set without resubscribing on callback changes.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
+      "name": "handler",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 46,
+        "column": 11
+      }
+    },
+    {
+      "name": "isGraphEventTarget",
+      "description": "Return whether a Cytoscape event target exposes the element identifier contract.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 61,
+        "column": 1
+      }
+    },
+    {
+      "name": "emitElementEvent",
+      "description": "Emit one translated element event without dynamic callback-property access.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 72,
+        "column": 1
+      }
+    },
+    {
+      "name": "unbindElementEvents",
+      "description": "Remove one selector's event handlers using the exact bound callback identities.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "line": 85,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGraphController",
+      "description": "Create the public viewport controller while keeping the Cytoscape core private.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGraphResizeObserver",
+      "description": "Observe settled container resizing without racing an active layout generation.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "scheduleResizeFit",
+      "description": "Fit one genuine resize only after the active layout has settled.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 40,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasSizeChanged",
+      "description": "Return whether ResizeObserver reported a genuinely different container size.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 50,
+        "column": 1
+      }
+    },
+    {
+      "name": "readResizeObserverConstructor",
+      "description": "Read ResizeObserver without imposing DOM library types on the package target.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 58,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGraphRuntime",
+      "description": "Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 69,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRuntimeState",
+      "description": "Build the mutable state shared by the single graph-runtime owner.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 94,
+        "column": 1
+      }
+    },
+    {
+      "name": "updateRuntime",
+      "description": "Apply one graph update and start exactly one new layout generation.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 135,
+        "column": 1
+      }
+    },
+    {
+      "name": "startCurrentLayout",
+      "description": "Start a generation-safe layout whose completion is the only normal automatic fit trigger.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 149,
+        "column": 1
+      }
+    },
+    {
+      "name": "completeCurrentLayout",
+      "description": "Settle only the latest layout generation and fit once from node bounds.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 166,
+        "column": 1
+      }
+    },
+    {
+      "name": "stopCurrentLayout",
+      "description": "Stop the current layout and invalidate every stale completion callback.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 185,
+        "column": 1
+      }
+    },
+    {
+      "name": "applyGraphStyles",
+      "description": "Apply consumer styles and hide native node paint only when React rich nodes are active.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 193,
+        "column": 1
+      }
+    },
+    {
+      "name": "setSelectedNodeIds",
+      "description": "Synchronize controlled selection without rerunning layout.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 214,
+        "column": 1
+      }
+    },
+    {
+      "name": "setNodeSize",
+      "description": "Persist one rich-node size and schedule at most one relayout for changed geometry.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 225,
+        "column": 1
+      }
+    },
+    {
+      "name": "applyKnownNodeSizes",
+      "description": "Apply every known rich-node size after Cytoscape elements are replaced.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 234,
+        "column": 1
+      }
+    },
+    {
+      "name": "applyNodeSize",
+      "description": "Apply one measured model-space size as a Cytoscape per-node style bypass.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 239,
+        "column": 1
+      }
+    },
+    {
+      "name": "scheduleMeasuredNodeRelayout",
+      "description": "Coalesce DOM measurements into one follow-up layout generation.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 246,
+        "column": 1
+      }
+    },
+    {
+      "name": "subscribeRenderedNodes",
+      "description": "Subscribe one React overlay to rendered node state without exposing the Cytoscape core.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 259,
+        "column": 1
+      }
+    },
+    {
+      "name": "emitRenderedNodes",
+      "description": "Publish current rendered node positions only to active rich-node subscribers.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 268,
+        "column": 1
+      }
+    },
+    {
+      "name": "handleOverlayNodeEvent",
+      "description": "Translate one rich-overlay event back into normal graph selection and callbacks.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 277,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasUsableViewport",
+      "description": "Return whether Cytoscape currently has dimensions suitable for fitting.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 290,
+        "column": 1
+      }
+    },
+    {
+      "name": "destroyRuntime",
+      "description": "Dispose all runtime resources in the reverse order they were acquired.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 295,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRenderableGraphElements",
+      "description": "Convert plain graph data into renderable Cytoscape elements without impossible compound edges.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "createEdgeElement",
+      "description": "Build one edge unless one endpoint owns the other in the compound hierarchy.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "isAncestor",
+      "description": "Return whether a node appears in another node's compound parent chain.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "line": 57,
+        "column": 1
+      }
+    },
+    {
+      "name": "fitGraphViewport",
+      "description": "Fit the requested visible nodes and never include edge geometry in viewport bounds.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "getFitNodes",
+      "description": "Resolve an optional node-id target without ever adding edges to the fit collection.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "GraphNodeOverlay",
+      "description": "Render optional React node content above Cytoscape at its authoritative rendered positions.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "line": 22,
+        "column": 1
+      }
+    },
+    {
+      "name": "MeasuredGraphNode",
+      "description": "Measure one rich node at model scale and translate its DOM interactions into graph events.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "line": 65,
+        "column": 1
+      }
+    },
+    {
+      "name": "reportElementSize",
+      "description": "Report unscaled DOM dimensions only when a measurable node has positive size.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "line": 110,
+        "column": 1
+      }
+    },
+    {
+      "name": "readResizeObserverConstructor",
+      "description": "Read ResizeObserver without requiring the DOM lib in the package TypeScript target.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "line": 128,
+        "column": 1
+      }
+    },
+    {
+      "name": "GraphView",
+      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 113,
+        "column": 1
+      }
+    },
+    {
+      "name": "useGraphViewRuntime",
+      "description": "Compose React synchronization around the single imperative graph runtime.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 145,
+        "column": 1
+      }
+    },
+    {
+      "name": "useGraphCallbacksRef",
+      "description": "Keep the callback ref current without mutating refs during render.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 161,
+        "column": 1
+      }
+    },
+    {
+      "name": "useRuntimeLifecycle",
+      "description": "Create and dispose the runtime only with the underlying browser container lifetime.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 179,
+        "column": 1
+      }
+    },
+    {
+      "name": "useRuntimeGraphUpdate",
+      "description": "Synchronize graph data and layout policy without exposing Cytoscape to React.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 197,
+        "column": 1
+      }
+    },
+    {
+      "name": "useRuntimeSelection",
+      "description": "Synchronize optional controlled selection independently from graph layout.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 243,
+        "column": 1
+      }
+    },
+    {
+      "name": "useRenderedNodeSubscription",
+      "description": "Subscribe the optional rich-node overlay to rendered runtime positions.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 253,
+        "column": 1
+      }
+    },
+    {
+      "name": "useKnownNodeSizes",
+      "description": "Seed known rich-node dimensions without requiring DOM measurement.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 269,
+        "column": 1
+      }
+    },
+    {
+      "name": "readCallbacks",
+      "description": "Read callback props for the initial runtime callback-ref value.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "line": 285,
+        "column": 1
+      }
+    },
+    {
+      "name": "readGraphRenderedNodes",
+      "description": "Read React-overlay node state from Cytoscape's authoritative rendered positions.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "runGraphLayout",
+      "description": "Run one Cytoscape layout with automatic fitting disabled and explicit stop ownership.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "handleStop",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "line": 22,
+        "column": 9
+      }
+    },
+    {
+      "name": "createLayoutOptions",
+      "description": "Build layout options while reserving fit ownership for the graph runtime.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "line": 34,
+        "column": 1
+      }
+    },
+    {
+      "name": "stopGraphLayout",
+      "description": "Stop one layout without allowing its stale layout-stop callback to escape.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "line": 46,
+        "column": 1
+      }
+    },
+    {
+      "name": "scheduleGraphFrame",
+      "description": "Schedule one graph-runtime callback after browser paint with a non-browser fallback.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
+        "line": 2,
+        "column": 1
+      }
+    },
+    {
+      "name": "syncGraphElements",
+      "description": "Replace Cytoscape elements from the current plain graph projection in one batch.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
       "name": "HeroInner",
       "description": null,
       "sourceLocation": {
@@ -49934,11 +50567,20 @@
       }
     },
     {
-      "name": "resolveWebArtifact",
-      "description": "Resolve the canonical packaged web artifact for a requested component.",
+      "name": "readWebArtifactDefinitionAsync",
+      "description": "Read one packaged artifact manifest so new web components require no CLI branching.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 69,
+        "line": 73,
+        "column": 1
+      }
+    },
+    {
+      "name": "readWebArtifactManifestSourceAsync",
+      "description": "Read an artifact manifest and translate missing packages into the CLI-facing error.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "line": 104,
         "column": 1
       }
     },
@@ -49947,7 +50589,7 @@
       "description": "Add a generated-file marker without changing the compiled artifact semantics.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 81,
+        "line": 117,
         "column": 1
       }
     },
@@ -56745,6 +57387,121 @@
         "sourcePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+      },
+      {
         "fromPath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
         "toPath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
         "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx"
@@ -60217,14 +60974,14 @@
       },
       {
         "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "resolveWebArtifact",
-        "callExpression": "resolveWebArtifact",
+        "toSymbol": "joinPath",
+        "callExpression": "fileSystem.joinPath",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {
         "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "joinPath",
-        "callExpression": "fileSystem.joinPath",
+        "toSymbol": "readWebArtifactDefinitionAsync",
+        "callExpression": "readWebArtifactDefinitionAsync",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {
@@ -60261,6 +61018,24 @@
         "fromSymbol": "materializeWebComponentArtifactAsync",
         "toSymbol": "writeTextFileAsync",
         "callExpression": "fileSystem.writeTextFileAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebArtifactDefinitionAsync",
+        "toSymbol": "joinPath",
+        "callExpression": "fileSystem.joinPath",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebArtifactDefinitionAsync",
+        "toSymbol": "readWebArtifactManifestSourceAsync",
+        "callExpression": "readWebArtifactManifestSourceAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebArtifactManifestSourceAsync",
+        "toSymbol": "readTextFileAsync",
+        "callExpression": "fileSystem.readTextFileAsync",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {
@@ -60484,6 +61259,570 @@
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
         "sourcePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx"
+      },
+      {
+        "fromSymbol": "bindGraphEvents",
+        "toSymbol": "bindElementEvents",
+        "callExpression": "bindElementEvents",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "viewportHandler",
+        "toSymbol": "onViewportChange",
+        "callExpression": "callbacksRef.current.onViewportChange",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "viewportHandler",
+        "toSymbol": "getViewport",
+        "callExpression": "controller.getViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "viewportHandler",
+        "toSymbol": "onRuntimeChange",
+        "callExpression": "onRuntimeChange",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
+        "toSymbol": "unbindElementEvents",
+        "callExpression": "unbindElementEvents",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "handler",
+        "toSymbol": "isGraphEventTarget",
+        "callExpression": "isGraphEventTarget",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "handler",
+        "toSymbol": "emitElementEvent",
+        "callExpression": "emitElementEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "handler",
+        "toSymbol": "id",
+        "callExpression": "target.id",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "handler",
+        "toSymbol": "onRuntimeChange",
+        "callExpression": "onRuntimeChange",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "emitElementEvent",
+        "toSymbol": "onNodeEvent",
+        "callExpression": "callbacks.onNodeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "emitElementEvent",
+        "toSymbol": "onEdgeEvent",
+        "callExpression": "callbacks.onEdgeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "fit",
+        "toSymbol": "fitGraphViewport",
+        "callExpression": "fitGraphViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "createGraphResizeObserver",
+        "toSymbol": "readResizeObserverConstructor",
+        "callExpression": "readResizeObserverConstructor",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toSymbol": "hasSizeChanged",
+        "callExpression": "hasSizeChanged",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toSymbol": "scheduleResizeFit",
+        "callExpression": "scheduleResizeFit",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "createGraphResizeObserver",
+        "toSymbol": "observe",
+        "callExpression": "observer.observe",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "scheduleResizeFit",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toSymbol": "fitGraphViewport",
+        "callExpression": "fitGraphViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toSymbol": "onViewportSettled",
+        "callExpression": "input.onViewportSettled",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "createGraphRuntime",
+        "toSymbol": "cytoscape",
+        "callExpression": "cytoscape",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "createGraphRuntime",
+        "toSymbol": "createRuntimeState",
+        "callExpression": "createRuntimeState",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "destroy",
+        "toSymbol": "destroyRuntime",
+        "callExpression": "destroyRuntime",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "handleOverlayNodeEvent",
+        "toSymbol": "handleOverlayNodeEvent",
+        "callExpression": "handleOverlayNodeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setNodeSize",
+        "toSymbol": "setNodeSize",
+        "callExpression": "setNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setSelectedNodeIds",
+        "toSymbol": "setSelectedNodeIds",
+        "callExpression": "setSelectedNodeIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "subscribeRenderedNodes",
+        "toSymbol": "subscribeRenderedNodes",
+        "callExpression": "subscribeRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "update",
+        "toSymbol": "updateRuntime",
+        "callExpression": "updateRuntime",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "createRuntimeState",
+        "toSymbol": "createGraphController",
+        "callExpression": "createGraphController",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "createRuntimeState",
+        "toSymbol": "bindGraphEvents",
+        "callExpression": "bindGraphEvents",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "emitRenderedNodes",
+        "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "createRuntimeState",
+        "toSymbol": "createGraphResizeObserver",
+        "callExpression": "createGraphResizeObserver",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "onViewportSettled",
+        "toSymbol": "emitRenderedNodes",
+        "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "stopCurrentLayout",
+        "callExpression": "stopCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "syncGraphElements",
+        "callExpression": "syncGraphElements",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "applyGraphStyles",
+        "callExpression": "applyGraphStyles",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "applyKnownNodeSizes",
+        "callExpression": "applyKnownNodeSizes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "startCurrentLayout",
+        "callExpression": "startCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "startCurrentLayout",
+        "toSymbol": "runGraphLayout",
+        "callExpression": "runGraphLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "completeCurrentLayout",
+        "callExpression": "completeCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "completeCurrentLayout",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "hasUsableViewport",
+        "callExpression": "hasUsableViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "fitGraphViewport",
+        "callExpression": "fitGraphViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "onReady",
+        "callExpression": "state.callbacksRef.current.onReady",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "onLayoutComplete",
+        "callExpression": "state.callbacksRef.current.onLayoutComplete",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "stopCurrentLayout",
+        "toSymbol": "stop",
+        "callExpression": "state.layoutRef.current?.stop",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setSelectedNodeIds",
+        "toSymbol": "emitRenderedNodes",
+        "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setNodeSize",
+        "toSymbol": "applyNodeSize",
+        "callExpression": "applyNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setNodeSize",
+        "toSymbol": "scheduleMeasuredNodeRelayout",
+        "callExpression": "scheduleMeasuredNodeRelayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "applyKnownNodeSizes",
+        "toSymbol": "applyNodeSize",
+        "callExpression": "applyNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "scheduleMeasuredNodeRelayout",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "stopCurrentLayout",
+        "callExpression": "stopCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "startCurrentLayout",
+        "callExpression": "startCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "subscribeRenderedNodes",
+        "toSymbol": "listener",
+        "callExpression": "listener",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "subscribeRenderedNodes",
+        "toSymbol": "readGraphRenderedNodes",
+        "callExpression": "readGraphRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "emitRenderedNodes",
+        "toSymbol": "readGraphRenderedNodes",
+        "callExpression": "readGraphRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "emitRenderedNodes",
+        "toSymbol": "listener",
+        "callExpression": "listener",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "handleOverlayNodeEvent",
+        "toSymbol": "onNodeEvent",
+        "callExpression": "state.callbacksRef.current.onNodeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "handleOverlayNodeEvent",
+        "toSymbol": "emitRenderedNodes",
+        "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "destroyRuntime",
+        "toSymbol": "disconnect",
+        "callExpression": "state.resizeObserver?.disconnect",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "destroyRuntime",
+        "toSymbol": "stopCurrentLayout",
+        "callExpression": "stopCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "destroyRuntime",
+        "toSymbol": "unbindEvents",
+        "callExpression": "state.unbindEvents",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
+        "toSymbol": "createEdgeElement",
+        "callExpression": "createEdgeElement",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts"
+      },
+      {
+        "fromSymbol": "createEdgeElement",
+        "toSymbol": "isAncestor",
+        "callExpression": "isAncestor",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts"
+      },
+      {
+        "fromSymbol": "fitGraphViewport",
+        "toSymbol": "getFitNodes",
+        "callExpression": "getFitNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toSymbol": "reportElementSize",
+        "callExpression": "reportElementSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toSymbol": "readResizeObserverConstructor",
+        "callExpression": "readResizeObserverConstructor",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toSymbol": "observe",
+        "callExpression": "observer.observe",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toSymbol": "disconnect",
+        "callExpression": "observer.disconnect",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "toSymbol": "onNodeEvent",
+        "callExpression": "props.onNodeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "MeasuredGraphNode",
+        "toSymbol": "renderNode",
+        "callExpression": "props.renderNode",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "reportElementSize",
+        "toSymbol": "onNodeSize",
+        "callExpression": "onNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
+      },
+      {
+        "fromSymbol": "GraphView",
+        "toSymbol": "useGraphViewRuntime",
+        "callExpression": "useGraphViewRuntime",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "handleOverlayNodeEvent",
+        "callExpression": "runtimeRef.current?.handleOverlayNodeEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "setNodeSize",
+        "callExpression": "runtimeRef.current?.setNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useGraphCallbacksRef",
+        "callExpression": "useGraphCallbacksRef",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useRuntimeLifecycle",
+        "callExpression": "useRuntimeLifecycle",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useRuntimeGraphUpdate",
+        "callExpression": "useRuntimeGraphUpdate",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useRuntimeSelection",
+        "callExpression": "useRuntimeSelection",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useRenderedNodeSubscription",
+        "callExpression": "useRenderedNodeSubscription",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphViewRuntime",
+        "toSymbol": "useKnownNodeSizes",
+        "callExpression": "useKnownNodeSizes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphCallbacksRef",
+        "toSymbol": "readCallbacks",
+        "callExpression": "readCallbacks",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "createGraphRuntime",
+        "callExpression": "createGraphRuntime",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "destroy",
+        "callExpression": "runtime.destroy",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "update",
+        "callExpression": "runtimeRef.current?.update",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "setSelectedNodeIds",
+        "callExpression": "runtimeRef.current?.setSelectedNodeIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "setRenderedNodes",
+        "callExpression": "setRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "subscribeRenderedNodes",
+        "callExpression": "runtime.subscribeRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "getNodeSize",
+        "callExpression": "getNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "setNodeSize",
+        "callExpression": "runtime.setNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "runGraphLayout",
+        "toSymbol": "createLayoutOptions",
+        "callExpression": "createLayoutOptions",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "handleStop",
+        "toSymbol": "onComplete",
+        "callExpression": "onComplete",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "stop",
+        "toSymbol": "stopGraphLayout",
+        "callExpression": "stopGraphLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "scheduleGraphFrame",
+        "toSymbol": "frame",
+        "callExpression": "frame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts"
+      },
+      {
+        "fromSymbol": "syncGraphElements",
+        "toSymbol": "createRenderableGraphElements",
+        "callExpression": "createRenderableGraphElements",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
       },
       {
         "fromSymbol": "TreeItemRow",

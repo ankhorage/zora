@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.0
+
+### Minor Changes
+
+- 25d5ed9: Add a materializable Cytoscape-backed GraphView web artifact with centralized layout/viewport ownership and optional rich React node rendering.
+
 ## 20.1.6
 
 ### Patch Changes
