@@ -19673,7 +19673,7 @@
     "modulePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
     "sourceLocation": {
       "filePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
-      "line": 68,
+      "line": 66,
       "column": 14
     },
     "exportPaths": [

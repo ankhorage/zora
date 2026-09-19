@@ -2954,7 +2954,7 @@ Export paths: `src/index.ts`
 
 ## TextInput
 
-Source: `src/features/form/text-input/adapters/inbound/TextInput.tsx:68:14`
+Source: `src/features/form/text-input/adapters/inbound/TextInput.tsx:66:14`
 
 Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
 

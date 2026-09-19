@@ -3,13 +3,14 @@ import { createKnipConfig } from '@ankhorage/devtools/knip';
 export default createKnipConfig({
   entry: [
     '.agents/skills/**/scripts/**/*.ts',
-    'scripts/build-web-components.ts',
     'scripts/scaffold-zora-example-app.ts',
     'examples/basic-app/App.tsx',
-    'src/cli/index.ts',
     'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
     'src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx',
+    'src/features/uploader/composition/createUploadPicker.web.ts',
     'src/**/*.native.tsx',
+    'src/**/*.web.ts',
+    'src/**/*.web.tsx',
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
   ],

@@ -1,4 +1,4 @@
-import * as Surface from '@ankhorage/surface';
+import { Icon as SurfaceIcon, TextInput as SurfaceTextInput } from '@ankhorage/surface';
 import React from 'react';
 
 import type { TextInputProps } from '../../../../../types/text-input';
@@ -24,14 +24,12 @@ function TextInputInner({
   const iconColor = theme.semantics.content.muted;
 
   return (
-    <Surface.TextInput
+    <SurfaceTextInput
       {...props}
       disabled={disabled}
       interactionPolicy={interactionPolicy}
       leadingAccessory={
-        leadingIcon ? (
-          <Surface.Icon {...leadingIcon} color={iconColor} size={iconSize} />
-        ) : undefined
+        leadingIcon ? <SurfaceIcon {...leadingIcon} color={iconColor} size={iconSize} /> : undefined
       }
       readOnly={readOnly}
       size={size}
@@ -48,7 +46,7 @@ function TextInputInner({
             onPress={trailingAction.onPress}
           />
         ) : trailingIcon ? (
-          <Surface.Icon {...trailingIcon} color={iconColor} size={iconSize} />
+          <SurfaceIcon {...trailingIcon} color={iconColor} size={iconSize} />
         ) : undefined
       }
     />

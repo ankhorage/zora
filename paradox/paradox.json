@@ -4620,6 +4620,17 @@
       ]
     },
     {
+      "path": "src/features/uploader/composition/createUploadPicker.web.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/uploader/application/ports/outbound/UploadPickerPort.ts",
+        "src/types/upload.ts"
+      ],
+      "exports": [
+        "createUploadPicker"
+      ]
+    },
+    {
       "path": "src/features/uploader/public.ts",
       "isEntrypoint": false,
       "dependencies": [],
@@ -25730,7 +25741,7 @@
       "modulePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
       "sourceLocation": {
         "filePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
-        "line": 68,
+        "line": 66,
         "column": 14
       },
       "exportPaths": [
@@ -44016,7 +44027,7 @@
       "modulePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
       "sourceLocation": {
         "filePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
-        "line": 68,
+        "line": 66,
         "column": 14
       },
       "exportPaths": [
@@ -50549,6 +50560,42 @@
       }
     },
     {
+      "name": "createUploadPicker",
+      "description": "Creates the browser upload picker without Expo or React Native runtime dependencies.",
+      "sourceLocation": {
+        "filePath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "pickBrowserFileAsync",
+      "description": "Opens one transient browser file input and maps the selected file to the portable upload contract.",
+      "sourceLocation": {
+        "filePath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "finish",
+      "description": "Completes one browser picker request and removes its transient input.",
+      "sourceLocation": {
+        "filePath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "line": 33,
+        "column": 11
+      }
+    },
+    {
+      "name": "createLocalUploadAsset",
+      "description": "Maps one browser file to a local upload asset backed by an object URL.",
+      "sourceLocation": {
+        "filePath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "line": 57,
+        "column": 1
+      }
+    },
+    {
       "name": "createNodeWebComponentArtifactFileSystem",
       "description": "Create the Node filesystem adapter used by ZORA web-component materialization.",
       "sourceLocation": {
@@ -50559,28 +50606,28 @@
     },
     {
       "name": "materializeWebComponentArtifactAsync",
-      "description": "Materialize one replaceable web-only component artifact from the published ZORA build.",
+      "description": "Materialize one replaceable web-only component artifact from the published ZORA catalog.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 18,
+        "line": 20,
         "column": 1
       }
     },
     {
       "name": "readWebArtifactDefinitionAsync",
-      "description": "Read one packaged artifact manifest so new web components require no CLI branching.",
+      "description": "Resolve one requested component exclusively through the packaged web artifact catalog.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 73,
+        "line": 80,
         "column": 1
       }
     },
     {
       "name": "readWebArtifactManifestSourceAsync",
-      "description": "Read an artifact manifest and translate missing packages into the CLI-facing error.",
+      "description": "Read the packaged target catalog and translate a missing catalog into the CLI-facing error.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 104,
+        "line": 125,
         "column": 1
       }
     },
@@ -50589,7 +50636,7 @@
       "description": "Add a generated-file marker without changing the compiled artifact semantics.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 117,
+        "line": 138,
         "column": 1
       }
     },
@@ -54487,6 +54534,16 @@
         "sourcePath": "src/features/uploader/composition/createUploadPicker.ts"
       },
       {
+        "fromPath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toPath": "src/types/upload.ts",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromPath": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toPath": "src/features/uploader/application/ports/outbound/UploadPickerPort.ts",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
         "fromPath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
         "toPath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
         "sourcePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
@@ -58201,6 +58258,66 @@
         "sourcePath": "src/features/uploader/composition/createUploadPicker.ts"
       },
       {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "createElement",
+        "callExpression": "document.createElement",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "finish",
+        "toSymbol": "remove",
+        "callExpression": "picker.remove",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "finish",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "addEventListener",
+        "callExpression": "picker.addEventListener",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "item",
+        "callExpression": "picker.files?.item",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "finish",
+        "callExpression": "finish",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "createLocalUploadAsset",
+        "callExpression": "createLocalUploadAsset",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "append",
+        "callExpression": "body.append",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "src/features/uploader/composition/createUploadPicker.web.ts",
+        "toSymbol": "click",
+        "callExpression": "picker.click",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
+        "fromSymbol": "createLocalUploadAsset",
+        "toSymbol": "createObjectURL",
+        "callExpression": "urlApi.createObjectURL",
+        "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
+      },
+      {
         "fromSymbol": "materializeWebComponentArtifactWithNodeAsync",
         "toSymbol": "materializeWebComponentArtifactAsync",
         "callExpression": "materializeWebComponentArtifactAsync",
@@ -60974,14 +61091,14 @@
       },
       {
         "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "joinPath",
-        "callExpression": "fileSystem.joinPath",
+        "toSymbol": "readWebArtifactDefinitionAsync",
+        "callExpression": "readWebArtifactDefinitionAsync",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {
         "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "readWebArtifactDefinitionAsync",
-        "callExpression": "readWebArtifactDefinitionAsync",
+        "toSymbol": "joinPath",
+        "callExpression": "fileSystem.joinPath",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {
@@ -61030,6 +61147,12 @@
         "fromSymbol": "readWebArtifactDefinitionAsync",
         "toSymbol": "readWebArtifactManifestSourceAsync",
         "callExpression": "readWebArtifactManifestSourceAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
         "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
       },
       {

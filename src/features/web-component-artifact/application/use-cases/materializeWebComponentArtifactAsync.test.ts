@@ -7,17 +7,25 @@ for (const artifact of [
   { component: 'tree-view', outputName: 'TreeView' },
   { component: 'graph-view', outputName: 'GraphView' },
 ] as const) {
-  test(`materializes packaged ${artifact.component} without source ownership transfer`, async () => {
+  test(`materializes cataloged ${artifact.component} without source ownership transfer`, async () => {
     const packageRoot = '/package';
     const outputDirectory = `/consumer/src/generated/zora/${artifact.component}`;
     const writes = new Map<string, string>();
     const sourceDirectory = `${packageRoot}/web-dist/${artifact.component}`;
     const sources = new Map<string, string>([
       [
-        `${sourceDirectory}/artifact.json`,
+        `${packageRoot}/web-dist/manifest.json`,
         JSON.stringify({
-          component: artifact.component,
-          files: [`${artifact.outputName}.js`, `${artifact.outputName}.d.ts`],
+          schemaVersion: 1,
+          artifacts: [
+            {
+              component: artifact.component,
+              exportName: artifact.outputName,
+              featurePath: artifact.component,
+              sourceKind: 'web-artifact',
+              files: [`${artifact.outputName}.js`, `${artifact.outputName}.d.ts`],
+            },
+          ],
         }),
       ],
       [`${sourceDirectory}/${artifact.outputName}.js`, 'export const component = 1;\n'],
@@ -53,8 +61,17 @@ for (const artifact of [
   });
 }
 
-test('rejects unsupported web components explicitly', async () => {
-  const fileSystem = createFakeFileSystem(new Map(), new Map());
+test('rejects components absent from the packaged target catalog', async () => {
+  const sources = new Map<string, string>([
+    [
+      '/package/web-dist/manifest.json',
+      JSON.stringify({
+        schemaVersion: 1,
+        artifacts: [],
+      }),
+    ],
+  ]);
+  const fileSystem = createFakeFileSystem(sources, new Map());
   let caught: unknown;
 
   try {
@@ -73,6 +90,37 @@ test('rejects unsupported web components explicitly', async () => {
 
   expect(caught).toBeInstanceOf(Error);
   expect((caught as Error).message).toBe('Unsupported ZORA web component: unknown');
+});
+
+test('rejects malformed catalog entries before reading artifact files', async () => {
+  const sources = new Map<string, string>([
+    [
+      '/package/web-dist/manifest.json',
+      JSON.stringify({
+        schemaVersion: 1,
+        artifacts: [{ component: 'button', files: [] }],
+      }),
+    ],
+  ]);
+  const fileSystem = createFakeFileSystem(sources, new Map());
+  let caught: unknown;
+
+  try {
+    await materializeWebComponentArtifactAsync(
+      {
+        component: 'button',
+        outputDirectory: '/consumer',
+        packageRoot: '/package',
+        packageVersion: '1.2.3',
+      },
+      fileSystem,
+    );
+  } catch (error) {
+    caught = error;
+  }
+
+  expect(caught).toBeInstanceOf(Error);
+  expect((caught as Error).message).toBe('Invalid ZORA web artifact manifest entry: button');
 });
 
 /*** Create a portable fake for the artifact filesystem port. */
