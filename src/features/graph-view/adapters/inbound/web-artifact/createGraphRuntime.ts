@@ -3,20 +3,30 @@ import elk from 'cytoscape-elk';
 
 import type {
   GraphViewCallbacks,
-  GraphViewController,
   GraphViewEdge,
+  GraphViewElementEventType,
   GraphViewLayoutName,
   GraphViewNode,
+  GraphViewRenderedNode,
+  GraphViewSize,
   GraphViewStyleRule,
 } from './GraphView';
 import { bindGraphEvents } from './bindGraphEvents';
+import { createGraphController } from './createGraphController';
+import {
+  createGraphResizeObserver,
+  type GraphResizeObserver,
+} from './createGraphResizeObserver';
 import { fitGraphViewport } from './fitGraphViewport';
+import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { runGraphLayout } from './runGraphLayout';
+import { scheduleGraphFrame } from './scheduleGraphFrame';
 import { syncGraphElements } from './syncGraphElements';
 
 cytoscape.use(elk as cytoscape.Ext);
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
+type RenderedNodeListener = (nodes: readonly GraphViewRenderedNode[]) => void;
 
 interface GraphRuntimeUpdate {
   readonly edges: readonly GraphViewEdge[];
@@ -26,27 +36,36 @@ interface GraphRuntimeUpdate {
   readonly maxZoom?: number;
   readonly minZoom?: number;
   readonly nodes: readonly GraphViewNode[];
+  readonly richNodeRendering: boolean;
   readonly spacingFactor?: number;
   readonly styleRules?: readonly GraphViewStyleRule[];
 }
 
 export interface GraphRuntime {
   destroy(): void;
+  handleOverlayNodeEvent(id: string, type: GraphViewElementEventType): void;
+  setNodeSize(id: string, size: GraphViewSize): void;
   setSelectedNodeIds(nodeIds: readonly string[] | undefined): void;
+  subscribeRenderedNodes(listener: RenderedNodeListener): () => void;
   update(input: GraphRuntimeUpdate): void;
 }
 
 interface GraphRuntimeState {
   readonly callbacksRef: { current: GraphViewCallbacks };
-  readonly controller: GraphViewController;
   readonly cy: Core;
   readonly fitPaddingRef: { current: number };
   readonly generationRef: { current: number };
+  readonly hoveredNodeIds: Set<string>;
+  readonly latestUpdateRef: { current: GraphRuntimeUpdate | null };
   readonly layoutRef: { current: ReturnType<typeof runGraphLayout> | null };
   readonly layoutRunningRef: { current: boolean };
+  readonly nodeSizes: Map<string, GraphViewSize>;
   readonly readyRef: { current: boolean };
-  readonly resizeObserver: ResizeObserverLike | null;
+  readonly relayoutScheduledRef: { current: boolean };
+  readonly renderedNodeListeners: Set<RenderedNodeListener>;
+  readonly resizeObserver: GraphResizeObserver | null;
   readonly unbindEvents: () => void;
+  readonly controller: ReturnType<typeof createGraphController>;
 }
 
 /*** Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal. */
@@ -62,59 +81,70 @@ export function createGraphRuntime(
     selectionType: 'additive',
     userPanningEnabled: true,
   });
-  const fitPaddingRef = { current: 50 };
-  const controller = createController(cy, fitPaddingRef);
-  const state = createRuntimeState(cy, controller, callbacksRef, fitPaddingRef);
+  const state = createRuntimeState(cy, container, callbacksRef);
 
   return {
-    destroy() {
-      destroyRuntime(state);
-    },
-    setSelectedNodeIds(nodeIds) {
-      setSelectedNodeIds(cy, nodeIds);
-    },
-    update(input) {
-      updateRuntime(state, input);
-    },
+    destroy: () => destroyRuntime(state),
+    handleOverlayNodeEvent: (id, type) => handleOverlayNodeEvent(state, id, type),
+    setNodeSize: (id, size) => setNodeSize(state, id, size),
+    setSelectedNodeIds: (nodeIds) => setSelectedNodeIds(state, nodeIds),
+    subscribeRenderedNodes: (listener) => subscribeRenderedNodes(state, listener),
+    update: (input) => updateRuntime(state, input),
   };
 }
 
-/*** Build the mutable runtime state around one Cytoscape core instance. */
+/*** Build the mutable state shared by the single graph-runtime owner. */
 function createRuntimeState(
   cy: Core,
-  controller: GraphViewController,
-  callbacksRef: { current: GraphViewCallbacks },
-  fitPaddingRef: { current: number }
+  container: GraphContainer,
+  callbacksRef: { current: GraphViewCallbacks }
 ): GraphRuntimeState {
+  const fitPaddingRef = { current: 50 };
+  const controller = createGraphController(cy, fitPaddingRef);
   const layoutRunningRef = { current: false };
   const readyRef = { current: false };
-  const resizeObserver = createResizeObserver(cy, layoutRunningRef, readyRef, fitPaddingRef);
-  const unbindEvents = bindGraphEvents(cy, callbacksRef, controller);
-  resizeObserver?.observe(cy.container());
-
-  return {
+  const renderedNodeListeners = new Set<RenderedNodeListener>();
+  const stateBase = {
     callbacksRef,
     controller,
     cy,
     fitPaddingRef,
     generationRef: { current: 0 },
-    layoutRef: { current: null },
+    hoveredNodeIds: new Set<string>(),
+    latestUpdateRef: { current: null as GraphRuntimeUpdate | null },
+    layoutRef: { current: null as ReturnType<typeof runGraphLayout> | null },
     layoutRunningRef,
+    nodeSizes: new Map<string, GraphViewSize>(),
     readyRef,
-    resizeObserver,
-    unbindEvents,
+    relayoutScheduledRef: { current: false },
+    renderedNodeListeners,
   };
+  const unbindEvents = bindGraphEvents(cy, callbacksRef, controller, () =>
+    emitRenderedNodes(stateBase)
+  );
+  const resizeObserver = createGraphResizeObserver({
+    container,
+    cy,
+    fitPaddingRef,
+    layoutRunningRef,
+    onViewportSettled: () => emitRenderedNodes(stateBase),
+    readyRef,
+  });
+
+  return { ...stateBase, resizeObserver, unbindEvents };
 }
 
 /*** Apply one graph update and start exactly one new layout generation. */
 function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   if (state.cy.destroyed()) return;
   stopCurrentLayout(state);
+  state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.cy.minZoom(input.minZoom ?? 0.05);
   state.cy.maxZoom(input.maxZoom ?? 2);
   syncGraphElements(state.cy, input.nodes, input.edges);
-  applyGraphStyles(state.cy, input.styleRules);
+  applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
+  applyKnownNodeSizes(state);
   startCurrentLayout(state, input);
 }
 
@@ -124,7 +154,6 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
   state.generationRef.current = generation;
   state.layoutRunningRef.current = true;
   state.cy.resize();
-
   state.layoutRef.current = runGraphLayout(
     state.cy,
     {
@@ -136,16 +165,17 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
   );
 }
 
-/*** Settle only the latest layout generation and fit from node bounds after one browser frame. */
+/*** Settle only the latest layout generation and fit once from node bounds. */
 function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
   state.layoutRef.current = null;
-  scheduleFrame(() => {
+  scheduleGraphFrame(() => {
     if (state.cy.destroyed() || generation !== state.generationRef.current) return;
     state.cy.resize();
     state.layoutRunningRef.current = false;
     if (!hasUsableViewport(state.cy)) return;
-
     fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
+    emitRenderedNodes(state);
+
     if (!state.readyRef.current) {
       state.readyRef.current = true;
       state.callbacksRef.current.onReady?.(state.controller);
@@ -154,7 +184,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
   });
 }
 
-/*** Stop the current layout before replacement and invalidate every stale completion callback. */
+/*** Stop the current layout and invalidate every stale completion callback. */
 function stopCurrentLayout(state: GraphRuntimeState) {
   state.generationRef.current += 1;
   state.layoutRunningRef.current = false;
@@ -162,100 +192,102 @@ function stopCurrentLayout(state: GraphRuntimeState) {
   state.layoutRef.current = null;
 }
 
-/*** Apply consumer Cytoscape style rules without giving consumers runtime ownership. */
-function applyGraphStyles(cy: Core, rules: readonly GraphViewStyleRule[] | undefined) {
-  if (rules === undefined) return;
-  cy.style(rules as StylesheetJson).update();
+/*** Apply consumer styles and hide native node paint only when React rich nodes are active. */
+function applyGraphStyles(
+  cy: Core,
+  rules: readonly GraphViewStyleRule[] | undefined,
+  richNodeRendering: boolean
+) {
+  const styles = [...(rules ?? [])];
+  if (richNodeRendering) {
+    styles.push({
+      selector: 'node',
+      style: {
+        'background-opacity': 0,
+        'border-width': 0,
+        label: '',
+        'overlay-opacity': 0,
+      },
+    });
+  }
+  if (styles.length > 0) cy.style(styles as StylesheetJson).update();
 }
 
 /*** Synchronize controlled selection without rerunning layout. */
-function setSelectedNodeIds(cy: Core, nodeIds: readonly string[] | undefined) {
-  if (cy.destroyed() || nodeIds === undefined) return;
+function setSelectedNodeIds(state: GraphRuntimeState, nodeIds: readonly string[] | undefined) {
+  if (state.cy.destroyed() || nodeIds === undefined) return;
   const selectedIds = new Set(nodeIds);
-  cy.nodes().forEach((node) => {
+  state.cy.nodes().forEach((node) => {
     if (selectedIds.has(node.id())) node.select();
     else node.unselect();
   });
+  emitRenderedNodes(state);
 }
 
-/*** Create the public viewport controller while keeping the Cytoscape core private. */
-function createController(
-  cy: Core,
-  fitPaddingRef: { current: number }
-): GraphViewController {
-  return {
-    fit(options) {
-      fitGraphViewport(cy, {
-        nodeIds: options?.nodeIds,
-        padding: options?.padding ?? fitPaddingRef.current,
-      });
-    },
-    getViewport() {
-      return { pan: cy.pan(), zoom: cy.zoom() };
-    },
-    setPan(pan) {
-      cy.pan(pan);
-    },
-    setZoom(zoom) {
-      cy.zoom({
-        level: zoom,
-        renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 },
-      });
-    },
-    zoomBy(factor) {
-      this.setZoom(cy.zoom() * factor);
-    },
-  };
+/*** Persist one rich-node size and schedule at most one relayout for changed geometry. */
+function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) {
+  const previous = state.nodeSizes.get(id);
+  if (previous?.width === size.width && previous.height === size.height) return;
+  state.nodeSizes.set(id, size);
+  applyNodeSize(state.cy, id, size);
+  scheduleMeasuredNodeRelayout(state);
 }
 
-/*** Observe actual post-ready container size changes without competing with layout completion. */
-function createResizeObserver(
-  cy: Core,
-  layoutRunningRef: { current: boolean },
-  readyRef: { current: boolean },
-  fitPaddingRef: { current: number }
-): ResizeObserverLike | null {
-  const Observer = readResizeObserverConstructor();
-  if (Observer === null) return null;
+/*** Apply every known rich-node size after Cytoscape elements are replaced. */
+function applyKnownNodeSizes(state: GraphRuntimeState) {
+  for (const [id, size] of state.nodeSizes) applyNodeSize(state.cy, id, size);
+}
 
-  let lastWidth = -1;
-  let lastHeight = -1;
-  return new Observer((entries) => {
-    const entry = entries.at(0);
-    if (entry === undefined) return;
-    const { width, height } = entry.contentRect;
-    if (width === lastWidth && height === lastHeight) return;
-    lastWidth = width;
-    lastHeight = height;
-    if (!readyRef.current || layoutRunningRef.current) return;
+/*** Apply one measured model-space size as a Cytoscape per-node style bypass. */
+function applyNodeSize(cy: Core, id: string, size: GraphViewSize) {
+  const node = cy.getElementById(id);
+  if (node.empty()) return;
+  node.style({ height: size.height, width: size.width });
+}
 
-    scheduleFrame(() => {
-      if (cy.destroyed() || layoutRunningRef.current) return;
-      cy.resize();
-      fitGraphViewport(cy, { padding: fitPaddingRef.current });
-    });
+/*** Coalesce DOM measurements into one follow-up layout generation. */
+function scheduleMeasuredNodeRelayout(state: GraphRuntimeState) {
+  if (state.relayoutScheduledRef.current) return;
+  state.relayoutScheduledRef.current = true;
+  scheduleGraphFrame(() => {
+    state.relayoutScheduledRef.current = false;
+    const input = state.latestUpdateRef.current;
+    if (input === null || state.cy.destroyed()) return;
+    stopCurrentLayout(state);
+    startCurrentLayout(state, input);
   });
 }
 
-/*** Read the browser ResizeObserver without imposing DOM library types on the package. */
-function readResizeObserverConstructor(): ResizeObserverConstructorLike | null {
-  const value = (globalThis as unknown as { ResizeObserver?: ResizeObserverConstructorLike })
-    .ResizeObserver;
-  return value ?? null;
+/*** Subscribe one React overlay to rendered node state without exposing the Cytoscape core. */
+function subscribeRenderedNodes(state: GraphRuntimeState, listener: RenderedNodeListener) {
+  state.renderedNodeListeners.add(listener);
+  listener(readGraphRenderedNodes(state.cy, state.hoveredNodeIds));
+  return () => state.renderedNodeListeners.delete(listener);
 }
 
-/*** Schedule viewport work after layout painting while retaining a non-browser fallback. */
-function scheduleFrame(callback: () => void) {
-  const frame = (
-    globalThis as unknown as {
-      requestAnimationFrame?: (scheduled: () => void) => number;
-    }
-  ).requestAnimationFrame;
-  if (frame) {
-    frame(callback);
-    return;
-  }
-  setTimeout(callback, 0);
+/*** Publish current rendered node positions only to active rich-node subscribers. */
+function emitRenderedNodes(
+  state: Pick<
+    GraphRuntimeState,
+    'cy' | 'hoveredNodeIds' | 'renderedNodeListeners'
+  >
+) {
+  if (state.renderedNodeListeners.size === 0) return;
+  const nodes = readGraphRenderedNodes(state.cy, state.hoveredNodeIds);
+  for (const listener of state.renderedNodeListeners) listener(nodes);
+}
+
+/*** Translate one rich-overlay event back into normal graph selection and callbacks. */
+function handleOverlayNodeEvent(
+  state: GraphRuntimeState,
+  id: string,
+  type: GraphViewElementEventType
+) {
+  if (type === 'pointer-enter') state.hoveredNodeIds.add(id);
+  if (type === 'pointer-leave') state.hoveredNodeIds.delete(id);
+  if (type === 'press') state.cy.getElementById(id).select();
+  state.callbacksRef.current.onNodeEvent?.({ id, type });
+  emitRenderedNodes(state);
 }
 
 /*** Return whether Cytoscape currently has dimensions suitable for fitting. */
@@ -268,21 +300,6 @@ function destroyRuntime(state: GraphRuntimeState) {
   state.resizeObserver?.disconnect();
   stopCurrentLayout(state);
   state.unbindEvents();
+  state.renderedNodeListeners.clear();
   if (!state.cy.destroyed()) state.cy.destroy();
-}
-
-interface ResizeObserverEntryLike {
-  readonly contentRect: {
-    readonly width: number;
-    readonly height: number;
-  };
-}
-
-interface ResizeObserverLike {
-  disconnect(): void;
-  observe(target: unknown): void;
-}
-
-interface ResizeObserverConstructorLike {
-  new (callback: (entries: readonly ResizeObserverEntryLike[]) => void): ResizeObserverLike;
 }
