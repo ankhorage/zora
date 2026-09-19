@@ -10,12 +10,14 @@ const artifacts = [
     declaration: 'dist/features/tree-view/adapters/inbound/web-artifact/TreeView.d.ts',
     entrypoint: 'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
     outputName: 'TreeView',
+    client: false,
   },
   {
     component: 'graph-view',
     declaration: 'dist/features/graph-view/adapters/inbound/web-artifact/GraphView.d.ts',
     entrypoint: 'src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx',
     outputName: 'GraphView',
+    client: true,
   },
 ] as const;
 
@@ -50,10 +52,19 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
 
   const bundleName = `${artifact.outputName}.js`;
   const declarationName = `${artifact.outputName}.d.ts`;
-  const bundle = await readFile(join(outputDirectory, bundleName), 'utf8');
-  if (bundle.includes('jsxDEV') || bundle.includes('react/jsx-dev-runtime')) {
+  const bundlePath = join(outputDirectory, bundleName);
+  const bundle = await readFile(bundlePath, 'utf8');
+  const normalizedBundle = artifact.client ? normalizeClientDirective(bundle) : bundle;
+  if (normalizedBundle.includes('jsxDEV') || normalizedBundle.includes('react/jsx-dev-runtime')) {
     throw new Error('Web component artifacts must use the production React JSX runtime.');
   }
+  if (normalizedBundle.includes("from 'web-worker'") || normalizedBundle.includes('require("web-worker")')) {
+    throw new Error('Web component artifacts must not expose the optional Node web-worker import.');
+  }
+  if (artifact.client && !normalizedBundle.startsWith("'use client';\n")) {
+    throw new Error('Client web component artifacts must start with the client directive.');
+  }
+  await writeFile(bundlePath, normalizedBundle, 'utf8');
 
   await copyFile(
     join(repositoryRoot, artifact.declaration),
@@ -71,4 +82,11 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
     )}\n`,
     'utf8',
   );
+}
+
+
+/** Hoist one client directive to the start of a bundled client artifact. */
+function normalizeClientDirective(bundle: string): string {
+  const withoutDirectives = bundle.replace(/^\s*['"]use client['"];\s*$/gmu, '');
+  return `'use client';\n${withoutDirectives.trimStart()}`;
 }
