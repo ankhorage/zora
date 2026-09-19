@@ -64,8 +64,7 @@ function createEntrypoint(target: WebArtifactTarget, entrypointDirectory: string
 
   const imports = target.runtimeExports
     .map(
-      (runtimeExport) =>
-        `${runtimeExport.exportName} as Canonical${runtimeExport.exportName}`,
+      (runtimeExport) => `${runtimeExport.exportName} as Canonical${runtimeExport.exportName}`,
     )
     .join(', ');
   const wrappers = target.runtimeExports.map(createResponsiveRuntimeWrapper).join('\n\n');
