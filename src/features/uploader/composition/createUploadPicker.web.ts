@@ -11,9 +11,12 @@ export function createUploadPicker(): UploadPickerPort {
   };
 }
 
-/*** Opens one transient browser file input and maps the selected File to the portable upload contract. */
+/*** Opens one transient browser file input and maps the selected file to the portable upload contract. */
 function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | null> {
-  if (typeof document === 'undefined' || typeof URL === 'undefined') {
+  const browser = globalThis as unknown as BrowserRuntime;
+  const document = browser.document;
+  const urlApi = browser.URL;
+  if (document === undefined || document.body === undefined || urlApi === undefined) {
     return Promise.resolve(null);
   }
 
@@ -35,8 +38,12 @@ function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | n
     picker.addEventListener(
       'change',
       () => {
-        const file = picker.files?.item(0);
-        finish(file === null || file === undefined ? null : createLocalUploadAsset(file));
+        const selectedFile = picker.files?.item(0);
+        finish(
+          selectedFile === null || selectedFile === undefined
+            ? null
+            : createLocalUploadAsset(selectedFile, urlApi),
+        );
       },
       { once: true },
     );
@@ -46,13 +53,56 @@ function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | n
   });
 }
 
-/*** Maps one browser File to a local upload asset backed by an object URL. */
-function createLocalUploadAsset(file: File): UploadAsset {
+/*** Maps one browser file to a local upload asset backed by an object URL. */
+function createLocalUploadAsset(file: BrowserFile, urlApi: BrowserUrlApi): UploadAsset {
   return {
     kind: 'local',
-    uri: URL.createObjectURL(file),
+    uri: urlApi.createObjectURL(file),
     fileName: file.name || undefined,
     sizeBytes: file.size,
     contentType: file.type || undefined,
   };
+}
+
+interface BrowserRuntime {
+  readonly document?: BrowserDocument;
+  readonly URL?: BrowserUrlApi;
+}
+
+interface BrowserDocument {
+  readonly body?: {
+    append(node: BrowserFileInput): void;
+  };
+  createElement(tagName: 'input'): BrowserFileInput;
+}
+
+interface BrowserFileInput {
+  accept: string;
+  readonly files?: BrowserFileList | null;
+  multiple: boolean;
+  readonly style: {
+    display: string;
+  };
+  type: string;
+  addEventListener(
+    type: string,
+    listener: () => void,
+    options?: { readonly once?: boolean },
+  ): void;
+  click(): void;
+  remove(): void;
+}
+
+interface BrowserFileList {
+  item(index: number): BrowserFile | null;
+}
+
+interface BrowserFile {
+  readonly name: string;
+  readonly size: number;
+  readonly type: string;
+}
+
+interface BrowserUrlApi {
+  createObjectURL(file: BrowserFile): string;
 }
