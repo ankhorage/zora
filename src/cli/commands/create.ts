@@ -19,7 +19,10 @@ export async function create(
 ): Promise<{ readonly exitCode: number }> {
   try {
     const options = parseCreateArguments(request.argv);
-    const packageJsonPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../../package.json');
+    const packageJsonPath = resolve(
+      dirname(fileURLToPath(import.meta.url)),
+      '../../../package.json',
+    );
     const packageRoot = dirname(packageJsonPath);
     const packageVersion = await readPackageVersionAsync(packageJsonPath);
     const outputDirectory =
@@ -65,10 +68,12 @@ function parseCreateArguments(argv: readonly string[]): CreateOptions {
     outputDirectory !== undefined &&
     outputDirectory.trim() !== '';
 
-  if (component === undefined || component.trim() === '' || (!hasDefaultOutput && !hasCustomOutput)) {
-    throw new Error(
-      'Usage: ankh zora create <component> --web [--out <directory>]',
-    );
+  if (
+    component === undefined ||
+    component.trim() === '' ||
+    (!hasDefaultOutput && !hasCustomOutput)
+  ) {
+    throw new Error('Usage: ankh zora create <component> --web [--out <directory>]');
   }
 
   return {
