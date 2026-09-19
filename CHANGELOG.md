@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.1
+
+### Patch Changes
+
+- 38db5b8: Update Ankhorage dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+
 ## 20.2.0
 
 ### Minor Changes
