@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.1.1
+
+### Patch Changes
+
+- c9f2c5d: Emit web-only component artifacts with React's production JSX runtime so Next.js SSR consumers can prerender them safely.
+
 ## 20.1.0
 
 ### Minor Changes
