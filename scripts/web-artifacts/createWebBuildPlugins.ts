@@ -60,26 +60,23 @@ function createPackageRootImportPlugin(options: PackageRootImportPluginOptions) 
   return {
     name: 'zora-package-symbol-imports',
     setup(
-      build: Parameters<NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']>[0],
+      build: Parameters<
+        NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
+      >[0],
     ) {
       build.onLoad({ filter: /\.[cm]?[jt]sx?$/ }, async (args) => {
         if (!options.importerRoots.some((root) => args.path.startsWith(root))) return undefined;
         const source = await readFile(args.path, 'utf8');
-        const relevantOwners = owners.filter((owner) =>
-          source.includes(`'${owner.packageName}'`) ||
-          source.includes(`"${owner.packageName}"`),
+        const relevantOwners = owners.filter(
+          (owner) =>
+            source.includes(`'${owner.packageName}'`) || source.includes(`"${owner.packageName}"`),
         );
         if (relevantOwners.length === 0) return undefined;
 
         return {
           contents: relevantOwners.reduce(
             (result, owner) =>
-              rewritePackageRootImports(
-                result,
-                args.path,
-                owner.packageName,
-                owner.exports,
-              ),
+              rewritePackageRootImports(result, args.path, owner.packageName, owner.exports),
             source,
           ),
           loader: resolveBunLoader(args.path),
@@ -217,7 +214,9 @@ function createWebPackageAliasPlugin() {
   return {
     name: 'zora-web-package-aliases',
     setup(
-      build: Parameters<NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']>[0],
+      build: Parameters<
+        NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
+      >[0],
     ) {
       build.onResolve({ filter: /^elkjs$/ }, () => ({ path: elkWebEntry }));
       build.onResolve({ filter: /^react-native$/ }, () => ({ path: reactNativeWebEntry }));
@@ -233,7 +232,9 @@ function createWebPlatformPlugin() {
   return {
     name: 'zora-web-platform-resolution',
     setup(
-      build: Parameters<NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']>[0],
+      build: Parameters<
+        NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
+      >[0],
     ) {
       build.onResolve({ filter: /^\./ }, async (args) => {
         const webPath = await resolveWebPlatformPath(args.resolveDir, args.path);

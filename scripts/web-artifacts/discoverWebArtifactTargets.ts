@@ -162,9 +162,7 @@ function resolveSymbolIdentity(symbol: ts.Symbol): string {
 }
 
 /*** Collapse identical re-exports while rejecting two real exports with the same CLI target. */
-function deduplicateTargets(
-  targets: readonly DiscoveredTarget[],
-): readonly WebArtifactTarget[] {
+function deduplicateTargets(targets: readonly DiscoveredTarget[]): readonly WebArtifactTarget[] {
   const resolved = new Map<string, DiscoveredTarget>();
   for (const target of targets) {
     const existing = resolved.get(target.component);

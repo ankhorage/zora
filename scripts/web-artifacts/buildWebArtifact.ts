@@ -132,7 +132,9 @@ async function validateBundle(target: WebArtifactTarget, bundlePath: string): Pr
     throw new Error(`ZORA web target "${target.component}" uses the development JSX runtime.`);
   }
   if (source.includes("from 'web-worker'") || source.includes('require("web-worker")')) {
-    throw new Error(`ZORA web target "${target.component}" exposes the optional Node web-worker import.`);
+    throw new Error(
+      `ZORA web target "${target.component}" exposes the optional Node web-worker import.`,
+    );
   }
   const unsupportedImport = findUnsupportedRuntimeImport(source);
   if (unsupportedImport !== undefined) {
@@ -143,10 +145,7 @@ async function validateBundle(target: WebArtifactTarget, bundlePath: string): Pr
 }
 
 /*** Write an exact specialized declaration or a portable declaration for generic exports. */
-async function writeDeclaration(
-  target: WebArtifactTarget,
-  outputDirectory: string,
-): Promise<void> {
+async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
   const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
   if (target.declarationSource !== undefined) {
     await copyFile(target.declarationSource, outputPath);
@@ -185,11 +184,7 @@ async function writeArtifactManifest(
 ): Promise<void> {
   await writeFile(
     join(outputDirectory, 'artifact.json'),
-    `${JSON.stringify(
-      createManifestEntry(target),
-      null,
-      2,
-    )}\n`,
+    `${JSON.stringify(createManifestEntry(target), null, 2)}\n`,
     'utf8',
   );
 }
