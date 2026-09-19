@@ -2,4 +2,4 @@
 "@ankhorage/zora": patch
 ---
 
-Make the materialized AppBar web artifact install its responsive runtime inside the standalone bundle and fall back to portable declarations when specialized artifact declarations leak unavailable imports.
+Make materialized public web components install their responsive runtime inside each standalone bundle so generated AppBar, typography, form, and navigation artifacts render without consumer-side Surface providers.

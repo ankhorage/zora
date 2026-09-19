@@ -52,13 +52,45 @@ function createManifestEntry(target: WebArtifactTarget): WebArtifactManifestEntr
   };
 }
 
-/*** Create one feature-runtime entrypoint so composing exports share their internal contexts. */
+/*** Create one self-contained browser entrypoint for a generated ZORA artifact. */
 function createEntrypoint(target: WebArtifactTarget, entrypointDirectory: string): string {
   const source = toModuleSpecifier(relative(entrypointDirectory, target.sourceEntry));
   const exportNames = target.runtimeExports
     .map((runtimeExport) => runtimeExport.exportName)
     .join(', ');
-  return `export { ${exportNames} } from ${JSON.stringify(source)};\n`;
+  if (target.sourceKind === 'web-artifact') {
+    return `export { ${exportNames} } from ${JSON.stringify(source)};\n`;
+  }
+
+  const imports = target.runtimeExports
+    .map(
+      (runtimeExport) =>
+        `${runtimeExport.exportName} as Canonical${runtimeExport.exportName}`,
+    )
+    .join(', ');
+  const wrappers = target.runtimeExports.map(createResponsiveRuntimeWrapper).join('\n\n');
+  return [
+    "import React from 'react';",
+    "import { ResponsiveProvider } from '@ankhorage/surface';",
+    `import { ${imports} } from ${JSON.stringify(source)};`,
+    '',
+    wrappers,
+    '',
+  ].join('\n');
+}
+
+/*** Wrap one public component with the responsive runtime bundled into the same artifact. */
+function createResponsiveRuntimeWrapper(runtimeExport: WebArtifactRuntimeExport): string {
+  const exportName = runtimeExport.exportName;
+  return [
+    `export function ${exportName}(props: Record<string, unknown>) {`,
+    '  return React.createElement(',
+    '    ResponsiveProvider,',
+    '    null,',
+    `    React.createElement(Canonical${exportName}, props),`,
+    '  );',
+    '}',
+  ].join('\n');
 }
 
 /*** Bundle one browser artifact with React/ReactDOM as its only allowed runtime peers. */
@@ -143,40 +175,14 @@ async function validateBundle(target: WebArtifactTarget, bundlePath: string): Pr
   }
 }
 
-/*** Write an exact standalone declaration or fall back to the dependency-light portable contract. */
+/*** Write an exact specialized declaration or a portable declaration for generic exports. */
 async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
   const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
-  if (target.declarationSource === undefined) {
-    await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
+  if (target.declarationSource !== undefined) {
+    await copyFile(target.declarationSource, outputPath);
     return;
   }
-
-  const source = await readFile(target.declarationSource, 'utf8');
-  if (findUnsupportedDeclarationImport(source) !== undefined) {
-    await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
-    return;
-  }
-
-  await copyFile(target.declarationSource, outputPath);
-}
-
-/*** Find a declaration import that would make a materialized artifact depend on unavailable source. */
-function findUnsupportedDeclarationImport(source: string): string | undefined {
-  const matches = source.matchAll(/(?:from\s+|import\()(["'])([^"']+)\1/g);
-  for (const match of matches) {
-    const specifier = match[2];
-    if (specifier === undefined) continue;
-    if (
-      specifier === 'react' ||
-      specifier.startsWith('react/') ||
-      specifier === 'react-dom' ||
-      specifier.startsWith('react-dom/')
-    ) {
-      continue;
-    }
-    return specifier;
-  }
-  return undefined;
+  await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
 }
 
 /*** Create dependency-light declarations for every runtime export sharing the feature facade. */
