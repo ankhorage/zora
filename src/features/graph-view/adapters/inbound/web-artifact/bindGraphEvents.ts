@@ -44,8 +44,10 @@ function bindElementEvents(
 ): readonly BoundElementHandler[] {
   return EVENT_TYPES.map(([cytoscapeEvent, type]) => {
     const handler = (event: EventObject) => {
+      const target: unknown = event.target;
+      if (!isGraphEventTarget(target)) return;
       emitElementEvent(callbacksRef.current, selector, {
-        id: String(event.target.id()),
+        id: target.id(),
         type,
       });
       onRuntimeChange();
@@ -53,6 +55,20 @@ function bindElementEvents(
     cy.on(cytoscapeEvent, selector, handler);
     return { cytoscapeEvent, handler };
   });
+}
+
+/*** Return whether a Cytoscape event target exposes the element identifier contract. */
+function isGraphEventTarget(value: unknown): value is GraphEventTarget {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'id' in value &&
+    typeof value.id === 'function'
+  );
+}
+
+interface GraphEventTarget {
+  id(): string;
 }
 
 /*** Emit one translated element event without dynamic callback-property access. */
