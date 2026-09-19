@@ -5,7 +5,6 @@ import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { fitGraphViewport } from './fitGraphViewport';
-import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import type {
   GraphViewCallbacks,
   GraphViewEdge,
