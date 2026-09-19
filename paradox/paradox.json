@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.3.0",
+      "value": "v20.3.1",
       "color": "cb3837"
     },
     {
@@ -2428,6 +2428,29 @@
       ],
       "exports": [
         "syncGraphElements"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "GraphView",
+        "GraphViewCallbacks",
+        "GraphViewController",
+        "GraphViewEdge",
+        "GraphViewElementEvent",
+        "GraphViewElementEventType",
+        "GraphViewFitOptions",
+        "GraphViewLayoutName",
+        "GraphViewNode",
+        "GraphViewNodeRenderContext",
+        "GraphViewPoint",
+        "GraphViewProps",
+        "GraphViewRenderedNode",
+        "GraphViewSize",
+        "GraphViewStyleRule",
+        "GraphViewViewport"
       ]
     },
     {
@@ -52897,6 +52920,11 @@
         "fromPath": "src/features/gradient/public.ts",
         "toPath": "src/features/gradient/adapters/inbound/GradientRendererContext.tsx",
         "sourcePath": "src/features/gradient/public.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/public.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/public.ts"
       },
       {
         "fromPath": "src/features/hero/heroMeta.ts",

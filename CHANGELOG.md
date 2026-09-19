@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.3.1
+
+### Patch Changes
+
+- d3432fb: Restore GraphView to generic web artifact discovery through its canonical feature facade.
+
 ## 20.3.0
 
 ### Minor Changes
