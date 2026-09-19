@@ -64,16 +64,19 @@ function TreeItemInner<TId extends string = string>({
         </View>
       ) : undefined;
 
-    return (
-      <ListItem
-        title={node.label}
-        leading={node.icon === undefined ? undefined : <Icon {...node.icon} size="s" />}
-        meta={node.meta}
-        disabled={node.disabled}
-        onPress={onSelect === undefined ? undefined : () => onSelect(node.id)}
-        selected={isSelected}
-        trailing={trailing}
-      />
+    const listItemProps = {
+      title: node.label,
+      leading: node.icon === undefined ? undefined : <Icon {...node.icon} size="s" />,
+      meta: node.meta,
+      disabled: node.disabled,
+      selected: isSelected,
+      trailing,
+    };
+
+    return onSelect === undefined ? (
+      <ListItem {...listItemProps} />
+    ) : (
+      <ListItem {...listItemProps} onPress={() => onSelect(node.id)} />
     );
   };
 
