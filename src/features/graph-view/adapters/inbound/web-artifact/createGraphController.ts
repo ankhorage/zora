@@ -1,12 +1,12 @@
 import type { Core } from 'cytoscape';
 
-import type { GraphViewController } from './GraphView';
 import { fitGraphViewport } from './fitGraphViewport';
+import type { GraphViewController } from './GraphView';
 
 /*** Create the public viewport controller while keeping the Cytoscape core private. */
 export function createGraphController(
   cy: Core,
-  fitPaddingRef: { current: number }
+  fitPaddingRef: { current: number },
 ): GraphViewController {
   return {
     fit(options) {
