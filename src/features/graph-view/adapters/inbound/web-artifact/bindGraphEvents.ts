@@ -11,7 +11,7 @@ export function bindGraphEvents(
   cy: Core,
   callbacksRef: { current: GraphViewCallbacks },
   controller: GraphViewController,
-  onRuntimeChange: () => void
+  onRuntimeChange: () => void,
 ) {
   const nodeHandlers = bindElementEvents(cy, 'node', callbacksRef, onRuntimeChange);
   const edgeHandlers = bindElementEvents(cy, 'edge', callbacksRef, onRuntimeChange);
@@ -40,13 +40,11 @@ function bindElementEvents(
   cy: Core,
   selector: ElementSelector,
   callbacksRef: { current: GraphViewCallbacks },
-  onRuntimeChange: () => void
+  onRuntimeChange: () => void,
 ): readonly BoundElementHandler[] {
-  const callbackKey = selector === 'node' ? 'onNodeEvent' : 'onEdgeEvent';
-
   return EVENT_TYPES.map(([cytoscapeEvent, type]) => {
     const handler = (event: EventObject) => {
-      callbacksRef.current[callbackKey]?.({
+      emitElementEvent(callbacksRef.current, selector, {
         id: String(event.target.id()),
         type,
       });
@@ -57,11 +55,24 @@ function bindElementEvents(
   });
 }
 
+/*** Emit one translated element event without dynamic callback-property access. */
+function emitElementEvent(
+  callbacks: GraphViewCallbacks,
+  selector: ElementSelector,
+  event: { readonly id: string; readonly type: GraphViewElementEventType },
+) {
+  if (selector === 'node') {
+    callbacks.onNodeEvent?.(event);
+    return;
+  }
+  callbacks.onEdgeEvent?.(event);
+}
+
 /*** Remove one selector's event handlers using the exact bound callback identities. */
 function unbindElementEvents(
   cy: Core,
   selector: ElementSelector,
-  handlers: readonly BoundElementHandler[]
+  handlers: readonly BoundElementHandler[],
 ) {
   for (const { cytoscapeEvent, handler } of handlers) {
     cy.off(cytoscapeEvent, selector, handler);
