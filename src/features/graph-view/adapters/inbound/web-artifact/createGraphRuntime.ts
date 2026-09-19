@@ -29,10 +29,7 @@ type RenderedNodeListener = (nodes: readonly GraphViewRenderedNode[]) => void;
 /*** Register the browser-safe ELK source layout through Cytoscape's function-style extension API. */
 function registerElkLayout() {
   /*** Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call(). */
-  function ElkLayoutRegistrant(
-    this: Record<string, unknown>,
-    options: Record<string, unknown>,
-  ) {
+  function ElkLayoutRegistrant(this: Record<string, unknown>, options: Record<string, unknown>) {
     Object.assign(this, new ElkLayout(options));
   }
 
