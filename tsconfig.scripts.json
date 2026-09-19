@@ -14,5 +14,9 @@
     "noEmit": true,
     "types": ["bun", "node"]
   },
-  "include": ["scripts/validate-example-projects.ts", "scripts/validate-expo-candidate.ts"]
+  "include": [
+    "scripts/build-web-components.ts",
+    "scripts/validate-example-projects.ts",
+    "scripts/validate-expo-candidate.ts"
+  ]
 }

@@ -1,6 +1,7 @@
 node_modules
 
 dist
+web-dist
 tsconfig.tsbuildinfo
 
 .DS_Store

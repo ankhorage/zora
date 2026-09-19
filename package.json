@@ -49,6 +49,7 @@
   },
   "files": [
     "dist",
+    "web-dist",
     "src",
     "package.json",
     "README.md",
@@ -92,13 +93,18 @@
       "import": "./dist/features/theme/public.js",
       "default": "./dist/features/theme/public.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.js",
+      "default": "./dist/cli/index.js"
+    }
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
+    "build": "rm -rf dist web-dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json && bun scripts/build-web-components.ts",
     "changeset": "ankhorage-changeset",
     "changeset:status": "ankhorage-changeset status --since=origin/main",
     "docs": "paradox",
@@ -138,5 +144,12 @@
     "react-native-worklets": "0.10.1",
     "typescript": "~6.0.3"
   },
-  "packageManager": "bun@1.4.2"
+  "packageManager": "bun@1.4.2",
+  "ankh": {
+    "category": "zora",
+    "provider": "./dist/cli/index.js",
+    "capabilities": [
+      "zora.create"
+    ]
+  }
 }

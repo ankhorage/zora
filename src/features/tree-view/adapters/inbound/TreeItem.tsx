@@ -3,6 +3,7 @@ import React from 'react';
 import type { ZoraBaseProps } from '../../../../types/base';
 import type { TreeItemNode, TreeItemRenderProps } from '../../../../types/tree-view';
 import { IconButton } from '../../../button/public';
+import { Icon } from '../../../icon/public';
 import { View } from '../../../layout/public';
 import { ListItem } from '../../../list/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
@@ -17,6 +18,7 @@ interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
   renderItem?: (props: TreeItemRenderProps<TId>) => React.ReactNode;
 }
 
+/*** Render one recursive themed tree row and keep row selection separate from expansion controls. */
 function TreeItemInner<TId extends string = string>({
   themeId: _themeId,
   mode: _mode,
@@ -45,28 +47,36 @@ function TreeItemInner<TId extends string = string>({
       });
     }
 
-    return (
-      <ListItem
-        title={node.label}
-        action={
-          <View direction="row" gap="xs" align="center">
-            {node.actions}
-            {hasChildren ? (
-              <IconButton
-                icon={{ name: isExpanded ? 'chevron-down-outline' : 'chevron-forward-outline' }}
-                interactionPolicy={interactionPolicy}
-                label={isExpanded ? 'Collapse' : 'Expand'}
-                onPress={() => onToggleExpand(node.id)}
-                size="s"
-                variant="ghost"
-              />
-            ) : null}
-          </View>
-        }
-        meta={node.meta}
-        disabled={node.disabled}
-        selected={isSelected}
-      />
+    const trailing =
+      node.actions !== undefined || hasChildren ? (
+        <View direction="row" gap="xs" align="center">
+          {node.actions}
+          {hasChildren ? (
+            <IconButton
+              icon={{ name: isExpanded ? 'chevron-down-outline' : 'chevron-forward-outline' }}
+              interactionPolicy={interactionPolicy}
+              label={isExpanded ? 'Collapse' : 'Expand'}
+              onPress={() => onToggleExpand(node.id)}
+              size="s"
+              variant="ghost"
+            />
+          ) : null}
+        </View>
+      ) : undefined;
+
+    const listItemProps = {
+      title: node.label,
+      leading: node.icon === undefined ? undefined : <Icon {...node.icon} size="s" />,
+      meta: node.meta,
+      disabled: node.disabled,
+      selected: isSelected,
+      trailing,
+    };
+
+    return onSelect === undefined ? (
+      <ListItem {...listItemProps} />
+    ) : (
+      <ListItem {...listItemProps} onPress={() => onSelect(node.id)} />
     );
   };
 
@@ -94,9 +104,5 @@ function TreeItemInner<TId extends string = string>({
   );
 }
 
-/***
- * Single tree node row used within `TreeView`.
- *
- 
- */
+/*** Single tree node row used within `TreeView`. */
 export const TreeItem = withZoraThemeScope(TreeItemInner);
