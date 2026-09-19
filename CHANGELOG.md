@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.2
+
+### Patch Changes
+
+- d46bab4: Make the materialized GraphView artifact consumable by Next/Turbopack by hoisting its client directive and bundling the browser-safe ELK adapter.
+
 ## 20.2.1
 
 ### Patch Changes

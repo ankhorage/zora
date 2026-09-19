@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.2.1",
+      "value": "v20.2.2",
       "color": "cb3837"
     },
     {
@@ -48438,7 +48438,7 @@
       "description": "Render optional React node content above Cytoscape at its authoritative rendered positions.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
-        "line": 22,
+        "line": 20,
         "column": 1
       }
     },
@@ -48447,7 +48447,7 @@
       "description": "Measure one rich node at model scale and translate its DOM interactions into graph events.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
-        "line": 65,
+        "line": 63,
         "column": 1
       }
     },
@@ -48456,7 +48456,7 @@
       "description": "Report unscaled DOM dimensions only when a measurable node has positive size.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
-        "line": 110,
+        "line": 108,
         "column": 1
       }
     },
@@ -48465,7 +48465,7 @@
       "description": "Read ResizeObserver without requiring the DOM lib in the package TypeScript target.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
-        "line": 128,
+        "line": 126,
         "column": 1
       }
     },
@@ -48474,7 +48474,7 @@
       "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 113,
+        "line": 111,
         "column": 1
       }
     },
@@ -48483,7 +48483,7 @@
       "description": "Compose React synchronization around the single imperative graph runtime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 145,
+        "line": 143,
         "column": 1
       }
     },
@@ -48492,7 +48492,7 @@
       "description": "Keep the callback ref current without mutating refs during render.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 161,
+        "line": 159,
         "column": 1
       }
     },
@@ -48501,7 +48501,7 @@
       "description": "Create and dispose the runtime only with the underlying browser container lifetime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 179,
+        "line": 177,
         "column": 1
       }
     },
@@ -48510,7 +48510,7 @@
       "description": "Synchronize graph data and layout policy without exposing Cytoscape to React.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 197,
+        "line": 195,
         "column": 1
       }
     },
@@ -48519,7 +48519,7 @@
       "description": "Synchronize optional controlled selection independently from graph layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 243,
+        "line": 241,
         "column": 1
       }
     },
@@ -48528,7 +48528,7 @@
       "description": "Subscribe the optional rich-node overlay to rendered runtime positions.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 253,
+        "line": 251,
         "column": 1
       }
     },
@@ -48537,7 +48537,7 @@
       "description": "Seed known rich-node dimensions without requiring DOM measurement.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 269,
+        "line": 267,
         "column": 1
       }
     },
@@ -48546,7 +48546,7 @@
       "description": "Read callback props for the initial runtime callback-ref value.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 285,
+        "line": 283,
         "column": 1
       }
     },
