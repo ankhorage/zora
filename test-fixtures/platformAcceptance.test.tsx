@@ -215,7 +215,7 @@ test('TreeView default rows render icons and emit selection on RN Web', async ()
       );
     });
 
-    expect(container.innerHTML).toContain('font-family:Ionicons');
+    expect(container.querySelector('[style*="font-family: Ionicons"]')).not.toBeNull();
     const row = Array.from(container.querySelectorAll('[role="button"],button')).find((element) =>
       element.textContent?.includes('src'),
     );
