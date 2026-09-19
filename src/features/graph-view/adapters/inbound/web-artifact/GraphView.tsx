@@ -3,6 +3,7 @@
 import type { CytoscapeOptions } from 'cytoscape';
 import React from 'react';
 
+import { GraphNodeOverlay } from './GraphNodeOverlay';
 import { createGraphRuntime } from './createGraphRuntime';
 
 export type GraphViewLayoutName = 'breadthfirst' | 'circle' | 'concentric' | 'elk' | 'grid';
@@ -40,6 +41,26 @@ export interface GraphViewPoint {
   readonly y: number;
 }
 
+export interface GraphViewSize {
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface GraphViewNodeRenderContext {
+  readonly hovered: boolean;
+  readonly node: GraphViewNode;
+  readonly selected: boolean;
+  readonly zoom: number;
+}
+
+export interface GraphViewRenderedNode {
+  readonly hovered: boolean;
+  readonly id: string;
+  readonly position: GraphViewPoint;
+  readonly selected: boolean;
+  readonly zoom: number;
+}
+
 export interface GraphViewViewport {
   readonly zoom: number;
   readonly pan: GraphViewPoint;
@@ -71,6 +92,8 @@ export interface GraphViewProps {
   readonly spacingFactor?: number;
   readonly styleRules?: readonly GraphViewStyleRule[];
   readonly selectedNodeIds?: readonly string[];
+  readonly renderNode?: (context: GraphViewNodeRenderContext) => React.ReactNode;
+  readonly getNodeSize?: (node: GraphViewNode) => GraphViewSize | undefined;
   readonly fitPadding?: number;
   readonly minZoom?: number;
   readonly maxZoom?: number;
@@ -96,6 +119,7 @@ export function GraphView(props: GraphViewProps) {
   const containerRef = React.useRef<GraphContainer | null>(null);
   const runtimeRef = React.useRef<ReturnType<typeof createGraphRuntime> | null>(null);
   const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
+  const [renderedNodes, setRenderedNodes] = React.useState<readonly GraphViewRenderedNode[]>([]);
   callbacksRef.current = readCallbacks(props);
 
   React.useEffect(() => {
@@ -119,6 +143,7 @@ export function GraphView(props: GraphViewProps) {
       maxZoom: props.maxZoom,
       minZoom: props.minZoom,
       nodes: props.nodes,
+      richNodeRendering: props.renderNode !== undefined,
       spacingFactor: props.spacingFactor,
       styleRules: props.styleRules,
     });
@@ -130,6 +155,7 @@ export function GraphView(props: GraphViewProps) {
     props.maxZoom,
     props.minZoom,
     props.nodes,
+    props.renderNode,
     props.spacingFactor,
     props.styleRules,
   ]);
@@ -138,14 +164,49 @@ export function GraphView(props: GraphViewProps) {
     runtimeRef.current?.setSelectedNodeIds(props.selectedNodeIds);
   }, [props.selectedNodeIds]);
 
+  React.useEffect(() => {
+    const runtime = runtimeRef.current;
+    if (runtime === null || props.renderNode === undefined) {
+      setRenderedNodes([]);
+      return;
+    }
+    return runtime.subscribeRenderedNodes(setRenderedNodes);
+  }, [props.renderNode]);
+
+  React.useEffect(() => {
+    const runtime = runtimeRef.current;
+    if (runtime === null || props.getNodeSize === undefined) return;
+    for (const node of props.nodes) {
+      const size = props.getNodeSize(node);
+      if (size) runtime.setNodeSize(node.id, size);
+    }
+  }, [props.getNodeSize, props.nodes]);
+
   return (
     <div
-      ref={containerRef}
       aria-label={props.ariaLabel ?? 'Graph'}
       className={props.className}
       role="application"
-      style={{ height: '100%', minHeight: 0, minWidth: 0, width: '100%', ...props.style }}
-    />
+      style={{
+        height: '100%',
+        minHeight: 0,
+        minWidth: 0,
+        position: 'relative',
+        width: '100%',
+        ...props.style,
+      }}
+    >
+      <div ref={containerRef} style={{ height: '100%', width: '100%' }} />
+      {props.renderNode ? (
+        <GraphNodeOverlay
+          nodes={props.nodes}
+          renderedNodes={renderedNodes}
+          renderNode={props.renderNode}
+          onNodeEvent={(id, type) => runtimeRef.current?.handleOverlayNodeEvent(id, type)}
+          onNodeSize={(id, size) => runtimeRef.current?.setNodeSize(id, size)}
+        />
+      ) : null}
+    </div>
   );
 }
 
