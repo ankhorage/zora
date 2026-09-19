@@ -39,6 +39,7 @@ export function createWebBuildPlugins(paths: WebBuildPluginPaths) {
         },
       ],
     }),
+    createEmbeddedFontPlugin(),
     createWebPackageAliasPlugin(),
     createWebPlatformPlugin(),
   ];
@@ -206,6 +207,27 @@ function rewritePackageRootImports(
         `${result.slice(0, replacement.start)}${replacement.text}${result.slice(replacement.end)}`,
       source,
     );
+}
+
+/*** Embed TrueType fonts so generated web artifacts remain single-file and portable. */
+function createEmbeddedFontPlugin() {
+  return {
+    name: 'zora-web-embedded-fonts',
+    setup(
+      build: Parameters<
+        NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
+      >[0],
+    ) {
+      build.onLoad({ filter: /\.ttf$/ }, async (args) => {
+        const font = await readFile(args.path);
+        const dataUrl = `data:font/ttf;base64,${font.toString('base64')}`;
+        return {
+          contents: `export default ${JSON.stringify(dataUrl)};`,
+          loader: 'js' as const,
+        };
+      });
+    },
+  };
 }
 
 /*** Alias React Native to React Native Web for standalone browser artifacts. */
