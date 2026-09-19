@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.3.3
+
+### Patch Changes
+
+- e34f1b0: Fix the materialized GraphView ELK layout by registering the transpiled Cytoscape adapter instead of its native-class source entry.
+
 ## 20.3.2
 
 ### Patch Changes

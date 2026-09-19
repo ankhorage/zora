@@ -1,11 +1,10 @@
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
-import elk from 'cytoscape-elk/src/index.js';
+import elk from 'cytoscape-elk';
 
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { fitGraphViewport } from './fitGraphViewport';
-import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import type {
   GraphViewCallbacks,
   GraphViewEdge,
@@ -19,6 +18,7 @@ import type {
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { runGraphLayout } from './runGraphLayout';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
+import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import { syncGraphElements } from './syncGraphElements';
 
 cytoscape.use(elk as cytoscape.Ext);

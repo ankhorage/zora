@@ -1,4 +1,4 @@
-declare module 'cytoscape-elk/src/index.js' {
+declare module 'cytoscape-elk' {
   const extension: unknown;
   export default extension;
 }
