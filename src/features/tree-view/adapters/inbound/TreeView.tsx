@@ -3,8 +3,10 @@ import React from 'react';
 import type { TreeViewProps } from '../../../../types/tree-view';
 import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
+import { toggleExpandedIds } from '../../utils/toggleExpandedIds';
 import { TreeItem } from './TreeItem';
 
+/*** Render the themed TreeView while supporting controlled or internal expansion state. */
 function TreeViewInner<TId extends string = string>({
   themeId: _themeId,
   mode: _mode,
@@ -27,13 +29,12 @@ function TreeViewInner<TId extends string = string>({
 
   const handleToggleExpand = (id: TId) => {
     if (interactionPolicy === 'passive') return;
-    const isExpanded = expandedIds.includes(id);
-    const newIds = isExpanded ? expandedIds.filter((eid) => eid !== id) : [...expandedIds, id];
+    const nextExpandedIds = toggleExpandedIds(expandedIds, id);
 
     if (!isControlled) {
-      setInternalExpandedIds(newIds);
+      setInternalExpandedIds(nextExpandedIds);
     }
-    onExpandedChange?.(newIds);
+    onExpandedChange?.(nextExpandedIds);
   };
 
   return (
@@ -55,9 +56,5 @@ function TreeViewInner<TId extends string = string>({
   );
 }
 
-/***
- * Tree view pattern for hierarchical navigation and expandable lists.
- *
- 
- */
+/*** Tree view pattern for hierarchical navigation and expandable lists. */
 export const TreeView = withZoraThemeScope(TreeViewInner);
