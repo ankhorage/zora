@@ -7,6 +7,7 @@ export default createKnipConfig({
     'examples/basic-app/App.tsx',
     'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
     'src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx',
+    'src/features/graph-view/public.ts',
     'src/features/uploader/composition/createUploadPicker.web.ts',
     'src/**/*.native.tsx',
     'src/**/*.web.ts',
