@@ -16,7 +16,7 @@ interface GraphLayoutSession {
 export function runGraphLayout(
   cy: Core,
   input: RunGraphLayoutInput,
-  onComplete: () => void
+  onComplete: () => void,
 ): GraphLayoutSession {
   const layout = cy.layout(createLayoutOptions(input));
   const handleStop = () => onComplete();
@@ -39,7 +39,7 @@ function createLayoutOptions(input: RunGraphLayoutInput): LayoutOptions {
     nodeDimensionsIncludeLabels: true,
     fit: false,
     animate: false,
-  } as LayoutOptions;
+  };
 }
 
 /*** Stop one layout without allowing its stale layout-stop callback to escape. */
