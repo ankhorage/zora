@@ -10,12 +10,14 @@ import type {
 export function bindGraphEvents(
   cy: Core,
   callbacksRef: { current: GraphViewCallbacks },
-  controller: GraphViewController
+  controller: GraphViewController,
+  onRuntimeChange: () => void
 ) {
-  const nodeHandlers = bindElementEvents(cy, 'node', callbacksRef);
-  const edgeHandlers = bindElementEvents(cy, 'edge', callbacksRef);
+  const nodeHandlers = bindElementEvents(cy, 'node', callbacksRef, onRuntimeChange);
+  const edgeHandlers = bindElementEvents(cy, 'edge', callbacksRef, onRuntimeChange);
   const viewportHandler = () => {
     callbacksRef.current.onViewportChange?.(controller.getViewport());
+    onRuntimeChange();
   };
   cy.on('zoom pan', viewportHandler);
 
@@ -37,7 +39,8 @@ interface BoundElementHandler {
 function bindElementEvents(
   cy: Core,
   selector: ElementSelector,
-  callbacksRef: { current: GraphViewCallbacks }
+  callbacksRef: { current: GraphViewCallbacks },
+  onRuntimeChange: () => void
 ): readonly BoundElementHandler[] {
   const callbackKey = selector === 'node' ? 'onNodeEvent' : 'onEdgeEvent';
 
@@ -47,6 +50,7 @@ function bindElementEvents(
         id: String(event.target.id()),
         type,
       });
+      onRuntimeChange();
     };
     cy.on(cytoscapeEvent, selector, handler);
     return { cytoscapeEvent, handler };
