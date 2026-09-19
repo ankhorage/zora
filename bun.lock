@@ -6,7 +6,7 @@
       "name": "@ankhorage/zora",
       "dependencies": {
         "@ankhorage/color-theory": "^0.3.1",
-        "@ankhorage/contracts": "^22.0.3",
+        "@ankhorage/contracts": "^22.0.4",
         "@ankhorage/surface": "^9.0.4",
         "@ankhorage/utility": "^1.4.0",
         "expo-document-picker": "~57.0.1",
@@ -57,7 +57,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@22.0.3", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.2.0" } }, "sha512-QjDvFA5IW5TBDjB8du621gIqlQy36al3DYNsX86qRAC1tIjvJQvarKVAIGKiemcO31rvlr3vRB7x7Obq/ZMxUA=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@22.0.4", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.4.0" } }, "sha512-gnR4+N62wWvt2YiytH30YM4zgxq+nxupFUCh1I7N3bow0Ay/+AM7gTu8D6GXzsL/LksWiY44/qZ6//HKhvW1cQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.17.1", "", { "dependencies": { "@ankhorage/apm": "^0.6.0", "@ankhorage/project-detector": "^0.1.0", "@ankhorage/utility": "^0.5.1", "@changesets/cli": "^3.0.2", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "@next/eslint-plugin-next": "^16.3.5", "eslint": "^10.10.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.0.0", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.34.0", "prettier": "^3.9.6", "typescript-eslint": "^8.69.0" }, "bin": { "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-prettier": "dist/cli/bin/prettier.js", "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-apm-release": "dist/cli/bin/apm-release.js" } }, "sha512-lEQk/pPdmOz8KXU0WwtRTvqHgO+cMY2Q5bwpGk0/oTT53iQfE3/qaUc6M9az89Jeb2zfJugkPVQSaxlPvH/wkg=="],
 
