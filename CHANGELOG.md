@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.3.2
+
+### Patch Changes
+
+- 2ab43e2: Preserve GraphView zoom and pan across subsequent layout generations such as layout-spacing changes, while retaining the initial automatic fit and explicit controller-driven fitting.
+
 ## 20.3.1
 
 ### Patch Changes
