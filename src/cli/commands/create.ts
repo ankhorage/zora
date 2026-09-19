@@ -19,7 +19,7 @@ export async function create(
 ): Promise<{ readonly exitCode: number }> {
   try {
     const options = parseCreateArguments(request.argv);
-    const packageJsonPath = fileURLToPath(new URL('../../../package.json', import.meta.url));
+    const packageJsonPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../../package.json');
     const packageRoot = dirname(packageJsonPath);
     const packageVersion = await readPackageVersionAsync(packageJsonPath);
     const outputDirectory =
