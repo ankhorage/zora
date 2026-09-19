@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.3.4
+
+### Patch Changes
+
+- 8d6a5b3: Keep GraphView ELK browser-safe by adapting the source layout class to Cytoscape's function-style extension contract and reject leaked CommonJS runtime dependencies from generated web artifacts.
+
 ## 20.3.3
 
 ### Patch Changes
