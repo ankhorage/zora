@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 
-import type { GraphViewEdge, GraphViewNode } from './GraphView';
 import { createRenderableGraphElements } from './createRenderableGraphElements';
+import type { GraphViewEdge, GraphViewNode } from './GraphView';
 
 test('omits compound ancestor and descendant edges without mutating source graph data', () => {
   const nodes: readonly GraphViewNode[] = [
@@ -38,9 +38,7 @@ test('keeps ordinary edges across unrelated compound branches', () => {
     { id: 'b' },
     { id: 'b.child', parentId: 'b' },
   ];
-  const edges: readonly GraphViewEdge[] = [
-    { id: 'cross', source: 'a.child', target: 'b.child' },
-  ];
+  const edges: readonly GraphViewEdge[] = [{ id: 'cross', source: 'a.child', target: 'b.child' }];
 
   const elements = createRenderableGraphElements(nodes, edges);
   const renderedEdgeIds = elements
