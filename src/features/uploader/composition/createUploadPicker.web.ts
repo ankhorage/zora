@@ -16,7 +16,8 @@ function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | n
   const browser = globalThis as unknown as BrowserRuntime;
   const document = browser.document;
   const urlApi = browser.URL;
-  if (document === undefined || document.body === undefined || urlApi === undefined) {
+  const body = document?.body;
+  if (document === undefined || body === undefined || urlApi === undefined) {
     return Promise.resolve(null);
   }
 
@@ -48,7 +49,7 @@ function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | n
       { once: true },
     );
     picker.addEventListener('cancel', () => finish(null), { once: true });
-    document.body.append(picker);
+    body.append(picker);
     picker.click();
   });
 }
