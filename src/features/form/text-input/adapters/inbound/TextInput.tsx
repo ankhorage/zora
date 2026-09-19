@@ -29,9 +29,7 @@ function TextInputInner({
       disabled={disabled}
       interactionPolicy={interactionPolicy}
       leadingAccessory={
-        leadingIcon ? (
-          <SurfaceIcon {...leadingIcon} color={iconColor} size={iconSize} />
-        ) : undefined
+        leadingIcon ? <SurfaceIcon {...leadingIcon} color={iconColor} size={iconSize} /> : undefined
       }
       readOnly={readOnly}
       size={size}
