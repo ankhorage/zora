@@ -79,7 +79,6 @@ async function bundleWebArtifact(
       minify: false,
       conditions: ['browser', 'import', 'default'],
       external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
-      loader: { '.ttf': 'dataurl' },
       plugins: createWebBuildPlugins({
         sourceRoot: paths.sourceRoot,
         surfacePackageRoot: paths.surfacePackageRoot,
