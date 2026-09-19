@@ -1,5 +1,3 @@
-import { join } from 'node:path';
-
 import type { WebComponentArtifactFileSystemPort } from '../ports/outbound/WebComponentArtifactFileSystemPort';
 
 export interface MaterializeWebComponentArtifactInput {
@@ -22,13 +20,13 @@ export async function materializeWebComponentArtifactAsync(
   fileSystem: WebComponentArtifactFileSystemPort,
 ): Promise<MaterializeWebComponentArtifactResult> {
   const artifact = resolveWebArtifact(input.component);
-  const sourceDirectory = join(input.packageRoot, 'web-dist', artifact.directory);
+  const sourceDirectory = fileSystem.joinPath(input.packageRoot, 'web-dist', artifact.directory);
   await fileSystem.ensureDirectoryAsync(input.outputDirectory);
 
   const createdFiles = await Promise.all(
     artifact.files.map(async (fileName) => {
-      const sourcePath = join(sourceDirectory, fileName);
-      const targetPath = join(input.outputDirectory, fileName);
+      const sourcePath = fileSystem.joinPath(sourceDirectory, fileName);
+      const targetPath = fileSystem.joinPath(input.outputDirectory, fileName);
       const source = await fileSystem.readTextFileAsync(sourcePath);
       await fileSystem.writeTextFileAsync(
         targetPath,
@@ -38,7 +36,7 @@ export async function materializeWebComponentArtifactAsync(
     }),
   );
 
-  const metadataPath = join(input.outputDirectory, 'zora-artifact.json');
+  const metadataPath = fileSystem.joinPath(input.outputDirectory, 'zora-artifact.json');
   await fileSystem.writeTextFileAsync(
     metadataPath,
     `${JSON.stringify(
