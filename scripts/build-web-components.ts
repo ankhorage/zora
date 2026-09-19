@@ -1,4 +1,4 @@
-import { rm } from 'node:fs/promises';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 
@@ -23,15 +23,25 @@ try {
     sourceRoot,
   });
 
+  const artifacts = [];
   for (const target of targets) {
-    await buildWebArtifact(target, {
-      cacheRoot,
-      repositoryRoot,
-      sourceRoot,
-      surfacePackageRoot,
-      webDistRoot,
-    });
+    artifacts.push(
+      await buildWebArtifact(target, {
+        cacheRoot,
+        repositoryRoot,
+        sourceRoot,
+        surfacePackageRoot,
+        webDistRoot,
+      }),
+    );
   }
+
+  await mkdir(webDistRoot, { recursive: true });
+  await writeFile(
+    join(webDistRoot, 'manifest.json'),
+    `${JSON.stringify({ schemaVersion: 1, artifacts }, null, 2)}\n`,
+    'utf8',
+  );
 } finally {
   await rm(cacheRoot, { force: true, recursive: true });
 }
