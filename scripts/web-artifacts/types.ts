@@ -1,4 +1,4 @@
-export type WebArtifactRuntimeKind = 'callable' | 'component' | 'value';
+type WebArtifactRuntimeKind = 'callable' | 'component' | 'value';
 
 export interface WebArtifactRuntimeExport {
   readonly exportName: string;
