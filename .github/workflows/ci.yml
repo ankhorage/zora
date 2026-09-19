@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -19,7 +19,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -32,19 +31,7 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        run: bun install
-
-      - name: Synchronize managed skills
-        if: github.event_name == 'pull_request'
-        run: |
-          bunx @ankhorage/ankh devtools skills sync .
-          git config user.name "ankhorage-renovate-sync[bot]"
-          git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
-          git add bun.lock .agents
-          if ! git diff --cached --quiet; then
-            git commit -m "chore(devtools): sync managed skills"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
+        run: bun install --frozen-lockfile
 
       - name: Run build
         run: |
@@ -54,8 +41,15 @@ jobs:
             echo "No build script found; skipping."
           fi
 
+      - name: Validate opted-in APM owner release
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.ankh?.apm === undefined ? 1 : 0)"; then
+            bun run test:apm
+            ./node_modules/.bin/ankhorage-apm-release validate . --allow-owner-code
+          fi
+
       - name: Validate Ankhorage repository
-        run: bunx @ankhorage/ankh doctor validate .
+        run: BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.10.14 validate .
 
       - name: Run lint
         run: |
