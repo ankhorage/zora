@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.3
+
+### Patch Changes
+
+- e1263fd: Update Ankhorage dependencies: `@ankhorage/contracts`.
+
 ## 20.2.2
 
 ### Patch Changes
