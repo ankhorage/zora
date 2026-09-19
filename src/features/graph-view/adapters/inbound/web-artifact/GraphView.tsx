@@ -1,5 +1,3 @@
-'use client';
-
 import type { CytoscapeOptions } from 'cytoscape';
 import React from 'react';
 
