@@ -16,10 +16,16 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      versioned: ${{ steps.release.outputs.versioned }}
+      package_name: ${{ steps.release.outputs.package_name }}
+      package_version: ${{ steps.release.outputs.package_version }}
+      release_sha: ${{ steps.release.outputs.release_sha }}
 
     steps:
       - name: Create the scoped release token
         id: release-token
+        continue-on-error: true
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
@@ -28,11 +34,22 @@ jobs:
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
 
+      - name: Diagnose unavailable scoped release token
+        if: steps.release-token.outcome == 'failure'
+        run: |
+          echo "::error title=Renovate Sync App repository access required::Could not create the scoped Ankhorage release token for ${GITHUB_REPOSITORY}. Ensure the ankhorage-renovate-sync GitHub App is installed and authorized for this repository, then rerun Release. Bootstrap policy: https://github.com/ankhorage/renovate/issues/115"
+          exit 1
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ steps.release-token.outputs.token }}
+
+      - name: Synchronize latest main
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -63,17 +80,46 @@ jobs:
         id: release
         if: hashFiles('.changeset/config.json') != ''
         run: |
-          git fetch origin main
-          git checkout -B main origin/main
-
           if [ -z "$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name README.md -print -quit)" ]; then
-            echo "versioned=false" >> "$GITHUB_OUTPUT"
+            current_version="$(node -p "require('./package.json').version")"
+            release_sha=""
+            for candidate_sha in $(git rev-list HEAD); do
+              candidate_subject="$(git show -s --format=%s "$candidate_sha")"
+              if [ "$candidate_subject" != "chore(release): version packages [skip ci]" ]; then
+                continue
+              fi
+              candidate_version="$(git show "${candidate_sha}:package.json" | node -e "let s=''; process.stdin.on('data',(d)=>s+=d); process.stdin.on('end',()=>process.stdout.write(JSON.parse(s).version ?? ''))")"
+              if [ "$candidate_version" = "$current_version" ]; then
+                release_sha="$candidate_sha"
+                break
+              fi
+            done
+
+            if [ -n "$release_sha" ]; then
+              echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
+              echo "versioned=true" >> "$GITHUB_OUTPUT"
+              echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+              echo "package_version=$current_version" >> "$GITHUB_OUTPUT"
+              echo "release_sha=$release_sha" >> "$GITHUB_OUTPUT"
+            else
+              echo "versioned=false" >> "$GITHUB_OUTPUT"
+            fi
             exit 0
           fi
-
           before_version="$(node -p "require('./package.json').version")"
           bun run version-packages
+          if node -e "const p=require('./package.json'); process.exit(p.ankh?.apm === undefined ? 1 : 0)"; then
+            ./node_modules/.bin/ankhorage-apm-release sync .
+          fi
           after_version="$(node -p "require('./package.json').version")"
+
+          if [ "$before_version" != "$after_version" ]; then
+            if node -e "const p=require('./package.json'); process.exit(p.scripts?.docs ? 0 : 1)"; then
+              bun run docs
+            else
+              echo "No docs script found; skipping."
+            fi
+          fi
 
           if git diff --quiet; then
             echo "versioned=false" >> "$GITHUB_OUTPUT"
@@ -96,30 +142,172 @@ jobs:
             echo "versioned=true" >> "$GITHUB_OUTPUT"
             echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
             echo "package_version=$after_version" >> "$GITHUB_OUTPUT"
+            echo "release_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Publish unpublished packages
         if: hashFiles('.changeset/config.json') != ''
-        run: bun run changeset -- publish
-
-      - name: Finalize Changesets v3 tags and GitHub releases
-        if: hashFiles('.changeset/config.json') != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          git tag --points-at HEAD | while IFS= read -r tag; do
-            if [ -z "$tag" ]; then
-              continue
+          if ! node -e "const p=require('./package.json'); process.exit(p.ankh?.apm === undefined ? 1 : 0)"; then
+            package_name="$(node -p "require('./package.json').name")"
+            package_version="$(node -p "require('./package.json').version")"
+            registry_evidence="${RUNNER_TEMP}/npm-package-preflight.json"
+            package_absent=false
+
+            if npm view "$package_name" version --json > "$registry_evidence"; then
+              :
+            elif node -e "const p=require(process.argv[1]); if(p.error?.code !== 'E404') process.exit(1)" "$registry_evidence"; then
+              package_absent=true
+            else
+              echo "::error title=npm registry preflight failed::Could not determine whether $package_name already exists in npm. Refusing to treat an authentication or network failure as first-publish bootstrap."
+              exit 1
             fi
-            git push origin "refs/tags/$tag"
-            if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-              gh release create "$tag" --repo "$GITHUB_REPOSITORY" --generate-notes
+
+            if ! bun run changeset -- publish; then
+              if [ "$package_absent" = true ]; then
+                echo "::error title=npm scope publish access required::Initial publish of ${package_name}@${package_version} failed while the package is absent from npm. Verify that the configured npm publishing credential has Read and write (publish and stage) access to the @ankhorage scope or All Packages, then rerun Release. The already-versioned release commit on main is reusable; do not create another version bump. Bootstrap guidance: https://github.com/ankhorage/devtools/issues/225"
+              fi
+              exit 1
+            fi
+            exit 0
+          fi
+
+          package_name="$(node -p "require('./package.json').name")"
+          package_version="$(node -p "require('./package.json').version")"
+          registry_evidence="${RUNNER_TEMP}/apm-registry.json"
+          if npm view "${package_name}@${package_version}" version --json > "$registry_evidence"; then
+            echo "Exact APM owner version is already published."
+          else
+            # Authentication/network errors must never be treated as an unpublished version.
+            node -e "const p=require(process.argv[1]); if(p.error?.code !== 'E404') process.exit(1)" "$registry_evidence"
+            bun install --frozen-lockfile --ignore-scripts
+            bun run build
+            bun run test:apm
+            artifact="$(mktemp -d "${RUNNER_TEMP}/apm-publish.XXXXXX")/candidate.tgz"
+            ./node_modules/.bin/ankhorage-apm-release validate . --allow-owner-code --artifact "$artifact"
+            npm publish "$artifact" --ignore-scripts
+          fi
+      - name: Skip release tooling
+        if: hashFiles('.changeset/config.json') == ''
+        run: echo "No Changesets config found; skipping versioning and publishing."
+
+  verify-publication:
+    needs: release
+    if: needs.release.outputs.versioned == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Node for npm verification
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Verify published npm artifact from a fresh runner
+        env:
+          PUBLISHED_PACKAGE_NAME: ${{ needs.release.outputs.package_name }}
+          PUBLISHED_PACKAGE_VERSION: ${{ needs.release.outputs.package_version }}
+        run: |
+          set -euo pipefail
+          package_spec="${PUBLISHED_PACKAGE_NAME}@${PUBLISHED_PACKAGE_VERSION}"
+          registry_evidence="${RUNNER_TEMP}/npm-publish-verification.json"
+          artifact="${RUNNER_TEMP}/npm-publish-verification.tgz"
+          pack_dir="${RUNNER_TEMP}/npm-pack-verification"
+          max_attempts=60
+          retry_seconds=30
+          mkdir -p "$pack_dir"
+
+          last_stage="registry-metadata"
+          for attempt in $(seq 1 "$max_attempts"); do
+            echo "Verifying ${package_spec} on npm (attempt ${attempt}/${max_attempts})..."
+            last_stage="registry-metadata"
+
+            if npm view "$package_spec" version dist.tarball dist.integrity --json > "$registry_evidence"; then
+              resolved_version="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.version==='string'?p.version:'')" "$registry_evidence")"
+              tarball="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.['dist.tarball']==='string'?p['dist.tarball']:'')" "$registry_evidence")"
+              integrity="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.['dist.integrity']==='string'?p['dist.integrity']:'')" "$registry_evidence")"
+
+              if [ "$resolved_version" = "$PUBLISHED_PACKAGE_VERSION" ] && [ -n "$tarball" ] && [ -n "$integrity" ]; then
+                last_stage="tarball-download"
+                if curl --fail --location --silent --show-error --output "$artifact" "$tarball"; then
+                  last_stage="integrity"
+                  if EXPECTED_INTEGRITY="$integrity" ARTIFACT="$artifact" node -e "const { createHash }=require('node:crypto'); const { readFileSync }=require('node:fs'); const actual='sha512-'+createHash('sha512').update(readFileSync(process.env.ARTIFACT)).digest('base64'); if(actual!==process.env.EXPECTED_INTEGRITY){console.error('Downloaded npm tarball integrity mismatch.'); process.exit(1)}"; then
+                    last_stage="npm-pack"
+                    attempt_pack_dir="$pack_dir/attempt-${attempt}"
+                    mkdir -p "$attempt_pack_dir"
+                    if npm pack "$package_spec" --pack-destination "$attempt_pack_dir" >/dev/null; then
+                      echo "Verified ${package_spec}: metadata, integrity, tarball download, and npm pack are available."
+                      exit 0
+                    fi
+                  fi
+                fi
+              fi
+            fi
+
+            echo "Published npm artifact not ready at stage: ${last_stage}."
+            if [ "$attempt" -lt "$max_attempts" ]; then
+              sleep "$retry_seconds"
             fi
           done
 
+          echo "Published npm artifact did not become retrievable after ${max_attempts} attempts; last stage: ${last_stage}."
+          cat "$registry_evidence" 2>/dev/null || true
+          exit 1
+
+  finalize:
+    needs:
+      - release
+      - verify-publication
+    if: needs.release.outputs.versioned == 'true' && needs.verify-publication.result == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create the scoped release token
+        id: release-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
+          private-key: ${{ secrets.ANKHORAGE_RENOVATE_SYNC_PRIVATE_KEY }}
+          owner: ankhorage
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+
+      - name: Checkout exact release commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.release.outputs.release_sha }}
+          token: ${{ steps.release-token.outputs.token }}
+
+      - name: Finalize Changesets v3 tag and GitHub release
+        env:
+          GH_TOKEN: ${{ steps.release-token.outputs.token }}
+          PUBLISHED_PACKAGE_VERSION: ${{ needs.release.outputs.package_version }}
+          RELEASE_SHA: ${{ needs.release.outputs.release_sha }}
+        run: |
+          set -euo pipefail
+          tag="v${PUBLISHED_PACKAGE_VERSION}"
+          remote_sha="$(git ls-remote --tags origin "refs/tags/$tag" | cut -f1)"
+
+          if [ -n "$remote_sha" ]; then
+            if [ "$remote_sha" != "$RELEASE_SHA" ]; then
+              echo "Existing tag $tag points to $remote_sha, expected $RELEASE_SHA."
+              exit 1
+            fi
+          else
+            git tag "$tag" "$RELEASE_SHA"
+            git push origin "refs/tags/$tag"
+          fi
+
+          if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --generate-notes --target "$RELEASE_SHA"
+          fi
+
       - name: Create the scoped rollout token
         id: rollout-token
-        if: steps.release.outputs.versioned == 'true' && steps.release.outputs.package_name == '@ankhorage/devtools'
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
@@ -128,33 +316,37 @@ jobs:
           repositories: renovate
           permission-contents: write
 
-      - name: Trigger the Devtools consumer rollout
-        if: steps.release.outputs.versioned == 'true' && steps.release.outputs.package_name == '@ankhorage/devtools'
+      - name: Trigger the package consumer rollout
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          PUBLISHED_PACKAGE_NAME: ${{ steps.release.outputs.package_name }}
-          PUBLISHED_PACKAGE_VERSION: ${{ steps.release.outputs.package_version }}
+          PUBLISHED_PACKAGE_NAME: ${{ needs.release.outputs.package_name }}
+          PUBLISHED_PACKAGE_VERSION: ${{ needs.release.outputs.package_version }}
+          PUBLISHED_SOURCE_REPOSITORY: ${{ github.repository }}
         with:
           github-token: ${{ steps.rollout-token.outputs.token }}
           script: |
             const release = {
               name: process.env.PUBLISHED_PACKAGE_NAME,
               version: process.env.PUBLISHED_PACKAGE_VERSION,
+              sourceRepository: process.env.PUBLISHED_SOURCE_REPOSITORY,
             };
             if (
-              release.name !== '@ankhorage/devtools' ||
-              !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version)
+              !/^@ankhorage\/[a-z0-9][a-z0-9-]*$/.test(release.name ?? '') ||
+              !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version ?? '') ||
+              !/^ankhorage\/[a-z0-9-]+$/.test(release.sourceRepository ?? '')
             ) {
-              throw new Error('Changesets must report one exact published Devtools version.');
+              throw new Error(
+                'Changesets must report one exact published Ankhorage package identity.',
+              );
             }
 
             await github.rest.repos.createDispatchEvent({
               owner: 'ankhorage',
               repo: 'renovate',
-              event_type: 'devtools-release',
-              client_payload: { version: release.version },
+              event_type: 'package-release',
+              client_payload: {
+                package_name: release.name,
+                version: release.version,
+                source_repository: release.sourceRepository,
+              },
             });
-
-      - name: Skip release tooling
-        if: hashFiles('.changeset/config.json') == ''
-        run: echo "No Changesets config found; skipping versioning and publishing."
