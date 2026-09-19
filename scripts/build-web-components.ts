@@ -55,10 +55,16 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
   const bundlePath = join(outputDirectory, bundleName);
   const bundle = await readFile(bundlePath, 'utf8');
   const normalizedBundle = artifact.client ? normalizeClientDirective(bundle) : bundle;
-  if (normalizedBundle.includes('jsxDEV') || normalizedBundle.includes('react/jsx-dev-runtime')) {
+  if (
+    normalizedBundle.includes('jsxDEV') ||
+    normalizedBundle.includes('react/jsx-dev-runtime')
+  ) {
     throw new Error('Web component artifacts must use the production React JSX runtime.');
   }
-  if (normalizedBundle.includes("from 'web-worker'") || normalizedBundle.includes('require("web-worker")')) {
+  if (
+    normalizedBundle.includes("from 'web-worker'") ||
+    normalizedBundle.includes('require("web-worker")')
+  ) {
     throw new Error('Web component artifacts must not expose the optional Node web-worker import.');
   }
   if (artifact.client && !normalizedBundle.startsWith("'use client';\n")) {
@@ -83,7 +89,6 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
     'utf8',
   );
 }
-
 
 /** Hoist one client directive to the start of a bundled client artifact. */
 function normalizeClientDirective(bundle: string): string {
