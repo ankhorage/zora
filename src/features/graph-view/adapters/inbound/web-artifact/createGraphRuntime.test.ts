@@ -1,7 +1,7 @@
+import './createGraphRuntime';
+
 import { expect, test } from 'bun:test';
 import cytoscape from 'cytoscape';
-
-import './createGraphRuntime';
 
 test('registers ELK with a Cytoscape-compatible layout constructor', () => {
   const cy = cytoscape({
