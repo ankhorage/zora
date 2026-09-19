@@ -1,13 +1,13 @@
 import type { Core } from 'cytoscape';
 
-import type { GraphViewEdge, GraphViewNode } from './GraphView';
 import { createRenderableGraphElements } from './createRenderableGraphElements';
+import type { GraphViewEdge, GraphViewNode } from './GraphView';
 
 /*** Replace Cytoscape elements from the current plain graph projection in one batch. */
 export function syncGraphElements(
   cy: Core,
   nodes: readonly GraphViewNode[],
-  edges: readonly GraphViewEdge[]
+  edges: readonly GraphViewEdge[],
 ) {
   if (cy.destroyed()) return;
 
