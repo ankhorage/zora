@@ -21,7 +21,6 @@ interface PackageRootOwner {
 
 const require = createRequire(import.meta.url);
 const reactNativeWebEntry = require.resolve('react-native-web');
-const elkWebEntry = require.resolve('elkjs/lib/elk.bundled.js');
 const safeAreaPackageRoot = dirname(require.resolve('react-native-safe-area-context/package.json'));
 const safeAreaPackage = require('react-native-safe-area-context/package.json') as {
   readonly module?: string;
@@ -218,7 +217,6 @@ function createWebPackageAliasPlugin() {
         NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
       >[0],
     ) {
-      build.onResolve({ filter: /^elkjs$/ }, () => ({ path: elkWebEntry }));
       build.onResolve({ filter: /^react-native$/ }, () => ({ path: reactNativeWebEntry }));
       build.onResolve({ filter: /^react-native-safe-area-context$/ }, () => ({
         path: safeAreaEntry,
