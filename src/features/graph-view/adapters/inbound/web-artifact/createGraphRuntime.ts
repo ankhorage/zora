@@ -1,6 +1,13 @@
-import cytoscape, { type Core, type CytoscapeOptions, type StylesheetJson } from 'cytoscape';
+import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
 import elk from 'cytoscape-elk';
 
+import { bindGraphEvents } from './bindGraphEvents';
+import { createGraphController } from './createGraphController';
+import {
+  createGraphResizeObserver,
+  type GraphResizeObserver,
+} from './createGraphResizeObserver';
+import { fitGraphViewport } from './fitGraphViewport';
 import type {
   GraphViewCallbacks,
   GraphViewEdge,
@@ -11,13 +18,6 @@ import type {
   GraphViewSize,
   GraphViewStyleRule,
 } from './GraphView';
-import { bindGraphEvents } from './bindGraphEvents';
-import { createGraphController } from './createGraphController';
-import {
-  createGraphResizeObserver,
-  type GraphResizeObserver,
-} from './createGraphResizeObserver';
-import { fitGraphViewport } from './fitGraphViewport';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { runGraphLayout } from './runGraphLayout';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
@@ -52,6 +52,7 @@ export interface GraphRuntime {
 
 interface GraphRuntimeState {
   readonly callbacksRef: { current: GraphViewCallbacks };
+  readonly controller: ReturnType<typeof createGraphController>;
   readonly cy: Core;
   readonly fitPaddingRef: { current: number };
   readonly generationRef: { current: number };
@@ -65,13 +66,12 @@ interface GraphRuntimeState {
   readonly renderedNodeListeners: Set<RenderedNodeListener>;
   readonly resizeObserver: GraphResizeObserver | null;
   readonly unbindEvents: () => void;
-  readonly controller: ReturnType<typeof createGraphController>;
 }
 
 /*** Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal. */
 export function createGraphRuntime(
   container: GraphContainer,
-  callbacksRef: { current: GraphViewCallbacks }
+  callbacksRef: { current: GraphViewCallbacks },
 ): GraphRuntime {
   const cy = cytoscape({
     container,
@@ -97,7 +97,7 @@ export function createGraphRuntime(
 function createRuntimeState(
   cy: Core,
   container: GraphContainer,
-  callbacksRef: { current: GraphViewCallbacks }
+  callbacksRef: { current: GraphViewCallbacks },
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
   const controller = createGraphController(cy, fitPaddingRef);
@@ -120,7 +120,7 @@ function createRuntimeState(
     renderedNodeListeners,
   };
   const unbindEvents = bindGraphEvents(cy, callbacksRef, controller, () =>
-    emitRenderedNodes(stateBase)
+    emitRenderedNodes(stateBase),
   );
   const resizeObserver = createGraphResizeObserver({
     container,
@@ -161,7 +161,7 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
       layoutOptions: input.layoutOptions,
       spacingFactor: input.spacingFactor ?? 1,
     },
-    () => completeCurrentLayout(state, generation)
+    () => completeCurrentLayout(state, generation),
   );
 }
 
@@ -196,7 +196,7 @@ function stopCurrentLayout(state: GraphRuntimeState) {
 function applyGraphStyles(
   cy: Core,
   rules: readonly GraphViewStyleRule[] | undefined,
-  richNodeRendering: boolean
+  richNodeRendering: boolean,
 ) {
   const styles = [...(rules ?? [])];
   if (richNodeRendering) {
@@ -210,7 +210,7 @@ function applyGraphStyles(
       },
     });
   }
-  if (styles.length > 0) cy.style(styles as StylesheetJson).update();
+  if (styles.length > 0) cy.style(styles).update();
 }
 
 /*** Synchronize controlled selection without rerunning layout. */
@@ -262,15 +262,14 @@ function scheduleMeasuredNodeRelayout(state: GraphRuntimeState) {
 function subscribeRenderedNodes(state: GraphRuntimeState, listener: RenderedNodeListener) {
   state.renderedNodeListeners.add(listener);
   listener(readGraphRenderedNodes(state.cy, state.hoveredNodeIds));
-  return () => state.renderedNodeListeners.delete(listener);
+  return () => {
+    state.renderedNodeListeners.delete(listener);
+  };
 }
 
 /*** Publish current rendered node positions only to active rich-node subscribers. */
 function emitRenderedNodes(
-  state: Pick<
-    GraphRuntimeState,
-    'cy' | 'hoveredNodeIds' | 'renderedNodeListeners'
-  >
+  state: Pick<GraphRuntimeState, 'cy' | 'hoveredNodeIds' | 'renderedNodeListeners'>,
 ) {
   if (state.renderedNodeListeners.size === 0) return;
   const nodes = readGraphRenderedNodes(state.cy, state.hoveredNodeIds);
@@ -281,7 +280,7 @@ function emitRenderedNodes(
 function handleOverlayNodeEvent(
   state: GraphRuntimeState,
   id: string,
-  type: GraphViewElementEventType
+  type: GraphViewElementEventType,
 ) {
   if (type === 'pointer-enter') state.hoveredNodeIds.add(id);
   if (type === 'pointer-leave') state.hoveredNodeIds.delete(id);
