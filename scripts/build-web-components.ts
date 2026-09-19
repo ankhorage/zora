@@ -10,10 +10,7 @@ await mkdir(treeViewOutput, { recursive: true });
 
 const buildResult = await Bun.build({
   entrypoints: [
-    join(
-      repositoryRoot,
-      'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
-    ),
+    join(repositoryRoot, 'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx'),
   ],
   outdir: treeViewOutput,
   target: 'browser',
@@ -28,9 +25,6 @@ if (!buildResult.success) {
 }
 
 await copyFile(
-  join(
-    repositoryRoot,
-    'dist/features/tree-view/adapters/inbound/web-artifact/TreeView.d.ts',
-  ),
+  join(repositoryRoot, 'dist/features/tree-view/adapters/inbound/web-artifact/TreeView.d.ts'),
   join(treeViewOutput, 'TreeView.d.ts'),
 );
