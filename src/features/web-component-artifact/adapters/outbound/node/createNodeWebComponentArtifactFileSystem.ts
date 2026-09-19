@@ -1,10 +1,14 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import type { WebComponentArtifactFileSystemPort } from '../../../application/ports/outbound/WebComponentArtifactFileSystemPort';
 
 /*** Create the Node filesystem adapter used by ZORA web-component materialization. */
 export function createNodeWebComponentArtifactFileSystem(): WebComponentArtifactFileSystemPort {
   return {
+    joinPath(...parts) {
+      return join(...parts);
+    },
     async ensureDirectoryAsync(path) {
       await mkdir(path, { recursive: true });
     },
