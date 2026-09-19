@@ -8,14 +8,13 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
   const hasChildren = node.children !== undefined && node.children.length > 0;
   const expanded = props.expandedIds.includes(node.id);
   const selected = props.selectedId === node.id;
-  const content =
-    props.renderItem?.({
-      node,
-      depth: props.depth,
-      selected,
-      expanded,
-      hasChildren,
-    }) ?? <TreeItemDefaultContent node={node} />;
+  const content = props.renderItem?.({
+    node,
+    depth: props.depth,
+    selected,
+    expanded,
+    hasChildren,
+  }) ?? <TreeItemDefaultContent node={node} />;
 
   return (
     <>
