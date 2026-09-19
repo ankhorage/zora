@@ -5,7 +5,7 @@ import type { GraphViewRenderedNode } from './GraphView';
 /*** Read React-overlay node state from Cytoscape's authoritative rendered positions. */
 export function readGraphRenderedNodes(
   cy: Core,
-  hoveredNodeIds: ReadonlySet<string>
+  hoveredNodeIds: ReadonlySet<string>,
 ): readonly GraphViewRenderedNode[] {
   if (cy.destroyed()) return [];
   const zoom = cy.zoom();
