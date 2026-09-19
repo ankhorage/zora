@@ -143,14 +143,40 @@ async function validateBundle(target: WebArtifactTarget, bundlePath: string): Pr
   }
 }
 
-/*** Write an exact specialized declaration or a portable declaration for generic exports. */
+/*** Write an exact standalone declaration or fall back to the dependency-light portable contract. */
 async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
   const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
-  if (target.declarationSource !== undefined) {
-    await copyFile(target.declarationSource, outputPath);
+  if (target.declarationSource === undefined) {
+    await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
     return;
   }
-  await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
+
+  const source = await readFile(target.declarationSource, 'utf8');
+  if (findUnsupportedDeclarationImport(source) !== undefined) {
+    await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
+    return;
+  }
+
+  await copyFile(target.declarationSource, outputPath);
+}
+
+/*** Find a declaration import that would make a materialized artifact depend on unavailable source. */
+function findUnsupportedDeclarationImport(source: string): string | undefined {
+  const matches = source.matchAll(/(?:from\s+|import\()(["'])([^"']+)\1/g);
+  for (const match of matches) {
+    const specifier = match[2];
+    if (specifier === undefined) continue;
+    if (
+      specifier === 'react' ||
+      specifier.startsWith('react/') ||
+      specifier === 'react-dom' ||
+      specifier.startsWith('react-dom/')
+    ) {
+      continue;
+    }
+    return specifier;
+  }
+  return undefined;
 }
 
 /*** Create dependency-light declarations for every runtime export sharing the feature facade. */
