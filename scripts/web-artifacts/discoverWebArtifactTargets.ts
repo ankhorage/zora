@@ -65,11 +65,14 @@ async function discoverEntryTargets(
     const exportName = exportSymbol.getName();
     if (exportName === 'default') return [];
 
+    const runtimeKind = resolveRuntimeKind(checker, resolvedSymbol, exportName);
+    if (runtimeKind !== 'component') return [];
+
     return [
       {
         exportName,
         resolvedSymbol,
-        runtimeKind: resolveRuntimeKind(checker, resolvedSymbol, exportName),
+        runtimeKind,
       },
     ];
   });
