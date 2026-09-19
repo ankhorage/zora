@@ -9,10 +9,7 @@ test('materializes the packaged tree-view web artifact without source ownership 
   const writes = new Map<string, string>();
   const sources = new Map<string, string>([
     ['/package/web-dist/tree-view/TreeView.js', 'export const TreeView = 1;\n'],
-    [
-      '/package/web-dist/tree-view/TreeView.d.ts',
-      'export declare const TreeView: unknown;\n',
-    ],
+    ['/package/web-dist/tree-view/TreeView.d.ts', 'export declare const TreeView: unknown;\n'],
   ]);
   const fileSystem = createFakeFileSystem(sources, writes);
 
@@ -42,9 +39,10 @@ test('materializes the packaged tree-view web artifact without source ownership 
 
 test('rejects unsupported web components explicitly', async () => {
   const fileSystem = createFakeFileSystem(new Map(), new Map());
+  let caught: unknown;
 
-  await expect(
-    materializeWebComponentArtifactAsync(
+  try {
+    await materializeWebComponentArtifactAsync(
       {
         component: 'unknown',
         outputDirectory: '/consumer',
@@ -52,8 +50,13 @@ test('rejects unsupported web components explicitly', async () => {
         packageVersion: '1.2.3',
       },
       fileSystem,
-    ),
-  ).rejects.toThrow('Unsupported ZORA web component: unknown');
+    );
+  } catch (error) {
+    caught = error;
+  }
+
+  expect(caught).toBeInstanceOf(Error);
+  expect((caught as Error).message).toBe('Unsupported ZORA web component: unknown');
 });
 
 /*** Create a portable fake for the artifact filesystem port. */
@@ -65,14 +68,17 @@ function createFakeFileSystem(
     joinPath(...parts) {
       return parts.join('/').replaceAll('//', '/');
     },
-    async ensureDirectoryAsync() {},
-    async readTextFileAsync(path) {
-      const source = sources.get(path);
-      if (source === undefined) throw new Error(`Missing test source: ${path}`);
-      return source;
+    ensureDirectoryAsync() {
+      return Promise.resolve();
     },
-    async writeTextFileAsync(path, content) {
+    readTextFileAsync(path) {
+      const source = sources.get(path);
+      if (source === undefined) return Promise.reject(new Error(`Missing test source: ${path}`));
+      return Promise.resolve(source);
+    },
+    writeTextFileAsync(path, content) {
       writes.set(path, content);
+      return Promise.resolve();
     },
   };
 }
