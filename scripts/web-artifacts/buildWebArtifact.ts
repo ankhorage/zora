@@ -52,13 +52,44 @@ function createManifestEntry(target: WebArtifactTarget): WebArtifactManifestEntr
   };
 }
 
-/*** Create one feature-runtime entrypoint so composing exports share their internal contexts. */
+/*** Create one self-contained browser entrypoint for a generated ZORA artifact. */
 function createEntrypoint(target: WebArtifactTarget, entrypointDirectory: string): string {
   const source = toModuleSpecifier(relative(entrypointDirectory, target.sourceEntry));
   const exportNames = target.runtimeExports
     .map((runtimeExport) => runtimeExport.exportName)
     .join(', ');
-  return `export { ${exportNames} } from ${JSON.stringify(source)};\n`;
+  if (target.sourceKind === 'web-artifact') {
+    return `export { ${exportNames} } from ${JSON.stringify(source)};\n`;
+  }
+
+  const imports = target.runtimeExports
+    .map(
+      (runtimeExport) => `${runtimeExport.exportName} as Canonical${runtimeExport.exportName}`,
+    )
+    .join(', ');
+  const wrappers = target.runtimeExports.map(createResponsiveRuntimeWrapper).join('\n\n');
+  return [
+    "import React from 'react';",
+    "import { ResponsiveProvider } from '@ankhorage/surface';",
+    `import { ${imports} } from ${JSON.stringify(source)};`,
+    '',
+    wrappers,
+    '',
+  ].join('\n');
+}
+
+/*** Wrap one public component with the responsive runtime bundled into the same artifact. */
+function createResponsiveRuntimeWrapper(runtimeExport: WebArtifactRuntimeExport): string {
+  const exportName = runtimeExport.exportName;
+  return [
+    `export function ${exportName}(props: Record<string, unknown>) {`,
+    '  return React.createElement(',
+    '    ResponsiveProvider,',
+    '    null,',
+    `    React.createElement(Canonical${exportName}, props),`,
+    '  );',
+    '}',
+  ].join('\n');
 }
 
 /*** Bundle one browser artifact with React/ReactDOM as its only allowed runtime peers. */
