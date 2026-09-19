@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.4
+
+### Patch Changes
+
+- 03ccf1d: Update Ankhorage dependencies: `@ankhorage/surface`.
+
 ## 20.2.3
 
 ### Patch Changes
