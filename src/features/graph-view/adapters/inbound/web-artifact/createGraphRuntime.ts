@@ -1,5 +1,5 @@
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
-import elk from 'cytoscape-elk';
+import elk from 'cytoscape-elk/src/index.js';
 
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
