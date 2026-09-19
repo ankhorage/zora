@@ -18,6 +18,7 @@ import type {
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { runGraphLayout } from './runGraphLayout';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
+import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import { syncGraphElements } from './syncGraphElements';
 
 cytoscape.use(elk as cytoscape.Ext);
@@ -170,7 +171,8 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.cy.resize();
     state.layoutRunningRef.current = false;
     if (!hasUsableViewport(state.cy)) return;
-    fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
+    const shouldFit = shouldFitGraphAfterLayout(state.readyRef.current);
+    if (shouldFit) fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
     emitRenderedNodes(state);
 
     if (!state.readyRef.current) {
