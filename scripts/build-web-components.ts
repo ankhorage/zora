@@ -10,12 +10,14 @@ const artifacts = [
     declaration: 'dist/features/tree-view/adapters/inbound/web-artifact/TreeView.d.ts',
     entrypoint: 'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
     outputName: 'TreeView',
+    client: false,
   },
   {
     component: 'graph-view',
     declaration: 'dist/features/graph-view/adapters/inbound/web-artifact/GraphView.d.ts',
     entrypoint: 'src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx',
     outputName: 'GraphView',
+    client: true,
   },
 ] as const;
 
@@ -34,6 +36,7 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
     format: 'esm',
     splitting: false,
     minify: false,
+    banner: artifact.client ? "'use client';" : undefined,
     external: ['react', 'react/jsx-runtime'],
     jsx: {
       development: false,
@@ -53,6 +56,12 @@ async function buildWebArtifact(artifact: (typeof artifacts)[number]) {
   const bundle = await readFile(join(outputDirectory, bundleName), 'utf8');
   if (bundle.includes('jsxDEV') || bundle.includes('react/jsx-dev-runtime')) {
     throw new Error('Web component artifacts must use the production React JSX runtime.');
+  }
+  if (bundle.includes("from 'web-worker'") || bundle.includes('require("web-worker")')) {
+    throw new Error('Web component artifacts must not expose the optional Node web-worker import.');
+  }
+  if (artifact.client && !bundle.startsWith("'use client';")) {
+    throw new Error('Client web component artifacts must start with the client directive.');
   }
 
   await copyFile(
