@@ -18,7 +18,7 @@ export interface GraphResizeObserver {
 
 /*** Observe settled container resizing without racing an active layout generation. */
 export function createGraphResizeObserver(
-  input: CreateGraphResizeObserverInput
+  input: CreateGraphResizeObserverInput,
 ): GraphResizeObserver | null {
   const Observer = readResizeObserverConstructor();
   if (Observer === null) return null;
@@ -49,7 +49,7 @@ function scheduleResizeFit(input: CreateGraphResizeObserverInput) {
 /*** Return whether ResizeObserver reported a genuinely different container size. */
 function hasSizeChanged(
   previous: { readonly height: number; readonly width: number },
-  next: { readonly height: number; readonly width: number }
+  next: { readonly height: number; readonly width: number },
 ): boolean {
   return previous.height !== next.height || previous.width !== next.width;
 }
@@ -75,6 +75,6 @@ interface ResizeObserverLike extends GraphResizeObserver {
   observe(target: unknown): void;
 }
 
-interface ResizeObserverConstructorLike {
-  new (callback: (entries: readonly ResizeObserverEntryLike[]) => void): ResizeObserverLike;
-}
+type ResizeObserverConstructorLike = new (
+  callback: (entries: readonly ResizeObserverEntryLike[]) => void,
+) => ResizeObserverLike;
