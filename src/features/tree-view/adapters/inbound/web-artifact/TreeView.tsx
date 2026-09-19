@@ -35,38 +35,49 @@ export interface TreeViewProps<TId extends string = string> {
 }
 
 /*** Render the standalone browser TreeView artifact without React Native runtime dependencies. */
-export function TreeView<TId extends string = string>(props: TreeViewProps<TId>) {
+export function TreeView<TId extends string = string>({
+  nodes,
+  selectedId,
+  expandedIds: controlledExpandedIds,
+  defaultExpandedIds,
+  onSelect,
+  onExpandedChange,
+  renderItem,
+  className,
+  style,
+  ariaLabel = 'Tree',
+}: TreeViewProps<TId>) {
   const [internalExpandedIds, setInternalExpandedIds] = React.useState<readonly TId[]>(
-    props.defaultExpandedIds ?? [],
+    defaultExpandedIds ?? [],
   );
-  const isControlled = props.expandedIds !== undefined;
-  const expandedIds = isControlled ? props.expandedIds : internalExpandedIds;
+  const isControlled = controlledExpandedIds !== undefined;
+  const expandedIds = isControlled ? controlledExpandedIds : internalExpandedIds;
   const handleToggleExpand = React.useCallback(
     (id: TId) => {
       const nextExpandedIds = toggleExpandedIds(expandedIds, id);
       if (!isControlled) setInternalExpandedIds(nextExpandedIds);
-      props.onExpandedChange?.(nextExpandedIds);
+      onExpandedChange?.(nextExpandedIds);
     },
-    [expandedIds, isControlled, props.onExpandedChange],
+    [expandedIds, isControlled, onExpandedChange],
   );
 
   return (
     <div
-      aria-label={props.ariaLabel ?? 'Tree'}
-      className={props.className}
+      aria-label={ariaLabel}
+      className={className}
       role="tree"
-      style={{ ...TREE_STYLE, ...props.style }}
+      style={{ ...TREE_STYLE, ...style }}
     >
-      {props.nodes.map((node) => (
+      {nodes.map((node) => (
         <TreeItemRow
           key={node.id}
           depth={0}
           expandedIds={expandedIds}
           node={node}
-          onSelect={props.onSelect}
+          onSelect={onSelect}
           onToggleExpand={handleToggleExpand}
-          renderItem={props.renderItem}
-          selectedId={props.selectedId}
+          renderItem={renderItem}
+          selectedId={selectedId}
         />
       ))}
     </div>
