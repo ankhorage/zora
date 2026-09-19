@@ -248,18 +248,26 @@ async function resolveWebPlatformPath(
   resolveDirectory: string,
   specifier: string,
 ): Promise<string | undefined> {
-  if (/\.[cm]?[jt]sx?$/.test(specifier)) return undefined;
-  const basePath = join(resolveDirectory, specifier);
-  const candidates = [
-    `${basePath}.web.tsx`,
-    `${basePath}.web.ts`,
-    `${basePath}.web.jsx`,
-    `${basePath}.web.js`,
-    join(basePath, 'index.web.tsx'),
-    join(basePath, 'index.web.ts'),
-    join(basePath, 'index.web.jsx'),
-    join(basePath, 'index.web.js'),
-  ];
+  if (/\.web\.[cm]?[jt]sx?$/.test(specifier)) return undefined;
+
+  const extension = specifier.match(/\.[cm]?[jt]sx?$/)?.[0];
+  const sourceSpecifier =
+    extension === undefined ? specifier : specifier.slice(0, -extension.length);
+  const basePath = join(resolveDirectory, sourceSpecifier);
+  const candidates =
+    extension === undefined
+      ? [
+          `${basePath}.web.tsx`,
+          `${basePath}.web.ts`,
+          `${basePath}.web.jsx`,
+          `${basePath}.web.js`,
+          join(basePath, 'index.web.tsx'),
+          join(basePath, 'index.web.ts'),
+          join(basePath, 'index.web.jsx'),
+          join(basePath, 'index.web.js'),
+        ]
+      : [`${basePath}.web${extension}`];
+
   for (const candidate of candidates) {
     if (await pathExists(candidate)) return candidate;
   }
