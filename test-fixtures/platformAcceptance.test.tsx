@@ -68,6 +68,7 @@ const { BottomSheet } = await import('../src/features/bottom-sheet/public');
 const { FlatList, SectionList } = await import('../src/features/list/public');
 const { Uploader } = await import('../src/features/uploader/public');
 const { ChipGroup } = await import('../src/features/chip/public');
+const { TreeView } = await import('../src/features/tree-view/public');
 
 test('Uploader emits serializable pick, validation, and removal events without transport callbacks', async () => {
   const browserWindow = new Window({ url: 'https://zora.test/' });
@@ -185,6 +186,53 @@ test('native lists render arbitrary children and declarative sections through pu
     'Intrinsic item',
   ])
     expect(markup).toContain(label);
+});
+
+test('TreeView default rows render icons and emit selection on RN Web', async () => {
+  const browserWindow = new Window({ url: 'https://zora.test/' });
+  Object.assign(globalThis, {
+    IS_REACT_ACT_ENVIRONMENT: true,
+    Node: browserWindow.Node,
+    document: browserWindow.document,
+    navigator: browserWindow.navigator,
+    window: browserWindow,
+  });
+  const { createRoot } = await import('react-dom/client');
+  const container = document.createElement('div');
+  document.body.append(container);
+  const root = createRoot(container);
+  const selections: string[] = [];
+
+  try {
+    await act(async () => {
+      root.render(
+        <ZoraProvider>
+          <TreeView
+            nodes={[{ id: 'src', label: 'src', icon: { name: 'folder-outline' } }]}
+            onSelect={(id) => selections.push(id)}
+          />
+        </ZoraProvider>,
+      );
+    });
+
+    expect(container.innerHTML).toContain('font-family:Ionicons');
+    const row = Array.from(container.querySelectorAll('[role="button"],button')).find((element) =>
+      element.textContent?.includes('src'),
+    );
+    if (!row) throw new Error('Missing selectable TreeView row');
+
+    await act(async () => {
+      row.dispatchEvent(new browserWindow.MouseEvent('click', { bubbles: true }));
+    });
+    expect(selections).toEqual(['src']);
+  } finally {
+    await act(async () => {
+      root.unmount();
+    });
+    browserWindow.close();
+    for (const key of ['IS_REACT_ACT_ENVIRONMENT', 'Node', 'document', 'navigator', 'window'])
+      Reflect.deleteProperty(globalThis, key);
+  }
 });
 
 test('keyboard avoiding view renders portable content through the native boundary', () => {
