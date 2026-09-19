@@ -2,10 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type {
-  AnkhCapabilityId,
-  AnkhCommandProviderManifest,
-} from '@ankhorage/contracts/cli';
+import type { AnkhCapabilityId, AnkhCommandProviderManifest } from '@ankhorage/contracts/cli';
 
 import { create } from './commands/create';
 
