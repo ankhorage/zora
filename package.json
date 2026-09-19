@@ -142,9 +142,7 @@
     "react-native-svg": "15.15.4",
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.10.1",
-    "typescript": "~6.0.3",
-    "cytoscape": "^3.34.3",
-    "cytoscape-elk": "^2.3.0"
+    "typescript": "~6.0.3"
   },
   "packageManager": "bun@1.4.2",
   "ankh": {
