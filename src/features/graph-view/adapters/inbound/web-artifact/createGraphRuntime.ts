@@ -5,6 +5,7 @@ import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { fitGraphViewport } from './fitGraphViewport';
+import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import type {
   GraphViewCallbacks,
   GraphViewEdge,
@@ -170,7 +171,8 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.cy.resize();
     state.layoutRunningRef.current = false;
     if (!hasUsableViewport(state.cy)) return;
-    fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
+    const shouldFit = shouldFitGraphAfterLayout(state.readyRef.current);
+    if (shouldFit) fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
     emitRenderedNodes(state);
 
     if (!state.readyRef.current) {
