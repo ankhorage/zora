@@ -59,7 +59,9 @@ function bindElementEvents(
 
 /*** Return whether a Cytoscape event target exposes the element identifier contract. */
 function isGraphEventTarget(value: unknown): value is GraphEventTarget {
-  return typeof value === 'object' && value !== null && 'id' in value && typeof value.id === 'function';
+  return (
+    typeof value === 'object' && value !== null && 'id' in value && typeof value.id === 'function'
+  );
 }
 
 interface GraphEventTarget {
