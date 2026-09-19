@@ -190,7 +190,7 @@ async function writeArtifactManifest(
 
 /*** Find a bare runtime import that should have been bundled into the artifact. */
 function findUnsupportedRuntimeImport(source: string): string | undefined {
-  const matches = source.matchAll(/(?:from\s+|import\()(["'])([^"'./][^"']*)\1/g);
+  const matches = source.matchAll(/(?:from\s+|import\(|require\()(["'])([^"'./][^"']*)\1/g);
   for (const match of matches) {
     const specifier = match[2];
     if (
