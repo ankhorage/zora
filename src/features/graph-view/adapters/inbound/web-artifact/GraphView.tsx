@@ -160,13 +160,7 @@ function useGraphViewRuntime(props: GraphViewProps) {
 /*** Keep the callback ref current without mutating refs during render. */
 function useGraphCallbacksRef(props: GraphViewProps) {
   const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
-  const {
-    onEdgeEvent,
-    onLayoutComplete,
-    onNodeEvent,
-    onReady,
-    onViewportChange,
-  } = props;
+  const { onEdgeEvent, onLayoutComplete, onNodeEvent, onReady, onViewportChange } = props;
 
   React.useEffect(() => {
     callbacksRef.current = {
