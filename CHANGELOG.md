@@ -1,5 +1,13 @@
 # Changelog
 
+## 20.3.0
+
+### Minor Changes
+
+- 2f745fe: Discover public runtime exports under `src/features/**/public.ts` automatically and publish each
+  one as a materializable standalone web artifact, while preserving specialized TreeView and GraphView
+  browser adapters by convention.
+
 ## 20.2.5
 
 ### Patch Changes
