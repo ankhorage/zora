@@ -20,7 +20,7 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
   return (
     <>
       <div
-        aria-disabled={node.disabled || undefined}
+        aria-disabled={node.disabled === true ? true : undefined}
         aria-expanded={hasChildren ? expanded : undefined}
         aria-selected={selected}
         onClick={() => selectNode(props)}
@@ -54,7 +54,11 @@ interface TreeItemRowProps<TId extends string> {
 }
 
 /*** Render the default browser tree-row label, icon, and metadata. */
-function TreeItemDefaultContent<TId extends string>({ node }: { readonly node: TreeItemNode<TId> }) {
+function TreeItemDefaultContent<TId extends string>({
+  node,
+}: {
+  readonly node: TreeItemNode<TId>;
+}) {
   return (
     <>
       {node.icon === undefined ? null : (
@@ -110,12 +114,7 @@ function TreeItemChildren<TId extends string>(props: TreeItemRowProps<TId>) {
   return (
     <div role="group">
       {props.node.children?.map((child) => (
-        <TreeItemRow
-          {...props}
-          key={child.id}
-          depth={props.depth + 1}
-          node={child}
-        />
+        <TreeItemRow {...props} key={child.id} depth={props.depth + 1} node={child} />
       ))}
     </div>
   );
