@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.1.0
+
+### Minor Changes
+
+- e915d65: Add Ankh CLI web-only component materialization, starting with TreeView, and wire TreeView default-row selection and icons.
+
 ## 20.0.2
 
 ### Patch Changes
