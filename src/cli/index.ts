@@ -1,4 +1,6 @@
 import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import type {
   AnkhCapabilityId,
@@ -40,7 +42,7 @@ export default provider;
 /*** Read the installed ZORA version for the Ankh provider manifest. */
 function readPackageVersion(): string {
   const packageJson = JSON.parse(
-    readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
+    readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../../package.json'), 'utf8'),
   ) as { readonly version?: unknown };
 
   if (typeof packageJson.version !== 'string' || packageJson.version.trim() === '') {
