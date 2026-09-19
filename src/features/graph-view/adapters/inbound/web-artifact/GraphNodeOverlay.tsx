@@ -63,7 +63,7 @@ interface MeasuredGraphNodeProps {
 
 /*** Measure one rich node at model scale and translate its DOM interactions into graph events. */
 function MeasuredGraphNode(props: MeasuredGraphNodeProps) {
-  const elementRef = React.useRef<MeasuredElement | null>(null);
+  const elementRef = React.useRef<HTMLDivElement | null>(null);
   const { node, onNodeSize, renderedNode } = props;
 
   React.useLayoutEffect(() => {
