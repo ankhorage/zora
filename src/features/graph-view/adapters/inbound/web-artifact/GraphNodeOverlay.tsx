@@ -22,7 +22,7 @@ interface GraphNodeOverlayProps {
 export function GraphNodeOverlay(props: GraphNodeOverlayProps) {
   const nodesById = React.useMemo(
     () => new Map(props.nodes.map((node) => [node.id, node] as const)),
-    [props.nodes]
+    [props.nodes],
   );
 
   return (
@@ -110,7 +110,7 @@ function MeasuredGraphNode(props: MeasuredGraphNodeProps) {
 function reportElementSize(
   element: unknown,
   nodeId: string,
-  onNodeSize: (id: string, size: GraphViewSize) => void
+  onNodeSize: (id: string, size: GraphViewSize) => void,
 ) {
   const measured = element as {
     readonly offsetHeight?: unknown;
@@ -139,6 +139,4 @@ interface ResizeObserverLike {
   observe(target: unknown): void;
 }
 
-interface ResizeObserverConstructorLike {
-  new (callback: () => void): ResizeObserverLike;
-}
+type ResizeObserverConstructorLike = new (callback: () => void) => ResizeObserverLike;
