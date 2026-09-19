@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.0.3",
+    "@ankhorage/contracts": "^22.0.4",
     "@ankhorage/surface": "^9.0.4",
     "@ankhorage/utility": "^1.4.0",
     "expo-document-picker": "~57.0.1",
