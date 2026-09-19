@@ -26,6 +26,7 @@ function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | n
       picker.accept = input.accept;
     }
 
+    /*** Completes one browser picker request and removes its transient input. */
     const finish = (asset: UploadAsset | null) => {
       picker.remove();
       resolve(asset);
