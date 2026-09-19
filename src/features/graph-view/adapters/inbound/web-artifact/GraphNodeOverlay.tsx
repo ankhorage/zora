@@ -108,14 +108,19 @@ function MeasuredGraphNode(props: MeasuredGraphNodeProps) {
 
 /*** Report unscaled DOM dimensions only when a measurable node has positive size. */
 function reportElementSize(
-  element: MeasuredElement,
+  element: unknown,
   nodeId: string,
   onNodeSize: (id: string, size: GraphViewSize) => void
 ) {
-  if (element.offsetWidth <= 0 || element.offsetHeight <= 0) return;
+  const measured = element as {
+    readonly offsetHeight?: unknown;
+    readonly offsetWidth?: unknown;
+  };
+  if (typeof measured.offsetWidth !== 'number' || typeof measured.offsetHeight !== 'number') return;
+  if (measured.offsetWidth <= 0 || measured.offsetHeight <= 0) return;
   onNodeSize(nodeId, {
-    width: element.offsetWidth,
-    height: element.offsetHeight,
+    width: measured.offsetWidth,
+    height: measured.offsetHeight,
   });
 }
 
@@ -129,14 +134,9 @@ function readResizeObserverConstructor(): ResizeObserverConstructorLike | null {
   return observer ?? null;
 }
 
-interface MeasuredElement {
-  readonly offsetHeight: number;
-  readonly offsetWidth: number;
-}
-
 interface ResizeObserverLike {
   disconnect(): void;
-  observe(target: MeasuredElement): void;
+  observe(target: unknown): void;
 }
 
 interface ResizeObserverConstructorLike {
