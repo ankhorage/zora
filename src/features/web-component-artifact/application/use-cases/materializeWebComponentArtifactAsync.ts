@@ -20,7 +20,11 @@ export async function materializeWebComponentArtifactAsync(
   fileSystem: WebComponentArtifactFileSystemPort,
 ): Promise<MaterializeWebComponentArtifactResult> {
   const sourceDirectory = fileSystem.joinPath(input.packageRoot, 'web-dist', input.component);
-  const artifact = await readWebArtifactDefinitionAsync(sourceDirectory, input.component, fileSystem);
+  const artifact = await readWebArtifactDefinitionAsync(
+    sourceDirectory,
+    input.component,
+    fileSystem,
+  );
   await fileSystem.ensureDirectoryAsync(input.outputDirectory);
 
   const createdFiles = await Promise.all(
@@ -72,13 +76,11 @@ async function readWebArtifactDefinitionAsync(
   fileSystem: WebComponentArtifactFileSystemPort,
 ): Promise<WebArtifactDefinition> {
   const manifestPath = fileSystem.joinPath(sourceDirectory, 'artifact.json');
-  let manifestSource: string;
-  try {
-    manifestSource = await fileSystem.readTextFileAsync(manifestPath);
-  } catch {
-    throw new Error(`Unsupported ZORA web component: ${component}`);
-  }
-
+  const manifestSource = await readWebArtifactManifestSourceAsync(
+    manifestPath,
+    component,
+    fileSystem,
+  );
   const parsed = JSON.parse(manifestSource) as {
     readonly component?: unknown;
     readonly files?: unknown;
@@ -96,6 +98,19 @@ async function readWebArtifactDefinitionAsync(
     component,
     files: parsed.files,
   };
+}
+
+/*** Read an artifact manifest and translate missing packages into the CLI-facing error. */
+async function readWebArtifactManifestSourceAsync(
+  manifestPath: string,
+  component: string,
+  fileSystem: WebComponentArtifactFileSystemPort,
+): Promise<string> {
+  try {
+    return await fileSystem.readTextFileAsync(manifestPath);
+  } catch {
+    throw new Error(`Unsupported ZORA web component: ${component}`);
+  }
 }
 
 /*** Add a generated-file marker without changing the compiled artifact semantics. */
