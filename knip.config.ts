@@ -8,6 +8,7 @@ export default createKnipConfig({
     'examples/basic-app/App.tsx',
     'src/cli/index.ts',
     'src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx',
+    'src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx',
     'src/**/*.native.tsx',
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
