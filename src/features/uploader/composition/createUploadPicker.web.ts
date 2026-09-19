@@ -14,8 +14,7 @@ export function createUploadPicker(): UploadPickerPort {
 /*** Opens one transient browser file input and maps the selected file to the portable upload contract. */
 function pickBrowserFileAsync(input: UploadPickerInput): Promise<UploadAsset | null> {
   const browser = globalThis as unknown as BrowserRuntime;
-  const document = browser.document;
-  const urlApi = browser.URL;
+  const { document, URL: urlApi } = browser;
   const body = document?.body;
   if (document === undefined || body === undefined || urlApi === undefined) {
     return Promise.resolve(null);
@@ -85,11 +84,7 @@ interface BrowserFileInput {
     display: string;
   };
   type: string;
-  addEventListener(
-    type: string,
-    listener: () => void,
-    options?: { readonly once?: boolean },
-  ): void;
+  addEventListener(type: string, listener: () => void, options?: { readonly once?: boolean }): void;
   click(): void;
   remove(): void;
 }
