@@ -5,11 +5,11 @@ import type { GraphViewEdge, GraphViewNode } from './GraphView';
 /*** Convert plain graph data into renderable Cytoscape elements without impossible compound edges. */
 export function createRenderableGraphElements(
   nodes: readonly GraphViewNode[],
-  edges: readonly GraphViewEdge[]
+  edges: readonly GraphViewEdge[],
 ): ElementDefinition[] {
   const nodeIds = new Set(nodes.map((node) => node.id));
   const parentById = new Map(
-    nodes.flatMap((node) => (node.parentId ? [[node.id, node.parentId] as const] : []))
+    nodes.flatMap((node) => (node.parentId ? [[node.id, node.parentId] as const] : [])),
   );
   const nodeElements: ElementDefinition[] = nodes.map((node) => ({
     group: 'nodes',
@@ -22,7 +22,7 @@ export function createRenderableGraphElements(
     },
   }));
   const edgeElements = edges.flatMap((edge, index) =>
-    createEdgeElement(edge, index, nodeIds, parentById)
+    createEdgeElement(edge, index, nodeIds, parentById),
   );
 
   return [...nodeElements, ...edgeElements];
@@ -33,7 +33,7 @@ function createEdgeElement(
   edge: GraphViewEdge,
   index: number,
   nodeIds: ReadonlySet<string>,
-  parentById: ReadonlyMap<string, string>
+  parentById: ReadonlyMap<string, string>,
 ): ElementDefinition[] {
   if (!nodeIds.has(edge.source) || !nodeIds.has(edge.target)) return [];
   if (isAncestor(edge.source, edge.target, parentById)) return [];
@@ -57,7 +57,7 @@ function createEdgeElement(
 function isAncestor(
   possibleAncestor: string,
   nodeId: string,
-  parentById: ReadonlyMap<string, string>
+  parentById: ReadonlyMap<string, string>,
 ): boolean {
   const visited = new Set<string>();
   let current = parentById.get(nodeId);
