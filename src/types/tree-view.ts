@@ -29,4 +29,5 @@ export interface TreeViewProps<TId extends string = string> extends ZoraBaseProp
   onSelect?: (id: TId) => void;
   onExpandedChange?: (ids: readonly TId[]) => void;
   renderItem?: (props: TreeItemRenderProps<TId>) => ReactNode;
+  expansionIndicator?: 'chevron' | 'folder';
 }

@@ -29,12 +29,17 @@ export interface TreeViewProps<TId extends string = string> {
   readonly onSelect?: (id: TId) => void;
   readonly onExpandedChange?: (ids: readonly TId[]) => void;
   readonly renderItem?: (props: TreeItemRenderProps<TId>) => React.ReactNode;
+  readonly expansionIndicator?: 'chevron' | 'folder';
   readonly className?: string;
   readonly style?: React.CSSProperties;
   readonly ariaLabel?: string;
 }
 
-/*** Render the standalone browser TreeView artifact without React Native runtime dependencies. */
+/***
+ * Render the standalone browser TreeView artifact without React Native runtime dependencies.
+ * @config expansionIndicator Use `chevron` (default) beside custom node icons, or `folder` for
+ * built-in folder/file indicators. Expansion is leading and independent from row selection.
+ */
 export function TreeView<TId extends string = string>({
   nodes,
   selectedId,
@@ -43,6 +48,7 @@ export function TreeView<TId extends string = string>({
   onSelect,
   onExpandedChange,
   renderItem,
+  expansionIndicator = 'chevron',
   className,
   style,
   ariaLabel = 'Tree',
@@ -73,6 +79,7 @@ export function TreeView<TId extends string = string>({
           key={node.id}
           depth={0}
           expandedIds={expandedIds}
+          expansionIndicator={expansionIndicator}
           node={node}
           onSelect={onSelect}
           onToggleExpand={handleToggleExpand}

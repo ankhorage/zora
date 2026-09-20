@@ -11,6 +11,7 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
   node: TreeItemNode<TId>;
   depth: number;
+  expansionIndicator: 'chevron' | 'folder';
   selectedId?: TId;
   expandedIds: readonly TId[];
   onSelect?: (id: TId) => void;
@@ -24,6 +25,7 @@ function TreeItemInner<TId extends string = string>({
   mode: _mode,
   node,
   depth,
+  expansionIndicator,
   selectedId,
   expandedIds,
   onSelect,
@@ -36,6 +38,7 @@ function TreeItemInner<TId extends string = string>({
   const isExpanded = expandedIds.includes(node.id);
   const isSelected = selectedId === node.id;
 
+  /*** Compose custom content or the selectable row independently of the expansion control. */
   const renderContent = () => {
     if (renderItem) {
       return renderItem({
@@ -47,30 +50,16 @@ function TreeItemInner<TId extends string = string>({
       });
     }
 
-    const trailing =
-      node.actions !== undefined || hasChildren ? (
-        <View direction="row" gap="xs" align="center">
-          {node.actions}
-          {hasChildren ? (
-            <IconButton
-              icon={{ name: isExpanded ? 'chevron-down-outline' : 'chevron-forward-outline' }}
-              interactionPolicy={interactionPolicy}
-              label={isExpanded ? 'Collapse' : 'Expand'}
-              onPress={() => onToggleExpand(node.id)}
-              size="s"
-              variant="ghost"
-            />
-          ) : null}
-        </View>
-      ) : undefined;
-
     const listItemProps = {
       title: node.label,
-      leading: node.icon === undefined ? undefined : <Icon {...node.icon} size="s" />,
+      leading:
+        expansionIndicator === 'folder' || node.icon === undefined ? undefined : (
+          <Icon {...node.icon} size="s" />
+        ),
       meta: node.meta,
       disabled: node.disabled,
       selected: isSelected,
-      trailing,
+      trailing: node.actions,
     };
 
     return onSelect === undefined ? (
@@ -82,7 +71,33 @@ function TreeItemInner<TId extends string = string>({
 
   return (
     <View testID={testID}>
-      <View style={{ paddingLeft: depth * 16 }}>{renderContent()}</View>
+      <View direction="row" align="center" style={{ paddingLeft: depth * 16 }}>
+        {hasChildren ? (
+          <IconButton
+            icon={{
+              name:
+                expansionIndicator === 'folder'
+                  ? isExpanded
+                    ? 'folder-open-outline'
+                    : 'folder-outline'
+                  : isExpanded
+                    ? 'chevron-down-outline'
+                    : 'chevron-forward-outline',
+            }}
+            disabled={node.disabled}
+            interactionPolicy={interactionPolicy}
+            label={isExpanded ? 'Collapse' : 'Expand'}
+            onPress={() => onToggleExpand(node.id)}
+            size="s"
+            variant="ghost"
+          />
+        ) : (
+          <View style={{ width: 32 }} align="center">
+            {expansionIndicator === 'folder' ? <Icon name="document-outline" size="s" /> : null}
+          </View>
+        )}
+        <View style={{ flex: 1, minWidth: 0 }}>{renderContent()}</View>
+      </View>
       {hasChildren && isExpanded ? (
         <View>
           {node.children?.map((child) => (
@@ -90,6 +105,7 @@ function TreeItemInner<TId extends string = string>({
               key={child.id}
               depth={depth + 1}
               expandedIds={expandedIds}
+              expansionIndicator={expansionIndicator}
               interactionPolicy={interactionPolicy}
               node={child}
               onSelect={onSelect}

@@ -90,6 +90,10 @@ export interface GraphViewProps {
   readonly fitPadding?: number;
   readonly minZoom?: number;
   readonly maxZoom?: number;
+  /** Zoom values and bounds use the full-node fit as 1 when fit-relative is selected. */
+  readonly zoomMode?: 'absolute' | 'fit-relative';
+  /** Measure plain labels before layout instead of estimating width from character count. */
+  readonly sizeNodesToLabels?: boolean;
   readonly className?: string;
   readonly style?: React.CSSProperties;
   readonly ariaLabel?: string;
@@ -107,7 +111,13 @@ export type GraphViewCallbacks = Pick<
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
 
-/*** Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal. */
+/***
+ * Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.
+ * @config zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative
+ * to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.
+ * @config sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode
+ * text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
+ */
 export function GraphView(props: GraphViewProps) {
   const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props);
 
@@ -203,6 +213,8 @@ function useRuntimeGraphUpdate(
     layoutOptions,
     maxZoom,
     minZoom,
+    zoomMode,
+    sizeNodesToLabels,
     nodes,
     renderNode,
     spacingFactor,
@@ -217,6 +229,8 @@ function useRuntimeGraphUpdate(
       layoutOptions,
       maxZoom,
       minZoom,
+      zoomMode,
+      sizeNodesToLabels,
       nodes,
       richNodeRendering: renderNode !== undefined,
       spacingFactor,
@@ -229,6 +243,8 @@ function useRuntimeGraphUpdate(
     layoutOptions,
     maxZoom,
     minZoom,
+    zoomMode,
+    sizeNodesToLabels,
     nodes,
     renderNode,
     runtimeRef,
