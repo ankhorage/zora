@@ -4,7 +4,6 @@ import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
-import { fitGraphViewport } from './fitGraphViewport';
 import { getGraphGeometryKey } from './getGraphGeometryKey';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
 import type {
@@ -20,6 +19,7 @@ import { registerGraphLayouts } from './registerGraphLayouts';
 import { runGraphLayout } from './runGraphLayout';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
 import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
+import { sizeGraphNodesToLabels } from './sizeGraphNodesToLabels';
 import { syncGraphElements } from './syncGraphElements';
 
 type GraphContainer = CytoscapeOptions['container'];
@@ -36,7 +36,8 @@ export interface GraphRuntime {
 
 interface GraphRuntimeState {
   readonly callbacksRef: { current: GraphViewCallbacks };
-  readonly controller: ReturnType<typeof createGraphController>;
+  readonly controller: ReturnType<typeof createGraphController>['controller'];
+  readonly viewport: ReturnType<typeof createGraphController>;
   readonly cy: Core;
   readonly fitPaddingRef: { current: number };
   readonly generationRef: { current: number };
@@ -46,6 +47,7 @@ interface GraphRuntimeState {
   readonly layoutRef: { current: ReturnType<typeof runGraphLayout> | null };
   readonly layoutRunningRef: { current: boolean };
   readonly nodeSizes: Map<string, GraphViewSize>;
+  readonly labelSizedNodeIds: Set<string>;
   readonly readyRef: { current: boolean };
   readonly settledTopologyRef: { current: string | null };
   readonly relayoutScheduledRef: { current: boolean };
@@ -86,13 +88,15 @@ function createRuntimeState(
   callbacksRef: { current: GraphViewCallbacks },
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
-  const controller = createGraphController(cy, fitPaddingRef);
+  const viewport = createGraphController(cy, fitPaddingRef);
+  const { controller } = viewport;
   const layoutRunningRef = { current: false };
   const readyRef = { current: false };
   const renderedNodeListeners = new Set<RenderedNodeListener>();
   const stateBase = {
     callbacksRef,
     controller,
+    viewport,
     cy,
     fitPaddingRef,
     generationRef: { current: 0 },
@@ -102,6 +106,7 @@ function createRuntimeState(
     layoutRef: { current: null as ReturnType<typeof runGraphLayout> | null },
     layoutRunningRef,
     nodeSizes: new Map<string, GraphViewSize>(),
+    labelSizedNodeIds: new Set<string>(),
     readyRef,
     settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
@@ -113,7 +118,7 @@ function createRuntimeState(
   const resizeObserver = createGraphResizeObserver({
     container,
     cy,
-    fitPaddingRef,
+    settleViewport: () => viewport.settle(true),
     layoutRunningRef,
     onViewportSettled: () => emitRenderedNodes(stateBase),
     readyRef,
@@ -131,8 +136,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   const previous = state.latestUpdateRef.current;
   state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
-  state.cy.minZoom(input.minZoom ?? 0.05);
-  state.cy.maxZoom(input.maxZoom ?? 2);
+  state.viewport.configure(input);
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
@@ -143,12 +147,25 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
     ) {
       applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
     }
-    applyKnownNodeSizes(state);
   });
+  sizeGraphNodesToLabels(
+    state.cy,
+    state.labelSizedNodeIds,
+    input.sizeNodesToLabels === true && !input.richNodeRendering,
+  );
+  applyKnownNodeSizes(state);
   const geometry = getGraphGeometryKey(state.cy);
   const relayout = geometry !== state.geometryRef.current || hasGraphLayoutChanged(previous, input);
   state.geometryRef.current = geometry;
   if (!relayout) {
+    if (
+      previous?.zoomMode !== input.zoomMode ||
+      previous?.fitPadding !== input.fitPadding ||
+      previous?.minZoom !== input.minZoom ||
+      previous?.maxZoom !== input.maxZoom
+    ) {
+      state.viewport.settle(previous?.zoomMode !== input.zoomMode);
+    }
     emitRenderedNodes(state);
     if (!state.layoutRunningRef.current)
       state.callbacksRef.current.onLayoutComplete?.(state.controller);
@@ -193,7 +210,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
       state.readyRef.current,
       topology !== state.settledTopologyRef.current,
     );
-    if (shouldFit) fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
+    state.viewport.settle(shouldFit);
     state.settledTopologyRef.current = topology;
     emitRenderedNodes(state);
 

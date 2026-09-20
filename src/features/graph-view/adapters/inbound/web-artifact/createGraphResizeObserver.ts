@@ -1,12 +1,11 @@
 import type { Core } from 'cytoscape';
 
-import { fitGraphViewport } from './fitGraphViewport';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
 
 interface CreateGraphResizeObserverInput {
   readonly container: unknown;
   readonly cy: Core;
-  readonly fitPaddingRef: { current: number };
+  readonly settleViewport: () => void;
   readonly layoutRunningRef: { current: boolean };
   readonly readyRef: { current: boolean };
   readonly onViewportSettled: () => void;
@@ -41,7 +40,7 @@ function scheduleResizeFit(input: CreateGraphResizeObserverInput) {
   scheduleGraphFrame(() => {
     if (input.cy.destroyed() || input.layoutRunningRef.current) return;
     input.cy.resize();
-    fitGraphViewport(input.cy, { padding: input.fitPaddingRef.current });
+    input.settleViewport();
     input.onViewportSettled();
   });
 }

@@ -12,6 +12,8 @@ export interface GraphRuntimeUpdate {
   readonly layoutOptions?: Readonly<Record<string, unknown>>;
   readonly maxZoom?: number;
   readonly minZoom?: number;
+  readonly zoomMode?: 'absolute' | 'fit-relative';
+  readonly sizeNodesToLabels?: boolean;
   readonly nodes: readonly GraphViewNode[];
   readonly richNodeRendering: boolean;
   readonly spacingFactor?: number;

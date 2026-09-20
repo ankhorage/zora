@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { TreeExpansionIndicator } from './TreeExpansionIndicator';
 import type { TreeItemNode, TreeItemRenderProps } from './TreeView';
 
 /*** Render one recursive browser tree row while keeping selection and expansion independent. */
@@ -14,7 +15,7 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
     selected,
     expanded,
     hasChildren,
-  }) ?? <TreeItemDefaultContent node={node} />;
+  }) ?? <TreeItemDefaultContent node={node} showIcon={props.expansionIndicator === 'chevron'} />;
 
   return (
     <>
@@ -28,14 +29,16 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
         tabIndex={node.disabled || props.onSelect === undefined ? undefined : 0}
         style={createRowStyle(props.depth, selected, node.disabled, props.onSelect !== undefined)}
       >
-        {content}
-        <TreeItemActions actions={node.actions} />
         <TreeItemExpander
+          disabled={node.disabled}
           expanded={expanded}
+          indicator={props.expansionIndicator}
           hasChildren={hasChildren}
           nodeId={node.id}
           onToggleExpand={props.onToggleExpand}
         />
+        {content}
+        <TreeItemActions actions={node.actions} />
       </div>
       {hasChildren && expanded ? <TreeItemChildren {...props} /> : null}
     </>
@@ -45,6 +48,7 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
 interface TreeItemRowProps<TId extends string> {
   readonly node: TreeItemNode<TId>;
   readonly depth: number;
+  readonly expansionIndicator: 'chevron' | 'folder';
   readonly selectedId?: TId;
   readonly expandedIds: readonly TId[];
   readonly onSelect?: (id: TId) => void;
@@ -55,12 +59,14 @@ interface TreeItemRowProps<TId extends string> {
 /*** Render the default browser tree-row label, icon, and metadata. */
 function TreeItemDefaultContent<TId extends string>({
   node,
+  showIcon,
 }: {
   readonly node: TreeItemNode<TId>;
+  readonly showIcon: boolean;
 }) {
   return (
     <>
-      {node.icon === undefined ? null : (
+      {!showIcon || node.icon === undefined ? null : (
         <span aria-hidden="true" style={ICON_STYLE}>
           {node.icon}
         </span>
@@ -87,15 +93,31 @@ function TreeItemActions({ actions }: { readonly actions?: React.ReactNode }) {
 
 /*** Render the independent expansion control for a tree row with children. */
 function TreeItemExpander<TId extends string>(props: {
+  readonly disabled?: boolean;
   readonly expanded: boolean;
+  readonly indicator: 'chevron' | 'folder';
   readonly hasChildren: boolean;
   readonly nodeId: TId;
   readonly onToggleExpand: (id: TId) => void;
 }) {
-  if (!props.hasChildren) return null;
+  const indicator = (
+    <TreeExpansionIndicator
+      expanded={props.expanded}
+      hasChildren={props.hasChildren}
+      variant={props.indicator}
+    />
+  );
+  if (!props.hasChildren)
+    return (
+      <span aria-hidden="true" style={EXPANDER_STYLE}>
+        {indicator}
+      </span>
+    );
   return (
     <button
       aria-label={props.expanded ? 'Collapse' : 'Expand'}
+      disabled={props.disabled}
+      onKeyDown={(event) => event.stopPropagation()}
       onClick={(event) => {
         event.stopPropagation();
         props.onToggleExpand(props.nodeId);
@@ -103,7 +125,7 @@ function TreeItemExpander<TId extends string>(props: {
       style={EXPANDER_STYLE}
       type="button"
     >
-      {props.expanded ? '⌄' : '›'}
+      {indicator}
     </button>
   );
 }
