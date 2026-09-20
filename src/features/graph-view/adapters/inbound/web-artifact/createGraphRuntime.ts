@@ -3,6 +3,7 @@ import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
+import { createGraphLoopSizer } from './createGraphLoopSizer';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { getGraphGeometryKey } from './getGraphGeometryKey';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
@@ -48,6 +49,7 @@ interface GraphRuntimeState {
   readonly layoutRunningRef: { current: boolean };
   readonly nodeSizes: Map<string, GraphViewSize>;
   readonly labelSizedNodeIds: Set<string>;
+  readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
   readonly readyRef: { current: boolean };
   readonly settledTopologyRef: { current: string | null };
   readonly relayoutScheduledRef: { current: boolean };
@@ -107,6 +109,7 @@ function createRuntimeState(
     layoutRunningRef,
     nodeSizes: new Map<string, GraphViewSize>(),
     labelSizedNodeIds: new Set<string>(),
+    loopSizer: createGraphLoopSizer(cy),
     readyRef,
     settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
@@ -145,6 +148,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       previous?.styleRules !== input.styleRules ||
       previous?.richNodeRendering !== input.richNodeRendering
     ) {
+      state.loopSizer.reset();
       applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
     }
   });
@@ -154,6 +158,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
     input.sizeNodesToLabels === true && !input.richNodeRendering,
   );
   applyKnownNodeSizes(state);
+  state.loopSizer.update();
   const geometry = getGraphGeometryKey(state.cy);
   const relayout = geometry !== state.geometryRef.current || hasGraphLayoutChanged(previous, input);
   state.geometryRef.current = geometry;
@@ -199,6 +204,7 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
 function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
   scheduleGraphFrame(() => {
     if (state.cy.destroyed() || generation !== state.generationRef.current) return;
+    state.loopSizer.update();
     state.layoutRef.current = null;
     state.cy.resize();
     state.layoutRunningRef.current = false;

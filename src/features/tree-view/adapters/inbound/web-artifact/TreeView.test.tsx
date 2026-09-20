@@ -69,6 +69,7 @@ test('expands from the leading control without selecting the row, including keyb
 test('renders a standalone web tree without a ZORA or React Native provider', () => {
   const markup = renderToStaticMarkup(
     <TreeView
+      expansionIndicator="chevron"
       defaultExpandedIds={['src']}
       nodes={[
         {
