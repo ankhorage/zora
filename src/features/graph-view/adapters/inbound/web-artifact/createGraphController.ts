@@ -2,20 +2,44 @@ import type { Core } from 'cytoscape';
 
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { fitGraphViewport } from './fitGraphViewport';
-import type { GraphViewController } from './GraphView';
+import type { GraphViewController, GraphViewFitOptions } from './GraphView';
 
 /*** Own viewport units and limits alongside the public controller, without exposing Cytoscape. */
-export function createGraphController(cy: Core, fitPaddingRef: { current: number }) {
-  const state = { scale: 1, relative: false, min: 0.05, max: 2 };
+export function createGraphController(
+  cy: Core,
+  fitPaddingRef: { current: number },
+  optimizeFit?: (options: GraphViewFitOptions) => void,
+) {
+  const state = {
+    scale: 1,
+    relative: false,
+    min: 0.05,
+    max: 2,
+    readableSize: 0,
+    fitSize: Infinity,
+    readableZoom: 0,
+    fitZoom: Infinity,
+  };
   const controller: GraphViewController = {
     fit(options) {
-      fitGraphViewport(cy, {
-        nodeIds: options?.nodeIds,
-        padding: options?.padding ?? fitPaddingRef.current,
-      });
+      if (options?.optimizeSpacing && !options.nodeIds?.length && optimizeFit) {
+        optimizeFit(options);
+        return;
+      }
+      fitGraphViewport(
+        cy,
+        {
+          nodeIds: options?.nodeIds,
+          padding: options?.padding ?? fitPaddingRef.current,
+        },
+        state.fitZoom,
+      );
     },
     getViewport() {
       return { pan: cy.pan(), zoom: cy.zoom() / state.scale };
+    },
+    getZoomRange() {
+      return { min: cy.minZoom() / state.scale, max: cy.maxZoom() / state.scale };
     },
     setPan(pan) {
       cy.pan(pan);
@@ -34,12 +58,27 @@ export function createGraphController(cy: Core, fitPaddingRef: { current: number
       state.relative = input.zoomMode === 'fit-relative';
       state.min = input.minZoom ?? 0.05;
       state.max = input.maxZoom ?? 2;
+      state.readableSize = positiveSize(input.minReadableLabelSize, 0);
+      state.fitSize = positiveSize(input.maxFitLabelSize, Infinity);
       if (!state.relative) state.scale = 1;
       applyZoomLimits(cy, state);
     },
     settle(fit: boolean) {
       const logicalZoom = cy.zoom() / state.scale;
-      state.scale = state.relative ? getNodeFitZoom(cy, fitPaddingRef.current) : 1;
+      const fonts = cy
+        .nodes()
+        .filter((node) => !node.isParent() && Boolean(node.style('label')))
+        .map((node) => Number.parseFloat(String(node.style('font-size'))))
+        .filter((size) => Number.isFinite(size) && size > 0);
+      state.readableZoom = fonts.length
+        ? state.readableSize / fonts.reduce((minimum, size) => Math.min(minimum, size), Infinity)
+        : 0;
+      state.fitZoom = fonts.length
+        ? state.fitSize / fonts.reduce((maximum, size) => Math.max(maximum, size), 0)
+        : Infinity;
+      state.scale = state.relative
+        ? Math.min(getNodeFitZoom(cy, fitPaddingRef.current), state.fitZoom)
+        : 1;
       applyZoomLimits(cy, state);
       if (fit) controller.fit();
       else if (state.relative) {
@@ -53,12 +92,22 @@ export function createGraphController(cy: Core, fitPaddingRef: { current: number
 /*** Keep pointer, wheel, and programmatic zoom on the same limits in the engine's native units. */
 function applyZoomLimits(
   cy: Core,
-  state: { readonly min: number; readonly max: number; readonly scale: number },
+  state: {
+    readonly min: number;
+    readonly max: number;
+    readonly scale: number;
+    readonly readableZoom: number;
+  },
 ) {
   const min = state.min * state.scale;
   cy.minZoom(Math.min(cy.minZoom(), min));
-  cy.maxZoom(state.max * state.scale);
+  cy.maxZoom(Math.max(min, state.max * state.scale, state.readableZoom));
   cy.minZoom(min);
+}
+
+/*** Ignore invalid optional typography targets at the public configuration boundary. */
+function positiveSize(value: number | undefined, fallback: number): number {
+  return value !== undefined && Number.isFinite(value) && value > 0 ? value : fallback;
 }
 
 /***

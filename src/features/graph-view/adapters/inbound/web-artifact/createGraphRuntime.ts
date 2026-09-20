@@ -2,6 +2,7 @@ import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
 
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { bindGraphEvents } from './bindGraphEvents';
+import { compactGraphSpacing } from './compactGraphSpacing';
 import { createGraphController } from './createGraphController';
 import { createGraphLoopSizer } from './createGraphLoopSizer';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
@@ -10,6 +11,7 @@ import { getGraphTopologyKey } from './getGraphTopologyKey';
 import type {
   GraphViewCallbacks,
   GraphViewElementEventType,
+  GraphViewFitOptions,
   GraphViewRenderedNode,
   GraphViewSize,
   GraphViewStyleRule,
@@ -36,6 +38,8 @@ export interface GraphRuntime {
 }
 
 interface GraphRuntimeState {
+  readonly fitRequestRef: { current: GraphViewFitOptions | null };
+  readonly optimizedSpacingRef: { current: number | null };
   readonly callbacksRef: { current: GraphViewCallbacks };
   readonly controller: ReturnType<typeof createGraphController>['controller'];
   readonly viewport: ReturnType<typeof createGraphController>;
@@ -90,12 +94,16 @@ function createRuntimeState(
   callbacksRef: { current: GraphViewCallbacks },
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
-  const viewport = createGraphController(cy, fitPaddingRef);
+  const viewport = createGraphController(cy, fitPaddingRef, (options) =>
+    requestOptimizedFit(state, options),
+  );
   const { controller } = viewport;
   const layoutRunningRef = { current: false };
   const readyRef = { current: false };
   const renderedNodeListeners = new Set<RenderedNodeListener>();
   const stateBase = {
+    fitRequestRef: { current: null as GraphViewFitOptions | null },
+    optimizedSpacingRef: { current: null as number | null },
     callbacksRef,
     controller,
     viewport,
@@ -127,7 +135,8 @@ function createRuntimeState(
     readyRef,
   });
 
-  return { ...stateBase, resizeObserver, unbindEvents };
+  const state = { ...stateBase, resizeObserver, unbindEvents };
+  return state;
 }
 
 /***
@@ -136,7 +145,12 @@ function createRuntimeState(
  */
 function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   if (state.cy.destroyed()) return;
-  const previous = state.latestUpdateRef.current;
+  const last = state.latestUpdateRef.current;
+  const acceptsSpacing =
+    state.optimizedSpacingRef.current !== null &&
+    state.optimizedSpacingRef.current === input.spacingFactor;
+  const previous = acceptsSpacing && last ? { ...last, spacingFactor: input.spacingFactor } : last;
+  if (acceptsSpacing) state.optimizedSpacingRef.current = null;
   state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.viewport.configure(input);
@@ -167,7 +181,9 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       previous?.zoomMode !== input.zoomMode ||
       previous?.fitPadding !== input.fitPadding ||
       previous?.minZoom !== input.minZoom ||
-      previous?.maxZoom !== input.maxZoom
+      previous?.maxZoom !== input.maxZoom ||
+      previous?.minReadableLabelSize !== input.minReadableLabelSize ||
+      previous?.maxFitLabelSize !== input.maxFitLabelSize
     ) {
       state.viewport.settle(previous?.zoomMode !== input.zoomMode);
     }
@@ -177,6 +193,8 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
     return;
   }
   stopCurrentLayout(state);
+  state.fitRequestRef.current = null;
+  state.optimizedSpacingRef.current = null;
   startCurrentLayout(state, input);
 }
 
@@ -218,6 +236,9 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     );
     state.viewport.settle(shouldFit);
     state.settledTopologyRef.current = topology;
+    const fitRequest = state.fitRequestRef.current;
+    state.fitRequestRef.current = null;
+    if (fitRequest) requestOptimizedFit(state, fitRequest);
     emitRenderedNodes(state);
 
     if (!state.readyRef.current) {
@@ -226,6 +247,31 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     }
     state.callbacksRef.current.onLayoutComplete?.(state.controller);
   });
+}
+
+/***
+ * Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.
+ * @performance Bounded compaction preserves the settled algorithm instead of repeatedly running it.
+ */
+function requestOptimizedFit(state: GraphRuntimeState, options: GraphViewFitOptions) {
+  if (state.cy.destroyed()) return;
+  if (state.layoutRunningRef.current) {
+    state.fitRequestRef.current = options;
+    return;
+  }
+  const input = state.latestUpdateRef.current;
+  if (!input) return;
+  const previous = state.optimizedSpacingRef.current ?? input.spacingFactor ?? 1;
+  const spacing = compactGraphSpacing(state.cy, previous);
+  state.geometryRef.current = getGraphGeometryKey(state.cy);
+  state.loopSizer.update();
+  state.viewport.settle(false);
+  state.controller.fit({ ...options, optimizeSpacing: false });
+  if (spacing !== previous) {
+    state.optimizedSpacingRef.current = spacing;
+    state.callbacksRef.current.onSpacingFactorChange?.(spacing);
+  }
+  emitRenderedNodes(state);
 }
 
 /*** Stop the current layout and invalidate every stale completion callback. */
