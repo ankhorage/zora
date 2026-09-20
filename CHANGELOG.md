@@ -1,5 +1,37 @@
 # Changelog
 
+## 20.3.7
+
+### Patch Changes
+
+- 1da4532: Make materialized public web components install their responsive runtime inside each standalone
+  bundle so generated AppBar, typography, form, and navigation artifacts render without consumer-side
+  Surface providers.
+
+## 20.3.6
+
+### Patch Changes
+
+- 7a99f2c: Update Ankhorage dependencies: `@ankhorage/surface`.
+
+## 20.3.5
+
+### Patch Changes
+
+- 2c51405: Update Ankhorage dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+
+## 20.3.4
+
+### Patch Changes
+
+- 8d6a5b3: Keep GraphView ELK browser-safe by adapting the source layout class to Cytoscape's function-style extension contract and reject leaked CommonJS runtime dependencies from generated web artifacts.
+
+## 20.3.3
+
+### Patch Changes
+
+- e34f1b0: Fix the materialized GraphView ELK layout by registering the transpiled Cytoscape adapter instead of its native-class source entry.
+
 ## 20.3.2
 
 ### Patch Changes

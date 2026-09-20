@@ -569,7 +569,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts">
       src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts
-      <small>17 functions</small>
+      <small>19 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts">
@@ -46393,73 +46393,81 @@ Native hosts can inject another compatible implementation.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-creategraphruntime-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts</h2>
-      <article class="item" data-search="createGraphRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.">
+      <article class="item" data-search="registerElkLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Register the browser-safe ELK source layout through Cytoscape&#39;s function-style extension API.">
+    <h3>registerElkLayout</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:30:1</code></p>
+    <p>Register the browser-safe ELK source layout through Cytoscape&#39;s function-style extension API.</p>
+  </article><article class="item" data-search="ElkLayoutRegistrant src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call().">
+    <h3>ElkLayoutRegistrant</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:32:3</code></p>
+    <p>Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call().</p>
+  </article><article class="item" data-search="createGraphRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.">
     <h3>createGraphRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:70:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:81:1</code></p>
     <p>Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.</p>
   </article><article class="item" data-search="createRuntimeState src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Build the mutable state shared by the single graph-runtime owner.">
     <h3>createRuntimeState</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:95:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:106:1</code></p>
     <p>Build the mutable state shared by the single graph-runtime owner.</p>
   </article><article class="item" data-search="updateRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply one graph update and start exactly one new layout generation.">
     <h3>updateRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:136:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:147:1</code></p>
     <p>Apply one graph update and start exactly one new layout generation.</p>
   </article><article class="item" data-search="startCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Start a generation-safe layout whose completion is the only normal automatic fit trigger.">
     <h3>startCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:150:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:161:1</code></p>
     <p>Start a generation-safe layout whose completion is the only normal automatic fit trigger.</p>
   </article><article class="item" data-search="completeCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Settle only the latest layout generation and fit once from node bounds.">
     <h3>completeCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:167:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:178:1</code></p>
     <p>Settle only the latest layout generation and fit once from node bounds.</p>
   </article><article class="item" data-search="stopCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Stop the current layout and invalidate every stale completion callback.">
     <h3>stopCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:187:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:198:1</code></p>
     <p>Stop the current layout and invalidate every stale completion callback.</p>
   </article><article class="item" data-search="applyGraphStyles src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply consumer styles and hide native node paint only when React rich nodes are active.">
     <h3>applyGraphStyles</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:195:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:206:1</code></p>
     <p>Apply consumer styles and hide native node paint only when React rich nodes are active.</p>
   </article><article class="item" data-search="setSelectedNodeIds src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Synchronize controlled selection without rerunning layout.">
     <h3>setSelectedNodeIds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:216:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:227:1</code></p>
     <p>Synchronize controlled selection without rerunning layout.</p>
   </article><article class="item" data-search="setNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Persist one rich-node size and schedule at most one relayout for changed geometry.">
     <h3>setNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:227:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:238:1</code></p>
     <p>Persist one rich-node size and schedule at most one relayout for changed geometry.</p>
   </article><article class="item" data-search="applyKnownNodeSizes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply every known rich-node size after Cytoscape elements are replaced.">
     <h3>applyKnownNodeSizes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:236:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:247:1</code></p>
     <p>Apply every known rich-node size after Cytoscape elements are replaced.</p>
   </article><article class="item" data-search="applyNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply one measured model-space size as a Cytoscape per-node style bypass.">
     <h3>applyNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:241:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:252:1</code></p>
     <p>Apply one measured model-space size as a Cytoscape per-node style bypass.</p>
   </article><article class="item" data-search="scheduleMeasuredNodeRelayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Coalesce DOM measurements into one follow-up layout generation.">
     <h3>scheduleMeasuredNodeRelayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:248:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:259:1</code></p>
     <p>Coalesce DOM measurements into one follow-up layout generation.</p>
   </article><article class="item" data-search="subscribeRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Subscribe one React overlay to rendered node state without exposing the Cytoscape core.">
     <h3>subscribeRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:261:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:272:1</code></p>
     <p>Subscribe one React overlay to rendered node state without exposing the Cytoscape core.</p>
   </article><article class="item" data-search="emitRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Publish current rendered node positions only to active rich-node subscribers.">
     <h3>emitRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:270:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:281:1</code></p>
     <p>Publish current rendered node positions only to active rich-node subscribers.</p>
   </article><article class="item" data-search="handleOverlayNodeEvent src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Translate one rich-overlay event back into normal graph selection and callbacks.">
     <h3>handleOverlayNodeEvent</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:279:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:290:1</code></p>
     <p>Translate one rich-overlay event back into normal graph selection and callbacks.</p>
   </article><article class="item" data-search="hasUsableViewport src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Return whether Cytoscape currently has dimensions suitable for fitting.">
     <h3>hasUsableViewport</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:292:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:303:1</code></p>
     <p>Return whether Cytoscape currently has dimensions suitable for fitting.</p>
   </article><article class="item" data-search="destroyRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Dispose all runtime resources in the reverse order they were acquired.">
     <h3>destroyRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:297:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:308:1</code></p>
     <p>Dispose all runtime resources in the reverse order they were acquired.</p>
   </article>
     </section>

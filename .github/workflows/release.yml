@@ -114,6 +114,9 @@ jobs:
           after_version="$(node -p "require('./package.json').version")"
 
           if [ "$before_version" != "$after_version" ]; then
+            if node -e "const p=require('./package.json'); process.exit(p.ankh?.structure === undefined ? 1 : 0)"; then
+              ./node_modules/.bin/ankhorage-structure build .
+            fi
             if node -e "const p=require('./package.json'); process.exit(p.scripts?.docs ? 0 : 1)"; then
               bun run docs
             else

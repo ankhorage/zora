@@ -1,5 +1,5 @@
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
-import elk from 'cytoscape-elk/src/index.js';
+import ElkLayout from 'cytoscape-elk/src/layout.js';
 
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
@@ -21,10 +21,21 @@ import { scheduleGraphFrame } from './scheduleGraphFrame';
 import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import { syncGraphElements } from './syncGraphElements';
 
-cytoscape.use(elk as cytoscape.Ext);
+registerElkLayout();
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
 type RenderedNodeListener = (nodes: readonly GraphViewRenderedNode[]) => void;
+
+/*** Register the browser-safe ELK source layout through Cytoscape's function-style extension API. */
+function registerElkLayout() {
+  /*** Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call(). */
+  function ElkLayoutRegistrant(this: Record<string, unknown>, options: Record<string, unknown>) {
+    Object.assign(this, new ElkLayout(options));
+  }
+
+  Object.setPrototypeOf(ElkLayoutRegistrant.prototype, ElkLayout.prototype);
+  cytoscape('layout', 'elk', ElkLayoutRegistrant);
+}
 
 interface GraphRuntimeUpdate {
   readonly edges: readonly GraphViewEdge[];

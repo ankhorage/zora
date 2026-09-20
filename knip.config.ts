@@ -13,6 +13,7 @@ export default createKnipConfig({
     'src/**/*.web.tsx',
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
+    'test-fixtures/webArtifactRuntime.test.tsx',
   ],
   ignoreFiles: [
     '.prettierrc.js',
