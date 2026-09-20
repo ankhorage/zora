@@ -60,6 +60,8 @@ export interface GraphViewViewport {
 }
 
 export interface GraphViewFitOptions {
+  /** Compact the existing layout without rerunning its algorithm; whole-graph fits only. */
+  readonly optimizeSpacing?: boolean;
   readonly nodeIds?: readonly string[];
   readonly padding?: number;
 }
@@ -72,6 +74,7 @@ export interface GraphViewElementEvent {
 export interface GraphViewController {
   fit(options?: GraphViewFitOptions): void;
   getViewport(): GraphViewViewport;
+  getZoomRange(): { readonly min: number; readonly max: number };
   setPan(pan: GraphViewPoint): void;
   setZoom(zoom: number): void;
   zoomBy(factor: number): void;
@@ -90,6 +93,8 @@ export interface GraphViewProps {
   readonly fitPadding?: number;
   readonly minZoom?: number;
   readonly maxZoom?: number;
+  readonly minReadableLabelSize?: number;
+  readonly maxFitLabelSize?: number;
   /** Zoom values and bounds use the full-node fit as 1 when fit-relative is selected. */
   readonly zoomMode?: 'absolute' | 'fit-relative';
   /** Measure plain labels before layout instead of estimating width from character count. */
@@ -102,11 +107,17 @@ export interface GraphViewProps {
   readonly onNodeEvent?: (event: GraphViewElementEvent) => void;
   readonly onEdgeEvent?: (event: GraphViewElementEvent) => void;
   readonly onViewportChange?: (viewport: GraphViewViewport) => void;
+  readonly onSpacingFactorChange?: (spacingFactor: number) => void;
 }
 
 export type GraphViewCallbacks = Pick<
   GraphViewProps,
-  'onEdgeEvent' | 'onLayoutComplete' | 'onNodeEvent' | 'onReady' | 'onViewportChange'
+  | 'onEdgeEvent'
+  | 'onLayoutComplete'
+  | 'onNodeEvent'
+  | 'onReady'
+  | 'onViewportChange'
+  | 'onSpacingFactorChange'
 >;
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
@@ -117,6 +128,11 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.
  * @config sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode
  * text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
+ * @config minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
+ * @config maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
+ * @config onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
+ * Ordinary zoom never compacts or relayouts. Compaction preserves layout ordering and uses bounded
+ * collision checks including labels and compound siblings; it cannot repair existing overlaps.
  */
 export function GraphView(props: GraphViewProps) {
   const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props);
@@ -168,7 +184,14 @@ function useGraphViewRuntime(props: GraphViewProps) {
 /*** Keep the callback ref current without mutating refs during render. */
 function useGraphCallbacksRef(props: GraphViewProps) {
   const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
-  const { onEdgeEvent, onLayoutComplete, onNodeEvent, onReady, onViewportChange } = props;
+  const {
+    onEdgeEvent,
+    onLayoutComplete,
+    onNodeEvent,
+    onReady,
+    onViewportChange,
+    onSpacingFactorChange,
+  } = props;
 
   React.useEffect(() => {
     callbacksRef.current = {
@@ -177,8 +200,16 @@ function useGraphCallbacksRef(props: GraphViewProps) {
       onNodeEvent,
       onReady,
       onViewportChange,
+      onSpacingFactorChange,
     };
-  }, [onEdgeEvent, onLayoutComplete, onNodeEvent, onReady, onViewportChange]);
+  }, [
+    onEdgeEvent,
+    onLayoutComplete,
+    onNodeEvent,
+    onReady,
+    onViewportChange,
+    onSpacingFactorChange,
+  ]);
 
   return callbacksRef;
 }
@@ -212,6 +243,8 @@ function useRuntimeGraphUpdate(
     layout,
     layoutOptions,
     maxZoom,
+    minReadableLabelSize,
+    maxFitLabelSize,
     minZoom,
     zoomMode,
     sizeNodesToLabels,
@@ -228,6 +261,8 @@ function useRuntimeGraphUpdate(
       layout,
       layoutOptions,
       maxZoom,
+      minReadableLabelSize,
+      maxFitLabelSize,
       minZoom,
       zoomMode,
       sizeNodesToLabels,
@@ -242,6 +277,8 @@ function useRuntimeGraphUpdate(
     layout,
     layoutOptions,
     maxZoom,
+    minReadableLabelSize,
+    maxFitLabelSize,
     minZoom,
     zoomMode,
     sizeNodesToLabels,
@@ -303,5 +340,6 @@ function readCallbacks(props: GraphViewProps): GraphViewCallbacks {
     onNodeEvent: props.onNodeEvent,
     onReady: props.onReady,
     onViewportChange: props.onViewportChange,
+    onSpacingFactorChange: props.onSpacingFactorChange,
   };
 }

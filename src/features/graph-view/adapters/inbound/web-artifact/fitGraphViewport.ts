@@ -3,12 +3,20 @@ import type { Core } from 'cytoscape';
 import type { GraphViewFitOptions } from './GraphView';
 
 /*** Fit the requested visible nodes and never include edge geometry in viewport bounds. */
-export function fitGraphViewport(cy: Core, options: GraphViewFitOptions = {}): boolean {
+export function fitGraphViewport(
+  cy: Core,
+  options: GraphViewFitOptions = {},
+  maxZoom = Infinity,
+): boolean {
   if (cy.destroyed()) return false;
   const nodes = getFitNodes(cy, options.nodeIds);
   if (nodes.empty()) return false;
 
   cy.fit(nodes, options.padding ?? 50);
+  if (cy.zoom() > maxZoom) {
+    cy.zoom(maxZoom);
+    cy.center(nodes);
+  }
   return true;
 }
 

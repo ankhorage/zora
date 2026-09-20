@@ -11,6 +11,47 @@ import type {
   GraphViewRenderedNode,
 } from './GraphView';
 
+test('explicit fit compacts once and controlled spacing acknowledgement does not rerun the algorithm', async () => {
+  const initial = Promise.withResolvers<GraphViewController>();
+  const calls = { sort: 0, spacing: 8 };
+  const callbacks = {
+    current: {
+      onReady: initial.resolve,
+      onSpacingFactorChange: (spacing: number) => {
+        calls.spacing = spacing;
+      },
+    },
+  };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const input = {
+    nodes: [{ id: 'a' }, { id: 'b' }, { id: 'c' }],
+    edges: [],
+    layout: 'grid' as const,
+    spacingFactor: 8,
+    layoutOptions: {
+      boundingBox: { x1: 0, y1: 0, w: 1000, h: 800 },
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: false,
+  };
+  try {
+    runtime.update(input);
+    const controller = await initial.promise;
+    const sortCount = calls.sort;
+    controller.fit({ optimizeSpacing: true });
+    expect(calls.spacing).toBeLessThan(8);
+    runtime.update({ ...input, spacingFactor: calls.spacing });
+    expect(calls.sort).toBe(sortCount);
+    controller.setZoom(1.5);
+    expect(calls.sort).toBe(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
 test('registers ELK with a Cytoscape-compatible layout constructor', () => {
   const cy = cytoscape({
     elements: [

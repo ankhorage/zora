@@ -67,3 +67,41 @@ test('keeps absolute zoom semantics for consumers that do not opt in', () => {
     cy.destroy();
   }
 });
+
+test('caps automatic label size for tiny graphs and expands manual zoom for large graphs', () => {
+  const cy = cytoscape({
+    headless: true,
+    styleEnabled: true,
+    layout: { name: 'preset' },
+    elements: [{ data: { id: 'a' } }],
+    style: [{ selector: 'node', style: { label: 'data(id)', 'font-size': 14 } }],
+  });
+  cy.width = () => 1000;
+  cy.height = () => 800;
+  const owner = createGraphController(cy, { current: 50 });
+  owner.configure({
+    nodes: [],
+    edges: [],
+    richNodeRendering: false,
+    zoomMode: 'fit-relative',
+    minZoom: 0.5,
+    maxZoom: 2,
+    minReadableLabelSize: 16,
+    maxFitLabelSize: 24,
+  });
+  try {
+    owner.settle(true);
+    expect(cy.zoom() * 14).toBeCloseTo(24);
+    expect(owner.controller.getViewport().zoom).toBeCloseTo(1);
+    cy.add({ data: { id: 'b' }, position: { x: 10000, y: 0 } });
+    owner.settle(true);
+    const range = owner.controller.getZoomRange();
+    expect(range.max).toBeGreaterThan(2);
+    owner.controller.setZoom(range.max);
+    expect(cy.zoom() * 14).toBeGreaterThanOrEqual(16);
+    owner.controller.fit();
+    expect(owner.controller.getViewport().zoom).toBeCloseTo(1);
+  } finally {
+    cy.destroy();
+  }
+});
