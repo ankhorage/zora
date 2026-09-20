@@ -1,5 +1,23 @@
 # Changelog
 
+## 20.3.6
+
+### Patch Changes
+
+- 7a99f2c: Update Ankhorage dependencies: `@ankhorage/surface`.
+
+## 20.3.5
+
+### Patch Changes
+
+- 2c51405: Update Ankhorage dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+
+## 20.3.4
+
+### Patch Changes
+
+- 8d6a5b3: Keep GraphView ELK browser-safe by adapting the source layout class to Cytoscape's function-style extension contract and reject leaked CommonJS runtime dependencies from generated web artifacts.
+
 ## 20.3.3
 
 ### Patch Changes
