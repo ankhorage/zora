@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.4.1
+
+### Patch Changes
+
+- 02d52d8: Size GraphView self-loops around actual node bounds so wide labels and compound nodes retain valid edge endpoints. Default TreeView expansion controls to folder icons while keeping chevrons configurable.
+
 ## 20.4.0
 
 ### Minor Changes
