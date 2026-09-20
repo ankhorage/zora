@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.3.8",
+      "value": "v20.4.0",
       "color": "cb3837"
     },
     {
@@ -80,7 +80,11 @@
   ],
   "readmeCli": null,
   "readmeConfig": null,
-  "config": null,
+  "config": {
+    "exportName": "TreeView",
+    "isReadme": false,
+    "members": []
+  },
   "entrypoints": [
     "src/index.ts"
   ],
@@ -2298,7 +2302,8 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
-        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "src/types/graphViewRuntime.ts"
       ],
       "exports": [
         "createGraphController"
@@ -2308,7 +2313,6 @@
       "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts"
       ],
       "exports": [
@@ -2323,7 +2327,6 @@
         "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
@@ -2333,6 +2336,7 @@
         "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
         "src/types/graphViewRuntime.ts"
       ],
@@ -2477,6 +2481,14 @@
       "dependencies": [],
       "exports": [
         "shouldFitGraphAfterLayout"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "sizeGraphNodesToLabels"
       ]
     },
     {
@@ -4410,9 +4422,18 @@
       ]
     },
     {
+      "path": "src/features/tree-view/adapters/inbound/web-artifact/TreeExpansionIndicator.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "TreeExpansionIndicator"
+      ]
+    },
+    {
       "path": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/tree-view/adapters/inbound/web-artifact/TreeExpansionIndicator.tsx",
         "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx"
       ],
       "exports": [
@@ -26834,7 +26855,7 @@
       "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 108,
+        "line": 124,
         "column": 14
       },
       "exportPaths": [
@@ -26975,14 +26996,14 @@
     },
     {
       "name": "TreeView",
-      "description": "Tree view pattern for hierarchical navigation and expandable lists.",
+      "description": "Tree view pattern for hierarchical navigation and expandable lists.\nExpansion controls are separate from row selection, including when rendering custom row content.",
       "isReadme": false,
       "examples": [],
       "kind": "value",
       "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
-        "line": 60,
+        "line": 66,
         "column": 14
       },
       "exportPaths": [
@@ -27026,6 +27047,13 @@
           "name": "expandedIds",
           "kind": "property",
           "type": "readonly TId[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "expansionIndicator",
+          "kind": "property",
+          "type": "\"folder\" | \"chevron\" | undefined",
           "required": false,
           "description": null
         },
@@ -45488,7 +45516,7 @@
       "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 108,
+        "line": 124,
         "column": 14
       },
       "exportPaths": [
@@ -45504,6 +45532,12 @@
         {
           "name": "expandedIds",
           "type": "readonly TId[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "expansionIndicator",
+          "type": "\"folder\" | \"chevron\"",
           "required": true,
           "description": null
         },
@@ -45565,13 +45599,13 @@
     },
     {
       "name": "TreeView",
-      "description": "Tree view pattern for hierarchical navigation and expandable lists.",
+      "description": "Tree view pattern for hierarchical navigation and expandable lists.\nExpansion controls are separate from row selection, including when rendering custom row content.",
       "isReadme": false,
       "examples": [],
       "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
-        "line": 60,
+        "line": 66,
         "column": 14
       },
       "exportPaths": [
@@ -45587,6 +45621,12 @@
         {
           "name": "expandedIds",
           "type": "readonly TId[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "expansionIndicator",
+          "type": "\"folder\" | \"chevron\" | undefined",
           "required": false,
           "description": null
         },
@@ -48296,10 +48336,37 @@
     },
     {
       "name": "createGraphController",
-      "description": "Create the public viewport controller while keeping the Cytoscape core private.",
+      "description": "Own viewport units and limits alongside the public controller, without exposing Cytoscape.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 7,
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "applyZoomLimits",
+      "description": "Keep pointer, wheel, and programmatic zoom on the same limits in the engine's native units.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 54,
+        "column": 1
+      }
+    },
+    {
+      "name": "getNodeFitZoom",
+      "description": "Recompute the fit reference only after layout or resize, never on every pan/zoom event.\n@performance Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 68,
+        "column": 1
+      }
+    },
+    {
+      "name": "setCenteredZoom",
+      "description": "Zoom around the visible viewport center instead of its top-left corner.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 78,
         "column": 1
       }
     },
@@ -48308,7 +48375,7 @@
       "description": "Observe settled container resizing without racing an active layout generation.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 20,
+        "line": 19,
         "column": 1
       }
     },
@@ -48317,7 +48384,7 @@
       "description": "Fit one genuine resize only after the active layout has settled.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 40,
+        "line": 39,
         "column": 1
       }
     },
@@ -48326,7 +48393,7 @@
       "description": "Return whether ResizeObserver reported a genuinely different container size.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 50,
+        "line": 49,
         "column": 1
       }
     },
@@ -48335,7 +48402,7 @@
       "description": "Read ResizeObserver without imposing DOM library types on the package target.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 58,
+        "line": 57,
         "column": 1
       }
     },
@@ -48344,7 +48411,7 @@
       "description": "Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 58,
+        "line": 60,
         "column": 1
       }
     },
@@ -48353,7 +48420,7 @@
       "description": "Build the mutable state shared by the single graph-runtime owner.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 83,
+        "line": 85,
         "column": 1
       }
     },
@@ -48362,7 +48429,7 @@
       "description": "Reconcile presentation in place and relayout only when graph geometry or layout policy changes.\n@performance Batch reconciliation and skip layout for presentation-only updates.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 129,
+        "line": 134,
         "column": 1
       }
     },
@@ -48371,7 +48438,7 @@
       "description": "Start a generation-safe layout whose completion is the only normal automatic fit trigger.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 162,
+        "line": 179,
         "column": 1
       }
     },
@@ -48380,7 +48447,7 @@
       "description": "Settle only the latest layout generation and fit once from node bounds.\n@performance Discard stale completions and avoid repeated automatic fits.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 182,
+        "line": 199,
         "column": 1
       }
     },
@@ -48389,7 +48456,7 @@
       "description": "Stop the current layout and invalidate every stale completion callback.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 209,
+        "line": 226,
         "column": 1
       }
     },
@@ -48398,7 +48465,7 @@
       "description": "Apply consumer styles and hide native node paint only when React rich nodes are active.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 217,
+        "line": 234,
         "column": 1
       }
     },
@@ -48407,7 +48474,7 @@
       "description": "Synchronize controlled selection without rerunning layout.\n@performance Selection updates must not trigger graph reconstruction or layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 241,
+        "line": 258,
         "column": 1
       }
     },
@@ -48416,7 +48483,7 @@
       "description": "Persist one rich-node size and schedule at most one relayout for changed geometry.\n@performance Ignore unchanged measurements before scheduling layout work.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 255,
+        "line": 272,
         "column": 1
       }
     },
@@ -48425,7 +48492,7 @@
       "description": "Apply every known rich-node size after Cytoscape elements are replaced.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 264,
+        "line": 281,
         "column": 1
       }
     },
@@ -48434,7 +48501,7 @@
       "description": "Apply one measured model-space size as a Cytoscape per-node style bypass.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 269,
+        "line": 286,
         "column": 1
       }
     },
@@ -48443,7 +48510,7 @@
       "description": "Coalesce DOM measurements into one follow-up layout generation.\n@performance Keep one scheduled layout per frame instead of one per measured node.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 279,
+        "line": 296,
         "column": 1
       }
     },
@@ -48452,7 +48519,7 @@
       "description": "Subscribe one React overlay to rendered node state without exposing the Cytoscape core.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 292,
+        "line": 309,
         "column": 1
       }
     },
@@ -48461,7 +48528,7 @@
       "description": "Publish current rendered node positions only to active rich-node subscribers.\n@performance Skip snapshot preparation when no overlay is subscribed.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 304,
+        "line": 321,
         "column": 1
       }
     },
@@ -48470,7 +48537,7 @@
       "description": "Translate one rich-overlay event back into normal graph selection and callbacks.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 313,
+        "line": 330,
         "column": 1
       }
     },
@@ -48479,7 +48546,7 @@
       "description": "Return whether Cytoscape currently has dimensions suitable for fitting.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 326,
+        "line": 343,
         "column": 1
       }
     },
@@ -48488,7 +48555,7 @@
       "description": "Dispose all runtime resources in the reverse order they were acquired.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 331,
+        "line": 348,
         "column": 1
       }
     },
@@ -48593,10 +48660,10 @@
     },
     {
       "name": "GraphView",
-      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.",
+      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 111,
+        "line": 121,
         "column": 1
       }
     },
@@ -48605,7 +48672,7 @@
       "description": "Compose React synchronization around the single imperative graph runtime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 143,
+        "line": 153,
         "column": 1
       }
     },
@@ -48614,7 +48681,7 @@
       "description": "Keep the callback ref current without mutating refs during render.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 159,
+        "line": 169,
         "column": 1
       }
     },
@@ -48623,7 +48690,7 @@
       "description": "Create and dispose the runtime only with the underlying browser container lifetime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 177,
+        "line": 187,
         "column": 1
       }
     },
@@ -48632,7 +48699,7 @@
       "description": "Synchronize graph data and layout policy without exposing Cytoscape to React.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 195,
+        "line": 205,
         "column": 1
       }
     },
@@ -48641,7 +48708,7 @@
       "description": "Synchronize optional controlled selection independently from graph layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 241,
+        "line": 257,
         "column": 1
       }
     },
@@ -48650,7 +48717,7 @@
       "description": "Subscribe the optional rich-node overlay to rendered runtime positions.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 251,
+        "line": 267,
         "column": 1
       }
     },
@@ -48659,7 +48726,7 @@
       "description": "Seed known rich-node dimensions without requiring DOM measurement.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 267,
+        "line": 283,
         "column": 1
       }
     },
@@ -48668,7 +48735,7 @@
       "description": "Read callback props for the initial runtime callback-ref value.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 283,
+        "line": 299,
         "column": 1
       }
     },
@@ -48777,6 +48844,15 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts",
         "line": 2,
+        "column": 1
+      }
+    },
+    {
+      "name": "sizeGraphNodesToLabels",
+      "description": "Size plain leaf nodes from the renderer's styled label bounds, keeping padding in the stylesheet.\n@performance Reuse Cytoscape's cached text measurements during reconciliation, never a per-element\nstyle callback or a pan/zoom listener. Only write changed dimensions; bold and Unicode labels must\nnot regress to character-count estimates. Compound dimensions remain owned by child bounds.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+        "line": 9,
         "column": 1
       }
     },
@@ -50162,16 +50238,16 @@
       "description": "Render one recursive themed tree row and keep row selection separate from expansion controls.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 22,
+        "line": 23,
         "column": 1
       }
     },
     {
       "name": "renderContent",
-      "description": null,
+      "description": "Compose custom content or the selectable row independently of the expansion control.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 39,
+        "line": 42,
         "column": 9
       }
     },
@@ -50189,8 +50265,17 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
-        "line": 30,
+        "line": 31,
         "column": 9
+      }
+    },
+    {
+      "name": "TreeExpansionIndicator",
+      "description": "Draw a compact expansion or folder/file indicator without adding an icon runtime dependency.",
+      "sourceLocation": {
+        "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeExpansionIndicator.tsx",
+        "line": 4,
+        "column": 1
       }
     },
     {
@@ -50198,7 +50283,7 @@
       "description": "Render one recursive browser tree row while keeping selection and expansion independent.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 6,
+        "line": 7,
         "column": 1
       }
     },
@@ -50207,7 +50292,7 @@
       "description": "Render the default browser tree-row label, icon, and metadata.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 56,
+        "line": 60,
         "column": 1
       }
     },
@@ -50216,7 +50301,7 @@
       "description": "Isolate optional row actions so their pointer events do not select the tree item.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 75,
+        "line": 81,
         "column": 1
       }
     },
@@ -50225,7 +50310,7 @@
       "description": "Render the independent expansion control for a tree row with children.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 89,
+        "line": 95,
         "column": 1
       }
     },
@@ -50234,7 +50319,7 @@
       "description": "Render expanded descendants recursively.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 112,
+        "line": 134,
         "column": 1
       }
     },
@@ -50243,7 +50328,7 @@
       "description": "Select a row from pointer activation when it is interactive.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 123,
+        "line": 145,
         "column": 1
       }
     },
@@ -50252,7 +50337,7 @@
       "description": "Select a row from keyboard activation while preserving native navigation keys.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 128,
+        "line": 150,
         "column": 1
       }
     },
@@ -50261,16 +50346,16 @@
       "description": "Resolve browser row presentation from the interaction state.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 138,
+        "line": 160,
         "column": 1
       }
     },
     {
       "name": "TreeView",
-      "description": "Render the standalone browser TreeView artifact without React Native runtime dependencies.",
+      "description": "Render the standalone browser TreeView artifact without React Native runtime dependencies.\nbuilt-in folder/file indicators. Expansion is leading and independent from row selection.",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
-        "line": 38,
+        "line": 43,
         "column": 1
       }
     },
@@ -57625,6 +57710,11 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "toPath": "src/types/graphViewRuntime.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
@@ -57632,11 +57722,6 @@
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
-      },
-      {
-        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
@@ -57661,11 +57746,6 @@
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -57711,6 +57791,11 @@
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -57782,6 +57867,11 @@
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+      },
+      {
+        "fromPath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
+        "toPath": "src/features/tree-view/adapters/inbound/web-artifact/TreeExpansionIndicator.tsx",
+        "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx"
       },
       {
         "fromPath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
@@ -60956,14 +61046,14 @@
       },
       {
         "fromSymbol": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "toSymbol": "onToggleExpand",
-        "callExpression": "onToggleExpand",
+        "toSymbol": "onSelect",
+        "callExpression": "onSelect",
         "sourcePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx"
       },
       {
         "fromSymbol": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "toSymbol": "onSelect",
-        "callExpression": "onSelect",
+        "toSymbol": "onToggleExpand",
+        "callExpression": "onToggleExpand",
         "sourcePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx"
       },
       {
@@ -61681,6 +61771,48 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
+        "fromSymbol": "setZoom",
+        "toSymbol": "setCenteredZoom",
+        "callExpression": "setCenteredZoom",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "zoomBy",
+        "toSymbol": "setCenteredZoom",
+        "callExpression": "setCenteredZoom",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "configure",
+        "toSymbol": "applyZoomLimits",
+        "callExpression": "applyZoomLimits",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "getNodeFitZoom",
+        "callExpression": "getNodeFitZoom",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "applyZoomLimits",
+        "callExpression": "applyZoomLimits",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "fit",
+        "callExpression": "controller.fit",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "setCenteredZoom",
+        "callExpression": "setCenteredZoom",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
         "fromSymbol": "createGraphResizeObserver",
         "toSymbol": "readResizeObserverConstructor",
         "callExpression": "readResizeObserverConstructor",
@@ -61712,8 +61844,8 @@
       },
       {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "toSymbol": "fitGraphViewport",
-        "callExpression": "fitGraphViewport",
+        "toSymbol": "settleViewport",
+        "callExpression": "input.settleViewport",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
       },
       {
@@ -61795,9 +61927,21 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
+        "fromSymbol": "settleViewport",
+        "toSymbol": "settle",
+        "callExpression": "viewport.settle",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
         "fromSymbol": "onViewportSettled",
         "toSymbol": "emitRenderedNodes",
         "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "configure",
+        "callExpression": "state.viewport.configure",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -61813,7 +61957,13 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
-        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "sizeGraphNodesToLabels",
+        "callExpression": "sizeGraphNodesToLabels",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
         "toSymbol": "applyKnownNodeSizes",
         "callExpression": "applyKnownNodeSizes",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
@@ -61828,6 +61978,12 @@
         "fromSymbol": "updateRuntime",
         "toSymbol": "hasGraphLayoutChanged",
         "callExpression": "hasGraphLayoutChanged",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "settle",
+        "callExpression": "state.viewport.settle",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -61892,8 +62048,8 @@
       },
       {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "toSymbol": "fitGraphViewport",
-        "callExpression": "fitGraphViewport",
+        "toSymbol": "settle",
+        "callExpression": "state.viewport.settle",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {

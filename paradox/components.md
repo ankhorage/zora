@@ -3239,7 +3239,7 @@ Export paths: `src/index.ts`
 
 ## TreeItem
 
-Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:108:14`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:124:14`
 
 Single tree node row used within `TreeView`.
 
@@ -3249,6 +3249,7 @@ Export paths: `src/index.ts`
 | --- | --- | --- | --- | --- |
 | depth | `number` | yes | — |  |
 | expandedIds | `readonly TId[]` | yes | — |  |
+| expansionIndicator | `"folder" \| "chevron"` | yes | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | node | `TreeItemNode<TId>` | yes | — |  |
@@ -3261,9 +3262,10 @@ Export paths: `src/index.ts`
 
 ## TreeView
 
-Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:60:14`
+Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:66:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
+Expansion controls are separate from row selection, including when rendering custom row content.
 
 Export paths: `src/index.ts`
 
@@ -3271,6 +3273,7 @@ Export paths: `src/index.ts`
 | --- | --- | --- | --- | --- |
 | defaultExpandedIds | `readonly TId[] \| undefined` | no | — |  |
 | expandedIds | `readonly TId[] \| undefined` | no | — |  |
+| expansionIndicator | `"folder" \| "chevron" \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | nodes | `readonly TreeItemNode<TId>[]` | yes | — |  |

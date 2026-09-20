@@ -20673,7 +20673,7 @@
     "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-      "line": 108,
+      "line": 124,
       "column": 14
     },
     "exportPaths": [
@@ -20814,14 +20814,14 @@
   },
   {
     "name": "TreeView",
-    "description": "Tree view pattern for hierarchical navigation and expandable lists.",
+    "description": "Tree view pattern for hierarchical navigation and expandable lists.\nExpansion controls are separate from row selection, including when rendering custom row content.",
     "isReadme": false,
     "examples": [],
     "kind": "value",
     "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
     "sourceLocation": {
       "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
-      "line": 60,
+      "line": 66,
       "column": 14
     },
     "exportPaths": [
@@ -20865,6 +20865,13 @@
         "name": "expandedIds",
         "kind": "property",
         "type": "readonly TId[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "expansionIndicator",
+        "kind": "property",
+        "type": "\"folder\" | \"chevron\" | undefined",
         "required": false,
         "description": null
       },

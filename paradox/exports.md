@@ -4832,7 +4832,7 @@ Source: `src/types/toolbar.ts:5:1`
 
 Kind: `value`
 Module: `src/features/tree-view/adapters/inbound/TreeItem.tsx`
-Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:108:14`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:124:14`
 
 Single tree node row used within `TreeView`.
 
@@ -4874,9 +4874,10 @@ Source: `src/types/tree-view.ts:16:1`
 
 Kind: `value`
 Module: `src/features/tree-view/adapters/inbound/TreeView.tsx`
-Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:60:14`
+Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:66:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
+Expansion controls are separate from row selection, including when rendering custom row content.
 
 ## TreeViewProps
 
@@ -4890,6 +4891,7 @@ Source: `src/types/tree-view.ts:24:1`
 | --- | --- | --- | --- | --- |
 | defaultExpandedIds | property | `readonly TId[] \| undefined` | no |  |
 | expandedIds | property | `readonly TId[] \| undefined` | no |  |
+| expansionIndicator | property | `"folder" \| "chevron" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nodes | property | `readonly TreeItemNode<TId>[]` | yes |  |
