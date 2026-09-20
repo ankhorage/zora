@@ -14,6 +14,7 @@ export default createKnipConfig({
     'src/**/*.web.tsx',
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
+    'test-fixtures/graphLayoutLifecycle.ts',
   ],
   ignoreFiles: [
     '.prettierrc.js',

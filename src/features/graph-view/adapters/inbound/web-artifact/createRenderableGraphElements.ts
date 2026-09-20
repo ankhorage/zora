@@ -13,12 +13,12 @@ export function createRenderableGraphElements(
   );
   const nodeElements: ElementDefinition[] = nodes.map((node) => ({
     group: 'nodes',
-    classes: node.classes,
+    classes: node.classes ?? '',
     data: {
       ...(node.data ?? {}),
       id: node.id,
       label: node.label ?? node.id,
-      ...(node.parentId ? { parent: node.parentId } : {}),
+      parent: node.parentId,
     },
   }));
   const edgeElements = edges.flatMap((edge, index) =>
@@ -42,7 +42,7 @@ function createEdgeElement(
   return [
     {
       group: 'edges',
-      classes: edge.classes,
+      classes: edge.classes ?? '',
       data: {
         ...(edge.data ?? {}),
         id: edge.id ?? `${edge.source}->${edge.target}:${index}`,
