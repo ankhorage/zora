@@ -4,7 +4,12 @@ import type { Core } from 'cytoscape';
 import { createRenderableGraphElements } from './createRenderableGraphElements';
 import type { GraphViewEdge, GraphViewNode } from './GraphView';
 
-/*** Reconcile the graph projection while retaining current positions, selection, and element state. */
+/***
+ * Reconciles graph data in one batch while retaining positions, selection and element identity.
+ * Do not replace this with remove-all/add-all: presentation updates must not discard interaction
+ * state or force the runtime to rebuild the graph. Use direct ID lookups for obsolete metadata;
+ * per-element selector scans would add avoidable work. Runtime tests cover hover/selection updates.
+ */
 export function syncGraphElements(
   cy: Core,
   nodes: readonly GraphViewNode[],

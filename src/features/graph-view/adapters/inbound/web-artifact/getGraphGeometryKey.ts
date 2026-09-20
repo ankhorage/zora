@@ -1,6 +1,12 @@
 import type { Core } from 'cytoscape';
 
-/*** Identify layout-relevant leaf dimensions without including positions or presentation colors. */
+/***
+ * Identifies layout-relevant leaf dimensions without including positions or presentation colors.
+ * Adding viewport, color or arbitrary data to this key turns interaction updates into relayouts.
+ * Measure after style reconciliation; actual size changes still require layout. Compound bounds
+ * follow child positions, so keying their measured bounds would feed layout output back into input.
+ * Styled geometry tests and runtime interaction tests protect these distinctions.
+ */
 export function getGraphGeometryKey(cy: Core): string {
   return JSON.stringify(
     cy.nodes().map((node) => {

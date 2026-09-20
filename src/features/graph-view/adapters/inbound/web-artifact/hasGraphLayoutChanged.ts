@@ -1,7 +1,12 @@
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
 
-/*** Detect topology and explicit layout-policy changes independently of highlight metadata. */
+/***
+ * Detects topology and explicit layout-policy changes independently of highlight metadata.
+ * New node/edge array identities alone are not a layout request: consumers may update classes
+ * and colors on hover or selection. Keep structural identity separate from presentation and
+ * combine this decision with measured geometry in the single runtime owner, not consumer effects.
+ */
 export function hasGraphLayoutChanged(
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
