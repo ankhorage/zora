@@ -1,54 +1,29 @@
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
-import ElkLayout from 'cytoscape-elk/src/layout.js';
 
+import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { bindGraphEvents } from './bindGraphEvents';
 import { createGraphController } from './createGraphController';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { fitGraphViewport } from './fitGraphViewport';
+import { getGraphGeometryKey } from './getGraphGeometryKey';
+import { getGraphTopologyKey } from './getGraphTopologyKey';
 import type {
   GraphViewCallbacks,
-  GraphViewEdge,
   GraphViewElementEventType,
-  GraphViewLayoutName,
-  GraphViewNode,
   GraphViewRenderedNode,
   GraphViewSize,
   GraphViewStyleRule,
 } from './GraphView';
+import { hasGraphLayoutChanged } from './hasGraphLayoutChanged';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
+import { registerGraphLayouts } from './registerGraphLayouts';
 import { runGraphLayout } from './runGraphLayout';
 import { scheduleGraphFrame } from './scheduleGraphFrame';
 import { shouldFitGraphAfterLayout } from './shouldFitGraphAfterLayout';
 import { syncGraphElements } from './syncGraphElements';
 
-registerElkLayout();
-
-type GraphContainer = NonNullable<CytoscapeOptions['container']>;
+type GraphContainer = CytoscapeOptions['container'];
 type RenderedNodeListener = (nodes: readonly GraphViewRenderedNode[]) => void;
-
-/*** Register the browser-safe ELK source layout through Cytoscape's function-style extension API. */
-function registerElkLayout() {
-  /*** Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call(). */
-  function ElkLayoutRegistrant(this: Record<string, unknown>, options: Record<string, unknown>) {
-    Object.assign(this, new ElkLayout(options));
-  }
-
-  Object.setPrototypeOf(ElkLayoutRegistrant.prototype, ElkLayout.prototype);
-  cytoscape('layout', 'elk', ElkLayoutRegistrant);
-}
-
-interface GraphRuntimeUpdate {
-  readonly edges: readonly GraphViewEdge[];
-  readonly fitPadding?: number;
-  readonly layout?: GraphViewLayoutName;
-  readonly layoutOptions?: Readonly<Record<string, unknown>>;
-  readonly maxZoom?: number;
-  readonly minZoom?: number;
-  readonly nodes: readonly GraphViewNode[];
-  readonly richNodeRendering: boolean;
-  readonly spacingFactor?: number;
-  readonly styleRules?: readonly GraphViewStyleRule[];
-}
 
 export interface GraphRuntime {
   destroy(): void;
@@ -65,12 +40,14 @@ interface GraphRuntimeState {
   readonly cy: Core;
   readonly fitPaddingRef: { current: number };
   readonly generationRef: { current: number };
+  readonly geometryRef: { current: string | null };
   readonly hoveredNodeIds: Set<string>;
   readonly latestUpdateRef: { current: GraphRuntimeUpdate | null };
   readonly layoutRef: { current: ReturnType<typeof runGraphLayout> | null };
   readonly layoutRunningRef: { current: boolean };
   readonly nodeSizes: Map<string, GraphViewSize>;
   readonly readyRef: { current: boolean };
+  readonly settledTopologyRef: { current: string | null };
   readonly relayoutScheduledRef: { current: boolean };
   readonly renderedNodeListeners: Set<RenderedNodeListener>;
   readonly resizeObserver: GraphResizeObserver | null;
@@ -119,12 +96,14 @@ function createRuntimeState(
     cy,
     fitPaddingRef,
     generationRef: { current: 0 },
+    geometryRef: { current: null as string | null },
     hoveredNodeIds: new Set<string>(),
     latestUpdateRef: { current: null as GraphRuntimeUpdate | null },
     layoutRef: { current: null as ReturnType<typeof runGraphLayout> | null },
     layoutRunningRef,
     nodeSizes: new Map<string, GraphViewSize>(),
     readyRef,
+    settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
     renderedNodeListeners,
   };
@@ -143,17 +122,39 @@ function createRuntimeState(
   return { ...stateBase, resizeObserver, unbindEvents };
 }
 
-/*** Apply one graph update and start exactly one new layout generation. */
+/***
+ * Reconcile presentation in place and relayout only when graph geometry or layout policy changes.
+ * @performance Batch reconciliation and skip layout for presentation-only updates.
+ */
 function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   if (state.cy.destroyed()) return;
-  stopCurrentLayout(state);
+  const previous = state.latestUpdateRef.current;
   state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.cy.minZoom(input.minZoom ?? 0.05);
   state.cy.maxZoom(input.maxZoom ?? 2);
-  syncGraphElements(state.cy, input.nodes, input.edges);
-  applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
-  applyKnownNodeSizes(state);
+  state.cy.batch(() => {
+    if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
+      syncGraphElements(state.cy, input.nodes, input.edges);
+    }
+    if (
+      previous?.styleRules !== input.styleRules ||
+      previous?.richNodeRendering !== input.richNodeRendering
+    ) {
+      applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
+    }
+    applyKnownNodeSizes(state);
+  });
+  const geometry = getGraphGeometryKey(state.cy);
+  const relayout = geometry !== state.geometryRef.current || hasGraphLayoutChanged(previous, input);
+  state.geometryRef.current = geometry;
+  if (!relayout) {
+    emitRenderedNodes(state);
+    if (!state.layoutRunningRef.current)
+      state.callbacksRef.current.onLayoutComplete?.(state.controller);
+    return;
+  }
+  stopCurrentLayout(state);
   startCurrentLayout(state, input);
 }
 
@@ -174,16 +175,26 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
   );
 }
 
-/*** Settle only the latest layout generation and fit once from node bounds. */
+/***
+ * Settle only the latest layout generation and fit once from node bounds.
+ * @performance Discard stale completions and avoid repeated automatic fits.
+ */
 function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
-  state.layoutRef.current = null;
   scheduleGraphFrame(() => {
     if (state.cy.destroyed() || generation !== state.generationRef.current) return;
+    state.layoutRef.current = null;
     state.cy.resize();
     state.layoutRunningRef.current = false;
     if (!hasUsableViewport(state.cy)) return;
-    const shouldFit = shouldFitGraphAfterLayout(state.readyRef.current);
+    const input = state.latestUpdateRef.current;
+    if (input === null) return;
+    const topology = getGraphTopologyKey(input.nodes, input.edges);
+    const shouldFit = shouldFitGraphAfterLayout(
+      state.readyRef.current,
+      topology !== state.settledTopologyRef.current,
+    );
     if (shouldFit) fitGraphViewport(state.cy, { padding: state.fitPaddingRef.current });
+    state.settledTopologyRef.current = topology;
     emitRenderedNodes(state);
 
     if (!state.readyRef.current) {
@@ -223,7 +234,10 @@ function applyGraphStyles(
   if (styles.length > 0) cy.style(styles).update();
 }
 
-/*** Synchronize controlled selection without rerunning layout. */
+/***
+ * Synchronize controlled selection without rerunning layout.
+ * @performance Selection updates must not trigger graph reconstruction or layout.
+ */
 function setSelectedNodeIds(state: GraphRuntimeState, nodeIds: readonly string[] | undefined) {
   if (state.cy.destroyed() || nodeIds === undefined) return;
   const selectedIds = new Set(nodeIds);
@@ -234,7 +248,10 @@ function setSelectedNodeIds(state: GraphRuntimeState, nodeIds: readonly string[]
   emitRenderedNodes(state);
 }
 
-/*** Persist one rich-node size and schedule at most one relayout for changed geometry. */
+/***
+ * Persist one rich-node size and schedule at most one relayout for changed geometry.
+ * @performance Ignore unchanged measurements before scheduling layout work.
+ */
 function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) {
   const previous = state.nodeSizes.get(id);
   if (previous?.width === size.width && previous.height === size.height) return;
@@ -255,7 +272,10 @@ function applyNodeSize(cy: Core, id: string, size: GraphViewSize) {
   node.style({ height: size.height, width: size.width });
 }
 
-/*** Coalesce DOM measurements into one follow-up layout generation. */
+/***
+ * Coalesce DOM measurements into one follow-up layout generation.
+ * @performance Keep one scheduled layout per frame instead of one per measured node.
+ */
 function scheduleMeasuredNodeRelayout(state: GraphRuntimeState) {
   if (state.relayoutScheduledRef.current) return;
   state.relayoutScheduledRef.current = true;
@@ -277,7 +297,10 @@ function subscribeRenderedNodes(state: GraphRuntimeState, listener: RenderedNode
   };
 }
 
-/*** Publish current rendered node positions only to active rich-node subscribers. */
+/***
+ * Publish current rendered node positions only to active rich-node subscribers.
+ * @performance Skip snapshot preparation when no overlay is subscribed.
+ */
 function emitRenderedNodes(
   state: Pick<GraphRuntimeState, 'cy' | 'hoveredNodeIds' | 'renderedNodeListeners'>,
 ) {
@@ -312,3 +335,5 @@ function destroyRuntime(state: GraphRuntimeState) {
   state.renderedNodeListeners.clear();
   if (!state.cy.destroyed()) state.cy.destroy();
 }
+
+registerGraphLayouts();

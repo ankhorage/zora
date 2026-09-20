@@ -1,6 +1,7 @@
 import type { Core, LayoutOptions, Layouts } from 'cytoscape';
 
 import type { GraphViewLayoutName } from './GraphView';
+import { runDetachedGraphLayout } from './runDetachedGraphLayout';
 
 interface RunGraphLayoutInput {
   readonly layout: GraphViewLayoutName;
@@ -18,14 +19,17 @@ export function runGraphLayout(
   input: RunGraphLayoutInput,
   onComplete: () => void,
 ): GraphLayoutSession {
+  if (input.layout === 'elk') {
+    return runDetachedGraphLayout(cy, createLayoutOptions(input), onComplete);
+  }
   const layout = cy.layout(createLayoutOptions(input));
   const handleStop = () => onComplete();
-  cy.one('layoutstop', handleStop);
+  layout.one('layoutstop', handleStop);
   layout.run();
 
   return {
     stop() {
-      stopGraphLayout(cy, layout, handleStop);
+      stopGraphLayout(layout, handleStop);
     },
   };
 }
@@ -43,8 +47,8 @@ function createLayoutOptions(input: RunGraphLayoutInput): LayoutOptions {
 }
 
 /*** Stop one layout without allowing its stale layout-stop callback to escape. */
-function stopGraphLayout(cy: Core, layout: Layouts, handleStop: () => void) {
-  cy.off('layoutstop', handleStop);
+function stopGraphLayout(layout: Layouts, handleStop: () => void) {
+  layout.off('layoutstop', handleStop);
   try {
     layout.stop();
   } catch {
