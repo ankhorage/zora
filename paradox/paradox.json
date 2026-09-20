@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.3.7",
+      "value": "v20.3.8",
       "color": "cb3837"
     },
     {
@@ -2324,12 +2324,17 @@
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts",
-        "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+        "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "src/types/graphViewRuntime.ts"
       ],
       "exports": [
         "createGraphRuntime",
@@ -2354,6 +2359,24 @@
       ],
       "exports": [
         "fitGraphViewport"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "getGraphGeometryKey"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "getGraphTopologyKey"
       ]
     },
     {
@@ -2393,6 +2416,17 @@
       ]
     },
     {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+        "src/types/graphViewRuntime.ts"
+      ],
+      "exports": [
+        "hasGraphLayoutChanged"
+      ]
+    },
+    {
       "path": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -2403,10 +2437,27 @@
       ]
     },
     {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "registerGraphLayouts"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "runDetachedGraphLayout"
+      ]
+    },
+    {
       "path": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
       ],
       "exports": [
         "runGraphLayout"
@@ -5510,6 +5561,16 @@
         "GradientRenderer",
         "GradientRendererProps",
         "GradientRendererProviderProps"
+      ]
+    },
+    {
+      "path": "src/types/graphViewRuntime.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      ],
+      "exports": [
+        "GraphRuntimeUpdate"
       ]
     },
     {
@@ -48279,29 +48340,11 @@
       }
     },
     {
-      "name": "registerElkLayout",
-      "description": "Register the browser-safe ELK source layout through Cytoscape's function-style extension API.",
-      "sourceLocation": {
-        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 30,
-        "column": 1
-      }
-    },
-    {
-      "name": "ElkLayoutRegistrant",
-      "description": "Initialize one Cytoscape wrapper from the native ELK layout class without invoking that class through .call().",
-      "sourceLocation": {
-        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 32,
-        "column": 3
-      }
-    },
-    {
       "name": "createGraphRuntime",
       "description": "Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 81,
+        "line": 58,
         "column": 1
       }
     },
@@ -48310,16 +48353,16 @@
       "description": "Build the mutable state shared by the single graph-runtime owner.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 106,
+        "line": 83,
         "column": 1
       }
     },
     {
       "name": "updateRuntime",
-      "description": "Apply one graph update and start exactly one new layout generation.",
+      "description": "Reconcile presentation in place and relayout only when graph geometry or layout policy changes.\n@performance Batch reconciliation and skip layout for presentation-only updates.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 147,
+        "line": 129,
         "column": 1
       }
     },
@@ -48328,16 +48371,16 @@
       "description": "Start a generation-safe layout whose completion is the only normal automatic fit trigger.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 161,
+        "line": 162,
         "column": 1
       }
     },
     {
       "name": "completeCurrentLayout",
-      "description": "Settle only the latest layout generation and fit once from node bounds.",
+      "description": "Settle only the latest layout generation and fit once from node bounds.\n@performance Discard stale completions and avoid repeated automatic fits.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 178,
+        "line": 182,
         "column": 1
       }
     },
@@ -48346,7 +48389,7 @@
       "description": "Stop the current layout and invalidate every stale completion callback.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 198,
+        "line": 209,
         "column": 1
       }
     },
@@ -48355,25 +48398,25 @@
       "description": "Apply consumer styles and hide native node paint only when React rich nodes are active.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 206,
+        "line": 217,
         "column": 1
       }
     },
     {
       "name": "setSelectedNodeIds",
-      "description": "Synchronize controlled selection without rerunning layout.",
+      "description": "Synchronize controlled selection without rerunning layout.\n@performance Selection updates must not trigger graph reconstruction or layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 227,
+        "line": 241,
         "column": 1
       }
     },
     {
       "name": "setNodeSize",
-      "description": "Persist one rich-node size and schedule at most one relayout for changed geometry.",
+      "description": "Persist one rich-node size and schedule at most one relayout for changed geometry.\n@performance Ignore unchanged measurements before scheduling layout work.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 238,
+        "line": 255,
         "column": 1
       }
     },
@@ -48382,7 +48425,7 @@
       "description": "Apply every known rich-node size after Cytoscape elements are replaced.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 247,
+        "line": 264,
         "column": 1
       }
     },
@@ -48391,16 +48434,16 @@
       "description": "Apply one measured model-space size as a Cytoscape per-node style bypass.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 252,
+        "line": 269,
         "column": 1
       }
     },
     {
       "name": "scheduleMeasuredNodeRelayout",
-      "description": "Coalesce DOM measurements into one follow-up layout generation.",
+      "description": "Coalesce DOM measurements into one follow-up layout generation.\n@performance Keep one scheduled layout per frame instead of one per measured node.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 259,
+        "line": 279,
         "column": 1
       }
     },
@@ -48409,16 +48452,16 @@
       "description": "Subscribe one React overlay to rendered node state without exposing the Cytoscape core.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 272,
+        "line": 292,
         "column": 1
       }
     },
     {
       "name": "emitRenderedNodes",
-      "description": "Publish current rendered node positions only to active rich-node subscribers.",
+      "description": "Publish current rendered node positions only to active rich-node subscribers.\n@performance Skip snapshot preparation when no overlay is subscribed.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 281,
+        "line": 304,
         "column": 1
       }
     },
@@ -48427,7 +48470,7 @@
       "description": "Translate one rich-overlay event back into normal graph selection and callbacks.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 290,
+        "line": 313,
         "column": 1
       }
     },
@@ -48436,7 +48479,7 @@
       "description": "Return whether Cytoscape currently has dimensions suitable for fitting.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 303,
+        "line": 326,
         "column": 1
       }
     },
@@ -48445,7 +48488,7 @@
       "description": "Dispose all runtime resources in the reverse order they were acquired.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 308,
+        "line": 331,
         "column": 1
       }
     },
@@ -48491,6 +48534,24 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "line": 16,
+        "column": 1
+      }
+    },
+    {
+      "name": "getGraphGeometryKey",
+      "description": "Identifies layout-relevant leaf dimensions without including positions or presentation colors.\n@performance\nAdding viewport, color or arbitrary data to this key turns interaction updates into relayouts.\nMeasure after style reconciliation; actual size changes still require layout. Compound bounds\nfollow child positions, so keying their measured bounds would feed layout output back into input.\nStyled geometry tests and runtime interaction tests protect these distinctions.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "getGraphTopologyKey",
+      "description": "Identify visible graph membership and hierarchy independently of presentation metadata.\n@performance Keep presentation-only changes out of the relayout decision.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+        "line": 7,
         "column": 1
       }
     },
@@ -48612,6 +48673,15 @@
       }
     },
     {
+      "name": "hasGraphLayoutChanged",
+      "description": "Detects topology and explicit layout-policy changes independently of highlight metadata.\n@performance\nNew node/edge array identities alone are not a layout request: consumers may update classes\nand colors on hover or selection. Keep structural identity separate from presentation and\ncombine this decision with measured geometry in the single runtime owner, not consumer effects.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
       "name": "readGraphRenderedNodes",
       "description": "Read React-overlay node state from Cytoscape's authoritative rendered positions.",
       "sourceLocation": {
@@ -48621,11 +48691,47 @@
       }
     },
     {
+      "name": "registerGraphLayouts",
+      "description": "Register browser-safe layout extensions through Cytoscape's function-style extension API.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
+        "line": 5,
+        "column": 1
+      }
+    },
+    {
+      "name": "ElkLayoutRegistrant",
+      "description": "Adapt the native ELK class to the constructor convention required by Cytoscape.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "runDetachedGraphLayout",
+      "description": "Isolate an uncancellable layout from the displayed core and discard stopped generations.\n@performance Apply current positions in one batch without rebuilding the displayed graph.\nA stopped ELK computation still runs to completion; this guard does not cancel its CPU work.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
+        "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "createLayoutSnapshot",
+      "description": "Capture graph data and measured node sizes without retaining the browser renderer.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
+        "line": 47,
+        "column": 1
+      }
+    },
+    {
       "name": "runGraphLayout",
       "description": "Run one Cytoscape layout with automatic fitting disabled and explicit stop ownership.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
-        "line": 16,
+        "line": 17,
         "column": 1
       }
     },
@@ -48634,7 +48740,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
-        "line": 22,
+        "line": 26,
         "column": 9
       }
     },
@@ -48643,7 +48749,7 @@
       "description": "Build layout options while reserving fit ownership for the graph runtime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
-        "line": 34,
+        "line": 38,
         "column": 1
       }
     },
@@ -48652,7 +48758,7 @@
       "description": "Stop one layout without allowing its stale layout-stop callback to escape.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
-        "line": 46,
+        "line": 50,
         "column": 1
       }
     },
@@ -48667,7 +48773,7 @@
     },
     {
       "name": "shouldFitGraphAfterLayout",
-      "description": "Return whether one completed layout still owns the initial automatic viewport fit.",
+      "description": "Fit initial or structurally changed graphs while preserving the viewport across spacing updates.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts",
         "line": 2,
@@ -48676,10 +48782,10 @@
     },
     {
       "name": "syncGraphElements",
-      "description": "Replace Cytoscape elements from the current plain graph projection in one batch.",
+      "description": "Reconciles graph data in one batch while retaining positions, selection and element identity.\n@performance\nDo not replace this with remove-all/add-all: presentation updates must not discard interaction\nstate or force the runtime to rebuild the graph. Use direct ID lookups for obsolete metadata;\nper-element selector scans would add avoidable work. Runtime tests cover hover/selection updates.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
-        "line": 7,
+        "line": 14,
         "column": 1
       }
     },
@@ -51466,6 +51572,11 @@
         "fromPath": "src/types/gradient.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/gradient.ts"
+      },
+      {
+        "fromPath": "src/types/graphViewRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/types/graphViewRuntime.ts"
       },
       {
         "fromPath": "src/types/heading.ts",
@@ -57534,6 +57645,11 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/types/graphViewRuntime.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
@@ -57554,12 +57670,32 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -57593,6 +57729,11 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts"
+      },
+      {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
@@ -57608,6 +57749,16 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+        "toPath": "src/types/graphViewRuntime.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
+      },
+      {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts"
@@ -57615,6 +57766,11 @@
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
       },
       {
@@ -61567,18 +61723,6 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
       },
       {
-        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "toSymbol": "registerElkLayout",
-        "callExpression": "registerElkLayout",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromSymbol": "registerElkLayout",
-        "toSymbol": "cytoscape",
-        "callExpression": "cytoscape",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
         "fromSymbol": "createGraphRuntime",
         "toSymbol": "cytoscape",
         "callExpression": "cytoscape",
@@ -61657,27 +61801,51 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
-        "fromSymbol": "updateRuntime",
-        "toSymbol": "stopCurrentLayout",
-        "callExpression": "stopCurrentLayout",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromSymbol": "updateRuntime",
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "syncGraphElements",
         "callExpression": "syncGraphElements",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
-        "fromSymbol": "updateRuntime",
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "applyGraphStyles",
         "callExpression": "applyGraphStyles",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
-        "fromSymbol": "updateRuntime",
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "applyKnownNodeSizes",
         "callExpression": "applyKnownNodeSizes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "getGraphGeometryKey",
+        "callExpression": "getGraphGeometryKey",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "hasGraphLayoutChanged",
+        "callExpression": "hasGraphLayoutChanged",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "emitRenderedNodes",
+        "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "onLayoutComplete",
+        "callExpression": "state.callbacksRef.current.onLayoutComplete",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "stopCurrentLayout",
+        "callExpression": "stopCurrentLayout",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -61708,6 +61876,12 @@
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "hasUsableViewport",
         "callExpression": "hasUsableViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "getGraphTopologyKey",
+        "callExpression": "getGraphTopologyKey",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -61834,6 +62008,12 @@
         "fromSymbol": "destroyRuntime",
         "toSymbol": "unbindEvents",
         "callExpression": "state.unbindEvents",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "registerGraphLayouts",
+        "callExpression": "registerGraphLayouts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -62005,6 +62185,54 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
       {
+        "fromSymbol": "hasGraphLayoutChanged",
+        "toSymbol": "getGraphTopologyKey",
+        "callExpression": "getGraphTopologyKey",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
+      },
+      {
+        "fromSymbol": "registerGraphLayouts",
+        "toSymbol": "cytoscape",
+        "callExpression": "cytoscape",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts"
+      },
+      {
+        "fromSymbol": "runDetachedGraphLayout",
+        "toSymbol": "createLayoutSnapshot",
+        "callExpression": "createLayoutSnapshot",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "runDetachedGraphLayout",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
+        "toSymbol": "onComplete",
+        "callExpression": "onComplete",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "createLayoutSnapshot",
+        "toSymbol": "cytoscape",
+        "callExpression": "cytoscape",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"
+      },
+      {
+        "fromSymbol": "runGraphLayout",
+        "toSymbol": "runDetachedGraphLayout",
+        "callExpression": "runDetachedGraphLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts"
+      },
+      {
         "fromSymbol": "runGraphLayout",
         "toSymbol": "createLayoutOptions",
         "callExpression": "createLayoutOptions",
@@ -62032,6 +62260,12 @@
         "fromSymbol": "syncGraphElements",
         "toSymbol": "createRenderableGraphElements",
         "callExpression": "createRenderableGraphElements",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"
       },
       {
