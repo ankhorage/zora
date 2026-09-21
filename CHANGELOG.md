@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.2
+
+### Patch Changes
+
+- 1108e6a: Update Ankhorage dependencies: `@ankhorage/surface`.
+
 ## 21.0.1
 
 ### Patch Changes
