@@ -4,6 +4,7 @@ export default createKnipConfig({
   entry: [
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
+    'scripts/web-artifacts/verifyWebMaterialization.ts',
     'examples/basic-app/App.tsx',
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
@@ -14,7 +15,6 @@ export default createKnipConfig({
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
     'test-fixtures/graphLayoutLifecycle.ts',
-    'test-fixtures/webArtifactRuntime.test.tsx',
   ],
   ignoreFiles: [
     '.prettierrc.js',

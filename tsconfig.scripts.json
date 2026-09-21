@@ -16,6 +16,7 @@
   },
   "include": [
     "scripts/build-web-components.ts",
+    "scripts/web-artifacts/verifyWebMaterialization.ts",
     "scripts/validate-example-projects.ts",
     "scripts/validate-expo-candidate.ts"
   ]

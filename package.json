@@ -116,7 +116,7 @@
     "format": "ankhorage-prettier --write .",
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
-    "test": "bun test src",
+    "test": "bun run build && bun test src",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json",
     "version-packages": "ankhorage-changeset version"
   },
@@ -151,7 +151,8 @@
     "category": "zora",
     "provider": "./dist/cli/index.js",
     "capabilities": [
-      "zora.create"
+      "zora.create",
+      "zora.sync"
     ]
   }
 }
