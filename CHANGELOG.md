@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.5.1
+
+### Patch Changes
+
+- d2308a3: Recover uniformly cramped GraphView layouts when an explicit optimized fit detects overlapping node or label bounds.
+
 ## 20.5.0
 
 ### Minor Changes

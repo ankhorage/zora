@@ -559,7 +559,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts">
       src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts
-      <small>3 functions</small>
+      <small>5 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts">
@@ -46608,21 +46608,29 @@ Native hosts can inject another compatible implementation.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-compactgraphspacing-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts</h2>
-      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Compress the settled layout uniformly until measured node/label bounds would collide.&#10;Compound containment is intentional; sibling and unrelated compound intersections are not.&#10;@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout&#10;algorithm reruns, no work on zoom, and no intermediate frame is painted. Large/locked/already&#10;overlapping views retain their original positions; compaction is not an overlap-repair solver.">
+      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Optimize settled layout spacing uniformly until measured node and label bounds clear.&#10;Compound containment is intentional; sibling and unrelated compound intersections are not.&#10;@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout&#10;algorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or&#10;non-uniformly overlapping views retain their original positions.">
     <h3>compactGraphSpacing</h3>
     <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:10:1</code></p>
-    <p>Compress the settled layout uniformly until measured node/label bounds would collide.
+    <p>Optimize settled layout spacing uniformly until measured node and label bounds clear.
 Compound containment is intentional; sibling and unrelated compound intersections are not.
 @performance At most eight synchronous trials and 200,000 pair checks per trial. No layout
-algorithm reruns, no work on zoom, and no intermediate frame is painted. Large/locked/already
-overlapping views retain their original positions; compaction is not an overlap-repair solver.</p>
+algorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or
+non-uniformly overlapping views retain their original positions.</p>
+  </article><article class="item" data-search="compressGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Compress a collision-free settled layout to its smallest measured clearance.">
+    <h3>compressGraphSpacing</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:26:1</code></p>
+    <p>Compress a collision-free settled layout to its smallest measured clearance.</p>
+  </article><article class="item" data-search="expandGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Expand a uniformly cramped layout until measured node and label bounds clear.">
+    <h3>expandGraphSpacing</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:46:1</code></p>
+    <p>Expand a uniformly cramped layout until measured node and label bounds clear.</p>
   </article><article class="item" data-search="applyScale src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.">
     <h3>applyScale</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:34:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:78:1</code></p>
     <p>Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.</p>
   </article><article class="item" data-search="hasCollisions src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.">
     <h3>hasCollisions</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:54:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:98:1</code></p>
     <p>Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.</p>
   </article>
     </section>
@@ -46717,11 +46725,11 @@ Preserve valid dependencies and configured larger loops; do not hide edges or si
     <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:222:1</code></p>
     <p>Settle only the latest layout generation and fit once from node bounds.
 @performance Discard stale completions and avoid repeated automatic fits.</p>
-  </article><article class="item" data-search="requestOptimizedFit src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.&#10;@performance Bounded compaction preserves the settled algorithm instead of repeatedly running it.">
+  </article><article class="item" data-search="requestOptimizedFit src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.&#10;@performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.">
     <h3>requestOptimizedFit</h3>
     <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:256:1</code></p>
     <p>Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.
-@performance Bounded compaction preserves the settled algorithm instead of repeatedly running it.</p>
+@performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.</p>
   </article><article class="item" data-search="stopCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Stop the current layout and invalidate every stale completion callback.">
     <h3>stopCurrentLayout</h3>
     <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:278:1</code></p>
@@ -46854,45 +46862,46 @@ Styled geometry tests and runtime interaction tests protect these distinctions.<
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-graphview-tsx" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx</h2>
-      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;Ordinary zoom never compacts or relayouts. Compaction preserves layout ordering and uses bounded&#10;collision checks including labels and compound siblings; it cannot repair existing overlaps.">
+      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering&#10;and uses bounded collision checks including labels and compound siblings; it can recover uniformly&#10;cramped layouts but cannot repair non-uniform overlaps.">
     <h3>GraphView</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:137:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:138:1</code></p>
     <p>Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.
 to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.
 text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
-Ordinary zoom never compacts or relayouts. Compaction preserves layout ordering and uses bounded
-collision checks including labels and compound siblings; it cannot repair existing overlaps.</p>
+Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering
+and uses bounded collision checks including labels and compound siblings; it can recover uniformly
+cramped layouts but cannot repair non-uniform overlaps.</p>
   </article><article class="item" data-search="useGraphViewRuntime src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Compose React synchronization around the single imperative graph runtime.">
     <h3>useGraphViewRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:169:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:170:1</code></p>
     <p>Compose React synchronization around the single imperative graph runtime.</p>
   </article><article class="item" data-search="useGraphCallbacksRef src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Keep the callback ref current without mutating refs during render.">
     <h3>useGraphCallbacksRef</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:185:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:186:1</code></p>
     <p>Keep the callback ref current without mutating refs during render.</p>
   </article><article class="item" data-search="useRuntimeLifecycle src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Create and dispose the runtime only with the underlying browser container lifetime.">
     <h3>useRuntimeLifecycle</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:218:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:219:1</code></p>
     <p>Create and dispose the runtime only with the underlying browser container lifetime.</p>
   </article><article class="item" data-search="useRuntimeGraphUpdate src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Synchronize graph data and layout policy without exposing Cytoscape to React.">
     <h3>useRuntimeGraphUpdate</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:236:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:237:1</code></p>
     <p>Synchronize graph data and layout policy without exposing Cytoscape to React.</p>
   </article><article class="item" data-search="useRuntimeSelection src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Synchronize optional controlled selection independently from graph layout.">
     <h3>useRuntimeSelection</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:294:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:295:1</code></p>
     <p>Synchronize optional controlled selection independently from graph layout.</p>
   </article><article class="item" data-search="useRenderedNodeSubscription src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Subscribe the optional rich-node overlay to rendered runtime positions.">
     <h3>useRenderedNodeSubscription</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:304:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:305:1</code></p>
     <p>Subscribe the optional rich-node overlay to rendered runtime positions.</p>
   </article><article class="item" data-search="useKnownNodeSizes src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Seed known rich-node dimensions without requiring DOM measurement.">
     <h3>useKnownNodeSizes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:320:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:321:1</code></p>
     <p>Seed known rich-node dimensions without requiring DOM measurement.</p>
   </article><article class="item" data-search="readCallbacks src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Read callback props for the initial runtime callback-ref value.">
     <h3>readCallbacks</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:336:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:337:1</code></p>
     <p>Read callback props for the initial runtime callback-ref value.</p>
   </article>
     </section>

@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.5.0",
+      "value": "v20.5.1",
       "color": "cb3837"
     },
     {
@@ -48354,10 +48354,28 @@
     },
     {
       "name": "compactGraphSpacing",
-      "description": "Compress the settled layout uniformly until measured node/label bounds would collide.\nCompound containment is intentional; sibling and unrelated compound intersections are not.\n@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout\nalgorithm reruns, no work on zoom, and no intermediate frame is painted. Large/locked/already\noverlapping views retain their original positions; compaction is not an overlap-repair solver.",
+      "description": "Optimize settled layout spacing uniformly until measured node and label bounds clear.\nCompound containment is intentional; sibling and unrelated compound intersections are not.\n@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout\nalgorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or\nnon-uniformly overlapping views retain their original positions.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
         "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "compressGraphSpacing",
+      "description": "Compress a collision-free settled layout to its smallest measured clearance.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 26,
+        "column": 1
+      }
+    },
+    {
+      "name": "expandGraphSpacing",
+      "description": "Expand a uniformly cramped layout until measured node and label bounds clear.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 46,
         "column": 1
       }
     },
@@ -48366,7 +48384,7 @@
       "description": "Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 34,
+        "line": 78,
         "column": 1
       }
     },
@@ -48375,7 +48393,7 @@
       "description": "Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 54,
+        "line": 98,
         "column": 1
       }
     },
@@ -48534,7 +48552,7 @@
     },
     {
       "name": "requestOptimizedFit",
-      "description": "Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.\n@performance Bounded compaction preserves the settled algorithm instead of repeatedly running it.",
+      "description": "Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.\n@performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "line": 256,
@@ -48750,10 +48768,10 @@
     },
     {
       "name": "GraphView",
-      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nOrdinary zoom never compacts or relayouts. Compaction preserves layout ordering and uses bounded\ncollision checks including labels and compound siblings; it cannot repair existing overlaps.",
+      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nOrdinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering\nand uses bounded collision checks including labels and compound siblings; it can recover uniformly\ncramped layouts but cannot repair non-uniform overlaps.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 137,
+        "line": 138,
         "column": 1
       }
     },
@@ -48762,7 +48780,7 @@
       "description": "Compose React synchronization around the single imperative graph runtime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 169,
+        "line": 170,
         "column": 1
       }
     },
@@ -48771,7 +48789,7 @@
       "description": "Keep the callback ref current without mutating refs during render.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 185,
+        "line": 186,
         "column": 1
       }
     },
@@ -48780,7 +48798,7 @@
       "description": "Create and dispose the runtime only with the underlying browser container lifetime.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 218,
+        "line": 219,
         "column": 1
       }
     },
@@ -48789,7 +48807,7 @@
       "description": "Synchronize graph data and layout policy without exposing Cytoscape to React.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 236,
+        "line": 237,
         "column": 1
       }
     },
@@ -48798,7 +48816,7 @@
       "description": "Synchronize optional controlled selection independently from graph layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 294,
+        "line": 295,
         "column": 1
       }
     },
@@ -48807,7 +48825,7 @@
       "description": "Subscribe the optional rich-node overlay to rendered runtime positions.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 304,
+        "line": 305,
         "column": 1
       }
     },
@@ -48816,7 +48834,7 @@
       "description": "Seed known rich-node dimensions without requiring DOM measurement.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 320,
+        "line": 321,
         "column": 1
       }
     },
@@ -48825,7 +48843,7 @@
       "description": "Read callback props for the initial runtime callback-ref value.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 336,
+        "line": 337,
         "column": 1
       }
     },
@@ -61872,8 +61890,38 @@
       },
       {
         "fromSymbol": "compactGraphSpacing",
+        "toSymbol": "expandGraphSpacing",
+        "callExpression": "expandGraphSpacing",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "compactGraphSpacing",
+        "toSymbol": "compressGraphSpacing",
+        "callExpression": "compressGraphSpacing",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "compressGraphSpacing",
         "toSymbol": "applyScale",
         "callExpression": "applyScale",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "compressGraphSpacing",
+        "toSymbol": "hasCollisions",
+        "callExpression": "hasCollisions",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "expandGraphSpacing",
+        "toSymbol": "applyScale",
+        "callExpression": "applyScale",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "expandGraphSpacing",
+        "toSymbol": "hasCollisions",
+        "callExpression": "hasCollisions",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
