@@ -11,6 +11,7 @@ export interface ZoraProviderProps {
   theme?: ZoraTheme;
   themeConfig?: ThemeConfig;
   initialMode?: ZoraThemeMode;
+  mode?: ZoraThemeMode;
   toast?: ZoraToastCapability;
   bottomSheet?: boolean;
 }

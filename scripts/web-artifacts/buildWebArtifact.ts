@@ -235,6 +235,7 @@ function createProviderDeclaration(): string {
     'export interface ZoraProviderProps {',
     '  children: React.ReactNode;',
     "  initialMode?: 'light' | 'dark';",
+    "  mode?: 'light' | 'dark';",
     '  theme?: { id: string; name: string; appCategory: string; primaryColor: string; harmony: string };',
     '  themeConfig?: Record<string, unknown>;',
     '  toast?: boolean | Record<string, unknown>;',

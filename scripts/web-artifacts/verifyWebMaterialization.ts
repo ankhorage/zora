@@ -89,13 +89,13 @@ try {
   assert.equal(typeof GraphView, 'function');
   assert.equal(typeof TreeView, 'function');
 
-  function TestApp() {
+  function TestApp({ mode }: { readonly mode: 'light' | 'dark' }) {
     const [value, setValue] = React.useState('grid');
     return React.createElement(
       ZoraProvider,
-      null,
+      { mode },
       React.createElement(AppBar, { title: 'Workspace' }),
-      React.createElement(Text, null, 'Ready'),
+      React.createElement(Text, { testID: 'mode-text' }, 'Ready'),
       React.createElement(Button, null, 'Action'),
       React.createElement(Select, {
         value,
@@ -109,7 +109,7 @@ try {
     );
   }
 
-  const app = React.createElement(TestApp);
+  const app = React.createElement(TestApp, { mode: 'light' });
   const markup = renderToString(app);
   browser.document.body.innerHTML = `<div id="root">${markup}</div>`;
   const hydrationErrors: string[] = [];
@@ -122,8 +122,9 @@ try {
     originalError(...args);
   };
   try {
+    let root: ReturnType<typeof hydrateRoot> | undefined;
     await React.act(async () => {
-      hydrateRoot(browser.document.getElementById('root')!, app);
+      root = hydrateRoot(browser.document.getElementById('root')!, app);
       await new Promise((resolve) => setTimeout(resolve, 20));
     });
     assert.deepEqual(hydrationErrors, []);
@@ -141,6 +142,22 @@ try {
         ?.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
       await new Promise((resolve) => setTimeout(resolve, 20));
     });
+    assert(
+      browser.document
+        .querySelector('[data-testid="layout-trigger"]')
+        ?.textContent?.includes('Circle'),
+    );
+    const lightColor = browser.document
+      .querySelector('[data-testid="mode-text"]')
+      ?.getAttribute('style');
+    await React.act(async () => {
+      root?.render(React.createElement(TestApp, { mode: 'dark' }));
+      await new Promise((resolve) => setTimeout(resolve, 20));
+    });
+    const darkColor = browser.document
+      .querySelector('[data-testid="mode-text"]')
+      ?.getAttribute('style');
+    assert.notEqual(darkColor, lightColor);
     assert(
       browser.document
         .querySelector('[data-testid="layout-trigger"]')

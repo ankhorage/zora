@@ -16,8 +16,10 @@ materialization available.
 
 Mount `.ankh/zora/web/runtime/ZoraProvider` once at the application's client root. Import selected
 components from `.ankh/zora/web/components/<component>/<Export>`; all generated imports share the
-same bundled ZORA and Surface runtime chunks. Do not copy the Ankh provider cache into the project
-or wrap each generated component with a separate provider.
+same bundled ZORA and Surface runtime chunks. Pass `mode="light"` or `mode="dark"` when the
+application owns a changing theme mode; the provider updates its shared theme runtime without
+remounting children. Do not copy the Ankh provider cache into the project or wrap each generated
+component with a separate provider.
 
 The generated `materialization.json` records the ZORA owner version, selected components, platform,
 schema version, and file inventory. It reports generated state; `zora.web.json` remains the desired
