@@ -15,7 +15,8 @@ complete generation before switching the `.ankh/zora/web` link, so failed builds
 materialization available.
 
 Mount `.ankh/zora/web/runtime/ZoraProvider` once at the application's client root. Import selected
-components from `.ankh/zora/web/components/<component>/<Export>`; all generated imports share the
+components from `.ankh/zora/web/components/<component>`; each directory has a generated JavaScript
+and TypeScript entry. A consumer can map `@zora/*` to `.ankh/zora/web/components/*` once. All generated imports share the
 same bundled ZORA and Surface runtime chunks. Pass `mode="light"` or `mode="dark"` when the
 application owns a changing theme mode; the provider updates its shared theme runtime without
 remounting children. Do not copy the Ankh provider cache into the project or wrap each generated

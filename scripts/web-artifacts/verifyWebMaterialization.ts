@@ -54,6 +54,7 @@ try {
   );
   assert.deepEqual(evidence.components, components);
   assert(evidence.files.some((file) => file.startsWith('chunks/')));
+  assert(evidence.files.includes('components/select/index.js'));
   assert(!evidence.files.some((file) => file.includes('node_modules')));
 
   const browser = new Window();
@@ -77,13 +78,13 @@ try {
   const load = async (file: string) =>
     await import(pathToFileURL(join(outputDirectory, file)).href);
   const { ZoraProvider } = await load('runtime/ZoraProvider.js');
-  const { Select } = await load('components/select/Select.js');
-  const { Button } = await load('components/button/Button.js');
-  const { Text } = await load('components/text/Text.js');
-  const { AppBar } = await load('components/app-bar/AppBar.js');
-  const { DatePicker } = await load('components/date-picker/DatePicker.js');
-  const { GraphView } = await load('components/graph-view/GraphView.js');
-  const { TreeView } = await load('components/tree-view/TreeView.js');
+  const { Select } = await load('components/select/index.js');
+  const { Button } = await load('components/button/index.js');
+  const { Text } = await load('components/text/index.js');
+  const { AppBar } = await load('components/app-bar/index.js');
+  const { DatePicker } = await load('components/date-picker/index.js');
+  const { GraphView } = await load('components/graph-view/index.js');
+  const { TreeView } = await load('components/tree-view/index.js');
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');

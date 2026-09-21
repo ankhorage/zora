@@ -44,12 +44,22 @@ export async function buildWebArtifact(
     targets.map(async (target) => {
       const entry = `components/${target.component}/${target.exportName}.js`;
       const declaration = `components/${target.component}/${target.exportName}.d.ts`;
-      await writeDeclaration(target, join(paths.webDistRoot, dirname(declaration)));
+      const alias = `components/${target.component}/index.js`;
+      const aliasDeclaration = `components/${target.component}/index.d.ts`;
+      const outputDirectory = join(paths.webDistRoot, dirname(declaration));
+      await writeDeclaration(target, outputDirectory);
+      await writeAlias(target, outputDirectory);
       return {
         component: target.component,
         exportName: target.exportName,
         featurePath: target.featurePath,
-        files: [entry, declaration, ...collectReachableChunks(entry, outputs, paths.webDistRoot)],
+        files: [
+          entry,
+          declaration,
+          alias,
+          aliasDeclaration,
+          ...collectReachableChunks(entry, outputs, paths.webDistRoot),
+        ],
         sourceKind: target.sourceKind,
       } satisfies WebArtifactManifestEntry;
     }),
@@ -72,6 +82,22 @@ export async function buildWebArtifact(
     },
     artifacts,
   };
+}
+
+/*** Give each selected component one stable directory import and type entry. */
+async function writeAlias(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
+  await Promise.all([
+    writeFile(
+      join(outputDirectory, 'index.js'),
+      `'use client';\nexport * from './${target.exportName}.js';\n`,
+      'utf8',
+    ),
+    writeFile(
+      join(outputDirectory, 'index.d.ts'),
+      `export * from './${target.exportName}';\n`,
+      'utf8',
+    ),
+  ]);
 }
 
 /*** Write one bare public entry so provider and components share context modules. */
