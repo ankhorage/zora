@@ -11,13 +11,7 @@ function TabPanelInner({
   themeId: _themeId,
   mode: _mode,
   interactionPolicy: _interactionPolicy,
-  children,
-  value,
-  testID,
+  ...props
 }: TabPanelProps) {
-  return (
-    <SurfaceTabPanel testID={testID} value={value}>
-      {children}
-    </SurfaceTabPanel>
-  );
+  return <SurfaceTabPanel {...props} />;
 }

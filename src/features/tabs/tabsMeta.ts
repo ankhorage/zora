@@ -1,4 +1,5 @@
 import type { ZoraComponentMeta } from '../../types/authoring';
+import { LAYOUT_PROPS } from '../layout/constants';
 
 export const tabsMeta = {
   name: 'Tabs',
@@ -35,6 +36,8 @@ export const tabsMeta = {
     },
   },
   props: {
+    ...LAYOUT_PROPS,
+    overflow: { type: 'enum', category: 'Layout', enum: ['visible', 'hidden'] },
     value: { type: 'string', category: 'State', label: 'Value' },
     defaultValue: { type: 'string', category: 'State', label: 'Default value' },
   },
