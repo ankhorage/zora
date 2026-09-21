@@ -108,3 +108,21 @@ test('syncs one shared provider graph, prunes removed components, and preserves 
     await rm(sandbox, { force: true, recursive: true });
   }
 });
+
+test('swaps Windows-style junction generations without leaving stale output', async () => {
+  const sandbox = await mkdtemp(join(tmpdir(), 'zora-web-windows-swap-'));
+  const outputDirectory = join(sandbox, 'web');
+  const fileSystem = createNodeWebComponentArtifactFileSystem('win32');
+  try {
+    const first = await fileSystem.createStageDirectoryAsync(outputDirectory);
+    await writeFile(join(first, 'version.txt'), 'first');
+    await fileSystem.commitStageDirectoryAsync(first, outputDirectory);
+    const second = await fileSystem.createStageDirectoryAsync(outputDirectory);
+    await writeFile(join(second, 'version.txt'), 'second');
+    await fileSystem.commitStageDirectoryAsync(second, outputDirectory);
+    expect(await readFile(join(outputDirectory, 'version.txt'), 'utf8')).toBe('second');
+    expect(await readdir(sandbox)).toHaveLength(2);
+  } finally {
+    await rm(sandbox, { force: true, recursive: true });
+  }
+});

@@ -117,6 +117,7 @@
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
     "test": "bun run build && bun test src",
+    "test:next-materialization": "bun scripts/web-artifacts/verifyNextWebMaterialization.ts",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json",
     "version-packages": "ankhorage-changeset version"
   },
@@ -135,6 +136,8 @@
     "cytoscape": "^3.34.3",
     "cytoscape-elk": "^2.3.0",
     "happy-dom": "^20.11.6",
+    "next": "16.3.5",
+    "playwright-core": "^1.58.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.3",

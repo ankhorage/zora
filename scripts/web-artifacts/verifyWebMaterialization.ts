@@ -1,5 +1,5 @@
 import { strict as assert } from 'node:assert';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { chmod, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -7,6 +7,7 @@ import { Window } from 'happy-dom';
 
 import { create } from '../../src/cli/commands/create';
 import { sync } from '../../src/cli/commands/sync';
+import { createWebDesiredStateWithNodeAsync } from '../../src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync';
 
 const packageRoot = join(import.meta.dir, '..', '..');
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
@@ -34,6 +35,32 @@ try {
     JSON.parse(await readFile(join(projectRoot, 'zora.web.json'), 'utf8')).components,
     ['select'],
   );
+  const initialDesired = await readFile(join(projectRoot, 'zora.web.json'), 'utf8');
+  const initialEvidence = await readFile(join(outputDirectory, 'materialization.json'), 'utf8');
+  await assert.rejects(
+    createWebDesiredStateWithNodeAsync({ component: 'not-a-component', projectRoot }),
+    /Unsupported ZORA web component/u,
+  );
+  assert.equal(await readFile(join(projectRoot, 'zora.web.json'), 'utf8'), initialDesired);
+  assert.equal(
+    await readFile(join(outputDirectory, 'materialization.json'), 'utf8'),
+    initialEvidence,
+  );
+  if (process.platform !== 'win32') {
+    await chmod(projectRoot, 0o555);
+    try {
+      await assert.rejects(
+        createWebDesiredStateWithNodeAsync({ component: 'button', projectRoot }),
+      );
+    } finally {
+      await chmod(projectRoot, 0o755);
+    }
+    assert.equal(await readFile(join(projectRoot, 'zora.web.json'), 'utf8'), initialDesired);
+    assert.equal(
+      await readFile(join(outputDirectory, 'materialization.json'), 'utf8'),
+      initialEvidence,
+    );
+  }
   await writeFile(
     join(projectRoot, 'zora.web.json'),
     `${JSON.stringify({ schemaVersion: 1, components })}\n`,

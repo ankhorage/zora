@@ -4,6 +4,7 @@ import {
   mkdtemp,
   readFile,
   readlink,
+  realpath,
   rename,
   rm,
   symlink,
@@ -14,7 +15,9 @@ import { basename, dirname, join } from 'node:path';
 import type { WebComponentArtifactFileSystemPort } from '../../../application/ports/outbound/WebComponentArtifactFileSystemPort';
 
 /*** Create the Node filesystem adapter used by ZORA web-component materialization. */
-export function createNodeWebComponentArtifactFileSystem(): WebComponentArtifactFileSystemPort {
+export function createNodeWebComponentArtifactFileSystem(
+  platform: NodeJS.Platform = process.platform,
+): WebComponentArtifactFileSystemPort {
   return {
     joinPath(...parts) {
       return join(...parts);
@@ -30,18 +33,35 @@ export function createNodeWebComponentArtifactFileSystem(): WebComponentArtifact
         if (isMissingFile(error)) return undefined;
         throw error;
       });
-      if (previous !== undefined && !isGeneratedDirectoryName(previous)) {
+      const previousDirectory =
+        previous === undefined ? undefined : await realpath(outputDirectory);
+      if (
+        previousDirectory !== undefined &&
+        (dirname(previousDirectory) !== (await realpath(parent)) ||
+          !isGeneratedDirectoryName(basename(previousDirectory)))
+      ) {
         throw new Error(`Refusing to replace non-ZORA materialization: ${outputDirectory}`);
       }
       const temporaryLink = join(parent, `.web-link-${randomUUID()}`);
       try {
-        await symlink(basename(stageDirectory), temporaryLink, 'dir');
-        await rename(temporaryLink, outputDirectory);
+        await symlink(
+          platform === 'win32' ? stageDirectory : basename(stageDirectory),
+          temporaryLink,
+          platform === 'win32' ? 'junction' : 'dir',
+        );
+        if (platform === 'win32' && previousDirectory !== undefined) {
+          await replaceWindowsJunctionAsync(temporaryLink, outputDirectory);
+        } else {
+          await rename(temporaryLink, outputDirectory);
+        }
       } finally {
         await rm(temporaryLink, { force: true });
       }
-      if (previous !== undefined && previous !== basename(stageDirectory)) {
-        await rm(join(parent, previous), { force: true, recursive: true }).catch(() => undefined);
+      if (
+        previousDirectory !== undefined &&
+        previousDirectory !== (await realpath(stageDirectory))
+      ) {
+        await rm(previousDirectory, { force: true, recursive: true }).catch(() => undefined);
       }
     },
     async removeStageDirectoryAsync(stageDirectory) {
@@ -57,6 +77,25 @@ export function createNodeWebComponentArtifactFileSystem(): WebComponentArtifact
       await writeFile(path, content, 'utf8');
     },
   };
+}
+
+/*** Swap Windows junctions with rollback because rename cannot replace an occupied destination. */
+async function replaceWindowsJunctionAsync(temporaryLink: string, outputDirectory: string) {
+  const previousLink = join(dirname(outputDirectory), `.web-link-${randomUUID()}`);
+  await rename(outputDirectory, previousLink);
+  try {
+    await rename(temporaryLink, outputDirectory);
+  } catch (error) {
+    try {
+      await rename(previousLink, outputDirectory);
+    } catch (rollbackError) {
+      throw new AggregateError([error, rollbackError], 'ZORA web swap and rollback failed.', {
+        cause: rollbackError,
+      });
+    }
+    throw error;
+  }
+  await rm(previousLink, { force: true });
 }
 
 /*** Recognize only the private generation directories written by this adapter. */
