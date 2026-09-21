@@ -5692,6 +5692,7 @@ Installs the core ZORA theme runtime and explicitly enabled optional capabilitie
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = 'light',
+  mode,
   toast = false,
 }: ZoraProviderProps) => React.JSX.Element`
   - {
@@ -5700,6 +5701,7 @@ Installs the core ZORA theme runtime and explicitly enabled optional capabilitie
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = 'light',
+  mode,
   toast = false,
 }: `ZoraProviderProps`
   - returns: `React.JSX.Element`
@@ -5717,6 +5719,7 @@ Source: `src/types/provider.ts:9:1`
 | bottomSheet | property | `boolean \| undefined` | no |  |
 | children | property | `React.ReactNode` | yes |  |
 | initialMode | property | `ZoraThemeMode \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | theme | property | `ZoraTheme \| undefined` | no |  |
 | themeConfig | property | `ThemeConfig \| undefined` | no |  |
 | toast | property | `ZoraToastCapability \| undefined` | no |  |

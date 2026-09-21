@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v20.5.1",
+      "value": "v21.0.0",
       "color": "cb3837"
     },
     {
@@ -93,17 +93,28 @@
       "path": "src/cli/commands/create.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
+        "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       ],
       "exports": [
         "create"
       ]
     },
     {
+      "path": "src/cli/commands/sync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      ],
+      "exports": [
+        "sync"
+      ]
+    },
+    {
       "path": "src/cli/index.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/cli/commands/create.ts"
+        "src/cli/commands/create.ts",
+        "src/cli/commands/sync.ts"
       ],
       "exports": [
         "default"
@@ -4788,6 +4799,14 @@
       ]
     },
     {
+      "path": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "readWebDesiredStateWithNodeAsync"
+      ]
+    },
+    {
       "path": "src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts",
       "isEntrypoint": false,
       "dependencies": [],
@@ -4796,26 +4815,48 @@
       ]
     },
     {
-      "path": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+      "path": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts"
       ],
       "exports": [
-        "materializeWebComponentArtifactAsync",
-        "MaterializeWebComponentArtifactInput",
-        "MaterializeWebComponentArtifactResult"
+        "synchronizeWebComponentArtifactsAsync",
+        "SynchronizeWebComponentArtifactsInput",
+        "SynchronizeWebComponentArtifactsResult"
       ]
     },
     {
-      "path": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
+      "path": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
+      ],
+      "exports": [
+        "createWebDesiredStateWithNodeAsync"
+      ]
+    },
+    {
+      "path": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
+      ],
+      "exports": [
+        "synchronizeDeclaredWebComponentsWithNodeAsync"
+      ]
+    },
+    {
+      "path": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
-        "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       ],
       "exports": [
-        "materializeWebComponentArtifactWithNodeAsync"
+        "synchronizeWebComponentArtifactsWithNodeAsync"
       ]
     },
     {
@@ -29949,10 +29990,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}: ZoraProviderProps) => React.JSX.Element",
+          "label": "({\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  mode,\n  toast = false,\n}: ZoraProviderProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}",
+              "name": "{\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  mode,\n  toast = false,\n}",
               "type": "ZoraProviderProps",
               "required": true,
               "description": null
@@ -30003,6 +30044,13 @@
         },
         {
           "name": "initialMode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
           "kind": "property",
           "type": "ZoraThemeMode | undefined",
           "required": false,
@@ -46260,6 +46308,12 @@
           "description": null
         },
         {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "theme",
           "type": "ZoraTheme | undefined",
           "required": false,
@@ -46320,28 +46374,19 @@
   "sourceFunctions": [
     {
       "name": "create",
-      "description": "Materialize a canonical ZORA component for a platform-specific consumer.",
+      "description": "Add one web component to project desired state and reconcile its shared runtime.",
       "sourceLocation": {
         "filePath": "src/cli/commands/create.ts",
-        "line": 17,
+        "line": 15,
         "column": 1
       }
     },
     {
-      "name": "parseCreateArguments",
-      "description": "Parse the intentionally small first web-materialization command surface.",
+      "name": "sync",
+      "description": "Reconcile the declared web component set from the installed ZORA provider.",
       "sourceLocation": {
-        "filePath": "src/cli/commands/create.ts",
-        "line": 61,
-        "column": 1
-      }
-    },
-    {
-      "name": "readPackageVersionAsync",
-      "description": "Read the installed package version used to stamp generated artifacts.",
-      "sourceLocation": {
-        "filePath": "src/cli/commands/create.ts",
-        "line": 86,
+        "filePath": "src/cli/commands/sync.ts",
+        "line": 15,
         "column": 1
       }
     },
@@ -46350,7 +46395,7 @@
       "description": "Read the installed ZORA version for the Ankh provider manifest.",
       "sourceLocation": {
         "filePath": "src/cli/index.ts",
-        "line": 40,
+        "line": 51,
         "column": 1
       }
     },
@@ -49982,6 +50027,15 @@
       }
     },
     {
+      "name": "ZoraProviderMode",
+      "description": "Keep the shared Surface runtime aligned with a controlled application mode.",
+      "sourceLocation": {
+        "filePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx",
+        "line": 42,
+        "column": 1
+      }
+    },
+    {
       "name": "ZoraThemeScope",
       "description": "Applies nested ZORA theme overrides through the public Surface theme scope.",
       "sourceLocation": {
@@ -50958,51 +51012,123 @@
       "description": "Create the Node filesystem adapter used by ZORA web-component materialization.",
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "line": 18,
+        "column": 1
+      }
+    },
+    {
+      "name": "replaceWindowsJunctionAsync",
+      "description": "Swap Windows junctions with rollback because rename cannot replace an occupied destination.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "line": 83,
+        "column": 1
+      }
+    },
+    {
+      "name": "isGeneratedDirectoryName",
+      "description": "Recognize only the private generation directories written by this adapter.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "line": 102,
+        "column": 1
+      }
+    },
+    {
+      "name": "isMissingFile",
+      "description": "Distinguish a missing first-generation link from other filesystem errors.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "line": 107,
+        "column": 1
+      }
+    },
+    {
+      "name": "readWebDesiredStateWithNodeAsync",
+      "description": "Read the version-controlled desired component set outside generated output.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
         "line": 7,
         "column": 1
       }
     },
     {
-      "name": "materializeWebComponentArtifactAsync",
-      "description": "Materialize one replaceable web-only component artifact from the published ZORA catalog.",
+      "name": "synchronizeWebComponentArtifactsAsync",
+      "description": "Reconcile one desired web set from a single published ZORA generation.",
       "sourceLocation": {
-        "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 20,
+        "filePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "line": 29,
         "column": 1
       }
     },
     {
-      "name": "readWebArtifactDefinitionAsync",
-      "description": "Resolve one requested component exclusively through the packaged web artifact catalog.",
+      "name": "readArtifactCatalogAsync",
+      "description": "Read and validate the packaged catalog before changing consumer output.",
       "sourceLocation": {
-        "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 80,
+        "filePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "line": 86,
         "column": 1
       }
     },
     {
-      "name": "readWebArtifactManifestSourceAsync",
-      "description": "Read the packaged target catalog and translate a missing catalog into the CLI-facing error.",
+      "name": "isFileList",
+      "description": "Accept only known, relative generated file paths.",
       "sourceLocation": {
-        "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 125,
+        "filePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "line": 117,
         "column": 1
       }
     },
     {
-      "name": "createGeneratedSource",
-      "description": "Add a generated-file marker without changing the compiled artifact semantics.",
+      "name": "parentDirectory",
+      "description": "Resolve the parent path inside the generated directory.",
       "sourceLocation": {
-        "filePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "line": 138,
+        "filePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "line": 131,
         "column": 1
       }
     },
     {
-      "name": "materializeWebComponentArtifactWithNodeAsync",
-      "description": "Compose the Node filesystem adapter with the web-component materialization use case.",
+      "name": "createWebDesiredStateWithNodeAsync",
+      "description": "Add one requested web component and regenerate the complete declared set.",
       "sourceLocation": {
-        "filePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
+        "filePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "replaceDesiredStateAsync",
+      "description": "Replace the authoritative project declaration only after its complete contents are staged.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "line": 50,
+        "column": 1
+      }
+    },
+    {
+      "name": "isMissingFile",
+      "description": "Recognize only absent desired state, not unrelated filesystem failures.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "line": 61,
+        "column": 1
+      }
+    },
+    {
+      "name": "synchronizeDeclaredWebComponentsWithNodeAsync",
+      "description": "Load project desired state and sync it from the active ZORA package release.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+        "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "synchronizeWebComponentArtifactsWithNodeAsync",
+      "description": "Wire Node filesystem operations into shared ZORA web reconciliation.",
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
         "line": 9,
         "column": 1
       }
@@ -51529,6 +51655,11 @@
       {
         "fromPath": "src/cli/index.ts",
         "toPath": "src/cli/commands/create.ts",
+        "sourcePath": "src/cli/index.ts"
+      },
+      {
+        "fromPath": "src/cli/index.ts",
+        "toPath": "src/cli/commands/sync.ts",
         "sourcePath": "src/cli/index.ts"
       },
       {
@@ -52103,8 +52234,13 @@
       },
       {
         "fromPath": "src/cli/commands/create.ts",
-        "toPath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
         "sourcePath": "src/cli/commands/create.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/sync.ts",
+        "toPath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+        "sourcePath": "src/cli/commands/sync.ts"
       },
       {
         "fromPath": "src/features/accordion/accordionItemMeta.ts",
@@ -54912,14 +55048,34 @@
         "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
       },
       {
-        "fromPath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
-        "toPath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
-        "sourcePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
+        "fromPath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       },
       {
-        "fromPath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts",
-        "toPath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "sourcePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
+        "fromPath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
       },
       {
         "fromPath": "src/features/accordion/adapters/inbound/Accordion.tsx",
@@ -57557,9 +57713,9 @@
         "sourcePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts"
       },
       {
-        "fromPath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "fromPath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
         "toPath": "src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
         "fromPath": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx",
@@ -58050,38 +58206,14 @@
       },
       {
         "fromSymbol": "create",
-        "toSymbol": "parseCreateArguments",
-        "callExpression": "parseCreateArguments",
+        "toSymbol": "createWebDesiredStateWithNodeAsync",
+        "callExpression": "createWebDesiredStateWithNodeAsync",
         "sourcePath": "src/cli/commands/create.ts"
       },
       {
         "fromSymbol": "create",
         "toSymbol": "resolve",
         "callExpression": "resolve",
-        "sourcePath": "src/cli/commands/create.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "dirname",
-        "callExpression": "dirname",
-        "sourcePath": "src/cli/commands/create.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "fileURLToPath",
-        "callExpression": "fileURLToPath",
-        "sourcePath": "src/cli/commands/create.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "readPackageVersionAsync",
-        "callExpression": "readPackageVersionAsync",
-        "sourcePath": "src/cli/commands/create.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "materializeWebComponentArtifactWithNodeAsync",
-        "callExpression": "materializeWebComponentArtifactWithNodeAsync",
         "sourcePath": "src/cli/commands/create.ts"
       },
       {
@@ -58097,10 +58229,28 @@
         "sourcePath": "src/cli/commands/create.ts"
       },
       {
-        "fromSymbol": "readPackageVersionAsync",
-        "toSymbol": "readFile",
-        "callExpression": "readFile",
-        "sourcePath": "src/cli/commands/create.ts"
+        "fromSymbol": "sync",
+        "toSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "callExpression": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "sourcePath": "src/cli/commands/sync.ts"
+      },
+      {
+        "fromSymbol": "sync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/cli/commands/sync.ts"
+      },
+      {
+        "fromSymbol": "sync",
+        "toSymbol": "writeStdout",
+        "callExpression": "request.context.writeStdout",
+        "sourcePath": "src/cli/commands/sync.ts"
+      },
+      {
+        "fromSymbol": "sync",
+        "toSymbol": "writeStderr",
+        "callExpression": "request.context.writeStderr",
+        "sourcePath": "src/cli/commands/sync.ts"
       },
       {
         "fromSymbol": "src/features/authoring/componentMeta.ts",
@@ -58751,16 +58901,142 @@
         "sourcePath": "src/features/uploader/composition/createUploadPicker.web.ts"
       },
       {
-        "fromSymbol": "materializeWebComponentArtifactWithNodeAsync",
-        "toSymbol": "materializeWebComponentArtifactAsync",
-        "callExpression": "materializeWebComponentArtifactAsync",
-        "sourcePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "readWebDesiredStateWithNodeAsync",
+        "callExpression": "readWebDesiredStateWithNodeAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       },
       {
-        "fromSymbol": "materializeWebComponentArtifactWithNodeAsync",
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "fileURLToPath",
+        "callExpression": "fileURLToPath",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "toSymbol": "isMissingFile",
+        "callExpression": "isMissingFile",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "replaceDesiredStateAsync",
+        "callExpression": "replaceDesiredStateAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "callExpression": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "randomUUID",
+        "callExpression": "randomUUID",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "writeFile",
+        "callExpression": "writeFile",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "rename",
+        "callExpression": "rename",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "replaceDesiredStateAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "readWebDesiredStateWithNodeAsync",
+        "callExpression": "readWebDesiredStateWithNodeAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "fileURLToPath",
+        "callExpression": "fileURLToPath",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "callExpression": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "toSymbol": "synchronizeWebComponentArtifactsAsync",
+        "callExpression": "synchronizeWebComponentArtifactsAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeWebComponentArtifactsWithNodeAsync",
         "toSymbol": "createNodeWebComponentArtifactFileSystem",
         "callExpression": "createNodeWebComponentArtifactFileSystem",
-        "sourcePath": "src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
       },
       {
         "fromSymbol": "src/features/accordion/adapters/inbound/Accordion.tsx",
@@ -60983,6 +61259,12 @@
         "sourcePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx"
       },
       {
+        "fromSymbol": "ZoraProviderMode",
+        "toSymbol": "useSurfaceTheme",
+        "callExpression": "useSurfaceTheme",
+        "sourcePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx"
+      },
+      {
         "fromSymbol": "ZoraThemeScopeInner",
         "toSymbol": "useZoraThemeRuntime",
         "callExpression": "useZoraThemeRuntime",
@@ -61523,76 +61805,106 @@
         "sourcePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts"
       },
       {
-        "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "readWebArtifactDefinitionAsync",
-        "callExpression": "readWebArtifactDefinitionAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
+        "toSymbol": "readArtifactCatalogAsync",
+        "callExpression": "readArtifactCatalogAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "materializeWebComponentArtifactAsync",
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
+        "toSymbol": "createStageDirectoryAsync",
+        "callExpression": "fileSystem.createStageDirectoryAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "toSymbol": "readTextFileAsync",
+        "callExpression": "fileSystem.readTextFileAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
         "toSymbol": "joinPath",
         "callExpression": "fileSystem.joinPath",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "materializeWebComponentArtifactAsync",
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
         "toSymbol": "ensureDirectoryAsync",
         "callExpression": "fileSystem.ensureDirectoryAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "toSymbol": "parentDirectory",
+        "callExpression": "parentDirectory",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "toSymbol": "writeTextFileAsync",
+        "callExpression": "fileSystem.writeTextFileAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
+        "toSymbol": "writeTextFileAsync",
+        "callExpression": "fileSystem.writeTextFileAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
         "toSymbol": "joinPath",
         "callExpression": "fileSystem.joinPath",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
+        "toSymbol": "commitStageDirectoryAsync",
+        "callExpression": "fileSystem.commitStageDirectoryAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeWebComponentArtifactsAsync",
+        "toSymbol": "removeStageDirectoryAsync",
+        "callExpression": "fileSystem.removeStageDirectoryAsync",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "readArtifactCatalogAsync",
         "toSymbol": "readTextFileAsync",
         "callExpression": "fileSystem.readTextFileAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "toSymbol": "writeTextFileAsync",
-        "callExpression": "fileSystem.writeTextFileAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
-      },
-      {
-        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
-        "toSymbol": "createGeneratedSource",
-        "callExpression": "createGeneratedSource",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
-      },
-      {
-        "fromSymbol": "materializeWebComponentArtifactAsync",
-        "toSymbol": "writeTextFileAsync",
-        "callExpression": "fileSystem.writeTextFileAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
-      },
-      {
-        "fromSymbol": "readWebArtifactDefinitionAsync",
+        "fromSymbol": "readArtifactCatalogAsync",
         "toSymbol": "joinPath",
         "callExpression": "fileSystem.joinPath",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "readWebArtifactDefinitionAsync",
-        "toSymbol": "readWebArtifactManifestSourceAsync",
-        "callExpression": "readWebArtifactManifestSourceAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
-      },
-      {
-        "fromSymbol": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts",
+        "fromSymbol": "readArtifactCatalogAsync",
         "toSymbol": "isRecord",
         "callExpression": "isRecord",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
-        "fromSymbol": "readWebArtifactManifestSourceAsync",
-        "toSymbol": "readTextFileAsync",
-        "callExpression": "fileSystem.readTextFileAsync",
-        "sourcePath": "src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts"
+        "fromSymbol": "readArtifactCatalogAsync",
+        "toSymbol": "isFileList",
+        "callExpression": "isFileList",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts",
+        "toSymbol": "isFileList",
+        "callExpression": "isFileList",
+        "sourcePath": "src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts"
       },
       {
         "fromSymbol": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx",
@@ -62735,6 +63047,108 @@
         "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
       },
       {
+        "fromSymbol": "createStageDirectoryAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "createStageDirectoryAsync",
+        "toSymbol": "mkdir",
+        "callExpression": "mkdir",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "createStageDirectoryAsync",
+        "toSymbol": "mkdtemp",
+        "callExpression": "mkdtemp",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "createStageDirectoryAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "readlink",
+        "callExpression": "readlink",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts",
+        "toSymbol": "isMissingFile",
+        "callExpression": "isMissingFile",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "realpath",
+        "callExpression": "realpath",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "isGeneratedDirectoryName",
+        "callExpression": "isGeneratedDirectoryName",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "basename",
+        "callExpression": "basename",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "randomUUID",
+        "callExpression": "randomUUID",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "symlink",
+        "callExpression": "symlink",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "replaceWindowsJunctionAsync",
+        "callExpression": "replaceWindowsJunctionAsync",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "rename",
+        "callExpression": "rename",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "commitStageDirectoryAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "removeStageDirectoryAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
         "fromSymbol": "ensureDirectoryAsync",
         "toSymbol": "mkdir",
         "callExpression": "mkdir",
@@ -62751,6 +63165,54 @@
         "toSymbol": "writeFile",
         "callExpression": "writeFile",
         "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "replaceWindowsJunctionAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "replaceWindowsJunctionAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "replaceWindowsJunctionAsync",
+        "toSymbol": "randomUUID",
+        "callExpression": "randomUUID",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "replaceWindowsJunctionAsync",
+        "toSymbol": "rename",
+        "callExpression": "rename",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "replaceWindowsJunctionAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts"
+      },
+      {
+        "fromSymbol": "readWebDesiredStateWithNodeAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebDesiredStateWithNodeAsync",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebDesiredStateWithNodeAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts"
       }
     ],
     "typeReferences": [
@@ -66840,7 +67302,13 @@
       {
         "fromComponent": "ZoraProvider",
         "toComponent": "ThemeProvider",
-        "jsxElement": "<ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>",
+        "jsxElement": "<ThemeProvider initialConfig={resolvedConfig} initialMode={mode ?? initialMode}>",
+        "sourcePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx"
+      },
+      {
+        "fromComponent": "ZoraProvider",
+        "toComponent": "ZoraProviderMode",
+        "jsxElement": "<ZoraProviderMode mode={mode}>",
         "sourcePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx"
       },
       {

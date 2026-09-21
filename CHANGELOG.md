@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.0
+
+### Major Changes
+
+- 163c605: Materialize web components with one shared ZoraProvider runtime and add project-scoped create/sync reconciliation.
+
 ## 20.5.1
 
 ### Patch Changes

@@ -3400,6 +3400,7 @@ Export paths: `src/index.ts`
 | bottomSheet | `boolean \| undefined` | no | `false` |  |
 | children | `React.ReactNode \| undefined` | no | — |  |
 | initialMode | `ZoraThemeMode \| undefined` | no | `'light'` |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
 | theme | `ZoraTheme \| undefined` | no | `zoraDefaultTheme` |  |
 | themeConfig | `ThemeConfig \| undefined` | no | — |  |
 | toast | `ZoraToastCapability \| undefined` | no | `false` |  |

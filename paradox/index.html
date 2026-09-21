@@ -129,7 +129,12 @@
             <li>
     <button class="nav-button" type="button" data-target="src/cli/commands/create.ts">
       src/cli/commands/create.ts
-      <small>3 functions</small>
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/cli/commands/sync.ts">
+      src/cli/commands/sync.ts
+      <small>1 function</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/cli/index.ts">
@@ -949,7 +954,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/theme/adapters/inbound/ZoraProvider.tsx">
       src/features/theme/adapters/inbound/ZoraProvider.tsx
-      <small>1 function</small>
+      <small>2 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/theme/adapters/inbound/ZoraThemeScope.tsx">
@@ -1154,16 +1159,31 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts">
       src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts
-      <small>1 function</small>
-    </button>
-  </li><li>
-    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts">
-      src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts
       <small>4 functions</small>
     </button>
   </li><li>
-    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts">
-      src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts
+    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts">
+      src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts">
+      src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts
+      <small>4 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts">
+      src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts
+      <small>3 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts">
+      src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts">
+      src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts
       <small>1 function</small>
     </button>
   </li><li>
@@ -1183,7 +1203,7 @@
       <div class="summary">
         <div><strong>404</strong><span class="muted">public exports</span></div>
         <div><strong>99</strong><span class="muted">components</span></div>
-        <div><strong>451</strong><span class="muted">modules</span></div>
+        <div><strong>455</strong><span class="muted">modules</span></div>
         <div><strong>1</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -1194,15 +1214,20 @@
     
     <section class="panel">
       <h2>Modules</h2>
-      <article class="item" data-search="src/cli/commands/create.ts src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts create">
+      <article class="item" data-search="src/cli/commands/create.ts src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts create">
     <h3>src/cli/commands/create.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts</code></p>
     <p><strong>Exports:</strong> <code>create</code></p>
-  </article><article class="item" data-search="src/cli/index.ts src/cli/commands/create.ts default">
+  </article><article class="item" data-search="src/cli/commands/sync.ts src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts sync">
+    <h3>src/cli/commands/sync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>sync</code></p>
+  </article><article class="item" data-search="src/cli/index.ts src/cli/commands/create.ts src/cli/commands/sync.ts default">
     <h3>src/cli/index.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/cli/commands/create.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/cli/commands/create.ts</code>, <code>src/cli/commands/sync.ts</code></p>
     <p><strong>Exports:</strong> <code>default</code></p>
   </article><article class="item" data-search="src/features/accordion/accordionItemMeta.ts src/features/authoring/allowedChildren.ts src/features/authoring/index.ts accordionItemMeta">
     <h3>src/features/accordion/accordionItemMeta.ts</h3>
@@ -3069,21 +3094,36 @@
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts</code></p>
     <p><strong>Exports:</strong> <code>createNodeWebComponentArtifactFileSystem</code></p>
+  </article><article class="item" data-search="src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts readWebDesiredStateWithNodeAsync">
+    <h3>src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>readWebDesiredStateWithNodeAsync</code></p>
   </article><article class="item" data-search="src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts WebComponentArtifactFileSystemPort">
     <h3>src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>WebComponentArtifactFileSystemPort</code></p>
-  </article><article class="item" data-search="src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts materializeWebComponentArtifactAsync MaterializeWebComponentArtifactInput MaterializeWebComponentArtifactResult">
-    <h3>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts</h3>
+  </article><article class="item" data-search="src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts synchronizeWebComponentArtifactsAsync SynchronizeWebComponentArtifactsInput SynchronizeWebComponentArtifactsResult">
+    <h3>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts</code></p>
-    <p><strong>Exports:</strong> <code>materializeWebComponentArtifactAsync</code>, <code>MaterializeWebComponentArtifactInput</code>, <code>MaterializeWebComponentArtifactResult</code></p>
-  </article><article class="item" data-search="src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts materializeWebComponentArtifactWithNodeAsync">
-    <h3>src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts</h3>
+    <p><strong>Exports:</strong> <code>synchronizeWebComponentArtifactsAsync</code>, <code>SynchronizeWebComponentArtifactsInput</code>, <code>SynchronizeWebComponentArtifactsResult</code></p>
+  </article><article class="item" data-search="src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts createWebDesiredStateWithNodeAsync">
+    <h3>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts</code>, <code>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts</code></p>
-    <p><strong>Exports:</strong> <code>materializeWebComponentArtifactWithNodeAsync</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts</code>, <code>src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>createWebDesiredStateWithNodeAsync</code></p>
+  </article><article class="item" data-search="src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts synchronizeDeclaredWebComponentsWithNodeAsync">
+    <h3>src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts</code>, <code>src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>synchronizeDeclaredWebComponentsWithNodeAsync</code></p>
+  </article><article class="item" data-search="src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts synchronizeWebComponentArtifactsWithNodeAsync">
+    <h3>src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts</code>, <code>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>synchronizeWebComponentArtifactsWithNodeAsync</code></p>
   </article><article class="item" data-search="src/index.ts Accordion AccordionItem AccordionItemProps AccordionMode AccordionMultipleProps AccordionProps AccordionSingleProps ActivityIndicator ActivityIndicatorProps AppBar AppBarMode AppBarOverflowMenu AppBarProps AppShell AppShellProps AuthFormBaseProps AuthIdentifierKind Avatar AvatarGroup AvatarGroupItem AvatarGroupProps AvatarProps AvatarShape AvatarSize Badge BadgeProps BarcodeScannerView BarcodeScannerViewProps BarcodeScanResult BottomSheet BottomSheetProps BreadcrumbItem BreadcrumbPressEvent Breadcrumbs BreadcrumbsProps Button ButtonGroup ButtonGroupAlign ButtonGroupOrientation ButtonGroupProps ButtonProps CameraPermissionStatus CameraPermissionView CameraPermissionViewProps Card CardProps ChatListAvatar ChatListItem ChatListItemProps Checkbox CheckboxGroup CheckboxGroupOption CheckboxGroupProps CheckboxProps Chip ChipGroup ChipGroupItem ChipGroupProps ChipProps CollectionEditor CollectionEditorProps CollectionEditorRenderItemProps compileZoraTheme ComposedZoraPluginCatalog ComposedZoraPluginMetadataCatalog composeZoraPluginMetadata composeZoraPlugins ContentRail ContentRailControlPressEvent ContentRailDirection ContentRailItemSize ContentRailMotion ContentRailProps ContentRailSpacing ContentRailVisibleRangeChangeEvent createZoraThemeConfig DataTable DataTableCellContext DataTableColumn DataTableColumnAlign DataTableDensity DataTableProps DataTableRowAction DataTableSortDirection DataTableSortState DatePicker DatePickerProps DatePickerValue DEFAULT_OAUTH_PROVIDER_ICONS Dialog DialogProps Divider DividerProps EmptyState EmptyStateAction EmptyStateProps Field FieldProps FlatList ForgotPasswordForm ForgotPasswordFormProps ForgotPasswordFormValues Form FormActions FormActionsProps FormError FormErrorProps FormErrors FormFieldConfig FormFieldInputType FormProps FormValidationErrors FormValidationResult FormValues Gradient GradientColor GradientColors GradientLocations GradientPoint GradientProps GradientRenderer GradientRendererProps GradientRendererProvider GradientRendererProviderProps Grid GridProps hasRequiredRule Heading HeadingAlign HeadingColor HeadingEmphasis HeadingLevel HeadingProps HeadingSize HeadingWeight Hero HeroAction HeroAlign HeroLayout HeroProps HeroTone Icon IconButton IconButtonProps IconProps Image ImageFit ImageProps KeyboardAvoidingView KeyboardAvoidingViewBehavior KeyboardAvoidingViewProps List ListChildrenProps ListItem ListItemProps ListItemsProps ListItemVariant ListProps ListSection ListSectionProps ManifestListProps ManifestListSection ManifestSectionListProps MediaCard MediaCardImageProps MediaCardProps MessageBubble MessageBubbleAuthor MessageBubbleAvatar MessageBubbleDirection MessageBubbleProps MessageBubbleStatus MetricCard MetricCardProps MissingElement MissingElementProps OAuthProviderButton OAuthProviderButtonProps OAuthProviderIconSpec OAuthProviderItem OAuthProviderList OAuthProviderListLayout OAuthProviderListProps OtpForm OtpFormProps OtpFormValues Pagination PaginationProps PaletteItem PaletteItemProps PopoverMenu PopoverMenuAction PopoverMenuActionIntent PopoverMenuProps PostAction PostAuthor PostAuthorAvatar PostCard PostCardMedia PostCardProps ProductCard ProductCardProps Progress ProgressProps ProgressRing ProgressRingProps Radio RadioGroup RadioGroupOption RadioGroupProps RadioProps Rating RatingProps ReaderColorScheme ReaderDocumentFormat ReaderErrorCode ReaderErrorEvent ReaderExternalLinkEvent ReaderLineHeight ReaderLocationChangeEvent ReaderNavigationTrigger ReaderResolvedSource ReaderStatus ReaderSurface ReaderSurfaceProps resolveAvatarInitials resolveOAuthProviderIcon resolveOAuthProviderLabel resolveReaderProgress ScanOverlay ScanOverlayProps Screen ScreenProps ScreenSection ScreenSectionProps ScrollView ScrollViewProps SearchInput SearchInputProps SectionHeader SectionHeaderProps SectionList Select SelectableItem SelectableItemProps SelectableItemState SelectionMode SelectionProvider SelectionProviderProps SelectionTrigger SelectOption SelectProps SignInForm SignInFormProps SignInFormValues SignUpForm SignUpFormField SignUpFormProps SignUpFormValues Skeleton SkeletonCard SkeletonCardProps SkeletonDimension SkeletonList SkeletonListProps SkeletonListVariant SkeletonProps SkeletonRadius SkeletonText SkeletonTextProps Surface SurfaceImageSource SurfaceProps SurfaceVariant Switch SwitchProps Tab TabList TabListProps TabPanel TabPanelProps TabProps Tabs TabsProps Text TextAlign TextColor TextEmphasis TextInput TextInputProps TextInputTrailingAction TextProps TextVariant TextWeight ThemeModeToggle ThemeModeToggleProps Timeline TimelineItem TimelineProps TimePicker TimePickerProps TimePickerValue Toast ToastController ToastOptions ToastProps ToastProvider ToastProviderProps ToastStatus Toolbar ToolbarProps TreeItem TreeItemNode TreeItemRenderProps TreeView TreeViewProps UploadAsset UploadAssetBase Uploader UploaderProps UploadProgressContext UploadType useFormController UseFormControllerOptions UseFormControllerResult useSelection UseSelectionResult useToast useZoraTheme validateField validateFields validateUploadAsset ValidateUploadAssetInput validateValue ValidationRule View ViewProps withZoraThemeScope ZORA_BINDABLE_COMPONENT_META ZORA_COLORS ZORA_COMPONENT_META ZORA_COMPONENT_REGISTRY ZORA_CORE_PLUGIN ZORA_CORE_PLUGIN_METADATA ZORA_EMPHASES ZORA_PALETTE_COLORS ZORA_STATUS_COLORS ZORA_THEME_RECIPE_META ZORA_THEME_TOKEN_FAMILIES ZoraBaseProps ZoraBindableComponentType ZoraColor ZoraComponentBlueprint ZoraComponentCategory ZoraComponentEventMeta ZoraComponentEventPayloadFieldMeta ZoraComponentEventPayloadFieldType ZoraComponentEventPayloadKind ZoraComponentI18nMeta ZoraComponentManifestPolicy ZoraComponentMeta ZoraComponentMetaRegistry ZoraComponentPropArrayItemSchema ZoraComponentPropAuthoring ZoraComponentPropSchema ZoraComponentPropType ZoraComponentPropValue ZoraComponentRegistry ZoraComponentSlotMeta ZoraComputedTheme ZoraComputedThemeMode zoraDefaultTheme ZoraEmphasis ZoraPaletteColor ZoraPluginCompositionError ZoraPluginCompositionErrorCode ZoraPluginDescriptor ZoraPluginMetadata ZoraPluginPlacement ZoraProvider ZoraProviderProps ZoraStatusColor ZoraTheme ZoraThemeCompilationDiagnostic ZoraThemeCompilationDiagnosticCode ZoraThemeCompilationOptions ZoraThemeId ZoraThemeMode ZoraThemeProvenanceEntry ZoraThemeRecipeBooleanFieldMeta ZoraThemeRecipeChoiceFieldMeta ZoraThemeRecipeFieldMeta ZoraThemeRecipeKind ZoraThemeRecipeMeta ZoraThemeRecipeMetaRegistry ZoraThemeRecipeTokenFieldMeta ZoraThemeScope ZoraThemeScopeProps ZoraThemeSelectionResult ZoraThemeSelectionTarget ZoraThemeSwatchRole ZoraThemeTokenFamily ZoraThemeValueOrigin ZoraToastCapability">
     <h3>src/index.ts</h3>
     <p class="muted">Configured entrypoint</p>
@@ -5167,7 +5207,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </section>
             <section>
               <h3>src/features/theme/adapters/inbound/ZoraProvider.tsx</h3>
-              <article class="item" id="symbol-zoraprovider" data-search="ZoraProvider function src/features/theme/adapters/inbound/ZoraProvider.tsx Installs the core ZORA theme runtime and explicitly enabled optional capabilities. ZoraProviderProps ({&#10;  bottomSheet = false,&#10;  children,&#10;  theme = zoraDefaultTheme,&#10;  themeConfig,&#10;  initialMode = &#39;light&#39;,&#10;  toast = false,&#10;}: ZoraProviderProps) =&gt; React.JSX.Element">
+              <article class="item" id="symbol-zoraprovider" data-search="ZoraProvider function src/features/theme/adapters/inbound/ZoraProvider.tsx Installs the core ZORA theme runtime and explicitly enabled optional capabilities. ZoraProviderProps ({&#10;  bottomSheet = false,&#10;  children,&#10;  theme = zoraDefaultTheme,&#10;  themeConfig,&#10;  initialMode = &#39;light&#39;,&#10;  mode,&#10;  toast = false,&#10;}: ZoraProviderProps) =&gt; React.JSX.Element">
     <h4>ZoraProvider</h4>
     <p class="muted">function • <code>src/features/theme/adapters/inbound/ZoraProvider.tsx:13:1</code></p>
     <p>Installs the core ZORA theme runtime and explicitly enabled optional capabilities.</p>
@@ -5181,6 +5221,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = &#39;light&#39;,
+  mode,
   toast = false,
 }: ZoraProviderProps) =&gt; React.JSX.Element</pre>
         <table>
@@ -5193,6 +5234,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = &#39;light&#39;,
+  mode,
   toast = false,
 }</code></td>
                         <td><code>ZoraProviderProps</code></td>
@@ -17234,6 +17276,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td></td>
           </tr><tr>
             <td><code>initialMode</code></td>
+            <td>property</td>
+            <td><code>ZoraThemeMode | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mode</code></td>
             <td>property</td>
             <td><code>ZoraThemeMode | undefined</code></td>
             <td>no</td>
@@ -34664,7 +34712,7 @@ Expansion controls are separate from row selection, including when rendering cus
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-zoraprovider" data-search="ZoraProvider src/features/theme/adapters/inbound/ZoraProvider.tsx Installs the core ZORA theme runtime and explicitly enabled optional capabilities. bottomSheet boolean | undefined children React.ReactNode | undefined initialMode ZoraThemeMode | undefined theme ZoraTheme | undefined themeConfig ThemeConfig | undefined toast ZoraToastCapability | undefined">
+  </article><article class="item" id="component-zoraprovider" data-search="ZoraProvider src/features/theme/adapters/inbound/ZoraProvider.tsx Installs the core ZORA theme runtime and explicitly enabled optional capabilities. bottomSheet boolean | undefined children React.ReactNode | undefined initialMode ZoraThemeMode | undefined mode ZoraThemeMode | undefined theme ZoraTheme | undefined themeConfig ThemeConfig | undefined toast ZoraToastCapability | undefined">
     <h3>ZoraProvider</h3>
     <p class="muted"><code>src/features/theme/adapters/inbound/ZoraProvider.tsx:13:1</code></p>
     <p>Installs the core ZORA theme runtime and explicitly enabled optional capabilities.</p>
@@ -34684,6 +34732,11 @@ Expansion controls are separate from row selection, including when rendering cus
               <td></td>
             </tr><tr>
               <td><code>initialMode</code></td>
+              <td><code>ZoraThemeMode | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mode</code></td>
               <td><code>ZoraThemeMode | undefined</code></td>
               <td>no</td>
               <td></td>
@@ -34744,10 +34797,14 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora --&gt; entrypoint_src_index_ts
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_cli_commands_create_ts
-  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
+  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_cli_commands_sync_ts
+  module_src_cli_commands_sync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_cli_index_ts
   module_src_cli_index_ts --&gt; module_src_cli_commands_create_ts
+  module_src_cli_index_ts --&gt; module_src_cli_commands_sync_ts
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_accordion_accordionItemMeta_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
@@ -36475,15 +36532,25 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_accordion_ts
@@ -36752,10 +36819,14 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora --&gt; entrypoint_src_index_ts
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_cli_commands_create_ts
-  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
+  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_cli_commands_sync_ts
+  module_src_cli_commands_sync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_cli_index_ts
   module_src_cli_index_ts --&gt; module_src_cli_commands_create_ts
+  module_src_cli_index_ts --&gt; module_src_cli_commands_sync_ts
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_accordion_accordionItemMeta_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
@@ -38483,15 +38554,25 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
-  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_accordion_ts
@@ -38758,6 +38839,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
     <div class="mermaid">graph LR
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   module_src_features_accordion_accordionMeta_ts[&quot;src/features/accordion/accordionMeta.ts&quot;]
@@ -39132,9 +39214,12 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_public_ts[&quot;src/features/uploader/public.ts&quot;]
   module_src_features_uploader_uploaderMeta_ts[&quot;src/features/uploader/uploaderMeta.ts&quot;]
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
@@ -39208,8 +39293,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_toolbar_ts[&quot;src/types/toolbar.ts&quot;]
   module_src_types_tree_view_ts[&quot;src/types/tree-view.ts&quot;]
   module_src_types_upload_ts[&quot;src/types/upload.ts&quot;]
-  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
+  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_cli_commands_sync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts --&gt; module_src_cli_commands_create_ts
+  module_src_cli_index_ts --&gt; module_src_cli_commands_sync_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_index_ts
   module_src_features_accordion_accordionMeta_ts --&gt; module_src_features_authoring_index_ts
@@ -40191,9 +40278,13 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_composition_createUploadPicker_web_ts --&gt; module_src_types_upload_ts
   module_src_features_uploader_uploaderMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
   module_src_types_accordion_ts --&gt; module_src_types_base_ts
   module_src_types_activity_indicator_ts --&gt; module_src_types_base_ts
   module_src_types_app_bar_ts --&gt; module_src_types_base_ts
@@ -40313,6 +40404,7 @@ Expansion controls are separate from row selection, including when rendering cus
       <summary>View Mermaid source</summary>
       <pre>graph LR
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   module_src_features_accordion_accordionMeta_ts[&quot;src/features/accordion/accordionMeta.ts&quot;]
@@ -40687,9 +40779,12 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_public_ts[&quot;src/features/uploader/public.ts&quot;]
   module_src_features_uploader_uploaderMeta_ts[&quot;src/features/uploader/uploaderMeta.ts&quot;]
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
@@ -40763,8 +40858,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_toolbar_ts[&quot;src/types/toolbar.ts&quot;]
   module_src_types_tree_view_ts[&quot;src/types/tree-view.ts&quot;]
   module_src_types_upload_ts[&quot;src/types/upload.ts&quot;]
-  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts
+  module_src_cli_commands_create_ts --&gt; module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
+  module_src_cli_commands_sync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts --&gt; module_src_cli_commands_create_ts
+  module_src_cli_index_ts --&gt; module_src_cli_commands_sync_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
   module_src_features_accordion_accordionItemMeta_ts --&gt; module_src_features_authoring_index_ts
   module_src_features_accordion_accordionMeta_ts --&gt; module_src_features_authoring_index_ts
@@ -41746,9 +41843,13 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_composition_createUploadPicker_web_ts --&gt; module_src_types_upload_ts
   module_src_features_uploader_uploaderMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts --&gt; module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts --&gt; module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts
   module_src_types_accordion_ts --&gt; module_src_types_base_ts
   module_src_types_activity_indicator_ts --&gt; module_src_types_base_ts
   module_src_types_app_bar_ts --&gt; module_src_types_base_ts
@@ -41870,6 +41971,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <p class="muted"><code>diagrams/export-graph.mmd</code></p>
     <div class="mermaid">graph LR
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   module_src_features_accordion_accordionMeta_ts[&quot;src/features/accordion/accordionMeta.ts&quot;]
@@ -42244,9 +42346,12 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_public_ts[&quot;src/features/uploader/public.ts&quot;]
   module_src_features_uploader_uploaderMeta_ts[&quot;src/features/uploader/uploaderMeta.ts&quot;]
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
@@ -43410,6 +43515,7 @@ Expansion controls are separate from row selection, including when rendering cus
       <summary>View Mermaid source</summary>
       <pre>graph LR
   module_src_cli_commands_create_ts[&quot;src/cli/commands/create.ts&quot;]
+  module_src_cli_commands_sync_ts[&quot;src/cli/commands/sync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_features_accordion_accordionItemMeta_ts[&quot;src/features/accordion/accordionItemMeta.ts&quot;]
   module_src_features_accordion_accordionMeta_ts[&quot;src/features/accordion/accordionMeta.ts&quot;]
@@ -43784,9 +43890,12 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_uploader_public_ts[&quot;src/features/uploader/public.ts&quot;]
   module_src_features_uploader_uploaderMeta_ts[&quot;src/features/uploader/uploaderMeta.ts&quot;]
   module_src_features_web_component_artifact_adapters_outbound_node_createNodeWebComponentArtifactFileSystem_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts&quot;]
+  module_src_features_web_component_artifact_adapters_outbound_node_readWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts&quot;]
   module_src_features_web_component_artifact_application_ports_outbound_WebComponentArtifactFileSystemPort_ts[&quot;src/features/web-component-artifact/application/ports/outbound/WebComponentArtifactFileSystemPort.ts&quot;]
-  module_src_features_web_component_artifact_application_use_cases_materializeWebComponentArtifactAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts&quot;]
-  module_src_features_web_component_artifact_composition_materializeWebComponentArtifactWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_application_use_cases_synchronizeWebComponentArtifactsAsync_ts[&quot;src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts&quot;]
+  module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts[&quot;src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_types_accordion_ts[&quot;src/types/accordion.ts&quot;]
   module_src_types_activity_indicator_ts[&quot;src/types/activity-indicator.ts&quot;]
@@ -45271,18 +45380,19 @@ Expansion controls are separate from row selection, including when rendering cus
         <section id="view-src-cli-commands-create-ts" class="view" data-view="src/cli/commands/create.ts" hidden>
     <section class="panel">
       <h2>src/cli/commands/create.ts</h2>
-      <article class="item" data-search="create src/cli/commands/create.ts Materialize a canonical ZORA component for a platform-specific consumer.">
+      <article class="item" data-search="create src/cli/commands/create.ts Add one web component to project desired state and reconcile its shared runtime.">
     <h3>create</h3>
-    <p class="muted"><code>src/cli/commands/create.ts:17:1</code></p>
-    <p>Materialize a canonical ZORA component for a platform-specific consumer.</p>
-  </article><article class="item" data-search="parseCreateArguments src/cli/commands/create.ts Parse the intentionally small first web-materialization command surface.">
-    <h3>parseCreateArguments</h3>
-    <p class="muted"><code>src/cli/commands/create.ts:61:1</code></p>
-    <p>Parse the intentionally small first web-materialization command surface.</p>
-  </article><article class="item" data-search="readPackageVersionAsync src/cli/commands/create.ts Read the installed package version used to stamp generated artifacts.">
-    <h3>readPackageVersionAsync</h3>
-    <p class="muted"><code>src/cli/commands/create.ts:86:1</code></p>
-    <p>Read the installed package version used to stamp generated artifacts.</p>
+    <p class="muted"><code>src/cli/commands/create.ts:15:1</code></p>
+    <p>Add one web component to project desired state and reconcile its shared runtime.</p>
+  </article>
+    </section>
+  </section><section id="view-src-cli-commands-sync-ts" class="view" data-view="src/cli/commands/sync.ts" hidden>
+    <section class="panel">
+      <h2>src/cli/commands/sync.ts</h2>
+      <article class="item" data-search="sync src/cli/commands/sync.ts Reconcile the declared web component set from the installed ZORA provider.">
+    <h3>sync</h3>
+    <p class="muted"><code>src/cli/commands/sync.ts:15:1</code></p>
+    <p>Reconcile the declared web component set from the installed ZORA provider.</p>
   </article>
     </section>
   </section><section id="view-src-cli-index-ts" class="view" data-view="src/cli/index.ts" hidden>
@@ -45290,7 +45400,7 @@ Expansion controls are separate from row selection, including when rendering cus
       <h2>src/cli/index.ts</h2>
       <article class="item" data-search="readPackageVersion src/cli/index.ts Read the installed ZORA version for the Ankh provider manifest.">
     <h3>readPackageVersion</h3>
-    <p class="muted"><code>src/cli/index.ts:40:1</code></p>
+    <p class="muted"><code>src/cli/index.ts:51:1</code></p>
     <p>Read the installed ZORA version for the Ankh provider manifest.</p>
   </article>
     </section>
@@ -47760,6 +47870,10 @@ per-element selector scans would add avoidable work. Runtime tests cover hover/s
     <h3>ZoraProvider</h3>
     <p class="muted"><code>src/features/theme/adapters/inbound/ZoraProvider.tsx:13:1</code></p>
     <p>Installs the core ZORA theme runtime and explicitly enabled optional capabilities.</p>
+  </article><article class="item" data-search="ZoraProviderMode src/features/theme/adapters/inbound/ZoraProvider.tsx Keep the shared Surface runtime aligned with a controlled application mode.">
+    <h3>ZoraProviderMode</h3>
+    <p class="muted"><code>src/features/theme/adapters/inbound/ZoraProvider.tsx:42:1</code></p>
+    <p>Keep the shared Surface runtime aligned with a controlled application mode.</p>
   </article>
     </section>
   </section><section id="view-src-features-theme-adapters-inbound-zorathemescope-tsx" class="view" data-view="src/features/theme/adapters/inbound/ZoraThemeScope.tsx" hidden>
@@ -48401,38 +48515,85 @@ built-in folder/file indicators. Expansion is leading and independent from row s
       <h2>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts</h2>
       <article class="item" data-search="createNodeWebComponentArtifactFileSystem src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts Create the Node filesystem adapter used by ZORA web-component materialization.">
     <h3>createNodeWebComponentArtifactFileSystem</h3>
-    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts:7:1</code></p>
+    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts:18:1</code></p>
     <p>Create the Node filesystem adapter used by ZORA web-component materialization.</p>
+  </article><article class="item" data-search="replaceWindowsJunctionAsync src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts Swap Windows junctions with rollback because rename cannot replace an occupied destination.">
+    <h3>replaceWindowsJunctionAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts:83:1</code></p>
+    <p>Swap Windows junctions with rollback because rename cannot replace an occupied destination.</p>
+  </article><article class="item" data-search="isGeneratedDirectoryName src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts Recognize only the private generation directories written by this adapter.">
+    <h3>isGeneratedDirectoryName</h3>
+    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts:102:1</code></p>
+    <p>Recognize only the private generation directories written by this adapter.</p>
+  </article><article class="item" data-search="isMissingFile src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts Distinguish a missing first-generation link from other filesystem errors.">
+    <h3>isMissingFile</h3>
+    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/createNodeWebComponentArtifactFileSystem.ts:107:1</code></p>
+    <p>Distinguish a missing first-generation link from other filesystem errors.</p>
   </article>
     </section>
-  </section><section id="view-src-features-web-component-artifact-application-use-cases-materializewebcomponentartifactasync-ts" class="view" data-view="src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts" hidden>
+  </section><section id="view-src-features-web-component-artifact-adapters-outbound-node-readwebdesiredstatewithnodeasync-ts" class="view" data-view="src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts" hidden>
     <section class="panel">
-      <h2>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts</h2>
-      <article class="item" data-search="materializeWebComponentArtifactAsync src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts Materialize one replaceable web-only component artifact from the published ZORA catalog.">
-    <h3>materializeWebComponentArtifactAsync</h3>
-    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts:20:1</code></p>
-    <p>Materialize one replaceable web-only component artifact from the published ZORA catalog.</p>
-  </article><article class="item" data-search="readWebArtifactDefinitionAsync src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts Resolve one requested component exclusively through the packaged web artifact catalog.">
-    <h3>readWebArtifactDefinitionAsync</h3>
-    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts:80:1</code></p>
-    <p>Resolve one requested component exclusively through the packaged web artifact catalog.</p>
-  </article><article class="item" data-search="readWebArtifactManifestSourceAsync src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts Read the packaged target catalog and translate a missing catalog into the CLI-facing error.">
-    <h3>readWebArtifactManifestSourceAsync</h3>
-    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts:125:1</code></p>
-    <p>Read the packaged target catalog and translate a missing catalog into the CLI-facing error.</p>
-  </article><article class="item" data-search="createGeneratedSource src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts Add a generated-file marker without changing the compiled artifact semantics.">
-    <h3>createGeneratedSource</h3>
-    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/materializeWebComponentArtifactAsync.ts:138:1</code></p>
-    <p>Add a generated-file marker without changing the compiled artifact semantics.</p>
+      <h2>src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts</h2>
+      <article class="item" data-search="readWebDesiredStateWithNodeAsync src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts Read the version-controlled desired component set outside generated output.">
+    <h3>readWebDesiredStateWithNodeAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts:7:1</code></p>
+    <p>Read the version-controlled desired component set outside generated output.</p>
   </article>
     </section>
-  </section><section id="view-src-features-web-component-artifact-composition-materializewebcomponentartifactwithnodeasync-ts" class="view" data-view="src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts" hidden>
+  </section><section id="view-src-features-web-component-artifact-application-use-cases-synchronizewebcomponentartifactsasync-ts" class="view" data-view="src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts" hidden>
     <section class="panel">
-      <h2>src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts</h2>
-      <article class="item" data-search="materializeWebComponentArtifactWithNodeAsync src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts Compose the Node filesystem adapter with the web-component materialization use case.">
-    <h3>materializeWebComponentArtifactWithNodeAsync</h3>
-    <p class="muted"><code>src/features/web-component-artifact/composition/materializeWebComponentArtifactWithNodeAsync.ts:9:1</code></p>
-    <p>Compose the Node filesystem adapter with the web-component materialization use case.</p>
+      <h2>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts</h2>
+      <article class="item" data-search="synchronizeWebComponentArtifactsAsync src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts Reconcile one desired web set from a single published ZORA generation.">
+    <h3>synchronizeWebComponentArtifactsAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts:29:1</code></p>
+    <p>Reconcile one desired web set from a single published ZORA generation.</p>
+  </article><article class="item" data-search="readArtifactCatalogAsync src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts Read and validate the packaged catalog before changing consumer output.">
+    <h3>readArtifactCatalogAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts:86:1</code></p>
+    <p>Read and validate the packaged catalog before changing consumer output.</p>
+  </article><article class="item" data-search="isFileList src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts Accept only known, relative generated file paths.">
+    <h3>isFileList</h3>
+    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts:117:1</code></p>
+    <p>Accept only known, relative generated file paths.</p>
+  </article><article class="item" data-search="parentDirectory src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts Resolve the parent path inside the generated directory.">
+    <h3>parentDirectory</h3>
+    <p class="muted"><code>src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.ts:131:1</code></p>
+    <p>Resolve the parent path inside the generated directory.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-web-component-artifact-composition-createwebdesiredstatewithnodeasync-ts" class="view" data-view="src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts</h2>
+      <article class="item" data-search="createWebDesiredStateWithNodeAsync src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts Add one requested web component and regenerate the complete declared set.">
+    <h3>createWebDesiredStateWithNodeAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts:10:1</code></p>
+    <p>Add one requested web component and regenerate the complete declared set.</p>
+  </article><article class="item" data-search="replaceDesiredStateAsync src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts Replace the authoritative project declaration only after its complete contents are staged.">
+    <h3>replaceDesiredStateAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts:50:1</code></p>
+    <p>Replace the authoritative project declaration only after its complete contents are staged.</p>
+  </article><article class="item" data-search="isMissingFile src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts Recognize only absent desired state, not unrelated filesystem failures.">
+    <h3>isMissingFile</h3>
+    <p class="muted"><code>src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts:61:1</code></p>
+    <p>Recognize only absent desired state, not unrelated filesystem failures.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-web-component-artifact-composition-synchronizedeclaredwebcomponentswithnodeasync-ts" class="view" data-view="src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts</h2>
+      <article class="item" data-search="synchronizeDeclaredWebComponentsWithNodeAsync src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts Load project desired state and sync it from the active ZORA package release.">
+    <h3>synchronizeDeclaredWebComponentsWithNodeAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts:9:1</code></p>
+    <p>Load project desired state and sync it from the active ZORA package release.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-web-component-artifact-composition-synchronizewebcomponentartifactswithnodeasync-ts" class="view" data-view="src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts</h2>
+      <article class="item" data-search="synchronizeWebComponentArtifactsWithNodeAsync src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts Wire Node filesystem operations into shared ZORA web reconciliation.">
+    <h3>synchronizeWebComponentArtifactsWithNodeAsync</h3>
+    <p class="muted"><code>src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts:9:1</code></p>
+    <p>Wire Node filesystem operations into shared ZORA web reconciliation.</p>
   </article>
     </section>
   </section><section id="view-src-types-progress-ts" class="view" data-view="src/types/progress.ts" hidden>

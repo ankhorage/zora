@@ -23749,10 +23749,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}: ZoraProviderProps) => React.JSX.Element",
+        "label": "({\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  mode,\n  toast = false,\n}: ZoraProviderProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  toast = false,\n}",
+            "name": "{\n  bottomSheet = false,\n  children,\n  theme = zoraDefaultTheme,\n  themeConfig,\n  initialMode = 'light',\n  mode,\n  toast = false,\n}",
             "type": "ZoraProviderProps",
             "required": true,
             "description": null
@@ -23803,6 +23803,13 @@
       },
       {
         "name": "initialMode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
         "required": false,
