@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.1
+
+### Patch Changes
+
+- a9b8d75: Forward constrained layout props through Tabs and TabPanel to the released Surface owner contract.
+
 ## 21.0.0
 
 ### Major Changes

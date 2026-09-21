@@ -525,6 +525,7 @@ Export paths: `src/index.ts`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -563,6 +564,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | onPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
@@ -650,6 +652,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `import("react-native").AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `import("react-native").AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -686,6 +689,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | onPress | `(() => void) \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
 | overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
@@ -751,6 +755,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
 | align | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
 | alignSelf | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no | — |  |
@@ -787,6 +792,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | onCheckedChange | `((checked: boolean) => void) \| undefined` | no | — |  |
 | onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
@@ -1021,6 +1027,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `import("react-native").AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `import("react-native").AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -1053,6 +1060,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
 | orientation | `"horizontal" \| "vertical" \| undefined` | no | — |  |
 | overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
@@ -1291,6 +1299,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `import("react-native").AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `import("react-native").AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -1327,6 +1336,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
 | overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
 | p | `Responsive<SpaceValue> \| undefined` | no | — |  |
@@ -2014,6 +2024,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
 | align | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
 | alignSelf | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no | — |  |
@@ -2050,6 +2061,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | onCheckedChange | `((checked: boolean) => void) \| undefined` | no | — |  |
 | onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
@@ -2722,6 +2734,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `import("react-native").AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `import("react-native").AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -2752,6 +2765,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
 | overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
 | p | `Responsive<SpaceValue> \| undefined` | no | — |  |
@@ -2786,6 +2800,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
 | align | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
 | alignSelf | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no | — |  |
@@ -2822,6 +2837,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | onCheckedChange | `((checked: boolean) => void) \| undefined` | no | — |  |
 | onLongPress | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
@@ -2890,12 +2906,57 @@ Export paths: `src/index.ts`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| align | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
 | children | `React.ReactNode` | no | — |  |
+| columnGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| direction | `Responsive<"row" \| "column"> \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| gap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| justify | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| rowGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
 | value | `string` | yes | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| wrap | `Responsive<"wrap" \| "nowrap"> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
 
 ## Tabs
 
@@ -2907,14 +2968,59 @@ Export paths: `src/index.ts`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| align | `Responsive<"flex-start" \| "center" \| "flex-end" \| "stretch" \| "baseline"> \| undefined` | no | — |  |
+| alignSelf | `Responsive<"auto" \| import("react-native").FlexAlignType \| undefined>` | no | — |  |
+| bg | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderColor | `Responsive<ColorValue> \| undefined` | no | — |  |
+| borderWidth | `Responsive<number> \| undefined` | no | — |  |
+| bottom | `Responsive<number> \| undefined` | no | — |  |
 | children | `React.ReactNode` | no | — |  |
+| columnGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | defaultValue | `string \| undefined` | no | — |  |
+| direction | `Responsive<"row" \| "column"> \| undefined` | no | — |  |
+| flex | `Responsive<number> \| undefined` | no | — |  |
+| flexBasis | `Responsive<string \| number> \| undefined` | no | — |  |
+| flexGrow | `Responsive<number> \| undefined` | no | — |  |
+| flexShrink | `Responsive<number> \| undefined` | no | — |  |
+| gap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| height | `Responsive<string \| number> \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| justify | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no | — |  |
+| left | `Responsive<number> \| undefined` | no | — |  |
+| m | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| maxHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| maxWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| mb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| minHeight | `Responsive<string \| number> \| undefined` | no | — |  |
+| minWidth | `Responsive<string \| number> \| undefined` | no | — |  |
+| ml | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| mr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| my | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | onValueChange | `((value: string) => void) \| undefined` | no | — |  |
+| opacity | `Responsive<number> \| undefined` | no | — |  |
+| overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
+| p | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pb | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pl | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| position | `Responsive<"absolute" \| "relative" \| "static" \| undefined>` | no | — |  |
+| pr | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| pt | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| px | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| py | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
+| right | `Responsive<number> \| undefined` | no | — |  |
+| rowGap | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| style | `StyleProp<ViewStyle>` | no | — |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
+| top | `Responsive<number> \| undefined` | no | — |  |
 | value | `string \| undefined` | no | — |  |
+| width | `Responsive<string \| number> \| undefined` | no | — |  |
+| wrap | `Responsive<"wrap" \| "nowrap"> \| undefined` | no | — |  |
+| zIndex | `Responsive<number> \| undefined` | no | — |  |
 
 ## Text
 
@@ -3332,6 +3438,7 @@ Export paths: `src/index.ts`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | accessibilityLabel | `string \| undefined` | no | — |  |
+| accessibilityLabelledBy | `string \| string[] \| undefined` | no | — |  |
 | accessibilityRole | `import("react-native").AccessibilityRole \| undefined` | no | — |  |
 | accessibilityState | `import("react-native").AccessibilityState \| undefined` | no | — |  |
 | accessible | `boolean \| undefined` | no | — |  |
@@ -3365,6 +3472,7 @@ Export paths: `src/index.ts`
 | mt | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | mx | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | my | `Responsive<SpaceValue> \| undefined` | no | — |  |
+| nativeID | `string \| undefined` | no | — |  |
 | opacity | `Responsive<number> \| undefined` | no | — |  |
 | overflow | `Responsive<"visible" \| "hidden" \| "scroll" \| undefined>` | no | — |  |
 | p | `Responsive<SpaceValue> \| undefined` | no | — |  |

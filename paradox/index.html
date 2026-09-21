@@ -2734,15 +2734,15 @@
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/authoring.ts</code></p>
     <p><strong>Exports:</strong> <code>tabMeta</code></p>
-  </article><article class="item" data-search="src/features/tabs/tabPanelMeta.ts src/features/authoring/allowedChildren.ts src/types/authoring.ts tabPanelMeta">
+  </article><article class="item" data-search="src/features/tabs/tabPanelMeta.ts src/features/authoring/allowedChildren.ts src/features/layout/constants.ts src/types/authoring.ts tabPanelMeta">
     <h3>src/features/tabs/tabPanelMeta.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/authoring/allowedChildren.ts</code>, <code>src/types/authoring.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/authoring/allowedChildren.ts</code>, <code>src/features/layout/constants.ts</code>, <code>src/types/authoring.ts</code></p>
     <p><strong>Exports:</strong> <code>tabPanelMeta</code></p>
-  </article><article class="item" data-search="src/features/tabs/tabsMeta.ts src/types/authoring.ts tabsMeta">
+  </article><article class="item" data-search="src/features/tabs/tabsMeta.ts src/features/layout/constants.ts src/types/authoring.ts tabsMeta">
     <h3>src/features/tabs/tabsMeta.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/types/authoring.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/layout/constants.ts</code>, <code>src/types/authoring.ts</code></p>
     <p><strong>Exports:</strong> <code>tabsMeta</code></p>
   </article><article class="item" data-search="src/features/theme/adapters/inbound/ThemeModeToggle.tsx src/features/button/public.ts src/features/theme/composition/useZoraTheme.ts src/features/theme/utils/resolveThemeModeToggleState.ts src/types/theme-mode-toggle.ts ThemeModeToggle">
     <h3>src/features/theme/adapters/inbound/ThemeModeToggle.tsx</h3>
@@ -8189,6 +8189,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
     <tbody>
       <tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessibilityRole</code></td>
             <td>property</td>
             <td><code>AccessibilityRole | undefined</code></td>
@@ -8417,6 +8423,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>onLongPress</code></td>
             <td>property</td>
             <td><code>((event: GestureResponderEvent) =&gt; void) | undefined</code></td>
@@ -8581,6 +8593,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>accessibilityLabel</code></td>
             <td>property</td>
             <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -8797,6 +8815,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>my</code></td>
             <td>property</td>
             <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -9510,6 +9534,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessible</code></td>
             <td>property</td>
             <td><code>boolean | undefined</code></td>
@@ -9723,6 +9753,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>my</code></td>
             <td>property</td>
             <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -13092,6 +13128,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessibilityRole</code></td>
             <td>property</td>
             <td><code>import(&quot;react-native&quot;).AccessibilityRole | undefined</code></td>
@@ -13284,6 +13326,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>opacity</code></td>
             <td>property</td>
             <td><code>Responsive&lt;number&gt; | undefined</code></td>
@@ -13432,6 +13480,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>accessibilityLabel</code></td>
             <td>property</td>
             <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -13648,6 +13702,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>my</code></td>
             <td>property</td>
             <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -15058,6 +15118,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessibilityRole</code></td>
             <td>property</td>
             <td><code>import(&quot;react-native&quot;).AccessibilityRole | undefined</code></td>
@@ -15253,6 +15319,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>my</code></td>
             <td>property</td>
             <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -17506,6 +17578,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessible</code></td>
             <td>property</td>
             <td><code>boolean | undefined</code></td>
@@ -17719,6 +17797,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>my</code></td>
             <td>property</td>
             <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -19589,6 +19673,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>accessibilityRole</code></td>
             <td>property</td>
             <td><code>import(&quot;react-native&quot;).AccessibilityRole | undefined</code></td>
@@ -19769,6 +19859,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>opacity</code></td>
             <td>property</td>
             <td><code>Responsive&lt;number&gt; | undefined</code></td>
@@ -19921,6 +20017,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>accessibilityLabel</code></td>
             <td>property</td>
             <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>accessibilityLabelledBy</code></td>
+            <td>property</td>
+            <td><code>string | string[] | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20140,6 +20242,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>nativeID</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>onCheckedChange</code></td>
             <td>property</td>
             <td><code>((checked: boolean) =&gt; void) | undefined</code></td>
@@ -20286,7 +20394,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
               <h3>src/types/tabs.ts</h3>
               <article class="item" id="symbol-tablistprops" data-search="TabListProps type src/types/tabs.ts  ZoraThemeMode">
     <h4>TabListProps</h4>
-    <p class="muted">type • <code>src/types/tabs.ts:12:1</code></p>
+    <p class="muted">type • <code>src/types/tabs.ts:11:1</code></p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">ZoraThemeMode</li></ul></div>
@@ -20329,7 +20437,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
   </table>
   </article><article class="item" id="symbol-tabpanelprops" data-search="TabPanelProps type src/types/tabs.ts  ZoraThemeMode">
     <h4>TabPanelProps</h4>
-    <p class="muted">type • <code>src/types/tabs.ts:22:1</code></p>
+    <p class="muted">type • <code>src/types/tabs.ts:21:1</code></p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">ZoraThemeMode</li></ul></div>
@@ -20338,9 +20446,93 @@ consumers do not need to import lower-level Surface typography directly.</p>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
     <tbody>
       <tr>
+            <td><code>align</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>alignSelf</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>bg</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>borderColor</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>borderWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>bottom</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>children</code></td>
             <td>property</td>
             <td><code>React.ReactNode</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>columnGap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>direction</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flex</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexBasis</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexGrow</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexShrink</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>gap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>height</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20350,9 +20542,171 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>justify</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>left</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>m</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxHeight</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mb</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>minHeight</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>minWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ml</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>mode</code></td>
             <td>property</td>
             <td><code>ZoraThemeMode | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mr</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mt</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mx</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>my</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>opacity</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>overflow</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>p</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pb</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pl</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>position</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pr</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pt</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>px</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>py</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>radius</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;RadiusValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>right</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>rowGap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>style</code></td>
+            <td>property</td>
+            <td><code>StyleProp&lt;ViewStyle&gt;</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20368,17 +20722,41 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>top</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>value</code></td>
             <td>property</td>
             <td><code>string</code></td>
             <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>width</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>wrap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>zIndex</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
             <td></td>
           </tr>
     </tbody>
   </table>
   </article><article class="item" id="symbol-tabprops" data-search="TabProps type src/types/tabs.ts  ZoraThemeMode">
     <h4>TabProps</h4>
-    <p class="muted">type • <code>src/types/tabs.ts:16:1</code></p>
+    <p class="muted">type • <code>src/types/tabs.ts:15:1</code></p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">ZoraThemeMode</li></ul></div>
@@ -20433,7 +20811,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
   </table>
   </article><article class="item" id="symbol-tabsprops" data-search="TabsProps type src/types/tabs.ts  ZoraThemeMode">
     <h4>TabsProps</h4>
-    <p class="muted">type • <code>src/types/tabs.ts:5:1</code></p>
+    <p class="muted">type • <code>src/types/tabs.ts:9:1</code></p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">ZoraThemeMode</li></ul></div>
@@ -20442,9 +20820,51 @@ consumers do not need to import lower-level Surface typography directly.</p>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
     <tbody>
       <tr>
+            <td><code>align</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>alignSelf</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>bg</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>borderColor</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>borderWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>bottom</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>children</code></td>
             <td>property</td>
             <td><code>React.ReactNode</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>columnGap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20454,9 +20874,105 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>direction</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flex</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexBasis</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexGrow</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>flexShrink</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>gap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>height</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>interactionPolicy</code></td>
             <td>property</td>
             <td><code>InteractionPolicy | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>justify</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>left</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>m</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxHeight</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mb</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>minHeight</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>minWidth</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ml</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20466,9 +20982,117 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>mr</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mt</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mx</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>my</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>onValueChange</code></td>
             <td>property</td>
             <td><code>((value: string) =&gt; void) | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>opacity</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>overflow</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>p</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pb</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pl</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>position</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pr</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pt</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>px</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>py</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>radius</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;RadiusValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>right</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>rowGap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>style</code></td>
+            <td>property</td>
+            <td><code>StyleProp&lt;ViewStyle&gt;</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -20484,9 +21108,33 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>top</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>value</code></td>
             <td>property</td>
             <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>width</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>wrap</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>zIndex</code></td>
+            <td>property</td>
+            <td><code>Responsive&lt;number&gt; | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr>
@@ -24251,7 +24899,7 @@ or test camera element through `camera`; keep permission and fallback UI here.</
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-button" data-search="Button src/features/button/adapters/inbound/Button.tsx Theme-aware action control for primary, secondary, destructive, and neutral actions.&#10;&#10;Use `Button` for explicit user actions that should follow ZORA&#39;s semantic color,&#10;variant, and size recipes across React Native and React Native Web. accessibilityRole AccessibilityRole | undefined accessibilityState AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined fullWidth boolean | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined leadingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined left Responsive&lt;number&gt; | undefined loading boolean | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined onPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ZoraControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined trailingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined variant ZoraButtonVariant | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-button" data-search="Button src/features/button/adapters/inbound/Button.tsx Theme-aware action control for primary, secondary, destructive, and neutral actions.&#10;&#10;Use `Button` for explicit user actions that should follow ZORA&#39;s semantic color,&#10;variant, and size recipes across React Native and React Native Web. accessibilityLabelledBy string | string[] | undefined accessibilityRole AccessibilityRole | undefined accessibilityState AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined fullWidth boolean | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined leadingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined left Responsive&lt;number&gt; | undefined loading boolean | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined onPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ZoraControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined trailingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined variant ZoraButtonVariant | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Button</h3>
     <p class="muted"><code>src/features/button/adapters/inbound/Button.tsx:19:14</code></p>
     <p>Theme-aware action control for primary, secondary, destructive, and neutral actions.
@@ -24263,6 +24911,11 @@ variant, and size recipes across React Native and React Native Web.</p>
       <thead><tr><th>Prop</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>accessibilityRole</code></td>
               <td><code>AccessibilityRole | undefined</code></td>
               <td>no</td>
@@ -24450,6 +25103,11 @@ variant, and size recipes across React Native and React Native Web.</p>
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -24715,7 +25373,7 @@ request, denied, requesting, and manual-entry surfaces consistently.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-card" data-search="Card src/features/card/adapters/inbound/Card.tsx Structured content container with built-in heading, description, actions, and footer slots.&#10;&#10;Use `Card` for reusable content blocks that should inherit ZORA spacing,&#10;radius, tone, and responsive header layout without hand-assembling primitives. accessibilityLabel string | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined actions React.ReactNode align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined compact boolean | undefined description React.ReactNode direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined eyebrow React.ReactNode flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined footer React.ReactNode gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onPress (() =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; padding string | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius string | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined title React.ReactNode tone ZoraCardTone | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-card" data-search="Card src/features/card/adapters/inbound/Card.tsx Structured content container with built-in heading, description, actions, and footer slots.&#10;&#10;Use `Card` for reusable content blocks that should inherit ZORA spacing,&#10;radius, tone, and responsive header layout without hand-assembling primitives. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined actions React.ReactNode align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined compact boolean | undefined description React.ReactNode direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined eyebrow React.ReactNode flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined footer React.ReactNode gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined onPress (() =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; padding string | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius string | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined title React.ReactNode tone ZoraCardTone | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Card</h3>
     <p class="muted"><code>src/features/card/adapters/inbound/Card.tsx:23:14</code></p>
     <p>Structured content container with built-in heading, description, actions, and footer slots.
@@ -24729,6 +25387,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -24909,6 +25572,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -25135,7 +25803,7 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-checkbox" data-search="Checkbox src/features/form/checkbox/adapters/inbound/Checkbox.tsx Binary selection control for toggling a value on or off. accessibilityLabel string | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-checkbox" data-search="Checkbox src/features/form/checkbox/adapters/inbound/Checkbox.tsx Binary selection control for toggling a value on or off. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Checkbox</h3>
     <p class="muted"><code>src/features/form/checkbox/adapters/inbound/Checkbox.tsx:21:14</code></p>
     <p>Binary selection control for toggling a value on or off.</p>
@@ -25146,6 +25814,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -25326,6 +25999,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -26099,7 +26777,7 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-divider" data-search="Divider src/features/layout/adapters/inbound/Divider.tsx Adapts the themed Surface Divider primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode color ColorValue | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined opacity Responsive&lt;number&gt; | undefined orientation &quot;horizontal&quot; | &quot;vertical&quot; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined thickness number | undefined top Responsive&lt;number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-divider" data-search="Divider src/features/layout/adapters/inbound/Divider.tsx Adapts the themed Surface Divider primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode color ColorValue | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined opacity Responsive&lt;number&gt; | undefined orientation &quot;horizontal&quot; | &quot;vertical&quot; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined thickness number | undefined top Responsive&lt;number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Divider</h3>
     <p class="muted"><code>src/features/layout/adapters/inbound/Divider.tsx:8:14</code></p>
     <p>Adapts the themed Surface Divider primitive to ZORA scope and interaction props.</p>
@@ -26110,6 +26788,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -26270,6 +26953,11 @@ radius, tone, and responsive header layout without hand-assembling primitives.</
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -26973,7 +27661,7 @@ Native hosts can inject another compatible implementation.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-grid" data-search="Grid src/features/layout/adapters/inbound/Grid.tsx Adapts the themed Surface Grid primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode colGap Responsive&lt;SpaceValue&gt; | undefined cols Responsive&lt;number&gt; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minItemWidth Responsive&lt;number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-grid" data-search="Grid src/features/layout/adapters/inbound/Grid.tsx Adapts the themed Surface Grid primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode colGap Responsive&lt;SpaceValue&gt; | undefined cols Responsive&lt;number&gt; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minItemWidth Responsive&lt;number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Grid</h3>
     <p class="muted"><code>src/features/layout/adapters/inbound/Grid.tsx:8:14</code></p>
     <p>Adapts the themed Surface Grid primitive to ZORA scope and interaction props.</p>
@@ -26984,6 +27672,11 @@ Native hosts can inject another compatible implementation.</p>
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -27164,6 +27857,11 @@ Native hosts can inject another compatible implementation.</p>
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -29506,7 +30204,7 @@ Adapters, redirects, and callback handling belong to app/runtime layers.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-radio" data-search="Radio src/features/form/radio/adapters/inbound/Radio.tsx Single-choice selection control used within a radio group. accessibilityLabel string | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-radio" data-search="Radio src/features/form/radio/adapters/inbound/Radio.tsx Single-choice selection control used within a radio group. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Radio</h3>
     <p class="muted"><code>src/features/form/radio/adapters/inbound/Radio.tsx:14:14</code></p>
     <p>Single-choice selection control used within a radio group.</p>
@@ -29517,6 +30215,11 @@ Adapters, redirects, and callback handling belong to app/runtime layers.</p>
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -29697,6 +30400,11 @@ Adapters, redirects, and callback handling belong to app/runtime layers.</p>
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32138,7 +32846,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-surface" data-search="Surface src/features/surface/adapters/inbound/Surface.tsx Adapts the themed Surface Surface primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined variant SurfaceVariant | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-surface" data-search="Surface src/features/surface/adapters/inbound/Surface.tsx Adapts the themed Surface Surface primitive to ZORA scope and interaction props. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined variant SurfaceVariant | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Surface</h3>
     <p class="muted"><code>src/features/surface/adapters/inbound/Surface.tsx:8:14</code></p>
     <p>Adapts the themed Surface Surface primitive to ZORA scope and interaction props.</p>
@@ -32149,6 +32857,11 @@ capability separately while ZORA owns the visible scan affordance.</p>
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32302,6 +33015,11 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>opacity</code></td>
               <td><code>Responsive&lt;number&gt; | undefined</code></td>
               <td>no</td>
@@ -32414,7 +33132,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-switch" data-search="Switch src/features/form/switch/adapters/inbound/Switch.tsx Renders the ZORA switch while preserving the canonical Surface switch contract. accessibilityLabel string | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-switch" data-search="Switch src/features/form/switch/adapters/inbound/Switch.tsx Renders the ZORA switch while preserving the canonical Surface switch contract. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined checked boolean | undefined children React.ReactNode color &quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;quaternary&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;danger&quot; | undefined columnGap Responsive&lt;SpaceValue&gt; | undefined defaultChecked boolean | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined disabled boolean | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined onCheckedChange ((checked: boolean) =&gt; void) | undefined onLongPress ((event: GestureResponderEvent) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined readOnly boolean | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined size ControlSize | undefined testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Switch</h3>
     <p class="muted"><code>src/features/form/switch/adapters/inbound/Switch.tsx:8:14</code></p>
     <p>Renders the ZORA switch while preserving the canonical Surface switch contract.</p>
@@ -32425,6 +33143,11 @@ capability separately while ZORA owns the visible scan affordance.</p>
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32605,6 +33328,11 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32807,7 +33535,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-tabpanel" data-search="TabPanel src/features/tabs/adapters/inbound/TabPanel.tsx Renders content associated with one selected Tab. children React.ReactNode interactionPolicy InteractionPolicy | undefined mode ZoraThemeMode | undefined testID string | undefined themeId string | undefined value string">
+  </article><article class="item" id="component-tabpanel" data-search="TabPanel src/features/tabs/adapters/inbound/TabPanel.tsx Renders content associated with one selected Tab. align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined value string width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>TabPanel</h3>
     <p class="muted"><code>src/features/tabs/adapters/inbound/TabPanel.tsx:7:14</code></p>
     <p>Renders content associated with one selected Tab.</p>
@@ -32816,8 +33544,78 @@ capability separately while ZORA owns the visible scan affordance.</p>
       <thead><tr><th>Prop</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
+              <td><code>align</code></td>
+              <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>alignSelf</code></td>
+              <td><code>Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>bg</code></td>
+              <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>borderColor</code></td>
+              <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>borderWidth</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>bottom</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>children</code></td>
               <td><code>React.ReactNode</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>columnGap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>direction</code></td>
+              <td><code>Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flex</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexBasis</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexGrow</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexShrink</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>gap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>height</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32826,8 +33624,143 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>justify</code></td>
+              <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>left</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>m</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>maxHeight</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>maxWidth</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mb</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>minHeight</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>minWidth</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>ml</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>mode</code></td>
               <td><code>ZoraThemeMode | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mr</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mt</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mx</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>my</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>opacity</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>overflow</code></td>
+              <td><code>Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>p</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pb</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pl</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>position</code></td>
+              <td><code>Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pr</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pt</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>px</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>py</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>radius</code></td>
+              <td><code>Responsive&lt;RadiusValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>right</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>rowGap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>style</code></td>
+              <td><code>StyleProp&lt;ViewStyle&gt;</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32841,14 +33774,34 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>top</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>value</code></td>
               <td><code>string</code></td>
               <td>yes</td>
               <td></td>
+            </tr><tr>
+              <td><code>width</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>wrap</code></td>
+              <td><code>Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>zIndex</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-tabs" data-search="Tabs src/features/tabs/adapters/inbound/Tabs.tsx Provides accessible tab state and interaction policy through the Surface Tabs primitive. children React.ReactNode defaultValue string | undefined interactionPolicy InteractionPolicy | undefined mode ZoraThemeMode | undefined onValueChange ((value: string) =&gt; void) | undefined testID string | undefined themeId string | undefined value string | undefined">
+  </article><article class="item" id="component-tabs" data-search="Tabs src/features/tabs/adapters/inbound/Tabs.tsx Provides accessible tab state and interaction policy through the Surface Tabs primitive. align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined defaultValue string | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined onValueChange ((value: string) =&gt; void) | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined value string | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>Tabs</h3>
     <p class="muted"><code>src/features/tabs/adapters/inbound/Tabs.tsx:8:14</code></p>
     <p>Provides accessible tab state and interaction policy through the Surface Tabs primitive.</p>
@@ -32857,8 +33810,43 @@ capability separately while ZORA owns the visible scan affordance.</p>
       <thead><tr><th>Prop</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
+              <td><code>align</code></td>
+              <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>alignSelf</code></td>
+              <td><code>Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>bg</code></td>
+              <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>borderColor</code></td>
+              <td><code>Responsive&lt;ColorValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>borderWidth</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>bottom</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>children</code></td>
               <td><code>React.ReactNode</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>columnGap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32867,8 +33855,88 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>direction</code></td>
+              <td><code>Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flex</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexBasis</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexGrow</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>flexShrink</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>gap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>height</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>interactionPolicy</code></td>
               <td><code>InteractionPolicy | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>justify</code></td>
+              <td><code>Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>left</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>m</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>maxHeight</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>maxWidth</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mb</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>minHeight</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>minWidth</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>ml</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32877,8 +33945,98 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>mr</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mt</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>mx</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>my</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>onValueChange</code></td>
               <td><code>((value: string) =&gt; void) | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>opacity</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>overflow</code></td>
+              <td><code>Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>p</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pb</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pl</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>position</code></td>
+              <td><code>Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt;</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pr</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>pt</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>px</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>py</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>radius</code></td>
+              <td><code>Responsive&lt;RadiusValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>right</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>rowGap</code></td>
+              <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>style</code></td>
+              <td><code>StyleProp&lt;ViewStyle&gt;</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -32892,8 +34050,28 @@ capability separately while ZORA owns the visible scan affordance.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>top</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>value</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>width</code></td>
+              <td><code>Responsive&lt;string | number&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>wrap</code></td>
+              <td><code>Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>zIndex</code></td>
+              <td><code>Responsive&lt;number&gt; | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr>
@@ -34426,7 +35604,7 @@ Expansion controls are separate from row selection, including when rendering cus
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-view" data-search="View src/features/layout/adapters/inbound/View.tsx Adapts the token-aware Surface View primitive to ZORA theme scope. accessibilityLabel string | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
+  </article><article class="item" id="component-view" data-search="View src/features/layout/adapters/inbound/View.tsx Adapts the token-aware Surface View primitive to ZORA theme scope. accessibilityLabel string | undefined accessibilityLabelledBy string | string[] | undefined accessibilityRole import(&quot;react-native&quot;).AccessibilityRole | undefined accessibilityState import(&quot;react-native&quot;).AccessibilityState | undefined accessible boolean | undefined align Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;stretch&quot; | &quot;baseline&quot;&gt; | undefined alignSelf Responsive&lt;&quot;auto&quot; | import(&quot;react-native&quot;).FlexAlignType | undefined&gt; bg Responsive&lt;ColorValue&gt; | undefined borderColor Responsive&lt;ColorValue&gt; | undefined borderWidth Responsive&lt;number&gt; | undefined bottom Responsive&lt;number&gt; | undefined children React.ReactNode columnGap Responsive&lt;SpaceValue&gt; | undefined direction Responsive&lt;&quot;row&quot; | &quot;column&quot;&gt; | undefined flex Responsive&lt;number&gt; | undefined flexBasis Responsive&lt;string | number&gt; | undefined flexGrow Responsive&lt;number&gt; | undefined flexShrink Responsive&lt;number&gt; | undefined gap Responsive&lt;SpaceValue&gt; | undefined height Responsive&lt;string | number&gt; | undefined interactionPolicy InteractionPolicy | undefined justify Responsive&lt;&quot;flex-start&quot; | &quot;center&quot; | &quot;flex-end&quot; | &quot;space-between&quot; | &quot;space-around&quot; | &quot;space-evenly&quot;&gt; | undefined left Responsive&lt;number&gt; | undefined m Responsive&lt;SpaceValue&gt; | undefined maxHeight Responsive&lt;string | number&gt; | undefined maxWidth Responsive&lt;string | number&gt; | undefined mb Responsive&lt;SpaceValue&gt; | undefined minHeight Responsive&lt;string | number&gt; | undefined minWidth Responsive&lt;string | number&gt; | undefined ml Responsive&lt;SpaceValue&gt; | undefined mode ZoraThemeMode | undefined mr Responsive&lt;SpaceValue&gt; | undefined mt Responsive&lt;SpaceValue&gt; | undefined mx Responsive&lt;SpaceValue&gt; | undefined my Responsive&lt;SpaceValue&gt; | undefined nativeID string | undefined opacity Responsive&lt;number&gt; | undefined overflow Responsive&lt;&quot;visible&quot; | &quot;hidden&quot; | &quot;scroll&quot; | undefined&gt; p Responsive&lt;SpaceValue&gt; | undefined pb Responsive&lt;SpaceValue&gt; | undefined pl Responsive&lt;SpaceValue&gt; | undefined pointerEvents &quot;box-none&quot; | &quot;none&quot; | &quot;box-only&quot; | &quot;auto&quot; | undefined position Responsive&lt;&quot;absolute&quot; | &quot;relative&quot; | &quot;static&quot; | undefined&gt; pr Responsive&lt;SpaceValue&gt; | undefined pt Responsive&lt;SpaceValue&gt; | undefined px Responsive&lt;SpaceValue&gt; | undefined py Responsive&lt;SpaceValue&gt; | undefined radius Responsive&lt;RadiusValue&gt; | undefined right Responsive&lt;number&gt; | undefined rowGap Responsive&lt;SpaceValue&gt; | undefined style StyleProp&lt;ViewStyle&gt; testID string | undefined themeId string | undefined top Responsive&lt;number&gt; | undefined width Responsive&lt;string | number&gt; | undefined wrap Responsive&lt;&quot;wrap&quot; | &quot;nowrap&quot;&gt; | undefined zIndex Responsive&lt;number&gt; | undefined">
     <h3>View</h3>
     <p class="muted"><code>src/features/layout/adapters/inbound/View.tsx:8:14</code></p>
     <p>Adapts the token-aware Surface View primitive to ZORA theme scope.</p>
@@ -34437,6 +35615,11 @@ Expansion controls are separate from row selection, including when rendering cus
         <tr>
               <td><code>accessibilityLabel</code></td>
               <td><code>string | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>accessibilityLabelledBy</code></td>
+              <td><code>string | string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -34602,6 +35785,11 @@ Expansion controls are separate from row selection, including when rendering cus
             </tr><tr>
               <td><code>my</code></td>
               <td><code>Responsive&lt;SpaceValue&gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>nativeID</code></td>
+              <td><code>string | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -36244,9 +37432,11 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_tabs_tabPanelMeta_ts[&quot;src/features/tabs/tabPanelMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_tabs_tabPanelMeta_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
+  module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabsMeta_ts[&quot;src/features/tabs/tabsMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_tabs_tabsMeta_ts
+  module_src_features_tabs_tabsMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabsMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx[&quot;src/features/theme/adapters/inbound/ThemeModeToggle.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx
@@ -38266,9 +39456,11 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_tabs_tabPanelMeta_ts[&quot;src/features/tabs/tabPanelMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_tabs_tabPanelMeta_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
+  module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabsMeta_ts[&quot;src/features/tabs/tabsMeta.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_tabs_tabsMeta_ts
+  module_src_features_tabs_tabsMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabsMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx[&quot;src/features/theme/adapters/inbound/ThemeModeToggle.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx
@@ -40132,7 +41324,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_tabs_tabListMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
+  module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_types_authoring_ts
+  module_src_features_tabs_tabsMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabsMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --&gt; module_src_features_button_public_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
@@ -41697,7 +42891,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_tabs_tabListMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_authoring_allowedChildren_ts
+  module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabPanelMeta_ts --&gt; module_src_types_authoring_ts
+  module_src_features_tabs_tabsMeta_ts --&gt; module_src_features_layout_constants_ts
   module_src_features_tabs_tabsMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --&gt; module_src_features_button_public_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
