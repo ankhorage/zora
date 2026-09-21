@@ -36,7 +36,30 @@ test('compacts the settled layout up to measured clearance without changing node
   }
 });
 
-test('does not shrink already overlapping or locked views', () => {
+test('expands a uniformly cramped layout to measured clearance', () => {
+  const cy = cytoscape({
+    headless: true,
+    styleEnabled: true,
+    layout: { name: 'preset' },
+    elements: [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 50, y: 0 } },
+    ],
+    style: [{ selector: 'node', style: { width: 100, height: 40, padding: '0px' } }],
+  });
+  try {
+    const factor = compactGraphSpacing(cy, 0.1);
+    expect(factor).toBeGreaterThan(0.2);
+    expect(factor).toBeLessThan(0.3);
+    const a = cy.getElementById('a').boundingBox();
+    const b = cy.getElementById('b').boundingBox();
+    expect(b.x1 - a.x2).toBeGreaterThanOrEqual(8);
+  } finally {
+    cy.destroy();
+  }
+});
+
+test('preserves locked or non-uniformly overlapping views', () => {
   for (const locked of [false, true]) {
     const cy = cytoscape({
       headless: true,

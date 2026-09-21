@@ -60,7 +60,7 @@ export interface GraphViewViewport {
 }
 
 export interface GraphViewFitOptions {
-  /** Compact the existing layout without rerunning its algorithm; whole-graph fits only. */
+  /** Optimize existing layout spacing without rerunning its algorithm; whole-graph fits only. */
   readonly optimizeSpacing?: boolean;
   readonly nodeIds?: readonly string[];
   readonly padding?: number;
@@ -131,8 +131,9 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * @config minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
  * @config maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
  * @config onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
- * Ordinary zoom never compacts or relayouts. Compaction preserves layout ordering and uses bounded
- * collision checks including labels and compound siblings; it cannot repair existing overlaps.
+ * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering
+ * and uses bounded collision checks including labels and compound siblings; it can recover uniformly
+ * cramped layouts but cannot repair non-uniform overlaps.
  */
 export function GraphView(props: GraphViewProps) {
   const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props);

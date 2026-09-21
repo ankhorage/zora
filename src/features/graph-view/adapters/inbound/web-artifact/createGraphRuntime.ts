@@ -251,7 +251,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
 
 /***
  * Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.
- * @performance Bounded compaction preserves the settled algorithm instead of repeatedly running it.
+ * @performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.
  */
 function requestOptimizedFit(state: GraphRuntimeState, options: GraphViewFitOptions) {
   if (state.cy.destroyed()) return;
