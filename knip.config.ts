@@ -4,6 +4,9 @@ export default createKnipConfig({
   entry: [
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
+    'scripts/web-artifacts/verifyWebMaterialization.ts',
+    'scripts/web-artifacts/fixtures/next-app/app/**/*.{ts,tsx}',
+    'scripts/web-artifacts/fixtures/next-app/next.config.ts',
     'examples/basic-app/App.tsx',
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
@@ -14,7 +17,6 @@ export default createKnipConfig({
     'test-fixtures/platformAcceptance.test.tsx',
     'test-fixtures/registrySnapshot.test.ts',
     'test-fixtures/graphLayoutLifecycle.ts',
-    'test-fixtures/webArtifactRuntime.test.tsx',
   ],
   ignoreFiles: [
     '.prettierrc.js',
@@ -26,4 +28,5 @@ export default createKnipConfig({
     'paradox.config.ts',
     'prettier.local.config.js',
   ],
+  ignoreDependencies: ['@zora/*'],
 });

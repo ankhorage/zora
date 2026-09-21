@@ -1,5 +1,5 @@
-import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { dirname, join, relative } from 'node:path';
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, join, relative, resolve, sep } from 'node:path';
 
 import { createWebBuildPlugins } from './createWebBuildPlugins';
 import type {
@@ -10,191 +10,239 @@ import type {
 
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
-  readonly repositoryRoot: string;
   readonly sourceRoot: string;
   readonly surfacePackageRoot: string;
   readonly webDistRoot: string;
 }
 
-/*** Build one discovered ZORA runtime export into the canonical CLI artifact layout. */
-export async function buildWebArtifact(
-  target: WebArtifactTarget,
-  paths: BuildWebArtifactPaths,
-): Promise<WebArtifactManifestEntry> {
-  const outputDirectory = join(paths.webDistRoot, target.component);
-  const entrypointDirectory = join(paths.cacheRoot, target.component);
-  const entrypoint = join(entrypointDirectory, `${target.exportName}.ts`);
-
-  await rm(outputDirectory, { force: true, recursive: true });
-  await mkdir(outputDirectory, { recursive: true });
-  await mkdir(entrypointDirectory, { recursive: true });
-  await writeFile(entrypoint, createEntrypoint(target, entrypointDirectory), 'utf8');
-
-  try {
-    await bundleWebArtifact(target, entrypoint, outputDirectory, paths);
-    await writeDeclaration(target, outputDirectory);
-    await writeArtifactManifest(target, outputDirectory);
-  } finally {
-    await rm(entrypointDirectory, { force: true, recursive: true });
-  }
-
-  return createManifestEntry(target);
+interface WebArtifactCatalog {
+  readonly schemaVersion: 2;
+  readonly runtime: { readonly entry: string; readonly files: readonly string[] };
+  readonly artifacts: readonly WebArtifactManifestEntry[];
 }
 
-/*** Create the catalog entry owned by one generated artifact directory. */
-function createManifestEntry(target: WebArtifactTarget): WebArtifactManifestEntry {
+/*** Build the provider and all public web targets in one shared module graph. */
+export async function buildWebArtifact(
+  targets: readonly WebArtifactTarget[],
+  paths: BuildWebArtifactPaths,
+): Promise<WebArtifactCatalog> {
+  const entries = await Promise.all(targets.map((target) => writeEntrypointAsync(target, paths)));
+  const providerEntry = await writeProviderEntrypointAsync(paths);
+  const result = await bundleWebArtifactsAsync([...entries, providerEntry], paths);
+  const outputs = result.metafile?.outputs;
+  if (outputs === undefined) throw new Error('ZORA web build did not produce dependency metadata.');
+
+  await Promise.all(
+    result.outputs
+      .filter((output) => output.path.endsWith('.js'))
+      .map(async (output) => {
+        await normalizeClientDirective(output.path);
+        await validateBundle(output.path);
+      }),
+  );
+  const artifacts = await Promise.all(
+    targets.map(async (target) => {
+      const entry = `components/${target.component}/${target.exportName}.js`;
+      const declaration = `components/${target.component}/${target.exportName}.d.ts`;
+      const alias = `components/${target.component}/index.js`;
+      const aliasDeclaration = `components/${target.component}/index.d.ts`;
+      const outputDirectory = join(paths.webDistRoot, dirname(declaration));
+      await writeDeclaration(target, outputDirectory);
+      await writeAlias(target, outputDirectory);
+      return {
+        component: target.component,
+        exportName: target.exportName,
+        featurePath: target.featurePath,
+        files: [
+          entry,
+          declaration,
+          alias,
+          aliasDeclaration,
+          ...collectReachableChunks(entry, outputs, paths.webDistRoot),
+        ],
+        sourceKind: target.sourceKind,
+      } satisfies WebArtifactManifestEntry;
+    }),
+  );
+
+  await writeFile(
+    join(paths.webDistRoot, 'runtime', 'ZoraProvider.d.ts'),
+    createProviderDeclaration(),
+    'utf8',
+  );
   return {
-    component: target.component,
-    exportName: target.exportName,
-    featurePath: target.featurePath,
-    files: [`${target.exportName}.js`, `${target.exportName}.d.ts`],
-    sourceKind: target.sourceKind,
+    schemaVersion: 2,
+    runtime: {
+      entry: 'runtime/ZoraProvider.js',
+      files: [
+        'runtime/ZoraProvider.js',
+        'runtime/ZoraProvider.d.ts',
+        ...collectReachableChunks('runtime/ZoraProvider.js', outputs, paths.webDistRoot),
+      ],
+    },
+    artifacts,
   };
 }
 
-/*** Create one self-contained browser entrypoint for a generated ZORA artifact. */
-function createEntrypoint(target: WebArtifactTarget, entrypointDirectory: string): string {
-  const source = toModuleSpecifier(relative(entrypointDirectory, target.sourceEntry));
-  const exportNames = target.runtimeExports
-    .map((runtimeExport) => runtimeExport.exportName)
-    .join(', ');
-  if (target.sourceKind === 'web-artifact') {
-    return `export { ${exportNames} } from ${JSON.stringify(source)};\n`;
-  }
-
-  const imports = target.runtimeExports
-    .map((runtimeExport) => `${runtimeExport.exportName} as Canonical${runtimeExport.exportName}`)
-    .join(', ');
-  const wrappers = target.runtimeExports.map(createResponsiveRuntimeWrapper).join('\n\n');
-  return [
-    "import React from 'react';",
-    "import { ResponsiveProvider } from '@ankhorage/surface';",
-    `import { ${imports} } from ${JSON.stringify(source)};`,
-    '',
-    wrappers,
-    '',
-  ].join('\n');
+/*** Give each selected component one stable directory import and type entry. */
+async function writeAlias(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
+  await Promise.all([
+    writeFile(
+      join(outputDirectory, 'index.js'),
+      `'use client';\nexport * from './${target.exportName}.js';\n`,
+      'utf8',
+    ),
+    writeFile(
+      join(outputDirectory, 'index.d.ts'),
+      `export * from './${target.exportName}';\n`,
+      'utf8',
+    ),
+  ]);
 }
 
-/*** Wrap one public component with the responsive runtime bundled into the same artifact. */
-function createResponsiveRuntimeWrapper(runtimeExport: WebArtifactRuntimeExport): string {
-  const exportName = runtimeExport.exportName;
-  return [
-    `export function ${exportName}(props: Record<string, unknown>) {`,
-    '  return React.createElement(',
-    '    ResponsiveProvider,',
-    '    null,',
-    `    React.createElement(Canonical${exportName}, props),`,
-    '  );',
-    '}',
-  ].join('\n');
-}
-
-/*** Bundle one browser artifact with React/ReactDOM as its only allowed runtime peers. */
-async function bundleWebArtifact(
+/*** Write one bare public entry so provider and components share context modules. */
+async function writeEntrypointAsync(
   target: WebArtifactTarget,
-  entrypoint: string,
-  outputDirectory: string,
   paths: BuildWebArtifactPaths,
-): Promise<void> {
-  let result: Awaited<ReturnType<typeof Bun.build>>;
-  try {
-    result = await Bun.build({
-      entrypoints: [entrypoint],
-      outdir: outputDirectory,
-      target: 'browser',
-      format: 'esm',
-      splitting: false,
-      minify: false,
-      conditions: ['browser', 'import', 'default'],
-      external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
-      plugins: createWebBuildPlugins({
-        sourceRoot: paths.sourceRoot,
-        surfacePackageRoot: paths.surfacePackageRoot,
-      }),
-      jsx: {
-        development: false,
-        factory: 'React.createElement',
-        fragment: 'React.Fragment',
-        importSource: 'react',
-        runtime: 'automatic',
-        sideEffects: false,
-      },
-    });
-  } catch (error) {
-    throw new Error(
-      `Could not build ZORA web target "${target.component}":\n${formatBuildFailure(error)}`,
-      { cause: error },
-    );
-  }
-  if (!result.success) {
-    throw new Error(
-      `Could not build ZORA web target "${target.component}":\n${result.logs.map(String).join('\n')}`,
-    );
-  }
-
-  const bundlePath = join(outputDirectory, `${target.exportName}.js`);
-  await normalizeClientDirective(bundlePath, target.runtimeKind === 'component');
-  await validateBundle(target, bundlePath);
+): Promise<string> {
+  const entry = join(paths.cacheRoot, 'components', target.component, `${target.exportName}.ts`);
+  await mkdir(dirname(entry), { recursive: true });
+  const source = toModuleSpecifier(relative(dirname(entry), target.sourceEntry));
+  const exports = target.runtimeExports.map(({ exportName }) => exportName).join(', ');
+  await writeFile(entry, `export { ${exports} } from ${JSON.stringify(source)};\n`, 'utf8');
+  return entry;
 }
 
-/*** Normalize bundled client directives so Next.js sees one valid module-level directive. */
-async function normalizeClientDirective(
-  bundlePath: string,
-  forceClientDirective: boolean,
-): Promise<void> {
-  const source = await readFile(bundlePath, 'utf8');
-  const clientDirective = /^[ \t]*["']use client["'];[ \t]*\r?\n/gm;
-  const hasClientDirective = clientDirective.test(source);
-  clientDirective.lastIndex = 0;
-  if (!hasClientDirective && !forceClientDirective) return;
+/*** Write the canonical ZORA provider as a peer entry in the same build. */
+async function writeProviderEntrypointAsync(paths: BuildWebArtifactPaths): Promise<string> {
+  const entry = join(paths.cacheRoot, 'runtime', 'ZoraProvider.ts');
+  const source = join(
+    paths.sourceRoot,
+    'features',
+    'theme',
+    'adapters',
+    'inbound',
+    'ZoraProvider.tsx',
+  );
+  await mkdir(dirname(entry), { recursive: true });
+  await writeFile(
+    entry,
+    `export { ZoraProvider } from ${JSON.stringify(toModuleSpecifier(relative(dirname(entry), source)))};\n`,
+    'utf8',
+  );
+  return entry;
+}
 
-  const normalized = source.replace(clientDirective, '');
+/*** Bundle all entries together so Bun can deduplicate Surface and ZORA contexts. */
+async function bundleWebArtifactsAsync(
+  entries: readonly string[],
+  paths: BuildWebArtifactPaths,
+): Promise<Awaited<ReturnType<typeof Bun.build>>> {
+  const result = await Bun.build({
+    entrypoints: [...entries],
+    root: paths.cacheRoot,
+    outdir: paths.webDistRoot,
+    target: 'browser',
+    format: 'esm',
+    splitting: true,
+    metafile: true,
+    minify: false,
+    naming: {
+      entry: '[dir]/[name].js',
+      chunk: 'chunks/[name]-[hash].js',
+      asset: 'assets/[name]-[hash].[ext]',
+    },
+    conditions: ['browser', 'import', 'default'],
+    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    plugins: createWebBuildPlugins({
+      sourceRoot: paths.sourceRoot,
+      surfacePackageRoot: paths.surfacePackageRoot,
+    }),
+    jsx: {
+      development: false,
+      factory: 'React.createElement',
+      fragment: 'React.Fragment',
+      importSource: 'react',
+      runtime: 'automatic',
+      sideEffects: false,
+    },
+  });
+  if (!result.success) {
+    throw new Error(`Could not build ZORA web artifacts:\n${result.logs.map(String).join('\n')}`);
+  }
+  return result;
+}
+
+/*** Find the exact shared chunks imported by one generated entry. */
+function collectReachableChunks(
+  entry: string,
+  outputs: Bun.BuildMetafile['outputs'],
+  outputRoot: string,
+): readonly string[] {
+  const pending = [entry];
+  const visited = new Set<string>();
+  while (pending.length > 0) {
+    const current = pending.pop();
+    if (current === undefined || visited.has(current)) continue;
+    visited.add(current);
+    const output = outputs[`./${current}`];
+    if (output === undefined) throw new Error(`Missing ZORA web build output: ${current}`);
+    for (const imported of output.imports) {
+      if (!imported.path.startsWith('.')) continue;
+      const next = relative(outputRoot, resolve(outputRoot, imported.path));
+      if (next.startsWith('..') || next.startsWith(sep)) {
+        throw new Error(`ZORA web chunk escapes output root: ${imported.path}`);
+      }
+      pending.push(next.replaceAll('\\', '/'));
+    }
+  }
+  return [...visited].filter((file) => file !== entry).sort();
+}
+
+/*** Normalize bundled client directives for Next.js entrypoints and shared chunks. */
+async function normalizeClientDirective(bundlePath: string): Promise<void> {
+  const source = await readFile(bundlePath, 'utf8');
+  const normalized = source.replace(/^[ \t]*["']use client["'];[ \t]*\r?\n/gm, '');
   await writeFile(bundlePath, `'use client';\n${normalized}`, 'utf8');
 }
 
-/*** Validate that a generated artifact is production React and dependency-self-contained. */
-async function validateBundle(target: WebArtifactTarget, bundlePath: string): Promise<void> {
+/*** Reject development JSX and package imports outside the portable React runtime. */
+async function validateBundle(bundlePath: string): Promise<void> {
   const source = await readFile(bundlePath, 'utf8');
   if (source.includes('jsxDEV') || source.includes('react/jsx-dev-runtime')) {
-    throw new Error(`ZORA web target "${target.component}" uses the development JSX runtime.`);
+    throw new Error(`ZORA web output uses the development JSX runtime: ${bundlePath}`);
   }
-  if (source.includes("from 'web-worker'") || source.includes('require("web-worker")')) {
-    throw new Error(
-      `ZORA web target "${target.component}" exposes the optional Node web-worker import.`,
-    );
-  }
-  const unsupportedImport = findUnsupportedRuntimeImport(source);
-  if (unsupportedImport !== undefined) {
-    throw new Error(
-      `ZORA web target "${target.component}" leaked runtime dependency "${unsupportedImport}".`,
-    );
+  const imports = source.matchAll(/(?:from\s+|import\(|require\()(["'])([^"'./][^"']*)\1/g);
+  for (const match of imports) {
+    const specifier = match[2];
+    if (
+      specifier !== undefined &&
+      specifier !== 'react' &&
+      !specifier.startsWith('react/') &&
+      specifier !== 'react-dom' &&
+      !specifier.startsWith('react-dom/')
+    ) {
+      throw new Error(`ZORA web output leaked runtime dependency "${specifier}".`);
+    }
   }
 }
 
-/*** Write an exact specialized declaration or a portable declaration for generic exports. */
+/*** Preserve exact specialized declarations or emit portable public component types. */
 async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
   const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
   if (target.declarationSource !== undefined) {
     await copyFile(target.declarationSource, outputPath);
     return;
   }
-  await writeFile(outputPath, createPortableDeclaration(target), 'utf8');
-}
-
-/*** Create dependency-light declarations for every runtime export sharing the feature facade. */
-function createPortableDeclaration(target: WebArtifactTarget): string {
   const declarations = target.runtimeExports.map(createPortableRuntimeDeclaration);
-  const imports = target.runtimeExports.some(
-    (runtimeExport) => runtimeExport.runtimeKind === 'component',
-  )
-    ? ["import type React from 'react';", '']
-    : [];
-
-  return [...imports, ...declarations, ''].join('\n');
+  await writeFile(
+    outputPath,
+    ["import type React from 'react';", '', ...declarations, ''].join('\n'),
+    'utf8',
+  );
 }
 
-/*** Create one portable declaration without exposing ZORA or Surface as consumer dependencies. */
+/*** Emit a portable declaration without requiring full ZORA or Surface packages. */
 function createPortableRuntimeDeclaration(runtimeExport: WebArtifactRuntimeExport): string {
   if (runtimeExport.runtimeKind === 'component') {
     return `export declare const ${runtimeExport.exportName}: React.ComponentType<Record<string, unknown>>;`;
@@ -205,61 +253,26 @@ function createPortableRuntimeDeclaration(runtimeExport: WebArtifactRuntimeExpor
   return `export declare const ${runtimeExport.exportName}: unknown;`;
 }
 
-/*** Persist the existing manifest contract consumed by the generic ZORA create command. */
-async function writeArtifactManifest(
-  target: WebArtifactTarget,
-  outputDirectory: string,
-): Promise<void> {
-  await writeFile(
-    join(outputDirectory, 'artifact.json'),
-    `${JSON.stringify(createManifestEntry(target), null, 2)}\n`,
-    'utf8',
-  );
+/*** Describe the generated provider's web-facing props without owner package imports. */
+function createProviderDeclaration(): string {
+  return [
+    "import type React from 'react';",
+    '',
+    'export interface ZoraProviderProps {',
+    '  children: React.ReactNode;',
+    "  initialMode?: 'light' | 'dark';",
+    "  mode?: 'light' | 'dark';",
+    '  theme?: { id: string; name: string; appCategory: string; primaryColor: string; harmony: string };',
+    '  themeConfig?: Record<string, unknown>;',
+    '  toast?: boolean | Record<string, unknown>;',
+    '  bottomSheet?: boolean;',
+    '}',
+    'export declare function ZoraProvider(props: ZoraProviderProps): React.ReactElement;',
+    '',
+  ].join('\n');
 }
 
-/*** Find a bare runtime import that should have been bundled into the artifact. */
-function findUnsupportedRuntimeImport(source: string): string | undefined {
-  const matches = source.matchAll(/(?:from\s+|import\(|require\()(["'])([^"'./][^"']*)\1/g);
-  for (const match of matches) {
-    const specifier = match[2];
-    if (
-      specifier !== undefined &&
-      specifier !== 'react' &&
-      !specifier.startsWith('react/') &&
-      specifier !== 'react-dom' &&
-      !specifier.startsWith('react-dom/')
-    ) {
-      return specifier;
-    }
-  }
-  return undefined;
-}
-
-/*** Render Bun aggregate failures with their individual source positions. */
-function formatBuildFailure(error: unknown): string {
-  if (error instanceof AggregateError) return error.errors.map(formatBuildMessage).join('\n');
-  return error instanceof Error ? error.message : String(error);
-}
-
-/*** Render one Bun build message with a useful source position when available. */
-function formatBuildMessage(entry: unknown): string {
-  if (typeof entry !== 'object' || entry === null) return String(entry);
-  const record = entry as Record<string, unknown>;
-  const message = typeof record.message === 'string' ? record.message : String(entry);
-  const position =
-    typeof record.position === 'object' && record.position !== null
-      ? (record.position as Record<string, unknown>)
-      : undefined;
-  if (position === undefined) return message;
-
-  const file = typeof position.file === 'string' ? position.file : '(unknown file)';
-  const line = typeof position.line === 'number' ? position.line : 0;
-  const column = typeof position.column === 'number' ? position.column : 0;
-  const lineText = typeof position.lineText === 'string' ? position.lineText : '';
-  return `${file}:${line}:${column} ${message}\n${lineText}`;
-}
-
-/*** Convert a filesystem-relative path to an ESM module specifier. */
+/*** Render a relative module path as a portable ESM specifier. */
 function toModuleSpecifier(path: string): string {
   const normalized = path.replaceAll('\\', '/');
   return normalized.startsWith('.') ? normalized : `./${normalized}`;

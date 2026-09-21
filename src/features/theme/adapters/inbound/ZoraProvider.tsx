@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@ankhorage/surface';
+import { ThemeProvider, useTheme as useSurfaceTheme } from '@ankhorage/surface';
 import React from 'react';
 
 import type { ZoraProviderProps } from '../../../../types/provider';
@@ -16,6 +16,7 @@ export function ZoraProvider({
   theme = zoraDefaultTheme,
   themeConfig,
   initialMode = 'light',
+  mode,
   toast = false,
 }: ZoraProviderProps) {
   const resolvedConfig = React.useMemo(
@@ -26,11 +27,22 @@ export function ZoraProvider({
 
   return (
     <ZoraThemeRuntimeContext value={runtimeValue}>
-      <ThemeProvider initialConfig={resolvedConfig} initialMode={initialMode}>
-        <ZoraRuntimeCapabilities bottomSheet={bottomSheet} toast={toast}>
-          {children}
-        </ZoraRuntimeCapabilities>
+      <ThemeProvider initialConfig={resolvedConfig} initialMode={mode ?? initialMode}>
+        <ZoraProviderMode mode={mode}>
+          <ZoraRuntimeCapabilities bottomSheet={bottomSheet} toast={toast}>
+            {children}
+          </ZoraRuntimeCapabilities>
+        </ZoraProviderMode>
       </ThemeProvider>
     </ZoraThemeRuntimeContext>
   );
+}
+
+/*** Keep the shared Surface runtime aligned with a controlled application mode. */
+function ZoraProviderMode({ children, mode }: Pick<ZoraProviderProps, 'children' | 'mode'>) {
+  const runtime = useSurfaceTheme();
+  React.useEffect(() => {
+    if (mode !== undefined && runtime.mode !== mode) runtime.setMode(mode);
+  }, [mode, runtime]);
+  return children;
 }

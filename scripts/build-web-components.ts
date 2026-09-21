@@ -23,23 +23,17 @@ try {
     sourceRoot,
   });
 
-  const artifacts = [];
-  for (const target of targets) {
-    artifacts.push(
-      await buildWebArtifact(target, {
-        cacheRoot,
-        repositoryRoot,
-        sourceRoot,
-        surfacePackageRoot,
-        webDistRoot,
-      }),
-    );
-  }
+  const catalog = await buildWebArtifact(targets, {
+    cacheRoot,
+    sourceRoot,
+    surfacePackageRoot,
+    webDistRoot,
+  });
 
   await mkdir(webDistRoot, { recursive: true });
   await writeFile(
     join(webDistRoot, 'manifest.json'),
-    `${JSON.stringify({ schemaVersion: 1, artifacts }, null, 2)}\n`,
+    `${JSON.stringify(catalog, null, 2)}\n`,
     'utf8',
   );
 } finally {

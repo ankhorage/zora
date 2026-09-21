@@ -99,3 +99,47 @@ jobs:
           else
             echo "No changeset:status script found; skipping."
           fi
+
+  next-web-materialization:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build web artifacts
+        run: bun run build
+
+      - name: Verify materialized Next.js consumer
+        run: bun run test:next-materialization
+
+  windows-web-materialization:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Verify Windows junction swap
+        run: bun test src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.test.ts
