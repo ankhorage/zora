@@ -6,5 +6,7 @@ export const tabListMeta = {
   directManifestNode: true,
   allowedChildren: ['Tab'],
   description: 'Accessible list of selectable tabs.',
-  props: {},
+  props: {
+    fill: { type: 'boolean', category: 'Layout', label: 'Fill', default: false },
+  },
 } as const satisfies ZoraComponentMeta;
