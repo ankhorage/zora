@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v21.0.12",
+      "value": "v21.0.13",
       "color": "cb3837"
     },
     {
@@ -50041,7 +50041,7 @@
       "description": "Observe settled container resizing without racing an active layout generation.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 19,
+        "line": 20,
         "column": 1
       }
     },
@@ -50050,7 +50050,7 @@
       "description": "Fit one genuine resize only after the active layout has settled.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 39,
+        "line": 41,
         "column": 1
       }
     },
@@ -50059,7 +50059,7 @@
       "description": "Return whether ResizeObserver reported a genuinely different container size.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 49,
+        "line": 54,
         "column": 1
       }
     },
@@ -50068,7 +50068,7 @@
       "description": "Read ResizeObserver without imposing DOM library types on the package target.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 57,
+        "line": 62,
         "column": 1
       }
     },
@@ -50077,7 +50077,7 @@
       "description": "Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 66,
+        "line": 67,
         "column": 1
       }
     },
@@ -50086,7 +50086,7 @@
       "description": "Build the mutable state shared by the single graph-runtime owner.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 91,
+        "line": 92,
         "column": 1
       }
     },
@@ -50095,7 +50095,7 @@
       "description": "Reconcile presentation in place and relayout only when graph geometry or layout policy changes.\n@performance Batch reconciliation and skip layout for presentation-only updates.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 146,
+        "line": 155,
         "column": 1
       }
     },
@@ -50104,7 +50104,7 @@
       "description": "Start a generation-safe layout whose completion is the only normal automatic fit trigger.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 202,
+        "line": 211,
         "column": 1
       }
     },
@@ -50113,7 +50113,7 @@
       "description": "Settle only the latest layout generation and fit once from node bounds.\n@performance Discard stale completions and avoid repeated automatic fits.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 222,
+        "line": 232,
         "column": 1
       }
     },
@@ -50122,7 +50122,7 @@
       "description": "Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.\n@performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 256,
+        "line": 270,
         "column": 1
       }
     },
@@ -50131,7 +50131,7 @@
       "description": "Stop the current layout and invalidate every stale completion callback.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 278,
+        "line": 292,
         "column": 1
       }
     },
@@ -50140,7 +50140,7 @@
       "description": "Apply consumer styles and hide native node paint only when React rich nodes are active.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 286,
+        "line": 300,
         "column": 1
       }
     },
@@ -50149,7 +50149,7 @@
       "description": "Synchronize controlled selection without rerunning layout.\n@performance Selection updates must not trigger graph reconstruction or layout.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 310,
+        "line": 324,
         "column": 1
       }
     },
@@ -50158,7 +50158,7 @@
       "description": "Persist one rich-node size and schedule at most one relayout for changed geometry.\n@performance Ignore unchanged measurements before scheduling layout work.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 324,
+        "line": 338,
         "column": 1
       }
     },
@@ -50167,7 +50167,7 @@
       "description": "Apply every known rich-node size after Cytoscape elements are replaced.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 333,
+        "line": 347,
         "column": 1
       }
     },
@@ -50176,7 +50176,7 @@
       "description": "Apply one measured model-space size as a Cytoscape per-node style bypass.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 338,
+        "line": 352,
         "column": 1
       }
     },
@@ -50185,7 +50185,7 @@
       "description": "Coalesce DOM measurements into one follow-up layout generation.\n@performance Keep one scheduled layout per frame instead of one per measured node.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 348,
+        "line": 362,
         "column": 1
       }
     },
@@ -50194,7 +50194,7 @@
       "description": "Subscribe one React overlay to rendered node state without exposing the Cytoscape core.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 361,
+        "line": 375,
         "column": 1
       }
     },
@@ -50203,7 +50203,7 @@
       "description": "Publish current rendered node positions only to active rich-node subscribers.\n@performance Skip snapshot preparation when no overlay is subscribed.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 373,
+        "line": 387,
         "column": 1
       }
     },
@@ -50212,7 +50212,7 @@
       "description": "Translate one rich-overlay event back into normal graph selection and callbacks.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 382,
+        "line": 396,
         "column": 1
       }
     },
@@ -50221,7 +50221,7 @@
       "description": "Return whether Cytoscape currently has dimensions suitable for fitting.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 395,
+        "line": 409,
         "column": 1
       }
     },
@@ -50230,7 +50230,7 @@
       "description": "Dispose all runtime resources in the reverse order they were acquired.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 400,
+        "line": 414,
         "column": 1
       }
     },
@@ -64026,6 +64026,18 @@
         "fromSymbol": "onViewportSettled",
         "toSymbol": "emitRenderedNodes",
         "callExpression": "emitRenderedNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "onViewportSettled",
+        "toSymbol": "onReady",
+        "callExpression": "callbacksRef.current.onReady",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "onViewportSettled",
+        "toSymbol": "onLayoutComplete",
+        "callExpression": "callbacksRef.current.onLayoutComplete",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {

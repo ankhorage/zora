@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.13
+
+### Patch Changes
+
+- 4504e86: Retry GraphView's pending initial fit when the container first becomes usable after a zero-size layout mount.
+
 ## 21.0.12
 
 ### Patch Changes
