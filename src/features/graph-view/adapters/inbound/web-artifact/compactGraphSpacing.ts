@@ -1,5 +1,5 @@
 import { findMinimumAcceptedNumber } from '@ankhorage/utility/algorithms';
-import type { Core } from 'cytoscape';
+import type { Core, NodeSingular } from 'cytoscape';
 
 const LABEL_OVERLAP_RATIO = 0.12;
 const MAX_EXPANSION_ATTEMPTS = 8;
@@ -21,9 +21,14 @@ export function compactGraphSpacing(cy: Core, spacingFactor: number): number {
   const bounds = leaves.boundingBox();
   const center = { x: (bounds.x1 + bounds.x2) / 2, y: (bounds.y1 + bounds.y2) / 2 };
   const leafGeometry = leaves.map(readLeafGeometry);
-  const groups = cy
-    .nodes(':parent')
-    .map((node) => readGroupGeometry(node.id(), node.ancestors().map((parent) => parent.id()), node.boundingBox(), leafGeometry));
+  const groups = cy.nodes(':parent').map((node) =>
+    readGroupGeometry(
+      node.id(),
+      node.ancestors().map((parent) => parent.id()),
+      node.boundingBox(),
+      leafGeometry,
+    ),
+  );
   const accepts = (factor: number) =>
     !hasUnsafeCollisions(resolveCollisionBoxes(leafGeometry, groups, center, factor));
   const currentAccepted = accepts(1);
@@ -87,7 +92,7 @@ interface CollisionBox {
 }
 
 /*** Read one leaf's immutable position, hierarchy and renderer-measured label geometry. */
-function readLeafGeometry(node: ReturnType<Core['nodes']>[number]): LeafGeometry {
+function readLeafGeometry(node: NodeSingular): LeafGeometry {
   const nodeBox = node.boundingBox({
     includeLabels: true,
     includeOverlays: false,
