@@ -114,7 +114,7 @@
     "lint": "ankhorage-eslint . --max-warnings=0",
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
     "format": "ankhorage-prettier --write .",
-    "format:check": "ankhorage-prettier --write scripts/web-artifacts/buildWebArtifact.ts && git diff -- scripts/web-artifacts/buildWebArtifact.ts && git diff --exit-code -- scripts/web-artifacts/buildWebArtifact.ts",
+    "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
     "test": "bun run build && bun test src",
     "test:next-materialization": "bun scripts/web-artifacts/verifyNextWebMaterialization.ts",
