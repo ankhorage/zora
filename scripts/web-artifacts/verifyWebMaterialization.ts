@@ -173,15 +173,11 @@ try {
     assert.deepEqual(hydrationErrors, []);
     assert(browser.document.body.textContent?.includes('Workspace'));
     assert.equal(
-      browser.document
-        .querySelector('[data-testid="theme-probe"]')
-        ?.getAttribute('data-mode'),
+      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
       'light',
     );
     assert(
-      browser.document
-        .querySelector('[data-testid="theme-probe"]')
-        ?.getAttribute('data-primary'),
+      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-primary'),
     );
     await React.act(async () => {
       browser.document
@@ -212,9 +208,7 @@ try {
       .querySelector('[data-testid="mode-text"]')
       ?.getAttribute('style');
     assert.equal(
-      browser.document
-        .querySelector('[data-testid="theme-probe"]')
-        ?.getAttribute('data-mode'),
+      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
       'dark',
     );
     assert.notEqual(darkColor, lightColor);
