@@ -54,6 +54,7 @@ interface GraphRuntimeState {
   readonly nodeSizes: Map<string, GraphViewSize>;
   readonly labelSizedNodeIds: Set<string>;
   readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
+  readonly pendingInitialFitRef: { current: boolean };
   readonly readyRef: { current: boolean };
   readonly settledTopologyRef: { current: string | null };
   readonly relayoutScheduledRef: { current: boolean };
@@ -118,6 +119,7 @@ function createRuntimeState(
     nodeSizes: new Map<string, GraphViewSize>(),
     labelSizedNodeIds: new Set<string>(),
     loopSizer: createGraphLoopSizer(cy),
+    pendingInitialFitRef: { current: false },
     readyRef,
     settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
@@ -131,7 +133,14 @@ function createRuntimeState(
     cy,
     settleViewport: () => viewport.settle(true),
     layoutRunningRef,
-    onViewportSettled: () => emitRenderedNodes(stateBase),
+    pendingInitialFitRef: stateBase.pendingInitialFitRef,
+    onViewportSettled: (completedPendingInitialFit) => {
+      emitRenderedNodes(stateBase);
+      if (!completedPendingInitialFit || readyRef.current) return;
+      readyRef.current = true;
+      callbacksRef.current.onReady?.(controller);
+      callbacksRef.current.onLayoutComplete?.(controller);
+    },
     readyRef,
   });
 
@@ -188,7 +197,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       state.viewport.settle(previous?.zoomMode !== input.zoomMode);
     }
     emitRenderedNodes(state);
-    if (!state.layoutRunningRef.current)
+    if (!state.layoutRunningRef.current && !state.pendingInitialFitRef.current)
       state.callbacksRef.current.onLayoutComplete?.(state.controller);
     return;
   }
@@ -200,6 +209,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
 
 /*** Start a generation-safe layout whose completion is the only normal automatic fit trigger. */
 function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
+  state.pendingInitialFitRef.current = false;
   const generation = state.generationRef.current + 1;
   state.generationRef.current = generation;
   state.layoutRunningRef.current = true;
@@ -226,7 +236,11 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.layoutRef.current = null;
     state.cy.resize();
     state.layoutRunningRef.current = false;
-    if (!hasUsableViewport(state.cy)) return;
+    if (!hasUsableViewport(state.cy)) {
+      if (!state.readyRef.current) state.pendingInitialFitRef.current = true;
+      return;
+    }
+    state.pendingInitialFitRef.current = false;
     const input = state.latestUpdateRef.current;
     if (input === null) return;
     const topology = getGraphTopologyKey(input.nodes, input.edges);

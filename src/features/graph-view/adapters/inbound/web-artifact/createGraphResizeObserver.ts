@@ -7,8 +7,9 @@ interface CreateGraphResizeObserverInput {
   readonly cy: Core;
   readonly settleViewport: () => void;
   readonly layoutRunningRef: { current: boolean };
+  readonly pendingInitialFitRef: { current: boolean };
   readonly readyRef: { current: boolean };
-  readonly onViewportSettled: () => void;
+  readonly onViewportSettled: (completedPendingInitialFit: boolean) => void;
 }
 
 export interface GraphResizeObserver {
@@ -28,7 +29,8 @@ export function createGraphResizeObserver(
     if (entry === undefined || !hasSizeChanged(sizeRef, entry.contentRect)) return;
     sizeRef.height = entry.contentRect.height;
     sizeRef.width = entry.contentRect.width;
-    if (!input.readyRef.current || input.layoutRunningRef.current) return;
+    if (input.layoutRunningRef.current) return;
+    if (!input.readyRef.current && !input.pendingInitialFitRef.current) return;
     scheduleResizeFit(input);
   });
   observer.observe(input.container);
@@ -40,8 +42,11 @@ function scheduleResizeFit(input: CreateGraphResizeObserverInput) {
   scheduleGraphFrame(() => {
     if (input.cy.destroyed() || input.layoutRunningRef.current) return;
     input.cy.resize();
+    if (input.cy.width() <= 0 || input.cy.height() <= 0) return;
+    const completedPendingInitialFit = input.pendingInitialFitRef.current;
+    input.pendingInitialFitRef.current = false;
     input.settleViewport();
-    input.onViewportSettled();
+    input.onViewportSettled(completedPendingInitialFit);
   });
 }
 
