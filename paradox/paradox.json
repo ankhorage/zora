@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v21.0.10",
+      "value": "v21.0.11",
       "color": "cb3837"
     },
     {
@@ -2921,6 +2921,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/layout/public.ts",
+        "src/features/list/utils/resolveListItemTitleLineCount.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/theme/composition/useZoraTheme.ts",
         "src/features/typography/public.ts",
@@ -3043,6 +3044,14 @@
       ],
       "exports": [
         "sectionListMeta"
+      ]
+    },
+    {
+      "path": "src/features/list/utils/resolveListItemTitleLineCount.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "resolveListItemTitleLineCount"
       ]
     },
     {
@@ -16701,7 +16710,7 @@
       "modulePath": "src/features/list/adapters/inbound/ListItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-        "line": 89,
+        "line": 94,
         "column": 14
       },
       "exportPaths": [
@@ -39148,7 +39157,7 @@
       "modulePath": "src/features/list/adapters/inbound/ListItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-        "line": 89,
+        "line": 94,
         "column": 14
       },
       "exportPaths": [
@@ -50743,7 +50752,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-        "line": 10,
+        "line": 11,
         "column": 1
       }
     },
@@ -50752,7 +50761,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-        "line": 74,
+        "line": 79,
         "column": 1
       }
     },
@@ -50761,7 +50770,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-        "line": 78,
+        "line": 83,
         "column": 1
       }
     },
@@ -50807,6 +50816,15 @@
       "sourceLocation": {
         "filePath": "src/features/list/application/use-cases/partitionListSections.ts",
         "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveListItemTitleLineCount",
+      "description": "Resolves the title line limit for compact list presentation.",
+      "sourceLocation": {
+        "filePath": "src/features/list/utils/resolveListItemTitleLineCount.ts",
+        "line": 2,
         "column": 1
       }
     },
@@ -58086,6 +58104,11 @@
         "sourcePath": "src/features/list/adapters/inbound/ListItem.tsx"
       },
       {
+        "fromPath": "src/features/list/adapters/inbound/ListItem.tsx",
+        "toPath": "src/features/list/utils/resolveListItemTitleLineCount.ts",
+        "sourcePath": "src/features/list/adapters/inbound/ListItem.tsx"
+      },
+      {
         "fromPath": "src/features/list/adapters/inbound/ListSection.tsx",
         "toPath": "src/types/list.ts",
         "sourcePath": "src/features/list/adapters/inbound/ListSection.tsx"
@@ -62107,6 +62130,12 @@
         "fromSymbol": "ListItemInner",
         "toSymbol": "resolveRadius",
         "callExpression": "resolveRadius",
+        "sourcePath": "src/features/list/adapters/inbound/ListItem.tsx"
+      },
+      {
+        "fromSymbol": "ListItemInner",
+        "toSymbol": "resolveListItemTitleLineCount",
+        "callExpression": "resolveListItemTitleLineCount",
         "sourcePath": "src/features/list/adapters/inbound/ListItem.tsx"
       },
       {

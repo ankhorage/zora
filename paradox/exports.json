@@ -10458,7 +10458,7 @@
     "modulePath": "src/features/list/adapters/inbound/ListItem.tsx",
     "sourceLocation": {
       "filePath": "src/features/list/adapters/inbound/ListItem.tsx",
-      "line": 89,
+      "line": 94,
       "column": 14
     },
     "exportPaths": [

@@ -2398,7 +2398,7 @@ Source: `src/types/list.ts:42:1`
 
 Kind: `value`
 Module: `src/features/list/adapters/inbound/ListItem.tsx`
-Source: `src/features/list/adapters/inbound/ListItem.tsx:89:14`
+Source: `src/features/list/adapters/inbound/ListItem.tsx:94:14`
 
 Opinionated list item built on the Surface list-item interaction and geometry boundary.
 

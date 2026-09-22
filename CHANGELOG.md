@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.11
+
+### Patch Changes
+
+- d36063d: Keep compact ListItem titles on one line so dense sidebar rows remain height-stable.
+
 ## 21.0.10
 
 ### Patch Changes
