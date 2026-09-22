@@ -173,7 +173,9 @@ try {
     assert.deepEqual(hydrationErrors, []);
     assert(browser.document.body.textContent?.includes('Workspace'));
     assert.equal(
-      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
+      browser.document
+        .querySelector('[data-testid="theme-probe"]')
+        ?.getAttribute('data-mode'),
       'light',
     );
     assert(
@@ -210,7 +212,9 @@ try {
       .querySelector('[data-testid="mode-text"]')
       ?.getAttribute('style');
     assert.equal(
-      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
+      browser.document
+        .querySelector('[data-testid="theme-probe"]')
+        ?.getAttribute('data-mode'),
       'dark',
     );
     assert.notEqual(darkColor, lightColor);
