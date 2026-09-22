@@ -41,9 +41,10 @@ export function createGraphResizeObserver(
 function scheduleResizeFit(input: CreateGraphResizeObserverInput) {
   scheduleGraphFrame(() => {
     if (input.cy.destroyed() || input.layoutRunningRef.current) return;
+    input.cy.resize();
+    if (input.cy.width() <= 0 || input.cy.height() <= 0) return;
     const completedPendingInitialFit = input.pendingInitialFitRef.current;
     input.pendingInitialFitRef.current = false;
-    input.cy.resize();
     input.settleViewport();
     input.onViewportSettled(completedPendingInitialFit);
   });
