@@ -4455,13 +4455,14 @@ Renders the accessible list of tabs for a Tabs composition.
 
 Kind: `type`
 Module: `src/types/tabs.ts`
-Source: `src/types/tabs.ts:11:1`
+Source: `src/types/tabs.ts:12:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | children | property | `React.ReactNode` | no |  |
+| fill | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -4479,7 +4480,7 @@ Renders content associated with one selected Tab.
 
 Kind: `type`
 Module: `src/types/tabs.ts`
-Source: `src/types/tabs.ts:21:1`
+Source: `src/types/tabs.ts:19:1`
 
 ### Members
 
@@ -4541,7 +4542,7 @@ Source: `src/types/tabs.ts:21:1`
 
 Kind: `type`
 Module: `src/types/tabs.ts`
-Source: `src/types/tabs.ts:15:1`
+Source: `src/types/tabs.ts:14:1`
 
 ### Members
 
@@ -4553,6 +4554,7 @@ Source: `src/types/tabs.ts:15:1`
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
+| trailing | property | `React.ReactNode` | no |  |
 | value | property | `string` | yes |  |
 
 ## Tabs
@@ -4567,7 +4569,7 @@ Provides accessible tab state and interaction policy through the Surface Tabs pr
 
 Kind: `type`
 Module: `src/types/tabs.ts`
-Source: `src/types/tabs.ts:9:1`
+Source: `src/types/tabs.ts:10:1`
 
 ### Members
 

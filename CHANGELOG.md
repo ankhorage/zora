@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.10
+
+### Patch Changes
+
+- ebb74d7: Expose Surface-owned equal-width tab filling and trailing tab content through the canonical ZORA Tabs boundary.
+
 ## 21.0.9
 
 ### Patch Changes

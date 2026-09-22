@@ -19379,7 +19379,7 @@
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
       "filePath": "src/types/tabs.ts",
-      "line": 11,
+      "line": 12,
       "column": 1
     },
     "exportPaths": [
@@ -19394,6 +19394,13 @@
         "name": "children",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fill",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -19457,7 +19464,7 @@
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
       "filePath": "src/types/tabs.ts",
-      "line": 21,
+      "line": 19,
       "column": 1
     },
     "exportPaths": [
@@ -19837,7 +19844,7 @@
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
       "filePath": "src/types/tabs.ts",
-      "line": 15,
+      "line": 14,
       "column": 1
     },
     "exportPaths": [
@@ -19891,6 +19898,13 @@
         "description": null
       },
       {
+        "name": "trailing",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "value",
         "kind": "property",
         "type": "string",
@@ -19929,7 +19943,7 @@
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
       "filePath": "src/types/tabs.ts",
-      "line": 9,
+      "line": 10,
       "column": 1
     },
     "exportPaths": [
