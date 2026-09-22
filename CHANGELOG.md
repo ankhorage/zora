@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.9
+
+### Patch Changes
+
+- 0d84538: Compact GraphView spacing around renderer-measured label readability bounds while preserving compound group separation.
+
 ## 21.0.8
 
 ### Patch Changes

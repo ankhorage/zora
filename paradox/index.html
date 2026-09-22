@@ -564,7 +564,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts">
       src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts
-      <small>5 functions</small>
+      <small>14 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts">
@@ -47914,30 +47914,66 @@ Native hosts can inject another compatible implementation.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-compactgraphspacing-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts</h2>
-      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Optimize settled layout spacing uniformly until measured node and label bounds clear.&#10;Compound containment is intentional; sibling and unrelated compound intersections are not.&#10;@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout&#10;algorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or&#10;non-uniformly overlapping views retain their original positions.">
+      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Optimize settled layout spacing around readable label bounds instead of full node clearance.&#10;Compound containment stays intentional while sibling groups retain non-overlapping boundaries.&#10;@performance Cytoscape geometry is measured once, then bounded pure numeric trials reuse the&#10;immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.">
     <h3>compactGraphSpacing</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:10:1</code></p>
-    <p>Optimize settled layout spacing uniformly until measured node and label bounds clear.
-Compound containment is intentional; sibling and unrelated compound intersections are not.
-@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout
-algorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or
-non-uniformly overlapping views retain their original positions.</p>
-  </article><article class="item" data-search="compressGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Compress a collision-free settled layout to its smallest measured clearance.">
-    <h3>compressGraphSpacing</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:26:1</code></p>
-    <p>Compress a collision-free settled layout to its smallest measured clearance.</p>
-  </article><article class="item" data-search="expandGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Expand a uniformly cramped layout until measured node and label bounds clear.">
-    <h3>expandGraphSpacing</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:46:1</code></p>
-    <p>Expand a uniformly cramped layout until measured node and label bounds clear.</p>
-  </article><article class="item" data-search="applyScale src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.">
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:16:1</code></p>
+    <p>Optimize settled layout spacing around readable label bounds instead of full node clearance.
+Compound containment stays intentional while sibling groups retain non-overlapping boundaries.
+@performance Cytoscape geometry is measured once, then bounded pure numeric trials reuse the
+immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.</p>
+  </article><article class="item" data-search="accepts src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts ">
+    <h3>accepts</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:32:9</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="readLeafGeometry src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Read one leaf&#39;s immutable position, hierarchy and renderer-measured label geometry.">
+    <h3>readLeafGeometry</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:95:1</code></p>
+    <p>Read one leaf&#39;s immutable position, hierarchy and renderer-measured label geometry.</p>
+  </article><article class="item" data-search="readGroupGeometry src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Capture one compound group&#39;s descendant geometry and constant renderer-owned outer insets.">
+    <h3>readGroupGeometry</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:118:1</code></p>
+    <p>Capture one compound group&#39;s descendant geometry and constant renderer-owned outer insets.</p>
+  </article><article class="item" data-search="resolveCollisionBoxes src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Resolve immutable label and compound boxes for one candidate uniform spacing factor.">
+    <h3>resolveCollisionBoxes</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:140:1</code></p>
+    <p>Resolve immutable label and compound boxes for one candidate uniform spacing factor.</p>
+  </article><article class="item" data-search="findExpansionMaximum src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Find the first bounded expansion factor that makes the pure geometry snapshot acceptable.">
+    <h3>findExpansionMaximum</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:171:1</code></p>
+    <p>Find the first bounded expansion factor that makes the pure geometry snapshot acceptable.</p>
+  </article><article class="item" data-search="hasUnsafeCollisions src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.&#10;Local loop counters are intentionally mutable on this performance-critical boundary.">
+    <h3>hasUnsafeCollisions</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:181:1</code></p>
+    <p>Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.
+Local loop counters are intentionally mutable on this performance-critical boundary.</p>
+  </article><article class="item" data-search="isIntentionalContainment src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Ignore intentional compound containment while retaining sibling and unrelated separation.">
+    <h3>isIntentionalContainment</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:199:1</code></p>
+    <p>Ignore intentional compound containment while retaining sibling and unrelated separation.</p>
+  </article><article class="item" data-search="isUnsafeOverlap src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Permit only a small bounded label-label overlap; every other intersection remains unsafe.">
+    <h3>isUnsafeOverlap</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:204:1</code></p>
+    <p>Permit only a small bounded label-label overlap; every other intersection remains unsafe.</p>
+  </article><article class="item" data-search="shiftBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Shift one fixed renderer box with its leaf center under uniform radial scaling.">
+    <h3>shiftBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:217:1</code></p>
+    <p>Shift one fixed renderer box with its leaf center under uniform radial scaling.</p>
+  </article><article class="item" data-search="expandBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Expand a descendant union by the compound renderer&#39;s measured outer insets.">
+    <h3>expandBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:231:1</code></p>
+    <p>Expand a descendant union by the compound renderer&#39;s measured outer insets.</p>
+  </article><article class="item" data-search="unionBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return the immutable union of measured boxes, or undefined for an empty collection.">
+    <h3>unionBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:240:1</code></p>
+    <p>Return the immutable union of measured boxes, or undefined for an empty collection.</p>
+  </article><article class="item" data-search="isUsableBox src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return whether renderer measurement produced a non-empty label box.">
+    <h3>isUsableBox</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:250:1</code></p>
+    <p>Return whether renderer measurement produced a non-empty label box.</p>
+  </article><article class="item" data-search="applyScale src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data.">
     <h3>applyScale</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:78:1</code></p>
-    <p>Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.</p>
-  </article><article class="item" data-search="hasCollisions src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.">
-    <h3>hasCollisions</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:98:1</code></p>
-    <p>Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.</p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:255:1</code></p>
+    <p>Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data.</p>
   </article>
     </section>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-creategraphcontroller-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts" hidden>

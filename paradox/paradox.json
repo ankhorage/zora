@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v21.0.8",
+      "value": "v21.0.9",
       "color": "cb3837"
     },
     {
@@ -49805,46 +49805,127 @@
     },
     {
       "name": "compactGraphSpacing",
-      "description": "Optimize settled layout spacing uniformly until measured node and label bounds clear.\nCompound containment is intentional; sibling and unrelated compound intersections are not.\n@performance At most eight synchronous trials and 200,000 pair checks per trial. No layout\nalgorithm reruns, no work on zoom, and no intermediate frame is painted. Large, locked, or\nnon-uniformly overlapping views retain their original positions.",
+      "description": "Optimize settled layout spacing around readable label bounds instead of full node clearance.\nCompound containment stays intentional while sibling groups retain non-overlapping boundaries.\n@performance Cytoscape geometry is measured once, then bounded pure numeric trials reuse the\nimmutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 10,
+        "line": 16,
         "column": 1
       }
     },
     {
-      "name": "compressGraphSpacing",
-      "description": "Compress a collision-free settled layout to its smallest measured clearance.",
+      "name": "accepts",
+      "description": null,
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 26,
+        "line": 32,
+        "column": 9
+      }
+    },
+    {
+      "name": "readLeafGeometry",
+      "description": "Read one leaf's immutable position, hierarchy and renderer-measured label geometry.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 95,
         "column": 1
       }
     },
     {
-      "name": "expandGraphSpacing",
-      "description": "Expand a uniformly cramped layout until measured node and label bounds clear.",
+      "name": "readGroupGeometry",
+      "description": "Capture one compound group's descendant geometry and constant renderer-owned outer insets.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 46,
+        "line": 118,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveCollisionBoxes",
+      "description": "Resolve immutable label and compound boxes for one candidate uniform spacing factor.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 140,
+        "column": 1
+      }
+    },
+    {
+      "name": "findExpansionMaximum",
+      "description": "Find the first bounded expansion factor that makes the pure geometry snapshot acceptable.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 171,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasUnsafeCollisions",
+      "description": "Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.\nLocal loop counters are intentionally mutable on this performance-critical boundary.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 181,
+        "column": 1
+      }
+    },
+    {
+      "name": "isIntentionalContainment",
+      "description": "Ignore intentional compound containment while retaining sibling and unrelated separation.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 199,
+        "column": 1
+      }
+    },
+    {
+      "name": "isUnsafeOverlap",
+      "description": "Permit only a small bounded label-label overlap; every other intersection remains unsafe.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 204,
+        "column": 1
+      }
+    },
+    {
+      "name": "shiftBounds",
+      "description": "Shift one fixed renderer box with its leaf center under uniform radial scaling.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 217,
+        "column": 1
+      }
+    },
+    {
+      "name": "expandBounds",
+      "description": "Expand a descendant union by the compound renderer's measured outer insets.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 231,
+        "column": 1
+      }
+    },
+    {
+      "name": "unionBounds",
+      "description": "Return the immutable union of measured boxes, or undefined for an empty collection.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 240,
+        "column": 1
+      }
+    },
+    {
+      "name": "isUsableBox",
+      "description": "Return whether renderer measurement produced a non-empty label box.",
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "line": 250,
         "column": 1
       }
     },
     {
       "name": "applyScale",
-      "description": "Transform leaf centers, preserving ordering, dimensions, compound membership and edge data.",
+      "description": "Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data.",
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 78,
-        "column": 1
-      }
-    },
-    {
-      "name": "hasCollisions",
-      "description": "Sweep measured bounds, ignoring intentional containment and stopping conservatively at budget.",
-      "sourceLocation": {
-        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
-        "line": 98,
+        "line": 255,
         "column": 1
       }
     },
@@ -63611,45 +63692,87 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
       },
       {
-        "fromSymbol": "compactGraphSpacing",
-        "toSymbol": "hasCollisions",
-        "callExpression": "hasCollisions",
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "toSymbol": "readGroupGeometry",
+        "callExpression": "readGroupGeometry",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "accepts",
+        "toSymbol": "hasUnsafeCollisions",
+        "callExpression": "hasUnsafeCollisions",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "accepts",
+        "toSymbol": "resolveCollisionBoxes",
+        "callExpression": "resolveCollisionBoxes",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
         "fromSymbol": "compactGraphSpacing",
-        "toSymbol": "expandGraphSpacing",
-        "callExpression": "expandGraphSpacing",
+        "toSymbol": "accepts",
+        "callExpression": "accepts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
         "fromSymbol": "compactGraphSpacing",
-        "toSymbol": "compressGraphSpacing",
-        "callExpression": "compressGraphSpacing",
+        "toSymbol": "findExpansionMaximum",
+        "callExpression": "findExpansionMaximum",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
-        "fromSymbol": "compressGraphSpacing",
+        "fromSymbol": "compactGraphSpacing",
+        "toSymbol": "findMinimumAcceptedNumber",
+        "callExpression": "findMinimumAcceptedNumber",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "compactGraphSpacing",
         "toSymbol": "applyScale",
         "callExpression": "applyScale",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
-        "fromSymbol": "compressGraphSpacing",
-        "toSymbol": "hasCollisions",
-        "callExpression": "hasCollisions",
+        "fromSymbol": "readLeafGeometry",
+        "toSymbol": "isUsableBox",
+        "callExpression": "isUsableBox",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
-        "fromSymbol": "expandGraphSpacing",
-        "toSymbol": "applyScale",
-        "callExpression": "applyScale",
+        "fromSymbol": "readGroupGeometry",
+        "toSymbol": "unionBounds",
+        "callExpression": "unionBounds",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
-        "fromSymbol": "expandGraphSpacing",
-        "toSymbol": "hasCollisions",
-        "callExpression": "hasCollisions",
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "toSymbol": "shiftBounds",
+        "callExpression": "shiftBounds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "toSymbol": "unionBounds",
+        "callExpression": "unionBounds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts",
+        "toSymbol": "expandBounds",
+        "callExpression": "expandBounds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "hasUnsafeCollisions",
+        "toSymbol": "isIntentionalContainment",
+        "callExpression": "isIntentionalContainment",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
+      },
+      {
+        "fromSymbol": "hasUnsafeCollisions",
+        "toSymbol": "isUnsafeOverlap",
+        "callExpression": "isUnsafeOverlap",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"
       },
       {
