@@ -20,15 +20,20 @@ test('settles a pending initial fit only after the viewport becomes usable', () 
   let width = 0;
   let height = 0;
   const calls = { resize: 0, settle: 0, completedPending: [] as boolean[] };
+  const observerCalls = { disconnect: 0, observe: 0 };
 
   class FakeResizeObserver {
     constructor(next: ResizeCallback) {
       callback = next;
     }
 
-    observe() {}
+    observe() {
+      observerCalls.observe += 1;
+    }
 
-    disconnect() {}
+    disconnect() {
+      observerCalls.disconnect += 1;
+    }
   }
 
   globals.ResizeObserver = FakeResizeObserver;
@@ -64,6 +69,7 @@ test('settles a pending initial fit only after the viewport becomes usable', () 
       },
     });
     expect(observer).not.toBeNull();
+    expect(observerCalls.observe).toBe(1);
 
     callback?.([{ contentRect: { height: 0, width: 0 } }]);
     expect(calls).toEqual({ resize: 0, settle: 0, completedPending: [] });
@@ -82,6 +88,9 @@ test('settles a pending initial fit only after the viewport becomes usable', () 
     expect(calls.settle).toBe(1);
     expect(calls.completedPending).toEqual([true]);
     expect(pendingInitialFitRef.current).toBe(false);
+
+    observer?.disconnect();
+    expect(observerCalls.disconnect).toBe(1);
   } finally {
     if (previousObserver === undefined) delete globals.ResizeObserver;
     else globals.ResizeObserver = previousObserver;
