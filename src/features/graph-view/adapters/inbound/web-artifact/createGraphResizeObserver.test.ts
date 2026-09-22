@@ -1,13 +1,12 @@
-import type { Core } from 'cytoscape';
-
 import { expect, test } from 'bun:test';
+import type { Core } from 'cytoscape';
 
 import { createGraphResizeObserver } from './createGraphResizeObserver';
 
 test('settles a pending initial fit only after the viewport becomes usable', () => {
-  type ResizeEntry = {
+  interface ResizeEntry {
     readonly contentRect: { readonly height: number; readonly width: number };
-  };
+  }
   type ResizeCallback = (entries: readonly ResizeEntry[]) => void;
 
   const globals = globalThis as unknown as {
