@@ -131,16 +131,18 @@ async function writeProviderEntrypointAsync(paths: BuildWebArtifactPaths): Promi
     'composition',
     'useZoraTheme.ts',
   );
+  const providerSpecifier = JSON.stringify(
+    toModuleSpecifier(relative(dirname(entry), providerSource)),
+  );
+  const themeSpecifier = JSON.stringify(
+    toModuleSpecifier(relative(dirname(entry), themeSource)),
+  );
   await mkdir(dirname(entry), { recursive: true });
   await writeFile(
     entry,
     [
-      `export { ZoraProvider } from ${JSON.stringify(
-        toModuleSpecifier(relative(dirname(entry), providerSource)),
-      )};`,
-      `export { useZoraTheme } from ${JSON.stringify(
-        toModuleSpecifier(relative(dirname(entry), themeSource)),
-      )};`,
+      `export { ZoraProvider } from ${providerSpecifier};`,
+      `export { useZoraTheme } from ${themeSpecifier};`,
       '',
     ].join('\n'),
     'utf8',
