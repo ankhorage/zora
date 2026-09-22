@@ -124,13 +124,7 @@ async function writeProviderEntrypointAsync(paths: BuildWebArtifactPaths): Promi
     'inbound',
     'ZoraProvider.tsx',
   );
-  const themeSource = join(
-    paths.sourceRoot,
-    'features',
-    'theme',
-    'composition',
-    'useZoraTheme.ts',
-  );
+  const themeSource = join(paths.sourceRoot, 'features', 'theme', 'composition', 'useZoraTheme.ts');
   const providerSpecifier = JSON.stringify(
     toModuleSpecifier(relative(dirname(entry), providerSource)),
   );
@@ -346,8 +340,8 @@ function createProviderDeclaration(): string {
     '',
     'export interface ZoraProviderProps {',
     '  children: React.ReactNode;',
-    "  initialMode?: ZoraThemeMode;",
-    "  mode?: ZoraThemeMode;",
+    '  initialMode?: ZoraThemeMode;',
+    '  mode?: ZoraThemeMode;',
     '  theme?: { id: string; name: string; appCategory: string; primaryColor: string; harmony: string };',
     '  themeConfig?: Record<string, unknown>;',
     '  toast?: boolean | Record<string, unknown>;',
