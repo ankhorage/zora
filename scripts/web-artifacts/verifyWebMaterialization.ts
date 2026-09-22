@@ -104,7 +104,7 @@ try {
   const { renderToString } = await import('react-dom/server');
   const load = async (file: string) =>
     await import(pathToFileURL(join(outputDirectory, file)).href);
-  const { ZoraProvider } = await load('runtime/ZoraProvider.js');
+  const { ZoraProvider, useZoraTheme } = await load('runtime/ZoraProvider.js');
   const { Select } = await load('components/select/index.js');
   const { Button } = await load('components/button/index.js');
   const { Text } = await load('components/text/index.js');
@@ -116,12 +116,27 @@ try {
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');
   assert.equal(typeof TreeView, 'function');
+  assert.equal(typeof useZoraTheme, 'function');
+
+  function ThemeProbe() {
+    const runtime = useZoraTheme();
+    return React.createElement(
+      'span',
+      {
+        'data-testid': 'theme-probe',
+        'data-mode': runtime.mode,
+        'data-primary': runtime.theme.colors.primary,
+      },
+      runtime.mode,
+    );
+  }
 
   function TestApp({ mode }: { readonly mode: 'light' | 'dark' }) {
     const [value, setValue] = React.useState('grid');
     return React.createElement(
       ZoraProvider,
       { mode },
+      React.createElement(ThemeProbe),
       React.createElement(AppBar, { title: 'Workspace' }),
       React.createElement(Text, { testID: 'mode-text' }, 'Ready'),
       React.createElement(Button, null, 'Action'),
@@ -157,6 +172,15 @@ try {
     });
     assert.deepEqual(hydrationErrors, []);
     assert(browser.document.body.textContent?.includes('Workspace'));
+    assert.equal(
+      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
+      'light',
+    );
+    assert(
+      browser.document
+        .querySelector('[data-testid="theme-probe"]')
+        ?.getAttribute('data-primary'),
+    );
     await React.act(async () => {
       browser.document
         .querySelector('[data-testid="layout-trigger"]')
@@ -185,6 +209,10 @@ try {
     const darkColor = browser.document
       .querySelector('[data-testid="mode-text"]')
       ?.getAttribute('style');
+    assert.equal(
+      browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'),
+      'dark',
+    );
     assert.notEqual(darkColor, lightColor);
     assert(
       browser.document
