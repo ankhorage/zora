@@ -169,7 +169,9 @@ function resolveCollisionBoxes(
 
 /*** Find the first bounded expansion factor that makes the pure geometry snapshot acceptable. */
 function findExpansionMaximum(accepts: (factor: number) => boolean): number | undefined {
-  return Array.from({ length: MAX_EXPANSION_ATTEMPTS }, (_, index) => 2 ** (index + 1)).find(accepts);
+  return Array.from({ length: MAX_EXPANSION_ATTEMPTS }, (_, index) => 2 ** (index + 1)).find(
+    accepts,
+  );
 }
 
 /***
@@ -200,7 +202,8 @@ function isIntentionalContainment(first: CollisionBox, second: CollisionBox): bo
 
 /*** Permit only a small bounded label-label overlap; every other intersection remains unsafe. */
 function isUnsafeOverlap(first: CollisionBox, second: CollisionBox): boolean {
-  const overlapWidth = Math.min(first.box.x2, second.box.x2) - Math.max(first.box.x1, second.box.x1);
+  const overlapWidth =
+    Math.min(first.box.x2, second.box.x2) - Math.max(first.box.x1, second.box.x1);
   const overlapHeight =
     Math.min(first.box.y2, second.box.y2) - Math.max(first.box.y1, second.box.y1);
   if (overlapWidth <= 0 || overlapHeight <= 0) return false;
