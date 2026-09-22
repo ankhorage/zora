@@ -6,6 +6,7 @@ import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
+import { resolveListItemTitleLineCount } from '../../utils/resolveListItemTitleLineCount';
 
 function ListItemInner({
   themeId: _themeId,
@@ -52,7 +53,11 @@ function ListItemInner({
         trailing={trailingContent}
       >
         <View gap="xxs">
-          <Text variant="body" weight={selected ? 'semiBold' : 'medium'}>
+          <Text
+            numberOfLines={resolveListItemTitleLineCount(compact)}
+            variant="body"
+            weight={selected ? 'semiBold' : 'medium'}
+          >
             {title}
           </Text>
           {description ? (
