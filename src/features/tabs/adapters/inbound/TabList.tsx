@@ -6,13 +6,12 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 /*** Renders the accessible list of tabs for a Tabs composition. */
 export const TabList = withZoraThemeScope(TabListInner);
 
-/*** Delegates tablist semantics and keyboard navigation to Surface. */
+/*** Delegates tablist semantics, keyboard navigation, and fill distribution to Surface. */
 function TabListInner({
   themeId: _themeId,
   mode: _mode,
   interactionPolicy: _interactionPolicy,
-  children,
-  testID,
+  ...props
 }: TabListProps) {
-  return <SurfaceTabList testID={testID}>{children}</SurfaceTabList>;
+  return <SurfaceTabList {...props} />;
 }
