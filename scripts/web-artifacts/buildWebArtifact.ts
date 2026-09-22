@@ -134,9 +134,7 @@ async function writeProviderEntrypointAsync(paths: BuildWebArtifactPaths): Promi
   const providerSpecifier = JSON.stringify(
     toModuleSpecifier(relative(dirname(entry), providerSource)),
   );
-  const themeSpecifier = JSON.stringify(
-    toModuleSpecifier(relative(dirname(entry), themeSource)),
-  );
+  const themeSpecifier = JSON.stringify(toModuleSpecifier(relative(dirname(entry), themeSource)));
   await mkdir(dirname(entry), { recursive: true });
   await writeFile(
     entry,
