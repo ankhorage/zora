@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.7
+
+### Patch Changes
+
+- 99ef629: Expose the active ZORA theme runtime alongside the materialized web ZoraProvider so external renderers can consume the same theme mode and resolved semantic tokens.
+
 ## 21.0.6
 
 ### Patch Changes
