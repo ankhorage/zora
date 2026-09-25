@@ -110,7 +110,9 @@ describe('Expo 57 example boundary', () => {
       expect(expoVersion).toMatch(SEMVER_PATTERNS.exact);
       expect(dependencies.react).toMatch(SEMVER_PATTERNS.exact);
       expect(readValue(dependencies, 'react-native')).toMatch(SEMVER_PATTERNS.exact);
-      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(SEMVER_PATTERNS.tilde);
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(
+        SEMVER_PATTERNS.tilde,
+      );
       expect(readValue(dependencies, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
       expect(readValue(dependencies, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
       expect(readValue(dependencies, 'react-native-web')).toMatch(SEMVER_PATTERNS.tilde);
