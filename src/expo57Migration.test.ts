@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { SEMVER_PATTERNS } from '@ankhorage/utility/semver';
 import { describe, expect, test } from 'bun:test';
 
 const ROOT = process.cwd();
@@ -28,10 +29,6 @@ const RNVI_PLUGINS = [
   '@react-native-vector-icons/fontawesome6',
   '@react-native-vector-icons/ionicons',
 ] as const;
-const CARET_SEMVER_RANGE = /^\^\d+\.\d+\.\d+$/u;
-const EXACT_SEMVER_VERSION = /^\d+\.\d+\.\d+$/u;
-const MINOR_WILDCARD_SEMVER_RANGE = /^\d+\.\d+\.x$/u;
-const TILDE_SEMVER_RANGE = /^~\d+\.\d+\.\d+$/u;
 
 function readJson(path: string): Record<string, unknown> {
   const value: unknown = JSON.parse(readFileSync(path, 'utf8'));
@@ -64,17 +61,17 @@ describe('portable ZORA package boundary', () => {
     const peers = readRecord(packageJson, 'peerDependencies');
     const development = readRecord(packageJson, 'devDependencies');
 
-    expect(readValue(dependencies, '@ankhorage/surface')).toMatch(CARET_SEMVER_RANGE);
-    expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(CARET_SEMVER_RANGE);
-    expect(peers.react).toMatch(EXACT_SEMVER_VERSION);
-    expect(readValue(peers, 'react-native')).toMatch(MINOR_WILDCARD_SEMVER_RANGE);
+    expect(readValue(dependencies, '@ankhorage/surface')).toMatch(SEMVER_PATTERNS.caret);
+    expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(SEMVER_PATTERNS.caret);
+    expect(peers.react).toMatch(SEMVER_PATTERNS.exact);
+    expect(readValue(peers, 'react-native')).toMatch(SEMVER_PATTERNS.minorWildcard);
     expect(readValue(peers, 'react-native-svg')).toBe('15.15.4');
     expect(readValue(development, 'react-native-svg')).toBe('15.15.4');
-    expect(readValue(peers, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
-    expect(readValue(peers, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
-    expect(readValue(peers, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
-    expect(readValue(peers, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
-    expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
+    expect(readValue(peers, 'react-native-web')).toMatch(SEMVER_PATTERNS.tilde);
+    expect(readValue(peers, 'react-native-gesture-handler')).toMatch(SEMVER_PATTERNS.tilde);
+    expect(readValue(peers, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
+    expect(readValue(peers, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
+    expect(development.typescript).toMatch(SEMVER_PATTERNS.tilde);
 
     for (const expoPackage of ['@expo/vector-icons', 'expo-font', 'expo-linear-gradient']) {
       expect(readValue(peers, expoPackage)).toBeUndefined();
@@ -109,15 +106,17 @@ describe('Expo 57 example boundary', () => {
       const development = readRecord(packageJson, 'devDependencies');
       const expoVersion = readValue(dependencies, 'expo');
 
-      expect(readValue(dependencies, '@ankhorage/zora')).toMatch(CARET_SEMVER_RANGE);
-      expect(expoVersion).toMatch(EXACT_SEMVER_VERSION);
-      expect(dependencies.react).toMatch(EXACT_SEMVER_VERSION);
-      expect(readValue(dependencies, 'react-native')).toMatch(EXACT_SEMVER_VERSION);
-      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
-      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
-      expect(readValue(dependencies, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
-      expect(readValue(dependencies, 'react-native-web')).toMatch(TILDE_SEMVER_RANGE);
-      expect(development.typescript).toMatch(TILDE_SEMVER_RANGE);
+      expect(readValue(dependencies, '@ankhorage/zora')).toMatch(SEMVER_PATTERNS.caret);
+      expect(expoVersion).toMatch(SEMVER_PATTERNS.exact);
+      expect(dependencies.react).toMatch(SEMVER_PATTERNS.exact);
+      expect(readValue(dependencies, 'react-native')).toMatch(SEMVER_PATTERNS.exact);
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(
+        SEMVER_PATTERNS.tilde,
+      );
+      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
+      expect(readValue(dependencies, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
+      expect(readValue(dependencies, 'react-native-web')).toMatch(SEMVER_PATTERNS.tilde);
+      expect(development.typescript).toMatch(SEMVER_PATTERNS.tilde);
       expect(readValue(dependencies, '@expo/vector-icons')).toBeUndefined();
 
       if (typeof expoVersion === 'string') {
@@ -147,7 +146,7 @@ describe('Expo 57 example boundary', () => {
         'utf8',
       );
 
-      expect(readValue(dependencies, '@ankhorage/navigator')).toMatch(CARET_SEMVER_RANGE);
+      expect(readValue(dependencies, '@ankhorage/navigator')).toMatch(SEMVER_PATTERNS.caret);
       expect(layoutSource).toContain("from '@ankhorage/navigator/tabs/native-icons'");
       expect(layoutSource).toContain("from 'expo-router/unstable-native-tabs'");
       expect(layoutSource).toContain("Platform.OS === 'web'");
@@ -167,9 +166,11 @@ describe('Expo 57 example boundary', () => {
       const gestureRootPosition = source.indexOf('<GestureHandlerRootView');
       const zoraProviderPosition = source.indexOf('<ZoraProvider');
 
-      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(TILDE_SEMVER_RANGE);
-      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(EXACT_SEMVER_VERSION);
-      expect(readValue(dependencies, 'react-native-worklets')).toMatch(EXACT_SEMVER_VERSION);
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(
+        SEMVER_PATTERNS.tilde,
+      );
+      expect(readValue(dependencies, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
+      expect(readValue(dependencies, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
       expect(source).toContain("from 'react-native-gesture-handler'");
       expect(gestureRootPosition).toBeGreaterThan(-1);
       expect(zoraProviderPosition).toBeGreaterThan(gestureRootPosition);

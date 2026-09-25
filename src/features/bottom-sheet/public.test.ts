@@ -1,3 +1,4 @@
+import { SEMVER_PATTERNS } from '@ankhorage/utility/semver';
 import { describe, expect, test } from 'bun:test';
 
 describe('ZORA BottomSheet public contract', () => {
@@ -10,7 +11,7 @@ describe('ZORA BottomSheet public contract', () => {
     const source = await Bun.file('src/features/bottom-sheet/public.ts').text();
 
     expect(packageJson.exports['./bottom-sheet']).toBeDefined();
-    expect(packageJson.dependencies['@ankhorage/surface']).toMatch(/^\^\d+\.\d+\.\d+$/u);
+    expect(packageJson.dependencies['@ankhorage/surface']).toMatch(SEMVER_PATTERNS.caret);
     expect(source).toContain("from '@ankhorage/surface/bottom-sheet'");
     for (const name of [
       'BottomSheetFlatList',
