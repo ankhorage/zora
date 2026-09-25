@@ -56,9 +56,7 @@ async function discoverEntryTargets(
   const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
   if (moduleSymbol === undefined) return [];
 
-  const featurePath = toPortablePath(
-    relative(paths.featuresRoot, dirname(publicEntry)),
-  );
+  const featurePath = toPortablePath(relative(paths.featuresRoot, dirname(publicEntry)));
   const runtimeExports = checker.getExportsOfModule(moduleSymbol).flatMap((exportSymbol) => {
     const resolvedSymbol =
       exportSymbol.flags & ts.SymbolFlags.Alias
@@ -210,4 +208,3 @@ async function pathExists(path: string): Promise<boolean> {
     return false;
   }
 }
-
