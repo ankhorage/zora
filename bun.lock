@@ -14,7 +14,7 @@
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.18.5",
-        "@ankhorage/paradox": "^0.2.1",
+        "@ankhorage/paradox": "^0.2.2",
         "@react-native-vector-icons/fontawesome": "^13.1.3",
         "@react-native-vector-icons/fontawesome5": "^13.1.3",
         "@react-native-vector-icons/fontawesome6": "^13.1.3",
@@ -65,7 +65,7 @@
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.18.5", "", { "dependencies": { "@ankhorage/apm": "^0.6.0", "@ankhorage/contracts": "^22.1.1", "@ankhorage/project-detector": "^0.1.0", "@ankhorage/utility": "^0.5.1", "@changesets/cli": "^3.0.2", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "@next/eslint-plugin-next": "^16.3.5", "eslint": "^10.10.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.0.0", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.34.0", "prettier": "^3.9.6", "typescript": "~6.0.3", "typescript-eslint": "^8.69.0" }, "bin": { "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-prettier": "dist/cli/bin/prettier.js", "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-structure": "dist/cli/bin/structure.js", "ankhorage-apm-release": "dist/cli/bin/apm-release.js" } }, "sha512-ffPE9WaynIm5TO3nEt4SdruwuEV2ZEvhO+TxRrd1wfHQYYFReldV99xNA1heAkTg5R6RT06xNrlznv1IDgBPFA=="],
 
-    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.1", "", { "dependencies": { "@ankhorage/policy": "^0.2.0", "@ankhorage/utility": "^1.8.0", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-wGMpNG1N40Saq58OJ1CToRFUIspFuik3OtHYp3R2bn9KQ87y/O91wl067qEqNL26zMNCoQ4lp1iRELRh5zK2Zg=="],
+    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.2", "", { "dependencies": { "@ankhorage/policy": "^0.2.0", "@ankhorage/utility": "^1.8.0", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-4WpFHyVXNcGP98vQ8RSN2gCaVxAxA2i8ea52OfMr11oarwZt1NFc+tfO24mD2a4Zvukr27z2FoAPOZUe9cxh5w=="],
 
     "@ankhorage/policy": ["@ankhorage/policy@0.2.0", "", {}, "sha512-9aY2x80PP4nBHYD8qpT1QkHJUXnwHnWkDbKdTPM9HtJyzQJRwaXhoJffhWLR6AqYaUb4go7flC8OhWx/uiPyow=="],
 
