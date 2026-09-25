@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.21
+
+### Patch Changes
+
+- 8f976a0: Update Ankhorage dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+
 ## 21.0.20
 
 ### Patch Changes
