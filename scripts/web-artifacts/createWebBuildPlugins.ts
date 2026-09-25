@@ -2,6 +2,7 @@ import { access, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join, relative } from 'node:path';
 
+import { toPortablePath } from '@ankhorage/utility/node/path';
 import * as ts from 'typescript';
 
 interface WebBuildPluginPaths {
@@ -305,7 +306,7 @@ function resolveBunLoader(path: string): 'js' | 'jsx' | 'ts' | 'tsx' {
 
 /*** Convert a relative filesystem path into a portable ESM module specifier. */
 function toModuleSpecifier(path: string): string {
-  const normalized = path.replaceAll('\\', '/');
+  const normalized = toPortablePath(path);
   return normalized.startsWith('.') ? normalized : `./${normalized}`;
 }
 
