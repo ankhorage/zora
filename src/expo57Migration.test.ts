@@ -166,7 +166,9 @@ describe('Expo 57 example boundary', () => {
       const gestureRootPosition = source.indexOf('<GestureHandlerRootView');
       const zoraProviderPosition = source.indexOf('<ZoraProvider');
 
-      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(SEMVER_PATTERNS.tilde);
+      expect(readValue(dependencies, 'react-native-gesture-handler')).toMatch(
+        SEMVER_PATTERNS.tilde,
+      );
       expect(readValue(dependencies, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
       expect(readValue(dependencies, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
       expect(source).toContain("from 'react-native-gesture-handler'");
