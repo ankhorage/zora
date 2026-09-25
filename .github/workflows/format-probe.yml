@@ -1,0 +1,24 @@
+name: Format probe
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/format-probe.yml'
+      - 'scripts/web-artifacts/discoverWebArtifactTargets.ts'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+      - run: bun install --frozen-lockfile
+      - name: Print formatter diff
+        run: |
+          bun run format
+          git diff -- scripts/web-artifacts/discoverWebArtifactTargets.ts
