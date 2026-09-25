@@ -1,6 +1,7 @@
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 
+import { toPortablePath } from '@ankhorage/utility/node/path';
 import { createWebBuildPlugins } from './createWebBuildPlugins';
 import type {
   WebArtifactManifestEntry,
@@ -202,7 +203,7 @@ function collectReachableChunks(
       if (next.startsWith('..') || next.startsWith(sep)) {
         throw new Error(`ZORA web chunk escapes output root: ${imported.path}`);
       }
-      pending.push(next.replaceAll('\\', '/'));
+      pending.push(toPortablePath(next));
     }
   }
   return [...visited].filter((file) => file !== entry).sort();
@@ -355,6 +356,6 @@ function createProviderDeclaration(): string {
 
 /*** Render a relative module path as a portable ESM specifier. */
 function toModuleSpecifier(path: string): string {
-  const normalized = path.replaceAll('\\', '/');
+  const normalized = toPortablePath(path);
   return normalized.startsWith('.') ? normalized : `./${normalized}`;
 }

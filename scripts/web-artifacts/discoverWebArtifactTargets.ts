@@ -1,6 +1,7 @@
 import { access, readdir } from 'node:fs/promises';
 import { dirname, join, relative } from 'node:path';
 
+import { toPortablePath } from '@ankhorage/utility/node/path';
 import * as ts from 'typescript';
 
 import type { WebArtifactTarget } from './types';
@@ -55,7 +56,7 @@ async function discoverEntryTargets(
   const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
   if (moduleSymbol === undefined) return [];
 
-  const featurePath = toPosixPath(relative(paths.featuresRoot, dirname(publicEntry)));
+  const featurePath = toPortablePath(relative(paths.featuresRoot, dirname(publicEntry)));
   const runtimeExports = checker.getExportsOfModule(moduleSymbol).flatMap((exportSymbol) => {
     const resolvedSymbol =
       exportSymbol.flags & ts.SymbolFlags.Alias
@@ -206,9 +207,4 @@ async function pathExists(path: string): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-/*** Normalize manifest-facing paths across operating systems. */
-function toPosixPath(path: string): string {
-  return path.replaceAll('\\', '/');
 }
