@@ -24,6 +24,7 @@ import { postCardMeta } from '../card/postCardMeta';
 import { productCardMeta } from '../card/productCardMeta';
 import { chatListItemMeta } from '../chat/chatListItemMeta';
 import { messageBubbleMeta } from '../chat/messageBubbleMeta';
+import { chessBoardMeta, openingBookMeta } from '../chess/meta';
 import { chipGroupMeta } from '../chip/chipGroupMeta';
 import { chipMeta } from '../chip/chipMeta';
 import { collectionEditorMeta } from '../collection-editor/meta';
@@ -74,6 +75,13 @@ import {
   skeletonTextMeta,
 } from '../skeleton/skeletonMeta';
 import { surfaceMeta } from '../surface/surfaceMeta';
+import {
+  cardBackMeta,
+  cardHandMeta,
+  playingCardMeta,
+  pokerTrainingTableMeta,
+  tabletopTableMeta,
+} from '../tabletop/meta';
 import { tabListMeta } from '../tabs/tabListMeta';
 import { tabMeta } from '../tabs/tabMeta';
 import { tabPanelMeta } from '../tabs/tabPanelMeta';
@@ -165,6 +173,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SignInForm: signInFormMeta,
   SignUpForm: signUpFormMeta,
   ChatListItem: chatListItemMeta,
+  ChessBoard: chessBoardMeta,
   CollectionEditor: collectionEditorMeta,
   ContentRail: contentRailMeta,
   EmptyState: emptyStateMeta,
@@ -173,6 +182,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   ListItem: listItemMeta,
   ListSection: listSectionMeta,
   MessageBubble: messageBubbleMeta,
+  OpeningBook: openingBookMeta,
   MissingElement: missingElementMeta,
   PostCard: postCardMeta,
   ProductCard: productCardMeta,
@@ -185,6 +195,11 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   SelectionProvider: selectionProviderMeta,
   PaletteItem: paletteItemMeta,
   Timeline: timelineMeta,
+  CardBack: cardBackMeta,
+  CardHand: cardHandMeta,
+  PlayingCard: playingCardMeta,
+  TabletopTable: tabletopTableMeta,
+  PokerTrainingTable: pokerTrainingTableMeta,
   TreeItem: treeItemMeta,
   TreeView: treeViewMeta,
 });

@@ -1,12 +1,20 @@
 import type { ZoraComponentMeta } from '../authoring';
-import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import {
+  CHESS_ALLOWED_CHILDREN,
+  CONTAINER_ALLOWED_CHILDREN,
+  TABLETOP_ALLOWED_CHILDREN,
+} from '../authoring/allowedChildren';
 import { COMPONENT_THEME_AUTHORING } from '../authoring/constants';
 
 export const cardMeta = {
   name: 'Card',
   category: 'component',
   directManifestNode: true,
-  allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
+  allowedChildren: [
+    ...CONTAINER_ALLOWED_CHILDREN,
+    ...CHESS_ALLOWED_CHILDREN,
+    ...TABLETOP_ALLOWED_CHILDREN,
+  ],
   blueprint: { label: 'Card', defaultProps: { title: 'Card' } },
   events: { press: { label: 'Press', eventType: 'card.press', payloadFields: [] } },
   props: {

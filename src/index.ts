@@ -125,6 +125,34 @@ export type {
   MessageBubbleStatus,
 } from './features/chat/public';
 export { ChatListItem, MessageBubble } from './features/chat/public';
+export type {
+  ChessBoardColorOverrides,
+  ChessBoardColorScheme,
+  ChessBoardOrientation,
+  ChessBoardProps,
+  ChessMoveAttempt,
+  ChessPieceCode,
+  ChessPieceRenderContext,
+  ChessPieceRenderer,
+  ChessPieceState,
+  ChessPromotionPiece,
+  ChessSquareId,
+  OpeningBookColorOverrides,
+  OpeningBookColorScheme,
+  OpeningBookMove,
+  OpeningBookProps,
+} from './features/chess/public';
+export type { ChessColorThemeShape } from './features/chess/public';
+export { ChessBoard, OpeningBook } from './features/chess/public';
+export {
+  chessSquares,
+  createBoardSquares,
+  createChessBoardColorScheme,
+  createOpeningBookColorScheme,
+  getSquareFile,
+  getSquareRank,
+  isLightSquare,
+} from './features/chess/public';
 export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
 export { Chip } from './features/chip/public';
@@ -342,6 +370,40 @@ export {
 } from './features/skeleton/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
 export { Surface } from './features/surface/public';
+export type {
+  CardBackProps,
+  CardHandProps,
+  CreatePokerTrainingTableStateOptions,
+  CreateTabletopGameSeatsInput,
+  PlayingCardProps,
+  PlayingCardSuit,
+  PlayingCardValue,
+  PokerTrainingPlayer,
+  PokerTrainingTableProps,
+  PokerTrainingTableSize,
+  PokerTrainingTableState,
+  PokerTrainingTaskTableData,
+  TabletopCardSize,
+  TabletopColorOverrides,
+  TabletopColorScheme,
+  TabletopGameParticipantState,
+  TabletopGameSeatDefinition,
+  TabletopGameSeatPresentation,
+  TabletopSeatCount,
+  TabletopSeatState,
+  TabletopShape,
+  TabletopTableProps,
+} from './features/tabletop/public';
+export {
+  CardBack,
+  CardHand,
+  createPokerTrainingTableState,
+  createTabletopColorScheme,
+  createTabletopGameSeats,
+  PlayingCard,
+  PokerTrainingTable,
+  TabletopTable,
+} from './features/tabletop/public';
 export {
   Tab,
   TabList,

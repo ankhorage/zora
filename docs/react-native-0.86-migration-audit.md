@@ -91,42 +91,37 @@ native font bootstrapping.
 
 ## Downstream consumer inventory
 
+The following records the standalone-package state at the time of this RN 0.86
+audit. Issue #462 supersedes the proposed dependency-matrix follow-ups with a
+core-ZORA presentation migration; PR #580 alone does not establish a released
+owner API or downstream acceptance.
+
 ### `@ankhorage/zora-chess`
 
 - Published/development version inspected: `0.1.2`.
 - Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
   `>=0.72.0`; they should not be narrowed solely for this validation baseline.
-- Development validation is stale: ZORA `^2.5.4`, React `^19.1.0`, RN
+- Development validation was stale: ZORA `^2.5.4`, React `^19.1.0`, RN
   `^0.79.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
   `1.3.13`.
-- **Owner follow-up required:** in the zora-chess repository, retain broad
-  public peers but move development/tooling validation to released ZORA 3,
-  React 19.2.3, RN 0.86.3, TypeScript 6.0.3, Node 24 typings, Devtools 1.6.0,
-  and Bun 1.3.14, then run its full gates and changeset/release flow.
+- The audit originally proposed an owner-side development-matrix follow-up;
+  issue #462 instead retires this standalone ownership after consumer migration.
 
 ### `@ankhorage/zora-tabletop`
 
 - Published/development version inspected: `0.0.5`.
 - Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
   `>=0.72.0`; they should not be narrowed solely for this validation baseline.
-- Development validation is stale: ZORA `^2.6.1`, React `^19.1.0`, RN
+- Development validation was stale: ZORA `^2.6.1`, React `^19.1.0`, RN
   `^0.81.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
   `1.3.13`.
-- **Owner follow-up required:** in the zora-tabletop repository, retain broad
-  public peers but move development/tooling validation to released ZORA 3 and
-  the same React/RN/TypeScript/Node/Devtools/Bun baseline, then run its full
-  gates and changeset/release flow.
+- The audit originally proposed an owner-side development-matrix follow-up;
+  issue #462 instead retires this standalone ownership after consumer migration.
 
-Cross-repository writes are intentionally not mixed into this ZORA worktree.
-Fresh temporary clones pass their current full build, lint, test, and Knip
+At the time, fresh temporary clones passed their build, lint, test, and Knip
 gates (zora-chess: 16 tests; zora-tabletop: 13 tests). Their only ZORA runtime
-import is `useZoraTheme`, which is unchanged by this migration. Installation of
-the packed ZORA candidate into those clones is not a substitute for updating
-their stale development matrices after ZORA 3 is released. This is
-baseline/source-inventory evidence rather than a claim that those matrices
-already accept ZORA 3. Merge and publish ZORA 3 first; each consumer owner must
-then commit, validate, and release its own development-matrix migration before
-roadmap issue #294 closes.
+import was `useZoraTheme`, unchanged by that RN migration. This is historical
+baseline evidence, not proof of the issue #462 release or consumer migration.
 
 ## Automated acceptance results
 

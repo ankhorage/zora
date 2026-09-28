@@ -18,12 +18,13 @@ consume these registries; they do not recreate ZORA ownership.
 
 ## Plugin composition
 
-ZORA plugins export one `ZoraPluginDescriptor` that keeps the package-owned runtime registry,
-component metadata, bindings, and placement declarations together. The application edge selects
-the installed set and composes it with core:
+External ZORA plugins still export one `ZoraPluginDescriptor` that keeps their runtime registry,
+component metadata, bindings, and placement declarations together. Chess and Tabletop are core
+features and require no plugin descriptor or standalone package. The application edge selects any
+other installed extensions and composes them with core:
 
 ```ts
-const catalog = composeZoraPlugins([ZORA_CORE_PLUGIN, ZORA_CHESS_PLUGIN]);
+const catalog = composeZoraPlugins([ZORA_CORE_PLUGIN, ...installedExtensions]);
 ```
 
 The composer sorts packages deterministically, rejects duplicate packages or component keys,
@@ -32,7 +33,8 @@ declared as extension hosts. Studio and Runtime consume the resulting `component
 `bindableComponentMeta`, and `componentRegistry` projections.
 
 Metadata-only tools import `composeZoraPluginMetadata` and `ZORA_CORE_PLUGIN_METADATA` from
-`@ankhorage/zora/metadata`, then add each installed plugin's `ZORA_PLUGIN_METADATA` export. This
+`@ankhorage/zora/metadata`, then add each remaining installed extension's `ZORA_PLUGIN_METADATA`
+export. Core Chess and Tabletop metadata already arrives through `ZORA_CORE_PLUGIN_METADATA`. This
 keeps server-side authoring inspection independent of React Native runtime imports.
 
 `Icon` and `Image` are direct manifest leaves accepted by normal screen containers. Their `source`

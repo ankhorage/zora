@@ -8,19 +8,28 @@ import { Window } from 'happy-dom';
 import { create } from '../../src/cli/commands/create';
 import { sync } from '../../src/cli/commands/sync';
 import { createWebDesiredStateWithNodeAsync } from '../../src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync';
+import { discoverWebArtifactTargets } from './discoverWebArtifactTargets';
 
 const packageRoot = join(import.meta.dir, '..', '..');
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
 const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
+const publicFeatureTargets = await discoverWebArtifactTargets({
+  featuresRoot: join(packageRoot, 'src', 'features'),
+  repositoryRoot: packageRoot,
+  sourceRoot: join(packageRoot, 'src'),
+});
 const components = [
-  'app-bar',
-  'button',
-  'date-picker',
-  'graph-view',
-  'select',
-  'text',
-  'tree-view',
-];
+  ...new Set([
+    'app-bar',
+    'button',
+    'date-picker',
+    'graph-view',
+    'select',
+    'text',
+    'tree-view',
+    ...publicFeatureTargets.map((target) => target.component),
+  ]),
+].sort();
 
 try {
   const context = {
@@ -81,7 +90,9 @@ try {
   );
   assert.deepEqual(evidence.components, components);
   assert(evidence.files.some((file) => file.startsWith('chunks/')));
-  assert(evidence.files.includes('components/select/index.js'));
+  for (const component of components) {
+    assert(evidence.files.includes(`components/${component}/index.js`));
+  }
   assert(!evidence.files.some((file) => file.includes('node_modules')));
 
   const browser = new Window();
@@ -112,6 +123,10 @@ try {
   const { DatePicker } = await load('components/date-picker/index.js');
   const { GraphView } = await load('components/graph-view/index.js');
   const { TreeView } = await load('components/tree-view/index.js');
+  for (const target of publicFeatureTargets) {
+    const artifact = await load(`components/${target.component}/index.js`);
+    assert.notEqual(artifact[target.exportName], undefined, target.exportName);
+  }
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');

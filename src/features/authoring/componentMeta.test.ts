@@ -185,6 +185,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Divider',
       'ChatListItem',
       'CameraPermissionView',
+      'ChessBoard',
+      'OpeningBook',
       'ScanOverlay',
       'ProductCard',
       'Progress',
@@ -192,6 +194,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ReaderSurface',
       'MissingElement',
       'TimePicker',
+      'TabletopTable',
+      'PokerTrainingTable',
     ]);
 
     const expectedContainerNodes = new Set([
@@ -252,6 +256,63 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.Tab.allowedChildren).toEqual([]);
     expect(ZORA_COMPONENT_META.TabPanel.allowedChildren.length).toBeGreaterThan(0);
     expect(ZORA_COMPONENT_META.Tabs.events?.valueChange?.eventType).toBe('tabs.valueChange');
+  });
+
+  test('Chess and Tabletop retain their direct placement hierarchy without exposing card subprimitives', () => {
+    for (const name of ['CardBack', 'CardHand', 'PlayingCard']) {
+      expect(
+        Object.values(ZORA_COMPONENT_META).find((meta) => meta.name === name)?.directManifestNode,
+      ).toBe(false);
+      for (const meta of Object.values(ZORA_COMPONENT_META)) {
+        expect(meta.allowedChildren).not.toContain(name);
+      }
+    }
+    for (const parent of [
+      ZORA_COMPONENT_META.Card,
+      ZORA_COMPONENT_META.Grid,
+      ZORA_COMPONENT_META.Screen,
+      ZORA_COMPONENT_META.ScreenSection,
+    ]) {
+      for (const name of ['ChessBoard', 'OpeningBook', 'TabletopTable', 'PokerTrainingTable']) {
+        expect(parent.allowedChildren).toContain(name);
+      }
+    }
+    expect(ZORA_COMPONENT_META.View.allowedChildren).toContain('ChessBoard');
+    expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('TabletopTable');
+    expect(ZORA_COMPONENT_META.ScrollView.allowedChildren).not.toContain('PokerTrainingTable');
+  });
+
+  test('Chess and Tabletop presentation bindings retain typed inputs and interaction intents', () => {
+    expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.pieces?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.legalTargets?.value).toEqual({
+      type: 'array',
+      itemType: 'string',
+    });
+    expect(ZORA_COMPONENT_META.OpeningBook.bindings?.props?.moves?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.OpeningBook.bindings?.events?.movePress?.payload.eventType).toBe(
+      'chess.openingMovePress',
+    );
+    expect(ZORA_COMPONENT_META.TabletopTable.bindings?.props?.seats?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.PokerTrainingTable.bindings?.props?.task?.value).toMatchObject({
+      type: 'object',
+      fields: [
+        { path: 'blinds' },
+        { path: 'heroPosition' },
+        { path: 'heroCards' },
+        { path: 'communityCards' },
+        { path: 'pot' },
+        { path: 'players' },
+      ],
+    });
   });
 
   test('Accordion constrains authored items to its canonical hierarchy', () => {
