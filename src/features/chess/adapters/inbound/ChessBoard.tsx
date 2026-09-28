@@ -9,9 +9,9 @@ import type {
 } from '../../../../types/chess';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
+import { getLegalTargets, readChessPieces, tryMove } from '../../utils/chessEngine';
 import { createBoardSquares } from '../../utils/createBoardSquares';
 import { createChessBoardColorScheme } from '../../utils/createChessBoardColorScheme';
-import { getLegalTargets, readChessPieces, tryMove } from '../../utils/chessEngine';
 import { isLightSquare } from '../../utils/isLightSquare';
 
 const symbols = new Map<string, string>([
