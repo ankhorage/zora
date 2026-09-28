@@ -89,6 +89,31 @@ test('authoring schemas omit layout and avatar options ignored by the underlying
   expect(meta.AvatarGroup?.props.items?.itemSchema?.map(({ key }) => key)).not.toContain('shape');
 });
 
+test('integrated Chess, Game, and Tabletop placements preserve their former package contracts', () => {
+  const expectedChessAndGameParents = ['Card', 'Grid', 'Screen', 'ScreenSection', 'View'] as const;
+  for (const parent of expectedChessAndGameParents) {
+    for (const child of ['ChessBoard', 'OpeningBook', 'Game', 'GameField'] as const) {
+      expect(ZORA_COMPONENT_META[parent].allowedChildren, `${parent} -> ${child}`).toContain(child);
+    }
+  }
+
+  for (const parent of ['Card', 'Grid', 'Screen', 'ScreenSection'] as const) {
+    for (const child of ['TabletopTable', 'PokerTrainingTable'] as const) {
+      expect(ZORA_COMPONENT_META[parent].allowedChildren, `${parent} -> ${child}`).toContain(child);
+    }
+  }
+  expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('TabletopTable');
+  expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('PokerTrainingTable');
+
+  expect(ZORA_COMPONENT_META.Game.allowedChildren).toEqual(
+    expect.arrayContaining(['GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay']),
+  );
+  expect(ZORA_COMPONENT_META.GameField.allowedChildren).toEqual(
+    expect.arrayContaining(['GameEntity', 'GameOverlay']),
+  );
+  expect(ZORA_COMPONENT_META.GameOverlay.allowedChildren).toContain('GameEntity');
+});
+
 test('ContentRail accepts chips and all card elements and offers intrinsic-width scrolling', () => {
   const rail = ZORA_COMPONENT_META.ContentRail;
   for (const child of ['ChipGroup', ...FEATURE_MANIFEST_ELEMENTS.card])
