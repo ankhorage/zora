@@ -59,9 +59,9 @@ const FORBIDDEN_ROUTER_HELPER_ROUTES = ['/ExampleAppBar', '/useZoraIconFonts'] a
 
 const FIXTURES: readonly CandidateFixture[] = [
   {
-    doctor: false,
+    doctor: true,
     name: 'game-presentation',
-    nativePrebuild: false,
+    nativePrebuild: true,
     project: 'examples/game-presentation',
   },
   {
