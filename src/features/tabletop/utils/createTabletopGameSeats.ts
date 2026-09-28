@@ -7,8 +7,8 @@ import type { CreateTabletopGameSeatsInput, TabletopSeatState } from '../../../t
  * which lets card games represent folded, eliminated, disconnected, or otherwise inactive seats
  * without embedding those game rules in the tabletop renderer.
  *
- * @param input - Ordered seats, participant overrides, and the fallback for missing participants.
- * @returns Normalized tabletop seats in the same order as the supplied seat definitions.
+ * Accepts ordered seats, participant overrides, and the fallback for missing participants, then
+ * returns normalized tabletop seats in the same order as the supplied seat definitions.
  */
 export function createTabletopGameSeats({
   seats,

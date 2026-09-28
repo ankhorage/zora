@@ -15,9 +15,8 @@ import { createTabletopGameSeats } from './createTabletopGameSeats';
  * (bottom) tabletop seat. Players omitted by the task are reconstructed as folded with the
  * configured default stack.
  *
- * @param task - Serializable poker training task data received by the generated application.
- * @param options - Presentation defaults for task fields that are intentionally omitted.
- * @returns Seats and shared-table content ready for `TabletopTable`.
+ * Accepts serializable poker training task data plus presentation defaults for omitted fields and
+ * returns seats and shared-table content ready for `TabletopTable`.
  */
 export function createPokerTrainingTableState(
   task: PokerTrainingTaskTableData,

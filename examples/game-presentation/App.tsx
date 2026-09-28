@@ -42,7 +42,6 @@ const definition = {
  * Exercise core ZORA Game presentation, input, motion, and measurement on Expo.
  *
  * @usage
- * @readme
  */
 export default function App() {
   return (
