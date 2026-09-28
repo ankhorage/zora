@@ -11,6 +11,7 @@ import type {
   PokerTrainingTable as PokerTrainingTableComponent,
   TabletopTable as TabletopTableComponent,
 } from './public';
+import { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
 import { createPokerTrainingTableState } from './utils/createPokerTrainingTableState';
 import { createTabletopGameSeats } from './utils/createTabletopGameSeats';
 import { getTabletopSeatPosition } from './utils/getTabletopSeatPosition';
@@ -63,6 +64,17 @@ describe('Tabletop presentation', () => {
       { id: 'north', label: 'North', disabled: true, muted: true },
       { id: 'south', label: 'South', selected: true },
     ]);
+  });
+
+  test('preserves the standalone Tabletop authoring bindings in core metadata', () => {
+    expect(Object.keys(tabletopTableMeta.bindings.props)).toEqual([
+      'seats',
+      'centerCards',
+      'centerLabel',
+      'centerSublabel',
+      'disabled',
+    ]);
+    expect(pokerTrainingTableMeta.bindings.props.disabled.value.type).toBe('boolean');
   });
 
   test('renders card sizing, per-card IDs, seat accessibility, and table shapes', async () => {
