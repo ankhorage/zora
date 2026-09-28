@@ -69,7 +69,7 @@ function advanceScheduledRuntime({
   return {
     key: runtimeKey,
     session: result.session,
-    outputs: result.outputs,
+    outputs: [...current.outputs, ...result.outputs],
     revision: current.revision + 1,
   };
 }
