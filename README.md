@@ -3,7 +3,7 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v21.0.23](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v21.1.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -52,7 +52,7 @@ export default function BasicApp() {
 }
 ```
 
-This package contains 4 additional examples. See the generated documentation for the complete set.
+This package contains 5 additional examples. See the generated documentation for the complete set.
 
 ## Configuration
 
@@ -89,7 +89,11 @@ export default defineParadoxConfig({
 - [Architecture overview](././paradox/diagrams/architecture-overview.mmd)
 - [Module relationships](././paradox/diagrams/module-relationships.mmd)
 - [Export graph](././paradox/diagrams/export-graph.mmd)
+- [createPokerTrainingTableState sequence](././paradox/diagrams/sequences/create-poker-training-table-state.mmd)
 - [createZoraThemeConfig sequence](././paradox/diagrams/sequences/create-zora-theme-config.mmd)
+- [Game sequence](././paradox/diagrams/sequences/game.mmd)
+- [GameInputZone sequence](././paradox/diagrams/sequences/game-input-zone.mmd)
+- [GameOverlay sequence](././paradox/diagrams/sequences/game-overlay.mmd)
 - [resolveAvatarInitials sequence](././paradox/diagrams/sequences/resolve-avatar-initials.mmd)
 - [resolveOAuthProviderIcon sequence](././paradox/diagrams/sequences/resolve-oauth-provider-icon.mmd)
 - [resolveOAuthProviderLabel sequence](././paradox/diagrams/sequences/resolve-oauth-provider-label.mmd)

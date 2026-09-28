@@ -1,5 +1,16 @@
 # Changelog
 
+## 21.1.0
+
+### Minor Changes
+
+- e791026: feat: add core chess and tabletop presentation components
+- e66d4ab: feat: move generic Game presentation and runtime adapters into core ZORA
+
+### Patch Changes
+
+- 88ebcdc: docs: fix Paradox source metadata so generated release documentation is valid
+
 ## 21.0.23
 
 ### Patch Changes

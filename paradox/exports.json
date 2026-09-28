@@ -3185,6 +3185,231 @@
     "structuredRows": []
   },
   {
+    "name": "CardBack",
+    "title": null,
+    "description": "Renders a face-down card with a non-revealing accessible label.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/adapters/inbound/CardBack.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/adapters/inbound/CardBack.tsx",
+      "line": 11,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CardBackProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 62,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabletopCardSize",
+      "TabletopColorScheme",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<TabletopColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "muted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "TabletopCardSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "CardHand",
+    "title": null,
+    "description": "Renders a compact row of face-up and face-down cards.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/adapters/inbound/CardHand.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/adapters/inbound/CardHand.tsx",
+      "line": 10,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CardHandProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 68,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue",
+      "TabletopCardSize",
+      "TabletopColorScheme",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<TabletopColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "faceDownCards",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "muted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "TabletopCardSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "CardProps",
     "title": null,
     "description": null,
@@ -4585,6 +4810,589 @@
     "structuredRows": []
   },
   {
+    "name": "ChessBoard",
+    "title": null,
+    "description": "Renders caller-owned chess presentation state without chess rule execution.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
+      "line": 27,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessBoardColorOverrides",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 46,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessBoardColorScheme",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 31,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "border",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "coordinateText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "darkPiece",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "darkSquare",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "darkSquareText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lastMoveFrom",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lastMoveTo",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "legalTarget",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lightPiece",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lightSquare",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lightSquareText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selectedSquare",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessBoardOrientation",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessBoardProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 60,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessBoardColorScheme",
+      "ChessBoardOrientation",
+      "ChessMoveAttempt",
+      "ChessPieceRenderer",
+      "ChessPieceState",
+      "ChessSquareId",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<ChessBoardColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "lastMove",
+        "kind": "property",
+        "type": "ChessMoveAttempt | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "legalTargets",
+        "kind": "property",
+        "type": "readonly (\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\")[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMoveAttempt",
+        "kind": "property",
+        "type": "((move: ChessMoveAttempt) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSquarePress",
+        "kind": "property",
+        "type": "((square: ChessSquareId) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "orientation",
+        "kind": "property",
+        "type": "ChessBoardOrientation | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pieces",
+        "kind": "property",
+        "type": "readonly ChessPieceState[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderPiece",
+        "kind": "property",
+        "type": "ChessPieceRenderer | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedSquare",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\" | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "showCoordinates",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessColorThemeShape",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/features/chess/utils/createChessBoardColorScheme.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/createChessBoardColorScheme.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "semantics",
+        "kind": "property",
+        "type": "{ action: { primary: { softBg: string; }; }; content: { default: string; muted: string; }; neutral: { divider: string; surface: string; surfaceHover: string; }; success: { softBg: string; }; warning: { softBg: string; }; }",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessMoveAttempt",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 11,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessPromotionPiece"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "from",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "promotion",
+        "kind": "property",
+        "type": "ChessPromotionPiece | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "to",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessPieceCode",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessPieceRenderContext",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 23,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "color",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "piece",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "square",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessPieceRenderer",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 29,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessPieceState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "color",
+        "kind": "property",
+        "type": "\"white\" | \"black\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "piece",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "square",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessPromotionPiece",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessSquareId",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "chessSquares",
+    "title": null,
+    "description": "Lists every board square in ascending rank and file order.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/chess/utils/chessSquares.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/chessSquares.ts",
+      "line": 4,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "Chip",
     "title": null,
     "description": "Compact pill-like control for filters, tags, and quick selections.",
@@ -5613,6 +6421,341 @@
         "name": "lastVisibleIndex",
         "kind": "property",
         "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "createBoardSquares",
+    "title": null,
+    "description": "Orders the 64 displayed squares for the selected player orientation.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/createBoardSquares.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/createBoardSquares.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessBoardOrientation"
+    ],
+    "signatures": [
+      {
+        "label": "(orientation: ChessBoardOrientation) => readonly (\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\")[]",
+        "parameters": [
+          {
+            "name": "orientation",
+            "type": "ChessBoardOrientation",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "readonly (\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\")[]",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createChessBoardColorScheme",
+    "title": null,
+    "description": "Creates the theme-derived palette used by `ChessBoard`.\n\nUse `createChessBoardColorScheme` when custom board overlays, piece renderers,\nor adjacent chess UI need to share the same square, highlight, coordinate, and\npiece colors as the built-in board.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/createChessBoardColorScheme.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/createChessBoardColorScheme.ts",
+      "line": 36,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessBoardColorScheme",
+      "ChessColorThemeShape"
+    ],
+    "signatures": [
+      {
+        "label": "(theme: ChessColorThemeShape, overrides?: Partial<ChessBoardColorScheme> | undefined) => ChessBoardColorScheme",
+        "parameters": [
+          {
+            "name": "overrides",
+            "type": "Partial<ChessBoardColorScheme> | undefined",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "theme",
+            "type": "ChessColorThemeShape",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ChessBoardColorScheme",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createOpeningBookColorScheme",
+    "title": null,
+    "description": "Creates the theme-derived palette used by `OpeningBook`.\n\nUse `createOpeningBookColorScheme` when custom opening-list rows, badges, or\ntrainer panels should match the built-in book surface and selected-move states.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/createOpeningBookColorScheme.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/createOpeningBookColorScheme.ts",
+      "line": 11,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessColorThemeShape",
+      "OpeningBookColorScheme"
+    ],
+    "signatures": [
+      {
+        "label": "(theme: ChessColorThemeShape, overrides?: Partial<OpeningBookColorScheme> | undefined) => OpeningBookColorScheme",
+        "parameters": [
+          {
+            "name": "overrides",
+            "type": "Partial<OpeningBookColorScheme> | undefined",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "theme",
+            "type": "ChessColorThemeShape",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "OpeningBookColorScheme",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createPokerTrainingTableState",
+    "title": null,
+    "description": "Adapts the table-relevant subset of a poker training task to generic tabletop presentation state.\n\nThe canonical poker ring for the task table size is rotated so the hero occupies the first\n(bottom) tabletop seat. Players omitted by the task are reconstructed as folded with the\nconfigured default stack.\n\nAccepts serializable poker training task data plus presentation defaults for omitted fields and\nreturns seats and shared-table content ready for `TabletopTable`.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/tabletop/utils/createPokerTrainingTableState.ts",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/utils/createPokerTrainingTableState.ts",
+      "line": 21,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CreatePokerTrainingTableStateOptions",
+      "PokerTrainingTableState",
+      "PokerTrainingTaskTableData"
+    ],
+    "signatures": [
+      {
+        "label": "(task: PokerTrainingTaskTableData, { defaultStackBigBlinds = 100 }?: CreatePokerTrainingTableStateOptions) => PokerTrainingTableState",
+        "parameters": [
+          {
+            "name": "{ defaultStackBigBlinds = 100 }",
+            "type": "CreatePokerTrainingTableStateOptions",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "task",
+            "type": "PokerTrainingTaskTableData",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PokerTrainingTableState",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CreatePokerTrainingTableStateOptions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 121,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "defaultStackBigBlinds",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "createTabletopColorScheme",
+    "title": null,
+    "description": "Creates the theme-derived color palette used by tabletop primitives.\n\nUse `createTabletopColorScheme` when custom components need to align with the\nsame card, table, seat, token, and contrast-aware foreground colors as the\nbuilt-in tabletop components.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/tabletop/utils/createTabletopColorScheme.ts",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/utils/createTabletopColorScheme.ts",
+      "line": 49,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabletopColorScheme"
+    ],
+    "signatures": [
+      {
+        "label": "(theme: TabletopColorThemeShape, overrides?: Partial<TabletopColorScheme>) => TabletopColorScheme",
+        "parameters": [
+          {
+            "name": "overrides",
+            "type": "Partial<TabletopColorScheme>",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "theme",
+            "type": "TabletopColorThemeShape",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "TabletopColorScheme",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createTabletopGameSeats",
+    "title": null,
+    "description": "Joins an ordered game layout with the participant states currently present in a scene.\n\nMissing participants retain their seat definition and receive the configured fallback state,\nwhich lets card games represent folded, eliminated, disconnected, or otherwise inactive seats\nwithout embedding those game rules in the tabletop renderer.\n\nAccepts ordered seats, participant overrides, and the fallback for missing participants, then\nreturns normalized tabletop seats in the same order as the supplied seat definitions.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/tabletop/utils/createTabletopGameSeats.ts",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/utils/createTabletopGameSeats.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CreateTabletopGameSeatsInput",
+      "TabletopSeatState"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  seats,\n  participants,\n  missingParticipantState = { disabled: true, muted: true },\n}: CreateTabletopGameSeatsInput) => readonly TabletopSeatState[]",
+        "parameters": [
+          {
+            "name": "{\n  seats,\n  participants,\n  missingParticipantState = { disabled: true, muted: true },\n}",
+            "type": "CreateTabletopGameSeatsInput",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "readonly TabletopSeatState[]",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CreateTabletopGameSeatsInput",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 35,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabletopGameParticipantState",
+      "TabletopGameSeatDefinition",
+      "TabletopGameSeatPresentation"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "missingParticipantState",
+        "kind": "property",
+        "type": "Partial<TabletopGameSeatPresentation> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "participants",
+        "kind": "property",
+        "type": "readonly TabletopGameParticipantState[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seats",
+        "kind": "property",
+        "type": "readonly TabletopGameSeatDefinition[]",
         "required": true,
         "description": null
       }
@@ -7996,6 +9139,1237 @@
     "structuredRows": []
   },
   {
+    "name": "Game",
+    "title": null,
+    "description": "Bind one serializable game definition to a local transient session and presentation field.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/Game.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/Game.tsx",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: GameProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "GameProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameEntity",
+    "title": null,
+    "description": "Render one generic positioned game entity without owning gameplay semantics.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/GameEntity.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameEntityProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: GameEntityProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "GameEntityProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameEntityEasing",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameEntityMotionProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameEntityEasing"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "motionAlternate",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionDelayMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionDurationMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionEasing",
+        "kind": "property",
+        "type": "GameEntityEasing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionEssential",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOffsetX",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOffsetY",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOpacityDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionPaused",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionRepeat",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionRotationDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionScaleDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "transitionDurationMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "transitionEasing",
+        "kind": "property",
+        "type": "GameEntityEasing | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameEntityProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 39,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameEntityEasing",
+      "GamePointerEvents"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hidden",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "measurementId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionAlternate",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionDelayMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionDurationMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionEasing",
+        "kind": "property",
+        "type": "GameEntityEasing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionEssential",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOffsetX",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOffsetY",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionOpacityDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionPaused",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionRepeat",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionRotationDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "motionScaleDelta",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "opacity",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pointerEvents",
+        "kind": "property",
+        "type": "GamePointerEvents | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rotation",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "scale",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "transitionDurationMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "transitionEasing",
+        "kind": "property",
+        "type": "GameEntityEasing | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameField",
+    "title": null,
+    "description": "Render a bounded relative-positioning surface for game presentation content.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/GameField.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/GameField.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameFieldProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  children,\n  aspectRatio,\n  minHeight = 320,\n  fill = false,\n  clip = true,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}: GameFieldProps) => import(\"react\").JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  children,\n  aspectRatio,\n  minHeight = 320,\n  fill = false,\n  clip = true,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}",
+            "type": "GameFieldProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "import(\"react\").JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameFieldProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 29,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aspectRatio",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "clip",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fill",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameInputZone",
+    "title": null,
+    "description": "Capture pointer/touch geometry and optional keyboard input as normalized generic Game events.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/GameInputZone.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/GameInputZone.tsx",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameInputZoneProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  x = 0,\n  y = 0,\n  width = 100,\n  height = 100,\n  zIndex = 0,\n  enabled = true,\n  continuous = true,\n  keyboardBindings,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n  ...inputProps\n}: GameInputZoneProps) => import(\"react\").JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  x = 0,\n  y = 0,\n  width = 100,\n  height = 100,\n  zIndex = 0,\n  enabled = true,\n  continuous = true,\n  keyboardBindings,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n  ...inputProps\n}",
+            "type": "GameInputZoneProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "import(\"react\").JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameInputZoneProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 63,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameKeyboardBinding"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "continuous",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "enabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "entityId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "eventType",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "keyboardBindings",
+        "kind": "property",
+        "type": "readonly GameKeyboardBinding[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameKeyboardBinding",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 56,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "entityId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "eventType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "key",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "preventDefault",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameMeasurementProbe",
+    "title": null,
+    "description": "Measure two registered game entities and dispatch only their raw rendered geometry.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/GameMeasurementProbe.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/GameMeasurementProbe.tsx",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameMeasurementProbeProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  sourceId,\n  targetId,\n  eventType = 'game.measurement',\n  entityId,\n  delayMs = 0,\n  enabled = true,\n  interactionPolicy,\n}: GameMeasurementProbeProps) => null",
+        "parameters": [
+          {
+            "name": "{\n  sourceId,\n  targetId,\n  eventType = 'game.measurement',\n  entityId,\n  delayMs = 0,\n  enabled = true,\n  interactionPolicy,\n}",
+            "type": "GameMeasurementProbeProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameMeasurementProbeProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 78,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "delayMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "enabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "entityId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "eventType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "sourceId",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "targetId",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GameOverlay",
+    "title": null,
+    "description": "Render an absolute game presentation layer for HUD, feedback, and phase content.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/game/adapters/inbound/GameOverlay.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/game/adapters/inbound/GameOverlay.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameOverlayProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  children,\n  placement = 'fill',\n  blocking = false,\n  padding = 0,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}: GameOverlayProps) => import(\"react\").JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  children,\n  placement = 'fill',\n  blocking = false,\n  padding = 0,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}",
+            "type": "GameOverlayProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "import(\"react\").JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameOverlayPlacement",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameOverlayProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 87,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GameOverlayPlacement"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "blocking",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "padding",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "placement",
+        "kind": "property",
+        "type": "GameOverlayPlacement | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GamePointerEvents",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GameProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/gamePresentation.ts",
+    "sourceLocation": {
+      "filePath": "src/types/gamePresentation.ts",
+      "line": 96,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "aspectRatio",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "autoAdvanceTime",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "clip",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "definition",
+        "kind": "property",
+        "type": "GameDefinition",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "fill",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "input",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"@ankhorage/game\").GameValue>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minHeight",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onOutput",
+        "kind": "property",
+        "type": "((output: GameOutput) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "resetKey",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "seed",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "getSquareFile",
+    "title": null,
+    "description": "Returns the file letter of a chess square.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/getSquareFile.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/getSquareFile.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(square: \"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\") => string",
+        "parameters": [
+          {
+            "name": "square",
+            "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "string",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "getSquareRank",
+    "title": null,
+    "description": "Returns the rank number of a chess square.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/getSquareRank.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/getSquareRank.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(square: \"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\") => string",
+        "parameters": [
+          {
+            "name": "square",
+            "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "string",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "Gradient",
     "title": null,
     "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\nThe host supplies a platform-compatible renderer through\n`GradientRendererProvider`; ZORA does not require an Expo runtime.",
@@ -9899,6 +12273,42 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "isLightSquare",
+    "title": null,
+    "description": "Determines whether a chess square uses the light presentation color.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/isLightSquare.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/isLightSquare.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(square: \"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\") => boolean",
+        "parameters": [
+          {
+            "name": "square",
+            "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "boolean",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -12377,6 +14787,326 @@
     "structuredRows": []
   },
   {
+    "name": "OpeningBook",
+    "title": null,
+    "description": "Renders caller-owned opening suggestions and their visual states.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/chess/adapters/inbound/OpeningBook.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/chess/adapters/inbound/OpeningBook.tsx",
+      "line": 10,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "OpeningBookColorOverrides",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 58,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "OpeningBookColorScheme",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 48,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "border",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "metricSurface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "primaryText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "secondaryText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selectedSurface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "surface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "surfaceHover",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "titleText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "OpeningBookMove",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 74,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "blackWinRate",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "drawRate",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "eco",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fen",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "games",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "san",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "uci",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "whiteWinRate",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "OpeningBookProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 86,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "OpeningBookColorScheme",
+      "OpeningBookMove",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<OpeningBookColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "emptyText",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorText",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "loading",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "moves",
+        "kind": "property",
+        "type": "readonly OpeningBookMove[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onMovePress",
+        "kind": "property",
+        "type": "((move: OpeningBookMove) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedMove",
+        "kind": "property",
+        "type": "string | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "OtpForm",
     "title": null,
     "description": "One-time passcode form pattern with digit input and submit actions.",
@@ -12837,6 +15567,549 @@
         "kind": "property",
         "type": "React.ReactNode",
         "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PlayingCard",
+    "title": null,
+    "description": "Renders a face-up playing card with an accessible rank and suit.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/adapters/inbound/PlayingCard.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/adapters/inbound/PlayingCard.tsx",
+      "line": 14,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PlayingCardProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 76,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue",
+      "TabletopCardSize",
+      "TabletopColorScheme",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "card",
+        "kind": "property",
+        "type": "PlayingCardValue",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<TabletopColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "muted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selected",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "size",
+        "kind": "property",
+        "type": "TabletopCardSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PlayingCardSuit",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PlayingCardValue",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardSuit"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "rank",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "suit",
+        "kind": "property",
+        "type": "PlayingCardSuit",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingPlayer",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 96,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "bet",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "folded",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isHero",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "position",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "stack",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingTable",
+    "title": null,
+    "description": "Maps a serializable training task to presentation without running poker or training policy.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx",
+      "line": 9,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingTableProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 114,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PokerTrainingTaskTableData",
+      "TabletopCardSize",
+      "TabletopColorScheme",
+      "TabletopShape",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cardSize",
+        "kind": "property",
+        "type": "TabletopCardSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<TabletopColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "defaultStackBigBlinds",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "shape",
+        "kind": "property",
+        "type": "TabletopShape | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "task",
+        "kind": "property",
+        "type": "PokerTrainingTaskTableData | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingTableSize",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 104,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingTableState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 124,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue",
+      "TabletopSeatCount",
+      "TabletopSeatState"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "centerCards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "centerLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerSublabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "seatCount",
+        "kind": "property",
+        "type": "TabletopSeatCount",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seats",
+        "kind": "property",
+        "type": "readonly TabletopSeatState[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PokerTrainingTaskTableData",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 105,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue",
+      "PokerTrainingPlayer",
+      "PokerTrainingTableSize"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "blinds",
+        "kind": "property",
+        "type": "{ readonly small: number; readonly big: number; } | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "communityCards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "heroCards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "heroPosition",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "players",
+        "kind": "property",
+        "type": "readonly PokerTrainingPlayer[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pot",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tableSize",
+        "kind": "property",
+        "type": "PokerTrainingTableSize | undefined",
+        "required": false,
         "description": null
       }
     ],
@@ -16345,7 +19618,7 @@
       {
         "name": "indicatorStyle",
         "kind": "property",
-        "type": "\"default\" | \"black\" | \"white\" | undefined",
+        "type": "\"default\" | \"white\" | \"black\" | undefined",
         "required": false,
         "description": null
       },
@@ -19878,6 +23151,596 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopCardSize",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopColorOverrides",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 61,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopColorScheme",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 40,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "cardBack",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "cardBackBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "cardBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "cardSurface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "cardText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mutedText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "redSuitText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seatBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seatMutedText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seatSelectedBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seatSurface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "seatText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tableBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tableFelt",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tableInnerBorder",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tableMutedText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tableText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tokenSurface",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tokenText",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopGameParticipantState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 31,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabletopGameSeatPresentation"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "seatId",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "state",
+        "kind": "property",
+        "type": "Partial<TabletopGameSeatPresentation>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopGameSeatDefinition",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 27,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TabletopGameSeatPresentation"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "defaultState",
+        "kind": "property",
+        "type": "TabletopGameSeatPresentation",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopGameSeatPresentation",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopSeatCount",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopSeatState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "faceDownCards",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "muted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selected",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "sublabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tokenLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopShape",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopTable",
+    "title": null,
+    "description": "Renders a responsive table surface and caller-owned seats.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/adapters/inbound/TabletopTable.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/adapters/inbound/TabletopTable.tsx",
+      "line": 13,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TabletopTableProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/tabletop.ts",
+    "sourceLocation": {
+      "filePath": "src/types/tabletop.ts",
+      "line": 84,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "PlayingCardValue",
+      "TabletopCardSize",
+      "TabletopColorScheme",
+      "TabletopSeatCount",
+      "TabletopSeatState",
+      "TabletopShape",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cardSize",
+        "kind": "property",
+        "type": "TabletopCardSize | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerCards",
+        "kind": "property",
+        "type": "readonly PlayingCardValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerLabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "centerSublabel",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "colorScheme",
+        "kind": "property",
+        "type": "Partial<TabletopColorScheme> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "seatCount",
+        "kind": "property",
+        "type": "TabletopSeatCount | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "seats",
+        "kind": "property",
+        "type": "readonly TabletopSeatState[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "shape",
+        "kind": "property",
+        "type": "TabletopShape | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -23824,7 +27687,7 @@
     "modulePath": "src/features/authoring/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/authoring/componentMeta.ts",
-      "line": 93,
+      "line": 107,
       "column": 14
     },
     "exportPaths": [
@@ -23846,7 +27709,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 186,
+      "line": 215,
       "column": 14
     },
     "exportPaths": [
@@ -24000,7 +27863,7 @@
     "modulePath": "src/features/authoring/constants.ts",
     "sourceLocation": {
       "filePath": "src/features/authoring/constants.ts",
-      "line": 47,
+      "line": 50,
       "column": 14
     },
     "exportPaths": [

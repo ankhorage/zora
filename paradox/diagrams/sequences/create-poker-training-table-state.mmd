@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant participant_createPokerAccessibilityLabel as createPokerAccessibilityLabel
+  participant participant_createPokerTrainingTableState as createPokerTrainingTableState
+  participant participant_createTabletopGameSeats as createTabletopGameSeats
+  participant participant_formatAmount as formatAmount
+  participant participant_rotatePokerPositions as rotatePokerPositions
+  participant_createPokerTrainingTableState->>participant_rotatePokerPositions: rotatePokerPositions()
+  participant_rotatePokerPositions-->>participant_createPokerTrainingTableState: return
+  participant_createPokerTrainingTableState->>participant_formatAmount: formatAmount()
+  participant_formatAmount-->>participant_createPokerTrainingTableState: return
+  participant_createPokerTrainingTableState->>participant_createTabletopGameSeats: createTabletopGameSeats()
+  participant_createTabletopGameSeats-->>participant_createPokerTrainingTableState: return
+  participant_createPokerTrainingTableState->>participant_createPokerAccessibilityLabel: createPokerAccessibilityLabel()
+  participant_createPokerAccessibilityLabel->>participant_formatAmount: formatAmount()
+  participant_formatAmount-->>participant_createPokerAccessibilityLabel: return
+  participant_createPokerAccessibilityLabel-->>participant_createPokerTrainingTableState: return

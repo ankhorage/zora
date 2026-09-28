@@ -1,0 +1,23 @@
+sequenceDiagram
+  participant participant_createRuntimeKey as createRuntimeKey
+  participant participant_Game as Game
+  participant participant_useGameAutoAdvanceClock as useGameAutoAdvanceClock
+  participant participant_useGameOutputEmitter as useGameOutputEmitter
+  participant participant_useGameRuntime as useGameRuntime
+  participant participant_useGameRuntimeReset as useGameRuntimeReset
+  participant participant_useGameScheduledEffects as useGameScheduledEffects
+  participant participant_useLatestValue as useLatestValue
+  participant_Game->>participant_useGameRuntime: useGameRuntime()
+  participant_useGameRuntime->>participant_useLatestValue: useLatestValue()
+  participant_useLatestValue-->>participant_useGameRuntime: return
+  participant_useGameRuntime->>participant_createRuntimeKey: createRuntimeKey()
+  participant_createRuntimeKey-->>participant_useGameRuntime: return
+  participant_useGameRuntime->>participant_useGameRuntimeReset: useGameRuntimeReset()
+  participant_useGameRuntimeReset-->>participant_useGameRuntime: return
+  participant_useGameRuntime->>participant_useGameAutoAdvanceClock: useGameAutoAdvanceClock()
+  participant_useGameAutoAdvanceClock-->>participant_useGameRuntime: return
+  participant_useGameRuntime->>participant_useGameOutputEmitter: useGameOutputEmitter()
+  participant_useGameOutputEmitter-->>participant_useGameRuntime: return
+  participant_useGameRuntime->>participant_useGameScheduledEffects: useGameScheduledEffects()
+  participant_useGameScheduledEffects-->>participant_useGameRuntime: return
+  participant_useGameRuntime-->>participant_Game: return

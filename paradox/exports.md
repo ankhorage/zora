@@ -707,6 +707,62 @@ Structured content container with built-in heading, description, actions, and fo
 Use `Card` for reusable content blocks that should inherit ZORA spacing,
 radius, tone, and responsive header layout without hand-assembling primitives.
 
+## CardBack
+
+Kind: `value`
+Module: `src/features/tabletop/adapters/inbound/CardBack.tsx`
+Source: `src/features/tabletop/adapters/inbound/CardBack.tsx:11:14`
+
+Renders a face-down card with a non-revealing accessible label.
+
+## CardBackProps
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:62:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| muted | property | `boolean \| undefined` | no |  |
+| size | property | `TabletopCardSize \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
+## CardHand
+
+Kind: `value`
+Module: `src/features/tabletop/adapters/inbound/CardHand.tsx`
+Source: `src/features/tabletop/adapters/inbound/CardHand.tsx:10:14`
+
+Renders a compact row of face-up and face-down cards.
+
+## CardHandProps
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:68:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| cards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
+| faceDownCards | property | `number \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| muted | property | `boolean \| undefined` | no |  |
+| size | property | `TabletopCardSize \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
 ## CardProps
 
 Kind: `type`
@@ -965,6 +1021,161 @@ Source: `src/types/checkbox.ts:6:1`
 | width | property | `Responsive<string \| number> \| undefined` | no |  |
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |
+
+## ChessBoard
+
+Kind: `value`
+Module: `src/features/chess/adapters/inbound/ChessBoard.tsx`
+Source: `src/features/chess/adapters/inbound/ChessBoard.tsx:27:14`
+
+Renders caller-owned chess presentation state without chess rule execution.
+
+## ChessBoardColorOverrides
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:46:1`
+
+## ChessBoardColorScheme
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:31:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| border | property | `string` | yes |  |
+| coordinateText | property | `string` | yes |  |
+| darkPiece | property | `string` | yes |  |
+| darkSquare | property | `string` | yes |  |
+| darkSquareText | property | `string` | yes |  |
+| lastMoveFrom | property | `string` | yes |  |
+| lastMoveTo | property | `string` | yes |  |
+| legalTarget | property | `string` | yes |  |
+| lightPiece | property | `string` | yes |  |
+| lightSquare | property | `string` | yes |  |
+| lightSquareText | property | `string` | yes |  |
+| selectedSquare | property | `string` | yes |  |
+
+## ChessBoardOrientation
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:5:1`
+
+## ChessBoardProps
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:60:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| colorScheme | property | `Partial<ChessBoardColorScheme> \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| lastMove | property | `ChessMoveAttempt \| null \| undefined` | no |  |
+| legalTargets | property | `readonly ("a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onMoveAttempt | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
+| onSquarePress | property | `((square: ChessSquareId) => void) \| undefined` | no |  |
+| orientation | property | `ChessBoardOrientation \| undefined` | no |  |
+| pieces | property | `readonly ChessPieceState[] \| undefined` | no |  |
+| renderPiece | property | `ChessPieceRenderer \| undefined` | no |  |
+| selectedSquare | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8" \| null \| undefined` | no |  |
+| showCoordinates | property | `boolean \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
+## ChessColorThemeShape
+
+Kind: `type`
+Module: `src/features/chess/utils/createChessBoardColorScheme.ts`
+Source: `src/features/chess/utils/createChessBoardColorScheme.ts:3:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| semantics | property | `{ action: { primary: { softBg: string; }; }; content: { default: string; muted: string; }; neutral: { divider: string; surface: string; surfaceHover: string; }; success: { softBg: string; }; warning: { softBg: string; }; }` | yes |  |
+
+## ChessMoveAttempt
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:11:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| from | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| promotion | property | `ChessPromotionPiece \| undefined` | no |  |
+| to | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+
+## ChessPieceCode
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:6:1`
+
+## ChessPieceRenderContext
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:23:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| color | property | `string` | yes |  |
+| piece | property | `string` | yes |  |
+| square | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+
+## ChessPieceRenderer
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:29:1`
+
+## ChessPieceState
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:17:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| color | property | `"white" \| "black"` | yes |  |
+| piece | property | `string` | yes |  |
+| square | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+
+## ChessPromotionPiece
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:9:1`
+
+## ChessSquareId
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:7:1`
+
+## chessSquares
+
+Kind: `value`
+Module: `src/features/chess/utils/chessSquares.ts`
+Source: `src/features/chess/utils/chessSquares.ts:4:14`
+
+Lists every board square in ascending rank and file order.
 
 ## Chip
 
@@ -1238,6 +1449,153 @@ Source: `src/types/content-rail.ts:15:1`
 | firstVisibleIndex | property | `number` | yes |  |
 | itemCount | property | `number` | yes |  |
 | lastVisibleIndex | property | `number` | yes |  |
+
+## createBoardSquares
+
+Kind: `function`
+Module: `src/features/chess/utils/createBoardSquares.ts`
+Source: `src/features/chess/utils/createBoardSquares.ts:7:1`
+
+Orders the 64 displayed squares for the selected player orientation.
+
+### Signatures
+
+- `(orientation: ChessBoardOrientation) => readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+  - orientation: `ChessBoardOrientation`
+  - returns: `readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+
+## createChessBoardColorScheme
+
+Kind: `function`
+Module: `src/features/chess/utils/createChessBoardColorScheme.ts`
+Source: `src/features/chess/utils/createChessBoardColorScheme.ts:36:1`
+
+Creates the theme-derived palette used by `ChessBoard`.
+
+Use `createChessBoardColorScheme` when custom board overlays, piece renderers,
+or adjacent chess UI need to share the same square, highlight, coordinate, and
+piece colors as the built-in board.
+
+### Signatures
+
+- `(theme: ChessColorThemeShape, overrides?: Partial<ChessBoardColorScheme> | undefined) => ChessBoardColorScheme`
+  - overrides: `Partial<ChessBoardColorScheme> | undefined` (optional)
+  - theme: `ChessColorThemeShape`
+  - returns: `ChessBoardColorScheme`
+
+## createOpeningBookColorScheme
+
+Kind: `function`
+Module: `src/features/chess/utils/createOpeningBookColorScheme.ts`
+Source: `src/features/chess/utils/createOpeningBookColorScheme.ts:11:1`
+
+Creates the theme-derived palette used by `OpeningBook`.
+
+Use `createOpeningBookColorScheme` when custom opening-list rows, badges, or
+trainer panels should match the built-in book surface and selected-move states.
+
+### Signatures
+
+- `(theme: ChessColorThemeShape, overrides?: Partial<OpeningBookColorScheme> | undefined) => OpeningBookColorScheme`
+  - overrides: `Partial<OpeningBookColorScheme> | undefined` (optional)
+  - theme: `ChessColorThemeShape`
+  - returns: `OpeningBookColorScheme`
+
+## createPokerTrainingTableState
+
+Kind: `function`
+Module: `src/features/tabletop/utils/createPokerTrainingTableState.ts`
+Source: `src/features/tabletop/utils/createPokerTrainingTableState.ts:21:1`
+
+Adapts the table-relevant subset of a poker training task to generic tabletop presentation state.
+
+The canonical poker ring for the task table size is rotated so the hero occupies the first
+(bottom) tabletop seat. Players omitted by the task are reconstructed as folded with the
+configured default stack.
+
+Accepts serializable poker training task data plus presentation defaults for omitted fields and
+returns seats and shared-table content ready for `TabletopTable`.
+
+### Signatures
+
+- `(task: PokerTrainingTaskTableData, { defaultStackBigBlinds = 100 }?: CreatePokerTrainingTableStateOptions) => PokerTrainingTableState`
+  - { defaultStackBigBlinds = 100 }: `CreatePokerTrainingTableStateOptions` (optional)
+  - task: `PokerTrainingTaskTableData`
+  - returns: `PokerTrainingTableState`
+
+## CreatePokerTrainingTableStateOptions
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:121:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| defaultStackBigBlinds | property | `number \| undefined` | no |  |
+
+## createTabletopColorScheme
+
+Kind: `function`
+Module: `src/features/tabletop/utils/createTabletopColorScheme.ts`
+Source: `src/features/tabletop/utils/createTabletopColorScheme.ts:49:1`
+
+Creates the theme-derived color palette used by tabletop primitives.
+
+Use `createTabletopColorScheme` when custom components need to align with the
+same card, table, seat, token, and contrast-aware foreground colors as the
+built-in tabletop components.
+
+### Signatures
+
+- `(theme: TabletopColorThemeShape, overrides?: Partial<TabletopColorScheme>) => TabletopColorScheme`
+  - overrides: `Partial<TabletopColorScheme>` (optional)
+  - theme: `TabletopColorThemeShape`
+  - returns: `TabletopColorScheme`
+
+## createTabletopGameSeats
+
+Kind: `function`
+Module: `src/features/tabletop/utils/createTabletopGameSeats.ts`
+Source: `src/features/tabletop/utils/createTabletopGameSeats.ts:13:1`
+
+Joins an ordered game layout with the participant states currently present in a scene.
+
+Missing participants retain their seat definition and receive the configured fallback state,
+which lets card games represent folded, eliminated, disconnected, or otherwise inactive seats
+without embedding those game rules in the tabletop renderer.
+
+Accepts ordered seats, participant overrides, and the fallback for missing participants, then
+returns normalized tabletop seats in the same order as the supplied seat definitions.
+
+### Signatures
+
+- `({
+  seats,
+  participants,
+  missingParticipantState = { disabled: true, muted: true },
+}: CreateTabletopGameSeatsInput) => readonly TabletopSeatState[]`
+  - {
+  seats,
+  participants,
+  missingParticipantState = { disabled: true, muted: true },
+}: `CreateTabletopGameSeatsInput`
+  - returns: `readonly TabletopSeatState[]`
+
+## CreateTabletopGameSeatsInput
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:35:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| missingParticipantState | property | `Partial<TabletopGameSeatPresentation> \| undefined` | no |  |
+| participants | property | `readonly TabletopGameParticipantState[]` | yes |  |
+| seats | property | `readonly TabletopGameSeatDefinition[]` | yes |  |
 
 ## createZoraThemeConfig
 
@@ -1802,6 +2160,396 @@ Kind: `unknown`
 Module: `src/types/form.ts`
 Source: `src/types/form.ts:13:1`
 
+## Game
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/Game.tsx`
+Source: `src/features/game/adapters/inbound/Game.tsx:12:1`
+
+Bind one serializable game definition to a local transient session and presentation field.
+
+### Signatures
+
+- `(props: GameProps) => React.JSX.Element`
+  - props: `GameProps`
+  - returns: `React.JSX.Element`
+
+## GameEntity
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/GameEntity.tsx`
+Source: `src/features/game/adapters/inbound/GameEntity.tsx:9:1`
+
+Render one generic positioned game entity without owning gameplay semantics.
+
+### Signatures
+
+- `(props: GameEntityProps) => React.JSX.Element`
+  - props: `GameEntityProps`
+  - returns: `React.JSX.Element`
+
+## GameEntityEasing
+
+Kind: `unknown`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:8:1`
+
+## GameEntityMotionProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:10:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| motionAlternate | property | `boolean \| undefined` | no |  |
+| motionDelayMs | property | `number \| undefined` | no |  |
+| motionDurationMs | property | `number \| undefined` | no |  |
+| motionEasing | property | `GameEntityEasing \| undefined` | no |  |
+| motionEssential | property | `boolean \| undefined` | no |  |
+| motionOffsetX | property | `number \| undefined` | no |  |
+| motionOffsetY | property | `number \| undefined` | no |  |
+| motionOpacityDelta | property | `number \| undefined` | no |  |
+| motionPaused | property | `boolean \| undefined` | no |  |
+| motionRepeat | property | `boolean \| undefined` | no |  |
+| motionRotationDelta | property | `number \| undefined` | no |  |
+| motionScaleDelta | property | `number \| undefined` | no |  |
+| transitionDurationMs | property | `number \| undefined` | no |  |
+| transitionEasing | property | `GameEntityEasing \| undefined` | no |  |
+
+## GameEntityProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:39:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| children | property | `React.ReactNode` | no |  |
+| height | property | `number \| undefined` | no |  |
+| hidden | property | `boolean \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| measurementId | property | `string \| undefined` | no |  |
+| motionAlternate | property | `boolean \| undefined` | no |  |
+| motionDelayMs | property | `number \| undefined` | no |  |
+| motionDurationMs | property | `number \| undefined` | no |  |
+| motionEasing | property | `GameEntityEasing \| undefined` | no |  |
+| motionEssential | property | `boolean \| undefined` | no |  |
+| motionOffsetX | property | `number \| undefined` | no |  |
+| motionOffsetY | property | `number \| undefined` | no |  |
+| motionOpacityDelta | property | `number \| undefined` | no |  |
+| motionPaused | property | `boolean \| undefined` | no |  |
+| motionRepeat | property | `boolean \| undefined` | no |  |
+| motionRotationDelta | property | `number \| undefined` | no |  |
+| motionScaleDelta | property | `number \| undefined` | no |  |
+| opacity | property | `number \| undefined` | no |  |
+| pointerEvents | property | `GamePointerEvents \| undefined` | no |  |
+| rotation | property | `number \| undefined` | no |  |
+| scale | property | `number \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| transitionDurationMs | property | `number \| undefined` | no |  |
+| transitionEasing | property | `GameEntityEasing \| undefined` | no |  |
+| width | property | `number \| undefined` | no |  |
+| x | property | `number \| undefined` | no |  |
+| y | property | `number \| undefined` | no |  |
+| zIndex | property | `number \| undefined` | no |  |
+
+## GameField
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/GameField.tsx`
+Source: `src/features/game/adapters/inbound/GameField.tsx:7:1`
+
+Render a bounded relative-positioning surface for game presentation content.
+
+### Signatures
+
+- `({
+  children,
+  aspectRatio,
+  minHeight = 320,
+  fill = false,
+  clip = true,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+}: GameFieldProps) => import("react").JSX.Element`
+  - {
+  children,
+  aspectRatio,
+  minHeight = 320,
+  fill = false,
+  clip = true,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+}: `GameFieldProps`
+  - returns: `import("react").JSX.Element`
+
+## GameFieldProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:29:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| aspectRatio | property | `number \| undefined` | no |  |
+| children | property | `React.ReactNode` | no |  |
+| clip | property | `boolean \| undefined` | no |  |
+| fill | property | `boolean \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| minHeight | property | `number \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+
+## GameInputZone
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/GameInputZone.tsx`
+Source: `src/features/game/adapters/inbound/GameInputZone.tsx:8:1`
+
+Capture pointer/touch geometry and optional keyboard input as normalized generic Game events.
+
+### Signatures
+
+- `({
+  x = 0,
+  y = 0,
+  width = 100,
+  height = 100,
+  zIndex = 0,
+  enabled = true,
+  continuous = true,
+  keyboardBindings,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+  ...inputProps
+}: GameInputZoneProps) => import("react").JSX.Element`
+  - {
+  x = 0,
+  y = 0,
+  width = 100,
+  height = 100,
+  zIndex = 0,
+  enabled = true,
+  continuous = true,
+  keyboardBindings,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+  ...inputProps
+}: `GameInputZoneProps`
+  - returns: `import("react").JSX.Element`
+
+## GameInputZoneProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:63:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| continuous | property | `boolean \| undefined` | no |  |
+| enabled | property | `boolean \| undefined` | no |  |
+| entityId | property | `string \| undefined` | no |  |
+| eventType | property | `string` | yes |  |
+| height | property | `number \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| keyboardBindings | property | `readonly GameKeyboardBinding[] \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| width | property | `number \| undefined` | no |  |
+| x | property | `number \| undefined` | no |  |
+| y | property | `number \| undefined` | no |  |
+| zIndex | property | `number \| undefined` | no |  |
+
+## GameKeyboardBinding
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:56:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| entityId | property | `string \| undefined` | no |  |
+| eventType | property | `string \| undefined` | no |  |
+| key | property | `string` | yes |  |
+| preventDefault | property | `boolean \| undefined` | no |  |
+
+## GameMeasurementProbe
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/GameMeasurementProbe.tsx`
+Source: `src/features/game/adapters/inbound/GameMeasurementProbe.tsx:9:1`
+
+Measure two registered game entities and dispatch only their raw rendered geometry.
+
+### Signatures
+
+- `({
+  sourceId,
+  targetId,
+  eventType = 'game.measurement',
+  entityId,
+  delayMs = 0,
+  enabled = true,
+  interactionPolicy,
+}: GameMeasurementProbeProps) => null`
+  - {
+  sourceId,
+  targetId,
+  eventType = 'game.measurement',
+  entityId,
+  delayMs = 0,
+  enabled = true,
+  interactionPolicy,
+}: `GameMeasurementProbeProps`
+  - returns: `null`
+
+## GameMeasurementProbeProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:78:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| delayMs | property | `number \| undefined` | no |  |
+| enabled | property | `boolean \| undefined` | no |  |
+| entityId | property | `string \| undefined` | no |  |
+| eventType | property | `string \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| sourceId | property | `string` | yes |  |
+| targetId | property | `string` | yes |  |
+
+## GameOverlay
+
+Kind: `function`
+Module: `src/features/game/adapters/inbound/GameOverlay.tsx`
+Source: `src/features/game/adapters/inbound/GameOverlay.tsx:7:1`
+
+Render an absolute game presentation layer for HUD, feedback, and phase content.
+
+### Signatures
+
+- `({
+  children,
+  placement = 'fill',
+  blocking = false,
+  padding = 0,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+}: GameOverlayProps) => import("react").JSX.Element`
+  - {
+  children,
+  placement = 'fill',
+  blocking = false,
+  padding = 0,
+  accessibilityLabel,
+  interactionPolicy,
+  testID,
+}: `GameOverlayProps`
+  - returns: `import("react").JSX.Element`
+
+## GameOverlayPlacement
+
+Kind: `unknown`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:26:1`
+
+## GameOverlayProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:87:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| blocking | property | `boolean \| undefined` | no |  |
+| children | property | `React.ReactNode` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| padding | property | `number \| undefined` | no |  |
+| placement | property | `GameOverlayPlacement \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+
+## GamePointerEvents
+
+Kind: `unknown`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:7:1`
+
+## GameProps
+
+Kind: `type`
+Module: `src/types/gamePresentation.ts`
+Source: `src/types/gamePresentation.ts:96:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| aspectRatio | property | `number \| undefined` | no |  |
+| autoAdvanceTime | property | `boolean \| undefined` | no |  |
+| children | property | `React.ReactNode` | no |  |
+| clip | property | `boolean \| undefined` | no |  |
+| definition | property | `GameDefinition` | yes |  |
+| fill | property | `boolean \| undefined` | no |  |
+| input | property | `Readonly<Record<string, import("@ankhorage/game").GameValue>> \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| minHeight | property | `number \| undefined` | no |  |
+| onOutput | property | `((output: GameOutput) => void) \| undefined` | no |  |
+| resetKey | property | `string \| undefined` | no |  |
+| seed | property | `number \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+
+## getSquareFile
+
+Kind: `function`
+Module: `src/features/chess/utils/getSquareFile.ts`
+Source: `src/features/chess/utils/getSquareFile.ts:4:1`
+
+Returns the file letter of a chess square.
+
+### Signatures
+
+- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => string`
+  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+  - returns: `string`
+
+## getSquareRank
+
+Kind: `function`
+Module: `src/features/chess/utils/getSquareRank.ts`
+Source: `src/features/chess/utils/getSquareRank.ts:4:1`
+
+Returns the rank number of a chess square.
+
+### Signatures
+
+- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => string`
+  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+  - returns: `string`
+
 ## Gradient
 
 Kind: `value`
@@ -2247,6 +2995,20 @@ Source: `src/types/image.ts:8:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | width | property | `string \| number \| undefined` | no |  |
+
+## isLightSquare
+
+Kind: `function`
+Module: `src/features/chess/utils/isLightSquare.ts`
+Source: `src/features/chess/utils/isLightSquare.ts:6:1`
+
+Determines whether a chess square uses the light presentation color.
+
+### Signatures
+
+- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => boolean`
+  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+  - returns: `boolean`
 
 ## KeyboardAvoidingView
 
@@ -2791,6 +3553,82 @@ Source: `src/types/auth.ts:96:1`
 | themeId | property | `string \| undefined` | no |  |
 | variant | property | `import("./button").ZoraButtonVariant \| undefined` | no |  |
 
+## OpeningBook
+
+Kind: `value`
+Module: `src/features/chess/adapters/inbound/OpeningBook.tsx`
+Source: `src/features/chess/adapters/inbound/OpeningBook.tsx:10:14`
+
+Renders caller-owned opening suggestions and their visual states.
+
+## OpeningBookColorOverrides
+
+Kind: `unknown`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:58:1`
+
+## OpeningBookColorScheme
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:48:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| border | property | `string` | yes |  |
+| metricSurface | property | `string` | yes |  |
+| primaryText | property | `string` | yes |  |
+| secondaryText | property | `string` | yes |  |
+| selectedSurface | property | `string` | yes |  |
+| surface | property | `string` | yes |  |
+| surfaceHover | property | `string` | yes |  |
+| titleText | property | `string` | yes |  |
+
+## OpeningBookMove
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:74:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| blackWinRate | property | `number \| undefined` | no |  |
+| drawRate | property | `number \| undefined` | no |  |
+| eco | property | `string \| undefined` | no |  |
+| fen | property | `string \| undefined` | no |  |
+| games | property | `number \| undefined` | no |  |
+| name | property | `string \| undefined` | no |  |
+| san | property | `string` | yes |  |
+| uci | property | `string \| undefined` | no |  |
+| whiteWinRate | property | `number \| undefined` | no |  |
+
+## OpeningBookProps
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:86:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| colorScheme | property | `Partial<OpeningBookColorScheme> \| undefined` | no |  |
+| emptyText | property | `string \| undefined` | no |  |
+| errorText | property | `string \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| loading | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| moves | property | `readonly OpeningBookMove[] \| undefined` | no |  |
+| onMovePress | property | `((move: OpeningBookMove) => void) \| undefined` | no |  |
+| selectedMove | property | `string \| null \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| title | property | `string \| undefined` | no |  |
+
 ## OtpForm
 
 Kind: `value`
@@ -2901,6 +3739,142 @@ Source: `src/types/palette-item.ts:6:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | title | property | `React.ReactNode` | yes |  |
+
+## PlayingCard
+
+Kind: `value`
+Module: `src/features/tabletop/adapters/inbound/PlayingCard.tsx`
+Source: `src/features/tabletop/adapters/inbound/PlayingCard.tsx:14:14`
+
+Renders a face-up playing card with an accessible rank and suit.
+
+## PlayingCardProps
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:76:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| card | property | `PlayingCardValue` | yes |  |
+| colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| muted | property | `boolean \| undefined` | no |  |
+| selected | property | `boolean \| undefined` | no |  |
+| size | property | `TabletopCardSize \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
+## PlayingCardSuit
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:5:1`
+
+## PlayingCardValue
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:10:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| rank | property | `string` | yes |  |
+| suit | property | `PlayingCardSuit` | yes |  |
+
+## PokerTrainingPlayer
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:96:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| bet | property | `number \| undefined` | no |  |
+| cards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| folded | property | `boolean \| undefined` | no |  |
+| isHero | property | `boolean \| undefined` | no |  |
+| position | property | `string` | yes |  |
+| stack | property | `number \| undefined` | no |  |
+
+## PokerTrainingTable
+
+Kind: `value`
+Module: `src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx`
+Source: `src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx:9:14`
+
+Maps a serializable training task to presentation without running poker or training policy.
+
+## PokerTrainingTableProps
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:114:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| cardSize | property | `TabletopCardSize \| undefined` | no |  |
+| colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
+| defaultStackBigBlinds | property | `number \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| shape | property | `TabletopShape \| undefined` | no |  |
+| task | property | `PokerTrainingTaskTableData \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
+## PokerTrainingTableSize
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:104:1`
+
+## PokerTrainingTableState
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:124:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string` | yes |  |
+| centerCards | property | `readonly PlayingCardValue[]` | yes |  |
+| centerLabel | property | `string \| undefined` | no |  |
+| centerSublabel | property | `string \| undefined` | no |  |
+| seatCount | property | `TabletopSeatCount` | yes |  |
+| seats | property | `readonly TabletopSeatState[]` | yes |  |
+
+## PokerTrainingTaskTableData
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:105:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| blinds | property | `{ readonly small: number; readonly big: number; } \| undefined` | no |  |
+| communityCards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| heroCards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| heroPosition | property | `string \| undefined` | no |  |
+| players | property | `readonly PokerTrainingPlayer[] \| undefined` | no |  |
+| pot | property | `number \| undefined` | no |  |
+| tableSize | property | `PokerTrainingTableSize \| undefined` | no |  |
 
 ## PopoverMenu
 
@@ -3685,7 +4659,7 @@ Source: `src/types/layout.ts:14:1`
 | horizontal | property | `boolean \| null \| undefined` | no |  |
 | id | property | `string \| undefined` | no |  |
 | importantForAccessibility | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no |  |
-| indicatorStyle | property | `"default" \| "black" \| "white" \| undefined` | no |  |
+| indicatorStyle | property | `"default" \| "white" \| "black" \| undefined` | no |  |
 | innerViewRef | property | `React.RefObject<View> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invertStickyHeaders | property | `boolean \| undefined` | no |  |
@@ -4442,6 +5416,146 @@ Module: `src/features/tabs/adapters/inbound/Tab.tsx`
 Source: `src/features/tabs/adapters/inbound/Tab.tsx:9:14`
 
 Renders one labeled selectable tab backed by Surface accessibility semantics.
+
+## TabletopCardSize
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:6:1`
+
+## TabletopColorOverrides
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:61:1`
+
+## TabletopColorScheme
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:40:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| cardBack | property | `string` | yes |  |
+| cardBackBorder | property | `string` | yes |  |
+| cardBorder | property | `string` | yes |  |
+| cardSurface | property | `string` | yes |  |
+| cardText | property | `string` | yes |  |
+| mutedText | property | `string` | yes |  |
+| redSuitText | property | `string` | yes |  |
+| seatBorder | property | `string` | yes |  |
+| seatMutedText | property | `string` | yes |  |
+| seatSelectedBorder | property | `string` | yes |  |
+| seatSurface | property | `string` | yes |  |
+| seatText | property | `string` | yes |  |
+| tableBorder | property | `string` | yes |  |
+| tableFelt | property | `string` | yes |  |
+| tableInnerBorder | property | `string` | yes |  |
+| tableMutedText | property | `string` | yes |  |
+| tableText | property | `string` | yes |  |
+| tokenSurface | property | `string` | yes |  |
+| tokenText | property | `string` | yes |  |
+
+## TabletopGameParticipantState
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:31:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| seatId | property | `string` | yes |  |
+| state | property | `Partial<TabletopGameSeatPresentation>` | yes |  |
+
+## TabletopGameSeatDefinition
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:27:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| defaultState | property | `TabletopGameSeatPresentation` | yes |  |
+| id | property | `string` | yes |  |
+
+## TabletopGameSeatPresentation
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:26:1`
+
+## TabletopSeatCount
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:8:1`
+
+## TabletopSeatState
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:14:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| cards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| faceDownCards | property | `number \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| label | property | `React.ReactNode` | yes |  |
+| muted | property | `boolean \| undefined` | no |  |
+| selected | property | `boolean \| undefined` | no |  |
+| sublabel | property | `React.ReactNode` | no |  |
+| tokenLabel | property | `React.ReactNode` | no |  |
+
+## TabletopShape
+
+Kind: `unknown`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:7:1`
+
+## TabletopTable
+
+Kind: `value`
+Module: `src/features/tabletop/adapters/inbound/TabletopTable.tsx`
+Source: `src/features/tabletop/adapters/inbound/TabletopTable.tsx:13:14`
+
+Renders a responsive table surface and caller-owned seats.
+
+## TabletopTableProps
+
+Kind: `type`
+Module: `src/types/tabletop.ts`
+Source: `src/types/tabletop.ts:84:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| cardSize | property | `TabletopCardSize \| undefined` | no |  |
+| centerCards | property | `readonly PlayingCardValue[] \| undefined` | no |  |
+| centerLabel | property | `React.ReactNode` | no |  |
+| centerSublabel | property | `React.ReactNode` | no |  |
+| colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| seatCount | property | `TabletopSeatCount \| undefined` | no |  |
+| seats | property | `readonly TabletopSeatState[]` | yes |  |
+| shape | property | `TabletopShape \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 
 ## TabList
 
@@ -5407,13 +6521,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/authoring/componentMeta.ts`
-Source: `src/features/authoring/componentMeta.ts:93:14`
+Source: `src/features/authoring/componentMeta.ts:107:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:186:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:215:14`
 
 ## ZORA_CORE_PLUGIN
 
@@ -5457,7 +6571,7 @@ Source: `src/features/authoring/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/features/authoring/constants.ts`
-Source: `src/features/authoring/constants.ts:47:14`
+Source: `src/features/authoring/constants.ts:50:14`
 
 ## ZoraBaseProps
 

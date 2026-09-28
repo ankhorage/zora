@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant participant_clampGamePercentage as clampGamePercentage
+  participant participant_createGameInputZoneKeyboardProps as createGameInputZoneKeyboardProps
+  participant participant_createInputZoneStyle as createInputZoneStyle
+  participant participant_GameInputZone as GameInputZone
+  participant participant_toGamePercentage as toGamePercentage
+  participant participant_useGameInputZoneResponder as useGameInputZoneResponder
+  participant_GameInputZone->>participant_useGameInputZoneResponder: useGameInputZoneResponder()
+  participant_useGameInputZoneResponder-->>participant_GameInputZone: return
+  participant_GameInputZone->>participant_createGameInputZoneKeyboardProps: createGameInputZoneKeyboardProps()
+  participant_createGameInputZoneKeyboardProps-->>participant_GameInputZone: return
+  participant_GameInputZone->>participant_createInputZoneStyle: createInputZoneStyle()
+  participant_createInputZoneStyle->>participant_toGamePercentage: toGamePercentage()
+  participant_toGamePercentage->>participant_clampGamePercentage: clampGamePercentage()
+  participant_clampGamePercentage-->>participant_toGamePercentage: return
+  participant_toGamePercentage-->>participant_createInputZoneStyle: return
+  participant_createInputZoneStyle-->>participant_GameInputZone: return

@@ -183,6 +183,7 @@ graph TD
   module_src_features_authoring_componentMeta_ts --> module_src_features_card_productCardMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_chat_chatListItemMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_chat_messageBubbleMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_chess_meta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_chip_chipGroupMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_chip_chipMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_collection_editor_meta_ts
@@ -201,6 +202,12 @@ graph TD
   module_src_features_authoring_componentMeta_ts --> module_src_features_form_select_selectMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_form_switch_switchMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameEntityMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameFieldMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameInputZoneMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameMeasurementProbeMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameOverlayMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_hero_heroMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_icon_iconMeta_ts
@@ -228,6 +235,7 @@ graph TD
   module_src_features_authoring_componentMeta_ts --> module_src_features_selection_meta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_skeleton_skeletonMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_surface_surfaceMeta_ts
+  module_src_features_authoring_componentMeta_ts --> module_src_features_tabletop_meta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabListMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabMeta_ts
   module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabPanelMeta_ts
@@ -485,6 +493,47 @@ graph TD
   module_src_features_chat_messageBubbleMeta_ts --> module_src_features_authoring_index_ts
   module_src_features_chat_public_ts["src/features/chat/public.ts"]
   package__ankhorage_zora -.-> module_src_features_chat_public_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx["src/features/chess/adapters/inbound/ChessBoard.tsx"]
+  package__ankhorage_zora -.-> module_src_features_chess_adapters_inbound_ChessBoard_tsx
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createBoardSquares_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardColorScheme_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_isLightSquare_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_types_chess_ts
+  module_src_features_chess_adapters_inbound_OpeningBook_tsx["src/features/chess/adapters/inbound/OpeningBook.tsx"]
+  package__ankhorage_zora -.-> module_src_features_chess_adapters_inbound_OpeningBook_tsx
+  module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_features_chess_utils_createOpeningBookColorScheme_ts
+  module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_types_chess_ts
+  module_src_features_chess_meta_ts["src/features/chess/meta.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_meta_ts
+  module_src_features_chess_meta_ts --> module_src_types_authoring_ts
+  module_src_features_chess_public_ts["src/features/chess/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_public_ts
+  module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_chessSquares_ts
+  module_src_features_chess_utils_chessSquares_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_createBoardSquares_ts["src/features/chess/utils/createBoardSquares.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_createBoardSquares_ts
+  module_src_features_chess_utils_createBoardSquares_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_createChessBoardColorScheme_ts["src/features/chess/utils/createChessBoardColorScheme.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_createChessBoardColorScheme_ts
+  module_src_features_chess_utils_createChessBoardColorScheme_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_createOpeningBookColorScheme_ts["src/features/chess/utils/createOpeningBookColorScheme.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_createOpeningBookColorScheme_ts
+  module_src_features_chess_utils_createOpeningBookColorScheme_ts --> module_src_features_chess_utils_createChessBoardColorScheme_ts
+  module_src_features_chess_utils_createOpeningBookColorScheme_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_getSquareFile_ts["src/features/chess/utils/getSquareFile.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_getSquareFile_ts
+  module_src_features_chess_utils_getSquareFile_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_getSquareRank_ts["src/features/chess/utils/getSquareRank.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_getSquareRank_ts
+  module_src_features_chess_utils_getSquareRank_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_isLightSquare_ts["src/features/chess/utils/isLightSquare.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_isLightSquare_ts
+  module_src_features_chess_utils_isLightSquare_ts --> module_src_types_chess_ts
   module_src_features_chip_adapters_inbound_Chip_tsx["src/features/chip/adapters/inbound/Chip.tsx"]
   package__ankhorage_zora -.-> module_src_features_chip_adapters_inbound_Chip_tsx
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_chip_utils_resolveChipColors_ts
@@ -829,6 +878,120 @@ graph TD
   module_src_features_form_utils_validation_ts["src/features/form/utils/validation.ts"]
   package__ankhorage_zora -.-> module_src_features_form_utils_validation_ts
   module_src_features_form_utils_validation_ts --> module_src_types_form_ts
+  module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts["src/features/game/adapters/inbound/createGameKeyboardEvent.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts
+  module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_createGameMeasurementEvent_ts["src/features/game/adapters/inbound/createGameMeasurementEvent.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_createGameMeasurementEvent_ts
+  module_src_features_game_adapters_inbound_createGameMeasurementEvent_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_adapters_inbound_createGamePointerEvent_ts["src/features/game/adapters/inbound/createGamePointerEvent.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_createGamePointerEvent_ts
+  module_src_features_game_adapters_inbound_createGamePointerEvent_ts --> module_src_features_game_utils_clampGamePercentage_ts
+  module_src_features_game_adapters_inbound_Game_tsx["src/features/game/adapters/inbound/Game.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_Game_tsx
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_adapters_inbound_GameField_tsx
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_createGameBindingContext_ts
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_createGameMeasurementRegistry_ts
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_useGameRuntime_ts
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx["src/features/game/adapters/inbound/GameEntity.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameEntity_tsx
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityAnimatedStyle_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityMeasurement_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameField_tsx["src/features/game/adapters/inbound/GameField.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameField_tsx
+  module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_layout_public_ts
+  module_src_features_game_adapters_inbound_GameField_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameInputZone_tsx["src/features/game/adapters/inbound/GameInputZone.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameInputZone_tsx
+  module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts
+  module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_features_game_utils_toGamePercentage_ts
+  module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx["src/features/game/adapters/inbound/GameMeasurementProbe.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_features_game_adapters_inbound_createGameMeasurementEvent_ts
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_types_gameRuntime_ts
+  module_src_features_game_adapters_inbound_GameOverlay_tsx["src/features/game/adapters/inbound/GameOverlay.tsx"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameOverlay_tsx
+  module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_features_layout_public_ts
+  module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_measureGameEntity_ts["src/features/game/adapters/inbound/measureGameEntity.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_measureGameEntity_ts
+  module_src_features_game_adapters_inbound_measureGameEntity_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts["src/features/game/adapters/inbound/useGameInputZoneResponder.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts
+  module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts
+  module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGamePointerEvent_ts
+  module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_composition_createGameBindingContext_ts["src/features/game/composition/createGameBindingContext.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_composition_createGameBindingContext_ts
+  module_src_features_game_composition_createGameMeasurementRegistry_ts["src/features/game/composition/createGameMeasurementRegistry.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_composition_createGameMeasurementRegistry_ts
+  module_src_features_game_composition_createGameMeasurementRegistry_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_composition_GameRuntimeContext_ts["src/features/game/composition/GameRuntimeContext.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_composition_GameRuntimeContext_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_composition_useGameRuntime_ts["src/features/game/composition/useGameRuntime.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_composition_useGameRuntime_ts
+  module_src_features_game_composition_useGameRuntime_ts --> module_src_features_game_composition_useGameScheduledEffects_ts
+  module_src_features_game_composition_useGameRuntime_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_composition_useGameRuntime_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_composition_useGameScheduledEffects_ts["src/features/game/composition/useGameScheduledEffects.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_composition_useGameScheduledEffects_ts
+  module_src_features_game_composition_useGameScheduledEffects_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_meta_gameEntityMeta_ts["src/features/game/meta/gameEntityMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameEntityMeta_ts
+  module_src_features_game_meta_gameEntityMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_meta_gameFieldMeta_ts["src/features/game/meta/gameFieldMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameFieldMeta_ts
+  module_src_features_game_meta_gameFieldMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_meta_gameInputZoneMeta_ts["src/features/game/meta/gameInputZoneMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameInputZoneMeta_ts
+  module_src_features_game_meta_gameInputZoneMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_meta_gameMeasurementProbeMeta_ts["src/features/game/meta/gameMeasurementProbeMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameMeasurementProbeMeta_ts
+  module_src_features_game_meta_gameMeasurementProbeMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_meta_gameMeta_ts["src/features/game/meta/gameMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameMeta_ts
+  module_src_features_game_meta_gameMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_meta_gameOverlayMeta_ts["src/features/game/meta/gameOverlayMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_meta_gameOverlayMeta_ts
+  module_src_features_game_meta_gameOverlayMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_public_ts["src/features/game/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_public_ts
+  module_src_features_game_utils_clampGamePercentage_ts["src/features/game/utils/clampGamePercentage.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_clampGamePercentage_ts
+  module_src_features_game_utils_resolveGameEntityMotionPlan_ts["src/features/game/utils/resolveGameEntityMotionPlan.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
+  module_src_features_game_utils_resolveGameEntityMotionPlan_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_utils_toGamePercentage_ts["src/features/game/utils/toGamePercentage.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_toGamePercentage_ts
+  module_src_features_game_utils_toGamePercentage_ts --> module_src_features_game_utils_clampGamePercentage_ts
+  module_src_features_game_utils_useAnimatedGameEntityValue_ts["src/features/game/utils/useAnimatedGameEntityValue.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_useAnimatedGameEntityValue_ts
+  module_src_features_game_utils_useAnimatedGameEntityValue_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts["src/features/game/utils/useGameEntityAnimatedStyle.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_useGameEntityAnimatedStyle_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_useAnimatedGameEntityValue_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_useGameEntityMotionProgress_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_useGameReducedMotion_ts
+  module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts["src/features/game/utils/useGameEntityMeasurement.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_useGameEntityMeasurement_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_adapters_inbound_measureGameEntity_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_utils_useGameEntityMotionProgress_ts["src/features/game/utils/useGameEntityMotionProgress.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_useGameEntityMotionProgress_ts
+  module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
+  module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_types_gamePresentation_ts
+  module_src_features_game_utils_useGameReducedMotion_ts["src/features/game/utils/useGameReducedMotion.ts"]
+  package__ankhorage_zora -.-> module_src_features_game_utils_useGameReducedMotion_ts
   module_src_features_gradient_adapters_inbound_Gradient_tsx["src/features/gradient/adapters/inbound/Gradient.tsx"]
   package__ankhorage_zora -.-> module_src_features_gradient_adapters_inbound_Gradient_tsx
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx
@@ -1267,6 +1430,7 @@ graph TD
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_button_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_card_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_chat_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_chess_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_chip_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_collection_editor_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_content_rail_public_ts
@@ -1281,6 +1445,7 @@ graph TD
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_select_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_switch_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_text_input_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_game_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_gradient_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_hero_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_icon_public_ts
@@ -1300,6 +1465,7 @@ graph TD
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_selection_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_skeleton_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_surface_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_tabletop_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_tabs_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_time_picker_public_ts
@@ -1423,6 +1589,65 @@ graph TD
   module_src_features_surface_surfaceMeta_ts --> module_src_features_authoring_allowedChildren_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_types_authoring_ts
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx["src/features/tabletop/adapters/inbound/CardBack.tsx"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_adapters_inbound_CardBack_tsx
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_features_tabletop_utils_createTabletopColorScheme_ts
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_features_tabletop_utils_getTabletopCardDimensions_ts
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_types_tabletop_ts
+  module_src_features_tabletop_adapters_inbound_CardHand_tsx["src/features/tabletop/adapters/inbound/CardHand.tsx"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_adapters_inbound_CardHand_tsx
+  module_src_features_tabletop_adapters_inbound_CardHand_tsx --> module_src_features_tabletop_adapters_inbound_CardBack_tsx
+  module_src_features_tabletop_adapters_inbound_CardHand_tsx --> module_src_features_tabletop_adapters_inbound_PlayingCard_tsx
+  module_src_features_tabletop_adapters_inbound_CardHand_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_tabletop_adapters_inbound_CardHand_tsx --> module_src_types_tabletop_ts
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx["src/features/tabletop/adapters/inbound/PlayingCard.tsx"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_adapters_inbound_PlayingCard_tsx
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_features_tabletop_utils_createTabletopColorScheme_ts
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_features_tabletop_utils_getPlayingCardLabel_ts
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_features_tabletop_utils_getTabletopCardDimensions_ts
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_tabletop_adapters_inbound_PlayingCard_tsx --> module_src_types_tabletop_ts
+  module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx["src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx
+  module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx --> module_src_features_tabletop_adapters_inbound_TabletopTable_tsx
+  module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx --> module_src_features_tabletop_utils_createPokerTrainingTableState_ts
+  module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx --> module_src_types_tabletop_ts
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx["src/features/tabletop/adapters/inbound/TabletopTable.tsx"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_adapters_inbound_TabletopTable_tsx
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_features_tabletop_adapters_inbound_CardHand_tsx
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_features_tabletop_utils_createTabletopColorScheme_ts
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_features_tabletop_utils_getTabletopSeatPosition_ts
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> module_src_types_tabletop_ts
+  module_src_features_tabletop_meta_ts["src/features/tabletop/meta.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_meta_ts
+  module_src_features_tabletop_meta_ts --> module_src_types_authoring_ts
+  module_src_features_tabletop_public_ts["src/features/tabletop/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_public_ts
+  module_src_features_tabletop_utils_createPokerTrainingTableState_ts["src/features/tabletop/utils/createPokerTrainingTableState.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_createPokerTrainingTableState_ts
+  module_src_features_tabletop_utils_createPokerTrainingTableState_ts --> module_src_features_tabletop_utils_createTabletopGameSeats_ts
+  module_src_features_tabletop_utils_createPokerTrainingTableState_ts --> module_src_types_tabletop_ts
+  module_src_features_tabletop_utils_createTabletopColorScheme_ts["src/features/tabletop/utils/createTabletopColorScheme.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_createTabletopColorScheme_ts
+  module_src_features_tabletop_utils_createTabletopColorScheme_ts --> module_src_types_tabletop_ts
+  module_src_features_tabletop_utils_createTabletopGameSeats_ts["src/features/tabletop/utils/createTabletopGameSeats.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_createTabletopGameSeats_ts
+  module_src_features_tabletop_utils_createTabletopGameSeats_ts --> module_src_types_tabletop_ts
+  module_src_features_tabletop_utils_getPlayingCardLabel_ts["src/features/tabletop/utils/getPlayingCardLabel.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_getPlayingCardLabel_ts
+  module_src_features_tabletop_utils_getPlayingCardLabel_ts --> module_src_types_tabletop_ts
+  module_src_features_tabletop_utils_getTabletopCardDimensions_ts["src/features/tabletop/utils/getTabletopCardDimensions.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_getTabletopCardDimensions_ts
+  module_src_features_tabletop_utils_getTabletopCardDimensions_ts --> module_src_types_tabletop_ts
+  module_src_features_tabletop_utils_getTabletopSeatPosition_ts["src/features/tabletop/utils/getTabletopSeatPosition.ts"]
+  package__ankhorage_zora -.-> module_src_features_tabletop_utils_getTabletopSeatPosition_ts
+  module_src_features_tabletop_utils_getTabletopSeatPosition_ts --> module_src_types_tabletop_ts
   module_src_features_tabs_adapters_inbound_Tab_tsx["src/features/tabs/adapters/inbound/Tab.tsx"]
   package__ankhorage_zora -.-> module_src_features_tabs_adapters_inbound_Tab_tsx
   module_src_features_tabs_adapters_inbound_Tab_tsx --> module_src_features_tabs_composition_TabsInteractionPolicyContext_ts
@@ -1821,6 +2046,9 @@ graph TD
   module_src_types_checkbox_ts["src/types/checkbox.ts"]
   package__ankhorage_zora -.-> module_src_types_checkbox_ts
   module_src_types_checkbox_ts --> module_src_types_base_ts
+  module_src_types_chess_ts["src/types/chess.ts"]
+  package__ankhorage_zora -.-> module_src_types_chess_ts
+  module_src_types_chess_ts --> module_src_types_base_ts
   module_src_types_chip_group_ts["src/types/chip-group.ts"]
   package__ankhorage_zora -.-> module_src_types_chip_group_ts
   module_src_types_chip_group_ts --> module_src_types_base_ts
@@ -1859,6 +2087,10 @@ graph TD
   package__ankhorage_zora -.-> module_src_types_form_ts
   module_src_types_form_ts --> module_src_types_base_ts
   module_src_types_form_ts --> module_src_types_text_input_ts
+  module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
+  package__ankhorage_zora -.-> module_src_types_gamePresentation_ts
+  module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
+  package__ankhorage_zora -.-> module_src_types_gameRuntime_ts
   module_src_types_gradient_ts["src/types/gradient.ts"]
   package__ankhorage_zora -.-> module_src_types_gradient_ts
   module_src_types_gradient_ts --> module_src_features_layout_public_ts
@@ -1985,6 +2217,9 @@ graph TD
   module_src_types_switch_ts["src/types/switch.ts"]
   package__ankhorage_zora -.-> module_src_types_switch_ts
   module_src_types_switch_ts --> module_src_types_base_ts
+  module_src_types_tabletop_ts["src/types/tabletop.ts"]
+  package__ankhorage_zora -.-> module_src_types_tabletop_ts
+  module_src_types_tabletop_ts --> module_src_types_base_ts
   module_src_types_tabs_ts["src/types/tabs.ts"]
   package__ankhorage_zora -.-> module_src_types_tabs_ts
   module_src_types_tabs_ts --> module_src_types_base_ts
