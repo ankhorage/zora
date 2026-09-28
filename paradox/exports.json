@@ -1,9 +1,11 @@
 [
   {
     "name": "Accordion",
+    "title": null,
     "description": "Renders a ZORA accordion backed by Surface expansion and accessibility mechanics.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/accordion/adapters/inbound/Accordion.tsx",
     "sourceLocation": {
@@ -21,9 +23,11 @@
   },
   {
     "name": "AccordionItem",
+    "title": null,
     "description": "Renders one opinionated ZORA accordion item over Surface trigger/content primitives.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/accordion/adapters/inbound/AccordionItem.tsx",
     "sourceLocation": {
@@ -41,9 +45,11 @@
   },
   {
     "name": "AccordionItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/accordion.ts",
     "sourceLocation": {
@@ -61,9 +67,11 @@
   },
   {
     "name": "AccordionMode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "node_modules/@ankhorage/surface/dist/types/accordion.d.ts",
     "sourceLocation": {
@@ -81,9 +89,11 @@
   },
   {
     "name": "AccordionMultipleProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/accordion.ts",
     "sourceLocation": {
@@ -101,9 +111,11 @@
   },
   {
     "name": "AccordionProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/accordion.ts",
     "sourceLocation": {
@@ -121,9 +133,11 @@
   },
   {
     "name": "AccordionSingleProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/accordion.ts",
     "sourceLocation": {
@@ -141,9 +155,11 @@
   },
   {
     "name": "ActivityIndicator",
+    "title": null,
     "description": "Native activity indicator exposed as a serializable ZORA feedback node.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx",
     "sourceLocation": {
@@ -161,9 +177,11 @@
   },
   {
     "name": "ActivityIndicatorProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/activity-indicator.ts",
     "sourceLocation": {
@@ -863,9 +881,11 @@
   },
   {
     "name": "AppBar",
+    "title": null,
     "description": "Renders a top app bar with title/subtitle and optional leading/trailing actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/app-bar/adapters/inbound/AppBar.tsx",
     "sourceLocation": {
@@ -883,9 +903,11 @@
   },
   {
     "name": "AppBarMode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
@@ -903,9 +925,11 @@
   },
   {
     "name": "AppBarOverflowMenu",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
@@ -968,9 +992,11 @@
   },
   {
     "name": "AppBarProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/app-bar.ts",
     "sourceLocation": {
@@ -1084,9 +1110,11 @@
   },
   {
     "name": "AppShell",
+    "title": null,
     "description": "Root application frame with explicit header, content, footer, and overlay slots.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/AppShell.tsx",
     "sourceLocation": {
@@ -1104,9 +1132,11 @@
   },
   {
     "name": "AppShellProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -1183,9 +1213,11 @@
   },
   {
     "name": "AuthFormBaseProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -1262,9 +1294,11 @@
   },
   {
     "name": "AuthIdentifierKind",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -1282,9 +1316,11 @@
   },
   {
     "name": "Avatar",
+    "title": null,
     "description": "Displays a user or entity avatar with image support and initials fallback.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/avatar/adapters/inbound/Avatar.tsx",
     "sourceLocation": {
@@ -1302,9 +1338,11 @@
   },
   {
     "name": "AvatarGroup",
+    "title": null,
     "description": "Renders a compact group of avatars with optional overflow handling.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/avatar/adapters/inbound/AvatarGroup.tsx",
     "sourceLocation": {
@@ -1322,9 +1360,11 @@
   },
   {
     "name": "AvatarGroupItem",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/avatar-group.ts",
     "sourceLocation": {
@@ -1392,9 +1432,11 @@
   },
   {
     "name": "AvatarGroupProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/avatar-group.ts",
     "sourceLocation": {
@@ -1481,9 +1523,11 @@
   },
   {
     "name": "AvatarProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/avatar.ts",
     "sourceLocation": {
@@ -1590,9 +1634,11 @@
   },
   {
     "name": "AvatarShape",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/avatar.ts",
     "sourceLocation": {
@@ -1610,9 +1656,11 @@
   },
   {
     "name": "AvatarSize",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/avatar.ts",
     "sourceLocation": {
@@ -1630,9 +1678,11 @@
   },
   {
     "name": "Badge",
+    "title": null,
     "description": "Shows a small status, label, or count indicator.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/badge/adapters/inbound/Badge.tsx",
     "sourceLocation": {
@@ -1650,9 +1700,11 @@
   },
   {
     "name": "BadgeProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/badge.ts",
     "sourceLocation": {
@@ -1729,9 +1781,11 @@
   },
   {
     "name": "BarcodeScannerView",
+    "title": null,
     "description": "Composed ZORA scanner shell for barcode scanning experiences.\n\n`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,\nor test camera element through `camera`; keep permission and fallback UI here.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/scanner/adapters/inbound/BarcodeScannerView.tsx",
     "sourceLocation": {
@@ -1749,9 +1803,11 @@
   },
   {
     "name": "BarcodeScannerViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
@@ -1900,9 +1956,11 @@
   },
   {
     "name": "BarcodeScanResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
@@ -1935,9 +1993,11 @@
   },
   {
     "name": "BottomSheet",
+    "title": null,
     "description": "Presents declarative manifest children through the shared Surface sheet host.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/bottom-sheet/adapters/inbound/BottomSheet.tsx",
     "sourceLocation": {
@@ -1955,9 +2015,11 @@
   },
   {
     "name": "BottomSheetProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/manifest-bottom-sheet.ts",
     "sourceLocation": {
@@ -2083,9 +2145,11 @@
   },
   {
     "name": "BreadcrumbItem",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/breadcrumbs.ts",
     "sourceLocation": {
@@ -2132,9 +2196,11 @@
   },
   {
     "name": "BreadcrumbPressEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/breadcrumbs.ts",
     "sourceLocation": {
@@ -2160,9 +2226,11 @@
   },
   {
     "name": "Breadcrumbs",
+    "title": null,
     "description": "Renders a breadcrumb trail whose final item represents the current location.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/breadcrumbs/adapters/inbound/Breadcrumbs.tsx",
     "sourceLocation": {
@@ -2180,9 +2248,11 @@
   },
   {
     "name": "BreadcrumbsProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/breadcrumbs.ts",
     "sourceLocation": {
@@ -2275,20 +2345,16 @@
   },
   {
     "name": "Button",
+    "title": null,
     "description": "Theme-aware action control for primary, secondary, destructive, and neutral actions.\n\nUse `Button` for explicit user actions that should follow ZORA's semantic color,\nvariant, and size recipes across React Native and React Native Web.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Basic action",
-        "language": "tsx",
-        "code": "<Button color=\"primary\" variant=\"solid\" onPress={save}>Save</Button>"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/button/adapters/inbound/Button.tsx",
     "sourceLocation": {
       "filePath": "src/features/button/adapters/inbound/Button.tsx",
-      "line": 19,
+      "line": 15,
       "column": 14
     },
     "exportPaths": [
@@ -2301,9 +2367,11 @@
   },
   {
     "name": "ButtonGroup",
+    "title": null,
     "description": "Groups multiple `Button` elements with consistent spacing and alignment.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/button/adapters/inbound/ButtonGroup.tsx",
     "sourceLocation": {
@@ -2321,9 +2389,11 @@
   },
   {
     "name": "ButtonGroupAlign",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/button-group.ts",
     "sourceLocation": {
@@ -2341,9 +2411,11 @@
   },
   {
     "name": "ButtonGroupOrientation",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/button-group.ts",
     "sourceLocation": {
@@ -2361,9 +2433,11 @@
   },
   {
     "name": "ButtonGroupProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/button-group.ts",
     "sourceLocation": {
@@ -2449,9 +2523,11 @@
   },
   {
     "name": "ButtonProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/button.ts",
     "sourceLocation": {
@@ -2920,9 +2996,11 @@
   },
   {
     "name": "CameraPermissionStatus",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
@@ -2940,9 +3018,11 @@
   },
   {
     "name": "CameraPermissionView",
+    "title": null,
     "description": "ZORA-owned camera permission state for scanner flows.\n\nNative permission APIs stay in app adapters. This component renders the\nrequest, denied, requesting, and manual-entry surfaces consistently.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/scanner/adapters/inbound/CameraPermissionView.tsx",
     "sourceLocation": {
@@ -2960,9 +3040,11 @@
   },
   {
     "name": "CameraPermissionViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
@@ -3082,20 +3164,16 @@
   },
   {
     "name": "Card",
+    "title": null,
     "description": "Structured content container with built-in heading, description, actions, and footer slots.\n\nUse `Card` for reusable content blocks that should inherit ZORA spacing,\nradius, tone, and responsive header layout without hand-assembling primitives.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Content card",
-        "language": "tsx",
-        "code": "<Card title=\"Project\" description=\"Latest activity\">...</Card>"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/card/adapters/inbound/Card.tsx",
     "sourceLocation": {
       "filePath": "src/features/card/adapters/inbound/Card.tsx",
-      "line": 23,
+      "line": 19,
       "column": 14
     },
     "exportPaths": [
@@ -3108,9 +3186,11 @@
   },
   {
     "name": "CardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/card.ts",
     "sourceLocation": {
@@ -3572,9 +3652,11 @@
   },
   {
     "name": "ChatListAvatar",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -3645,9 +3727,11 @@
   },
   {
     "name": "ChatListItem",
+    "title": null,
     "description": "Chat-style list row with avatar, title, preview text, and unread indicators.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/chat/adapters/inbound/ChatListItem.tsx",
     "sourceLocation": {
@@ -3665,9 +3749,11 @@
   },
   {
     "name": "ChatListItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -3815,9 +3901,11 @@
   },
   {
     "name": "Checkbox",
+    "title": null,
     "description": "Binary selection control for toggling a value on or off.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx",
     "sourceLocation": {
@@ -3835,9 +3923,11 @@
   },
   {
     "name": "CheckboxGroup",
+    "title": null,
     "description": "Renders a group of checkboxes for multi-select values.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/checkbox/adapters/inbound/CheckboxGroup.tsx",
     "sourceLocation": {
@@ -3855,9 +3945,11 @@
   },
   {
     "name": "CheckboxGroupOption",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/checkbox.ts",
     "sourceLocation": {
@@ -3911,9 +4003,11 @@
   },
   {
     "name": "CheckboxGroupProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/checkbox.ts",
     "sourceLocation": {
@@ -4033,9 +4127,11 @@
   },
   {
     "name": "CheckboxProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/checkbox.ts",
     "sourceLocation": {
@@ -4490,9 +4586,11 @@
   },
   {
     "name": "Chip",
+    "title": null,
     "description": "Compact pill-like control for filters, tags, and quick selections.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/chip/adapters/inbound/Chip.tsx",
     "sourceLocation": {
@@ -4510,9 +4608,11 @@
   },
   {
     "name": "ChipGroup",
+    "title": null,
     "description": "Renders a row or wrap layout of `Chip` items.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/chip/adapters/inbound/ChipGroup.tsx",
     "sourceLocation": {
@@ -4530,9 +4630,11 @@
   },
   {
     "name": "ChipGroupItem",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chip-group.ts",
     "sourceLocation": {
@@ -4586,9 +4688,11 @@
   },
   {
     "name": "ChipGroupProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/chip-group.ts",
     "sourceLocation": {
@@ -4606,9 +4710,11 @@
   },
   {
     "name": "ChipProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chip.ts",
     "sourceLocation": {
@@ -4706,9 +4812,11 @@
   },
   {
     "name": "CollectionEditor",
+    "title": null,
     "description": "Editor pattern for adding, removing, and reordering a collection of items.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/collection-editor/adapters/inbound/CollectionEditor.tsx",
     "sourceLocation": {
@@ -4726,9 +4834,11 @@
   },
   {
     "name": "CollectionEditorProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/collection-editor.ts",
     "sourceLocation": {
@@ -4848,9 +4958,11 @@
   },
   {
     "name": "CollectionEditorRenderItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/collection-editor.ts",
     "sourceLocation": {
@@ -4918,9 +5030,11 @@
   },
   {
     "name": "compileZoraTheme",
+    "title": null,
     "description": "Compile canonical theme source into Color Theory evidence and resolved Surface themes.\nThis function is pure and does not mount React or reproduce owner algorithms.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/application/use-cases/compileZoraTheme.ts",
     "sourceLocation": {
@@ -4961,9 +5075,11 @@
   },
   {
     "name": "ComposedZoraPluginCatalog",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -5019,9 +5135,11 @@
   },
   {
     "name": "ComposedZoraPluginMetadataCatalog",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -5070,9 +5188,11 @@
   },
   {
     "name": "composeZoraPluginMetadata",
+    "title": null,
     "description": "Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts",
     "sourceLocation": {
@@ -5107,9 +5227,11 @@
   },
   {
     "name": "composeZoraPlugins",
+    "title": null,
     "description": "Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/plugin/application/use-cases/composeZoraPlugins.ts",
     "sourceLocation": {
@@ -5144,9 +5266,11 @@
   },
   {
     "name": "ContentRail",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
     "sourceLocation": {
@@ -5164,9 +5288,11 @@
   },
   {
     "name": "ContentRailControlPressEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5199,9 +5325,11 @@
   },
   {
     "name": "ContentRailDirection",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5219,9 +5347,11 @@
   },
   {
     "name": "ContentRailItemSize",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5239,9 +5369,11 @@
   },
   {
     "name": "ContentRailMotion",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5259,9 +5391,11 @@
   },
   {
     "name": "ContentRailProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5421,9 +5555,11 @@
   },
   {
     "name": "ContentRailSpacing",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5441,9 +5577,11 @@
   },
   {
     "name": "ContentRailVisibleRangeChangeEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/content-rail.ts",
     "sourceLocation": {
@@ -5483,9 +5621,11 @@
   },
   {
     "name": "createZoraThemeConfig",
+    "title": null,
     "description": "Convert the concise ZORA design seed into canonical persisted theme source.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/application/use-cases/createZoraThemeConfig.ts",
     "sourceLocation": {
@@ -5519,9 +5659,11 @@
   },
   {
     "name": "DataTable",
+    "title": null,
     "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
     "sourceLocation": {
@@ -5539,9 +5681,11 @@
   },
   {
     "name": "DataTableCellContext",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5590,9 +5734,11 @@
   },
   {
     "name": "DataTableColumn",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5670,9 +5816,11 @@
   },
   {
     "name": "DataTableColumnAlign",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5690,9 +5838,11 @@
   },
   {
     "name": "DataTableDensity",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5710,9 +5860,11 @@
   },
   {
     "name": "DataTableProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5849,9 +6001,11 @@
   },
   {
     "name": "DataTableRowAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5921,9 +6075,11 @@
   },
   {
     "name": "DataTableSortDirection",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5941,9 +6097,11 @@
   },
   {
     "name": "DataTableSortState",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
@@ -5978,9 +6136,11 @@
   },
   {
     "name": "DatePicker",
+    "title": null,
     "description": "Renders DatePicker with anchored web Popover presentation.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/date-picker/adapters/inbound/DatePicker.web.tsx",
     "sourceLocation": {
@@ -5998,9 +6158,11 @@
   },
   {
     "name": "DatePickerProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/date-picker.ts",
     "sourceLocation": {
@@ -6127,9 +6289,11 @@
   },
   {
     "name": "DatePickerValue",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/date-picker.ts",
     "sourceLocation": {
@@ -6147,9 +6311,11 @@
   },
   {
     "name": "DEFAULT_OAUTH_PROVIDER_ICONS",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
@@ -6167,9 +6333,11 @@
   },
   {
     "name": "Dialog",
+    "title": null,
     "description": "Renders the product-level dialog composition on top of the Surface modal primitive.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/dialog/adapters/inbound/Dialog.tsx",
     "sourceLocation": {
@@ -6187,9 +6355,11 @@
   },
   {
     "name": "DialogProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/dialog.ts",
     "sourceLocation": {
@@ -6294,9 +6464,11 @@
   },
   {
     "name": "Divider",
+    "title": null,
     "description": "Adapts the themed Surface Divider primitive to ZORA scope and interaction props.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/Divider.tsx",
     "sourceLocation": {
@@ -6314,9 +6486,11 @@
   },
   {
     "name": "DividerProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -6736,20 +6910,16 @@
   },
   {
     "name": "EmptyState",
+    "title": null,
     "description": "Reusable fallback state for empty lists, missing data, or first-run experiences.\n\n`EmptyState` combines concise copy with optional primary and secondary actions\nso apps can guide users without custom card and button wiring.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Empty project list",
-        "language": "tsx",
-        "code": "<EmptyState title=\"No projects yet\" primaryAction={{ label: 'Create project', onPress }} />"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/empty-state/adapters/inbound/EmptyState.tsx",
     "sourceLocation": {
       "filePath": "src/features/empty-state/adapters/inbound/EmptyState.tsx",
-      "line": 74,
+      "line": 70,
       "column": 14
     },
     "exportPaths": [
@@ -6762,9 +6932,11 @@
   },
   {
     "name": "EmptyStateAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/empty-state.ts",
     "sourceLocation": {
@@ -6811,9 +6983,11 @@
   },
   {
     "name": "EmptyStateProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/empty-state.ts",
     "sourceLocation": {
@@ -6905,9 +7079,11 @@
   },
   {
     "name": "Field",
+    "title": null,
     "description": "Groups one form control with its label, description, helper text, and field error.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/field/adapters/inbound/Field.tsx",
     "sourceLocation": {
@@ -6925,9 +7101,11 @@
   },
   {
     "name": "FieldProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7039,9 +7217,11 @@
   },
   {
     "name": "FlatList",
+    "title": null,
     "description": "Virtualizes keyed manifest children using React Native FlatList and the Runtime repeat contract.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/list/adapters/inbound/FlatList.tsx",
     "sourceLocation": {
@@ -7059,9 +7239,11 @@
   },
   {
     "name": "ForgotPasswordForm",
+    "title": null,
     "description": "Password reset form pattern with validation and submit actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
     "sourceLocation": {
@@ -7079,9 +7261,11 @@
   },
   {
     "name": "ForgotPasswordFormProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -7195,9 +7379,11 @@
   },
   {
     "name": "ForgotPasswordFormValues",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -7232,9 +7418,11 @@
   },
   {
     "name": "Form",
+    "title": null,
     "description": "Composes explicit form fields, form errors, and submit actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/adapters/inbound/Form.tsx",
     "sourceLocation": {
@@ -7252,9 +7440,11 @@
   },
   {
     "name": "FormActions",
+    "title": null,
     "description": "Standard submit/action area for forms.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/adapters/inbound/FormActions.tsx",
     "sourceLocation": {
@@ -7272,9 +7462,11 @@
   },
   {
     "name": "FormActionsProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7358,9 +7550,11 @@
   },
   {
     "name": "FormError",
+    "title": null,
     "description": "Displays a form-level validation or submission error.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/adapters/inbound/FormError.tsx",
     "sourceLocation": {
@@ -7378,9 +7572,11 @@
   },
   {
     "name": "FormErrorProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7436,9 +7632,11 @@
   },
   {
     "name": "FormErrors",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7456,9 +7654,11 @@
   },
   {
     "name": "FormFieldConfig",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7599,9 +7799,11 @@
   },
   {
     "name": "FormFieldInputType",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7619,9 +7821,11 @@
   },
   {
     "name": "FormProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7712,9 +7916,11 @@
   },
   {
     "name": "FormValidationErrors",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7732,9 +7938,11 @@
   },
   {
     "name": "FormValidationResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7767,9 +7975,11 @@
   },
   {
     "name": "FormValues",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -7787,9 +7997,11 @@
   },
   {
     "name": "Gradient",
+    "title": null,
     "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\nThe host supplies a platform-compatible renderer through\n`GradientRendererProvider`; ZORA does not require an Expo runtime.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/gradient/adapters/inbound/Gradient.tsx",
     "sourceLocation": {
@@ -7807,9 +8019,11 @@
   },
   {
     "name": "GradientColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -7827,9 +8041,11 @@
   },
   {
     "name": "GradientColors",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -7847,9 +8063,11 @@
   },
   {
     "name": "GradientLocations",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -7867,9 +8085,11 @@
   },
   {
     "name": "GradientPoint",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -7902,9 +8122,11 @@
   },
   {
     "name": "GradientProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -8026,9 +8248,11 @@
   },
   {
     "name": "GradientRenderer",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -8046,9 +8270,11 @@
   },
   {
     "name": "GradientRendererProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -8113,9 +8339,11 @@
   },
   {
     "name": "GradientRendererProvider",
+    "title": null,
     "description": "Supplies the host-owned renderer used by `Gradient`.\n\nExpo apps can adapt `expo-linear-gradient` here, while standalone React\nNative hosts can inject another compatible implementation.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/gradient/adapters/inbound/GradientRendererContext.tsx",
     "sourceLocation": {
@@ -8149,9 +8377,11 @@
   },
   {
     "name": "GradientRendererProviderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/gradient.ts",
     "sourceLocation": {
@@ -8186,9 +8416,11 @@
   },
   {
     "name": "Grid",
+    "title": null,
     "description": "Adapts the themed Surface Grid primitive to ZORA scope and interaction props.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/Grid.tsx",
     "sourceLocation": {
@@ -8206,9 +8438,11 @@
   },
   {
     "name": "GridProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -8649,9 +8883,11 @@
   },
   {
     "name": "hasRequiredRule",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/form/utils/validation.ts",
     "sourceLocation": {
@@ -8685,20 +8921,16 @@
   },
   {
     "name": "Heading",
+    "title": null,
     "description": "Structured title primitive for accessible page, section, and card headings.\n\n`Heading` gives consumers a ZORA-owned title API with semantic levels,\nresponsive sizes, and theme-aware emphasis while preserving header semantics.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Section title",
-        "language": "tsx",
-        "code": "<Heading level={2} size=\"xl\">Account settings</Heading>"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/typography/adapters/inbound/Heading.tsx",
     "sourceLocation": {
       "filePath": "src/features/typography/adapters/inbound/Heading.tsx",
-      "line": 23,
+      "line": 19,
       "column": 14
     },
     "exportPaths": [
@@ -8711,9 +8943,11 @@
   },
   {
     "name": "HeadingAlign",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8731,9 +8965,11 @@
   },
   {
     "name": "HeadingColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8751,9 +8987,11 @@
   },
   {
     "name": "HeadingEmphasis",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8771,9 +9009,11 @@
   },
   {
     "name": "HeadingLevel",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8791,9 +9031,11 @@
   },
   {
     "name": "HeadingProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8972,9 +9214,11 @@
   },
   {
     "name": "HeadingSize",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -8992,9 +9236,11 @@
   },
   {
     "name": "HeadingWeight",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/heading.ts",
     "sourceLocation": {
@@ -9012,9 +9258,11 @@
   },
   {
     "name": "Hero",
+    "title": null,
     "description": "Hero section pattern for prominent page introductions with actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/hero/adapters/inbound/Hero.tsx",
     "sourceLocation": {
@@ -9032,9 +9280,11 @@
   },
   {
     "name": "HeroAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/hero.ts",
     "sourceLocation": {
@@ -9088,9 +9338,11 @@
   },
   {
     "name": "HeroAlign",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/hero.ts",
     "sourceLocation": {
@@ -9108,9 +9360,11 @@
   },
   {
     "name": "HeroLayout",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/hero.ts",
     "sourceLocation": {
@@ -9128,9 +9382,11 @@
   },
   {
     "name": "HeroProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/hero.ts",
     "sourceLocation": {
@@ -9260,9 +9516,11 @@
   },
   {
     "name": "HeroTone",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/hero.ts",
     "sourceLocation": {
@@ -9280,9 +9538,11 @@
   },
   {
     "name": "Icon",
+    "title": null,
     "description": "Adapts the themed Surface Icon primitive to ZORA scope and interaction props.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/icon/adapters/inbound/Icon.tsx",
     "sourceLocation": {
@@ -9300,9 +9560,11 @@
   },
   {
     "name": "IconButton",
+    "title": null,
     "description": "Icon-only button for compact actions; requires an accessible `label`.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/button/adapters/inbound/IconButton.tsx",
     "sourceLocation": {
@@ -9320,9 +9582,11 @@
   },
   {
     "name": "IconButtonProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/icon-button.ts",
     "sourceLocation": {
@@ -9434,9 +9698,11 @@
   },
   {
     "name": "IconProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/icon.ts",
     "sourceLocation": {
@@ -9454,9 +9720,11 @@
   },
   {
     "name": "Image",
+    "title": null,
     "description": "Displays an image asset and owns its missing, unrenderable, and failed presentation states.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/image/adapters/inbound/Image.tsx",
     "sourceLocation": {
@@ -9474,9 +9742,11 @@
   },
   {
     "name": "ImageFit",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
     "sourceLocation": {
@@ -9494,9 +9764,11 @@
   },
   {
     "name": "ImageProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/image.ts",
     "sourceLocation": {
@@ -9631,9 +9903,11 @@
   },
   {
     "name": "KeyboardAvoidingView",
+    "title": null,
     "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/keyboard-avoiding-view/adapters/inbound/KeyboardAvoidingView.tsx",
     "sourceLocation": {
@@ -9651,9 +9925,11 @@
   },
   {
     "name": "KeyboardAvoidingViewBehavior",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/keyboard-avoiding-view.ts",
     "sourceLocation": {
@@ -9671,9 +9947,11 @@
   },
   {
     "name": "KeyboardAvoidingViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/keyboard-avoiding-view.ts",
     "sourceLocation": {
@@ -10373,9 +10651,11 @@
   },
   {
     "name": "List",
+    "title": null,
     "description": "List composition built on the Surface list boundary with ZORA item/separator policy.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/list/adapters/inbound/List.tsx",
     "sourceLocation": {
@@ -10393,9 +10673,11 @@
   },
   {
     "name": "ListChildrenProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10451,9 +10733,11 @@
   },
   {
     "name": "ListItem",
+    "title": null,
     "description": "Opinionated list item built on the Surface list-item interaction and geometry boundary.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/list/adapters/inbound/ListItem.tsx",
     "sourceLocation": {
@@ -10471,9 +10755,11 @@
   },
   {
     "name": "ListItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10491,9 +10777,11 @@
   },
   {
     "name": "ListItemsProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10565,9 +10853,11 @@
   },
   {
     "name": "ListItemVariant",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10585,9 +10875,11 @@
   },
   {
     "name": "ListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10605,9 +10897,11 @@
   },
   {
     "name": "ListSection",
+    "title": null,
     "description": "Section wrapper for lists with optional ZORA section-heading semantics.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/list/adapters/inbound/ListSection.tsx",
     "sourceLocation": {
@@ -10625,9 +10919,11 @@
   },
   {
     "name": "ListSectionProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/list.ts",
     "sourceLocation": {
@@ -10645,9 +10941,11 @@
   },
   {
     "name": "ManifestListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/manifest-list.ts",
     "sourceLocation": {
@@ -10808,9 +11106,11 @@
   },
   {
     "name": "ManifestListSection",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/manifest-list.ts",
     "sourceLocation": {
@@ -10850,9 +11150,11 @@
   },
   {
     "name": "ManifestSectionListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/manifest-list.ts",
     "sourceLocation": {
@@ -11028,9 +11330,11 @@
   },
   {
     "name": "MediaCard",
+    "title": null,
     "description": "Card layout with an optional media/header region and structured content slots.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/card/adapters/inbound/MediaCard.tsx",
     "sourceLocation": {
@@ -11048,9 +11352,11 @@
   },
   {
     "name": "MediaCardImageProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/media-card.ts",
     "sourceLocation": {
@@ -11068,9 +11374,11 @@
   },
   {
     "name": "MediaCardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/media-card.ts",
     "sourceLocation": {
@@ -11088,9 +11396,11 @@
   },
   {
     "name": "MessageBubble",
+    "title": null,
     "description": "Message bubble pattern for chat UIs with direction and status styling.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/chat/adapters/inbound/MessageBubble.tsx",
     "sourceLocation": {
@@ -11108,9 +11418,11 @@
   },
   {
     "name": "MessageBubbleAuthor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -11145,9 +11457,11 @@
   },
   {
     "name": "MessageBubbleAvatar",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -11218,9 +11532,11 @@
   },
   {
     "name": "MessageBubbleDirection",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -11238,9 +11554,11 @@
   },
   {
     "name": "MessageBubbleProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -11396,9 +11714,11 @@
   },
   {
     "name": "MessageBubbleStatus",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/chat.ts",
     "sourceLocation": {
@@ -11416,9 +11736,11 @@
   },
   {
     "name": "MetricCard",
+    "title": null,
     "description": "Highlights a key metric with label, value, and optional trend/actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/card/adapters/inbound/MetricCard.tsx",
     "sourceLocation": {
@@ -11436,9 +11758,11 @@
   },
   {
     "name": "MetricCardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/metric-card.ts",
     "sourceLocation": {
@@ -11557,9 +11881,11 @@
   },
   {
     "name": "MissingElement",
+    "title": null,
     "description": "Draft-only marker that preserves an unsupported manifest region without faking its capability.\n\n`MissingElement` is intentionally non-interactive and release-blocking in component metadata.\nReplace it with a released semantic ZORA element before publishing a production template.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
     "sourceLocation": {
@@ -11577,9 +11903,11 @@
   },
   {
     "name": "MissingElementProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/missing-element.ts",
     "sourceLocation": {
@@ -11663,9 +11991,11 @@
   },
   {
     "name": "OAuthProviderButton",
+    "title": null,
     "description": "Renders a provider-branded OAuth action button without owning auth behavior.\n\nThe component only renders UI and forwards the provider id through `onPress`.\nAdapters, redirects, and callback handling belong to app/runtime layers.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/OAuthProviderButton.tsx",
     "sourceLocation": {
@@ -11683,9 +12013,11 @@
   },
   {
     "name": "OAuthProviderButtonProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -11804,9 +12136,11 @@
   },
   {
     "name": "OAuthProviderIconSpec",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -11824,9 +12158,11 @@
   },
   {
     "name": "OAuthProviderItem",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -11880,9 +12216,11 @@
   },
   {
     "name": "OAuthProviderList",
+    "title": null,
     "description": "Renders a group of OAuth provider buttons for sign-in and auth settings flows.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/OAuthProviderList.tsx",
     "sourceLocation": {
@@ -11900,9 +12238,11 @@
   },
   {
     "name": "OAuthProviderListLayout",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -11920,9 +12260,11 @@
   },
   {
     "name": "OAuthProviderListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -12036,9 +12378,11 @@
   },
   {
     "name": "OtpForm",
+    "title": null,
     "description": "One-time passcode form pattern with digit input and submit actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/OtpForm.tsx",
     "sourceLocation": {
@@ -12056,9 +12400,11 @@
   },
   {
     "name": "OtpFormProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -12185,9 +12531,11 @@
   },
   {
     "name": "OtpFormValues",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -12213,9 +12561,11 @@
   },
   {
     "name": "Pagination",
+    "title": null,
     "description": "Renders controls for navigating between pages of a finite result set.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/pagination/adapters/inbound/Pagination.tsx",
     "sourceLocation": {
@@ -12233,9 +12583,11 @@
   },
   {
     "name": "PaginationProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/pagination.ts",
     "sourceLocation": {
@@ -12368,9 +12720,11 @@
   },
   {
     "name": "PaletteItem",
+    "title": null,
     "description": "Tile item pattern for palettes and option grids.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/palette-item/adapters/inbound/PaletteItem.tsx",
     "sourceLocation": {
@@ -12388,9 +12742,11 @@
   },
   {
     "name": "PaletteItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/palette-item.ts",
     "sourceLocation": {
@@ -12488,9 +12844,11 @@
   },
   {
     "name": "PopoverMenu",
+    "title": null,
     "description": "Presents a ZORA-styled action list through the Surface PopoverMenu capability.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
     "sourceLocation": {
@@ -12508,9 +12866,11 @@
   },
   {
     "name": "PopoverMenuAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/popover-menu.ts",
     "sourceLocation": {
@@ -12599,9 +12959,11 @@
   },
   {
     "name": "PopoverMenuActionIntent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/popover-menu.ts",
     "sourceLocation": {
@@ -12619,9 +12981,11 @@
   },
   {
     "name": "PopoverMenuProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/popover-menu.ts",
     "sourceLocation": {
@@ -12699,9 +13063,11 @@
   },
   {
     "name": "PostAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/post-card.ts",
     "sourceLocation": {
@@ -12769,9 +13135,11 @@
   },
   {
     "name": "PostAuthor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/post-card.ts",
     "sourceLocation": {
@@ -12813,9 +13181,11 @@
   },
   {
     "name": "PostAuthorAvatar",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/post-card.ts",
     "sourceLocation": {
@@ -12886,9 +13256,11 @@
   },
   {
     "name": "PostCard",
+    "title": null,
     "description": "Social-style post card pattern with author, content, media, and actions.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/card/adapters/inbound/PostCard.tsx",
     "sourceLocation": {
@@ -12906,9 +13278,11 @@
   },
   {
     "name": "PostCardMedia",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/post-card.ts",
     "sourceLocation": {
@@ -12926,9 +13300,11 @@
   },
   {
     "name": "PostCardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/post-card.ts",
     "sourceLocation": {
@@ -13057,9 +13433,11 @@
   },
   {
     "name": "ProductCard",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/card/adapters/inbound/ProductCard.tsx",
     "sourceLocation": {
@@ -13077,9 +13455,11 @@
   },
   {
     "name": "ProductCardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/product-card.ts",
     "sourceLocation": {
@@ -13240,9 +13620,11 @@
   },
   {
     "name": "Progress",
+    "title": null,
     "description": "Progress indicator for determinate and indeterminate loading states.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/progress/adapters/inbound/Progress.tsx",
     "sourceLocation": {
@@ -13260,9 +13642,11 @@
   },
   {
     "name": "ProgressProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/progress.ts",
     "sourceLocation": {
@@ -13339,9 +13723,11 @@
   },
   {
     "name": "ProgressRing",
+    "title": null,
     "description": "Circular determinate progress with optional serializable center value and label content.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/progress/adapters/inbound/ProgressRing.tsx",
     "sourceLocation": {
@@ -13359,9 +13745,11 @@
   },
   {
     "name": "ProgressRingProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/progress.ts",
     "sourceLocation": {
@@ -13480,9 +13868,11 @@
   },
   {
     "name": "Radio",
+    "title": null,
     "description": "Single-choice selection control used within a radio group.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/radio/adapters/inbound/Radio.tsx",
     "sourceLocation": {
@@ -13500,9 +13890,11 @@
   },
   {
     "name": "RadioGroup",
+    "title": null,
     "description": "Present one controlled single-choice group as inline radios or icon radio options.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
     "sourceLocation": {
@@ -13520,9 +13912,11 @@
   },
   {
     "name": "RadioGroupOption",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/radio.ts",
     "sourceLocation": {
@@ -13585,9 +13979,11 @@
   },
   {
     "name": "RadioGroupProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/radio.ts",
     "sourceLocation": {
@@ -13735,9 +14131,11 @@
   },
   {
     "name": "RadioProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/radio.ts",
     "sourceLocation": {
@@ -14192,9 +14590,11 @@
   },
   {
     "name": "Rating",
+    "title": null,
     "description": "Displays a read-only star rating with optional half steps.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/rating/adapters/inbound/Rating.tsx",
     "sourceLocation": {
@@ -14212,9 +14612,11 @@
   },
   {
     "name": "RatingProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/rating.ts",
     "sourceLocation": {
@@ -14291,9 +14693,11 @@
   },
   {
     "name": "ReaderColorScheme",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14311,9 +14715,11 @@
   },
   {
     "name": "ReaderDocumentFormat",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14331,9 +14737,11 @@
   },
   {
     "name": "ReaderErrorCode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14351,9 +14759,11 @@
   },
   {
     "name": "ReaderErrorEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14396,9 +14806,11 @@
   },
   {
     "name": "ReaderExternalLinkEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14424,9 +14836,11 @@
   },
   {
     "name": "ReaderLineHeight",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14444,9 +14858,11 @@
   },
   {
     "name": "ReaderLocationChangeEvent",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14524,9 +14940,11 @@
   },
   {
     "name": "ReaderNavigationTrigger",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14544,9 +14962,11 @@
   },
   {
     "name": "ReaderResolvedSource",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14564,9 +14984,11 @@
   },
   {
     "name": "ReaderStatus",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14584,9 +15006,11 @@
   },
   {
     "name": "ReaderSurface",
+    "title": null,
     "description": "Adapter-neutral reader shell for EPUB and PDF experiences.\n\nSupply the actual renderer through `viewport`; ZORA owns only the reader\nchrome, controlled state, progress, accessible controls, and normalized\nadapter callbacks.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
     "sourceLocation": {
@@ -14604,9 +15028,11 @@
   },
   {
     "name": "ReaderSurfaceProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
@@ -14922,9 +15348,11 @@
   },
   {
     "name": "resolveAvatarInitials",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/avatar/utils/resolveAvatarInitials.ts",
     "sourceLocation": {
@@ -14956,9 +15384,11 @@
   },
   {
     "name": "resolveOAuthProviderIcon",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
@@ -14990,9 +15420,11 @@
   },
   {
     "name": "resolveOAuthProviderLabel",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/auth/utils/oauthProviders.ts",
     "sourceLocation": {
@@ -15024,9 +15456,11 @@
   },
   {
     "name": "resolveReaderProgress",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/reader/utils/resolveReaderProgress.ts",
     "sourceLocation": {
@@ -15058,9 +15492,11 @@
   },
   {
     "name": "ScanOverlay",
+    "title": null,
     "description": "Camera-agnostic scan frame overlay for barcode and QR scanning flows.\n\n`ScanOverlay` intentionally renders no native camera. Apps provide camera\ncapability separately while ZORA owns the visible scan affordance.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/scanner/adapters/inbound/ScanOverlay.tsx",
     "sourceLocation": {
@@ -15078,9 +15514,11 @@
   },
   {
     "name": "ScanOverlayProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/scanner.ts",
     "sourceLocation": {
@@ -15150,9 +15588,11 @@
   },
   {
     "name": "Screen",
+    "title": null,
     "description": "Screen content boundary with independent width policy and scroll ownership.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/Screen.tsx",
     "sourceLocation": {
@@ -15170,9 +15610,11 @@
   },
   {
     "name": "ScreenProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -15249,9 +15691,11 @@
   },
   {
     "name": "ScreenSection",
+    "title": null,
     "description": "Screen section with optional heading, description, actions, and content.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/section/adapters/inbound/ScreenSection.tsx",
     "sourceLocation": {
@@ -15269,9 +15713,11 @@
   },
   {
     "name": "ScreenSectionProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/section.ts",
     "sourceLocation": {
@@ -15348,9 +15794,11 @@
   },
   {
     "name": "ScrollView",
+    "title": null,
     "description": "Adapts the token-aware Surface ScrollView primitive to ZORA theme scope.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
     "sourceLocation": {
@@ -15368,9 +15816,11 @@
   },
   {
     "name": "ScrollViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -16779,9 +17229,11 @@
   },
   {
     "name": "SearchInput",
+    "title": null,
     "description": "Renders a search-focused text input with clear and submit behavior.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/search-input/adapters/inbound/SearchInput.tsx",
     "sourceLocation": {
@@ -16799,9 +17251,11 @@
   },
   {
     "name": "SearchInputProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/search-input.ts",
     "sourceLocation": {
@@ -16913,9 +17367,11 @@
   },
   {
     "name": "SectionHeader",
+    "title": null,
     "description": "Section heading pattern with optional description and action slot.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/section/adapters/inbound/SectionHeader.tsx",
     "sourceLocation": {
@@ -16933,9 +17389,11 @@
   },
   {
     "name": "SectionHeaderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/section.ts",
     "sourceLocation": {
@@ -17012,9 +17470,11 @@
   },
   {
     "name": "SectionList",
+    "title": null,
     "description": "Virtualizes manifest children grouped by explicit section identities and child counts.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/list/adapters/inbound/SectionList.tsx",
     "sourceLocation": {
@@ -17032,9 +17492,11 @@
   },
   {
     "name": "Select",
+    "title": null,
     "description": "Renders Select with anchored Popover presentation on web.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/select/adapters/inbound/Select.web.tsx",
     "sourceLocation": {
@@ -17052,9 +17514,11 @@
   },
   {
     "name": "SelectableItem",
+    "title": null,
     "description": "Adds selection behavior to arbitrary child content via render props.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/selection/adapters/inbound/SelectableItem.tsx",
     "sourceLocation": {
@@ -17088,9 +17552,11 @@
   },
   {
     "name": "SelectableItemProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -17147,9 +17613,11 @@
   },
   {
     "name": "SelectableItemState",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -17219,9 +17687,11 @@
   },
   {
     "name": "SelectionMode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -17239,9 +17709,11 @@
   },
   {
     "name": "SelectionProvider",
+    "title": null,
     "description": "Provides selection state for building selectable lists and grids.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
@@ -17275,9 +17747,11 @@
   },
   {
     "name": "SelectionProviderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -17347,9 +17821,11 @@
   },
   {
     "name": "SelectionTrigger",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -17367,9 +17843,11 @@
   },
   {
     "name": "SelectOption",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
@@ -17409,9 +17887,11 @@
   },
   {
     "name": "SelectProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
@@ -17545,9 +18025,11 @@
   },
   {
     "name": "SignInForm",
+    "title": null,
     "description": "Sign-in form pattern with identifier and password fields.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/SignInForm.tsx",
     "sourceLocation": {
@@ -17565,9 +18047,11 @@
   },
   {
     "name": "SignInFormProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -17702,9 +18186,11 @@
   },
   {
     "name": "SignInFormValues",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -17746,9 +18232,11 @@
   },
   {
     "name": "SignUpForm",
+    "title": null,
     "description": "Sign-up form pattern with structured fields and validation.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/auth/adapters/inbound/SignUpForm.tsx",
     "sourceLocation": {
@@ -17766,9 +18254,11 @@
   },
   {
     "name": "SignUpFormField",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -17786,9 +18276,11 @@
   },
   {
     "name": "SignUpFormProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -17895,9 +18387,11 @@
   },
   {
     "name": "SignUpFormValues",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/auth.ts",
     "sourceLocation": {
@@ -17915,9 +18409,11 @@
   },
   {
     "name": "Skeleton",
+    "title": null,
     "description": "Generic skeleton placeholder for loading states.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/skeleton/adapters/inbound/Skeleton.tsx",
     "sourceLocation": {
@@ -17935,9 +18431,11 @@
   },
   {
     "name": "SkeletonCard",
+    "title": null,
     "description": "Skeleton placeholder that matches the structure of a `Card`.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/skeleton/adapters/inbound/SkeletonCard.tsx",
     "sourceLocation": {
@@ -17955,9 +18453,11 @@
   },
   {
     "name": "SkeletonCardProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18034,9 +18534,11 @@
   },
   {
     "name": "SkeletonDimension",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18054,9 +18556,11 @@
   },
   {
     "name": "SkeletonList",
+    "title": null,
     "description": "Skeleton placeholder list for loading states in list views.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/skeleton/adapters/inbound/SkeletonList.tsx",
     "sourceLocation": {
@@ -18074,9 +18578,11 @@
   },
   {
     "name": "SkeletonListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18168,9 +18674,11 @@
   },
   {
     "name": "SkeletonListVariant",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18188,9 +18696,11 @@
   },
   {
     "name": "SkeletonProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18260,9 +18770,11 @@
   },
   {
     "name": "SkeletonRadius",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18280,9 +18792,11 @@
   },
   {
     "name": "SkeletonText",
+    "title": null,
     "description": "Multi-line skeleton placeholder for text content.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/skeleton/adapters/inbound/SkeletonText.tsx",
     "sourceLocation": {
@@ -18300,9 +18814,11 @@
   },
   {
     "name": "SkeletonTextProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/skeleton.ts",
     "sourceLocation": {
@@ -18386,9 +18902,11 @@
   },
   {
     "name": "Surface",
+    "title": null,
     "description": "Adapts the themed Surface Surface primitive to ZORA scope and interaction props.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/surface/adapters/inbound/Surface.tsx",
     "sourceLocation": {
@@ -18406,9 +18924,11 @@
   },
   {
     "name": "SurfaceImageSource",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "node_modules/@ankhorage/surface/dist/types/image.d.ts",
     "sourceLocation": {
@@ -18426,9 +18946,11 @@
   },
   {
     "name": "SurfaceProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/surface.ts",
     "sourceLocation": {
@@ -18835,9 +19357,11 @@
   },
   {
     "name": "SurfaceVariant",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "node_modules/@ankhorage/surface/dist/types/surface.d.ts",
     "sourceLocation": {
@@ -18855,9 +19379,11 @@
   },
   {
     "name": "Switch",
+    "title": null,
     "description": "Renders the ZORA switch while preserving the canonical Surface switch contract.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/switch/adapters/inbound/Switch.tsx",
     "sourceLocation": {
@@ -18875,9 +19401,11 @@
   },
   {
     "name": "SwitchProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/switch.ts",
     "sourceLocation": {
@@ -19332,9 +19860,11 @@
   },
   {
     "name": "Tab",
+    "title": null,
     "description": "Renders one labeled selectable tab backed by Surface accessibility semantics.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tabs/adapters/inbound/Tab.tsx",
     "sourceLocation": {
@@ -19352,9 +19882,11 @@
   },
   {
     "name": "TabList",
+    "title": null,
     "description": "Renders the accessible list of tabs for a Tabs composition.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tabs/adapters/inbound/TabList.tsx",
     "sourceLocation": {
@@ -19372,9 +19904,11 @@
   },
   {
     "name": "TabListProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
@@ -19437,9 +19971,11 @@
   },
   {
     "name": "TabPanel",
+    "title": null,
     "description": "Renders content associated with one selected Tab.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tabs/adapters/inbound/TabPanel.tsx",
     "sourceLocation": {
@@ -19457,9 +19993,11 @@
   },
   {
     "name": "TabPanelProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
@@ -19837,9 +20375,11 @@
   },
   {
     "name": "TabProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
@@ -19916,9 +20456,11 @@
   },
   {
     "name": "Tabs",
+    "title": null,
     "description": "Provides accessible tab state and interaction policy through the Surface Tabs primitive.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tabs/adapters/inbound/Tabs.tsx",
     "sourceLocation": {
@@ -19936,9 +20478,11 @@
   },
   {
     "name": "TabsProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tabs.ts",
     "sourceLocation": {
@@ -20330,20 +20874,16 @@
   },
   {
     "name": "Text",
+    "title": null,
     "description": "Structured copy primitive for theme-aware app text.\n\n`Text` owns normal body, caption, label, code, and supporting-copy variants so\nconsumers do not need to import lower-level Surface typography directly.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Muted supporting copy",
-        "language": "tsx",
-        "code": "<Text variant=\"bodySmall\" emphasis=\"muted\">Updated just now</Text>"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/typography/adapters/inbound/Text.tsx",
     "sourceLocation": {
       "filePath": "src/features/typography/adapters/inbound/Text.tsx",
-      "line": 22,
+      "line": 18,
       "column": 14
     },
     "exportPaths": [
@@ -20356,9 +20896,11 @@
   },
   {
     "name": "TextAlign",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20376,9 +20918,11 @@
   },
   {
     "name": "TextColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20396,9 +20940,11 @@
   },
   {
     "name": "TextEmphasis",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20416,20 +20962,16 @@
   },
   {
     "name": "TextInput",
+    "title": null,
     "description": "Theme-aware text input with semantic sizing and optional leading/trailing icon slots.\n\nUse `TextInput` for single-line, multiline, and password form controls with ZORA styling.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": "Search input",
-        "language": "tsx",
-        "code": "<TextInput placeholder=\"Search\" leadingIcon={{ name: 'search-outline' }} />"
-      }
-    ],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
     "sourceLocation": {
       "filePath": "src/features/form/text-input/adapters/inbound/TextInput.tsx",
-      "line": 66,
+      "line": 62,
       "column": 14
     },
     "exportPaths": [
@@ -20442,9 +20984,11 @@
   },
   {
     "name": "TextInputProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text-input.ts",
     "sourceLocation": {
@@ -20462,9 +21006,11 @@
   },
   {
     "name": "TextInputTrailingAction",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/text-input.ts",
     "sourceLocation": {
@@ -20506,9 +21052,11 @@
   },
   {
     "name": "TextProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20686,9 +21234,11 @@
   },
   {
     "name": "TextVariant",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20706,9 +21256,11 @@
   },
   {
     "name": "TextWeight",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/text.ts",
     "sourceLocation": {
@@ -20726,9 +21278,11 @@
   },
   {
     "name": "ThemeModeToggle",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/adapters/inbound/ThemeModeToggle.tsx",
     "sourceLocation": {
@@ -20762,9 +21316,11 @@
   },
   {
     "name": "ThemeModeToggleProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme-mode-toggle.ts",
     "sourceLocation": {
@@ -20782,9 +21338,11 @@
   },
   {
     "name": "Timeline",
+    "title": null,
     "description": "Timeline pattern for displaying a sequence of events.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
     "sourceLocation": {
@@ -20802,9 +21360,11 @@
   },
   {
     "name": "TimelineItem",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
@@ -20872,9 +21432,11 @@
   },
   {
     "name": "TimelineProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
@@ -20938,9 +21500,11 @@
   },
   {
     "name": "TimePicker",
+    "title": null,
     "description": "Renders TimePicker with anchored web Popover presentation.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/time-picker/adapters/inbound/TimePicker.web.tsx",
     "sourceLocation": {
@@ -20958,9 +21522,11 @@
   },
   {
     "name": "TimePickerProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/time-picker.ts",
     "sourceLocation": {
@@ -21094,9 +21660,11 @@
   },
   {
     "name": "TimePickerValue",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/time-picker.ts",
     "sourceLocation": {
@@ -21114,9 +21682,11 @@
   },
   {
     "name": "Toast",
+    "title": null,
     "description": "Renders a toast notification message with ZORA theme scoping.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/toast/adapters/inbound/Toast.tsx",
     "sourceLocation": {
@@ -21134,9 +21704,11 @@
   },
   {
     "name": "ToastController",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/toast.ts",
     "sourceLocation": {
@@ -21154,9 +21726,11 @@
   },
   {
     "name": "ToastOptions",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/toast.ts",
     "sourceLocation": {
@@ -21174,9 +21748,11 @@
   },
   {
     "name": "ToastProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/toast.ts",
     "sourceLocation": {
@@ -21254,9 +21830,11 @@
   },
   {
     "name": "ToastProvider",
+    "title": null,
     "description": "Provides toast state and rendering context through the Surface runtime host.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/toast/adapters/inbound/ToastProvider.tsx",
     "sourceLocation": {
@@ -21290,9 +21868,11 @@
   },
   {
     "name": "ToastProviderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/toast.ts",
     "sourceLocation": {
@@ -21310,9 +21890,11 @@
   },
   {
     "name": "ToastStatus",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/toast.ts",
     "sourceLocation": {
@@ -21330,9 +21912,11 @@
   },
   {
     "name": "Toolbar",
+    "title": null,
     "description": "Renders a visible horizontal group of contextual actions and controls.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/toolbar/adapters/inbound/Toolbar.tsx",
     "sourceLocation": {
@@ -21350,9 +21934,11 @@
   },
   {
     "name": "ToolbarProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/toolbar.ts",
     "sourceLocation": {
@@ -21422,9 +22008,11 @@
   },
   {
     "name": "TreeItem",
+    "title": null,
     "description": "Single tree node row used within `TreeView`.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
     "sourceLocation": {
@@ -21442,9 +22030,11 @@
   },
   {
     "name": "TreeItemNode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
@@ -21512,9 +22102,11 @@
   },
   {
     "name": "TreeItemRenderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
@@ -21570,9 +22162,11 @@
   },
   {
     "name": "TreeView",
-    "description": "Tree view pattern for hierarchical navigation and expandable lists.\nExpansion controls are separate from row selection, including when rendering custom row content.",
+    "title": null,
+    "description": "Tree view pattern for hierarchical navigation and expandable lists.\nexpansionIndicator Select `folder` (default) or `chevron` for leading expansion controls.\nExpansion controls are separate from row selection, including when rendering custom row content.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
     "sourceLocation": {
@@ -21590,9 +22184,11 @@
   },
   {
     "name": "TreeViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
@@ -21699,9 +22295,11 @@
   },
   {
     "name": "UploadAsset",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -21719,9 +22317,11 @@
   },
   {
     "name": "UploadAssetBase",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -21789,9 +22389,11 @@
   },
   {
     "name": "Uploader",
+    "title": null,
     "description": "Picks, validates, uploads, previews, and removes one generic file asset.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
     "sourceLocation": {
@@ -21809,9 +22411,11 @@
   },
   {
     "name": "UploaderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -22017,9 +22621,11 @@
   },
   {
     "name": "UploadProgressContext",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -22045,9 +22651,11 @@
   },
   {
     "name": "UploadType",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -22065,9 +22673,11 @@
   },
   {
     "name": "useFormController",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/form/useFormController.ts",
     "sourceLocation": {
@@ -22102,9 +22712,11 @@
   },
   {
     "name": "UseFormControllerOptions",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -22175,9 +22787,11 @@
   },
   {
     "name": "UseFormControllerResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -22248,9 +22862,11 @@
   },
   {
     "name": "useSelection",
+    "title": null,
     "description": "Accesses selection state provided by `SelectionProvider`.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
@@ -22277,9 +22893,11 @@
   },
   {
     "name": "UseSelectionResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
@@ -22363,9 +22981,11 @@
   },
   {
     "name": "useToast",
+    "title": null,
     "description": "Returns the toast controller installed by ToastProvider.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "node_modules/@ankhorage/surface/dist/features/toast/adapters/inbound/useToast.d.ts",
     "sourceLocation": {
@@ -22392,9 +23012,11 @@
   },
   {
     "name": "useZoraTheme",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/composition/useZoraTheme.ts",
     "sourceLocation": {
@@ -22419,9 +23041,11 @@
   },
   {
     "name": "validateField",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/form/utils/validation.ts",
     "sourceLocation": {
@@ -22462,9 +23086,11 @@
   },
   {
     "name": "validateFields",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/form/utils/validation.ts",
     "sourceLocation": {
@@ -22506,9 +23132,11 @@
   },
   {
     "name": "validateUploadAsset",
+    "title": null,
     "description": "Validates a picked upload asset against MIME, extension, size, and caller rules.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
     "sourceLocation": {
@@ -22542,9 +23170,11 @@
   },
   {
     "name": "ValidateUploadAssetInput",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
@@ -22593,9 +23223,11 @@
   },
   {
     "name": "validateValue",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/form/utils/validation.ts",
     "sourceLocation": {
@@ -22635,9 +23267,11 @@
   },
   {
     "name": "ValidationRule",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/form.ts",
     "sourceLocation": {
@@ -22655,9 +23289,11 @@
   },
   {
     "name": "View",
+    "title": null,
     "description": "Adapts the token-aware Surface View primitive to ZORA theme scope.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/layout/adapters/inbound/View.tsx",
     "sourceLocation": {
@@ -22675,9 +23311,11 @@
   },
   {
     "name": "ViewProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/layout.ts",
     "sourceLocation": {
@@ -23097,9 +23735,11 @@
   },
   {
     "name": "withZoraThemeScope",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
     "sourceLocation": {
@@ -23131,9 +23771,11 @@
   },
   {
     "name": "ZORA_BINDABLE_COMPONENT_META",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/authoring/bindableComponentMeta.ts",
     "sourceLocation": {
@@ -23151,9 +23793,11 @@
   },
   {
     "name": "ZORA_COLORS",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/theme/colorModel.ts",
     "sourceLocation": {
@@ -23171,9 +23815,11 @@
   },
   {
     "name": "ZORA_COMPONENT_META",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/authoring/componentMeta.ts",
     "sourceLocation": {
@@ -23191,9 +23837,11 @@
   },
   {
     "name": "ZORA_COMPONENT_REGISTRY",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
@@ -23211,9 +23859,11 @@
   },
   {
     "name": "ZORA_CORE_PLUGIN",
+    "title": null,
     "description": "Describe the complete ZORA core runtime and authoring surface through the public plugin contract.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/plugin/ZORA_CORE_PLUGIN.ts",
     "sourceLocation": {
@@ -23231,9 +23881,11 @@
   },
   {
     "name": "ZORA_CORE_PLUGIN_METADATA",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts",
     "sourceLocation": {
@@ -23251,9 +23903,11 @@
   },
   {
     "name": "ZORA_EMPHASES",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/theme/colorModel.ts",
     "sourceLocation": {
@@ -23271,9 +23925,11 @@
   },
   {
     "name": "ZORA_PALETTE_COLORS",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/theme/colorModel.ts",
     "sourceLocation": {
@@ -23291,9 +23947,11 @@
   },
   {
     "name": "ZORA_STATUS_COLORS",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/theme/colorModel.ts",
     "sourceLocation": {
@@ -23311,9 +23969,11 @@
   },
   {
     "name": "ZORA_THEME_RECIPE_META",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/authoring/themeRecipeMeta.ts",
     "sourceLocation": {
@@ -23331,9 +23991,11 @@
   },
   {
     "name": "ZORA_THEME_TOKEN_FAMILIES",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/authoring/constants.ts",
     "sourceLocation": {
@@ -23351,9 +24013,11 @@
   },
   {
     "name": "ZoraBaseProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/base.ts",
     "sourceLocation": {
@@ -23402,9 +24066,11 @@
   },
   {
     "name": "ZoraBindableComponentType",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/features/authoring/bindableComponentMeta.ts",
     "sourceLocation": {
@@ -23422,9 +24088,11 @@
   },
   {
     "name": "ZoraColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -23442,9 +24110,11 @@
   },
   {
     "name": "ZoraComponentBlueprint",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23486,9 +24156,11 @@
   },
   {
     "name": "ZoraComponentCategory",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23506,9 +24178,11 @@
   },
   {
     "name": "ZoraComponentEventMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23558,9 +24232,11 @@
   },
   {
     "name": "ZoraComponentEventPayloadFieldMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23609,9 +24285,11 @@
   },
   {
     "name": "ZoraComponentEventPayloadFieldType",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23629,9 +24307,11 @@
   },
   {
     "name": "ZoraComponentEventPayloadKind",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23649,9 +24329,11 @@
   },
   {
     "name": "ZoraComponentI18nMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23677,9 +24359,11 @@
   },
   {
     "name": "ZoraComponentManifestPolicy",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23719,9 +24403,11 @@
   },
   {
     "name": "ZoraComponentMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23846,9 +24532,11 @@
   },
   {
     "name": "ZoraComponentMetaRegistry",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23866,9 +24554,11 @@
   },
   {
     "name": "ZoraComponentPropArrayItemSchema",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23903,9 +24593,11 @@
   },
   {
     "name": "ZoraComponentPropAuthoring",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -23923,9 +24615,11 @@
   },
   {
     "name": "ZoraComponentPropSchema",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -24004,9 +24698,11 @@
   },
   {
     "name": "ZoraComponentPropType",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -24024,9 +24720,11 @@
   },
   {
     "name": "ZoraComponentPropValue",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -24044,9 +24742,11 @@
   },
   {
     "name": "ZoraComponentRegistry",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/registry.ts",
     "sourceLocation": {
@@ -24064,9 +24764,11 @@
   },
   {
     "name": "ZoraComponentSlotMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
@@ -24099,9 +24801,11 @@
   },
   {
     "name": "ZoraComputedTheme",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24159,9 +24863,11 @@
   },
   {
     "name": "ZoraComputedThemeMode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24227,9 +24933,11 @@
   },
   {
     "name": "zoraDefaultTheme",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/features/theme/zoraDefaultTheme.ts",
     "sourceLocation": {
@@ -24247,9 +24955,11 @@
   },
   {
     "name": "ZoraEmphasis",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24267,9 +24977,11 @@
   },
   {
     "name": "ZoraPaletteColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24287,9 +24999,11 @@
   },
   {
     "name": "ZoraPluginCompositionError",
+    "title": null,
     "description": "Report one deterministic plugin composition contract violation.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/features/plugin/domain/ZoraPluginCompositionError.ts",
     "sourceLocation": {
@@ -24307,9 +25021,11 @@
   },
   {
     "name": "ZoraPluginCompositionErrorCode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -24327,9 +25043,11 @@
   },
   {
     "name": "ZoraPluginDescriptor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -24400,9 +25118,11 @@
   },
   {
     "name": "ZoraPluginMetadata",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -24466,9 +25186,11 @@
   },
   {
     "name": "ZoraPluginPlacement",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/plugin.ts",
     "sourceLocation": {
@@ -24501,9 +25223,11 @@
   },
   {
     "name": "ZoraProvider",
+    "title": null,
     "description": "Installs the core ZORA theme runtime and explicitly enabled optional capabilities.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/adapters/inbound/ZoraProvider.tsx",
     "sourceLocation": {
@@ -24537,9 +25261,11 @@
   },
   {
     "name": "ZoraProviderProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/provider.ts",
     "sourceLocation": {
@@ -24611,9 +25337,11 @@
   },
   {
     "name": "ZoraStatusColor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24631,9 +25359,11 @@
   },
   {
     "name": "ZoraTheme",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24687,9 +25417,11 @@
   },
   {
     "name": "ZoraThemeCompilationDiagnostic",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24746,9 +25478,11 @@
   },
   {
     "name": "ZoraThemeCompilationDiagnosticCode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24766,9 +25500,11 @@
   },
   {
     "name": "ZoraThemeCompilationOptions",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24797,9 +25533,11 @@
   },
   {
     "name": "ZoraThemeId",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24817,9 +25555,11 @@
   },
   {
     "name": "ZoraThemeMode",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24837,9 +25577,11 @@
   },
   {
     "name": "ZoraThemeProvenanceEntry",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -24888,9 +25630,11 @@
   },
   {
     "name": "ZoraThemeRecipeBooleanFieldMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -24937,9 +25681,11 @@
   },
   {
     "name": "ZoraThemeRecipeChoiceFieldMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -24993,9 +25739,11 @@
   },
   {
     "name": "ZoraThemeRecipeFieldMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25013,9 +25761,11 @@
   },
   {
     "name": "ZoraThemeRecipeKind",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25033,9 +25783,11 @@
   },
   {
     "name": "ZoraThemeRecipeMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25085,9 +25837,11 @@
   },
   {
     "name": "ZoraThemeRecipeMetaRegistry",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25105,9 +25859,11 @@
   },
   {
     "name": "ZoraThemeRecipeTokenFieldMeta",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25163,9 +25919,11 @@
   },
   {
     "name": "ZoraThemeScope",
+    "title": null,
     "description": "Applies nested ZORA theme overrides through the public Surface theme scope.",
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/theme/adapters/inbound/ZoraThemeScope.tsx",
     "sourceLocation": {
@@ -25199,9 +25957,11 @@
   },
   {
     "name": "ZoraThemeScopeProps",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/features/theme/adapters/inbound/ZoraThemeScope.tsx",
     "sourceLocation": {
@@ -25243,9 +26003,11 @@
   },
   {
     "name": "ZoraThemeSelectionResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -25280,9 +26042,11 @@
   },
   {
     "name": "ZoraThemeSelectionTarget",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -25336,9 +26100,11 @@
   },
   {
     "name": "ZoraThemeSwatchRole",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -25356,9 +26122,11 @@
   },
   {
     "name": "ZoraThemeTokenFamily",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme-recipe.ts",
     "sourceLocation": {
@@ -25376,9 +26144,11 @@
   },
   {
     "name": "ZoraThemeValueOrigin",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/theme.ts",
     "sourceLocation": {
@@ -25396,9 +26166,11 @@
   },
   {
     "name": "ZoraToastCapability",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types/provider.ts",
     "sourceLocation": {

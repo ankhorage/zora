@@ -1,5 +1,14 @@
 # Changelog
 
+## 21.0.23
+
+### Patch Changes
+
+- 112ecba: Align ZORA documentation sources with the canonical Paradox metadata policy so release-owned documentation can regenerate successfully.
+- df60dff: Reuse the canonical portable-path conversion from @ankhorage/utility/node/path.
+- d8157f4: Remove the ZORA-owned Next.js and Playwright acceptance dependencies so consumer frameworks remain downstream application ownership.
+- ebd6f97: Update Ankhorage dependencies: `@ankhorage/paradox`, `@ankhorage/utility`.
+
 ## 21.0.22
 
 ### Patch Changes

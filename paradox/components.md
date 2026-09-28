@@ -514,7 +514,7 @@ Export paths: `src/index.ts`
 
 ## Button
 
-Source: `src/features/button/adapters/inbound/Button.tsx:19:14`
+Source: `src/features/button/adapters/inbound/Button.tsx:15:14`
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
 
@@ -640,7 +640,7 @@ Export paths: `src/index.ts`
 
 ## Card
 
-Source: `src/features/card/adapters/inbound/Card.tsx:23:14`
+Source: `src/features/card/adapters/inbound/Card.tsx:19:14`
 
 Structured content container with built-in heading, description, actions, and footer slots.
 
@@ -1086,7 +1086,7 @@ Export paths: `src/index.ts`
 
 ## EmptyState
 
-Source: `src/features/empty-state/adapters/inbound/EmptyState.tsx:74:14`
+Source: `src/features/empty-state/adapters/inbound/EmptyState.tsx:70:14`
 
 Reusable fallback state for empty lists, missing data, or first-run experiences.
 
@@ -1361,7 +1361,7 @@ Export paths: `src/index.ts`
 
 ## Heading
 
-Source: `src/features/typography/adapters/inbound/Heading.tsx:23:14`
+Source: `src/features/typography/adapters/inbound/Heading.tsx:19:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -3026,7 +3026,7 @@ Export paths: `src/index.ts`
 
 ## Text
 
-Source: `src/features/typography/adapters/inbound/Text.tsx:22:14`
+Source: `src/features/typography/adapters/inbound/Text.tsx:18:14`
 
 Structured copy primitive for theme-aware app text.
 
@@ -3062,7 +3062,7 @@ Export paths: `src/index.ts`
 
 ## TextInput
 
-Source: `src/features/form/text-input/adapters/inbound/TextInput.tsx:66:14`
+Source: `src/features/form/text-input/adapters/inbound/TextInput.tsx:62:14`
 
 Theme-aware text input with semantic sizing and optional leading/trailing icon slots.
 
@@ -3373,6 +3373,7 @@ Export paths: `src/index.ts`
 Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:66:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
+expansionIndicator Select `folder` (default) or `chevron` for leading expansion controls.
 Expansion controls are separate from row selection, including when rendering custom row content.
 
 Export paths: `src/index.ts`
