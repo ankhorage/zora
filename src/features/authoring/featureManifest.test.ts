@@ -105,12 +105,12 @@ test('integrated Chess, Game, and Tabletop placements preserve their former pack
   expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('TabletopTable');
   expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('PokerTrainingTable');
 
-  expect(ZORA_COMPONENT_META.Game.allowedChildren).toEqual(
-    expect.arrayContaining(['GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay']),
-  );
-  expect(ZORA_COMPONENT_META.GameField.allowedChildren).toEqual(
-    expect.arrayContaining(['GameEntity', 'GameOverlay']),
-  );
+  for (const child of ['GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay']) {
+    expect(ZORA_COMPONENT_META.Game.allowedChildren).toContain(child);
+  }
+  for (const child of ['GameEntity', 'GameOverlay']) {
+    expect(ZORA_COMPONENT_META.GameField.allowedChildren).toContain(child);
+  }
   expect(ZORA_COMPONENT_META.GameOverlay.allowedChildren).toContain('GameEntity');
 });
 
