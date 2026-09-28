@@ -14,6 +14,13 @@ export interface ChessMoveAttempt {
   readonly promotion?: ChessPromotionPiece;
 }
 
+export interface ChessMoveResult extends Omit<ChessMoveAttempt, 'promotion'> {
+  readonly fen: string;
+  readonly lan: string;
+  readonly promotion?: ChessPromotionPiece;
+  readonly san: string;
+}
+
 export interface ChessPieceState {
   readonly color: 'black' | 'white';
   readonly piece: ChessPieceCode;
@@ -58,6 +65,7 @@ export interface OpeningBookColorScheme {
 export type OpeningBookColorOverrides = Partial<OpeningBookColorScheme>;
 
 export interface ChessBoardProps extends ZoraBaseProps {
+  readonly fen?: string;
   readonly pieces?: readonly ChessPieceState[];
   readonly orientation?: ChessBoardOrientation;
   readonly selectedSquare?: ChessSquareId | null;
@@ -65,9 +73,12 @@ export interface ChessBoardProps extends ZoraBaseProps {
   readonly lastMove?: ChessMoveAttempt | null;
   readonly disabled?: boolean;
   readonly showCoordinates?: boolean;
+  readonly validateMoves?: boolean;
   readonly colorScheme?: ChessBoardColorOverrides;
   readonly onSquarePress?: (square: ChessSquareId) => void;
   readonly onMoveAttempt?: (move: ChessMoveAttempt) => void;
+  readonly onLegalMove?: (move: ChessMoveResult) => void;
+  readonly onInvalidMove?: (move: ChessMoveAttempt) => void;
   readonly renderPiece?: ChessPieceRenderer;
 }
 
