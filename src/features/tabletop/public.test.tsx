@@ -112,9 +112,9 @@ describe('Tabletop presentation', () => {
     expect(
       browser.document.querySelector('[data-testid="poker"]')?.getAttribute('aria-label'),
     ).toContain('Six-player poker table');
-    const circleSurface = browser.document
-      .querySelector('[data-testid="table"]')
-      ?.firstElementChild.getAttribute('class');
+    const circleTable = browser.document.querySelector('[data-testid="table"]');
+    expect(circleTable?.getAttribute('style')).toContain('aspect-ratio:1');
+    const circleSurface = circleTable?.firstElementChild.getAttribute('class');
     browser.document.body.innerHTML = renderToStaticMarkup(
       <TabletopTable seats={[]} shape="rounded" testID="table" />,
     );

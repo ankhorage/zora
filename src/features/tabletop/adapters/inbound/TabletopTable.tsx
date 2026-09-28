@@ -48,7 +48,11 @@ function TabletopTableInner({
   return (
     <View
       accessibilityLabel={accessibilityLabel}
-      style={[styles.root, { opacity: disabled ? 0.56 : 1 }]}
+      style={[
+        styles.root,
+        shape === 'circle' ? styles.circleRoot : null,
+        { opacity: disabled ? 0.56 : 1 },
+      ]}
       testID={testID}
     >
       <View
@@ -183,6 +187,9 @@ const styles = StyleSheet.create({
   centerSublabel: {
     fontSize: 11,
     fontWeight: '700',
+  },
+  circleRoot: {
+    aspectRatio: 1,
   },
   circleSurface: {
     borderRadius: 999,
