@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.1.3
+
+### Patch Changes
+
+- c6b7409: Update dependencies from Renovate pull request #593.
+
 ## 21.1.2
 
 ### Patch Changes
