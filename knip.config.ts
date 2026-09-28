@@ -5,8 +5,6 @@ export default createKnipConfig({
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
     'scripts/web-artifacts/verifyWebMaterialization.ts',
-    'scripts/web-artifacts/fixtures/next-app/app/**/*.{ts,tsx}',
-    'scripts/web-artifacts/fixtures/next-app/next.config.ts',
     'examples/basic-app/App.tsx',
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
