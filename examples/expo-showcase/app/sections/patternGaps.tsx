@@ -153,6 +153,7 @@ export function PatternGapsSection() {
           node={{ id: 'direct-tree-item', label: 'Direct TreeItem export', meta: 'tsx' }}
           depth={0}
           expandedIds={[]}
+          expansionIndicator="chevron"
           onToggleExpand={() => undefined}
         />
       </Card>
