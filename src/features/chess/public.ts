@@ -4,6 +4,7 @@ export type {
   ChessBoardOrientation,
   ChessBoardProps,
   ChessMoveAttempt,
+  ChessMoveResult,
   ChessPieceCode,
   ChessPieceRenderContext,
   ChessPieceRenderer,
@@ -25,3 +26,5 @@ export { createOpeningBookColorScheme } from './utils/createOpeningBookColorSche
 export { getSquareFile } from './utils/getSquareFile';
 export { getSquareRank } from './utils/getSquareRank';
 export { isLightSquare } from './utils/isLightSquare';
+
+export { getLegalTargets, readChessPieces, tryMove } from './utils/chessEngine';
