@@ -63,6 +63,8 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'MissingElement',
 ] as const;
 
+export const GAME_ALLOWED_CHILDREN = ['Game', 'GameField'] as const;
+
 export const CHESS_ALLOWED_CHILDREN = ['ChessBoard', 'OpeningBook'] as const;
 export const TABLETOP_ALLOWED_CHILDREN = ['TabletopTable', 'PokerTrainingTable'] as const;
 
@@ -90,6 +92,7 @@ export const CONTENT_RAIL_ALLOWED_CHILDREN = [
 export const SCREEN_SECTION_ALLOWED_CHILDREN = [
   ...CONTAINER_ALLOWED_CHILDREN,
   ...CHESS_ALLOWED_CHILDREN,
+  ...GAME_ALLOWED_CHILDREN,
   ...TABLETOP_ALLOWED_CHILDREN,
 ] as const;
 

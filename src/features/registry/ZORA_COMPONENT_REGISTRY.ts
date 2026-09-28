@@ -35,6 +35,14 @@ import { SearchInput } from '../form/search-input/public';
 import { Select } from '../form/select/public';
 import { Switch } from '../form/switch/public';
 import { TextInput } from '../form/text-input/public';
+import {
+  Game,
+  GameEntity,
+  GameField,
+  GameInputZone,
+  GameMeasurementProbe,
+  GameOverlay,
+} from '../game/public';
 import { Gradient } from '../gradient/public';
 import { Hero } from '../hero/public';
 import { Icon } from '../icon/public';
@@ -118,6 +126,12 @@ const _ZORA_COMPONENT_REGISTRY = {
   FormError,
   Field,
   Gradient,
+  Game,
+  GameEntity,
+  GameField,
+  GameInputZone,
+  GameMeasurementProbe,
+  GameOverlay,
   Heading,
   Icon,
   IconButton,

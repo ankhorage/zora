@@ -43,6 +43,12 @@ import { searchInputMeta } from '../form/search-input/searchInputMeta';
 import { selectMeta } from '../form/select/selectMeta';
 import { switchMeta } from '../form/switch/switchMeta';
 import { textInputMeta } from '../form/text-input/textInputMeta';
+import { gameEntityMeta } from '../game/meta/gameEntityMeta';
+import { gameFieldMeta } from '../game/meta/gameFieldMeta';
+import { gameInputZoneMeta } from '../game/meta/gameInputZoneMeta';
+import { gameMeasurementProbeMeta } from '../game/meta/gameMeasurementProbeMeta';
+import { gameMeta } from '../game/meta/gameMeta';
+import { gameOverlayMeta } from '../game/meta/gameOverlayMeta';
 import { gradientMeta } from '../gradient/gradientMeta';
 import { heroMeta } from '../hero/heroMeta';
 import { iconMeta } from '../icon/iconMeta';
@@ -127,6 +133,12 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   FormError: formErrorMeta,
   Field: fieldMeta,
   Gradient: gradientMeta,
+  Game: gameMeta,
+  GameField: gameFieldMeta,
+  GameEntity: gameEntityMeta,
+  GameInputZone: gameInputZoneMeta,
+  GameMeasurementProbe: gameMeasurementProbeMeta,
+  GameOverlay: gameOverlayMeta,
   Heading: headingMeta,
   Icon: iconMeta,
   IconButton: iconButtonMeta,

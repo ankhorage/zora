@@ -17,6 +17,32 @@ describe('ZORA_COMPONENT_META public API', () => {
 });
 
 describe('ZORA_COMPONENT_META registry coverage', () => {
+  test('registers the six Game components and their canonical placements', () => {
+    const names = [
+      'Game',
+      'GameField',
+      'GameEntity',
+      'GameInputZone',
+      'GameMeasurementProbe',
+      'GameOverlay',
+    ] as const;
+    const gameMetadata = Object.values(ZORA_COMPONENT_META).filter((meta) =>
+      names.some((name) => name === meta.name),
+    );
+    expect(gameMetadata).toHaveLength(names.length);
+    for (const meta of gameMetadata) expect(meta.directManifestNode).toBe(true);
+    expect(ZORA_COMPONENT_META.Screen.allowedChildren).toContain('Game');
+    expect(ZORA_COMPONENT_META.ScreenSection.allowedChildren).toContain('GameField');
+    expect(ZORA_COMPONENT_META.Game.allowedChildren).toContain('GameInputZone');
+    expect(ZORA_COMPONENT_META.Game.allowedChildren).toContain('GameMeasurementProbe');
+    expect(ZORA_COMPONENT_META.GameField.allowedChildren).toContain('GameEntity');
+    expect(ZORA_COMPONENT_META.GameField.allowedChildren).toContain('GameOverlay');
+    expect(ZORA_COMPONENT_META.Game.bindings?.props?.definition?.value.type).toBe('object');
+    expect(ZORA_COMPONENT_META.Game.bindings?.events?.output?.payload.eventType).toBe(
+      'game.output',
+    );
+  });
+
   test('covers every public UI React component export (foundation/components/patterns/layout)', async () => {
     const source = await Bun.file('src/index.ts').text();
     const componentExports = Array.from(
@@ -186,6 +212,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ChatListItem',
       'CameraPermissionView',
       'ChessBoard',
+      'GameInputZone',
+      'GameMeasurementProbe',
       'OpeningBook',
       'ScanOverlay',
       'ProductCard',
@@ -204,6 +232,10 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Dialog',
       'Form',
       'Gradient',
+      'Game',
+      'GameEntity',
+      'GameField',
+      'GameOverlay',
       'Surface',
       'MediaCard',
       'FlatList',
