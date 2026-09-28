@@ -6,12 +6,12 @@ import { Window } from 'happy-dom';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
 import type {
   CardHand as CardHandComponent,
   PokerTrainingTable as PokerTrainingTableComponent,
   TabletopTable as TabletopTableComponent,
 } from './public';
-import { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
 import { createPokerTrainingTableState } from './utils/createPokerTrainingTableState';
 import { createTabletopGameSeats } from './utils/createTabletopGameSeats';
 import { getTabletopSeatPosition } from './utils/getTabletopSeatPosition';
