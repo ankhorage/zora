@@ -2,6 +2,7 @@ import type { ZoraComponentMeta } from '../../types/authoring';
 import {
   CHESS_ALLOWED_CHILDREN,
   CONTAINER_ALLOWED_CHILDREN,
+  GAME_ALLOWED_CHILDREN,
   TABLETOP_ALLOWED_CHILDREN,
 } from '../authoring/allowedChildren';
 import { LAYOUT_PROPS } from './constants';
@@ -13,6 +14,7 @@ export const gridMeta = {
   allowedChildren: [
     ...CONTAINER_ALLOWED_CHILDREN,
     ...CHESS_ALLOWED_CHILDREN,
+    ...GAME_ALLOWED_CHILDREN,
     ...TABLETOP_ALLOWED_CHILDREN,
   ],
   props: {

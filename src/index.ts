@@ -243,6 +243,27 @@ export {
   type TextInputTrailingAction,
 } from './features/form/text-input/public';
 export type {
+  GameEntityEasing,
+  GameEntityMotionProps,
+  GameEntityProps,
+  GameFieldProps,
+  GameInputZoneProps,
+  GameKeyboardBinding,
+  GameMeasurementProbeProps,
+  GameOverlayPlacement,
+  GameOverlayProps,
+  GamePointerEvents,
+  GameProps,
+} from './features/game/public';
+export {
+  Game,
+  GameEntity,
+  GameField,
+  GameInputZone,
+  GameMeasurementProbe,
+  GameOverlay,
+} from './features/game/public';
+export type {
   GradientColor,
   GradientColors,
   GradientLocations,

@@ -43,6 +43,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   uploader: ['Uploader'],
   'bottom-sheet': ['BottomSheet'],
   chess: ['ChessBoard', 'OpeningBook'],
+  game: ['Game', 'GameField', 'GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay'],
   tabletop: ['TabletopTable', 'PokerTrainingTable'],
 } as const;
 

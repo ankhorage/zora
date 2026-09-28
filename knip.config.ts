@@ -6,6 +6,7 @@ export default createKnipConfig({
     'scripts/scaffold-zora-example-app.ts',
     'scripts/web-artifacts/verifyWebMaterialization.ts',
     'examples/basic-app/App.tsx',
+    'examples/game-presentation/index.ts',
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
     'src/features/uploader/composition/createUploadPicker.web.ts',
@@ -26,5 +27,4 @@ export default createKnipConfig({
     'paradox.config.ts',
     'prettier.local.config.js',
   ],
-  ignoreDependencies: ['@zora/*'],
 });

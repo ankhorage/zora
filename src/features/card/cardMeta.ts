@@ -2,6 +2,7 @@ import type { ZoraComponentMeta } from '../authoring';
 import {
   CHESS_ALLOWED_CHILDREN,
   CONTAINER_ALLOWED_CHILDREN,
+  GAME_ALLOWED_CHILDREN,
   TABLETOP_ALLOWED_CHILDREN,
 } from '../authoring/allowedChildren';
 import { COMPONENT_THEME_AUTHORING } from '../authoring/constants';
@@ -13,6 +14,7 @@ export const cardMeta = {
   allowedChildren: [
     ...CONTAINER_ALLOWED_CHILDREN,
     ...CHESS_ALLOWED_CHILDREN,
+    ...GAME_ALLOWED_CHILDREN,
     ...TABLETOP_ALLOWED_CHILDREN,
   ],
   blueprint: { label: 'Card', defaultProps: { title: 'Card' } },

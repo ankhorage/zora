@@ -42,6 +42,8 @@
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
     "@ankhorage/contracts": "^22.8.2",
+    "@ankhorage/game": "^0.1.2",
+    "@ankhorage/runtime": "^3.0.25",
     "@ankhorage/surface": "^9.1.7",
     "@ankhorage/utility": "^1.8.1",
     "expo-document-picker": "~57.0.1",

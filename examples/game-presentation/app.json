@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "zora-game-presentation",
+    "slug": "zora-game-presentation",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ankhorage.zoragamepresentation"
+    },
+    "android": {
+      "package": "com.ankhorage.zoragamepresentation"
+    },
+    "web": {
+      "output": "single"
+    },
+    "plugins": [
+      "@react-native-vector-icons/fontawesome",
+      "@react-native-vector-icons/fontawesome5",
+      "@react-native-vector-icons/fontawesome6",
+      "@react-native-vector-icons/ionicons"
+    ],
+    "experiments": {
+      "reactCompiler": true
+    }
+  }
+}
