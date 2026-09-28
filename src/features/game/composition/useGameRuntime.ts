@@ -34,7 +34,8 @@ export function useGameRuntime(props: GameProps): GameRuntimeValue {
     seed,
     setRuntime,
   });
-  useGameOutputEmitter(runtime, outputRef);
+  useGameAutoAdvanceClock(autoAdvanceTime, clockRef);
+  useGameOutputEmitter(runtime, outputRef, setRuntime);
 
   const dispatch = React.useCallback<GameRuntimeValue['dispatch']>(
     (event) => {
@@ -103,14 +104,32 @@ function useGameRuntimeReset({
   }, [clockRef, definitionRef, inputRef, runtimeKey, seed, setRuntime]);
 }
 
-/*** Emit each runtime output exactly when one execution revision becomes current. */
+/*** Rebase elapsed-time tracking when automatic game-time advancement resumes. */
+function useGameAutoAdvanceClock(enabled: boolean, clockRef: React.RefObject<number>): void {
+  const previousEnabledRef = React.useRef(enabled);
+
+  React.useEffect(() => {
+    if (enabled && !previousEnabledRef.current) {
+      clockRef.current = Date.now();
+    }
+    previousEnabledRef.current = enabled;
+  }, [clockRef, enabled]);
+}
+
+/*** Emit each committed runtime output once and clear the delivered queue. */
 function useGameOutputEmitter(
   runtime: GameRuntimeState,
   outputRef: React.RefObject<GameProps['onOutput']>,
+  setRuntime: React.Dispatch<React.SetStateAction<GameRuntimeState>>,
 ): void {
   React.useEffect(() => {
+    if (runtime.outputs.length === 0) return;
+
+    setRuntime((current) =>
+      current.revision === runtime.revision ? { ...current, outputs: [] } : current,
+    );
     emitGameOutputs(runtime.outputs, outputRef.current);
-  }, [outputRef, runtime.outputs, runtime.revision]);
+  }, [outputRef, runtime.outputs, runtime.revision, setRuntime]);
 }
 
 interface ApplyRuntimeEventArgs {
@@ -143,7 +162,7 @@ function applyRuntimeEvent(args: ApplyRuntimeEventArgs): GameRuntimeState {
   return {
     key: args.runtimeKey,
     session: result.session,
-    outputs: [...(base === args.current ? [] : base.outputs), ...timed.outputs, ...result.outputs],
+    outputs: [...base.outputs, ...timed.outputs, ...result.outputs],
     revision: args.current.revision + 1,
   };
 }
