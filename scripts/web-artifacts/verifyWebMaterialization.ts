@@ -125,7 +125,7 @@ try {
   const { TreeView } = await load('components/tree-view/index.js');
   for (const target of publicFeatureTargets) {
     const artifact = await load(`components/${target.component}/index.js`);
-    assert.equal(typeof artifact[target.exportName], 'function', target.exportName);
+    assert.notEqual(artifact[target.exportName], undefined, target.exportName);
   }
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');

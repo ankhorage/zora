@@ -50,8 +50,7 @@ function TabletopTableInner({
       accessibilityLabel={accessibilityLabel}
       style={[
         styles.root,
-        shape === 'circle' ? styles.circleRoot : null,
-        { opacity: disabled ? 0.56 : 1 },
+        { aspectRatio: shape === 'circle' ? 1 : 1.6, opacity: disabled ? 0.56 : 1 },
       ]}
       testID={testID}
     >
@@ -188,9 +187,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
   },
-  circleRoot: {
-    aspectRatio: 1,
-  },
   circleSurface: {
     borderRadius: 999,
   },
@@ -207,7 +203,6 @@ const styles = StyleSheet.create({
     borderRadius: 999,
   },
   root: {
-    aspectRatio: 1.6,
     maxWidth: 760,
     position: 'relative',
     width: '100%',
