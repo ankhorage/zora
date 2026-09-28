@@ -30,3 +30,4 @@ export { TabletopTable } from './adapters/inbound/TabletopTable';
 export { createPokerTrainingTableState } from './utils/createPokerTrainingTableState';
 export { createTabletopColorScheme } from './utils/createTabletopColorScheme';
 export { createTabletopGameSeats } from './utils/createTabletopGameSeats';
+export { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
