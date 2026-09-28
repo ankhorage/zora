@@ -10,7 +10,7 @@ const SEARCH_ITERATIONS = 8;
 /***
  * Optimize settled layout spacing around readable label bounds instead of full node clearance.
  * Compound containment stays intentional while sibling groups retain non-overlapping boundaries.
- * @performance Cytoscape geometry is measured once, then bounded pure numeric trials reuse the
+ * Cytoscape geometry is measured once, then bounded pure numeric trials reuse the
  * immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.
  */
 export function compactGraphSpacing(cy: Core, spacingFactor: number): number {
