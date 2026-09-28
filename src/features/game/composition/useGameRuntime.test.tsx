@@ -21,7 +21,14 @@ function RuntimeHarness({
   onOutput,
 }: RuntimeHarnessProps) {
   const runtime = useGameRuntime({ autoAdvanceTime, definition, onOutput });
-  dispatchRef.current = runtime.dispatch;
+
+  React.useEffect(() => {
+    dispatchRef.current = runtime.dispatch;
+    return () => {
+      dispatchRef.current = undefined;
+    };
+  }, [dispatchRef, runtime.dispatch]);
+
   return null;
 }
 
