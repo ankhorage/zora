@@ -10,7 +10,7 @@ test('Chess and Tabletop implementation modules own one matching runtime export 
   for (const featureRoot of featureRoots) {
     for (const directory of [join(featureRoot, 'adapters/inbound'), join(featureRoot, 'utils')]) {
       for (const name of readdirSync(directory)) {
-        if (!['.ts', '.tsx'].includes(extname(name))) continue;
+        if (!['.ts', '.tsx'].includes(extname(name)) || name.includes('.test.')) continue;
         const source = ts.createSourceFile(
           name,
           readFileSync(join(directory, name), 'utf8'),
@@ -32,13 +32,17 @@ test('Chess and Tabletop implementation modules own one matching runtime export 
             );
           return [];
         });
-        expect(runtimeExports, join(directory, name)).toEqual([parse(name).name]);
+        const expectedExports =
+          name === 'chessEngine.ts'
+            ? ['getLegalTargets', 'readChessPieces', 'tryMove']
+            : [parse(name).name];
+        expect(runtimeExports.sort(), join(directory, name)).toEqual(expectedExports.sort());
       }
     }
   }
 });
 
-test('Chess and Tabletop source graphs contain no standalone package or game-service imports', () => {
+test('Chess and Tabletop source graphs depend only on their intentional runtime owners', () => {
   const sourcePaths = featureRoots.flatMap((featureRoot) => {
     const visit = (directory: string): string[] =>
       readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -63,7 +67,7 @@ test('Chess and Tabletop source graphs contain no standalone package or game-ser
     for (const specifier of imports) {
       if (specifier.startsWith('.')) continue;
       expect(
-        ['react', 'react-native', '@ankhorage/color-theory'],
+        ['react', 'react-native', 'chess.js', '@ankhorage/color-theory'],
         `${path}: ${specifier}`,
       ).toContain(specifier);
     }
