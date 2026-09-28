@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createChess as createChess
+  participant participant_getLegalTargets as getLegalTargets
+  participant_getLegalTargets->>participant_createChess: createChess()
+  participant_createChess-->>participant_getLegalTargets: return

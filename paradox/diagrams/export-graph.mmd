@@ -88,6 +88,7 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx["src/features/chess/adapters/inbound/OpeningBook.tsx"]
   module_src_features_chess_meta_ts["src/features/chess/meta.ts"]
   module_src_features_chess_public_ts["src/features/chess/public.ts"]
+  module_src_features_chess_utils_chessEngine_ts["src/features/chess/utils/chessEngine.ts"]
   module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
   module_src_features_chess_utils_createBoardSquares_ts["src/features/chess/utils/createBoardSquares.ts"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts["src/features/chess/utils/createChessBoardColorScheme.ts"]
@@ -288,13 +289,6 @@ graph LR
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx["src/features/palette-item/adapters/inbound/PaletteItem.tsx"]
   module_src_features_palette_item_paletteItemMeta_ts["src/features/palette-item/paletteItemMeta.ts"]
   module_src_features_palette_item_public_ts["src/features/palette-item/public.ts"]
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts["src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts"]
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts["src/features/plugin/application/use-cases/composeZoraPlugins.ts"]
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts["src/features/plugin/domain/ZoraPluginCompositionError.ts"]
-  module_src_features_plugin_public_ts["src/features/plugin/public.ts"]
-  module_src_features_plugin_runtime_ts["src/features/plugin/runtime.ts"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts["src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts["src/features/plugin/ZORA_CORE_PLUGIN.ts"]
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx["src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"]
   module_src_features_popover_menu_popoverMenuMeta_ts["src/features/popover-menu/popoverMenuMeta.ts"]
   module_src_features_popover_menu_public_ts["src/features/popover-menu/public.ts"]
@@ -483,7 +477,6 @@ graph LR
   module_src_types_missing_element_ts["src/types/missing-element.ts"]
   module_src_types_pagination_ts["src/types/pagination.ts"]
   module_src_types_palette_item_ts["src/types/palette-item.ts"]
-  module_src_types_plugin_ts["src/types/plugin.ts"]
   module_src_types_popover_menu_ts["src/types/popover-menu.ts"]
   module_src_types_post_card_ts["src/types/post-card.ts"]
   module_src_types_product_card_ts["src/types/product-card.ts"]
@@ -679,6 +672,8 @@ graph LR
   module_src_types_chess_ts --> export_ChessBoardColorOverrides
   export_ChessBoardColorScheme["ChessBoardColorScheme"]
   module_src_types_chess_ts --> export_ChessBoardColorScheme
+  export_chessBoardMeta["chessBoardMeta"]
+  module_src_features_chess_meta_ts --> export_chessBoardMeta
   export_ChessBoardOrientation["ChessBoardOrientation"]
   module_src_types_chess_ts --> export_ChessBoardOrientation
   export_ChessBoardProps["ChessBoardProps"]
@@ -686,6 +681,7 @@ graph LR
   export_ChessBoardProps -.-> export_ChessBoardColorScheme
   export_ChessBoardProps -.-> export_ChessBoardOrientation
   export_ChessBoardProps -.-> export_ChessMoveAttempt
+  export_ChessBoardProps -.-> export_ChessMoveResult
   export_ChessBoardProps -.-> export_ChessPieceRenderer
   export_ChessBoardProps -.-> export_ChessPieceState
   export_ChessBoardProps -.-> export_ChessSquareId
@@ -695,6 +691,9 @@ graph LR
   export_ChessMoveAttempt["ChessMoveAttempt"]
   module_src_types_chess_ts --> export_ChessMoveAttempt
   export_ChessMoveAttempt -.-> export_ChessPromotionPiece
+  export_ChessMoveResult["ChessMoveResult"]
+  module_src_types_chess_ts --> export_ChessMoveResult
+  export_ChessMoveResult -.-> export_ChessPromotionPiece
   export_ChessPieceCode["ChessPieceCode"]
   module_src_types_chess_ts --> export_ChessPieceCode
   export_ChessPieceRenderContext["ChessPieceRenderContext"]
@@ -732,20 +731,6 @@ graph LR
   module_src_features_theme_application_use_cases_compileZoraTheme_ts --> export_compileZoraTheme
   export_compileZoraTheme -.-> export_ZoraComputedTheme
   export_compileZoraTheme -.-> export_ZoraThemeCompilationOptions
-  export_ComposedZoraPluginCatalog["ComposedZoraPluginCatalog"]
-  module_src_types_plugin_ts --> export_ComposedZoraPluginCatalog
-  export_ComposedZoraPluginCatalog -.-> export_ZoraComponentMeta
-  export_ComposedZoraPluginMetadataCatalog["ComposedZoraPluginMetadataCatalog"]
-  module_src_types_plugin_ts --> export_ComposedZoraPluginMetadataCatalog
-  export_ComposedZoraPluginMetadataCatalog -.-> export_ZoraComponentMeta
-  export_composeZoraPluginMetadata["composeZoraPluginMetadata"]
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> export_composeZoraPluginMetadata
-  export_composeZoraPluginMetadata -.-> export_ComposedZoraPluginMetadataCatalog
-  export_composeZoraPluginMetadata -.-> export_ZoraPluginMetadata
-  export_composeZoraPlugins["composeZoraPlugins"]
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> export_composeZoraPlugins
-  export_composeZoraPlugins -.-> export_ComposedZoraPluginCatalog
-  export_composeZoraPlugins -.-> export_ZoraPluginDescriptor
   export_ContentRail["ContentRail"]
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> export_ContentRail
   export_ContentRailControlPressEvent["ContentRailControlPressEvent"]
@@ -949,6 +934,8 @@ graph LR
   module_src_types_gamePresentation_ts --> export_GamePointerEvents
   export_GameProps["GameProps"]
   module_src_types_gamePresentation_ts --> export_GameProps
+  export_getLegalTargets["getLegalTargets"]
+  module_src_features_chess_utils_chessEngine_ts --> export_getLegalTargets
   export_getSquareFile["getSquareFile"]
   module_src_features_chess_utils_getSquareFile_ts --> export_getSquareFile
   export_getSquareRank["getSquareRank"]
@@ -1144,6 +1131,8 @@ graph LR
   module_src_types_chess_ts --> export_OpeningBookColorOverrides
   export_OpeningBookColorScheme["OpeningBookColorScheme"]
   module_src_types_chess_ts --> export_OpeningBookColorScheme
+  export_openingBookMeta["openingBookMeta"]
+  module_src_features_chess_meta_ts --> export_openingBookMeta
   export_OpeningBookMove["OpeningBookMove"]
   module_src_types_chess_ts --> export_OpeningBookMove
   export_OpeningBookProps["OpeningBookProps"]
@@ -1187,6 +1176,8 @@ graph LR
   export_PokerTrainingPlayer -.-> export_PlayingCardValue
   export_PokerTrainingTable["PokerTrainingTable"]
   module_src_features_tabletop_adapters_inbound_PokerTrainingTable_tsx --> export_PokerTrainingTable
+  export_pokerTrainingTableMeta["pokerTrainingTableMeta"]
+  module_src_features_tabletop_meta_ts --> export_pokerTrainingTableMeta
   export_PokerTrainingTableProps["PokerTrainingTableProps"]
   module_src_types_tabletop_ts --> export_PokerTrainingTableProps
   export_PokerTrainingTableProps -.-> export_PokerTrainingTaskTableData
@@ -1269,6 +1260,9 @@ graph LR
   export_RatingProps["RatingProps"]
   module_src_types_rating_ts --> export_RatingProps
   export_RatingProps -.-> export_ZoraThemeMode
+  export_readChessPieces["readChessPieces"]
+  module_src_features_chess_utils_chessEngine_ts --> export_readChessPieces
+  export_readChessPieces -.-> export_ChessPieceState
   export_ReaderColorScheme["ReaderColorScheme"]
   module_src_types_reader_ts --> export_ReaderColorScheme
   export_ReaderDocumentFormat["ReaderDocumentFormat"]
@@ -1464,6 +1458,8 @@ graph LR
   module_src_types_tabletop_ts --> export_TabletopShape
   export_TabletopTable["TabletopTable"]
   module_src_features_tabletop_adapters_inbound_TabletopTable_tsx --> export_TabletopTable
+  export_tabletopTableMeta["tabletopTableMeta"]
+  module_src_features_tabletop_meta_ts --> export_tabletopTableMeta
   export_TabletopTableProps["TabletopTableProps"]
   module_src_types_tabletop_ts --> export_TabletopTableProps
   export_TabletopTableProps -.-> export_PlayingCardValue
@@ -1573,6 +1569,10 @@ graph LR
   export_TreeViewProps -.-> export_TreeItemNode
   export_TreeViewProps -.-> export_TreeItemRenderProps
   export_TreeViewProps -.-> export_ZoraThemeMode
+  export_tryMove["tryMove"]
+  module_src_features_chess_utils_chessEngine_ts --> export_tryMove
+  export_tryMove -.-> export_ChessMoveAttempt
+  export_tryMove -.-> export_ChessMoveResult
   export_UploadAsset["UploadAsset"]
   module_src_types_upload_ts --> export_UploadAsset
   export_UploadAssetBase["UploadAssetBase"]
@@ -1647,10 +1647,6 @@ graph LR
   module_src_features_authoring_componentMeta_ts --> export_ZORA_COMPONENT_META
   export_ZORA_COMPONENT_REGISTRY["ZORA_COMPONENT_REGISTRY"]
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> export_ZORA_COMPONENT_REGISTRY
-  export_ZORA_CORE_PLUGIN["ZORA_CORE_PLUGIN"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> export_ZORA_CORE_PLUGIN
-  export_ZORA_CORE_PLUGIN_METADATA["ZORA_CORE_PLUGIN_METADATA"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> export_ZORA_CORE_PLUGIN_METADATA
   export_ZORA_EMPHASES["ZORA_EMPHASES"]
   module_src_features_theme_colorModel_ts --> export_ZORA_EMPHASES
   export_ZORA_PALETTE_COLORS["ZORA_PALETTE_COLORS"]
@@ -1734,20 +1730,6 @@ graph LR
   module_src_types_theme_ts --> export_ZoraEmphasis
   export_ZoraPaletteColor["ZoraPaletteColor"]
   module_src_types_theme_ts --> export_ZoraPaletteColor
-  export_ZoraPluginCompositionError["ZoraPluginCompositionError"]
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts --> export_ZoraPluginCompositionError
-  export_ZoraPluginCompositionErrorCode["ZoraPluginCompositionErrorCode"]
-  module_src_types_plugin_ts --> export_ZoraPluginCompositionErrorCode
-  export_ZoraPluginDescriptor["ZoraPluginDescriptor"]
-  module_src_types_plugin_ts --> export_ZoraPluginDescriptor
-  export_ZoraPluginDescriptor -.-> export_ZoraComponentMeta
-  export_ZoraPluginDescriptor -.-> export_ZoraPluginPlacement
-  export_ZoraPluginMetadata["ZoraPluginMetadata"]
-  module_src_types_plugin_ts --> export_ZoraPluginMetadata
-  export_ZoraPluginMetadata -.-> export_ZoraComponentMeta
-  export_ZoraPluginMetadata -.-> export_ZoraPluginPlacement
-  export_ZoraPluginPlacement["ZoraPluginPlacement"]
-  module_src_types_plugin_ts --> export_ZoraPluginPlacement
   export_ZoraProvider["ZoraProvider"]
   module_src_features_theme_adapters_inbound_ZoraProvider_tsx --> export_ZoraProvider
   export_ZoraProvider -.-> export_ZoraProviderProps

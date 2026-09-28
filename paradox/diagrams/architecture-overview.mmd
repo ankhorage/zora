@@ -495,6 +495,7 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_chat_public_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx["src/features/chess/adapters/inbound/ChessBoard.tsx"]
   package__ankhorage_zora -.-> module_src_features_chess_adapters_inbound_ChessBoard_tsx
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_chessEngine_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createBoardSquares_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardColorScheme_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_isLightSquare_ts
@@ -512,6 +513,9 @@ graph TD
   module_src_features_chess_meta_ts --> module_src_types_authoring_ts
   module_src_features_chess_public_ts["src/features/chess/public.ts"]
   package__ankhorage_zora -.-> module_src_features_chess_public_ts
+  module_src_features_chess_utils_chessEngine_ts["src/features/chess/utils/chessEngine.ts"]
+  package__ankhorage_zora -.-> module_src_features_chess_utils_chessEngine_ts
+  module_src_features_chess_utils_chessEngine_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
   package__ankhorage_zora -.-> module_src_features_chess_utils_chessSquares_ts
   module_src_features_chess_utils_chessSquares_ts --> module_src_types_chess_ts
@@ -1310,35 +1314,6 @@ graph TD
   module_src_features_palette_item_paletteItemMeta_ts --> module_src_features_authoring_index_ts
   module_src_features_palette_item_public_ts["src/features/palette-item/public.ts"]
   package__ankhorage_zora -.-> module_src_features_palette_item_public_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts["src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_features_plugin_domain_ZoraPluginCompositionError_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_types_authoring_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts["src/features/plugin/application/use-cases/composeZoraPlugins.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_application_use_cases_composeZoraPlugins_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_features_plugin_domain_ZoraPluginCompositionError_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_types_registry_ts
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts["src/features/plugin/domain/ZoraPluginCompositionError.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_domain_ZoraPluginCompositionError_ts
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_public_ts["src/features/plugin/public.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_public_ts
-  module_src_features_plugin_runtime_ts["src/features/plugin/runtime.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_runtime_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts["src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_features_authoring_bindableComponentMeta_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_features_authoring_componentMeta_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_types_authoring_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts["src/features/plugin/ZORA_CORE_PLUGIN.ts"]
-  package__ankhorage_zora -.-> module_src_features_plugin_ZORA_CORE_PLUGIN_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_types_plugin_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx["src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"]
   package__ankhorage_zora -.-> module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_public_ts
@@ -2153,10 +2128,6 @@ graph TD
   module_src_types_palette_item_ts["src/types/palette-item.ts"]
   package__ankhorage_zora -.-> module_src_types_palette_item_ts
   module_src_types_palette_item_ts --> module_src_types_base_ts
-  module_src_types_plugin_ts["src/types/plugin.ts"]
-  package__ankhorage_zora -.-> module_src_types_plugin_ts
-  module_src_types_plugin_ts --> module_src_types_authoring_ts
-  module_src_types_plugin_ts --> module_src_types_registry_ts
   module_src_types_popover_menu_ts["src/types/popover-menu.ts"]
   package__ankhorage_zora -.-> module_src_types_popover_menu_ts
   module_src_types_popover_menu_ts --> module_src_types_base_ts

@@ -1026,21 +1026,21 @@ Source: `src/types/checkbox.ts:6:1`
 
 Kind: `value`
 Module: `src/features/chess/adapters/inbound/ChessBoard.tsx`
-Source: `src/features/chess/adapters/inbound/ChessBoard.tsx:27:14`
+Source: `src/features/chess/adapters/inbound/ChessBoard.tsx:33:14`
 
-Renders caller-owned chess presentation state without chess rule execution.
+Renders caller-owned or FEN-backed chess state with optional legal-move validation.
 
 ## ChessBoardColorOverrides
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:46:1`
+Source: `src/types/chess.ts:53:1`
 
 ## ChessBoardColorScheme
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:31:1`
+Source: `src/types/chess.ts:38:1`
 
 ### Members
 
@@ -1059,6 +1059,12 @@ Source: `src/types/chess.ts:31:1`
 | lightSquareText | property | `string` | yes |  |
 | selectedSquare | property | `string` | yes |  |
 
+## chessBoardMeta
+
+Kind: `value`
+Module: `src/features/chess/meta.ts`
+Source: `src/features/chess/meta.ts:3:14`
+
 ## ChessBoardOrientation
 
 Kind: `unknown`
@@ -1069,7 +1075,7 @@ Source: `src/types/chess.ts:5:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:60:1`
+Source: `src/types/chess.ts:67:1`
 
 ### Members
 
@@ -1077,10 +1083,13 @@ Source: `src/types/chess.ts:60:1`
 | --- | --- | --- | --- | --- |
 | colorScheme | property | `Partial<ChessBoardColorScheme> \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
+| fen | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | lastMove | property | `ChessMoveAttempt \| null \| undefined` | no |  |
 | legalTargets | property | `readonly ("a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onInvalidMove | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
+| onLegalMove | property | `((move: ChessMoveResult) => void) \| undefined` | no |  |
 | onMoveAttempt | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
 | onSquarePress | property | `((square: ChessSquareId) => void) \| undefined` | no |  |
 | orientation | property | `ChessBoardOrientation \| undefined` | no |  |
@@ -1090,6 +1099,7 @@ Source: `src/types/chess.ts:60:1`
 | showCoordinates | property | `boolean \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
+| validateMoves | property | `boolean \| undefined` | no |  |
 
 ## ChessColorThemeShape
 
@@ -1117,6 +1127,23 @@ Source: `src/types/chess.ts:11:1`
 | promotion | property | `ChessPromotionPiece \| undefined` | no |  |
 | to | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
 
+## ChessMoveResult
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:17:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| fen | property | `string` | yes |  |
+| from | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| lan | property | `string` | yes |  |
+| promotion | property | `ChessPromotionPiece \| undefined` | no |  |
+| san | property | `string` | yes |  |
+| to | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+
 ## ChessPieceCode
 
 Kind: `unknown`
@@ -1127,7 +1154,7 @@ Source: `src/types/chess.ts:6:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:23:1`
+Source: `src/types/chess.ts:30:1`
 
 ### Members
 
@@ -1141,13 +1168,13 @@ Source: `src/types/chess.ts:23:1`
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:29:1`
+Source: `src/types/chess.ts:36:1`
 
 ## ChessPieceState
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:17:1`
+Source: `src/types/chess.ts:24:1`
 
 ### Members
 
@@ -1303,65 +1330,6 @@ This function is pure and does not mount React or reproduce owner algorithms.
   - options: `ZoraThemeCompilationOptions` (optional)
   - themeConfig: `ThemeConfig`
   - returns: `ZoraComputedTheme`
-
-## ComposedZoraPluginCatalog
-
-Kind: `type`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:41:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| bindableComponentMeta | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>` | yes |  |
-| componentMeta | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>` | yes |  |
-| componentRegistry | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes |  |
-| interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>` | yes |  |
-| packageManifests | property | `readonly UiComponentPackageManifest[]` | yes |  |
-
-## ComposedZoraPluginMetadataCatalog
-
-Kind: `type`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:34:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| bindableComponentMeta | property | `Readonly<Record<string, import("@ankhorage/contracts").UiComponentMeta>>` | yes |  |
-| componentMeta | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>` | yes |  |
-| interactionPolicySupportedComponents | property | `Readonly<Record<string, true>>` | yes |  |
-| packageManifests | property | `readonly UiComponentPackageManifest[]` | yes |  |
-
-## composeZoraPluginMetadata
-
-Kind: `function`
-Module: `src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts`
-Source: `src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts:11:1`
-
-Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.
-
-### Signatures
-
-- `(plugins: readonly ZoraPluginMetadata[]) => ComposedZoraPluginMetadataCatalog`
-  - plugins: `readonly ZoraPluginMetadata[]`
-  - returns: `ComposedZoraPluginMetadataCatalog`
-
-## composeZoraPlugins
-
-Kind: `function`
-Module: `src/features/plugin/application/use-cases/composeZoraPlugins.ts`
-Source: `src/features/plugin/application/use-cases/composeZoraPlugins.ts:11:1`
-
-Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.
-
-### Signatures
-
-- `(plugins: readonly ZoraPluginDescriptor[]) => ComposedZoraPluginCatalog`
-  - plugins: `readonly ZoraPluginDescriptor[]`
-  - returns: `ComposedZoraPluginCatalog`
 
 ## ContentRail
 
@@ -2522,6 +2490,21 @@ Source: `src/types/gamePresentation.ts:96:1`
 | seed | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 
+## getLegalTargets
+
+Kind: `function`
+Module: `src/features/chess/utils/chessEngine.ts`
+Source: `src/features/chess/utils/chessEngine.ts:63:1`
+
+Resolve legal destination squares from one FEN position and source square.
+
+### Signatures
+
+- `(fen: string, from: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+  - fen: `string`
+  - from: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+  - returns: `readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+
 ## getSquareFile
 
 Kind: `function`
@@ -3565,13 +3548,13 @@ Renders caller-owned opening suggestions and their visual states.
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:58:1`
+Source: `src/types/chess.ts:65:1`
 
 ## OpeningBookColorScheme
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:48:1`
+Source: `src/types/chess.ts:55:1`
 
 ### Members
 
@@ -3586,11 +3569,17 @@ Source: `src/types/chess.ts:48:1`
 | surfaceHover | property | `string` | yes |  |
 | titleText | property | `string` | yes |  |
 
+## openingBookMeta
+
+Kind: `value`
+Module: `src/features/chess/meta.ts`
+Source: `src/features/chess/meta.ts:125:14`
+
 ## OpeningBookMove
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:74:1`
+Source: `src/types/chess.ts:85:1`
 
 ### Members
 
@@ -3610,7 +3599,7 @@ Source: `src/types/chess.ts:74:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:86:1`
+Source: `src/types/chess.ts:97:1`
 
 ### Members
 
@@ -3812,6 +3801,12 @@ Module: `src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx`
 Source: `src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx:9:14`
 
 Maps a serializable training task to presentation without running poker or training policy.
+
+## pokerTrainingTableMeta
+
+Kind: `value`
+Module: `src/features/tabletop/meta.ts`
+Source: `src/features/tabletop/meta.ts:204:14`
 
 ## PokerTrainingTableProps
 
@@ -4278,6 +4273,20 @@ Source: `src/types/rating.ts:5:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | value | property | `number` | yes |  |
+
+## readChessPieces
+
+Kind: `function`
+Module: `src/features/chess/utils/chessEngine.ts`
+Source: `src/features/chess/utils/chessEngine.ts:44:1`
+
+Read all pieces from a FEN-backed position. Invalid FEN produces an empty position.
+
+### Signatures
+
+- `(fen: string) => ReadonlyMap<"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8", ChessPieceState>`
+  - fen: `string`
+  - returns: `ReadonlyMap<"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8", ChessPieceState>`
 
 ## ReaderColorScheme
 
@@ -5532,6 +5541,12 @@ Source: `src/features/tabletop/adapters/inbound/TabletopTable.tsx:13:14`
 
 Renders a responsive table surface and caller-owned seats.
 
+## tabletopTableMeta
+
+Kind: `value`
+Module: `src/features/tabletop/meta.ts`
+Source: `src/features/tabletop/meta.ts:94:14`
+
 ## TabletopTableProps
 
 Kind: `type`
@@ -6125,6 +6140,21 @@ Source: `src/types/tree-view.ts:24:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 
+## tryMove
+
+Kind: `function`
+Module: `src/features/chess/utils/chessEngine.ts`
+Source: `src/features/chess/utils/chessEngine.ts:69:1`
+
+Attempt one legal chess move against FEN and return the resulting position/move notation.
+
+### Signatures
+
+- `(fen: string, attempt: ChessMoveAttempt) => ChessMoveResult | null`
+  - attempt: `ChessMoveAttempt`
+  - fen: `string`
+  - returns: `ChessMoveResult | null`
+
 ## UploadAsset
 
 Kind: `unknown`
@@ -6529,20 +6559,6 @@ Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
 Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:215:14`
 
-## ZORA_CORE_PLUGIN
-
-Kind: `value`
-Module: `src/features/plugin/ZORA_CORE_PLUGIN.ts`
-Source: `src/features/plugin/ZORA_CORE_PLUGIN.ts:6:14`
-
-Describe the complete ZORA core runtime and authoring surface through the public plugin contract.
-
-## ZORA_CORE_PLUGIN_METADATA
-
-Kind: `value`
-Module: `src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts`
-Source: `src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts:18:14`
-
 ## ZORA_EMPHASES
 
 Kind: `value`
@@ -6838,68 +6854,6 @@ Source: `src/types/theme.ts:91:1`
 Kind: `unknown`
 Module: `src/types/theme.ts`
 Source: `src/types/theme.ts:88:1`
-
-## ZoraPluginCompositionError
-
-Kind: `type`
-Module: `src/features/plugin/domain/ZoraPluginCompositionError.ts`
-Source: `src/features/plugin/domain/ZoraPluginCompositionError.ts:4:1`
-
-Report one deterministic plugin composition contract violation.
-
-## ZoraPluginCompositionErrorCode
-
-Kind: `unknown`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:6:1`
-
-## ZoraPluginDescriptor
-
-Kind: `type`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:30:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| componentMeta | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>` | yes |  |
-| componentRegistry | property | `Readonly<Record<string, import("react").ElementType<any, keyof import("react").JSX.IntrinsicElements>>>` | yes |  |
-| displayName | property | `string \| undefined` | no |  |
-| extensionHosts | property | `readonly string[] \| undefined` | no |  |
-| interactionPolicySupportedComponents | property | `readonly string[] \| undefined` | no |  |
-| packageName | property | `string` | yes |  |
-| placements | property | `readonly ZoraPluginPlacement[] \| undefined` | no |  |
-
-## ZoraPluginMetadata
-
-Kind: `type`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:21:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| componentMeta | property | `Readonly<Record<string, import("./authoring").ZoraComponentMeta>>` | yes |  |
-| displayName | property | `string \| undefined` | no |  |
-| extensionHosts | property | `readonly string[] \| undefined` | no |  |
-| interactionPolicySupportedComponents | property | `readonly string[] \| undefined` | no |  |
-| packageName | property | `string` | yes |  |
-| placements | property | `readonly ZoraPluginPlacement[] \| undefined` | no |  |
-
-## ZoraPluginPlacement
-
-Kind: `type`
-Module: `src/types/plugin.ts`
-Source: `src/types/plugin.ts:16:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| child | property | `string` | yes |  |
-| parents | property | `readonly string[]` | yes |  |
 
 ## ZoraProvider
 

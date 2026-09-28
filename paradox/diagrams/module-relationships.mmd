@@ -88,6 +88,7 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx["src/features/chess/adapters/inbound/OpeningBook.tsx"]
   module_src_features_chess_meta_ts["src/features/chess/meta.ts"]
   module_src_features_chess_public_ts["src/features/chess/public.ts"]
+  module_src_features_chess_utils_chessEngine_ts["src/features/chess/utils/chessEngine.ts"]
   module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
   module_src_features_chess_utils_createBoardSquares_ts["src/features/chess/utils/createBoardSquares.ts"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts["src/features/chess/utils/createChessBoardColorScheme.ts"]
@@ -288,13 +289,6 @@ graph LR
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx["src/features/palette-item/adapters/inbound/PaletteItem.tsx"]
   module_src_features_palette_item_paletteItemMeta_ts["src/features/palette-item/paletteItemMeta.ts"]
   module_src_features_palette_item_public_ts["src/features/palette-item/public.ts"]
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts["src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts"]
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts["src/features/plugin/application/use-cases/composeZoraPlugins.ts"]
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts["src/features/plugin/domain/ZoraPluginCompositionError.ts"]
-  module_src_features_plugin_public_ts["src/features/plugin/public.ts"]
-  module_src_features_plugin_runtime_ts["src/features/plugin/runtime.ts"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts["src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts"]
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts["src/features/plugin/ZORA_CORE_PLUGIN.ts"]
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx["src/features/popover-menu/adapters/inbound/PopoverMenu.tsx"]
   module_src_features_popover_menu_popoverMenuMeta_ts["src/features/popover-menu/popoverMenuMeta.ts"]
   module_src_features_popover_menu_public_ts["src/features/popover-menu/public.ts"]
@@ -483,7 +477,6 @@ graph LR
   module_src_types_missing_element_ts["src/types/missing-element.ts"]
   module_src_types_pagination_ts["src/types/pagination.ts"]
   module_src_types_palette_item_ts["src/types/palette-item.ts"]
-  module_src_types_plugin_ts["src/types/plugin.ts"]
   module_src_types_popover_menu_ts["src/types/popover-menu.ts"]
   module_src_types_post_card_ts["src/types/post-card.ts"]
   module_src_types_product_card_ts["src/types/product-card.ts"]
@@ -835,6 +828,7 @@ graph LR
   module_src_features_chat_chatListItemMeta_ts --> module_src_features_authoring_index_ts
   module_src_features_chat_messageBubbleMeta_ts --> module_src_features_authoring_allowedChildren_ts
   module_src_features_chat_messageBubbleMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_chessEngine_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createBoardSquares_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardColorScheme_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_isLightSquare_ts
@@ -846,6 +840,7 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_types_chess_ts
   module_src_features_chess_meta_ts --> module_src_types_authoring_ts
+  module_src_features_chess_utils_chessEngine_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_chessSquares_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_createBoardSquares_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_createChessBoardColorScheme_ts --> module_src_types_chess_ts
@@ -1244,21 +1239,6 @@ graph LR
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_typography_public_ts
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_types_palette_item_ts
   module_src_features_palette_item_paletteItemMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_features_plugin_domain_ZoraPluginCompositionError_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_types_authoring_ts
-  module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_features_plugin_application_use_cases_composeZoraPluginMetadata_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_features_plugin_domain_ZoraPluginCompositionError_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_application_use_cases_composeZoraPlugins_ts --> module_src_types_registry_ts
-  module_src_features_plugin_domain_ZoraPluginCompositionError_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_features_authoring_bindableComponentMeta_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_features_authoring_componentMeta_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_types_authoring_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts --> module_src_types_plugin_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_features_plugin_ZORA_CORE_PLUGIN_METADATA_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts
-  module_src_features_plugin_ZORA_CORE_PLUGIN_ts --> module_src_types_plugin_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_public_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_utils_resolveIconSize_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_layout_public_ts
@@ -1698,8 +1678,6 @@ graph LR
   module_src_types_missing_element_ts --> module_src_types_base_ts
   module_src_types_pagination_ts --> module_src_types_base_ts
   module_src_types_palette_item_ts --> module_src_types_base_ts
-  module_src_types_plugin_ts --> module_src_types_authoring_ts
-  module_src_types_plugin_ts --> module_src_types_registry_ts
   module_src_types_popover_menu_ts --> module_src_types_base_ts
   module_src_types_post_card_ts --> module_src_features_avatar_public_ts
   module_src_types_post_card_ts --> module_src_types_base_ts

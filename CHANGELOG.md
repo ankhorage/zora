@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.0
+
+### Major Changes
+
+- b2b83aa: refactor: remove the obsolete ZORA plugin composition API while preserving the complete integrated Chess, Game, and Tabletop feature surfaces in core
+
 ## 21.1.4
 
 ### Patch Changes

@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_createChess as createChess
+  participant participant_readChessPieces as readChessPieces
+  participant participant_toPieceCode as toPieceCode
+  participant_readChessPieces->>participant_createChess: createChess()
+  participant_createChess-->>participant_readChessPieces: return
+  participant_readChessPieces->>participant_toPieceCode: toPieceCode()
+  participant_toPieceCode-->>participant_readChessPieces: return

@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_createChess as createChess
+  participant participant_toMoveResult as toMoveResult
+  participant participant_toPromotionPiece as toPromotionPiece
+  participant participant_tryMove as tryMove
+  participant_tryMove->>participant_createChess: createChess()
+  participant_createChess-->>participant_tryMove: return
+  participant_tryMove->>participant_toMoveResult: toMoveResult()
+  participant_toMoveResult->>participant_toPromotionPiece: toPromotionPiece()
+  participant_toPromotionPiece-->>participant_toMoveResult: return
+  participant_toMoveResult-->>participant_tryMove: return

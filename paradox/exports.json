@@ -4812,7 +4812,7 @@
   {
     "name": "ChessBoard",
     "title": null,
-    "description": "Renders caller-owned chess presentation state without chess rule execution.",
+    "description": "Renders caller-owned or FEN-backed chess state with optional legal-move validation.",
     "isReadme": false,
     "see": [],
     "security": [],
@@ -4820,7 +4820,7 @@
     "modulePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
     "sourceLocation": {
       "filePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
-      "line": 27,
+      "line": 33,
       "column": 14
     },
     "exportPaths": [
@@ -4842,7 +4842,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 46,
+      "line": 53,
       "column": 1
     },
     "exportPaths": [
@@ -4864,7 +4864,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 31,
+      "line": 38,
       "column": 1
     },
     "exportPaths": [
@@ -4961,6 +4961,28 @@
     "structuredRows": []
   },
   {
+    "name": "chessBoardMeta",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/chess/meta.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/meta.ts",
+      "line": 3,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ChessBoardOrientation",
     "title": null,
     "description": null,
@@ -4993,7 +5015,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 60,
+      "line": 67,
       "column": 1
     },
     "exportPaths": [
@@ -5003,6 +5025,7 @@
       "ChessBoardColorScheme",
       "ChessBoardOrientation",
       "ChessMoveAttempt",
+      "ChessMoveResult",
       "ChessPieceRenderer",
       "ChessPieceState",
       "ChessSquareId",
@@ -5021,6 +5044,13 @@
         "name": "disabled",
         "kind": "property",
         "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "fen",
+        "kind": "property",
+        "type": "string | undefined",
         "required": false,
         "description": null
       },
@@ -5049,6 +5079,20 @@
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onInvalidMove",
+        "kind": "property",
+        "type": "((move: ChessMoveAttempt) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onLegalMove",
+        "kind": "property",
+        "type": "((move: ChessMoveResult) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -5112,6 +5156,13 @@
         "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "validateMoves",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       }
@@ -5195,6 +5246,73 @@
     "structuredRows": []
   },
   {
+    "name": "ChessMoveResult",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessPromotionPiece"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "fen",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "from",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lan",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "promotion",
+        "kind": "property",
+        "type": "ChessPromotionPiece | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "san",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "to",
+        "kind": "property",
+        "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "ChessPieceCode",
     "title": null,
     "description": null,
@@ -5227,7 +5345,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 23,
+      "line": 30,
       "column": 1
     },
     "exportPaths": [
@@ -5271,7 +5389,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 29,
+      "line": 36,
       "column": 1
     },
     "exportPaths": [
@@ -5293,7 +5411,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 17,
+      "line": 24,
       "column": 1
     },
     "exportPaths": [
@@ -5875,197 +5993,6 @@
           }
         ],
         "returnType": "ZoraComputedTheme",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ComposedZoraPluginCatalog",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 41,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ZoraComponentMeta"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "bindableComponentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"@ankhorage/contracts\").UiComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "componentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"./authoring\").ZoraComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "componentRegistry",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"react\").ElementType<any, keyof import(\"react\").JSX.IntrinsicElements>>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "interactionPolicySupportedComponents",
-        "kind": "property",
-        "type": "Readonly<Record<string, true>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "packageManifests",
-        "kind": "property",
-        "type": "readonly UiComponentPackageManifest[]",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ComposedZoraPluginMetadataCatalog",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 34,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ZoraComponentMeta"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "bindableComponentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"@ankhorage/contracts\").UiComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "componentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"./authoring\").ZoraComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "interactionPolicySupportedComponents",
-        "kind": "property",
-        "type": "Readonly<Record<string, true>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "packageManifests",
-        "kind": "property",
-        "type": "readonly UiComponentPackageManifest[]",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "composeZoraPluginMetadata",
-    "title": null,
-    "description": "Compose a selected ZORA metadata set for authoring tools that must not load React Native runtime modules.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts",
-    "sourceLocation": {
-      "filePath": "src/features/plugin/application/use-cases/composeZoraPluginMetadata.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ComposedZoraPluginMetadataCatalog",
-      "ZoraPluginMetadata"
-    ],
-    "signatures": [
-      {
-        "label": "(plugins: readonly ZoraPluginMetadata[]) => ComposedZoraPluginMetadataCatalog",
-        "parameters": [
-          {
-            "name": "plugins",
-            "type": "readonly ZoraPluginMetadata[]",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "ComposedZoraPluginMetadataCatalog",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "composeZoraPlugins",
-    "title": null,
-    "description": "Compose a selected ZORA core/plugin descriptor set into one validated authoring/runtime catalog.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/plugin/application/use-cases/composeZoraPlugins.ts",
-    "sourceLocation": {
-      "filePath": "src/features/plugin/application/use-cases/composeZoraPlugins.ts",
-      "line": 11,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ComposedZoraPluginCatalog",
-      "ZoraPluginDescriptor"
-    ],
-    "signatures": [
-      {
-        "label": "(plugins: readonly ZoraPluginDescriptor[]) => ComposedZoraPluginCatalog",
-        "parameters": [
-          {
-            "name": "plugins",
-            "type": "readonly ZoraPluginDescriptor[]",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "ComposedZoraPluginCatalog",
         "returnDescription": null
       }
     ],
@@ -10295,6 +10222,48 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "getLegalTargets",
+    "title": null,
+    "description": "Resolve legal destination squares from one FEN position and source square.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/chessEngine.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/chessEngine.ts",
+      "line": 63,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(fen: string, from: \"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\") => readonly (\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\")[]",
+        "parameters": [
+          {
+            "name": "fen",
+            "type": "string",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "from",
+            "type": "\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\"",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "readonly (\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\")[]",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -14819,7 +14788,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 58,
+      "line": 65,
       "column": 1
     },
     "exportPaths": [
@@ -14841,7 +14810,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 48,
+      "line": 55,
       "column": 1
     },
     "exportPaths": [
@@ -14910,6 +14879,28 @@
     "structuredRows": []
   },
   {
+    "name": "openingBookMeta",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/chess/meta.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/meta.ts",
+      "line": 125,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "OpeningBookMove",
     "title": null,
     "description": null,
@@ -14920,7 +14911,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 74,
+      "line": 85,
       "column": 1
     },
     "exportPaths": [
@@ -15006,7 +14997,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 86,
+      "line": 97,
       "column": 1
     },
     "exportPaths": [
@@ -15832,6 +15823,28 @@
     "sourceLocation": {
       "filePath": "src/features/tabletop/adapters/inbound/PokerTrainingTable.tsx",
       "line": 9,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "pokerTrainingTableMeta",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/meta.ts",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/meta.ts",
+      "line": 204,
       "column": 14
     },
     "exportPaths": [
@@ -17962,6 +17975,44 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "readChessPieces",
+    "title": null,
+    "description": "Read all pieces from a FEN-backed position. Invalid FEN produces an empty position.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/chessEngine.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/chessEngine.ts",
+      "line": 44,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessPieceState"
+    ],
+    "signatures": [
+      {
+        "label": "(fen: string) => ReadonlyMap<\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\", ChessPieceState>",
+        "parameters": [
+          {
+            "name": "fen",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ReadonlyMap<\"a1\" | \"a5\" | \"a2\" | \"a3\" | \"a4\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b5\" | \"b2\" | \"b3\" | \"b4\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c5\" | \"c2\" | \"c3\" | \"c4\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d5\" | \"d2\" | \"d3\" | \"d4\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e5\" | \"e2\" | \"e3\" | \"e4\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f5\" | \"f2\" | \"f3\" | \"f4\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g5\" | \"g2\" | \"g3\" | \"g4\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h5\" | \"h2\" | \"h3\" | \"h4\" | \"h6\" | \"h7\" | \"h8\", ChessPieceState>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -23615,6 +23666,28 @@
     "structuredRows": []
   },
   {
+    "name": "tabletopTableMeta",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/tabletop/meta.ts",
+    "sourceLocation": {
+      "filePath": "src/features/tabletop/meta.ts",
+      "line": 94,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "TabletopTableProps",
     "title": null,
     "description": null,
@@ -26157,6 +26230,51 @@
     "structuredRows": []
   },
   {
+    "name": "tryMove",
+    "title": null,
+    "description": "Attempt one legal chess move against FEN and return the resulting position/move notation.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/chess/utils/chessEngine.ts",
+    "sourceLocation": {
+      "filePath": "src/features/chess/utils/chessEngine.ts",
+      "line": 69,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ChessMoveAttempt",
+      "ChessMoveResult"
+    ],
+    "signatures": [
+      {
+        "label": "(fen: string, attempt: ChessMoveAttempt) => ChessMoveResult | null",
+        "parameters": [
+          {
+            "name": "attempt",
+            "type": "ChessMoveAttempt",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "fen",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ChessMoveResult | null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "UploadAsset",
     "title": null,
     "description": null,
@@ -27721,50 +27839,6 @@
     "structuredRows": []
   },
   {
-    "name": "ZORA_CORE_PLUGIN",
-    "title": null,
-    "description": "Describe the complete ZORA core runtime and authoring surface through the public plugin contract.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "value",
-    "modulePath": "src/features/plugin/ZORA_CORE_PLUGIN.ts",
-    "sourceLocation": {
-      "filePath": "src/features/plugin/ZORA_CORE_PLUGIN.ts",
-      "line": 6,
-      "column": 14
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZORA_CORE_PLUGIN_METADATA",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "value",
-    "modulePath": "src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts",
-    "sourceLocation": {
-      "filePath": "src/features/plugin/ZORA_CORE_PLUGIN_METADATA.ts",
-      "line": 18,
-      "column": 14
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "ZORA_EMPHASES",
     "title": null,
     "description": null,
@@ -28858,230 +28932,6 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPluginCompositionError",
-    "title": null,
-    "description": "Report one deterministic plugin composition contract violation.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/features/plugin/domain/ZoraPluginCompositionError.ts",
-    "sourceLocation": {
-      "filePath": "src/features/plugin/domain/ZoraPluginCompositionError.ts",
-      "line": 4,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPluginCompositionErrorCode",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "unknown",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPluginDescriptor",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 30,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ZoraComponentMeta",
-      "ZoraPluginPlacement"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "componentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"./authoring\").ZoraComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "componentRegistry",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"react\").ElementType<any, keyof import(\"react\").JSX.IntrinsicElements>>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "displayName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "extensionHosts",
-        "kind": "property",
-        "type": "readonly string[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicySupportedComponents",
-        "kind": "property",
-        "type": "readonly string[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "packageName",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "placements",
-        "kind": "property",
-        "type": "readonly ZoraPluginPlacement[] | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPluginMetadata",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 21,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ZoraComponentMeta",
-      "ZoraPluginPlacement"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "componentMeta",
-        "kind": "property",
-        "type": "Readonly<Record<string, import(\"./authoring\").ZoraComponentMeta>>",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "displayName",
-        "kind": "property",
-        "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "extensionHosts",
-        "kind": "property",
-        "type": "readonly string[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "interactionPolicySupportedComponents",
-        "kind": "property",
-        "type": "readonly string[] | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "packageName",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "placements",
-        "kind": "property",
-        "type": "readonly ZoraPluginPlacement[] | undefined",
-        "required": false,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ZoraPluginPlacement",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/plugin.ts",
-    "sourceLocation": {
-      "filePath": "src/types/plugin.ts",
-      "line": 16,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [
-      {
-        "name": "child",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "parents",
-        "kind": "property",
-        "type": "readonly string[]",
-        "required": true,
-        "description": null
-      }
-    ],
     "structuredRows": []
   },
   {
