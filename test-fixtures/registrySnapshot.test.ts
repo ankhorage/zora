@@ -33,7 +33,9 @@ test('prints the canonical ZORA component registry snapshot', async () => {
 
   expect(registryKeys.length).toBeGreaterThan(0);
   expect(new Set(registryKeys).size).toBe(registryKeys.length);
-  for (const componentName of registryKeys) expect(ZORA_COMPONENT_META).toHaveProperty(componentName);
+  for (const componentName of registryKeys) {
+    expect(ZORA_COMPONENT_META).toHaveProperty(componentName);
+  }
   expect(ZORA_COMPONENT_META.Screen.allowedChildren).toContain('TabletopTable');
 
   console.log(`${SNAPSHOT_PREFIX}${JSON.stringify(registryKeys)}`);
