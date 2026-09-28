@@ -28,3 +28,4 @@ export { getSquareRank } from './utils/getSquareRank';
 export { isLightSquare } from './utils/isLightSquare';
 
 export { getLegalTargets, readChessPieces, tryMove } from './utils/chessEngine';
+export { chessBoardMeta, openingBookMeta } from './meta';
