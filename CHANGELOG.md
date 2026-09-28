@@ -1,5 +1,12 @@
 # Changelog
 
+## 21.1.2
+
+### Patch Changes
+
+- 7f999f6: Update dependencies from Renovate pull request #588.
+- 569d05a: Update dependencies from Renovate pull request #590.
+
 ## 21.1.1
 
 ### Patch Changes
