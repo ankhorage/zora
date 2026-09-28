@@ -84,10 +84,6 @@ interface RecipeMetadata extends Record<string, unknown> {
 }
 
 interface ZoraMetadataApi extends Record<string, unknown> {
-  composeZoraPluginMetadata: (plugins: readonly Record<string, unknown>[]) => {
-    componentMeta: Record<string, ComponentMetadata | undefined>;
-  };
-  ZORA_CORE_PLUGIN_METADATA: Record<string, unknown>;
   ZORA_COMPONENT_META: Record<string, ComponentMetadata | undefined>;
   ZORA_THEME_RECIPE_META: Record<string, RecipeMetadata | undefined>;
 }
@@ -122,8 +118,8 @@ interface LoadedOwnerModule {
 const OWNER_RELEASES = {
   colorTheory: { packageName: '@ankhorage/color-theory', minimumVersion: '0.3.1' },
   contracts: { packageName: '@ankhorage/contracts', minimumVersion: '22.0.2' },
-  templates: { packageName: '@ankhorage/templates', minimumVersion: '12.0.0' },
-  zora: { packageName: '@ankhorage/zora', minimumVersion: '20.0.1' },
+  templates: { packageName: '@ankhorage/templates', minimumVersion: '12.0.3' },
+  zora: { packageName: '@ankhorage/zora', minimumVersion: '21.1.0' },
 };
 
 const OWNER_REQUIREMENTS = {
@@ -159,12 +155,7 @@ const OWNER_REQUIREMENTS = {
   zoraMetadata: {
     ...OWNER_RELEASES.zora,
     specifier: '@ankhorage/zora/metadata',
-    exports: [
-      'composeZoraPluginMetadata',
-      'ZORA_COMPONENT_META',
-      'ZORA_CORE_PLUGIN_METADATA',
-      'ZORA_THEME_RECIPE_META',
-    ],
+    exports: ['ZORA_COMPONENT_META', 'ZORA_THEME_RECIPE_META'],
   },
 };
 
@@ -180,110 +171,25 @@ export async function loadOwnerApis(targetDirectory = process.cwd()) {
   const templates = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.templates);
   const zoraTheme = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.zoraTheme);
   const zoraMetadata = await loadOwnerModule(targetDirectory, OWNER_REQUIREMENTS.zoraMetadata);
-  const installedPluginMetadata = await loadInstalledZoraPluginMetadata(targetDirectory);
   assertColorTheoryApi(colorTheory.module);
   assertContractsApi(contracts.module);
   assertTemplatesApi(templates.module);
   assertZoraThemeApi(zoraTheme.module);
   assertZoraMetadataApi(zoraMetadata.module);
-  const composedZoraMetadata = zoraMetadata.module.composeZoraPluginMetadata([
-    zoraMetadata.module.ZORA_CORE_PLUGIN_METADATA,
-    ...installedPluginMetadata.map((entry) => entry.metadata),
-  ]);
-  assertRecord(composedZoraMetadata, 'composed ZORA plugin metadata');
-  assertRecord(composedZoraMetadata.componentMeta, 'composed ZORA component metadata');
 
   return {
     colorTheory: colorTheory.module,
     contracts: contracts.module,
     templates: templates.module,
     zoraTheme: zoraTheme.module,
-    zoraMetadata: {
-      ...zoraMetadata.module,
-      ZORA_COMPONENT_META: composedZoraMetadata.componentMeta,
-    },
+    zoraMetadata: zoraMetadata.module,
     versions: {
       colorTheory: colorTheory.version,
       contracts: contracts.version,
       templates: templates.version,
       zora: zoraTheme.version,
-      plugins: Object.fromEntries(
-        installedPluginMetadata.map((entry) => [entry.packageName, entry.version]),
-      ),
     },
   };
-}
-
-/*** Load metadata-only descriptors for every installed ZORA plugin declared by the target package. */
-async function loadInstalledZoraPluginMetadata(
-  targetDirectory: string,
-): Promise<{ metadata: Record<string, unknown>; packageName: string; version: string }[]> {
-  const targetManifestPath = join(resolve(targetDirectory), 'package.json');
-  const targetManifest: unknown = JSON.parse(await readFile(targetManifestPath, 'utf8'));
-  assertRecord(targetManifest, 'Target package manifest');
-  const packageNames = new Set<string>();
-  if (typeof targetManifest.name === 'string') packageNames.add(targetManifest.name);
-  for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
-    const dependencies = targetManifest[field];
-    if (!isRecord(dependencies)) continue;
-    for (const packageName of Object.keys(dependencies)) packageNames.add(packageName);
-  }
-
-  const loaded: { metadata: Record<string, unknown>; packageName: string; version: string }[] = [];
-  for (const packageName of [...packageNames].filter(isZoraPluginPackage).sort()) {
-    const minimumVersion = resolvePluginMinimumVersion(targetManifest, packageName);
-    const requirement: OwnerRequirement = {
-      packageName,
-      minimumVersion,
-      specifier: `${packageName}/metadata`,
-      exports: ['ZORA_PLUGIN_METADATA'],
-    };
-    const plugin = await loadOwnerModule(targetDirectory, requirement);
-    const metadata = plugin.module.ZORA_PLUGIN_METADATA;
-    assertRecord(metadata, `${packageName} ZORA plugin metadata`);
-    loaded.push({ metadata, packageName, version: plugin.version });
-  }
-  return loaded;
-}
-
-function isZoraPluginPackage(packageName: string): boolean {
-  return packageName.startsWith('@ankhorage/zora-') && packageName !== '@ankhorage/zora';
-}
-
-/*** Resolve one ZORA plugin minimum version from the target package declaration or owner package itself. */
-function resolvePluginMinimumVersion(
-  targetManifest: Record<string, unknown>,
-  packageName: string,
-): string {
-  if (targetManifest.name === packageName) {
-    const { version } = targetManifest;
-    if (typeof version === 'string' && parseVersion(version)[0] >= 0) return version;
-    throw new Error(`ZORA plugin owner package ${packageName} must declare a semantic version.`);
-  }
-
-  for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
-    const dependencies = targetManifest[field];
-    if (!isRecord(dependencies)) continue;
-    const specifier = dependencies[packageName];
-    if (typeof specifier === 'string') {
-      return readPluginMinimumVersion(packageName, specifier);
-    }
-  }
-
-  throw new Error(`ZORA plugin ${packageName} must be declared by the target package.`);
-}
-
-/*** Read the semantic lower bound from one supported published dependency specifier. */
-function readPluginMinimumVersion(packageName: string, specifier: string): string {
-  const normalized = specifier.trim().replace(/^workspace:/u, '');
-  const match = /^(?:\^|~|>=)?(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)$/u.exec(normalized);
-  const minimumVersion = match?.[1];
-  if (minimumVersion === undefined) {
-    throw new Error(
-      `ZORA plugin ${packageName} must use an exact, caret, tilde, or >= semantic dependency range; found ${specifier}.`,
-    );
-  }
-  return minimumVersion;
 }
 
 /*** Load only Contracts for tooling that runs before another owner package has been built. */
@@ -754,10 +660,6 @@ function assertZoraThemeApi(value: Record<string, unknown>): asserts value is Zo
 
 /*** Narrow released ZORA metadata into only the fields the orchestration needs. */
 function assertZoraMetadataApi(value: Record<string, unknown>): asserts value is ZoraMetadataApi {
-  if (typeof value.composeZoraPluginMetadata !== 'function') {
-    throw new Error('composeZoraPluginMetadata must be a function.');
-  }
-  assertRecord(value.ZORA_CORE_PLUGIN_METADATA, 'ZORA_CORE_PLUGIN_METADATA');
   assertRecord(value.ZORA_COMPONENT_META, 'ZORA_COMPONENT_META');
   for (const [name, metadata] of Object.entries(value.ZORA_COMPONENT_META)) {
     assertComponentMetadata(metadata, name);
