@@ -91,42 +91,11 @@ native font bootstrapping.
 
 ## Downstream consumer inventory
 
-### `@ankhorage/zora-chess`
-
-- Published/development version inspected: `0.1.2`.
-- Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
-  `>=0.72.0`; they should not be narrowed solely for this validation baseline.
-- Development validation is stale: ZORA `^2.5.4`, React `^19.1.0`, RN
-  `^0.79.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
-  `1.3.13`.
-- **Owner follow-up required:** in the zora-chess repository, retain broad
-  public peers but move development/tooling validation to released ZORA 3,
-  React 19.2.3, RN 0.86.3, TypeScript 6.0.3, Node 24 typings, Devtools 1.6.0,
-  and Bun 1.3.14, then run its full gates and changeset/release flow.
-
-### `@ankhorage/zora-tabletop`
-
-- Published/development version inspected: `0.0.5`.
-- Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
-  `>=0.72.0`; they should not be narrowed solely for this validation baseline.
-- Development validation is stale: ZORA `^2.6.1`, React `^19.1.0`, RN
-  `^0.81.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
-  `1.3.13`.
-- **Owner follow-up required:** in the zora-tabletop repository, retain broad
-  public peers but move development/tooling validation to released ZORA 3 and
-  the same React/RN/TypeScript/Node/Devtools/Bun baseline, then run its full
-  gates and changeset/release flow.
-
-Cross-repository writes are intentionally not mixed into this ZORA worktree.
-Fresh temporary clones pass their current full build, lint, test, and Knip
-gates (zora-chess: 16 tests; zora-tabletop: 13 tests). Their only ZORA runtime
-import is `useZoraTheme`, which is unchanged by this migration. Installation of
-the packed ZORA candidate into those clones is not a substitute for updating
-their stale development matrices after ZORA 3 is released. This is
-baseline/source-inventory evidence rather than a claim that those matrices
-already accept ZORA 3. Merge and publish ZORA 3 first; each consumer owner must
-then commit, validate, and release its own development-matrix migration before
-roadmap issue #294 closes.
+Chess and tabletop presentation surfaces are now owned by core ZORA. Their
+public components are discovered through the regular feature facades and are
+materialized with the same generic artifact path as every other ZORA component.
+Chess rules and game execution remain consumer-owned; the core components accept
+only caller-provided presentation state and emit interaction intents.
 
 ## Automated acceptance results
 

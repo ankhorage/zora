@@ -61,6 +61,13 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'ReaderSurface',
   'ContentRail',
   'MissingElement',
+  'ChessBoard',
+  'OpeningBook',
+  'CardBack',
+  'CardHand',
+  'PlayingCard',
+  'TabletopTable',
+  'PokerTrainingTable',
 ] as const;
 
 export const CONTENT_RAIL_ALLOWED_CHILDREN = [

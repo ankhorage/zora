@@ -15,9 +15,16 @@ const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
 const components = [
   'app-bar',
   'button',
+  'card-back',
+  'card-hand',
+  'chess-board',
   'date-picker',
   'graph-view',
+  'opening-book',
+  'playing-card',
+  'poker-training-table',
   'select',
+  'tabletop-table',
   'text',
   'tree-view',
 ];
@@ -112,10 +119,24 @@ try {
   const { DatePicker } = await load('components/date-picker/index.js');
   const { GraphView } = await load('components/graph-view/index.js');
   const { TreeView } = await load('components/tree-view/index.js');
+  const { ChessBoard } = await load('components/chess-board/index.js');
+  const { OpeningBook } = await load('components/opening-book/index.js');
+  const { CardBack } = await load('components/card-back/index.js');
+  const { CardHand } = await load('components/card-hand/index.js');
+  const { PlayingCard } = await load('components/playing-card/index.js');
+  const { TabletopTable } = await load('components/tabletop-table/index.js');
+  const { PokerTrainingTable } = await load('components/poker-training-table/index.js');
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');
   assert.equal(typeof TreeView, 'function');
+  assert.equal(typeof ChessBoard, 'function');
+  assert.equal(typeof OpeningBook, 'function');
+  assert.equal(typeof CardBack, 'function');
+  assert.equal(typeof CardHand, 'function');
+  assert.equal(typeof PlayingCard, 'function');
+  assert.equal(typeof TabletopTable, 'function');
+  assert.equal(typeof PokerTrainingTable, 'function');
   assert.equal(typeof useZoraTheme, 'function');
 
   function ThemeProbe() {

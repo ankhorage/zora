@@ -1,0 +1,25 @@
+export type {
+  CardBackProps,
+  CardHandProps,
+  PlayingCardProps,
+  PlayingCardSuit,
+  PlayingCardValue,
+  PokerTrainingPlayer,
+  PokerTrainingTableProps,
+  PokerTrainingTableSize,
+  PokerTrainingTaskTableData,
+  TabletopCardSize,
+  TabletopColorOverrides,
+  TabletopColorScheme,
+  TabletopSeatCount,
+  TabletopSeatState,
+  TabletopShape,
+  TabletopTableProps,
+} from '../../types/tabletop';
+export {
+  CardBack,
+  CardHand,
+  PlayingCard,
+  PokerTrainingTable,
+  TabletopTable,
+} from './adapters/inbound/Tabletop';

@@ -42,6 +42,8 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   'time-picker': ['TimePicker'],
   uploader: ['Uploader'],
   'bottom-sheet': ['BottomSheet'],
+  chess: ['ChessBoard', 'OpeningBook'],
+  tabletop: ['CardBack', 'CardHand', 'PlayingCard', 'TabletopTable', 'PokerTrainingTable'],
 } as const;
 
 export const ZORA_THEME_TOKEN_FAMILIES = [

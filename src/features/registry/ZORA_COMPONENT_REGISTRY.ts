@@ -20,6 +20,7 @@ import { Breadcrumbs } from '../breadcrumbs/public';
 import { Button, ButtonGroup, IconButton } from '../button/public';
 import { Card, MediaCard, MetricCard, PostCard, ProductCard } from '../card/public';
 import { ChatListItem, MessageBubble } from '../chat/public';
+import { ChessBoard, OpeningBook } from '../chess/public';
 import { Chip, ChipGroup } from '../chip/public';
 import { CollectionEditor } from '../collection-editor/public';
 import { ContentRail } from '../content-rail/public';
@@ -53,6 +54,13 @@ import { ScreenSection, SectionHeader } from '../section/public';
 import { SelectableItem } from '../selection/public';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from '../skeleton/public';
 import { Surface } from '../surface/public';
+import {
+  CardBack,
+  CardHand,
+  PlayingCard,
+  PokerTrainingTable,
+  TabletopTable,
+} from '../tabletop/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { ThemeModeToggle } from '../theme/adapters/inbound/ThemeModeToggle';
 import { TimePicker } from '../time-picker/public';
@@ -160,6 +168,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   SignInForm,
   SignUpForm,
   ChatListItem,
+  ChessBoard,
   CollectionEditor,
   ContentRail,
   EmptyState,
@@ -168,6 +177,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   ListItem,
   ListSection,
   MessageBubble,
+  OpeningBook,
   MissingElement,
   PostCard,
   ProductCard,
@@ -178,6 +188,11 @@ const _ZORA_COMPONENT_REGISTRY = {
   SectionHeader,
   SelectableItem,
   PaletteItem,
+  CardBack,
+  CardHand,
+  PlayingCard,
+  TabletopTable,
+  PokerTrainingTable,
   Timeline,
   TreeItem,
   TreeView,

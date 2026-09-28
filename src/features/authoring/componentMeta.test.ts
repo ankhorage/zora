@@ -149,6 +149,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Avatar',
       'AvatarGroup',
       'Badge',
+      'CardBack',
+      'CardHand',
       'Breadcrumbs',
       'Chip',
       'ChipGroup',
@@ -185,13 +187,18 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Divider',
       'ChatListItem',
       'CameraPermissionView',
+      'ChessBoard',
+      'OpeningBook',
       'ScanOverlay',
       'ProductCard',
+      'PlayingCard',
       'Progress',
       'ProgressRing',
       'ReaderSurface',
       'MissingElement',
       'TimePicker',
+      'TabletopTable',
+      'PokerTrainingTable',
     ]);
 
     const expectedContainerNodes = new Set([
