@@ -282,7 +282,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.ScrollView.allowedChildren).not.toContain('PokerTrainingTable');
   });
 
-  test('migrated presentation bindings retain typed inputs and interaction intents', () => {
+  test('Chess and Tabletop presentation bindings retain typed inputs and interaction intents', () => {
     expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.pieces?.value).toEqual({
       type: 'array',
       itemType: 'object',

@@ -13,22 +13,22 @@ import { discoverWebArtifactTargets } from './discoverWebArtifactTargets';
 const packageRoot = join(import.meta.dir, '..', '..');
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
 const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
-const migratedTargets = (
-  await discoverWebArtifactTargets({
-    featuresRoot: join(packageRoot, 'src', 'features'),
-    repositoryRoot: packageRoot,
-    sourceRoot: join(packageRoot, 'src'),
-  })
-).filter((target) => target.featurePath === 'chess' || target.featurePath === 'tabletop');
+const publicFeatureTargets = await discoverWebArtifactTargets({
+  featuresRoot: join(packageRoot, 'src', 'features'),
+  repositoryRoot: packageRoot,
+  sourceRoot: join(packageRoot, 'src'),
+});
 const components = [
-  'app-bar',
-  'button',
-  'date-picker',
-  'graph-view',
-  'select',
-  'text',
-  'tree-view',
-  ...migratedTargets.map((target) => target.component),
+  ...new Set([
+    'app-bar',
+    'button',
+    'date-picker',
+    'graph-view',
+    'select',
+    'text',
+    'tree-view',
+    ...publicFeatureTargets.map((target) => target.component),
+  ]),
 ].sort();
 
 try {
@@ -123,7 +123,7 @@ try {
   const { DatePicker } = await load('components/date-picker/index.js');
   const { GraphView } = await load('components/graph-view/index.js');
   const { TreeView } = await load('components/tree-view/index.js');
-  for (const target of migratedTargets) {
+  for (const target of publicFeatureTargets) {
     const artifact = await load(`components/${target.component}/index.js`);
     assert.equal(typeof artifact[target.exportName], 'function', target.exportName);
   }

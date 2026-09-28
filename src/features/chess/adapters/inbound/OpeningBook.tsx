@@ -71,7 +71,10 @@ function OpeningBookInner({
                 accessibilityRole="button"
                 disabled={onMovePress === undefined || interactionPolicy === 'passive'}
                 key={moveKey(move)}
-                onPress={() => onMovePress?.(move)}
+                onPress={() => {
+                  if (interactionPolicy === 'passive') return;
+                  onMovePress?.(move);
+                }}
                 style={[
                   styles.move,
                   {
