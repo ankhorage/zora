@@ -124,13 +124,13 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
 
 /***
  * Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.
- * @config zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative
+ * zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative
  * to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.
- * @config sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode
+ * sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode
  * text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
- * @config minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
- * @config maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
- * @config onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
+ * minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
+ * maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
+ * onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
  * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering
  * and uses bounded collision checks including labels and compound siblings; it can recover uniformly
  * cramped layouts but cannot repair non-uniform overlaps.

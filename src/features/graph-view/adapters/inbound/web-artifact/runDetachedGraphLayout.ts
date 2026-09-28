@@ -3,7 +3,7 @@ import cytoscape, { type Core, type LayoutOptions } from 'cytoscape';
 
 /***
  * Isolate an uncancellable layout from the displayed core and discard stopped generations.
- * @performance Apply current positions in one batch without rebuilding the displayed graph.
+ * Apply current positions in one batch without rebuilding the displayed graph.
  * A stopped ELK computation still runs to completion; this guard does not cancel its CPU work.
  */
 export function runDetachedGraphLayout(cy: Core, options: LayoutOptions, onComplete: () => void) {

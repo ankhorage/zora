@@ -11,10 +11,6 @@ import { resolveButtonThemeRecipe } from '../../utils/resolveButtonThemeRecipe';
  * Use `Button` for explicit user actions that should follow ZORA's semantic color,
  * variant, and size recipes across React Native and React Native Web.
  *
- * @example Basic action
- * ```tsx
- * <Button color="primary" variant="solid" onPress={save}>Save</Button>
- * ```
  */
 export const Button = withZoraThemeScope(ButtonInner);
 

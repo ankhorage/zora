@@ -150,7 +150,7 @@ function createRuntimeState(
 
 /***
  * Reconcile presentation in place and relayout only when graph geometry or layout policy changes.
- * @performance Batch reconciliation and skip layout for presentation-only updates.
+ * Batch reconciliation and skip layout for presentation-only updates.
  */
 function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   if (state.cy.destroyed()) return;
@@ -227,7 +227,7 @@ function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate)
 
 /***
  * Settle only the latest layout generation and fit once from node bounds.
- * @performance Discard stale completions and avoid repeated automatic fits.
+ * Discard stale completions and avoid repeated automatic fits.
  */
 function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
   scheduleGraphFrame(() => {
@@ -265,7 +265,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
 
 /***
  * Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.
- * @performance Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.
+ * Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.
  */
 function requestOptimizedFit(state: GraphRuntimeState, options: GraphViewFitOptions) {
   if (state.cy.destroyed()) return;
@@ -319,7 +319,7 @@ function applyGraphStyles(
 
 /***
  * Synchronize controlled selection without rerunning layout.
- * @performance Selection updates must not trigger graph reconstruction or layout.
+ * Selection updates must not trigger graph reconstruction or layout.
  */
 function setSelectedNodeIds(state: GraphRuntimeState, nodeIds: readonly string[] | undefined) {
   if (state.cy.destroyed() || nodeIds === undefined) return;
@@ -333,7 +333,7 @@ function setSelectedNodeIds(state: GraphRuntimeState, nodeIds: readonly string[]
 
 /***
  * Persist one rich-node size and schedule at most one relayout for changed geometry.
- * @performance Ignore unchanged measurements before scheduling layout work.
+ * Ignore unchanged measurements before scheduling layout work.
  */
 function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) {
   const previous = state.nodeSizes.get(id);
@@ -357,7 +357,7 @@ function applyNodeSize(cy: Core, id: string, size: GraphViewSize) {
 
 /***
  * Coalesce DOM measurements into one follow-up layout generation.
- * @performance Keep one scheduled layout per frame instead of one per measured node.
+ * Keep one scheduled layout per frame instead of one per measured node.
  */
 function scheduleMeasuredNodeRelayout(state: GraphRuntimeState) {
   if (state.relayoutScheduledRef.current) return;
@@ -382,7 +382,7 @@ function subscribeRenderedNodes(state: GraphRuntimeState, listener: RenderedNode
 
 /***
  * Publish current rendered node positions only to active rich-node subscribers.
- * @performance Skip snapshot preparation when no overlay is subscribed.
+ * Skip snapshot preparation when no overlay is subscribed.
  */
 function emitRenderedNodes(
   state: Pick<GraphRuntimeState, 'cy' | 'hoveredNodeIds' | 'renderedNodeListeners'>,

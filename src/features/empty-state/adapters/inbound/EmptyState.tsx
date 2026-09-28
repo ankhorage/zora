@@ -66,9 +66,5 @@ function EmptyStateInner({
  * so apps can guide users without custom card and button wiring.
  *
  
- * @example Empty project list
- * ```tsx
- * <EmptyState title="No projects yet" primaryAction={{ label: 'Create project', onPress }} />
- * ```
  */
 export const EmptyState = withZoraThemeScope(EmptyStateInner);

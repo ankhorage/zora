@@ -25,6 +25,8 @@ const basicTheme: ZoraTheme = {
 };
 
 /***
+ * @title Basic App
+ *
  * ZORA app root with optional runtime capabilities and adaptive UI.
  *
  * Enable only the runtime capabilities the app uses. `toast` installs the host consumed by
@@ -82,13 +84,14 @@ function UsageContent() {
 }
 
 /***
+ * @title Native Bottom Sheet
+ *
  * Direct native BottomSheet usage.
  *
  * Render this inside `<ZoraProvider bottomSheet>` on native. Web pickers do not need this host;
  * their platform adapters use Popover instead.
  *
  * @usage
- * @readme
  */
 export function NativeBottomSheetExample() {
   const [open, setOpen] = React.useState(false);

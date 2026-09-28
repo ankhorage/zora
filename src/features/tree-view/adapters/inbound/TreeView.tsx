@@ -60,7 +60,7 @@ function TreeViewInner<TId extends string = string>({
 
 /***
  * Tree view pattern for hierarchical navigation and expandable lists.
- * @config expansionIndicator Select `folder` (default) or `chevron` for leading expansion controls.
+ * expansionIndicator Select `folder` (default) or `chevron` for leading expansion controls.
  * Expansion controls are separate from row selection, including when rendering custom row content.
  */
 export const TreeView = withZoraThemeScope(TreeViewInner);

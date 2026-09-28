@@ -2,7 +2,7 @@ import type { GraphViewEdge, GraphViewNode } from './GraphView';
 
 /***
  * Identify visible graph membership and hierarchy independently of presentation metadata.
- * @performance Keep presentation-only changes out of the relayout decision.
+ * Keep presentation-only changes out of the relayout decision.
  */
 export function getGraphTopologyKey(
   nodes: readonly GraphViewNode[],
