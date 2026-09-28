@@ -90,16 +90,28 @@ test('authoring schemas omit layout and avatar options ignored by the underlying
 });
 
 test('integrated Chess, Game, and Tabletop placements preserve their former package contracts', () => {
-  const expectedChessAndGameParents = ['Card', 'Grid', 'Screen', 'ScreenSection', 'View'] as const;
-  for (const parent of expectedChessAndGameParents) {
+  const chessAndGameParents = [
+    ['Card', ZORA_COMPONENT_META.Card],
+    ['Grid', ZORA_COMPONENT_META.Grid],
+    ['Screen', ZORA_COMPONENT_META.Screen],
+    ['ScreenSection', ZORA_COMPONENT_META.ScreenSection],
+    ['View', ZORA_COMPONENT_META.View],
+  ] as const;
+  for (const [parent, metadata] of chessAndGameParents) {
     for (const child of ['ChessBoard', 'OpeningBook', 'Game', 'GameField'] as const) {
-      expect(ZORA_COMPONENT_META[parent].allowedChildren, `${parent} -> ${child}`).toContain(child);
+      expect(metadata.allowedChildren, `${parent} -> ${child}`).toContain(child);
     }
   }
 
-  for (const parent of ['Card', 'Grid', 'Screen', 'ScreenSection'] as const) {
+  const tabletopParents = [
+    ['Card', ZORA_COMPONENT_META.Card],
+    ['Grid', ZORA_COMPONENT_META.Grid],
+    ['Screen', ZORA_COMPONENT_META.Screen],
+    ['ScreenSection', ZORA_COMPONENT_META.ScreenSection],
+  ] as const;
+  for (const [parent, metadata] of tabletopParents) {
     for (const child of ['TabletopTable', 'PokerTrainingTable'] as const) {
-      expect(ZORA_COMPONENT_META[parent].allowedChildren, `${parent} -> ${child}`).toContain(child);
+      expect(metadata.allowedChildren, `${parent} -> ${child}`).toContain(child);
     }
   }
   expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('TabletopTable');
