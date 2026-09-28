@@ -144,7 +144,7 @@ export type {
   OpeningBookProps,
 } from './features/chess/public';
 export type { ChessColorThemeShape } from './features/chess/public';
-export { ChessBoard, OpeningBook } from './features/chess/public';
+export { ChessBoard, chessBoardMeta, OpeningBook, openingBookMeta } from './features/chess/public';
 export {
   chessSquares,
   createBoardSquares,
@@ -421,7 +421,9 @@ export {
   createTabletopGameSeats,
   PlayingCard,
   PokerTrainingTable,
+  pokerTrainingTableMeta,
   TabletopTable,
+  tabletopTableMeta,
 } from './features/tabletop/public';
 export {
   Tab,
