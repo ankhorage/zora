@@ -320,12 +320,6 @@ export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
 export { PaletteItem } from './features/palette-item/public';
 export {
-  composeZoraPluginMetadata,
-  ZORA_CORE_PLUGIN_METADATA,
-  ZoraPluginCompositionError,
-} from './features/plugin/public';
-export { composeZoraPlugins, ZORA_CORE_PLUGIN } from './features/plugin/runtime';
-export {
   PopoverMenu,
   type PopoverMenuAction,
   type PopoverMenuActionIntent,
@@ -495,12 +489,4 @@ export type {
   ValidateUploadAssetInput,
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
-export type {
-  ComposedZoraPluginCatalog,
-  ComposedZoraPluginMetadataCatalog,
-  ZoraPluginCompositionErrorCode,
-  ZoraPluginDescriptor,
-  ZoraPluginMetadata,
-  ZoraPluginPlacement,
-} from './types/plugin';
 export type { ZoraComponentRegistry } from './types/registry';
