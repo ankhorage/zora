@@ -151,11 +151,11 @@ export {
   createChessBoardColorScheme,
   createOpeningBookColorScheme,
   getLegalTargets,
-  readChessPieces,
-  tryMove,
   getSquareFile,
   getSquareRank,
   isLightSquare,
+  readChessPieces,
+  tryMove,
 } from './features/chess/public';
 export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
