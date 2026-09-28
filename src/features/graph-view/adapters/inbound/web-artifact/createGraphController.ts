@@ -112,7 +112,7 @@ function positiveSize(value: number | undefined, fallback: number): number {
 
 /***
  * Recompute the fit reference only after layout or resize, never on every pan/zoom event.
- * @performance Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.
+ * Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.
  */
 function getNodeFitZoom(cy: Core, padding: number): number {
   if (cy.nodes().empty()) return 1;

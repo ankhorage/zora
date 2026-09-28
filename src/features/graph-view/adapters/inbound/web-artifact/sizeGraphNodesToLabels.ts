@@ -2,7 +2,7 @@ import type { Core } from 'cytoscape';
 
 /***
  * Size plain leaf nodes from the renderer's styled label bounds, keeping padding in the stylesheet.
- * @performance Reuse Cytoscape's cached text measurements during reconciliation, never a per-element
+ * Reuse Cytoscape's cached text measurements during reconciliation, never a per-element
  * style callback or a pan/zoom listener. Only write changed dimensions; bold and Unicode labels must
  * not regress to character-count estimates. Compound dimensions remain owned by child bounds.
  */

@@ -2,7 +2,7 @@ import type { Core } from 'cytoscape';
 
 /***
  * Keeps self-loop control points outside the rendered node, independent of label size and direction.
- * @performance Reconcile loop geometry only after size/style/layout changes, never on pan or zoom.
+ * Reconcile loop geometry only after size/style/layout changes, never on pan or zoom.
  * Preserve valid dependencies and configured larger loops; do not hide edges or silence warnings.
  */
 export function createGraphLoopSizer(cy: Core) {
