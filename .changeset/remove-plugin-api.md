@@ -2,4 +2,4 @@
 '@ankhorage/zora': major
 ---
 
-refactor: remove the obsolete ZORA plugin composition API now that Chess, Game, and Tabletop are canonical core features
+refactor: remove the obsolete ZORA plugin composition API while preserving the complete integrated Chess, Game, and Tabletop feature surfaces in core
