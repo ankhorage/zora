@@ -7,7 +7,7 @@ import { View } from '../../../layout/public';
 export function GameField({
   children,
   aspectRatio,
-  minHeight = 240,
+  minHeight = 320,
   fill = false,
   clip = true,
   accessibilityLabel,
