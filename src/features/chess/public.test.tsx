@@ -7,11 +7,11 @@ import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import { chessBoardMeta } from './meta';
 import type {
   ChessBoard as ChessBoardComponent,
   OpeningBook as OpeningBookComponent,
 } from './public';
-import { chessBoardMeta } from './meta';
 import { createBoardSquares } from './utils/createBoardSquares';
 import { createChessBoardColorScheme } from './utils/createChessBoardColorScheme';
 import { getSquareFile } from './utils/getSquareFile';
