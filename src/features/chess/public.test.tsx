@@ -88,6 +88,70 @@ describe('Chess presentation', () => {
     browser.close();
   });
 
+  test('preserves FEN-backed pieces, legal targets, and legal/invalid move callbacks', async () => {
+    const { ChessBoard } = (await load('components/chess-board/index.js')) as {
+      ChessBoard: typeof ChessBoardComponent;
+    };
+    const browser = new Window();
+    const keys = ['window', 'document', 'Node', 'navigator', 'IS_REACT_ACT_ENVIRONMENT'] as const;
+    const previous = keys.map(
+      (key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)] as const,
+    );
+    Object.assign(globalThis, {
+      window: browser,
+      document: browser.document,
+      Node: browser.Node,
+      navigator: browser.navigator,
+      IS_REACT_ACT_ENVIRONMENT: true,
+    });
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    const legal: string[] = [];
+    const invalid: string[] = [];
+    const root = createRoot(host);
+
+    try {
+      act(() =>
+        root.render(
+          <ChessBoard
+            fen="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+            onInvalidMove={(move) => invalid.push(`${move.from}-${move.to}`)}
+            onLegalMove={(move) => legal.push(`${move.lan}:${move.san}`)}
+            selectedSquare="e2"
+            showCoordinates
+            testID="fen-board"
+          />,
+        ),
+      );
+
+      expect(host.querySelector('[data-testid="fen-board-square-e1"]')?.textContent).toContain('♔');
+      expect(
+        host.querySelector('[data-testid="fen-board-square-e4"]')?.getAttribute('style'),
+      ).toContain('background-color');
+
+      act(() => {
+        host
+          .querySelector('[data-testid="fen-board-square-e4"]')
+          ?.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+      });
+      expect(legal).toEqual(['e2e4:e4']);
+
+      act(() => {
+        host
+          .querySelector('[data-testid="fen-board-square-e5"]')
+          ?.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+      });
+      expect(invalid).toEqual(['e2-e5']);
+    } finally {
+      act(() => root.unmount());
+      browser.close();
+      for (const [key, descriptor] of previous) {
+        if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+        else Reflect.deleteProperty(globalThis, key);
+      }
+    }
+  });
+
   test('emits only caller-owned intents in active mode and suppresses them in passive mode', async () => {
     const { ChessBoard } = (await load('components/chess-board/index.js')) as {
       ChessBoard: typeof ChessBoardComponent;
