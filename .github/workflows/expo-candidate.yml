@@ -1,7 +1,8 @@
 name: Expo candidate
 
 on:
-  # Temporarily opt-in until release-owned validation is centralized.
+  # Run the migration candidate once through the PR event; this trigger is reverted after proof.
+  pull_request:
   workflow_dispatch:
 
 permissions:
