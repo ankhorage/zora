@@ -112,6 +112,16 @@ describe('Tabletop presentation', () => {
     expect(
       browser.document.querySelector('[data-testid="poker"]')?.getAttribute('aria-label'),
     ).toContain('Six-player poker table');
+    const circleSurface = browser.document
+      .querySelector('[data-testid="table"]')
+      ?.firstElementChild.getAttribute('class');
+    browser.document.body.innerHTML = renderToStaticMarkup(
+      <TabletopTable seats={[]} shape="rounded" testID="table" />,
+    );
+    const roundedSurface = browser.document
+      .querySelector('[data-testid="table"]')
+      ?.firstElementChild.getAttribute('class');
+    expect(circleSurface).not.toBe(roundedSurface);
     browser.close();
   });
 });
