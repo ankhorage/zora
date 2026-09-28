@@ -17,11 +17,6 @@ export type {
   ZoraComponentSlotMeta,
 } from '../../types/authoring';
 export type {
-  ComposedZoraPluginMetadataCatalog,
-  ZoraPluginMetadata,
-  ZoraPluginPlacement,
-} from '../../types/plugin';
-export type {
   ZoraThemeRecipeBooleanFieldMeta,
   ZoraThemeRecipeChoiceFieldMeta,
   ZoraThemeRecipeFieldMeta,
@@ -31,9 +26,6 @@ export type {
   ZoraThemeRecipeTokenFieldMeta,
   ZoraThemeTokenFamily,
 } from '../../types/theme-recipe';
-export { composeZoraPluginMetadata } from '../plugin/application/use-cases/composeZoraPluginMetadata';
-export { ZoraPluginCompositionError } from '../plugin/domain/ZoraPluginCompositionError';
-export { ZORA_CORE_PLUGIN_METADATA } from '../plugin/ZORA_CORE_PLUGIN_METADATA';
 export type { ZoraBindableComponentType } from './bindableComponentMeta';
 export { ZORA_BINDABLE_COMPONENT_META } from './bindableComponentMeta';
 export { ZORA_COMPONENT_META } from './componentMeta';
