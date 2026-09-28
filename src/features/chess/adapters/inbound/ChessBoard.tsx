@@ -1,15 +1,12 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type {
-  ChessBoardColorOverrides,
-  ChessBoardProps,
-  ChessPieceState,
-  ChessSquareId,
-} from '../../../../types/chess';
+import type { ChessBoardProps, ChessPieceState, ChessSquareId } from '../../../../types/chess';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
-import { createChessBoardSquares, isLightChessSquare } from '../../utils/chessPresentation';
+import { createBoardSquares } from '../../utils/createBoardSquares';
+import { createChessBoardColorScheme } from '../../utils/createChessBoardColorScheme';
+import { isLightSquare } from '../../utils/isLightSquare';
 
 const symbols = new Map<string, string>([
   ['white:p', '♙'],
@@ -29,25 +26,7 @@ const symbols = new Map<string, string>([
 /*** Renders caller-owned chess presentation state without chess rule execution. */
 export const ChessBoard = withZoraThemeScope(ChessBoardInner);
 
-function useChessColors(overrides: ChessBoardColorOverrides = {}) {
-  const { theme } = useZoraTheme();
-  return {
-    lightSquare: theme.semantics.neutral.surface,
-    darkSquare: theme.semantics.action.primary.softBg,
-    lightSquareText: theme.semantics.content.default,
-    darkSquareText: theme.semantics.content.default,
-    selectedSquare: theme.semantics.warning.softBg,
-    legalTarget: theme.semantics.action.primary.base,
-    lastMoveFrom: theme.semantics.warning.softBg,
-    lastMoveTo: theme.semantics.warning.softBg,
-    border: theme.semantics.neutral.border,
-    coordinateText: theme.semantics.content.muted,
-    lightPiece: theme.semantics.content.default,
-    darkPiece: theme.semantics.content.default,
-    ...overrides,
-  };
-}
-
+/*** Renders the current presentation state without executing chess rules. */
 function ChessBoardInner({
   pieces = [],
   orientation = 'white',
@@ -55,23 +34,25 @@ function ChessBoardInner({
   legalTargets = [],
   lastMove = null,
   disabled = false,
-  showCoordinates = true,
+  showCoordinates = false,
   colorScheme,
   onSquarePress,
   onMoveAttempt,
   renderPiece,
+  interactionPolicy,
   testID,
 }: ChessBoardProps) {
-  const colors = useChessColors(colorScheme);
-  const squares = createChessBoardSquares(orientation);
+  const { theme } = useZoraTheme();
+  const colors = createChessBoardColorScheme(theme, colorScheme);
+  const squares = createBoardSquares(orientation);
   const piecesBySquare = new Map<ChessSquareId, ChessPieceState>(
     pieces.map((piece) => [piece.square, piece]),
   );
   const legalTargetSet = new Set(legalTargets);
   const pressSquare = (square: ChessSquareId) => {
-    if (disabled) return;
+    if (disabled || interactionPolicy === 'passive') return;
     onSquarePress?.(square);
-    if (selectedSquare !== null && legalTargetSet.has(square))
+    if (selectedSquare !== null && selectedSquare !== square)
       onMoveAttempt?.({ from: selectedSquare, to: square });
   };
   return (
@@ -82,60 +63,65 @@ function ChessBoardInner({
     >
       {squares.map((square) => {
         const piece = piecesBySquare.get(square);
-        const light = isLightChessSquare(square);
+        const light = isLightSquare(square);
         const isTarget = legalTargetSet.has(square);
-        const isLastMove = lastMove?.from === square || lastMove?.to === square;
         const backgroundColor =
           selectedSquare === square
             ? colors.selectedSquare
-            : isLastMove
-              ? lastMove.to === square
-                ? colors.lastMoveTo
-                : colors.lastMoveFrom
-              : light
-                ? colors.lightSquare
-                : colors.darkSquare;
+            : isTarget
+              ? colors.legalTarget
+              : lastMove?.from === square
+                ? colors.lastMoveFrom
+                : lastMove?.to === square
+                  ? colors.lastMoveTo
+                  : light
+                    ? colors.lightSquare
+                    : colors.darkSquare;
         const pieceContent =
           piece === undefined
             ? null
-            : (renderPiece?.({
-                color: piece.color === 'white' ? colors.lightPiece : colors.darkPiece,
-                piece: piece.piece,
-                square,
-              }) ??
-              symbols.get(`${piece.color}:${piece.piece.toLowerCase()}`) ??
-              piece.piece);
+            : renderPiece
+              ? renderPiece({
+                  color: piece.color === 'white' ? colors.lightPiece : colors.darkPiece,
+                  piece: piece.piece,
+                  square,
+                })
+              : (symbols.get(`${piece.color}:${piece.piece.toLowerCase()}`) ?? piece.piece);
         return (
           <Pressable
             accessibilityLabel={square}
             accessibilityRole="button"
-            disabled={disabled}
+            disabled={disabled || interactionPolicy === 'passive'}
             key={square}
             onPress={() => pressSquare(square)}
             style={[styles.square, { backgroundColor }]}
+            testID={testID ? `${testID}-square-${square}` : undefined}
           >
-            {showCoordinates &&
-            (square.startsWith(orientation === 'white' ? 'a' : 'h') ||
-              square.endsWith(orientation === 'white' ? '1' : '8')) ? (
-              <Text style={[styles.coordinate, { color: colors.coordinateText }]}>
-                {square.startsWith(orientation === 'white' ? 'a' : 'h') ? square[1] : square[0]}
-              </Text>
-            ) : null}
-            {isTarget ? (
-              <View
-                pointerEvents="none"
-                style={[styles.target, { backgroundColor: colors.legalTarget }]}
-              />
-            ) : null}
-            {piece === undefined ? null : (
+            {showCoordinates ? (
               <Text
                 style={[
-                  styles.piece,
-                  { color: piece.color === 'white' ? colors.lightPiece : colors.darkPiece },
+                  styles.coordinate,
+                  { color: light ? colors.lightSquareText : colors.darkSquareText },
                 ]}
               >
-                {pieceContent}
+                {square}
               </Text>
+            ) : null}
+            {piece === undefined ? null : (
+              <View pointerEvents="none" style={styles.pieceContainer}>
+                {renderPiece ? (
+                  pieceContent
+                ) : (
+                  <Text
+                    style={[
+                      styles.piece,
+                      { color: piece.color === 'white' ? colors.lightPiece : colors.darkPiece },
+                    ]}
+                  >
+                    {pieceContent}
+                  </Text>
+                )}
+              </View>
             )}
           </Pressable>
         );
@@ -145,15 +131,39 @@ function ChessBoardInner({
 }
 
 const styles = StyleSheet.create({
-  board: { borderWidth: 1, flexDirection: 'row', flexWrap: 'wrap', overflow: 'hidden' },
-  coordinate: { fontSize: 10, left: 3, position: 'absolute', top: 2 },
-  piece: { fontSize: 30, lineHeight: 34 },
+  board: {
+    aspectRatio: 1,
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    width: '100%',
+  },
+  coordinate: {
+    fontSize: 9,
+    fontWeight: '600',
+    left: 3,
+    opacity: 0.72,
+    position: 'absolute',
+    top: 2,
+    zIndex: 2,
+  },
+  piece: { fontSize: 32, fontWeight: '600', lineHeight: 38 },
+  pieceContainer: {
+    alignItems: 'center',
+    bottom: 0,
+    justifyContent: 'center',
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
   square: {
     alignItems: 'center',
     aspectRatio: 1,
-    flexBasis: '12.5%',
+    width: '12.5%',
     justifyContent: 'center',
     position: 'relative',
   },
-  target: { borderRadius: 99, height: 10, position: 'absolute', width: 10 },
 });

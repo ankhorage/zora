@@ -8,26 +8,28 @@ import { Window } from 'happy-dom';
 import { create } from '../../src/cli/commands/create';
 import { sync } from '../../src/cli/commands/sync';
 import { createWebDesiredStateWithNodeAsync } from '../../src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync';
+import { discoverWebArtifactTargets } from './discoverWebArtifactTargets';
 
 const packageRoot = join(import.meta.dir, '..', '..');
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
 const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
+const migratedTargets = (
+  await discoverWebArtifactTargets({
+    featuresRoot: join(packageRoot, 'src', 'features'),
+    repositoryRoot: packageRoot,
+    sourceRoot: join(packageRoot, 'src'),
+  })
+).filter((target) => target.featurePath === 'chess' || target.featurePath === 'tabletop');
 const components = [
   'app-bar',
   'button',
-  'card-back',
-  'card-hand',
-  'chess-board',
   'date-picker',
   'graph-view',
-  'opening-book',
-  'playing-card',
-  'poker-training-table',
   'select',
-  'tabletop-table',
   'text',
   'tree-view',
-];
+  ...migratedTargets.map((target) => target.component),
+].sort();
 
 try {
   const context = {
@@ -88,7 +90,9 @@ try {
   );
   assert.deepEqual(evidence.components, components);
   assert(evidence.files.some((file) => file.startsWith('chunks/')));
-  assert(evidence.files.includes('components/select/index.js'));
+  for (const component of components) {
+    assert(evidence.files.includes(`components/${component}/index.js`));
+  }
   assert(!evidence.files.some((file) => file.includes('node_modules')));
 
   const browser = new Window();
@@ -119,24 +123,14 @@ try {
   const { DatePicker } = await load('components/date-picker/index.js');
   const { GraphView } = await load('components/graph-view/index.js');
   const { TreeView } = await load('components/tree-view/index.js');
-  const { ChessBoard } = await load('components/chess-board/index.js');
-  const { OpeningBook } = await load('components/opening-book/index.js');
-  const { CardBack } = await load('components/card-back/index.js');
-  const { CardHand } = await load('components/card-hand/index.js');
-  const { PlayingCard } = await load('components/playing-card/index.js');
-  const { TabletopTable } = await load('components/tabletop-table/index.js');
-  const { PokerTrainingTable } = await load('components/poker-training-table/index.js');
+  for (const target of migratedTargets) {
+    const artifact = await load(`components/${target.component}/index.js`);
+    assert.equal(typeof artifact[target.exportName], 'function', target.exportName);
+  }
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');
   assert.equal(typeof TreeView, 'function');
-  assert.equal(typeof ChessBoard, 'function');
-  assert.equal(typeof OpeningBook, 'function');
-  assert.equal(typeof CardBack, 'function');
-  assert.equal(typeof CardHand, 'function');
-  assert.equal(typeof PlayingCard, 'function');
-  assert.equal(typeof TabletopTable, 'function');
-  assert.equal(typeof PokerTrainingTable, 'function');
   assert.equal(typeof useZoraTheme, 'function');
 
   function ThemeProbe() {

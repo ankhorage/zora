@@ -4,8 +4,9 @@ export const cardBackMeta = {
   name: 'CardBack',
   category: 'component',
   description: 'Renders one face-down playing card.',
-  directManifestNode: true,
+  directManifestNode: false,
   allowedChildren: [],
+  note: 'Public card primitive composed by code-facing tabletop components, not a direct manifest node.',
   blueprint: { label: 'Card back', defaultProps: { size: 'medium' } },
   props: {
     size: {
@@ -29,8 +30,9 @@ export const cardHandMeta = {
   name: 'CardHand',
   category: 'component',
   description: 'Renders a compact caller-owned card hand.',
-  directManifestNode: true,
+  directManifestNode: false,
   allowedChildren: [],
+  note: 'Public hand primitive composed by code-facing tabletop components, not a direct manifest node.',
   blueprint: { label: 'Card hand', defaultProps: { cards: [], faceDownCards: 0, size: 'medium' } },
   props: {
     cards: {
@@ -61,8 +63,9 @@ export const playingCardMeta = {
   name: 'PlayingCard',
   category: 'component',
   description: 'Renders one face-up caller-owned playing card.',
-  directManifestNode: true,
+  directManifestNode: false,
   allowedChildren: [],
+  note: 'Public card primitive composed by code-facing tabletop components, not a direct manifest node.',
   blueprint: {
     label: 'Playing card',
     defaultProps: { card: { rank: 'A', suit: 'spades' }, size: 'medium' },

@@ -23,12 +23,27 @@ export interface TabletopSeatState {
   readonly tokenLabel?: React.ReactNode;
   readonly accessibilityLabel?: string;
 }
+export type TabletopGameSeatPresentation = Omit<TabletopSeatState, 'id'>;
+export interface TabletopGameSeatDefinition {
+  readonly id: string;
+  readonly defaultState: TabletopGameSeatPresentation;
+}
+export interface TabletopGameParticipantState {
+  readonly seatId: string;
+  readonly state: Partial<TabletopGameSeatPresentation>;
+}
+export interface CreateTabletopGameSeatsInput {
+  readonly seats: readonly TabletopGameSeatDefinition[];
+  readonly participants: readonly TabletopGameParticipantState[];
+  readonly missingParticipantState?: Partial<TabletopGameSeatPresentation>;
+}
 export interface TabletopColorScheme {
   readonly cardBack: string;
   readonly cardBackBorder: string;
   readonly cardBorder: string;
   readonly cardSurface: string;
   readonly cardText: string;
+  readonly mutedText: string;
   readonly redSuitText: string;
   readonly seatBorder: string;
   readonly seatMutedText: string;
@@ -39,6 +54,7 @@ export interface TabletopColorScheme {
   readonly tableFelt: string;
   readonly tableInnerBorder: string;
   readonly tableMutedText: string;
+  readonly tableText: string;
   readonly tokenSurface: string;
   readonly tokenText: string;
 }
@@ -101,4 +117,15 @@ export interface PokerTrainingTableProps extends Omit<
 > {
   readonly task?: PokerTrainingTaskTableData;
   readonly defaultStackBigBlinds?: number;
+}
+export interface CreatePokerTrainingTableStateOptions {
+  readonly defaultStackBigBlinds?: number;
+}
+export interface PokerTrainingTableState {
+  readonly seatCount: TabletopSeatCount;
+  readonly seats: readonly TabletopSeatState[];
+  readonly centerCards: readonly PlayingCardValue[];
+  readonly centerLabel?: string;
+  readonly centerSublabel?: string;
+  readonly accessibilityLabel: string;
 }

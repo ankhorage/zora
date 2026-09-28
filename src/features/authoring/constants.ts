@@ -43,7 +43,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   uploader: ['Uploader'],
   'bottom-sheet': ['BottomSheet'],
   chess: ['ChessBoard', 'OpeningBook'],
-  tabletop: ['CardBack', 'CardHand', 'PlayingCard', 'TabletopTable', 'PokerTrainingTable'],
+  tabletop: ['TabletopTable', 'PokerTrainingTable'],
 } as const;
 
 export const ZORA_THEME_TOKEN_FAMILIES = [

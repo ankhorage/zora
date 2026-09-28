@@ -91,11 +91,37 @@ native font bootstrapping.
 
 ## Downstream consumer inventory
 
-Chess and tabletop presentation surfaces are now owned by core ZORA. Their
-public components are discovered through the regular feature facades and are
-materialized with the same generic artifact path as every other ZORA component.
-Chess rules and game execution remain consumer-owned; the core components accept
-only caller-provided presentation state and emit interaction intents.
+The following records the standalone-package state at the time of this RN 0.86
+audit. Issue #462 supersedes the proposed dependency-matrix follow-ups with a
+core-ZORA presentation migration; PR #580 alone does not establish a released
+owner API or downstream acceptance.
+
+### `@ankhorage/zora-chess`
+
+- Published/development version inspected: `0.1.2`.
+- Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
+  `>=0.72.0`; they should not be narrowed solely for this validation baseline.
+- Development validation was stale: ZORA `^2.5.4`, React `^19.1.0`, RN
+  `^0.79.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
+  `1.3.13`.
+- The audit originally proposed an owner-side development-matrix follow-up;
+  issue #462 instead retires this standalone ownership after consumer migration.
+
+### `@ankhorage/zora-tabletop`
+
+- Published/development version inspected: `0.0.5`.
+- Public peers remain broad and valid: ZORA `>=0.1.0`, React `>=18.2.0`, and RN
+  `>=0.72.0`; they should not be narrowed solely for this validation baseline.
+- Development validation was stale: ZORA `^2.6.1`, React `^19.1.0`, RN
+  `^0.81.5`, TypeScript `^5.9.3`, Node 25 typings, Devtools `^1.0.6`, and Bun
+  `1.3.13`.
+- The audit originally proposed an owner-side development-matrix follow-up;
+  issue #462 instead retires this standalone ownership after consumer migration.
+
+At the time, fresh temporary clones passed their build, lint, test, and Knip
+gates (zora-chess: 16 tests; zora-tabletop: 13 tests). Their only ZORA runtime
+import was `useZoraTheme`, unchanged by that RN migration. This is historical
+baseline evidence, not proof of the issue #462 release or consumer migration.
 
 ## Automated acceptance results
 

@@ -1,12 +1,12 @@
 import type { ZoraComponentMeta } from '../../types/authoring';
-import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import { CHESS_ALLOWED_CHILDREN, CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
 import { LAYOUT_PROPS } from './constants';
 
 export const viewMeta = {
   name: 'View',
   category: 'foundation',
   directManifestNode: true,
-  allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
+  allowedChildren: [...CONTAINER_ALLOWED_CHILDREN, ...CHESS_ALLOWED_CHILDREN],
   props: {
     ...LAYOUT_PROPS,
     direction: { type: 'enum', category: 'Layout', enum: ['row', 'column'] },

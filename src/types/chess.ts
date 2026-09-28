@@ -45,6 +45,18 @@ export interface ChessBoardColorScheme {
 
 export type ChessBoardColorOverrides = Partial<ChessBoardColorScheme>;
 
+export interface OpeningBookColorScheme {
+  readonly border: string;
+  readonly surface: string;
+  readonly surfaceHover: string;
+  readonly selectedSurface: string;
+  readonly titleText: string;
+  readonly primaryText: string;
+  readonly secondaryText: string;
+  readonly metricSurface: string;
+}
+export type OpeningBookColorOverrides = Partial<OpeningBookColorScheme>;
+
 export interface ChessBoardProps extends ZoraBaseProps {
   readonly pieces?: readonly ChessPieceState[];
   readonly orientation?: ChessBoardOrientation;
@@ -78,5 +90,6 @@ export interface OpeningBookProps extends ZoraBaseProps {
   readonly errorText?: string;
   readonly emptyText?: string;
   readonly selectedMove?: string | null;
+  readonly colorScheme?: OpeningBookColorOverrides;
   readonly onMovePress?: (move: OpeningBookMove) => void;
 }
