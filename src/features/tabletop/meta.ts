@@ -102,6 +102,22 @@ export const tabletopTableMeta = {
     label: 'Tabletop table',
     defaultProps: { seats: [], centerCards: [], shape: 'oval', cardSize: 'small' },
   },
+  bindings: {
+    props: {
+      seats: {
+        label: 'Seats',
+        value: { type: 'array', itemType: 'object' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      centerCards: {
+        label: 'Center cards',
+        value: { type: 'array', itemType: 'object' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+  },
   props: {
     seats: {
       type: 'array',
@@ -159,6 +175,12 @@ export const tabletopTableMeta = {
       default: false,
       authoring: { authority: 'instance' },
     },
+    accessibilityLabel: {
+      type: 'string',
+      category: 'Accessibility',
+      label: 'Accessibility label',
+      authoring: { authority: 'instance' },
+    },
   },
 } as const satisfies ZoraComponentMeta;
 export const pokerTrainingTableMeta = {
@@ -172,7 +194,24 @@ export const pokerTrainingTableMeta = {
     defaultProps: { task: {}, defaultStackBigBlinds: 100, shape: 'oval', cardSize: 'small' },
   },
   bindings: {
-    props: { task: { label: 'Poker task', value: { type: 'object' }, acceptsFallback: true } },
+    props: {
+      task: {
+        label: 'Poker training task',
+        description: 'Table-relevant fields from a poker training task.',
+        value: {
+          type: 'object',
+          fields: [
+            { path: 'blinds', type: 'object', label: 'Blinds' },
+            { path: 'heroPosition', type: 'string', label: 'Hero position' },
+            { path: 'heroCards', type: 'array', label: 'Hero cards' },
+            { path: 'communityCards', type: 'array', label: 'Community cards' },
+            { path: 'pot', type: 'number', label: 'Pot' },
+            { path: 'players', type: 'array', label: 'Players' },
+          ],
+        },
+        acceptsFallback: true,
+      },
+    },
   },
   props: {
     defaultStackBigBlinds: {
@@ -203,6 +242,12 @@ export const pokerTrainingTableMeta = {
       category: 'State',
       label: 'Disabled',
       default: false,
+      authoring: { authority: 'instance' },
+    },
+    accessibilityLabel: {
+      type: 'string',
+      category: 'Accessibility',
+      label: 'Accessibility label',
       authoring: { authority: 'instance' },
     },
   },

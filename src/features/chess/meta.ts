@@ -26,6 +26,22 @@ export const chessBoardMeta = {
       ],
     },
   },
+  bindings: {
+    props: {
+      pieces: {
+        label: 'Pieces',
+        value: { type: 'array', itemType: 'object' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      legalTargets: {
+        label: 'Legal targets',
+        value: { type: 'array', itemType: 'string' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+  },
   props: {
     pieces: {
       type: 'array',
@@ -59,7 +75,7 @@ export const chessBoardMeta = {
       type: 'boolean',
       category: 'Style',
       label: 'Show coordinates',
-      default: true,
+      default: false,
       authoring: { authority: 'instance' },
     },
     disabled: {
@@ -78,7 +94,35 @@ export const openingBookMeta = {
     'Presents caller-owned opening suggestions and their loading, empty, selected, and press states.',
   directManifestNode: true,
   allowedChildren: [],
-  blueprint: { label: 'Opening book', defaultProps: { moves: [] } },
+  blueprint: {
+    label: 'Opening book',
+    defaultProps: {
+      moves: [],
+      title: 'Opening book',
+      emptyText: 'No book moves for this position.',
+    },
+  },
+  events: {
+    movePress: {
+      label: 'Move press',
+      eventType: 'chess.openingMovePress',
+      payloadFields: [
+        { path: 'san', type: 'string', label: 'SAN' },
+        { path: 'uci', type: 'string', label: 'UCI' },
+        { path: 'fen', type: 'string', label: 'Position' },
+      ],
+    },
+  },
+  bindings: {
+    props: {
+      moves: {
+        label: 'Moves',
+        value: { type: 'array', itemType: 'object' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+  },
   props: {
     moves: {
       type: 'array',
@@ -92,6 +136,13 @@ export const openingBookMeta = {
       category: 'Content',
       label: 'Title',
       default: 'Opening book',
+      authoring: { authority: 'instance' },
+    },
+    emptyText: {
+      type: 'string',
+      category: 'Content',
+      label: 'Empty text',
+      default: 'No book moves for this position.',
       authoring: { authority: 'instance' },
     },
     loading: {

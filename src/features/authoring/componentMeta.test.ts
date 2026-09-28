@@ -282,6 +282,39 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.ScrollView.allowedChildren).not.toContain('PokerTrainingTable');
   });
 
+  test('migrated presentation bindings retain typed inputs and interaction intents', () => {
+    expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.pieces?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.legalTargets?.value).toEqual({
+      type: 'array',
+      itemType: 'string',
+    });
+    expect(ZORA_COMPONENT_META.OpeningBook.bindings?.props?.moves?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.OpeningBook.bindings?.events?.movePress?.payload.eventType).toBe(
+      'chess.openingMovePress',
+    );
+    expect(ZORA_COMPONENT_META.TabletopTable.bindings?.props?.seats?.value).toEqual({
+      type: 'array',
+      itemType: 'object',
+    });
+    expect(ZORA_COMPONENT_META.PokerTrainingTable.bindings?.props?.task?.value).toMatchObject({
+      type: 'object',
+      fields: [
+        { path: 'blinds' },
+        { path: 'heroPosition' },
+        { path: 'heroCards' },
+        { path: 'communityCards' },
+        { path: 'pot' },
+        { path: 'players' },
+      ],
+    });
+  });
+
   test('Accordion constrains authored items to its canonical hierarchy', () => {
     expect(ZORA_COMPONENT_META.Accordion.directManifestNode).toBe(true);
     expect(ZORA_COMPONENT_META.Accordion.allowedChildren).toEqual(['AccordionItem']);
