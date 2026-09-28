@@ -41,25 +41,22 @@ function toMoveResult(move: Move, fen: string): ChessMoveResult {
 }
 
 /*** Read all pieces from a FEN-backed position. Invalid FEN produces an empty position. */
-export function readChessPieces(fen: string): readonly ChessPieceState[] {
+export function readChessPieces(fen: string): ReadonlyMap<ChessSquareId, ChessPieceState> {
   const chess = createChess(fen);
-  if (!chess) return [];
+  const pieces = new Map<ChessSquareId, ChessPieceState>();
+  if (!chess) return pieces;
 
-  return chess
-    .board()
-    .flatMap((rank) =>
-      rank.flatMap((piece) =>
-        piece
-          ? [
-              {
-                color: piece.color === 'w' ? ('white' as const) : ('black' as const),
-                piece: toPieceCode(piece),
-                square: piece.square,
-              },
-            ]
-          : [],
-      ),
-    );
+  for (const rank of chess.board()) {
+    for (const piece of rank) {
+      if (!piece) continue;
+      pieces.set(piece.square, {
+        color: piece.color === 'w' ? 'white' : 'black',
+        piece: toPieceCode(piece),
+        square: piece.square,
+      });
+    }
+  }
+  return pieces;
 }
 
 /*** Resolve legal destination squares from one FEN position and source square. */
