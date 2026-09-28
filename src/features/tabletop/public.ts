@@ -27,6 +27,7 @@ export { CardHand } from './adapters/inbound/CardHand';
 export { PlayingCard } from './adapters/inbound/PlayingCard';
 export { PokerTrainingTable } from './adapters/inbound/PokerTrainingTable';
 export { TabletopTable } from './adapters/inbound/TabletopTable';
+export { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
 export { createPokerTrainingTableState } from './utils/createPokerTrainingTableState';
 export { createTabletopColorScheme } from './utils/createTabletopColorScheme';
 export { createTabletopGameSeats } from './utils/createTabletopGameSeats';

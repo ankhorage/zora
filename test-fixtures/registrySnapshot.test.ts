@@ -29,15 +29,13 @@ function readRegistryKeys(): readonly string[] {
 
 test('prints the canonical ZORA component registry snapshot', async () => {
   const registryKeys = readRegistryKeys();
-  const corePluginSource = readFileSync(
-    path.join(sourceRoot, 'features/plugin/ZORA_CORE_PLUGIN.ts'),
-    'utf8',
-  );
   const { ZORA_COMPONENT_META } = await import('../src/features/authoring');
 
   expect(registryKeys.length).toBeGreaterThan(0);
   expect(new Set(registryKeys).size).toBe(registryKeys.length);
-  expect(corePluginSource).toContain('componentRegistry: ZORA_COMPONENT_REGISTRY');
+  for (const componentName of registryKeys) {
+    expect(ZORA_COMPONENT_META).toHaveProperty(componentName);
+  }
   expect(ZORA_COMPONENT_META.Screen.allowedChildren).toContain('TabletopTable');
 
   console.log(`${SNAPSHOT_PREFIX}${JSON.stringify(registryKeys)}`);

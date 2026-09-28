@@ -116,6 +116,24 @@ export const tabletopTableMeta = {
         acceptsFallback: true,
         acceptsTransforms: true,
       },
+      centerLabel: {
+        label: 'Center label',
+        value: { type: 'string' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      centerSublabel: {
+        label: 'Center sublabel',
+        value: { type: 'string' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      disabled: {
+        label: 'Disabled',
+        value: { type: 'boolean' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
     },
   },
   props: {
@@ -210,6 +228,12 @@ export const pokerTrainingTableMeta = {
           ],
         },
         acceptsFallback: true,
+      },
+      disabled: {
+        label: 'Disabled',
+        value: { type: 'boolean' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
       },
     },
   },

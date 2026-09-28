@@ -2,7 +2,6 @@ import { existsSync } from 'node:fs';
 
 import { expect, test } from 'bun:test';
 
-import { ZORA_CORE_PLUGIN_METADATA } from '../plugin/ZORA_CORE_PLUGIN_METADATA';
 import { ZORA_COMPONENT_META } from './componentMeta';
 import { FEATURE_MANIFEST_ELEMENTS } from './constants';
 
@@ -45,8 +44,8 @@ test('migrated picker and presentation elements have one canonical feature owner
   }
 });
 
-test('existing interactive authoring retains bindings after plugin composition', () => {
-  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+test('existing interactive authoring retains bindings in core metadata', () => {
+  const meta = ZORA_COMPONENT_META;
   expect(meta.DataTable?.bindings?.props?.sort?.value.type).toBe('object');
   expect(meta.DataTable?.bindings?.props?.rows?.value.type).toBe('array');
   expect(meta.Uploader?.bindings?.props?.value?.value.type).toBe('object');
@@ -57,8 +56,8 @@ test('existing interactive authoring retains bindings after plugin composition',
   expect(meta.BottomSheet?.bindings?.props?.open?.value.type).toBe('boolean');
 });
 
-test('final ownership data components retain bindings after plugin composition', () => {
-  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+test('final ownership data components retain bindings in core metadata', () => {
+  const meta = ZORA_COMPONENT_META;
   expect(meta.Dialog?.bindings?.props?.visible?.value.type).toBe('boolean');
   expect(meta.Dialog?.bindings?.events?.dismiss?.payload?.eventType).toBe('dialog.dismiss');
   expect(meta.Pagination?.bindings?.props?.page?.value.type).toBe('number');
@@ -68,26 +67,63 @@ test('final ownership data components retain bindings after plugin composition',
   expect(meta.Rating?.bindings?.props?.value?.value.type).toBe('number');
 });
 
-test('final ownership form and tab components retain bindings after plugin composition', () => {
-  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+test('final ownership form and tab components retain bindings in core metadata', () => {
+  const meta = ZORA_COMPONENT_META;
   expect(meta.SearchInput?.bindings?.props?.value?.value.type).toBe('string');
   expect(meta.SearchInput?.bindings?.events?.submit?.payload?.eventType).toBe('searchInput.submit');
   expect(meta.Tabs?.bindings?.props?.value?.value.type).toBe('string');
   expect(meta.Tabs?.bindings?.events?.valueChange?.payload?.eventType).toBe('tabs.valueChange');
 });
 
-test('existing scalar authoring bindings remain available after plugin composition', () => {
-  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+test('existing scalar authoring bindings remain available in core metadata', () => {
+  const meta = ZORA_COMPONENT_META;
   expect(meta.Heading?.bindings?.props?.level?.value.type).toBe('number');
   expect(meta.Image?.bindings?.props?.radius?.value.type).toBe('unknown');
 });
 
 test('authoring schemas omit layout and avatar options ignored by the underlying components', () => {
-  const meta = ZORA_CORE_PLUGIN_METADATA.componentMeta;
+  const meta = ZORA_COMPONENT_META;
   expect(meta.Divider?.props).not.toHaveProperty('width');
   expect(meta.Container?.props).not.toHaveProperty('width');
   expect(meta.AvatarGroup?.props.items?.itemSchema?.map(({ key }) => key)).not.toContain('size');
   expect(meta.AvatarGroup?.props.items?.itemSchema?.map(({ key }) => key)).not.toContain('shape');
+});
+
+test('integrated Chess, Game, and Tabletop placements preserve their former package contracts', () => {
+  const chessAndGameParents = [
+    ['Card', ZORA_COMPONENT_META.Card],
+    ['Grid', ZORA_COMPONENT_META.Grid],
+    ['Screen', ZORA_COMPONENT_META.Screen],
+    ['ScreenSection', ZORA_COMPONENT_META.ScreenSection],
+    ['View', ZORA_COMPONENT_META.View],
+  ] as const;
+  for (const [parent, metadata] of chessAndGameParents) {
+    for (const child of ['ChessBoard', 'OpeningBook', 'Game', 'GameField'] as const) {
+      expect(metadata.allowedChildren, `${parent} -> ${child}`).toContain(child);
+    }
+  }
+
+  const tabletopParents = [
+    ['Card', ZORA_COMPONENT_META.Card],
+    ['Grid', ZORA_COMPONENT_META.Grid],
+    ['Screen', ZORA_COMPONENT_META.Screen],
+    ['ScreenSection', ZORA_COMPONENT_META.ScreenSection],
+  ] as const;
+  for (const [parent, metadata] of tabletopParents) {
+    for (const child of ['TabletopTable', 'PokerTrainingTable'] as const) {
+      expect(metadata.allowedChildren, `${parent} -> ${child}`).toContain(child);
+    }
+  }
+  expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('TabletopTable');
+  expect(ZORA_COMPONENT_META.View.allowedChildren).not.toContain('PokerTrainingTable');
+
+  for (const child of ['GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay']) {
+    expect(ZORA_COMPONENT_META.Game.allowedChildren).toContain(child);
+  }
+  for (const child of ['GameEntity', 'GameOverlay']) {
+    expect(ZORA_COMPONENT_META.GameField.allowedChildren).toContain(child);
+  }
+  expect(ZORA_COMPONENT_META.GameOverlay.allowedChildren).toContain('GameEntity');
 });
 
 test('ContentRail accepts chips and all card elements and offers intrinsic-width scrolling', () => {

@@ -4,6 +4,7 @@ export type {
   ChessBoardOrientation,
   ChessBoardProps,
   ChessMoveAttempt,
+  ChessMoveResult,
   ChessPieceCode,
   ChessPieceRenderContext,
   ChessPieceRenderer,
@@ -17,6 +18,8 @@ export type {
 } from '../../types/chess';
 export { ChessBoard } from './adapters/inbound/ChessBoard';
 export { OpeningBook } from './adapters/inbound/OpeningBook';
+export { chessBoardMeta, openingBookMeta } from './meta';
+export { getLegalTargets, readChessPieces, tryMove } from './utils/chessEngine';
 export { chessSquares } from './utils/chessSquares';
 export { createBoardSquares } from './utils/createBoardSquares';
 export type { ChessColorThemeShape } from './utils/createChessBoardColorScheme';

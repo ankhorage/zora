@@ -6,6 +6,7 @@ import { Window } from 'happy-dom';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import { pokerTrainingTableMeta, tabletopTableMeta } from './meta';
 import type {
   CardHand as CardHandComponent,
   PokerTrainingTable as PokerTrainingTableComponent,
@@ -63,6 +64,17 @@ describe('Tabletop presentation', () => {
       { id: 'north', label: 'North', disabled: true, muted: true },
       { id: 'south', label: 'South', selected: true },
     ]);
+  });
+
+  test('preserves the standalone Tabletop authoring bindings in core metadata', () => {
+    expect(Object.keys(tabletopTableMeta.bindings.props)).toEqual([
+      'seats',
+      'centerCards',
+      'centerLabel',
+      'centerSublabel',
+      'disabled',
+    ]);
+    expect(pokerTrainingTableMeta.bindings.props.disabled.value.type).toBe('boolean');
   });
 
   test('renders card sizing, per-card IDs, seat accessibility, and table shapes', async () => {

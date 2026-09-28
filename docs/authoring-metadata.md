@@ -16,31 +16,19 @@ ZORA_THEME_RECIPE_META
 Neither component metadata nor theme recipe metadata contains React components. Runtime and Studio
 consume these registries; they do not recreate ZORA ownership.
 
-## Plugin composition
+## Core ownership
 
-External ZORA plugins still export one `ZoraPluginDescriptor` that keeps their runtime registry,
-component metadata, bindings, and placement declarations together. Chess and Tabletop are core
-features and require no plugin descriptor or standalone package. The application edge selects any
-other installed extensions and composes them with core:
+ZORA components are owned directly by the canonical core registries. There is no ZORA plugin
+composition layer.
 
-```ts
-const catalog = composeZoraPlugins([ZORA_CORE_PLUGIN, ...installedExtensions]);
-```
+Runtime consumers use `ZORA_COMPONENT_REGISTRY`. Authoring and metadata-only tools import
+`ZORA_COMPONENT_META`, `ZORA_BINDABLE_COMPONENT_META`, and `ZORA_THEME_RECIPE_META` from
+`@ankhorage/zora/metadata`. Chess, Game, and Tabletop are ordinary core features and require no
+standalone package, descriptor, metadata composition, or plugin discovery.
 
-The composer sorts packages deterministically, rejects duplicate packages or component keys,
-verifies runtime/metadata coverage, and only permits plugin placement into components explicitly
-declared as extension hosts. Studio and Runtime consume the resulting `componentMeta`,
-`bindableComponentMeta`, and `componentRegistry` projections.
-
-Metadata-only tools import `composeZoraPluginMetadata` and `ZORA_CORE_PLUGIN_METADATA` from
-`@ankhorage/zora/metadata`, then add each remaining installed extension's `ZORA_PLUGIN_METADATA`
-export. Core Chess and Tabletop metadata already arrives through `ZORA_CORE_PLUGIN_METADATA`. This
-keeps server-side authoring inspection independent of React Native runtime imports.
-
-`Icon` and `Image` are direct manifest leaves accepted by normal screen containers. Their `source`
-props support media-registry references (`{ mediaId }`): use standalone SVG assets for `Icon` and
-application imagery for `Image`. The host media resolver supplies the renderable source; screen
-mockups remain separate design evidence.
+Application-specific runtime adapters remain application-owned and may be combined with the core
+runtime registry at the application composition edge. They do not extend ZORA ownership or create a
+second component metadata catalog.
 
 ## Prop authoring authority
 

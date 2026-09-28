@@ -131,6 +131,7 @@ export type {
   ChessBoardOrientation,
   ChessBoardProps,
   ChessMoveAttempt,
+  ChessMoveResult,
   ChessPieceCode,
   ChessPieceRenderContext,
   ChessPieceRenderer,
@@ -143,15 +144,18 @@ export type {
   OpeningBookProps,
 } from './features/chess/public';
 export type { ChessColorThemeShape } from './features/chess/public';
-export { ChessBoard, OpeningBook } from './features/chess/public';
+export { ChessBoard, chessBoardMeta, OpeningBook, openingBookMeta } from './features/chess/public';
 export {
   chessSquares,
   createBoardSquares,
   createChessBoardColorScheme,
   createOpeningBookColorScheme,
+  getLegalTargets,
   getSquareFile,
   getSquareRank,
   isLightSquare,
+  readChessPieces,
+  tryMove,
 } from './features/chess/public';
 export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
@@ -320,12 +324,6 @@ export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
 export { PaletteItem } from './features/palette-item/public';
 export {
-  composeZoraPluginMetadata,
-  ZORA_CORE_PLUGIN_METADATA,
-  ZoraPluginCompositionError,
-} from './features/plugin/public';
-export { composeZoraPlugins, ZORA_CORE_PLUGIN } from './features/plugin/runtime';
-export {
   PopoverMenu,
   type PopoverMenuAction,
   type PopoverMenuActionIntent,
@@ -423,7 +421,9 @@ export {
   createTabletopGameSeats,
   PlayingCard,
   PokerTrainingTable,
+  pokerTrainingTableMeta,
   TabletopTable,
+  tabletopTableMeta,
 } from './features/tabletop/public';
 export {
   Tab,
@@ -495,12 +495,4 @@ export type {
   ValidateUploadAssetInput,
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
-export type {
-  ComposedZoraPluginCatalog,
-  ComposedZoraPluginMetadataCatalog,
-  ZoraPluginCompositionErrorCode,
-  ZoraPluginDescriptor,
-  ZoraPluginMetadata,
-  ZoraPluginPlacement,
-} from './types/plugin';
 export type { ZoraComponentRegistry } from './types/registry';

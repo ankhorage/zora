@@ -9,7 +9,7 @@ export const chessBoardMeta = {
   allowedChildren: [],
   blueprint: {
     label: 'Chess board',
-    defaultProps: { pieces: [], orientation: 'white', showCoordinates: true },
+    defaultProps: { pieces: [], orientation: 'white', showCoordinates: true, validateMoves: true },
   },
   events: {
     squarePress: {
@@ -23,6 +23,28 @@ export const chessBoardMeta = {
       payloadFields: [
         { path: 'from', type: 'string', label: 'From' },
         { path: 'to', type: 'string', label: 'To' },
+        { path: 'promotion', type: 'string', label: 'Promotion' },
+      ],
+    },
+    legalMove: {
+      label: 'Legal move',
+      eventType: 'chess.legalMove',
+      payloadFields: [
+        { path: 'from', type: 'string', label: 'From' },
+        { path: 'to', type: 'string', label: 'To' },
+        { path: 'fen', type: 'string', label: 'Position' },
+        { path: 'san', type: 'string', label: 'SAN' },
+        { path: 'lan', type: 'string', label: 'LAN' },
+        { path: 'promotion', type: 'string', label: 'Promotion' },
+      ],
+    },
+    invalidMove: {
+      label: 'Invalid move',
+      eventType: 'chess.invalidMove',
+      payloadFields: [
+        { path: 'from', type: 'string', label: 'From' },
+        { path: 'to', type: 'string', label: 'To' },
+        { path: 'promotion', type: 'string', label: 'Promotion' },
       ],
     },
   },
@@ -43,6 +65,12 @@ export const chessBoardMeta = {
     },
   },
   props: {
+    fen: {
+      type: 'string',
+      category: 'Position',
+      label: 'FEN',
+      authoring: { authority: 'instance' },
+    },
     pieces: {
       type: 'array',
       category: 'Board',
@@ -76,6 +104,13 @@ export const chessBoardMeta = {
       category: 'Style',
       label: 'Show coordinates',
       default: false,
+      authoring: { authority: 'instance' },
+    },
+    validateMoves: {
+      type: 'boolean',
+      category: 'Behavior',
+      label: 'Validate moves',
+      default: true,
       authoring: { authority: 'instance' },
     },
     disabled: {

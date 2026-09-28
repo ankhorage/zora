@@ -16,9 +16,9 @@ bun .agents/skills/zora-designer/scripts/owner-api.ts inspect
 bun .agents/skills/zora-designer/scripts/analyze-screen.ts screen-analysis-input.json
 ```
 
-The analyzer uses the current composed ZORA metadata, including every installed
-`@ankhorage/zora-*` plugin, and delegates image processing to released
-`@ankhorage/utility/image`:
+The analyzer uses the current canonical core ZORA metadata from released `@ankhorage/zora` and
+delegates image processing to released `@ankhorage/utility/image`. It does not discover or compose
+standalone ZORA plugin packages:
 
 ```text
 supplied image
@@ -88,7 +88,7 @@ The analyzer returns:
 - aggregate confidence;
 - ranked component candidates by region;
 - unresolved diagnostics;
-- the exact composed component names and owner/plugin version provenance used for the pass.
+- the exact core component names and owner version provenance used for the pass.
 
 Use the generated `ScreenSpec` as the structural baseline. Do not discard a high-confidence exact
 metadata match merely because another component looks visually similar.

@@ -52,16 +52,22 @@ exceptions or replaced by generic preferences from this skill.
 - Use ordinary inline comments when they explain non-obvious intent, invariants, constraints, or the
   reason behind a decision. Do not narrate self-explanatory code or duplicate what names and types
   already express.
-- Paradox documentation metadata belongs only inside `/*** ... */` comments. Use only supported
-  Paradox tags: `@readme`, `@config`, `@example`, and `@usage`. Do not use JSDoc-only tags such as
-  `@param` or `@returns` as Paradox metadata.
+- Paradox documentation metadata belongs only inside `/*** ... */` comments. The canonical tag
+  vocabulary is owned by `@ankhorage/policy`: `@readme`, `@usage`, `@config`, `@title`,
+  `@see`, and `@security`. Unsupported tag-shaped lines are invalid; `@example` does not exist.
+  Do not use JSDoc-only tags such as `@param` or `@returns` as Paradox metadata.
+- Paradox comments contain documentation prose and metadata only. Fenced or indented code blocks are
+  invalid; source examples come from real code. Inline code spans remain valid prose.
 - Add a supported Paradox tag only when it changes or usefully enriches generated documentation;
   plain function descriptions do not need tags.
 - README usage documentation must come from a real repository-root `examples/<example>/...` source
-  file. Put `@usage` in that example file's leading `/*** ... */` comment so Paradox promotes the
-  runnable example into the README Usage section. Do not create dedicated `readme-usage`,
-  `usage-readme`, `readmeUsage`, or equivalent source modules whose only purpose is feeding README
-  usage text.
+  file. A package that opts into `@usage` must have exactly one example combining `@usage`,
+  `@readme`, and `@title`; additional `@usage` examples remain full-doc-only. Do not create
+  dedicated `readme-usage`, `usage-readme`, `readmeUsage`, or equivalent source modules whose
+  only purpose is feeding README usage text.
+- Configuration documentation is optional until a package opts in. Once it does, the canonical schema
+  is `src/types/config.ts` with exactly one root type/interface carrying `@config`, `@readme`,
+  and `@title`.
 - Update documentation sources in the pull request, including repository-owned manual documentation
   outside the configured generated output. Never hand-edit generated README or Paradox artifacts.
 - Generated documentation is release-owned. Ordinary feature pull requests must not regenerate or
