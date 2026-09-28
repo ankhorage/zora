@@ -26,10 +26,9 @@ describe('src ownership', () => {
     }
   });
 
-  test('keeps reusable authoring, plugin, registry, and theme types centralized', () => {
+  test('keeps reusable authoring, registry, and theme types centralized', () => {
     for (const path of [
       'src/types/authoring.ts',
-      'src/types/plugin.ts',
       'src/types/registry.ts',
       'src/types/theme.ts',
       'src/types/theme-recipe.ts',
@@ -49,8 +48,6 @@ describe('src ownership', () => {
 
   test('keeps deliberate feature facades instead of legacy catch-all implementation files', () => {
     for (const path of [
-      'src/features/plugin/public.ts',
-      'src/features/plugin/runtime.ts',
       'src/features/registry/public.ts',
       'src/features/theme/public.ts',
       'src/features/theme/runtime.ts',
@@ -59,9 +56,7 @@ describe('src ownership', () => {
     }
 
     for (const path of [
-      'src/features/plugin/pluginComposition.ts',
-      'src/features/plugin/corePlugin.ts',
-      'src/features/plugin/corePluginMetadata.ts',
+      'src/features/plugin',
       'src/features/registry/registry.ts',
       'src/features/theme/index.ts',
     ]) {
