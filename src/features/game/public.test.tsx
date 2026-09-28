@@ -56,6 +56,9 @@ test('generic web materialization renders Game field and entity without a plugin
     </ZoraProvider>,
   );
   expect(browser.document.querySelector('[data-testid="field"]')).not.toBeNull();
+  expect(browser.document.querySelector('[data-testid="field"]')?.getAttribute('style')).toContain(
+    'min-height:320px',
+  );
   expect(browser.document.querySelector('[data-testid="entity"]')).not.toBeNull();
   browser.close();
 });
