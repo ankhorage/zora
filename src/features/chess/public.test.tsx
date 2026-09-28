@@ -11,6 +11,7 @@ import type {
   ChessBoard as ChessBoardComponent,
   OpeningBook as OpeningBookComponent,
 } from './public';
+import { chessBoardMeta } from './meta';
 import { createBoardSquares } from './utils/createBoardSquares';
 import { createChessBoardColorScheme } from './utils/createChessBoardColorScheme';
 import { getSquareFile } from './utils/getSquareFile';
@@ -28,6 +29,24 @@ describe('Chess presentation', () => {
     expect(getSquareRank('e4')).toBe('4');
     expect(isLightSquare('a1')).toBe(false);
     expect(typeof createChessBoardColorScheme).toBe('function');
+  });
+
+  test('preserves FEN and validated-move authoring metadata', () => {
+    expect(chessBoardMeta.props.fen.type).toBe('string');
+    expect(chessBoardMeta.props.validateMoves.default).toBe(true);
+    expect(chessBoardMeta.events.legalMove.payloadFields.map((field) => field.path)).toEqual([
+      'from',
+      'to',
+      'fen',
+      'san',
+      'lan',
+      'promotion',
+    ]);
+    expect(chessBoardMeta.events.invalidMove.payloadFields.map((field) => field.path)).toEqual([
+      'from',
+      'to',
+      'promotion',
+    ]);
   });
 
   test('renders custom React nodes, square IDs, and opening metadata through independent artifacts', async () => {
