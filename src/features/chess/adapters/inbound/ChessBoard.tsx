@@ -1,11 +1,17 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { ChessBoardProps, ChessPieceState, ChessSquareId } from '../../../../types/chess';
+import type {
+  ChessBoardProps,
+  ChessMoveAttempt,
+  ChessPieceState,
+  ChessSquareId,
+} from '../../../../types/chess';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { createBoardSquares } from '../../utils/createBoardSquares';
 import { createChessBoardColorScheme } from '../../utils/createChessBoardColorScheme';
+import { getLegalTargets, readChessPieces, tryMove } from '../../utils/chessEngine';
 import { isLightSquare } from '../../utils/isLightSquare';
 
 const symbols = new Map<string, string>([
@@ -23,21 +29,25 @@ const symbols = new Map<string, string>([
   ['black:k', '♚'],
 ]);
 
-/*** Renders caller-owned chess presentation state without chess rule execution. */
+/*** Renders caller-owned or FEN-backed chess state with optional legal-move validation. */
 export const ChessBoard = withZoraThemeScope(ChessBoardInner);
 
-/*** Renders the current presentation state without executing chess rules. */
+/*** Renders the current presentation state and delegates FEN validation to the core chess engine. */
 function ChessBoardInner({
-  pieces = [],
+  fen,
+  pieces,
   orientation = 'white',
   selectedSquare = null,
-  legalTargets = [],
+  legalTargets,
   lastMove = null,
   disabled = false,
   showCoordinates = false,
+  validateMoves = true,
   colorScheme,
   onSquarePress,
   onMoveAttempt,
+  onLegalMove,
+  onInvalidMove,
   renderPiece,
   interactionPolicy,
   testID,
@@ -45,15 +55,28 @@ function ChessBoardInner({
   const { theme } = useZoraTheme();
   const colors = createChessBoardColorScheme(theme, colorScheme);
   const squares = createBoardSquares(orientation);
-  const piecesBySquare = new Map<ChessSquareId, ChessPieceState>(
-    pieces.map((piece) => [piece.square, piece]),
-  );
-  const legalTargetSet = new Set(legalTargets);
+  const piecesBySquare =
+    pieces === undefined
+      ? fen === undefined
+        ? new Map<ChessSquareId, ChessPieceState>()
+        : new Map(readChessPieces(fen))
+      : new Map<ChessSquareId, ChessPieceState>(pieces.map((piece) => [piece.square, piece]));
+  const resolvedLegalTargets =
+    legalTargets ??
+    (fen !== undefined && selectedSquare !== null ? getLegalTargets(fen, selectedSquare) : []);
+  const legalTargetSet = new Set(resolvedLegalTargets);
   const pressSquare = (square: ChessSquareId) => {
     if (disabled || interactionPolicy === 'passive') return;
     onSquarePress?.(square);
-    if (selectedSquare !== null && selectedSquare !== square)
-      onMoveAttempt?.({ from: selectedSquare, to: square });
+    if (selectedSquare === null || selectedSquare === square) return;
+
+    const attempt: ChessMoveAttempt = { from: selectedSquare, to: square };
+    onMoveAttempt?.(attempt);
+    if (!validateMoves || fen === undefined) return;
+
+    const result = tryMove(fen, attempt);
+    if (result) onLegalMove?.(result);
+    else onInvalidMove?.(attempt);
   };
   return (
     <View
