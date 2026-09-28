@@ -58,9 +58,5 @@ function TextInputInner({
  *
  * Use `TextInput` for single-line, multiline, and password form controls with ZORA styling.
  *
- * @example Search input
- * ```tsx
- * <TextInput placeholder="Search" leadingIcon={{ name: 'search-outline' }} />
- * ```
  */
 export const TextInput = withZoraThemeScope(TextInputInner);
