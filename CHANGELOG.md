@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.20
+
+### Patch Changes
+
+- c147f6b: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.19
 
 ### Patch Changes
