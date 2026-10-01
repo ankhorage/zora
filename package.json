@@ -41,10 +41,10 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.8.31",
+    "@ankhorage/contracts": "^22.8.32",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/runtime": "^3.0.30",
-    "@ankhorage/surface": "^9.1.36",
+    "@ankhorage/surface": "^9.1.37",
     "@ankhorage/utility": "^1.9.21",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20",
