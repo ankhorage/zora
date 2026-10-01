@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.17
+
+### Patch Changes
+
+- 89bc246: Update dependencies: `@ankhorage/paradox`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.16
 
 ### Patch Changes
