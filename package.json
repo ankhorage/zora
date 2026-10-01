@@ -46,7 +46,7 @@
     "@ankhorage/runtime": "^3.0.25",
     "@ankhorage/surface": "^9.1.7",
     "@ankhorage/utility": "^1.9.0",
-    "expo-document-picker": "~57.0.2",
+    "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20",
     "chess.js": "^1.4.0"
   },
