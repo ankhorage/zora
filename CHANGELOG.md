@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.10
+
+### Patch Changes
+
+- 1c203f5: Update Renovate-managed workflows.
+- 01b63b0: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`.
+
 ## 22.0.9
 
 ### Patch Changes
