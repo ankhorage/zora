@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.3
+
+### Patch Changes
+
+- 8829703: Update dependencies: `@react-native-vector-icons/fontawesome5`, `@react-native-vector-icons/fontawesome`, `@react-native-vector-icons/ionicons`, `react-native-safe-area-context`.
+
 ## 22.0.2
 
 ### Patch Changes
