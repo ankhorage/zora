@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.22
+
+### Patch Changes
+
+- 309a9b8: Update Renovate-managed workflows.
+- cada916: Update dependencies: `@types/node`.
+
 ## 22.0.21
 
 ### Patch Changes
