@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.7
+
+### Patch Changes
+
+- 619cb45: Update dependencies: `react-native-safe-area-context`.
+
 ## 22.0.6
 
 ### Patch Changes
