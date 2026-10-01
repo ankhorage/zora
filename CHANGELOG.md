@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.1
+
+### Patch Changes
+
+- a0cd8a6: Update dependencies: `expo-document-picker`.
+
 ## 22.0.0
 
 ### Major Changes
