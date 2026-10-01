@@ -6,7 +6,7 @@
       "name": "@ankhorage/zora",
       "dependencies": {
         "@ankhorage/color-theory": "^0.3.1",
-        "@ankhorage/contracts": "^22.8.30",
+        "@ankhorage/contracts": "^22.8.31",
         "@ankhorage/game": "^0.1.2",
         "@ankhorage/runtime": "^3.0.30",
         "@ankhorage/surface": "^9.1.36",
@@ -17,7 +17,7 @@
       },
       "devDependencies": {
         "@ankhorage/devtools": "^2.0.12",
-        "@ankhorage/paradox": "^0.2.9",
+        "@ankhorage/paradox": "^0.2.10",
         "@react-native-vector-icons/fontawesome": "^13.1.4",
         "@react-native-vector-icons/fontawesome5": "^13.1.4",
         "@react-native-vector-icons/fontawesome6": "^13.1.4",
@@ -62,7 +62,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.30", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.19" } }, "sha512-ZUd2D0nMZ7k2H1fYyQTrGHWZ8mXSdeRVf5sIIR7fhYviJ1S0Kxpjz5V4W3vAZ169OVlD2i6tDRBPyFAhT1KSWQ=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.31", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.20" } }, "sha512-ZhREaeGuDmaSXxdCfTcZnHfdRB1oXamXJbK/IzNZyCOlM3C0zconl5FVDAAuQD7xXvI5cNfEd9NO075aJJ7UWQ=="],
 
     "@ankhorage/data-sources": ["@ankhorage/data-sources@2.0.16", "", { "dependencies": { "@ankhorage/contracts": "^22.8.1" } }, "sha512-0InTJLtyIY0f0CVxi77qnf16/59eozI+zVDUrCYncJF6vfbKoWHlBTbEeEHnlJ/ZbMs+6Q9pUve7I5qkaHh1fQ=="],
 
@@ -70,7 +70,7 @@
 
     "@ankhorage/game": ["@ankhorage/game@0.1.2", "", {}, "sha512-dWYhU/ZSIP2QDisuyH+46Qu6W2S6ucEOaYG7l7yvj3s06+wjeFJGtDv7JpD9dxWso+niIpv+C1+OKs0YzT+2ZQ=="],
 
-    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.9", "", { "dependencies": { "@ankhorage/policy": "^0.6.0", "@ankhorage/utility": "^1.9.20", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-TUymk5hYRsmFKNzCJZcngAC92L7szA2Y4dqjj2FTB6BwoX3LHtcS+zeqAN1knXQuCLvrISPNxNAbDBAyO8uTbw=="],
+    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.10", "", { "dependencies": { "@ankhorage/policy": "^0.6.0", "@ankhorage/utility": "^1.9.21", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-iK7pLmeF6I23KhgwGj2yxMiw2pmD8AG1KE/rJaMnhdYjL/kH+9clwWNy4W+LTdwQhcQjOxSPqTY7Ajd8ZHZtng=="],
 
     "@ankhorage/policy": ["@ankhorage/policy@0.6.0", "", {}, "sha512-zY0Dks/n4YrVqDQYc0wcYPRjPGtjNMB5LLJvj1Xupnm3SgvxOKii00qDlPIxEWuJQREy9WKL7zjLhri278yN4g=="],
 
