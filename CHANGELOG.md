@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.16
+
+### Patch Changes
+
+- 7bb0cab: Update Renovate-managed workflows.
+
 ## 22.0.15
 
 ### Patch Changes
