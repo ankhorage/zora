@@ -2,6 +2,7 @@ graph LR
   module_src_cli_commands_create_ts["src/cli/commands/create.ts"]
   module_src_cli_commands_sync_ts["src/cli/commands/sync.ts"]
   module_src_cli_index_ts["src/cli/index.ts"]
+  module_src_constants_authoring_ts["src/constants/authoring.ts"]
   module_src_features_accordion_accordionItemMeta_ts["src/features/accordion/accordionItemMeta.ts"]
   module_src_features_accordion_accordionMeta_ts["src/features/accordion/accordionMeta.ts"]
   module_src_features_accordion_adapters_inbound_Accordion_tsx["src/features/accordion/adapters/inbound/Accordion.tsx"]
@@ -31,14 +32,6 @@ graph LR
   module_src_features_auth_signUpFormMeta_ts["src/features/auth/signUpFormMeta.ts"]
   module_src_features_auth_utils_authForm_ts["src/features/auth/utils/authForm.ts"]
   module_src_features_auth_utils_oauthProviders_ts["src/features/auth/utils/oauthProviders.ts"]
-  module_src_features_authoring_allowedChildren_ts["src/features/authoring/allowedChildren.ts"]
-  module_src_features_authoring_bindableComponentMeta_ts["src/features/authoring/bindableComponentMeta.ts"]
-  module_src_features_authoring_componentMeta_ts["src/features/authoring/componentMeta.ts"]
-  module_src_features_authoring_constants_ts["src/features/authoring/constants.ts"]
-  module_src_features_authoring_index_ts["src/features/authoring/index.ts"]
-  module_src_features_authoring_themeRecipeMeta_ts["src/features/authoring/themeRecipeMeta.ts"]
-  module_src_features_authoring_utils_createManifestBindings_ts["src/features/authoring/utils/createManifestBindings.ts"]
-  module_src_features_authoring_utils_finalizeFeatureMetadata_ts["src/features/authoring/utils/finalizeFeatureMetadata.ts"]
   module_src_features_avatar_adapters_inbound_Avatar_tsx["src/features/avatar/adapters/inbound/Avatar.tsx"]
   module_src_features_avatar_adapters_inbound_AvatarGroup_tsx["src/features/avatar/adapters/inbound/AvatarGroup.tsx"]
   module_src_features_avatar_avatarGroupMeta_ts["src/features/avatar/avatarGroupMeta.ts"]
@@ -187,7 +180,6 @@ graph LR
   module_src_features_game_adapters_inbound_GameInputZone_tsx["src/features/game/adapters/inbound/GameInputZone.tsx"]
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx["src/features/game/adapters/inbound/GameMeasurementProbe.tsx"]
   module_src_features_game_adapters_inbound_GameOverlay_tsx["src/features/game/adapters/inbound/GameOverlay.tsx"]
-  module_src_features_game_adapters_inbound_measureGameEntity_ts["src/features/game/adapters/inbound/measureGameEntity.ts"]
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts["src/features/game/adapters/inbound/useGameInputZoneResponder.ts"]
   module_src_features_game_composition_createGameBindingContext_ts["src/features/game/composition/createGameBindingContext.ts"]
   module_src_features_game_composition_createGameMeasurementRegistry_ts["src/features/game/composition/createGameMeasurementRegistry.ts"]
@@ -202,6 +194,7 @@ graph LR
   module_src_features_game_meta_gameOverlayMeta_ts["src/features/game/meta/gameOverlayMeta.ts"]
   module_src_features_game_public_ts["src/features/game/public.ts"]
   module_src_features_game_utils_clampGamePercentage_ts["src/features/game/utils/clampGamePercentage.ts"]
+  module_src_features_game_utils_measureGameEntity_ts["src/features/game/utils/measureGameEntity.ts"]
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts["src/features/game/utils/resolveGameEntityMotionPlan.ts"]
   module_src_features_game_utils_toGamePercentage_ts["src/features/game/utils/toGamePercentage.ts"]
   module_src_features_game_utils_useAnimatedGameEntityValue_ts["src/features/game/utils/useAnimatedGameEntityValue.ts"]
@@ -306,7 +299,13 @@ graph LR
   module_src_features_reader_meta_ts["src/features/reader/meta.ts"]
   module_src_features_reader_public_ts["src/features/reader/public.ts"]
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
+  module_src_features_registry_bindableComponentMeta_ts["src/features/registry/bindableComponentMeta.ts"]
+  module_src_features_registry_componentMeta_ts["src/features/registry/componentMeta.ts"]
+  module_src_features_registry_createManifestBindings_ts["src/features/registry/createManifestBindings.ts"]
+  module_src_features_registry_finalizeFeatureMetadata_ts["src/features/registry/finalizeFeatureMetadata.ts"]
+  module_src_features_registry_index_ts["src/features/registry/index.ts"]
   module_src_features_registry_public_ts["src/features/registry/public.ts"]
+  module_src_features_registry_themeRecipeMeta_ts["src/features/registry/themeRecipeMeta.ts"]
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts["src/features/registry/ZORA_COMPONENT_REGISTRY.ts"]
   module_src_features_scanner_adapters_inbound_BarcodeScannerView_tsx["src/features/scanner/adapters/inbound/BarcodeScannerView.tsx"]
   module_src_features_scanner_adapters_inbound_CameraPermissionView_tsx["src/features/scanner/adapters/inbound/CameraPermissionView.tsx"]
@@ -461,6 +460,7 @@ graph LR
   module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
   module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
   module_src_types_gradient_ts["src/types/gradient.ts"]
+  module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_hero_ts["src/types/hero.ts"]
@@ -511,9 +511,9 @@ graph LR
   module_src_cli_commands_sync_ts --> module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts --> module_src_cli_commands_create_ts
   module_src_cli_index_ts --> module_src_cli_commands_sync_ts
-  module_src_features_accordion_accordionItemMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_accordion_accordionItemMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_accordion_accordionMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_accordion_accordionItemMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_accordion_accordionItemMeta_ts --> module_src_types_authoring_ts
+  module_src_features_accordion_accordionMeta_ts --> module_src_types_authoring_ts
   module_src_features_accordion_adapters_inbound_Accordion_tsx --> module_src_features_accordion_composition_AccordionPresentationContext_ts
   module_src_features_accordion_adapters_inbound_Accordion_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_accordion_adapters_inbound_Accordion_tsx --> module_src_types_accordion_ts
@@ -524,7 +524,7 @@ graph LR
   module_src_features_accordion_adapters_inbound_AccordionItem_tsx --> module_src_features_typography_public_ts
   module_src_features_accordion_adapters_inbound_AccordionItem_tsx --> module_src_types_accordion_ts
   module_src_features_accordion_composition_AccordionPresentationContext_ts --> module_src_types_accordion_ts
-  module_src_features_activity_indicator_activityIndicatorMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_activity_indicator_activityIndicatorMeta_ts --> module_src_types_authoring_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
@@ -535,7 +535,7 @@ graph LR
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_typography_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_types_app_bar_ts
-  module_src_features_app_bar_appBarMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_app_bar_appBarMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_auth_adapters_inbound_AuthFormField_tsx
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_form_public_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_layout_public_ts
@@ -579,124 +579,17 @@ graph LR
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_auth_ts
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_form_ts
-  module_src_features_auth_forgotPasswordFormMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_auth_forgotPasswordFormMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_features_theme_colorModel_ts
-  module_src_features_auth_oauthProviderListMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_oauthProviderListMeta_ts --> module_src_features_theme_colorModel_ts
-  module_src_features_auth_otpFormMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_auth_signInFormMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_auth_signUpFormMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_auth_oauthProviderListMeta_ts --> module_src_types_authoring_ts
+  module_src_features_auth_otpFormMeta_ts --> module_src_types_authoring_ts
+  module_src_features_auth_signInFormMeta_ts --> module_src_types_authoring_ts
+  module_src_features_auth_signUpFormMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_utils_authForm_ts --> module_src_types_auth_ts
   module_src_features_auth_utils_authForm_ts --> module_src_types_form_ts
   module_src_features_auth_utils_oauthProviders_ts --> module_src_types_auth_ts
-  module_src_features_authoring_bindableComponentMeta_ts --> module_src_features_image_imageMeta_ts
-  module_src_features_authoring_bindableComponentMeta_ts --> module_src_features_reader_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_accordion_accordionItemMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_otpFormMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_signInFormMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_auth_signUpFormMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_authoring_utils_finalizeFeatureMetadata_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_avatar_avatarGroupMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_avatar_avatarMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_badge_badgeMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_bottom_sheet_bottomSheetMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_breadcrumbs_breadcrumbsMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_button_buttonGroupMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_button_buttonMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_button_iconButtonMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_card_cardMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_card_mediaCardMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_card_metricCardMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_card_postCardMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_card_productCardMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_chat_chatListItemMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_chat_messageBubbleMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_chess_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_chip_chipGroupMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_chip_chipMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_collection_editor_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_content_rail_contentRailMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_data_table_dataTableMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_date_picker_datePickerMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_dialog_dialogMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_empty_state_emptyStateMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_checkbox_checkboxMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_field_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_formActionsMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_formErrorMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_formMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_radio_radioMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_search_input_searchInputMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_select_selectMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_switch_switchMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameEntityMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameFieldMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameInputZoneMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameMeasurementProbeMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_game_meta_gameOverlayMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_hero_heroMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_icon_iconMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_image_imageMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_appShellMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_dividerMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_gridMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_screenMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_scrollViewMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_layout_viewMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_list_flatListMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_list_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_missing_element_missingElementMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_pagination_paginationMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_palette_item_paletteItemMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_popover_menu_popoverMenuMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_progress_progressMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_rating_ratingMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_reader_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_scanner_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_section_screenSectionMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_section_sectionHeaderMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_selection_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_skeleton_skeletonMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_surface_surfaceMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tabletop_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabListMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabPanelMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tabs_tabsMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_theme_ThemeModeToggle_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_time_picker_timePickerMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_timeline_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_toast_toastMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_toast_toastProviderMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_toolbar_toolbarMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_tree_view_meta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_typography_headingMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_typography_textMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
-  module_src_features_authoring_componentMeta_ts --> module_src_types_authoring_ts
-  module_src_features_authoring_constants_ts --> module_src_types_theme_recipe_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_features_button_utils_themeRecipeMeta_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_features_card_utils_themeRecipeMeta_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_features_form_radio_themeRecipeMeta_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_features_typography_utils_headingThemeRecipeMeta_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_features_typography_utils_textThemeRecipeMeta_ts
-  module_src_features_authoring_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
-  module_src_features_authoring_utils_createManifestBindings_ts --> module_src_types_authoring_ts
-  module_src_features_authoring_utils_finalizeFeatureMetadata_ts --> module_src_features_authoring_constants_ts
-  module_src_features_authoring_utils_finalizeFeatureMetadata_ts --> module_src_features_authoring_utils_createManifestBindings_ts
-  module_src_features_authoring_utils_finalizeFeatureMetadata_ts --> module_src_types_authoring_ts
   module_src_features_avatar_adapters_inbound_Avatar_tsx --> module_src_features_avatar_utils_resolveAvatarInitials_ts
   module_src_features_avatar_adapters_inbound_Avatar_tsx --> module_src_features_icon_public_ts
   module_src_features_avatar_adapters_inbound_Avatar_tsx --> module_src_features_layout_public_ts
@@ -725,7 +618,7 @@ graph LR
   module_src_features_bottom_sheet_adapters_inbound_BottomSheet_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_bottom_sheet_adapters_inbound_BottomSheet_tsx --> module_src_features_theme_composition_ZoraThemeRuntimeContext_tsx
   module_src_features_bottom_sheet_adapters_inbound_BottomSheet_tsx --> module_src_types_manifest_bottom_sheet_ts
-  module_src_features_bottom_sheet_bottomSheetMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_bottom_sheet_bottomSheetMeta_ts --> module_src_constants_authoring_ts
   module_src_features_bottom_sheet_bottomSheetMeta_ts --> module_src_types_authoring_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_button_public_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_icon_public_ts
@@ -735,8 +628,9 @@ graph LR
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_features_typography_public_ts
   module_src_features_breadcrumbs_adapters_inbound_Breadcrumbs_tsx --> module_src_types_breadcrumbs_ts
-  module_src_features_breadcrumbs_breadcrumbsMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_breadcrumbs_breadcrumbsMeta_ts --> module_src_types_authoring_ts
   module_src_features_button_adapters_inbound_Button_tsx --> module_src_features_button_utils_resolveButtonThemeRecipe_ts
+  module_src_features_button_adapters_inbound_Button_tsx --> module_src_features_button_utils_themeRecipeMeta_ts
   module_src_features_button_adapters_inbound_Button_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_button_adapters_inbound_Button_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
   module_src_features_button_adapters_inbound_Button_tsx --> module_src_types_button_ts
@@ -746,10 +640,10 @@ graph LR
   module_src_features_button_adapters_inbound_IconButton_tsx --> module_src_features_button_utils_resolveButtonRecipe_ts
   module_src_features_button_adapters_inbound_IconButton_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_button_adapters_inbound_IconButton_tsx --> module_src_types_icon_button_ts
-  module_src_features_button_buttonGroupMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_button_buttonMeta_ts --> module_src_features_authoring_constants_ts
-  module_src_features_button_buttonMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_button_buttonGroupMeta_ts --> module_src_types_authoring_ts
+  module_src_features_button_buttonMeta_ts --> module_src_constants_authoring_ts
   module_src_features_button_buttonMeta_ts --> module_src_features_theme_colorModel_ts
+  module_src_features_button_buttonMeta_ts --> module_src_types_authoring_ts
   module_src_features_button_iconButtonMeta_ts --> module_src_types_authoring_ts
   module_src_features_button_utils_resolveButtonRecipe_ts --> module_src_types_button_ts
   module_src_features_button_utils_resolveButtonRecipe_ts --> module_src_types_control_ts
@@ -762,6 +656,7 @@ graph LR
   module_src_features_button_utils_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_resolveCardThemeRecipe_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_resolveCardVariant_ts
+  module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_themeRecipeMeta_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_layout_public_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
@@ -800,15 +695,14 @@ graph LR
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_features_typography_public_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_types_base_ts
   module_src_features_card_adapters_inbound_ProductCard_tsx --> module_src_types_product_card_ts
-  module_src_features_card_cardMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_card_cardMeta_ts --> module_src_features_authoring_constants_ts
-  module_src_features_card_cardMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_card_mediaCardMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_card_cardMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_card_cardMeta_ts --> module_src_types_authoring_ts
+  module_src_features_card_mediaCardMeta_ts --> module_src_constants_authoring_ts
   module_src_features_card_mediaCardMeta_ts --> module_src_types_authoring_ts
   module_src_features_card_metricCardMeta_ts --> module_src_types_authoring_ts
-  module_src_features_card_postCardMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_card_postCardMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_card_productCardMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_card_postCardMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_card_postCardMeta_ts --> module_src_types_authoring_ts
+  module_src_features_card_productCardMeta_ts --> module_src_types_authoring_ts
   module_src_features_card_utils_resolveCardThemeRecipe_ts --> module_src_types_card_ts
   module_src_features_card_utils_resolveCardVariant_ts --> module_src_types_card_ts
   module_src_features_card_utils_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
@@ -825,9 +719,9 @@ graph LR
   module_src_features_chat_adapters_inbound_MessageBubble_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_chat_adapters_inbound_MessageBubble_tsx --> module_src_features_typography_public_ts
   module_src_features_chat_adapters_inbound_MessageBubble_tsx --> module_src_types_chat_ts
-  module_src_features_chat_chatListItemMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_chat_messageBubbleMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_chat_messageBubbleMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_chat_chatListItemMeta_ts --> module_src_types_authoring_ts
+  module_src_features_chat_messageBubbleMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_chat_messageBubbleMeta_ts --> module_src_types_authoring_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_chessEngine_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createBoardSquares_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardColorScheme_ts
@@ -871,7 +765,7 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_features_typography_public_ts
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_types_collection_editor_ts
-  module_src_features_collection_editor_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_resolveContentRailItemWidth_ts
@@ -885,9 +779,9 @@ graph LR
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_content_rail_ts
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_types_content_rail_ts
-  module_src_features_content_rail_contentRailMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_content_rail_contentRailMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_content_rail_contentRailMeta_ts --> module_src_constants_authoring_ts
   module_src_features_content_rail_contentRailMeta_ts --> module_src_features_content_rail_constants_ts
+  module_src_features_content_rail_contentRailMeta_ts --> module_src_types_authoring_ts
   module_src_features_content_rail_utils_resolveContentRailItemWidth_ts --> module_src_types_content_rail_ts
   module_src_features_content_rail_utils_useContentRailReducedMotion_ts --> module_src_types_content_rail_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_button_public_ts
@@ -926,13 +820,13 @@ graph LR
   module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_features_button_public_ts
   module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_features_date_picker_utils_localDate_ts
   module_src_features_date_picker_composition_DatePickerTrigger_tsx --> module_src_types_date_picker_ts
-  module_src_features_date_picker_datePickerMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_date_picker_datePickerMeta_ts --> module_src_types_authoring_ts
   module_src_features_dialog_adapters_inbound_Dialog_tsx --> module_src_features_dialog_utils_resolveDialogWidth_ts
   module_src_features_dialog_adapters_inbound_Dialog_tsx --> module_src_features_layout_public_ts
   module_src_features_dialog_adapters_inbound_Dialog_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_dialog_adapters_inbound_Dialog_tsx --> module_src_features_typography_public_ts
   module_src_features_dialog_adapters_inbound_Dialog_tsx --> module_src_types_dialog_ts
-  module_src_features_dialog_dialogMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_dialog_dialogMeta_ts --> module_src_constants_authoring_ts
   module_src_features_dialog_dialogMeta_ts --> module_src_types_authoring_ts
   module_src_features_dialog_utils_resolveDialogWidth_ts --> module_src_types_layout_ts
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_button_public_ts
@@ -940,7 +834,7 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_layout_public_ts
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_types_empty_state_ts
-  module_src_features_empty_state_emptyStateMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_empty_state_emptyStateMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_form_adapters_inbound_FormActions_tsx
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_layout_public_ts
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -960,18 +854,19 @@ graph LR
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_features_typography_public_ts
   module_src_features_form_checkbox_adapters_inbound_CheckboxGroup_tsx --> module_src_types_checkbox_ts
-  module_src_features_form_checkbox_checkboxMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_form_checkbox_checkboxMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_field_adapters_inbound_Field_tsx --> module_src_features_layout_public_ts
   module_src_features_form_field_adapters_inbound_Field_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_form_field_adapters_inbound_Field_tsx --> module_src_features_typography_public_ts
   module_src_features_form_field_adapters_inbound_Field_tsx --> module_src_types_form_ts
-  module_src_features_form_field_meta_ts --> module_src_features_authoring_index_ts
-  module_src_features_form_formActionsMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_form_formErrorMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_form_formMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_form_field_meta_ts --> module_src_types_authoring_ts
+  module_src_features_form_formActionsMeta_ts --> module_src_types_authoring_ts
+  module_src_features_form_formErrorMeta_ts --> module_src_types_authoring_ts
+  module_src_features_form_formMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_radio_adapters_inbound_Radio_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_form_radio_adapters_inbound_Radio_tsx --> module_src_types_radio_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx
+  module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_form_radio_themeRecipeMeta_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_form_radio_utils_resolveRadioGroupThemeRecipe_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_layout_public_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -983,8 +878,8 @@ graph LR
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_icon_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_typography_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_types_radio_ts
-  module_src_features_form_radio_radioMeta_ts --> module_src_features_authoring_index_ts
   module_src_features_form_radio_radioMeta_ts --> module_src_features_theme_colorModel_ts
+  module_src_features_form_radio_radioMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_radio_themeRecipeMeta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_form_radio_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
   module_src_features_form_radio_utils_handleRadioOptionKeyDown_ts --> module_src_features_form_radio_constants_ts
@@ -1016,16 +911,16 @@ graph LR
   module_src_features_form_select_composition_SelectTrigger_tsx --> module_src_features_button_public_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --> module_src_types_select_ts
   module_src_features_form_select_composition_useSelectController_ts --> module_src_types_select_ts
-  module_src_features_form_select_selectMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_form_select_selectMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_switch_adapters_inbound_Switch_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_form_switch_adapters_inbound_Switch_tsx --> module_src_types_switch_ts
-  module_src_features_form_switch_switchMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_form_switch_switchMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_features_button_public_ts
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_features_icon_utils_resolveIconSize_ts
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_form_text_input_adapters_inbound_TextInput_tsx --> module_src_types_text_input_ts
-  module_src_features_form_text_input_textInputMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_form_text_input_textInputMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_useFormController_ts --> module_src_features_form_utils_validation_ts
   module_src_features_form_useFormController_ts --> module_src_types_form_ts
   module_src_features_form_utils_validation_ts --> module_src_types_form_ts
@@ -1052,7 +947,6 @@ graph LR
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_types_gameRuntime_ts
   module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_features_layout_public_ts
   module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_types_gamePresentation_ts
-  module_src_features_game_adapters_inbound_measureGameEntity_ts --> module_src_types_gameRuntime_ts
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGamePointerEvent_ts
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_composition_GameRuntimeContext_ts
@@ -1069,6 +963,7 @@ graph LR
   module_src_features_game_meta_gameMeasurementProbeMeta_ts --> module_src_types_authoring_ts
   module_src_features_game_meta_gameMeta_ts --> module_src_types_authoring_ts
   module_src_features_game_meta_gameOverlayMeta_ts --> module_src_types_authoring_ts
+  module_src_features_game_utils_measureGameEntity_ts --> module_src_types_gameRuntime_ts
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts --> module_src_types_gamePresentation_ts
   module_src_features_game_utils_toGamePercentage_ts --> module_src_features_game_utils_clampGamePercentage_ts
   module_src_features_game_utils_useAnimatedGameEntityValue_ts --> module_src_types_gamePresentation_ts
@@ -1077,8 +972,8 @@ graph LR
   module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_useGameEntityMotionProgress_ts
   module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_features_game_utils_useGameReducedMotion_ts
   module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_types_gamePresentation_ts
-  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_adapters_inbound_measureGameEntity_ts
   module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_utils_measureGameEntity_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_types_gamePresentation_ts
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx
@@ -1086,11 +981,11 @@ graph LR
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_types_gradient_ts
   module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx --> module_src_types_gradient_ts
-  module_src_features_gradient_gradientMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_gradient_gradientMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_gradient_gradientMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_gradient_gradientMeta_ts --> module_src_types_authoring_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_types_graphViewRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_scheduleGraphFrame_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts
@@ -1100,7 +995,6 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_registerGraphLayouts_ts
@@ -1109,30 +1003,32 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_shouldFitGraphAfterLayout_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_types_graphViewRuntime_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
-  module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
-  module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
-  module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --> module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --> module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --> module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_types_graphViewRuntime_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
-  module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_runDetachedGraphLayout_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
-  module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_types_graph_view_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_button_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_card_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_layout_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_typography_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_types_hero_ts
-  module_src_features_hero_heroMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_hero_heroMeta_ts --> module_src_types_authoring_ts
   module_src_features_icon_adapters_inbound_Icon_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_icon_adapters_inbound_Icon_tsx --> module_src_types_icon_ts
-  module_src_features_icon_iconMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_icon_iconMeta_ts --> module_src_types_authoring_ts
   module_src_features_icon_utils_resolveIconSize_ts --> module_src_types_control_ts
   module_src_features_image_adapters_inbound_Image_tsx --> module_src_features_icon_public_ts
   module_src_features_image_adapters_inbound_Image_tsx --> module_src_features_layout_public_ts
@@ -1140,10 +1036,10 @@ graph LR
   module_src_features_image_adapters_inbound_Image_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_image_adapters_inbound_Image_tsx --> module_src_types_image_ts
   module_src_features_image_adapters_inbound_Image_tsx --> module_src_types_upload_ts
-  module_src_features_image_imageMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_image_imageMeta_ts --> module_src_types_authoring_ts
   module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx --> module_src_types_keyboard_avoiding_view_ts
-  module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_constants_authoring_ts
   module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts --> module_src_types_authoring_ts
   module_src_features_layout_adapters_inbound_AppShell_tsx --> module_src_features_layout_adapters_inbound_View_tsx
   module_src_features_layout_adapters_inbound_AppShell_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1161,20 +1057,20 @@ graph LR
   module_src_features_layout_adapters_inbound_ScrollView_tsx --> module_src_types_layout_ts
   module_src_features_layout_adapters_inbound_View_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_layout_adapters_inbound_View_tsx --> module_src_types_layout_ts
-  module_src_features_layout_appShellMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_layout_appShellMeta_ts --> module_src_types_authoring_ts
   module_src_features_layout_constants_ts --> module_src_types_authoring_ts
   module_src_features_layout_dividerMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_layout_dividerMeta_ts --> module_src_types_authoring_ts
-  module_src_features_layout_gridMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_layout_gridMeta_ts --> module_src_constants_authoring_ts
   module_src_features_layout_gridMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_layout_gridMeta_ts --> module_src_types_authoring_ts
-  module_src_features_layout_screenMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_layout_screenMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_layout_scrollViewMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_layout_screenMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_layout_screenMeta_ts --> module_src_types_authoring_ts
+  module_src_features_layout_scrollViewMeta_ts --> module_src_constants_authoring_ts
   module_src_features_layout_scrollViewMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_layout_scrollViewMeta_ts --> module_src_types_authoring_ts
   module_src_features_layout_utils_resolvePageMaxWidth_ts --> module_src_types_layout_ts
-  module_src_features_layout_viewMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_layout_viewMeta_ts --> module_src_constants_authoring_ts
   module_src_features_layout_viewMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_layout_viewMeta_ts --> module_src_types_authoring_ts
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_adapters_inbound_HorizontalListSeparator_tsx
@@ -1210,9 +1106,9 @@ graph LR
   module_src_features_list_adapters_inbound_useListVisibility_ts --> module_src_types_manifest_list_ts
   module_src_features_list_adapters_inbound_VerticalListSeparator_tsx --> module_src_features_layout_public_ts
   module_src_features_list_application_use_cases_partitionListSections_ts --> module_src_types_manifest_list_ts
-  module_src_features_list_flatListMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_list_flatListMeta_ts --> module_src_constants_authoring_ts
   module_src_features_list_flatListMeta_ts --> module_src_types_authoring_ts
-  module_src_features_list_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_list_meta_ts --> module_src_types_authoring_ts
   module_src_features_list_sectionListMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_features_list_sectionListMeta_ts --> module_src_types_authoring_ts
   module_src_features_list_utils_resolveListSeparator_ts --> module_src_types_list_ts
@@ -1222,7 +1118,7 @@ graph LR
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_features_typography_public_ts
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_types_missing_element_ts
-  module_src_features_missing_element_missingElementMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_missing_element_missingElementMeta_ts --> module_src_types_authoring_ts
   module_src_features_pagination_adapters_inbound_Pagination_tsx --> module_src_features_button_public_ts
   module_src_features_pagination_adapters_inbound_Pagination_tsx --> module_src_features_layout_public_ts
   module_src_features_pagination_adapters_inbound_Pagination_tsx --> module_src_features_pagination_utils_resolvePaginationPage_ts
@@ -1238,14 +1134,14 @@ graph LR
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_features_typography_public_ts
   module_src_features_palette_item_adapters_inbound_PaletteItem_tsx --> module_src_types_palette_item_ts
-  module_src_features_palette_item_paletteItemMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_palette_item_paletteItemMeta_ts --> module_src_types_authoring_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_public_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_icon_utils_resolveIconSize_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_layout_public_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_popover_menu_adapters_inbound_PopoverMenu_tsx --> module_src_types_popover_menu_ts
-  module_src_features_popover_menu_popoverMenuMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_popover_menu_popoverMenuMeta_ts --> module_src_types_authoring_ts
   module_src_features_progress_adapters_inbound_Progress_tsx --> module_src_features_layout_public_ts
   module_src_features_progress_adapters_inbound_Progress_tsx --> module_src_features_progress_utils_resolveProgressFraction_ts
   module_src_features_progress_adapters_inbound_Progress_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1258,8 +1154,8 @@ graph LR
   module_src_features_progress_adapters_inbound_ProgressRing_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_progress_adapters_inbound_ProgressRing_tsx --> module_src_features_typography_public_ts
   module_src_features_progress_adapters_inbound_ProgressRing_tsx --> module_src_types_progress_ts
-  module_src_features_progress_progressMeta_ts --> module_src_features_authoring_index_ts
   module_src_features_progress_progressMeta_ts --> module_src_features_theme_colorModel_ts
+  module_src_features_progress_progressMeta_ts --> module_src_types_authoring_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_icon_public_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_icon_utils_resolveIconSize_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_features_layout_public_ts
@@ -1279,8 +1175,114 @@ graph LR
   module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_typography_public_ts
   module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_types_reader_ts
-  module_src_features_reader_meta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_reader_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_reader_meta_ts --> module_src_constants_authoring_ts
+  module_src_features_reader_meta_ts --> module_src_types_authoring_ts
+  module_src_features_registry_bindableComponentMeta_ts --> module_src_features_image_imageMeta_ts
+  module_src_features_registry_bindableComponentMeta_ts --> module_src_features_reader_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionItemMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_otpFormMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_signInFormMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_signUpFormMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_avatar_avatarGroupMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_avatar_avatarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_badge_badgeMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_bottom_sheet_bottomSheetMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_breadcrumbs_breadcrumbsMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_button_buttonGroupMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_button_buttonMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_button_iconButtonMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_card_cardMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_card_mediaCardMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_card_metricCardMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_card_postCardMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_card_productCardMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_chat_chatListItemMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_chat_messageBubbleMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_chess_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_chip_chipGroupMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_chip_chipMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_collection_editor_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_content_rail_contentRailMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_data_table_dataTableMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_date_picker_datePickerMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_dialog_dialogMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_empty_state_emptyStateMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_checkbox_checkboxMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_field_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_formActionsMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_formErrorMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_formMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_radio_radioMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_search_input_searchInputMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_select_selectMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_switch_switchMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_form_text_input_textInputMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameEntityMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameFieldMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameInputZoneMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameMeasurementProbeMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameOverlayMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_hero_heroMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_icon_iconMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_image_imageMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_keyboard_avoiding_view_keyboardAvoidingViewMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_appShellMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_dividerMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_gridMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_screenMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_scrollViewMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_layout_viewMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_list_flatListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_list_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_missing_element_missingElementMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_pagination_paginationMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_palette_item_paletteItemMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_popover_menu_popoverMenuMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_progress_progressMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_rating_ratingMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_reader_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_registry_finalizeFeatureMetadata_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_scanner_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_section_screenSectionMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_section_sectionHeaderMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_selection_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_skeleton_skeletonMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_surface_surfaceMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tabletop_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tabs_tabListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tabs_tabMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tabs_tabPanelMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tabs_tabsMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_theme_ThemeModeToggle_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_time_picker_timePickerMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_timeline_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_toast_toastMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_toast_toastProviderMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_toolbar_toolbarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_tree_view_meta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_typography_headingMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_typography_textMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_types_authoring_ts
+  module_src_features_registry_createManifestBindings_ts --> module_src_types_authoring_ts
+  module_src_features_registry_finalizeFeatureMetadata_ts --> module_src_constants_authoring_ts
+  module_src_features_registry_finalizeFeatureMetadata_ts --> module_src_features_registry_createManifestBindings_ts
+  module_src_features_registry_finalizeFeatureMetadata_ts --> module_src_types_authoring_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_features_button_utils_themeRecipeMeta_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_features_card_utils_themeRecipeMeta_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_features_form_radio_themeRecipeMeta_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_features_typography_utils_headingThemeRecipeMeta_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_features_typography_utils_textThemeRecipeMeta_ts
+  module_src_features_registry_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_accordion_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_activity_indicator_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_app_bar_public_ts
@@ -1358,8 +1360,8 @@ graph LR
   module_src_features_scanner_adapters_inbound_ScanOverlay_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_scanner_adapters_inbound_ScanOverlay_tsx --> module_src_features_typography_public_ts
   module_src_features_scanner_adapters_inbound_ScanOverlay_tsx --> module_src_types_scanner_ts
-  module_src_features_scanner_meta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_scanner_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_scanner_meta_ts --> module_src_constants_authoring_ts
+  module_src_features_scanner_meta_ts --> module_src_types_authoring_ts
   module_src_features_section_adapters_inbound_ScreenSection_tsx --> module_src_features_layout_public_ts
   module_src_features_section_adapters_inbound_ScreenSection_tsx --> module_src_features_section_adapters_inbound_SectionHeader_tsx
   module_src_features_section_adapters_inbound_ScreenSection_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1368,14 +1370,14 @@ graph LR
   module_src_features_section_adapters_inbound_SectionHeader_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_section_adapters_inbound_SectionHeader_tsx --> module_src_features_typography_public_ts
   module_src_features_section_adapters_inbound_SectionHeader_tsx --> module_src_types_section_ts
-  module_src_features_section_screenSectionMeta_ts --> module_src_features_authoring_allowedChildren_ts
-  module_src_features_section_screenSectionMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_section_sectionHeaderMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_section_screenSectionMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_section_screenSectionMeta_ts --> module_src_types_authoring_ts
+  module_src_features_section_sectionHeaderMeta_ts --> module_src_types_authoring_ts
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_features_selection_adapters_inbound_SelectionProvider_tsx
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_types_selection_ts
   module_src_features_selection_adapters_inbound_SelectionProvider_tsx --> module_src_features_selection_utils_resolveSelectionNextIds_ts
   module_src_features_selection_adapters_inbound_SelectionProvider_tsx --> module_src_types_selection_ts
-  module_src_features_selection_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_selection_meta_ts --> module_src_types_authoring_ts
   module_src_features_selection_utils_resolveSelectionNextIds_ts --> module_src_types_selection_ts
   module_src_features_skeleton_adapters_inbound_Skeleton_tsx --> module_src_features_layout_public_ts
   module_src_features_skeleton_adapters_inbound_Skeleton_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1397,10 +1399,10 @@ graph LR
   module_src_features_skeleton_adapters_inbound_SkeletonText_tsx --> module_src_features_skeleton_adapters_inbound_Skeleton_tsx
   module_src_features_skeleton_adapters_inbound_SkeletonText_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_skeleton_adapters_inbound_SkeletonText_tsx --> module_src_types_skeleton_ts
-  module_src_features_skeleton_skeletonMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_skeleton_skeletonMeta_ts --> module_src_types_authoring_ts
   module_src_features_surface_adapters_inbound_Surface_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_surface_adapters_inbound_Surface_tsx --> module_src_types_surface_ts
-  module_src_features_surface_surfaceMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_surface_surfaceMeta_ts --> module_src_constants_authoring_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_surface_surfaceMeta_ts --> module_src_types_authoring_ts
   module_src_features_tabletop_adapters_inbound_CardBack_tsx --> module_src_features_tabletop_utils_createTabletopColorScheme_ts
@@ -1448,7 +1450,7 @@ graph LR
   module_src_features_tabs_adapters_inbound_Tabs_tsx --> module_src_types_tabs_ts
   module_src_features_tabs_tabListMeta_ts --> module_src_types_authoring_ts
   module_src_features_tabs_tabMeta_ts --> module_src_types_authoring_ts
-  module_src_features_tabs_tabPanelMeta_ts --> module_src_features_authoring_allowedChildren_ts
+  module_src_features_tabs_tabPanelMeta_ts --> module_src_constants_authoring_ts
   module_src_features_tabs_tabPanelMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_tabs_tabPanelMeta_ts --> module_src_types_authoring_ts
   module_src_features_tabs_tabsMeta_ts --> module_src_features_layout_constants_ts
@@ -1472,14 +1474,14 @@ graph LR
   module_src_features_theme_application_use_cases_createZoraThemeConfig_ts --> module_src_types_theme_ts
   module_src_features_theme_composition_useZoraThemeRecipe_ts --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_theme_composition_useZoraThemeRecipe_ts --> module_src_features_theme_utils_resolveZoraThemeRecipe_ts
+  module_src_features_theme_composition_useZoraThemeRecipe_ts --> module_src_types_theme_recipe_ts
   module_src_features_theme_composition_ZoraRuntimeCapabilities_native_tsx --> module_src_types_provider_ts
   module_src_features_theme_composition_ZoraRuntimeCapabilities_web_tsx --> module_src_types_provider_ts
   module_src_features_theme_composition_ZoraThemeRuntimeContext_tsx --> module_src_features_theme_zoraDefaultTheme_ts
   module_src_features_theme_composition_ZoraThemeRuntimeContext_tsx --> module_src_types_theme_ts
-  module_src_features_theme_ThemeModeToggle_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_theme_ThemeModeToggle_meta_ts --> module_src_types_authoring_ts
   module_src_features_theme_utils_resolveThemeModeToggleState_ts --> module_src_types_theme_ts
   module_src_features_theme_utils_resolveZoraScopedThemeId_ts --> module_src_types_theme_ts
-  module_src_features_theme_utils_resolveZoraThemeRecipe_ts --> module_src_features_authoring_themeRecipeMeta_ts
   module_src_features_theme_utils_resolveZoraThemeRecipe_ts --> module_src_types_theme_recipe_ts
   module_src_features_theme_zoraDefaultTheme_ts --> module_src_types_theme_ts
   module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx --> module_src_features_bottom_sheet_public_ts
@@ -1503,7 +1505,7 @@ graph LR
   module_src_features_time_picker_composition_TimePickerField_tsx --> module_src_types_time_picker_ts
   module_src_features_time_picker_composition_TimePickerTrigger_tsx --> module_src_features_button_public_ts
   module_src_features_time_picker_composition_TimePickerTrigger_tsx --> module_src_types_time_picker_ts
-  module_src_features_time_picker_timePickerMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_time_picker_timePickerMeta_ts --> module_src_types_authoring_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_icon_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_icon_utils_resolveIconSize_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_layout_public_ts
@@ -1512,12 +1514,12 @@ graph LR
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_typography_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_types_theme_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_types_timeline_ts
-  module_src_features_timeline_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_timeline_meta_ts --> module_src_types_authoring_ts
   module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_types_toast_ts
   module_src_features_toast_adapters_inbound_ToastProvider_tsx --> module_src_types_toast_ts
-  module_src_features_toast_toastMeta_ts --> module_src_features_authoring_index_ts
-  module_src_features_toast_toastProviderMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_toast_toastMeta_ts --> module_src_types_authoring_ts
+  module_src_features_toast_toastProviderMeta_ts --> module_src_types_authoring_ts
   module_src_features_toolbar_adapters_inbound_Toolbar_tsx --> module_src_features_card_public_ts
   module_src_features_toolbar_adapters_inbound_Toolbar_tsx --> module_src_features_layout_public_ts
   module_src_features_toolbar_adapters_inbound_Toolbar_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1539,10 +1541,11 @@ graph LR
   module_src_features_tree_view_adapters_inbound_web_artifact_TreeItemRow_tsx --> module_src_features_tree_view_adapters_inbound_web_artifact_TreeView_tsx
   module_src_features_tree_view_adapters_inbound_web_artifact_TreeView_tsx --> module_src_features_tree_view_adapters_inbound_web_artifact_TreeItemRow_tsx
   module_src_features_tree_view_adapters_inbound_web_artifact_TreeView_tsx --> module_src_features_tree_view_utils_toggleExpandedIds_ts
-  module_src_features_tree_view_meta_ts --> module_src_features_authoring_index_ts
+  module_src_features_tree_view_meta_ts --> module_src_types_authoring_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
+  module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_headingThemeRecipeMeta_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingRecipe_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingSizeFromLevel_ts
   module_src_features_typography_adapters_inbound_Heading_tsx --> module_src_features_typography_utils_resolveHeadingThemeRecipe_ts
@@ -1552,13 +1555,14 @@ graph LR
   module_src_features_typography_adapters_inbound_Text_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
   module_src_features_typography_adapters_inbound_Text_tsx --> module_src_features_typography_utils_resolveTextStyle_ts
   module_src_features_typography_adapters_inbound_Text_tsx --> module_src_features_typography_utils_resolveTextThemeRecipe_ts
+  module_src_features_typography_adapters_inbound_Text_tsx --> module_src_features_typography_utils_textThemeRecipeMeta_ts
   module_src_features_typography_adapters_inbound_Text_tsx --> module_src_types_text_ts
-  module_src_features_typography_headingMeta_ts --> module_src_features_authoring_constants_ts
-  module_src_features_typography_headingMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_typography_headingMeta_ts --> module_src_constants_authoring_ts
   module_src_features_typography_headingMeta_ts --> module_src_features_theme_colorModel_ts
-  module_src_features_typography_textMeta_ts --> module_src_features_authoring_constants_ts
-  module_src_features_typography_textMeta_ts --> module_src_features_authoring_index_ts
+  module_src_features_typography_headingMeta_ts --> module_src_types_authoring_ts
+  module_src_features_typography_textMeta_ts --> module_src_constants_authoring_ts
   module_src_features_typography_textMeta_ts --> module_src_features_theme_colorModel_ts
+  module_src_features_typography_textMeta_ts --> module_src_types_authoring_ts
   module_src_features_typography_utils_headingThemeRecipeMeta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_typography_utils_headingThemeRecipeMeta_ts --> module_src_types_theme_recipe_ts
   module_src_features_typography_utils_resolveHeadingRecipe_ts --> module_src_features_typography_utils_resolveHeadingSizeFromLevel_ts
@@ -1608,10 +1612,10 @@ graph LR
   module_src_types_activity_indicator_ts --> module_src_types_base_ts
   module_src_types_app_bar_ts --> module_src_types_base_ts
   module_src_types_app_bar_ts --> module_src_types_popover_menu_ts
-  module_src_types_auth_ts --> module_src_features_button_public_ts
   module_src_types_auth_ts --> module_src_types_base_ts
+  module_src_types_auth_ts --> module_src_types_button_ts
   module_src_types_auth_ts --> module_src_types_form_ts
-  module_src_types_avatar_group_ts --> module_src_features_avatar_public_ts
+  module_src_types_avatar_group_ts --> module_src_types_avatar_ts
   module_src_types_avatar_group_ts --> module_src_types_base_ts
   module_src_types_avatar_group_ts --> module_src_types_theme_ts
   module_src_types_avatar_ts --> module_src_types_base_ts
@@ -1621,13 +1625,13 @@ graph LR
   module_src_types_badge_ts --> module_src_types_theme_ts
   module_src_types_base_ts --> module_src_types_theme_ts
   module_src_types_breadcrumbs_ts --> module_src_types_base_ts
-  module_src_types_button_group_ts --> module_src_features_layout_public_ts
   module_src_types_button_group_ts --> module_src_types_base_ts
+  module_src_types_button_group_ts --> module_src_types_layout_ts
   module_src_types_button_ts --> module_src_types_base_ts
   module_src_types_button_ts --> module_src_types_control_ts
   module_src_types_button_ts --> module_src_types_theme_ts
   module_src_types_card_ts --> module_src_types_base_ts
-  module_src_types_chat_ts --> module_src_features_avatar_public_ts
+  module_src_types_chat_ts --> module_src_types_avatar_ts
   module_src_types_chat_ts --> module_src_types_base_ts
   module_src_types_chat_ts --> module_src_types_theme_ts
   module_src_types_checkbox_ts --> module_src_types_base_ts
@@ -1650,9 +1654,9 @@ graph LR
   module_src_types_empty_state_ts --> module_src_types_theme_ts
   module_src_types_form_ts --> module_src_types_base_ts
   module_src_types_form_ts --> module_src_types_text_input_ts
-  module_src_types_gradient_ts --> module_src_features_layout_public_ts
   module_src_types_gradient_ts --> module_src_types_base_ts
-  module_src_types_graphViewRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_types_gradient_ts --> module_src_types_layout_ts
+  module_src_types_graphViewRuntime_ts --> module_src_types_graph_view_ts
   module_src_types_heading_ts --> module_src_types_base_ts
   module_src_types_heading_ts --> module_src_types_theme_ts
   module_src_types_hero_ts --> module_src_types_base_ts
@@ -1679,7 +1683,7 @@ graph LR
   module_src_types_pagination_ts --> module_src_types_base_ts
   module_src_types_palette_item_ts --> module_src_types_base_ts
   module_src_types_popover_menu_ts --> module_src_types_base_ts
-  module_src_types_post_card_ts --> module_src_features_avatar_public_ts
+  module_src_types_post_card_ts --> module_src_types_avatar_ts
   module_src_types_post_card_ts --> module_src_types_base_ts
   module_src_types_post_card_ts --> module_src_types_card_ts
   module_src_types_post_card_ts --> module_src_types_theme_ts
@@ -1688,20 +1692,20 @@ graph LR
   module_src_types_progress_ts --> module_src_types_control_ts
   module_src_types_progress_ts --> module_src_types_theme_ts
   module_src_types_provider_ts --> module_src_types_theme_ts
-  module_src_types_radio_ts --> module_src_features_icon_public_ts
   module_src_types_radio_ts --> module_src_types_base_ts
+  module_src_types_radio_ts --> module_src_types_icon_ts
   module_src_types_rating_ts --> module_src_types_base_ts
   module_src_types_rating_ts --> module_src_types_control_ts
   module_src_types_rating_ts --> module_src_types_theme_ts
   module_src_types_reader_ts --> module_src_types_base_ts
-  module_src_types_scanner_ts --> module_src_features_button_public_ts
   module_src_types_scanner_ts --> module_src_types_base_ts
+  module_src_types_scanner_ts --> module_src_types_button_ts
   module_src_types_search_input_ts --> module_src_types_base_ts
   module_src_types_search_input_ts --> module_src_types_control_ts
   module_src_types_section_ts --> module_src_types_base_ts
   module_src_types_select_ts --> module_src_types_base_ts
-  module_src_types_skeleton_ts --> module_src_features_layout_public_ts
   module_src_types_skeleton_ts --> module_src_types_base_ts
+  module_src_types_skeleton_ts --> module_src_types_layout_ts
   module_src_types_surface_ts --> module_src_types_base_ts
   module_src_types_switch_ts --> module_src_types_base_ts
   module_src_types_tabletop_ts --> module_src_types_base_ts
@@ -1710,7 +1714,7 @@ graph LR
   module_src_types_text_input_ts --> module_src_types_control_ts
   module_src_types_text_ts --> module_src_types_base_ts
   module_src_types_text_ts --> module_src_types_theme_ts
-  module_src_types_theme_mode_toggle_ts --> module_src_features_button_public_ts
+  module_src_types_theme_mode_toggle_ts --> module_src_types_icon_button_ts
   module_src_types_time_picker_ts --> module_src_types_base_ts
   module_src_types_timeline_ts --> module_src_types_base_ts
   module_src_types_timeline_ts --> module_src_types_theme_ts

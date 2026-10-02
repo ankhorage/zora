@@ -2,6 +2,7 @@ graph LR
   module_src_cli_commands_create_ts["src/cli/commands/create.ts"]
   module_src_cli_commands_sync_ts["src/cli/commands/sync.ts"]
   module_src_cli_index_ts["src/cli/index.ts"]
+  module_src_constants_authoring_ts["src/constants/authoring.ts"]
   module_src_features_accordion_accordionItemMeta_ts["src/features/accordion/accordionItemMeta.ts"]
   module_src_features_accordion_accordionMeta_ts["src/features/accordion/accordionMeta.ts"]
   module_src_features_accordion_adapters_inbound_Accordion_tsx["src/features/accordion/adapters/inbound/Accordion.tsx"]
@@ -31,14 +32,6 @@ graph LR
   module_src_features_auth_signUpFormMeta_ts["src/features/auth/signUpFormMeta.ts"]
   module_src_features_auth_utils_authForm_ts["src/features/auth/utils/authForm.ts"]
   module_src_features_auth_utils_oauthProviders_ts["src/features/auth/utils/oauthProviders.ts"]
-  module_src_features_authoring_allowedChildren_ts["src/features/authoring/allowedChildren.ts"]
-  module_src_features_authoring_bindableComponentMeta_ts["src/features/authoring/bindableComponentMeta.ts"]
-  module_src_features_authoring_componentMeta_ts["src/features/authoring/componentMeta.ts"]
-  module_src_features_authoring_constants_ts["src/features/authoring/constants.ts"]
-  module_src_features_authoring_index_ts["src/features/authoring/index.ts"]
-  module_src_features_authoring_themeRecipeMeta_ts["src/features/authoring/themeRecipeMeta.ts"]
-  module_src_features_authoring_utils_createManifestBindings_ts["src/features/authoring/utils/createManifestBindings.ts"]
-  module_src_features_authoring_utils_finalizeFeatureMetadata_ts["src/features/authoring/utils/finalizeFeatureMetadata.ts"]
   module_src_features_avatar_adapters_inbound_Avatar_tsx["src/features/avatar/adapters/inbound/Avatar.tsx"]
   module_src_features_avatar_adapters_inbound_AvatarGroup_tsx["src/features/avatar/adapters/inbound/AvatarGroup.tsx"]
   module_src_features_avatar_avatarGroupMeta_ts["src/features/avatar/avatarGroupMeta.ts"]
@@ -187,7 +180,6 @@ graph LR
   module_src_features_game_adapters_inbound_GameInputZone_tsx["src/features/game/adapters/inbound/GameInputZone.tsx"]
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx["src/features/game/adapters/inbound/GameMeasurementProbe.tsx"]
   module_src_features_game_adapters_inbound_GameOverlay_tsx["src/features/game/adapters/inbound/GameOverlay.tsx"]
-  module_src_features_game_adapters_inbound_measureGameEntity_ts["src/features/game/adapters/inbound/measureGameEntity.ts"]
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts["src/features/game/adapters/inbound/useGameInputZoneResponder.ts"]
   module_src_features_game_composition_createGameBindingContext_ts["src/features/game/composition/createGameBindingContext.ts"]
   module_src_features_game_composition_createGameMeasurementRegistry_ts["src/features/game/composition/createGameMeasurementRegistry.ts"]
@@ -202,6 +194,7 @@ graph LR
   module_src_features_game_meta_gameOverlayMeta_ts["src/features/game/meta/gameOverlayMeta.ts"]
   module_src_features_game_public_ts["src/features/game/public.ts"]
   module_src_features_game_utils_clampGamePercentage_ts["src/features/game/utils/clampGamePercentage.ts"]
+  module_src_features_game_utils_measureGameEntity_ts["src/features/game/utils/measureGameEntity.ts"]
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts["src/features/game/utils/resolveGameEntityMotionPlan.ts"]
   module_src_features_game_utils_toGamePercentage_ts["src/features/game/utils/toGamePercentage.ts"]
   module_src_features_game_utils_useAnimatedGameEntityValue_ts["src/features/game/utils/useAnimatedGameEntityValue.ts"]
@@ -306,7 +299,13 @@ graph LR
   module_src_features_reader_meta_ts["src/features/reader/meta.ts"]
   module_src_features_reader_public_ts["src/features/reader/public.ts"]
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
+  module_src_features_registry_bindableComponentMeta_ts["src/features/registry/bindableComponentMeta.ts"]
+  module_src_features_registry_componentMeta_ts["src/features/registry/componentMeta.ts"]
+  module_src_features_registry_createManifestBindings_ts["src/features/registry/createManifestBindings.ts"]
+  module_src_features_registry_finalizeFeatureMetadata_ts["src/features/registry/finalizeFeatureMetadata.ts"]
+  module_src_features_registry_index_ts["src/features/registry/index.ts"]
   module_src_features_registry_public_ts["src/features/registry/public.ts"]
+  module_src_features_registry_themeRecipeMeta_ts["src/features/registry/themeRecipeMeta.ts"]
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts["src/features/registry/ZORA_COMPONENT_REGISTRY.ts"]
   module_src_features_scanner_adapters_inbound_BarcodeScannerView_tsx["src/features/scanner/adapters/inbound/BarcodeScannerView.tsx"]
   module_src_features_scanner_adapters_inbound_CameraPermissionView_tsx["src/features/scanner/adapters/inbound/CameraPermissionView.tsx"]
@@ -461,6 +460,7 @@ graph LR
   module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
   module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
   module_src_types_gradient_ts["src/types/gradient.ts"]
+  module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_hero_ts["src/types/hero.ts"]
@@ -1640,11 +1640,11 @@ graph LR
   export_withZoraThemeScope["withZoraThemeScope"]
   module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx --> export_withZoraThemeScope
   export_ZORA_BINDABLE_COMPONENT_META["ZORA_BINDABLE_COMPONENT_META"]
-  module_src_features_authoring_bindableComponentMeta_ts --> export_ZORA_BINDABLE_COMPONENT_META
+  module_src_features_registry_bindableComponentMeta_ts --> export_ZORA_BINDABLE_COMPONENT_META
   export_ZORA_COLORS["ZORA_COLORS"]
   module_src_features_theme_colorModel_ts --> export_ZORA_COLORS
   export_ZORA_COMPONENT_META["ZORA_COMPONENT_META"]
-  module_src_features_authoring_componentMeta_ts --> export_ZORA_COMPONENT_META
+  module_src_features_registry_componentMeta_ts --> export_ZORA_COMPONENT_META
   export_ZORA_COMPONENT_REGISTRY["ZORA_COMPONENT_REGISTRY"]
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> export_ZORA_COMPONENT_REGISTRY
   export_ZORA_EMPHASES["ZORA_EMPHASES"]
@@ -1654,14 +1654,14 @@ graph LR
   export_ZORA_STATUS_COLORS["ZORA_STATUS_COLORS"]
   module_src_features_theme_colorModel_ts --> export_ZORA_STATUS_COLORS
   export_ZORA_THEME_RECIPE_META["ZORA_THEME_RECIPE_META"]
-  module_src_features_authoring_themeRecipeMeta_ts --> export_ZORA_THEME_RECIPE_META
+  module_src_features_registry_themeRecipeMeta_ts --> export_ZORA_THEME_RECIPE_META
   export_ZORA_THEME_TOKEN_FAMILIES["ZORA_THEME_TOKEN_FAMILIES"]
-  module_src_features_authoring_constants_ts --> export_ZORA_THEME_TOKEN_FAMILIES
+  module_src_constants_authoring_ts --> export_ZORA_THEME_TOKEN_FAMILIES
   export_ZoraBaseProps["ZoraBaseProps"]
   module_src_types_base_ts --> export_ZoraBaseProps
   export_ZoraBaseProps -.-> export_ZoraThemeMode
   export_ZoraBindableComponentType["ZoraBindableComponentType"]
-  module_src_features_authoring_bindableComponentMeta_ts --> export_ZoraBindableComponentType
+  module_src_features_registry_bindableComponentMeta_ts --> export_ZoraBindableComponentType
   export_ZoraColor["ZoraColor"]
   module_src_types_theme_ts --> export_ZoraColor
   export_ZoraComponentBlueprint["ZoraComponentBlueprint"]

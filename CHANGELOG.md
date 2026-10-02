@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.74
+
+### Patch Changes
+
+- 097a7ed: Update dependencies
+
 ## 22.0.73
 
 ### Patch Changes

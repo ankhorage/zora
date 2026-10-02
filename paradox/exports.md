@@ -532,7 +532,7 @@ Source: `src/types/breadcrumbs.ts:16:1`
 
 Kind: `value`
 Module: `src/features/button/adapters/inbound/Button.tsx`
-Source: `src/features/button/adapters/inbound/Button.tsx:15:14`
+Source: `src/features/button/adapters/inbound/Button.tsx:16:14`
 
 Theme-aware action control for primary, secondary, destructive, and neutral actions.
 
@@ -700,7 +700,7 @@ Source: `src/types/scanner.ts:19:1`
 
 Kind: `value`
 Module: `src/features/card/adapters/inbound/Card.tsx`
-Source: `src/features/card/adapters/inbound/Card.tsx:19:14`
+Source: `src/features/card/adapters/inbound/Card.tsx:20:14`
 
 Structured content container with built-in heading, description, actions, and footer slots.
 
@@ -1086,7 +1086,7 @@ Source: `src/types/chess.ts:67:1`
 | fen | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | lastMove | property | `ChessMoveAttempt \| null \| undefined` | no |  |
-| legalTargets | property | `readonly ("a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
+| legalTargets | property | `readonly ("a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onInvalidMove | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
 | onLegalMove | property | `((move: ChessMoveResult) => void) \| undefined` | no |  |
@@ -1095,7 +1095,7 @@ Source: `src/types/chess.ts:67:1`
 | orientation | property | `ChessBoardOrientation \| undefined` | no |  |
 | pieces | property | `readonly ChessPieceState[] \| undefined` | no |  |
 | renderPiece | property | `ChessPieceRenderer \| undefined` | no |  |
-| selectedSquare | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8" \| null \| undefined` | no |  |
+| selectedSquare | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8" \| null \| undefined` | no |  |
 | showCoordinates | property | `boolean \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -1123,9 +1123,9 @@ Source: `src/types/chess.ts:11:1`
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| from | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| from | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 | promotion | property | `ChessPromotionPiece \| undefined` | no |  |
-| to | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| to | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 
 ## ChessMoveResult
 
@@ -1138,11 +1138,11 @@ Source: `src/types/chess.ts:17:1`
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | fen | property | `string` | yes |  |
-| from | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| from | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 | lan | property | `string` | yes |  |
 | promotion | property | `ChessPromotionPiece \| undefined` | no |  |
 | san | property | `string` | yes |  |
-| to | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| to | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 
 ## ChessPieceCode
 
@@ -1162,7 +1162,7 @@ Source: `src/types/chess.ts:30:1`
 | --- | --- | --- | --- | --- |
 | color | property | `string` | yes |  |
 | piece | property | `string` | yes |  |
-| square | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| square | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 
 ## ChessPieceRenderer
 
@@ -1182,7 +1182,7 @@ Source: `src/types/chess.ts:24:1`
 | --- | --- | --- | --- | --- |
 | color | property | `"white" \| "black"` | yes |  |
 | piece | property | `string` | yes |  |
-| square | property | `"a1" \| "a5" \| "a2" \| "a3" \| "a4" \| "a6" \| "a7" \| "a8" \| "b1" \| "b5" \| "b2" \| "b3" \| "b4" \| "b6" \| "b7" \| "b8" \| "c1" \| "c5" \| "c2" \| "c3" \| "c4" \| "c6" \| "c7" \| "c8" \| "d1" \| "d5" \| "d2" \| "d3" \| "d4" \| "d6" \| "d7" \| "d8" \| "e1" \| "e5" \| "e2" \| "e3" \| "e4" \| "e6" \| "e7" \| "e8" \| "f1" \| "f5" \| "f2" \| "f3" \| "f4" \| "f6" \| "f7" \| "f8" \| "g1" \| "g5" \| "g2" \| "g3" \| "g4" \| "g6" \| "g7" \| "g8" \| "h1" \| "h5" \| "h2" \| "h3" \| "h4" \| "h6" \| "h7" \| "h8"` | yes |  |
+| square | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
 
 ## ChessPromotionPiece
 
@@ -1428,9 +1428,9 @@ Orders the 64 displayed squares for the selected player orientation.
 
 ### Signatures
 
-- `(orientation: ChessBoardOrientation) => readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+- `(orientation: ChessBoardOrientation) => readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
   - orientation: `ChessBoardOrientation`
-  - returns: `readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+  - returns: `readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
 
 ## createChessBoardColorScheme
 
@@ -2500,10 +2500,10 @@ Resolve legal destination squares from one FEN position and source square.
 
 ### Signatures
 
-- `(fen: string, from: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+- `(fen: string, from: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
   - fen: `string`
-  - from: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
-  - returns: `readonly ("a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8")[]`
+  - from: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
+  - returns: `readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
 
 ## getSquareFile
 
@@ -2515,8 +2515,8 @@ Returns the file letter of a chess square.
 
 ### Signatures
 
-- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => string`
-  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => string`
+  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
   - returns: `string`
 
 ## getSquareRank
@@ -2529,8 +2529,8 @@ Returns the rank number of a chess square.
 
 ### Signatures
 
-- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => string`
-  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => string`
+  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
   - returns: `string`
 
 ## Gradient
@@ -2748,7 +2748,7 @@ Source: `src/features/form/utils/validation.ts:11:1`
 
 Kind: `value`
 Module: `src/features/typography/adapters/inbound/Heading.tsx`
-Source: `src/features/typography/adapters/inbound/Heading.tsx:19:14`
+Source: `src/features/typography/adapters/inbound/Heading.tsx:20:14`
 
 Structured title primitive for accessible page, section, and card headings.
 
@@ -2989,8 +2989,8 @@ Determines whether a chess square uses the light presentation color.
 
 ### Signatures
 
-- `(square: "a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8") => boolean`
-  - square: `"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8"`
+- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => boolean`
+  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
   - returns: `boolean`
 
 ## KeyboardAvoidingView
@@ -4124,7 +4124,7 @@ Single-choice selection control used within a radio group.
 
 Kind: `value`
 Module: `src/features/form/radio/adapters/inbound/RadioGroup.tsx`
-Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:14:14`
+Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:15:14`
 
 Present one controlled single-choice group as inline radios or icon radio options.
 
@@ -4284,9 +4284,9 @@ Read all pieces from a FEN-backed position. Invalid FEN produces an empty positi
 
 ### Signatures
 
-- `(fen: string) => ReadonlyMap<"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8", ChessPieceState>`
+- `(fen: string) => ReadonlyMap<"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8", ChessPieceState>`
   - fen: `string`
-  - returns: `ReadonlyMap<"a1" | "a5" | "a2" | "a3" | "a4" | "a6" | "a7" | "a8" | "b1" | "b5" | "b2" | "b3" | "b4" | "b6" | "b7" | "b8" | "c1" | "c5" | "c2" | "c3" | "c4" | "c6" | "c7" | "c8" | "d1" | "d5" | "d2" | "d3" | "d4" | "d6" | "d7" | "d8" | "e1" | "e5" | "e2" | "e3" | "e4" | "e6" | "e7" | "e8" | "f1" | "f5" | "f2" | "f3" | "f4" | "f6" | "f7" | "f8" | "g1" | "g5" | "g2" | "g3" | "g4" | "g6" | "g7" | "g8" | "h1" | "h5" | "h2" | "h3" | "h4" | "h6" | "h7" | "h8", ChessPieceState>`
+  - returns: `ReadonlyMap<"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8", ChessPieceState>`
 
 ## ReaderColorScheme
 
@@ -5762,7 +5762,7 @@ Source: `src/types/tabs.ts:10:1`
 
 Kind: `value`
 Module: `src/features/typography/adapters/inbound/Text.tsx`
-Source: `src/features/typography/adapters/inbound/Text.tsx:18:14`
+Source: `src/features/typography/adapters/inbound/Text.tsx:19:14`
 
 Structured copy primitive for theme-aware app text.
 
@@ -6538,8 +6538,8 @@ Source: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx:6:1`
 ## ZORA_BINDABLE_COMPONENT_META
 
 Kind: `value`
-Module: `src/features/authoring/bindableComponentMeta.ts`
-Source: `src/features/authoring/bindableComponentMeta.ts:6:14`
+Module: `src/features/registry/bindableComponentMeta.ts`
+Source: `src/features/registry/bindableComponentMeta.ts:6:14`
 
 ## ZORA_COLORS
 
@@ -6550,8 +6550,8 @@ Source: `src/features/theme/colorModel.ts:12:14`
 ## ZORA_COMPONENT_META
 
 Kind: `value`
-Module: `src/features/authoring/componentMeta.ts`
-Source: `src/features/authoring/componentMeta.ts:107:14`
+Module: `src/features/registry/componentMeta.ts`
+Source: `src/features/registry/componentMeta.ts:107:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
@@ -6580,14 +6580,14 @@ Source: `src/features/theme/colorModel.ts:11:14`
 ## ZORA_THEME_RECIPE_META
 
 Kind: `value`
-Module: `src/features/authoring/themeRecipeMeta.ts`
-Source: `src/features/authoring/themeRecipeMeta.ts:8:14`
+Module: `src/features/registry/themeRecipeMeta.ts`
+Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 ## ZORA_THEME_TOKEN_FAMILIES
 
 Kind: `value`
-Module: `src/features/authoring/constants.ts`
-Source: `src/features/authoring/constants.ts:50:14`
+Module: `src/constants/authoring.ts`
+Source: `src/constants/authoring.ts:151:14`
 
 ## ZoraBaseProps
 
@@ -6607,8 +6607,8 @@ Source: `src/types/base.ts:5:1`
 ## ZoraBindableComponentType
 
 Kind: `unknown`
-Module: `src/features/authoring/bindableComponentMeta.ts`
-Source: `src/features/authoring/bindableComponentMeta.ts:505:1`
+Module: `src/features/registry/bindableComponentMeta.ts`
+Source: `src/features/registry/bindableComponentMeta.ts:505:1`
 
 ## ZoraColor
 
