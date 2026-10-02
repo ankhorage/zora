@@ -6,6 +6,7 @@ import type { HeadingProps } from '../../../../types/heading';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
+import { headingThemeRecipeMeta } from '../../utils/headingThemeRecipeMeta';
 import { resolveHeadingRecipe } from '../../utils/resolveHeadingRecipe';
 import { resolveHeadingSizeFromLevel } from '../../utils/resolveHeadingSizeFromLevel';
 import { resolveHeadingThemeRecipe } from '../../utils/resolveHeadingThemeRecipe';
@@ -68,7 +69,7 @@ function HeadingInner({
 }: HeadingProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
-  const themeRecipe = resolveHeadingThemeRecipe(useZoraThemeRecipe('Heading'));
+  const themeRecipe = resolveHeadingThemeRecipe(useZoraThemeRecipe(headingThemeRecipeMeta));
   const content = resolveHeadingContent({ children, text, i18nKey });
   const resolvedSize =
     resolveResponsive(size ?? themeRecipe.size, breakpoint) ?? resolveHeadingSizeFromLevel(level);

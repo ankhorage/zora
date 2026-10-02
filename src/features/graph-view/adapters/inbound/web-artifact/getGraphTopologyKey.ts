@@ -1,4 +1,4 @@
-import type { GraphViewEdge, GraphViewNode } from './GraphView';
+import type { GraphViewEdge, GraphViewNode } from '../../../../../types/graph-view';
 
 /***
  * Identify visible graph membership and hierarchy independently of presentation metadata.

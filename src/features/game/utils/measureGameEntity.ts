@@ -1,6 +1,6 @@
 import type { View } from 'react-native';
 
-import type { GameMeasurementBounds } from '../../../../types/gameRuntime';
+import type { GameMeasurementBounds } from '../../../types/gameRuntime';
 
 /*** Measure one rendered React Native or React Native Web game entity in window coordinates. */
 export function measureGameEntity(

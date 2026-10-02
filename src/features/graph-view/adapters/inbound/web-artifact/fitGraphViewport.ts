@@ -1,6 +1,6 @@
 import type { Core } from 'cytoscape';
 
-import type { GraphViewFitOptions } from './GraphView';
+import type { GraphViewFitOptions } from '../../../../../types/graph-view';
 
 /*** Fit the requested visible nodes and never include edge geometry in viewport bounds. */
 export function fitGraphViewport(

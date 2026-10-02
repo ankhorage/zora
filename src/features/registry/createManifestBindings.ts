@@ -1,6 +1,6 @@
 import type { UiComponentBindingMeta } from '@ankhorage/contracts';
 
-import type { ZoraComponentMeta } from '../../../types/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 /*** Derives scalar bindings and normalized events from explicit component authoring schemas. */
 export function createManifestBindings(

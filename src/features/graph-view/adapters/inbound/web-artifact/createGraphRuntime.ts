@@ -1,5 +1,13 @@
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
 
+import type {
+  GraphViewCallbacks,
+  GraphViewElementEventType,
+  GraphViewFitOptions,
+  GraphViewRenderedNode,
+  GraphViewSize,
+  GraphViewStyleRule,
+} from '../../../../../types/graph-view';
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { bindGraphEvents } from './bindGraphEvents';
 import { compactGraphSpacing } from './compactGraphSpacing';
@@ -8,14 +16,6 @@ import { createGraphLoopSizer } from './createGraphLoopSizer';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { getGraphGeometryKey } from './getGraphGeometryKey';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
-import type {
-  GraphViewCallbacks,
-  GraphViewElementEventType,
-  GraphViewFitOptions,
-  GraphViewRenderedNode,
-  GraphViewSize,
-  GraphViewStyleRule,
-} from './GraphView';
 import { hasGraphLayoutChanged } from './hasGraphLayoutChanged';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { registerGraphLayouts } from './registerGraphLayouts';

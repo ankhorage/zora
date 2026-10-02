@@ -1,7 +1,7 @@
 import type React from 'react';
 
-import type { ViewProps } from '../features/layout/public';
 import type { ZoraBaseProps } from './base';
+import type { ViewProps } from './layout';
 
 export type ButtonGroupAlign = 'start' | 'center' | 'end' | 'stretch' | 'between';
 export type ButtonGroupOrientation = 'horizontal' | 'vertical' | 'responsive';

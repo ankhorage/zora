@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_BINDABLE_COMPONENT_META, ZORA_COMPONENT_META } from '../authoring';
+import { cardMeta } from '../card/cardMeta';
+import { emptyStateMeta } from '../empty-state/emptyStateMeta';
 import { missingElementMeta } from './missingElementMeta';
 
 describe('MissingElement draft contract', () => {
   test('is a release-blocking manifest leaf distinct from completed states', () => {
-    expect(ZORA_COMPONENT_META.MissingElement).toBe(missingElementMeta);
     expect(missingElementMeta.directManifestNode).toBe(true);
     expect(missingElementMeta.allowedChildren).toEqual([]);
     expect(missingElementMeta.manifestPolicy).toEqual({
@@ -13,8 +13,8 @@ describe('MissingElement draft contract', () => {
       availability: 'draft-only',
       releaseGate: 'blocked',
     });
-    expect(ZORA_COMPONENT_META.Card.manifestPolicy).toBeUndefined();
-    expect(ZORA_COMPONENT_META.EmptyState.manifestPolicy).toBeUndefined();
+    expect(cardMeta.manifestPolicy).toBeUndefined();
+    expect(emptyStateMeta.manifestPolicy).toBeUndefined();
   });
 
   test('captures only stable serializable gap and layout data', () => {
@@ -34,10 +34,11 @@ describe('MissingElement draft contract', () => {
     expect(() => JSON.stringify(missingElementMeta)).not.toThrow();
   });
 
-  test('has no event, data-binding, runtime-requirement, or fallback contract', () => {
+  test('has no event, data-binding, runtime-requirement, or fallback contract', async () => {
     expect(missingElementMeta.events).toBeUndefined();
     expect(missingElementMeta.requirements).toBeUndefined();
-    expect(ZORA_BINDABLE_COMPONENT_META).not.toHaveProperty('MissingElement');
+    const bindableSource = await Bun.file('src/features/registry/bindableComponentMeta.ts').text();
+    expect(bindableSource).not.toContain('MissingElement');
   });
 
   test('visibly and accessibly identifies the gap while preserving its minimum dimensions', async () => {

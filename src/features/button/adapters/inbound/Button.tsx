@@ -5,6 +5,7 @@ import type { ButtonProps } from '../../../../types/button';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
 import { resolveButtonThemeRecipe } from '../../utils/resolveButtonThemeRecipe';
+import { buttonThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 /***
  * Theme-aware action control for primary, secondary, destructive, and neutral actions.
  *
@@ -23,7 +24,7 @@ function ButtonInner({
   interactionPolicy,
   ...props
 }: ButtonProps) {
-  const themeFields = useZoraThemeRecipe('Button');
+  const themeFields = useZoraThemeRecipe(buttonThemeRecipeMeta);
   const recipe = resolveButtonThemeRecipe({ color, variant, size, themeFields });
 
   return (

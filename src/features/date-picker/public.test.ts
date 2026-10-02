@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
+import { datePickerMeta } from './datePickerMeta';
 
 test('DatePicker keeps one manifest contract across native and web presentation hosts', async () => {
   const nativeSource = await Bun.file(
@@ -12,12 +12,10 @@ test('DatePicker keeps one manifest contract across native and web presentation 
   const contentSource = await Bun.file(
     'src/features/date-picker/composition/DatePickerContent.tsx',
   ).text();
-  const meta = ZORA_COMPONENT_META.DatePicker;
 
-  expect(meta.directManifestNode).toBe(true);
-  expect(meta.props.value?.type).toBe('string');
-  expect(meta.events?.valueChange?.eventType).toBe('datePicker.valueChange');
-  expect(meta.bindings?.props?.value?.value.type).toBe('string');
+  expect(datePickerMeta.directManifestNode).toBe(true);
+  expect(datePickerMeta.props.value.type).toBe('string');
+  expect(datePickerMeta.events.valueChange.eventType).toBe('datePicker.valueChange');
   expect(nativeSource).toContain('useBottomSheet()');
   expect(webSource).toContain('<Popover');
   expect(webSource).not.toContain('useBottomSheet');

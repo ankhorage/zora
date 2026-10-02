@@ -2,8 +2,8 @@ import { existsSync } from 'node:fs';
 
 import { expect, test } from 'bun:test';
 
+import { FEATURE_MANIFEST_ELEMENTS } from '../../constants/authoring';
 import { ZORA_COMPONENT_META } from './componentMeta';
-import { FEATURE_MANIFEST_ELEMENTS } from './constants';
 
 test('every selected feature element is directly authorable through its canonical public facade', async () => {
   const catalog = new Map(Object.entries(ZORA_COMPONENT_META));

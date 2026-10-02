@@ -8,6 +8,7 @@ import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
 import { resolveTextStyle } from '../../utils/resolveTextStyle';
 import { resolveTextThemeRecipe } from '../../utils/resolveTextThemeRecipe';
+import { textThemeRecipeMeta } from '../../utils/textThemeRecipeMeta';
 /***
  * Structured copy primitive for theme-aware app text.
  *
@@ -71,7 +72,7 @@ function TextInner({
 }: TextProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
-  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe('Text'));
+  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe(textThemeRecipeMeta));
   const content = resolveTextContent({ children, text, i18nKey });
   const resolvedVariant = resolveResponsive(variant ?? themeRecipe.variant, breakpoint) ?? 'body';
   const resolvedStyle = resolveTextStyle({

@@ -3,13 +3,13 @@ import './createGraphRuntime';
 import { expect, test } from 'bun:test';
 import cytoscape from 'cytoscape';
 
-import { createGraphRuntime } from './createGraphRuntime';
 import type {
   GraphViewCallbacks,
   GraphViewController,
   GraphViewElementEvent,
   GraphViewRenderedNode,
-} from './GraphView';
+} from '../../../../../types/graph-view';
+import { createGraphRuntime } from './createGraphRuntime';
 
 test('explicit fit compacts once and controlled spacing acknowledgement does not rerun the algorithm', async () => {
   const initial = Promise.withResolvers<GraphViewController>();

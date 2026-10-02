@@ -1,6 +1,6 @@
 import type { ElementDefinition } from 'cytoscape';
 
-import type { GraphViewEdge, GraphViewNode } from './GraphView';
+import type { GraphViewEdge, GraphViewNode } from '../../../../../types/graph-view';
 
 /*** Convert plain graph data into renderable Cytoscape elements without impossible compound edges. */
 export function createRenderableGraphElements(

@@ -1,6 +1,6 @@
 import type { Core, LayoutOptions, Layouts } from 'cytoscape';
 
-import type { GraphViewLayoutName } from './GraphView';
+import type { GraphViewLayoutName } from '../../../../../types/graph-view';
 import { runDetachedGraphLayout } from './runDetachedGraphLayout';
 
 interface RunGraphLayoutInput {

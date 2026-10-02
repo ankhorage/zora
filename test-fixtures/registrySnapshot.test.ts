@@ -29,7 +29,7 @@ function readRegistryKeys(): readonly string[] {
 
 test('prints the canonical ZORA component registry snapshot', async () => {
   const registryKeys = readRegistryKeys();
-  const { ZORA_COMPONENT_META } = await import('../src/features/authoring');
+  const { ZORA_COMPONENT_META } = await import('../src/features/registry');
 
   expect(registryKeys.length).toBeGreaterThan(0);
   expect(new Set(registryKeys).size).toBe(registryKeys.length);

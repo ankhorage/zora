@@ -3,7 +3,7 @@ import type {
   GraphViewLayoutName,
   GraphViewNode,
   GraphViewStyleRule,
-} from '../features/graph-view/adapters/inbound/web-artifact/GraphView';
+} from './graph-view';
 
 export interface GraphRuntimeUpdate {
   readonly edges: readonly GraphViewEdge[];

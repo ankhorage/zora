@@ -1,8 +1,8 @@
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import type { ViewProps } from '../features/layout/public';
 import type { ZoraBaseProps } from './base';
+import type { ViewProps } from './layout';
 
 export type GradientColor = string;
 export type GradientColors = readonly [GradientColor, GradientColor, ...GradientColor[]];

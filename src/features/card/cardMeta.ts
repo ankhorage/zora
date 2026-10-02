@@ -1,11 +1,11 @@
-import type { ZoraComponentMeta } from '../authoring';
 import {
   CHESS_ALLOWED_CHILDREN,
   CONTAINER_ALLOWED_CHILDREN,
   GAME_ALLOWED_CHILDREN,
   TABLETOP_ALLOWED_CHILDREN,
-} from '../authoring/allowedChildren';
-import { COMPONENT_THEME_AUTHORING } from '../authoring/constants';
+} from '../../constants/authoring';
+import { COMPONENT_THEME_AUTHORING } from '../../constants/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 export const cardMeta = {
   name: 'Card',

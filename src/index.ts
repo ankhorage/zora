@@ -42,39 +42,6 @@ export {
   SignInForm,
   SignUpForm,
 } from './features/auth/public';
-export type {
-  ZoraBindableComponentType,
-  ZoraComponentBlueprint,
-  ZoraComponentCategory,
-  ZoraComponentEventMeta,
-  ZoraComponentEventPayloadFieldMeta,
-  ZoraComponentEventPayloadFieldType,
-  ZoraComponentEventPayloadKind,
-  ZoraComponentI18nMeta,
-  ZoraComponentManifestPolicy,
-  ZoraComponentMeta,
-  ZoraComponentMetaRegistry,
-  ZoraComponentPropArrayItemSchema,
-  ZoraComponentPropAuthoring,
-  ZoraComponentPropSchema,
-  ZoraComponentPropType,
-  ZoraComponentPropValue,
-  ZoraComponentSlotMeta,
-  ZoraThemeRecipeBooleanFieldMeta,
-  ZoraThemeRecipeChoiceFieldMeta,
-  ZoraThemeRecipeFieldMeta,
-  ZoraThemeRecipeKind,
-  ZoraThemeRecipeMeta,
-  ZoraThemeRecipeMetaRegistry,
-  ZoraThemeRecipeTokenFieldMeta,
-  ZoraThemeTokenFamily,
-} from './features/authoring';
-export {
-  ZORA_BINDABLE_COMPONENT_META,
-  ZORA_COMPONENT_META,
-  ZORA_THEME_RECIPE_META,
-  ZORA_THEME_TOKEN_FAMILIES,
-} from './features/authoring';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -350,6 +317,39 @@ export type {
   ReaderSurfaceProps,
 } from './features/reader/public';
 export { ReaderSurface, resolveReaderProgress } from './features/reader/public';
+export type {
+  ZoraBindableComponentType,
+  ZoraComponentBlueprint,
+  ZoraComponentCategory,
+  ZoraComponentEventMeta,
+  ZoraComponentEventPayloadFieldMeta,
+  ZoraComponentEventPayloadFieldType,
+  ZoraComponentEventPayloadKind,
+  ZoraComponentI18nMeta,
+  ZoraComponentManifestPolicy,
+  ZoraComponentMeta,
+  ZoraComponentMetaRegistry,
+  ZoraComponentPropArrayItemSchema,
+  ZoraComponentPropAuthoring,
+  ZoraComponentPropSchema,
+  ZoraComponentPropType,
+  ZoraComponentPropValue,
+  ZoraComponentSlotMeta,
+  ZoraThemeRecipeBooleanFieldMeta,
+  ZoraThemeRecipeChoiceFieldMeta,
+  ZoraThemeRecipeFieldMeta,
+  ZoraThemeRecipeKind,
+  ZoraThemeRecipeMeta,
+  ZoraThemeRecipeMetaRegistry,
+  ZoraThemeRecipeTokenFieldMeta,
+  ZoraThemeTokenFamily,
+} from './features/registry';
+export {
+  ZORA_BINDABLE_COMPONENT_META,
+  ZORA_COMPONENT_META,
+  ZORA_THEME_RECIPE_META,
+  ZORA_THEME_TOKEN_FAMILIES,
+} from './features/registry';
 export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
 export type {
   BarcodeScannerViewProps,

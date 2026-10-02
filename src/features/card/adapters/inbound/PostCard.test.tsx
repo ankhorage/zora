@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../../authoring';
+import { postCardMeta } from '../../postCardMeta';
 
 describe('PostCard', () => {
   test('is registered as a public ZORA pattern', () => {
-    expect(ZORA_COMPONENT_META.PostCard?.name).toBe('PostCard');
-    expect(ZORA_COMPONENT_META.PostCard?.category).toBe('pattern');
-    expect(ZORA_COMPONENT_META.PostCard?.directManifestNode).toBe(true);
+    expect(postCardMeta.name).toBe('PostCard');
+    expect(postCardMeta.category).toBe('pattern');
+    expect(postCardMeta.directManifestNode).toBe(true);
   });
 });

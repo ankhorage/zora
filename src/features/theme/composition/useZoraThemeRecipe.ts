@@ -1,7 +1,9 @@
+import type { ZoraThemeRecipeMeta } from '../../../types/theme-recipe';
 import { resolveZoraThemeRecipe } from '../utils/resolveZoraThemeRecipe';
 import { useZoraTheme } from './useZoraTheme';
 
-export function useZoraThemeRecipe(recipeName: string) {
+/*** Resolve one feature-owned theme recipe against the active ZORA theme. */
+export function useZoraThemeRecipe(meta: ZoraThemeRecipeMeta) {
   const { theme } = useZoraTheme();
-  return resolveZoraThemeRecipe(theme, recipeName);
+  return resolveZoraThemeRecipe(theme, meta);
 }

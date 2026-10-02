@@ -1,3 +1,50 @@
+export const COMPONENT_THEME_AUTHORING = {
+  authority: 'theme',
+  scope: 'component',
+  allowInstanceOverride: true,
+} as const;
+
+export const FEATURE_MANIFEST_ELEMENTS = {
+  auth: [
+    'ForgotPasswordForm',
+    'OAuthProviderButton',
+    'OAuthProviderList',
+    'OtpForm',
+    'SignInForm',
+    'SignUpForm',
+  ],
+  surface: ['Surface'],
+  avatar: ['Avatar', 'AvatarGroup'],
+  badge: ['Badge'],
+  card: ['Card', 'MediaCard', 'MetricCard', 'PostCard', 'ProductCard'],
+  chip: ['Chip', 'ChipGroup'],
+  'data-table': ['DataTable'],
+  'date-picker': ['DatePicker'],
+  dialog: ['Dialog'],
+  form: ['Form', 'FormError', 'Field'],
+  gradient: ['Gradient'],
+  button: ['Button', 'IconButton', 'ButtonGroup'],
+  icon: ['Icon'],
+  image: ['Image'],
+  'keyboard-avoiding-view': ['KeyboardAvoidingView'],
+  'content-rail': ['ContentRail'],
+  layout: ['Divider', 'Grid', 'Screen', 'ScrollView', 'View'],
+  section: ['ScreenSection', 'SectionHeader'],
+  list: ['FlatList', 'SectionList'],
+  pagination: ['Pagination'],
+  rating: ['Rating'],
+  skeleton: ['Skeleton', 'SkeletonCard', 'SkeletonList', 'SkeletonText'],
+  tabs: ['Tabs', 'TabList', 'Tab', 'TabPanel'],
+  toolbar: ['Toolbar'],
+  typography: ['Heading', 'Text'],
+  'time-picker': ['TimePicker'],
+  uploader: ['Uploader'],
+  'bottom-sheet': ['BottomSheet'],
+  chess: ['ChessBoard', 'OpeningBook'],
+  game: ['Game', 'GameField', 'GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay'],
+  tabletop: ['TabletopTable', 'PokerTrainingTable'],
+} as const;
+
 export const CONTAINER_ALLOWED_CHILDREN = [
   'ActivityIndicator',
   'ForgotPasswordForm',
@@ -99,4 +146,12 @@ export const SCREEN_SECTION_ALLOWED_CHILDREN = [
 export const SCREEN_ALLOWED_CHILDREN = [
   'ScreenSection',
   ...SCREEN_SECTION_ALLOWED_CHILDREN,
+] as const;
+
+export const ZORA_THEME_TOKEN_FAMILIES = [
+  'colors',
+  'spacing',
+  'radii',
+  'typography',
+  'shadows',
 ] as const;

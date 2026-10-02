@@ -1,9 +1,9 @@
-import type { ZoraComponentMeta } from '../../types/authoring';
 import {
   CHESS_ALLOWED_CHILDREN,
   CONTAINER_ALLOWED_CHILDREN,
   GAME_ALLOWED_CHILDREN,
-} from '../authoring/allowedChildren';
+} from '../../constants/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 import { LAYOUT_PROPS } from './constants';
 
 export const viewMeta = {

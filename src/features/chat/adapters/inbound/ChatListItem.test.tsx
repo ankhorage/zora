@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../../authoring';
+import { chatListItemMeta } from '../../chatListItemMeta';
 
 describe('ChatListItem', () => {
   test('is registered as a public ZORA pattern', () => {
-    expect(ZORA_COMPONENT_META.ChatListItem?.name).toBe('ChatListItem');
-    expect(ZORA_COMPONENT_META.ChatListItem?.category).toBe('pattern');
-    expect(ZORA_COMPONENT_META.ChatListItem?.directManifestNode).toBe(true);
+    expect(chatListItemMeta.name).toBe('ChatListItem');
+    expect(chatListItemMeta.category).toBe('pattern');
+    expect(chatListItemMeta.directManifestNode).toBe(true);
   });
 });

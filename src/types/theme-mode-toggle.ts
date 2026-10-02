@@ -1,4 +1,4 @@
-import type { IconButtonProps } from '../features/button/public';
+import type { IconButtonProps } from './icon-button';
 
 export type ThemeModeToggleProps = Pick<
   IconButtonProps,

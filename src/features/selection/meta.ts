@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 const SELECTION_NOTE = 'Selection pattern component; not represented as a manifest node in v1.';
 

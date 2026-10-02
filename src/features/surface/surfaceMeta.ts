@@ -1,5 +1,5 @@
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 import type { ZoraComponentMeta } from '../../types/authoring';
-import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
 import { LAYOUT_PROPS } from '../layout/constants';
 
 export const surfaceMeta = {

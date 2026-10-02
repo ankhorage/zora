@@ -102,7 +102,7 @@ import { treeItemMeta, treeViewMeta } from '../tree-view/meta';
 import { headingMeta } from '../typography/headingMeta';
 import { textMeta } from '../typography/textMeta';
 import { uploaderMeta } from '../uploader/uploaderMeta';
-import { finalizeFeatureMetadata } from './utils/finalizeFeatureMetadata';
+import { finalizeFeatureMetadata } from './finalizeFeatureMetadata';
 
 export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMetadata({
   Accordion: accordionMeta,
