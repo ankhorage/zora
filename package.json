@@ -41,11 +41,11 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.8.73",
+    "@ankhorage/contracts": "^22.8.75",
     "@ankhorage/game": "^0.1.2",
-    "@ankhorage/runtime": "^3.0.31",
-    "@ankhorage/surface": "^9.1.85",
-    "@ankhorage/utility": "^1.9.61",
+    "@ankhorage/runtime": "^3.0.35",
+    "@ankhorage/surface": "^9.1.87",
+    "@ankhorage/utility": "^1.9.64",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20",
     "chess.js": "^1.4.0"
@@ -125,7 +125,7 @@
   },
   "devDependencies": {
     "@ankhorage/devtools": "^2.0.12",
-    "@ankhorage/paradox": "^0.2.22",
+    "@ankhorage/paradox": "^0.2.25",
     "@react-native-vector-icons/fontawesome": "^13.1.4",
     "@react-native-vector-icons/fontawesome5": "^13.1.4",
     "@react-native-vector-icons/fontawesome6": "^13.1.4",
