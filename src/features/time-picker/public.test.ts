@@ -14,9 +14,8 @@ test('TimePicker keeps one manifest contract across native and web presentation 
   ).text();
 
   expect(timePickerMeta.directManifestNode).toBe(true);
-  expect(timePickerMeta.props.value?.type).toBe('string');
-  expect(timePickerMeta.events?.valueChange?.eventType).toBe('timePicker.valueChange');
-  expect(timePickerMeta.bindings?.props?.value?.value.type).toBe('string');
+  expect(timePickerMeta.props.value.type).toBe('string');
+  expect(timePickerMeta.events.valueChange.eventType).toBe('timePicker.valueChange');
   expect(nativeSource).toContain('useBottomSheet()');
   expect(webSource).toContain('<Popover');
   expect(webSource).not.toContain('useBottomSheet');
