@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.59
+
+### Patch Changes
+
+- 5224b66: Update Renovate-managed workflows.
+- 649a6c0: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 22.0.58
 
 ### Patch Changes
