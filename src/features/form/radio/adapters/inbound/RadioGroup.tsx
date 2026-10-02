@@ -6,6 +6,7 @@ import type { RadioGroupProps } from '../../../../../types/radio';
 import { View } from '../../../../layout/public';
 import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../../theme/composition/useZoraThemeRecipe';
+import { radioGroupThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 import { Text } from '../../../../typography/public';
 import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
 import { RadioOptionControl } from './RadioOptionControl';
@@ -25,7 +26,7 @@ function RadioGroupInner<TValue extends string>({
     props.onValueChange?.(next);
   };
   const selectedProps = { ...props, value: props.value ?? localValue, onValueChange };
-  const themeFields = useZoraThemeRecipe('RadioGroup');
+  const themeFields = useZoraThemeRecipe(radioGroupThemeRecipeMeta);
   const recipe = resolveRadioGroupThemeRecipe({ ...props, themeFields });
   if (props.presentation !== 'card') return <RadioGroupInline {...selectedProps} {...recipe} />;
   const columns =
