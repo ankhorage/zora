@@ -12,8 +12,8 @@ describe('ProductCard', () => {
   });
 
   test('has correct event metadata', () => {
-    expect(productCardMeta.events?.press).toBeDefined();
-    expect(productCardMeta.events?.primaryAction).toBeDefined();
-    expect(productCardMeta.events?.secondaryAction).toBeDefined();
+    expect(productCardMeta.events.press).toBeDefined();
+    expect(productCardMeta.events.primaryAction).toBeDefined();
+    expect(productCardMeta.events.secondaryAction).toBeDefined();
   });
 });
