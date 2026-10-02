@@ -6,7 +6,7 @@
       "name": "@ankhorage/zora",
       "dependencies": {
         "@ankhorage/color-theory": "^0.3.1",
-        "@ankhorage/contracts": "^22.8.81",
+        "@ankhorage/contracts": "^22.8.82",
         "@ankhorage/game": "^0.1.2",
         "@ankhorage/runtime": "^3.0.40",
         "@ankhorage/surface": "^9.1.95",
@@ -62,7 +62,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.81", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.67" } }, "sha512-Hb61AV6YZfFageO8Dl4qGlOqhDwLPKAcVb/G57gf1KrHoU9OkxxjK8EyMczC4zwspAZIbs6eQ8NLhggxye/84w=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.82", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.68" } }, "sha512-7LvmteLCZIF1qJGlVq5hIMzcUzhDgaCvvHxA9REhMZ03VoHqKO4ve+wKMwVUHNuZmXb7VlNNJlgnc4AnWV4RZQ=="],
 
     "@ankhorage/data-sources": ["@ankhorage/data-sources@2.0.16", "", { "dependencies": { "@ankhorage/contracts": "^22.8.1" } }, "sha512-0InTJLtyIY0f0CVxi77qnf16/59eozI+zVDUrCYncJF6vfbKoWHlBTbEeEHnlJ/ZbMs+6Q9pUve7I5qkaHh1fQ=="],
 
