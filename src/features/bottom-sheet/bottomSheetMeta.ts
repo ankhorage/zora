@@ -1,5 +1,5 @@
-import type { ZoraComponentMeta } from '../../types/authoring';
 import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 export const bottomSheetMeta = {
   name: 'BottomSheet',
