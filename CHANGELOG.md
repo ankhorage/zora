@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.72
+
+### Patch Changes
+
+- b068331: Update Renovate-managed workflows.
+- bed5964: Update dependencies: `@ankhorage/devtools`.
+
 ## 22.0.71
 
 ### Patch Changes
