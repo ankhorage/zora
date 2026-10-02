@@ -1,5 +1,5 @@
+import { FEATURE_MANIFEST_ELEMENTS } from '../../../constants/authoring';
 import type { ZoraComponentMetaRegistry } from '../../../types/authoring';
-import { FEATURE_MANIFEST_ELEMENTS } from '../constants';
 import { createManifestBindings } from './createManifestBindings';
 
 /*** Completes feature bindings while preserving each component's explicit value contracts. */
