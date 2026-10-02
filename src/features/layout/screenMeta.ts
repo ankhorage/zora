@@ -1,5 +1,5 @@
 import type { ZoraComponentMeta } from '../authoring';
-import { SCREEN_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import { SCREEN_ALLOWED_CHILDREN } from '../../constants/authoring';
 
 export const screenMeta = {
   name: 'Screen',
