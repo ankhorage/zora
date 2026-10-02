@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
+import { ZORA_COMPONENT_META } from '../registry/componentMeta';
 
 test('Toast stays imperative and installs its host only when the ZoraProvider capability is enabled', async () => {
   const [publicSource, providerSource, webCapabilities, nativeCapabilities] = await Promise.all([

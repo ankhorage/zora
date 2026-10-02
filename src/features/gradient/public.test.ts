@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../authoring/componentMeta';
+import { ZORA_COMPONENT_META } from '../registry/componentMeta';
 
 test('Gradient is a direct manifest container with serializable colors', () => {
   const meta = ZORA_COMPONENT_META.Gradient;
