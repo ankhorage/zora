@@ -6,6 +6,7 @@ import type { TextProps } from '../../../../types/text';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
+import { textThemeRecipeMeta } from '../../utils/textThemeRecipeMeta';
 import { resolveTextStyle } from '../../utils/resolveTextStyle';
 import { resolveTextThemeRecipe } from '../../utils/resolveTextThemeRecipe';
 /***
@@ -71,7 +72,7 @@ function TextInner({
 }: TextProps) {
   const { theme } = useZoraTheme();
   const { breakpoint } = useResponsiveRuntime();
-  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe('Text'));
+  const themeRecipe = resolveTextThemeRecipe(useZoraThemeRecipe(textThemeRecipeMeta));
   const content = resolveTextContent({ children, text, i18nKey });
   const resolvedVariant = resolveResponsive(variant ?? themeRecipe.variant, breakpoint) ?? 'body';
   const resolvedStyle = resolveTextStyle({
