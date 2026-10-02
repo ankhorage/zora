@@ -11,70 +11,6 @@ export {
   ActivityIndicator,
   type ActivityIndicatorProps,
 } from './features/activity-indicator/public';
-export type { AppBarMode, AppBarOverflowMenu, AppBarProps } from './features/app-bar/public';
-export { AppBar } from './features/app-bar/public';
-export type {
-  AuthFormBaseProps,
-  AuthIdentifierKind,
-  ForgotPasswordFormProps,
-  ForgotPasswordFormValues,
-  OAuthProviderButtonProps,
-  OAuthProviderIconSpec,
-  OAuthProviderItem,
-  OAuthProviderListLayout,
-  OAuthProviderListProps,
-  OtpFormProps,
-  OtpFormValues,
-  SignInFormProps,
-  SignInFormValues,
-  SignUpFormField,
-  SignUpFormProps,
-  SignUpFormValues,
-} from './features/auth/public';
-export {
-  DEFAULT_OAUTH_PROVIDER_ICONS,
-  ForgotPasswordForm,
-  OAuthProviderButton,
-  OAuthProviderList,
-  OtpForm,
-  resolveOAuthProviderIcon,
-  resolveOAuthProviderLabel,
-  SignInForm,
-  SignUpForm,
-} from './features/auth/public';
-export type {
-  ZoraBindableComponentType,
-  ZoraComponentBlueprint,
-  ZoraComponentCategory,
-  ZoraComponentEventMeta,
-  ZoraComponentEventPayloadFieldMeta,
-  ZoraComponentEventPayloadFieldType,
-  ZoraComponentEventPayloadKind,
-  ZoraComponentI18nMeta,
-  ZoraComponentManifestPolicy,
-  ZoraComponentMeta,
-  ZoraComponentMetaRegistry,
-  ZoraComponentPropArrayItemSchema,
-  ZoraComponentPropAuthoring,
-  ZoraComponentPropSchema,
-  ZoraComponentPropType,
-  ZoraComponentPropValue,
-  ZoraComponentSlotMeta,
-  ZoraThemeRecipeBooleanFieldMeta,
-  ZoraThemeRecipeChoiceFieldMeta,
-  ZoraThemeRecipeFieldMeta,
-  ZoraThemeRecipeKind,
-  ZoraThemeRecipeMeta,
-  ZoraThemeRecipeMetaRegistry,
-  ZoraThemeRecipeTokenFieldMeta,
-  ZoraThemeTokenFamily,
-} from './features/registry';
-export {
-  ZORA_BINDABLE_COMPONENT_META,
-  ZORA_COMPONENT_META,
-  ZORA_THEME_RECIPE_META,
-  ZORA_THEME_TOKEN_FAMILIES,
-} from './features/registry';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';
@@ -350,6 +286,70 @@ export type {
   ReaderSurfaceProps,
 } from './features/reader/public';
 export { ReaderSurface, resolveReaderProgress } from './features/reader/public';
+export type { AppBarMode, AppBarOverflowMenu, AppBarProps } from './features/app-bar/public';
+export { AppBar } from './features/app-bar/public';
+export type {
+  AuthFormBaseProps,
+  AuthIdentifierKind,
+  ForgotPasswordFormProps,
+  ForgotPasswordFormValues,
+  OAuthProviderButtonProps,
+  OAuthProviderIconSpec,
+  OAuthProviderItem,
+  OAuthProviderListLayout,
+  OAuthProviderListProps,
+  OtpFormProps,
+  OtpFormValues,
+  SignInFormProps,
+  SignInFormValues,
+  SignUpFormField,
+  SignUpFormProps,
+  SignUpFormValues,
+} from './features/auth/public';
+export {
+  DEFAULT_OAUTH_PROVIDER_ICONS,
+  ForgotPasswordForm,
+  OAuthProviderButton,
+  OAuthProviderList,
+  OtpForm,
+  resolveOAuthProviderIcon,
+  resolveOAuthProviderLabel,
+  SignInForm,
+  SignUpForm,
+} from './features/auth/public';
+export type {
+  ZoraBindableComponentType,
+  ZoraComponentBlueprint,
+  ZoraComponentCategory,
+  ZoraComponentEventMeta,
+  ZoraComponentEventPayloadFieldMeta,
+  ZoraComponentEventPayloadFieldType,
+  ZoraComponentEventPayloadKind,
+  ZoraComponentI18nMeta,
+  ZoraComponentManifestPolicy,
+  ZoraComponentMeta,
+  ZoraComponentMetaRegistry,
+  ZoraComponentPropArrayItemSchema,
+  ZoraComponentPropAuthoring,
+  ZoraComponentPropSchema,
+  ZoraComponentPropType,
+  ZoraComponentPropValue,
+  ZoraComponentSlotMeta,
+  ZoraThemeRecipeBooleanFieldMeta,
+  ZoraThemeRecipeChoiceFieldMeta,
+  ZoraThemeRecipeFieldMeta,
+  ZoraThemeRecipeKind,
+  ZoraThemeRecipeMeta,
+  ZoraThemeRecipeMetaRegistry,
+  ZoraThemeRecipeTokenFieldMeta,
+  ZoraThemeTokenFamily,
+} from './features/registry';
+export {
+  ZORA_BINDABLE_COMPONENT_META,
+  ZORA_COMPONENT_META,
+  ZORA_THEME_RECIPE_META,
+  ZORA_THEME_TOKEN_FAMILIES,
+} from './features/registry';
 export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
 export type {
   BarcodeScannerViewProps,

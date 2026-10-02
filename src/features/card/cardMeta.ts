@@ -4,8 +4,8 @@ import {
   GAME_ALLOWED_CHILDREN,
   TABLETOP_ALLOWED_CHILDREN,
 } from '../../constants/authoring';
-import type { ZoraComponentMeta } from '../../types/authoring';
 import { COMPONENT_THEME_AUTHORING } from '../../constants/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 export const cardMeta = {
   name: 'Card',

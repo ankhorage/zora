@@ -1,5 +1,5 @@
-import type { ZoraComponentMeta } from '../../types/authoring';
 import { COMPONENT_THEME_AUTHORING } from '../../constants/authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 import { ZORA_COLORS } from '../theme/colorModel';
 
 export const buttonMeta = {
