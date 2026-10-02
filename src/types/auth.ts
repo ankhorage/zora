@@ -1,8 +1,8 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
-import type { ButtonProps } from './button';
 import type { ZoraBaseProps } from './base';
+import type { ButtonProps } from './button';
 import type { FormFieldConfig, FormValues } from './form';
 
 export type AuthIdentifierKind = 'email' | 'phone' | 'username';
