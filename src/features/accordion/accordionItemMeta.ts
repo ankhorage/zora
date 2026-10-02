@@ -1,5 +1,5 @@
 import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
-import type { ZoraComponentMeta } from '../authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 export const accordionItemMeta = {
   name: 'AccordionItem',
