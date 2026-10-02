@@ -6,8 +6,8 @@ import type { RadioGroupProps } from '../../../../../types/radio';
 import { View } from '../../../../layout/public';
 import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../../theme/composition/useZoraThemeRecipe';
-import { radioGroupThemeRecipeMeta } from '../../themeRecipeMeta';
 import { Text } from '../../../../typography/public';
+import { radioGroupThemeRecipeMeta } from '../../themeRecipeMeta';
 import { resolveRadioGroupThemeRecipe } from '../../utils/resolveRadioGroupThemeRecipe';
 import { RadioOptionControl } from './RadioOptionControl';
 
