@@ -1,21 +1,12 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../registry/componentMeta';
+import { CONTAINER_ALLOWED_CHILDREN } from '../../../constants/authoring';
+import { iconMeta } from '../iconMeta';
 
-test('permits media-backed Icon and Image content in ordinary screen containers', () => {
-  const icon = ZORA_COMPONENT_META.Icon;
-  expect(icon.directManifestNode).toBe(true);
-  expect(icon.allowedChildren).toEqual([]);
-  expect(icon.props.source).toMatchObject({ type: 'media', mediaKinds: ['image'] });
-  for (const container of [
-    ZORA_COMPONENT_META.View,
-    ZORA_COMPONENT_META.ScrollView,
-    ZORA_COMPONENT_META.Grid,
-    ZORA_COMPONENT_META.Card,
-    ZORA_COMPONENT_META.Screen,
-    ZORA_COMPONENT_META.ScreenSection,
-  ]) {
-    expect(container.allowedChildren).toContain('Icon');
-    expect(container.allowedChildren).toContain('Image');
-  }
+test('permits media-backed Icon and Image content in ordinary containers', () => {
+  expect(iconMeta.directManifestNode).toBe(true);
+  expect(iconMeta.allowedChildren).toEqual([]);
+  expect(iconMeta.props.source).toMatchObject({ type: 'media', mediaKinds: ['image'] });
+  expect(CONTAINER_ALLOWED_CHILDREN).toContain('Icon');
+  expect(CONTAINER_ALLOWED_CHILDREN).toContain('Image');
 });

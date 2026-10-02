@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../registry/componentMeta';
+import { skeletonCardMeta, skeletonListMeta, skeletonMeta, skeletonTextMeta } from './skeletonMeta';
 
 test('skeletons support direct authoring and automatic feature loading states', async () => {
   const [dataTableSource, publicSource] = await Promise.all([
@@ -8,15 +8,15 @@ test('skeletons support direct authoring and automatic feature loading states', 
     Bun.file('src/features/skeleton/public.ts').text(),
   ]);
 
-  expect(ZORA_COMPONENT_META.Skeleton.directManifestNode).toBe(true);
-  expect(ZORA_COMPONENT_META.SkeletonCard.directManifestNode).toBe(true);
-  expect(ZORA_COMPONENT_META.SkeletonList.directManifestNode).toBe(true);
-  expect(ZORA_COMPONENT_META.SkeletonText.directManifestNode).toBe(true);
+  expect(skeletonMeta.directManifestNode).toBe(true);
+  expect(skeletonCardMeta.directManifestNode).toBe(true);
+  expect(skeletonListMeta.directManifestNode).toBe(true);
+  expect(skeletonTextMeta.directManifestNode).toBe(true);
   expect(publicSource).toContain('Skeleton');
   expect(publicSource).toContain('SkeletonCard');
   expect(publicSource).toContain('SkeletonList');
   expect(publicSource).toContain('SkeletonText');
-  expect(ZORA_COMPONENT_META.SkeletonList.bindings?.props?.rows?.value.type).toBe('number');
+  expect(skeletonListMeta.bindings?.props?.rows?.value.type).toBe('number');
 
   expect(dataTableSource).toContain("from '../../../skeleton/public'");
   expect(dataTableSource).toContain('if (loading)');

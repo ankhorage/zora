@@ -1,19 +1,19 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../../../registry';
+import { productCardMeta } from '../../productCardMeta';
 
 describe('ProductCard', () => {
   test('is registered as a public ZORA pattern', () => {
-    expect(ZORA_COMPONENT_META.ProductCard?.name).toBe('ProductCard');
-    expect(ZORA_COMPONENT_META.ProductCard?.category).toBe('pattern');
-    expect(ZORA_COMPONENT_META.ProductCard?.directManifestNode).toBe(true);
-    expect(ZORA_COMPONENT_META.ProductCard?.allowedChildren).toEqual([]);
-    expect(ZORA_COMPONENT_META.ProductCard?.requirements).toBeUndefined();
+    expect(productCardMeta.name).toBe('ProductCard');
+    expect(productCardMeta.category).toBe('pattern');
+    expect(productCardMeta.directManifestNode).toBe(true);
+    expect(productCardMeta.allowedChildren).toEqual([]);
+    expect(productCardMeta.requirements).toBeUndefined();
   });
 
   test('has correct event metadata', () => {
-    expect(ZORA_COMPONENT_META.ProductCard?.events?.press).toBeDefined();
-    expect(ZORA_COMPONENT_META.ProductCard?.events?.primaryAction).toBeDefined();
-    expect(ZORA_COMPONENT_META.ProductCard?.events?.secondaryAction).toBeDefined();
+    expect(productCardMeta.events?.press).toBeDefined();
+    expect(productCardMeta.events?.primaryAction).toBeDefined();
+    expect(productCardMeta.events?.secondaryAction).toBeDefined();
   });
 });

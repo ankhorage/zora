@@ -1,5 +1,3 @@
-import type { ZoraThemeTokenFamily } from '../types/theme-recipe';
-
 export const COMPONENT_THEME_AUTHORING = {
   authority: 'theme',
   scope: 'component',
@@ -115,4 +113,4 @@ export const ZORA_THEME_TOKEN_FAMILIES = [
   'radii',
   'typography',
   'shadows',
-] as const satisfies readonly ZoraThemeTokenFamily[];
+] as const;

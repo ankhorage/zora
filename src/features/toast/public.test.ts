@@ -1,6 +1,7 @@
 import { expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META } from '../registry/componentMeta';
+import { toastMeta } from './toastMeta';
+import { toastProviderMeta } from './toastProviderMeta';
 
 test('Toast stays imperative and installs its host only when the ZoraProvider capability is enabled', async () => {
   const [publicSource, providerSource, webCapabilities, nativeCapabilities] = await Promise.all([
@@ -10,8 +11,8 @@ test('Toast stays imperative and installs its host only when the ZoraProvider ca
     Bun.file('src/features/theme/composition/ZoraRuntimeCapabilities.native.tsx').text(),
   ]);
 
-  expect(ZORA_COMPONENT_META.Toast?.directManifestNode).toBe(false);
-  expect(ZORA_COMPONENT_META.ToastProvider?.directManifestNode).toBe(false);
+  expect(toastMeta.directManifestNode).toBe(false);
+  expect(toastProviderMeta.directManifestNode).toBe(false);
   expect(publicSource).toContain("useToast } from '@ankhorage/surface'");
   expect(providerSource).toContain('toast = false');
   expect(webCapabilities).toContain('if (!toast)');
