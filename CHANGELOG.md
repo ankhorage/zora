@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.62
+
+### Patch Changes
+
+- d6a88da: Update dependencies: `react-native-reanimated`.
+
 ## 22.0.61
 
 ### Patch Changes
