@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.40
+
+### Patch Changes
+
+- ad33bbe: Update Renovate-managed workflows.
+
 ## 22.0.39
 
 ### Patch Changes
