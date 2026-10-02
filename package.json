@@ -41,11 +41,11 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.8.88",
+    "@ankhorage/contracts": "^22.8.89",
     "@ankhorage/game": "^0.1.2",
-    "@ankhorage/runtime": "^3.0.47",
-    "@ankhorage/surface": "^9.1.102",
-    "@ankhorage/utility": "^1.9.75",
+    "@ankhorage/runtime": "^3.0.48",
+    "@ankhorage/surface": "^9.1.104",
+    "@ankhorage/utility": "^1.9.76",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20",
     "chess.js": "^1.4.0"
