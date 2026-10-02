@@ -1,5 +1,5 @@
 import type { ZoraComponentMeta } from '../../types/authoring';
-import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 
 export const flatListMeta = {
   name: 'FlatList',
