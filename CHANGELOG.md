@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.73
+
+### Patch Changes
+
+- 21f47ff: Restore Expo 57-compatible React Native peer requirements and prevent Renovate from advancing
+  Expo-owned runtime peers beyond the active SDK baseline.
+
 ## 22.0.72
 
 ### Patch Changes
