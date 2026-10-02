@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 
 import { createRenderableGraphElements } from './createRenderableGraphElements';
-import type { GraphViewEdge, GraphViewNode } from './GraphView';
+import type { GraphViewEdge, GraphViewNode } from '../../../../../types/graph-view';
 
 test('omits compound ancestor and descendant edges without mutating source graph data', () => {
   const nodes: readonly GraphViewNode[] = [

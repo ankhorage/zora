@@ -15,7 +15,7 @@ import type {
   GraphViewRenderedNode,
   GraphViewSize,
   GraphViewStyleRule,
-} from './GraphView';
+} from '../../../../../types/graph-view';
 import { hasGraphLayoutChanged } from './hasGraphLayoutChanged';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { registerGraphLayouts } from './registerGraphLayouts';

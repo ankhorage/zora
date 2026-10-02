@@ -9,7 +9,7 @@ import type {
   GraphViewController,
   GraphViewElementEvent,
   GraphViewRenderedNode,
-} from './GraphView';
+} from '../../../../../types/graph-view';
 
 test('explicit fit compacts once and controlled spacing acknowledgement does not rerun the algorithm', async () => {
   const initial = Promise.withResolvers<GraphViewController>();

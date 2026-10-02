@@ -6,7 +6,7 @@ import type {
   GraphViewNodeRenderContext,
   GraphViewRenderedNode,
   GraphViewSize,
-} from './GraphView';
+} from '../../../../../types/graph-view';
 
 interface GraphNodeOverlayProps {
   readonly nodes: readonly GraphViewNode[];

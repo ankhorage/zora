@@ -2,7 +2,7 @@ import type { Core } from 'cytoscape';
 
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { fitGraphViewport } from './fitGraphViewport';
-import type { GraphViewController, GraphViewFitOptions } from './GraphView';
+import type { GraphViewController, GraphViewFitOptions } from '../../../../../types/graph-view';
 
 /*** Own viewport units and limits alongside the public controller, without exposing Cytoscape. */
 export function createGraphController(

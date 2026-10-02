@@ -1,6 +1,6 @@
 import type { Core } from 'cytoscape';
 
-import type { GraphViewRenderedNode } from './GraphView';
+import type { GraphViewRenderedNode } from '../../../../../types/graph-view';
 
 /*** Read React-overlay node state from Cytoscape's authoritative rendered positions. */
 export function readGraphRenderedNodes(

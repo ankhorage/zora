@@ -4,7 +4,7 @@ import type {
   GraphViewCallbacks,
   GraphViewController,
   GraphViewElementEventType,
-} from './GraphView';
+} from '../../../../../types/graph-view';
 
 /*** Bind stable Cytoscape events that always read the latest React callbacks. */
 export function bindGraphEvents(
