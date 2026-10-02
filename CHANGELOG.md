@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.33
+
+### Patch Changes
+
+- cd095b6: Update Renovate-managed workflows.
+- ec85697: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/surface`.
+
 ## 22.0.32
 
 ### Patch Changes
