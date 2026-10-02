@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_BINDABLE_COMPONENT_META, ZORA_COMPONENT_META } from '../authoring';
+import { ZORA_BINDABLE_COMPONENT_META, ZORA_COMPONENT_META } from '../registry';
 import { missingElementMeta } from './missingElementMeta';
 
 describe('MissingElement draft contract', () => {
