@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 const TREE_NOTE = 'Tree view pattern component; not represented as a manifest node in v1.';
 
