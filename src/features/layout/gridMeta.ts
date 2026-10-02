@@ -4,7 +4,7 @@ import {
   CONTAINER_ALLOWED_CHILDREN,
   GAME_ALLOWED_CHILDREN,
   TABLETOP_ALLOWED_CHILDREN,
-} from '../authoring/allowedChildren';
+} from '../../constants/authoring';
 import { LAYOUT_PROPS } from './constants';
 
 export const gridMeta = {
