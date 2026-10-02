@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 
 const instanceAuthoring = { authority: 'instance' } as const;
 
