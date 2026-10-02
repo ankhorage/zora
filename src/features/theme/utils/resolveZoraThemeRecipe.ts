@@ -1,7 +1,10 @@
 import type { ThemeConfig, ThemeRecipeOverrideValue } from '@ankhorage/contracts';
 
-import type { ZoraThemeRecipeFieldMeta, ZoraThemeTokenFamily } from '../../../types/theme-recipe';
-import { ZORA_THEME_RECIPE_META } from '../../authoring/themeRecipeMeta';
+import type {
+  ZoraThemeRecipeFieldMeta,
+  ZoraThemeRecipeMeta,
+  ZoraThemeTokenFamily,
+} from '../../../types/theme-recipe';
 
 interface ZoraThemeRecipeRuntimeTheme {
   readonly config: ThemeConfig;
@@ -16,15 +19,12 @@ interface ZoraThemeRecipeRuntimeTheme {
   };
 }
 
-const recipeMetaByName = new Map(Object.entries(ZORA_THEME_RECIPE_META));
-
+/*** Resolve one feature-owned theme recipe against persisted theme overrides. */
 export function resolveZoraThemeRecipe(
   theme: ZoraThemeRecipeRuntimeTheme,
-  recipeName: string,
+  meta: ZoraThemeRecipeMeta,
 ): Readonly<Record<string, ThemeRecipeOverrideValue>> {
-  const meta = recipeMetaByName.get(recipeName);
-  if (!meta) throw new RangeError(`Unknown ZORA theme recipe: ${recipeName}.`);
-
+  const recipeName = meta.name;
   const recipes =
     meta.kind === 'component' ? theme.config.recipes?.components : theme.config.recipes?.patterns;
   const overrides = new Map(Object.entries(recipes ?? {})).get(recipeName);
@@ -44,6 +44,7 @@ export function resolveZoraThemeRecipe(
   return Object.fromEntries(resolved);
 }
 
+/*** Validate one persisted recipe value against its feature-owned metadata. */
 function validateFieldValue(
   theme: ZoraThemeRecipeRuntimeTheme,
   recipeName: string,
@@ -70,6 +71,7 @@ function validateFieldValue(
   }
 }
 
+/*** Check whether one runtime theme exposes the referenced token. */
 function hasThemeToken(
   theme: ZoraThemeRecipeRuntimeTheme,
   family: ZoraThemeTokenFamily,
@@ -86,6 +88,7 @@ function hasThemeToken(
   );
 }
 
+/*** Check an own property without traversing the prototype chain. */
 function hasOwn(value: object, key: PropertyKey): boolean {
   return Object.prototype.hasOwnProperty.call(value, key);
 }
