@@ -1,5 +1,5 @@
-import type { ViewProps } from './layout';
 import type { ZoraBaseProps } from './base';
+import type { ViewProps } from './layout';
 
 export type SkeletonRadius = ViewProps['radius'];
 export type SkeletonDimension = ViewProps['width'];
