@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.57
+
+### Patch Changes
+
+- f2d7a46: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.56
 
 ### Patch Changes
