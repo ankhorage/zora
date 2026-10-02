@@ -25,13 +25,13 @@ test('auth solutions are direct manifest leaf nodes with authoring schemas', () 
 });
 
 test('auth solution events expose their actionable boundaries', () => {
-  expect(signInFormMeta.events?.submit?.payloadFields).toContainEqual({
+  expect(signInFormMeta.events.submit.payloadFields).toContainEqual({
     path: 'secret',
     type: 'string',
     label: 'Secret',
   });
-  expect(otpFormMeta.events?.resend?.eventType).toBe('otpForm.resend');
-  expect(oauthProviderListMeta.events?.providerPress?.payloadFields).toEqual([
+  expect(otpFormMeta.events.resend.eventType).toBe('otpForm.resend');
+  expect(oauthProviderListMeta.events.providerPress.payloadFields).toEqual([
     { path: 'providerId', type: 'string', label: 'Provider ID' },
   ]);
 });
