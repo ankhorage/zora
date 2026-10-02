@@ -7,7 +7,6 @@ import type {
   GraphViewProps,
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
-
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
 
