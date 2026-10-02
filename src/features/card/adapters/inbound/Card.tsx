@@ -5,6 +5,7 @@ import type { CardProps } from '../../../../types/card';
 import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
+import { cardThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { resolveCardThemeRecipe } from '../../utils/resolveCardThemeRecipe';
@@ -35,7 +36,7 @@ function CardInner({
   interactionPolicy,
   ...props
 }: CardProps) {
-  const themeFields = useZoraThemeRecipe('Card');
+  const themeFields = useZoraThemeRecipe(cardThemeRecipeMeta);
   const recipe = resolveCardThemeRecipe({ tone, compact, padding, radius, themeFields });
   const hasHeader = [eyebrow, title, description, actions].some((item) => item != null);
   const hasFooter = footer !== undefined;
