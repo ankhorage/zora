@@ -1,4 +1,3 @@
-export { GraphView } from './adapters/inbound/web-artifact/GraphView';
 export type {
   GraphViewCallbacks,
   GraphViewController,
@@ -16,3 +15,4 @@ export type {
   GraphViewStyleRule,
   GraphViewViewport,
 } from '../../types/graph-view';
+export { GraphView } from './adapters/inbound/web-artifact/GraphView';

@@ -1,8 +1,8 @@
 import { isRecord } from '@ankhorage/utility/object';
 import type { Core } from 'cytoscape';
 
-import { createRenderableGraphElements } from './createRenderableGraphElements';
 import type { GraphViewEdge, GraphViewNode } from '../../../../../types/graph-view';
+import { createRenderableGraphElements } from './createRenderableGraphElements';
 
 /***
  * Reconciles graph data in one batch while retaining positions, selection and element identity.
