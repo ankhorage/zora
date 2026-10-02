@@ -1,11 +1,3 @@
-import type { ZoraThemeTokenFamily } from '../../types/theme-recipe';
-
-export const COMPONENT_THEME_AUTHORING = {
-  authority: 'theme',
-  scope: 'component',
-  allowInstanceOverride: true,
-} as const;
-
 export const FEATURE_MANIFEST_ELEMENTS = {
   auth: [
     'ForgotPasswordForm',
@@ -46,11 +38,3 @@ export const FEATURE_MANIFEST_ELEMENTS = {
   game: ['Game', 'GameField', 'GameEntity', 'GameInputZone', 'GameMeasurementProbe', 'GameOverlay'],
   tabletop: ['TabletopTable', 'PokerTrainingTable'],
 } as const;
-
-export const ZORA_THEME_TOKEN_FAMILIES = [
-  'colors',
-  'spacing',
-  'radii',
-  'typography',
-  'shadows',
-] as const satisfies readonly ZoraThemeTokenFamily[];

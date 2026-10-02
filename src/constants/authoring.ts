@@ -1,3 +1,11 @@
+import type { ZoraThemeTokenFamily } from '../types/theme-recipe';
+
+export const COMPONENT_THEME_AUTHORING = {
+  authority: 'theme',
+  scope: 'component',
+  allowInstanceOverride: true,
+} as const;
+
 export const CONTAINER_ALLOWED_CHILDREN = [
   'ActivityIndicator',
   'ForgotPasswordForm',
@@ -100,3 +108,11 @@ export const SCREEN_ALLOWED_CHILDREN = [
   'ScreenSection',
   ...SCREEN_SECTION_ALLOWED_CHILDREN,
 ] as const;
+
+export const ZORA_THEME_TOKEN_FAMILIES = [
+  'colors',
+  'spacing',
+  'radii',
+  'typography',
+  'shadows',
+] as const satisfies readonly ZoraThemeTokenFamily[];

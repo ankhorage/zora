@@ -68,13 +68,13 @@ export type {
   ZoraThemeRecipeMetaRegistry,
   ZoraThemeRecipeTokenFieldMeta,
   ZoraThemeTokenFamily,
-} from './features/authoring';
+} from './features/registry';
 export {
   ZORA_BINDABLE_COMPONENT_META,
   ZORA_COMPONENT_META,
   ZORA_THEME_RECIPE_META,
   ZORA_THEME_TOKEN_FAMILIES,
-} from './features/authoring';
+} from './features/registry';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';

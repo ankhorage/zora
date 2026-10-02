@@ -29,5 +29,5 @@ export type {
 export type { ZoraBindableComponentType } from './bindableComponentMeta';
 export { ZORA_BINDABLE_COMPONENT_META } from './bindableComponentMeta';
 export { ZORA_COMPONENT_META } from './componentMeta';
-export { ZORA_THEME_TOKEN_FAMILIES } from './constants';
+export { ZORA_THEME_TOKEN_FAMILIES } from '../../constants/authoring';
 export { ZORA_THEME_RECIPE_META } from './themeRecipeMeta';

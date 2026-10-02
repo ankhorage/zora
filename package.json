@@ -82,11 +82,11 @@
       "default": "./dist/features/uploader/public.js"
     },
     "./metadata": {
-      "react-native": "./src/features/authoring/index.ts",
-      "browser": "./src/features/authoring/index.ts",
-      "types": "./dist/features/authoring/index.d.ts",
-      "import": "./dist/features/authoring/index.js",
-      "default": "./dist/features/authoring/index.js"
+      "react-native": "./src/features/registry/index.ts",
+      "browser": "./src/features/registry/index.ts",
+      "types": "./dist/features/registry/index.d.ts",
+      "import": "./dist/features/registry/index.js",
+      "default": "./dist/features/registry/index.js"
     },
     "./theme": {
       "bun": "./src/features/theme/public.ts",

@@ -36,6 +36,7 @@ describe('src ownership', () => {
     }
 
     for (const path of [
+      'src/features/authoring',
       'src/features/authoring/types.ts',
       'src/features/authoring/themeRecipeTypes.ts',
       'src/features/theme/ZoraBaseProps.ts',

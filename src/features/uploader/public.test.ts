@@ -23,7 +23,7 @@ describe('ZORA Uploader public contract', () => {
     const [rootSource, registrySource, metadataSource] = await Promise.all([
       Bun.file('src/index.ts').text(),
       Bun.file('src/features/registry/ZORA_COMPONENT_REGISTRY.ts').text(),
-      Bun.file('src/features/authoring/componentMeta.ts').text(),
+      Bun.file('src/features/registry/componentMeta.ts').text(),
     ]);
     const publicSurface = `${rootSource}\n${registrySource}\n${metadataSource}`;
 
