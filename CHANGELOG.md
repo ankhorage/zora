@@ -1,5 +1,12 @@
 # Changelog
 
+## 22.0.60
+
+### Patch Changes
+
+- 2c6dc01: Update Renovate-managed workflows.
+- b18c81f: Update dependencies: `@ankhorage/contracts`.
+
 ## 22.0.59
 
 ### Patch Changes
