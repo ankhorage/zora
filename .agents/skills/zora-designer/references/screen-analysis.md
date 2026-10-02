@@ -17,8 +17,7 @@ bun .agents/skills/zora-designer/scripts/analyze-screen.ts screen-analysis-input
 ```
 
 The analyzer uses the current canonical core ZORA metadata from released `@ankhorage/zora` and
-delegates image processing to released `@ankhorage/utility/image`. It does not discover or compose
-standalone ZORA plugin packages:
+delegates image processing to released `@ankhorage/utility/image`:
 
 ```text
 supplied image

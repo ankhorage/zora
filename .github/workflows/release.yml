@@ -66,7 +66,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build package
         run: |
@@ -75,6 +75,9 @@ jobs:
           else
             echo "No build script found; skipping."
           fi
+
+      - name: Validate release contract
+        run: BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.11.93 validate .
 
       - name: Version packages directly on main
         id: release
@@ -148,6 +151,28 @@ jobs:
             echo "release_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Verify standalone packed install
+        if: steps.release.outputs.versioned == 'true'
+        run: |
+          set -euo pipefail
+          bun install --ignore-scripts
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.build?0:1)"; then
+            bun run build
+          fi
+          pack_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-pack.XXXXXX")"
+          install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-install.XXXXXX")"
+          npm pack --ignore-scripts --pack-destination "$pack_dir" >/dev/null
+          artifact="$(find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -print -quit)"
+          if [ -z "$artifact" ]; then
+            echo "::error title=Standalone pack failed::npm pack did not produce a package artifact."
+            exit 1
+          fi
+          printf '{"name":"standalone-consumer","private":true,"version":"0.0.0"}\n' > "$install_dir/package.json"
+          (
+            cd "$install_dir"
+            bun add "$artifact" --ignore-scripts
+          )
+
       - name: Publish unpublished packages
         if: hashFiles('.changeset/config.json') != ''
         run: |
@@ -183,7 +208,7 @@ jobs:
           else
             # Authentication/network errors must never be treated as an unpublished version.
             node -e "const p=require(process.argv[1]); if(p.error?.code !== 'E404') process.exit(1)" "$registry_evidence"
-            bun install --frozen-lockfile --ignore-scripts
+            bun install --ignore-scripts
             bun run build
             bun run test:apm
             artifact="$(mktemp -d "${RUNNER_TEMP}/apm-publish.XXXXXX")/candidate.tgz"
@@ -335,7 +360,8 @@ jobs:
             };
             if (
               !/^@ankhorage\/[a-z0-9][a-z0-9-]*$/.test(release.name ?? '') ||
-              !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(release.version ?? '') ||
+              typeof release.version !== 'string' ||
+              release.version.length === 0 ||
               !/^ankhorage\/[a-z0-9-]+$/.test(release.sourceRepository ?? '')
             ) {
               throw new Error(

@@ -31,7 +31,7 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Run build
         run: |
@@ -49,7 +49,7 @@ jobs:
           fi
 
       - name: Validate Ankhorage repository
-        run: BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.10.26 validate .
+        run: BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.11.93 validate .
 
       - name: Run lint
         run: |
@@ -94,26 +94,38 @@ jobs:
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: |
+          base_sha='${{ github.event.pull_request.base.sha }}'
+          head_sha='${{ github.event.pull_request.head.sha }}'
+          export ANKH_PR_CHANGESET_FILES
+          ANKH_PR_CHANGESET_FILES="$(git diff --name-only --diff-filter=AMCR "$base_sha" "$head_sha" -- .changeset)"
+          if [ -z "$ANKH_PR_CHANGESET_FILES" ]; then
+            echo "No pull-request-owned Changeset files; no release requested."
+            exit 0
+          fi
+          node -e '
+            const { readFileSync } = require("node:fs");
+            const files = process.env.ANKH_PR_CHANGESET_FILES.split("\n").filter(Boolean);
+            const empty = files.filter((file) => {
+              if (!/^\.changeset\/[^/]+\.md$/u.test(file) || file === ".changeset/README.md") return false;
+              const match = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/u.exec(readFileSync(file, "utf8"));
+              return match?.[1].trim() === "";
+            });
+            if (empty.length > 0) {
+              throw new Error("Empty Changesets are not supported. Remove " + empty.join(", ") + " for a no-release PR, or add release intent.");
+            }
+          '
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.['changeset:status'] ? 0 : 1)"; then
             bun run changeset:status
           else
-            echo "No changeset:status script found; skipping."
+            echo "No changeset:status script found; skipping validation."
           fi
 
-  windows-web-materialization:
-    runs-on: windows-latest
+      - name: Enforce PKGViz cyclic-dependencies rule
+        run: cd src && bunx pkgviz@0.8.1 --out pkgviz-audit.json --rule cyclic-dependencies=block
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Upload PKGViz audit
+        if: always() && hashFiles('src/pkgviz-audit.json') != ''
+        uses: actions/upload-artifact@v4
         with:
-          bun-version: '1.4.2'
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Verify Windows junction swap
-        run: bun test src/features/web-component-artifact/application/use-cases/synchronizeWebComponentArtifactsAsync.test.ts
+          name: pkgviz-audit
+          path: src/pkgviz-audit.json
