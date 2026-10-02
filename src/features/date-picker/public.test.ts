@@ -14,9 +14,8 @@ test('DatePicker keeps one manifest contract across native and web presentation 
   ).text();
 
   expect(datePickerMeta.directManifestNode).toBe(true);
-  expect(datePickerMeta.props.value?.type).toBe('string');
-  expect(datePickerMeta.events?.valueChange?.eventType).toBe('datePicker.valueChange');
-  expect(datePickerMeta.bindings?.props?.value?.value.type).toBe('string');
+  expect(datePickerMeta.props.value.type).toBe('string');
+  expect(datePickerMeta.events.valueChange.eventType).toBe('datePicker.valueChange');
   expect(nativeSource).toContain('useBottomSheet()');
   expect(webSource).toContain('<Popover');
   expect(webSource).not.toContain('useBottomSheet');
