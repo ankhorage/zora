@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ButtonProps } from '../features/button/public';
+import type { ButtonProps } from './button';
 import type { ZoraBaseProps } from './base';
 
 export type CameraPermissionStatus = 'unknown' | 'requesting' | 'granted' | 'denied';
