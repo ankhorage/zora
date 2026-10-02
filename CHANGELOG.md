@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.41
+
+### Patch Changes
+
+- c425c3c: Update dependencies: `@ankhorage/contracts`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.40
 
 ### Patch Changes
