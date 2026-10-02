@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.70
+
+### Patch Changes
+
+- 532e0a8: Update dependencies: `@ankhorage/devtools`.
+
 ## 22.0.69
 
 ### Patch Changes
