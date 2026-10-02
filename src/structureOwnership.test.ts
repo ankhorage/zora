@@ -3,19 +3,18 @@ import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'bun:test';
 
 describe('src ownership', () => {
-  test('keeps the required CLI, feature, and type owner directories at the package source root', () => {
+  test('keeps the required package-wide and feature owner directories at the package source root', () => {
     const directories = readdirSync('src', { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
       .sort();
 
-    expect(directories).toEqual(['cli', 'features', 'types']);
+    expect(directories).toEqual(['cli', 'constants', 'features', 'types']);
   });
 
   test('does not reintroduce technical ownership roots', () => {
     for (const path of [
       'src/constants.ts',
-      'src/constants',
       'src/context',
       'src/internal',
       'src/metadata',
