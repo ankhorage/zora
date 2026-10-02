@@ -4,8 +4,8 @@ import React from 'react';
 import type { ButtonProps } from '../../../../types/button';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
-import { buttonThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 import { resolveButtonThemeRecipe } from '../../utils/resolveButtonThemeRecipe';
+import { buttonThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 /***
  * Theme-aware action control for primary, secondary, destructive, and neutral actions.
  *
