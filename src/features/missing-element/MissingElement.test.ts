@@ -6,7 +6,6 @@ import { missingElementMeta } from './missingElementMeta';
 
 describe('MissingElement draft contract', () => {
   test('is a release-blocking manifest leaf distinct from completed states', () => {
-    
     expect(missingElementMeta.directManifestNode).toBe(true);
     expect(missingElementMeta.allowedChildren).toEqual([]);
     expect(missingElementMeta.manifestPolicy).toEqual({
