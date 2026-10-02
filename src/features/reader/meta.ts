@@ -1,5 +1,5 @@
 import type { ZoraComponentMeta } from '../authoring';
-import { CONTAINER_ALLOWED_CHILDREN } from '../authoring/allowedChildren';
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 
 const EMPTY_EVENT_FIELDS = [] as const;
 
