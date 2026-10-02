@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../authoring';
+import type { ZoraComponentMeta } from '../../types/authoring';
 export const formActionsMeta = {
   name: 'FormActions',
   category: 'component',
