@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.27
+
+### Patch Changes
+
+- b300b0f: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.26
 
 ### Patch Changes
