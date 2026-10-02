@@ -16,7 +16,7 @@ test('skeletons support direct authoring and automatic feature loading states', 
   expect(publicSource).toContain('SkeletonCard');
   expect(publicSource).toContain('SkeletonList');
   expect(publicSource).toContain('SkeletonText');
-  expect(skeletonListMeta.bindings?.props?.rows?.value.type).toBe('number');
+  expect(skeletonListMeta.props.rows.type).toBe('number');
 
   expect(dataTableSource).toContain("from '../../../skeleton/public'");
   expect(dataTableSource).toContain('if (loading)');
