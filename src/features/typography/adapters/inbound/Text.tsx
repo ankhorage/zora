@@ -6,9 +6,9 @@ import type { TextProps } from '../../../../types/text';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
-import { textThemeRecipeMeta } from '../../utils/textThemeRecipeMeta';
 import { resolveTextStyle } from '../../utils/resolveTextStyle';
 import { resolveTextThemeRecipe } from '../../utils/resolveTextThemeRecipe';
+import { textThemeRecipeMeta } from '../../utils/textThemeRecipeMeta';
 /***
  * Structured copy primitive for theme-aware app text.
  *
