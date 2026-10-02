@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ViewProps } from '../features/layout/public';
+import type { ViewProps } from './layout';
 import type { ZoraBaseProps } from './base';
 
 export type ButtonGroupAlign = 'start' | 'center' | 'end' | 'stretch' | 'between';
