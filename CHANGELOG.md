@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.51
+
+### Patch Changes
+
+- 451536b: Update dependencies: `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 22.0.50
 
 ### Patch Changes
