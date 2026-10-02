@@ -1,5 +1,5 @@
-import type { ZoraComponentMeta } from '../authoring';
-import { COMPONENT_THEME_AUTHORING } from '../authoring/constants';
+import type { ZoraComponentMeta } from '../../types/authoring';
+import { COMPONENT_THEME_AUTHORING } from '../../constants/authoring';
 import { ZORA_COLORS, ZORA_EMPHASES } from '../theme/colorModel';
 
 export const textMeta = {
