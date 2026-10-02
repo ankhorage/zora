@@ -18,8 +18,8 @@ navigator types, ZORA elements, or events. Resolve explicit user input before pr
 existing brief values, category recommendations, and global defaults. Record the origin of every
 resolved decision.
 
-Use the component catalog reported directly by released core `@ankhorage/zora`. Do not discover,
-compose, or maintain a second catalog from standalone `@ankhorage/zora-*` packages.
+Use the component catalog reported directly by released core `@ankhorage/zora` as the single
+component-authoring authority.
 
 ## 2. Ask in dependency order
 

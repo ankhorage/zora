@@ -47,8 +47,7 @@ schemas, token inventories, color algorithms, action types, or manifest implemen
 skill.
 
 The inspection reads the canonical component and authoring metadata directly from released
-`@ankhorage/zora`. Chess, Game, and Tabletop are core ZORA capabilities; do not discover or load
-standalone `@ankhorage/zora-*` packages.
+`@ankhorage/zora`, which owns Chess, Game, and Tabletop as core capabilities.
 
 For supplied-screen reconstruction, continue through `recognize` and treat the local analyzer's
 `ScreenSpec`, visual graph, confidence, alternatives, and unresolved diagnostics as the structural
