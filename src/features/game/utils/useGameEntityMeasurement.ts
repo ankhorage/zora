@@ -1,8 +1,8 @@
 import React from 'react';
 import type { View } from 'react-native';
 
-import { measureGameEntity } from './measureGameEntity';
 import { GameRuntimeContext } from '../composition/GameRuntimeContext';
+import { measureGameEntity } from './measureGameEntity';
 
 /*** Register one optional measurable GameEntity view inside its local Game scope. */
 export function useGameEntityMeasurement(
