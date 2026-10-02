@@ -5,11 +5,11 @@ import type { CardProps } from '../../../../types/card';
 import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraThemeRecipe } from '../../../theme/composition/useZoraThemeRecipe';
-import { cardThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 import { Heading } from '../../../typography/public';
 import { Text } from '../../../typography/public';
 import { resolveCardThemeRecipe } from '../../utils/resolveCardThemeRecipe';
 import { resolveCardVariant } from '../../utils/resolveCardVariant';
+import { cardThemeRecipeMeta } from '../../utils/themeRecipeMeta';
 /***
  * Structured content container with built-in heading, description, actions, and footer slots.
  *
