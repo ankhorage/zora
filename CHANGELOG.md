@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.48
+
+### Patch Changes
+
+- cf1f31d: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/surface`.
+
 ## 22.0.47
 
 ### Patch Changes
