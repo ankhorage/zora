@@ -1,4 +1,4 @@
-import type { ZoraComponentMeta } from '../../authoring';
+import type { ZoraComponentMeta } from '../../../types/authoring';
 
 export const fieldMeta = {
   name: 'Field',
