@@ -48,8 +48,8 @@ function AuthScreenInner({
   return (
     <KeyboardAvoidingView
       behavior={Platform.select({ android: 'height', ios: 'padding' })}
-      flex={1}
       interactionPolicy={interactionPolicy}
+      style={{ flex: 1 }}
     >
       <ScrollView
         bg="background"
@@ -67,14 +67,12 @@ function AuthScreenInner({
           py="xl"
         >
           <Surface
-            borderColor="border"
-            borderWidth={1}
             gap="m"
             maxWidth={560}
             p={{ base: 'l', md: 'xl' }}
             radius="l"
             testID={testID}
-            variant="default"
+            variant="outline"
             width="100%"
           >
             <View gap="xs" interactionPolicy={interactionPolicy}>
