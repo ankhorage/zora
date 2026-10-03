@@ -4900,7 +4900,7 @@ Adds selection behavior to arbitrary child content via render props.
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:40:1`
+Source: `src/types/selection.ts:43:1`
 
 ### Members
 
@@ -4916,12 +4916,13 @@ Source: `src/types/selection.ts:40:1`
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:30:1`
+Source: `src/types/selection.ts:32:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| activate | property | `(intent: SelectionIntent) => void` | yes |  |
 | clear | property | `() => void` | yes |  |
 | disabled | property | `boolean` | yes |  |
 | id | property | `string` | yes |  |
@@ -4930,17 +4931,23 @@ Source: `src/types/selection.ts:30:1`
 | selected | property | `boolean` | yes |  |
 | toggle | property | `() => void` | yes |  |
 
+## SelectionIntent
+
+Kind: `unknown`
+Module: `node_modules/@ankhorage/utility/dist/selection/types.d.ts`
+Source: `node_modules/@ankhorage/utility/dist/selection/types.d.ts:1:1`
+
 ## SelectionMode
 
 Kind: `unknown`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:4:1`
+Source: `src/types/selection.ts:5:1`
 
 ## SelectionProvider
 
 Kind: `function`
 Module: `src/features/selection/adapters/inbound/SelectionProvider.tsx`
-Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:48:1`
+Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:36:1`
 
 Provides selection state for building selectable lists and grids.
 
@@ -4970,7 +4977,7 @@ Provides selection state for building selectable lists and grids.
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:8:1`
+Source: `src/types/selection.ts:9:1`
 
 ### Members
 
@@ -4988,7 +4995,7 @@ Source: `src/types/selection.ts:8:1`
 
 Kind: `unknown`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:6:1`
+Source: `src/types/selection.ts:7:1`
 
 ## SelectOption
 
@@ -6069,7 +6076,7 @@ Source: `src/types/toolbar.ts:5:1`
 
 Kind: `value`
 Module: `src/features/tree-view/adapters/inbound/TreeItem.tsx`
-Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:124:14`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:140:14`
 
 Single tree node row used within `TreeView`.
 
@@ -6077,7 +6084,7 @@ Single tree node row used within `TreeView`.
 
 Kind: `type`
 Module: `src/types/tree-view.ts`
-Source: `src/types/tree-view.ts:6:1`
+Source: `src/types/tree-view.ts:7:1`
 
 ### Members
 
@@ -6095,7 +6102,7 @@ Source: `src/types/tree-view.ts:6:1`
 
 Kind: `type`
 Module: `src/types/tree-view.ts`
-Source: `src/types/tree-view.ts:16:1`
+Source: `src/types/tree-view.ts:17:1`
 
 ### Members
 
@@ -6111,7 +6118,7 @@ Source: `src/types/tree-view.ts:16:1`
 
 Kind: `value`
 Module: `src/features/tree-view/adapters/inbound/TreeView.tsx`
-Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:66:14`
+Source: `src/features/tree-view/adapters/inbound/TreeView.tsx:64:14`
 
 Tree view pattern for hierarchical navigation and expandable lists.
 expansionIndicator Select `folder` (default) or `chevron` for leading expansion controls.
@@ -6121,7 +6128,7 @@ Expansion controls are separate from row selection, including when rendering cus
 
 Kind: `type`
 Module: `src/types/tree-view.ts`
-Source: `src/types/tree-view.ts:24:1`
+Source: `src/types/tree-view.ts:25:1`
 
 ### Members
 
@@ -6134,9 +6141,9 @@ Source: `src/types/tree-view.ts:24:1`
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nodes | property | `readonly TreeItemNode<TId>[]` | yes |  |
 | onExpandedChange | property | `((ids: readonly TId[]) => void) \| undefined` | no |  |
-| onSelect | property | `((id: TId) => void) \| undefined` | no |  |
+| onSelect | property | `((id: TId, intent: SelectionIntent) => void) \| undefined` | no |  |
 | renderItem | property | `((props: TreeItemRenderProps<TId>) => ReactNode) \| undefined` | no |  |
-| selectedId | property | `TId \| undefined` | no |  |
+| selectedIds | property | `readonly TId[] \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 
@@ -6310,7 +6317,7 @@ Source: `src/types/form.ts:82:1`
 
 Kind: `function`
 Module: `src/features/selection/adapters/inbound/SelectionProvider.tsx`
-Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:36:1`
+Source: `src/features/selection/adapters/inbound/SelectionProvider.tsx:29:1`
 
 Accesses selection state provided by `SelectionProvider`.
 
@@ -6323,12 +6330,13 @@ Accesses selection state provided by `SelectionProvider`.
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:18:1`
+Source: `src/types/selection.ts:19:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| activate | property | `(id: string, intent: SelectionIntent) => void` | yes |  |
 | clear | property | `() => void` | yes |  |
 | disabled | property | `boolean` | yes |  |
 | hasSelection | property | `boolean` | yes |  |

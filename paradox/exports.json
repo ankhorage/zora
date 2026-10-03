@@ -20885,7 +20885,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 40,
+      "line": 43,
       "column": 1
     },
     "exportPaths": [
@@ -20946,17 +20946,25 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 30,
+      "line": 32,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
+      "SelectionIntent",
       "SelectionMode"
     ],
     "signatures": [],
     "members": [
+      {
+        "name": "activate",
+        "kind": "property",
+        "type": "(intent: SelectionIntent) => void",
+        "required": true,
+        "description": null
+      },
       {
         "name": "clear",
         "kind": "property",
@@ -21010,6 +21018,28 @@
     "structuredRows": []
   },
   {
+    "name": "SelectionIntent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "node_modules/@ankhorage/utility/dist/selection/types.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/@ankhorage/utility/dist/selection/types.d.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "SelectionMode",
     "title": null,
     "description": null,
@@ -21020,7 +21050,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 4,
+      "line": 5,
       "column": 1
     },
     "exportPaths": [
@@ -21042,7 +21072,7 @@
     "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
       "filePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
-      "line": 48,
+      "line": 36,
       "column": 1
     },
     "exportPaths": [
@@ -21080,7 +21110,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": [
@@ -21154,7 +21184,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 6,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -25953,7 +25983,7 @@
     "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-      "line": 124,
+      "line": 140,
       "column": 14
     },
     "exportPaths": [
@@ -25975,7 +26005,7 @@
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
       "filePath": "src/types/tree-view.ts",
-      "line": 6,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -26047,7 +26077,7 @@
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
       "filePath": "src/types/tree-view.ts",
-      "line": 16,
+      "line": 17,
       "column": 1
     },
     "exportPaths": [
@@ -26107,7 +26137,7 @@
     "modulePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
     "sourceLocation": {
       "filePath": "src/features/tree-view/adapters/inbound/TreeView.tsx",
-      "line": 66,
+      "line": 64,
       "column": 14
     },
     "exportPaths": [
@@ -26129,13 +26159,14 @@
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
       "filePath": "src/types/tree-view.ts",
-      "line": 24,
+      "line": 25,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
+      "SelectionIntent",
       "TreeItemNode",
       "TreeItemRenderProps",
       "ZoraThemeMode"
@@ -26194,7 +26225,7 @@
       {
         "name": "onSelect",
         "kind": "property",
-        "type": "((id: TId) => void) | undefined",
+        "type": "((id: TId, intent: SelectionIntent) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -26206,9 +26237,9 @@
         "description": null
       },
       {
-        "name": "selectedId",
+        "name": "selectedIds",
         "kind": "property",
-        "type": "TId | undefined",
+        "type": "readonly TId[] | undefined",
         "required": false,
         "description": null
       },
@@ -26852,7 +26883,7 @@
     "modulePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
     "sourceLocation": {
       "filePath": "src/features/selection/adapters/inbound/SelectionProvider.tsx",
-      "line": 36,
+      "line": 29,
       "column": 1
     },
     "exportPaths": [
@@ -26883,17 +26914,25 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 18,
+      "line": 19,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
+      "SelectionIntent",
       "SelectionMode"
     ],
     "signatures": [],
     "members": [
+      {
+        "name": "activate",
+        "kind": "property",
+        "type": "(id: string, intent: SelectionIntent) => void",
+        "required": true,
+        "description": null
+      },
       {
         "name": "clear",
         "kind": "property",

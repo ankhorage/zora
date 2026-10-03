@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.0.0
+
+### Major Changes
+
+- 2f16225: Unify cross-platform multi-selection intent across Selection, TreeView, and GraphView.
+
 ## 22.1.4
 
 ### Patch Changes

@@ -320,6 +320,7 @@ graph LR
   module_src_features_section_sectionHeaderMeta_ts["src/features/section/sectionHeaderMeta.ts"]
   module_src_features_selection_adapters_inbound_SelectableItem_tsx["src/features/selection/adapters/inbound/SelectableItem.tsx"]
   module_src_features_selection_adapters_inbound_SelectionProvider_tsx["src/features/selection/adapters/inbound/SelectionProvider.tsx"]
+  module_src_features_selection_application_resolveSelectionEventIntent_ts["src/features/selection/application/resolveSelectionEventIntent.ts"]
   module_src_features_selection_meta_ts["src/features/selection/meta.ts"]
   module_src_features_selection_public_ts["src/features/selection/public.ts"]
   module_src_features_selection_utils_resolveSelectionNextIds_ts["src/features/selection/utils/resolveSelectionNextIds.ts"]
@@ -1355,7 +1356,10 @@ graph LR
   export_SelectableItemProps -.-> export_SelectionTrigger
   export_SelectableItemState["SelectableItemState"]
   module_src_types_selection_ts --> export_SelectableItemState
+  export_SelectableItemState -.-> export_SelectionIntent
   export_SelectableItemState -.-> export_SelectionMode
+  export_SelectionIntent["SelectionIntent"]
+  module_node_modules__ankhorage_utility_dist_selection_types_d_ts --> export_SelectionIntent
   export_SelectionMode["SelectionMode"]
   module_src_types_selection_ts --> export_SelectionMode
   export_SelectionProvider["SelectionProvider"]
@@ -1568,6 +1572,7 @@ graph LR
   module_src_features_tree_view_adapters_inbound_TreeView_tsx --> export_TreeView
   export_TreeViewProps["TreeViewProps"]
   module_src_types_tree_view_ts --> export_TreeViewProps
+  export_TreeViewProps -.-> export_SelectionIntent
   export_TreeViewProps -.-> export_TreeItemNode
   export_TreeViewProps -.-> export_TreeItemRenderProps
   export_TreeViewProps -.-> export_ZoraThemeMode
@@ -1608,6 +1613,7 @@ graph LR
   export_useSelection -.-> export_UseSelectionResult
   export_UseSelectionResult["UseSelectionResult"]
   module_src_types_selection_ts --> export_UseSelectionResult
+  export_UseSelectionResult -.-> export_SelectionIntent
   export_UseSelectionResult -.-> export_SelectionMode
   export_useToast["useToast"]
   module_node_modules__ankhorage_surface_dist_features_toast_adapters_inbound_useToast_d_ts --> export_useToast
