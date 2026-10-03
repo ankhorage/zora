@@ -114,6 +114,51 @@ test(
   },
 );
 
+test('keeps mixed-width Atlas-like compound geometry readable while using available viewport', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'group' } },
+      { data: { id: 'theme', parent: 'group' }, position: { x: 0, y: 0 } },
+      { data: { id: 'workspace', parent: 'group' }, position: { x: 360, y: 0 } },
+      { data: { id: 'project-tree' }, position: { x: 760, y: 0 } },
+      { data: { id: 'project-source' }, position: { x: 1180, y: 0 } },
+    ],
+    1600,
+    700,
+  );
+  const widths = new Map([
+    ['theme', 180],
+    ['workspace', 220],
+    ['project-tree', 260],
+    ['project-source', 300],
+  ]);
+  for (const [id, width] of widths) {
+    cy.getElementById(id).style({ width, height: 64 });
+    installMeasuredLabelBox(cy.getElementById(id), width - 32, 24);
+  }
+
+  try {
+    const spacing = compactGraphSpacing(cy, 1, { fitPadding: 50, maxFitZoom: 1.4 });
+    expect(spacing).toBeLessThan(1);
+    expect(spacing).toBeGreaterThan(0.6);
+
+    const leaves = ['theme', 'workspace', 'project-tree', 'project-source'].map((id) =>
+      cy.getElementById(id).boundingBox({ includeLabels: false }),
+    );
+    for (const [index, first] of leaves.entries()) {
+      for (const second of leaves.slice(index + 1)) {
+        const overlapWidth = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
+        const overlapHeight = Math.min(first.y2, second.y2) - Math.max(first.y1, second.y1);
+        expect(overlapWidth > 0 && overlapHeight > 0).toBe(false);
+      }
+    }
+    expect(cy.getElementById('theme').data('parent')).toBe('group');
+    expect(cy.getElementById('workspace').data('parent')).toBe('group');
+  } finally {
+    cy.destroy();
+  }
+});
+
 test('preserves compound containment while keeping peer groups separated', () => {
   const cy = createGraph(
     [
