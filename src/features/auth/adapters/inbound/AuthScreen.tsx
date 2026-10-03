@@ -95,12 +95,7 @@ function AuthScreenInner({
                   providers={oauthProviders}
                   testID={testID ? `${testID}-oauth` : undefined}
                 />
-                <View
-                  align="center"
-                  direction="row"
-                  gap="s"
-                  interactionPolicy={interactionPolicy}
-                >
+                <View align="center" direction="row" gap="s" interactionPolicy={interactionPolicy}>
                   <View flex={1} interactionPolicy={interactionPolicy}>
                     <Divider interactionPolicy={interactionPolicy} />
                   </View>
