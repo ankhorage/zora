@@ -8,6 +8,7 @@ export interface TreeItemNode<TId extends string = string> {
   id: TId;
   label: ReactNode;
   icon?: ButtonIconSpec;
+  expandedIcon?: ButtonIconSpec;
   children?: readonly TreeItemNode<TId>[];
   disabled?: boolean;
   meta?: ReactNode;
