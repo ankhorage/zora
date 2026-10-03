@@ -97,10 +97,7 @@ export function createGraphController(
 }
 
 /*** Measure rendered node geometry for public consumers while keeping Cytoscape private. */
-function measureRenderedNodes(
-  cy: Core,
-  nodeIds: readonly string[],
-): GraphViewMeasurement | null {
+function measureRenderedNodes(cy: Core, nodeIds: readonly string[]): GraphViewMeasurement | null {
   const viewport = { width: cy.width(), height: cy.height() };
   if (viewport.width <= 0 || viewport.height <= 0 || nodeIds.length === 0) return null;
 

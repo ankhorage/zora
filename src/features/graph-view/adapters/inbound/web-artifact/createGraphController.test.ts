@@ -106,7 +106,6 @@ test('caps automatic label size for tiny graphs and expands manual zoom for larg
   }
 });
 
-
 test('measures requested rendered nodes without exposing Cytoscape', () => {
   const cy = cytoscape({
     headless: true,
