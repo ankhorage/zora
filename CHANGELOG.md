@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.1.1
+
+### Patch Changes
+
+- 903db75: Update dependencies: `@ankhorage/utility`.
+
 ## 22.1.0
 
 ### Minor Changes
