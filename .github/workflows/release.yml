@@ -99,7 +99,19 @@ jobs:
             done
 
             if [ -n "$release_sha" ]; then
-              echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
+              release_tag="v$current_version"
+              tagged_sha="$(git rev-parse -q --verify "refs/tags/${release_tag}^{commit}" 2>/dev/null || true)"
+              if [ -n "$tagged_sha" ] && [ "$tagged_sha" != "$release_sha" ]; then
+                echo "::error title=Release tag mismatch::${release_tag} points to ${tagged_sha}, expected ${release_sha}."
+                exit 1
+              fi
+
+              if [ -n "$tagged_sha" ]; then
+                echo "Release tag ${release_tag} already points to ${release_sha}; resuming idempotent finalization."
+              else
+                echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
+              fi
+              git checkout --detach "$release_sha"
               echo "versioned=true" >> "$GITHUB_OUTPUT"
               echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
               echo "package_version=$current_version" >> "$GITHUB_OUTPUT"
@@ -168,9 +180,131 @@ jobs:
             exit 1
           fi
           printf '{"name":"standalone-consumer","private":true,"version":"0.0.0"}\n' > "$install_dir/package.json"
+          package_name="$(node -p "require('./package.json').name")"
           (
             cd "$install_dir"
             bun add "$artifact" --ignore-scripts
+
+            PACKAGE_NAME="$package_name" node - <<'NODE' > runtime-entrypoints.txt
+          const { readFileSync } = require('node:fs');
+          const { join } = require('node:path');
+          const name = process.env.PACKAGE_NAME;
+          const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
+          const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
+          const importConditions = new Set(['bun', 'default', 'import', 'node']);
+          const requireConditions = new Set(['default', 'node', 'require']);
+          const supportsLoader = (target, conditions) => {
+            if (typeof target === 'string') return true;
+            if (Array.isArray(target)) return target.some((value) => supportsLoader(value, conditions));
+            if (!target || typeof target !== 'object') return false;
+            return Object.entries(target).some(
+              ([condition, value]) =>
+                conditions.has(condition) && supportsLoader(value, conditions),
+            );
+          };
+          const selectLoader = (target) => {
+            if (supportsLoader(target, importConditions)) return 'import';
+            if (supportsLoader(target, requireConditions)) return 'require';
+            return undefined;
+          };
+          const records = [];
+          const addEntrypoint = (specifier, target) => {
+            const loader = selectLoader(target);
+            if (loader !== undefined) records.push(`${loader}|${specifier}`);
+          };
+          const exportsMap = pkg.exports;
+          if (exportsMap === undefined) {
+            if (typeof pkg.main === 'string' || typeof pkg.module === 'string') {
+              records.push(`import|${name}`);
+            }
+          } else if (
+            typeof exportsMap === 'string' ||
+            Array.isArray(exportsMap) ||
+            (exportsMap &&
+              typeof exportsMap === 'object' &&
+              !Object.keys(exportsMap).some((key) => key.startsWith('.')))
+          ) {
+            addEntrypoint(name, exportsMap);
+          } else if (exportsMap && typeof exportsMap === 'object') {
+            for (const [key, target] of Object.entries(exportsMap)) {
+              if (!key.startsWith('.') || key === './package.json' || key.includes('*')) continue;
+              addEntrypoint(key === '.' ? name : `${name}/${key.slice(2)}`, target);
+            }
+          }
+          const output = records.sort();
+          process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
+          NODE
+
+            while IFS='|' read -r loader specifier; do
+              if [ -z "$specifier" ]; then
+                continue
+              fi
+              case "$loader" in
+                import)
+                  PACKAGE_SPECIFIER="$specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)'
+                  ;;
+                require)
+                  PACKAGE_SPECIFIER="$specifier" node -e 'require(process.env.PACKAGE_SPECIFIER)'
+                  ;;
+                *)
+                  echo "::error title=Unsupported packed entrypoint loader::Unexpected loader '$loader' for $specifier."
+                  exit 1
+                  ;;
+              esac
+            done < runtime-entrypoints.txt
+
+            PACKAGE_NAME="$package_name" node - <<'NODE' > binary-paths.txt
+          const { readFileSync } = require('node:fs');
+          const { join, resolve } = require('node:path');
+          const name = process.env.PACKAGE_NAME;
+          const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
+          const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
+          const binaries =
+            typeof pkg.bin === 'string'
+              ? [pkg.bin]
+              : pkg.bin && typeof pkg.bin === 'object'
+                ? Object.values(pkg.bin)
+                : [];
+          const paths = binaries
+            .filter((value) => typeof value === 'string')
+            .map((value) => resolve(packageDir, value))
+            .sort();
+          process.stdout.write(paths.length === 0 ? '' : `${paths.join('\n')}\n`);
+          NODE
+
+            while IFS= read -r binary_path; do
+              if [ -z "$binary_path" ]; then
+                continue
+              fi
+
+              binary_build_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-bin-build.XXXXXX")"
+              bun build "$binary_path" --target=bun --outdir "$binary_build_dir" >/dev/null
+
+              binary_log="$(mktemp "${RUNNER_TEMP}/standalone-bin-smoke.XXXXXX")"
+              set +e
+              timeout 5s bun "$binary_path" </dev/null >"$binary_log" 2>&1
+              binary_status=$?
+              set -e
+
+              if [ "$binary_status" -eq 124 ]; then
+                echo "Declared binary $binary_path started successfully and remained active until the smoke timeout."
+                continue
+              fi
+
+              if grep -Eiq 'Cannot find (package|module)|ERR_MODULE_NOT_FOUND|MODULE_NOT_FOUND|Could not resolve' "$binary_log"; then
+                cat "$binary_log"
+                echo "::error title=Packed binary runtime dependency missing::$binary_path could not resolve a runtime dependency."
+                exit 1
+              fi
+
+              if [ "$binary_status" -eq 126 ] || [ "$binary_status" -eq 127 ]; then
+                cat "$binary_log"
+                echo "::error title=Packed binary failed to start::$binary_path exited with status $binary_status."
+                exit 1
+              fi
+
+              echo "Declared binary $binary_path started without a missing-runtime-dependency failure (exit $binary_status)."
+            done < binary-paths.txt
           )
 
       - name: Publish unpublished packages
