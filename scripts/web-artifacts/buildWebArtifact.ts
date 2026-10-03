@@ -371,9 +371,7 @@ function assertStandaloneDeclaration(
     ...source.matchAll(/(?:from\s+|import\s*\()(['"])(\.{1,2}\/[^'"]+)\1/gu),
   ]
     .map((match) => match[2])
-    .filter(
-      (specifier): specifier is string => specifier !== undefined && !allowed.has(specifier),
-    );
+    .filter((specifier): specifier is string => specifier !== undefined && !allowed.has(specifier));
   if (localSpecifiers.length > 0) {
     throw new Error(
       `ZORA web declaration retained local dependencies in ${path}: ${localSpecifiers.join(', ')}`,
