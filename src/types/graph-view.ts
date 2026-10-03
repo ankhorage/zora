@@ -50,6 +50,17 @@ export interface GraphViewRenderedNode {
   readonly zoom: number;
 }
 
+export interface GraphViewNodeMeasurement {
+  readonly id: string;
+  readonly position: GraphViewPoint;
+  readonly size: GraphViewSize;
+}
+
+export interface GraphViewMeasurement {
+  readonly nodes: readonly GraphViewNodeMeasurement[];
+  readonly viewport: GraphViewSize;
+}
+
 export interface GraphViewViewport {
   readonly zoom: number;
   readonly pan: GraphViewPoint;
@@ -69,6 +80,8 @@ export interface GraphViewElementEvent {
 
 export interface GraphViewController {
   fit(options?: GraphViewFitOptions): void;
+  /** Measure rendered node geometry without exposing the backing graph engine. */
+  measureNodes?(nodeIds: readonly string[]): GraphViewMeasurement | null;
   getViewport(): GraphViewViewport;
   getZoomRange(): { readonly min: number; readonly max: number };
   setPan(pan: GraphViewPoint): void;

@@ -105,3 +105,42 @@ test('caps automatic label size for tiny graphs and expands manual zoom for larg
     cy.destroy();
   }
 });
+
+test('measures requested rendered nodes without exposing Cytoscape', () => {
+  const cy = cytoscape({
+    headless: true,
+    styleEnabled: true,
+    layout: { name: 'preset' },
+    elements: [
+      { data: { id: 'a' }, position: { x: 40, y: 60 } },
+      { data: { id: 'b' }, position: { x: 240, y: 180 } },
+    ],
+    style: [{ selector: 'node', style: { width: 40, height: 30 } }],
+  });
+  cy.width = () => 800;
+  cy.height = () => 600;
+  const { controller } = createGraphController(cy, { current: 50 });
+
+  try {
+    const measurement = controller.measureNodes?.(['a', 'missing']);
+    const node = cy.getElementById('a');
+    const bounds = node.renderedBoundingBox();
+
+    expect(measurement).toEqual({
+      viewport: { width: 800, height: 600 },
+      nodes: [
+        {
+          id: 'a',
+          position: node.renderedPosition(),
+          size: { width: bounds.w, height: bounds.h },
+        },
+      ],
+    });
+    expect(controller.measureNodes?.([])).toBeNull();
+
+    cy.width = () => 0;
+    expect(controller.measureNodes?.(['a'])).toBeNull();
+  } finally {
+    cy.destroy();
+  }
+});
