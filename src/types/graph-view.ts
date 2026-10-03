@@ -67,7 +67,10 @@ export interface GraphViewViewport {
 }
 
 export interface GraphViewFitOptions {
-  /** Optimize existing layout spacing without rerunning its algorithm; whole-graph fits only. */
+  /**
+   * Optimize effective rendered fit without rerunning the layout algorithm; whole-graph fits only.
+   * Stops at the configured fit-size target and keeps semantic labels collision-safe.
+   */
   readonly optimizeSpacing?: boolean;
   readonly nodeIds?: readonly string[];
   readonly padding?: number;
