@@ -6,6 +6,7 @@ export const COMPONENT_THEME_AUTHORING = {
 
 export const FEATURE_MANIFEST_ELEMENTS = {
   auth: [
+    'AuthScreen',
     'ForgotPasswordForm',
     'OAuthProviderButton',
     'OAuthProviderList',
@@ -47,6 +48,7 @@ export const FEATURE_MANIFEST_ELEMENTS = {
 
 export const CONTAINER_ALLOWED_CHILDREN = [
   'ActivityIndicator',
+  'AuthScreen',
   'ForgotPasswordForm',
   'OAuthProviderButton',
   'OAuthProviderList',

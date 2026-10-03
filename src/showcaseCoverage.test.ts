@@ -63,6 +63,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
   features: ['Uploader', 'BottomSheet', 'FlatList', 'SectionList'],
   layouts: ['AppShell', 'Screen', 'ScreenSection', 'ScrollView'],
   patterns: [
+    'AuthScreen',
     'ForgotPasswordForm',
     'OtpForm',
     'SignInForm',

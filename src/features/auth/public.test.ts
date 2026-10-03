@@ -1,5 +1,6 @@
 import { expect, test } from 'bun:test';
 
+import { authScreenMeta } from './authScreenMeta';
 import { forgotPasswordFormMeta } from './forgotPasswordFormMeta';
 import { oauthProviderButtonMeta } from './oauthProviderButtonMeta';
 import { oauthProviderListMeta } from './oauthProviderListMeta';
@@ -8,6 +9,7 @@ import { signInFormMeta } from './signInFormMeta';
 import { signUpFormMeta } from './signUpFormMeta';
 
 const AUTH_MANIFEST_ELEMENTS = {
+  AuthScreen: authScreenMeta,
   ForgotPasswordForm: forgotPasswordFormMeta,
   OAuthProviderButton: oauthProviderButtonMeta,
   OAuthProviderList: oauthProviderListMeta,
@@ -25,6 +27,10 @@ test('auth solutions are direct manifest leaf nodes with authoring schemas', () 
 });
 
 test('auth solution events expose their actionable boundaries', () => {
+  expect(authScreenMeta.events.modeChange.eventType).toBe('authScreen.modeChange');
+  expect(authScreenMeta.events.oauthProviderPress.payloadFields).toEqual([
+    { path: 'providerId', type: 'string', label: 'Provider ID' },
+  ]);
   expect(signInFormMeta.events.submit.payloadFields).toContainEqual({
     path: 'secret',
     type: 'string',

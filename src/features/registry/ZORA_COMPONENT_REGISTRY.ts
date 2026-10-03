@@ -6,6 +6,7 @@ import { Accordion, AccordionItem } from '../accordion/public';
 import { ActivityIndicator } from '../activity-indicator/public';
 import { AppBar } from '../app-bar/public';
 import {
+  AuthScreen,
   ForgotPasswordForm,
   OAuthProviderButton,
   OAuthProviderList,
@@ -175,6 +176,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   AppShell,
   Screen,
   ScreenSection,
+  AuthScreen,
   ForgotPasswordForm,
   OAuthProviderButton,
   OAuthProviderList,
