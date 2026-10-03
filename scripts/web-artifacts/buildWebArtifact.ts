@@ -358,8 +358,13 @@ function importBindingNames(statement: ts.ImportDeclaration): readonly string[] 
 
 /*** Reject relative declaration dependencies that would escape the standalone materialized artifact. */
 function assertStandaloneDeclaration(source: string, path: string): void {
-  if (/(?:from\s+|import\s*\()(['"])\.{1,2}\//u.test(source)) {
-    throw new Error(`ZORA web declaration retained a local dependency: ${path}`);
+  const localSpecifiers = [...source.matchAll(/(?:from\s+|import\s*\()(['"])(\.{1,2}\/[^'"]+)\1/gu)]
+    .map((match) => match[2])
+    .filter((specifier): specifier is string => specifier !== undefined);
+  if (localSpecifiers.length > 0) {
+    throw new Error(
+      `ZORA web declaration retained local dependencies in ${path}: ${localSpecifiers.join(', ')}`,
+    );
   }
 }
 
