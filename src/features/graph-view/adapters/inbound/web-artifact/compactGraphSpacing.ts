@@ -1,10 +1,10 @@
 import type { Core } from 'cytoscape';
 
-import {
-  createGraphSpacingEvaluator,
-  type GraphSpacingCandidate,
-  type GraphSpacingFitOptions,
-} from './createGraphSpacingEvaluator';
+import type {
+  GraphSpacingCandidate,
+  GraphSpacingFitOptions,
+} from '../../../../../types/graph-view-spacing';
+import { createGraphSpacingEvaluator } from './createGraphSpacingEvaluator';
 
 const MAX_EXPANSION_ATTEMPTS = 8;
 const MAX_NODE_COUNT = 2000;
