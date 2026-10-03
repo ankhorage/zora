@@ -172,6 +172,27 @@ test('preserves selection and positions through hover presentation updates witho
   }
 });
 
+test('forwards semantic selection intent from rich-node press events', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const events: GraphViewElementEvent[] = [];
+  const runtime = createGraphRuntime(undefined, {
+    current: { onReady: ready.resolve, onNodeEvent: (event) => events.push(event) },
+  });
+  try {
+    runtime.update({
+      nodes: [{ id: 'a' }],
+      edges: [],
+      layout: 'grid',
+      richNodeRendering: false,
+    });
+    await ready.promise;
+    runtime.handleOverlayNodeEvent('a', 'press', 'toggle');
+    expect(events.at(-1)).toEqual({ id: 'a', type: 'press', selectionIntent: 'toggle' });
+  } finally {
+    runtime.destroy();
+  }
+});
+
 test('settles the pending initial layout when presentation changes before readiness', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
   const calls = { ready: 0, sort: 0 };
