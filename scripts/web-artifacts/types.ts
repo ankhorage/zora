@@ -18,7 +18,6 @@ export interface WebArtifactManifestEntry {
   readonly sourceKind: 'public' | 'web-artifact';
 }
 
-
 export interface WebArtifactTarget {
   readonly component: string;
   readonly declarationSource?: string;
