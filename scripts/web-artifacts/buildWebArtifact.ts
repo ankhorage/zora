@@ -372,8 +372,7 @@ function assertStandaloneDeclaration(
   ]
     .map((match) => match[2])
     .filter(
-      (specifier): specifier is string =>
-        specifier !== undefined && !allowed.has(specifier),
+      (specifier): specifier is string => specifier !== undefined && !allowed.has(specifier),
     );
   if (localSpecifiers.length > 0) {
     throw new Error(
