@@ -7,6 +7,27 @@ import type { FormFieldConfig, FormValues } from './form';
 
 export type AuthIdentifierKind = 'email' | 'phone' | 'username';
 
+export type AuthScreenMode = 'signIn' | 'signUp';
+
+export interface AuthScreenProps extends ZoraBaseProps {
+  authMode: AuthScreenMode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  info?: React.ReactNode;
+  error?: React.ReactNode;
+  loading?: boolean;
+  disabled?: boolean;
+  identifiers?: readonly AuthIdentifierKind[];
+  identifierLabel?: React.ReactNode;
+  signUpFields?: readonly SignUpFormField[];
+  oauthProviders?: readonly OAuthProviderItem[];
+  oauthSeparatorLabel?: React.ReactNode;
+  onModeChange?: (mode: AuthScreenMode) => void | Promise<void>;
+  onOAuthProviderPress?: (providerId: string) => void | Promise<void>;
+  onSignInSubmit?: (values: SignInFormValues) => void | Promise<void>;
+  onSignUpSubmit?: (values: SignUpFormValues) => void | Promise<void>;
+}
+
 export interface AuthFormBaseProps extends ZoraBaseProps {
   loading?: boolean;
   disabled?: boolean;
