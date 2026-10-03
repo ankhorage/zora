@@ -6,7 +6,7 @@ import type {
   GraphViewElementEvent,
   GraphViewElementEventType,
 } from '../../../../../types/graph-view';
-import { resolveSelectionEventIntent } from '../../../../selection/public';
+import { resolveSelectionEventIntent } from '../../../../selection/application/resolveSelectionEventIntent';
 
 /*** Bind stable Cytoscape events that always read the latest React callbacks. */
 export function bindGraphEvents(
