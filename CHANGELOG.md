@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.75
+
+### Patch Changes
+
+- b436c81: Update Renovate-managed workflows.
+
 ## 22.0.74
 
 ### Patch Changes
