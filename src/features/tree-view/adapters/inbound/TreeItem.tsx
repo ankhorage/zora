@@ -54,11 +54,12 @@ function TreeItemInner<TId extends string = string>({
       });
     }
 
+    const nodeIcon = isExpanded ? (node.expandedIcon ?? node.icon) : node.icon;
     const listItemProps = {
       title: node.label,
       leading:
-        expansionIndicator === 'folder' || node.icon === undefined ? undefined : (
-          <Icon {...node.icon} size="s" />
+        expansionIndicator === 'folder' || nodeIcon === undefined ? undefined : (
+          <Icon {...nodeIcon} size={12} />
         ),
       meta: node.meta,
       disabled: node.disabled,

@@ -17,7 +17,13 @@ export function TreeItemRow<TId extends string>(props: TreeItemRowProps<TId>) {
     selected,
     expanded,
     hasChildren,
-  }) ?? <TreeItemDefaultContent node={node} showIcon={props.expansionIndicator === 'chevron'} />;
+  }) ?? (
+    <TreeItemDefaultContent
+      expanded={expanded}
+      node={node}
+      showIcon={props.expansionIndicator === 'chevron'}
+    />
+  );
 
   return (
     <>
@@ -61,17 +67,20 @@ interface TreeItemRowProps<TId extends string> {
 
 /*** Render the default browser tree-row label, icon, and metadata. */
 function TreeItemDefaultContent<TId extends string>({
+  expanded,
   node,
   showIcon,
 }: {
+  readonly expanded: boolean;
   readonly node: TreeItemNode<TId>;
   readonly showIcon: boolean;
 }) {
+  const icon = expanded ? (node.expandedIcon ?? node.icon) : node.icon;
   return (
     <>
-      {!showIcon || node.icon === undefined ? null : (
+      {!showIcon || icon === undefined ? null : (
         <span aria-hidden="true" style={ICON_STYLE}>
-          {node.icon}
+          {icon}
         </span>
       )}
       <span style={LABEL_STYLE}>{node.label}</span>
