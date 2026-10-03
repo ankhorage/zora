@@ -151,7 +151,12 @@ function readDeclaredExportNames(path: string): ReadonlySet<string> {
   const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
   return new Set(
     file.statements.flatMap((statement) => {
-      if (!statement.modifiers?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword)) return [];
+      if (
+        !ts.canHaveModifiers(statement) ||
+        !ts.getModifiers(statement)?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword)
+      ) {
+        return [];
+      }
       if (
         ts.isFunctionDeclaration(statement) ||
         ts.isClassDeclaration(statement) ||
