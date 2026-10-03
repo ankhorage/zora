@@ -1,22 +1,12 @@
 import type { Core, NodeSingular } from 'cytoscape';
 
+import type {
+  GraphSpacingCandidate,
+  GraphSpacingEvaluator,
+  GraphSpacingFitOptions,
+} from '../../../../../types/graph-view-spacing';
+
 const MAX_PAIR_CHECKS = 200000;
-
-export interface GraphSpacingFitOptions {
-  readonly fitPadding?: number;
-  readonly maxFitZoom?: number;
-}
-
-export interface GraphSpacingCandidate {
-  readonly effectiveFitZoom: number;
-  readonly hardCollision: boolean;
-  readonly renderedBackgroundOverlap: number;
-}
-
-export interface GraphSpacingEvaluator {
-  readonly evaluate: (factor: number) => GraphSpacingCandidate;
-  readonly apply: (factor: number) => void;
-}
 
 interface Point {
   readonly x: number;
