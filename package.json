@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.8.99",
+    "@ankhorage/contracts": "^22.8.100",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/runtime": "^3.0.59",
     "@ankhorage/surface": "^9.1.112",
