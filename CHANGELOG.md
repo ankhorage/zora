@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.2.3
+
+### Patch Changes
+
+- 730f9ef: Update dependencies: `@ankhorage/contracts`.
+
 ## 23.2.2
 
 ### Patch Changes
