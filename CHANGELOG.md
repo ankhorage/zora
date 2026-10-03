@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.80
+
+### Patch Changes
+
+- bfbe40f: Update dependencies: `@ankhorage/runtime`.
+
 ## 22.0.79
 
 ### Patch Changes
