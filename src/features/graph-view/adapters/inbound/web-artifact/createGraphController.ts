@@ -74,6 +74,10 @@ export function createGraphController(
     getFitZoomLimit() {
       return state.relative ? state.fitZoom : Math.min(state.fitZoom, state.max);
     },
+    /*** Return the native label-readability threshold used before allowing background overlap. */
+    getReadableZoomTarget() {
+      return state.readableZoom;
+    },
     settle(fit: boolean) {
       const logicalZoom = cy.zoom() / state.scale;
       const fonts = cy
