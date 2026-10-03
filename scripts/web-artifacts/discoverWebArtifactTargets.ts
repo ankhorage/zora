@@ -96,6 +96,10 @@ async function discoverEntryTargets(
           override === undefined ? facadeRuntimeExports : [{ exportName, runtimeKind }],
         sourceEntry: override ?? publicEntry,
         sourceKind: override === undefined ? 'public' : 'web-artifact',
+        typeExports:
+          override === undefined
+            ? []
+            : discoverMissingTypeExports(checker, program, moduleSymbol, override, paths),
         symbolIdentity: resolveSymbolIdentity(resolvedSymbol),
       } satisfies DiscoveredTarget;
     }),
@@ -104,6 +108,48 @@ async function discoverEntryTargets(
 
 interface DiscoveredTarget extends WebArtifactTarget {
   readonly symbolIdentity: string;
+}
+
+/*** Preserve public type exports missing from a specialized browser implementation. */
+function discoverMissingTypeExports(
+  checker: ts.TypeChecker,
+  program: ts.Program,
+  publicModuleSymbol: ts.Symbol,
+  override: string,
+  paths: DiscoveryPaths,
+): WebArtifactTarget['typeExports'] {
+  const overrideSource = program.getSourceFile(override);
+  if (overrideSource === undefined) throw new Error(`Could not load ZORA web artifact: ${override}`);
+  const overrideModuleSymbol = checker.getSymbolAtLocation(overrideSource);
+  const overrideExports = new Set(
+    overrideModuleSymbol === undefined
+      ? []
+      : checker.getExportsOfModule(overrideModuleSymbol).map((symbol) => symbol.getName()),
+  );
+
+  return checker
+    .getExportsOfModule(publicModuleSymbol)
+    .flatMap((exportSymbol) => {
+      const exportName = exportSymbol.getName();
+      if (overrideExports.has(exportName)) return [];
+      const resolvedSymbol =
+        exportSymbol.flags & ts.SymbolFlags.Alias
+          ? checker.getAliasedSymbol(exportSymbol)
+          : exportSymbol;
+      if ((resolvedSymbol.flags & ts.SymbolFlags.Type) === 0) return [];
+      const declaration = resolvedSymbol.declarations?.at(0);
+      if (declaration === undefined) return [];
+      const sourcePath = declaration.getSourceFile().fileName;
+      const relativeSource = toPortablePath(relative(paths.sourceRoot, sourcePath));
+      if (relativeSource.startsWith('../') || relativeSource === '..') return [];
+      return [
+        {
+          declarationSource: toDistDeclarationPath(sourcePath, paths),
+          exportName,
+        },
+      ];
+    })
+    .sort((left, right) => left.exportName.localeCompare(right.exportName));
 }
 
 /*** Resolve an optional convention-based standalone browser implementation. */

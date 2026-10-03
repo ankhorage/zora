@@ -48,7 +48,7 @@ export async function buildWebArtifact(
       const alias = `components/${target.component}/index.js`;
       const aliasDeclaration = `components/${target.component}/index.d.ts`;
       const outputDirectory = join(paths.webDistRoot, dirname(declaration));
-      await writeDeclaration(target, outputDirectory);
+      const declarationFiles = await writeDeclaration(target, outputDirectory);
       await writeAlias(target, outputDirectory);
       return {
         component: target.component,
@@ -56,7 +56,7 @@ export async function buildWebArtifact(
         featurePath: target.featurePath,
         files: [
           entry,
-          declaration,
+          ...declarationFiles.map((file) => `components/${target.component}/${file}`),
           alias,
           aliasDeclaration,
           ...collectReachableChunks(entry, outputs, paths.webDistRoot),
@@ -237,19 +237,92 @@ async function validateBundle(bundlePath: string): Promise<void> {
   }
 }
 
-/*** Preserve exact specialized declarations or emit portable public component types. */
-async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
-  const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
-  if (target.declarationSource !== undefined) {
-    await copyFile(target.declarationSource, outputPath);
-    return;
+/*** Preserve specialized declarations plus any public types omitted by their runtime override. */
+async function writeDeclaration(
+  target: WebArtifactTarget,
+  outputDirectory: string,
+): Promise<readonly string[]> {
+  const outputFile = `${target.exportName}.d.ts`;
+  const outputPath = join(outputDirectory, outputFile);
+  if (target.declarationSource === undefined) {
+    const declarations = target.runtimeExports.map(createPortableRuntimeDeclaration);
+    await writeFile(
+      outputPath,
+      ["import type React from 'react';", '', ...declarations, ''].join('\n'),
+      'utf8',
+    );
+    return [outputFile];
   }
-  const declarations = target.runtimeExports.map(createPortableRuntimeDeclaration);
-  await writeFile(
-    outputPath,
-    ["import type React from 'react';", '', ...declarations, ''].join('\n'),
-    'utf8',
+  if (target.typeExports.length === 0) {
+    await copyFile(target.declarationSource, outputPath);
+    return [outputFile];
+  }
+
+  const groups = groupTypeExports(target);
+  const supports = await Promise.all(
+    groups.map(async ({ declarationSource, exportNames }, index) => {
+      const supportFile = `${target.exportName}.types-${index}.d.ts`;
+      const supportSource = await readFile(declarationSource, 'utf8');
+      assertStandaloneDeclaration(supportSource, declarationSource);
+      await writeFile(join(outputDirectory, supportFile), supportSource, 'utf8');
+      return {
+        exportNames,
+        supportFile,
+        originalSpecifier: declarationModuleSpecifier(target.declarationSource!, declarationSource),
+        localSpecifier: `./${supportFile.replace(/\.d\.ts$/u, '')}`,
+      };
+    }),
   );
+
+  const runtimeSource = await readFile(target.declarationSource, 'utf8');
+  const rewritten = supports.reduce(
+    (source, support) =>
+      replaceDeclarationSpecifier(source, support.originalSpecifier, support.localSpecifier),
+    runtimeSource,
+  );
+  assertStandaloneDeclaration(rewritten, target.declarationSource);
+  const reexports = supports.map(
+    ({ exportNames, localSpecifier }) =>
+      `export type { ${exportNames.join(', ')} } from '${localSpecifier}';`,
+  );
+  await writeFile(outputPath, `${rewritten.trim()}\n${reexports.join('\n')}\n`, 'utf8');
+  return [outputFile, ...supports.map(({ supportFile }) => supportFile)];
+}
+
+/*** Group public type exports by their canonical emitted declaration owner. */
+function groupTypeExports(target: WebArtifactTarget) {
+  const groups = new Map<string, string[]>();
+  for (const item of target.typeExports) {
+    const current = groups.get(item.declarationSource);
+    if (current === undefined) groups.set(item.declarationSource, [item.exportName]);
+    else current.push(item.exportName);
+  }
+  return [...groups.entries()]
+    .map(([declarationSource, exportNames]) => ({
+      declarationSource,
+      exportNames: [...exportNames].sort(),
+    }))
+    .sort((left, right) => left.declarationSource.localeCompare(right.declarationSource));
+}
+
+/*** Resolve one emitted declaration dependency to its original relative module specifier. */
+function declarationModuleSpecifier(fromFile: string, toFile: string): string {
+  const path = toPortablePath(relative(dirname(fromFile), toFile)).replace(/\.d\.ts$/u, '');
+  return path.startsWith('.') ? path : `./${path}`;
+}
+
+/*** Rewrite one exact local declaration dependency to its colocated materialized support file. */
+function replaceDeclarationSpecifier(source: string, from: string, to: string): string {
+  const replaced = source.replaceAll(`'${from}'`, `'${to}'`).replaceAll(`"${from}"`, `"${to}"`);
+  if (replaced === source) throw new Error(`Missing declaration dependency "${from}".`);
+  return replaced;
+}
+
+/*** Reject relative declaration dependencies that would escape the standalone materialized artifact. */
+function assertStandaloneDeclaration(source: string, path: string): void {
+  if (/(?:from\s+|import\s*\()(['"])\.{1,2}\//u.test(source)) {
+    throw new Error(`ZORA web declaration retained a local dependency: ${path}`);
+  }
 }
 
 /*** Emit a portable declaration without requiring full ZORA or Surface packages. */
