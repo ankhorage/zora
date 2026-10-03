@@ -96,6 +96,10 @@ async function discoverEntryTargets(
           override === undefined ? facadeRuntimeExports : [{ exportName, runtimeKind }],
         sourceEntry: override ?? publicEntry,
         sourceKind: override === undefined ? 'public' : 'web-artifact',
+        typeExports:
+          override === undefined
+            ? []
+            : discoverMissingTypeExports(checker, moduleSymbol, override, paths),
         symbolIdentity: resolveSymbolIdentity(resolvedSymbol),
       } satisfies DiscoveredTarget;
     }),
@@ -104,6 +108,72 @@ async function discoverEntryTargets(
 
 interface DiscoveredTarget extends WebArtifactTarget {
   readonly symbolIdentity: string;
+}
+
+/*** Preserve public type exports missing from a specialized browser implementation. */
+function discoverMissingTypeExports(
+  checker: ts.TypeChecker,
+  publicModuleSymbol: ts.Symbol,
+  override: string,
+  paths: DiscoveryPaths,
+): WebArtifactTarget['typeExports'] {
+  const overrideExports = readDeclaredExportNames(override);
+
+  return checker
+    .getExportsOfModule(publicModuleSymbol)
+    .flatMap((exportSymbol) => {
+      const exportName = exportSymbol.getName();
+      if (overrideExports.has(exportName)) return [];
+      const resolvedSymbol =
+        exportSymbol.flags & ts.SymbolFlags.Alias
+          ? checker.getAliasedSymbol(exportSymbol)
+          : exportSymbol;
+      if ((resolvedSymbol.flags & ts.SymbolFlags.Type) === 0) return [];
+      const declaration = resolvedSymbol.declarations?.at(0);
+      if (declaration === undefined) return [];
+      const sourcePath = declaration.getSourceFile().fileName;
+      const relativeSource = toPortablePath(relative(paths.sourceRoot, sourcePath));
+      if (relativeSource.startsWith('../') || relativeSource === '..') return [];
+      return [
+        {
+          declarationSource: toDistDeclarationPath(sourcePath, paths),
+          exportName,
+        },
+      ];
+    })
+    .sort((left, right) => left.exportName.localeCompare(right.exportName));
+}
+
+/*** Read named declarations exported directly by one specialized browser source file. */
+function readDeclaredExportNames(path: string): ReadonlySet<string> {
+  const source = ts.sys.readFile(path);
+  if (source === undefined) throw new Error(`Could not read ZORA web artifact: ${path}`);
+  const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
+  return new Set(
+    file.statements.flatMap((statement) => {
+      if (
+        !ts.canHaveModifiers(statement) ||
+        !ts.getModifiers(statement)?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword)
+      ) {
+        return [];
+      }
+      if (
+        ts.isFunctionDeclaration(statement) ||
+        ts.isClassDeclaration(statement) ||
+        ts.isInterfaceDeclaration(statement) ||
+        ts.isTypeAliasDeclaration(statement) ||
+        ts.isEnumDeclaration(statement)
+      ) {
+        return statement.name === undefined ? [] : [statement.name.text];
+      }
+      if (ts.isVariableStatement(statement)) {
+        return statement.declarationList.declarations.flatMap(({ name }) =>
+          ts.isIdentifier(name) ? [name.text] : [],
+        );
+      }
+      return [];
+    }),
+  );
 }
 
 /*** Resolve an optional convention-based standalone browser implementation. */

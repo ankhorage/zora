@@ -94,6 +94,28 @@ try {
     assert(evidence.files.includes(`components/${component}/index.js`));
   }
   assert(!evidence.files.some((file) => file.includes('node_modules')));
+  const graphViewDeclaration = await readFile(
+    join(outputDirectory, 'components/graph-view/GraphView.d.ts'),
+    'utf8',
+  );
+  for (const exportName of [
+    'GraphViewController',
+    'GraphViewEdge',
+    'GraphViewElementEvent',
+    'GraphViewFitOptions',
+    'GraphViewLayoutName',
+    'GraphViewNode',
+    'GraphViewStyleRule',
+  ]) {
+    assert(graphViewDeclaration.includes(exportName), `Missing materialized ${exportName}`);
+  }
+  const graphViewTypeFile = evidence.files.find((file) =>
+    /^components\/graph-view\/GraphView\.types-\d+\.d\.ts$/u.test(file),
+  );
+  assert(graphViewTypeFile);
+  const graphViewTypes = await readFile(join(outputDirectory, graphViewTypeFile), 'utf8');
+  assert(graphViewTypes.includes('export interface GraphViewController'));
+  assert(!/(?:from\s+|import\s*\()(['"])\.{1,2}\//u.test(graphViewTypes));
 
   const browser = new Window();
   Object.assign(globalThis, {

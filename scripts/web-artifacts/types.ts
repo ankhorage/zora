@@ -5,6 +5,11 @@ export interface WebArtifactRuntimeExport {
   readonly runtimeKind: WebArtifactRuntimeKind;
 }
 
+interface WebArtifactTypeExport {
+  readonly declarationSource: string;
+  readonly exportName: string;
+}
+
 export interface WebArtifactManifestEntry {
   readonly component: string;
   readonly exportName: string;
@@ -22,4 +27,5 @@ export interface WebArtifactTarget {
   readonly runtimeExports: readonly WebArtifactRuntimeExport[];
   readonly sourceEntry: string;
   readonly sourceKind: 'public' | 'web-artifact';
+  readonly typeExports: readonly WebArtifactTypeExport[];
 }
