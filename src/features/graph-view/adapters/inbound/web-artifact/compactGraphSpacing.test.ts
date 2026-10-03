@@ -51,6 +51,34 @@ test(
   },
 );
 
+test('keeps strict separation when it can preserve the readable-label threshold', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 120, y: 0 } },
+    ],
+    340,
+    400,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
+
+  try {
+    const spacing = compactGraphSpacing(cy, 1, {
+      fitPadding: 50,
+      maxFitZoom: 1.5,
+      minReadableZoom: 1.1,
+    });
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    expect(spacing).toBeGreaterThan(0.83);
+    expect(spacing).toBeLessThan(0.85);
+    expect(Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1)).toBeLessThanOrEqual(0);
+  } finally {
+    cy.destroy();
+  }
+});
+
 test(
   'uses a small rendered background-overlap budget only when strict separation cannot reach the fit target',
   () => {
