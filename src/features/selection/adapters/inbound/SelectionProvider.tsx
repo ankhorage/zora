@@ -1,3 +1,4 @@
+import { applySelectionIntent, type SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
 
 import type {
@@ -5,13 +6,7 @@ import type {
   SelectionProviderProps,
   UseSelectionResult,
 } from '../../../../types/selection';
-import {
-  areIdsEqual,
-  clearIds,
-  normalizeIds,
-  selectId,
-  toggleId,
-} from '../../utils/resolveSelectionNextIds';
+import { areIdsEqual, clearIds, normalizeIds, selectId } from '../../utils/resolveSelectionNextIds';
 
 const MISSING_CONTEXT_MESSAGE =
   'ZORA selection context is missing. Wrap this tree in <SelectionProvider>.';
@@ -30,21 +25,14 @@ function resolveDisabled(disabled: boolean | undefined): boolean {
   return disabled ?? false;
 }
 
-/***
- * Accesses selection state provided by `SelectionProvider`.
- */
+/*** Accesses selection state provided by `SelectionProvider`. */
 export function useSelection(): UseSelectionResult {
   const value = React.use(SelectionContext);
-  if (!value) {
-    throw new Error(MISSING_CONTEXT_MESSAGE);
-  }
-
+  if (!value) throw new Error(MISSING_CONTEXT_MESSAGE);
   return value;
 }
 
-/***
- * Provides selection state for building selectable lists and grids.
- */
+/*** Provides selection state for building selectable lists and grids. */
 export function SelectionProvider({
   children,
   selectedIds,
@@ -57,27 +45,20 @@ export function SelectionProvider({
   const resolvedMode = resolveMode(mode);
   const resolvedDisabled = resolveDisabled(disabled);
   const isControlled = selectedIds !== undefined;
-
   const [uncontrolledIds, setUncontrolledIds] = React.useState<readonly string[]>(
     defaultSelectedIds ?? [],
   );
 
   const rawIds = isControlled ? selectedIds : uncontrolledIds;
   const currentNormalizedIds = normalizeIds(rawIds, resolvedMode);
-
   const selectedIdSet = React.useMemo(() => new Set(currentNormalizedIds), [currentNormalizedIds]);
 
   const commitSelectionChange = React.useCallback(
     (nextNormalizedIds: readonly string[]) => {
-      if (resolvedDisabled) return;
-      if (interactionPolicy === 'passive') return;
+      if (resolvedDisabled || interactionPolicy === 'passive') return;
       if (areIdsEqual(nextNormalizedIds, currentNormalizedIds)) return;
-
       onSelectionChange?.(nextNormalizedIds);
-
-      if (!isControlled) {
-        setUncontrolledIds(nextNormalizedIds);
-      }
+      if (!isControlled) setUncontrolledIds(nextNormalizedIds);
     },
     [currentNormalizedIds, interactionPolicy, isControlled, onSelectionChange, resolvedDisabled],
   );
@@ -89,34 +70,52 @@ export function SelectionProvider({
   const select = React.useCallback(
     (id: string) => {
       const nextIds = selectId({ mode: resolvedMode, ids: currentNormalizedIds, id });
-      const nextNormalizedIds = normalizeIds(nextIds, resolvedMode);
-      commitSelectionChange(nextNormalizedIds);
+      commitSelectionChange(normalizeIds(nextIds, resolvedMode));
     },
     [commitSelectionChange, currentNormalizedIds, resolvedMode],
   );
 
   const toggle = React.useCallback(
     (id: string) => {
-      const nextIds = toggleId({ mode: resolvedMode, ids: currentNormalizedIds, id });
-      const nextNormalizedIds = normalizeIds(nextIds, resolvedMode);
-      commitSelectionChange(nextNormalizedIds);
+      const nextIds = applySelectionIntent(currentNormalizedIds, id, 'toggle');
+      commitSelectionChange(normalizeIds(nextIds, resolvedMode));
     },
     [commitSelectionChange, currentNormalizedIds, resolvedMode],
   );
 
-  const value = React.useMemo<UseSelectionResult>(() => {
-    return {
+  const activate = React.useCallback(
+    (id: string, intent: SelectionIntent) => {
+      const effectiveIntent = resolvedMode === 'single' ? 'replace' : intent;
+      const nextIds = applySelectionIntent(currentNormalizedIds, id, effectiveIntent);
+      commitSelectionChange(normalizeIds(nextIds, resolvedMode));
+    },
+    [commitSelectionChange, currentNormalizedIds, resolvedMode],
+  );
+
+  const value = React.useMemo<UseSelectionResult>(
+    () => ({
       mode: resolvedMode,
       disabled: resolvedDisabled,
       selectedIds: currentNormalizedIds,
       selectedCount: currentNormalizedIds.length,
       hasSelection: currentNormalizedIds.length > 0,
       isSelected: (id: string) => selectedIdSet.has(id),
+      activate,
       select,
       toggle,
       clear,
-    };
-  }, [clear, currentNormalizedIds, resolvedDisabled, resolvedMode, select, selectedIdSet, toggle]);
+    }),
+    [
+      activate,
+      clear,
+      currentNormalizedIds,
+      resolvedDisabled,
+      resolvedMode,
+      select,
+      selectedIdSet,
+      toggle,
+    ],
+  );
 
   return <SelectionContext value={value}>{children}</SelectionContext>;
 }

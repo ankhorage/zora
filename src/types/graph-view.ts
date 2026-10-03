@@ -1,3 +1,4 @@
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type React from 'react';
 
 export type GraphViewLayoutName = 'breadthfirst' | 'circle' | 'concentric' | 'elk' | 'grid';
@@ -79,6 +80,7 @@ export interface GraphViewFitOptions {
 export interface GraphViewElementEvent {
   readonly id: string;
   readonly type: GraphViewElementEventType;
+  readonly selectionIntent?: SelectionIntent;
 }
 
 export interface GraphViewController {

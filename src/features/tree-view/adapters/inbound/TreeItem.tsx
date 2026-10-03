@@ -1,4 +1,7 @@
+import { Pressable } from '@ankhorage/surface';
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
+import { Platform } from 'react-native';
 
 import type { ZoraBaseProps } from '../../../../types/base';
 import type { TreeItemNode, TreeItemRenderProps } from '../../../../types/tree-view';
@@ -6,15 +9,16 @@ import { IconButton } from '../../../button/public';
 import { Icon } from '../../../icon/public';
 import { View } from '../../../layout/public';
 import { ListItem } from '../../../list/public';
+import { resolveSelectionEventIntent } from '../../../selection/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 interface TreeItemProps<TId extends string = string> extends ZoraBaseProps {
   node: TreeItemNode<TId>;
   depth: number;
   expansionIndicator: 'chevron' | 'folder';
-  selectedId?: TId;
+  selectedIds: readonly TId[];
   expandedIds: readonly TId[];
-  onSelect?: (id: TId) => void;
+  onSelect?: (id: TId, intent: SelectionIntent) => void;
   onToggleExpand: (id: TId) => void;
   renderItem?: (props: TreeItemRenderProps<TId>) => React.ReactNode;
 }
@@ -26,7 +30,7 @@ function TreeItemInner<TId extends string = string>({
   node,
   depth,
   expansionIndicator,
-  selectedId,
+  selectedIds,
   expandedIds,
   onSelect,
   onToggleExpand,
@@ -36,7 +40,7 @@ function TreeItemInner<TId extends string = string>({
 }: TreeItemProps<TId>) {
   const hasChildren = node.children !== undefined && node.children.length > 0;
   const isExpanded = expandedIds.includes(node.id);
-  const isSelected = selectedId === node.id;
+  const isSelected = selectedIds.includes(node.id);
 
   /*** Compose custom content or the selectable row independently of the expansion control. */
   const renderContent = () => {
@@ -62,10 +66,22 @@ function TreeItemInner<TId extends string = string>({
       trailing: node.actions,
     };
 
-    return onSelect === undefined ? (
-      <ListItem {...listItemProps} />
-    ) : (
-      <ListItem {...listItemProps} onPress={() => onSelect(node.id)} />
+    if (onSelect === undefined) return <ListItem {...listItemProps} />;
+    return (
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ disabled: node.disabled, selected: isSelected }}
+        disabled={node.disabled}
+        interactionPolicy={interactionPolicy}
+        onPress={(event) =>
+          onSelect(
+            node.id,
+            resolveSelectionEventIntent(event, Platform.OS === 'web' ? 'pointer' : 'touch'),
+          )
+        }
+      >
+        <ListItem {...listItemProps} />
+      </Pressable>
     );
   };
 
@@ -111,7 +127,7 @@ function TreeItemInner<TId extends string = string>({
               onSelect={onSelect}
               onToggleExpand={onToggleExpand}
               renderItem={renderItem}
-              selectedId={selectedId}
+              selectedIds={selectedIds}
             />
           ))}
         </View>

@@ -1,4 +1,5 @@
 import type { ButtonIconSpec } from '@ankhorage/surface';
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type { ReactNode } from 'react';
 
 import type { ZoraBaseProps } from './base';
@@ -23,10 +24,10 @@ export interface TreeItemRenderProps<TId extends string = string> {
 
 export interface TreeViewProps<TId extends string = string> extends ZoraBaseProps {
   nodes: readonly TreeItemNode<TId>[];
-  selectedId?: TId;
+  selectedIds?: readonly TId[];
   expandedIds?: readonly TId[];
   defaultExpandedIds?: readonly TId[];
-  onSelect?: (id: TId) => void;
+  onSelect?: (id: TId, intent: SelectionIntent) => void;
   onExpandedChange?: (ids: readonly TId[]) => void;
   renderItem?: (props: TreeItemRenderProps<TId>) => ReactNode;
   expansionIndicator?: 'chevron' | 'folder';

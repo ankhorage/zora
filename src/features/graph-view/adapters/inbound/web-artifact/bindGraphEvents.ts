@@ -3,8 +3,10 @@ import type { Core, EventObject } from 'cytoscape';
 import type {
   GraphViewCallbacks,
   GraphViewController,
+  GraphViewElementEvent,
   GraphViewElementEventType,
 } from '../../../../../types/graph-view';
+import { resolveSelectionEventIntent } from '../../../../selection/application/resolveSelectionEventIntent';
 
 /*** Bind stable Cytoscape events that always read the latest React callbacks. */
 export function bindGraphEvents(
@@ -46,15 +48,30 @@ function bindElementEvents(
     const handler = (event: EventObject) => {
       const target: unknown = event.target;
       if (!isGraphEventTarget(target)) return;
-      emitElementEvent(callbacksRef.current, selector, {
-        id: target.id(),
-        type,
-      });
+      emitElementEvent(
+        callbacksRef.current,
+        selector,
+        createElementEvent(event, target.id(), type),
+      );
       onRuntimeChange();
     };
     cy.on(cytoscapeEvent, selector, handler);
     return { cytoscapeEvent, handler };
   });
+}
+
+/*** Translate one renderer event into the engine-neutral public event contract. */
+function createElementEvent(
+  event: EventObject,
+  id: string,
+  type: GraphViewElementEventType,
+): GraphViewElementEvent {
+  if (type !== 'press') return { id, type };
+  return {
+    id,
+    type,
+    selectionIntent: resolveSelectionEventIntent(event, 'pointer'),
+  };
 }
 
 /*** Return whether a Cytoscape event target exposes the element identifier contract. */
@@ -72,7 +89,7 @@ interface GraphEventTarget {
 function emitElementEvent(
   callbacks: GraphViewCallbacks,
   selector: ElementSelector,
-  event: { readonly id: string; readonly type: GraphViewElementEventType },
+  event: GraphViewElementEvent,
 ) {
   if (selector === 'node') {
     callbacks.onNodeEvent?.(event);

@@ -1,4 +1,5 @@
 import type { InteractionPolicy } from '@ankhorage/surface';
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type React from 'react';
 
 export type SelectionMode = 'single' | 'multi';
@@ -22,6 +23,7 @@ export interface UseSelectionResult {
   selectedCount: number;
   hasSelection: boolean;
   isSelected: (id: string) => boolean;
+  activate: (id: string, intent: SelectionIntent) => void;
   select: (id: string) => void;
   toggle: (id: string) => void;
   clear: () => void;
@@ -32,6 +34,7 @@ export interface SelectableItemState {
   selected: boolean;
   disabled: boolean;
   mode: SelectionMode;
+  activate: (intent: SelectionIntent) => void;
   select: () => void;
   toggle: () => void;
   clear: () => void;

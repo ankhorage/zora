@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 
 import type { SelectionMode } from '../../../types/selection';
-import { areIdsEqual, clearIds, normalizeIds, selectId, toggleId } from './resolveSelectionNextIds';
+import { areIdsEqual, clearIds, normalizeIds, selectId } from './resolveSelectionNextIds';
 
 describe('resolveSelectionNextIds', () => {
   test('normalizeIds removes duplicates, preserves order', () => {
@@ -38,19 +38,6 @@ describe('resolveSelectionNextIds', () => {
   test('selectId is no-op in multi mode when already selected', () => {
     const ids = ['a', 'b'];
     expect(selectId({ mode: 'multi', ids, id: 'b' })).toBe(ids);
-  });
-
-  test('toggleId clears id when already selected (single mode)', () => {
-    expect(toggleId({ mode: 'single', ids: ['a'], id: 'a' })).toEqual([]);
-  });
-
-  test('toggleId selects id when not selected (single mode)', () => {
-    expect(toggleId({ mode: 'single', ids: [], id: 'a' })).toEqual(['a']);
-  });
-
-  test('toggleId toggles membership (multi mode)', () => {
-    expect(toggleId({ mode: 'multi', ids: ['a'], id: 'b' })).toEqual(['a', 'b']);
-    expect(toggleId({ mode: 'multi', ids: ['a', 'b'], id: 'b' })).toEqual(['a']);
   });
 
   test('mode-change normalization example', () => {

@@ -1,3 +1,4 @@
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import cytoscape, { type Core, type CytoscapeOptions } from 'cytoscape';
 
 import type {
@@ -30,7 +31,11 @@ type RenderedNodeListener = (nodes: readonly GraphViewRenderedNode[]) => void;
 
 export interface GraphRuntime {
   destroy(): void;
-  handleOverlayNodeEvent(id: string, type: GraphViewElementEventType): void;
+  handleOverlayNodeEvent(
+    id: string,
+    type: GraphViewElementEventType,
+    selectionIntent?: SelectionIntent,
+  ): void;
   setNodeSize(id: string, size: GraphViewSize): void;
   setSelectedNodeIds(nodeIds: readonly string[] | undefined): void;
   subscribeRenderedNodes(listener: RenderedNodeListener): () => void;
@@ -80,7 +85,8 @@ export function createGraphRuntime(
 
   return {
     destroy: () => destroyRuntime(state),
-    handleOverlayNodeEvent: (id, type) => handleOverlayNodeEvent(state, id, type),
+    handleOverlayNodeEvent: (id, type, selectionIntent) =>
+      handleOverlayNodeEvent(state, id, type, selectionIntent),
     setNodeSize: (id, size) => setNodeSize(state, id, size),
     setSelectedNodeIds: (nodeIds) => setSelectedNodeIds(state, nodeIds),
     subscribeRenderedNodes: (listener) => subscribeRenderedNodes(state, listener),
@@ -401,11 +407,12 @@ function handleOverlayNodeEvent(
   state: GraphRuntimeState,
   id: string,
   type: GraphViewElementEventType,
+  selectionIntent?: SelectionIntent,
 ) {
   if (type === 'pointer-enter') state.hoveredNodeIds.add(id);
   if (type === 'pointer-leave') state.hoveredNodeIds.delete(id);
   if (type === 'press') state.cy.getElementById(id).select();
-  state.callbacksRef.current.onNodeEvent?.({ id, type });
+  state.callbacksRef.current.onNodeEvent?.({ id, type, selectionIntent });
   emitRenderedNodes(state);
 }
 

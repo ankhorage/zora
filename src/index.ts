@@ -368,6 +368,7 @@ export {
 export type {
   SelectableItemProps,
   SelectableItemState,
+  SelectionIntent,
   SelectionMode,
   SelectionProviderProps,
   SelectionTrigger,
