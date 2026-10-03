@@ -8,7 +8,7 @@
         "@ankhorage/color-theory": "^0.3.1",
         "@ankhorage/contracts": "^22.8.99",
         "@ankhorage/game": "^0.1.2",
-        "@ankhorage/runtime": "^3.0.58",
+        "@ankhorage/runtime": "^3.0.59",
         "@ankhorage/surface": "^9.1.112",
         "@ankhorage/utility": "^1.9.82",
         "chess.js": "^1.4.0",
@@ -64,7 +64,7 @@
 
     "@ankhorage/contracts": ["@ankhorage/contracts@22.8.99", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.82" } }, "sha512-GhWjkbPw4GUTkfxuWEQtrT9zljL+U/KY0MsI/eVLuGl2/0vBfeQBoA7XkcvIXiYNsk2hCy0B4+aVZUz2z6+/jg=="],
 
-    "@ankhorage/data-sources": ["@ankhorage/data-sources@2.0.30", "", { "dependencies": { "@ankhorage/contracts": "^22.8.98" } }, "sha512-lCtF6X0OyoSQgDibAyjZEzNX1sefnV9ZqhZ/rIJchqZ2l783quMwyYTG5n1d6w5gntBaw7I6gljKuWpzPqJqxg=="],
+    "@ankhorage/data-sources": ["@ankhorage/data-sources@2.0.31", "", { "dependencies": { "@ankhorage/contracts": "^22.8.99" } }, "sha512-il6enxi2DMoiAraCvT1EJPQZRHctA410YRSQjplroSo9OG47jE+hBZ/3AdWQ1baeEEZGyUPRA8lWE0ucAConpQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@2.1.2", "", { "dependencies": { "@ankhorage/apm": "^0.8.13", "@ankhorage/contracts": "^22.8.93", "@ankhorage/project-detector": "^0.3.3", "@ankhorage/rules-repository": "^0.2.0", "@ankhorage/utility": "^0.5.5", "@changesets/cli": "^3.0.3", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "@next/eslint-plugin-next": "^16.3.8", "eslint": "^10.11.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.2.0", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.39.0", "prettier": "^3.9.9", "typescript": "~6.0.3", "typescript-eslint": "^8.71.0" }, "bin": { "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-prettier": "dist/cli/bin/prettier.js", "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-structure": "dist/cli/bin/structure.js", "ankhorage-apm-release": "dist/cli/bin/apm-release.js" } }, "sha512-fxUtUpGl3JWRwZ53UlbKgsPRd5xptoZtJ/aSFbTZqSqmgxlrKFhEJ4V5tsPcwr9yjvmYt8BCtB0ufbuFhSDQgw=="],
 
@@ -80,7 +80,7 @@
 
     "@ankhorage/rules-repository": ["@ankhorage/rules-repository@0.2.0", "", { "dependencies": { "@ankhorage/rules": "^0.2.0" } }, "sha512-ugJq6urUXGpexwcJAERSfauHJAUtWN2ZkogsAMYUX9dMCH8wXcQrdWOuYHjL5G7wB6f0IX2Ebjri7091AuF1XQ=="],
 
-    "@ankhorage/runtime": ["@ankhorage/runtime@3.0.58", "", { "dependencies": { "@ankhorage/contracts": "^22.8.99", "@ankhorage/data-sources": "^2.0.30", "@ankhorage/utility": "^1.9.82" }, "peerDependencies": { "react": ">=19.2.0 <20", "react-native": ">=0.86.0 <0.88", "react-native-web": "~0.21.3" }, "optionalPeers": ["react-native-web"] }, "sha512-ggAYZ5BfLKZaw958PxpObkQYIUGlp7uGNmgjCfBu2WLrOipkfzaTYonml7ZO6hmdEYpDrwKiMb/Zv/Gz+4xazw=="],
+    "@ankhorage/runtime": ["@ankhorage/runtime@3.0.59", "", { "dependencies": { "@ankhorage/contracts": "^22.8.99", "@ankhorage/data-sources": "^2.0.31", "@ankhorage/utility": "^1.9.82" }, "peerDependencies": { "react": ">=19.2.0 <20", "react-native": ">=0.86.0 <0.88", "react-native-web": "~0.21.3" }, "optionalPeers": ["react-native-web"] }, "sha512-mjy+Nijx5ysn8jNkTGYkywE3iYjvCzNfF4mAzEyWF9K6+C1ktppZlywLonwMGI2qM2LmT7j4VnENKJGzyS2DXw=="],
 
     "@ankhorage/surface": ["@ankhorage/surface@9.1.112", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/contracts": "^22.8.94", "@ankhorage/utility": "^1.9.79", "@gorhom/bottom-sheet": "^5.2.14" }, "peerDependencies": { "@react-native-vector-icons/fontawesome": "^13.1.4", "@react-native-vector-icons/fontawesome5": "^13.1.3", "@react-native-vector-icons/fontawesome6": "^13.1.3", "@react-native-vector-icons/ionicons": "^13.1.3", "@react-native-vector-icons/material-design-icons": "^13.1.3", "react": "19.3.0", "react-native": "0.86.x || 0.87.x", "react-native-gesture-handler": "~2.32.0 || ~3.3.0", "react-native-reanimated": "4.5.1 || 4.7.0 || 4.7", "react-native-safe-area-context": "~5.10.0", "react-native-svg": "15.15.5", "react-native-web": "~0.21.0", "react-native-worklets": "0.10.1 || 0.13.0" } }, "sha512-We9601afNoJKem96MfADinA8fiLFUW02ISuiPsMc9Zvmq5snFH08sJMoIXMETriWRxh8vY/eppjlJgsKmnw7JQ=="],
 
