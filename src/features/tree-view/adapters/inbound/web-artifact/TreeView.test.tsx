@@ -221,3 +221,25 @@ test('supports folder/file indicators without duplicating supplied row icons', (
   expect(markup).not.toContain('duplicate-icon');
   expect(markup.match(/<svg/g)?.length).toBe(2);
 });
+
+
+test('renders the expanded node icon while a chevron node is open', () => {
+  const node = {
+    id: 'src',
+    label: 'src',
+    icon: <span>closed-folder</span>,
+    expandedIcon: <span>open-folder</span>,
+    children: [{ id: 'file', label: 'file.ts' }],
+  };
+  const collapsed = renderToStaticMarkup(
+    <TreeView expansionIndicator="chevron" nodes={[node]} />,
+  );
+  const expanded = renderToStaticMarkup(
+    <TreeView expansionIndicator="chevron" defaultExpandedIds={['src']} nodes={[node]} />,
+  );
+
+  expect(collapsed).toContain('closed-folder');
+  expect(collapsed).not.toContain('open-folder');
+  expect(expanded).toContain('open-folder');
+  expect(expanded).not.toContain('closed-folder');
+});
