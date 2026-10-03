@@ -21,9 +21,9 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
  * maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
  * onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
- * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering
- * and uses bounded collision checks including labels and compound siblings; it can recover uniformly
- * cramped layouts but cannot repair non-uniform overlaps.
+ * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
+ * stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
+ * collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.
  */
 export function GraphView(props: GraphViewProps) {
   const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props);
