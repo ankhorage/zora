@@ -2,6 +2,8 @@ import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 
 import { toPortablePath } from '@ankhorage/utility/node/path';
+import * as ts from 'typescript';
+
 import { createWebBuildPlugins } from './createWebBuildPlugins';
 import type {
   WebArtifactManifestEntry,
@@ -274,7 +276,10 @@ async function writeDeclaration(
     }),
   );
 
-  const runtimeSource = await readFile(target.declarationSource, 'utf8');
+  const runtimeSource = publicDeclarationSurface(
+    await readFile(target.declarationSource, 'utf8'),
+    target.declarationSource,
+  );
   const rewritten = supports.reduce(
     (source, support) =>
       replaceDeclarationSpecifier(source, support.originalSpecifier, support.localSpecifier),
@@ -316,6 +321,39 @@ function replaceDeclarationSpecifier(source: string, from: string, to: string): 
   const replaced = source.replaceAll(`'${from}'`, `'${to}'`).replaceAll(`"${from}"`, `"${to}"`);
   if (replaced === source) throw new Error(`Missing declaration dependency "${from}".`);
   return replaced;
+}
+
+/*** Keep only exported declarations and imports required by that public declaration surface. */
+function publicDeclarationSurface(source: string, path: string): string {
+  const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
+  const exported = file.statements.filter(isPublicDeclarationStatement);
+  const publicText = exported.map((statement) => statement.getText(file)).join('\n');
+  const imports = file.statements.filter(
+    (statement): statement is ts.ImportDeclaration =>
+      ts.isImportDeclaration(statement) &&
+      importBindingNames(statement).some((name) => publicText.includes(name)),
+  );
+  return [...imports, ...exported]
+    .map((statement) => statement.getFullText(file).trim())
+    .filter(Boolean)
+    .join('\n\n');
+}
+
+/*** Identify declarations that belong to the emitted module's public contract. */
+function isPublicDeclarationStatement(statement: ts.Statement): boolean {
+  if (ts.isExportDeclaration(statement)) return true;
+  return statement.modifiers?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword) ?? false;
+}
+
+/*** Read local binding identifiers introduced by one declaration import. */
+function importBindingNames(statement: ts.ImportDeclaration): readonly string[] {
+  const clause = statement.importClause;
+  if (clause === undefined) return [];
+  const names = clause.name === undefined ? [] : [clause.name.text];
+  const bindings = clause.namedBindings;
+  if (bindings === undefined) return names;
+  if (ts.isNamespaceImport(bindings)) return [...names, bindings.name.text];
+  return [...names, ...bindings.elements.map(({ name }) => name.text)];
 }
 
 /*** Reject relative declaration dependencies that would escape the standalone materialized artifact. */
