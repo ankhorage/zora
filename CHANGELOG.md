@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.1.2
+
+### Patch Changes
+
+- 4430e25: Update dependencies: `@ankhorage/contracts`.
+
 ## 22.1.1
 
 ### Patch Changes
