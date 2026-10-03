@@ -79,7 +79,7 @@ test('reveals a controlled selection when expansion makes the row renderable', a
     Node: browserWindow.Node,
     navigator: browserWindow.navigator,
   });
-  const reveals: (boolean | ScrollIntoViewOptions | undefined)[] = [];
+  const reveals: unknown[] = [];
   browserWindow.HTMLElement.prototype.scrollIntoView = (options) => reveals.push(options);
   const host = document.createElement('div');
   document.body.appendChild(host);
