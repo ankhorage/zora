@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.81
+
+### Patch Changes
+
+- d3d3741: Preserve public GraphView type exports in standalone web materialization.
+
 ## 22.0.80
 
 ### Patch Changes
