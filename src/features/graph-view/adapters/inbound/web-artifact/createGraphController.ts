@@ -104,18 +104,19 @@ function measureRenderedNodes(
   const viewport = { width: cy.width(), height: cy.height() };
   if (viewport.width <= 0 || viewport.height <= 0 || nodeIds.length === 0) return null;
 
-  const requestedIds = new Set(nodeIds);
-  const nodes = cy
-    .nodes()
-    .filter((node) => requestedIds.has(node.id()))
-    .map((node) => {
-      const bounds = node.renderedBoundingBox();
-      return {
-        id: node.id(),
+  const nodes = [...new Set(nodeIds)].flatMap((id) => {
+    const node = cy.getElementById(id);
+    if (!node.isNode()) return [];
+
+    const bounds = node.renderedBoundingBox();
+    return [
+      {
+        id,
         position: node.renderedPosition(),
         size: { width: bounds.w, height: bounds.h },
-      };
-    });
+      },
+    ];
+  });
   return nodes.length === 0 ? null : { nodes, viewport };
 }
 
