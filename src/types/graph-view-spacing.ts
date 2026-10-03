@@ -1,6 +1,7 @@
 export interface GraphSpacingFitOptions {
   readonly fitPadding?: number;
   readonly maxFitZoom?: number;
+  readonly minReadableZoom?: number;
 }
 
 export interface GraphSpacingCandidate {
