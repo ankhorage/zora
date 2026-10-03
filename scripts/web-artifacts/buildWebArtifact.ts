@@ -346,7 +346,10 @@ function publicDeclarationSurface(source: string, path: string): string {
 /*** Identify declarations that belong to the emitted module's public contract. */
 function isPublicDeclarationStatement(statement: ts.Statement): boolean {
   if (ts.isExportDeclaration(statement)) return true;
-  return statement.modifiers?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword) ?? false;
+  return (
+    ts.canHaveModifiers(statement) &&
+    (ts.getModifiers(statement)?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword) ?? false)
+  );
 }
 
 /*** Read local binding identifiers introduced by one declaration import. */
