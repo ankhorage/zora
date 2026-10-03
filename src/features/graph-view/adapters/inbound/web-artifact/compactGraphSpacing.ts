@@ -35,9 +35,16 @@ export function compactGraphSpacing(
   if (evaluator === null) return spacingFactor;
   const current = evaluator.evaluate(1);
   const maxFitZoom = options.maxFitZoom ?? Infinity;
+  const minReadableZoom = options.minReadableZoom ?? 0;
   const factor = needsExpansion(current)
-    ? chooseExpansionFactor(evaluator.evaluate, maxFitZoom)
-    : chooseCompactionFactor(evaluator.evaluate, spacingFactor, maxFitZoom, current);
+    ? chooseExpansionFactor(evaluator.evaluate, minReadableZoom)
+    : chooseCompactionFactor(
+        evaluator.evaluate,
+        spacingFactor,
+        maxFitZoom,
+        minReadableZoom,
+        current,
+      );
   if (factor === 1) return spacingFactor;
 
   evaluator.apply(factor);
@@ -49,12 +56,17 @@ function chooseCompactionFactor(
   evaluate: (factor: number) => GraphSpacingCandidate,
   spacingFactor: number,
   maxFitZoom: number,
+  minReadableZoom: number,
   current: GraphSpacingCandidate,
 ): number {
-  if (current.renderedBackgroundOverlap > ZERO_TOLERANCE || reachesFitTarget(current, maxFitZoom))
-    return 1;
+  if (reachesFitTarget(current, maxFitZoom)) return 1;
 
   const minimum = Math.min(1, 0.1 / spacingFactor);
+  if (current.renderedBackgroundOverlap > ZERO_TOLERANCE) {
+    if (reachesReadableTarget(current, minReadableZoom)) return 1;
+    return chooseSoftCompactionFactor(evaluate, minimum, 1, minReadableZoom);
+  }
+
   const strictMinimum = findMinimumAcceptedFactor(minimum, 1, (factor) =>
     isStrictCandidate(evaluate(factor)),
   );
@@ -69,29 +81,41 @@ function chooseCompactionFactor(
       }) ?? strictMinimum
     );
   }
+  if (reachesReadableTarget(strict, minReadableZoom)) return strictMinimum;
 
-  const softMinimum =
-    findMinimumAcceptedFactor(minimum, strictMinimum, (factor) =>
-      isSoftCandidate(evaluate(factor)),
-    ) ?? strictMinimum;
+  return chooseSoftCompactionFactor(evaluate, minimum, strictMinimum, minReadableZoom);
+}
+
+/*** Spend background-overlap budget only to recover the configured readable-label threshold. */
+function chooseSoftCompactionFactor(
+  evaluate: (factor: number) => GraphSpacingCandidate,
+  minimum: number,
+  maximum: number,
+  minReadableZoom: number,
+): number {
+  const softMinimum = findMinimumAcceptedFactor(minimum, maximum, (factor) =>
+    isSoftCandidate(evaluate(factor)),
+  );
+  if (softMinimum === undefined) return maximum;
+
   const soft = evaluate(softMinimum);
-  if (!reachesFitTarget(soft, maxFitZoom)) return softMinimum;
+  if (!reachesReadableTarget(soft, minReadableZoom)) return softMinimum;
   return (
-    findMaximumAcceptedFactor(softMinimum, strictMinimum, (factor) => {
+    findMaximumAcceptedFactor(softMinimum, maximum, (factor) => {
       const candidate = evaluate(factor);
-      return isSoftCandidate(candidate) && reachesFitTarget(candidate, maxFitZoom);
+      return isSoftCandidate(candidate) && reachesReadableTarget(candidate, minReadableZoom);
     }) ?? softMinimum
   );
 }
 
-/*** Expand only enough to recover hard readability constraints or the rendered overlap budget. */
+/*** Expand only enough to restore strict geometry unless that would sacrifice readable labels. */
 function chooseExpansionFactor(
   evaluate: (factor: number) => GraphSpacingCandidate,
-  maxFitZoom: number,
+  minReadableZoom: number,
 ): number {
   const strict = findExpansionFactor((factor) => isStrictCandidate(evaluate(factor)));
-  if (strict !== undefined && reachesFitTarget(evaluate(strict), maxFitZoom)) return strict;
-  return findExpansionFactor((factor) => isSoftCandidate(evaluate(factor))) ?? 1;
+  if (strict !== undefined && reachesReadableTarget(evaluate(strict), minReadableZoom)) return strict;
+  return findExpansionFactor((factor) => isSoftCandidate(evaluate(factor))) ?? strict ?? 1;
 }
 
 /*** Return whether a candidate is collision-free, including decorative leaf backgrounds. */
@@ -116,6 +140,11 @@ function needsExpansion(candidate: GraphSpacingCandidate): boolean {
 function reachesFitTarget(candidate: GraphSpacingCandidate, maxFitZoom: number): boolean {
   if (!Number.isFinite(maxFitZoom)) return false;
   return candidate.effectiveFitZoom >= maxFitZoom - ZERO_TOLERANCE;
+}
+
+/*** Return whether full-graph fit keeps semantic labels at the configured readable threshold. */
+function reachesReadableTarget(candidate: GraphSpacingCandidate, minReadableZoom: number): boolean {
+  return minReadableZoom <= 0 || candidate.effectiveFitZoom >= minReadableZoom - ZERO_TOLERANCE;
 }
 
 /*** Binary-search the smallest factor accepted by a monotonic spacing constraint. */
