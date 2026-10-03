@@ -5,7 +5,7 @@ export interface WebArtifactRuntimeExport {
   readonly runtimeKind: WebArtifactRuntimeKind;
 }
 
-export interface WebArtifactTypeExport {
+interface WebArtifactTypeExport {
   readonly declarationSource: string;
   readonly exportName: string;
 }
