@@ -91,6 +91,10 @@ async function discoverEntryTargets(
           override === undefined ? undefined : toDistDeclarationPath(override, paths),
         exportName,
         featurePath,
+        publicTypeExports:
+          override === undefined
+            ? []
+            : discoverPublicTypeExports(program, publicEntry, override, paths),
         runtimeKind,
         runtimeExports:
           override === undefined ? facadeRuntimeExports : [{ exportName, runtimeKind }],
@@ -120,6 +124,58 @@ async function resolveWebArtifactOverride(
     if (await pathExists(candidate)) return candidate;
   }
   return undefined;
+}
+
+/*** Preserve explicit public type re-exports beside a specialized browser implementation. */
+function discoverPublicTypeExports(
+  program: ts.Program,
+  publicEntry: string,
+  override: string,
+  paths: DiscoveryPaths,
+): WebArtifactTarget['publicTypeExports'] {
+  const sourceFile = program.getSourceFile(publicEntry);
+  if (sourceFile === undefined) throw new Error(`Could not load ZORA feature: ${publicEntry}`);
+  return sourceFile.statements.flatMap((statement) => {
+    if (
+      !ts.isExportDeclaration(statement) ||
+      !statement.isTypeOnly ||
+      statement.moduleSpecifier === undefined ||
+      !ts.isStringLiteral(statement.moduleSpecifier) ||
+      statement.exportClause === undefined ||
+      !ts.isNamedExports(statement.exportClause)
+    ) {
+      return [];
+    }
+    const moduleSpecifier = statement.moduleSpecifier.text;
+    if (!moduleSpecifier.startsWith('.')) return [];
+    const resolved = ts.resolveModuleName(
+      moduleSpecifier,
+      publicEntry,
+      program.getCompilerOptions(),
+      ts.sys,
+    ).resolvedModule?.resolvedFileName;
+    if (resolved === undefined) {
+      throw new Error(
+        `Could not resolve public type source "${moduleSpecifier}" from ${publicEntry}`,
+      );
+    }
+    return [
+      {
+        declarationSource: toDistDeclarationPath(resolved, paths),
+        exportNames: statement.exportClause.elements.map(({ name }) => name.text),
+        sourceSpecifier: relativeSourceSpecifier(override, resolved),
+      },
+    ];
+  });
+}
+
+/*** Render one source-relative module specifier exactly as TypeScript preserves it in declarations. */
+function relativeSourceSpecifier(fromFile: string, toFile: string): string {
+  const normalized = toPortablePath(relative(dirname(fromFile), toFile)).replace(
+    /\.(?:tsx?|mts|cts)$/u,
+    '',
+  );
+  return normalized.startsWith('.') ? normalized : `./${normalized}`;
 }
 
 /*** Resolve a source implementation to its emitted declaration path. */

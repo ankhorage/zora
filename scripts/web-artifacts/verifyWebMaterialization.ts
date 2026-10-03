@@ -94,6 +94,34 @@ try {
     assert(evidence.files.includes(`components/${component}/index.js`));
   }
   assert(!evidence.files.some((file) => file.includes('node_modules')));
+  const graphViewDeclaration = await readFile(
+    join(outputDirectory, 'components', 'graph-view', 'index.d.ts'),
+    'utf8',
+  );
+  for (const typeName of [
+    'GraphViewController',
+    'GraphViewEdge',
+    'GraphViewElementEvent',
+    'GraphViewFitOptions',
+    'GraphViewLayoutName',
+    'GraphViewNode',
+    'GraphViewStyleRule',
+  ]) {
+    assert(
+      graphViewDeclaration.includes(typeName),
+      `Missing materialized GraphView type ${typeName}`,
+    );
+  }
+  const graphViewRuntimeDeclaration = await readFile(
+    join(outputDirectory, 'components', 'graph-view', 'GraphView.d.ts'),
+    'utf8',
+  );
+  assert(!graphViewRuntimeDeclaration.includes('../../../../../types/graph-view'));
+  assert(
+    evidence.files.some((file) =>
+      file.startsWith('components/graph-view/GraphView.public-types-'),
+    ),
+  );
 
   const browser = new Window();
   Object.assign(globalThis, {

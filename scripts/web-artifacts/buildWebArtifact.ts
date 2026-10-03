@@ -1,10 +1,11 @@
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 
 import { toPortablePath } from '@ankhorage/utility/node/path';
 import { createWebBuildPlugins } from './createWebBuildPlugins';
 import type {
   WebArtifactManifestEntry,
+  WebArtifactPublicTypeExport,
   WebArtifactRuntimeExport,
   WebArtifactTarget,
 } from './types';
@@ -20,6 +21,11 @@ interface WebArtifactCatalog {
   readonly schemaVersion: 2;
   readonly runtime: { readonly entry: string; readonly files: readonly string[] };
   readonly artifacts: readonly WebArtifactManifestEntry[];
+}
+
+interface DeclarationOutput {
+  readonly aliasExports: readonly string[];
+  readonly files: readonly string[];
 }
 
 /*** Build the provider and all public web targets in one shared module graph. */
@@ -48,15 +54,15 @@ export async function buildWebArtifact(
       const alias = `components/${target.component}/index.js`;
       const aliasDeclaration = `components/${target.component}/index.d.ts`;
       const outputDirectory = join(paths.webDistRoot, dirname(declaration));
-      await writeDeclaration(target, outputDirectory);
-      await writeAlias(target, outputDirectory);
+      const declarationOutput = await writeDeclaration(target, outputDirectory);
+      await writeAlias(target, outputDirectory, declarationOutput.aliasExports);
       return {
         component: target.component,
         exportName: target.exportName,
         featurePath: target.featurePath,
         files: [
           entry,
-          declaration,
+          ...declarationOutput.files.map((file) => `components/${target.component}/${file}`),
           alias,
           aliasDeclaration,
           ...collectReachableChunks(entry, outputs, paths.webDistRoot),
@@ -86,7 +92,11 @@ export async function buildWebArtifact(
 }
 
 /*** Give each selected component one stable directory import and type entry. */
-async function writeAlias(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
+async function writeAlias(
+  target: WebArtifactTarget,
+  outputDirectory: string,
+  typeExports: readonly string[],
+): Promise<void> {
   await Promise.all([
     writeFile(
       join(outputDirectory, 'index.js'),
@@ -95,7 +105,7 @@ async function writeAlias(target: WebArtifactTarget, outputDirectory: string): P
     ),
     writeFile(
       join(outputDirectory, 'index.d.ts'),
-      `export * from './${target.exportName}';\n`,
+      [`export * from './${target.exportName}';`, ...typeExports, ''].join('\n'),
       'utf8',
     ),
   ]);
@@ -237,12 +247,36 @@ async function validateBundle(bundlePath: string): Promise<void> {
   }
 }
 
-/*** Preserve exact specialized declarations or emit portable public component types. */
-async function writeDeclaration(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
-  const outputPath = join(outputDirectory, `${target.exportName}.d.ts`);
+/*** Preserve specialized declarations and their explicit public type surface as standalone files. */
+async function writeDeclaration(
+  target: WebArtifactTarget,
+  outputDirectory: string,
+): Promise<DeclarationOutput> {
+  const fileName = `${target.exportName}.d.ts`;
+  const outputPath = join(outputDirectory, fileName);
   if (target.declarationSource !== undefined) {
-    await copyFile(target.declarationSource, outputPath);
-    return;
+    const publicTypes = await Promise.all(
+      target.publicTypeExports.map((typeExport, index) =>
+        writePublicTypeDeclarationAsync(target, typeExport, index, outputDirectory),
+      ),
+    );
+    const source = publicTypes.reduce(
+      (current, publicType) =>
+        rewriteDeclarationSpecifier(
+          current,
+          publicType.typeExport.sourceSpecifier,
+          publicType.localSpecifier,
+        ),
+      await readFile(target.declarationSource, 'utf8'),
+    );
+    await writeFile(outputPath, source, 'utf8');
+    return {
+      aliasExports: publicTypes.map(
+        ({ localSpecifier, typeExport }) =>
+          `export type { ${typeExport.exportNames.join(', ')} } from '${localSpecifier}';`,
+      ),
+      files: [fileName, ...publicTypes.map(({ fileName: publicTypeFile }) => publicTypeFile)],
+    };
   }
   const declarations = target.runtimeExports.map(createPortableRuntimeDeclaration);
   await writeFile(
@@ -250,6 +284,48 @@ async function writeDeclaration(target: WebArtifactTarget, outputDirectory: stri
     ["import type React from 'react';", '', ...declarations, ''].join('\n'),
     'utf8',
   );
+  return { aliasExports: [], files: [fileName] };
+}
+
+interface WrittenPublicTypeDeclaration {
+  readonly fileName: string;
+  readonly localSpecifier: string;
+  readonly typeExport: WebArtifactPublicTypeExport;
+}
+
+/*** Materialize one public type module locally so specialized declarations never reach into ZORA source. */
+async function writePublicTypeDeclarationAsync(
+  target: WebArtifactTarget,
+  typeExport: WebArtifactPublicTypeExport,
+  index: number,
+  outputDirectory: string,
+): Promise<WrittenPublicTypeDeclaration> {
+  const source = await readFile(typeExport.declarationSource, 'utf8');
+  assertStandaloneTypeDeclaration(source, typeExport.declarationSource);
+  const fileName = `${target.exportName}.public-types-${index}.d.ts`;
+  await writeFile(join(outputDirectory, fileName), source, 'utf8');
+  return {
+    fileName,
+    localSpecifier: `./${fileName.replace(/\.d\.ts$/u, '')}`,
+    typeExport,
+  };
+}
+
+/*** Reject copied public type modules that still depend on unmaterialized relative declarations. */
+function assertStandaloneTypeDeclaration(source: string, sourcePath: string): void {
+  const relativeDependency = [
+    ...source.matchAll(/(?:from\s+|import\()(["'])(\.[^"']*)\1/gu),
+  ].at(0)?.[2];
+  if (relativeDependency !== undefined) {
+    throw new Error(
+      `ZORA public type declaration ${sourcePath} still depends on relative module "${relativeDependency}".`,
+    );
+  }
+}
+
+/*** Redirect one specialized declaration import to its colocated materialized public type module. */
+function rewriteDeclarationSpecifier(source: string, from: string, to: string): string {
+  return source.replaceAll(`'${from}'`, `'${to}'`).replaceAll(`"${from}"`, `"${to}"`);
 }
 
 /*** Emit a portable declaration without requiring full ZORA or Surface packages. */
