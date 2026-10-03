@@ -70,6 +70,14 @@ export function createGraphController(
       if (!state.relative) state.scale = 1;
       applyZoomLimits(cy, state);
     },
+    /*** Return the native automatic-fit ceiling used by spacing optimization. */
+    getFitZoomLimit() {
+      return state.relative ? state.fitZoom : Math.min(state.fitZoom, state.max);
+    },
+    /*** Return the native label-readability threshold used before allowing background overlap. */
+    getReadableZoomTarget() {
+      return state.readableZoom;
+    },
     settle(fit: boolean) {
       const logicalZoom = cy.zoom() / state.scale;
       const fonts = cy

@@ -1,273 +1,194 @@
-import { findMinimumAcceptedNumber } from '@ankhorage/utility/algorithms';
-import type { Core, NodeSingular } from 'cytoscape';
+import type { Core } from 'cytoscape';
 
-const LABEL_OVERLAP_RATIO = 0.12;
+import type {
+  GraphSpacingCandidate,
+  GraphSpacingFitOptions,
+} from '../../../../../types/graph-view-spacing';
+import { createGraphSpacingEvaluator } from './createGraphSpacingEvaluator';
+
 const MAX_EXPANSION_ATTEMPTS = 8;
 const MAX_NODE_COUNT = 2000;
-const MAX_PAIR_CHECKS = 200000;
+const MAX_RENDERED_BACKGROUND_OVERLAP = 4;
 const SEARCH_ITERATIONS = 8;
+const ZERO_TOLERANCE = 0.001;
 
 /***
- * Optimize settled layout spacing around readable label bounds instead of full node clearance.
- * Compound containment stays intentional while sibling groups retain non-overlapping boundaries.
- * Cytoscape geometry is measured once, then bounded pure numeric trials reuse the
- * immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.
+ * Optimize settled spacing for useful rendered scale instead of minimum model-space distance.
+ * A graph already at its fit-size target remains unchanged. When compaction is useful, semantic
+ * label/compound collisions stay forbidden; only dense graphs may spend up to four rendered pixels
+ * of decorative leaf-background overlap. Locked/large views retain their settled geometry.
  */
-export function compactGraphSpacing(cy: Core, spacingFactor: number): number {
-  const leaves = cy.nodes(':childless');
-  if (leaves.length < 2 || cy.nodes().length > MAX_NODE_COUNT || cy.nodes(':locked').length > 0)
+export function compactGraphSpacing(
+  cy: Core,
+  spacingFactor: number,
+  options: GraphSpacingFitOptions = {},
+): number {
+  if (
+    spacingFactor <= 0 ||
+    cy.nodes(':childless').length < 2 ||
+    cy.nodes().length > MAX_NODE_COUNT ||
+    cy.nodes(':locked').length > 0
+  )
     return spacingFactor;
 
-  const bounds = leaves.boundingBox();
-  const center = { x: (bounds.x1 + bounds.x2) / 2, y: (bounds.y1 + bounds.y2) / 2 };
-  const leafGeometry = leaves.map(readLeafGeometry);
-  const groups = cy.nodes(':parent').map((node) =>
-    readGroupGeometry(
-      node.id(),
-      node.ancestors().map((parent) => parent.id()),
-      node.boundingBox(),
-      leafGeometry,
-    ),
-  );
-  const accepts = (factor: number) =>
-    !hasUnsafeCollisions(resolveCollisionBoxes(leafGeometry, groups, center, factor));
-  const currentAccepted = accepts(1);
-  const minimum = currentAccepted ? Math.min(1, 0.1 / spacingFactor) : 1;
-  const maximum = currentAccepted ? 1 : findExpansionMaximum(accepts);
-  if (maximum === undefined) return spacingFactor;
+  const evaluator = createGraphSpacingEvaluator(cy, options);
+  if (evaluator === null) return spacingFactor;
+  const current = evaluator.evaluate(1);
+  const maxFitZoom = options.maxFitZoom ?? Infinity;
+  const minReadableZoom = options.minReadableZoom ?? 0;
+  const factor = needsExpansion(current)
+    ? chooseExpansionFactor(evaluator.evaluate, minReadableZoom)
+    : chooseCompactionFactor(
+        evaluator.evaluate,
+        spacingFactor,
+        maxFitZoom,
+        minReadableZoom,
+        current,
+      );
+  if (factor === 1) return spacingFactor;
 
-  const factor = findMinimumAcceptedNumber({
-    minimum,
-    maximum,
-    iterations: SEARCH_ITERATIONS,
-    accepts,
-  });
-  if (factor === undefined) return spacingFactor;
-
-  applyScale(cy, leafGeometry, center, factor);
+  evaluator.apply(factor);
   return spacingFactor * factor;
 }
 
-interface Point {
-  readonly x: number;
-  readonly y: number;
-}
+/*** Choose a smaller factor only while it improves rendered fit or reaches the configured cap. */
+function chooseCompactionFactor(
+  evaluate: (factor: number) => GraphSpacingCandidate,
+  spacingFactor: number,
+  maxFitZoom: number,
+  minReadableZoom: number,
+  current: GraphSpacingCandidate,
+): number {
+  if (reachesFitTarget(current, maxFitZoom)) return 1;
 
-interface Bounds {
-  readonly x1: number;
-  readonly y1: number;
-  readonly x2: number;
-  readonly y2: number;
-  readonly w: number;
-  readonly h: number;
-}
+  const minimum = Math.min(1, 0.1 / spacingFactor);
+  if (current.renderedBackgroundOverlap > ZERO_TOLERANCE) {
+    if (reachesReadableTarget(current, minReadableZoom)) return 1;
+    return chooseSoftCompactionFactor(evaluate, minimum, 1, minReadableZoom);
+  }
 
-interface Insets {
-  readonly left: number;
-  readonly right: number;
-  readonly top: number;
-  readonly bottom: number;
-}
+  const strictMinimum = findMinimumAcceptedFactor(minimum, 1, (factor) =>
+    isStrictCandidate(evaluate(factor)),
+  );
+  if (strictMinimum === undefined) return 1;
 
-interface LeafGeometry {
-  readonly id: string;
-  readonly ancestors: ReadonlySet<string>;
-  readonly position: Point;
-  readonly labelBox: Bounds;
-  readonly nodeBox: Bounds;
-}
-
-interface GroupGeometry {
-  readonly id: string;
-  readonly ancestors: ReadonlySet<string>;
-  readonly descendants: readonly LeafGeometry[];
-  readonly insets: Insets;
-}
-
-interface CollisionBox {
-  readonly id: string;
-  readonly ancestors: ReadonlySet<string>;
-  readonly kind: 'label' | 'group';
-  readonly box: Bounds;
-}
-
-/*** Read one leaf's immutable position, hierarchy and renderer-measured label geometry. */
-function readLeafGeometry(node: NodeSingular): LeafGeometry {
-  const nodeBox = node.boundingBox({
-    includeLabels: true,
-    includeOverlays: false,
-    includeUnderlays: false,
-  });
-  const labelBox = node.boundingBox({
-    includeNodes: false,
-    includeEdges: false,
-    includeLabels: true,
-    includeOverlays: false,
-    includeUnderlays: false,
-  });
-  return {
-    id: node.id(),
-    ancestors: new Set(node.ancestors().map((parent) => parent.id())),
-    position: { ...node.position() },
-    labelBox: isUsableBox(labelBox) ? labelBox : nodeBox,
-    nodeBox,
-  };
-}
-
-/*** Capture one compound group's descendant geometry and constant renderer-owned outer insets. */
-function readGroupGeometry(
-  id: string,
-  ancestorIds: readonly string[],
-  parentBox: Bounds,
-  leaves: readonly LeafGeometry[],
-): GroupGeometry {
-  const descendants = leaves.filter((leaf) => leaf.ancestors.has(id));
-  const descendantUnion = unionBounds(descendants.map((leaf) => leaf.nodeBox)) ?? parentBox;
-  return {
-    id,
-    ancestors: new Set(ancestorIds),
-    descendants,
-    insets: {
-      left: Math.max(0, descendantUnion.x1 - parentBox.x1),
-      right: Math.max(0, parentBox.x2 - descendantUnion.x2),
-      top: Math.max(0, descendantUnion.y1 - parentBox.y1),
-      bottom: Math.max(0, parentBox.y2 - descendantUnion.y2),
-    },
-  };
-}
-
-/*** Resolve immutable label and compound boxes for one candidate uniform spacing factor. */
-function resolveCollisionBoxes(
-  leaves: readonly LeafGeometry[],
-  groups: readonly GroupGeometry[],
-  center: Point,
-  factor: number,
-): readonly CollisionBox[] {
-  const labels = leaves.map((leaf) => ({
-    id: leaf.id,
-    ancestors: leaf.ancestors,
-    kind: 'label' as const,
-    box: shiftBounds(leaf.labelBox, leaf.position, center, factor),
-  }));
-  const compoundBoxes = groups.flatMap((group) => {
-    const descendants = group.descendants.map((leaf) =>
-      shiftBounds(leaf.nodeBox, leaf.position, center, factor),
+  const strict = evaluate(strictMinimum);
+  if (reachesFitTarget(strict, maxFitZoom)) {
+    return (
+      findMaximumAcceptedFactor(strictMinimum, 1, (factor) => {
+        const candidate = evaluate(factor);
+        return isStrictCandidate(candidate) && reachesFitTarget(candidate, maxFitZoom);
+      }) ?? strictMinimum
     );
-    const union = unionBounds(descendants);
-    if (!union) return [];
-    return [
-      {
-        id: group.id,
-        ancestors: group.ancestors,
-        kind: 'group' as const,
-        box: expandBounds(union, group.insets),
-      },
-    ];
-  });
-  return [...labels, ...compoundBoxes];
+  }
+  if (reachesReadableTarget(strict, minReadableZoom)) return strictMinimum;
+
+  return chooseSoftCompactionFactor(evaluate, minimum, strictMinimum, minReadableZoom);
 }
 
-/*** Find the first bounded expansion factor that makes the pure geometry snapshot acceptable. */
-function findExpansionMaximum(accepts: (factor: number) => boolean): number | undefined {
-  return Array.from({ length: MAX_EXPANSION_ATTEMPTS }, (_, index) => 2 ** (index + 1)).find(
-    accepts,
+/*** Spend background-overlap budget only to recover the configured readable-label threshold. */
+function chooseSoftCompactionFactor(
+  evaluate: (factor: number) => GraphSpacingCandidate,
+  minimum: number,
+  maximum: number,
+  minReadableZoom: number,
+): number {
+  const softMinimum = findMinimumAcceptedFactor(minimum, maximum, (factor) =>
+    isSoftCandidate(evaluate(factor)),
+  );
+  if (softMinimum === undefined) return maximum;
+
+  const soft = evaluate(softMinimum);
+  if (!reachesReadableTarget(soft, minReadableZoom)) return softMinimum;
+  return (
+    findMaximumAcceptedFactor(softMinimum, maximum, (factor) => {
+      const candidate = evaluate(factor);
+      return isSoftCandidate(candidate) && reachesReadableTarget(candidate, minReadableZoom);
+    }) ?? softMinimum
   );
 }
 
-/***
- * Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.
- * Local loop counters are intentionally mutable on this performance-critical boundary.
- */
-function hasUnsafeCollisions(boxes: readonly CollisionBox[]): boolean {
-  const sorted = [...boxes].sort((first, second) => first.box.x1 - second.box.x1);
-  const budget = { remaining: MAX_PAIR_CHECKS };
-  for (const [index, first] of sorted.entries()) {
-    for (let next = index + 1; next < sorted.length; next += 1) {
-      const second = sorted.at(next);
-      if (!second) break;
-      if (second.box.x1 >= first.box.x2) break;
-      budget.remaining -= 1;
-      if (budget.remaining < 0) return true;
-      if (isIntentionalContainment(first, second)) continue;
-      if (isUnsafeOverlap(first, second)) return true;
-    }
-  }
-  return false;
+/*** Expand only enough to restore strict geometry unless that would sacrifice readable labels. */
+function chooseExpansionFactor(
+  evaluate: (factor: number) => GraphSpacingCandidate,
+  minReadableZoom: number,
+): number {
+  const strict = findExpansionFactor((factor) => isStrictCandidate(evaluate(factor)));
+  if (strict !== undefined && reachesReadableTarget(evaluate(strict), minReadableZoom))
+    return strict;
+  return findExpansionFactor((factor) => isSoftCandidate(evaluate(factor))) ?? strict ?? 1;
 }
 
-/*** Ignore intentional compound containment while retaining sibling and unrelated separation. */
-function isIntentionalContainment(first: CollisionBox, second: CollisionBox): boolean {
-  return first.ancestors.has(second.id) || second.ancestors.has(first.id);
+/*** Return whether a candidate is collision-free, including decorative leaf backgrounds. */
+function isStrictCandidate(candidate: GraphSpacingCandidate): boolean {
+  return !candidate.hardCollision && candidate.renderedBackgroundOverlap <= ZERO_TOLERANCE;
 }
 
-/*** Permit only a small bounded label-label overlap; every other intersection remains unsafe. */
-function isUnsafeOverlap(first: CollisionBox, second: CollisionBox): boolean {
-  const overlapWidth =
-    Math.min(first.box.x2, second.box.x2) - Math.max(first.box.x1, second.box.x1);
-  const overlapHeight =
-    Math.min(first.box.y2, second.box.y2) - Math.max(first.box.y1, second.box.y1);
-  if (overlapWidth <= 0 || overlapHeight <= 0) return false;
-  if (first.kind !== 'label' || second.kind !== 'label') return true;
-  const widthRatio = overlapWidth / Math.min(first.box.w, second.box.w);
-  const heightRatio = overlapHeight / Math.min(first.box.h, second.box.h);
-  return widthRatio > LABEL_OVERLAP_RATIO && heightRatio > LABEL_OVERLAP_RATIO;
+/*** Allow only bounded rendered-pixel background overlap as a dense-graph fallback. */
+function isSoftCandidate(candidate: GraphSpacingCandidate): boolean {
+  return (
+    !candidate.hardCollision &&
+    candidate.renderedBackgroundOverlap <= MAX_RENDERED_BACKGROUND_OVERLAP + ZERO_TOLERANCE
+  );
 }
 
-/*** Shift one fixed renderer box with its leaf center under uniform radial scaling. */
-function shiftBounds(box: Bounds, position: Point, center: Point, factor: number): Bounds {
-  const dx = (position.x - center.x) * (factor - 1);
-  const dy = (position.y - center.y) * (factor - 1);
-  return {
-    x1: box.x1 + dx,
-    y1: box.y1 + dy,
-    x2: box.x2 + dx,
-    y2: box.y2 + dy,
-    w: box.w,
-    h: box.h,
-  };
+/*** Detect whether current geometry must expand before compaction can be considered. */
+function needsExpansion(candidate: GraphSpacingCandidate): boolean {
+  return candidate.hardCollision || !isSoftCandidate(candidate);
 }
 
-/*** Expand a descendant union by the compound renderer's measured outer insets. */
-function expandBounds(box: Bounds, insets: Insets): Bounds {
-  const x1 = box.x1 - insets.left;
-  const y1 = box.y1 - insets.top;
-  const x2 = box.x2 + insets.right;
-  const y2 = box.y2 + insets.bottom;
-  return { x1, y1, x2, y2, w: x2 - x1, h: y2 - y1 };
+/*** Treat a finite fit-size ceiling as the point after which tighter spacing cannot improve output. */
+function reachesFitTarget(candidate: GraphSpacingCandidate, maxFitZoom: number): boolean {
+  if (!Number.isFinite(maxFitZoom)) return false;
+  return candidate.effectiveFitZoom >= maxFitZoom - ZERO_TOLERANCE;
 }
 
-/*** Return the immutable union of measured boxes, or undefined for an empty collection. */
-function unionBounds(boxes: readonly Bounds[]): Bounds | undefined {
-  if (boxes.length === 0) return undefined;
-  const x1 = Math.min(...boxes.map((box) => box.x1));
-  const y1 = Math.min(...boxes.map((box) => box.y1));
-  const x2 = Math.max(...boxes.map((box) => box.x2));
-  const y2 = Math.max(...boxes.map((box) => box.y2));
-  return { x1, y1, x2, y2, w: x2 - x1, h: y2 - y1 };
+/*** Return whether full-graph fit keeps semantic labels at the configured readable threshold. */
+function reachesReadableTarget(candidate: GraphSpacingCandidate, minReadableZoom: number): boolean {
+  return minReadableZoom <= 0 || candidate.effectiveFitZoom >= minReadableZoom - ZERO_TOLERANCE;
 }
 
-/*** Return whether renderer measurement produced a non-empty label box. */
-function isUsableBox(box: Bounds): boolean {
-  return box.w > 0 && box.h > 0;
+/*** Binary-search the smallest factor accepted by a monotonic spacing constraint. */
+function findMinimumAcceptedFactor(
+  minimum: number,
+  maximum: number,
+  accepts: (factor: number) => boolean,
+): number | undefined {
+  if (!accepts(maximum)) return undefined;
+  if (accepts(minimum)) return minimum;
+  return Array.from({ length: SEARCH_ITERATIONS }).reduce<{ low: number; high: number }>(
+    (range) => {
+      const factor = (range.low + range.high) / 2;
+      return accepts(factor) ? { low: range.low, high: factor } : { low: factor, high: range.high };
+    },
+    { low: minimum, high: maximum },
+  ).high;
 }
 
-/*** Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data. */
-function applyScale(
-  cy: Core,
-  leaves: readonly LeafGeometry[],
-  center: Point,
-  factor: number,
-): void {
-  const positions = new Map(leaves.map((leaf) => [leaf.id, leaf.position]));
-  cy.batch(() => {
-    cy.nodes()
-      .not(':parent')
-      .positions((node) => {
-        const original = positions.get(node.id()) ?? node.position();
-        return {
-          x: center.x + (original.x - center.x) * factor,
-          y: center.y + (original.y - center.y) * factor,
-        };
-      });
-  });
+/*** Binary-search the largest factor that still reaches a target under its collision policy. */
+function findMaximumAcceptedFactor(
+  minimum: number,
+  maximum: number,
+  accepts: (factor: number) => boolean,
+): number | undefined {
+  if (!accepts(minimum)) return undefined;
+  if (accepts(maximum)) return maximum;
+  return Array.from({ length: SEARCH_ITERATIONS }).reduce<{ low: number; high: number }>(
+    (range) => {
+      const factor = (range.low + range.high) / 2;
+      return accepts(factor) ? { low: factor, high: range.high } : { low: range.low, high: factor };
+    },
+    { low: minimum, high: maximum },
+  ).low;
+}
+
+/*** Find the first bounded expansion threshold and refine it without unbounded layout work. */
+function findExpansionFactor(accepts: (factor: number) => boolean): number | undefined {
+  if (accepts(1)) return 1;
+  const maximum = Array.from(
+    { length: MAX_EXPANSION_ATTEMPTS },
+    (_, index) => 2 ** (index + 1),
+  ).find(accepts);
+  if (maximum === undefined) return undefined;
+  return findMinimumAcceptedFactor(maximum / 2, maximum, accepts);
 }

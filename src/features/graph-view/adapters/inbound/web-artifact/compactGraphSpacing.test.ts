@@ -1,112 +1,238 @@
 import { expect, test } from 'bun:test';
-import cytoscape, { type NodeSingular } from 'cytoscape';
+import cytoscape, { type Core, type CytoscapeOptions, type NodeSingular } from 'cytoscape';
 
 import { compactGraphSpacing } from './compactGraphSpacing';
 
-test('compacts around measured labels while allowing node backgrounds to overlap', () => {
-  const cy = cytoscape({
-    headless: true,
-    styleEnabled: true,
-    layout: { name: 'preset' },
-    elements: [
+const FIT_OPTIONS = { fitPadding: 50, maxFitZoom: 1, minReadableZoom: 1 } as const;
+
+test('keeps an already readable graph unchanged once the fit-size target is reached', () => {
+  const cy = createGraph(
+    [
       { data: { id: 'a' }, position: { x: 0, y: 0 } },
-      { data: { id: 'b' }, position: { x: 200, y: 0 } },
-      { data: { id: 'e', source: 'a', target: 'b', weight: 7 } },
+      { data: { id: 'b' }, position: { x: 300, y: 0 } },
     ],
-    style: [{ selector: 'node', style: { width: 100, height: 40, padding: '0px' } }],
-  });
+    800,
+    600,
+  );
   try {
-    const a = cy.getElementById('a');
-    const b = cy.getElementById('b');
-    installMeasuredLabelBox(a, 40, 20);
-    installMeasuredLabelBox(b, 40, 20);
-
-    const factor = compactGraphSpacing(cy, 1);
-    expect(factor).toBeGreaterThan(0.17);
-    expect(factor).toBeLessThan(0.19);
-    expect(b.boundingBox().x1 - a.boundingBox().x2).toBeLessThan(0);
-
-    const labelA = readLabelBox(a);
-    const labelB = readLabelBox(b);
-    const overlap = Math.min(labelA.x2, labelB.x2) - Math.max(labelA.x1, labelB.x1);
-    expect(overlap).toBeGreaterThan(0);
-    expect(overlap).toBeLessThanOrEqual(40 * 0.12 + 0.2);
-    expect(cy.edges()[0].data('weight')).toBe(7);
-    expect(a.width()).toBe(100);
+    const before = cy.getElementById('b').position();
+    const spacing = compactGraphSpacing(cy, 1, { ...FIT_OPTIONS, maxFitZoom: 1.5 });
+    expect(spacing).toBe(1);
+    expect(cy.getElementById('b').position()).toEqual(before);
   } finally {
     cy.destroy();
   }
 });
 
-test('expands a uniformly cramped layout only until measured labels are readable', () => {
-  const cy = cytoscape({
-    headless: true,
-    styleEnabled: true,
-    layout: { name: 'preset' },
-    elements: [
+test('compacts only until the effective fit reaches its cap while preserving node separation', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 1000, y: 0 } },
+      { data: { id: 'e', source: 'a', target: 'b', weight: 7 } },
+    ],
+    800,
+    600,
+  );
+  try {
+    const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox();
+    const second = cy.getElementById('b').boundingBox();
+    expect(spacing).toBeGreaterThan(0.59);
+    expect(spacing).toBeLessThan(0.61);
+    expect(second.x1 - first.x2).toBeGreaterThan(0);
+    expect(cy.edges()[0].data('weight')).toBe(7);
+    expect(cy.getElementById('a').width()).toBe(100);
+  } finally {
+    cy.destroy();
+  }
+});
+
+test('keeps strict separation when it can preserve the readable-label threshold', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 120, y: 0 } },
+    ],
+    340,
+    400,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
+
+  try {
+    const spacing = compactGraphSpacing(cy, 1, {
+      fitPadding: 50,
+      maxFitZoom: 1.5,
+      minReadableZoom: 1.1,
+    });
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    expect(spacing).toBeGreaterThan(0.8);
+    expect(spacing).toBeLessThan(0.9);
+    expect(Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1)).toBeLessThanOrEqual(0);
+  } finally {
+    cy.destroy();
+  }
+});
+
+test('uses a small rendered background-overlap budget only when strict separation cannot reach the fit target', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 120, y: 0 } },
+    ],
+    296,
+    400,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
+  try {
+    const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    const visualOverlap = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
+    const firstLabel = readLabelBox(cy.getElementById('a'));
+    const secondLabel = readLabelBox(cy.getElementById('b'));
+    const labelOverlap =
+      Math.min(firstLabel.x2, secondLabel.x2) - Math.max(firstLabel.x1, secondLabel.x1);
+
+    expect(spacing).toBeGreaterThan(0.79);
+    expect(spacing).toBeLessThan(0.84);
+    expect(visualOverlap).toBeGreaterThan(0);
+    expect(visualOverlap).toBeLessThanOrEqual(4.2);
+    expect(labelOverlap).toBeLessThanOrEqual(0);
+  } finally {
+    cy.destroy();
+  }
+});
+
+test('expands cramped labels and nodes when the viewport can keep them separated at the fit target', () => {
+  const cy = createGraph(
+    [
       { data: { id: 'a' }, position: { x: 0, y: 0 } },
       { data: { id: 'b' }, position: { x: 20, y: 0 } },
     ],
-    style: [{ selector: 'node', style: { width: 100, height: 40, padding: '0px' } }],
-  });
+    800,
+    600,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
   try {
-    installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
-    installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
-
-    const factor = compactGraphSpacing(cy, 0.1);
-    expect(factor).toBeGreaterThan(0.17);
-    expect(factor).toBeLessThan(0.19);
-    const labelA = readLabelBox(cy.getElementById('a'));
-    const labelB = readLabelBox(cy.getElementById('b'));
-    expect(Math.min(labelA.x2, labelB.x2) - Math.max(labelA.x1, labelB.x1)).toBeLessThanOrEqual(
-      40 * 0.12 + 0.2,
-    );
+    const spacing = compactGraphSpacing(cy, 0.1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    expect(spacing).toBeGreaterThanOrEqual(0.49);
+    expect(second.x1 - first.x2).toBeGreaterThanOrEqual(-0.2);
+    expect(
+      Math.min(readLabelBox(cy.getElementById('a')).x2, readLabelBox(cy.getElementById('b')).x2) -
+        Math.max(readLabelBox(cy.getElementById('a')).x1, readLabelBox(cy.getElementById('b')).x1),
+    ).toBeLessThanOrEqual(0);
   } finally {
     cy.destroy();
   }
 });
 
-test('preserves locked or non-uniformly overlapping views', () => {
-  for (const locked of [false, true]) {
-    const cy = cytoscape({
-      headless: true,
-      styleEnabled: true,
-      layout: { name: 'preset' },
-      elements: [
-        { data: { id: 'a' }, position: { x: 0, y: 0 }, locked },
-        { data: { id: 'b' }, position: { x: locked ? 500 : 0, y: 0 } },
-      ],
-    });
-    try {
-      expect(compactGraphSpacing(cy, 1)).toBe(1);
-    } finally {
-      cy.destroy();
+test('keeps mixed-width Atlas-like compound geometry readable while using available viewport', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'group' } },
+      { data: { id: 'theme', parent: 'group' }, position: { x: 0, y: 0 } },
+      { data: { id: 'workspace', parent: 'group' }, position: { x: 360, y: 0 } },
+      { data: { id: 'project-tree' }, position: { x: 760, y: 0 } },
+      { data: { id: 'project-source' }, position: { x: 1180, y: 0 } },
+    ],
+    1600,
+    700,
+  );
+  const widths = new Map([
+    ['theme', 180],
+    ['workspace', 220],
+    ['project-tree', 260],
+    ['project-source', 300],
+  ]);
+  for (const [id, width] of widths) {
+    cy.getElementById(id).style({ width, height: 64 });
+    installMeasuredLabelBox(cy.getElementById(id), width - 32, 24);
+  }
+
+  try {
+    const spacing = compactGraphSpacing(cy, 1, { fitPadding: 50, maxFitZoom: 1.4 });
+    expect(spacing).toBeLessThan(1);
+    expect(spacing).toBeGreaterThan(0.6);
+
+    const leaves = ['theme', 'workspace', 'project-tree', 'project-source'].map((id) =>
+      cy.getElementById(id).boundingBox({ includeLabels: false }),
+    );
+    for (const [index, first] of leaves.entries()) {
+      for (const second of leaves.slice(index + 1)) {
+        const overlapWidth = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
+        const overlapHeight = Math.min(first.y2, second.y2) - Math.max(first.y1, second.y1);
+        expect(overlapWidth > 0 && overlapHeight > 0).toBe(false);
+      }
     }
+    expect(cy.getElementById('theme').data('parent')).toBe('group');
+    expect(cy.getElementById('workspace').data('parent')).toBe('group');
+  } finally {
+    cy.destroy();
   }
 });
 
-test('allows parent-child containment but keeps compound peer groups separated', () => {
-  const cy = cytoscape({
-    headless: true,
-    styleEnabled: true,
-    layout: { name: 'preset' },
-    elements: [
+test('preserves compound containment while keeping peer groups separated', () => {
+  const cy = createGraph(
+    [
       { data: { id: 'p' } },
       { data: { id: 'p.a', parent: 'p' }, position: { x: 0, y: 0 } },
       { data: { id: 'q' } },
       { data: { id: 'q.a', parent: 'q' }, position: { x: 800, y: 0 } },
     ],
-  });
+    1000,
+    600,
+  );
   try {
-    expect(compactGraphSpacing(cy, 1)).toBeLessThan(1);
+    expect(compactGraphSpacing(cy, 1, { fitPadding: 50 })).toBeLessThan(1);
     expect(
       cy.getElementById('q').boundingBox().x1 - cy.getElementById('p').boundingBox().x2,
-    ).toBeGreaterThanOrEqual(0);
+    ).toBeGreaterThanOrEqual(-0.2);
     expect(cy.getElementById('p.a').data('parent')).toBe('p');
   } finally {
     cy.destroy();
   }
 });
+
+test('is idempotent after a capped optimized fit', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 1000, y: 0 } },
+    ],
+    800,
+    600,
+  );
+  try {
+    const firstSpacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
+    const firstPosition = { ...cy.getElementById('b').position() };
+    const secondSpacing = compactGraphSpacing(cy, firstSpacing, FIT_OPTIONS);
+    expect(secondSpacing).toBe(firstSpacing);
+    expect(cy.getElementById('b').position()).toEqual(firstPosition);
+  } finally {
+    cy.destroy();
+  }
+});
+
+/*** Create one measured headless graph with stable viewport and visual node dimensions. */
+function createGraph(elements: CytoscapeOptions['elements'], width: number, height: number): Core {
+  const cy = cytoscape({
+    headless: true,
+    styleEnabled: true,
+    layout: { name: 'preset' },
+    elements,
+    style: [{ selector: 'node', style: { width: 100, height: 40, padding: '0px' } }],
+  });
+  cy.width = () => width;
+  cy.height = () => height;
+  return cy;
+}
 
 /*** Install a dynamic renderer-style label box for headless Cytoscape tests. */
 function installMeasuredLabelBox(node: NodeSingular, width: number, height: number): void {

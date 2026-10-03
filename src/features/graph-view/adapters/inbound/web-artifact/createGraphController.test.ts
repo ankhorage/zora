@@ -92,6 +92,8 @@ test('caps automatic label size for tiny graphs and expands manual zoom for larg
   try {
     owner.settle(true);
     expect(cy.zoom() * 14).toBeCloseTo(24);
+    expect(owner.getFitZoomLimit()).toBeCloseTo(24 / 14);
+    expect(owner.getReadableZoomTarget()).toBeCloseTo(16 / 14);
     expect(owner.controller.getViewport().zoom).toBeCloseTo(1);
     cy.add({ data: { id: 'b' }, position: { x: 10000, y: 0 } });
     owner.settle(true);
