@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v22.0.82",
+      "value": "v22.1.0",
       "color": "cb3837"
     },
     {
@@ -2948,7 +2948,9 @@
         "GraphViewElementEventType",
         "GraphViewFitOptions",
         "GraphViewLayoutName",
+        "GraphViewMeasurement",
         "GraphViewNode",
+        "GraphViewNodeMeasurement",
         "GraphViewNodeRenderContext",
         "GraphViewPoint",
         "GraphViewProps",
@@ -6493,7 +6495,9 @@
         "GraphViewElementEventType",
         "GraphViewFitOptions",
         "GraphViewLayoutName",
+        "GraphViewMeasurement",
         "GraphViewNode",
+        "GraphViewNodeMeasurement",
         "GraphViewNodeRenderContext",
         "GraphViewPoint",
         "GraphViewProps",
@@ -57724,7 +57728,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 8,
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "measureRenderedNodes",
+      "description": "Measure rendered node geometry for public consumers while keeping Cytoscape private.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 100,
         "column": 1
       }
     },
@@ -57735,7 +57750,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 93,
+        "line": 121,
         "column": 1
       }
     },
@@ -57746,7 +57761,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 109,
+        "line": 137,
         "column": 1
       }
     },
@@ -57757,7 +57772,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 117,
+        "line": 145,
         "column": 1
       }
     },
@@ -57768,7 +57783,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 127,
+        "line": 155,
         "column": 1
       }
     },
@@ -73809,6 +73824,12 @@
         "fromSymbol": "fit",
         "toSymbol": "fitGraphViewport",
         "callExpression": "fitGraphViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "measureNodes",
+        "toSymbol": "measureRenderedNodes",
+        "callExpression": "measureRenderedNodes",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {

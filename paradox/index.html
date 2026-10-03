@@ -719,7 +719,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts">
       src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts
-      <small>5 functions</small>
+      <small>6 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts">
@@ -2728,11 +2728,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts</code>, <code>src/types/graph-view.ts</code></p>
     <p><strong>Exports:</strong> <code>syncGraphElements</code></p>
-  </article><article class="item" data-search="src/features/graph-view/public.ts GraphView GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewNode GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
+  </article><article class="item" data-search="src/features/graph-view/public.ts GraphView GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
     <h3>src/features/graph-view/public.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>GraphView</code>, <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewNode</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
+    <p><strong>Exports:</strong> <code>GraphView</code>, <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
   </article><article class="item" data-search="src/features/hero/adapters/inbound/Hero.tsx src/features/button/public.ts src/features/card/public.ts src/features/layout/public.ts src/features/theme/adapters/inbound/withZoraThemeScope.tsx src/features/typography/public.ts src/types/hero.ts Hero">
     <h3>src/features/hero/adapters/inbound/Hero.tsx</h3>
     <p class="muted">Referenced module</p>
@@ -3893,11 +3893,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/base.ts</code>, <code>src/types/layout.ts</code></p>
     <p><strong>Exports:</strong> <code>GradientColor</code>, <code>GradientColors</code>, <code>GradientLocations</code>, <code>GradientPoint</code>, <code>GradientProps</code>, <code>GradientRenderer</code>, <code>GradientRendererProps</code>, <code>GradientRendererProviderProps</code></p>
-  </article><article class="item" data-search="src/types/graph-view.ts GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewNode GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
+  </article><article class="item" data-search="src/types/graph-view.ts GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
     <h3>src/types/graph-view.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewNode</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
+    <p><strong>Exports:</strong> <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
   </article><article class="item" data-search="src/types/graphViewRuntime.ts src/types/graph-view.ts GraphRuntimeUpdate">
     <h3>src/types/graphViewRuntime.ts</h3>
     <p class="muted">Referenced module</p>
@@ -55525,28 +55525,33 @@ Local loop counters are intentionally mutable on this performance-critical bound
       <h2>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts</h2>
       <article class="item" data-search="createGraphController src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Own viewport units and limits alongside the public controller, without exposing Cytoscape.">
     <h3>createGraphController</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:8:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:12:1</code></p>
     <p>Own viewport units and limits alongside the public controller, without exposing Cytoscape.</p>
+    
+  </article><article class="item" data-search="measureRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Measure rendered node geometry for public consumers while keeping Cytoscape private.">
+    <h3>measureRenderedNodes</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:100:1</code></p>
+    <p>Measure rendered node geometry for public consumers while keeping Cytoscape private.</p>
     
   </article><article class="item" data-search="applyZoomLimits src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.">
     <h3>applyZoomLimits</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:93:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:121:1</code></p>
     <p>Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.</p>
     
   </article><article class="item" data-search="positiveSize src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Ignore invalid optional typography targets at the public configuration boundary.">
     <h3>positiveSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:109:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:137:1</code></p>
     <p>Ignore invalid optional typography targets at the public configuration boundary.</p>
     
   </article><article class="item" data-search="getNodeFitZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Recompute the fit reference only after layout or resize, never on every pan/zoom event.&#10;Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.">
     <h3>getNodeFitZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:117:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:145:1</code></p>
     <p>Recompute the fit reference only after layout or resize, never on every pan/zoom event.
 Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.</p>
     
   </article><article class="item" data-search="setCenteredZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Zoom around the visible viewport center instead of its top-left corner.">
     <h3>setCenteredZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:127:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:155:1</code></p>
     <p>Zoom around the visible viewport center instead of its top-left corner.</p>
     
   </article>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.1.0
+
+### Minor Changes
+
+- 7439ab2: Expose rendered GraphView node measurements through the public controller so consumers can compare selected node geometry with the viewport without accessing the backing renderer.
+
 ## 22.0.82
 
 ### Patch Changes
