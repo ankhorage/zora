@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.77
+
+### Patch Changes
+
+- bae9f7d: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/runtime`, `@ankhorage/utility`.
+
 ## 22.0.76
 
 ### Patch Changes
