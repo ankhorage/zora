@@ -8,7 +8,7 @@ import type {
   GraphViewRenderedNode,
   GraphViewSize,
 } from '../../../../../types/graph-view';
-import { resolveSelectionEventIntent } from '../../../../selection/public';
+import { resolveSelectionEventIntent } from '../../../../selection/application/resolveSelectionEventIntent';
 
 interface GraphNodeOverlayProps {
   readonly nodes: readonly GraphViewNode[];
