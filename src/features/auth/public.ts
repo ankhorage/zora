@@ -1,6 +1,8 @@
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,
+  AuthScreenMode,
+  AuthScreenProps,
   ForgotPasswordFormProps,
   ForgotPasswordFormValues,
   OAuthProviderButtonProps,
@@ -16,6 +18,7 @@ export type {
   SignUpFormProps,
   SignUpFormValues,
 } from '../../types/auth';
+export { AuthScreen } from './adapters/inbound/AuthScreen';
 export { ForgotPasswordForm } from './adapters/inbound/ForgotPasswordForm';
 export { OAuthProviderButton } from './adapters/inbound/OAuthProviderButton';
 export { OAuthProviderList } from './adapters/inbound/OAuthProviderList';
