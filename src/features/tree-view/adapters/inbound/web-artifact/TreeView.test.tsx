@@ -66,6 +66,46 @@ test('expands from the leading control without selecting the row, including keyb
   }
 });
 
+test('reveals a controlled selection when expansion makes the row renderable', async () => {
+  const browserWindow = new Window();
+  const keys = ['window', 'document', 'Node', 'navigator', 'IS_REACT_ACT_ENVIRONMENT'] as const;
+  const previous = keys.map(
+    (key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)] as const,
+  );
+  Object.assign(globalThis, {
+    IS_REACT_ACT_ENVIRONMENT: true,
+    window: browserWindow,
+    document: browserWindow.document,
+    Node: browserWindow.Node,
+    navigator: browserWindow.navigator,
+  });
+  const reveals: (boolean | ScrollIntoViewOptions | undefined)[] = [];
+  browserWindow.HTMLElement.prototype.scrollIntoView = (options) => reveals.push(options);
+  const host = document.createElement('div');
+  document.body.appendChild(host);
+  const root = createRoot(host);
+  const interactAsync = (action: () => void) => act(() => Promise.resolve().then(action));
+  const nodes = [{ id: 'src', label: 'source', children: [{ id: 'leaf', label: 'leaf' }] }];
+  try {
+    await interactAsync(() =>
+      root.render(<TreeView expandedIds={[]} nodes={nodes} selectedId="leaf" />),
+    );
+    expect(reveals).toEqual([]);
+
+    await interactAsync(() =>
+      root.render(<TreeView expandedIds={['src']} nodes={nodes} selectedId="leaf" />),
+    );
+    expect(reveals).toEqual([{ block: 'nearest', inline: 'nearest' }]);
+  } finally {
+    await interactAsync(() => root.unmount());
+    browserWindow.close();
+    for (const [key, descriptor] of previous) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else Reflect.deleteProperty(globalThis, key);
+    }
+  }
+});
+
 test('renders a standalone web tree without a ZORA or React Native provider', () => {
   const markup = renderToStaticMarkup(
     <TreeView
