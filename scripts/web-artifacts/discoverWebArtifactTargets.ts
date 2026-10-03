@@ -99,7 +99,7 @@ async function discoverEntryTargets(
         typeExports:
           override === undefined
             ? []
-            : discoverMissingTypeExports(checker, program, moduleSymbol, override, paths),
+            : discoverMissingTypeExports(checker, moduleSymbol, override, paths),
         symbolIdentity: resolveSymbolIdentity(resolvedSymbol),
       } satisfies DiscoveredTarget;
     }),
@@ -113,19 +113,11 @@ interface DiscoveredTarget extends WebArtifactTarget {
 /*** Preserve public type exports missing from a specialized browser implementation. */
 function discoverMissingTypeExports(
   checker: ts.TypeChecker,
-  program: ts.Program,
   publicModuleSymbol: ts.Symbol,
   override: string,
   paths: DiscoveryPaths,
 ): WebArtifactTarget['typeExports'] {
-  const overrideSource = program.getSourceFile(override);
-  if (overrideSource === undefined) throw new Error(`Could not load ZORA web artifact: ${override}`);
-  const overrideModuleSymbol = checker.getSymbolAtLocation(overrideSource);
-  const overrideExports = new Set(
-    overrideModuleSymbol === undefined
-      ? []
-      : checker.getExportsOfModule(overrideModuleSymbol).map((symbol) => symbol.getName()),
-  );
+  const overrideExports = readDeclaredExportNames(override);
 
   return checker
     .getExportsOfModule(publicModuleSymbol)
@@ -150,6 +142,33 @@ function discoverMissingTypeExports(
       ];
     })
     .sort((left, right) => left.exportName.localeCompare(right.exportName));
+}
+
+/*** Read named declarations exported directly by one specialized browser source file. */
+function readDeclaredExportNames(path: string): ReadonlySet<string> {
+  const source = ts.sys.readFile(path);
+  if (source === undefined) throw new Error(`Could not read ZORA web artifact: ${path}`);
+  const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
+  return new Set(
+    file.statements.flatMap((statement) => {
+      if (!statement.modifiers?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword)) return [];
+      if (
+        ts.isFunctionDeclaration(statement) ||
+        ts.isClassDeclaration(statement) ||
+        ts.isInterfaceDeclaration(statement) ||
+        ts.isTypeAliasDeclaration(statement) ||
+        ts.isEnumDeclaration(statement)
+      ) {
+        return statement.name === undefined ? [] : [statement.name.text];
+      }
+      if (ts.isVariableStatement(statement)) {
+        return statement.declarationList.declarations.flatMap(({ name }) =>
+          ts.isIdentifier(name) ? [name.text] : [],
+        );
+      }
+      return [];
+    }),
+  );
 }
 
 /*** Resolve an optional convention-based standalone browser implementation. */
