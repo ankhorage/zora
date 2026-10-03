@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionItem,
   AppBar,
+  AuthScreen,
   Avatar,
   Badge,
   Button,
@@ -510,6 +511,17 @@ export function PatternsPage() {
       </ScreenSection>
 
       <ScreenSection title="Scenario: Auth forms">
+        <AuthScreen
+          authMode="signIn"
+          description="Reusable ZORA-owned authentication screen with consumer-owned auth actions."
+          identifiers={['email']}
+          oauthProviders={[{ id: 'google', label: 'Continue with Google' }]}
+          onModeChange={handleMockAction}
+          onOAuthProviderPress={handleMockAction}
+          onSignInSubmit={handleMockAction}
+          onSignUpSubmit={handleMockAction}
+        />
+
         <Card
           title="Sign in"
           description="Provider-agnostic form with validation, form-level errors, and navigation callbacks."
