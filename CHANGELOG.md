@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.0.82
+
+### Patch Changes
+
+- 37b8d04: Reveal controlled TreeView selections in standalone web artifacts without changing expansion ownership.
+
 ## 22.0.81
 
 ### Patch Changes

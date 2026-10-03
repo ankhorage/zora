@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v22.0.81",
+      "value": "v22.0.82",
       "color": "cb3837"
     },
     {
@@ -60468,6 +60468,17 @@
       }
     },
     {
+      "name": "useSelectedTreeItemReveal",
+      "description": "Reveal a controlled selection after it is rendered without changing expansion ownership.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
+        "line": 98,
+        "column": 1
+      }
+    },
+    {
       "name": "toggleExpandedIds",
       "description": "Toggle one tree node id while preserving immutable expansion state.",
       "see": [],
@@ -74602,6 +74613,24 @@
         "fromSymbol": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
         "toSymbol": "onExpandedChange",
         "callExpression": "onExpandedChange",
+        "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx"
+      },
+      {
+        "fromSymbol": "TreeView",
+        "toSymbol": "useSelectedTreeItemReveal",
+        "callExpression": "useSelectedTreeItemReveal",
+        "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
+        "toSymbol": "scrollIntoView",
+        "callExpression": "root\n      ?.querySelector('[role=\"treeitem\"][aria-selected=\"true\"]')\n      ?.scrollIntoView",
+        "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
+        "toSymbol": "querySelector",
+        "callExpression": "root\n      ?.querySelector",
         "sourcePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx"
       },
       {
