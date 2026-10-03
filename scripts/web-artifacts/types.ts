@@ -16,8 +16,8 @@ export interface WebArtifactManifestEntry {
   readonly featurePath: string;
   readonly files: readonly string[];
   readonly sourceKind: 'public' | 'web-artifact';
-  readonly typeExports: readonly WebArtifactTypeExport[];
 }
+
 
 export interface WebArtifactTarget {
   readonly component: string;
@@ -28,4 +28,5 @@ export interface WebArtifactTarget {
   readonly runtimeExports: readonly WebArtifactRuntimeExport[];
   readonly sourceEntry: string;
   readonly sourceKind: 'public' | 'web-artifact';
+  readonly typeExports: readonly WebArtifactTypeExport[];
 }
