@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v23.1.0",
+      "value": "v23.2.0",
       "color": "cb3837"
     },
     {
@@ -33393,7 +33393,7 @@
       "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 140,
+        "line": 141,
         "column": 14
       },
       "exportPaths": [
@@ -33446,6 +33446,13 @@
           "description": null
         },
         {
+          "name": "expandedIcon",
+          "kind": "property",
+          "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "icon",
           "kind": "property",
           "type": "import(\"@ankhorage/surface\").IconSource | undefined",
@@ -33487,7 +33494,7 @@
       "modulePath": "src/types/tree-view.ts",
       "sourceLocation": {
         "filePath": "src/types/tree-view.ts",
-        "line": 17,
+        "line": 18,
         "column": 1
       },
       "exportPaths": [
@@ -33569,7 +33576,7 @@
       "modulePath": "src/types/tree-view.ts",
       "sourceLocation": {
         "filePath": "src/types/tree-view.ts",
-        "line": 25,
+        "line": 26,
         "column": 1
       },
       "exportPaths": [
@@ -54048,7 +54055,7 @@
       "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-        "line": 140,
+        "line": 141,
         "column": 14
       },
       "exportPaths": [
@@ -61099,7 +61106,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 63,
+        "line": 69,
         "column": 1
       }
     },
@@ -61110,7 +61117,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 84,
+        "line": 93,
         "column": 1
       }
     },
@@ -61121,7 +61128,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 99,
+        "line": 108,
         "column": 1
       }
     },
@@ -61132,7 +61139,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 139,
+        "line": 148,
         "column": 1
       }
     },
@@ -61143,7 +61150,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 150,
+        "line": 159,
         "column": 1
       }
     },
@@ -61154,7 +61161,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 159,
+        "line": 168,
         "column": 1
       }
     },
@@ -61165,7 +61172,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 168,
+        "line": 177,
         "column": 1
       }
     },
@@ -61176,7 +61183,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeItemRow.tsx",
-        "line": 178,
+        "line": 187,
         "column": 1
       }
     },
@@ -61187,7 +61194,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
-        "line": 44,
+        "line": 45,
         "column": 1
       }
     },
@@ -61198,7 +61205,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/tree-view/adapters/inbound/web-artifact/TreeView.tsx",
-        "line": 100,
+        "line": 101,
         "column": 1
       }
     },

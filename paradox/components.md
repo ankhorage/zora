@@ -3668,7 +3668,7 @@ Export paths: `src/index.ts`
 
 ## TreeItem
 
-Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:140:14`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:141:14`
 
 Single tree node row used within `TreeView`.
 

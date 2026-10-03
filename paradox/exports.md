@@ -6124,7 +6124,7 @@ Source: `src/types/toolbar.ts:5:1`
 
 Kind: `value`
 Module: `src/features/tree-view/adapters/inbound/TreeItem.tsx`
-Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:140:14`
+Source: `src/features/tree-view/adapters/inbound/TreeItem.tsx:141:14`
 
 Single tree node row used within `TreeView`.
 
@@ -6141,6 +6141,7 @@ Source: `src/types/tree-view.ts:7:1`
 | actions | property | `ReactNode` | no |  |
 | children | property | `readonly TreeItemNode<TId>[] \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
+| expandedIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | id | property | `TId` | yes |  |
 | label | property | `ReactNode` | yes |  |
@@ -6150,7 +6151,7 @@ Source: `src/types/tree-view.ts:7:1`
 
 Kind: `type`
 Module: `src/types/tree-view.ts`
-Source: `src/types/tree-view.ts:17:1`
+Source: `src/types/tree-view.ts:18:1`
 
 ### Members
 
@@ -6176,7 +6177,7 @@ Expansion controls are separate from row selection, including when rendering cus
 
 Kind: `type`
 Module: `src/types/tree-view.ts`
-Source: `src/types/tree-view.ts:25:1`
+Source: `src/types/tree-view.ts:26:1`
 
 ### Members
 

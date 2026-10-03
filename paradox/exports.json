@@ -26198,7 +26198,7 @@
     "modulePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
     "sourceLocation": {
       "filePath": "src/features/tree-view/adapters/inbound/TreeItem.tsx",
-      "line": 140,
+      "line": 141,
       "column": 14
     },
     "exportPaths": [
@@ -26251,6 +26251,13 @@
         "description": null
       },
       {
+        "name": "expandedIcon",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "icon",
         "kind": "property",
         "type": "import(\"@ankhorage/surface\").IconSource | undefined",
@@ -26292,7 +26299,7 @@
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
       "filePath": "src/types/tree-view.ts",
-      "line": 17,
+      "line": 18,
       "column": 1
     },
     "exportPaths": [
@@ -26374,7 +26381,7 @@
     "modulePath": "src/types/tree-view.ts",
     "sourceLocation": {
       "filePath": "src/types/tree-view.ts",
-      "line": 25,
+      "line": 26,
       "column": 1
     },
     "exportPaths": [
