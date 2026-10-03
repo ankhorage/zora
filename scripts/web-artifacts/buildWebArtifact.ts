@@ -255,11 +255,13 @@ async function writeDeclaration(
   const fileName = `${target.exportName}.d.ts`;
   const outputPath = join(outputDirectory, fileName);
   if (target.declarationSource !== undefined) {
-    const publicTypes = await Promise.all(
-      target.publicTypeExports.map((typeExport, index) =>
-        writePublicTypeDeclarationAsync(target, typeExport, index, outputDirectory),
-      ),
-    );
+    const publicTypes = (
+      await Promise.all(
+        target.publicTypeExports.map((typeExport, index) =>
+          writePublicTypeDeclarationAsync(target, typeExport, index, outputDirectory),
+        ),
+      )
+    ).filter(isWrittenPublicTypeDeclaration);
     const source = publicTypes.reduce(
       (current, publicType) =>
         rewriteDeclarationSpecifier(
@@ -299,9 +301,9 @@ async function writePublicTypeDeclarationAsync(
   typeExport: WebArtifactPublicTypeExport,
   index: number,
   outputDirectory: string,
-): Promise<WrittenPublicTypeDeclaration> {
+): Promise<WrittenPublicTypeDeclaration | undefined> {
   const source = await readFile(typeExport.declarationSource, 'utf8');
-  assertStandaloneTypeDeclaration(source, typeExport.declarationSource);
+  if (!isStandaloneTypeDeclaration(source)) return undefined;
   const fileName = `${target.exportName}.public-types-${index}.d.ts`;
   await writeFile(join(outputDirectory, fileName), source, 'utf8');
   return {
@@ -311,16 +313,25 @@ async function writePublicTypeDeclarationAsync(
   };
 }
 
-/*** Reject copied public type modules that still depend on unmaterialized relative declarations. */
-function assertStandaloneTypeDeclaration(source: string, sourcePath: string): void {
-  const relativeDependency = [
-    ...source.matchAll(/(?:from\s+|import\()(["'])(\.[^"']*)\1/gu),
-  ].at(0)?.[2];
-  if (relativeDependency !== undefined) {
-    throw new Error(
-      `ZORA public type declaration ${sourcePath} still depends on relative module "${relativeDependency}".`,
-    );
-  }
+/*** Keep only copied public type modules that already depend on portable React declaration peers. */
+function isStandaloneTypeDeclaration(source: string): boolean {
+  const specifiers = [...source.matchAll(/(?:from\s+|import\()(["'])([^"']+)\1/gu)].flatMap(
+    (match) => (match[2] === undefined ? [] : [match[2]]),
+  );
+  return specifiers.every(
+    (specifier) =>
+      specifier === 'react' ||
+      specifier.startsWith('react/') ||
+      specifier === 'react-dom' ||
+      specifier.startsWith('react-dom/'),
+  );
+}
+
+/*** Narrow completed public declaration writes after unsupported modules are skipped. */
+function isWrittenPublicTypeDeclaration(
+  value: WrittenPublicTypeDeclaration | undefined,
+): value is WrittenPublicTypeDeclaration {
+  return value !== undefined;
 }
 
 /*** Redirect one specialized declaration import to its colocated materialized public type module. */
