@@ -3,7 +3,7 @@ import cytoscape, { type Core, type CytoscapeOptions, type NodeSingular } from '
 
 import { compactGraphSpacing } from './compactGraphSpacing';
 
-const FIT_OPTIONS = { fitPadding: 50, maxFitZoom: 1 } as const;
+const FIT_OPTIONS = { fitPadding: 50, maxFitZoom: 1, minReadableZoom: 1 } as const;
 
 test('keeps an already readable graph unchanged once the fit-size target is reached', () => {
   const cy = createGraph(
