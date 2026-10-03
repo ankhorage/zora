@@ -16,6 +16,8 @@ export { AppBar } from './features/app-bar/public';
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,
+  AuthScreenMode,
+  AuthScreenProps,
   ForgotPasswordFormProps,
   ForgotPasswordFormValues,
   OAuthProviderButtonProps,
@@ -32,6 +34,7 @@ export type {
   SignUpFormValues,
 } from './features/auth/public';
 export {
+  AuthScreen,
   DEFAULT_OAUTH_PROVIDER_ICONS,
   ForgotPasswordForm,
   OAuthProviderButton,
