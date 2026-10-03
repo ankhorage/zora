@@ -276,7 +276,10 @@ function requestOptimizedFit(state: GraphRuntimeState, options: GraphViewFitOpti
   const input = state.latestUpdateRef.current;
   if (!input) return;
   const previous = state.optimizedSpacingRef.current ?? input.spacingFactor ?? 1;
-  const spacing = compactGraphSpacing(state.cy, previous);
+  const spacing = compactGraphSpacing(state.cy, previous, {
+    fitPadding: options.padding ?? state.fitPaddingRef.current,
+    maxFitZoom: state.viewport.getFitZoomLimit(),
+  });
   state.geometryRef.current = getGraphGeometryKey(state.cy);
   state.loopSizer.update();
   state.viewport.settle(false);
