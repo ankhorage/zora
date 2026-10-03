@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.1.4
+
+### Patch Changes
+
+- 24915fd: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/utility`.
+
 ## 22.1.3
 
 ### Patch Changes
