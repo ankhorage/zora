@@ -24,32 +24,29 @@ test('keeps an already readable graph unchanged once the fit-size target is reac
   }
 });
 
-test(
-  'compacts only until the effective fit reaches its cap while preserving node separation',
-  () => {
-    const cy = createGraph(
-      [
-        { data: { id: 'a' }, position: { x: 0, y: 0 } },
-        { data: { id: 'b' }, position: { x: 1000, y: 0 } },
-        { data: { id: 'e', source: 'a', target: 'b', weight: 7 } },
-      ],
-      800,
-      600,
-    );
-    try {
-      const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
-      const first = cy.getElementById('a').boundingBox();
-      const second = cy.getElementById('b').boundingBox();
-      expect(spacing).toBeGreaterThan(0.59);
-      expect(spacing).toBeLessThan(0.61);
-      expect(second.x1 - first.x2).toBeGreaterThan(0);
-      expect(cy.edges()[0].data('weight')).toBe(7);
-      expect(cy.getElementById('a').width()).toBe(100);
-    } finally {
-      cy.destroy();
-    }
-  },
-);
+test('compacts only until the effective fit reaches its cap while preserving node separation', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 1000, y: 0 } },
+      { data: { id: 'e', source: 'a', target: 'b', weight: 7 } },
+    ],
+    800,
+    600,
+  );
+  try {
+    const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox();
+    const second = cy.getElementById('b').boundingBox();
+    expect(spacing).toBeGreaterThan(0.59);
+    expect(spacing).toBeLessThan(0.61);
+    expect(second.x1 - first.x2).toBeGreaterThan(0);
+    expect(cy.edges()[0].data('weight')).toBe(7);
+    expect(cy.getElementById('a').width()).toBe(100);
+  } finally {
+    cy.destroy();
+  }
+});
 
 test('keeps strict separation when it can preserve the readable-label threshold', () => {
   const cy = createGraph(
@@ -79,68 +76,62 @@ test('keeps strict separation when it can preserve the readable-label threshold'
   }
 });
 
-test(
-  'uses a small rendered background-overlap budget only when strict separation cannot reach the fit target',
-  () => {
-    const cy = createGraph(
-      [
-        { data: { id: 'a' }, position: { x: 0, y: 0 } },
-        { data: { id: 'b' }, position: { x: 120, y: 0 } },
-      ],
-      296,
-      400,
-    );
-    installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
-    installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
-    try {
-      const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
-      const first = cy.getElementById('a').boundingBox({ includeLabels: false });
-      const second = cy.getElementById('b').boundingBox({ includeLabels: false });
-      const visualOverlap = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
-      const firstLabel = readLabelBox(cy.getElementById('a'));
-      const secondLabel = readLabelBox(cy.getElementById('b'));
-      const labelOverlap =
-        Math.min(firstLabel.x2, secondLabel.x2) - Math.max(firstLabel.x1, secondLabel.x1);
+test('uses a small rendered background-overlap budget only when strict separation cannot reach the fit target', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 120, y: 0 } },
+    ],
+    296,
+    400,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
+  try {
+    const spacing = compactGraphSpacing(cy, 1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    const visualOverlap = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
+    const firstLabel = readLabelBox(cy.getElementById('a'));
+    const secondLabel = readLabelBox(cy.getElementById('b'));
+    const labelOverlap =
+      Math.min(firstLabel.x2, secondLabel.x2) - Math.max(firstLabel.x1, secondLabel.x1);
 
-      expect(spacing).toBeGreaterThan(0.79);
-      expect(spacing).toBeLessThan(0.81);
-      expect(visualOverlap).toBeGreaterThan(0);
-      expect(visualOverlap).toBeLessThanOrEqual(4.2);
-      expect(labelOverlap).toBeLessThanOrEqual(0);
-    } finally {
-      cy.destroy();
-    }
-  },
-);
+    expect(spacing).toBeGreaterThan(0.79);
+    expect(spacing).toBeLessThan(0.81);
+    expect(visualOverlap).toBeGreaterThan(0);
+    expect(visualOverlap).toBeLessThanOrEqual(4.2);
+    expect(labelOverlap).toBeLessThanOrEqual(0);
+  } finally {
+    cy.destroy();
+  }
+});
 
-test(
-  'expands cramped labels and nodes when the viewport can keep them separated at the fit target',
-  () => {
-    const cy = createGraph(
-      [
-        { data: { id: 'a' }, position: { x: 0, y: 0 } },
-        { data: { id: 'b' }, position: { x: 20, y: 0 } },
-      ],
-      800,
-      600,
-    );
-    installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
-    installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
-    try {
-      const spacing = compactGraphSpacing(cy, 0.1, FIT_OPTIONS);
-      const first = cy.getElementById('a').boundingBox({ includeLabels: false });
-      const second = cy.getElementById('b').boundingBox({ includeLabels: false });
-      expect(spacing).toBeGreaterThanOrEqual(0.49);
-      expect(second.x1 - first.x2).toBeGreaterThanOrEqual(-0.2);
-      expect(
-        Math.min(readLabelBox(cy.getElementById('a')).x2, readLabelBox(cy.getElementById('b')).x2) -
-          Math.max(readLabelBox(cy.getElementById('a')).x1, readLabelBox(cy.getElementById('b')).x1),
-      ).toBeLessThanOrEqual(0);
-    } finally {
-      cy.destroy();
-    }
-  },
-);
+test('expands cramped labels and nodes when the viewport can keep them separated at the fit target', () => {
+  const cy = createGraph(
+    [
+      { data: { id: 'a' }, position: { x: 0, y: 0 } },
+      { data: { id: 'b' }, position: { x: 20, y: 0 } },
+    ],
+    800,
+    600,
+  );
+  installMeasuredLabelBox(cy.getElementById('a'), 40, 20);
+  installMeasuredLabelBox(cy.getElementById('b'), 40, 20);
+  try {
+    const spacing = compactGraphSpacing(cy, 0.1, FIT_OPTIONS);
+    const first = cy.getElementById('a').boundingBox({ includeLabels: false });
+    const second = cy.getElementById('b').boundingBox({ includeLabels: false });
+    expect(spacing).toBeGreaterThanOrEqual(0.49);
+    expect(second.x1 - first.x2).toBeGreaterThanOrEqual(-0.2);
+    expect(
+      Math.min(readLabelBox(cy.getElementById('a')).x2, readLabelBox(cy.getElementById('b')).x2) -
+        Math.max(readLabelBox(cy.getElementById('a')).x1, readLabelBox(cy.getElementById('b')).x1),
+    ).toBeLessThanOrEqual(0);
+  } finally {
+    cy.destroy();
+  }
+});
 
 test('keeps mixed-width Atlas-like compound geometry readable while using available viewport', () => {
   const cy = createGraph(
@@ -230,11 +221,7 @@ test('is idempotent after a capped optimized fit', () => {
 });
 
 /*** Create one measured headless graph with stable viewport and visual node dimensions. */
-function createGraph(
-  elements: CytoscapeOptions['elements'],
-  width: number,
-  height: number,
-): Core {
+function createGraph(elements: CytoscapeOptions['elements'], width: number, height: number): Core {
   const cy = cytoscape({
     headless: true,
     styleEnabled: true,
