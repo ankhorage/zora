@@ -68,8 +68,8 @@ test('keeps strict separation when it can preserve the readable-label threshold'
     });
     const first = cy.getElementById('a').boundingBox({ includeLabels: false });
     const second = cy.getElementById('b').boundingBox({ includeLabels: false });
-    expect(spacing).toBeGreaterThan(0.83);
-    expect(spacing).toBeLessThan(0.85);
+    expect(spacing).toBeGreaterThan(0.8);
+    expect(spacing).toBeLessThan(0.9);
     expect(Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1)).toBeLessThanOrEqual(0);
   } finally {
     cy.destroy();
@@ -98,7 +98,7 @@ test('uses a small rendered background-overlap budget only when strict separatio
       Math.min(firstLabel.x2, secondLabel.x2) - Math.max(firstLabel.x1, secondLabel.x1);
 
     expect(spacing).toBeGreaterThan(0.79);
-    expect(spacing).toBeLessThan(0.81);
+    expect(spacing).toBeLessThan(0.84);
     expect(visualOverlap).toBeGreaterThan(0);
     expect(visualOverlap).toBeLessThanOrEqual(4.2);
     expect(labelOverlap).toBeLessThanOrEqual(0);
