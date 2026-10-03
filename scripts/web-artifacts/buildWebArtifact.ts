@@ -285,7 +285,11 @@ async function writeDeclaration(
       replaceDeclarationSpecifier(source, support.originalSpecifier, support.localSpecifier),
     runtimeSource,
   );
-  assertStandaloneDeclaration(rewritten, target.declarationSource);
+  assertStandaloneDeclaration(
+    rewritten,
+    target.declarationSource,
+    supports.map(({ localSpecifier }) => localSpecifier),
+  );
   const reexports = supports.map(
     ({ exportNames, localSpecifier }) =>
       `export type { ${exportNames.join(', ')} } from '${localSpecifier}';`,
@@ -357,10 +361,18 @@ function importBindingNames(statement: ts.ImportDeclaration): readonly string[] 
 }
 
 /*** Reject relative declaration dependencies that would escape the standalone materialized artifact. */
-function assertStandaloneDeclaration(source: string, path: string): void {
+function assertStandaloneDeclaration(
+  source: string,
+  path: string,
+  allowedLocalSpecifiers: readonly string[] = [],
+): void {
+  const allowed = new Set(allowedLocalSpecifiers);
   const localSpecifiers = [...source.matchAll(/(?:from\s+|import\s*\()(['"])(\.{1,2}\/[^'"]+)\1/gu)]
     .map((match) => match[2])
-    .filter((specifier): specifier is string => specifier !== undefined);
+    .filter(
+      (specifier): specifier is string =>
+        specifier !== undefined && !allowed.has(specifier),
+    );
   if (localSpecifiers.length > 0) {
     throw new Error(
       `ZORA web declaration retained local dependencies in ${path}: ${localSpecifiers.join(', ')}`,
