@@ -714,7 +714,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts">
       src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts
-      <small>14 functions</small>
+      <small>12 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts">
@@ -734,6 +734,11 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts">
       src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts
+      <small>18 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts">
+      src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts
       <small>18 functions</small>
     </button>
   </li><li>
@@ -1408,7 +1413,7 @@
       <div class="summary">
         <div><strong>473</strong><span class="muted">public exports</span></div>
         <div><strong>111</strong><span class="muted">components</span></div>
-        <div><strong>508</strong><span class="muted">modules</span></div>
+        <div><strong>510</strong><span class="muted">modules</span></div>
         <div><strong>1</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -2628,10 +2633,10 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/graph-view.ts</code></p>
     <p><strong>Exports:</strong> <code>bindGraphEvents</code></p>
-  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts compactGraphSpacing">
+  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts src/types/graph-view-spacing.ts compactGraphSpacing">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts</code>, <code>src/types/graph-view-spacing.ts</code></p>
     <p><strong>Exports:</strong> <code>compactGraphSpacing</code></p>
   </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts src/types/graph-view.ts src/types/graphViewRuntime.ts createGraphController">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts</h3>
@@ -2653,6 +2658,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts</code>, <code>src/types/graph-view.ts</code>, <code>src/types/graphViewRuntime.ts</code></p>
     <p><strong>Exports:</strong> <code>createGraphRuntime</code>, <code>GraphRuntime</code></p>
+  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts src/types/graph-view-spacing.ts createGraphSpacingEvaluator">
+    <h3>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/types/graph-view-spacing.ts</code></p>
+    <p><strong>Exports:</strong> <code>createGraphSpacingEvaluator</code></p>
   </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts src/types/graph-view.ts createRenderableGraphElements">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts</h3>
     <p class="muted">Referenced module</p>
@@ -3893,6 +3903,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/base.ts</code>, <code>src/types/layout.ts</code></p>
     <p><strong>Exports:</strong> <code>GradientColor</code>, <code>GradientColors</code>, <code>GradientLocations</code>, <code>GradientPoint</code>, <code>GradientProps</code>, <code>GradientRenderer</code>, <code>GradientRendererProps</code>, <code>GradientRendererProviderProps</code></p>
+  </article><article class="item" data-search="src/types/graph-view-spacing.ts GraphSpacingCandidate GraphSpacingEvaluator GraphSpacingFitOptions">
+    <h3>src/types/graph-view-spacing.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>GraphSpacingCandidate</code>, <code>GraphSpacingEvaluator</code>, <code>GraphSpacingFitOptions</code></p>
   </article><article class="item" data-search="src/types/graph-view.ts GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
     <h3>src/types/graph-view.ts</h3>
     <p class="muted">Referenced module</p>
@@ -42222,6 +42237,8 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
@@ -42251,6 +42268,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
@@ -43397,6 +43417,8 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_types_gradient_ts
   module_src_types_gradient_ts --&gt; module_src_types_base_ts
   module_src_types_gradient_ts --&gt; module_src_types_layout_ts
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_types_graph_view_spacing_ts
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_graph_view_ts
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
@@ -44459,6 +44481,8 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
@@ -44488,6 +44512,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
@@ -45634,6 +45661,8 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_types_gradient_ts
   module_src_types_gradient_ts --&gt; module_src_types_base_ts
   module_src_types_gradient_ts --&gt; module_src_types_layout_ts
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_types_graph_view_spacing_ts
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_graph_view_ts
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
@@ -46013,6 +46042,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -46261,6 +46291,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_gamePresentation_ts[&quot;src/types/gamePresentation.ts&quot;]
   module_src_types_gameRuntime_ts[&quot;src/types/gameRuntime.ts&quot;]
   module_src_types_gradient_ts[&quot;src/types/gradient.ts&quot;]
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
   module_src_types_heading_ts[&quot;src/types/heading.ts&quot;]
@@ -46785,6 +46816,8 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_gradient_gradientMeta_ts --&gt; module_src_constants_authoring_ts
   module_src_features_gradient_gradientMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --&gt; module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_types_graphViewRuntime_ts
@@ -46806,6 +46839,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --&gt; module_src_types_graph_view_ts
@@ -47740,6 +47774,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -47988,6 +48023,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_gamePresentation_ts[&quot;src/types/gamePresentation.ts&quot;]
   module_src_types_gameRuntime_ts[&quot;src/types/gameRuntime.ts&quot;]
   module_src_types_gradient_ts[&quot;src/types/gradient.ts&quot;]
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
   module_src_types_heading_ts[&quot;src/types/heading.ts&quot;]
@@ -48512,6 +48548,8 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_gradient_gradientMeta_ts --&gt; module_src_constants_authoring_ts
   module_src_features_gradient_gradientMeta_ts --&gt; module_src_types_authoring_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --&gt; module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --&gt; module_src_types_graphViewRuntime_ts
@@ -48533,6 +48571,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --&gt; module_src_types_graph_view_ts
@@ -49469,6 +49508,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -49717,6 +49757,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_gamePresentation_ts[&quot;src/types/gamePresentation.ts&quot;]
   module_src_types_gameRuntime_ts[&quot;src/types/gameRuntime.ts&quot;]
   module_src_types_gradient_ts[&quot;src/types/gradient.ts&quot;]
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
   module_src_types_heading_ts[&quot;src/types/heading.ts&quot;]
@@ -51269,6 +51310,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -51517,6 +51559,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_gamePresentation_ts[&quot;src/types/gamePresentation.ts&quot;]
   module_src_types_gameRuntime_ts[&quot;src/types/gameRuntime.ts&quot;]
   module_src_types_gradient_ts[&quot;src/types/gradient.ts&quot;]
+  module_src_types_graph_view_spacing_ts[&quot;src/types/graph-view-spacing.ts&quot;]
   module_src_types_graph_view_ts[&quot;src/types/graph-view.ts&quot;]
   module_src_types_graphViewRuntime_ts[&quot;src/types/graphViewRuntime.ts&quot;]
   module_src_types_heading_ts[&quot;src/types/heading.ts&quot;]
@@ -55444,79 +55487,68 @@ Native hosts can inject another compatible implementation.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-compactgraphspacing-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts</h2>
-      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Optimize settled layout spacing around readable label bounds instead of full node clearance.&#10;Compound containment stays intentional while sibling groups retain non-overlapping boundaries.&#10;Cytoscape geometry is measured once, then bounded pure numeric trials reuse the&#10;immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.">
+      <article class="item" data-search="compactGraphSpacing src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Optimize settled spacing for useful rendered scale instead of minimum model-space distance.&#10;A graph already at its fit-size target remains unchanged. When compaction is useful, semantic&#10;label/compound collisions stay forbidden; only dense graphs may spend up to four rendered pixels&#10;of decorative leaf-background overlap. Locked/large views retain their settled geometry.">
     <h3>compactGraphSpacing</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:16:1</code></p>
-    <p>Optimize settled layout spacing around readable label bounds instead of full node clearance.
-Compound containment stays intentional while sibling groups retain non-overlapping boundaries.
-Cytoscape geometry is measured once, then bounded pure numeric trials reuse the
-immutable snapshot. No layout reruns, zoom work, or intermediate frames are painted.</p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:21:1</code></p>
+    <p>Optimize settled spacing for useful rendered scale instead of minimum model-space distance.
+A graph already at its fit-size target remains unchanged. When compaction is useful, semantic
+label/compound collisions stay forbidden; only dense graphs may spend up to four rendered pixels
+of decorative leaf-background overlap. Locked/large views retain their settled geometry.</p>
     
-  </article><article class="item" data-search="accepts src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts ">
-    <h3>accepts</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:32:9</code></p>
-    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="chooseCompactionFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Choose a smaller factor only while it improves rendered fit or reaches the configured cap.">
+    <h3>chooseCompactionFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:55:1</code></p>
+    <p>Choose a smaller factor only while it improves rendered fit or reaches the configured cap.</p>
     
-  </article><article class="item" data-search="readLeafGeometry src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Read one leaf&#39;s immutable position, hierarchy and renderer-measured label geometry.">
-    <h3>readLeafGeometry</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:95:1</code></p>
-    <p>Read one leaf&#39;s immutable position, hierarchy and renderer-measured label geometry.</p>
+  </article><article class="item" data-search="chooseSoftCompactionFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Spend background-overlap budget only to recover the configured readable-label threshold.">
+    <h3>chooseSoftCompactionFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:90:1</code></p>
+    <p>Spend background-overlap budget only to recover the configured readable-label threshold.</p>
     
-  </article><article class="item" data-search="readGroupGeometry src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Capture one compound group&#39;s descendant geometry and constant renderer-owned outer insets.">
-    <h3>readGroupGeometry</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:118:1</code></p>
-    <p>Capture one compound group&#39;s descendant geometry and constant renderer-owned outer insets.</p>
+  </article><article class="item" data-search="chooseExpansionFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Expand only enough to restore strict geometry unless that would sacrifice readable labels.">
+    <h3>chooseExpansionFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:112:1</code></p>
+    <p>Expand only enough to restore strict geometry unless that would sacrifice readable labels.</p>
     
-  </article><article class="item" data-search="resolveCollisionBoxes src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Resolve immutable label and compound boxes for one candidate uniform spacing factor.">
-    <h3>resolveCollisionBoxes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:140:1</code></p>
-    <p>Resolve immutable label and compound boxes for one candidate uniform spacing factor.</p>
+  </article><article class="item" data-search="isStrictCandidate src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return whether a candidate is collision-free, including decorative leaf backgrounds.">
+    <h3>isStrictCandidate</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:123:1</code></p>
+    <p>Return whether a candidate is collision-free, including decorative leaf backgrounds.</p>
     
-  </article><article class="item" data-search="findExpansionMaximum src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Find the first bounded expansion factor that makes the pure geometry snapshot acceptable.">
-    <h3>findExpansionMaximum</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:171:1</code></p>
-    <p>Find the first bounded expansion factor that makes the pure geometry snapshot acceptable.</p>
+  </article><article class="item" data-search="isSoftCandidate src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Allow only bounded rendered-pixel background overlap as a dense-graph fallback.">
+    <h3>isSoftCandidate</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:128:1</code></p>
+    <p>Allow only bounded rendered-pixel background overlap as a dense-graph fallback.</p>
     
-  </article><article class="item" data-search="hasUnsafeCollisions src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.&#10;Local loop counters are intentionally mutable on this performance-critical boundary.">
-    <h3>hasUnsafeCollisions</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:181:1</code></p>
-    <p>Sweep resolved boxes by x extent and stop conservatively if the pair-check budget is exhausted.
-Local loop counters are intentionally mutable on this performance-critical boundary.</p>
+  </article><article class="item" data-search="needsExpansion src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Detect whether current geometry must expand before compaction can be considered.">
+    <h3>needsExpansion</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:136:1</code></p>
+    <p>Detect whether current geometry must expand before compaction can be considered.</p>
     
-  </article><article class="item" data-search="isIntentionalContainment src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Ignore intentional compound containment while retaining sibling and unrelated separation.">
-    <h3>isIntentionalContainment</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:199:1</code></p>
-    <p>Ignore intentional compound containment while retaining sibling and unrelated separation.</p>
+  </article><article class="item" data-search="reachesFitTarget src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Treat a finite fit-size ceiling as the point after which tighter spacing cannot improve output.">
+    <h3>reachesFitTarget</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:141:1</code></p>
+    <p>Treat a finite fit-size ceiling as the point after which tighter spacing cannot improve output.</p>
     
-  </article><article class="item" data-search="isUnsafeOverlap src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Permit only a small bounded label-label overlap; every other intersection remains unsafe.">
-    <h3>isUnsafeOverlap</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:204:1</code></p>
-    <p>Permit only a small bounded label-label overlap; every other intersection remains unsafe.</p>
+  </article><article class="item" data-search="reachesReadableTarget src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return whether full-graph fit keeps semantic labels at the configured readable threshold.">
+    <h3>reachesReadableTarget</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:147:1</code></p>
+    <p>Return whether full-graph fit keeps semantic labels at the configured readable threshold.</p>
     
-  </article><article class="item" data-search="shiftBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Shift one fixed renderer box with its leaf center under uniform radial scaling.">
-    <h3>shiftBounds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:217:1</code></p>
-    <p>Shift one fixed renderer box with its leaf center under uniform radial scaling.</p>
+  </article><article class="item" data-search="findMinimumAcceptedFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Binary-search the smallest factor accepted by a monotonic spacing constraint.">
+    <h3>findMinimumAcceptedFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:152:1</code></p>
+    <p>Binary-search the smallest factor accepted by a monotonic spacing constraint.</p>
     
-  </article><article class="item" data-search="expandBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Expand a descendant union by the compound renderer&#39;s measured outer insets.">
-    <h3>expandBounds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:231:1</code></p>
-    <p>Expand a descendant union by the compound renderer&#39;s measured outer insets.</p>
+  </article><article class="item" data-search="findMaximumAcceptedFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Binary-search the largest factor that still reaches a target under its collision policy.">
+    <h3>findMaximumAcceptedFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:169:1</code></p>
+    <p>Binary-search the largest factor that still reaches a target under its collision policy.</p>
     
-  </article><article class="item" data-search="unionBounds src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return the immutable union of measured boxes, or undefined for an empty collection.">
-    <h3>unionBounds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:240:1</code></p>
-    <p>Return the immutable union of measured boxes, or undefined for an empty collection.</p>
-    
-  </article><article class="item" data-search="isUsableBox src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Return whether renderer measurement produced a non-empty label box.">
-    <h3>isUsableBox</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:250:1</code></p>
-    <p>Return whether renderer measurement produced a non-empty label box.</p>
-    
-  </article><article class="item" data-search="applyScale src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data.">
-    <h3>applyScale</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:255:1</code></p>
-    <p>Apply the accepted factor once, preserving node dimensions, hierarchy, ordering and edge data.</p>
+  </article><article class="item" data-search="findExpansionFactor src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts Find the first bounded expansion threshold and refine it without unbounded layout work.">
+    <h3>findExpansionFactor</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts:186:1</code></p>
+    <p>Find the first bounded expansion threshold and refine it without unbounded layout work.</p>
     
   </article>
     </section>
@@ -55530,28 +55562,28 @@ Local loop counters are intentionally mutable on this performance-critical bound
     
   </article><article class="item" data-search="measureRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Measure rendered node geometry for public consumers while keeping Cytoscape private.">
     <h3>measureRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:100:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:108:1</code></p>
     <p>Measure rendered node geometry for public consumers while keeping Cytoscape private.</p>
     
   </article><article class="item" data-search="applyZoomLimits src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.">
     <h3>applyZoomLimits</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:121:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:129:1</code></p>
     <p>Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.</p>
     
   </article><article class="item" data-search="positiveSize src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Ignore invalid optional typography targets at the public configuration boundary.">
     <h3>positiveSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:137:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:145:1</code></p>
     <p>Ignore invalid optional typography targets at the public configuration boundary.</p>
     
   </article><article class="item" data-search="getNodeFitZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Recompute the fit reference only after layout or resize, never on every pan/zoom event.&#10;Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.">
     <h3>getNodeFitZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:145:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:153:1</code></p>
     <p>Recompute the fit reference only after layout or resize, never on every pan/zoom event.
 Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.</p>
     
   </article><article class="item" data-search="setCenteredZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Zoom around the visible viewport center instead of its top-left corner.">
     <h3>setCenteredZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:155:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:163:1</code></p>
     <p>Zoom around the visible viewport center instead of its top-left corner.</p>
     
   </article>
@@ -55641,67 +55673,165 @@ Bounded spacing optimization preserves the settled algorithm instead of repeated
     
   </article><article class="item" data-search="stopCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Stop the current layout and invalidate every stale completion callback.">
     <h3>stopCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:292:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:296:1</code></p>
     <p>Stop the current layout and invalidate every stale completion callback.</p>
     
   </article><article class="item" data-search="applyGraphStyles src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply consumer styles and hide native node paint only when React rich nodes are active.">
     <h3>applyGraphStyles</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:300:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:304:1</code></p>
     <p>Apply consumer styles and hide native node paint only when React rich nodes are active.</p>
     
   </article><article class="item" data-search="setSelectedNodeIds src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Synchronize controlled selection without rerunning layout.&#10;Selection updates must not trigger graph reconstruction or layout.">
     <h3>setSelectedNodeIds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:324:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:328:1</code></p>
     <p>Synchronize controlled selection without rerunning layout.
 Selection updates must not trigger graph reconstruction or layout.</p>
     
   </article><article class="item" data-search="setNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Persist one rich-node size and schedule at most one relayout for changed geometry.&#10;Ignore unchanged measurements before scheduling layout work.">
     <h3>setNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:338:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:342:1</code></p>
     <p>Persist one rich-node size and schedule at most one relayout for changed geometry.
 Ignore unchanged measurements before scheduling layout work.</p>
     
   </article><article class="item" data-search="applyKnownNodeSizes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply every known rich-node size after Cytoscape elements are replaced.">
     <h3>applyKnownNodeSizes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:347:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:351:1</code></p>
     <p>Apply every known rich-node size after Cytoscape elements are replaced.</p>
     
   </article><article class="item" data-search="applyNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply one measured model-space size as a Cytoscape per-node style bypass.">
     <h3>applyNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:352:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:356:1</code></p>
     <p>Apply one measured model-space size as a Cytoscape per-node style bypass.</p>
     
   </article><article class="item" data-search="scheduleMeasuredNodeRelayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Coalesce DOM measurements into one follow-up layout generation.&#10;Keep one scheduled layout per frame instead of one per measured node.">
     <h3>scheduleMeasuredNodeRelayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:362:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:366:1</code></p>
     <p>Coalesce DOM measurements into one follow-up layout generation.
 Keep one scheduled layout per frame instead of one per measured node.</p>
     
   </article><article class="item" data-search="subscribeRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Subscribe one React overlay to rendered node state without exposing the Cytoscape core.">
     <h3>subscribeRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:375:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:379:1</code></p>
     <p>Subscribe one React overlay to rendered node state without exposing the Cytoscape core.</p>
     
   </article><article class="item" data-search="emitRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Publish current rendered node positions only to active rich-node subscribers.&#10;Skip snapshot preparation when no overlay is subscribed.">
     <h3>emitRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:387:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:391:1</code></p>
     <p>Publish current rendered node positions only to active rich-node subscribers.
 Skip snapshot preparation when no overlay is subscribed.</p>
     
   </article><article class="item" data-search="handleOverlayNodeEvent src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Translate one rich-overlay event back into normal graph selection and callbacks.">
     <h3>handleOverlayNodeEvent</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:396:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:400:1</code></p>
     <p>Translate one rich-overlay event back into normal graph selection and callbacks.</p>
     
   </article><article class="item" data-search="hasUsableViewport src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Return whether Cytoscape currently has dimensions suitable for fitting.">
     <h3>hasUsableViewport</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:409:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:413:1</code></p>
     <p>Return whether Cytoscape currently has dimensions suitable for fitting.</p>
     
   </article><article class="item" data-search="destroyRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Dispose all runtime resources in the reverse order they were acquired.">
     <h3>destroyRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:414:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:418:1</code></p>
     <p>Dispose all runtime resources in the reverse order they were acquired.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-creategraphspacingevaluator-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts" hidden>
+    <section class="panel">
+      <h2>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts</h2>
+      <article class="item" data-search="createGraphSpacingEvaluator src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Snapshot renderer geometry once and expose pure candidate evaluation plus one accepted mutation.&#10;Labels and unrelated compound boundaries are hard constraints. Leaf backgrounds report rendered&#10;overlap separately so the caller can spend a small visual-overlap budget only for dense graphs.">
+    <h3>createGraphSpacingEvaluator</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:77:1</code></p>
+    <p>Snapshot renderer geometry once and expose pure candidate evaluation plus one accepted mutation.
+Labels and unrelated compound boundaries are hard constraints. Leaf backgrounds report rendered
+overlap separately so the caller can spend a small visual-overlap budget only for dense graphs.</p>
+    
+  </article><article class="item" data-search="readLeafGeometry src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Read immutable leaf geometry while separating label content from decorative node bounds.">
+    <h3>readLeafGeometry</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:107:1</code></p>
+    <p>Read immutable leaf geometry while separating label content from decorative node bounds.</p>
+    
+  </article><article class="item" data-search="readNodeBox src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Read a leaf node box with explicit label participation and no edge/overlay geometry.">
+    <h3>readNodeBox</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:128:1</code></p>
+    <p>Read a leaf node box with explicit label participation and no edge/overlay geometry.</p>
+    
+  </article><article class="item" data-search="readGroupGeometry src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Capture compound insets so candidate parent bounds follow uniformly shifted descendants.">
+    <h3>readGroupGeometry</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:139:1</code></p>
+    <p>Capture compound insets so candidate parent bounds follow uniformly shifted descendants.</p>
+    
+  </article><article class="item" data-search="evaluateSpacingCandidate src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Evaluate one uniform spacing factor without mutating Cytoscape or painting intermediate frames.">
+    <h3>evaluateSpacingCandidate</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:157:1</code></p>
+    <p>Evaluate one uniform spacing factor without mutating Cytoscape or painting intermediate frames.</p>
+    
+  </article><article class="item" data-search="resolveLeafGeometry src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Shift one leaf&#39;s fixed renderer boxes with its center under uniform radial scaling.">
+    <h3>resolveLeafGeometry</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:174:1</code></p>
+    <p>Shift one leaf&#39;s fixed renderer boxes with its center under uniform radial scaling.</p>
+    
+  </article><article class="item" data-search="resolveGroupBox src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Resolve one compound boundary from shifted descendants plus measured outer insets.">
+    <h3>resolveGroupBox</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:190:1</code></p>
+    <p>Resolve one compound boundary from shifted descendants plus measured outer insets.</p>
+    
+  </article><article class="item" data-search="createCollisionBoxes src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Build collision boxes with semantic labels separate from decorative leaf backgrounds.">
+    <h3>createCollisionBoxes</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:212:1</code></p>
+    <p>Build collision boxes with semantic labels separate from decorative leaf backgrounds.</p>
+    
+  </article><article class="item" data-search="readCollisionState src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Sweep collision boxes and separate semantic collisions from decorative background penetration.&#10;Pair-budget exhaustion is conservative and therefore treated as a hard collision.">
+    <h3>readCollisionState</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:236:1</code></p>
+    <p>Sweep collision boxes and separate semantic collisions from decorative background penetration.
+Pair-budget exhaustion is conservative and therefore treated as a hard collision.</p>
+    
+  </article><article class="item" data-search="isIntentionalContainment src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Ignore only true ancestor/descendant containment; siblings remain collision candidates.">
+    <h3>isIntentionalContainment</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:264:1</code></p>
+    <p>Ignore only true ancestor/descendant containment; siblings remain collision candidates.</p>
+    
+  </article><article class="item" data-search="getOverlapPenetration src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Return the smaller-axis penetration for intersecting rectangles, or zero when disjoint.">
+    <h3>getOverlapPenetration</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:269:1</code></p>
+    <p>Return the smaller-axis penetration for intersecting rectangles, or zero when disjoint.</p>
+    
+  </article><article class="item" data-search="getFitZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Calculate native zoom for fitting candidate node geometry inside the padded viewport.">
+    <h3>getFitZoom</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:276:1</code></p>
+    <p>Calculate native zoom for fitting candidate node geometry inside the padded viewport.</p>
+    
+  </article><article class="item" data-search="shiftBounds src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Shift one fixed renderer box with its leaf center under uniform radial scaling.">
+    <h3>shiftBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:284:1</code></p>
+    <p>Shift one fixed renderer box with its leaf center under uniform radial scaling.</p>
+    
+  </article><article class="item" data-search="expandBounds src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Expand a descendant union by the compound renderer&#39;s measured outer insets.">
+    <h3>expandBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:291:1</code></p>
+    <p>Expand a descendant union by the compound renderer&#39;s measured outer insets.</p>
+    
+  </article><article class="item" data-search="unionBounds src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Return the immutable union of measured boxes, or undefined for an empty collection.">
+    <h3>unionBounds</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:300:1</code></p>
+    <p>Return the immutable union of measured boxes, or undefined for an empty collection.</p>
+    
+  </article><article class="item" data-search="isUsableBox src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Return whether renderer measurement produced a non-empty box.">
+    <h3>isUsableBox</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:310:1</code></p>
+    <p>Return whether renderer measurement produced a non-empty box.</p>
+    
+  </article><article class="item" data-search="positiveNumber src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Normalize an optional positive numeric input without allowing NaN or non-positive values.">
+    <h3>positiveNumber</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:315:1</code></p>
+    <p>Normalize an optional positive numeric input without allowing NaN or non-positive values.</p>
+    
+  </article><article class="item" data-search="applyScale src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts Apply the accepted factor once, preserving dimensions, hierarchy, ordering and edge data.">
+    <h3>applyScale</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts:320:1</code></p>
+    <p>Apply the accepted factor once, preserving dimensions, hierarchy, ordering and edge data.</p>
     
   </article>
     </section>
@@ -55793,7 +55923,7 @@ Keep presentation-only changes out of the relayout decision.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-graphview-tsx" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx</h2>
-      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.&#10;maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.&#10;onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).&#10;Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering&#10;and uses bounded collision checks including labels and compound siblings; it can recover uniformly&#10;cramped layouts but cannot repair non-uniform overlaps.">
+      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.&#10;maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.&#10;onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).&#10;Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,&#10;stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries&#10;collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.">
     <h3>GraphView</h3>
     <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:28:1</code></p>
     <p>Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.
@@ -55804,9 +55934,9 @@ text. Keep padding in styleRules. Compound and rich-node dimensions retain their
 minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
 maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
 onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
-Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering
-and uses bounded collision checks including labels and compound siblings; it can recover uniformly
-cramped layouts but cannot repair non-uniform overlaps.</p>
+Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
+stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
+collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.</p>
     
   </article><article class="item" data-search="useGraphViewRuntime src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Compose React synchronization around the single imperative graph runtime.">
     <h3>useGraphViewRuntime</h3>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 22.1.3
+
+### Patch Changes
+
+- a362a56: Make GraphView optimized fit stop at the effective fit-size target, keep labels and compound boundaries collision-safe, and use only a bounded rendered background-overlap fallback for genuinely dense graphs.
+
 ## 22.1.2
 
 ### Patch Changes

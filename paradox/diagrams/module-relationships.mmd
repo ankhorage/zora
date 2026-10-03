@@ -212,6 +212,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts["src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts["src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts["src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts"]
@@ -460,6 +461,7 @@ graph LR
   module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
   module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
   module_src_types_gradient_ts["src/types/gradient.ts"]
+  module_src_types_graph_view_spacing_ts["src/types/graph-view-spacing.ts"]
   module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
@@ -984,6 +986,8 @@ graph LR
   module_src_features_gradient_gradientMeta_ts --> module_src_constants_authoring_ts
   module_src_features_gradient_gradientMeta_ts --> module_src_types_authoring_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_bindGraphEvents_ts --> module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts --> module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_types_graphViewRuntime_ts
@@ -1005,6 +1009,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --> module_src_types_graph_view_spacing_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --> module_src_types_graph_view_ts
