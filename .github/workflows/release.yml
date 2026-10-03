@@ -193,6 +193,8 @@ jobs:
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
           const requireConditions = new Set(['default', 'node', 'require']);
+          const platformConditions = new Set(['browser', 'react-native']);
+          const explicitServerConditions = new Set(['bun', 'node']);
           const supportsLoader = (target, conditions) => {
             if (typeof target === 'string') return true;
             if (Array.isArray(target)) return target.some((value) => supportsLoader(value, conditions));
@@ -202,7 +204,21 @@ jobs:
                 conditions.has(condition) && supportsLoader(value, conditions),
             );
           };
+          const declaresCondition = (target, conditions) => {
+            if (Array.isArray(target)) {
+              return target.some((value) => declaresCondition(value, conditions));
+            }
+            if (!target || typeof target !== 'object') return false;
+            return Object.entries(target).some(
+              ([condition, value]) =>
+                conditions.has(condition) || declaresCondition(value, conditions),
+            );
+          };
+          const isPlatformOnlyRuntimeTarget = (target) =>
+            declaresCondition(target, platformConditions) &&
+            !declaresCondition(target, explicitServerConditions);
           const selectLoader = (target) => {
+            if (isPlatformOnlyRuntimeTarget(target)) return undefined;
             if (supportsLoader(target, importConditions)) return 'import';
             if (supportsLoader(target, requireConditions)) return 'require';
             return undefined;
