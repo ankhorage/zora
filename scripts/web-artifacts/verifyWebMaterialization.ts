@@ -118,9 +118,7 @@ try {
   );
   assert(!graphViewRuntimeDeclaration.includes('../../../../../types/graph-view'));
   assert(
-    evidence.files.some((file) =>
-      file.startsWith('components/graph-view/GraphView.public-types-'),
-    ),
+    evidence.files.some((file) => file.startsWith('components/graph-view/GraphView.public-types-')),
   );
 
   const browser = new Window();
