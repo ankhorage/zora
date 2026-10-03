@@ -56,6 +56,7 @@ export function TreeView<TId extends string = string>({
   const [internalExpandedIds, setInternalExpandedIds] = React.useState<readonly TId[]>(
     defaultExpandedIds ?? [],
   );
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
   const isControlled = controlledExpandedIds !== undefined;
   const expandedIds = isControlled ? controlledExpandedIds : internalExpandedIds;
   const handleToggleExpand = React.useCallback(
@@ -66,9 +67,11 @@ export function TreeView<TId extends string = string>({
     },
     [expandedIds, isControlled, onExpandedChange],
   );
+  useSelectedTreeItemReveal(rootRef, selectedId, expandedIds);
 
   return (
     <div
+      ref={rootRef}
       aria-label={ariaLabel}
       className={className}
       role="tree"
@@ -89,6 +92,20 @@ export function TreeView<TId extends string = string>({
       ))}
     </div>
   );
+}
+
+/*** Reveal a controlled selection after it is rendered without changing expansion ownership. */
+function useSelectedTreeItemReveal<TId extends string>(
+  rootRef: React.RefObject<HTMLDivElement | null>,
+  selectedId: TId | undefined,
+  expandedIds: readonly TId[],
+) {
+  React.useEffect(() => {
+    if (selectedId === undefined) return;
+    rootRef.current
+      ?.querySelector<HTMLElement>('[role="treeitem"][aria-selected="true"]')
+      ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [expandedIds, rootRef, selectedId]);
 }
 
 const TREE_STYLE = {
