@@ -3,6 +3,7 @@ import { accordionItemMeta } from '../accordion/accordionItemMeta';
 import { accordionMeta } from '../accordion/accordionMeta';
 import { activityIndicatorMeta } from '../activity-indicator/activityIndicatorMeta';
 import { appBarMeta } from '../app-bar/appBarMeta';
+import { authScreenMeta } from '../auth/authScreenMeta';
 import { forgotPasswordFormMeta } from '../auth/forgotPasswordFormMeta';
 import { oauthProviderButtonMeta } from '../auth/oauthProviderButtonMeta';
 import { oauthProviderListMeta } from '../auth/oauthProviderListMeta';
@@ -178,6 +179,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   AppShell: appShellMeta,
   Screen: screenMeta,
   ScreenSection: screenSectionMeta,
+  AuthScreen: authScreenMeta,
   ForgotPasswordForm: forgotPasswordFormMeta,
   OAuthProviderButton: oauthProviderButtonMeta,
   OAuthProviderList: oauthProviderListMeta,
