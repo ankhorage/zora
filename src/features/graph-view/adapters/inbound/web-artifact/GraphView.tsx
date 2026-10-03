@@ -48,7 +48,9 @@ export function GraphView(props: GraphViewProps) {
           nodes={props.nodes}
           renderedNodes={renderedNodes}
           renderNode={props.renderNode}
-          onNodeEvent={(id, type) => runtimeRef.current?.handleOverlayNodeEvent(id, type)}
+          onNodeEvent={(id, type, selectionIntent) =>
+            runtimeRef.current?.handleOverlayNodeEvent(id, type, selectionIntent)
+          }
           onNodeSize={(id, size) => runtimeRef.current?.setNodeSize(id, size)}
         />
       ) : null}

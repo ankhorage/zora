@@ -1,3 +1,4 @@
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
 
 import { toggleExpandedIds } from '../../../utils/toggleExpandedIds';
@@ -23,10 +24,10 @@ export interface TreeItemRenderProps<TId extends string = string> {
 
 export interface TreeViewProps<TId extends string = string> {
   readonly nodes: readonly TreeItemNode<TId>[];
-  readonly selectedId?: TId;
+  readonly selectedIds?: readonly TId[];
   readonly expandedIds?: readonly TId[];
   readonly defaultExpandedIds?: readonly TId[];
-  readonly onSelect?: (id: TId) => void;
+  readonly onSelect?: (id: TId, intent: SelectionIntent) => void;
   readonly onExpandedChange?: (ids: readonly TId[]) => void;
   readonly renderItem?: (props: TreeItemRenderProps<TId>) => React.ReactNode;
   readonly expansionIndicator?: 'chevron' | 'folder';
@@ -42,7 +43,7 @@ export interface TreeViewProps<TId extends string = string> {
  */
 export function TreeView<TId extends string = string>({
   nodes,
-  selectedId,
+  selectedIds = [],
   expandedIds: controlledExpandedIds,
   defaultExpandedIds,
   onSelect,
@@ -67,12 +68,13 @@ export function TreeView<TId extends string = string>({
     },
     [expandedIds, isControlled, onExpandedChange],
   );
-  useSelectedTreeItemReveal(rootRef, selectedId, expandedIds);
+  useSelectedTreeItemReveal(rootRef, selectedIds, expandedIds);
 
   return (
     <div
       ref={rootRef}
       aria-label={ariaLabel}
+      aria-multiselectable="true"
       className={className}
       role="tree"
       style={{ ...TREE_STYLE, ...style }}
@@ -87,26 +89,26 @@ export function TreeView<TId extends string = string>({
           onSelect={onSelect}
           onToggleExpand={handleToggleExpand}
           renderItem={renderItem}
-          selectedId={selectedId}
+          selectedIds={selectedIds}
         />
       ))}
     </div>
   );
 }
 
-/*** Reveal a controlled selection after it is rendered without changing expansion ownership. */
+/*** Reveal the first controlled selection after it is rendered without changing expansion ownership. */
 function useSelectedTreeItemReveal<TId extends string>(
   rootRef: React.RefObject<HTMLDivElement | null>,
-  selectedId: TId | undefined,
+  selectedIds: readonly TId[],
   expandedIds: readonly TId[],
 ) {
   React.useEffect(() => {
-    if (selectedId === undefined) return;
+    if (selectedIds.length === 0) return;
     const root = rootRef.current as unknown as TreeViewQueryableElement | null;
     root
       ?.querySelector('[role="treeitem"][aria-selected="true"]')
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  }, [expandedIds, rootRef, selectedId]);
+  }, [expandedIds, rootRef, selectedIds]);
 }
 
 const TREE_STYLE = {

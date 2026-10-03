@@ -1,3 +1,4 @@
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
 
 import type {
@@ -7,12 +8,17 @@ import type {
   GraphViewRenderedNode,
   GraphViewSize,
 } from '../../../../../types/graph-view';
+import { resolveSelectionEventIntent } from '../../../../selection/public';
 
 interface GraphNodeOverlayProps {
   readonly nodes: readonly GraphViewNode[];
   readonly renderedNodes: readonly GraphViewRenderedNode[];
   readonly renderNode: (context: GraphViewNodeRenderContext) => React.ReactNode;
-  readonly onNodeEvent: (id: string, type: GraphViewElementEventType) => void;
+  readonly onNodeEvent: (
+    id: string,
+    type: GraphViewElementEventType,
+    selectionIntent?: SelectionIntent,
+  ) => void;
   readonly onNodeSize: (id: string, size: GraphViewSize) => void;
 }
 
@@ -89,7 +95,9 @@ function MeasuredGraphNode(props: MeasuredGraphNodeProps) {
         transform: `translate(-50%, -50%) scale(${renderedNode.zoom})`,
         transformOrigin: 'center',
       }}
-      onClick={() => props.onNodeEvent(node.id, 'press')}
+      onPointerUp={(event) =>
+        props.onNodeEvent(node.id, 'press', resolveSelectionEventIntent(event, 'pointer'))
+      }
       onDoubleClick={() => props.onNodeEvent(node.id, 'double-press')}
       onMouseEnter={() => props.onNodeEvent(node.id, 'pointer-enter')}
       onMouseLeave={() => props.onNodeEvent(node.id, 'pointer-leave')}

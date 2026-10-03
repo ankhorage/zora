@@ -1,29 +1,29 @@
 import { Pressable } from '@ankhorage/surface';
+import type { SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
-import type { GestureResponderEvent } from 'react-native';
+import { type GestureResponderEvent, Platform } from 'react-native';
 
 import type {
   SelectableItemProps,
   SelectableItemState,
   SelectionTrigger,
 } from '../../../../types/selection';
+import { resolveSelectionEventIntent } from '../../application/resolveSelectionEventIntent';
 import { useSelection } from './SelectionProvider';
 
+/*** Resolve the configured selection trigger. */
 function resolveTrigger(trigger: SelectionTrigger | undefined): SelectionTrigger {
   return trigger ?? 'manual';
 }
 
+/*** Narrow render-prop children without changing ordinary React-node children. */
 function isRenderProp(
   children: SelectableItemProps['children'],
 ): children is (state: SelectableItemState) => React.ReactNode {
   return typeof children === 'function';
 }
 
-/***
- * Adds selection behavior to arbitrary child content via render props.
- *
- 
- */
+/*** Adds selection behavior to arbitrary child content via render props. */
 export function SelectableItem({
   id,
   trigger,
@@ -36,67 +36,50 @@ export function SelectableItem({
   const resolvedDisabled = selection.disabled || disabled;
   const selected = selection.isSelected(id);
 
+  const activate = React.useCallback(
+    (intent: SelectionIntent) => {
+      if (resolvedDisabled || interactionPolicy === 'passive') return;
+      selection.activate(id, intent);
+    },
+    [id, interactionPolicy, resolvedDisabled, selection],
+  );
   const select = React.useCallback(() => {
-    if (resolvedDisabled) return;
-    if (interactionPolicy === 'passive') return;
+    if (resolvedDisabled || interactionPolicy === 'passive') return;
     selection.select(id);
-  }, [id, resolvedDisabled, interactionPolicy, selection]);
-
+  }, [id, interactionPolicy, resolvedDisabled, selection]);
   const toggle = React.useCallback(() => {
-    if (resolvedDisabled) return;
-    if (interactionPolicy === 'passive') return;
+    if (resolvedDisabled || interactionPolicy === 'passive') return;
     selection.toggle(id);
-  }, [id, resolvedDisabled, interactionPolicy, selection]);
-
+  }, [id, interactionPolicy, resolvedDisabled, selection]);
   const clear = React.useCallback(() => {
-    if (selection.disabled) return;
-    if (interactionPolicy === 'passive') return;
+    if (selection.disabled || interactionPolicy === 'passive') return;
     selection.clear();
   }, [interactionPolicy, selection]);
 
-  const itemState = React.useMemo<SelectableItemState>(() => {
-    return {
+  const itemState = React.useMemo<SelectableItemState>(
+    () => ({
       id,
       selected,
       disabled: resolvedDisabled,
       mode: selection.mode,
+      activate,
       select,
       toggle,
       clear,
-    };
-  }, [clear, id, resolvedDisabled, select, selected, selection.mode, toggle]);
+    }),
+    [activate, clear, id, resolvedDisabled, select, selected, selection.mode, toggle],
+  );
 
-  // IMPORTANT:
-  // Do not pass `children` directly into Pressable. Pressable also supports function children,
-  // but its function signature receives interaction state, not SelectableItemState.
   const content = isRenderProp(children) ? children(itemState) : children;
+  if (resolvedTrigger === 'manual') return <>{content}</>;
 
-  if (resolvedTrigger === 'manual') {
-    return <>{content}</>;
-  }
-
-  const handlePress = (event: GestureResponderEvent) => {
+  const handleActivation = (event: GestureResponderEvent) => {
     event.stopPropagation();
-    if (resolvedDisabled) return;
-    if (interactionPolicy === 'passive') return;
-    if (selection.mode === 'single') {
-      selection.select(id);
-      return;
-    }
-
-    selection.toggle(id);
-  };
-
-  const handleLongPress = (event: GestureResponderEvent) => {
-    event.stopPropagation();
-    if (resolvedDisabled) return;
-    if (interactionPolicy === 'passive') return;
-    if (selection.mode === 'single') {
-      selection.select(id);
-      return;
-    }
-
-    selection.toggle(id);
+    if (resolvedDisabled || interactionPolicy === 'passive') return;
+    selection.activate(
+      id,
+      resolveSelectionEventIntent(event, Platform.OS === 'web' ? 'pointer' : 'touch'),
+    );
   };
 
   return (
@@ -105,8 +88,8 @@ export function SelectableItem({
       accessibilityRole="button"
       accessibilityState={{ disabled: resolvedDisabled, selected }}
       disabled={resolvedDisabled}
-      onLongPress={resolvedTrigger === 'longPress' ? handleLongPress : undefined}
-      onPress={resolvedTrigger === 'press' ? handlePress : undefined}
+      onLongPress={resolvedTrigger === 'longPress' ? handleActivation : undefined}
+      onPress={resolvedTrigger === 'press' ? handleActivation : undefined}
     >
       {content}
     </Pressable>

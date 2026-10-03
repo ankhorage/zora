@@ -6,12 +6,12 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 import { toggleExpandedIds } from '../../utils/toggleExpandedIds';
 import { TreeItem } from './TreeItem';
 
-/*** Render the themed TreeView while supporting controlled or internal expansion state. */
+/*** Render the themed TreeView while supporting controlled selection and expansion state. */
 function TreeViewInner<TId extends string = string>({
   themeId: _themeId,
   mode: _mode,
   nodes,
-  selectedId,
+  selectedIds = [],
   expandedIds: controlledExpandedIds,
   defaultExpandedIds,
   onSelect,
@@ -32,9 +32,7 @@ function TreeViewInner<TId extends string = string>({
     if (interactionPolicy === 'passive') return;
     const nextExpandedIds = toggleExpandedIds(expandedIds, id);
 
-    if (!isControlled) {
-      setInternalExpandedIds(nextExpandedIds);
-    }
+    if (!isControlled) setInternalExpandedIds(nextExpandedIds);
     onExpandedChange?.(nextExpandedIds);
   };
 
@@ -50,7 +48,7 @@ function TreeViewInner<TId extends string = string>({
           onSelect={onSelect}
           onToggleExpand={handleToggleExpand}
           renderItem={renderItem}
-          selectedId={selectedId}
+          selectedIds={selectedIds}
           interactionPolicy={interactionPolicy}
         />
       ))}

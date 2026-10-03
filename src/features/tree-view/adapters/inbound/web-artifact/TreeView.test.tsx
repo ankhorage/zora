@@ -21,7 +21,7 @@ test('expands from the leading control without selecting the row, including keyb
   });
   const host = document.createElement('div');
   document.body.appendChild(host);
-  const selected: string[] = [];
+  const selected: (readonly [string, string])[] = [];
   const expanded: (readonly string[])[] = [];
   const root = createRoot(host);
   const interactAsync = (action: () => void) => act(() => Promise.resolve().then(action));
@@ -30,7 +30,7 @@ test('expands from the leading control without selecting the row, including keyb
       root.render(
         <TreeView
           nodes={[{ id: 'src', label: 'source', children: [{ id: 'leaf', label: 'leaf' }] }]}
-          onSelect={(id) => selected.push(id)}
+          onSelect={(id, intent) => selected.push([id, intent])}
           onExpandedChange={(ids) => expanded.push(ids)}
         />,
       ),
@@ -49,13 +49,83 @@ test('expands from the leading control without selecting the row, including keyb
     expect(expanded).toEqual([['src']]);
     expect(host.querySelector('[role="group"]')?.textContent).toContain('leaf');
     await interactAsync(() => {
-      row.dispatchEvent(new browserWindow.MouseEvent('click', { bubbles: true }));
+      row.dispatchEvent(
+        new browserWindow.PointerEvent('pointerup', { bubbles: true, pointerType: 'mouse' }),
+      );
     });
-    expect(selected).toEqual(['src']);
+    expect(selected).toEqual([['src', 'replace']]);
     expect(expanded).toEqual([['src']]);
     await interactAsync(() => button.click());
     expect(expanded).toEqual([['src'], []]);
     expect(host.querySelector('[role="group"]')).toBeNull();
+  } finally {
+    await interactAsync(() => root.unmount());
+    browserWindow.close();
+    for (const [key, descriptor] of previous) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else Reflect.deleteProperty(globalThis, key);
+    }
+  }
+});
+
+test('reports toggle intent for desktop modifiers and touch pointer activation', async () => {
+  const browserWindow = new Window();
+  const keys = ['window', 'document', 'Node', 'navigator', 'IS_REACT_ACT_ENVIRONMENT'] as const;
+  const previous = keys.map(
+    (key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)] as const,
+  );
+  Object.assign(globalThis, {
+    IS_REACT_ACT_ENVIRONMENT: true,
+    window: browserWindow,
+    document: browserWindow.document,
+    Node: browserWindow.Node,
+    navigator: browserWindow.navigator,
+  });
+  const host = document.createElement('div');
+  document.body.appendChild(host);
+  const selected: string[] = [];
+  const root = createRoot(host);
+  const interactAsync = (action: () => void) => act(() => Promise.resolve().then(action));
+  try {
+    await interactAsync(() =>
+      root.render(
+        <TreeView
+          nodes={[{ id: 'a', label: 'A' }]}
+          onSelect={(_id, intent) => selected.push(intent)}
+        />,
+      ),
+    );
+    const row = host.querySelector('[role="treeitem"]');
+    if (!row) throw new Error('Missing tree row');
+
+    await interactAsync(() =>
+      row.dispatchEvent(
+        new browserWindow.PointerEvent('pointerup', {
+          bubbles: true,
+          pointerType: 'mouse',
+          metaKey: true,
+        }),
+      ),
+    );
+    await interactAsync(() =>
+      row.dispatchEvent(
+        new browserWindow.PointerEvent('pointerup', {
+          bubbles: true,
+          pointerType: 'mouse',
+          ctrlKey: true,
+        }),
+      ),
+    );
+    await interactAsync(() =>
+      row.dispatchEvent(
+        new browserWindow.PointerEvent('pointerup', {
+          bubbles: true,
+          pointerType: 'touch',
+        }),
+      ),
+    );
+
+    expect(selected).toEqual(['toggle', 'toggle', 'toggle']);
   } finally {
     await interactAsync(() => root.unmount());
     browserWindow.close();
@@ -88,12 +158,12 @@ test('reveals a controlled selection when expansion makes the row renderable', a
   const nodes = [{ id: 'src', label: 'source', children: [{ id: 'leaf', label: 'leaf' }] }];
   try {
     await interactAsync(() =>
-      root.render(<TreeView expandedIds={[]} nodes={nodes} selectedId="leaf" />),
+      root.render(<TreeView expandedIds={[]} nodes={nodes} selectedIds={['leaf']} />),
     );
     expect(reveals).toEqual([]);
 
     await interactAsync(() =>
-      root.render(<TreeView expandedIds={['src']} nodes={nodes} selectedId="leaf" />),
+      root.render(<TreeView expandedIds={['src']} nodes={nodes} selectedIds={['leaf']} />),
     );
     expect(reveals).toEqual([{ block: 'nearest', inline: 'nearest' }]);
   } finally {
@@ -119,7 +189,7 @@ test('renders a standalone web tree without a ZORA or React Native provider', ()
           children: [{ id: 'index', label: 'index.ts' }],
         },
       ]}
-      selectedId="index"
+      selectedIds={['index']}
     />,
   );
 
