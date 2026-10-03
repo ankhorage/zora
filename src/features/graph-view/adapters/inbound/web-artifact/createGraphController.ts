@@ -1,6 +1,10 @@
 import type { Core } from 'cytoscape';
 
-import type { GraphViewController, GraphViewFitOptions } from '../../../../../types/graph-view';
+import type {
+  GraphViewController,
+  GraphViewFitOptions,
+  GraphViewMeasurement,
+} from '../../../../../types/graph-view';
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { fitGraphViewport } from './fitGraphViewport';
 
@@ -34,6 +38,9 @@ export function createGraphController(
         },
         state.fitZoom,
       );
+    },
+    measureNodes(nodeIds) {
+      return measureRenderedNodes(cy, nodeIds);
     },
     getViewport() {
       return { pan: cy.pan(), zoom: cy.zoom() / state.scale };
@@ -87,6 +94,29 @@ export function createGraphController(
       }
     },
   };
+}
+
+/*** Measure rendered node geometry for public consumers while keeping Cytoscape private. */
+function measureRenderedNodes(
+  cy: Core,
+  nodeIds: readonly string[],
+): GraphViewMeasurement | null {
+  const viewport = { width: cy.width(), height: cy.height() };
+  if (viewport.width <= 0 || viewport.height <= 0 || nodeIds.length === 0) return null;
+
+  const requestedIds = new Set(nodeIds);
+  const nodes = cy
+    .nodes()
+    .filter((node) => requestedIds.has(node.id()))
+    .map((node) => {
+      const bounds = node.renderedBoundingBox();
+      return {
+        id: node.id(),
+        position: node.renderedPosition(),
+        size: { width: bounds.w, height: bounds.h },
+      };
+    });
+  return nodes.length === 0 ? null : { nodes, viewport };
 }
 
 /*** Keep pointer, wheel, and programmatic zoom on the same limits in the engine's native units. */
