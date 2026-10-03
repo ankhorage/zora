@@ -114,7 +114,8 @@ function chooseExpansionFactor(
   minReadableZoom: number,
 ): number {
   const strict = findExpansionFactor((factor) => isStrictCandidate(evaluate(factor)));
-  if (strict !== undefined && reachesReadableTarget(evaluate(strict), minReadableZoom)) return strict;
+  if (strict !== undefined && reachesReadableTarget(evaluate(strict), minReadableZoom))
+    return strict;
   return findExpansionFactor((factor) => isSoftCandidate(evaluate(factor))) ?? strict ?? 1;
 }
 
@@ -184,9 +185,10 @@ function findMaximumAcceptedFactor(
 /*** Find the first bounded expansion threshold and refine it without unbounded layout work. */
 function findExpansionFactor(accepts: (factor: number) => boolean): number | undefined {
   if (accepts(1)) return 1;
-  const maximum = Array.from({ length: MAX_EXPANSION_ATTEMPTS }, (_, index) => 2 ** (index + 1)).find(
-    accepts,
-  );
+  const maximum = Array.from(
+    { length: MAX_EXPANSION_ATTEMPTS },
+    (_, index) => 2 ** (index + 1),
+  ).find(accepts);
   if (maximum === undefined) return undefined;
   return findMinimumAcceptedFactor(maximum / 2, maximum, accepts);
 }
