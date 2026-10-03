@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v23.0.0",
+      "value": "v23.1.0",
       "color": "cb3837"
     },
     {
@@ -407,6 +407,24 @@
       ]
     },
     {
+      "path": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/auth/adapters/inbound/OAuthProviderList.tsx",
+        "src/features/auth/adapters/inbound/SignInForm.tsx",
+        "src/features/auth/adapters/inbound/SignUpForm.tsx",
+        "src/features/keyboard-avoiding-view/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/surface/public.ts",
+        "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/typography/public.ts",
+        "src/types/auth.ts"
+      ],
+      "exports": [
+        "AuthScreen"
+      ]
+    },
+    {
       "path": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -495,6 +513,16 @@
       ]
     },
     {
+      "path": "src/features/auth/authScreenMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/authoring.ts"
+      ],
+      "exports": [
+        "authScreenMeta"
+      ]
+    },
+    {
       "path": "src/features/auth/forgotPasswordFormMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -543,6 +571,9 @@
       "exports": [
         "AuthFormBaseProps",
         "AuthIdentifierKind",
+        "AuthScreen",
+        "AuthScreenMode",
+        "AuthScreenProps",
         "DEFAULT_OAUTH_PROVIDER_ICONS",
         "ForgotPasswordForm",
         "ForgotPasswordFormProps",
@@ -3835,6 +3866,7 @@
         "src/features/accordion/accordionMeta.ts",
         "src/features/activity-indicator/activityIndicatorMeta.ts",
         "src/features/app-bar/appBarMeta.ts",
+        "src/features/auth/authScreenMeta.ts",
         "src/features/auth/forgotPasswordFormMeta.ts",
         "src/features/auth/oauthProviderButtonMeta.ts",
         "src/features/auth/oauthProviderListMeta.ts",
@@ -5623,6 +5655,9 @@
         "AppShellProps",
         "AuthFormBaseProps",
         "AuthIdentifierKind",
+        "AuthScreen",
+        "AuthScreenMode",
+        "AuthScreenProps",
         "Avatar",
         "AvatarGroup",
         "AvatarGroupItem",
@@ -6131,6 +6166,8 @@
       "exports": [
         "AuthFormBaseProps",
         "AuthIdentifierKind",
+        "AuthScreenMode",
+        "AuthScreenProps",
         "ForgotPasswordFormProps",
         "ForgotPasswordFormValues",
         "OAuthProviderButtonProps",
@@ -8380,7 +8417,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 10,
+        "line": 31,
         "column": 1
       },
       "exportPaths": [
@@ -8470,6 +8507,221 @@
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AuthScreen",
+      "title": null,
+      "description": "Reusable authentication-screen composition for sign-in and sign-up flows.\n\nOwns keyboard-safe responsive layout, auth surface presentation, OAuth separation, and\nsign-in/sign-up form composition while consumers retain routing and authentication orchestration.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "line": 20,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AuthScreenMode",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/auth.ts",
+      "sourceLocation": {
+        "filePath": "src/types/auth.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "AuthScreenProps",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/auth.ts",
+      "sourceLocation": {
+        "filePath": "src/types/auth.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "AuthIdentifierKind",
+        "AuthScreenMode",
+        "OAuthProviderItem",
+        "SignInFormValues",
+        "SignUpFormField",
+        "SignUpFormValues",
+        "ZoraThemeMode"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "authMode",
+          "kind": "property",
+          "type": "AuthScreenMode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "error",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "identifierLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "identifiers",
+          "kind": "property",
+          "type": "readonly AuthIdentifierKind[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "info",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "oauthProviders",
+          "kind": "property",
+          "type": "readonly OAuthProviderItem[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "oauthSeparatorLabel",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onModeChange",
+          "kind": "property",
+          "type": "((mode: AuthScreenMode) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onOAuthProviderPress",
+          "kind": "property",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSignInSubmit",
+          "kind": "property",
+          "type": "((values: SignInFormValues) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSignUpSubmit",
+          "kind": "property",
+          "type": "((values: SignUpFormValues) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "signUpFields",
+          "kind": "property",
+          "type": "readonly SignUpFormField[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ],
       "structuredRows": []
     },
     {
@@ -15498,7 +15750,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 49,
+        "line": 70,
         "column": 1
       },
       "exportPaths": [
@@ -15616,7 +15868,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 44,
+        "line": 65,
         "column": 1
       },
       "exportPaths": [
@@ -21559,7 +21811,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 81,
+        "line": 102,
         "column": 1
       },
       "exportPaths": [
@@ -21682,7 +21934,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 71,
+        "line": 92,
         "column": 1
       },
       "exportPaths": [
@@ -21704,7 +21956,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 73,
+        "line": 94,
         "column": 1
       },
       "exportPaths": [
@@ -21784,7 +22036,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 94,
+        "line": 115,
         "column": 1
       },
       "exportPaths": [
@@ -21806,7 +22058,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 96,
+        "line": 117,
         "column": 1
       },
       "exportPaths": [
@@ -22288,7 +22540,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 61,
+        "line": 82,
         "column": 1
       },
       "exportPaths": [
@@ -22419,7 +22671,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 57,
+        "line": 78,
         "column": 1
       },
       "exportPaths": [
@@ -28568,7 +28820,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 23,
+        "line": 44,
         "column": 1
       },
       "exportPaths": [
@@ -28707,7 +28959,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 17,
+        "line": 38,
         "column": 1
       },
       "exportPaths": [
@@ -28775,7 +29027,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 35,
+        "line": 56,
         "column": 1
       },
       "exportPaths": [
@@ -28797,7 +29049,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 37,
+        "line": 58,
         "column": 1
       },
       "exportPaths": [
@@ -28908,7 +29160,7 @@
       "modulePath": "src/types/auth.ts",
       "sourceLocation": {
         "filePath": "src/types/auth.ts",
-        "line": 34,
+        "line": 55,
         "column": 1
       },
       "exportPaths": [
@@ -35002,7 +35254,7 @@
       "modulePath": "src/features/registry/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/componentMeta.ts",
-        "line": 107,
+        "line": 108,
         "column": 14
       },
       "exportPaths": [
@@ -35024,7 +35276,7 @@
       "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-        "line": 215,
+        "line": 217,
         "column": 14
       },
       "exportPaths": [
@@ -35134,7 +35386,7 @@
       "modulePath": "src/constants/authoring.ts",
       "sourceLocation": {
         "filePath": "src/constants/authoring.ts",
-        "line": 151,
+        "line": 153,
         "column": 14
       },
       "exportPaths": [
@@ -39079,6 +39331,144 @@
         {
           "name": "themeId",
           "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "AuthScreen",
+      "description": "Reusable authentication-screen composition for sign-in and sign-up flows.\n\nOwns keyboard-safe responsive layout, auth surface presentation, OAuth separation, and\nsign-in/sign-up form composition while consumers retain routing and authentication orchestration.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "modulePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "line": 20,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "props": [
+        {
+          "name": "authMode",
+          "type": "AuthScreenMode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "error",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "identifierLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "identifiers",
+          "type": "readonly AuthIdentifierKind[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "info",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "loading",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "oauthProviders",
+          "type": "readonly OAuthProviderItem[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "oauthSeparatorLabel",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onModeChange",
+          "type": "((mode: AuthScreenMode) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onOAuthProviderPress",
+          "type": "((providerId: string) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSignInSubmit",
+          "type": "((values: SignInFormValues) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSignUpSubmit",
+          "type": "((values: SignUpFormValues) => void | Promise<void>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "signUpFields",
+          "type": "readonly SignUpFormField[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -54697,6 +55087,28 @@
       }
     },
     {
+      "name": "AuthScreenInner",
+      "description": "Render the themed authentication screen while preserving consumer-owned callbacks and state.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "line": 23,
+        "column": 1
+      }
+    },
+    {
+      "name": "AuthScreenForm",
+      "description": "Render the active ZORA auth form and translate form-switch actions into the shared mode boundary.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "line": 156,
+        "column": 1
+      }
+    },
+    {
       "name": "ForgotPasswordFormInner",
       "description": null,
       "see": [],
@@ -62838,6 +63250,11 @@
         "sourcePath": "src/features/app-bar/public.ts"
       },
       {
+        "fromPath": "src/features/auth/authScreenMeta.ts",
+        "toPath": "src/types/authoring.ts",
+        "sourcePath": "src/features/auth/authScreenMeta.ts"
+      },
+      {
         "fromPath": "src/features/auth/forgotPasswordFormMeta.ts",
         "toPath": "src/types/authoring.ts",
         "sourcePath": "src/features/auth/forgotPasswordFormMeta.ts"
@@ -62870,6 +63287,11 @@
       {
         "fromPath": "src/features/auth/public.ts",
         "toPath": "src/types/auth.ts",
+        "sourcePath": "src/features/auth/public.ts"
+      },
+      {
+        "fromPath": "src/features/auth/public.ts",
+        "toPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
         "sourcePath": "src/features/auth/public.ts"
       },
       {
@@ -63905,6 +64327,11 @@
       {
         "fromPath": "src/features/registry/componentMeta.ts",
         "toPath": "src/features/app-bar/appBarMeta.ts",
+        "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/features/registry/componentMeta.ts",
+        "toPath": "src/features/auth/authScreenMeta.ts",
         "sourcePath": "src/features/registry/componentMeta.ts"
       },
       {
@@ -66091,6 +66518,51 @@
         "fromPath": "src/features/auth/adapters/inbound/AuthFormField.tsx",
         "toPath": "src/features/form/text-input/public.ts",
         "sourcePath": "src/features/auth/adapters/inbound/AuthFormField.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/types/auth.ts",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/keyboard-avoiding-view/public.ts",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/surface/public.ts",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/auth/adapters/inbound/OAuthProviderList.tsx",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/auth/adapters/inbound/SignInForm.tsx",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromPath": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toPath": "src/features/auth/adapters/inbound/SignUpForm.tsx",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
       },
       {
         "fromPath": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
@@ -70843,6 +71315,18 @@
         "toSymbol": "resolveTextContentType",
         "callExpression": "resolveTextContentType",
         "sourcePath": "src/features/auth/adapters/inbound/AuthFormField.tsx"
+      },
+      {
+        "fromSymbol": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
+      },
+      {
+        "fromSymbol": "src/features/auth/adapters/inbound/AuthScreen.tsx",
+        "toSymbol": "onModeChange",
+        "callExpression": "onModeChange",
+        "sourcePath": "src/features/auth/adapters/inbound/AuthScreen.tsx"
       },
       {
         "fromSymbol": "src/features/auth/adapters/inbound/ForgotPasswordForm.tsx",
@@ -75635,6 +76119,56 @@
       },
       {
         "fromSymbol": "AuthFormBaseProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "AuthIdentifierKind",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "AuthScreenMode",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "OAuthProviderItem",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "React",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "SignInFormValues",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "SignUpFormField",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
+        "toType": "SignUpFormValues",
+        "sourcePath": "src/types/auth.ts"
+      },
+      {
+        "fromSymbol": "AuthScreenProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/auth.ts"
       },

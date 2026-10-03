@@ -248,7 +248,7 @@ Source: `src/types/layout.ts:20:1`
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:10:1`
+Source: `src/types/auth.ts:31:1`
 
 ### Members
 
@@ -268,6 +268,54 @@ Source: `src/types/auth.ts:10:1`
 Kind: `unknown`
 Module: `src/types/auth.ts`
 Source: `src/types/auth.ts:8:1`
+
+## AuthScreen
+
+Kind: `value`
+Module: `src/features/auth/adapters/inbound/AuthScreen.tsx`
+Source: `src/features/auth/adapters/inbound/AuthScreen.tsx:20:14`
+
+Reusable authentication-screen composition for sign-in and sign-up flows.
+
+Owns keyboard-safe responsive layout, auth surface presentation, OAuth separation, and
+sign-in/sign-up form composition while consumers retain routing and authentication orchestration.
+
+## AuthScreenMode
+
+Kind: `unknown`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:10:1`
+
+## AuthScreenProps
+
+Kind: `type`
+Module: `src/types/auth.ts`
+Source: `src/types/auth.ts:12:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| authMode | property | `AuthScreenMode` | yes |  |
+| description | property | `React.ReactNode` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| error | property | `React.ReactNode` | no |  |
+| identifierLabel | property | `React.ReactNode` | no |  |
+| identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
+| info | property | `React.ReactNode` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| loading | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| oauthProviders | property | `readonly OAuthProviderItem[] \| undefined` | no |  |
+| oauthSeparatorLabel | property | `React.ReactNode` | no |  |
+| onModeChange | property | `((mode: AuthScreenMode) => void \| Promise<void>) \| undefined` | no |  |
+| onOAuthProviderPress | property | `((providerId: string) => void \| Promise<void>) \| undefined` | no |  |
+| onSignInSubmit | property | `((values: SignInFormValues) => void \| Promise<void>) \| undefined` | no |  |
+| onSignUpSubmit | property | `((values: SignUpFormValues) => void \| Promise<void>) \| undefined` | no |  |
+| signUpFields | property | `readonly SignUpFormField[] \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| title | property | `React.ReactNode` | no |  |
 
 ## Avatar
 
@@ -1949,7 +1997,7 @@ Password reset form pattern with validation and submit actions.
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:49:1`
+Source: `src/types/auth.ts:70:1`
 
 ### Members
 
@@ -1973,7 +2021,7 @@ Source: `src/types/auth.ts:49:1`
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:44:1`
+Source: `src/types/auth.ts:65:1`
 
 ### Members
 
@@ -3455,7 +3503,7 @@ Adapters, redirects, and callback handling belong to app/runtime layers.
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:81:1`
+Source: `src/types/auth.ts:102:1`
 
 ### Members
 
@@ -3480,13 +3528,13 @@ Source: `src/types/auth.ts:81:1`
 
 Kind: `unknown`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:71:1`
+Source: `src/types/auth.ts:92:1`
 
 ## OAuthProviderItem
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:73:1`
+Source: `src/types/auth.ts:94:1`
 
 ### Members
 
@@ -3510,13 +3558,13 @@ Renders a group of OAuth provider buttons for sign-in and auth settings flows.
 
 Kind: `unknown`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:94:1`
+Source: `src/types/auth.ts:115:1`
 
 ## OAuthProviderListProps
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:96:1`
+Source: `src/types/auth.ts:117:1`
 
 ### Members
 
@@ -3630,7 +3678,7 @@ One-time passcode form pattern with digit input and submit actions.
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:61:1`
+Source: `src/types/auth.ts:82:1`
 
 ### Members
 
@@ -3656,7 +3704,7 @@ Source: `src/types/auth.ts:61:1`
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:57:1`
+Source: `src/types/auth.ts:78:1`
 
 ### Members
 
@@ -5050,7 +5098,7 @@ Sign-in form pattern with identifier and password fields.
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:23:1`
+Source: `src/types/auth.ts:44:1`
 
 ### Members
 
@@ -5077,7 +5125,7 @@ Source: `src/types/auth.ts:23:1`
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:17:1`
+Source: `src/types/auth.ts:38:1`
 
 ### Members
 
@@ -5099,13 +5147,13 @@ Sign-up form pattern with structured fields and validation.
 
 Kind: `unknown`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:35:1`
+Source: `src/types/auth.ts:56:1`
 
 ## SignUpFormProps
 
 Kind: `type`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:37:1`
+Source: `src/types/auth.ts:58:1`
 
 ### Members
 
@@ -5128,7 +5176,7 @@ Source: `src/types/auth.ts:37:1`
 
 Kind: `unknown`
 Module: `src/types/auth.ts`
-Source: `src/types/auth.ts:34:1`
+Source: `src/types/auth.ts:55:1`
 
 ## Skeleton
 
@@ -6559,13 +6607,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:107:14`
+Source: `src/features/registry/componentMeta.ts:108:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:215:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:217:14`
 
 ## ZORA_EMPHASES
 
@@ -6595,7 +6643,7 @@ Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/constants/authoring.ts`
-Source: `src/constants/authoring.ts:151:14`
+Source: `src/constants/authoring.ts:153:14`
 
 ## ZoraBaseProps
 

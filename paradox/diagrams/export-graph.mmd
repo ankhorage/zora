@@ -17,12 +17,14 @@ graph LR
   module_src_features_app_bar_public_ts["src/features/app-bar/public.ts"]
   module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx["src/features/auth/adapters/inbound/AuthScreen.tsx"]
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx["src/features/auth/adapters/inbound/ForgotPasswordForm.tsx"]
   module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx["src/features/auth/adapters/inbound/OAuthProviderButton.tsx"]
   module_src_features_auth_adapters_inbound_OAuthProviderList_tsx["src/features/auth/adapters/inbound/OAuthProviderList.tsx"]
   module_src_features_auth_adapters_inbound_OtpForm_tsx["src/features/auth/adapters/inbound/OtpForm.tsx"]
   module_src_features_auth_adapters_inbound_SignInForm_tsx["src/features/auth/adapters/inbound/SignInForm.tsx"]
   module_src_features_auth_adapters_inbound_SignUpForm_tsx["src/features/auth/adapters/inbound/SignUpForm.tsx"]
+  module_src_features_auth_authScreenMeta_ts["src/features/auth/authScreenMeta.ts"]
   module_src_features_auth_forgotPasswordFormMeta_ts["src/features/auth/forgotPasswordFormMeta.ts"]
   module_src_features_auth_oauthProviderButtonMeta_ts["src/features/auth/oauthProviderButtonMeta.ts"]
   module_src_features_auth_oauthProviderListMeta_ts["src/features/auth/oauthProviderListMeta.ts"]
@@ -551,6 +553,19 @@ graph LR
   export_AuthFormBaseProps -.-> export_ZoraThemeMode
   export_AuthIdentifierKind["AuthIdentifierKind"]
   module_src_types_auth_ts --> export_AuthIdentifierKind
+  export_AuthScreen["AuthScreen"]
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> export_AuthScreen
+  export_AuthScreenMode["AuthScreenMode"]
+  module_src_types_auth_ts --> export_AuthScreenMode
+  export_AuthScreenProps["AuthScreenProps"]
+  module_src_types_auth_ts --> export_AuthScreenProps
+  export_AuthScreenProps -.-> export_AuthIdentifierKind
+  export_AuthScreenProps -.-> export_AuthScreenMode
+  export_AuthScreenProps -.-> export_OAuthProviderItem
+  export_AuthScreenProps -.-> export_SignInFormValues
+  export_AuthScreenProps -.-> export_SignUpFormField
+  export_AuthScreenProps -.-> export_SignUpFormValues
+  export_AuthScreenProps -.-> export_ZoraThemeMode
   export_Avatar["Avatar"]
   module_src_features_avatar_adapters_inbound_Avatar_tsx --> export_Avatar
   export_AvatarGroup["AvatarGroup"]

@@ -76,6 +76,17 @@ graph TD
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_types_base_ts
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx["src/features/auth/adapters/inbound/AuthScreen.tsx"]
+  package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_AuthScreen_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_OAuthProviderList_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_SignInForm_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_SignUpForm_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_keyboard_avoiding_view_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_surface_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_typography_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_types_auth_ts
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx["src/features/auth/adapters/inbound/ForgotPasswordForm.tsx"]
   package__ankhorage_zora -.-> module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
@@ -122,6 +133,9 @@ graph TD
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_auth_ts
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_authScreenMeta_ts["src/features/auth/authScreenMeta.ts"]
+  package__ankhorage_zora -.-> module_src_features_auth_authScreenMeta_ts
+  module_src_features_auth_authScreenMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_forgotPasswordFormMeta_ts["src/features/auth/forgotPasswordFormMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_features_auth_forgotPasswordFormMeta_ts --> module_src_types_authoring_ts
@@ -1289,6 +1303,7 @@ graph TD
   module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_authScreenMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts

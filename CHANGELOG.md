@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.1.0
+
+### Minor Changes
+
+- 76d0316: Add a reusable AuthScreen composition that owns responsive keyboard-safe authentication presentation, OAuth separation, and sign-in/sign-up form composition while leaving authentication orchestration to consumers.
+
 ## 23.0.0
 
 ### Major Changes

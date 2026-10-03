@@ -17,12 +17,14 @@ graph LR
   module_src_features_app_bar_public_ts["src/features/app-bar/public.ts"]
   module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx["src/features/auth/adapters/inbound/AuthScreen.tsx"]
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx["src/features/auth/adapters/inbound/ForgotPasswordForm.tsx"]
   module_src_features_auth_adapters_inbound_OAuthProviderButton_tsx["src/features/auth/adapters/inbound/OAuthProviderButton.tsx"]
   module_src_features_auth_adapters_inbound_OAuthProviderList_tsx["src/features/auth/adapters/inbound/OAuthProviderList.tsx"]
   module_src_features_auth_adapters_inbound_OtpForm_tsx["src/features/auth/adapters/inbound/OtpForm.tsx"]
   module_src_features_auth_adapters_inbound_SignInForm_tsx["src/features/auth/adapters/inbound/SignInForm.tsx"]
   module_src_features_auth_adapters_inbound_SignUpForm_tsx["src/features/auth/adapters/inbound/SignUpForm.tsx"]
+  module_src_features_auth_authScreenMeta_ts["src/features/auth/authScreenMeta.ts"]
   module_src_features_auth_forgotPasswordFormMeta_ts["src/features/auth/forgotPasswordFormMeta.ts"]
   module_src_features_auth_oauthProviderButtonMeta_ts["src/features/auth/oauthProviderButtonMeta.ts"]
   module_src_features_auth_oauthProviderListMeta_ts["src/features/auth/oauthProviderListMeta.ts"]
@@ -548,6 +550,15 @@ graph LR
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_features_form_text_input_public_ts
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_types_base_ts
   module_src_features_auth_adapters_inbound_AuthFormField_tsx --> module_src_types_form_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_OAuthProviderList_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_SignInForm_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_auth_adapters_inbound_SignUpForm_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_keyboard_avoiding_view_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_layout_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_surface_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_features_typography_public_ts
+  module_src_features_auth_adapters_inbound_AuthScreen_tsx --> module_src_types_auth_ts
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_auth_adapters_inbound_AuthForm_tsx
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_auth_utils_authForm_ts
   module_src_features_auth_adapters_inbound_ForgotPasswordForm_tsx --> module_src_features_button_public_ts
@@ -582,6 +593,7 @@ graph LR
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_auth_ts
   module_src_features_auth_adapters_inbound_SignUpForm_tsx --> module_src_types_form_ts
+  module_src_features_auth_authScreenMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_forgotPasswordFormMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_auth_oauthProviderButtonMeta_ts --> module_src_types_authoring_ts
@@ -1191,6 +1203,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_auth_authScreenMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderListMeta_ts

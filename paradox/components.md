@@ -371,6 +371,40 @@ Export paths: `src/index.ts`
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
 
+## AuthScreen
+
+Source: `src/features/auth/adapters/inbound/AuthScreen.tsx:20:14`
+
+Reusable authentication-screen composition for sign-in and sign-up flows.
+
+Owns keyboard-safe responsive layout, auth surface presentation, OAuth separation, and
+sign-in/sign-up form composition while consumers retain routing and authentication orchestration.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| authMode | `AuthScreenMode` | yes | — |  |
+| description | `React.ReactNode` | no | — |  |
+| disabled | `boolean \| undefined` | no | — |  |
+| error | `React.ReactNode` | no | — |  |
+| identifierLabel | `React.ReactNode` | no | — |  |
+| identifiers | `readonly AuthIdentifierKind[] \| undefined` | no | — |  |
+| info | `React.ReactNode` | no | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| loading | `boolean \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| oauthProviders | `readonly OAuthProviderItem[] \| undefined` | no | — |  |
+| oauthSeparatorLabel | `React.ReactNode` | no | — |  |
+| onModeChange | `((mode: AuthScreenMode) => void \| Promise<void>) \| undefined` | no | — |  |
+| onOAuthProviderPress | `((providerId: string) => void \| Promise<void>) \| undefined` | no | — |  |
+| onSignInSubmit | `((values: SignInFormValues) => void \| Promise<void>) \| undefined` | no | — |  |
+| onSignUpSubmit | `((values: SignUpFormValues) => void \| Promise<void>) \| undefined` | no | — |  |
+| signUpFields | `readonly SignUpFormField[] \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| title | `React.ReactNode` | no | — |  |
+
 ## Avatar
 
 Source: `src/features/avatar/adapters/inbound/Avatar.tsx:16:14`
