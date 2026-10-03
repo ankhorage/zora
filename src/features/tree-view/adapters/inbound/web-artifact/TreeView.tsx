@@ -102,8 +102,9 @@ function useSelectedTreeItemReveal<TId extends string>(
 ) {
   React.useEffect(() => {
     if (selectedId === undefined) return;
-    rootRef.current
-      ?.querySelector<HTMLElement>('[role="treeitem"][aria-selected="true"]')
+    const root = rootRef.current as unknown as TreeViewQueryableElement | null;
+    root
+      ?.querySelector('[role="treeitem"][aria-selected="true"]')
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }, [expandedIds, rootRef, selectedId]);
 }
@@ -113,3 +114,11 @@ const TREE_STYLE = {
   flexDirection: 'column',
   minWidth: 0,
 } as const satisfies React.CSSProperties;
+
+interface TreeViewQueryableElement {
+  querySelector(selector: string): TreeViewRevealTarget | null;
+}
+
+interface TreeViewRevealTarget {
+  scrollIntoView(options: { readonly block: 'nearest'; readonly inline: 'nearest' }): void;
+}
