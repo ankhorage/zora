@@ -2,9 +2,13 @@ import { StyleSheet, type ViewStyle } from 'react-native';
 
 import type { GameOverlayPlacement, GameOverlayProps } from '../../../../types/gamePresentation';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Render an absolute game presentation layer for HUD, feedback, and phase content. */
-export function GameOverlay({
+export const GameOverlay = withZoraThemeScope(GameOverlayInner);
+
+/*** Render the overlay inside the inherited ZORA theme scope. */
+function GameOverlayInner({
   children,
   placement = 'fill',
   blocking = false,

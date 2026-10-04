@@ -2,6 +2,8 @@ import type { InteractionPolicy } from '@ankhorage/surface';
 import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type React from 'react';
 
+import type { ZoraBaseProps } from './base';
+
 export type SelectionMode = 'single' | 'multi';
 
 export type SelectionTrigger = 'press' | 'longPress' | 'manual';
@@ -40,7 +42,7 @@ export interface SelectableItemState {
   clear: () => void;
 }
 
-export interface SelectableItemProps {
+export interface SelectableItemProps extends ZoraBaseProps {
   id: string;
   trigger?: SelectionTrigger;
   disabled?: boolean;

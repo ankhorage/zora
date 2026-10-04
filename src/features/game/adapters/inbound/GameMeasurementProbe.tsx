@@ -2,11 +2,15 @@ import React from 'react';
 
 import type { GameMeasurementProbeProps } from '../../../../types/gamePresentation';
 import type { GameRuntimeContextValue } from '../../../../types/gameRuntime';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { GameRuntimeContext } from '../../composition/GameRuntimeContext';
 import { createGameMeasurementEvent } from './createGameMeasurementEvent';
 
 /*** Measure two registered game entities and dispatch only their raw rendered geometry. */
-export function GameMeasurementProbe({
+export const GameMeasurementProbe = withZoraThemeScope(GameMeasurementProbeInner);
+
+/*** Measure geometry inside the inherited ZORA theme scope. */
+function GameMeasurementProbeInner({
   sourceId,
   targetId,
   eventType = 'game.measurement',

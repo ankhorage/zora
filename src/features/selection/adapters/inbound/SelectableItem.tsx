@@ -8,6 +8,7 @@ import type {
   SelectableItemState,
   SelectionTrigger,
 } from '../../../../types/selection';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { resolveSelectionEventIntent } from '../../application/resolveSelectionEventIntent';
 import { useSelection } from './SelectionProvider';
 
@@ -24,7 +25,10 @@ function isRenderProp(
 }
 
 /*** Adds selection behavior to arbitrary child content via render props. */
-export function SelectableItem({
+export const SelectableItem = withZoraThemeScope(SelectableItemInner);
+
+/*** Render a selectable item inside the inherited ZORA theme scope. */
+function SelectableItemInner({
   id,
   trigger,
   disabled = false,

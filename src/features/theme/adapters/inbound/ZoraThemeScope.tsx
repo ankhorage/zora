@@ -12,20 +12,21 @@ export interface ZoraThemeScopeProps {
   children: React.ReactNode;
   themeId?: ZoraThemeId;
   mode?: ZoraThemeMode;
+  inverted?: boolean;
 }
 
 /*** Applies nested ZORA theme overrides through the public Surface theme scope. */
-export function ZoraThemeScope({ children, themeId, mode }: ZoraThemeScopeProps) {
-  if (mode === undefined && themeId === undefined) return children;
+export function ZoraThemeScope({ children, themeId, mode, inverted }: ZoraThemeScopeProps) {
+  if (mode === undefined && themeId === undefined && inverted === undefined) return children;
   return (
-    <ZoraThemeScopeInner mode={mode} themeId={themeId}>
+    <ZoraThemeScopeInner mode={mode} themeId={themeId} inverted={inverted}>
       {children}
     </ZoraThemeScopeInner>
   );
 }
 
 /*** Resolves and provides the scoped Surface and ZORA theme runtime values. */
-function ZoraThemeScopeInner({ children, themeId, mode }: ZoraThemeScopeProps) {
+function ZoraThemeScopeInner({ children, themeId, mode, inverted }: ZoraThemeScopeProps) {
   const parentRuntime = useZoraThemeRuntime();
   const scopedThemeId = resolveZoraScopedThemeId({
     desiredThemeId: themeId,
@@ -33,7 +34,13 @@ function ZoraThemeScopeInner({ children, themeId, mode }: ZoraThemeScopeProps) {
   });
   const scopedRuntimeValue = useMemo(() => ({ themeId: scopedThemeId }), [scopedThemeId]);
   const scopedChildren =
-    mode === undefined ? children : <ThemeScope mode={mode}>{children}</ThemeScope>;
+    mode === undefined && inverted === undefined ? (
+      children
+    ) : (
+      <ThemeScope mode={mode} inverted={inverted}>
+        {children}
+      </ThemeScope>
+    );
 
   return (
     <ZoraThemeRuntimeContext value={scopedRuntimeValue}>{scopedChildren}</ZoraThemeRuntimeContext>

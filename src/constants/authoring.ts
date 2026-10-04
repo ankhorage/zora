@@ -4,6 +4,13 @@ export const COMPONENT_THEME_AUTHORING = {
   allowInstanceOverride: true,
 } as const;
 
+export const INVERTED_POLARITY_PROP = {
+  type: 'boolean',
+  category: 'Theme',
+  label: 'Inverted surface polarity (inherits when omitted; false resets)',
+  authoring: { authority: 'instance' },
+} as const;
+
 export const FEATURE_MANIFEST_ELEMENTS = {
   auth: [
     'AuthScreen',

@@ -27,7 +27,7 @@ describe('canonical ThemeConfig scope propagation', () => {
   test('nested scopes delegate Surface config and mode ownership to ThemeScope', () => {
     const scope = readFileSync(join(themeDir, 'adapters', 'inbound', 'ZoraThemeScope.tsx'), 'utf8');
     expect(scope).toContain("import { ThemeScope } from '@ankhorage/surface';");
-    expect(scope).toContain('<ThemeScope mode={mode}>');
+    expect(scope).toContain('<ThemeScope mode={mode} inverted={inverted}>');
     expect(scope).not.toContain('parentSurface');
     expect(scope).not.toContain('sourceConfig');
     expect(scope).not.toContain('createTheme');
