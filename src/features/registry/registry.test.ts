@@ -76,6 +76,7 @@ describe('ZORA_COMPONENT_REGISTRY', () => {
     expect(registry).toEqual({});
     expect(registryEntries).toContain('Screen');
     expect(registryEntries).toContain('View');
+    expect(registryEntries).toContain('AppHeader');
     expect(source).toContain("export type { ZoraComponentRegistry } from './types/registry';");
     expect(source).toContain(
       "export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';",

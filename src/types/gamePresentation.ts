@@ -1,6 +1,7 @@
 import type { GameDefinition, GameInput, GameOutput } from '@ankhorage/game';
-import type { InteractionPolicyProps } from '@ankhorage/surface';
 import type React from 'react';
+
+import type { ZoraBaseProps } from './base';
 
 type GameOverlayCornerPlacement = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
@@ -26,7 +27,7 @@ export interface GameEntityMotionProps {
 export type GameOverlayPlacement =
   'fill' | 'center' | 'top' | 'bottom' | GameOverlayCornerPlacement;
 
-export interface GameFieldProps extends InteractionPolicyProps {
+export interface GameFieldProps extends ZoraBaseProps {
   readonly children?: React.ReactNode;
   readonly aspectRatio?: number;
   readonly minHeight?: number;
@@ -36,7 +37,7 @@ export interface GameFieldProps extends InteractionPolicyProps {
   readonly testID?: string;
 }
 
-export interface GameEntityProps extends GameEntityMotionProps, InteractionPolicyProps {
+export interface GameEntityProps extends GameEntityMotionProps, ZoraBaseProps {
   readonly children?: React.ReactNode;
   readonly x?: number;
   readonly y?: number;
@@ -60,7 +61,7 @@ export interface GameKeyboardBinding {
   readonly preventDefault?: boolean;
 }
 
-export interface GameInputZoneProps extends InteractionPolicyProps {
+export interface GameInputZoneProps extends ZoraBaseProps {
   readonly eventType: string;
   readonly entityId?: string;
   readonly x?: number;
@@ -75,7 +76,7 @@ export interface GameInputZoneProps extends InteractionPolicyProps {
   readonly testID?: string;
 }
 
-export interface GameMeasurementProbeProps extends InteractionPolicyProps {
+export interface GameMeasurementProbeProps extends ZoraBaseProps {
   readonly sourceId: string;
   readonly targetId: string;
   readonly eventType?: string;
@@ -84,7 +85,7 @@ export interface GameMeasurementProbeProps extends InteractionPolicyProps {
   readonly enabled?: boolean;
 }
 
-export interface GameOverlayProps extends InteractionPolicyProps {
+export interface GameOverlayProps extends ZoraBaseProps {
   readonly children?: React.ReactNode;
   readonly placement?: GameOverlayPlacement;
   readonly blocking?: boolean;

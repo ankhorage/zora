@@ -1,11 +1,15 @@
 import { Platform, StyleSheet, View, type ViewStyle } from 'react-native';
 
 import type { GameInputZoneProps } from '../../../../types/gamePresentation';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { toGamePercentage } from '../../utils/toGamePercentage';
 import { useGameInputZoneResponder } from './useGameInputZoneResponder';
 
 /*** Capture pointer/touch geometry and optional keyboard input as normalized generic Game events. */
-export function GameInputZone({
+export const GameInputZone = withZoraThemeScope(GameInputZoneInner);
+
+/*** Capture game input inside the inherited ZORA theme scope. */
+function GameInputZoneInner({
   x = 0,
   y = 0,
   width = 100,

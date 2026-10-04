@@ -5,6 +5,7 @@ import type { ZoraComponentRegistry } from '../../types/registry';
 import { Accordion, AccordionItem } from '../accordion/public';
 import { ActivityIndicator } from '../activity-indicator/public';
 import { AppBar } from '../app-bar/public';
+import { AppHeader } from '../app-header/public';
 import {
   AuthScreen,
   ForgotPasswordForm,
@@ -108,6 +109,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   AccordionItem,
   ActivityIndicator,
   AppBar,
+  AppHeader,
   Avatar,
   AvatarGroup,
   Badge,

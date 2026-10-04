@@ -2,9 +2,13 @@ import { StyleSheet } from 'react-native';
 
 import type { GameFieldProps } from '../../../../types/gamePresentation';
 import { View } from '../../../layout/public';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 
 /*** Render a bounded relative-positioning surface for game presentation content. */
-export function GameField({
+export const GameField = withZoraThemeScope(GameFieldInner);
+
+/*** Render the field inside the inherited ZORA theme scope. */
+function GameFieldInner({
   children,
   aspectRatio,
   minHeight = 320,

@@ -2,11 +2,15 @@ import React from 'react';
 import { Animated, StyleSheet, type View, type ViewStyle } from 'react-native';
 
 import type { GameEntityProps } from '../../../../types/gamePresentation';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useGameEntityAnimatedStyle } from '../../utils/useGameEntityAnimatedStyle';
 import { useGameEntityMeasurement } from '../../utils/useGameEntityMeasurement';
 
 /*** Render one generic positioned game entity without owning gameplay semantics. */
-export function GameEntity(props: GameEntityProps) {
+export const GameEntity = withZoraThemeScope(GameEntityInner);
+
+/*** Render the positioned entity inside the inherited ZORA theme scope. */
+function GameEntityInner(props: GameEntityProps) {
   const elementRef = React.useRef<View | null>(null);
   const animatedStyle = useGameEntityAnimatedStyle(props);
   useGameEntityMeasurement(elementRef, props.measurementId);

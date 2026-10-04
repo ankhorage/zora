@@ -2,6 +2,7 @@ import { RuntimeRendererConfigProvider } from '@ankhorage/runtime';
 import React from 'react';
 
 import type { GameProps } from '../../../../types/gamePresentation';
+import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { createGameBindingContext } from '../../composition/createGameBindingContext';
 import { createGameMeasurementRegistry } from '../../composition/createGameMeasurementRegistry';
 import { GameRuntimeContext } from '../../composition/GameRuntimeContext';
@@ -9,7 +10,10 @@ import { useGameRuntime } from '../../composition/useGameRuntime';
 import { GameField } from './GameField';
 
 /*** Bind one serializable game definition to a local transient session and presentation field. */
-export function Game(props: GameProps) {
+export const Game = withZoraThemeScope(GameInner);
+
+/*** Render the game session inside the inherited ZORA theme scope. */
+function GameInner(props: GameProps) {
   const runtime = useGameRuntime(props);
   const [measurementRegistry] = React.useState(createGameMeasurementRegistry);
   const runtimeContext = React.useMemo(

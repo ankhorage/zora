@@ -18,6 +18,9 @@ export interface ZoraBaseProps {
    */
   mode?: ZoraThemeMode;
 
+  /** Inherits the nearest surface polarity unless explicitly inverted or reset to normal. */
+  inverted?: boolean;
+
   testID?: string;
 
   /**
