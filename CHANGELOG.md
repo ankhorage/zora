@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.3.0
+
+### Minor Changes
+
+- 10ee5d8: Add inherited inverted surface polarity and AppHeader
+
 ## 23.2.5
 
 ### Patch Changes

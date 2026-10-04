@@ -106,6 +106,7 @@ Source: `src/types/activity-indicator.ts:5:1`
 | id | property | `string \| undefined` | no |  |
 | importantForAccessibility | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | isTVSelectable | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nativeID | property | `string \| undefined` | no |  |
@@ -208,6 +209,7 @@ Source: `src/types/app-bar.ts:29:1`
 | children | property | `React.ReactNode` | no |  |
 | divider | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | leading | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | overflow | property | `AppBarOverflowMenu \| undefined` | no |  |
@@ -216,6 +218,26 @@ Source: `src/types/app-bar.ts:29:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | title | property | `React.ReactNode` | no |  |
+
+## AppHeader
+
+Kind: `function`
+Module: `src/features/app-header/adapters/inbound/AppHeader.tsx`
+Source: `src/features/app-header/adapters/inbound/AppHeader.tsx:7:1`
+
+Composes application header chrome through the scoped ZORA AppBar.
+
+### Signatures
+
+- `(props: import("../../../..").AppBarProps) => React.JSX.Element`
+  - props: `import("../../../..").AppBarProps`
+  - returns: `React.JSX.Element`
+
+## AppHeaderProps
+
+Kind: `unknown`
+Module: `src/types/app-header.ts`
+Source: `src/types/app-header.ts:3:1`
 
 ## AppShell
 
@@ -239,6 +261,7 @@ Source: `src/types/layout.ts:20:1`
 | footer | property | `React.ReactNode` | no |  |
 | header | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | overlay | property | `React.ReactNode` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -257,6 +280,7 @@ Source: `src/types/auth.ts:31:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | error | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | submitLabel | property | `React.ReactNode` | no |  |
@@ -304,6 +328,7 @@ Source: `src/types/auth.ts:12:1`
 | identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
 | info | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | oauthProviders | property | `readonly OAuthProviderItem[] \| undefined` | no |  |
@@ -362,6 +387,7 @@ Source: `src/types/avatar-group.ts:18:1`
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly AvatarGroupItem[]` | yes |  |
 | max | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -385,6 +411,7 @@ Source: `src/types/avatar.ts:11:1`
 | iconFallback | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | initials | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `string \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | name | property | `string \| undefined` | no |  |
@@ -427,6 +454,7 @@ Source: `src/types/badge.ts:10:1`
 | children | property | `React.ReactNode` | no |  |
 | color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | size | property | `ZoraControlSize \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -460,6 +488,7 @@ Source: `src/types/scanner.ts:32:1`
 | deniedPermissionLabel | property | `React.ReactNode` | no |  |
 | description | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | manualEntryLabel | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onBarcodeScanned | property | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no |  |
@@ -510,6 +539,7 @@ Source: `src/types/manifest-bottom-sheet.ts:5:1`
 | enablePanDownToClose | property | `boolean \| undefined` | no |  |
 | initialIndex | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | keyboardBehavior | property | `"extend" \| "fillParent" \| "interactive" \| undefined` | no |  |
 | keyboardBlurBehavior | property | `"none" \| "restore" \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -568,6 +598,7 @@ Source: `src/types/breadcrumbs.ts:16:1`
 | compact | property | `boolean \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly BreadcrumbItem[]` | yes |  |
 | maxItems | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -621,6 +652,7 @@ Source: `src/types/button-group.ts:9:1`
 | children | property | `React.ReactNode` | no |  |
 | gap | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | orientation | property | `ButtonGroupOrientation \| undefined` | no |  |
 | reverse | property | `boolean \| undefined` | no |  |
@@ -660,6 +692,7 @@ Source: `src/types/button.ts:10:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | leadingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
@@ -732,6 +765,7 @@ Source: `src/types/scanner.ts:19:1`
 | deniedLabel | property | `React.ReactNode` | no |  |
 | description | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | manualEntryButtonProps | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no |  |
 | manualEntryLabel | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -776,6 +810,7 @@ Source: `src/types/tabletop.ts:62:1`
 | accessibilityLabel | property | `string \| undefined` | no |  |
 | colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | muted | property | `boolean \| undefined` | no |  |
 | size | property | `TabletopCardSize \| undefined` | no |  |
@@ -805,6 +840,7 @@ Source: `src/types/tabletop.ts:68:1`
 | colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
 | faceDownCards | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | muted | property | `boolean \| undefined` | no |  |
 | size | property | `TabletopCardSize \| undefined` | no |  |
@@ -845,6 +881,7 @@ Source: `src/types/card.ts:8:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -926,6 +963,7 @@ Source: `src/types/chat.ts:18:1`
 | compact | property | `boolean \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | leading | property | `React.ReactNode` | no |  |
 | meta | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -987,6 +1025,7 @@ Source: `src/types/checkbox.ts:17:1`
 | gap | property | `"m" \| "s" \| "l" \| "xs" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onValueChange | property | `(value: TValue[]) => void` | yes |  |
 | options | property | `readonly CheckboxGroupOption<TValue>[]` | yes |  |
@@ -1031,6 +1070,7 @@ Source: `src/types/checkbox.ts:6:1`
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -1133,6 +1173,7 @@ Source: `src/types/chess.ts:67:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | fen | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lastMove | property | `ChessMoveAttempt \| null \| undefined` | no |  |
 | legalTargets | property | `readonly ("a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -1305,6 +1346,7 @@ Source: `src/types/chip.ts:8:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onPress | property | `(() => void) \| undefined` | no |  |
 | selected | property | `boolean \| undefined` | no |  |
@@ -1335,6 +1377,7 @@ Source: `src/types/collection-editor.ts:15:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | emptyLabel | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly TItem[]` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onAdd | property | `(() => void) \| undefined` | no |  |
@@ -1432,6 +1475,7 @@ Source: `src/types/content-rail.ts:21:1`
 | direction | property | `ContentRailDirection \| undefined` | no |  |
 | gap | property | `ContentRailSpacing \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | itemSize | property | `ContentRailItemSize \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | motion | property | `ContentRailMotion \| undefined` | no |  |
@@ -1696,6 +1740,7 @@ Source: `src/types/data-table.ts:44:1`
 | emptyDescription | property | `React.ReactNode` | no |  |
 | emptyTitle | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | loadingRows | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -1768,6 +1813,7 @@ Source: `src/types/date-picker.ts:7:1`
 | error | property | `React.ReactNode` | no |  |
 | formatDate | property | `((value: string) => React.ReactNode) \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | no |  |
 | maxDate | property | `string \| undefined` | no |  |
 | minDate | property | `string \| undefined` | no |  |
@@ -1814,6 +1860,7 @@ Source: `src/types/dialog.ts:6:1`
 | description | property | `React.ReactNode` | no |  |
 | footer | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onDismiss | property | `(() => void) \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -1860,6 +1907,7 @@ Source: `src/types/layout.ts:16:1`
 | flexShrink | property | `Responsive<number> \| undefined` | no |  |
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -1938,6 +1986,7 @@ Source: `src/types/empty-state.ts:14:1`
 | eyebrow | property | `React.ReactNode` | no |  |
 | footer | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | primaryAction | property | `EmptyStateAction \| undefined` | no |  |
 | secondaryAction | property | `EmptyStateAction \| undefined` | no |  |
@@ -1970,6 +2019,7 @@ Source: `src/types/form.ts:47:1`
 | helperText | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | readOnly | property | `boolean \| undefined` | no |  |
@@ -2008,6 +2058,7 @@ Source: `src/types/auth.ts:70:1`
 | identifierLabel | property | `React.ReactNode` | no |  |
 | identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onSignIn | property | `(() => void \| Promise<void>) \| undefined` | no |  |
@@ -2059,6 +2110,7 @@ Source: `src/types/form.ts:59:1`
 | children | property | `React.ReactNode` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onSubmit | property | `(() => void) \| undefined` | no |  |
@@ -2086,6 +2138,7 @@ Source: `src/types/form.ts:66:1`
 | --- | --- | --- | --- | --- |
 | error | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -2144,6 +2197,7 @@ Source: `src/types/form.ts:38:1`
 | children | property | `React.ReactNode` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onSubmit | property | `(() => void \| Promise<void>) \| undefined` | no |  |
@@ -2178,43 +2232,31 @@ Source: `src/types/form.ts:13:1`
 
 ## Game
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/Game.tsx`
-Source: `src/features/game/adapters/inbound/Game.tsx:12:1`
+Source: `src/features/game/adapters/inbound/Game.tsx:13:14`
 
 Bind one serializable game definition to a local transient session and presentation field.
 
-### Signatures
-
-- `(props: GameProps) => React.JSX.Element`
-  - props: `GameProps`
-  - returns: `React.JSX.Element`
-
 ## GameEntity
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/GameEntity.tsx`
-Source: `src/features/game/adapters/inbound/GameEntity.tsx:9:1`
+Source: `src/features/game/adapters/inbound/GameEntity.tsx:10:14`
 
 Render one generic positioned game entity without owning gameplay semantics.
-
-### Signatures
-
-- `(props: GameEntityProps) => React.JSX.Element`
-  - props: `GameEntityProps`
-  - returns: `React.JSX.Element`
 
 ## GameEntityEasing
 
 Kind: `unknown`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:8:1`
+Source: `src/types/gamePresentation.ts:9:1`
 
 ## GameEntityMotionProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:10:1`
+Source: `src/types/gamePresentation.ts:11:1`
 
 ### Members
 
@@ -2239,7 +2281,7 @@ Source: `src/types/gamePresentation.ts:10:1`
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:39:1`
+Source: `src/types/gamePresentation.ts:40:1`
 
 ### Members
 
@@ -2250,7 +2292,9 @@ Source: `src/types/gamePresentation.ts:39:1`
 | height | property | `number \| undefined` | no |  |
 | hidden | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | measurementId | property | `string \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | motionAlternate | property | `boolean \| undefined` | no |  |
 | motionDelayMs | property | `number \| undefined` | no |  |
 | motionDurationMs | property | `number \| undefined` | no |  |
@@ -2268,6 +2312,7 @@ Source: `src/types/gamePresentation.ts:39:1`
 | rotation | property | `number \| undefined` | no |  |
 | scale | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 | transitionDurationMs | property | `number \| undefined` | no |  |
 | transitionEasing | property | `GameEntityEasing \| undefined` | no |  |
 | width | property | `number \| undefined` | no |  |
@@ -2277,41 +2322,17 @@ Source: `src/types/gamePresentation.ts:39:1`
 
 ## GameField
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/GameField.tsx`
-Source: `src/features/game/adapters/inbound/GameField.tsx:7:1`
+Source: `src/features/game/adapters/inbound/GameField.tsx:8:14`
 
 Render a bounded relative-positioning surface for game presentation content.
-
-### Signatures
-
-- `({
-  children,
-  aspectRatio,
-  minHeight = 320,
-  fill = false,
-  clip = true,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-}: GameFieldProps) => import("react").JSX.Element`
-  - {
-  children,
-  aspectRatio,
-  minHeight = 320,
-  fill = false,
-  clip = true,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-}: `GameFieldProps`
-  - returns: `import("react").JSX.Element`
 
 ## GameFieldProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:29:1`
+Source: `src/types/gamePresentation.ts:30:1`
 
 ### Members
 
@@ -2323,54 +2344,25 @@ Source: `src/types/gamePresentation.ts:29:1`
 | clip | property | `boolean \| undefined` | no |  |
 | fill | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | minHeight | property | `number \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 
 ## GameInputZone
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/GameInputZone.tsx`
-Source: `src/features/game/adapters/inbound/GameInputZone.tsx:8:1`
+Source: `src/features/game/adapters/inbound/GameInputZone.tsx:9:14`
 
 Capture pointer/touch geometry and optional keyboard input as normalized generic Game events.
-
-### Signatures
-
-- `({
-  x = 0,
-  y = 0,
-  width = 100,
-  height = 100,
-  zIndex = 0,
-  enabled = true,
-  continuous = true,
-  keyboardBindings,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-  ...inputProps
-}: GameInputZoneProps) => import("react").JSX.Element`
-  - {
-  x = 0,
-  y = 0,
-  width = 100,
-  height = 100,
-  zIndex = 0,
-  enabled = true,
-  continuous = true,
-  keyboardBindings,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-  ...inputProps
-}: `GameInputZoneProps`
-  - returns: `import("react").JSX.Element`
 
 ## GameInputZoneProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:63:1`
+Source: `src/types/gamePresentation.ts:64:1`
 
 ### Members
 
@@ -2383,8 +2375,11 @@ Source: `src/types/gamePresentation.ts:63:1`
 | eventType | property | `string` | yes |  |
 | height | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | keyboardBindings | property | `readonly GameKeyboardBinding[] \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 | width | property | `number \| undefined` | no |  |
 | x | property | `number \| undefined` | no |  |
 | y | property | `number \| undefined` | no |  |
@@ -2394,7 +2389,7 @@ Source: `src/types/gamePresentation.ts:63:1`
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:56:1`
+Source: `src/types/gamePresentation.ts:57:1`
 
 ### Members
 
@@ -2407,39 +2402,17 @@ Source: `src/types/gamePresentation.ts:56:1`
 
 ## GameMeasurementProbe
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/GameMeasurementProbe.tsx`
-Source: `src/features/game/adapters/inbound/GameMeasurementProbe.tsx:9:1`
+Source: `src/features/game/adapters/inbound/GameMeasurementProbe.tsx:10:14`
 
 Measure two registered game entities and dispatch only their raw rendered geometry.
-
-### Signatures
-
-- `({
-  sourceId,
-  targetId,
-  eventType = 'game.measurement',
-  entityId,
-  delayMs = 0,
-  enabled = true,
-  interactionPolicy,
-}: GameMeasurementProbeProps) => null`
-  - {
-  sourceId,
-  targetId,
-  eventType = 'game.measurement',
-  entityId,
-  delayMs = 0,
-  enabled = true,
-  interactionPolicy,
-}: `GameMeasurementProbeProps`
-  - returns: `null`
 
 ## GameMeasurementProbeProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:78:1`
+Source: `src/types/gamePresentation.ts:79:1`
 
 ### Members
 
@@ -2450,50 +2423,32 @@ Source: `src/types/gamePresentation.ts:78:1`
 | entityId | property | `string \| undefined` | no |  |
 | eventType | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | sourceId | property | `string` | yes |  |
 | targetId | property | `string` | yes |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 
 ## GameOverlay
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/game/adapters/inbound/GameOverlay.tsx`
-Source: `src/features/game/adapters/inbound/GameOverlay.tsx:7:1`
+Source: `src/features/game/adapters/inbound/GameOverlay.tsx:8:14`
 
 Render an absolute game presentation layer for HUD, feedback, and phase content.
-
-### Signatures
-
-- `({
-  children,
-  placement = 'fill',
-  blocking = false,
-  padding = 0,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-}: GameOverlayProps) => import("react").JSX.Element`
-  - {
-  children,
-  placement = 'fill',
-  blocking = false,
-  padding = 0,
-  accessibilityLabel,
-  interactionPolicy,
-  testID,
-}: `GameOverlayProps`
-  - returns: `import("react").JSX.Element`
 
 ## GameOverlayPlacement
 
 Kind: `unknown`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:26:1`
+Source: `src/types/gamePresentation.ts:27:1`
 
 ## GameOverlayProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:87:1`
+Source: `src/types/gamePresentation.ts:88:1`
 
 ### Members
 
@@ -2503,21 +2458,24 @@ Source: `src/types/gamePresentation.ts:87:1`
 | blocking | property | `boolean \| undefined` | no |  |
 | children | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | padding | property | `number \| undefined` | no |  |
 | placement | property | `GameOverlayPlacement \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 
 ## GamePointerEvents
 
 Kind: `unknown`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:7:1`
+Source: `src/types/gamePresentation.ts:8:1`
 
 ## GameProps
 
 Kind: `type`
 Module: `src/types/gamePresentation.ts`
-Source: `src/types/gamePresentation.ts:96:1`
+Source: `src/types/gamePresentation.ts:97:1`
 
 ### Members
 
@@ -2532,11 +2490,14 @@ Source: `src/types/gamePresentation.ts:96:1`
 | fill | property | `boolean \| undefined` | no |  |
 | input | property | `Readonly<Record<string, import("@ankhorage/game").GameValue>> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | minHeight | property | `number \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onOutput | property | `((output: GameOutput) => void) \| undefined` | no |  |
 | resetKey | property | `string \| undefined` | no |  |
 | seed | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 
 ## getLegalTargets
 
@@ -2638,6 +2599,7 @@ Source: `src/types/gradient.ts:32:1`
 | end | property | `GradientPoint \| undefined` | no |  |
 | height | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | locations | property | `GradientLocations \| undefined` | no |  |
 | minHeight | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -2742,6 +2704,7 @@ Source: `src/types/layout.ts:18:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -2847,6 +2810,7 @@ Source: `src/types/heading.ts:19:1`
 | emphasis | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no |  |
 | i18nKey | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | italic | property | `boolean \| undefined` | no |  |
 | level | property | `HeadingLevel \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -2924,6 +2888,7 @@ Source: `src/types/hero.ts:19:1`
 | eyebrow | property | `React.ReactNode` | no |  |
 | footer | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | layout | property | `HeroLayout \| undefined` | no |  |
 | media | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -2971,6 +2936,7 @@ Source: `src/types/icon-button.ts:8:1`
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | iconName | property | `"link" \| "search" \| "image" \| "text" \| "alert" \| "checkbox" \| "menu" \| "radio" \| "timer" \| "list" \| "document" \| "grid" \| "warning" \| "accessibility" \| "accessibility-outline" \| "accessibility-sharp" \| "add" \| "add-circle" \| "add-circle-outline" \| "add-circle-sharp" \| "add-outline" \| "add-sharp" \| "airplane" \| "airplane-outline" \| "airplane-sharp" \| "alarm" \| "alarm-outline" \| "alarm-sharp" \| "albums" \| "albums-outline" \| "albums-sharp" \| "alert-circle" \| "alert-circle-outline" \| "alert-circle-sharp" \| "alert-outline" \| "alert-sharp" \| "american-football" \| "american-football-outline" \| "american-football-sharp" \| "analytics" \| "analytics-outline" \| "analytics-sharp" \| "aperture" \| "aperture-outline" \| "aperture-sharp" \| "apps" \| "apps-outline" \| "apps-sharp" \| "archive" \| "archive-outline" \| "archive-sharp" \| "arrow-back" \| "arrow-back-circle" \| "arrow-back-circle-outline" \| "arrow-back-circle-sharp" \| "arrow-back-outline" \| "arrow-back-sharp" \| "arrow-down" \| "arrow-down-circle" \| "arrow-down-circle-outline" \| "arrow-down-circle-sharp" \| "arrow-down-left-box" \| "arrow-down-left-box-outline" \| "arrow-down-left-box-sharp" \| "arrow-down-outline" \| "arrow-down-right-box" \| "arrow-down-right-box-outline" \| "arrow-down-right-box-sharp" \| "arrow-down-sharp" \| "arrow-forward" \| "arrow-forward-circle" \| "arrow-forward-circle-outline" \| "arrow-forward-circle-sharp" \| "arrow-forward-outline" \| "arrow-forward-sharp" \| "arrow-redo" \| "arrow-redo-circle" \| "arrow-redo-circle-outline" \| "arrow-redo-circle-sharp" \| "arrow-redo-outline" \| "arrow-redo-sharp" \| "arrow-undo" \| "arrow-undo-circle" \| "arrow-undo-circle-outline" \| "arrow-undo-circle-sharp" \| "arrow-undo-outline" \| "arrow-undo-sharp" \| "arrow-up" \| "arrow-up-circle" \| "arrow-up-circle-outline" \| "arrow-up-circle-sharp" \| "arrow-up-left-box" \| "arrow-up-left-box-outline" \| "arrow-up-left-box-sharp" \| "arrow-up-outline" \| "arrow-up-right-box" \| "arrow-up-right-box-outline" \| "arrow-up-right-box-sharp" \| "arrow-up-sharp" \| "at" \| "at-circle" \| "at-circle-outline" \| "at-circle-sharp" \| "at-outline" \| "at-sharp" \| "attach" \| "attach-outline" \| "attach-sharp" \| "backspace" \| "backspace-outline" \| "backspace-sharp" \| "bag" \| "bag-add" \| "bag-add-outline" \| "bag-add-sharp" \| "bag-check" \| "bag-check-outline" \| "bag-check-sharp" \| "bag-handle" \| "bag-handle-outline" \| "bag-handle-sharp" \| "bag-outline" \| "bag-remove" \| "bag-remove-outline" \| "bag-remove-sharp" \| "bag-sharp" \| "balloon" \| "balloon-outline" \| "balloon-sharp" \| "ban" \| "ban-outline" \| "ban-sharp" \| "bandage" \| "bandage-outline" \| "bandage-sharp" \| "bar-chart" \| "bar-chart-outline" \| "bar-chart-sharp" \| "barbell" \| "barbell-outline" \| "barbell-sharp" \| "barcode" \| "barcode-outline" \| "barcode-sharp" \| "baseball" \| "baseball-outline" \| "baseball-sharp" \| "basket" \| "basket-outline" \| "basket-sharp" \| "basketball" \| "basketball-outline" \| "basketball-sharp" \| "battery-charging" \| "battery-charging-outline" \| "battery-charging-sharp" \| "battery-dead" \| "battery-dead-outline" \| "battery-dead-sharp" \| "battery-full" \| "battery-full-outline" \| "battery-full-sharp" \| "battery-half" \| "battery-half-outline" \| "battery-half-sharp" \| "beaker" \| "beaker-outline" \| "beaker-sharp" \| "bed" \| "bed-outline" \| "bed-sharp" \| "beer" \| "beer-outline" \| "beer-sharp" \| "bicycle" \| "bicycle-outline" \| "bicycle-sharp" \| "binoculars" \| "binoculars-outline" \| "binoculars-sharp" \| "bluetooth" \| "bluetooth-outline" \| "bluetooth-sharp" \| "boat" \| "boat-outline" \| "boat-sharp" \| "body" \| "body-outline" \| "body-sharp" \| "bonfire" \| "bonfire-outline" \| "bonfire-sharp" \| "book" \| "book-outline" \| "book-sharp" \| "bookmark" \| "bookmark-outline" \| "bookmark-sharp" \| "bookmarks" \| "bookmarks-outline" \| "bookmarks-sharp" \| "bowling-ball" \| "bowling-ball-outline" \| "bowling-ball-sharp" \| "briefcase" \| "briefcase-outline" \| "briefcase-sharp" \| "browsers" \| "browsers-outline" \| "browsers-sharp" \| "brush" \| "brush-outline" \| "brush-sharp" \| "bug" \| "bug-outline" \| "bug-sharp" \| "build" \| "build-outline" \| "build-sharp" \| "bulb" \| "bulb-outline" \| "bulb-sharp" \| "bus" \| "bus-outline" \| "bus-sharp" \| "business" \| "business-outline" \| "business-sharp" \| "cafe" \| "cafe-outline" \| "cafe-sharp" \| "calculator" \| "calculator-outline" \| "calculator-sharp" \| "calendar" \| "calendar-clear" \| "calendar-clear-outline" \| "calendar-clear-sharp" \| "calendar-number" \| "calendar-number-outline" \| "calendar-number-sharp" \| "calendar-outline" \| "calendar-sharp" \| "call" \| "call-outline" \| "call-sharp" \| "camera" \| "camera-outline" \| "camera-reverse" \| "camera-reverse-outline" \| "camera-reverse-sharp" \| "camera-sharp" \| "car" \| "car-outline" \| "car-sharp" \| "car-sport" \| "car-sport-outline" \| "car-sport-sharp" \| "card" \| "card-outline" \| "card-sharp" \| "caret-back" \| "caret-back-circle" \| "caret-back-circle-outline" \| "caret-back-circle-sharp" \| "caret-back-outline" \| "caret-back-sharp" \| "caret-down" \| "caret-down-circle" \| "caret-down-circle-outline" \| "caret-down-circle-sharp" \| "caret-down-outline" \| "caret-down-sharp" \| "caret-forward" \| "caret-forward-circle" \| "caret-forward-circle-outline" \| "caret-forward-circle-sharp" \| "caret-forward-outline" \| "caret-forward-sharp" \| "caret-up" \| "caret-up-circle" \| "caret-up-circle-outline" \| "caret-up-circle-sharp" \| "caret-up-outline" \| "caret-up-sharp" \| "cart" \| "cart-outline" \| "cart-sharp" \| "cash" \| "cash-outline" \| "cash-sharp" \| "cellular" \| "cellular-outline" \| "cellular-sharp" \| "chatbox" \| "chatbox-ellipses" \| "chatbox-ellipses-outline" \| "chatbox-ellipses-sharp" \| "chatbox-outline" \| "chatbox-sharp" \| "chatbubble" \| "chatbubble-ellipses" \| "chatbubble-ellipses-outline" \| "chatbubble-ellipses-sharp" \| "chatbubble-outline" \| "chatbubble-sharp" \| "chatbubbles" \| "chatbubbles-outline" \| "chatbubbles-sharp" \| "checkbox-outline" \| "checkbox-sharp" \| "checkmark" \| "checkmark-circle" \| "checkmark-circle-outline" \| "checkmark-circle-sharp" \| "checkmark-done" \| "checkmark-done-circle" \| "checkmark-done-circle-outline" \| "checkmark-done-circle-sharp" \| "checkmark-done-outline" \| "checkmark-done-sharp" \| "checkmark-outline" \| "checkmark-sharp" \| "chevron-back" \| "chevron-back-circle" \| "chevron-back-circle-outline" \| "chevron-back-circle-sharp" \| "chevron-back-outline" \| "chevron-back-sharp" \| "chevron-collapse" \| "chevron-collapse-outline" \| "chevron-collapse-sharp" \| "chevron-down" \| "chevron-down-circle" \| "chevron-down-circle-outline" \| "chevron-down-circle-sharp" \| "chevron-down-outline" \| "chevron-down-sharp" \| "chevron-expand" \| "chevron-expand-outline" \| "chevron-expand-sharp" \| "chevron-forward" \| "chevron-forward-circle" \| "chevron-forward-circle-outline" \| "chevron-forward-circle-sharp" \| "chevron-forward-outline" \| "chevron-forward-sharp" \| "chevron-up" \| "chevron-up-circle" \| "chevron-up-circle-outline" \| "chevron-up-circle-sharp" \| "chevron-up-outline" \| "chevron-up-sharp" \| "clipboard" \| "clipboard-outline" \| "clipboard-sharp" \| "close" \| "close-circle" \| "close-circle-outline" \| "close-circle-sharp" \| "close-outline" \| "close-sharp" \| "cloud" \| "cloud-circle" \| "cloud-circle-outline" \| "cloud-circle-sharp" \| "cloud-done" \| "cloud-done-outline" \| "cloud-done-sharp" \| "cloud-download" \| "cloud-download-outline" \| "cloud-download-sharp" \| "cloud-offline" \| "cloud-offline-outline" \| "cloud-offline-sharp" \| "cloud-outline" \| "cloud-sharp" \| "cloud-upload" \| "cloud-upload-outline" \| "cloud-upload-sharp" \| "cloudy" \| "cloudy-night" \| "cloudy-night-outline" \| "cloudy-night-sharp" \| "cloudy-outline" \| "cloudy-sharp" \| "code" \| "code-download" \| "code-download-outline" \| "code-download-sharp" \| "code-outline" \| "code-sharp" \| "code-slash" \| "code-slash-outline" \| "code-slash-sharp" \| "code-working" \| "code-working-outline" \| "code-working-sharp" \| "cog" \| "cog-outline" \| "cog-sharp" \| "color-fill" \| "color-fill-outline" \| "color-fill-sharp" \| "color-filter" \| "color-filter-outline" \| "color-filter-sharp" \| "color-palette" \| "color-palette-outline" \| "color-palette-sharp" \| "color-wand" \| "color-wand-outline" \| "color-wand-sharp" \| "compass" \| "compass-outline" \| "compass-sharp" \| "construct" \| "construct-outline" \| "construct-sharp" \| "contract" \| "contract-outline" \| "contract-sharp" \| "contrast" \| "contrast-outline" \| "contrast-sharp" \| "copy" \| "copy-outline" \| "copy-sharp" \| "create" \| "create-outline" \| "create-sharp" \| "crop" \| "crop-outline" \| "crop-sharp" \| "cube" \| "cube-outline" \| "cube-sharp" \| "cut" \| "cut-outline" \| "cut-sharp" \| "desktop" \| "desktop-outline" \| "desktop-sharp" \| "diamond" \| "diamond-outline" \| "diamond-sharp" \| "dice" \| "dice-outline" \| "dice-sharp" \| "disc" \| "disc-outline" \| "disc-sharp" \| "document-attach" \| "document-attach-outline" \| "document-attach-sharp" \| "document-lock" \| "document-lock-outline" \| "document-lock-sharp" \| "document-outline" \| "document-sharp" \| "document-text" \| "document-text-outline" \| "document-text-sharp" \| "documents" \| "documents-outline" \| "documents-sharp" \| "download" \| "download-outline" \| "download-sharp" \| "duplicate" \| "duplicate-outline" \| "duplicate-sharp" \| "ear" \| "ear-outline" \| "ear-sharp" \| "earth" \| "earth-outline" \| "earth-sharp" \| "easel" \| "easel-outline" \| "easel-sharp" \| "egg" \| "egg-outline" \| "egg-sharp" \| "ellipse" \| "ellipse-outline" \| "ellipse-sharp" \| "ellipsis-horizontal" \| "ellipsis-horizontal-circle" \| "ellipsis-horizontal-circle-outline" \| "ellipsis-horizontal-circle-sharp" \| "ellipsis-horizontal-outline" \| "ellipsis-horizontal-sharp" \| "ellipsis-vertical" \| "ellipsis-vertical-circle" \| "ellipsis-vertical-circle-outline" \| "ellipsis-vertical-circle-sharp" \| "ellipsis-vertical-outline" \| "ellipsis-vertical-sharp" \| "enter" \| "enter-outline" \| "enter-sharp" \| "exit" \| "exit-outline" \| "exit-sharp" \| "expand" \| "expand-outline" \| "expand-sharp" \| "extension-puzzle" \| "extension-puzzle-outline" \| "extension-puzzle-sharp" \| "eye" \| "eye-off" \| "eye-off-outline" \| "eye-off-sharp" \| "eye-outline" \| "eye-sharp" \| "eyedrop" \| "eyedrop-outline" \| "eyedrop-sharp" \| "fast-food" \| "fast-food-outline" \| "fast-food-sharp" \| "female" \| "female-outline" \| "female-sharp" \| "file-tray" \| "file-tray-full" \| "file-tray-full-outline" \| "file-tray-full-sharp" \| "file-tray-outline" \| "file-tray-sharp" \| "file-tray-stacked" \| "file-tray-stacked-outline" \| "file-tray-stacked-sharp" \| "film" \| "film-outline" \| "film-sharp" \| "filter" \| "filter-circle" \| "filter-circle-outline" \| "filter-circle-sharp" \| "filter-outline" \| "filter-sharp" \| "finger-print" \| "finger-print-outline" \| "finger-print-sharp" \| "fish" \| "fish-outline" \| "fish-sharp" \| "fitness" \| "fitness-outline" \| "fitness-sharp" \| "flag" \| "flag-outline" \| "flag-sharp" \| "flame" \| "flame-outline" \| "flame-sharp" \| "flash" \| "flash-off" \| "flash-off-outline" \| "flash-off-sharp" \| "flash-outline" \| "flash-sharp" \| "flashlight" \| "flashlight-outline" \| "flashlight-sharp" \| "flask" \| "flask-outline" \| "flask-sharp" \| "flower" \| "flower-outline" \| "flower-sharp" \| "folder" \| "folder-open" \| "folder-open-outline" \| "folder-open-sharp" \| "folder-outline" \| "folder-sharp" \| "football" \| "football-outline" \| "football-sharp" \| "footsteps" \| "footsteps-outline" \| "footsteps-sharp" \| "funnel" \| "funnel-outline" \| "funnel-sharp" \| "game-controller" \| "game-controller-outline" \| "game-controller-sharp" \| "gift" \| "gift-outline" \| "gift-sharp" \| "git-branch" \| "git-branch-outline" \| "git-branch-sharp" \| "git-commit" \| "git-commit-outline" \| "git-commit-sharp" \| "git-compare" \| "git-compare-outline" \| "git-compare-sharp" \| "git-merge" \| "git-merge-outline" \| "git-merge-sharp" \| "git-network" \| "git-network-outline" \| "git-network-sharp" \| "git-pull-request" \| "git-pull-request-outline" \| "git-pull-request-sharp" \| "glasses" \| "glasses-outline" \| "glasses-sharp" \| "globe" \| "globe-outline" \| "globe-sharp" \| "golf" \| "golf-outline" \| "golf-sharp" \| "grid-outline" \| "grid-sharp" \| "hammer" \| "hammer-outline" \| "hammer-sharp" \| "hand-left" \| "hand-left-outline" \| "hand-left-sharp" \| "hand-right" \| "hand-right-outline" \| "hand-right-sharp" \| "happy" \| "happy-outline" \| "happy-sharp" \| "hardware-chip" \| "hardware-chip-outline" \| "hardware-chip-sharp" \| "headset" \| "headset-outline" \| "headset-sharp" \| "heart" \| "heart-circle" \| "heart-circle-outline" \| "heart-circle-sharp" \| "heart-dislike" \| "heart-dislike-circle" \| "heart-dislike-circle-outline" \| "heart-dislike-circle-sharp" \| "heart-dislike-outline" \| "heart-dislike-sharp" \| "heart-half" \| "heart-half-outline" \| "heart-half-sharp" \| "heart-outline" \| "heart-sharp" \| "help" \| "help-buoy" \| "help-buoy-outline" \| "help-buoy-sharp" \| "help-circle" \| "help-circle-outline" \| "help-circle-sharp" \| "help-outline" \| "help-sharp" \| "home" \| "home-outline" \| "home-sharp" \| "hourglass" \| "hourglass-outline" \| "hourglass-sharp" \| "ice-cream" \| "ice-cream-outline" \| "ice-cream-sharp" \| "id-card" \| "id-card-outline" \| "id-card-sharp" \| "image-outline" \| "image-sharp" \| "images" \| "images-outline" \| "images-sharp" \| "infinite" \| "infinite-outline" \| "infinite-sharp" \| "information" \| "information-circle" \| "information-circle-outline" \| "information-circle-sharp" \| "information-outline" \| "information-sharp" \| "invert-mode" \| "invert-mode-outline" \| "invert-mode-sharp" \| "journal" \| "journal-outline" \| "journal-sharp" \| "key" \| "key-outline" \| "key-sharp" \| "keypad" \| "keypad-outline" \| "keypad-sharp" \| "language" \| "language-outline" \| "language-sharp" \| "laptop" \| "laptop-outline" \| "laptop-sharp" \| "layers" \| "layers-outline" \| "layers-sharp" \| "leaf" \| "leaf-outline" \| "leaf-sharp" \| "library" \| "library-outline" \| "library-sharp" \| "link-outline" \| "link-sharp" \| "list-circle" \| "list-circle-outline" \| "list-circle-sharp" \| "list-outline" \| "list-sharp" \| "locate" \| "locate-outline" \| "locate-sharp" \| "location" \| "location-outline" \| "location-sharp" \| "lock-closed" \| "lock-closed-outline" \| "lock-closed-sharp" \| "lock-open" \| "lock-open-outline" \| "lock-open-sharp" \| "log-in" \| "log-in-outline" \| "log-in-sharp" \| "log-out" \| "log-out-outline" \| "log-out-sharp" \| "logo-alipay" \| "logo-amazon" \| "logo-amplify" \| "logo-android" \| "logo-angular" \| "logo-appflow" \| "logo-apple" \| "logo-apple-appstore" \| "logo-apple-ar" \| "logo-behance" \| "logo-bitbucket" \| "logo-bitcoin" \| "logo-buffer" \| "logo-capacitor" \| "logo-chrome" \| "logo-closed-captioning" \| "logo-codepen" \| "logo-css3" \| "logo-designernews" \| "logo-deviantart" \| "logo-discord" \| "logo-docker" \| "logo-dribbble" \| "logo-dropbox" \| "logo-edge" \| "logo-electron" \| "logo-euro" \| "logo-facebook" \| "logo-figma" \| "logo-firebase" \| "logo-firefox" \| "logo-flickr" \| "logo-foursquare" \| "logo-github" \| "logo-gitlab" \| "logo-google" \| "logo-google-playstore" \| "logo-hackernews" \| "logo-html5" \| "logo-instagram" \| "logo-ionic" \| "logo-ionitron" \| "logo-javascript" \| "logo-laravel" \| "logo-linkedin" \| "logo-markdown" \| "logo-mastodon" \| "logo-medium" \| "logo-microsoft" \| "logo-no-smoking" \| "logo-nodejs" \| "logo-npm" \| "logo-octocat" \| "logo-paypal" \| "logo-pinterest" \| "logo-playstation" \| "logo-pwa" \| "logo-python" \| "logo-react" \| "logo-reddit" \| "logo-rss" \| "logo-sass" \| "logo-skype" \| "logo-slack" \| "logo-snapchat" \| "logo-soundcloud" \| "logo-stackoverflow" \| "logo-steam" \| "logo-stencil" \| "logo-tableau" \| "logo-threads" \| "logo-tiktok" \| "logo-trapeze" \| "logo-tumblr" \| "logo-tux" \| "logo-twitch" \| "logo-twitter" \| "logo-usd" \| "logo-venmo" \| "logo-vercel" \| "logo-vimeo" \| "logo-vk" \| "logo-vue" \| "logo-web-component" \| "logo-wechat" \| "logo-whatsapp" \| "logo-windows" \| "logo-wordpress" \| "logo-x" \| "logo-xbox" \| "logo-xing" \| "logo-yahoo" \| "logo-yen" \| "logo-youtube" \| "magnet" \| "magnet-outline" \| "magnet-sharp" \| "mail" \| "mail-open" \| "mail-open-outline" \| "mail-open-sharp" \| "mail-outline" \| "mail-sharp" \| "mail-unread" \| "mail-unread-outline" \| "mail-unread-sharp" \| "male" \| "male-female" \| "male-female-outline" \| "male-female-sharp" \| "male-outline" \| "male-sharp" \| "man" \| "man-outline" \| "man-sharp" \| "map" \| "map-outline" \| "map-sharp" \| "medal" \| "medal-outline" \| "medal-sharp" \| "medical" \| "medical-outline" \| "medical-sharp" \| "medkit" \| "medkit-outline" \| "medkit-sharp" \| "megaphone" \| "megaphone-outline" \| "megaphone-sharp" \| "menu-outline" \| "menu-sharp" \| "mic" \| "mic-circle" \| "mic-circle-outline" \| "mic-circle-sharp" \| "mic-off" \| "mic-off-circle" \| "mic-off-circle-outline" \| "mic-off-circle-sharp" \| "mic-off-outline" \| "mic-off-sharp" \| "mic-outline" \| "mic-sharp" \| "moon" \| "moon-outline" \| "moon-sharp" \| "move" \| "move-outline" \| "move-sharp" \| "musical-note" \| "musical-note-outline" \| "musical-note-sharp" \| "musical-notes" \| "musical-notes-outline" \| "musical-notes-sharp" \| "navigate" \| "navigate-circle" \| "navigate-circle-outline" \| "navigate-circle-sharp" \| "navigate-outline" \| "navigate-sharp" \| "newspaper" \| "newspaper-outline" \| "newspaper-sharp" \| "notifications" \| "notifications-circle" \| "notifications-circle-outline" \| "notifications-circle-sharp" \| "notifications-off" \| "notifications-off-circle" \| "notifications-off-circle-outline" \| "notifications-off-circle-sharp" \| "notifications-off-outline" \| "notifications-off-sharp" \| "notifications-outline" \| "notifications-sharp" \| "nuclear" \| "nuclear-outline" \| "nuclear-sharp" \| "nutrition" \| "nutrition-outline" \| "nutrition-sharp" \| "open" \| "open-outline" \| "open-sharp" \| "options" \| "options-outline" \| "options-sharp" \| "paper-plane" \| "paper-plane-outline" \| "paper-plane-sharp" \| "partly-sunny" \| "partly-sunny-outline" \| "partly-sunny-sharp" \| "pause" \| "pause-circle" \| "pause-circle-outline" \| "pause-circle-sharp" \| "pause-outline" \| "pause-sharp" \| "paw" \| "paw-outline" \| "paw-sharp" \| "pencil" \| "pencil-outline" \| "pencil-sharp" \| "people" \| "people-circle" \| "people-circle-outline" \| "people-circle-sharp" \| "people-outline" \| "people-sharp" \| "person" \| "person-add" \| "person-add-outline" \| "person-add-sharp" \| "person-circle" \| "person-circle-outline" \| "person-circle-sharp" \| "person-outline" \| "person-remove" \| "person-remove-outline" \| "person-remove-sharp" \| "person-sharp" \| "phone-landscape" \| "phone-landscape-outline" \| "phone-landscape-sharp" \| "phone-portrait" \| "phone-portrait-outline" \| "phone-portrait-sharp" \| "pie-chart" \| "pie-chart-outline" \| "pie-chart-sharp" \| "pin" \| "pin-outline" \| "pin-sharp" \| "pint" \| "pint-outline" \| "pint-sharp" \| "pizza" \| "pizza-outline" \| "pizza-sharp" \| "planet" \| "planet-outline" \| "planet-sharp" \| "play" \| "play-back" \| "play-back-circle" \| "play-back-circle-outline" \| "play-back-circle-sharp" \| "play-back-outline" \| "play-back-sharp" \| "play-circle" \| "play-circle-outline" \| "play-circle-sharp" \| "play-forward" \| "play-forward-circle" \| "play-forward-circle-outline" \| "play-forward-circle-sharp" \| "play-forward-outline" \| "play-forward-sharp" \| "play-outline" \| "play-sharp" \| "play-skip-back" \| "play-skip-back-circle" \| "play-skip-back-circle-outline" \| "play-skip-back-circle-sharp" \| "play-skip-back-outline" \| "play-skip-back-sharp" \| "play-skip-forward" \| "play-skip-forward-circle" \| "play-skip-forward-circle-outline" \| "play-skip-forward-circle-sharp" \| "play-skip-forward-outline" \| "play-skip-forward-sharp" \| "podium" \| "podium-outline" \| "podium-sharp" \| "power" \| "power-outline" \| "power-sharp" \| "pricetag" \| "pricetag-outline" \| "pricetag-sharp" \| "pricetags" \| "pricetags-outline" \| "pricetags-sharp" \| "print" \| "print-outline" \| "print-sharp" \| "prism" \| "prism-outline" \| "prism-sharp" \| "pulse" \| "pulse-outline" \| "pulse-sharp" \| "push" \| "push-outline" \| "push-sharp" \| "qr-code" \| "qr-code-outline" \| "qr-code-sharp" \| "radio-button-off" \| "radio-button-off-outline" \| "radio-button-off-sharp" \| "radio-button-on" \| "radio-button-on-outline" \| "radio-button-on-sharp" \| "radio-outline" \| "radio-sharp" \| "rainy" \| "rainy-outline" \| "rainy-sharp" \| "reader" \| "reader-outline" \| "reader-sharp" \| "receipt" \| "receipt-outline" \| "receipt-sharp" \| "recording" \| "recording-outline" \| "recording-sharp" \| "refresh" \| "refresh-circle" \| "refresh-circle-outline" \| "refresh-circle-sharp" \| "refresh-outline" \| "refresh-sharp" \| "reload" \| "reload-circle" \| "reload-circle-outline" \| "reload-circle-sharp" \| "reload-outline" \| "reload-sharp" \| "remove" \| "remove-circle" \| "remove-circle-outline" \| "remove-circle-sharp" \| "remove-outline" \| "remove-sharp" \| "reorder-four" \| "reorder-four-outline" \| "reorder-four-sharp" \| "reorder-three" \| "reorder-three-outline" \| "reorder-three-sharp" \| "reorder-two" \| "reorder-two-outline" \| "reorder-two-sharp" \| "repeat" \| "repeat-outline" \| "repeat-sharp" \| "resize" \| "resize-outline" \| "resize-sharp" \| "restaurant" \| "restaurant-outline" \| "restaurant-sharp" \| "return-down-back" \| "return-down-back-outline" \| "return-down-back-sharp" \| "return-down-forward" \| "return-down-forward-outline" \| "return-down-forward-sharp" \| "return-up-back" \| "return-up-back-outline" \| "return-up-back-sharp" \| "return-up-forward" \| "return-up-forward-outline" \| "return-up-forward-sharp" \| "ribbon" \| "ribbon-outline" \| "ribbon-sharp" \| "rocket" \| "rocket-outline" \| "rocket-sharp" \| "rose" \| "rose-outline" \| "rose-sharp" \| "sad" \| "sad-outline" \| "sad-sharp" \| "save" \| "save-outline" \| "save-sharp" \| "scale" \| "scale-outline" \| "scale-sharp" \| "scan" \| "scan-circle" \| "scan-circle-outline" \| "scan-circle-sharp" \| "scan-outline" \| "scan-sharp" \| "school" \| "school-outline" \| "school-sharp" \| "search-circle" \| "search-circle-outline" \| "search-circle-sharp" \| "search-outline" \| "search-sharp" \| "send" \| "send-outline" \| "send-sharp" \| "server" \| "server-outline" \| "server-sharp" \| "settings" \| "settings-outline" \| "settings-sharp" \| "shapes" \| "shapes-outline" \| "shapes-sharp" \| "share" \| "share-outline" \| "share-sharp" \| "share-social" \| "share-social-outline" \| "share-social-sharp" \| "shield" \| "shield-checkmark" \| "shield-checkmark-outline" \| "shield-checkmark-sharp" \| "shield-half" \| "shield-half-outline" \| "shield-half-sharp" \| "shield-outline" \| "shield-sharp" \| "shirt" \| "shirt-outline" \| "shirt-sharp" \| "shuffle" \| "shuffle-outline" \| "shuffle-sharp" \| "skull" \| "skull-outline" \| "skull-sharp" \| "snow" \| "snow-outline" \| "snow-sharp" \| "sparkles" \| "sparkles-outline" \| "sparkles-sharp" \| "speedometer" \| "speedometer-outline" \| "speedometer-sharp" \| "square" \| "square-outline" \| "square-sharp" \| "star" \| "star-half" \| "star-half-outline" \| "star-half-sharp" \| "star-outline" \| "star-sharp" \| "stats-chart" \| "stats-chart-outline" \| "stats-chart-sharp" \| "stop" \| "stop-circle" \| "stop-circle-outline" \| "stop-circle-sharp" \| "stop-outline" \| "stop-sharp" \| "stopwatch" \| "stopwatch-outline" \| "stopwatch-sharp" \| "storefront" \| "storefront-outline" \| "storefront-sharp" \| "subway" \| "subway-outline" \| "subway-sharp" \| "sunny" \| "sunny-outline" \| "sunny-sharp" \| "swap-horizontal" \| "swap-horizontal-outline" \| "swap-horizontal-sharp" \| "swap-vertical" \| "swap-vertical-outline" \| "swap-vertical-sharp" \| "sync" \| "sync-circle" \| "sync-circle-outline" \| "sync-circle-sharp" \| "sync-outline" \| "sync-sharp" \| "tablet-landscape" \| "tablet-landscape-outline" \| "tablet-landscape-sharp" \| "tablet-portrait" \| "tablet-portrait-outline" \| "tablet-portrait-sharp" \| "telescope" \| "telescope-outline" \| "telescope-sharp" \| "tennisball" \| "tennisball-outline" \| "tennisball-sharp" \| "terminal" \| "terminal-outline" \| "terminal-sharp" \| "text-outline" \| "text-sharp" \| "thermometer" \| "thermometer-outline" \| "thermometer-sharp" \| "thumbs-down" \| "thumbs-down-outline" \| "thumbs-down-sharp" \| "thumbs-up" \| "thumbs-up-outline" \| "thumbs-up-sharp" \| "thunderstorm" \| "thunderstorm-outline" \| "thunderstorm-sharp" \| "ticket" \| "ticket-outline" \| "ticket-sharp" \| "time" \| "time-outline" \| "time-sharp" \| "timer-outline" \| "timer-sharp" \| "today" \| "today-outline" \| "today-sharp" \| "toggle" \| "toggle-outline" \| "toggle-sharp" \| "trail-sign" \| "trail-sign-outline" \| "trail-sign-sharp" \| "train" \| "train-outline" \| "train-sharp" \| "transgender" \| "transgender-outline" \| "transgender-sharp" \| "trash" \| "trash-bin" \| "trash-bin-outline" \| "trash-bin-sharp" \| "trash-outline" \| "trash-sharp" \| "trending-down" \| "trending-down-outline" \| "trending-down-sharp" \| "trending-up" \| "trending-up-outline" \| "trending-up-sharp" \| "triangle" \| "triangle-outline" \| "triangle-sharp" \| "trophy" \| "trophy-outline" \| "trophy-sharp" \| "tv" \| "tv-outline" \| "tv-sharp" \| "umbrella" \| "umbrella-outline" \| "umbrella-sharp" \| "unlink" \| "unlink-outline" \| "unlink-sharp" \| "videocam" \| "videocam-off" \| "videocam-off-outline" \| "videocam-off-sharp" \| "videocam-outline" \| "videocam-sharp" \| "volume-high" \| "volume-high-outline" \| "volume-high-sharp" \| "volume-low" \| "volume-low-outline" \| "volume-low-sharp" \| "volume-medium" \| "volume-medium-outline" \| "volume-medium-sharp" \| "volume-mute" \| "volume-mute-outline" \| "volume-mute-sharp" \| "volume-off" \| "volume-off-outline" \| "volume-off-sharp" \| "walk" \| "walk-outline" \| "walk-sharp" \| "wallet" \| "wallet-outline" \| "wallet-sharp" \| "warning-outline" \| "warning-sharp" \| "watch" \| "watch-outline" \| "watch-sharp" \| "water" \| "water-outline" \| "water-sharp" \| "wifi" \| "wifi-outline" \| "wifi-sharp" \| "wine" \| "wine-outline" \| "wine-sharp" \| "woman" \| "woman-outline" \| "woman-sharp" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `string` | yes |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3017,6 +2983,7 @@ Source: `src/types/image.ts:8:1`
 | fit | property | `ImageResizeMode \| undefined` | no |  |
 | height | property | `string \| number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onError | property | `((error: import("react-native").ImageErrorEvent) => void) \| undefined` | no |  |
 | radius | property | `string \| number \| undefined` | no |  |
@@ -3107,6 +3074,7 @@ Source: `src/types/keyboard-avoiding-view.ts:9:1`
 | id | property | `string \| undefined` | no |  |
 | importantForAccessibility | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | isTVSelectable | property | `boolean \| undefined` | no |  |
 | keyboardVerticalOffset | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3183,6 +3151,7 @@ Source: `src/types/list.ts:42:1`
 | --- | --- | --- | --- | --- |
 | children | property | `React.ReactNode` | yes |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -3213,6 +3182,7 @@ Source: `src/types/list.ts:36:1`
 | --- | --- | --- | --- | --- |
 | compact | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly ListItemProps[]` | yes |  |
 | itemVariant | property | `ListItemVariant \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3263,6 +3233,7 @@ Source: `src/types/manifest-list.ts:5:1`
 | horizontal | property | `boolean \| undefined` | no |  |
 | initialNumToRender | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | maxToRenderPerBatch | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onEndReached | property | `((event: { distanceFromEnd: number; }) => void) \| undefined` | no |  |
@@ -3308,6 +3279,7 @@ Source: `src/types/manifest-list.ts:30:1`
 | horizontal | property | `boolean \| undefined` | no |  |
 | initialNumToRender | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | maxToRenderPerBatch | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onEndReached | property | `((event: { distanceFromEnd: number; }) => void) \| undefined` | no |  |
@@ -3406,6 +3378,7 @@ Source: `src/types/chat.ts:54:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | footer | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | leading | property | `React.ReactNode` | no |  |
 | meta | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3449,6 +3422,7 @@ Source: `src/types/metric-card.ts:8:1`
 | description | property | `React.ReactNode` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onPress | property | `(() => void) \| undefined` | no |  |
@@ -3480,6 +3454,7 @@ Source: `src/types/missing-element.ts:3:1`
 | --- | --- | --- | --- | --- |
 | evidenceId | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | minimumHeight | property | `number \| undefined` | no |  |
 | minimumWidth | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3514,6 +3489,7 @@ Source: `src/types/auth.ts:102:1`
 | fullWidth | property | `boolean \| undefined` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3574,6 +3550,7 @@ Source: `src/types/auth.ts:117:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | fullWidth | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | layout | property | `OAuthProviderListLayout \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3657,6 +3634,7 @@ Source: `src/types/chess.ts:97:1`
 | emptyText | property | `string \| undefined` | no |  |
 | errorText | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | moves | property | `readonly OpeningBookMove[] \| undefined` | no |  |
@@ -3687,6 +3665,7 @@ Source: `src/types/auth.ts:82:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | error | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | length | property | `number \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -3735,6 +3714,7 @@ Source: `src/types/pagination.ts:3:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | firstLabel | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lastLabel | property | `string \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nextLabel | property | `string \| undefined` | no |  |
@@ -3770,6 +3750,7 @@ Source: `src/types/palette-item.ts:6:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onPress | property | `(() => void) \| undefined` | no |  |
 | selected | property | `boolean \| undefined` | no |  |
@@ -3799,6 +3780,7 @@ Source: `src/types/tabletop.ts:76:1`
 | card | property | `PlayingCardValue` | yes |  |
 | colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | muted | property | `boolean \| undefined` | no |  |
 | selected | property | `boolean \| undefined` | no |  |
@@ -3872,6 +3854,7 @@ Source: `src/types/tabletop.ts:114:1`
 | defaultStackBigBlinds | property | `number \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | shape | property | `TabletopShape \| undefined` | no |  |
 | task | property | `PokerTrainingTaskTableData \| undefined` | no |  |
@@ -3967,6 +3950,7 @@ Source: `src/types/popover-menu.ts:25:1`
 | actions | property | `readonly PopoverMenuAction[]` | yes |  |
 | closeOnSelect | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onDismiss | property | `(() => void) \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -4055,6 +4039,7 @@ Source: `src/types/post-card.ts:60:1`
 | footer | property | `React.ReactNode` | no |  |
 | headerAction | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | media | property | `PostCardMedia \| readonly PostCardMedia[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onPress | property | `(() => void) \| undefined` | no |  |
@@ -4086,6 +4071,7 @@ Source: `src/types/product-card.ts:3:1`
 | imageAlt | property | `string \| undefined` | no |  |
 | imageUrl | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | meta | property | `readonly { label: string; value: string; }[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onPress | property | `(() => void) \| undefined` | no |  |
@@ -4120,6 +4106,7 @@ Source: `src/types/progress.ts:7:1`
 | --- | --- | --- | --- | --- |
 | color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | max | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | size | property | `ZoraControlSize \| undefined` | no |  |
@@ -4151,6 +4138,7 @@ Source: `src/types/progress.ts:14:1`
 | centerValue | property | `string \| undefined` | no |  |
 | color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | max | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | size | property | `number \| undefined` | no |  |
@@ -4211,6 +4199,7 @@ Source: `src/types/radio.ts:19:1`
 | gap | property | `"m" \| "s" \| "l" \| "xs" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onValueChange | property | `((value: TValue) => void) \| undefined` | no |  |
 | options | property | `readonly RadioGroupOption<TValue>[]` | yes |  |
@@ -4256,6 +4245,7 @@ Source: `src/types/radio.ts:7:1`
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -4315,6 +4305,7 @@ Source: `src/types/rating.ts:5:1`
 | --- | --- | --- | --- | --- |
 | color | property | `"primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "error" \| "info" \| "danger" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | max | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | size | property | `ZoraControlSize \| undefined` | no |  |
@@ -4458,6 +4449,7 @@ Source: `src/types/reader.ts:42:1`
 | highlighted | property | `boolean \| undefined` | no |  |
 | highlightLabel | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lineHeight | property | `ReaderLineHeight \| undefined` | no |  |
 | loadingLabel | property | `string \| undefined` | no |  |
 | location | property | `string \| undefined` | no |  |
@@ -4567,6 +4559,7 @@ Source: `src/types/scanner.ts:13:1`
 | cornerLabel | property | `React.ReactNode` | no |  |
 | description | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -4593,6 +4586,7 @@ Source: `src/types/layout.ts:27:1`
 | children | property | `React.ReactNode` | no |  |
 | footer | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | scroll | property | `boolean \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -4621,6 +4615,7 @@ Source: `src/types/section.ts:12:1`
 | children | property | `React.ReactNode` | no |  |
 | description | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -4719,6 +4714,7 @@ Source: `src/types/layout.ts:14:1`
 | indicatorStyle | property | `"default" \| "white" \| "black" \| undefined` | no |  |
 | innerViewRef | property | `React.RefObject<View> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | invertStickyHeaders | property | `boolean \| undefined` | no |  |
 | isTVSelectable | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
@@ -4864,6 +4860,7 @@ Source: `src/types/search-input.ts:4:1`
 | clearable | property | `boolean \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onClear | property | `(() => void) \| undefined` | no |  |
 | onSubmit | property | `((value: string) => void) \| undefined` | no |  |
@@ -4897,6 +4894,7 @@ Source: `src/types/section.ts:5:1`
 | description | property | `React.ReactNode` | no |  |
 | eyebrow | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -4920,35 +4918,17 @@ Renders Select with anchored Popover presentation on web.
 
 ## SelectableItem
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/selection/adapters/inbound/SelectableItem.tsx`
-Source: `src/features/selection/adapters/inbound/SelectableItem.tsx:27:1`
+Source: `src/features/selection/adapters/inbound/SelectableItem.tsx:28:14`
 
 Adds selection behavior to arbitrary child content via render props.
-
-### Signatures
-
-- `({
-  id,
-  trigger,
-  disabled = false,
-  interactionPolicy,
-  children,
-}: SelectableItemProps) => React.JSX.Element`
-  - {
-  id,
-  trigger,
-  disabled = false,
-  interactionPolicy,
-  children,
-}: `SelectableItemProps`
-  - returns: `React.JSX.Element`
 
 ## SelectableItemProps
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:43:1`
+Source: `src/types/selection.ts:45:1`
 
 ### Members
 
@@ -4958,13 +4938,17 @@ Source: `src/types/selection.ts:43:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | id | property | `string` | yes |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
 | trigger | property | `SelectionTrigger \| undefined` | no |  |
 
 ## SelectableItemState
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:32:1`
+Source: `src/types/selection.ts:34:1`
 
 ### Members
 
@@ -4989,7 +4973,7 @@ Source: `node_modules/@ankhorage/utility/dist/selection/types.d.ts:1:1`
 
 Kind: `unknown`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:5:1`
+Source: `src/types/selection.ts:7:1`
 
 ## SelectionProvider
 
@@ -5025,7 +5009,7 @@ Provides selection state for building selectable lists and grids.
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:9:1`
+Source: `src/types/selection.ts:11:1`
 
 ### Members
 
@@ -5043,7 +5027,7 @@ Source: `src/types/selection.ts:9:1`
 
 Kind: `unknown`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:7:1`
+Source: `src/types/selection.ts:9:1`
 
 ## SelectOption
 
@@ -5075,6 +5059,7 @@ Source: `src/types/select.ts:9:1`
 | helperText | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `string \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onValueChange | property | `((value: TValue) => void) \| undefined` | no |  |
@@ -5110,6 +5095,7 @@ Source: `src/types/auth.ts:44:1`
 | identifierLabel | property | `React.ReactNode` | no |  |
 | identifiers | property | `readonly AuthIdentifierKind[] \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onForgotPassword | property | `(() => void \| Promise<void>) \| undefined` | no |  |
@@ -5163,6 +5149,7 @@ Source: `src/types/auth.ts:58:1`
 | error | property | `React.ReactNode` | no |  |
 | fields | property | `readonly SignUpFormField[] \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onSignIn | property | `(() => void \| Promise<void>) \| undefined` | no |  |
@@ -5207,6 +5194,7 @@ Source: `src/types/skeleton.ts:22:1`
 | actions | property | `boolean \| undefined` | no |  |
 | compact | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lines | property | `number \| undefined` | no |  |
 | media | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -5240,6 +5228,7 @@ Source: `src/types/skeleton.ts:29:1`
 | avatar | property | `boolean \| undefined` | no |  |
 | compact | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lines | property | `number \| undefined` | no |  |
 | media | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -5266,6 +5255,7 @@ Source: `src/types/skeleton.ts:8:1`
 | --- | --- | --- | --- | --- |
 | height | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | radius | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -5298,6 +5288,7 @@ Source: `src/types/skeleton.ts:14:1`
 | --- | --- | --- | --- | --- |
 | gap | property | `import("@ankhorage/surface").Responsive<import("@ankhorage/surface/dist/types/layout").SpaceValue> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | lastLineWidth | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 | lineHeight | property | `number \| undefined` | no |  |
 | lines | property | `number \| undefined` | no |  |
@@ -5348,6 +5339,7 @@ Source: `src/types/surface.ts:6:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -5434,6 +5426,7 @@ Source: `src/types/switch.ts:5:1`
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | invalid | property | `boolean \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -5620,6 +5613,7 @@ Source: `src/types/tabletop.ts:84:1`
 | colorScheme | property | `Partial<TabletopColorScheme> \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | seatCount | property | `TabletopSeatCount \| undefined` | no |  |
 | seats | property | `readonly TabletopSeatState[]` | yes |  |
@@ -5648,6 +5642,7 @@ Source: `src/types/tabs.ts:12:1`
 | children | property | `React.ReactNode` | no |  |
 | fill | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -5686,6 +5681,7 @@ Source: `src/types/tabs.ts:19:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -5734,6 +5730,7 @@ Source: `src/types/tabs.ts:14:1`
 | --- | --- | --- | --- | --- |
 | disabled | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `string` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -5776,6 +5773,7 @@ Source: `src/types/tabs.ts:10:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -5893,6 +5891,7 @@ Source: `src/types/text.ts:22:1`
 | emphasis | property | `Responsive<"default" \| "subtle" \| "muted" \| "inverse"> \| undefined` | no |  |
 | i18nKey | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | italic | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nativeID | property | `string \| undefined` | no |  |
@@ -5919,31 +5918,17 @@ Source: `src/types/text.ts:18:1`
 
 ## ThemeModeToggle
 
-Kind: `function`
+Kind: `value`
 Module: `src/features/theme/adapters/inbound/ThemeModeToggle.tsx`
-Source: `src/features/theme/adapters/inbound/ThemeModeToggle.tsx:6:1`
+Source: `src/features/theme/adapters/inbound/ThemeModeToggle.tsx:8:14`
 
-### Signatures
-
-- `({
-  disabled,
-  interactionPolicy,
-  size = 'm',
-  testID,
-}: ThemeModeToggleProps) => import("react").JSX.Element`
-  - {
-  disabled,
-  interactionPolicy,
-  size = 'm',
-  testID,
-}: `ThemeModeToggleProps`
-  - returns: `import("react").JSX.Element`
+Provide a theme mode control with inherited surface polarity.
 
 ## ThemeModeToggleProps
 
 Kind: `unknown`
 Module: `src/types/theme-mode-toggle.ts`
-Source: `src/types/theme-mode-toggle.ts:3:1`
+Source: `src/types/theme-mode-toggle.ts:4:1`
 
 ## Timeline
 
@@ -5983,6 +5968,7 @@ Source: `src/types/timeline.ts:17:1`
 | --- | --- | --- | --- | --- |
 | compact | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly TimelineItem[]` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -6011,6 +5997,7 @@ Source: `src/types/time-picker.ts:7:1`
 | error | property | `React.ReactNode` | no |  |
 | formatTime | property | `((value: string) => React.ReactNode) \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | no |  |
 | maxTime | property | `string \| undefined` | no |  |
 | minTime | property | `string \| undefined` | no |  |
@@ -6061,6 +6048,7 @@ Source: `src/types/toast.ts:16:1`
 | --- | --- | --- | --- | --- |
 | description | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onDismiss | property | `(() => void) \| undefined` | no |  |
 | status | property | `ToastStatus \| undefined` | no |  |
@@ -6116,6 +6104,7 @@ Source: `src/types/toolbar.ts:5:1`
 | compact | property | `boolean \| undefined` | no |  |
 | floating | property | `boolean \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -6187,6 +6176,7 @@ Source: `src/types/tree-view.ts:26:1`
 | expandedIds | property | `readonly TId[] \| undefined` | no |  |
 | expansionIndicator | property | `"folder" \| "chevron" \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | nodes | property | `readonly TreeItemNode<TId>[]` | yes |  |
 | onExpandedChange | property | `((ids: readonly TId[]) => void) \| undefined` | no |  |
@@ -6260,6 +6250,7 @@ Source: `src/types/upload.ts:45:1`
 | errorText | property | `React.ReactNode` | no |  |
 | helperText | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | label | property | `React.ReactNode` | no |  |
 | maxSizeBytes | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
@@ -6379,7 +6370,7 @@ Accesses selection state provided by `SelectionProvider`.
 
 Kind: `type`
 Module: `src/types/selection.ts`
-Source: `src/types/selection.ts:19:1`
+Source: `src/types/selection.ts:21:1`
 
 ### Members
 
@@ -6543,6 +6534,7 @@ Source: `src/types/layout.ts:13:1`
 | gap | property | `Responsive<SpaceValue> \| undefined` | no |  |
 | height | property | `Responsive<string \| number> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"flex-start" \| "center" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | m | property | `Responsive<SpaceValue> \| undefined` | no |  |
@@ -6584,7 +6576,9 @@ Source: `src/types/layout.ts:13:1`
 
 Kind: `function`
 Module: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx`
-Source: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx:6:1`
+Source: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx:7:1`
+
+Applies optional theme and polarity overrides to any ZORA component.
 
 ### Signatures
 
@@ -6596,7 +6590,7 @@ Source: `src/features/theme/adapters/inbound/withZoraThemeScope.tsx:6:1`
 
 Kind: `value`
 Module: `src/features/registry/bindableComponentMeta.ts`
-Source: `src/features/registry/bindableComponentMeta.ts:6:14`
+Source: `src/features/registry/bindableComponentMeta.ts:7:14`
 
 ## ZORA_COLORS
 
@@ -6608,13 +6602,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:108:14`
+Source: `src/features/registry/componentMeta.ts:109:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:217:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:219:14`
 
 ## ZORA_EMPHASES
 
@@ -6644,7 +6638,7 @@ Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/constants/authoring.ts`
-Source: `src/constants/authoring.ts:153:14`
+Source: `src/constants/authoring.ts:160:14`
 
 ## ZoraBaseProps
 
@@ -6657,6 +6651,7 @@ Source: `src/types/base.ts:5:1`
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -6665,7 +6660,7 @@ Source: `src/types/base.ts:5:1`
 
 Kind: `unknown`
 Module: `src/features/registry/bindableComponentMeta.ts`
-Source: `src/features/registry/bindableComponentMeta.ts:505:1`
+Source: `src/features/registry/bindableComponentMeta.ts:517:1`
 
 ## ZoraColor
 
@@ -7127,14 +7122,14 @@ Source: `src/types/theme-recipe.ts:10:1`
 
 Kind: `function`
 Module: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx`
-Source: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx:18:1`
+Source: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx:19:1`
 
 Applies nested ZORA theme overrides through the public Surface theme scope.
 
 ### Signatures
 
-- `({ children, themeId, mode }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined`
-  - { children, themeId, mode }: `ZoraThemeScopeProps`
+- `({ children, themeId, mode, inverted }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined`
+  - { children, themeId, mode, inverted }: `ZoraThemeScopeProps`
   - returns: `string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined`
 
 ## ZoraThemeScopeProps
@@ -7148,6 +7143,7 @@ Source: `src/features/theme/adapters/inbound/ZoraThemeScope.tsx:11:1`
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | children | property | `React.ReactNode` | yes |  |
+| inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 

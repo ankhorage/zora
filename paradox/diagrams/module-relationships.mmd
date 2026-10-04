@@ -15,6 +15,9 @@ graph LR
   module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
   module_src_features_app_bar_appBarMeta_ts["src/features/app-bar/appBarMeta.ts"]
   module_src_features_app_bar_public_ts["src/features/app-bar/public.ts"]
+  module_src_features_app_header_adapters_inbound_AppHeader_tsx["src/features/app-header/adapters/inbound/AppHeader.tsx"]
+  module_src_features_app_header_appHeaderMeta_ts["src/features/app-header/appHeaderMeta.ts"]
+  module_src_features_app_header_public_ts["src/features/app-header/public.ts"]
   module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
   module_src_features_auth_adapters_inbound_AuthScreen_tsx["src/features/auth/adapters/inbound/AuthScreen.tsx"]
@@ -438,6 +441,7 @@ graph LR
   module_src_types_accordion_ts["src/types/accordion.ts"]
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
   module_src_types_app_bar_ts["src/types/app-bar.ts"]
+  module_src_types_app_header_ts["src/types/app-header.ts"]
   module_src_types_auth_ts["src/types/auth.ts"]
   module_src_types_authoring_ts["src/types/authoring.ts"]
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
@@ -540,7 +544,12 @@ graph LR
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_typography_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_types_app_bar_ts
+  module_src_features_app_bar_appBarMeta_ts --> module_src_constants_authoring_ts
   module_src_features_app_bar_appBarMeta_ts --> module_src_types_authoring_ts
+  module_src_features_app_header_adapters_inbound_AppHeader_tsx --> module_src_features_app_bar_public_ts
+  module_src_features_app_header_adapters_inbound_AppHeader_tsx --> module_src_types_app_header_ts
+  module_src_features_app_header_appHeaderMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_app_header_appHeaderMeta_ts --> module_src_types_authoring_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_auth_adapters_inbound_AuthFormField_tsx
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_form_public_ts
   module_src_features_auth_adapters_inbound_AuthForm_tsx --> module_src_features_layout_public_ts
@@ -947,20 +956,26 @@ graph LR
   module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_createGameMeasurementRegistry_ts
   module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_GameRuntimeContext_ts
   module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_game_composition_useGameRuntime_ts
+  module_src_features_game_adapters_inbound_Game_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_Game_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityAnimatedStyle_ts
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityMeasurement_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_layout_public_ts
+  module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts
   module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_features_game_utils_toGamePercentage_ts
+  module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameInputZone_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_features_game_adapters_inbound_createGameMeasurementEvent_ts
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_features_game_composition_GameRuntimeContext_ts
+  module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> module_src_types_gameRuntime_ts
   module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_features_layout_public_ts
+  module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameOverlay_tsx --> module_src_types_gamePresentation_ts
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGameKeyboardEvent_ts
   module_src_features_game_adapters_inbound_useGameInputZoneResponder_ts --> module_src_features_game_adapters_inbound_createGamePointerEvent_ts
@@ -1197,12 +1212,14 @@ graph LR
   module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_types_reader_ts
   module_src_features_reader_meta_ts --> module_src_constants_authoring_ts
   module_src_features_reader_meta_ts --> module_src_types_authoring_ts
+  module_src_features_registry_bindableComponentMeta_ts --> module_src_constants_authoring_ts
   module_src_features_registry_bindableComponentMeta_ts --> module_src_features_image_imageMeta_ts
   module_src_features_registry_bindableComponentMeta_ts --> module_src_features_reader_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionItemMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_accordion_accordionMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_activity_indicator_activityIndicatorMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_app_bar_appBarMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_app_header_appHeaderMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_authScreenMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_forgotPasswordFormMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_auth_oauthProviderButtonMeta_ts
@@ -1307,6 +1324,7 @@ graph LR
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_accordion_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_activity_indicator_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_app_bar_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_app_header_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_auth_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_avatar_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_badge_public_ts
@@ -1396,6 +1414,7 @@ graph LR
   module_src_features_section_sectionHeaderMeta_ts --> module_src_types_authoring_ts
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_features_selection_adapters_inbound_SelectionProvider_tsx
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_features_selection_application_resolveSelectionEventIntent_ts
+  module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> module_src_types_selection_ts
   module_src_features_selection_adapters_inbound_SelectionProvider_tsx --> module_src_features_selection_utils_resolveSelectionNextIds_ts
   module_src_features_selection_adapters_inbound_SelectionProvider_tsx --> module_src_types_selection_ts
@@ -1478,6 +1497,7 @@ graph LR
   module_src_features_tabs_tabsMeta_ts --> module_src_features_layout_constants_ts
   module_src_features_tabs_tabsMeta_ts --> module_src_types_authoring_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> module_src_features_button_public_ts
+  module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> module_src_features_theme_utils_resolveThemeModeToggleState_ts
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> module_src_types_theme_mode_toggle_ts
@@ -1636,6 +1656,7 @@ graph LR
   module_src_types_activity_indicator_ts --> module_src_types_base_ts
   module_src_types_app_bar_ts --> module_src_types_base_ts
   module_src_types_app_bar_ts --> module_src_types_popover_menu_ts
+  module_src_types_app_header_ts --> module_src_types_app_bar_ts
   module_src_types_auth_ts --> module_src_types_base_ts
   module_src_types_auth_ts --> module_src_types_button_ts
   module_src_types_auth_ts --> module_src_types_form_ts
@@ -1678,6 +1699,7 @@ graph LR
   module_src_types_empty_state_ts --> module_src_types_theme_ts
   module_src_types_form_ts --> module_src_types_base_ts
   module_src_types_form_ts --> module_src_types_text_input_ts
+  module_src_types_gamePresentation_ts --> module_src_types_base_ts
   module_src_types_gradient_ts --> module_src_types_base_ts
   module_src_types_gradient_ts --> module_src_types_layout_ts
   module_src_types_graphViewRuntime_ts --> module_src_types_graph_view_ts
@@ -1728,6 +1750,7 @@ graph LR
   module_src_types_search_input_ts --> module_src_types_control_ts
   module_src_types_section_ts --> module_src_types_base_ts
   module_src_types_select_ts --> module_src_types_base_ts
+  module_src_types_selection_ts --> module_src_types_base_ts
   module_src_types_skeleton_ts --> module_src_types_base_ts
   module_src_types_skeleton_ts --> module_src_types_layout_ts
   module_src_types_surface_ts --> module_src_types_base_ts
@@ -1738,6 +1761,7 @@ graph LR
   module_src_types_text_input_ts --> module_src_types_control_ts
   module_src_types_text_ts --> module_src_types_base_ts
   module_src_types_text_ts --> module_src_types_theme_ts
+  module_src_types_theme_mode_toggle_ts --> module_src_types_base_ts
   module_src_types_theme_mode_toggle_ts --> module_src_types_icon_button_ts
   module_src_types_time_picker_ts --> module_src_types_base_ts
   module_src_types_timeline_ts --> module_src_types_base_ts

@@ -492,6 +492,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "isTVSelectable",
         "kind": "property",
         "type": "boolean | undefined",
@@ -1050,6 +1057,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leading",
         "kind": "property",
         "type": "React.ReactNode",
@@ -1106,6 +1120,66 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "AppHeader",
+    "title": null,
+    "description": "Composes application header chrome through the scoped ZORA AppBar.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/app-header/adapters/inbound/AppHeader.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/app-header/adapters/inbound/AppHeader.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AppBarProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: import(\"../../../..\").AppBarProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "import(\"../../../..\").AppBarProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "AppHeaderProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/app-header.ts",
+    "sourceLocation": {
+      "filePath": "src/types/app-header.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -1181,6 +1255,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -1251,6 +1332,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -1439,6 +1527,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -1678,6 +1773,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "items",
         "kind": "property",
         "type": "readonly AvatarGroupItem[]",
@@ -1785,6 +1887,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -1957,6 +2066,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -2079,6 +2195,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -2289,6 +2412,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -2507,6 +2637,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "items",
         "kind": "property",
         "type": "readonly BreadcrumbItem[]",
@@ -2695,6 +2832,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -2916,6 +3060,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -3298,6 +3449,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "manualEntryButtonProps",
         "kind": "property",
         "type": "Omit<ButtonProps, \"children\" | \"onPress\"> | undefined",
@@ -3467,6 +3625,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -3583,6 +3748,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -3811,6 +3983,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -4246,6 +4425,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leading",
         "kind": "property",
         "type": "React.ReactNode",
@@ -4494,6 +4680,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -4750,6 +4943,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -5273,6 +5473,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -5907,6 +6114,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -6028,6 +6242,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -6406,6 +6627,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -7205,6 +7433,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -7500,6 +7735,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "label",
         "kind": "property",
         "type": "React.ReactNode",
@@ -7692,6 +7934,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -7928,6 +8177,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -8318,6 +8574,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -8450,6 +8713,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -8600,6 +8870,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -8789,6 +9066,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -8888,6 +9172,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -9155,6 +9446,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -9287,34 +9585,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/Game.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/Game.tsx",
-      "line": 12,
-      "column": 1
+      "line": 13,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameProps"
-    ],
-    "signatures": [
-      {
-        "label": "(props: GameProps) => React.JSX.Element",
-        "parameters": [
-          {
-            "name": "props",
-            "type": "GameProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "React.JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -9325,34 +9607,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/GameEntity.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-      "line": 9,
-      "column": 1
+      "line": 10,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameEntityProps"
-    ],
-    "signatures": [
-      {
-        "label": "(props: GameEntityProps) => React.JSX.Element",
-        "parameters": [
-          {
-            "name": "props",
-            "type": "GameEntityProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "React.JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -9367,7 +9633,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": [
@@ -9389,7 +9655,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 10,
+      "line": 11,
       "column": 1
     },
     "exportPaths": [
@@ -9512,7 +9778,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 39,
+      "line": 40,
       "column": 1
     },
     "exportPaths": [
@@ -9520,7 +9786,8 @@
     ],
     "relatedSymbols": [
       "GameEntityEasing",
-      "GamePointerEvents"
+      "GamePointerEvents",
+      "ZoraThemeMode"
     ],
     "signatures": [],
     "members": [
@@ -9560,9 +9827,23 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "measurementId",
         "kind": "property",
         "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
         "required": false,
         "description": null
       },
@@ -9686,6 +9967,13 @@
         "description": null
       },
       {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "transitionDurationMs",
         "kind": "property",
         "type": "number | undefined",
@@ -9737,34 +10025,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/GameField.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameField.tsx",
-      "line": 7,
-      "column": 1
+      "line": 8,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameFieldProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  children,\n  aspectRatio,\n  minHeight = 320,\n  fill = false,\n  clip = true,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}: GameFieldProps) => import(\"react\").JSX.Element",
-        "parameters": [
-          {
-            "name": "{\n  children,\n  aspectRatio,\n  minHeight = 320,\n  fill = false,\n  clip = true,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}",
-            "type": "GameFieldProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "import(\"react\").JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -9779,13 +10051,15 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 29,
+      "line": 30,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -9831,6 +10105,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "minHeight",
         "kind": "property",
         "type": "number | undefined",
@@ -9838,7 +10119,21 @@
         "description": null
       },
       {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
         "required": false,
@@ -9854,34 +10149,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/GameInputZone.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameInputZone.tsx",
-      "line": 8,
-      "column": 1
+      "line": 9,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameInputZoneProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  x = 0,\n  y = 0,\n  width = 100,\n  height = 100,\n  zIndex = 0,\n  enabled = true,\n  continuous = true,\n  keyboardBindings,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n  ...inputProps\n}: GameInputZoneProps) => import(\"react\").JSX.Element",
-        "parameters": [
-          {
-            "name": "{\n  x = 0,\n  y = 0,\n  width = 100,\n  height = 100,\n  zIndex = 0,\n  enabled = true,\n  continuous = true,\n  keyboardBindings,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n  ...inputProps\n}",
-            "type": "GameInputZoneProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "import(\"react\").JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -9896,14 +10175,15 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 63,
+      "line": 64,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
-      "GameKeyboardBinding"
+      "GameKeyboardBinding",
+      "ZoraThemeMode"
     ],
     "signatures": [],
     "members": [
@@ -9957,6 +10237,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "keyboardBindings",
         "kind": "property",
         "type": "readonly GameKeyboardBinding[] | undefined",
@@ -9964,7 +10251,21 @@
         "description": null
       },
       {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
         "required": false,
@@ -10012,7 +10313,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 56,
+      "line": 57,
       "column": 1
     },
     "exportPaths": [
@@ -10059,34 +10360,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/GameMeasurementProbe.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameMeasurementProbe.tsx",
-      "line": 9,
-      "column": 1
+      "line": 10,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameMeasurementProbeProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  sourceId,\n  targetId,\n  eventType = 'game.measurement',\n  entityId,\n  delayMs = 0,\n  enabled = true,\n  interactionPolicy,\n}: GameMeasurementProbeProps) => null",
-        "parameters": [
-          {
-            "name": "{\n  sourceId,\n  targetId,\n  eventType = 'game.measurement',\n  entityId,\n  delayMs = 0,\n  enabled = true,\n  interactionPolicy,\n}",
-            "type": "GameMeasurementProbeProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "null",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -10101,13 +10386,15 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 78,
+      "line": 79,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10146,6 +10433,20 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "sourceId",
         "kind": "property",
         "type": "string",
@@ -10158,6 +10459,20 @@
         "type": "string",
         "required": true,
         "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
       }
     ],
     "structuredRows": []
@@ -10169,34 +10484,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/game/adapters/inbound/GameOverlay.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameOverlay.tsx",
-      "line": 7,
-      "column": 1
+      "line": 8,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "GameOverlayProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  children,\n  placement = 'fill',\n  blocking = false,\n  padding = 0,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}: GameOverlayProps) => import(\"react\").JSX.Element",
-        "parameters": [
-          {
-            "name": "{\n  children,\n  placement = 'fill',\n  blocking = false,\n  padding = 0,\n  accessibilityLabel,\n  interactionPolicy,\n  testID,\n}",
-            "type": "GameOverlayProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "import(\"react\").JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -10211,7 +10510,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 26,
+      "line": 27,
       "column": 1
     },
     "exportPaths": [
@@ -10233,14 +10532,15 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 87,
+      "line": 88,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
-      "GameOverlayPlacement"
+      "GameOverlayPlacement",
+      "ZoraThemeMode"
     ],
     "signatures": [],
     "members": [
@@ -10273,6 +10573,20 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "padding",
         "kind": "property",
         "type": "number | undefined",
@@ -10292,6 +10606,13 @@
         "type": "string | undefined",
         "required": false,
         "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
       }
     ],
     "structuredRows": []
@@ -10307,7 +10628,7 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": [
@@ -10329,13 +10650,15 @@
     "modulePath": "src/types/gamePresentation.ts",
     "sourceLocation": {
       "filePath": "src/types/gamePresentation.ts",
-      "line": 96,
+      "line": 97,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
     "signatures": [],
     "members": [
       {
@@ -10402,9 +10725,23 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "minHeight",
         "kind": "property",
         "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
         "required": false,
         "description": null
       },
@@ -10431,6 +10768,13 @@
       },
       {
         "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
         "required": false,
@@ -10735,6 +11079,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -11174,6 +11525,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -11684,6 +12042,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "italic",
         "kind": "property",
         "type": "boolean | undefined",
@@ -12007,6 +12372,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "layout",
         "kind": "property",
         "type": "HeroLayout | undefined",
@@ -12192,6 +12564,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -12390,6 +12769,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -12856,6 +13242,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "isTVSelectable",
         "kind": "property",
         "type": "boolean | undefined",
@@ -13302,6 +13695,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -13404,6 +13804,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -13608,6 +14015,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -13818,6 +14232,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -14227,6 +14648,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leading",
         "kind": "property",
         "type": "React.ReactNode",
@@ -14422,6 +14850,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "label",
         "kind": "property",
         "type": "React.ReactNode",
@@ -14528,6 +14963,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -14659,6 +15101,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -14901,6 +15350,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -15254,6 +15710,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -15375,6 +15838,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -15575,6 +16045,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lastLabel",
         "kind": "property",
         "type": "string | undefined",
@@ -15734,6 +16211,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -15850,6 +16334,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -16135,6 +16626,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -16525,6 +17023,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -16881,6 +17386,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "media",
         "kind": "property",
         "type": "PostCardMedia | readonly PostCardMedia[] | undefined",
@@ -17022,6 +17534,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -17178,6 +17697,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "max",
         "kind": "property",
         "type": "number | undefined",
@@ -17305,6 +17831,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -17552,6 +18085,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -17815,6 +18355,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -18144,6 +18691,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -18687,6 +19241,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lineHeight",
         "kind": "property",
         "type": "ReaderLineHeight | undefined",
@@ -19095,6 +19656,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -19187,6 +19755,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -19297,6 +19872,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -19899,6 +20481,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -20832,6 +21421,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -20977,6 +21573,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -21058,34 +21661,18 @@
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/selection/adapters/inbound/SelectableItem.tsx",
     "sourceLocation": {
       "filePath": "src/features/selection/adapters/inbound/SelectableItem.tsx",
-      "line": 27,
-      "column": 1
+      "line": 28,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "SelectableItemProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  id,\n  trigger,\n  disabled = false,\n  interactionPolicy,\n  children,\n}: SelectableItemProps) => React.JSX.Element",
-        "parameters": [
-          {
-            "name": "{\n  id,\n  trigger,\n  disabled = false,\n  interactionPolicy,\n  children,\n}",
-            "type": "SelectableItemProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "React.JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -21100,7 +21687,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 43,
+      "line": 45,
       "column": 1
     },
     "exportPaths": [
@@ -21108,7 +21695,8 @@
     ],
     "relatedSymbols": [
       "SelectableItemState",
-      "SelectionTrigger"
+      "SelectionTrigger",
+      "ZoraThemeMode"
     ],
     "signatures": [],
     "members": [
@@ -21141,6 +21729,34 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "trigger",
         "kind": "property",
         "type": "SelectionTrigger | undefined",
@@ -21161,7 +21777,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 32,
+      "line": 34,
       "column": 1
     },
     "exportPaths": [
@@ -21265,7 +21881,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 5,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -21325,7 +21941,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 9,
+      "line": 11,
       "column": 1
     },
     "exportPaths": [
@@ -21399,7 +22015,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 7,
+      "line": 9,
       "column": 1
     },
     "exportPaths": [
@@ -21514,6 +22130,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -21677,6 +22300,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -21896,6 +22526,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "loading",
         "kind": "property",
         "type": "boolean | undefined",
@@ -22064,6 +22701,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lines",
         "kind": "property",
         "type": "number | undefined",
@@ -22190,6 +22834,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "lines",
         "kind": "property",
         "type": "number | undefined",
@@ -22296,6 +22947,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -22414,6 +23072,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -22659,6 +23324,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -23153,6 +23825,13 @@
       },
       {
         "name": "invalid",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
         "kind": "property",
         "type": "boolean | undefined",
         "required": false,
@@ -24017,6 +24696,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -24123,6 +24809,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -24303,6 +24996,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -24591,6 +25291,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "label",
         "kind": "property",
         "type": "string",
@@ -24795,6 +25502,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -25334,6 +26048,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "italic",
         "kind": "property",
         "type": "boolean | undefined",
@@ -25460,38 +26181,22 @@
   {
     "name": "ThemeModeToggle",
     "title": null,
-    "description": null,
+    "description": "Provide a theme mode control with inherited surface polarity.",
     "isReadme": false,
     "see": [],
     "security": [],
-    "kind": "function",
+    "kind": "value",
     "modulePath": "src/features/theme/adapters/inbound/ThemeModeToggle.tsx",
     "sourceLocation": {
       "filePath": "src/features/theme/adapters/inbound/ThemeModeToggle.tsx",
-      "line": 6,
-      "column": 1
+      "line": 8,
+      "column": 14
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [
-      "ThemeModeToggleProps"
-    ],
-    "signatures": [
-      {
-        "label": "({\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}: ThemeModeToggleProps) => import(\"react\").JSX.Element",
-        "parameters": [
-          {
-            "name": "{\n  disabled,\n  interactionPolicy,\n  size = 'm',\n  testID,\n}",
-            "type": "ThemeModeToggleProps",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "import(\"react\").JSX.Element",
-        "returnDescription": null
-      }
-    ],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
@@ -25506,7 +26211,7 @@
     "modulePath": "src/types/theme-mode-toggle.ts",
     "sourceLocation": {
       "filePath": "src/types/theme-mode-toggle.ts",
-      "line": 3,
+      "line": 4,
       "column": 1
     },
     "exportPaths": [
@@ -25649,6 +26354,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "items",
         "kind": "property",
         "type": "readonly TimelineItem[]",
@@ -25756,6 +26468,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -25965,6 +26684,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -26160,6 +26886,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -26420,6 +27153,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -26714,6 +27454,13 @@
         "name": "interactionPolicy",
         "kind": "property",
         "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -27136,7 +27883,7 @@
     "modulePath": "src/types/selection.ts",
     "sourceLocation": {
       "filePath": "src/types/selection.ts",
-      "line": 19,
+      "line": 21,
       "column": 1
     },
     "exportPaths": [
@@ -27721,6 +28468,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "justify",
         "kind": "property",
         "type": "Responsive<\"flex-start\" | \"center\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\"> | undefined",
@@ -27978,7 +28732,7 @@
   {
     "name": "withZoraThemeScope",
     "title": null,
-    "description": null,
+    "description": "Applies optional theme and polarity overrides to any ZORA component.",
     "isReadme": false,
     "see": [],
     "security": [],
@@ -27986,7 +28740,7 @@
     "modulePath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
     "sourceLocation": {
       "filePath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
-      "line": 6,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -28022,7 +28776,7 @@
     "modulePath": "src/features/registry/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/bindableComponentMeta.ts",
-      "line": 6,
+      "line": 7,
       "column": 14
     },
     "exportPaths": [
@@ -28066,7 +28820,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 108,
+      "line": 109,
       "column": 14
     },
     "exportPaths": [
@@ -28088,7 +28842,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 217,
+      "line": 219,
       "column": 14
     },
     "exportPaths": [
@@ -28198,7 +28952,7 @@
     "modulePath": "src/constants/authoring.ts",
     "sourceLocation": {
       "filePath": "src/constants/authoring.ts",
-      "line": 153,
+      "line": 160,
       "column": 14
     },
     "exportPaths": [
@@ -28239,6 +28993,13 @@
         "description": null
       },
       {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -28273,7 +29034,7 @@
     "modulePath": "src/features/registry/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/bindableComponentMeta.ts",
-      "line": 505,
+      "line": 517,
       "column": 1
     },
     "exportPaths": [
@@ -29902,7 +30663,7 @@
     "modulePath": "src/features/theme/adapters/inbound/ZoraThemeScope.tsx",
     "sourceLocation": {
       "filePath": "src/features/theme/adapters/inbound/ZoraThemeScope.tsx",
-      "line": 18,
+      "line": 19,
       "column": 1
     },
     "exportPaths": [
@@ -29913,10 +30674,10 @@
     ],
     "signatures": [
       {
-        "label": "({ children, themeId, mode }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined",
+        "label": "({ children, themeId, mode, inverted }: ZoraThemeScopeProps) => string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined",
         "parameters": [
           {
-            "name": "{ children, themeId, mode }",
+            "name": "{ children, themeId, mode, inverted }",
             "type": "ZoraThemeScopeProps",
             "required": true,
             "description": null
@@ -29956,6 +30717,13 @@
         "kind": "property",
         "type": "React.ReactNode",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
         "description": null
       },
       {

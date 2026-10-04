@@ -15,6 +15,9 @@ graph LR
   module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
   module_src_features_app_bar_appBarMeta_ts["src/features/app-bar/appBarMeta.ts"]
   module_src_features_app_bar_public_ts["src/features/app-bar/public.ts"]
+  module_src_features_app_header_adapters_inbound_AppHeader_tsx["src/features/app-header/adapters/inbound/AppHeader.tsx"]
+  module_src_features_app_header_appHeaderMeta_ts["src/features/app-header/appHeaderMeta.ts"]
+  module_src_features_app_header_public_ts["src/features/app-header/public.ts"]
   module_src_features_auth_adapters_inbound_AuthForm_tsx["src/features/auth/adapters/inbound/AuthForm.tsx"]
   module_src_features_auth_adapters_inbound_AuthFormField_tsx["src/features/auth/adapters/inbound/AuthFormField.tsx"]
   module_src_features_auth_adapters_inbound_AuthScreen_tsx["src/features/auth/adapters/inbound/AuthScreen.tsx"]
@@ -438,6 +441,7 @@ graph LR
   module_src_types_accordion_ts["src/types/accordion.ts"]
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
   module_src_types_app_bar_ts["src/types/app-bar.ts"]
+  module_src_types_app_header_ts["src/types/app-header.ts"]
   module_src_types_auth_ts["src/types/auth.ts"]
   module_src_types_authoring_ts["src/types/authoring.ts"]
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
@@ -543,6 +547,11 @@ graph LR
   export_AppBarProps -.-> export_AppBarMode
   export_AppBarProps -.-> export_AppBarOverflowMenu
   export_AppBarProps -.-> export_ZoraThemeMode
+  export_AppHeader["AppHeader"]
+  module_src_features_app_header_adapters_inbound_AppHeader_tsx --> export_AppHeader
+  export_AppHeader -.-> export_AppBarProps
+  export_AppHeaderProps["AppHeaderProps"]
+  module_src_types_app_header_ts --> export_AppHeaderProps
   export_AppShell["AppShell"]
   module_src_features_layout_adapters_inbound_AppShell_tsx --> export_AppShell
   export_AppShellProps["AppShellProps"]
@@ -909,10 +918,8 @@ graph LR
   module_src_types_form_ts --> export_FormValues
   export_Game["Game"]
   module_src_features_game_adapters_inbound_Game_tsx --> export_Game
-  export_Game -.-> export_GameProps
   export_GameEntity["GameEntity"]
   module_src_features_game_adapters_inbound_GameEntity_tsx --> export_GameEntity
-  export_GameEntity -.-> export_GameEntityProps
   export_GameEntityEasing["GameEntityEasing"]
   module_src_types_gamePresentation_ts --> export_GameEntityEasing
   export_GameEntityMotionProps["GameEntityMotionProps"]
@@ -922,36 +929,38 @@ graph LR
   module_src_types_gamePresentation_ts --> export_GameEntityProps
   export_GameEntityProps -.-> export_GameEntityEasing
   export_GameEntityProps -.-> export_GamePointerEvents
+  export_GameEntityProps -.-> export_ZoraThemeMode
   export_GameField["GameField"]
   module_src_features_game_adapters_inbound_GameField_tsx --> export_GameField
-  export_GameField -.-> export_GameFieldProps
   export_GameFieldProps["GameFieldProps"]
   module_src_types_gamePresentation_ts --> export_GameFieldProps
+  export_GameFieldProps -.-> export_ZoraThemeMode
   export_GameInputZone["GameInputZone"]
   module_src_features_game_adapters_inbound_GameInputZone_tsx --> export_GameInputZone
-  export_GameInputZone -.-> export_GameInputZoneProps
   export_GameInputZoneProps["GameInputZoneProps"]
   module_src_types_gamePresentation_ts --> export_GameInputZoneProps
   export_GameInputZoneProps -.-> export_GameKeyboardBinding
+  export_GameInputZoneProps -.-> export_ZoraThemeMode
   export_GameKeyboardBinding["GameKeyboardBinding"]
   module_src_types_gamePresentation_ts --> export_GameKeyboardBinding
   export_GameMeasurementProbe["GameMeasurementProbe"]
   module_src_features_game_adapters_inbound_GameMeasurementProbe_tsx --> export_GameMeasurementProbe
-  export_GameMeasurementProbe -.-> export_GameMeasurementProbeProps
   export_GameMeasurementProbeProps["GameMeasurementProbeProps"]
   module_src_types_gamePresentation_ts --> export_GameMeasurementProbeProps
+  export_GameMeasurementProbeProps -.-> export_ZoraThemeMode
   export_GameOverlay["GameOverlay"]
   module_src_features_game_adapters_inbound_GameOverlay_tsx --> export_GameOverlay
-  export_GameOverlay -.-> export_GameOverlayProps
   export_GameOverlayPlacement["GameOverlayPlacement"]
   module_src_types_gamePresentation_ts --> export_GameOverlayPlacement
   export_GameOverlayProps["GameOverlayProps"]
   module_src_types_gamePresentation_ts --> export_GameOverlayProps
   export_GameOverlayProps -.-> export_GameOverlayPlacement
+  export_GameOverlayProps -.-> export_ZoraThemeMode
   export_GamePointerEvents["GamePointerEvents"]
   module_src_types_gamePresentation_ts --> export_GamePointerEvents
   export_GameProps["GameProps"]
   module_src_types_gamePresentation_ts --> export_GameProps
+  export_GameProps -.-> export_ZoraThemeMode
   export_getLegalTargets["getLegalTargets"]
   module_src_features_chess_utils_chessEngine_ts --> export_getLegalTargets
   export_getSquareFile["getSquareFile"]
@@ -1364,11 +1373,11 @@ graph LR
   module_src_features_form_select_adapters_inbound_Select_web_tsx --> export_Select
   export_SelectableItem["SelectableItem"]
   module_src_features_selection_adapters_inbound_SelectableItem_tsx --> export_SelectableItem
-  export_SelectableItem -.-> export_SelectableItemProps
   export_SelectableItemProps["SelectableItemProps"]
   module_src_types_selection_ts --> export_SelectableItemProps
   export_SelectableItemProps -.-> export_SelectableItemState
   export_SelectableItemProps -.-> export_SelectionTrigger
+  export_SelectableItemProps -.-> export_ZoraThemeMode
   export_SelectableItemState["SelectableItemState"]
   module_src_types_selection_ts --> export_SelectableItemState
   export_SelectableItemState -.-> export_SelectionIntent
@@ -1535,7 +1544,6 @@ graph LR
   module_src_types_text_ts --> export_TextWeight
   export_ThemeModeToggle["ThemeModeToggle"]
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> export_ThemeModeToggle
-  export_ThemeModeToggle -.-> export_ThemeModeToggleProps
   export_ThemeModeToggleProps["ThemeModeToggleProps"]
   module_src_types_theme_mode_toggle_ts --> export_ThemeModeToggleProps
   export_Timeline["Timeline"]
