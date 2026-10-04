@@ -44,7 +44,7 @@
     "@ankhorage/contracts": "^22.8.103",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/runtime": "^3.0.59",
-    "@ankhorage/surface": "^9.1.116",
+    "@ankhorage/surface": "^9.2.0",
     "@ankhorage/utility": "^1.9.85",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20",
