@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { FEATURE_MANIFEST_ELEMENTS, INVERTED_POLARITY_PROP } from '../../constants/authoring';
+import { INVERTED_POLARITY_PROP } from '../../constants/authoring';
 import { ZORA_COMPONENT_META, type ZoraComponentPropAuthoring } from '.';
 
 const componentMetaByName = new Map(Object.entries(ZORA_COMPONENT_META));
@@ -45,9 +45,11 @@ describe('ZORA component prop authoring authority', () => {
     expect(JSON.stringify(ZORA_COMPONENT_META)).not.toContain('"authority":"system"');
   });
 
-  test('describes inverted as optional inherited surface polarity across authorable components', () => {
-    for (const name of Object.values(FEATURE_MANIFEST_ELEMENTS).flat()) {
-      expect(componentMetaByName.get(name)?.props.inverted, name).toEqual(INVERTED_POLARITY_PROP);
+  test('describes inherited surface polarity for every direct manifest component', () => {
+    for (const [name, meta] of componentMetaByName) {
+      if (!meta.directManifestNode) continue;
+      expect(meta.props.inverted, name).toEqual(INVERTED_POLARITY_PROP);
+      expect(meta.bindings?.props?.inverted?.value.type, name).toBe('boolean');
     }
     expect(ZORA_COMPONENT_META.AppBar.props.inverted).toEqual(INVERTED_POLARITY_PROP);
     expect(ZORA_COMPONENT_META.AppHeader.props.inverted).toEqual(INVERTED_POLARITY_PROP);
