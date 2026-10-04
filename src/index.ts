@@ -13,6 +13,7 @@ export {
 } from './features/activity-indicator/public';
 export type { AppBarMode, AppBarOverflowMenu, AppBarProps } from './features/app-bar/public';
 export { AppBar } from './features/app-bar/public';
+export { AppHeader, type AppHeaderProps } from './features/app-header/public';
 export type {
   AuthFormBaseProps,
   AuthIdentifierKind,

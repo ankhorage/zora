@@ -178,6 +178,7 @@ describe('theme scope structure', () => {
   it('delegates nested Surface runtime ownership to the public ThemeScope boundary', () => {
     expect(themeScopeSource).toMatch(/import \{ ThemeScope \} from '@ankhorage\/surface'/u);
     expect(themeScopeSource).toMatch(/<ThemeScope\s+mode=/u);
+    expect(themeScopeSource).toMatch(/inverted=\{inverted\}/u);
     expect(themeScopeSource).not.toMatch(/ThemeContext/u);
     expect(themeScopeSource).not.toMatch(/useFontContext/u);
     expect(themeScopeSource).not.toMatch(/createTheme\(/u);
@@ -185,9 +186,13 @@ describe('theme scope structure', () => {
     expect(themeScopeSource).not.toMatch(/<ThemeProvider\b/u);
   });
 
-  it('wraps components only when mode/themeId overrides are present', () => {
+  it('wraps components only when mode/themeId/inverted overrides are present', () => {
     expect(hocSource).toMatch(/props\.mode === undefined/u);
     expect(hocSource).toMatch(/props\.themeId === undefined/u);
+    expect(hocSource).toMatch(/props\.inverted === undefined/u);
+    expect(hocSource).toMatch(/delete componentProps\.themeId/u);
+    expect(hocSource).toMatch(/delete componentProps\.mode/u);
+    expect(hocSource).toMatch(/delete componentProps\.inverted/u);
     expect(hocSource).toMatch(/<ZoraThemeScope/u);
   });
 

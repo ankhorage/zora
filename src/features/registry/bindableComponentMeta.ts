@@ -1,5 +1,6 @@
 import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
+import { INVERTED_POLARITY_PROP } from '../../constants/authoring';
 import { imageMeta } from '../image/imageMeta';
 import { readerSurfaceMeta } from '../reader/meta';
 
@@ -22,6 +23,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       text: {
         type: 'string',
         category: 'Content',
@@ -47,6 +49,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       text: {
         type: 'string',
         category: 'Content',
@@ -97,6 +100,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       children: {
         type: 'string',
         category: 'Content',
@@ -111,6 +115,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
   },
   Image: {
     ...imageMeta,
+    props: { ...imageMeta.props, inverted: INVERTED_POLARITY_PROP },
     bindings: {
       props: {
         source: {
@@ -174,6 +179,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       value: {
         type: 'string',
         category: 'Content',
@@ -229,6 +235,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       value: {
         type: 'string',
         category: 'Content',
@@ -284,6 +291,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       checked: {
         type: 'boolean',
         category: 'State',
@@ -339,6 +347,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       checked: { type: 'boolean', category: 'State', label: 'Checked' },
       disabled: { type: 'boolean', category: 'State', label: 'Disabled' },
     },
@@ -364,6 +373,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       items: {
         type: 'array',
         category: 'Data',
@@ -392,6 +402,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
     props: {
+      inverted: INVERTED_POLARITY_PROP,
       rows: {
         type: 'array',
         category: 'Data',
@@ -401,6 +412,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
   },
   ReaderSurface: {
     ...readerSurfaceMeta,
+    props: { ...readerSurfaceMeta.props, inverted: INVERTED_POLARITY_PROP },
     bindings: {
       props: {
         location: {
