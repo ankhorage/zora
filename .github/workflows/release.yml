@@ -33,6 +33,7 @@ jobs:
           owner: ankhorage
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
+          permission-workflows: write
 
       - name: Diagnose unavailable scoped release token
         if: steps.release-token.outcome == 'failure'
