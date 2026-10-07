@@ -2,36 +2,29 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type { AnkhCapabilityId, AnkhCommandProviderManifest } from '@ankhorage/contracts/cli';
+import type { AnkhRuntimeCommandProvider } from '@ankhorage/ankh';
+import type { Capability } from '@ankhorage/contracts/capabilities';
 
+import { CAPABILITIES } from '../capabilities';
 import { create } from './commands/create';
 import { sync } from './commands/sync';
 
-const CREATE_CAPABILITY = 'zora.create' satisfies AnkhCapabilityId;
-const SYNC_CAPABILITY = 'zora.sync' satisfies AnkhCapabilityId;
 const CREATE_COMMAND = {
   path: ['create'],
-  capability: CREATE_CAPABILITY,
+  capability: 'zora.create' satisfies Capability['id'],
   summary: 'Materialize a canonical ZORA component for a target platform.',
 } as const;
 const SYNC_COMMAND = {
   path: ['sync'],
-  capability: SYNC_CAPABILITY,
+  capability: 'zora.sync' satisfies Capability['id'],
   summary: 'Regenerate the declared ZORA web materialization.',
 } as const;
-
-interface ZoraRuntimeProvider extends AnkhCommandProviderManifest {
-  readonly handlers: readonly {
-    readonly path: readonly string[];
-    readonly handler: typeof create | typeof sync;
-  }[];
-}
 
 const provider = {
   id: '@ankhorage/zora',
   category: 'zora',
   version: readPackageVersion(),
-  capabilities: [CREATE_CAPABILITY, SYNC_CAPABILITY],
+  capabilities: CAPABILITIES,
   commands: [CREATE_COMMAND, SYNC_COMMAND],
   handlers: [
     {
@@ -43,7 +36,7 @@ const provider = {
       handler: sync,
     },
   ],
-} satisfies ZoraRuntimeProvider;
+} satisfies AnkhRuntimeCommandProvider;
 
 export default provider;
 
