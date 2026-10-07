@@ -9,7 +9,7 @@ describe('src ownership', () => {
       .map((entry) => entry.name)
       .sort();
 
-    expect(directories).toEqual(['cli', 'constants', 'features', 'types']);
+    expect(directories).toEqual(['capabilities', 'cli', 'constants', 'features', 'types']);
   });
 
   test('does not reintroduce technical ownership roots', () => {

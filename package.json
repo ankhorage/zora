@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^22.8.103",
+    "@ankhorage/contracts": "^24.1.0",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/runtime": "^3.0.59",
     "@ankhorage/surface": "^9.2.0",
@@ -87,6 +87,11 @@
       "types": "./dist/features/registry/index.d.ts",
       "import": "./dist/features/registry/index.js",
       "default": "./dist/features/registry/index.js"
+    },
+    "./capabilities": {
+      "types": "./dist/capabilities/index.d.ts",
+      "import": "./dist/capabilities/index.js",
+      "default": "./dist/capabilities/index.js"
     },
     "./theme": {
       "bun": "./src/features/theme/public.ts",
@@ -154,8 +159,98 @@
     "category": "zora",
     "provider": "./dist/cli/index.js",
     "capabilities": [
-      "zora.create",
-      "zora.sync"
+      {
+        "id": "zora.create",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Materialize ZORA web component",
+        "description": "Materialize a declared ZORA component and reconcile its web runtime.",
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "component",
+              "platform"
+            ],
+            "properties": {
+              "component": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string",
+                "const": "web"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "output": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "exitCode"
+            ],
+            "properties": {
+              "exitCode": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "id": "zora.sync",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Synchronize ZORA web components",
+        "description": "Reconcile the web runtime from the declared ZORA component set.",
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "platform"
+            ],
+            "properties": {
+              "platform": {
+                "type": "string",
+                "const": "web"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "output": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "exitCode"
+            ],
+            "properties": {
+              "exitCode": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
     ]
   }
 }

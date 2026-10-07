@@ -1,20 +1,21 @@
 import { expect, test } from 'bun:test';
 
+import { CAPABILITIES } from '../capabilities';
 import provider from './index';
 
 test('publishes ZORA create and sync through the Ankh provider', () => {
   expect(provider.id).toBe('@ankhorage/zora');
   expect(provider.category).toBe('zora');
-  expect(provider.capabilities).toEqual(['zora.create', 'zora.sync']);
+  expect(provider.capabilities).toBe(CAPABILITIES);
   expect(provider.commands).toEqual([
     {
       path: ['create'],
-      capability: 'zora.create',
+      capability: CAPABILITIES[0].id,
       summary: 'Materialize a canonical ZORA component for a target platform.',
     },
     {
       path: ['sync'],
-      capability: 'zora.sync',
+      capability: CAPABILITIES[1].id,
       summary: 'Regenerate the declared ZORA web materialization.',
     },
   ]);
