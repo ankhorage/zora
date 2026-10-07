@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type { AnkhCommandProviderManifest } from '@ankhorage/contracts/cli';
+import type { AnkhRuntimeCommandProvider } from '@ankhorage/ankh';
+import type { Capability } from '@ankhorage/contracts/capabilities';
 
 import { CAPABILITIES } from '../capabilities';
 import { create } from './commands/create';
@@ -10,21 +11,14 @@ import { sync } from './commands/sync';
 
 const CREATE_COMMAND = {
   path: ['create'],
-  capability: CAPABILITIES[0].id,
+  capability: 'zora.create' satisfies Capability['id'],
   summary: 'Materialize a canonical ZORA component for a target platform.',
 } as const;
 const SYNC_COMMAND = {
   path: ['sync'],
-  capability: CAPABILITIES[1].id,
+  capability: 'zora.sync' satisfies Capability['id'],
   summary: 'Regenerate the declared ZORA web materialization.',
 } as const;
-
-interface ZoraRuntimeProvider extends AnkhCommandProviderManifest {
-  readonly handlers: readonly {
-    readonly path: readonly string[];
-    readonly handler: typeof create | typeof sync;
-  }[];
-}
 
 const provider = {
   id: '@ankhorage/zora',
@@ -42,7 +36,7 @@ const provider = {
       handler: sync,
     },
   ],
-} satisfies ZoraRuntimeProvider;
+} satisfies AnkhRuntimeCommandProvider;
 
 export default provider;
 

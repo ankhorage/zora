@@ -5,6 +5,7 @@
     "": {
       "name": "@ankhorage/zora",
       "dependencies": {
+        "@ankhorage/ankh": "^0.12.0",
         "@ankhorage/color-theory": "^0.3.1",
         "@ankhorage/contracts": "^24.1.0",
         "@ankhorage/game": "^0.1.2",
@@ -58,6 +59,8 @@
     },
   },
   "packages": {
+    "@ankhorage/ankh": ["@ankhorage/ankh@0.12.0", "", { "dependencies": { "@ankhorage/contracts": "^24.1.0", "yaml": "^2.9.1" }, "bin": { "ankh": "dist/bin.js" } }, "sha512-Cb/OLGO3mZhoFiwVBrCzdmWnTy3N3cBK1b71FTrEtMMXvYata+/r93j+8QEgg8DfIfpw5iF7tEBD+bjWG+ClQw=="],
+
     "@ankhorage/apm": ["@ankhorage/apm@0.8.14", "", { "dependencies": { "@ankhorage/project-detector": "^0.1.0", "@ankhorage/utility": "^1.4.0", "jsonc-parser": "^3.3.1", "semver": "^7.8.5", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.10.4" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "apm": "dist/cli/runAsync.js" } }, "sha512-2y3ZJzSPwWEhhKS+c5kAYwQoeDDGkqfmtqikw0bd/not+6vdICQBIuCumH86FwKoRKz/o3FpbznoIxscu42n2g=="],
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
