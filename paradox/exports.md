@@ -5807,6 +5807,7 @@ Source: `src/types/tabs.ts:10:1`
 | themeId | property | `string \| undefined` | no |  |
 | top | property | `Responsive<number> \| undefined` | no |  |
 | value | property | `string \| undefined` | no |  |
+| variant | property | `TabsVariant \| undefined` | no |  |
 | width | property | `Responsive<string \| number> \| undefined` | no |  |
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |

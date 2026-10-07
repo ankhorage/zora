@@ -1,4 +1,5 @@
 graph LR
+  module_src_capabilities_index_ts["src/capabilities/index.ts"]
   module_src_cli_commands_create_ts["src/cli/commands/create.ts"]
   module_src_cli_commands_sync_ts["src/cli/commands/sync.ts"]
   module_src_cli_index_ts["src/cli/index.ts"]
@@ -518,6 +519,7 @@ graph LR
   module_src_types_upload_ts["src/types/upload.ts"]
   module_src_cli_commands_create_ts --> module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
   module_src_cli_commands_sync_ts --> module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
+  module_src_cli_index_ts --> module_src_capabilities_index_ts
   module_src_cli_index_ts --> module_src_cli_commands_create_ts
   module_src_cli_index_ts --> module_src_cli_commands_sync_ts
   module_src_features_accordion_accordionItemMeta_ts --> module_src_constants_authoring_ts

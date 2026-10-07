@@ -25744,6 +25744,13 @@
         "description": null
       },
       {
+        "name": "variant",
+        "kind": "property",
+        "type": "TabsVariant | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "width",
         "kind": "property",
         "type": "Responsive<string | number> | undefined",

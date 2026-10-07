@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.4.0
+
+### Minor Changes
+
+- f75cdf5: Publish canonical ZORA capability descriptors for the Ankh provider commands.
+
 ## 23.3.0
 
 ### Minor Changes
