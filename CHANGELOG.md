@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.4.1
+
+### Patch Changes
+
+- c91d5d9: Update dependencies: `@ankhorage/surface`.
+
 ## 23.4.0
 
 ### Minor Changes
