@@ -131,7 +131,7 @@
   },
   "devDependencies": {
     "@ankhorage/devtools": "^2.2.2",
-    "@ankhorage/paradox": "^0.2.28",
+    "@ankhorage/paradox": "^0.3.0",
     "@react-native-vector-icons/fontawesome": "^13.1.4",
     "@react-native-vector-icons/fontawesome5": "^13.1.4",
     "@react-native-vector-icons/fontawesome6": "^13.1.4",
