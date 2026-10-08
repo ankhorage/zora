@@ -77,12 +77,26 @@ jobs:
             echo "No build script found; skipping."
           fi
 
+      - name: Synchronize package capability metadata
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.ankh === undefined ? 1 : 0)"; then
+            if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/devtools' ? 0 : 1)"; then
+              bun ./dist/cli/bin/repository.js package sync .
+              bun ./dist/cli/bin/repository.js package status .
+            else
+              bunx --bun --no-install ankhorage-repository package sync .
+              bunx --bun --no-install ankhorage-repository package status .
+            fi
+          else
+            echo "No Ankh package metadata found; skipping capability materialization."
+          fi
+
       - name: Validate release contract
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate .
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.13.1 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.2 validate .
           fi
 
       - name: Version packages directly on main
@@ -255,6 +269,32 @@ jobs:
           }
           const output = records.sort();
           process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
+          NODE
+
+            PACKAGE_NAME="$package_name" node --input-type=module - <<'NODE'
+          import { readFileSync } from 'node:fs';
+          import { createRequire } from 'node:module';
+          import { join } from 'node:path';
+          import { pathToFileURL } from 'node:url';
+          const name = process.env.PACKAGE_NAME;
+          const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
+          const manifest = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
+          if (
+            !manifest.ankh ||
+            typeof manifest.ankh !== 'object' ||
+            !Object.hasOwn(manifest.ankh, 'capabilities')
+          ) process.exit(0);
+          const requireFromPackage = createRequire(join(packageDir, 'package.json'));
+          const contractsPath = requireFromPackage.resolve('@ankhorage/contracts/capabilities');
+          const { areCapabilitiesEqual, isCapability, normalizeCapability } = await import(pathToFileURL(contractsPath).href);
+          const { CAPABILITIES } = await import(`${name}/capabilities`);
+          const metadata = manifest.ankh.capabilities;
+          if (!Array.isArray(CAPABILITIES) || !Array.isArray(metadata) ||
+              !CAPABILITIES.every(isCapability) || !metadata.every(isCapability) ||
+              CAPABILITIES.length !== metadata.length ||
+              !CAPABILITIES.every((capability, index) => areCapabilitiesEqual(normalizeCapability(capability), metadata[index]))) {
+            throw new Error('Packed package.json ankh.capabilities must exactly match the public CAPABILITIES catalog.');
+          }
           NODE
 
             while IFS='|' read -r loader specifier; do
