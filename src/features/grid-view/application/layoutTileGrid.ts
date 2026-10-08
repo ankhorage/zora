@@ -18,9 +18,16 @@ export function layoutTileGrid(
   gap: number,
   zoom = 1,
 ): TileGridLayout {
-  if (![viewportWidth, tileSize, gap, zoom].every(Number.isFinite)
-    || viewportWidth < 0 || tileSize <= 0 || gap < 0 || zoom <= 0) {
-    throw new RangeError('Tile layout requires finite, nonnegative dimensions and positive scales.');
+  if (
+    ![viewportWidth, tileSize, gap, zoom].every(Number.isFinite) ||
+    viewportWidth < 0 ||
+    tileSize <= 0 ||
+    gap < 0 ||
+    zoom <= 0
+  ) {
+    throw new RangeError(
+      'Tile layout requires finite, nonnegative dimensions and positive scales.',
+    );
   }
   const columns = Math.max(1, Math.floor((viewportWidth / zoom + gap) / (tileSize + gap)));
   const rows = Math.ceil(items.length / columns);
