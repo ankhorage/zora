@@ -1,28 +1,47 @@
-/*** Resolve roving focus from semantic keyboard input without coupling focus policy to a renderer. */
+/*** Resolve focus along actual tile coordinates, skipping unavailable items without collapsing rows. */
 export function getExplorerNextFocusId(
   ids: readonly string[],
   currentId: string | null,
   key: string,
   columns: number,
+  disabledIds: ReadonlySet<string> = new Set(),
 ): string | null {
-  if (ids.length === 0) return null;
-  const currentIndex = currentId === null ? 0 : Math.max(0, ids.indexOf(currentId));
   const delta = resolveFocusDelta(key, columns);
-  if (delta === null) return null;
-  return ids[Math.max(0, Math.min(ids.length - 1, currentIndex + delta))] ?? null;
+  if (delta === null || ids.length === 0) return null;
+
+  const firstIndex = ids.findIndex((id) => !disabledIds.has(id));
+  if (firstIndex < 0) return null;
+
+  const currentIndex = Math.max(firstIndex, ids.indexOf(currentId ?? ''));
+  const candidateIndex =
+    delta === Number.NEGATIVE_INFINITY
+      ? 0
+      : delta === Number.POSITIVE_INFINITY
+        ? ids.length - 1
+        : Math.max(0, Math.min(ids.length - 1, currentIndex + delta));
+  const direction = delta === Number.NEGATIVE_INFINITY ? 1 : delta === Number.POSITIVE_INFINITY ? -1 : Math.sign(delta);
+
+  for (let index = candidateIndex; index >= 0 && index < ids.length; index += direction) {
+    const candidate = ids[index];
+    if (candidate !== undefined && !disabledIds.has(candidate)) return candidate;
+  }
+  return ids[currentIndex] !== undefined && !disabledIds.has(ids[currentIndex])
+    ? ids[currentIndex]
+    : ids[firstIndex] ?? null;
 }
 
-/*** Translate supported Explorer navigation keys into an ordered collection displacement. */
+/*** Translate navigation keys into collection-relative movements. */
 function resolveFocusDelta(key: string, columns: number): number | null {
+  const rowSize = Math.max(1, Math.floor(columns));
   switch (key) {
     case 'ArrowLeft':
       return -1;
     case 'ArrowRight':
       return 1;
     case 'ArrowUp':
-      return -Math.max(1, columns);
+      return -rowSize;
     case 'ArrowDown':
-      return Math.max(1, columns);
+      return rowSize;
     case 'Home':
       return Number.NEGATIVE_INFINITY;
     case 'End':
