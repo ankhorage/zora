@@ -75,7 +75,9 @@ export function GridView({
   }, [onViewportChange, viewport]);
 
   const viewportRef = React.useRef(viewport);
-  viewportRef.current = viewport;
+  React.useEffect(() => {
+    viewportRef.current = viewport;
+  }, [viewport]);
 
   React.useEffect(() => {
     const currentViewport = viewportRef.current;
