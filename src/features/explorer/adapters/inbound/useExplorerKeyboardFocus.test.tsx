@@ -47,7 +47,7 @@ test('restores native DOM focus only after a far virtual tile mounts', () => {
   const host = document.createElement('div');
   document.body.append(host);
   const root = createRoot(host);
-  const navigation: HarnessProps['navigation'] extends infer N ? N : never = [];
+  const navigation: { origin: string; target: string; extend: boolean }[] = [];
   const items = Array.from({ length: 10000 }, (_, i): ExplorerItem => ({
     id: `tile-${i}`,
     name: `Tile ${i}`,
