@@ -1,0 +1,38 @@
+name: GridView one-time autofix
+
+on:
+  push:
+    branches:
+      - feat/grid-view-explorer
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/grid-view-explorer
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: bun install
+      - name: Apply repository-owned tooling
+        run: |
+          bun run lint:fix || true
+          bun run format
+      - name: Commit canonical formatting and generated lockfile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- package.json bun.lock src/index.ts src/constants/authoring.ts src/features/explorer src/features/grid-view src/features/registry src/features/uploader src/types/explorer.ts src/types/grid-view.ts src/types/upload.ts .changeset/grid-view-explorer.md
+          git rm -- .github/workflows/grid-view-autofix.yml
+          git commit -m "style(explorer): apply canonical tooling and lockfile"
+          git push origin HEAD:feat/grid-view-explorer
