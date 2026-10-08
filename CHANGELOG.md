@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.0.3
+
+### Patch Changes
+
+- 2e820ec: Update dependencies: `@ankhorage/runtime`.
+
 ## 24.0.2
 
 ### Patch Changes
