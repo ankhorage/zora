@@ -1,5 +1,4 @@
-import { getVisibleGridItems, worldToViewport } from '@ankhorage/grid-view';
-import type { GridViewport } from '@ankhorage/grid-view';
+import { getVisibleGridItems, type GridViewport, worldToViewport } from '@ankhorage/grid-view';
 import React from 'react';
 import { ScrollView as NativeScrollView, View as NativeView } from 'react-native';
 
