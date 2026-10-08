@@ -8,6 +8,7 @@ export function useExplorerKeyboardFocus(
   items: readonly ExplorerItem[],
   columns: number,
   disabled: boolean,
+  visibleIds: readonly string[],
   onNavigate: (targetId: string, originId: string, shiftKey: boolean) => void,
 ) {
   const [focusedId, setFocusedId] = React.useState<string | null>(null);
@@ -19,10 +20,11 @@ export function useExplorerKeyboardFocus(
     () => new Set(items.filter((item) => item.disabled).map(({ id }) => id)),
     [items],
   );
+  const visibleEligibleIds = visibleIds.filter((id) => ids.includes(id) && !disabledIds.has(id));
   const tabStopId =
-    focusedId !== null && ids.includes(focusedId) && !disabledIds.has(focusedId)
+    focusedId !== null && visibleEligibleIds.includes(focusedId)
       ? focusedId
-      : ids.find((id) => !disabledIds.has(id));
+      : visibleEligibleIds[0] ?? ids.find((id) => !disabledIds.has(id));
 
   const onFocus = React.useCallback((id: string) => {
     pendingFocusRef.current = null;
