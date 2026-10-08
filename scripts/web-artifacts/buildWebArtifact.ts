@@ -257,11 +257,12 @@ function collectRuntimeImports(root: ts.SourceFile): readonly string[] {
     if (
       ts.isCallExpression(node) &&
       (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
-        (ts.isIdentifier(node.expression) && node.expression.text === 'require')) &&
-      node.arguments.length > 0 &&
-      ts.isStringLiteral(node.arguments[0])
+        (ts.isIdentifier(node.expression) && node.expression.text === 'require'))
     ) {
-      specifiers.push(node.arguments[0].text);
+      const argument = node.arguments[0];
+      if (argument !== undefined && ts.isStringLiteral(argument)) {
+        specifiers.push(argument.text);
+      }
     }
     ts.forEachChild(node, visit);
   };
