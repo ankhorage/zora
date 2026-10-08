@@ -37,8 +37,8 @@ function ExplorerInner({
   const [internalSelectedIds, setInternalSelectedIds] = React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
-  const allowedItems = items.filter((item) => !item.disabled);
-  const ids = allowedItems.map((item) => item.id);
+  const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
+  const ids = items.filter((item) => !item.disabled).map((item) => item.id);
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
 
@@ -51,7 +51,7 @@ function ExplorerInner({
   };
 
   const renderTile = (tile: { readonly id: string }) => {
-    const item = items.find((candidate) => candidate.id === tile.id);
+    const item = itemLookup.get(tile.id);
     if (!item) return null;
     const isSelected = selected.has(item.id);
     const canInteract = !passive && !item.disabled;
@@ -63,9 +63,13 @@ function ExplorerInner({
         disabled={!canInteract}
         onLongPress={() => select(item, 'toggle')}
         onPress={(event) => {
-          const nativeEvent = event.nativeEvent as unknown as Readonly<Record<string, unknown>>;
-          const intent = nativeEvent.shiftKey === true ? 'range'
-            : nativeEvent.ctrlKey === true || nativeEvent.metaKey === true ? 'toggle' : 'replace';
+          const nativeEvent: unknown = event.nativeEvent;
+          const modifiers = typeof nativeEvent === 'object' && nativeEvent !== null
+            ? nativeEvent : {};
+          const intent = 'shiftKey' in modifiers && modifiers.shiftKey === true
+            ? 'range'
+            : ('ctrlKey' in modifiers && modifiers.ctrlKey === true)
+              || ('metaKey' in modifiers && modifiers.metaKey === true) ? 'toggle' : 'replace';
           select(item, intent);
           if (selectionMode === 'single' && intent === 'replace') onActivate?.({ id: item.id });
         }}
