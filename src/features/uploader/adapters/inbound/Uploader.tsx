@@ -90,53 +90,56 @@ function UploaderInner({
     [isMounted],
   );
 
-  const acceptPicked = React.useCallback(async (picked: UploadAsset | null) => {
-    if (!picked || !isMounted() || passive || actionsDisabled || uploading || removing) return;
-    setInternalError(undefined);
-    const validationError = validateUploadAsset({
-      accept: resolvedAccept,
-      asset: picked,
-      maxSizeBytes,
-      validate: validatePicked,
-    });
-    if (validationError) {
-      setInternalError(validationError);
-      onValidationError?.({ message: validationError });
-      return;
-    }
-    notifyValue(picked);
-    onUploadRequest?.({ asset: picked });
-    if (!onUpload) return;
+  const acceptPicked = React.useCallback(
+    async (picked: UploadAsset | null) => {
+      if (!picked || !isMounted() || passive || actionsDisabled || uploading || removing) return;
+      setInternalError(undefined);
+      const validationError = validateUploadAsset({
+        accept: resolvedAccept,
+        asset: picked,
+        maxSizeBytes,
+        validate: validatePicked,
+      });
+      if (validationError) {
+        setInternalError(validationError);
+        onValidationError?.({ message: validationError });
+        return;
+      }
+      notifyValue(picked);
+      onUploadRequest?.({ asset: picked });
+      if (!onUpload) return;
 
-    setUploading(true);
-    setProgressSafe(0);
-    try {
-      const uploaded = await onUpload(picked, { setProgress: setProgressSafe });
-      if (!isMounted()) return;
-      notifyValue(uploaded);
-      setUploading(false);
-      setProgress(null);
-    } catch (error) {
-      if (!isMounted()) return;
-      setInternalError(formatUnknownError(error));
-      setUploading(false);
-      setProgress(null);
-    }
-  }, [
-    actionsDisabled,
-    isMounted,
-    maxSizeBytes,
-    notifyValue,
-    onUpload,
-    onUploadRequest,
-    onValidationError,
-    passive,
-    removing,
-    resolvedAccept,
-    setProgressSafe,
-    uploading,
-    validatePicked,
-  ]);
+      setUploading(true);
+      setProgressSafe(0);
+      try {
+        const uploaded = await onUpload(picked, { setProgress: setProgressSafe });
+        if (!isMounted()) return;
+        notifyValue(uploaded);
+        setUploading(false);
+        setProgress(null);
+      } catch (error) {
+        if (!isMounted()) return;
+        setInternalError(formatUnknownError(error));
+        setUploading(false);
+        setProgress(null);
+      }
+    },
+    [
+      actionsDisabled,
+      isMounted,
+      maxSizeBytes,
+      notifyValue,
+      onUpload,
+      onUploadRequest,
+      onValidationError,
+      passive,
+      removing,
+      resolvedAccept,
+      setProgressSafe,
+      uploading,
+      validatePicked,
+    ],
+  );
 
   const handlePick = React.useCallback(async () => {
     if (passive || actionsDisabled || uploading || removing) return;
