@@ -43,7 +43,10 @@ function ExplorerInner({
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
-  const ids = React.useMemo(() => items.filter((item) => !item.disabled).map((item) => item.id), [items]);
+  const ids = React.useMemo(
+    () => items.filter((item) => !item.disabled).map((item) => item.id),
+    [items],
+  );
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
 
