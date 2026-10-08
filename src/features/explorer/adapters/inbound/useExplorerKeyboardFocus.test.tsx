@@ -16,7 +16,7 @@ interface HarnessProps {
 }
 
 function FocusHarness({ items, mountedIds, columns, navigation }: HarnessProps) {
-  const keyboard = useExplorerKeyboardFocus(items, columns, false, (target, origin, extend) => {
+  const keyboard = useExplorerKeyboardFocus(items, columns, false, mountedIds, (target, origin, extend) => {
     navigation.push({ origin, target, extend });
   });
   return (
@@ -145,6 +145,10 @@ test('rapid navigation cancels a pending focus and handles resize, range and una
     expect(document.activeElement?.getAttribute('data-tile')).toBe('a');
     expect(host.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
     expect(host.querySelector<HTMLButtonElement>('[data-tile="c"]')?.tabIndex).toBe(-1);
+
+    act(() => root.render(render(230, ['d', 'e', 'f'])));
+    expect(host.querySelector<HTMLButtonElement>('[data-tile="d"]')?.tabIndex).toBe(0);
+    expect(host.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
   } finally {
     act(() => root.unmount());
     host.remove();
