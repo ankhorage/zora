@@ -66,7 +66,7 @@ export function useExplorerKeyboardFocus(
     [columns, disabled, disabledIds, ids, onNavigate],
   );
 
-  return { focusedId: tabStopId, onFocus, onKeyDown, registerTile };
+  return { focusedId, tabStopId, onFocus, onKeyDown, registerTile };
 }
 
 interface FocusableTile {
