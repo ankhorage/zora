@@ -17,6 +17,7 @@ export function TileGrid({
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
   testID,
@@ -47,6 +48,7 @@ export function TileGrid({
           focusedItemId={focusedItemId}
           interactionPolicy={interactionPolicy}
           items={layout.items}
+          onVisibleItemIdsChange={onVisibleItemIdsChange}
           overscanPixels={overscanPixels}
           renderItem={(item) => {
             const source = itemLookup.get(item.id);
