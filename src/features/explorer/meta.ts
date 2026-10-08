@@ -6,7 +6,14 @@ const explorerProps = {
     category: 'Data',
     itemSchema: [
       { key: 'id', schema: { type: 'string', category: 'Identity' } },
-      { key: 'kind', schema: { type: 'enum', category: 'Data', enum: ['image', 'video', 'audio', 'document', 'file', 'folder'] } },
+      {
+        key: 'kind',
+        schema: {
+          type: 'enum',
+          category: 'Data',
+          enum: ['image', 'video', 'audio', 'document', 'file', 'folder'],
+        },
+      },
       { key: 'name', schema: { type: 'string', category: 'Content' } },
       { key: 'uri', schema: { type: 'string', category: 'Data' } },
       { key: 'thumbnailUri', schema: { type: 'string', category: 'Media' } },
@@ -16,7 +23,12 @@ const explorerProps = {
       { key: 'disabled', schema: { type: 'boolean', category: 'State' } },
     ],
   },
-  selectionMode: { type: 'enum', category: 'Selection', enum: ['single', 'multi'], default: 'single' },
+  selectionMode: {
+    type: 'enum',
+    category: 'Selection',
+    enum: ['single', 'multi'],
+    default: 'single',
+  },
   selectedIds: { type: 'array', category: 'Selection' },
   tileSize: { type: 'number', category: 'Layout', default: 120 },
   height: { type: 'number', category: 'Layout', default: 440 },
@@ -58,7 +70,10 @@ export const mediaExplorerMeta = {
   description: 'Virtualized media library with normalized selection and activation events.',
   directManifestNode: true,
   allowedChildren: [],
-  blueprint: { label: 'Media explorer', defaultProps: { items: [], selectionMode: 'single', tileSize: 120 } },
+  blueprint: {
+    label: 'Media explorer',
+    defaultProps: { items: [], selectionMode: 'single', tileSize: 120 },
+  },
   events: explorerEvents,
   props: explorerProps,
 } as const satisfies ZoraComponentMeta;
@@ -69,7 +84,10 @@ export const fileExplorerMeta = {
   description: 'Virtualized file and folder collection with normalized selection and activation.',
   directManifestNode: true,
   allowedChildren: [],
-  blueprint: { label: 'File explorer', defaultProps: { items: [], selectionMode: 'single', tileSize: 120 } },
+  blueprint: {
+    label: 'File explorer',
+    defaultProps: { items: [], selectionMode: 'single', tileSize: 120 },
+  },
   events: explorerEvents,
   props: explorerProps,
 } as const satisfies ZoraComponentMeta;
