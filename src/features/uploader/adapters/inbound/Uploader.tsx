@@ -300,7 +300,7 @@ function UploaderInner({
           visible={explorerOpen}
         >
           <Explorer
-            items={explorerItems.filter((item) => item.uploadAsset !== undefined)}
+            items={explorerItems}
             height={360}
             interactionPolicy={interactionPolicy}
             onActivate={({ id }) => {
