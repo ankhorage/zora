@@ -156,7 +156,10 @@ function ExplorerInner({
   );
 }
 
-/*** Normalize platform press modifiers for multi-selection without passing event objects into contracts. */
+/***
+ * Normalize platform press modifiers into selection intents
+ * without passing event objects into the public contracts.
+ */
 function resolveExplorerPressIntent(event: unknown): 'replace' | 'toggle' | 'range' {
   if (typeof event !== 'object' || event === null) return 'replace';
   if ('shiftKey' in event && event.shiftKey === true) return 'range';
