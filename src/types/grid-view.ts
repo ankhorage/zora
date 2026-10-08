@@ -12,6 +12,10 @@ export interface GridViewProps extends ZoraBaseProps {
   height: number;
   zoom?: number;
   overscanPixels?: number;
+  /** Stable item identity that must be scrolled into view without duplicating viewport geometry. */
+  focusedItemId?: string;
+  /** Pixel inset retained around a revealed focused item. */
+  revealPaddingPixels?: number;
   onViewportChange?: (viewport: GridViewport) => void;
   renderItem: (item: GridRectItem) => React.ReactNode;
 }
@@ -30,5 +34,7 @@ export interface TileGridProps extends ZoraBaseProps {
   gap?: number;
   zoom?: number;
   overscanPixels?: number;
+  focusedItemId?: string;
+  revealPaddingPixels?: number;
   renderItem: (item: TileGridItem) => React.ReactNode;
 }

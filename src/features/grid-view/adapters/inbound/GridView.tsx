@@ -1,4 +1,9 @@
-import { getVisibleGridItems, type GridViewport, worldToViewport } from '@ankhorage/grid-view';
+import {
+  getVisibleGridItems,
+  type GridViewport,
+  revealWorldRect,
+  worldToViewport,
+} from '@ankhorage/grid-view';
 import React from 'react';
 import { ScrollView as NativeScrollView, View as NativeView } from 'react-native';
 
@@ -18,6 +23,8 @@ export function GridView({
   height,
   zoom = 1,
   overscanPixels = 160,
+  focusedItemId,
+  revealPaddingPixels = 8,
   interactionPolicy,
   onViewportChange,
   renderItem,
@@ -25,6 +32,8 @@ export function GridView({
 }: GridViewProps) {
   const [scrollX, setScrollX] = React.useState(0);
   const [scrollY, setScrollY] = React.useState(0);
+  const horizontalScrollRef = React.useRef<NativeScrollView>(null);
+  const verticalScrollRef = React.useRef<NativeScrollView>(null);
   const scale = Math.max(0.01, zoom);
   const viewport = React.useMemo<GridViewport>(
     () => ({
@@ -46,8 +55,21 @@ export function GridView({
     onViewportChange?.(viewport);
   }, [onViewportChange, viewport]);
 
+  React.useEffect(() => {
+    const focusedItem = items.find((item) => item.id === focusedItemId);
+    if (!focusedItem) return;
+    const revealed = revealWorldRect(viewport, focusedItem, revealPaddingPixels);
+    if (revealed.offsetX !== viewport.offsetX) {
+      horizontalScrollRef.current?.scrollTo({ x: revealed.offsetX * scale, animated: true });
+    }
+    if (revealed.offsetY !== viewport.offsetY) {
+      verticalScrollRef.current?.scrollTo({ y: revealed.offsetY * scale, animated: true });
+    }
+  }, [focusedItemId, items, revealPaddingPixels, scale, viewport]);
+
   return (
     <NativeScrollView
+      ref={horizontalScrollRef}
       horizontal
       scrollEnabled={interactionPolicy !== 'passive'}
       scrollEventThrottle={32}
@@ -57,6 +79,7 @@ export function GridView({
       onScroll={(event) => setScrollX(event.nativeEvent.contentOffset.x)}
     >
       <NativeScrollView
+        ref={verticalScrollRef}
         scrollEnabled={interactionPolicy !== 'passive'}
         scrollEventThrottle={32}
         showsVerticalScrollIndicator

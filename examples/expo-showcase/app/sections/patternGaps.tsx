@@ -139,6 +139,7 @@ export function PatternGapsSection() {
           expandedIds={[]}
           expansionIndicator="chevron"
           onToggleExpand={() => undefined}
+          selectedIds={[]}
         />
       </Card>
 

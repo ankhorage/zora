@@ -7,6 +7,7 @@ export default createKnipConfig({
     'scripts/web-artifacts/verifyWebMaterialization.ts',
     'examples/basic-app/App.tsx',
     'examples/game-presentation/index.ts',
+    'examples/grid-workspaces/index.ts',
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
     'src/features/uploader/composition/createUploadPicker.web.ts',

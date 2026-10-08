@@ -44,7 +44,7 @@
     "@ankhorage/color-theory": "^0.3.1",
     "@ankhorage/contracts": "^24.2.1",
     "@ankhorage/game": "^0.1.2",
-    "@ankhorage/grid-view": "^0.1.1",
+    "@ankhorage/grid-view": "^0.2.0",
     "@ankhorage/reader": "^0.1.0",
     "@ankhorage/runtime": "^4.0.6",
     "@ankhorage/surface": "^9.4.2",

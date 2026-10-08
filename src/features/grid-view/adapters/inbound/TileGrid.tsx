@@ -14,6 +14,8 @@ export function TileGrid({
   gap = 12,
   zoom = 1,
   overscanPixels,
+  focusedItemId,
+  revealPaddingPixels,
   renderItem,
   interactionPolicy,
   testID,
@@ -37,6 +39,7 @@ export function TileGrid({
           contentHeight={layout.height}
           contentWidth={Math.max(resolvedWidth / zoom, layout.width)}
           height={height}
+          focusedItemId={focusedItemId}
           interactionPolicy={interactionPolicy}
           items={layout.items}
           overscanPixels={overscanPixels}
@@ -44,6 +47,7 @@ export function TileGrid({
             const source = itemLookup.get(item.id);
             return source ? renderItem(source) : null;
           }}
+          revealPaddingPixels={revealPaddingPixels}
           width={resolvedWidth}
           zoom={zoom}
         />

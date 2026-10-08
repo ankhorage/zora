@@ -6,6 +6,7 @@ const REPOSITORY_ROOT = resolve(import.meta.dir, '..');
 const EXAMPLE_PROJECTS = [
   'examples/basic-app',
   'examples/expo-showcase',
+  'examples/grid-workspaces',
   'examples/food_drink/restaurant',
   'examples/shopping_commerce/marketplace',
   'examples/shopping_commerce/storefront',
@@ -15,7 +16,12 @@ const EXAMPLE_PROJECTS = [
   'examples/social_community/visual-discovery',
 ] as const;
 
-const ROUTER_EXAMPLE_PROJECTS = EXAMPLE_PROJECTS.slice(2);
+const ROUTER_EXAMPLE_PROJECTS = EXAMPLE_PROJECTS.filter(
+  (project) =>
+    project !== 'examples/basic-app' &&
+    project !== 'examples/expo-showcase' &&
+    project !== 'examples/grid-workspaces',
+);
 
 function collectRouteModules(root: string): readonly string[] {
   const routeModules: string[] = [];

@@ -8,7 +8,9 @@ import { Image } from '../../../image/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
+import { getExplorerNextFocusId } from '../../application/getExplorerNextFocusId';
 import { resolveExplorerSelection } from '../../application/resolveExplorerSelection';
+import { ExplorerKeyboardProxy } from './ExplorerKeyboardProxy';
 
 /*** Single canonical Explorer implementation for media and file catalogue presentation. */
 export const Explorer = withZoraThemeScope(ExplorerInner);
@@ -37,11 +39,14 @@ function ExplorerInner({
   const [internalSelectedIds, setInternalSelectedIds] =
     React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
+  const [focusedId, setFocusedId] = React.useState<string | null>(null);
+  const tileRefs = React.useRef(new Map<string, { focus?: () => void }>());
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const ids = items.filter((item) => !item.disabled).map((item) => item.id);
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
+  const columns = Math.max(1, Math.floor(((width ?? tileSize) + 12) / (tileSize + 12)));
 
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;
@@ -64,47 +69,68 @@ function ExplorerInner({
     const isSelected = selected.has(item.id);
     const canInteract = !passive && !item.disabled;
     return (
-      <NativePressable
-        accessibilityLabel={item.name}
-        accessibilityRole="button"
-        accessibilityState={{ selected: isSelected, disabled: !canInteract }}
-        disabled={!canInteract}
-        onLongPress={() => select(item, 'toggle')}
-        onPress={(event) => {
-          const intent = resolveExplorerPressIntent(event.nativeEvent);
-          select(item, intent);
-          if (selectionMode === 'single' && intent === 'replace') {
-            onActivate?.({ id: item.id });
+      <ExplorerKeyboardProxy
+        onKeyDown={(key, shiftKey) => {
+          const nextId = getExplorerNextFocusId(ids, item.id, key, columns);
+          if (!nextId || nextId === item.id) return;
+          setFocusedId(nextId);
+          setTimeout(() => tileRefs.current.get(nextId)?.focus?.(), 0);
+          if (shiftKey) {
+            const nextItem = itemLookup.get(nextId);
+            if (nextItem) select(nextItem, 'range');
           }
         }}
-        style={{
-          flex: 1,
-          overflow: 'hidden',
-          borderRadius: 8,
-          borderWidth: isSelected ? 2 : 1,
-          borderColor: isSelected ? theme.colors.primary : theme.semantics.neutral.divider,
-          backgroundColor: theme.semantics.neutral.surface,
-          padding: 8,
-          gap: 4,
-        }}
-        testID={`explorer-item-${item.id}`}
       >
-        <NativeView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          {item.thumbnailUri ? (
-            <Image
-              accessibilityLabel={item.name}
-              aspectRatio={1}
-              source={item.thumbnailUri}
-              width="100%"
-            />
-          ) : (
-            <Icon name={item.kind === 'folder' ? 'folder-outline' : 'document-outline'} size={32} />
-          )}
-        </NativeView>
-        <Text numberOfLines={1} variant="caption">
-          {item.name}
-        </Text>
-      </NativePressable>
+        <NativePressable
+          accessibilityLabel={item.name}
+          accessibilityRole="button"
+          accessibilityState={{ selected: isSelected, disabled: !canInteract }}
+          disabled={!canInteract}
+          onFocus={() => setFocusedId(item.id)}
+          onLongPress={() => select(item, 'toggle')}
+          onPress={(event) => {
+            const intent = resolveExplorerPressIntent(event.nativeEvent);
+            select(item, intent);
+            if (selectionMode === 'single' && intent === 'replace') {
+              onActivate?.({ id: item.id });
+            }
+          }}
+          style={{
+            flex: 1,
+            overflow: 'hidden',
+            borderRadius: 8,
+            borderWidth: isSelected ? 2 : 1,
+            borderColor: isSelected ? theme.colors.primary : theme.semantics.neutral.divider,
+            backgroundColor: theme.semantics.neutral.surface,
+            padding: 8,
+            gap: 4,
+          }}
+          ref={(node) => {
+            if (node) tileRefs.current.set(item.id, node);
+            else tileRefs.current.delete(item.id);
+          }}
+          testID={`explorer-item-${item.id}`}
+        >
+          <NativeView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {item.thumbnailUri ? (
+              <Image
+                accessibilityLabel={item.name}
+                aspectRatio={1}
+                source={item.thumbnailUri}
+                width="100%"
+              />
+            ) : (
+              <Icon
+                name={item.kind === 'folder' ? 'folder-outline' : 'document-outline'}
+                size={32}
+              />
+            )}
+          </NativeView>
+          <Text numberOfLines={1} variant="caption">
+            {item.name}
+          </Text>
+        </NativePressable>
+      </ExplorerKeyboardProxy>
     );
   };
 
@@ -115,6 +141,7 @@ function ExplorerInner({
   return (
     <TileGrid
       height={height}
+      focusedItemId={focusedId ?? undefined}
       interactionPolicy={interactionPolicy}
       items={items}
       renderItem={renderTile}
