@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "24.0.0",
+  "version": "24.0.3",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -40,14 +40,14 @@
     "react-native-worklets": "0.10.1"
   },
   "dependencies": {
-    "@ankhorage/ankh": "^0.12.0",
+    "@ankhorage/ankh": "^0.12.2",
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^24.1.0",
+    "@ankhorage/contracts": "^24.2.0",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/grid-view": "^0.1.1",
     "@ankhorage/reader": "^0.1.0",
-    "@ankhorage/runtime": "^4.0.3",
-    "@ankhorage/surface": "^9.4.0",
+    "@ankhorage/runtime": "^4.0.5",
+    "@ankhorage/surface": "^9.4.1",
     "@ankhorage/utility": "^1.9.85",
     "chess.js": "^1.4.0",
     "expo-document-picker": "~57.0.3",
