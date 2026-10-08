@@ -224,19 +224,50 @@ async function validateBundle(bundlePath: string): Promise<void> {
   if (source.includes('jsxDEV') || source.includes('react/jsx-dev-runtime')) {
     throw new Error(`ZORA web output uses the development JSX runtime: ${bundlePath}`);
   }
-  const imports = source.matchAll(/(?:from\s+|import\(|require\()(["'])([^"'./][^"']*)\1/g);
-  for (const match of imports) {
-    const specifier = match[2];
+  const javascript = ts.createSourceFile(
+    bundlePath,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.JS,
+  );
+  for (const specifier of collectRuntimeImports(javascript)) {
     if (
-      specifier !== undefined &&
       specifier !== 'react' &&
       !specifier.startsWith('react/') &&
       specifier !== 'react-dom' &&
       !specifier.startsWith('react-dom/')
     ) {
-      throw new Error(`ZORA web output leaked runtime dependency "${specifier}".`);
+      throw new Error(`ZORA web output leaked runtime dependency "${specifier}" in ${bundlePath}.`);
     }
   }
+}
+
+/*** Inspect executable imports rather than matching import-looking text inside bundled strings. */
+function collectRuntimeImports(root: ts.SourceFile): readonly string[] {
+  const specifiers: string[] = [];
+  const visit = (node: ts.Node): void => {
+    if (
+      (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) &&
+      node.moduleSpecifier !== undefined &&
+      ts.isStringLiteral(node.moduleSpecifier)
+    ) {
+      specifiers.push(node.moduleSpecifier.text);
+    }
+    if (
+      ts.isCallExpression(node) &&
+      (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
+        (ts.isIdentifier(node.expression) && node.expression.text === 'require'))
+    ) {
+      const argument = node.arguments[0];
+      if (argument !== undefined && ts.isStringLiteral(argument)) {
+        specifiers.push(argument.text);
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(root);
+  return specifiers.filter((specifier) => !specifier.startsWith('.') && !specifier.startsWith('/'));
 }
 
 /*** Preserve specialized declarations plus any public types omitted by their runtime override. */

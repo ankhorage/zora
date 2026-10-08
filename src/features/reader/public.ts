@@ -7,9 +7,9 @@ export type {
   ReaderLineHeight,
   ReaderLocationChangeEvent,
   ReaderNavigationTrigger,
+  ReaderProps,
   ReaderResolvedSource,
   ReaderStatus,
-  ReaderSurfaceProps,
 } from '../../types/reader';
-export { ReaderSurface } from './adapters/inbound/ReaderSurface';
+export { Reader } from './adapters/inbound/Reader';
 export { resolveReaderProgress } from './utils/resolveReaderProgress';

@@ -58,7 +58,7 @@ import { PaletteItem } from '../palette-item/public';
 import { PopoverMenu } from '../popover-menu/public';
 import { Progress, ProgressRing } from '../progress/public';
 import { Rating } from '../rating/public';
-import { ReaderSurface } from '../reader/public';
+import { Reader } from '../reader/public';
 import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from '../scanner/public';
 import { ScreenSection, SectionHeader } from '../section/public';
 import { SelectableItem } from '../selection/public';
@@ -199,7 +199,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   MissingElement,
   PostCard,
   ProductCard,
-  ReaderSurface,
+  Reader,
   BarcodeScannerView,
   CameraPermissionView,
   ScanOverlay,

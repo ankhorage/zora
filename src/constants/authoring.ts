@@ -114,7 +114,7 @@ export const CONTAINER_ALLOWED_CHILDREN = [
   'ChatListItem',
   'MessageBubble',
   'ProgressRing',
-  'ReaderSurface',
+  'Reader',
   'ContentRail',
   'MissingElement',
 ] as const;

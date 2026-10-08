@@ -3,11 +3,10 @@ import type { ZoraComponentMeta } from '../../types/authoring';
 
 const EMPTY_EVENT_FIELDS = [] as const;
 
-export const readerSurfaceMeta = {
-  name: 'ReaderSurface',
+export const readerMeta = {
+  name: 'Reader',
   category: 'pattern',
-  description:
-    'Adapter-neutral EPUB and PDF reader shell with controlled chrome, progress, and navigation events.',
+  description: 'Themed EPUB and PDF reader with standalone engine, progress and navigation events.',
   directManifestNode: true,
   requirements: {
     capabilities: { ebookReader: true },
@@ -88,10 +87,6 @@ export const readerSurfaceMeta = {
     },
   },
   slots: {
-    viewport: {
-      label: 'Reader viewport adapter',
-      allowedChildren: [],
-    },
     headerActions: {
       label: 'Header actions',
       allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],

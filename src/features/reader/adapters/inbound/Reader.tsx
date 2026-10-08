@@ -1,6 +1,7 @@
+import { ReaderView } from '@ankhorage/reader';
 import React from 'react';
 
-import type { ReaderStatus, ReaderSurfaceProps } from '../../../../types/reader';
+import type { ReaderProps, ReaderStatus } from '../../../../types/reader';
 import { AppBar } from '../../../app-bar/public';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
@@ -9,6 +10,7 @@ import { Surface } from '../../../surface/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
+import { useReaderController } from '../../composition/useReaderController';
 import { resolveReaderProgress } from '../../utils/resolveReaderProgress';
 
 function resolvePageLabel(page: number | undefined, pageCount: number | undefined): string | null {
@@ -20,7 +22,7 @@ function resolvePageLabel(page: number | undefined, pageCount: number | undefine
 function resolveCanGoPrevious({
   canGoPrevious,
   page,
-}: Pick<ReaderSurfaceProps, 'canGoPrevious' | 'page'>): boolean {
+}: Pick<ReaderProps, 'canGoPrevious' | 'page'>): boolean {
   if (canGoPrevious !== undefined) return canGoPrevious;
   return page === undefined || page > 1;
 }
@@ -29,7 +31,7 @@ function resolveCanGoNext({
   canGoNext,
   page,
   pageCount,
-}: Pick<ReaderSurfaceProps, 'canGoNext' | 'page' | 'pageCount'>): boolean {
+}: Pick<ReaderProps, 'canGoNext' | 'page' | 'pageCount'>): boolean {
   if (canGoNext !== undefined) return canGoNext;
   return page === undefined || pageCount === undefined || page < pageCount;
 }
@@ -74,7 +76,7 @@ function ReaderHeader({
   onOpenAppearance,
   onToggleHighlight,
 }: Pick<
-  ReaderSurfaceProps,
+  ReaderProps,
   | 'interactionPolicy'
   | 'title'
   | 'subtitle'
@@ -150,7 +152,7 @@ function ReaderFooter({
   onPreviousPage,
   onNextPage,
 }: Pick<
-  ReaderSurfaceProps,
+  ReaderProps,
   | 'interactionPolicy'
   | 'status'
   | 'page'
@@ -231,19 +233,19 @@ function ReaderFooter({
   );
 }
 
-function ReaderSurfaceInner({
+function ReaderInner({
   themeId: _themeId,
   mode: _mode,
   interactionPolicy,
-  source: _source,
-  format: _format,
-  location: _location,
-  status = 'idle',
-  page,
-  pageCount,
-  progress,
-  canGoPrevious,
-  canGoNext,
+  source,
+  format,
+  location,
+  status: statusOverride,
+  page: pageOverride,
+  pageCount: pageCountOverride,
+  progress: progressOverride,
+  canGoPrevious: canGoPreviousOverride,
+  canGoNext: canGoNextOverride,
   title,
   subtitle,
   chapterLabel,
@@ -257,28 +259,62 @@ function ReaderSurfaceInner({
   errorTitle = 'Unable to open this document.',
   unavailableTitle = 'Reader preview unavailable.',
   showChrome = true,
-  readerColorScheme: _readerColorScheme = 'system',
-  fontScale: _fontScale = 1,
-  lineHeight: _lineHeight = 'normal',
+  readerColorScheme = 'system',
+  fontScale = 1,
+  lineHeight = 'normal',
   highlighted = false,
-  viewport,
   headerActions,
   footerActions,
   onPreviousPage,
   onNextPage,
-  onLocationChange: _onLocationChange,
+  onLocationChange,
   onOpenContents,
   onOpenAppearance,
   onToggleHighlight,
-  onOpenExternalLink: _onOpenExternalLink,
-  onReaderError: _onReaderError,
+  onOpenExternalLink,
+  onReaderError,
   testID,
-}: ReaderSurfaceProps) {
+}: ReaderProps) {
   const { theme } = useZoraTheme();
+  const reader = useReaderController({
+    source,
+    format,
+    location,
+    readerColorScheme,
+    fontScale,
+    lineHeight,
+    onNextPage,
+    onPreviousPage,
+    onLocationChange,
+    onOpenExternalLink,
+    onReaderError,
+  });
+  const status =
+    reader.sourceUri === undefined
+      ? 'idle'
+      : reader.error === undefined
+        ? (statusOverride ?? reader.state.status)
+        : 'error';
+  const page = pageOverride ?? reader.state.page;
+  const pageCount = pageCountOverride ?? reader.state.pageCount;
+  const progress = progressOverride ?? reader.state.progress;
+  const canGoPrevious = canGoPreviousOverride ?? reader.state.canGoPrevious;
+  const canGoNext = canGoNextOverride ?? reader.state.canGoNext;
+  const chapter = chapterLabel ?? reader.state.location?.chapterTitle;
 
   const viewportContent =
-    viewport && status !== 'error' ? (
-      viewport
+    reader.sourceUri !== undefined && status !== 'error' ? (
+      <ReaderView
+        key={`${reader.sourceUri}:${format}`}
+        sourceUri={reader.sourceUri}
+        format={format}
+        appearance={reader.appearance}
+        initialLocation={location}
+        command={reader.command}
+        onStateChange={reader.handleStateChange}
+        onError={reader.handleError}
+        onOpenExternalLink={reader.handleOpenExternalLink}
+      />
     ) : (
       <ReaderEmptyState
         errorTitle={errorTitle}
@@ -320,12 +356,12 @@ function ReaderSurfaceInner({
           <ReaderFooter
             canGoNext={canGoNext}
             canGoPrevious={canGoPrevious}
-            chapterLabel={chapterLabel}
+            chapterLabel={chapter}
             footerActions={footerActions}
             interactionPolicy={interactionPolicy}
             nextPageLabel={nextPageLabel}
-            onNextPage={onNextPage}
-            onPreviousPage={onPreviousPage}
+            onNextPage={reader.goNext}
+            onPreviousPage={reader.goPrevious}
             page={page}
             pageCount={pageCount}
             pageLabel={pageLabel}
@@ -340,10 +376,8 @@ function ReaderSurfaceInner({
 }
 
 /***
- * Adapter-neutral reader shell for EPUB and PDF experiences.
+ * The themed EPUB/PDF Reader composed around the independent ReaderView engine.
  *
- * Supply the actual renderer through `viewport`; ZORA owns only the reader
- * chrome, controlled state, progress, accessible controls, and normalized
- * adapter callbacks.
+ * Rendering, pagination and navigation remain owned by @ankhorage/reader.
  */
-export const ReaderSurface = withZoraThemeScope(ReaderSurfaceInner);
+export const Reader = withZoraThemeScope(ReaderInner);
