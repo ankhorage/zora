@@ -1,10 +1,7 @@
 import { getVisibleGridItems, worldToViewport } from '@ankhorage/grid-view';
 import type { GridViewport } from '@ankhorage/grid-view';
 import React from 'react';
-import {
-  ScrollView as NativeScrollView,
-  View as NativeView,
-} from 'react-native';
+import { ScrollView as NativeScrollView, View as NativeView } from 'react-native';
 
 import type { GridViewProps } from '../../../../types/grid-view';
 
@@ -32,7 +29,8 @@ export function GridView({
   const scale = Math.max(0.01, zoom);
   const viewport = React.useMemo<GridViewport>(
     () => ({
-      width, height,
+      width,
+      height,
       offsetX: scrollX / scale,
       offsetY: scrollY / scale,
       pixelsPerUnitX: scale,
@@ -68,11 +66,14 @@ export function GridView({
       >
         <NativeView style={{ width: contentWidth * scale, height: contentHeight * scale }}>
           {visibleItems.map((item) => {
-            const position = worldToViewport({ x: item.x, y: item.y }, {
-              ...viewport,
-              offsetX: 0,
-              offsetY: 0,
-            });
+            const position = worldToViewport(
+              { x: item.x, y: item.y },
+              {
+                ...viewport,
+                offsetX: 0,
+                offsetY: 0,
+              },
+            );
             return (
               <NativeView
                 key={item.id}
