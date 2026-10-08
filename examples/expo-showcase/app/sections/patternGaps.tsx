@@ -7,7 +7,7 @@ import {
   IconButton,
   ListItem,
   MissingElement,
-  ReaderSurface,
+  Reader,
   ScreenSection,
   SectionHeader,
   Text,
@@ -19,7 +19,6 @@ import React from 'react';
 export function PatternGapsSection() {
   const [confirmOpen, setConfirmOpen] = React.useState(false);
   const [syncEnabled, setSyncEnabled] = React.useState(true);
-  const [readerPage, setReaderPage] = React.useState(2);
 
   return (
     <ScreenSection title="Additional patterns">
@@ -45,31 +44,16 @@ export function PatternGapsSection() {
       </ContentRail>
 
       <SectionHeader
-        title="ReaderSurface"
-        description="Adapter-neutral EPUB/PDF chrome around an injected viewport."
+        title="Reader"
+        description="Reader chrome and controls backed by a standalone EPUB/PDF engine."
       />
-      <ReaderSurface
-        chapterLabel="Chapter 1 · A quiet beginning"
+      <Reader
         format="epub"
-        onNextPage={() => setReaderPage((page) => Math.min(6, page + 1))}
         onOpenAppearance={() => undefined}
         onOpenContents={() => undefined}
-        onPreviousPage={() => setReaderPage((page) => Math.max(1, page - 1))}
-        page={readerPage}
-        pageCount={6}
-        status="ready"
         subtitle="EPUB preview"
         title="The North Wind"
-        viewport={
-          <View gap="m" p="l">
-            <Text variant="eyebrow">Chapter one</Text>
-            <Text variant="lead">A quiet beginning</Text>
-            <Text>
-              This static page stands in for the platform renderer. The ReaderSurface owns the
-              chrome while the Expo adapter will own EPUB/PDF rendering and swipe gestures.
-            </Text>
-          </View>
-        }
+        unavailableTitle="Select a DRM-free EPUB or PDF file to read."
       />
 
       <SectionHeader

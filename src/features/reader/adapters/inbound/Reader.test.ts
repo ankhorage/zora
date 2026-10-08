@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { ReaderErrorEvent, ReaderLocationChangeEvent, ReaderSurfaceProps } from '../../../..';
+import type { ReaderErrorEvent, ReaderLocationChangeEvent, ReaderProps } from '../../../..';
 
-describe('ReaderSurface public contract', () => {
+describe('Reader public contract', () => {
   test('exports the component and serializable adapter events from the package root', () => {
-    const props: ReaderSurfaceProps = { format: 'epub' };
+    const props: ReaderProps = { format: 'epub' };
     const location: ReaderLocationChangeEvent = {
       format: 'epub',
       locator: 'epubcfi(/6/4!/4/2)',
@@ -30,11 +30,12 @@ describe('ReaderSurface public contract', () => {
     const source = await Bun.file('src/index.ts').text();
 
     expect(source).toContain("from './features/reader/public';");
-    expect(source).toContain('ReaderSurface, resolveReaderProgress');
+    expect(source).toContain('Reader, resolveReaderProgress');
+    expect(source).not.toContain('ReaderSurface');
   });
 
   test('keeps parsing, fetching, persistence, and platform APIs outside ZORA', async () => {
-    const source = await Bun.file('src/features/reader/adapters/inbound/ReaderSurface.tsx').text();
+    const source = await Bun.file('src/features/reader/adapters/inbound/Reader.tsx').text();
 
     expect(source).not.toContain('expo-');
     expect(source).not.toContain('pdfjs');

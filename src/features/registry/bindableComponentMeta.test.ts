@@ -37,8 +37,8 @@ describe('ZORA bindable component metadata', () => {
     expect(image.bindings.props.source.value.type).toBe('imageAsset');
   });
 
-  it('describes serializable controlled ReaderSurface bindings', () => {
-    const reader = ZORA_BINDABLE_COMPONENT_META.ReaderSurface;
+  it('describes serializable controlled Reader bindings', () => {
+    const reader = ZORA_BINDABLE_COMPONENT_META.Reader;
 
     expect(Object.keys(reader.bindings.props)).toEqual([
       'location',

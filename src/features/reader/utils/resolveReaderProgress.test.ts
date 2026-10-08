@@ -6,7 +6,7 @@ describe('resolveReaderProgress', () => {
   test('is exported from the package root', async () => {
     const source = await Bun.file('src/index.ts').text();
 
-    expect(source).toContain('ReaderSurface, resolveReaderProgress');
+    expect(source).toContain('Reader, resolveReaderProgress');
   });
 
   test('clamps an explicit progress value', () => {

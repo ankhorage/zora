@@ -76,7 +76,7 @@ const REQUIRED_SHOWCASE_COVERAGE = {
     'List',
     'ListItem',
     'ListSection',
-    'ReaderSurface',
+    'Reader',
     'SectionHeader',
     'Timeline',
     'PaletteItem',

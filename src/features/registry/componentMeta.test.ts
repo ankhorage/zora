@@ -114,8 +114,8 @@ describe('ZORA_COMPONENT_META requirement metadata', () => {
     });
   });
 
-  test('declares ebook reader capability metadata for ReaderSurface', () => {
-    expect(ZORA_COMPONENT_META.ReaderSurface.requirements).toEqual({
+  test('declares ebook reader capability metadata for Reader', () => {
+    expect(ZORA_COMPONENT_META.Reader.requirements).toEqual({
       capabilities: { ebookReader: true },
     });
   });
@@ -220,7 +220,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'ProductCard',
       'Progress',
       'ProgressRing',
-      'ReaderSurface',
+      'Reader',
       'MissingElement',
       'TimePicker',
       'TabletopTable',
@@ -435,8 +435,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(progressRing.props.accessibilityValueText?.type).toBe('string');
   });
 
-  test('ReaderSurface exposes a safe file-media blueprint and normalized events', () => {
-    const reader = ZORA_COMPONENT_META.ReaderSurface;
+  test('Reader exposes a safe file-media blueprint and normalized events', () => {
+    const reader = ZORA_COMPONENT_META.Reader;
 
     expect(reader.directManifestNode).toBe(true);
     expect(reader.allowedChildren).toEqual([]);

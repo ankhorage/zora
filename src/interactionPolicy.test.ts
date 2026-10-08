@@ -153,19 +153,19 @@ describe('ProductCard', () => {
   });
 });
 
-describe('ReaderSurface', () => {
+describe('Reader', () => {
   test('types extend ZoraBaseProps instead of duplicating InteractionPolicy', () => {
     const source = readSource('types/reader.ts');
 
     expect(source).not.toMatch(
       /import type \{\s*InteractionPolicy\s*\} from '@ankhorage\/surface';/,
     );
-    expect(source).toMatch(/export interface ReaderSurfaceProps extends ZoraBaseProps/);
+    expect(source).toMatch(/export interface ReaderProps extends ZoraBaseProps/);
     expect(source).not.toMatch(/interactionPolicy\?: InteractionPolicy;/);
   });
 
   test('forwards interactionPolicy to its owned interactive controls', () => {
-    const source = readFeature('reader', 'adapters', 'inbound', 'ReaderSurface.tsx');
+    const source = readFeature('reader', 'adapters', 'inbound', 'Reader.tsx');
 
     expect(source).not.toMatch(/interactionPolicy:\s*_interactionPolicy/);
     expect(source).toMatch(
