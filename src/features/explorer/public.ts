@@ -3,8 +3,8 @@ export type {
   ExplorerItem,
   ExplorerItemKind,
   ExplorerProps,
-  ExplorerSelectionMode,
   ExplorerSelectionChangeEvent,
+  ExplorerSelectionMode,
 } from '../../types/explorer';
 export { Explorer } from './adapters/inbound/Explorer';
 export { FileExplorer } from './adapters/inbound/FileExplorer';
