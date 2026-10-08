@@ -67,6 +67,7 @@ function ExplorerInner({
           const intent = nativeEvent.shiftKey === true ? 'range'
             : nativeEvent.ctrlKey === true || nativeEvent.metaKey === true ? 'toggle' : 'replace';
           select(item, intent);
+          if (selectionMode === 'single' && intent === 'replace') onActivate?.({ id: item.id });
         }}
         style={{
           flex: 1,
