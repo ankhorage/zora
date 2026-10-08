@@ -16,7 +16,8 @@ export function resolveExplorerSelection(
 ): readonly string[] {
   const targetIndex = orderedIds.indexOf(targetId);
   if (targetIndex < 0) return currentIds;
-  if (mode === 'single' || intent === 'replace') return applySelectionIntent(currentIds, targetId, 'replace');
+  if (mode === 'single' || intent === 'replace')
+    return applySelectionIntent(currentIds, targetId, 'replace');
   if (intent === 'toggle') {
     return applySelectionIntent(currentIds, targetId, 'toggle');
   }
