@@ -1994,6 +1994,102 @@ Source: `src/types/empty-state.ts:14:1`
 | themeId | property | `string \| undefined` | no |  |
 | title | property | `React.ReactNode` | yes |  |
 
+## Explorer
+
+Kind: `value`
+Module: `src/features/explorer/adapters/inbound/Explorer.tsx`
+Source: `src/features/explorer/adapters/inbound/Explorer.tsx:14:14`
+
+Single canonical Explorer implementation for media and file catalogue presentation.
+
+## ExplorerActivateEvent
+
+Kind: `type`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:21:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| id | property | `string` | yes |  |
+
+## ExplorerItem
+
+Kind: `type`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:6:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| contentType | property | `string \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| durationSeconds | property | `number \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| kind | property | `ExplorerItemKind` | yes |  |
+| name | property | `string` | yes |  |
+| providerId | property | `string \| undefined` | no |  |
+| sizeBytes | property | `number \| undefined` | no |  |
+| thumbnailUri | property | `string \| undefined` | no |  |
+| uri | property | `string \| undefined` | no |  |
+
+## ExplorerItemKind
+
+Kind: `unknown`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:4:1`
+
+## ExplorerProps
+
+Kind: `type`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:29:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| defaultSelectedIds | property | `readonly string[] \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| emptyText | property | `string \| undefined` | no |  |
+| errorText | property | `string \| undefined` | no |  |
+| height | property | `number \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| items | property | `readonly ExplorerItem[]` | yes |  |
+| loading | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onActivate | property | `((event: ExplorerActivateEvent) => void) \| undefined` | no |  |
+| onSelectionChange | property | `((event: ExplorerSelectionChangeEvent) => void) \| undefined` | no |  |
+| readOnly | property | `boolean \| undefined` | no |  |
+| selectedIds | property | `readonly string[] \| undefined` | no |  |
+| selectionMode | property | `ExplorerSelectionMode \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| tileSize | property | `number \| undefined` | no |  |
+| width | property | `number \| undefined` | no |  |
+| zoom | property | `number \| undefined` | no |  |
+
+## ExplorerSelectionChangeEvent
+
+Kind: `type`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:25:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| selectedIds | property | `readonly string[]` | yes |  |
+
+## ExplorerSelectionMode
+
+Kind: `unknown`
+Module: `src/types/explorer.ts`
+Source: `src/types/explorer.ts:19:1`
+
 ## Field
 
 Kind: `value`
@@ -2026,6 +2122,20 @@ Source: `src/types/form.ts:47:1`
 | required | property | `boolean \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
+
+## FileExplorer
+
+Kind: `function`
+Module: `src/features/explorer/adapters/inbound/FileExplorer.tsx`
+Source: `src/features/explorer/adapters/inbound/FileExplorer.tsx:7:1`
+
+File and folder presentation using the exact same TileGrid and selection model.
+
+### Signatures
+
+- `(props: ExplorerProps) => React.JSX.Element`
+  - props: `ExplorerProps`
+  - returns: `React.JSX.Element`
 
 ## FlatList
 
@@ -2743,6 +2853,72 @@ Source: `src/types/layout.ts:18:1`
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |
 
+## GridView
+
+Kind: `function`
+Module: `src/features/grid-view/adapters/inbound/GridView.tsx`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:13:1`
+
+Renders world-positioned items on native and web using the canonical viewport/culling engine.
+
+This first renderer uses nested native scroll regions. Only visible items are mounted;
+logical cells and invisible elements are never rendered.
+
+### Signatures
+
+- `({
+  items,
+  contentWidth,
+  contentHeight,
+  width,
+  height,
+  zoom = 1,
+  overscanPixels = 160,
+  interactionPolicy,
+  onViewportChange,
+  renderItem,
+  testID,
+}: GridViewProps) => React.JSX.Element`
+  - {
+  items,
+  contentWidth,
+  contentHeight,
+  width,
+  height,
+  zoom = 1,
+  overscanPixels = 160,
+  interactionPolicy,
+  onViewportChange,
+  renderItem,
+  testID,
+}: `GridViewProps`
+  - returns: `React.JSX.Element`
+
+## GridViewProps
+
+Kind: `type`
+Module: `src/types/grid-view.ts`
+Source: `src/types/grid-view.ts:7:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| contentHeight | property | `number` | yes |  |
+| contentWidth | property | `number` | yes |  |
+| height | property | `number` | yes |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| items | property | `readonly GridRectItem[]` | yes |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
+| overscanPixels | property | `number \| undefined` | no |  |
+| renderItem | property | `(item: GridRectItem) => React.ReactNode` | yes |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| width | property | `number` | yes |  |
+| zoom | property | `number \| undefined` | no |  |
+
 ## hasRequiredRule
 
 Kind: `function`
@@ -3131,6 +3307,24 @@ Source: `src/types/keyboard-avoiding-view.ts:9:1`
 | tvParallaxShiftDistanceY | property | `number \| undefined` | no |  |
 | tvParallaxTiltAngle | property | `number \| undefined` | no |  |
 
+## layoutTileGrid
+
+Kind: `function`
+Module: `src/features/grid-view/application/layoutTileGrid.ts`
+Source: `src/features/grid-view/application/layoutTileGrid.ts:14:1`
+
+Arrange keyed tiles into responsive rows without constructing placeholder grid cells.
+
+### Signatures
+
+- `(items: readonly TileGridItem[], viewportWidth: number, tileSize: number, gap: number, zoom?: number) => TileGridLayout`
+  - gap: `number`
+  - items: `readonly TileGridItem[]`
+  - tileSize: `number`
+  - viewportWidth: `number`
+  - zoom: `number` (optional)
+  - returns: `TileGridLayout`
+
 ## List
 
 Kind: `value`
@@ -3314,6 +3508,20 @@ Source: `src/types/media-card.ts:25:1`
 Kind: `unknown`
 Module: `src/types/media-card.ts`
 Source: `src/types/media-card.ts:42:1`
+
+## MediaExplorer
+
+Kind: `function`
+Module: `src/features/explorer/adapters/inbound/MediaExplorer.tsx`
+Source: `src/features/explorer/adapters/inbound/MediaExplorer.tsx:7:1`
+
+Specialized media catalogue presentation sharing the canonical Explorer/TileGrid path.
+
+### Signatures
+
+- `(props: ExplorerProps) => React.JSX.Element`
+  - props: `ExplorerProps`
+  - returns: `React.JSX.Element`
 
 ## MessageBubble
 
@@ -4487,6 +4695,26 @@ Source: `src/features/avatar/utils/resolveAvatarInitials.ts:20:1`
 - `(name: string | undefined) => string | null`
   - name: `string | undefined`
   - returns: `string | null`
+
+## resolveExplorerSelection
+
+Kind: `function`
+Module: `src/features/explorer/application/resolveExplorerSelection.ts`
+Source: `src/features/explorer/application/resolveExplorerSelection.ts:9:1`
+
+Resolve selection against ordered stable identities; shift-range extends from the last anchor.
+Range may replace or extend a multi-selection, but never affects the underlying catalogue.
+
+### Signatures
+
+- `(orderedIds: readonly string[], currentIds: readonly string[], targetId: string, anchorId: string | null, intent: "toggle" | "replace" | "range", mode: ExplorerSelectionMode) => readonly string[]`
+  - anchorId: `string | null`
+  - currentIds: `readonly string[]`
+  - intent: `"toggle" | "replace" | "range"`
+  - mode: `ExplorerSelectionMode`
+  - orderedIds: `readonly string[]`
+  - targetId: `string`
+  - returns: `readonly string[]`
 
 ## resolveOAuthProviderIcon
 
@@ -5928,6 +6156,78 @@ Kind: `unknown`
 Module: `src/types/theme-mode-toggle.ts`
 Source: `src/types/theme-mode-toggle.ts:4:1`
 
+## TileGrid
+
+Kind: `function`
+Module: `src/features/grid-view/adapters/inbound/TileGrid.tsx`
+Source: `src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1`
+
+Composes a responsive, virtualized tile presentation over the generic GridView renderer.
+
+### Signatures
+
+- `({
+  items,
+  width,
+  height = 440,
+  tileSize = 120,
+  gap = 12,
+  zoom = 1,
+  overscanPixels,
+  renderItem,
+  interactionPolicy,
+  testID,
+}: TileGridProps) => React.JSX.Element`
+  - {
+  items,
+  width,
+  height = 440,
+  tileSize = 120,
+  gap = 12,
+  zoom = 1,
+  overscanPixels,
+  renderItem,
+  interactionPolicy,
+  testID,
+}: `TileGridProps`
+  - returns: `React.JSX.Element`
+
+## TileGridItem
+
+Kind: `type`
+Module: `src/types/grid-view.ts`
+Source: `src/types/grid-view.ts:20:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| id | property | `string` | yes |  |
+
+## TileGridProps
+
+Kind: `type`
+Module: `src/types/grid-view.ts`
+Source: `src/types/grid-view.ts:25:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| gap | property | `number \| undefined` | no |  |
+| height | property | `number \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| items | property | `readonly TileGridItem[]` | yes |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| overscanPixels | property | `number \| undefined` | no |  |
+| renderItem | property | `(item: TileGridItem) => React.ReactNode` | yes |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| tileSize | property | `number \| undefined` | no |  |
+| width | property | `number \| undefined` | no |  |
+| zoom | property | `number \| undefined` | no |  |
+
 ## Timeline
 
 Kind: `value`
@@ -6203,13 +6503,13 @@ Attempt one legal chess move against FEN and return the resulting position/move 
 
 Kind: `unknown`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:17:1`
+Source: `src/types/upload.ts:18:1`
 
 ## UploadAssetBase
 
 Kind: `type`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:7:1`
+Source: `src/types/upload.ts:8:1`
 
 ### Members
 
@@ -6227,15 +6527,21 @@ Source: `src/types/upload.ts:7:1`
 
 Kind: `value`
 Module: `src/features/uploader/adapters/inbound/Uploader.tsx`
-Source: `src/features/uploader/adapters/inbound/Uploader.tsx:17:14`
+Source: `src/features/uploader/adapters/inbound/Uploader.tsx:18:14`
 
 Picks, validates, uploads, previews, and removes one generic file asset.
+
+## UploaderExplorerItem
+
+Kind: `unknown`
+Module: `src/types/upload.ts`
+Source: `src/types/upload.ts:46:1`
 
 ## UploaderProps
 
 Kind: `type`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:45:1`
+Source: `src/types/upload.ts:48:1`
 
 ### Members
 
@@ -6246,6 +6552,7 @@ Source: `src/types/upload.ts:45:1`
 | description | property | `React.ReactNode` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
 | errorText | property | `React.ReactNode` | no |  |
+| explorerItems | property | `readonly UploaderExplorerItem[] \| undefined` | no |  |
 | helperText | property | `React.ReactNode` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
@@ -6273,7 +6580,7 @@ Source: `src/types/upload.ts:45:1`
 
 Kind: `type`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:34:1`
+Source: `src/types/upload.ts:35:1`
 
 ### Members
 
@@ -6285,7 +6592,7 @@ Source: `src/types/upload.ts:34:1`
 
 Kind: `unknown`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:5:1`
+Source: `src/types/upload.ts:6:1`
 
 ## useFormController
 
@@ -6463,7 +6770,7 @@ Validates a picked upload asset against MIME, extension, size, and caller rules.
 
 Kind: `type`
 Module: `src/types/upload.ts`
-Source: `src/types/upload.ts:38:1`
+Source: `src/types/upload.ts:39:1`
 
 ### Members
 
@@ -6600,13 +6907,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:109:14`
+Source: `src/features/registry/componentMeta.ts:111:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:219:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:226:14`
 
 ## ZORA_EMPHASES
 
@@ -6636,7 +6943,7 @@ Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/constants/authoring.ts`
-Source: `src/constants/authoring.ts:160:14`
+Source: `src/constants/authoring.ts:163:14`
 
 ## ZoraBaseProps
 
@@ -6820,7 +7127,7 @@ Source: `src/types/authoring.ts:34:1`
 | enum | property | `readonly (string \| number)[] \| undefined` | no |  |
 | itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined` | no |  |
 | label | property | `string \| undefined` | no |  |
-| mediaKinds | property | `readonly ("image" \| "audio" \| "video" \| "font" \| "file")[] \| undefined` | no |  |
+| mediaKinds | property | `readonly ("image" \| "video" \| "audio" \| "file" \| "font")[] \| undefined` | no |  |
 | type | property | `UiComponentPropType` | yes |  |
 
 ## ZoraComponentPropType

@@ -133,6 +133,12 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx["src/features/empty-state/adapters/inbound/EmptyState.tsx"]
   module_src_features_empty_state_emptyStateMeta_ts["src/features/empty-state/emptyStateMeta.ts"]
   module_src_features_empty_state_public_ts["src/features/empty-state/public.ts"]
+  module_src_features_explorer_adapters_inbound_Explorer_tsx["src/features/explorer/adapters/inbound/Explorer.tsx"]
+  module_src_features_explorer_adapters_inbound_FileExplorer_tsx["src/features/explorer/adapters/inbound/FileExplorer.tsx"]
+  module_src_features_explorer_adapters_inbound_MediaExplorer_tsx["src/features/explorer/adapters/inbound/MediaExplorer.tsx"]
+  module_src_features_explorer_application_resolveExplorerSelection_ts["src/features/explorer/application/resolveExplorerSelection.ts"]
+  module_src_features_explorer_meta_ts["src/features/explorer/meta.ts"]
+  module_src_features_explorer_public_ts["src/features/explorer/public.ts"]
   module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
   module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
   module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
@@ -235,6 +241,11 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts["src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts["src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"]
   module_src_features_graph_view_public_ts["src/features/graph-view/public.ts"]
+  module_src_features_grid_view_adapters_inbound_GridView_tsx["src/features/grid-view/adapters/inbound/GridView.tsx"]
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx["src/features/grid-view/adapters/inbound/TileGrid.tsx"]
+  module_src_features_grid_view_application_layoutTileGrid_ts["src/features/grid-view/application/layoutTileGrid.ts"]
+  module_src_features_grid_view_meta_ts["src/features/grid-view/meta.ts"]
+  module_src_features_grid_view_public_ts["src/features/grid-view/public.ts"]
   module_src_features_hero_adapters_inbound_Hero_tsx["src/features/hero/adapters/inbound/Hero.tsx"]
   module_src_features_hero_heroMeta_ts["src/features/hero/heroMeta.ts"]
   module_src_features_hero_public_ts["src/features/hero/public.ts"]
@@ -466,6 +477,7 @@ graph LR
   module_src_types_date_picker_ts["src/types/date-picker.ts"]
   module_src_types_dialog_ts["src/types/dialog.ts"]
   module_src_types_empty_state_ts["src/types/empty-state.ts"]
+  module_src_types_explorer_ts["src/types/explorer.ts"]
   module_src_types_form_ts["src/types/form.ts"]
   module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
   module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
@@ -473,6 +485,7 @@ graph LR
   module_src_types_graph_view_spacing_ts["src/types/graph-view-spacing.ts"]
   module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
+  module_src_types_grid_view_ts["src/types/grid-view.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_hero_ts["src/types/hero.ts"]
   module_src_types_icon_button_ts["src/types/icon-button.ts"]
@@ -872,11 +885,34 @@ graph LR
   module_src_types_empty_state_ts --> export_EmptyStateProps
   export_EmptyStateProps -.-> export_EmptyStateAction
   export_EmptyStateProps -.-> export_ZoraThemeMode
+  export_Explorer["Explorer"]
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> export_Explorer
+  export_ExplorerActivateEvent["ExplorerActivateEvent"]
+  module_src_types_explorer_ts --> export_ExplorerActivateEvent
+  export_ExplorerItem["ExplorerItem"]
+  module_src_types_explorer_ts --> export_ExplorerItem
+  export_ExplorerItem -.-> export_ExplorerItemKind
+  export_ExplorerItemKind["ExplorerItemKind"]
+  module_src_types_explorer_ts --> export_ExplorerItemKind
+  export_ExplorerProps["ExplorerProps"]
+  module_src_types_explorer_ts --> export_ExplorerProps
+  export_ExplorerProps -.-> export_ExplorerActivateEvent
+  export_ExplorerProps -.-> export_ExplorerItem
+  export_ExplorerProps -.-> export_ExplorerSelectionChangeEvent
+  export_ExplorerProps -.-> export_ExplorerSelectionMode
+  export_ExplorerProps -.-> export_ZoraThemeMode
+  export_ExplorerSelectionChangeEvent["ExplorerSelectionChangeEvent"]
+  module_src_types_explorer_ts --> export_ExplorerSelectionChangeEvent
+  export_ExplorerSelectionMode["ExplorerSelectionMode"]
+  module_src_types_explorer_ts --> export_ExplorerSelectionMode
   export_Field["Field"]
   module_src_features_form_field_adapters_inbound_Field_tsx --> export_Field
   export_FieldProps["FieldProps"]
   module_src_types_form_ts --> export_FieldProps
   export_FieldProps -.-> export_ZoraThemeMode
+  export_FileExplorer["FileExplorer"]
+  module_src_features_explorer_adapters_inbound_FileExplorer_tsx --> export_FileExplorer
+  export_FileExplorer -.-> export_ExplorerProps
   export_FlatList["FlatList"]
   module_src_features_list_adapters_inbound_FlatList_tsx --> export_FlatList
   export_ForgotPasswordForm["ForgotPasswordForm"]
@@ -1003,6 +1039,12 @@ graph LR
   export_GridProps["GridProps"]
   module_src_types_layout_ts --> export_GridProps
   export_GridProps -.-> export_ZoraThemeMode
+  export_GridView["GridView"]
+  module_src_features_grid_view_adapters_inbound_GridView_tsx --> export_GridView
+  export_GridView -.-> export_GridViewProps
+  export_GridViewProps["GridViewProps"]
+  module_src_types_grid_view_ts --> export_GridViewProps
+  export_GridViewProps -.-> export_ZoraThemeMode
   export_hasRequiredRule["hasRequiredRule"]
   module_src_features_form_utils_validation_ts --> export_hasRequiredRule
   export_hasRequiredRule -.-> export_ValidationRule
@@ -1071,6 +1113,9 @@ graph LR
   export_KeyboardAvoidingViewProps["KeyboardAvoidingViewProps"]
   module_src_types_keyboard_avoiding_view_ts --> export_KeyboardAvoidingViewProps
   export_KeyboardAvoidingViewProps -.-> export_ZoraThemeMode
+  export_layoutTileGrid["layoutTileGrid"]
+  module_src_features_grid_view_application_layoutTileGrid_ts --> export_layoutTileGrid
+  export_layoutTileGrid -.-> export_TileGridItem
   export_List["List"]
   module_src_features_list_adapters_inbound_List_tsx --> export_List
   export_ListChildrenProps["ListChildrenProps"]
@@ -1108,6 +1153,9 @@ graph LR
   module_src_types_media_card_ts --> export_MediaCardImageProps
   export_MediaCardProps["MediaCardProps"]
   module_src_types_media_card_ts --> export_MediaCardProps
+  export_MediaExplorer["MediaExplorer"]
+  module_src_features_explorer_adapters_inbound_MediaExplorer_tsx --> export_MediaExplorer
+  export_MediaExplorer -.-> export_ExplorerProps
   export_MessageBubble["MessageBubble"]
   module_src_features_chat_adapters_inbound_MessageBubble_tsx --> export_MessageBubble
   export_MessageBubbleAuthor["MessageBubbleAuthor"]
@@ -1331,6 +1379,9 @@ graph LR
   module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderStatus
   export_resolveAvatarInitials["resolveAvatarInitials"]
   module_src_features_avatar_utils_resolveAvatarInitials_ts --> export_resolveAvatarInitials
+  export_resolveExplorerSelection["resolveExplorerSelection"]
+  module_src_features_explorer_application_resolveExplorerSelection_ts --> export_resolveExplorerSelection
+  export_resolveExplorerSelection -.-> export_ExplorerSelectionMode
   export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
   module_src_features_auth_utils_oauthProviders_ts --> export_resolveOAuthProviderIcon
   export_resolveOAuthProviderLabel["resolveOAuthProviderLabel"]
@@ -1548,6 +1599,15 @@ graph LR
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> export_ThemeModeToggle
   export_ThemeModeToggleProps["ThemeModeToggleProps"]
   module_src_types_theme_mode_toggle_ts --> export_ThemeModeToggleProps
+  export_TileGrid["TileGrid"]
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> export_TileGrid
+  export_TileGrid -.-> export_TileGridProps
+  export_TileGridItem["TileGridItem"]
+  module_src_types_grid_view_ts --> export_TileGridItem
+  export_TileGridProps["TileGridProps"]
+  module_src_types_grid_view_ts --> export_TileGridProps
+  export_TileGridProps -.-> export_TileGridItem
+  export_TileGridProps -.-> export_ZoraThemeMode
   export_Timeline["Timeline"]
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> export_Timeline
   export_TimelineItem["TimelineItem"]
@@ -1611,9 +1671,12 @@ graph LR
   module_src_types_upload_ts --> export_UploadAssetBase
   export_Uploader["Uploader"]
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> export_Uploader
+  export_UploaderExplorerItem["UploaderExplorerItem"]
+  module_src_types_upload_ts --> export_UploaderExplorerItem
   export_UploaderProps["UploaderProps"]
   module_src_types_upload_ts --> export_UploaderProps
   export_UploaderProps -.-> export_UploadAsset
+  export_UploaderProps -.-> export_UploaderExplorerItem
   export_UploaderProps -.-> export_UploadProgressContext
   export_UploaderProps -.-> export_UploadType
   export_UploaderProps -.-> export_ZoraThemeMode

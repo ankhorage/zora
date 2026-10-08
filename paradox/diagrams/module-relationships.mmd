@@ -133,6 +133,12 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx["src/features/empty-state/adapters/inbound/EmptyState.tsx"]
   module_src_features_empty_state_emptyStateMeta_ts["src/features/empty-state/emptyStateMeta.ts"]
   module_src_features_empty_state_public_ts["src/features/empty-state/public.ts"]
+  module_src_features_explorer_adapters_inbound_Explorer_tsx["src/features/explorer/adapters/inbound/Explorer.tsx"]
+  module_src_features_explorer_adapters_inbound_FileExplorer_tsx["src/features/explorer/adapters/inbound/FileExplorer.tsx"]
+  module_src_features_explorer_adapters_inbound_MediaExplorer_tsx["src/features/explorer/adapters/inbound/MediaExplorer.tsx"]
+  module_src_features_explorer_application_resolveExplorerSelection_ts["src/features/explorer/application/resolveExplorerSelection.ts"]
+  module_src_features_explorer_meta_ts["src/features/explorer/meta.ts"]
+  module_src_features_explorer_public_ts["src/features/explorer/public.ts"]
   module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
   module_src_features_form_adapters_inbound_FormActions_tsx["src/features/form/adapters/inbound/FormActions.tsx"]
   module_src_features_form_adapters_inbound_FormError_tsx["src/features/form/adapters/inbound/FormError.tsx"]
@@ -235,6 +241,11 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts["src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts["src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"]
   module_src_features_graph_view_public_ts["src/features/graph-view/public.ts"]
+  module_src_features_grid_view_adapters_inbound_GridView_tsx["src/features/grid-view/adapters/inbound/GridView.tsx"]
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx["src/features/grid-view/adapters/inbound/TileGrid.tsx"]
+  module_src_features_grid_view_application_layoutTileGrid_ts["src/features/grid-view/application/layoutTileGrid.ts"]
+  module_src_features_grid_view_meta_ts["src/features/grid-view/meta.ts"]
+  module_src_features_grid_view_public_ts["src/features/grid-view/public.ts"]
   module_src_features_hero_adapters_inbound_Hero_tsx["src/features/hero/adapters/inbound/Hero.tsx"]
   module_src_features_hero_heroMeta_ts["src/features/hero/heroMeta.ts"]
   module_src_features_hero_public_ts["src/features/hero/public.ts"]
@@ -466,6 +477,7 @@ graph LR
   module_src_types_date_picker_ts["src/types/date-picker.ts"]
   module_src_types_dialog_ts["src/types/dialog.ts"]
   module_src_types_empty_state_ts["src/types/empty-state.ts"]
+  module_src_types_explorer_ts["src/types/explorer.ts"]
   module_src_types_form_ts["src/types/form.ts"]
   module_src_types_gamePresentation_ts["src/types/gamePresentation.ts"]
   module_src_types_gameRuntime_ts["src/types/gameRuntime.ts"]
@@ -473,6 +485,7 @@ graph LR
   module_src_types_graph_view_spacing_ts["src/types/graph-view-spacing.ts"]
   module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
+  module_src_types_grid_view_ts["src/types/grid-view.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_hero_ts["src/types/hero.ts"]
   module_src_types_icon_button_ts["src/types/icon-button.ts"]
@@ -862,6 +875,20 @@ graph LR
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_empty_state_adapters_inbound_EmptyState_tsx --> module_src_types_empty_state_ts
   module_src_features_empty_state_emptyStateMeta_ts --> module_src_types_authoring_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_application_resolveExplorerSelection_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_grid_view_public_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_icon_public_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_image_public_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_typography_public_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_types_explorer_ts
+  module_src_features_explorer_adapters_inbound_FileExplorer_tsx --> module_src_features_explorer_adapters_inbound_Explorer_tsx
+  module_src_features_explorer_adapters_inbound_FileExplorer_tsx --> module_src_types_explorer_ts
+  module_src_features_explorer_adapters_inbound_MediaExplorer_tsx --> module_src_features_explorer_adapters_inbound_Explorer_tsx
+  module_src_features_explorer_adapters_inbound_MediaExplorer_tsx --> module_src_types_explorer_ts
+  module_src_features_explorer_application_resolveExplorerSelection_ts --> module_src_types_explorer_ts
+  module_src_features_explorer_meta_ts --> module_src_types_authoring_ts
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_form_adapters_inbound_FormActions_tsx
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_layout_public_ts
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1057,6 +1084,12 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_types_graph_view_ts
+  module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_grid_view_ts
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_features_grid_view_adapters_inbound_GridView_tsx
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_features_grid_view_application_layoutTileGrid_ts
+  module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_types_grid_view_ts
+  module_src_features_grid_view_application_layoutTileGrid_ts --> module_src_types_grid_view_ts
+  module_src_features_grid_view_meta_ts --> module_src_types_authoring_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_button_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_card_public_ts
   module_src_features_hero_adapters_inbound_Hero_tsx --> module_src_features_layout_public_ts
@@ -1256,6 +1289,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_date_picker_datePickerMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_dialog_dialogMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_empty_state_emptyStateMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_explorer_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_form_checkbox_checkboxMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_form_field_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_form_formActionsMeta_ts
@@ -1273,6 +1307,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameOverlayMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_grid_view_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_hero_heroMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_icon_iconMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_image_imageMeta_ts
@@ -1346,6 +1381,7 @@ graph LR
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_date_picker_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_dialog_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_empty_state_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_explorer_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_checkbox_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_radio_public_ts
@@ -1355,6 +1391,7 @@ graph LR
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_text_input_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_game_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_gradient_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_grid_view_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_hero_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_icon_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_image_public_ts
@@ -1624,6 +1661,7 @@ graph LR
   module_src_features_typography_utils_textThemeRecipeMeta_ts --> module_src_types_theme_recipe_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_button_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_dialog_public_ts
+  module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_explorer_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_form_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_icon_public_ts
   module_src_features_uploader_adapters_inbound_Uploader_tsx --> module_src_features_image_public_ts
@@ -1702,12 +1740,14 @@ graph LR
   module_src_types_empty_state_ts --> module_src_types_base_ts
   module_src_types_empty_state_ts --> module_src_types_button_ts
   module_src_types_empty_state_ts --> module_src_types_theme_ts
+  module_src_types_explorer_ts --> module_src_types_base_ts
   module_src_types_form_ts --> module_src_types_base_ts
   module_src_types_form_ts --> module_src_types_text_input_ts
   module_src_types_gamePresentation_ts --> module_src_types_base_ts
   module_src_types_gradient_ts --> module_src_types_base_ts
   module_src_types_gradient_ts --> module_src_types_layout_ts
   module_src_types_graphViewRuntime_ts --> module_src_types_graph_view_ts
+  module_src_types_grid_view_ts --> module_src_types_base_ts
   module_src_types_heading_ts --> module_src_types_base_ts
   module_src_types_heading_ts --> module_src_types_theme_ts
   module_src_types_hero_ts --> module_src_types_base_ts
@@ -1775,3 +1815,4 @@ graph LR
   module_src_types_toolbar_ts --> module_src_types_base_ts
   module_src_types_tree_view_ts --> module_src_types_base_ts
   module_src_types_upload_ts --> module_src_types_base_ts
+  module_src_types_upload_ts --> module_src_types_explorer_ts

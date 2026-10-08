@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_applySelectionIntent as applySelectionIntent
+  participant participant_resolveExplorerSelection as resolveExplorerSelection
+  participant_resolveExplorerSelection->>participant_applySelectionIntent: applySelectionIntent()
+  participant_applySelectionIntent-->>participant_resolveExplorerSelection: return

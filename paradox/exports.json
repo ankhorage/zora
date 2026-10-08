@@ -8626,6 +8626,396 @@
     "structuredRows": []
   },
   {
+    "name": "Explorer",
+    "title": null,
+    "description": "Single canonical Explorer implementation for media and file catalogue presentation.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
+      "line": 14,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerActivateEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 21,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ExplorerItemKind"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "contentType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "durationSeconds",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "kind",
+        "kind": "property",
+        "type": "ExplorerItemKind",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "providerId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "sizeBytes",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "thumbnailUri",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "uri",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerItemKind",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 29,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ExplorerActivateEvent",
+      "ExplorerItem",
+      "ExplorerSelectionChangeEvent",
+      "ExplorerSelectionMode",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "defaultSelectedIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "emptyText",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "errorText",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly ExplorerItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "loading",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onActivate",
+        "kind": "property",
+        "type": "((event: ExplorerActivateEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSelectionChange",
+        "kind": "property",
+        "type": "((event: ExplorerSelectionChangeEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectionMode",
+        "kind": "property",
+        "type": "ExplorerSelectionMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tileSize",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoom",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerSelectionChangeEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "selectedIds",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "ExplorerSelectionMode",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/explorer.ts",
+    "sourceLocation": {
+      "filePath": "src/types/explorer.ts",
+      "line": 19,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "Field",
     "title": null,
     "description": "Groups one form control with its label, description, helper text, and field error.",
@@ -8768,6 +9158,44 @@
         "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "FileExplorer",
+    "title": null,
+    "description": "File and folder presentation using the exact same TileGrid and selection model.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/explorer/adapters/inbound/FileExplorer.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/explorer/adapters/inbound/FileExplorer.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ExplorerProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: ExplorerProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "ExplorerProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
     "structuredRows": []
   },
   {
@@ -11798,6 +12226,167 @@
     "structuredRows": []
   },
   {
+    "name": "GridView",
+    "title": null,
+    "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridViewProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}",
+            "type": "GridViewProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GridViewProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-view.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-view.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "contentHeight",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "contentWidth",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly GridRectItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onViewportChange",
+        "kind": "property",
+        "type": "((viewport: GridViewport) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overscanPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderItem",
+        "kind": "property",
+        "type": "(item: GridRectItem) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "zoom",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "hasRequiredRule",
     "title": null,
     "description": null,
@@ -13637,6 +14226,68 @@
     "structuredRows": []
   },
   {
+    "name": "layoutTileGrid",
+    "title": null,
+    "description": "Arrange keyed tiles into responsive rows without constructing placeholder grid cells.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/grid-view/application/layoutTileGrid.ts",
+    "sourceLocation": {
+      "filePath": "src/features/grid-view/application/layoutTileGrid.ts",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TileGridItem"
+    ],
+    "signatures": [
+      {
+        "label": "(items: readonly TileGridItem[], viewportWidth: number, tileSize: number, gap: number, zoom?: number) => TileGridLayout",
+        "parameters": [
+          {
+            "name": "gap",
+            "type": "number",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "items",
+            "type": "readonly TileGridItem[]",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "tileSize",
+            "type": "number",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "viewportWidth",
+            "type": "number",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "zoom",
+            "type": "number",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "TileGridLayout",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "List",
     "title": null,
     "description": "List composition built on the Surface list boundary with ZORA item/separator policy.",
@@ -14406,6 +15057,44 @@
     ],
     "relatedSymbols": [],
     "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "MediaExplorer",
+    "title": null,
+    "description": "Specialized media catalogue presentation sharing the canonical Explorer/TileGrid path.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/explorer/adapters/inbound/MediaExplorer.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/explorer/adapters/inbound/MediaExplorer.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ExplorerProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: ExplorerProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "ExplorerProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
     "members": [],
     "structuredRows": []
   },
@@ -19469,6 +20158,74 @@
           }
         ],
         "returnType": "string | null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "resolveExplorerSelection",
+    "title": null,
+    "description": "Resolve selection against ordered stable identities; shift-range extends from the last anchor.\nRange may replace or extend a multi-selection, but never affects the underlying catalogue.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/explorer/application/resolveExplorerSelection.ts",
+    "sourceLocation": {
+      "filePath": "src/features/explorer/application/resolveExplorerSelection.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ExplorerSelectionMode"
+    ],
+    "signatures": [
+      {
+        "label": "(orderedIds: readonly string[], currentIds: readonly string[], targetId: string, anchorId: string | null, intent: \"toggle\" | \"replace\" | \"range\", mode: ExplorerSelectionMode) => readonly string[]",
+        "parameters": [
+          {
+            "name": "anchorId",
+            "type": "string | null",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "currentIds",
+            "type": "readonly string[]",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "intent",
+            "type": "\"toggle\" | \"replace\" | \"range\"",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "mode",
+            "type": "ExplorerSelectionMode",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "orderedIds",
+            "type": "readonly string[]",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "targetId",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "readonly string[]",
         "returnDescription": null
       }
     ],
@@ -26223,6 +26980,191 @@
     "structuredRows": []
   },
   {
+    "name": "TileGrid",
+    "title": null,
+    "description": "Composes a responsive, virtualized tile presentation over the generic GridView renderer.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TileGridProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
+            "type": "TileGridProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TileGridItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-view.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-view.ts",
+      "line": 20,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TileGridProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-view.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-view.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TileGridItem",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "gap",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly TileGridItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overscanPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderItem",
+        "kind": "property",
+        "type": "(item: TileGridItem) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "tileSize",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoom",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Timeline",
     "title": null,
     "description": "Timeline pattern for displaying a sequence of events.",
@@ -27278,7 +28220,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 17,
+      "line": 18,
       "column": 1
     },
     "exportPaths": [
@@ -27300,7 +28242,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": [
@@ -27372,8 +28314,30 @@
     "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
     "sourceLocation": {
       "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-      "line": 17,
+      "line": 18,
       "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UploaderExplorerItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/upload.ts",
+    "sourceLocation": {
+      "filePath": "src/types/upload.ts",
+      "line": 46,
+      "column": 1
     },
     "exportPaths": [
       "src/index.ts"
@@ -27394,7 +28358,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 45,
+      "line": 48,
       "column": 1
     },
     "exportPaths": [
@@ -27402,6 +28366,7 @@
     ],
     "relatedSymbols": [
       "UploadAsset",
+      "UploaderExplorerItem",
       "UploadProgressContext",
       "UploadType",
       "ZoraThemeMode"
@@ -27440,6 +28405,13 @@
         "name": "errorText",
         "kind": "property",
         "type": "React.ReactNode",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "explorerItems",
+        "kind": "property",
+        "type": "readonly UploaderExplorerItem[] | undefined",
         "required": false,
         "description": null
       },
@@ -27611,7 +28583,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 34,
+      "line": 35,
       "column": 1
     },
     "exportPaths": [
@@ -27641,7 +28613,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 5,
+      "line": 6,
       "column": 1
     },
     "exportPaths": [
@@ -28168,7 +29140,7 @@
     "modulePath": "src/types/upload.ts",
     "sourceLocation": {
       "filePath": "src/types/upload.ts",
-      "line": 38,
+      "line": 39,
       "column": 1
     },
     "exportPaths": [
@@ -28820,7 +29792,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 109,
+      "line": 111,
       "column": 14
     },
     "exportPaths": [
@@ -28842,7 +29814,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 219,
+      "line": 226,
       "column": 14
     },
     "exportPaths": [
@@ -28952,7 +29924,7 @@
     "modulePath": "src/constants/authoring.ts",
     "sourceLocation": {
       "filePath": "src/constants/authoring.ts",
-      "line": 160,
+      "line": 163,
       "column": 14
     },
     "exportPaths": [
@@ -29641,7 +30613,7 @@
       {
         "name": "mediaKinds",
         "kind": "property",
-        "type": "readonly (\"image\" | \"audio\" | \"video\" | \"font\" | \"file\")[] | undefined",
+        "type": "readonly (\"image\" | \"video\" | \"audio\" | \"file\" | \"font\")[] | undefined",
         "required": false,
         "description": null
       },
