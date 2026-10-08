@@ -16,6 +16,7 @@ export function TileGrid({
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
+  onColumnsChange,
   renderItem,
   interactionPolicy,
   testID,
@@ -27,6 +28,10 @@ export function TileGrid({
     [items, resolvedWidth, tileSize, gap, zoom],
   );
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
+
+  React.useEffect(() => {
+    if (resolvedWidth > 0) onColumnsChange?.(layout.columns);
+  }, [layout.columns, onColumnsChange, resolvedWidth]);
 
   return (
     <NativeView
