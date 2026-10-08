@@ -46,7 +46,6 @@ function ExplorerInner({
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
 
-
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;
     const next = resolveExplorerSelection(
@@ -62,12 +61,17 @@ function ExplorerInner({
     onSelectionChange?.({ selectedIds: next });
   };
 
-  const keyboard = useExplorerKeyboardFocus(items, columns, passive, (targetId, originId, shiftKey) => {
-    if (!shiftKey) return;
-    if (anchorId.current === null) anchorId.current = originId;
-    const nextItem = itemLookup.get(targetId);
-    if (nextItem) select(nextItem, 'range');
-  });
+  const keyboard = useExplorerKeyboardFocus(
+    items,
+    columns,
+    passive,
+    (targetId, originId, shiftKey) => {
+      if (!shiftKey) return;
+      if (anchorId.current === null) anchorId.current = originId;
+      const nextItem = itemLookup.get(targetId);
+      if (nextItem) select(nextItem, 'range');
+    },
+  );
 
   const renderTile = (tile: { readonly id: string }) => {
     const item = itemLookup.get(tile.id);
@@ -135,10 +139,10 @@ function ExplorerInner({
 
   return (
     <TileGrid
-      height={height}
       focusedItemId={keyboard.focusedId ?? undefined}
-      onColumnsChange={setColumns}
+      height={height}
       interactionPolicy={interactionPolicy}
+      onColumnsChange={setColumns}
       items={items}
       renderItem={renderTile}
       testID={testID}
