@@ -24,12 +24,16 @@ export interface ExplorerActivateEvent {
   readonly id: string;
 }
 
+export interface ExplorerSelectionChangeEvent {
+  readonly selectedIds: readonly string[];
+}
+
 export interface ExplorerProps extends ZoraBaseProps {
   items: readonly ExplorerItem[];
   selectionMode?: ExplorerSelectionMode;
   selectedIds?: readonly string[];
   defaultSelectedIds?: readonly string[];
-  onSelectionChange?: (ids: readonly string[]) => void;
+  onSelectionChange?: (event: ExplorerSelectionChangeEvent) => void;
   onActivate?: (event: ExplorerActivateEvent) => void;
   width?: number;
   height?: number;
