@@ -2,6 +2,7 @@ export type {
   UploadAsset,
   UploadAssetBase,
   UploaderProps,
+  UploaderExplorerItem,
   UploadProgressContext,
   UploadType,
   ValidateUploadAssetInput,
