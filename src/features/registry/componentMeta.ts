@@ -71,7 +71,7 @@ import { paletteItemMeta } from '../palette-item/paletteItemMeta';
 import { popoverMenuMeta } from '../popover-menu/popoverMenuMeta';
 import { progressMeta, progressRingMeta } from '../progress/progressMeta';
 import { ratingMeta } from '../rating/ratingMeta';
-import { readerSurfaceMeta } from '../reader/meta';
+import { readerMeta } from '../reader/meta';
 import { barcodeScannerViewMeta, cameraPermissionViewMeta, scanOverlayMeta } from '../scanner/meta';
 import { screenSectionMeta } from '../section/screenSectionMeta';
 import { sectionHeaderMeta } from '../section/sectionHeaderMeta';
@@ -202,7 +202,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   MissingElement: missingElementMeta,
   PostCard: postCardMeta,
   ProductCard: productCardMeta,
-  ReaderSurface: readerSurfaceMeta,
+  Reader: readerMeta,
   BarcodeScannerView: barcodeScannerViewMeta,
   CameraPermissionView: cameraPermissionViewMeta,
   ScanOverlay: scanOverlayMeta,

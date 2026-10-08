@@ -2,7 +2,7 @@ import type { UiComponentMetaRegistry } from '@ankhorage/contracts';
 
 import { INVERTED_POLARITY_PROP } from '../../constants/authoring';
 import { imageMeta } from '../image/imageMeta';
-import { readerSurfaceMeta } from '../reader/meta';
+import { readerMeta } from '../reader/meta';
 
 export const ZORA_BINDABLE_COMPONENT_META = {
   Text: {
@@ -410,9 +410,9 @@ export const ZORA_BINDABLE_COMPONENT_META = {
       },
     },
   },
-  ReaderSurface: {
-    ...readerSurfaceMeta,
-    props: { ...readerSurfaceMeta.props, inverted: INVERTED_POLARITY_PROP },
+  Reader: {
+    ...readerMeta,
+    props: { ...readerMeta.props, inverted: INVERTED_POLARITY_PROP },
     bindings: {
       props: {
         location: {

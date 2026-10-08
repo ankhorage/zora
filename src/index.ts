@@ -318,9 +318,9 @@ export type {
   ReaderNavigationTrigger,
   ReaderResolvedSource,
   ReaderStatus,
-  ReaderSurfaceProps,
+  ReaderProps,
 } from './features/reader/public';
-export { ReaderSurface, resolveReaderProgress } from './features/reader/public';
+export { Reader, resolveReaderProgress } from './features/reader/public';
 export type {
   ZoraBindableComponentType,
   ZoraComponentBlueprint,
