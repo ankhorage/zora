@@ -29,7 +29,18 @@ type ControllerProps = Pick<
 
 /*** Coordinate themed Reader chrome with the standalone ReaderView's controlled events. */
 export function useReaderController(props: ControllerProps) {
-  const sourceUri = resolveReaderSourceUri(props.source);
+  const {
+    source,
+    readerColorScheme,
+    fontScale,
+    lineHeight,
+    onLocationChange,
+    onReaderError,
+    onOpenExternalLink,
+    onNextPage,
+    onPreviousPage,
+  } = props;
+  const sourceUri = resolveReaderSourceUri(source);
   const [snapshot, setSnapshot] = React.useState({
     sourceUri,
     value: INITIAL_STATE,
@@ -46,22 +57,22 @@ export function useReaderController(props: ControllerProps) {
     (next: ReaderViewportState) => {
       setSnapshot({ sourceUri, value: next });
       setFailure({ sourceUri });
-      if (next.location !== undefined) void props.onLocationChange?.(next.location);
+      if (next.location !== undefined) void onLocationChange?.(next.location);
     },
-    [sourceUri, props.onLocationChange],
+    [sourceUri, onLocationChange],
   );
   const handleError = React.useCallback(
     (event: ReaderErrorEvent) => {
       setFailure({ sourceUri, event });
-      void props.onReaderError?.(event);
+      void onReaderError?.(event);
     },
-    [sourceUri, props.onReaderError],
+    [sourceUri, onReaderError],
   );
   const handleOpenExternalLink = React.useCallback(
     (event: { readonly url: string }) => {
-      void props.onOpenExternalLink?.(event);
+      void onOpenExternalLink?.(event);
     },
-    [props.onOpenExternalLink],
+    [onOpenExternalLink],
   );
   const navigate = (type: ReaderCommand['type']) => {
     if (sourceUri === undefined) return;
@@ -70,15 +81,15 @@ export function useReaderController(props: ControllerProps) {
       sourceUri,
       type,
     }));
-    if (type === 'next') void props.onNextPage?.();
-    else void props.onPreviousPage?.();
+    if (type === 'next') void onNextPage?.();
+    else void onPreviousPage?.();
   };
   return {
     appearance: {
-      colorScheme: props.readerColorScheme ?? 'system',
-      fontScale: props.fontScale ?? 1,
+      colorScheme: readerColorScheme ?? 'system',
+      fontScale: fontScale ?? 1,
       lineHeight:
-        props.lineHeight === 'compact' ? 1.25 : props.lineHeight === 'relaxed' ? 1.75 : 1.5,
+        lineHeight === 'compact' ? 1.25 : lineHeight === 'relaxed' ? 1.75 : 1.5,
     },
     command,
     error,
