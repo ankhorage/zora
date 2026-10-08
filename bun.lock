@@ -7,7 +7,7 @@
       "dependencies": {
         "@ankhorage/ankh": "^0.12.0",
         "@ankhorage/color-theory": "^0.3.1",
-        "@ankhorage/contracts": "^24.1.0",
+        "@ankhorage/contracts": "^24.2.0",
         "@ankhorage/game": "^0.1.2",
         "@ankhorage/reader": "^0.1.0",
         "@ankhorage/runtime": "^4.0.3",
@@ -66,7 +66,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@24.1.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.85" } }, "sha512-aY29kI/SBhi8kWxOa8H7NEJk59/FWSNzg3YJmxWjIYkQ8He9Zw5wk6KH2b2+msLYoBqVXIr79vpQQQJqyRwBnw=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@24.2.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.85" } }, "sha512-QP2u9DrKx2JO3NnMhEiDPFfiwOlbHJ1yT8dXazED/7IPr4tiG7Rdf99N4WifyTrC0rwc3aIxfximqz19hHri4w=="],
 
     "@ankhorage/data-sources": ["@ankhorage/data-sources@2.0.38", "", { "dependencies": { "@ankhorage/contracts": "^24.1.0" } }, "sha512-ejmwnRUr5bbWiaVKWOcnIoC/G7DFYQwyQJAPMdaHz/VUxwlRhcEbKFYgYg4zW7loZaJcRoKO5VQ3o9Xal2Knlw=="],
 
