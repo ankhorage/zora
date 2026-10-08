@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.0.0
+
+### Major Changes
+
+- 740fd0f: Replace ReaderSurface with the canonical themed Reader backed by the standalone @ankhorage/reader ReaderView engine, without aliases.
+
 ## 23.4.3
 
 ### Patch Changes

@@ -302,7 +302,8 @@ graph LR
   module_src_features_rating_public_ts["src/features/rating/public.ts"]
   module_src_features_rating_ratingMeta_ts["src/features/rating/ratingMeta.ts"]
   module_src_features_rating_utils_resolveRatingSegments_ts["src/features/rating/utils/resolveRatingSegments.ts"]
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx["src/features/reader/adapters/inbound/ReaderSurface.tsx"]
+  module_src_features_reader_adapters_inbound_Reader_tsx["src/features/reader/adapters/inbound/Reader.tsx"]
+  module_src_features_reader_composition_useReaderController_ts["src/features/reader/composition/useReaderController.ts"]
   module_src_features_reader_meta_ts["src/features/reader/meta.ts"]
   module_src_features_reader_public_ts["src/features/reader/public.ts"]
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
@@ -1202,16 +1203,18 @@ graph LR
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_types_rating_ts
   module_src_features_rating_adapters_inbound_Rating_tsx --> module_src_types_theme_ts
   module_src_features_rating_ratingMeta_ts --> module_src_types_authoring_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_app_bar_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_button_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_layout_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_progress_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_reader_utils_resolveReaderProgress_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_surface_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_theme_composition_useZoraTheme_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_features_typography_public_ts
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> module_src_types_reader_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_app_bar_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_button_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_layout_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_progress_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_reader_composition_useReaderController_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_reader_utils_resolveReaderProgress_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_surface_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_features_typography_public_ts
+  module_src_features_reader_adapters_inbound_Reader_tsx --> module_src_types_reader_ts
+  module_src_features_reader_composition_useReaderController_ts --> module_src_types_reader_ts
   module_src_features_reader_meta_ts --> module_src_constants_authoring_ts
   module_src_features_reader_meta_ts --> module_src_types_authoring_ts
   module_src_features_registry_bindableComponentMeta_ts --> module_src_constants_authoring_ts

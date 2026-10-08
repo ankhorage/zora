@@ -2560,15 +2560,13 @@ Export paths: `src/index.ts`
 | themeId | `string \| undefined` | no | — |  |
 | value | `number` | yes | — |  |
 
-## ReaderSurface
+## Reader
 
-Source: `src/features/reader/adapters/inbound/ReaderSurface.tsx:349:14`
+Source: `src/features/reader/adapters/inbound/Reader.tsx:383:14`
 
-Adapter-neutral reader shell for EPUB and PDF experiences.
+The themed EPUB/PDF Reader composed around the independent ReaderView engine.
 
-Supply the actual renderer through `viewport`; ZORA owns only the reader
-chrome, controlled state, progress, accessible controls, and normalized
-adapter callbacks.
+Rendering, pagination and navigation remain owned by @ankhorage/reader.
 
 Export paths: `src/index.ts`
 
@@ -2615,7 +2613,6 @@ Export paths: `src/index.ts`
 | themeId | `string \| undefined` | no | — |  |
 | title | `string \| undefined` | no | — |  |
 | unavailableTitle | `string \| undefined` | no | — |  |
-| viewport | `React.ReactNode` | no | — |  |
 
 ## ScanOverlay
 

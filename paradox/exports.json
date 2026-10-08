@@ -18785,6 +18785,28 @@
     "structuredRows": []
   },
   {
+    "name": "Reader",
+    "title": null,
+    "description": "The themed EPUB/PDF Reader composed around the independent ReaderView engine.\n\nRendering, pagination and navigation remain owned by @ankhorage/reader.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/reader/adapters/inbound/Reader.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+      "line": 383,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ReaderColorScheme",
     "title": null,
     "description": null,
@@ -18795,7 +18817,7 @@
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
       "filePath": "src/types/reader.ts",
-      "line": 32,
+      "line": 20,
       "column": 1
     },
     "exportPaths": [
@@ -18814,10 +18836,10 @@
     "see": [],
     "security": [],
     "kind": "unknown",
-    "modulePath": "src/types/reader.ts",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
     "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 5,
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 2,
       "column": 1
     },
     "exportPaths": [
@@ -18836,10 +18858,10 @@
     "see": [],
     "security": [],
     "kind": "unknown",
-    "modulePath": "src/types/reader.ts",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
     "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 23,
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 5,
       "column": 1
     },
     "exportPaths": [
@@ -18858,10 +18880,10 @@
     "see": [],
     "security": [],
     "kind": "type",
-    "modulePath": "src/types/reader.ts",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
     "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 26,
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 16,
       "column": 1
     },
     "exportPaths": [
@@ -18908,7 +18930,7 @@
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
       "filePath": "src/types/reader.ts",
-      "line": 38,
+      "line": 26,
       "column": 1
     },
     "exportPaths": [
@@ -18938,7 +18960,7 @@
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
       "filePath": "src/types/reader.ts",
-      "line": 34,
+      "line": 22,
       "column": 1
     },
     "exportPaths": [
@@ -18957,10 +18979,10 @@
     "see": [],
     "security": [],
     "kind": "type",
-    "modulePath": "src/types/reader.ts",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
     "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 12,
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 6,
       "column": 1
     },
     "exportPaths": [
@@ -19039,10 +19061,10 @@
     "see": [],
     "security": [],
     "kind": "unknown",
-    "modulePath": "src/types/reader.ts",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
     "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 9,
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 4,
       "column": 1
     },
     "exportPaths": [
@@ -19054,73 +19076,7 @@
     "structuredRows": []
   },
   {
-    "name": "ReaderResolvedSource",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "unknown",
-    "modulePath": "src/types/reader.ts",
-    "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 36,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ReaderStatus",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "unknown",
-    "modulePath": "src/types/reader.ts",
-    "sourceLocation": {
-      "filePath": "src/types/reader.ts",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ReaderSurface",
-    "title": null,
-    "description": "Adapter-neutral reader shell for EPUB and PDF experiences.\n\nSupply the actual renderer through `viewport`; ZORA owns only the reader\nchrome, controlled state, progress, accessible controls, and normalized\nadapter callbacks.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "value",
-    "modulePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-    "sourceLocation": {
-      "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-      "line": 349,
-      "column": 14
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ReaderSurfaceProps",
+    "name": "ReaderProps",
     "title": null,
     "description": null,
     "isReadme": false,
@@ -19130,7 +19086,7 @@
     "modulePath": "src/types/reader.ts",
     "sourceLocation": {
       "filePath": "src/types/reader.ts",
-      "line": 42,
+      "line": 30,
       "column": 1
     },
     "exportPaths": [
@@ -19435,15 +19391,52 @@
         "type": "string | undefined",
         "required": false,
         "description": null
-      },
-      {
-        "name": "viewport",
-        "kind": "property",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": null
       }
     ],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderResolvedSource",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/reader.ts",
+    "sourceLocation": {
+      "filePath": "src/types/reader.ts",
+      "line": 24,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ReaderStatus",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
     "structuredRows": []
   },
   {

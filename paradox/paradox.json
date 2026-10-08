@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v23.4.3",
+      "value": "v24.0.0",
       "color": "cb3837"
     },
     {
@@ -3823,13 +3823,14 @@
       ]
     },
     {
-      "path": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+      "path": "src/features/reader/adapters/inbound/Reader.tsx",
       "isEntrypoint": false,
       "dependencies": [
         "src/features/app-bar/public.ts",
         "src/features/button/public.ts",
         "src/features/layout/public.ts",
         "src/features/progress/public.ts",
+        "src/features/reader/composition/useReaderController.ts",
         "src/features/reader/utils/resolveReaderProgress.ts",
         "src/features/surface/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
@@ -3838,7 +3839,17 @@
         "src/types/reader.ts"
       ],
       "exports": [
-        "ReaderSurface"
+        "Reader"
+      ]
+    },
+    {
+      "path": "src/features/reader/composition/useReaderController.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/reader.ts"
+      ],
+      "exports": [
+        "useReaderController"
       ]
     },
     {
@@ -3849,7 +3860,7 @@
         "src/types/authoring.ts"
       ],
       "exports": [
-        "readerSurfaceMeta"
+        "readerMeta"
       ]
     },
     {
@@ -3857,6 +3868,7 @@
       "isEntrypoint": false,
       "dependencies": [],
       "exports": [
+        "Reader",
         "ReaderColorScheme",
         "ReaderDocumentFormat",
         "ReaderErrorCode",
@@ -3865,10 +3877,9 @@
         "ReaderLineHeight",
         "ReaderLocationChangeEvent",
         "ReaderNavigationTrigger",
+        "ReaderProps",
         "ReaderResolvedSource",
         "ReaderStatus",
-        "ReaderSurface",
-        "ReaderSurfaceProps",
         "resolveReaderProgress"
       ]
     },
@@ -5958,6 +5969,7 @@
         "Rating",
         "RatingProps",
         "readChessPieces",
+        "Reader",
         "ReaderColorScheme",
         "ReaderDocumentFormat",
         "ReaderErrorCode",
@@ -5966,10 +5978,9 @@
         "ReaderLineHeight",
         "ReaderLocationChangeEvent",
         "ReaderNavigationTrigger",
+        "ReaderProps",
         "ReaderResolvedSource",
         "ReaderStatus",
-        "ReaderSurface",
-        "ReaderSurfaceProps",
         "resolveAvatarInitials",
         "resolveOAuthProviderIcon",
         "resolveOAuthProviderLabel",
@@ -6938,9 +6949,9 @@
         "ReaderLineHeight",
         "ReaderLocationChangeEvent",
         "ReaderNavigationTrigger",
+        "ReaderProps",
         "ReaderResolvedSource",
-        "ReaderStatus",
-        "ReaderSurfaceProps"
+        "ReaderStatus"
       ]
     },
     {
@@ -26036,6 +26047,28 @@
       "structuredRows": []
     },
     {
+      "name": "Reader",
+      "title": null,
+      "description": "The themed EPUB/PDF Reader composed around the independent ReaderView engine.\n\nRendering, pagination and navigation remain owned by @ankhorage/reader.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/features/reader/adapters/inbound/Reader.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 383,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "ReaderColorScheme",
       "title": null,
       "description": null,
@@ -26046,7 +26079,7 @@
       "modulePath": "src/types/reader.ts",
       "sourceLocation": {
         "filePath": "src/types/reader.ts",
-        "line": 32,
+        "line": 20,
         "column": 1
       },
       "exportPaths": [
@@ -26065,10 +26098,10 @@
       "see": [],
       "security": [],
       "kind": "unknown",
-      "modulePath": "src/types/reader.ts",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
       "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 5,
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 2,
         "column": 1
       },
       "exportPaths": [
@@ -26087,10 +26120,10 @@
       "see": [],
       "security": [],
       "kind": "unknown",
-      "modulePath": "src/types/reader.ts",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
       "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 23,
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 5,
         "column": 1
       },
       "exportPaths": [
@@ -26109,10 +26142,10 @@
       "see": [],
       "security": [],
       "kind": "type",
-      "modulePath": "src/types/reader.ts",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
       "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 26,
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 16,
         "column": 1
       },
       "exportPaths": [
@@ -26159,7 +26192,7 @@
       "modulePath": "src/types/reader.ts",
       "sourceLocation": {
         "filePath": "src/types/reader.ts",
-        "line": 38,
+        "line": 26,
         "column": 1
       },
       "exportPaths": [
@@ -26189,7 +26222,7 @@
       "modulePath": "src/types/reader.ts",
       "sourceLocation": {
         "filePath": "src/types/reader.ts",
-        "line": 34,
+        "line": 22,
         "column": 1
       },
       "exportPaths": [
@@ -26208,10 +26241,10 @@
       "see": [],
       "security": [],
       "kind": "type",
-      "modulePath": "src/types/reader.ts",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
       "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 12,
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 6,
         "column": 1
       },
       "exportPaths": [
@@ -26290,10 +26323,10 @@
       "see": [],
       "security": [],
       "kind": "unknown",
-      "modulePath": "src/types/reader.ts",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
       "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 9,
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 4,
         "column": 1
       },
       "exportPaths": [
@@ -26305,73 +26338,7 @@
       "structuredRows": []
     },
     {
-      "name": "ReaderResolvedSource",
-      "title": null,
-      "description": null,
-      "isReadme": false,
-      "see": [],
-      "security": [],
-      "kind": "unknown",
-      "modulePath": "src/types/reader.ts",
-      "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 36,
-        "column": 1
-      },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ReaderStatus",
-      "title": null,
-      "description": null,
-      "isReadme": false,
-      "see": [],
-      "security": [],
-      "kind": "unknown",
-      "modulePath": "src/types/reader.ts",
-      "sourceLocation": {
-        "filePath": "src/types/reader.ts",
-        "line": 7,
-        "column": 1
-      },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ReaderSurface",
-      "title": null,
-      "description": "Adapter-neutral reader shell for EPUB and PDF experiences.\n\nSupply the actual renderer through `viewport`; ZORA owns only the reader\nchrome, controlled state, progress, accessible controls, and normalized\nadapter callbacks.",
-      "isReadme": false,
-      "see": [],
-      "security": [],
-      "kind": "value",
-      "modulePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-      "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 349,
-        "column": 14
-      },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [],
-      "signatures": [],
-      "members": [],
-      "structuredRows": []
-    },
-    {
-      "name": "ReaderSurfaceProps",
+      "name": "ReaderProps",
       "title": null,
       "description": null,
       "isReadme": false,
@@ -26381,7 +26348,7 @@
       "modulePath": "src/types/reader.ts",
       "sourceLocation": {
         "filePath": "src/types/reader.ts",
-        "line": 42,
+        "line": 30,
         "column": 1
       },
       "exportPaths": [
@@ -26686,15 +26653,52 @@
           "type": "string | undefined",
           "required": false,
           "description": null
-        },
-        {
-          "name": "viewport",
-          "kind": "property",
-          "type": "React.ReactNode",
-          "required": false,
-          "description": null
         }
       ],
+      "structuredRows": []
+    },
+    {
+      "name": "ReaderResolvedSource",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/reader.ts",
+      "sourceLocation": {
+        "filePath": "src/types/reader.ts",
+        "line": 24,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ReaderStatus",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+      "sourceLocation": {
+        "filePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
       "structuredRows": []
     },
     {
@@ -49727,15 +49731,15 @@
       ]
     },
     {
-      "name": "ReaderSurface",
-      "description": "Adapter-neutral reader shell for EPUB and PDF experiences.\n\nSupply the actual renderer through `viewport`; ZORA owns only the reader\nchrome, controlled state, progress, accessible controls, and normalized\nadapter callbacks.",
+      "name": "Reader",
+      "description": "The themed EPUB/PDF Reader composed around the independent ReaderView engine.\n\nRendering, pagination and navigation remain owned by @ankhorage/reader.",
       "isReadme": false,
       "see": [],
       "security": [],
-      "modulePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+      "modulePath": "src/features/reader/adapters/inbound/Reader.tsx",
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 349,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 383,
         "column": 14
       },
       "exportPaths": [
@@ -49985,12 +49989,6 @@
         {
           "name": "unavailableTitle",
           "type": "string | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "viewport",
-          "type": "React.ReactNode",
           "required": false,
           "description": null
         }
@@ -61465,8 +61463,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 14,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 16,
         "column": 1
       }
     },
@@ -61476,8 +61474,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 20,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 22,
         "column": 1
       }
     },
@@ -61487,8 +61485,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 28,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 30,
         "column": 1
       }
     },
@@ -61498,8 +61496,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 37,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 39,
         "column": 1
       }
     },
@@ -61509,8 +61507,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 60,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 62,
         "column": 1
       }
     },
@@ -61520,8 +61518,8 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 64,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 66,
         "column": 1
       }
     },
@@ -61531,19 +61529,52 @@
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 137,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 139,
         "column": 1
       }
     },
     {
-      "name": "ReaderSurfaceInner",
+      "name": "ReaderInner",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
-        "line": 234,
+        "filePath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "line": 236,
+        "column": 1
+      }
+    },
+    {
+      "name": "useReaderController",
+      "description": "Coordinate themed Reader chrome with the standalone ReaderView's controlled events.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/reader/composition/useReaderController.ts",
+        "line": 31,
+        "column": 1
+      }
+    },
+    {
+      "name": "navigate",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/reader/composition/useReaderController.ts",
+        "line": 77,
+        "column": 9
+      }
+    },
+    {
+      "name": "resolveReaderSourceUri",
+      "description": "Resolve a ZORA file source to the independent ReaderView's URI.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/reader/composition/useReaderController.ts",
+        "line": 106,
         "column": 1
       }
     },
@@ -66049,7 +66080,7 @@
       },
       {
         "fromPath": "src/features/reader/public.ts",
-        "toPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "toPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "sourcePath": "src/features/reader/public.ts"
       },
       {
@@ -67906,6 +67937,11 @@
         "fromPath": "src/features/pagination/utils/resolvePaginationState.ts",
         "toPath": "src/features/pagination/utils/resolvePaginationPage.ts",
         "sourcePath": "src/features/pagination/utils/resolvePaginationState.ts"
+      },
+      {
+        "fromPath": "src/features/reader/composition/useReaderController.ts",
+        "toPath": "src/types/reader.ts",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
       },
       {
         "fromPath": "src/features/selection/utils/resolveSelectionNextIds.ts",
@@ -70233,54 +70269,59 @@
         "sourcePath": "src/features/rating/adapters/inbound/Rating.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/types/reader.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/app-bar/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/button/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/progress/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/surface/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/theme/composition/useZoraTheme.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/typography/public.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromPath": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
+        "toPath": "src/features/reader/composition/useReaderController.ts",
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
+      },
+      {
+        "fromPath": "src/features/reader/adapters/inbound/Reader.tsx",
         "toPath": "src/features/reader/utils/resolveReaderProgress.ts",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromPath": "src/features/scanner/adapters/inbound/BarcodeScannerView.tsx",
@@ -72375,6 +72416,72 @@
         "toSymbol": "normalizePositiveNumber",
         "callExpression": "normalizePositiveNumber",
         "sourcePath": "src/features/progress/utils/resolveProgressRingGeometry.ts"
+      },
+      {
+        "fromSymbol": "useReaderController",
+        "toSymbol": "resolveReaderSourceUri",
+        "callExpression": "resolveReaderSourceUri",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "src/features/reader/composition/useReaderController.ts",
+        "toSymbol": "setSnapshot",
+        "callExpression": "setSnapshot",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "src/features/reader/composition/useReaderController.ts",
+        "toSymbol": "setFailure",
+        "callExpression": "setFailure",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "src/features/reader/composition/useReaderController.ts",
+        "toSymbol": "onLocationChange",
+        "callExpression": "onLocationChange",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "src/features/reader/composition/useReaderController.ts",
+        "toSymbol": "onReaderError",
+        "callExpression": "onReaderError",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "src/features/reader/composition/useReaderController.ts",
+        "toSymbol": "onOpenExternalLink",
+        "callExpression": "onOpenExternalLink",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "navigate",
+        "toSymbol": "setCommand",
+        "callExpression": "setCommand",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "navigate",
+        "toSymbol": "onNextPage",
+        "callExpression": "onNextPage",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "navigate",
+        "toSymbol": "onPreviousPage",
+        "callExpression": "onPreviousPage",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "goNext",
+        "toSymbol": "navigate",
+        "callExpression": "navigate",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "goPrevious",
+        "toSymbol": "navigate",
+        "callExpression": "navigate",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
       },
       {
         "fromSymbol": "resolveSelectionEventIntent",
@@ -75062,55 +75169,61 @@
         "fromSymbol": "invokeReaderAction",
         "toSymbol": "action",
         "callExpression": "action",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromSymbol": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromSymbol": "src/features/reader/adapters/inbound/Reader.tsx",
         "toSymbol": "invokeReaderAction",
         "callExpression": "invokeReaderAction",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "ReaderFooter",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "ReaderFooter",
         "toSymbol": "resolveReaderProgress",
         "callExpression": "resolveReaderProgress",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "ReaderFooter",
         "toSymbol": "resolvePageLabel",
         "callExpression": "resolvePageLabel",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "ReaderFooter",
         "toSymbol": "resolveCanGoPrevious",
         "callExpression": "resolveCanGoPrevious",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "ReaderFooter",
         "toSymbol": "resolveCanGoNext",
         "callExpression": "resolveCanGoNext",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromSymbol": "ReaderSurfaceInner",
+        "fromSymbol": "ReaderInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
-        "fromSymbol": "src/features/reader/adapters/inbound/ReaderSurface.tsx",
+        "fromSymbol": "ReaderInner",
+        "toSymbol": "useReaderController",
+        "callExpression": "useReaderController",
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
+      },
+      {
+        "fromSymbol": "src/features/reader/adapters/inbound/Reader.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
-        "sourcePath": "src/features/reader/adapters/inbound/ReaderSurface.tsx"
+        "sourcePath": "src/features/reader/adapters/inbound/Reader.tsx"
       },
       {
         "fromSymbol": "BarcodeScannerViewInner",
@@ -80936,80 +81049,80 @@
       {
         "fromSymbol": "ReaderErrorEvent",
         "toType": "ReaderDocumentFormat",
-        "sourcePath": "src/types/reader.ts"
+        "sourcePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts"
       },
       {
         "fromSymbol": "ReaderErrorEvent",
         "toType": "ReaderErrorCode",
-        "sourcePath": "src/types/reader.ts"
+        "sourcePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts"
       },
       {
         "fromSymbol": "ReaderLocationChangeEvent",
         "toType": "ReaderDocumentFormat",
-        "sourcePath": "src/types/reader.ts"
+        "sourcePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts"
       },
       {
         "fromSymbol": "ReaderLocationChangeEvent",
         "toType": "ReaderNavigationTrigger",
-        "sourcePath": "src/types/reader.ts"
+        "sourcePath": "node_modules/@ankhorage/reader/dist/types/reader.d.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "InteractionPolicy",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "React",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReactNode",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderColorScheme",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderDocumentFormat",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderErrorEvent",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderExternalLinkEvent",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderLineHeight",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderLocationChangeEvent",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderResolvedSource",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ReaderStatus",
         "sourcePath": "src/types/reader.ts"
       },
       {
-        "fromSymbol": "ReaderSurfaceProps",
+        "fromSymbol": "ReaderProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/reader.ts"
       },

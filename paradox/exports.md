@@ -4327,29 +4327,39 @@ Read all pieces from a FEN-backed position. Invalid FEN produces an empty positi
   - fen: `string`
   - returns: `ReadonlyMap<"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8", ChessPieceState>`
 
+## Reader
+
+Kind: `value`
+Module: `src/features/reader/adapters/inbound/Reader.tsx`
+Source: `src/features/reader/adapters/inbound/Reader.tsx:383:14`
+
+The themed EPUB/PDF Reader composed around the independent ReaderView engine.
+
+Rendering, pagination and navigation remain owned by @ankhorage/reader.
+
 ## ReaderColorScheme
 
 Kind: `unknown`
 Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:32:1`
+Source: `src/types/reader.ts:20:1`
 
 ## ReaderDocumentFormat
 
 Kind: `unknown`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:5:1`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:2:1`
 
 ## ReaderErrorCode
 
 Kind: `unknown`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:23:1`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:5:1`
 
 ## ReaderErrorEvent
 
 Kind: `type`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:26:1`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:16:1`
 
 ### Members
 
@@ -4363,7 +4373,7 @@ Source: `src/types/reader.ts:26:1`
 
 Kind: `type`
 Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:38:1`
+Source: `src/types/reader.ts:26:1`
 
 ### Members
 
@@ -4375,13 +4385,13 @@ Source: `src/types/reader.ts:38:1`
 
 Kind: `unknown`
 Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:34:1`
+Source: `src/types/reader.ts:22:1`
 
 ## ReaderLocationChangeEvent
 
 Kind: `type`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:12:1`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:6:1`
 
 ### Members
 
@@ -4399,38 +4409,14 @@ Source: `src/types/reader.ts:12:1`
 ## ReaderNavigationTrigger
 
 Kind: `unknown`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:9:1`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:4:1`
 
-## ReaderResolvedSource
-
-Kind: `unknown`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:36:1`
-
-## ReaderStatus
-
-Kind: `unknown`
-Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:7:1`
-
-## ReaderSurface
-
-Kind: `value`
-Module: `src/features/reader/adapters/inbound/ReaderSurface.tsx`
-Source: `src/features/reader/adapters/inbound/ReaderSurface.tsx:349:14`
-
-Adapter-neutral reader shell for EPUB and PDF experiences.
-
-Supply the actual renderer through `viewport`; ZORA owns only the reader
-chrome, controlled state, progress, accessible controls, and normalized
-adapter callbacks.
-
-## ReaderSurfaceProps
+## ReaderProps
 
 Kind: `type`
 Module: `src/types/reader.ts`
-Source: `src/types/reader.ts:42:1`
+Source: `src/types/reader.ts:30:1`
 
 ### Members
 
@@ -4477,7 +4463,18 @@ Source: `src/types/reader.ts:42:1`
 | themeId | property | `string \| undefined` | no |  |
 | title | property | `string \| undefined` | no |  |
 | unavailableTitle | property | `string \| undefined` | no |  |
-| viewport | property | `React.ReactNode` | no |  |
+
+## ReaderResolvedSource
+
+Kind: `unknown`
+Module: `src/types/reader.ts`
+Source: `src/types/reader.ts:24:1`
+
+## ReaderStatus
+
+Kind: `unknown`
+Module: `node_modules/@ankhorage/reader/dist/types/reader.d.ts`
+Source: `node_modules/@ankhorage/reader/dist/types/reader.d.ts:3:1`
 
 ## resolveAvatarInitials
 

@@ -302,7 +302,8 @@ graph LR
   module_src_features_rating_public_ts["src/features/rating/public.ts"]
   module_src_features_rating_ratingMeta_ts["src/features/rating/ratingMeta.ts"]
   module_src_features_rating_utils_resolveRatingSegments_ts["src/features/rating/utils/resolveRatingSegments.ts"]
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx["src/features/reader/adapters/inbound/ReaderSurface.tsx"]
+  module_src_features_reader_adapters_inbound_Reader_tsx["src/features/reader/adapters/inbound/Reader.tsx"]
+  module_src_features_reader_composition_useReaderController_ts["src/features/reader/composition/useReaderController.ts"]
   module_src_features_reader_meta_ts["src/features/reader/meta.ts"]
   module_src_features_reader_public_ts["src/features/reader/public.ts"]
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
@@ -1291,14 +1292,16 @@ graph LR
   export_readChessPieces["readChessPieces"]
   module_src_features_chess_utils_chessEngine_ts --> export_readChessPieces
   export_readChessPieces -.-> export_ChessPieceState
+  export_Reader["Reader"]
+  module_src_features_reader_adapters_inbound_Reader_tsx --> export_Reader
   export_ReaderColorScheme["ReaderColorScheme"]
   module_src_types_reader_ts --> export_ReaderColorScheme
   export_ReaderDocumentFormat["ReaderDocumentFormat"]
-  module_src_types_reader_ts --> export_ReaderDocumentFormat
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderDocumentFormat
   export_ReaderErrorCode["ReaderErrorCode"]
-  module_src_types_reader_ts --> export_ReaderErrorCode
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderErrorCode
   export_ReaderErrorEvent["ReaderErrorEvent"]
-  module_src_types_reader_ts --> export_ReaderErrorEvent
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderErrorEvent
   export_ReaderErrorEvent -.-> export_ReaderDocumentFormat
   export_ReaderErrorEvent -.-> export_ReaderErrorCode
   export_ReaderExternalLinkEvent["ReaderExternalLinkEvent"]
@@ -1306,28 +1309,26 @@ graph LR
   export_ReaderLineHeight["ReaderLineHeight"]
   module_src_types_reader_ts --> export_ReaderLineHeight
   export_ReaderLocationChangeEvent["ReaderLocationChangeEvent"]
-  module_src_types_reader_ts --> export_ReaderLocationChangeEvent
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderLocationChangeEvent
   export_ReaderLocationChangeEvent -.-> export_ReaderDocumentFormat
   export_ReaderLocationChangeEvent -.-> export_ReaderNavigationTrigger
   export_ReaderNavigationTrigger["ReaderNavigationTrigger"]
-  module_src_types_reader_ts --> export_ReaderNavigationTrigger
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderNavigationTrigger
+  export_ReaderProps["ReaderProps"]
+  module_src_types_reader_ts --> export_ReaderProps
+  export_ReaderProps -.-> export_ReaderColorScheme
+  export_ReaderProps -.-> export_ReaderDocumentFormat
+  export_ReaderProps -.-> export_ReaderErrorEvent
+  export_ReaderProps -.-> export_ReaderExternalLinkEvent
+  export_ReaderProps -.-> export_ReaderLineHeight
+  export_ReaderProps -.-> export_ReaderLocationChangeEvent
+  export_ReaderProps -.-> export_ReaderResolvedSource
+  export_ReaderProps -.-> export_ReaderStatus
+  export_ReaderProps -.-> export_ZoraThemeMode
   export_ReaderResolvedSource["ReaderResolvedSource"]
   module_src_types_reader_ts --> export_ReaderResolvedSource
   export_ReaderStatus["ReaderStatus"]
-  module_src_types_reader_ts --> export_ReaderStatus
-  export_ReaderSurface["ReaderSurface"]
-  module_src_features_reader_adapters_inbound_ReaderSurface_tsx --> export_ReaderSurface
-  export_ReaderSurfaceProps["ReaderSurfaceProps"]
-  module_src_types_reader_ts --> export_ReaderSurfaceProps
-  export_ReaderSurfaceProps -.-> export_ReaderColorScheme
-  export_ReaderSurfaceProps -.-> export_ReaderDocumentFormat
-  export_ReaderSurfaceProps -.-> export_ReaderErrorEvent
-  export_ReaderSurfaceProps -.-> export_ReaderExternalLinkEvent
-  export_ReaderSurfaceProps -.-> export_ReaderLineHeight
-  export_ReaderSurfaceProps -.-> export_ReaderLocationChangeEvent
-  export_ReaderSurfaceProps -.-> export_ReaderResolvedSource
-  export_ReaderSurfaceProps -.-> export_ReaderStatus
-  export_ReaderSurfaceProps -.-> export_ZoraThemeMode
+  module_node_modules__ankhorage_reader_dist_types_reader_d_ts --> export_ReaderStatus
   export_resolveAvatarInitials["resolveAvatarInitials"]
   module_src_features_avatar_utils_resolveAvatarInitials_ts --> export_resolveAvatarInitials
   export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
