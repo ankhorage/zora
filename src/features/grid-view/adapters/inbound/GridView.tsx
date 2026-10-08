@@ -63,7 +63,9 @@ export function GridView({
     if (
       previous.length === viewportVisibleIds.length &&
       previous.every((id, index) => id === viewportVisibleIds[index])
-    ) return;
+    ) {
+      return;
+    }
     previousVisibleIdsRef.current = viewportVisibleIds;
     onVisibleItemIdsChange(viewportVisibleIds);
   }, [onVisibleItemIdsChange, viewportVisibleIds]);
