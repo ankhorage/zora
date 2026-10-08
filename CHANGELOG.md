@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.1.2
+
+### Patch Changes
+
+- 3717c3a: Update dependencies: `@ankhorage/surface`.
+
 ## 24.1.1
 
 ### Patch Changes
