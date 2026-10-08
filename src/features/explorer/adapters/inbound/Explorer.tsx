@@ -34,7 +34,8 @@ function ExplorerInner({
   testID,
 }: ExplorerProps) {
   const { theme } = useZoraTheme();
-  const [internalSelectedIds, setInternalSelectedIds] = React.useState<readonly string[]>(defaultSelectedIds);
+  const [internalSelectedIds, setInternalSelectedIds] =
+    React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
@@ -44,7 +45,14 @@ function ExplorerInner({
 
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;
-    const next = resolveExplorerSelection(ids, effectiveSelectedIds, item.id, anchorId.current, intent, selectionMode);
+    const next = resolveExplorerSelection(
+      ids,
+      effectiveSelectedIds,
+      item.id,
+      anchorId.current,
+      intent,
+      selectionMode,
+    );
     if (intent !== 'range') anchorId.current = item.id;
     if (selectedIds === undefined) setInternalSelectedIds(next);
     onSelectionChange?.({ selectedIds: next });
