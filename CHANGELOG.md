@@ -1,5 +1,12 @@
 # Changelog
 
+## 24.0.2
+
+### Patch Changes
+
+- a165554: Update dependencies: `@ankhorage/ankh`.
+- 1cd0f0c: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 24.0.1
 
 ### Patch Changes
