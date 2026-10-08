@@ -224,7 +224,13 @@ async function validateBundle(bundlePath: string): Promise<void> {
   if (source.includes('jsxDEV') || source.includes('react/jsx-dev-runtime')) {
     throw new Error(`ZORA web output uses the development JSX runtime: ${bundlePath}`);
   }
-  const javascript = ts.createSourceFile(bundlePath, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  const javascript = ts.createSourceFile(
+    bundlePath,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.JS,
+  );
   for (const specifier of collectRuntimeImports(javascript)) {
     if (
       specifier !== 'react' &&
@@ -236,7 +242,6 @@ async function validateBundle(bundlePath: string): Promise<void> {
     }
   }
 }
-
 
 /*** Inspect executable imports rather than matching import-looking text inside bundled strings. */
 function collectRuntimeImports(root: ts.SourceFile): readonly string[] {
