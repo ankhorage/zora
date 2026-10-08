@@ -192,6 +192,8 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'IconButton',
       'MetricCard',
       'Uploader',
+      'MediaExplorer',
+      'FileExplorer',
       'SectionHeader',
       'EmptyState',
       'Hero',

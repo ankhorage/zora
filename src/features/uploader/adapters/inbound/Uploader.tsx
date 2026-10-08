@@ -3,6 +3,7 @@ import React from 'react';
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
 import { Dialog } from '../../../dialog/public';
+import { Explorer } from '../../../explorer/public';
 import { Field } from '../../../form/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
@@ -40,6 +41,7 @@ function UploaderInner({
   disabled = false,
   readOnly = false,
   validatePicked,
+  explorerItems,
   onUpload,
   onRemove,
   aspectRatio = 1,
@@ -54,6 +56,7 @@ function UploaderInner({
   const removing = internalRemoving || uploadState === 'removing';
   const [progress, setProgress] = React.useState<number | null>(null);
   const [previewOpen, setPreviewOpen] = React.useState(false);
+  const [explorerOpen, setExplorerOpen] = React.useState(false);
   const mountedRef = React.useRef<boolean | null>(null);
   const resolvedAccept = resolveUploadAccept(type, accept);
   const actionsDisabled = disabled || readOnly;
@@ -87,19 +90,10 @@ function UploaderInner({
     [isMounted],
   );
 
-  const handlePick = React.useCallback(async () => {
-    if (passive || actionsDisabled || uploading || removing) {
-      return;
-    }
-
-    setInternalError(undefined);
-
-    try {
-      const picked = await picker.pickAsync({ accept: resolvedAccept, type });
-      if (!picked || !isMounted()) {
-        return;
-      }
-
+  const acceptPicked = React.useCallback(
+    async (picked: UploadAsset | null) => {
+      if (!picked || !isMounted() || passive || actionsDisabled || uploading || removing) return;
+      setInternalError(undefined);
       const validationError = validateUploadAsset({
         accept: resolvedAccept,
         asset: picked,
@@ -111,55 +105,65 @@ function UploaderInner({
         onValidationError?.({ message: validationError });
         return;
       }
-
       notifyValue(picked);
       onUploadRequest?.({ asset: picked });
-      if (!onUpload) {
-        return;
-      }
+      if (!onUpload) return;
 
       setUploading(true);
       setProgressSafe(0);
-
       try {
         const uploaded = await onUpload(picked, { setProgress: setProgressSafe });
-        if (!isMounted()) {
-          return;
-        }
-
+        if (!isMounted()) return;
         notifyValue(uploaded);
         setUploading(false);
         setProgress(null);
       } catch (error) {
-        if (!isMounted()) {
-          return;
-        }
-
+        if (!isMounted()) return;
         setInternalError(formatUnknownError(error));
         setUploading(false);
         setProgress(null);
       }
+    },
+    [
+      actionsDisabled,
+      isMounted,
+      maxSizeBytes,
+      notifyValue,
+      onUpload,
+      onUploadRequest,
+      onValidationError,
+      passive,
+      removing,
+      resolvedAccept,
+      setProgressSafe,
+      uploading,
+      validatePicked,
+    ],
+  );
+
+  const handlePick = React.useCallback(async () => {
+    if (passive || actionsDisabled || uploading || removing) return;
+    if (explorerItems !== undefined) {
+      setExplorerOpen(true);
+      return;
+    }
+    setInternalError(undefined);
+    try {
+      await acceptPicked(await picker.pickAsync({ accept: resolvedAccept, type }));
     } catch (error) {
-      if (isMounted()) {
-        setInternalError(formatUnknownError(error));
-      }
+      if (isMounted()) setInternalError(formatUnknownError(error));
     }
   }, [
+    acceptPicked,
     actionsDisabled,
+    explorerItems,
     isMounted,
-    maxSizeBytes,
-    notifyValue,
-    onUploadRequest,
-    onValidationError,
-    onUpload,
     passive,
     picker,
     removing,
     resolvedAccept,
-    setProgressSafe,
     type,
     uploading,
-    validatePicked,
   ]);
 
   const handleRemove = React.useCallback(async () => {
@@ -286,6 +290,31 @@ function UploaderInner({
           </View>
         </View>
       </Field>
+
+      {explorerItems !== undefined ? (
+        <Dialog
+          closeOnBackdrop
+          interactionPolicy={interactionPolicy}
+          onDismiss={() => setExplorerOpen(false)}
+          title="Select from collection"
+          visible={explorerOpen}
+        >
+          <Explorer
+            items={explorerItems}
+            height={360}
+            interactionPolicy={interactionPolicy}
+            onActivate={({ id }) => {
+              const chosen = explorerItems.find((item) => item.id === id)?.uploadAsset;
+              setExplorerOpen(false);
+              if (chosen) {
+                void acceptPicked(chosen).catch((error: unknown) => {
+                  if (isMounted()) setInternalError(formatUnknownError(error));
+                });
+              }
+            }}
+          />
+        </Dialog>
+      ) : null}
 
       {canPreviewImage ? (
         <Dialog

@@ -17,7 +17,6 @@ const removedPublicNames = [
   'SidebarLayout',
   'Spacer',
   'Stack',
-  'TileGrid',
   'TopbarLayout',
 ] as const;
 
@@ -26,6 +25,11 @@ describe('canonical layout boundary', () => {
     for (const name of ['AppShell', 'Divider', 'Grid', 'Screen', 'ScrollView', 'View']) {
       expect(publicSource).toMatch(new RegExp(`\\b${name}\\b`, 'u'));
     }
+
+    expect(publicSource).not.toContain('TileGrid');
+    expect(rootSource).toContain(
+      "export { GridView, layoutTileGrid, TileGrid } from './features/grid-view/public';",
+    );
 
     for (const name of removedPublicNames) {
       expect(publicSource).not.toMatch(new RegExp(`\\b${name}\\b`, 'u'));

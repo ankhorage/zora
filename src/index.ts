@@ -169,6 +169,20 @@ export {
   type EmptyStateAction,
   type EmptyStateProps,
 } from './features/empty-state/public';
+export type {
+  ExplorerActivateEvent,
+  ExplorerItem,
+  ExplorerItemKind,
+  ExplorerProps,
+  ExplorerSelectionChangeEvent,
+  ExplorerSelectionMode,
+} from './features/explorer/public';
+export {
+  Explorer,
+  FileExplorer,
+  MediaExplorer,
+  resolveExplorerSelection,
+} from './features/explorer/public';
 export {
   Checkbox,
   CheckboxGroup,
@@ -249,6 +263,8 @@ export type {
   GradientRendererProviderProps,
 } from './features/gradient/public';
 export { Gradient, GradientRendererProvider } from './features/gradient/public';
+export type { GridViewProps, TileGridItem, TileGridProps } from './features/grid-view/public';
+export { GridView, layoutTileGrid, TileGrid } from './features/grid-view/public';
 export {
   Hero,
   type HeroAction,
@@ -494,6 +510,7 @@ export { Text } from './features/typography/public';
 export type {
   UploadAsset,
   UploadAssetBase,
+  UploaderExplorerItem,
   UploaderProps,
   UploadProgressContext,
   UploadType,

@@ -54,6 +54,7 @@ export const uploaderMeta = {
     type: { type: 'enum', category: 'Selection', enum: ['image', 'video', 'document', 'file'] },
     accept: { type: 'string', category: 'Validation' },
     maxSizeBytes: { type: 'number', category: 'Validation' },
+    explorerItems: { type: 'array', category: 'Selection', label: 'App-owned collection' },
     required: { type: 'boolean', category: 'Validation' },
     disabled: { type: 'boolean', category: 'State' },
     readOnly: { type: 'boolean', category: 'State' },

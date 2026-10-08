@@ -35,6 +35,7 @@ import { dataTableMeta } from '../data-table/dataTableMeta';
 import { datePickerMeta } from '../date-picker/datePickerMeta';
 import { dialogMeta } from '../dialog/dialogMeta';
 import { emptyStateMeta } from '../empty-state/emptyStateMeta';
+import { explorerMeta, fileExplorerMeta, mediaExplorerMeta } from '../explorer/meta';
 import { checkboxGroupMeta, checkboxMeta } from '../form/checkbox/checkboxMeta';
 import { fieldMeta } from '../form/field/meta';
 import { formActionsMeta } from '../form/formActionsMeta';
@@ -52,6 +53,7 @@ import { gameMeasurementProbeMeta } from '../game/meta/gameMeasurementProbeMeta'
 import { gameMeta } from '../game/meta/gameMeta';
 import { gameOverlayMeta } from '../game/meta/gameOverlayMeta';
 import { gradientMeta } from '../gradient/gradientMeta';
+import { gridViewMeta, tileGridMeta } from '../grid-view/meta';
 import { heroMeta } from '../hero/heroMeta';
 import { iconMeta } from '../icon/iconMeta';
 import { imageMeta } from '../image/imageMeta';
@@ -193,6 +195,11 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   CollectionEditor: collectionEditorMeta,
   ContentRail: contentRailMeta,
   EmptyState: emptyStateMeta,
+  Explorer: explorerMeta,
+  FileExplorer: fileExplorerMeta,
+  MediaExplorer: mediaExplorerMeta,
+  GridView: gridViewMeta,
+  TileGrid: tileGridMeta,
   Hero: heroMeta,
   List: listMeta,
   ListItem: listItemMeta,

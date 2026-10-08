@@ -30,6 +30,7 @@ import { DataTable } from '../data-table/public';
 import { DatePicker } from '../date-picker/public';
 import { Dialog } from '../dialog/public';
 import { EmptyState } from '../empty-state/public';
+import { Explorer, FileExplorer, MediaExplorer } from '../explorer/public';
 import { Checkbox, CheckboxGroup } from '../form/checkbox/public';
 import { Field, Form, FormActions, FormError } from '../form/public';
 import { Radio, RadioGroup } from '../form/radio/public';
@@ -46,6 +47,7 @@ import {
   GameOverlay,
 } from '../game/public';
 import { Gradient } from '../gradient/public';
+import { GridView, TileGrid } from '../grid-view/public';
 import { Hero } from '../hero/public';
 import { Icon } from '../icon/public';
 import { Image } from '../image/public';
@@ -190,6 +192,11 @@ const _ZORA_COMPONENT_REGISTRY = {
   CollectionEditor,
   ContentRail,
   EmptyState,
+  Explorer,
+  FileExplorer,
+  GridView,
+  TileGrid,
+  MediaExplorer,
   Hero,
   List,
   ListItem,
