@@ -27,7 +27,9 @@ describe('canonical layout boundary', () => {
     }
 
     expect(publicSource).not.toContain('TileGrid');
-    expect(rootSource).toContain("export { GridView, TileGrid, layoutTileGrid } from './features/grid-view/public';");
+    expect(rootSource).toContain(
+      "export { GridView, layoutTileGrid, TileGrid } from './features/grid-view/public';",
+    );
 
     for (const name of removedPublicNames) {
       expect(publicSource).not.toMatch(new RegExp(`\\b${name}\\b`, 'u'));
