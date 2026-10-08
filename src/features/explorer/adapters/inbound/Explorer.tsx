@@ -2,12 +2,12 @@ import React from 'react';
 import { Pressable as NativePressable, View as NativeView } from 'react-native';
 
 import type { ExplorerItem, ExplorerProps } from '../../../../types/explorer';
+import { TileGrid } from '../../../grid-view/public';
 import { Icon } from '../../../icon/public';
 import { Image } from '../../../image/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
-import { TileGrid } from '../../../grid-view/public';
 import { resolveExplorerSelection } from '../../application/resolveExplorerSelection';
 
 /*** Single canonical Explorer implementation for media and file catalogue presentation. */
@@ -38,7 +38,10 @@ function ExplorerInner({
     React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
-  const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
+  const itemLookup = React.useMemo(
+    () => new Map(items.map((item) => [item.id, item])),
+    [items],
+  );
   const ids = items.filter((item) => !item.disabled).map((item) => item.id);
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
@@ -71,15 +74,11 @@ function ExplorerInner({
         disabled={!canInteract}
         onLongPress={() => select(item, 'toggle')}
         onPress={(event) => {
-          const nativeEvent: unknown = event.nativeEvent;
-          const modifiers = typeof nativeEvent === 'object' && nativeEvent !== null
-            ? nativeEvent : {};
-          const intent = 'shiftKey' in modifiers && modifiers.shiftKey === true
-            ? 'range'
-            : ('ctrlKey' in modifiers && modifiers.ctrlKey === true)
-              || ('metaKey' in modifiers && modifiers.metaKey === true) ? 'toggle' : 'replace';
+          const intent = resolveExplorerPressIntent(event.nativeEvent);
           select(item, intent);
-          if (selectionMode === 'single' && intent === 'replace') onActivate?.({ id: item.id });
+          if (selectionMode === 'single' && intent === 'replace') {
+            onActivate?.({ id: item.id });
+          }
         }}
         style={{
           flex: 1,
@@ -95,10 +94,19 @@ function ExplorerInner({
       >
         <NativeView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           {item.thumbnailUri ? (
-            <Image source={item.thumbnailUri} accessibilityLabel={item.name} aspectRatio={1} width="100%" />
-          ) : <Icon name={item.kind === 'folder' ? 'folder-outline' : 'document-outline'} size={32} />}
+            <Image
+              accessibilityLabel={item.name}
+              aspectRatio={1}
+              source={item.thumbnailUri}
+              width="100%"
+            />
+          ) : (
+            <Icon name={item.kind === 'folder' ? 'folder-outline' : 'document-outline'} size={32} />
+          )}
         </NativeView>
-        <Text variant="caption" numberOfLines={1}>{item.name}</Text>
+        <Text numberOfLines={1} variant="caption">
+          {item.name}
+        </Text>
       </NativePressable>
     );
   };
@@ -119,4 +127,13 @@ function ExplorerInner({
       zoom={zoom}
     />
   );
+}
+
+/*** Normalize platform press modifiers for multi-selection without passing event objects into contracts. */
+function resolveExplorerPressIntent(event: unknown): 'replace' | 'toggle' | 'range' {
+  if (typeof event !== 'object' || event === null) return 'replace';
+  if ('shiftKey' in event && event.shiftKey === true) return 'range';
+  if ('ctrlKey' in event && event.ctrlKey === true) return 'toggle';
+  if ('metaKey' in event && event.metaKey === true) return 'toggle';
+  return 'replace';
 }
