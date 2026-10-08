@@ -24,10 +24,7 @@ export function TileGrid({
     () => layoutTileGrid(items, resolvedWidth, tileSize, gap, zoom),
     [items, resolvedWidth, tileSize, gap, zoom],
   );
-  const itemLookup = React.useMemo(
-    () => new Map(items.map((item) => [item.id, item])),
-    [items],
-  );
+  const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
 
   return (
     <NativeView
