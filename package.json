@@ -45,7 +45,7 @@
     "@ankhorage/contracts": "^24.1.0",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/runtime": "^4.0.3",
-    "@ankhorage/surface": "^9.3.3",
+    "@ankhorage/surface": "^9.4.0",
     "@ankhorage/utility": "^1.9.85",
     "chess.js": "^1.4.0",
     "expo-document-picker": "~57.0.3",
