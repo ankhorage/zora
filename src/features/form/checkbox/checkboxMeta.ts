@@ -6,6 +6,14 @@ export const checkboxMeta = {
   directManifestNode: true,
   allowedChildren: [],
   blueprint: { label: 'Checkbox', defaultProps: { label: 'Option', checked: false } },
+  events: {
+    checkedChange: {
+      label: 'Checked change',
+      eventType: 'checkbox.checkedChange',
+      description: 'Emitted when the checked state changes.',
+      payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+    },
+  },
   props: {
     label: { type: 'string', category: 'Content', label: 'Label' },
     checked: { type: 'boolean', category: 'State', label: 'Checked', default: false },

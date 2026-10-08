@@ -159,24 +159,6 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           acceptsTransforms: true,
         },
       },
-      events: {
-        changeText: {
-          label: 'Change text',
-          description: 'Runs when the input value changes.',
-          payload: {
-            eventType: 'textInput.changeText',
-            fields: [{ path: 'value', type: 'string', label: 'Value' }],
-          },
-        },
-      },
-    },
-    events: {
-      changeText: {
-        label: 'Change text',
-        eventType: 'textInput.changeText',
-        description: 'Emitted when the input value changes.',
-        payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
-      },
     },
     props: {
       inverted: INVERTED_POLARITY_PROP,
@@ -271,24 +253,6 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           acceptsTransforms: true,
         },
       },
-      events: {
-        checkedChange: {
-          label: 'Checked change',
-          description: 'Runs when checked state changes.',
-          payload: {
-            eventType: 'checkbox.checkedChange',
-            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
-          },
-        },
-      },
-    },
-    events: {
-      checkedChange: {
-        label: 'Checked change',
-        eventType: 'checkbox.checkedChange',
-        description: 'Emitted when the checked state changes.',
-        payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
-      },
     },
     props: {
       inverted: INVERTED_POLARITY_PROP,
@@ -326,24 +290,6 @@ export const ZORA_BINDABLE_COMPONENT_META = {
           acceptsFallback: true,
           acceptsTransforms: true,
         },
-      },
-      events: {
-        checkedChange: {
-          label: 'Checked change',
-          description: 'Runs when checked state changes.',
-          payload: {
-            eventType: 'switch.checkedChange',
-            fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
-          },
-        },
-      },
-    },
-    events: {
-      checkedChange: {
-        label: 'Checked change',
-        eventType: 'switch.checkedChange',
-        description: 'Emitted when the checked state changes.',
-        payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
       },
     },
     props: {

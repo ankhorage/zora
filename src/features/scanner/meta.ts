@@ -122,17 +122,6 @@ export const barcodeScannerViewMeta = {
       description: 'Point the camera at a barcode to continue.',
     },
   },
-  events: {
-    onBarcodeScanned: {
-      label: 'Barcode scanned',
-      eventType: 'scan',
-      description: 'Emitted by the app camera adapter after a barcode has been scanned.',
-      payloadFields: [
-        { path: 'value', type: 'string', label: 'Barcode value' },
-        { path: 'type', type: 'string', label: 'Barcode type' },
-      ],
-    },
-  },
   slots: {
     camera: {
       label: 'Camera adapter',

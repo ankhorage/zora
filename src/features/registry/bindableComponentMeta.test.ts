@@ -25,6 +25,15 @@ describe('ZORA bindable component metadata', () => {
     expect(select.bindings.events.valueChange.payload.eventType).toBe('select.valueChange');
   });
 
+  it('does not duplicate controlled component event ownership', () => {
+    expect(ZORA_BINDABLE_COMPONENT_META.TextInput.events).toBeUndefined();
+    expect(ZORA_BINDABLE_COMPONENT_META.TextInput.bindings.events).toBeUndefined();
+    expect(ZORA_BINDABLE_COMPONENT_META.Checkbox.events).toBeUndefined();
+    expect(ZORA_BINDABLE_COMPONENT_META.Checkbox.bindings.events).toBeUndefined();
+    expect(ZORA_BINDABLE_COMPONENT_META.Switch.events).toBeUndefined();
+    expect(ZORA_BINDABLE_COMPONENT_META.Switch.bindings.events).toBeUndefined();
+  });
+
   it('shares canonical Image authoring metadata while preserving dynamic image bindings', () => {
     const image = ZORA_BINDABLE_COMPONENT_META.Image;
 

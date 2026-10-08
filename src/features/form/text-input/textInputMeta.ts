@@ -12,6 +12,14 @@ export const textInputMeta = {
       value: '',
     },
   },
+  events: {
+    changeText: {
+      label: 'Change text',
+      eventType: 'textInput.changeText',
+      description: 'Emitted when the input value changes.',
+      payloadFields: [{ path: 'value', type: 'string', label: 'Value' }],
+    },
+  },
   props: {
     placeholder: {
       type: 'string',
