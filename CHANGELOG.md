@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.0.1
+
+### Patch Changes
+
+- e7f2725: Update dependencies: `@ankhorage/grid-view`, `@ankhorage/runtime`.
+
 ## 25.0.0
 
 ### Major Changes
