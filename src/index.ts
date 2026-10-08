@@ -510,6 +510,7 @@ export { Text } from './features/typography/public';
 export type {
   UploadAsset,
   UploadAssetBase,
+  UploaderExplorerItem,
   UploaderProps,
   UploadProgressContext,
   UploadType,
