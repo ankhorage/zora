@@ -16,11 +16,12 @@ export function useExplorerKeyboardFocus(
   const pendingFocusRef = React.useRef<string | null>(null);
   const tileRefs = React.useRef(new Map<string, FocusableTile>());
   const ids = React.useMemo(() => items.map(({ id }) => id), [items]);
+  const idSet = React.useMemo(() => new Set(ids), [ids]);
   const disabledIds = React.useMemo(
     () => new Set(items.filter((item) => item.disabled).map(({ id }) => id)),
     [items],
   );
-  const visibleEligibleIds = visibleIds.filter((id) => ids.includes(id) && !disabledIds.has(id));
+  const visibleEligibleIds = visibleIds.filter((id) => idSet.has(id) && !disabledIds.has(id));
   const tabStopId =
     focusedId !== null && visibleEligibleIds.includes(focusedId)
       ? focusedId
