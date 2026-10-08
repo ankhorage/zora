@@ -40,6 +40,7 @@ function ExplorerInner({
     React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
   const [columns, setColumns] = React.useState(1);
+  const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const ids = items.filter((item) => !item.disabled).map((item) => item.id);
@@ -65,6 +66,7 @@ function ExplorerInner({
     items,
     columns,
     passive,
+    visibleIds,
     (targetId, originId, shiftKey) => {
       if (!shiftKey) return;
       if (anchorId.current === null) anchorId.current = originId;
@@ -143,6 +145,7 @@ function ExplorerInner({
       height={height}
       interactionPolicy={interactionPolicy}
       onColumnsChange={setColumns}
+      onVisibleItemIdsChange={setVisibleIds}
       items={items}
       renderItem={renderTile}
       testID={testID}
