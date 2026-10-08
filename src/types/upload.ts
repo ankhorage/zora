@@ -43,6 +43,8 @@ export interface ValidateUploadAssetInput {
   validate?: (asset: UploadAsset) => string | undefined;
 }
 
+export type UploaderExplorerItem = ExplorerItem & { readonly uploadAsset: UploadAsset };
+
 export interface UploaderProps extends ZoraBaseProps {
   value?: UploadAsset | null;
   onChange?: (next: UploadAsset | null) => void;
@@ -64,7 +66,7 @@ export interface UploaderProps extends ZoraBaseProps {
   readOnly?: boolean;
   validatePicked?: (asset: UploadAsset) => string | undefined;
   /** If supplied, Uploader opens the canonical app-owned Explorer instead of an OS picker. */
-  explorerItems?: readonly ExplorerItem[];
+  explorerItems?: readonly UploaderExplorerItem[];
   onUpload?: (asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>;
   onRemove?: (current: UploadAsset) => void | Promise<void>;
   aspectRatio?: number;
