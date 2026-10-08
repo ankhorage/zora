@@ -27,6 +27,7 @@ export function GridView({
   revealPaddingPixels = 8,
   interactionPolicy,
   onViewportChange,
+  onVisibleItemIdsChange,
   renderItem,
   testID,
 }: GridViewProps) {
@@ -50,6 +51,22 @@ export function GridView({
     () => getVisibleGridItems(items, viewport, overscanPixels),
     [items, overscanPixels, viewport],
   );
+  const viewportVisibleIds = React.useMemo(
+    () => getVisibleGridItems(visibleItems, viewport).map((item) => item.id),
+    [viewport, visibleItems],
+  );
+  const previousVisibleIdsRef = React.useRef<readonly string[]>([]);
+
+  React.useEffect(() => {
+    if (!onVisibleItemIdsChange) return;
+    const previous = previousVisibleIdsRef.current;
+    if (
+      previous.length === viewportVisibleIds.length &&
+      previous.every((id, index) => id === viewportVisibleIds[index])
+    ) return;
+    previousVisibleIdsRef.current = viewportVisibleIds;
+    onVisibleItemIdsChange(viewportVisibleIds);
+  }, [onVisibleItemIdsChange, viewportVisibleIds]);
 
   React.useEffect(() => {
     onViewportChange?.(viewport);
