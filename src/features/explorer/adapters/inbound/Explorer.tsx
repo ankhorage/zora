@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable as NativePressable, View as NativeView } from 'react-native';
+import { Platform, Pressable as NativePressable, View as NativeView } from 'react-native';
 
 import type { ExplorerItem, ExplorerProps } from '../../../../types/explorer';
 import { TileGrid } from '../../../grid-view/public';
@@ -87,7 +87,7 @@ function ExplorerInner({
           accessibilityRole="button"
           accessibilityState={{ selected: isSelected, disabled: !canInteract }}
           disabled={!canInteract}
-          focusable={canInteract && item.id === keyboard.tabStopId}
+          focusable={canInteract && (Platform.OS !== 'web' || item.id === keyboard.tabStopId)}
           onFocus={() => keyboard.onFocus(item.id)}
           onLongPress={() => select(item, 'toggle')}
           onPress={(event) => {
