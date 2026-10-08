@@ -1,6 +1,7 @@
 import type React from 'react';
 
 import type { ZoraBaseProps } from './base';
+import type { ExplorerItem } from './explorer';
 
 export type UploadType = 'image' | 'video' | 'document' | 'file';
 
@@ -62,6 +63,8 @@ export interface UploaderProps extends ZoraBaseProps {
   disabled?: boolean;
   readOnly?: boolean;
   validatePicked?: (asset: UploadAsset) => string | undefined;
+  /** If supplied, Uploader opens the canonical app-owned Explorer instead of an OS picker. */
+  explorerItems?: readonly ExplorerItem[];
   onUpload?: (asset: UploadAsset, context: UploadProgressContext) => Promise<UploadAsset>;
   onRemove?: (current: UploadAsset) => void | Promise<void>;
   aspectRatio?: number;
