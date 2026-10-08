@@ -47,7 +47,7 @@
     "@ankhorage/grid-view": "^0.1.1",
     "@ankhorage/reader": "^0.1.0",
     "@ankhorage/runtime": "^4.0.6",
-    "@ankhorage/surface": "^9.4.1",
+    "@ankhorage/surface": "^9.4.2",
     "@ankhorage/utility": "^1.9.85",
     "chess.js": "^1.4.0",
     "expo-document-picker": "~57.0.3",
