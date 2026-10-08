@@ -1,4 +1,7 @@
-/*** Resolve focus along actual tile coordinates, skipping unavailable items without collapsing rows. */
+/***
+ * Resolve focus along actual tile positions while skipping unavailable items
+ * without collapsing the visual row geometry.
+ */
 export function getExplorerNextFocusId(
   ids: readonly string[],
   currentId: string | null,
@@ -19,7 +22,12 @@ export function getExplorerNextFocusId(
       : delta === Number.POSITIVE_INFINITY
         ? ids.length - 1
         : Math.max(0, Math.min(ids.length - 1, currentIndex + delta));
-  const direction = delta === Number.NEGATIVE_INFINITY ? 1 : delta === Number.POSITIVE_INFINITY ? -1 : Math.sign(delta);
+  const direction =
+    delta === Number.NEGATIVE_INFINITY
+      ? 1
+      : delta === Number.POSITIVE_INFINITY
+        ? -1
+        : Math.sign(delta);
 
   for (let index = candidateIndex; index >= 0 && index < ids.length; index += direction) {
     const candidate = ids[index];
