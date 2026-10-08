@@ -1,5 +1,4 @@
 import type { ZoraBaseProps } from './base';
-import type { UploadAsset } from './upload';
 
 /** Portable catalogue row. Providers retain permissions, pagination and storage objects. */
 export type ExplorerItemKind = 'image' | 'video' | 'audio' | 'document' | 'file' | 'folder';
@@ -15,7 +14,6 @@ export interface ExplorerItem {
   readonly durationSeconds?: number;
   readonly providerId?: string;
   readonly disabled?: boolean;
-  readonly uploadAsset?: UploadAsset;
 }
 
 export type ExplorerSelectionMode = 'single' | 'multi';
