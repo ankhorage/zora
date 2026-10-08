@@ -30,12 +30,13 @@ export function getExplorerNextFocusId(
         : Math.sign(delta);
 
   for (let index = candidateIndex; index >= 0 && index < ids.length; index += direction) {
-    const candidate = ids[index];
+    const candidate = ids.at(index);
     if (candidate !== undefined && !disabledIds.has(candidate)) return candidate;
   }
-  return ids[currentIndex] !== undefined && !disabledIds.has(ids[currentIndex])
-    ? ids[currentIndex]
-    : (ids[firstIndex] ?? null);
+  const current = ids.at(currentIndex);
+  return current !== undefined && !disabledIds.has(current)
+    ? current
+    : (ids.at(firstIndex) ?? null);
 }
 
 /*** Translate navigation keys into collection-relative movements. */
