@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.1.1
+
+### Patch Changes
+
+- bf08937: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`.
+
 ## 24.1.0
 
 ### Minor Changes
