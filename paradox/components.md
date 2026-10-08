@@ -1269,7 +1269,7 @@ Export paths: `src/index.ts`
 
 ## Explorer
 
-Source: `src/features/explorer/adapters/inbound/Explorer.tsx:14:14`
+Source: `src/features/explorer/adapters/inbound/Explorer.tsx:16:14`
 
 Single canonical Explorer implementation for media and file catalogue presentation.
 
@@ -1753,7 +1753,7 @@ Export paths: `src/index.ts`
 
 ## GridView
 
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:13:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:18:1`
 
 Renders world-positioned items on native and web using the canonical viewport/culling engine.
 
@@ -1766,14 +1766,17 @@ Export paths: `src/index.ts`
 | --- | --- | --- | --- | --- |
 | contentHeight | `number` | yes | — |  |
 | contentWidth | `number` | yes | — |  |
+| focusedItemId | `string \| undefined` | no | — |  |
 | height | `number` | yes | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | items | `readonly GridRectItem[]` | yes | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onViewportChange | `(viewport: GridViewport) => void \| undefined` | no | — |  |
+| onVisibleItemIdsChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
 | overscanPixels | `number \| undefined` | no | `160` |  |
 | renderItem | `(item: GridRectItem) => React.ReactNode` | yes | — |  |
+| revealPaddingPixels | `number \| undefined` | no | `8` |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `ZoraThemeId \| undefined` | no | — |  |
 | width | `number` | yes | — |  |
@@ -3863,14 +3866,18 @@ Export paths: `src/index.ts`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| focusedItemId | `string \| undefined` | no | — |  |
 | gap | `number \| undefined` | no | `12` |  |
 | height | `number \| undefined` | no | `440` |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | items | `readonly TileGridItem[]` | yes | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onColumnsChange | `(columns: number) => void \| undefined` | no | — |  |
+| onVisibleItemIdsChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
 | overscanPixels | `number \| undefined` | no | — |  |
 | renderItem | `(item: TileGridItem) => React.ReactNode` | yes | — |  |
+| revealPaddingPixels | `number \| undefined` | no | — |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `ZoraThemeId \| undefined` | no | — |  |
 | tileSize | `number \| undefined` | no | `120` |  |

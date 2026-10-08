@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.0.1",
+      "value": "v25.1.0",
       "color": "cb3837"
     },
     {
@@ -99,7 +99,7 @@
       "security": []
     }
   ],
-  "exampleCount": 6,
+  "exampleCount": 7,
   "findings": [
     {
       "ruleId": "documentation.public-function.description",
@@ -1867,6 +1867,8 @@
       "path": "src/features/explorer/adapters/inbound/Explorer.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.tsx",
+        "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
         "src/features/explorer/application/resolveExplorerSelection.ts",
         "src/features/grid-view/public.ts",
         "src/features/icon/public.ts",
@@ -1878,6 +1880,30 @@
       ],
       "exports": [
         "Explorer"
+      ]
+    },
+    {
+      "path": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.native.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ExplorerKeyboardProxy"
+      ]
+    },
+    {
+      "path": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ExplorerKeyboardProxy"
+      ]
+    },
+    {
+      "path": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.web.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ExplorerKeyboardProxy"
       ]
     },
     {
@@ -1900,6 +1926,25 @@
       ],
       "exports": [
         "MediaExplorer"
+      ]
+    },
+    {
+      "path": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/explorer/application/getExplorerNextFocusId.ts",
+        "src/types/explorer.ts"
+      ],
+      "exports": [
+        "useExplorerKeyboardFocus"
+      ]
+    },
+    {
+      "path": "src/features/explorer/application/getExplorerNextFocusId.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "getExplorerNextFocusId"
       ]
     },
     {
@@ -1937,6 +1982,7 @@
         "ExplorerSelectionChangeEvent",
         "ExplorerSelectionMode",
         "FileExplorer",
+        "getExplorerNextFocusId",
         "MediaExplorer",
         "resolveExplorerSelection"
       ]
@@ -16077,7 +16123,7 @@
       "modulePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 14,
+        "line": 16,
         "column": 14
       },
       "exportPaths": [
@@ -19677,7 +19723,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 13,
+        "line": 18,
         "column": 1
       },
       "exportPaths": [
@@ -19688,10 +19734,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}",
+              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
               "type": "GridViewProps",
               "required": true,
               "description": null
@@ -19741,6 +19787,13 @@
           "description": null
         },
         {
+          "name": "focusedItemId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "height",
           "kind": "property",
           "type": "number",
@@ -19783,6 +19836,13 @@
           "description": null
         },
         {
+          "name": "onVisibleItemIdsChange",
+          "kind": "property",
+          "type": "((ids: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "overscanPixels",
           "kind": "property",
           "type": "number | undefined",
@@ -19794,6 +19854,13 @@
           "kind": "property",
           "type": "(item: GridRectItem) => React.ReactNode",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "revealPaddingPixels",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -34442,10 +34509,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
+          "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
+              "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
               "type": "TileGridProps",
               "required": true,
               "description": null
@@ -34469,7 +34536,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 20,
+        "line": 25,
         "column": 1
       },
       "exportPaths": [
@@ -34499,7 +34566,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 25,
+        "line": 30,
         "column": 1
       },
       "exportPaths": [
@@ -34511,6 +34578,13 @@
       ],
       "signatures": [],
       "members": [
+        {
+          "name": "focusedItemId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
         {
           "name": "gap",
           "kind": "property",
@@ -34554,6 +34628,20 @@
           "description": null
         },
         {
+          "name": "onColumnsChange",
+          "kind": "property",
+          "type": "((columns: number) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onVisibleItemIdsChange",
+          "kind": "property",
+          "type": "((ids: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "overscanPixels",
           "kind": "property",
           "type": "number | undefined",
@@ -34565,6 +34653,13 @@
           "kind": "property",
           "type": "(item: TileGridItem) => React.ReactNode",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "revealPaddingPixels",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -45322,7 +45417,7 @@
       "modulePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 14,
+        "line": 16,
         "column": 14
       },
       "exportPaths": [
@@ -47374,7 +47469,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 13,
+        "line": 18,
         "column": 1
       },
       "exportPaths": [
@@ -47391,6 +47486,12 @@
           "name": "contentWidth",
           "type": "number",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "focusedItemId",
+          "type": "string | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -47430,6 +47531,12 @@
           "description": null
         },
         {
+          "name": "onVisibleItemIdsChange",
+          "type": "(ids: readonly string[]) => void | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "overscanPixels",
           "type": "number | undefined",
           "required": false,
@@ -47440,6 +47547,13 @@
           "name": "renderItem",
           "type": "(item: GridRectItem) => React.ReactNode",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "revealPaddingPixels",
+          "type": "number | undefined",
+          "required": false,
+          "defaultValue": "8",
           "description": null
         },
         {
@@ -57092,6 +57206,12 @@
       ],
       "props": [
         {
+          "name": "focusedItemId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "gap",
           "type": "number | undefined",
           "required": false,
@@ -57130,6 +57250,18 @@
           "description": null
         },
         {
+          "name": "onColumnsChange",
+          "type": "(columns: number) => void | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onVisibleItemIdsChange",
+          "type": "(ids: readonly string[]) => void | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "overscanPixels",
           "type": "number | undefined",
           "required": false,
@@ -57139,6 +57271,12 @@
           "name": "renderItem",
           "type": "(item: TileGridItem) => React.ReactNode",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "revealPaddingPixels",
+          "type": "number | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -60538,7 +60676,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 17,
+        "line": 19,
         "column": 1
       }
     },
@@ -60549,7 +60687,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 46,
+        "line": 53,
         "column": 9
       }
     },
@@ -60560,18 +60698,51 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 61,
+        "line": 81,
         "column": 9
       }
     },
     {
       "name": "resolveExplorerPressIntent",
-      "description": "Normalize platform press modifiers for multi-selection without passing event objects into contracts.",
+      "description": "Normalize platform press modifiers into selection intents\nwithout passing event objects into the public contracts.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-        "line": 130,
+        "line": 166,
+        "column": 1
+      }
+    },
+    {
+      "name": "ExplorerKeyboardProxy",
+      "description": "Keeps Explorer navigation portable when a native host has no DOM keyboard event surface.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.native.tsx",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "ExplorerKeyboardProxy",
+      "description": "Provides the native fallback type surface; RNW resolves the web adapter at runtime.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.tsx",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "ExplorerKeyboardProxy",
+      "description": "Bridges RNW's rendered DOM focus events into Explorer's platform-neutral navigation policy.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.web.tsx",
+        "line": 4,
         "column": 1
       }
     },
@@ -60594,6 +60765,39 @@
       "sourceLocation": {
         "filePath": "src/features/explorer/adapters/inbound/MediaExplorer.tsx",
         "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "useExplorerKeyboardFocus",
+      "description": "Tracks the one keyboard tab stop and restores focus only after a virtualized tile mounts.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "getExplorerNextFocusId",
+      "description": "Resolve focus along actual tile positions while skipping unavailable items\nwithout collapsing the visual row geometry.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/application/getExplorerNextFocusId.ts",
+        "line": 5,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveFocusDelta",
+      "description": "Translate navigation keys into collection-relative movements.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/explorer/application/getExplorerNextFocusId.ts",
+        "line": 43,
         "column": 1
       }
     },
@@ -62727,7 +62931,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 13,
+        "line": 18,
         "column": 1
       }
     },
@@ -67577,6 +67781,11 @@
       },
       {
         "fromPath": "src/features/explorer/public.ts",
+        "toPath": "src/features/explorer/application/getExplorerNextFocusId.ts",
+        "sourcePath": "src/features/explorer/public.ts"
+      },
+      {
+        "fromPath": "src/features/explorer/public.ts",
         "toPath": "src/features/explorer/application/resolveExplorerSelection.ts",
         "sourcePath": "src/features/explorer/public.ts"
       },
@@ -71491,6 +71700,16 @@
         "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
       },
       {
+        "fromPath": "src/features/explorer/adapters/inbound/Explorer.tsx",
+        "toPath": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.tsx",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
+        "fromPath": "src/features/explorer/adapters/inbound/Explorer.tsx",
+        "toPath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
         "fromPath": "src/features/explorer/adapters/inbound/FileExplorer.tsx",
         "toPath": "src/types/explorer.ts",
         "sourcePath": "src/features/explorer/adapters/inbound/FileExplorer.tsx"
@@ -71509,6 +71728,16 @@
         "fromPath": "src/features/explorer/adapters/inbound/MediaExplorer.tsx",
         "toPath": "src/features/explorer/adapters/inbound/Explorer.tsx",
         "sourcePath": "src/features/explorer/adapters/inbound/MediaExplorer.tsx"
+      },
+      {
+        "fromPath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toPath": "src/types/explorer.ts",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
+      },
+      {
+        "fromPath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toPath": "src/features/explorer/application/getExplorerNextFocusId.ts",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
       },
       {
         "fromPath": "src/features/form/adapters/inbound/Form.tsx",
@@ -74276,6 +74505,12 @@
         "sourcePath": "src/features/date-picker/composition/DatePickerTrigger.tsx"
       },
       {
+        "fromSymbol": "getExplorerNextFocusId",
+        "toSymbol": "resolveFocusDelta",
+        "callExpression": "resolveFocusDelta",
+        "sourcePath": "src/features/explorer/application/getExplorerNextFocusId.ts"
+      },
+      {
         "fromSymbol": "resolveExplorerSelection",
         "toSymbol": "applySelectionIntent",
         "callExpression": "applySelectionIntent",
@@ -76646,9 +76881,27 @@
         "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
       },
       {
+        "fromSymbol": "ExplorerInner",
+        "toSymbol": "useExplorerKeyboardFocus",
+        "callExpression": "useExplorerKeyboardFocus",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
         "fromSymbol": "src/features/explorer/adapters/inbound/Explorer.tsx",
         "toSymbol": "select",
         "callExpression": "select",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/Explorer.tsx",
+        "toSymbol": "onKeyDown",
+        "callExpression": "keyboard.onKeyDown",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/Explorer.tsx",
+        "toSymbol": "onFocus",
+        "callExpression": "keyboard.onFocus",
         "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
       },
       {
@@ -76662,6 +76915,48 @@
         "toSymbol": "onActivate",
         "callExpression": "onActivate",
         "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/Explorer.tsx",
+        "toSymbol": "registerTile",
+        "callExpression": "keyboard.registerTile",
+        "sourcePath": "src/features/explorer/adapters/inbound/Explorer.tsx"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.web.tsx",
+        "toSymbol": "onKeyDown",
+        "callExpression": "onKeyDown",
+        "sourcePath": "src/features/explorer/adapters/inbound/ExplorerKeyboardProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toSymbol": "setFocusedId",
+        "callExpression": "setFocusedId",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toSymbol": "focus",
+        "callExpression": "node.focus",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toSymbol": "getExplorerNextFocusId",
+        "callExpression": "getExplorerNextFocusId",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toSymbol": "onNavigate",
+        "callExpression": "onNavigate",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts",
+        "toSymbol": "focus",
+        "callExpression": "mounted.focus",
+        "sourcePath": "src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"
       },
       {
         "fromSymbol": "src/features/form/adapters/inbound/Form.tsx",
@@ -76953,8 +77248,20 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "onVisibleItemIdsChange",
+        "callExpression": "onVisibleItemIdsChange",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toSymbol": "onViewportChange",
         "callExpression": "onViewportChange",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "revealWorldRect",
+        "callExpression": "revealWorldRect",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -76985,6 +77292,12 @@
         "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
         "toSymbol": "layoutTileGrid",
         "callExpression": "layoutTileGrid",
+        "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
+        "toSymbol": "onColumnsChange",
+        "callExpression": "onColumnsChange",
         "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
       },
       {
@@ -85036,13 +85349,13 @@
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n      horizontal\n      scrollEnabled={interactionPolicy !== 'passive'}\n      scrollEventThrottle={32}\n      showsHorizontalScrollIndicator\n      style={{ width, height }}\n      testID={testID}\n      onScroll={(event) => setScrollX(event.nativeEvent.contentOffset.x)}\n    >",
+        "jsxElement": "<NativeScrollView\n      ref={horizontalScrollRef}\n      horizontal\n      scrollEnabled={interactionPolicy !== 'passive'}\n      scrollEventThrottle={32}\n      showsHorizontalScrollIndicator\n      style={{ width, height }}\n      testID={testID}\n      onScroll={(event) => setScrollX(event.nativeEvent.contentOffset.x)}\n    >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n        scrollEnabled={interactionPolicy !== 'passive'}\n        scrollEventThrottle={32}\n        showsVerticalScrollIndicator\n        style={{ width: contentWidth * scale, height }}\n        onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}\n      >",
+        "jsxElement": "<NativeScrollView\n        ref={verticalScrollRef}\n        scrollEnabled={interactionPolicy !== 'passive'}\n        scrollEventThrottle={32}\n        showsVerticalScrollIndicator\n        style={{ width: contentWidth * scale, height }}\n        onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}\n      >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -85078,7 +85391,7 @@
       {
         "fromComponent": "TileGrid",
         "toComponent": "GridView",
-        "jsxElement": "<GridView\n          contentHeight={layout.height}\n          contentWidth={Math.max(resolvedWidth / zoom, layout.width)}\n          height={height}\n          interactionPolicy={interactionPolicy}\n          items={layout.items}\n          overscanPixels={overscanPixels}\n          renderItem={(item) => {\n            const source = itemLookup.get(item.id);\n            return source ? renderItem(source) : null;\n          }}\n          width={resolvedWidth}\n          zoom={zoom}\n        />",
+        "jsxElement": "<GridView\n          contentHeight={layout.height}\n          contentWidth={Math.max(resolvedWidth / zoom, layout.width)}\n          height={height}\n          focusedItemId={focusedItemId}\n          interactionPolicy={interactionPolicy}\n          items={layout.items}\n          onVisibleItemIdsChange={onVisibleItemIdsChange}\n          overscanPixels={overscanPixels}\n          renderItem={(item) => {\n            const source = itemLookup.get(item.id);\n            return source ? renderItem(source) : null;\n          }}\n          revealPaddingPixels={revealPaddingPixels}\n          width={resolvedWidth}\n          zoom={zoom}\n        />",
         "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
       },
       {

@@ -1997,7 +1997,7 @@ Source: `src/types/empty-state.ts:14:1`
 
 Kind: `value`
 Module: `src/features/explorer/adapters/inbound/Explorer.tsx`
-Source: `src/features/explorer/adapters/inbound/Explorer.tsx:14:14`
+Source: `src/features/explorer/adapters/inbound/Explorer.tsx:16:14`
 
 Single canonical Explorer implementation for media and file catalogue presentation.
 
@@ -2856,7 +2856,7 @@ Source: `src/types/layout.ts:18:1`
 
 Kind: `function`
 Module: `src/features/grid-view/adapters/inbound/GridView.tsx`
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:13:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:18:1`
 
 Renders world-positioned items on native and web using the canonical viewport/culling engine.
 
@@ -2873,8 +2873,11 @@ logical cells and invisible elements are never rendered.
   height,
   zoom = 1,
   overscanPixels = 160,
+  focusedItemId,
+  revealPaddingPixels = 8,
   interactionPolicy,
   onViewportChange,
+  onVisibleItemIdsChange,
   renderItem,
   testID,
 }: GridViewProps) => React.JSX.Element`
@@ -2886,8 +2889,11 @@ logical cells and invisible elements are never rendered.
   height,
   zoom = 1,
   overscanPixels = 160,
+  focusedItemId,
+  revealPaddingPixels = 8,
   interactionPolicy,
   onViewportChange,
+  onVisibleItemIdsChange,
   renderItem,
   testID,
 }: `GridViewProps`
@@ -2905,14 +2911,17 @@ Source: `src/types/grid-view.ts:7:1`
 | --- | --- | --- | --- | --- |
 | contentHeight | property | `number` | yes |  |
 | contentWidth | property | `number` | yes |  |
+| focusedItemId | property | `string \| undefined` | no |  |
 | height | property | `number` | yes |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly GridRectItem[]` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
+| onVisibleItemIdsChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
 | overscanPixels | property | `number \| undefined` | no |  |
 | renderItem | property | `(item: GridRectItem) => React.ReactNode` | yes |  |
+| revealPaddingPixels | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | width | property | `number` | yes |  |
@@ -6173,6 +6182,10 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
   gap = 12,
   zoom = 1,
   overscanPixels,
+  focusedItemId,
+  revealPaddingPixels,
+  onColumnsChange,
+  onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
   testID,
@@ -6185,6 +6198,10 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
   gap = 12,
   zoom = 1,
   overscanPixels,
+  focusedItemId,
+  revealPaddingPixels,
+  onColumnsChange,
+  onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
   testID,
@@ -6195,7 +6212,7 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:20:1`
+Source: `src/types/grid-view.ts:25:1`
 
 ### Members
 
@@ -6207,20 +6224,24 @@ Source: `src/types/grid-view.ts:20:1`
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:25:1`
+Source: `src/types/grid-view.ts:30:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| focusedItemId | property | `string \| undefined` | no |  |
 | gap | property | `number \| undefined` | no |  |
 | height | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly TileGridItem[]` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onColumnsChange | property | `((columns: number) => void) \| undefined` | no |  |
+| onVisibleItemIdsChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
 | overscanPixels | property | `number \| undefined` | no |  |
 | renderItem | property | `(item: TileGridItem) => React.ReactNode` | yes |  |
+| revealPaddingPixels | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | tileSize | property | `number \| undefined` | no |  |

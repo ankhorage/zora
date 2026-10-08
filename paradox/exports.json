@@ -8628,7 +8628,7 @@
     "modulePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
     "sourceLocation": {
       "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-      "line": 14,
+      "line": 16,
       "column": 14
     },
     "exportPaths": [
@@ -12228,7 +12228,7 @@
     "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
     "sourceLocation": {
       "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-      "line": 13,
+      "line": 18,
       "column": 1
     },
     "exportPaths": [
@@ -12239,10 +12239,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  interactionPolicy,\n  onViewportChange,\n  renderItem,\n  testID,\n}",
+            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
             "type": "GridViewProps",
             "required": true,
             "description": null
@@ -12292,6 +12292,13 @@
         "description": null
       },
       {
+        "name": "focusedItemId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "number",
@@ -12334,6 +12341,13 @@
         "description": null
       },
       {
+        "name": "onVisibleItemIdsChange",
+        "kind": "property",
+        "type": "((ids: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "overscanPixels",
         "kind": "property",
         "type": "number | undefined",
@@ -12345,6 +12359,13 @@
         "kind": "property",
         "type": "(item: GridRectItem) => React.ReactNode",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "revealPaddingPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -26993,10 +27014,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
+        "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
+            "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
             "type": "TileGridProps",
             "required": true,
             "description": null
@@ -27020,7 +27041,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 20,
+      "line": 25,
       "column": 1
     },
     "exportPaths": [
@@ -27050,7 +27071,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 25,
+      "line": 30,
       "column": 1
     },
     "exportPaths": [
@@ -27062,6 +27083,13 @@
     ],
     "signatures": [],
     "members": [
+      {
+        "name": "focusedItemId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
       {
         "name": "gap",
         "kind": "property",
@@ -27105,6 +27133,20 @@
         "description": null
       },
       {
+        "name": "onColumnsChange",
+        "kind": "property",
+        "type": "((columns: number) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onVisibleItemIdsChange",
+        "kind": "property",
+        "type": "((ids: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "overscanPixels",
         "kind": "property",
         "type": "number | undefined",
@@ -27116,6 +27158,13 @@
         "kind": "property",
         "type": "(item: TileGridItem) => React.ReactNode",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "revealPaddingPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
         "description": null
       },
       {

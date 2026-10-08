@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.1.0
+
+### Minor Changes
+
+- 52f40c6: Add virtualized Explorer keyboard focus navigation with published GridView reveal geometry and a runnable native/web workspace example.
+
 ## 25.0.1
 
 ### Patch Changes
