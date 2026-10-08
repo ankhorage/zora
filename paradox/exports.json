@@ -2150,7 +2150,6 @@
       "src/index.ts"
     ],
     "relatedSymbols": [
-      "BarcodeScanResult",
       "CameraPermissionStatus",
       "ZoraThemeMode"
     ],
@@ -2216,13 +2215,6 @@
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onBarcodeScanned",
-        "kind": "property",
-        "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
         "required": false,
         "description": null
       },
@@ -30006,7 +29998,7 @@
     "modulePath": "src/features/registry/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/bindableComponentMeta.ts",
-      "line": 517,
+      "line": 463,
       "column": 1
     },
     "exportPaths": [

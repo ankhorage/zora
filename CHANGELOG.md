@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.0.0
+
+### Major Changes
+
+- e87cd75: Remove the unimplemented `BarcodeScannerView.onBarcodeScanned` callback and reconcile emitted-event metadata with direct component ownership.
+
 ## 24.1.2
 
 ### Patch Changes

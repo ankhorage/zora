@@ -491,7 +491,6 @@ Source: `src/types/scanner.ts:32:1`
 | inverted | property | `boolean \| undefined` | no |  |
 | manualEntryLabel | property | `React.ReactNode` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onBarcodeScanned | property | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no |  |
 | onManualEntry | property | `(() => void \| Promise<void>) \| undefined` | no |  |
 | onRequestPermission | property | `(() => void \| Promise<void>) \| undefined` | no |  |
 | overlayDescription | property | `React.ReactNode` | no |  |
@@ -6965,7 +6964,7 @@ Source: `src/types/base.ts:5:1`
 
 Kind: `unknown`
 Module: `src/features/registry/bindableComponentMeta.ts`
-Source: `src/features/registry/bindableComponentMeta.ts:517:1`
+Source: `src/features/registry/bindableComponentMeta.ts:463:1`
 
 ## ZoraColor
 

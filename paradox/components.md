@@ -523,7 +523,6 @@ Export paths: `src/index.ts`
 | inverted | `boolean \| undefined` | no | — |  |
 | manualEntryLabel | `React.ReactNode` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
-| onBarcodeScanned | `((result: BarcodeScanResult) => void \| Promise<void>) \| undefined` | no | — |  |
 | onManualEntry | `(() => void \| Promise<void>) \| undefined` | no | — |  |
 | onRequestPermission | `(() => void \| Promise<void>) \| undefined` | no | — |  |
 | overlayDescription | `React.ReactNode` | no | — |  |

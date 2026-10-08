@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v24.1.2",
+      "value": "v25.0.0",
       "color": "cb3837"
     },
     {
@@ -9599,7 +9599,6 @@
         "src/index.ts"
       ],
       "relatedSymbols": [
-        "BarcodeScanResult",
         "CameraPermissionStatus",
         "ZoraThemeMode"
       ],
@@ -9665,13 +9664,6 @@
           "name": "mode",
           "kind": "property",
           "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onBarcodeScanned",
-          "kind": "property",
-          "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
           "required": false,
           "description": null
         },
@@ -37455,7 +37447,7 @@
       "modulePath": "src/features/registry/bindableComponentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/bindableComponentMeta.ts",
-        "line": 517,
+        "line": 463,
         "column": 1
       },
       "exportPaths": [
@@ -41926,12 +41918,6 @@
         {
           "name": "mode",
           "type": "ZoraThemeMode | undefined",
-          "required": false,
-          "description": null
-        },
-        {
-          "name": "onBarcodeScanned",
-          "type": "((result: BarcodeScanResult) => void | Promise<void>) | undefined",
           "required": false,
           "description": null
         },
@@ -83646,11 +83632,6 @@
         "fromSymbol": "ZoraThemeRecipeTokenFieldMeta",
         "toType": "ZoraThemeTokenFamily",
         "sourcePath": "src/types/theme-recipe.ts"
-      },
-      {
-        "fromSymbol": "BarcodeScannerViewProps",
-        "toType": "BarcodeScanResult",
-        "sourcePath": "src/types/scanner.ts"
       },
       {
         "fromSymbol": "BarcodeScannerViewProps",

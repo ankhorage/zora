@@ -6653,7 +6653,7 @@ Rendering, pagination and navigation remain owned by @ankhorage/reader.</p>
   </article><article class="item" id="symbol-zorabindablecomponenttype" data-search="ZoraBindableComponentType  unknown src/features/registry/bindableComponentMeta.ts ">
     <h4>ZoraBindableComponentType</h4>
     
-    <p class="muted">unknown • <code>src/features/registry/bindableComponentMeta.ts:517:1</code></p>
+    <p class="muted">unknown • <code>src/features/registry/bindableComponentMeta.ts:463:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -23086,14 +23086,14 @@ consumers do not need to import lower-level Surface typography directly.</p>
             </section>
             <section>
               <h3>src/types/scanner.ts</h3>
-              <article class="item" id="symbol-barcodescannerviewprops" data-search="BarcodeScannerViewProps  type src/types/scanner.ts  BarcodeScanResult CameraPermissionStatus ZoraThemeMode">
+              <article class="item" id="symbol-barcodescannerviewprops" data-search="BarcodeScannerViewProps  type src/types/scanner.ts  CameraPermissionStatus ZoraThemeMode">
     <h4>BarcodeScannerViewProps</h4>
     
     <p class="muted">type • <code>src/types/scanner.ts:32:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">BarcodeScanResult</li><li class="chip">CameraPermissionStatus</li><li class="chip">ZoraThemeMode</li></ul></div>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">CameraPermissionStatus</li><li class="chip">ZoraThemeMode</li></ul></div>
     
     <table>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
@@ -23150,12 +23150,6 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>mode</code></td>
             <td>property</td>
             <td><code>ZoraThemeMode | undefined</code></td>
-            <td>no</td>
-            <td></td>
-          </tr><tr>
-            <td><code>onBarcodeScanned</code></td>
-            <td>property</td>
-            <td><code>((result: BarcodeScanResult) =&gt; void | Promise&lt;void&gt;) | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -30906,7 +30900,7 @@ sign-in/sign-up form composition while consumers retain routing and authenticati
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-barcodescannerview" data-search="BarcodeScannerView src/features/scanner/adapters/inbound/BarcodeScannerView.tsx Composed ZORA scanner shell for barcode scanning experiences.&#10;&#10;`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,&#10;or test camera element through `camera`; keep permission and fallback UI here. camera React.ReactNode children React.ReactNode cornerLabel React.ReactNode deniedPermissionLabel React.ReactNode description React.ReactNode interactionPolicy InteractionPolicy | undefined inverted boolean | undefined manualEntryLabel React.ReactNode mode ZoraThemeMode | undefined onBarcodeScanned ((result: BarcodeScanResult) =&gt; void | Promise&lt;void&gt;) | undefined onManualEntry (() =&gt; void | Promise&lt;void&gt;) | undefined onRequestPermission (() =&gt; void | Promise&lt;void&gt;) | undefined overlayDescription React.ReactNode overlayTitle React.ReactNode permissionStatus CameraPermissionStatus requestPermissionLabel React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode">
+  </article><article class="item" id="component-barcodescannerview" data-search="BarcodeScannerView src/features/scanner/adapters/inbound/BarcodeScannerView.tsx Composed ZORA scanner shell for barcode scanning experiences.&#10;&#10;`BarcodeScannerView` is camera-adapter-neutral: pass an `expo-camera`, web,&#10;or test camera element through `camera`; keep permission and fallback UI here. camera React.ReactNode children React.ReactNode cornerLabel React.ReactNode deniedPermissionLabel React.ReactNode description React.ReactNode interactionPolicy InteractionPolicy | undefined inverted boolean | undefined manualEntryLabel React.ReactNode mode ZoraThemeMode | undefined onManualEntry (() =&gt; void | Promise&lt;void&gt;) | undefined onRequestPermission (() =&gt; void | Promise&lt;void&gt;) | undefined overlayDescription React.ReactNode overlayTitle React.ReactNode permissionStatus CameraPermissionStatus requestPermissionLabel React.ReactNode testID string | undefined themeId string | undefined title React.ReactNode">
     <h3>BarcodeScannerView</h3>
     <p class="muted"><code>src/features/scanner/adapters/inbound/BarcodeScannerView.tsx:130:14</code></p>
     <p>Composed ZORA scanner shell for barcode scanning experiences.
@@ -30961,11 +30955,6 @@ or test camera element through `camera`; keep permission and fallback UI here.</
             </tr><tr>
               <td><code>mode</code></td>
               <td><code>ZoraThemeMode | undefined</code></td>
-              <td>no</td>
-              <td></td>
-            </tr><tr>
-              <td><code>onBarcodeScanned</code></td>
-              <td><code>((result: BarcodeScanResult) =&gt; void | Promise&lt;void&gt;) | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -53374,7 +53363,6 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_scanner_adapters_inbound_BarcodeScannerView_tsx --&gt; export_BarcodeScannerView
   export_BarcodeScannerViewProps[&quot;BarcodeScannerViewProps&quot;]
   module_src_types_scanner_ts --&gt; export_BarcodeScannerViewProps
-  export_BarcodeScannerViewProps -.-&gt; export_BarcodeScanResult
   export_BarcodeScannerViewProps -.-&gt; export_CameraPermissionStatus
   export_BarcodeScannerViewProps -.-&gt; export_ZoraThemeMode
   export_BarcodeScanResult[&quot;BarcodeScanResult&quot;]
@@ -55270,7 +55258,6 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_scanner_adapters_inbound_BarcodeScannerView_tsx --&gt; export_BarcodeScannerView
   export_BarcodeScannerViewProps[&quot;BarcodeScannerViewProps&quot;]
   module_src_types_scanner_ts --&gt; export_BarcodeScannerViewProps
-  export_BarcodeScannerViewProps -.-&gt; export_BarcodeScanResult
   export_BarcodeScannerViewProps -.-&gt; export_CameraPermissionStatus
   export_BarcodeScannerViewProps -.-&gt; export_ZoraThemeMode
   export_BarcodeScanResult[&quot;BarcodeScanResult&quot;]
