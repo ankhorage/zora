@@ -74,7 +74,7 @@ test('restores native DOM focus only after a far virtual tile mounts', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => first.dispatchEvent(event));
+    act(() => { first.dispatchEvent(event); });
 
     expect(event.defaultPrevented).toBe(true);
     expect(navigation).toEqual([{ origin: 'tile-0', target: 'tile-9999', extend: false }]);
@@ -120,7 +120,7 @@ test('restores focus after rapid navigation, resize and unavailable tiles', () =
     if (!first) throw new Error('Missing first tile');
     act(() => first.focus());
 
-    act(() =>
+    act(() => {
       first.dispatchEvent(
         new browser.KeyboardEvent('keydown', {
           key: 'ArrowDown',
@@ -128,24 +128,24 @@ test('restores focus after rapid navigation, resize and unavailable tiles', () =
           bubbles: true,
           cancelable: true,
         }),
-      ),
-    );
+      );
+    });
     expect(navigation.at(-1)).toEqual({ origin: 'a', target: 'e', extend: true });
 
     act(() => root.render(render(230, ['a', 'b', 'c', 'd'])));
-    act(() =>
-      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true })),
-    );
-    act(() =>
+    act(() => {
+      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
+    });
+    act(() => {
       first.dispatchEvent(
         new browser.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
-      ),
-    );
+      );
+    });
     expect(navigation.at(-1)).toEqual({ origin: 'a', target: 'd', extend: false });
 
-    act(() =>
-      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'End', bubbles: true })),
-    );
+    act(() => {
+      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'End', bubbles: true }));
+    });
     act(() =>
       first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true })),
     );
@@ -186,7 +186,7 @@ test('web proxy leaves non-navigation keys to ordinary activation', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => button.dispatchEvent(arrow));
+    act(() => { button.dispatchEvent(arrow); });
     expect(arrow.defaultPrevented).toBe(true);
 
     const enter = new browser.KeyboardEvent('keydown', {
@@ -194,7 +194,7 @@ test('web proxy leaves non-navigation keys to ordinary activation', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => button.dispatchEvent(enter));
+    act(() => { button.dispatchEvent(enter); });
     expect(enter.defaultPrevented).toBe(false);
   } finally {
     act(() => root.unmount());
