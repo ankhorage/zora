@@ -1,3 +1,5 @@
+import { applySelectionIntent } from '@ankhorage/utility/selection';
+
 import type { ExplorerSelectionMode } from '../../../types/explorer';
 
 /***
@@ -14,11 +16,9 @@ export function resolveExplorerSelection(
 ): readonly string[] {
   const targetIndex = orderedIds.indexOf(targetId);
   if (targetIndex < 0) return currentIds;
-  if (mode === 'single' || intent === 'replace') return [targetId];
+  if (mode === 'single' || intent === 'replace') return applySelectionIntent(currentIds, targetId, 'replace');
   if (intent === 'toggle') {
-    return currentIds.includes(targetId)
-      ? currentIds.filter((id) => id !== targetId)
-      : [...currentIds, targetId];
+    return applySelectionIntent(currentIds, targetId, 'toggle');
   }
   const anchorIndex = anchorId === null ? -1 : orderedIds.indexOf(anchorId);
   if (anchorIndex < 0) return [targetId];
