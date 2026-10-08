@@ -8,8 +8,8 @@ export function MediaExplorer(props: ExplorerProps) {
   return (
     <Explorer
       {...props}
-      items={props.items.filter((item) =>
-        item.kind === 'image' || item.kind === 'video' || item.kind === 'audio',
+      items={props.items.filter(
+        (item) => item.kind === 'image' || item.kind === 'video' || item.kind === 'audio',
       )}
     />
   );
