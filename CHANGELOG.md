@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.0.1
+
+### Patch Changes
+
+- c0b5b80: Update dependencies: `@ankhorage/contracts`.
+
 ## 24.0.0
 
 ### Major Changes
