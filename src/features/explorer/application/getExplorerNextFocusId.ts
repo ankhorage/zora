@@ -35,7 +35,7 @@ export function getExplorerNextFocusId(
   }
   return ids[currentIndex] !== undefined && !disabledIds.has(ids[currentIndex])
     ? ids[currentIndex]
-    : ids[firstIndex] ?? null;
+    : (ids[firstIndex] ?? null);
 }
 
 /*** Translate navigation keys into collection-relative movements. */
