@@ -60,6 +60,7 @@ export const explorerMeta = {
   name: 'Explorer',
   category: 'pattern',
   directManifestNode: false,
+  note: 'Shared code-only Explorer composition; MediaExplorer and FileExplorer own manifest representation.',
   allowedChildren: [],
   props: {},
 } as const satisfies ZoraComponentMeta;
