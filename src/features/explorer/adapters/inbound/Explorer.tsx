@@ -47,7 +47,7 @@ function ExplorerInner({
     const next = resolveExplorerSelection(ids, effectiveSelectedIds, item.id, anchorId.current, intent, selectionMode);
     if (intent !== 'range') anchorId.current = item.id;
     if (selectedIds === undefined) setInternalSelectedIds(next);
-    onSelectionChange?.(next);
+    onSelectionChange?.({ selectedIds: next });
   };
 
   const renderTile = (tile: { readonly id: string }) => {
