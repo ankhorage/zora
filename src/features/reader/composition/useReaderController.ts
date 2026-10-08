@@ -88,8 +88,7 @@ export function useReaderController(props: ControllerProps) {
     appearance: {
       colorScheme: readerColorScheme ?? 'system',
       fontScale: fontScale ?? 1,
-      lineHeight:
-        lineHeight === 'compact' ? 1.25 : lineHeight === 'relaxed' ? 1.75 : 1.5,
+      lineHeight: lineHeight === 'compact' ? 1.25 : lineHeight === 'relaxed' ? 1.75 : 1.5,
     },
     command,
     error,
