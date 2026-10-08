@@ -5,7 +5,7 @@
     "": {
       "name": "zora-expo-showcase",
       "dependencies": {
-        "@ankhorage/zora": "^24.0.2",
+        "@ankhorage/zora": "^24.0.3",
         "@react-native-picker/picker": "2.11.4",
         "@react-native-vector-icons/fontawesome": "^13.1.4",
         "@react-native-vector-icons/fontawesome5": "^13.1.4",
@@ -50,7 +50,7 @@
 
     "@ankhorage/utility": ["@ankhorage/utility@1.9.85", "", { "peerDependencies": { "fastify": "^5.12.5" }, "optionalPeers": ["fastify"] }, "sha512-039OnOPntg5EY7BwMR4shCaHOO8N/DgNZOgQxkh/lxtsZbqIlf34bp47ZYh7NoPVibxLDwj8CeMl6m1Pw8y1aQ=="],
 
-    "@ankhorage/zora": ["@ankhorage/zora@24.0.2", "", { "dependencies": { "@ankhorage/ankh": "^0.12.2", "@ankhorage/color-theory": "^0.3.1", "@ankhorage/contracts": "^24.2.0", "@ankhorage/game": "^0.1.2", "@ankhorage/reader": "^0.1.0", "@ankhorage/runtime": "^4.0.4", "@ankhorage/surface": "^9.4.1", "@ankhorage/utility": "^1.9.85", "chess.js": "^1.4.0", "expo-document-picker": "~57.0.3", "expo-image-picker": "~57.0.20" }, "peerDependencies": { "@react-native-vector-icons/fontawesome": "^13.1.3", "@react-native-vector-icons/fontawesome5": "^13.1.3", "@react-native-vector-icons/fontawesome6": "^13.1.4", "@react-native-vector-icons/ionicons": "^13.1.3", "react": "19.2.3", "react-native": "0.86.x", "react-native-gesture-handler": "~2.32.0", "react-native-reanimated": "4.5.1", "react-native-safe-area-context": "~5.7.0", "react-native-svg": "15.15.4", "react-native-web": "~0.21.3", "react-native-worklets": "0.10.1" } }, "sha512-N3i6EnmRvr15VVa40CSnV5TUKsnAtrtYpEscTKB7pUHXhNOzM9Hwvszxf9ipMnl/AfPC/Vt3qcI5BGmv4hStfg=="],
+    "@ankhorage/zora": ["@ankhorage/zora@24.0.3", "", { "dependencies": { "@ankhorage/ankh": "^0.12.2", "@ankhorage/color-theory": "^0.3.1", "@ankhorage/contracts": "^24.2.0", "@ankhorage/game": "^0.1.2", "@ankhorage/reader": "^0.1.0", "@ankhorage/runtime": "^4.0.5", "@ankhorage/surface": "^9.4.1", "@ankhorage/utility": "^1.9.85", "chess.js": "^1.4.0", "expo-document-picker": "~57.0.3", "expo-image-picker": "~57.0.20" }, "peerDependencies": { "@react-native-vector-icons/fontawesome": "^13.1.3", "@react-native-vector-icons/fontawesome5": "^13.1.3", "@react-native-vector-icons/fontawesome6": "^13.1.4", "@react-native-vector-icons/ionicons": "^13.1.3", "react": "19.2.3", "react-native": "0.86.x", "react-native-gesture-handler": "~2.32.0", "react-native-reanimated": "4.5.1", "react-native-safe-area-context": "~5.7.0", "react-native-svg": "15.15.4", "react-native-web": "~0.21.3", "react-native-worklets": "0.10.1" } }, "sha512-F195S5GDVCqUd5rOMQ8nfHuchPoXBhb8KhdZm2noeLxkdHxLhvEnTByDwMOOZ+1TQ3Sr3mAiqOK+MgxdYicl6g=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.29.0", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.28.5", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw=="],
 
