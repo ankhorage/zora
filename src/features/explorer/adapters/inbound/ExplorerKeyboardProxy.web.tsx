@@ -5,7 +5,7 @@ export function ExplorerKeyboardProxy({ children, onKeyDown }: ExplorerKeyboardP
   return (
     <div
       onKeyDown={(event) => {
-        onKeyDown(event.key, event.shiftKey);
+        if (onKeyDown(event.key, event.shiftKey)) event.preventDefault();
       }}
       style={{ display: 'flex', flex: 1 }}
     >
@@ -16,5 +16,5 @@ export function ExplorerKeyboardProxy({ children, onKeyDown }: ExplorerKeyboardP
 
 interface ExplorerKeyboardProxyProps {
   readonly children: React.ReactNode;
-  readonly onKeyDown: (key: string, shiftKey: boolean) => void;
+  readonly onKeyDown: (key: string, shiftKey: boolean) => boolean;
 }
