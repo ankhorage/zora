@@ -69,7 +69,7 @@ function ExplorerInner({
     visibleIds,
     (targetId, originId, shiftKey) => {
       if (!shiftKey) return;
-      if (anchorId.current === null) anchorId.current = originId;
+      anchorId.current ??= originId;
       const nextItem = itemLookup.get(targetId);
       if (nextItem) select(nextItem, 'range');
     },
