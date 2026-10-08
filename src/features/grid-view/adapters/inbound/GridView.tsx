@@ -55,17 +55,21 @@ export function GridView({
     onViewportChange?.(viewport);
   }, [onViewportChange, viewport]);
 
+  const viewportRef = React.useRef(viewport);
+  viewportRef.current = viewport;
+
   React.useEffect(() => {
+    const currentViewport = viewportRef.current;
     const focusedItem = items.find((item) => item.id === focusedItemId);
     if (!focusedItem) return;
-    const revealed = revealWorldRect(viewport, focusedItem, revealPaddingPixels);
-    if (revealed.offsetX !== viewport.offsetX) {
+    const revealed = revealWorldRect(currentViewport, focusedItem, revealPaddingPixels);
+    if (revealed.offsetX !== currentViewport.offsetX) {
       horizontalScrollRef.current?.scrollTo({ x: revealed.offsetX * scale, animated: true });
     }
-    if (revealed.offsetY !== viewport.offsetY) {
+    if (revealed.offsetY !== currentViewport.offsetY) {
       verticalScrollRef.current?.scrollTo({ y: revealed.offsetY * scale, animated: true });
     }
-  }, [focusedItemId, items, revealPaddingPixels, scale, viewport]);
+  }, [focusedItemId, height, items, revealPaddingPixels, scale, width]);
 
   return (
     <NativeScrollView
