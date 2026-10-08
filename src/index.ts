@@ -501,3 +501,8 @@ export type {
 } from './features/uploader/public';
 export { Uploader, validateUploadAsset } from './features/uploader/public';
 export type { ZoraComponentRegistry } from './types/registry';
+
+export { GridView, TileGrid, layoutTileGrid } from './features/grid-view/public';
+export type { GridViewProps, TileGridItem, TileGridProps } from './features/grid-view/public';
+export { Explorer, MediaExplorer, FileExplorer, resolveExplorerSelection } from './features/explorer/public';
+export type { ExplorerItem, ExplorerItemKind, ExplorerProps, ExplorerSelectionMode, ExplorerActivateEvent } from './features/explorer/public';
