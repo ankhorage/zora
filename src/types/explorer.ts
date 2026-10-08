@@ -1,5 +1,5 @@
-import type { UploadAsset } from './upload';
 import type { ZoraBaseProps } from './base';
+import type { UploadAsset } from './upload';
 
 /** Portable catalogue row. Providers retain permissions, pagination and storage objects. */
 export type ExplorerItemKind = 'image' | 'video' | 'audio' | 'document' | 'file' | 'folder';
