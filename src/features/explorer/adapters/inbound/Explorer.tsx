@@ -8,9 +8,9 @@ import { Image } from '../../../image/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
-import { getExplorerNextFocusId } from '../../application/getExplorerNextFocusId';
 import { resolveExplorerSelection } from '../../application/resolveExplorerSelection';
 import { ExplorerKeyboardProxy } from './ExplorerKeyboardProxy';
+import { useExplorerKeyboardFocus } from './useExplorerKeyboardFocus';
 
 /*** Single canonical Explorer implementation for media and file catalogue presentation. */
 export const Explorer = withZoraThemeScope(ExplorerInner);
@@ -39,14 +39,13 @@ function ExplorerInner({
   const [internalSelectedIds, setInternalSelectedIds] =
     React.useState<readonly string[]>(defaultSelectedIds);
   const anchorId = React.useRef<string | null>(null);
-  const [focusedId, setFocusedId] = React.useState<string | null>(null);
-  const tileRefs = React.useRef(new Map<string, { focus?: () => void }>());
+  const [columns, setColumns] = React.useState(1);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const ids = items.filter((item) => !item.disabled).map((item) => item.id);
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
-  const columns = Math.max(1, Math.floor(((width ?? tileSize) + 12) / (tileSize + 12)));
+
 
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;
@@ -63,6 +62,13 @@ function ExplorerInner({
     onSelectionChange?.({ selectedIds: next });
   };
 
+  const keyboard = useExplorerKeyboardFocus(items, columns, passive, (targetId, originId, shiftKey) => {
+    if (!shiftKey) return;
+    if (anchorId.current === null) anchorId.current = originId;
+    const nextItem = itemLookup.get(targetId);
+    if (nextItem) select(nextItem, 'range');
+  });
+
   const renderTile = (tile: { readonly id: string }) => {
     const item = itemLookup.get(tile.id);
     if (!item) return null;
@@ -70,23 +76,15 @@ function ExplorerInner({
     const canInteract = !passive && !item.disabled;
     return (
       <ExplorerKeyboardProxy
-        onKeyDown={(key, shiftKey) => {
-          const nextId = getExplorerNextFocusId(ids, item.id, key, columns);
-          if (!nextId || nextId === item.id) return;
-          setFocusedId(nextId);
-          setTimeout(() => tileRefs.current.get(nextId)?.focus?.(), 0);
-          if (shiftKey) {
-            const nextItem = itemLookup.get(nextId);
-            if (nextItem) select(nextItem, 'range');
-          }
-        }}
+        onKeyDown={(key, shiftKey) => keyboard.onKeyDown(item.id, key, shiftKey)}
       >
         <NativePressable
           accessibilityLabel={item.name}
           accessibilityRole="button"
           accessibilityState={{ selected: isSelected, disabled: !canInteract }}
           disabled={!canInteract}
-          onFocus={() => setFocusedId(item.id)}
+          focusable={canInteract && item.id === keyboard.tabStopId}
+          onFocus={() => keyboard.onFocus(item.id)}
           onLongPress={() => select(item, 'toggle')}
           onPress={(event) => {
             const intent = resolveExplorerPressIntent(event.nativeEvent);
@@ -105,10 +103,7 @@ function ExplorerInner({
             padding: 8,
             gap: 4,
           }}
-          ref={(node) => {
-            if (node) tileRefs.current.set(item.id, node);
-            else tileRefs.current.delete(item.id);
-          }}
+          ref={(node) => keyboard.registerTile(item.id, node)}
           testID={`explorer-item-${item.id}`}
         >
           <NativeView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -141,7 +136,8 @@ function ExplorerInner({
   return (
     <TileGrid
       height={height}
-      focusedItemId={focusedId ?? undefined}
+      focusedItemId={keyboard.focusedId ?? undefined}
+      onColumnsChange={setColumns}
       interactionPolicy={interactionPolicy}
       items={items}
       renderItem={renderTile}
