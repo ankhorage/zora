@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 
-import { ZORA_COMPONENT_META, type ZoraComponentEventPayloadKind } from '.';
+import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
+import { ZORA_COMPONENT_META } from '.';
 
 const componentMetaByName = new Map(Object.entries(ZORA_COMPONENT_META));
 
@@ -97,6 +98,43 @@ describe('ZORA_COMPONENT_META event metadata', () => {
       'payload.itemId',
       'payload.item',
     ]);
+  });
+
+  test('owns controlled component events in direct metadata and projects their bindings', () => {
+    expect(ZORA_COMPONENT_META.TextInput.events?.changeText).toMatchObject({
+      eventType: 'textInput.changeText',
+      payloadFields: [{ path: 'value', type: 'string' }],
+    });
+    expect(ZORA_COMPONENT_META.TextInput.bindings?.events?.changeText.payload).toEqual({
+      eventType: 'textInput.changeText',
+      fields: [{ path: 'value', type: 'string', label: 'Value' }],
+    });
+    expect(ZORA_COMPONENT_META.Checkbox.events?.checkedChange).toMatchObject({
+      eventType: 'checkbox.checkedChange',
+      payloadFields: [{ path: 'checked', type: 'boolean' }],
+    });
+    expect(ZORA_COMPONENT_META.Checkbox.bindings?.events?.checkedChange.payload).toEqual({
+      eventType: 'checkbox.checkedChange',
+      fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+    });
+    expect(ZORA_COMPONENT_META.Switch.events?.checkedChange).toMatchObject({
+      eventType: 'switch.checkedChange',
+      payloadFields: [{ path: 'checked', type: 'boolean' }],
+    });
+    expect(ZORA_COMPONENT_META.Switch.bindings?.events?.checkedChange.payload).toEqual({
+      eventType: 'switch.checkedChange',
+      fields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+    });
+  });
+
+  test('does not declare a scanner event without a ZORA-owned emitter', () => {
+    type HasBarcodeScanCallback = 'onBarcodeScanned' extends keyof BarcodeScannerViewProps
+      ? true
+      : false;
+    const hasBarcodeScanCallback: HasBarcodeScanCallback = false;
+
+    expect(ZORA_COMPONENT_META.BarcodeScannerView.events).toBeUndefined();
+    expect(hasBarcodeScanCallback).toBe(false);
   });
 });
 

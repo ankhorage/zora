@@ -43,5 +43,4 @@ export interface BarcodeScannerViewProps extends ZoraBaseProps {
   manualEntryLabel?: React.ReactNode;
   onRequestPermission?: () => void | Promise<void>;
   onManualEntry?: () => void | Promise<void>;
-  onBarcodeScanned?: (result: BarcodeScanResult) => void | Promise<void>;
 }

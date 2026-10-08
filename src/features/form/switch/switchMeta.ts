@@ -6,6 +6,14 @@ export const switchMeta = {
   directManifestNode: true,
   allowedChildren: [],
   blueprint: { label: 'Switch', defaultProps: { children: 'Option', checked: false } },
+  events: {
+    checkedChange: {
+      label: 'Checked change',
+      eventType: 'switch.checkedChange',
+      description: 'Emitted when the checked state changes.',
+      payloadFields: [{ path: 'checked', type: 'boolean', label: 'Checked' }],
+    },
+  },
   props: {
     children: { type: 'string', category: 'Content', label: 'Label' },
     checked: { type: 'boolean', category: 'State', label: 'Checked', default: false },
