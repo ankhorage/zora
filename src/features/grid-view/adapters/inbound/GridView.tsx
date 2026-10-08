@@ -62,7 +62,7 @@ export function GridView({
     const previous = previousVisibleIdsRef.current;
     if (
       previous.length === viewportVisibleIds.length &&
-      previous.every((id, index) => id === viewportVisibleIds[index])
+      previous.every((id, index) => id === viewportVisibleIds.at(index))
     ) {
       return;
     }
