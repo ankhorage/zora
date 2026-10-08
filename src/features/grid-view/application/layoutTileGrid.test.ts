@@ -1,3 +1,4 @@
+import { getVisibleGridItems } from '@ankhorage/grid-view';
 import { describe, expect, test } from 'bun:test';
 
 import { layoutTileGrid } from './layoutTileGrid';
@@ -11,6 +12,20 @@ describe('TileGrid presentation', () => {
     expect(large.columns).toBe(4);
     expect(small.items[2]).toEqual({ id: '2', x: 0, y: 130, width: 120, height: 120 });
     expect(small.items[9999]?.id).toBe('9999');
+  });
+
+  test('mounts only the viewport subset from a large catalogue', () => {
+    const items = Array.from({ length: 10000 }, (_, index) => ({ id: String(index) }));
+    const layout = layoutTileGrid(items, 270, 120, 10);
+    const visible = getVisibleGridItems(layout.items, {
+      width: 270,
+      height: 250,
+      offsetX: 0,
+      offsetY: 0,
+      pixelsPerUnitX: 1,
+      pixelsPerUnitY: 1,
+    });
+    expect(visible.map((item) => item.id)).toEqual(['0', '1', '2', '3']);
   });
 
   test('zoom affects column count without changing stable item identity', () => {
