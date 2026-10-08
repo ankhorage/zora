@@ -7,5 +7,5 @@ export function ExplorerKeyboardProxy({ children }: ExplorerKeyboardProxyProps) 
 
 interface ExplorerKeyboardProxyProps {
   readonly children: React.ReactNode;
-  readonly onKeyDown: (key: string, shiftKey: boolean) => void;
+  readonly onKeyDown: (key: string, shiftKey: boolean) => boolean;
 }
