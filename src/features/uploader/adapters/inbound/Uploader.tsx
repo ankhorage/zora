@@ -303,7 +303,11 @@ function UploaderInner({
             onActivate={({ id }) => {
               const chosen = explorerItems.find((item) => item.id === id)?.uploadAsset;
               setExplorerOpen(false);
-              if (chosen) void acceptPicked(chosen);
+              if (chosen) {
+                void acceptPicked(chosen).catch((error: unknown) => {
+                  if (isMounted()) setInternalError(formatUnknownError(error));
+                });
+              }
             }}
           />
         </Dialog>
