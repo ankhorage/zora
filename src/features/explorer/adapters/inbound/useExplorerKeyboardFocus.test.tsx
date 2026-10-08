@@ -16,9 +16,15 @@ interface HarnessProps {
 }
 
 function FocusHarness({ items, mountedIds, columns, navigation }: HarnessProps) {
-  const keyboard = useExplorerKeyboardFocus(items, columns, false, mountedIds, (target, origin, extend) => {
-    navigation.push({ origin, target, extend });
-  });
+  const keyboard = useExplorerKeyboardFocus(
+    items,
+    columns,
+    false,
+    mountedIds,
+    (target, origin, extend) => {
+      navigation.push({ origin, target, extend });
+    },
+  );
   return (
     <div>
       {mountedIds.map((id) => (
@@ -85,7 +91,7 @@ test('restores native DOM focus only after a far virtual tile mounts', () => {
   }
 });
 
-test('rapid navigation cancels a pending focus and handles resize, range and unavailable tiles', () => {
+test('restores focus after rapid navigation, resize and unavailable tiles', () => {
   const browser = new Window();
   const restore = installBrowserGlobals(browser);
   const host = document.createElement('div');
@@ -131,7 +137,9 @@ test('rapid navigation cancels a pending focus and handles resize, range and una
       first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true })),
     );
     act(() =>
-      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })),
+      first.dispatchEvent(
+        new browser.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
+      ),
     );
     expect(navigation.at(-1)).toEqual({ origin: 'a', target: 'd', extend: false });
 
