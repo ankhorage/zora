@@ -74,7 +74,9 @@ test('restores native DOM focus only after a far virtual tile mounts', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => { first.dispatchEvent(event); });
+    act(() => {
+      first.dispatchEvent(event);
+    });
 
     expect(event.defaultPrevented).toBe(true);
     expect(navigation).toEqual([{ origin: 'tile-0', target: 'tile-9999', extend: false }]);
@@ -146,9 +148,9 @@ test('restores focus after rapid navigation, resize and unavailable tiles', () =
     act(() => {
       first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'End', bubbles: true }));
     });
-    act(() =>
-      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true })),
-    );
+    act(() => {
+      first.dispatchEvent(new browser.KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
+    });
     act(() => root.render(render(230, ['a', 'b', 'c', 'd', 'e', 'f'])));
     expect(document.activeElement?.getAttribute('data-tile')).toBe('a');
     expect(host.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
@@ -186,7 +188,9 @@ test('web proxy leaves non-navigation keys to ordinary activation', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => { button.dispatchEvent(arrow); });
+    act(() => {
+      button.dispatchEvent(arrow);
+    });
     expect(arrow.defaultPrevented).toBe(true);
 
     const enter = new browser.KeyboardEvent('keydown', {
@@ -194,7 +198,9 @@ test('web proxy leaves non-navigation keys to ordinary activation', () => {
       bubbles: true,
       cancelable: true,
     });
-    act(() => { button.dispatchEvent(enter); });
+    act(() => {
+      button.dispatchEvent(enter);
+    });
     expect(enter.defaultPrevented).toBe(false);
   } finally {
     act(() => root.unmount());
