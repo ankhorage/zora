@@ -25,7 +25,7 @@ export function useExplorerKeyboardFocus(
   const tabStopId =
     focusedId !== null && visibleEligibleIds.includes(focusedId)
       ? focusedId
-      : visibleEligibleIds[0] ?? ids.find((id) => !disabledIds.has(id));
+      : (visibleEligibleIds[0] ?? ids.find((id) => !disabledIds.has(id)));
 
   const onFocus = React.useCallback((id: string) => {
     pendingFocusRef.current = null;
