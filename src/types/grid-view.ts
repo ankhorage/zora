@@ -36,5 +36,7 @@ export interface TileGridProps extends ZoraBaseProps {
   overscanPixels?: number;
   focusedItemId?: string;
   revealPaddingPixels?: number;
+  /** Reports the same measured column count used to position tiles. */
+  onColumnsChange?: (columns: number) => void;
   renderItem: (item: TileGridItem) => React.ReactNode;
 }
