@@ -1,10 +1,10 @@
-import type React from 'react';
 import type {
   ReaderDocumentFormat,
   ReaderErrorEvent,
   ReaderLocationChangeEvent,
   ReaderStatus,
 } from '@ankhorage/reader';
+import type React from 'react';
 
 export type {
   ReaderDocumentFormat,

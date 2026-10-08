@@ -316,9 +316,9 @@ export type {
   ReaderLineHeight,
   ReaderLocationChangeEvent,
   ReaderNavigationTrigger,
+  ReaderProps,
   ReaderResolvedSource,
   ReaderStatus,
-  ReaderProps,
 } from './features/reader/public';
 export { Reader, resolveReaderProgress } from './features/reader/public';
 export type {

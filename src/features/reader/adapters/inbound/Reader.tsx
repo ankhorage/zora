@@ -1,7 +1,7 @@
 import { ReaderView } from '@ankhorage/reader';
 import React from 'react';
 
-import type { ReaderStatus, ReaderProps } from '../../../../types/reader';
+import type { ReaderProps, ReaderStatus } from '../../../../types/reader';
 import { AppBar } from '../../../app-bar/public';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
@@ -289,11 +289,12 @@ function ReaderInner({
     onOpenExternalLink,
     onReaderError,
   });
-  const status = reader.sourceUri === undefined
-    ? 'idle'
-    : reader.error === undefined
-      ? (statusOverride ?? reader.state.status)
-      : 'error';
+  const status =
+    reader.sourceUri === undefined
+      ? 'idle'
+      : reader.error === undefined
+        ? (statusOverride ?? reader.state.status)
+        : 'error';
   const page = pageOverride ?? reader.state.page;
   const pageCount = pageCountOverride ?? reader.state.pageCount;
   const progress = progressOverride ?? reader.state.progress;
@@ -301,26 +302,27 @@ function ReaderInner({
   const canGoNext = canGoNextOverride ?? reader.state.canGoNext;
   const chapter = chapterLabel ?? reader.state.location?.chapterTitle;
 
-  const viewportContent = reader.sourceUri !== undefined && status !== 'error' ? (
-    <ReaderView
-      key={`${reader.sourceUri}:${format}`}
-      sourceUri={reader.sourceUri}
-      format={format}
-      appearance={reader.appearance}
-      initialLocation={location}
-      command={reader.command}
-      onStateChange={reader.handleStateChange}
-      onError={reader.handleError}
-      onOpenExternalLink={reader.handleOpenExternalLink}
-    />
-  ) : (
-    <ReaderEmptyState
-      errorTitle={errorTitle}
-      loadingLabel={loadingLabel}
-      status={status}
-      unavailableTitle={unavailableTitle}
-    />
-  );
+  const viewportContent =
+    reader.sourceUri !== undefined && status !== 'error' ? (
+      <ReaderView
+        key={`${reader.sourceUri}:${format}`}
+        sourceUri={reader.sourceUri}
+        format={format}
+        appearance={reader.appearance}
+        initialLocation={location}
+        command={reader.command}
+        onStateChange={reader.handleStateChange}
+        onError={reader.handleError}
+        onOpenExternalLink={reader.handleOpenExternalLink}
+      />
+    ) : (
+      <ReaderEmptyState
+        errorTitle={errorTitle}
+        loadingLabel={loadingLabel}
+        status={status}
+        unavailableTitle={unavailableTitle}
+      />
+    );
 
   return (
     <Surface

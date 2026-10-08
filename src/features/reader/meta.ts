@@ -6,8 +6,7 @@ const EMPTY_EVENT_FIELDS = [] as const;
 export const readerMeta = {
   name: 'Reader',
   category: 'pattern',
-  description:
-    'Themed EPUB and PDF reader with standalone engine, progress and navigation events.',
+  description: 'Themed EPUB and PDF reader with standalone engine, progress and navigation events.',
   directManifestNode: true,
   requirements: {
     capabilities: { ebookReader: true },
