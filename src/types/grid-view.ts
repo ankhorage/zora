@@ -17,6 +17,7 @@ export interface GridViewProps extends ZoraBaseProps {
   /** Pixel inset retained around a revealed focused item. */
   revealPaddingPixels?: number;
   onViewportChange?: (viewport: GridViewport) => void;
+  onVisibleItemIdsChange?: (ids: readonly string[]) => void;
   renderItem: (item: GridRectItem) => React.ReactNode;
 }
 
@@ -38,5 +39,6 @@ export interface TileGridProps extends ZoraBaseProps {
   revealPaddingPixels?: number;
   /** Reports the same measured column count used to position tiles. */
   onColumnsChange?: (columns: number) => void;
+  onVisibleItemIdsChange?: (ids: readonly string[]) => void;
   renderItem: (item: TileGridItem) => React.ReactNode;
 }
