@@ -9,7 +9,7 @@
         "@ankhorage/color-theory": "^0.3.1",
         "@ankhorage/contracts": "^24.2.1",
         "@ankhorage/game": "^0.1.2",
-        "@ankhorage/grid-view": "^0.2.0",
+        "@ankhorage/grid-view": "^0.3.0",
         "@ankhorage/reader": "^0.1.0",
         "@ankhorage/runtime": "^4.0.7",
         "@ankhorage/surface": "^9.4.2",
@@ -77,7 +77,7 @@
 
     "@ankhorage/game": ["@ankhorage/game@0.1.2", "", {}, "sha512-dWYhU/ZSIP2QDisuyH+46Qu6W2S6ucEOaYG7l7yvj3s06+wjeFJGtDv7JpD9dxWso+niIpv+C1+OKs0YzT+2ZQ=="],
 
-    "@ankhorage/grid-view": ["@ankhorage/grid-view@0.2.0", "", {}, "sha512-2nf1pnYlFM+lwNGz+W1UKVIc8Ol6F7L0w7DJiQWJ/5QzsmIVDxGmyl7xjyCND/v+x6tymIRspxYLQelMF24g5g=="],
+    "@ankhorage/grid-view": ["@ankhorage/grid-view@0.3.0", "", {}, "sha512-kGQDSLeXyanV/aS6qv7EQkXSjZw3NP2YuVzOJXddadBlVwgmNScC4PnRbXLkYtb3VNTr6L/tvx2BqMyvyHKtig=="],
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.3.1", "", { "dependencies": { "@ankhorage/ankh": "^0.12.2", "@ankhorage/contracts": "^24.1.0", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-23mRAZoLLmt+MIO0siVmK8FG4NxaG5shh0l1AerYkcapsW+AvEa3KGivtcxav9DuLpybj1RpOteQQpLPC01MqQ=="],
 

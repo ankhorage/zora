@@ -53,6 +53,7 @@ import { gameMeasurementProbeMeta } from '../game/meta/gameMeasurementProbeMeta'
 import { gameMeta } from '../game/meta/gameMeta';
 import { gameOverlayMeta } from '../game/meta/gameOverlayMeta';
 import { gradientMeta } from '../gradient/gradientMeta';
+import { gridLineOverlayMeta, gridRulerMeta } from '../grid-rulers/meta';
 import { gridViewMeta, tileGridMeta } from '../grid-view/meta';
 import { heroMeta } from '../hero/heroMeta';
 import { iconMeta } from '../icon/iconMeta';
@@ -198,6 +199,8 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Explorer: explorerMeta,
   FileExplorer: fileExplorerMeta,
   MediaExplorer: mediaExplorerMeta,
+  GridLineOverlay: gridLineOverlayMeta,
+  GridRuler: gridRulerMeta,
   GridView: gridViewMeta,
   TileGrid: tileGridMeta,
   Hero: heroMeta,

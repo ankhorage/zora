@@ -263,6 +263,14 @@ export type {
   GradientRendererProviderProps,
 } from './features/gradient/public';
 export { Gradient, GradientRendererProvider } from './features/gradient/public';
+export type {
+  GridGuide,
+  GridLineOverlayProps,
+  GridRulerMark,
+  GridRulerProps,
+  GridRulerTickSource,
+} from './features/grid-rulers/public';
+export { GridLineOverlay, GridRuler, resolveGridRulerMarks } from './features/grid-rulers/public';
 export type { GridViewProps, TileGridItem, TileGridProps } from './features/grid-view/public';
 export { GridView, layoutTileGrid, TileGrid } from './features/grid-view/public';
 export {
