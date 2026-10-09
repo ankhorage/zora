@@ -21,6 +21,11 @@ import type { GridViewProps } from '../../../../types/grid-view';
 
 type ScrollPosition = Readonly<{ x: number; y: number }>;
 type PinchGesture = Readonly<{ distance: number; focalPoint: GridPoint }>;
+type ScrollAxisMapping = Readonly<{ contentSize: number; origin: number; position: number }>;
+type ScrollMapping = Readonly<{
+  horizontal: ScrollAxisMapping;
+  vertical: ScrollAxisMapping;
+}>;
 
 /*** Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. */
 export function GridView({
@@ -50,6 +55,7 @@ export function GridView({
   const verticalScrollRef = React.useRef<NativeScrollView>(null);
   const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
+  const [isPinching, setIsPinching] = React.useState(false);
   const constraints = React.useMemo(
     () => viewportConstraints ?? createContentConstraints(contentWidth, contentHeight),
     [contentHeight, contentWidth, viewportConstraints],
@@ -73,6 +79,7 @@ export function GridView({
   const interactive = interactionPolicy !== 'passive';
 
   const publish = (nextViewport: GridViewport) => {
+    if (areViewportsEqual(viewportRef.current, nextViewport)) return;
     viewportRef.current = nextViewport;
     if (uncontrolled) setUncontrolledViewport(nextViewport);
     onViewportChange?.(nextViewport);
@@ -111,11 +118,16 @@ export function GridView({
   }, [onVisibleItemIdsChange, viewportVisibleIds]);
 
   React.useEffect(() => {
-    const position = viewportToScrollPosition(viewport);
-    scrollPositionRef.current = position;
-    horizontalScrollRef.current?.scrollTo({ animated: false, x: position.x });
-    verticalScrollRef.current?.scrollTo({ animated: false, y: position.y });
-  }, [viewport]);
+    const position = createScrollMapping(viewport, constraints);
+    const nextPosition = {
+      x: position.horizontal.position,
+      y: position.vertical.position,
+    };
+    if (areScrollPositionsEqual(scrollPositionRef.current, nextPosition)) return;
+    scrollPositionRef.current = nextPosition;
+    horizontalScrollRef.current?.scrollTo({ animated: false, x: nextPosition.x });
+    verticalScrollRef.current?.scrollTo({ animated: false, y: nextPosition.y });
+  }, [constraints, viewport]);
 
   React.useEffect(() => {
     const focusedItem = items.find((item) => item.id === focusedItemId);
@@ -126,39 +138,57 @@ export function GridView({
       revealPaddingPixels,
       constraints,
     );
-    viewportRef.current = revealed;
-    if (uncontrolled) setUncontrolledViewport(revealed);
-    onViewportChange?.(revealed);
+    publish(revealed);
   }, [constraints, focusedItemId, items, onViewportChange, revealPaddingPixels, uncontrolled]);
+
+  const scrollMapping = createScrollMapping(viewport, constraints);
+
+  const syncScrollPosition = () => {
+    const nextMapping = createScrollMapping(viewportRef.current, constraints);
+    const nextPosition = {
+      x: nextMapping.horizontal.position,
+      y: nextMapping.vertical.position,
+    };
+    scrollPositionRef.current = nextPosition;
+    horizontalScrollRef.current?.scrollTo({ animated: false, x: nextPosition.x });
+    verticalScrollRef.current?.scrollTo({ animated: false, y: nextPosition.y });
+  };
 
   return (
     <NativeView
       accessibilityLabel="Interactive grid viewport"
       onTouchEnd={() => {
+        const wasPinching = pinchGestureRef.current !== undefined;
         pinchGestureRef.current = undefined;
+        setIsPinching(false);
+        if (wasPinching) syncScrollPosition();
       }}
       onTouchMove={(event) => {
         if (!interactive) return;
         const pinch = getPinchGesture(event.nativeEvent.touches, width, height);
         const previous = pinchGestureRef.current;
         pinchGestureRef.current = pinch;
+        setIsPinching(pinch !== undefined);
         if (!pinch || !previous) return;
         zoomAt(pinch.focalPoint, pinch.distance / previous.distance);
       }}
       onTouchStart={(event) => {
         pinchGestureRef.current = getPinchGesture(event.nativeEvent.touches, width, height);
+        setIsPinching(pinchGestureRef.current !== undefined);
       }}
       style={{ height, overflow: 'hidden', width }}
       testID={testID}
     >
       <NativeScrollView
         ref={horizontalScrollRef}
+        testID={testID ? `${testID}-horizontal-scroll` : undefined}
         horizontal
-        scrollEnabled={interactive}
+        scrollEnabled={interactive && !isPinching}
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator
         style={{ height, width }}
         onScroll={(event) => {
+          if (pinchGestureRef.current) return;
           const { x } = event.nativeEvent.contentOffset;
           const displacement = x - scrollPositionRef.current.x;
           scrollPositionRef.current = { ...scrollPositionRef.current, x };
@@ -167,11 +197,13 @@ export function GridView({
       >
         <NativeScrollView
           ref={verticalScrollRef}
-          scrollEnabled={interactive}
+          testID={testID ? `${testID}-vertical-scroll` : undefined}
+          scrollEnabled={interactive && !isPinching}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator
-          style={{ height, width: contentWidth * viewport.pixelsPerUnitX }}
+          style={{ height, width: scrollMapping.horizontal.contentSize }}
           onScroll={(event) => {
+            if (pinchGestureRef.current) return;
             const { y } = event.nativeEvent.contentOffset;
             const displacement = y - scrollPositionRef.current.y;
             scrollPositionRef.current = { ...scrollPositionRef.current, y };
@@ -180,8 +212,8 @@ export function GridView({
         >
           <NativeView
             style={{
-              height: contentHeight * viewport.pixelsPerUnitY,
-              width: contentWidth * viewport.pixelsPerUnitX,
+              height: scrollMapping.vertical.contentSize,
+              width: scrollMapping.horizontal.contentSize,
             }}
           >
             {visibleItems.map((item) => {
@@ -194,9 +226,9 @@ export function GridView({
                   key={item.id}
                   style={{
                     height: item.height * viewport.pixelsPerUnitY,
-                    left: position.x,
+                    left: position.x + scrollMapping.horizontal.origin,
                     position: 'absolute',
-                    top: position.y,
+                    top: position.y + scrollMapping.vertical.origin,
                     width: item.width * viewport.pixelsPerUnitX,
                   }}
                 >
@@ -284,17 +316,73 @@ function createContentConstraints(
   return { world: { height: contentHeight, width: contentWidth, x: 0, y: 0 } };
 }
 
-/*** Converts canonical world offsets into native scroll coordinates without changing geometry. */
-function viewportToScrollPosition(viewport: GridViewport): ScrollPosition {
+/*** Maps engine-constrained world offsets to nonnegative native scroll coordinates. */
+function createScrollMapping(
+  viewport: GridViewport,
+  constraints: GridViewportConstraints,
+): ScrollMapping {
   return {
-    x: viewport.offsetX * viewport.pixelsPerUnitX,
-    y: viewport.offsetY * viewport.pixelsPerUnitY,
+    horizontal: createScrollAxisMapping(
+      viewport,
+      constraints,
+      'offsetX',
+      'pixelsPerUnitX',
+      'width',
+    ),
+    vertical: createScrollAxisMapping(viewport, constraints, 'offsetY', 'pixelsPerUnitY', 'height'),
   };
+}
+
+/*** Derives one physical scroll range through the published viewport constraint operation. */
+function createScrollAxisMapping(
+  viewport: GridViewport,
+  constraints: GridViewportConstraints,
+  offsetKey: 'offsetX' | 'offsetY',
+  scaleKey: 'pixelsPerUnitX' | 'pixelsPerUnitY',
+  sizeKey: 'width' | 'height',
+): ScrollAxisMapping {
+  const minimum = constrainViewport(
+    { ...viewport, [offsetKey]: -Number.MAX_SAFE_INTEGER },
+    constraints,
+  )[offsetKey];
+  const maximum = constrainViewport(
+    { ...viewport, [offsetKey]: Number.MAX_SAFE_INTEGER },
+    constraints,
+  )[offsetKey];
+  const scale = viewport[scaleKey];
+  const range = (maximum - minimum) * scale;
+  return {
+    contentSize: viewport[sizeKey] + range,
+    origin: -minimum * scale,
+    position: (viewport[offsetKey] - minimum) * scale,
+  };
+}
+
+/*** Compares canonical viewport fields without treating equal proposals as state changes. */
+function areViewportsEqual(left: GridViewport, right: GridViewport): boolean {
+  return (
+    left.width === right.width &&
+    left.height === right.height &&
+    left.offsetX === right.offsetX &&
+    left.offsetY === right.offsetY &&
+    left.pixelsPerUnitX === right.pixelsPerUnitX &&
+    left.pixelsPerUnitY === right.pixelsPerUnitY
+  );
+}
+
+/*** Avoids requesting native scrolling again when the physical position is already current. */
+function areScrollPositionsEqual(left: ScrollPosition, right: ScrollPosition): boolean {
+  return left.x === right.x && left.y === right.y;
 }
 
 /*** Extracts a stable two-finger focal point and distance from native or web touch data. */
 function getPinchGesture(
-  touches: readonly Readonly<{ pageX: number; pageY: number }>[],
+  touches: readonly Readonly<{
+    pageX: number;
+    pageY: number;
+    locationX?: number;
+    locationY?: number;
+  }>[],
   width: number,
   height: number,
 ): PinchGesture | undefined {
@@ -307,8 +395,14 @@ function getPinchGesture(
   return {
     distance,
     focalPoint: {
-      x: Math.min(width, Math.max(0, (first.pageX + second.pageX) / 2)),
-      y: Math.min(height, Math.max(0, (first.pageY + second.pageY) / 2)),
+      x: Math.min(
+        width,
+        Math.max(0, ((first.locationX ?? first.pageX) + (second.locationX ?? second.pageX)) / 2),
+      ),
+      y: Math.min(
+        height,
+        Math.max(0, ((first.locationY ?? first.pageY) + (second.locationY ?? second.pageY)) / 2),
+      ),
     },
   };
 }

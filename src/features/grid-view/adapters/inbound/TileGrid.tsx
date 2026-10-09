@@ -29,9 +29,10 @@ export function TileGrid({
 }: TileGridProps) {
   const [measuredWidth, setMeasuredWidth] = React.useState(0);
   const resolvedWidth = width ?? measuredWidth;
+  const pixelsPerUnitX = viewport?.pixelsPerUnitX ?? defaultViewport?.pixelsPerUnitX ?? zoom;
   const layout = React.useMemo(
-    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, viewport?.pixelsPerUnitX ?? zoom),
-    [items, resolvedWidth, tileSize, gap, viewport?.pixelsPerUnitX, zoom],
+    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, pixelsPerUnitX),
+    [gap, items, pixelsPerUnitX, resolvedWidth, tileSize],
   );
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
 
@@ -48,7 +49,7 @@ export function TileGrid({
       {resolvedWidth > 0 ? (
         <GridView
           contentHeight={layout.height}
-          contentWidth={Math.max(resolvedWidth / (viewport?.pixelsPerUnitX ?? zoom), layout.width)}
+          contentWidth={Math.max(resolvedWidth / pixelsPerUnitX, layout.width)}
           defaultViewport={defaultViewport}
           height={height}
           focusedItemId={focusedItemId}
