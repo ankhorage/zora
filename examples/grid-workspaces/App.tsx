@@ -4,10 +4,10 @@ import {
   MediaExplorer,
   Screen,
   ScreenSection,
+  type UploadAsset,
   Uploader,
   View,
 } from '@ankhorage/zora';
-import type { UploadAsset } from '@ankhorage/zora';
 import React from 'react';
 
 const mediaItems = Array.from({ length: 10000 }, (_, index) => ({
