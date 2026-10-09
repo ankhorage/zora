@@ -285,8 +285,8 @@ jobs:
             !Object.hasOwn(manifest.ankh, 'capabilities')
           ) process.exit(0);
           const requireFromPackage = createRequire(join(packageDir, 'package.json'));
-          const contractsPath = requireFromPackage.resolve('@ankhorage/contracts/capabilities');
-          const { areCapabilitiesEqual, isCapability, normalizeCapability } = await import(pathToFileURL(contractsPath).href);
+          const capabilityPath = requireFromPackage.resolve('@ankhorage/capability');
+          const { areCapabilitiesEqual, isCapability, normalizeCapability } = await import(pathToFileURL(capabilityPath).href);
           const { CAPABILITIES } = await import(`${name}/capabilities`);
           const metadata = manifest.ankh.capabilities;
           if (!Array.isArray(CAPABILITIES) || !Array.isArray(metadata) ||
