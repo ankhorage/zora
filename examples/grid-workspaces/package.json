@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "^25.0.0",
+    "@ankhorage/zora": "^25.2.0",
     "expo": "57.0.27",
     "react": "19.3.0",
     "react-native": "0.86.3",
