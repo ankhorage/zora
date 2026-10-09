@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.2.1
+
+### Patch Changes
+
+- 67a39fe: Update dependencies: `@ankhorage/ankh`.
+
 ## 25.2.0
 
 ### Minor Changes
