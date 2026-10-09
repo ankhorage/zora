@@ -18,12 +18,20 @@ export interface ExplorerItem {
 
 export type ExplorerSelectionMode = 'single' | 'multi';
 
+/** Provider-owned access state projected into the portable explorer presentation. */
+export type ExplorerPermissionStatus = 'granted' | 'limited' | 'denied' | 'unavailable';
+
 export interface ExplorerActivateEvent {
   readonly id: string;
 }
 
 export interface ExplorerSelectionChangeEvent {
   readonly selectedIds: readonly string[];
+}
+
+/** Requests the next provider page without exposing a provider cursor or native object. */
+export interface ExplorerPageRequestEvent {
+  readonly loadedItemCount: number;
 }
 
 export interface ExplorerProps extends ZoraBaseProps {
@@ -38,6 +46,28 @@ export interface ExplorerProps extends ZoraBaseProps {
   tileSize?: number;
   zoom?: number;
   loading?: boolean;
+  /** Provider paging remains application-owned; Explorer only requests the next page near its end. */
+  hasMore?: boolean;
+  loadingMore?: boolean;
+  /**
+   * Stable serializable identity for a provider collection.
+   *
+   * Supply this whenever paging is enabled so a replacement collection with the same number of
+   * loaded rows receives its own initial page request.
+   */
+  pagingCollectionId?: string;
+  /**
+   * Provider-controlled retry token for the current page boundary.
+   *
+   * Change this after a failed request to permit one deliberate retry without causing automatic
+   * retry loops.
+   */
+  pagingRetryToken?: string;
+  onLoadMore?: (event: ExplorerPageRequestEvent) => void;
+  /** Never pass a native permission object through this presentation boundary. */
+  permissionStatus?: ExplorerPermissionStatus;
+  permissionText?: string;
+  onRequestPermission?: () => void;
   errorText?: string;
   emptyText?: string;
   disabled?: boolean;
