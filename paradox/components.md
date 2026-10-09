@@ -706,7 +706,7 @@ Export paths: `src/index.ts`
 | onRequestPermission | `(() => void \| Promise<void>) \| undefined` | no | — |  |
 | requestButtonProps | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no | — |  |
 | requestLabel | `React.ReactNode` | no | — |  |
-| status | `"unknown" \| "requesting" \| "denied"` | yes | — |  |
+| status | `"denied" \| "unknown" \| "requesting"` | yes | — |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
 | title | `React.ReactNode` | no | — |  |
@@ -1269,7 +1269,7 @@ Export paths: `src/index.ts`
 
 ## Explorer
 
-Source: `src/features/explorer/adapters/inbound/Explorer.tsx:16:14`
+Source: `src/features/explorer/adapters/inbound/Explorer.tsx:21:14`
 
 Single canonical Explorer implementation for media and file catalogue presentation.
 
@@ -1281,14 +1281,22 @@ Export paths: `src/index.ts`
 | disabled | `boolean \| undefined` | no | — |  |
 | emptyText | `string \| undefined` | no | — |  |
 | errorText | `string \| undefined` | no | — |  |
+| hasMore | `boolean \| undefined` | no | — |  |
 | height | `number \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | items | `readonly ExplorerItem[]` | yes | — |  |
 | loading | `boolean \| undefined` | no | — |  |
+| loadingMore | `boolean \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onActivate | `((event: ExplorerActivateEvent) => void) \| undefined` | no | — |  |
+| onLoadMore | `((event: ExplorerPageRequestEvent) => void) \| undefined` | no | — |  |
+| onRequestPermission | `(() => void) \| undefined` | no | — |  |
 | onSelectionChange | `((event: ExplorerSelectionChangeEvent) => void) \| undefined` | no | — |  |
+| pagingCollectionId | `string \| undefined` | no | — |  |
+| pagingRetryToken | `string \| undefined` | no | — |  |
+| permissionStatus | `ExplorerPermissionStatus \| undefined` | no | — |  |
+| permissionText | `string \| undefined` | no | — |  |
 | readOnly | `boolean \| undefined` | no | — |  |
 | selectedIds | `readonly string[] \| undefined` | no | — |  |
 | selectionMode | `ExplorerSelectionMode \| undefined` | no | — |  |
@@ -1337,14 +1345,22 @@ Export paths: `src/index.ts`
 | disabled | `boolean \| undefined` | no | — |  |
 | emptyText | `string \| undefined` | no | — |  |
 | errorText | `string \| undefined` | no | — |  |
+| hasMore | `boolean \| undefined` | no | — |  |
 | height | `number \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | items | `readonly ExplorerItem[]` | yes | — |  |
 | loading | `boolean \| undefined` | no | — |  |
+| loadingMore | `boolean \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onActivate | `(event: ExplorerActivateEvent) => void \| undefined` | no | — |  |
+| onLoadMore | `(event: ExplorerPageRequestEvent) => void \| undefined` | no | — |  |
+| onRequestPermission | `() => void \| undefined` | no | — |  |
 | onSelectionChange | `(event: ExplorerSelectionChangeEvent) => void \| undefined` | no | — |  |
+| pagingCollectionId | `string \| undefined` | no | — |  |
+| pagingRetryToken | `string \| undefined` | no | — |  |
+| permissionStatus | `ExplorerPermissionStatus \| undefined` | no | — |  |
+| permissionText | `string \| undefined` | no | — |  |
 | readOnly | `boolean \| undefined` | no | — |  |
 | selectedIds | `readonly string[] \| undefined` | no | — |  |
 | selectionMode | `ExplorerSelectionMode \| undefined` | no | — |  |
@@ -2137,14 +2153,22 @@ Export paths: `src/index.ts`
 | disabled | `boolean \| undefined` | no | — |  |
 | emptyText | `string \| undefined` | no | — |  |
 | errorText | `string \| undefined` | no | — |  |
+| hasMore | `boolean \| undefined` | no | — |  |
 | height | `number \| undefined` | no | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | items | `readonly ExplorerItem[]` | yes | — |  |
 | loading | `boolean \| undefined` | no | — |  |
+| loadingMore | `boolean \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onActivate | `(event: ExplorerActivateEvent) => void \| undefined` | no | — |  |
+| onLoadMore | `(event: ExplorerPageRequestEvent) => void \| undefined` | no | — |  |
+| onRequestPermission | `() => void \| undefined` | no | — |  |
 | onSelectionChange | `(event: ExplorerSelectionChangeEvent) => void \| undefined` | no | — |  |
+| pagingCollectionId | `string \| undefined` | no | — |  |
+| pagingRetryToken | `string \| undefined` | no | — |  |
+| permissionStatus | `ExplorerPermissionStatus \| undefined` | no | — |  |
+| permissionText | `string \| undefined` | no | — |  |
 | readOnly | `boolean \| undefined` | no | — |  |
 | selectedIds | `readonly string[] \| undefined` | no | — |  |
 | selectionMode | `ExplorerSelectionMode \| undefined` | no | — |  |

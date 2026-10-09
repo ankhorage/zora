@@ -1,5 +1,12 @@
 # Changelog
 
+## 25.2.0
+
+### Minor Changes
+
+- 92ed809: Finish the Explorer migration with provider-neutral paging and permission presentation, and extend
+  the runnable GridView workspace example with paged, limited-access, and Uploader interactions.
+
 ## 25.1.0
 
 ### Minor Changes

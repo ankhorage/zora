@@ -3499,7 +3499,7 @@
       {
         "name": "status",
         "kind": "property",
-        "type": "\"unknown\" | \"requesting\" | \"denied\"",
+        "type": "\"denied\" | \"unknown\" | \"requesting\"",
         "required": true,
         "description": null
       },
@@ -8628,7 +8628,7 @@
     "modulePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
     "sourceLocation": {
       "filePath": "src/features/explorer/adapters/inbound/Explorer.tsx",
-      "line": 16,
+      "line": 21,
       "column": 14
     },
     "exportPaths": [
@@ -8650,7 +8650,7 @@
     "modulePath": "src/types/explorer.ts",
     "sourceLocation": {
       "filePath": "src/types/explorer.ts",
-      "line": 21,
+      "line": 24,
       "column": 1
     },
     "exportPaths": [
@@ -8797,7 +8797,7 @@
     "modulePath": "src/types/explorer.ts",
     "sourceLocation": {
       "filePath": "src/types/explorer.ts",
-      "line": 29,
+      "line": 37,
       "column": 1
     },
     "exportPaths": [
@@ -8841,6 +8841,13 @@
         "description": null
       },
       {
+        "name": "hasMore",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "height",
         "kind": "property",
         "type": "number | undefined",
@@ -8876,6 +8883,13 @@
         "description": null
       },
       {
+        "name": "loadingMore",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
@@ -8890,9 +8904,51 @@
         "description": null
       },
       {
+        "name": "onLoadMore",
+        "kind": "property",
+        "type": "((event: ExplorerPageRequestEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onRequestPermission",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "onSelectionChange",
         "kind": "property",
         "type": "((event: ExplorerSelectionChangeEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pagingCollectionId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pagingRetryToken",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "permissionStatus",
+        "kind": "property",
+        "type": "ExplorerPermissionStatus | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "permissionText",
+        "kind": "property",
+        "type": "string | undefined",
         "required": false,
         "description": null
       },
@@ -8966,7 +9022,7 @@
     "modulePath": "src/types/explorer.ts",
     "sourceLocation": {
       "filePath": "src/types/explorer.ts",
-      "line": 25,
+      "line": 28,
       "column": 1
     },
     "exportPaths": [

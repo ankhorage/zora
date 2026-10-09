@@ -772,7 +772,7 @@ Source: `src/types/scanner.ts:19:1`
 | onRequestPermission | property | `(() => void \| Promise<void>) \| undefined` | no |  |
 | requestButtonProps | property | `Omit<ButtonProps, "children" \| "onPress"> \| undefined` | no |  |
 | requestLabel | property | `React.ReactNode` | no |  |
-| status | property | `"unknown" \| "requesting" \| "denied"` | yes |  |
+| status | property | `"denied" \| "unknown" \| "requesting"` | yes |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | title | property | `React.ReactNode` | no |  |
@@ -1997,7 +1997,7 @@ Source: `src/types/empty-state.ts:14:1`
 
 Kind: `value`
 Module: `src/features/explorer/adapters/inbound/Explorer.tsx`
-Source: `src/features/explorer/adapters/inbound/Explorer.tsx:16:14`
+Source: `src/features/explorer/adapters/inbound/Explorer.tsx:21:14`
 
 Single canonical Explorer implementation for media and file catalogue presentation.
 
@@ -2005,7 +2005,7 @@ Single canonical Explorer implementation for media and file catalogue presentati
 
 Kind: `type`
 Module: `src/types/explorer.ts`
-Source: `src/types/explorer.ts:21:1`
+Source: `src/types/explorer.ts:24:1`
 
 ### Members
 
@@ -2044,7 +2044,7 @@ Source: `src/types/explorer.ts:4:1`
 
 Kind: `type`
 Module: `src/types/explorer.ts`
-Source: `src/types/explorer.ts:29:1`
+Source: `src/types/explorer.ts:37:1`
 
 ### Members
 
@@ -2054,14 +2054,22 @@ Source: `src/types/explorer.ts:29:1`
 | disabled | property | `boolean \| undefined` | no |  |
 | emptyText | property | `string \| undefined` | no |  |
 | errorText | property | `string \| undefined` | no |  |
+| hasMore | property | `boolean \| undefined` | no |  |
 | height | property | `number \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | items | property | `readonly ExplorerItem[]` | yes |  |
 | loading | property | `boolean \| undefined` | no |  |
+| loadingMore | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onActivate | property | `((event: ExplorerActivateEvent) => void) \| undefined` | no |  |
+| onLoadMore | property | `((event: ExplorerPageRequestEvent) => void) \| undefined` | no |  |
+| onRequestPermission | property | `(() => void) \| undefined` | no |  |
 | onSelectionChange | property | `((event: ExplorerSelectionChangeEvent) => void) \| undefined` | no |  |
+| pagingCollectionId | property | `string \| undefined` | no |  |
+| pagingRetryToken | property | `string \| undefined` | no |  |
+| permissionStatus | property | `ExplorerPermissionStatus \| undefined` | no |  |
+| permissionText | property | `string \| undefined` | no |  |
 | readOnly | property | `boolean \| undefined` | no |  |
 | selectedIds | property | `readonly string[] \| undefined` | no |  |
 | selectionMode | property | `ExplorerSelectionMode \| undefined` | no |  |
@@ -2075,7 +2083,7 @@ Source: `src/types/explorer.ts:29:1`
 
 Kind: `type`
 Module: `src/types/explorer.ts`
-Source: `src/types/explorer.ts:25:1`
+Source: `src/types/explorer.ts:28:1`
 
 ### Members
 

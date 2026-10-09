@@ -142,6 +142,8 @@ graph LR
   module_src_features_explorer_adapters_inbound_useExplorerKeyboardFocus_ts["src/features/explorer/adapters/inbound/useExplorerKeyboardFocus.ts"]
   module_src_features_explorer_application_getExplorerNextFocusId_ts["src/features/explorer/application/getExplorerNextFocusId.ts"]
   module_src_features_explorer_application_resolveExplorerSelection_ts["src/features/explorer/application/resolveExplorerSelection.ts"]
+  module_src_features_explorer_application_shouldDispatchExplorerPageRequest_ts["src/features/explorer/application/shouldDispatchExplorerPageRequest.ts"]
+  module_src_features_explorer_application_shouldRequestExplorerPage_ts["src/features/explorer/application/shouldRequestExplorerPage.ts"]
   module_src_features_explorer_meta_ts["src/features/explorer/meta.ts"]
   module_src_features_explorer_public_ts["src/features/explorer/public.ts"]
   module_src_features_form_adapters_inbound_Form_tsx["src/features/form/adapters/inbound/Form.tsx"]
@@ -883,6 +885,8 @@ graph LR
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_adapters_inbound_ExplorerKeyboardProxy_tsx
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_adapters_inbound_useExplorerKeyboardFocus_ts
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_application_resolveExplorerSelection_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_application_shouldDispatchExplorerPageRequest_ts
+  module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_explorer_application_shouldRequestExplorerPage_ts
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_grid_view_public_ts
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_icon_public_ts
   module_src_features_explorer_adapters_inbound_Explorer_tsx --> module_src_features_image_public_ts
@@ -897,6 +901,7 @@ graph LR
   module_src_features_explorer_adapters_inbound_useExplorerKeyboardFocus_ts --> module_src_features_explorer_application_getExplorerNextFocusId_ts
   module_src_features_explorer_adapters_inbound_useExplorerKeyboardFocus_ts --> module_src_types_explorer_ts
   module_src_features_explorer_application_resolveExplorerSelection_ts --> module_src_types_explorer_ts
+  module_src_features_explorer_application_shouldRequestExplorerPage_ts --> module_src_types_explorer_ts
   module_src_features_explorer_meta_ts --> module_src_types_authoring_ts
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_form_adapters_inbound_FormActions_tsx
   module_src_features_form_adapters_inbound_Form_tsx --> module_src_features_layout_public_ts
