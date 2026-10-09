@@ -49,6 +49,20 @@ export interface ExplorerProps extends ZoraBaseProps {
   /** Provider paging remains application-owned; Explorer only requests the next page near its end. */
   hasMore?: boolean;
   loadingMore?: boolean;
+  /**
+   * Stable serializable identity for a provider collection.
+   *
+   * Supply this whenever paging is enabled so a replacement collection with the same number of
+   * loaded rows receives its own initial page request.
+   */
+  pagingCollectionId?: string;
+  /**
+   * Provider-controlled retry token for the current page boundary.
+   *
+   * Change this after a failed request to permit one deliberate retry without causing automatic
+   * retry loops.
+   */
+  pagingRetryToken?: string;
   onLoadMore?: (event: ExplorerPageRequestEvent) => void;
   /** Never pass a native permission object through this presentation boundary. */
   permissionStatus?: ExplorerPermissionStatus;

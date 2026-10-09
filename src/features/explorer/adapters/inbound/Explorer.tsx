@@ -9,6 +9,10 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 import { resolveExplorerSelection } from '../../application/resolveExplorerSelection';
+import {
+  type ExplorerPageRequestSignature,
+  shouldDispatchExplorerPageRequest,
+} from '../../application/shouldDispatchExplorerPageRequest';
 import { shouldRequestExplorerPage } from '../../application/shouldRequestExplorerPage';
 import { ExplorerKeyboardProxy } from './ExplorerKeyboardProxy';
 import { useExplorerKeyboardFocus } from './useExplorerKeyboardFocus';
@@ -31,6 +35,8 @@ function ExplorerInner({
   loading = false,
   hasMore = false,
   loadingMore = false,
+  pagingCollectionId,
+  pagingRetryToken,
   onLoadMore,
   permissionStatus = 'granted',
   permissionText,
@@ -48,7 +54,7 @@ function ExplorerInner({
   const anchorId = React.useRef<string | null>(null);
   const [columns, setColumns] = React.useState(1);
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
-  const lastPageRequestCountRef = React.useRef<number | null>(null);
+  const lastPageRequestRef = React.useRef<ExplorerPageRequestSignature | null>(null);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const ids = React.useMemo(
@@ -59,16 +65,41 @@ function ExplorerInner({
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
 
   React.useEffect(() => {
+    const request = {
+      collectionId: pagingCollectionId,
+      loadedItemCount: items.length,
+      retryToken: pagingRetryToken,
+    };
     if (
       !onLoadMore ||
-      lastPageRequestCountRef.current === items.length ||
-      !shouldRequestExplorerPage(ids, visibleIds, hasMore, loadingMore)
+      !shouldDispatchExplorerPageRequest(lastPageRequestRef.current, request) ||
+      !shouldRequestExplorerPage(
+        ids,
+        visibleIds,
+        hasMore,
+        loadingMore,
+        loading,
+        errorText,
+        permissionStatus,
+      )
     ) {
       return;
     }
-    lastPageRequestCountRef.current = items.length;
+    lastPageRequestRef.current = request;
     onLoadMore({ loadedItemCount: items.length });
-  }, [hasMore, ids, items.length, loadingMore, onLoadMore, visibleIds]);
+  }, [
+    errorText,
+    hasMore,
+    ids,
+    items.length,
+    loading,
+    loadingMore,
+    onLoadMore,
+    pagingCollectionId,
+    pagingRetryToken,
+    permissionStatus,
+    visibleIds,
+  ]);
 
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;

@@ -59,6 +59,7 @@ export default function App() {
           hasMore={visibleMediaCount < mediaItems.length}
           items={visibleMedia}
           loadingMore={loadingMore}
+          pagingCollectionId="workspace-media"
           permissionStatus={permissionStatus}
           onLoadMore={loadNextMediaPage}
           onRequestPermission={() => setPermissionStatus('granted')}
