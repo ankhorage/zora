@@ -78,12 +78,15 @@ export function GridView({
   const uncontrolled = controlledViewport === undefined;
   const interactive = interactionPolicy !== 'passive';
 
-  const publish = (nextViewport: GridViewport) => {
-    if (areViewportsEqual(viewportRef.current, nextViewport)) return;
-    viewportRef.current = nextViewport;
-    if (uncontrolled) setUncontrolledViewport(nextViewport);
-    onViewportChange?.(nextViewport);
-  };
+  const publish = React.useCallback(
+    (nextViewport: GridViewport) => {
+      if (areViewportsEqual(viewportRef.current, nextViewport)) return;
+      viewportRef.current = nextViewport;
+      if (uncontrolled) setUncontrolledViewport(nextViewport);
+      onViewportChange?.(nextViewport);
+    },
+    [onViewportChange, uncontrolled],
+  );
   const pan = (displacement: GridPoint) =>
     publish(panViewport(viewportRef.current, displacement, constraints));
   const zoomAt = (focalPoint: GridPoint, factor: number) =>
@@ -139,7 +142,7 @@ export function GridView({
       constraints,
     );
     publish(revealed);
-  }, [constraints, focusedItemId, items, onViewportChange, revealPaddingPixels, uncontrolled]);
+  }, [constraints, focusedItemId, items, publish, revealPaddingPixels]);
 
   const scrollMapping = createScrollMapping(viewport, constraints);
 
@@ -321,40 +324,61 @@ function createScrollMapping(
   viewport: GridViewport,
   constraints: GridViewportConstraints,
 ): ScrollMapping {
+  const horizontalMinimum = constrainViewport(
+    { ...viewport, offsetX: -Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetX;
+  const horizontalMaximum = constrainViewport(
+    { ...viewport, offsetX: Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetX;
+  const verticalMinimum = constrainViewport(
+    { ...viewport, offsetY: -Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetY;
+  const verticalMaximum = constrainViewport(
+    { ...viewport, offsetY: Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetY;
   return {
-    horizontal: createScrollAxisMapping(
-      viewport,
-      constraints,
-      'offsetX',
-      'pixelsPerUnitX',
-      'width',
-    ),
-    vertical: createScrollAxisMapping(viewport, constraints, 'offsetY', 'pixelsPerUnitY', 'height'),
+    horizontal: createScrollAxisMapping({
+      maximum: horizontalMaximum,
+      minimum: horizontalMinimum,
+      offset: viewport.offsetX,
+      scale: viewport.pixelsPerUnitX,
+      viewportSize: viewport.width,
+    }),
+    vertical: createScrollAxisMapping({
+      maximum: verticalMaximum,
+      minimum: verticalMinimum,
+      offset: viewport.offsetY,
+      scale: viewport.pixelsPerUnitY,
+      viewportSize: viewport.height,
+    }),
   };
 }
 
-/*** Derives one physical scroll range through the published viewport constraint operation. */
-function createScrollAxisMapping(
-  viewport: GridViewport,
-  constraints: GridViewportConstraints,
-  offsetKey: 'offsetX' | 'offsetY',
-  scaleKey: 'pixelsPerUnitX' | 'pixelsPerUnitY',
-  sizeKey: 'width' | 'height',
-): ScrollAxisMapping {
-  const minimum = constrainViewport(
-    { ...viewport, [offsetKey]: -Number.MAX_SAFE_INTEGER },
-    constraints,
-  )[offsetKey];
-  const maximum = constrainViewport(
-    { ...viewport, [offsetKey]: Number.MAX_SAFE_INTEGER },
-    constraints,
-  )[offsetKey];
-  const scale = viewport[scaleKey];
+type ScrollAxisMappingInput = Readonly<{
+  maximum: number;
+  minimum: number;
+  offset: number;
+  scale: number;
+  viewportSize: number;
+}>;
+
+/*** Derives a physical scroll axis from the published engine constraint result. */
+function createScrollAxisMapping({
+  maximum,
+  minimum,
+  offset,
+  scale,
+  viewportSize,
+}: ScrollAxisMappingInput): ScrollAxisMapping {
   const range = (maximum - minimum) * scale;
   return {
-    contentSize: viewport[sizeKey] + range,
+    contentSize: viewportSize + range,
     origin: -minimum * scale,
-    position: (viewport[offsetKey] - minimum) * scale,
+    position: (offset - minimum) * scale,
   };
 }
 
