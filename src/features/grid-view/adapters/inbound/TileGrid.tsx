@@ -13,10 +13,15 @@ export function TileGrid({
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
@@ -25,8 +30,8 @@ export function TileGrid({
   const [measuredWidth, setMeasuredWidth] = React.useState(0);
   const resolvedWidth = width ?? measuredWidth;
   const layout = React.useMemo(
-    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, zoom),
-    [items, resolvedWidth, tileSize, gap, zoom],
+    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, viewport?.pixelsPerUnitX ?? zoom),
+    [items, resolvedWidth, tileSize, gap, viewport?.pixelsPerUnitX, zoom],
   );
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
 
@@ -43,12 +48,14 @@ export function TileGrid({
       {resolvedWidth > 0 ? (
         <GridView
           contentHeight={layout.height}
-          contentWidth={Math.max(resolvedWidth / zoom, layout.width)}
+          contentWidth={Math.max(resolvedWidth / (viewport?.pixelsPerUnitX ?? zoom), layout.width)}
+          defaultViewport={defaultViewport}
           height={height}
           focusedItemId={focusedItemId}
           interactionPolicy={interactionPolicy}
           items={layout.items}
           onVisibleItemIdsChange={onVisibleItemIdsChange}
+          onViewportChange={onViewportChange}
           overscanPixels={overscanPixels}
           renderItem={(item) => {
             const source = itemLookup.get(item.id);
@@ -56,6 +63,9 @@ export function TileGrid({
           }}
           revealPaddingPixels={revealPaddingPixels}
           width={resolvedWidth}
+          viewport={viewport}
+          viewportConstraints={viewportConstraints}
+          zoomLimits={zoomLimits}
           zoom={zoom}
         />
       ) : null}
