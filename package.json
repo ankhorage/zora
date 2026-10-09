@@ -40,7 +40,7 @@
     "react-native-worklets": "0.10.1"
   },
   "dependencies": {
-    "@ankhorage/ankh": "^0.12.2",
+    "@ankhorage/ankh": "^0.13.0",
     "@ankhorage/color-theory": "^0.3.1",
     "@ankhorage/contracts": "^24.2.1",
     "@ankhorage/game": "^0.1.2",
