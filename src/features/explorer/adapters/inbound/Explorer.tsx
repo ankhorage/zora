@@ -9,6 +9,7 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { Text } from '../../../typography/public';
 import { resolveExplorerSelection } from '../../application/resolveExplorerSelection';
+import { shouldRequestExplorerPage } from '../../application/shouldRequestExplorerPage';
 import { ExplorerKeyboardProxy } from './ExplorerKeyboardProxy';
 import { useExplorerKeyboardFocus } from './useExplorerKeyboardFocus';
 
@@ -28,6 +29,12 @@ function ExplorerInner({
   tileSize = 120,
   zoom = 1,
   loading = false,
+  hasMore = false,
+  loadingMore = false,
+  onLoadMore,
+  permissionStatus = 'granted',
+  permissionText,
+  onRequestPermission,
   errorText,
   emptyText = 'No items',
   disabled = false,
@@ -41,6 +48,7 @@ function ExplorerInner({
   const anchorId = React.useRef<string | null>(null);
   const [columns, setColumns] = React.useState(1);
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
+  const lastPageRequestCountRef = React.useRef<number | null>(null);
   const effectiveSelectedIds = selectedIds ?? internalSelectedIds;
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const ids = React.useMemo(
@@ -49,6 +57,18 @@ function ExplorerInner({
   );
   const selected = new Set(effectiveSelectedIds);
   const passive = interactionPolicy === 'passive' || disabled || readOnly;
+
+  React.useEffect(() => {
+    if (
+      !onLoadMore ||
+      lastPageRequestCountRef.current === items.length ||
+      !shouldRequestExplorerPage(ids, visibleIds, hasMore, loadingMore)
+    ) {
+      return;
+    }
+    lastPageRequestCountRef.current = items.length;
+    onLoadMore({ loadedItemCount: items.length });
+  }, [hasMore, ids, items.length, loadingMore, onLoadMore, visibleIds]);
 
   const select = (item: ExplorerItem, intent: 'replace' | 'toggle' | 'range') => {
     if (passive || item.disabled) return;
@@ -138,24 +158,42 @@ function ExplorerInner({
     );
   };
 
+  if (permissionStatus === 'denied' || permissionStatus === 'unavailable') {
+    return (
+      <NativeView testID={testID}>
+        <Text>{permissionText ?? 'This collection is unavailable without permission.'}</Text>
+        {permissionStatus === 'denied' && onRequestPermission ? (
+          <NativePressable accessibilityRole="button" onPress={onRequestPermission}>
+            <Text>Grant access</Text>
+          </NativePressable>
+        ) : null}
+      </NativeView>
+    );
+  }
   if (errorText) return <Text testID={testID}>{errorText}</Text>;
   if (loading) return <Text testID={testID}>Loading…</Text>;
   if (items.length === 0) return <Text testID={testID}>{emptyText}</Text>;
 
   return (
-    <TileGrid
-      focusedItemId={keyboard.focusedId ?? undefined}
-      height={height}
-      interactionPolicy={interactionPolicy}
-      onColumnsChange={setColumns}
-      onVisibleItemIdsChange={setVisibleIds}
-      items={items}
-      renderItem={renderTile}
-      testID={testID}
-      tileSize={tileSize}
-      width={width}
-      zoom={zoom}
-    />
+    <NativeView>
+      {permissionStatus === 'limited' ? (
+        <Text>{permissionText ?? 'Showing the media you have allowed.'}</Text>
+      ) : null}
+      <TileGrid
+        focusedItemId={keyboard.focusedId ?? undefined}
+        height={height}
+        interactionPolicy={interactionPolicy}
+        onColumnsChange={setColumns}
+        onVisibleItemIdsChange={setVisibleIds}
+        items={items}
+        renderItem={renderTile}
+        testID={testID}
+        tileSize={tileSize}
+        width={width}
+        zoom={zoom}
+      />
+      {loadingMore ? <Text>Loading more…</Text> : null}
+    </NativeView>
   );
 }
 

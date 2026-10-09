@@ -72,6 +72,12 @@ const FIXTURES: readonly CandidateFixture[] = [
   },
   {
     doctor: false,
+    name: 'grid-workspaces',
+    nativePrebuild: true,
+    project: 'examples/grid-workspaces',
+  },
+  {
+    doctor: false,
     expectedWebRoutes: RESTAURANT_WEB_ROUTES,
     name: 'restaurant',
     nativePrebuild: false,

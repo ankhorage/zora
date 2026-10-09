@@ -1,15 +1,16 @@
 import { readFileSync } from 'node:fs';
 
 import { isCapability } from '@ankhorage/contracts/capabilities';
+import { isRecord } from '@ankhorage/utility/object';
 import { expect, test } from 'bun:test';
 
 import { CAPABILITIES } from './index';
 
-const packageCapabilities = (
-  JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8')) as {
-    readonly ankh?: { readonly capabilities?: unknown };
-  }
-).ankh?.capabilities;
+const packageJson: unknown = JSON.parse(
+  readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
+);
+const packageCapabilities =
+  isRecord(packageJson) && isRecord(packageJson.ankh) ? packageJson.ankh.capabilities : undefined;
 
 test('publishes valid, uniquely identified canonical ZORA capabilities', () => {
   expect(CAPABILITIES).toHaveLength(2);
@@ -27,7 +28,10 @@ test('keeps Ankh package metadata identical to the canonical catalog', () => {
 });
 
 test('exports the catalog from the public capabilities subpath', async () => {
-  const capabilities = await import('@ankhorage/zora/capabilities');
+  const capabilities: unknown = await import('@ankhorage/zora/capabilities');
+  if (!isRecord(capabilities)) {
+    throw new Error('Expected a capability module record.');
+  }
 
   expect(capabilities.CAPABILITIES).toEqual(CAPABILITIES);
 });

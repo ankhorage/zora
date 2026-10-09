@@ -96,6 +96,9 @@ jobs:
             echo "No typecheck script found; skipping."
           fi
 
+      - name: Validate packed ZORA in Expo applications
+        run: bun run expo:candidate
+
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: |

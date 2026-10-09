@@ -2,6 +2,8 @@ export type {
   ExplorerActivateEvent,
   ExplorerItem,
   ExplorerItemKind,
+  ExplorerPageRequestEvent,
+  ExplorerPermissionStatus,
   ExplorerProps,
   ExplorerSelectionChangeEvent,
   ExplorerSelectionMode,
