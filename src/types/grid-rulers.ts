@@ -50,6 +50,8 @@ export interface GridRulerProps extends ZoraBaseProps {
 /** A passive overlay of visible major/minor grid lines and explicit guides. */
 export interface GridLineOverlayProps extends ZoraBaseProps {
   readonly viewport: GridViewport;
+  /** Mirrors horizontal world positions using the same projection as an RTL GridRuler. */
+  readonly direction?: 'ltr' | 'rtl';
   readonly xTickSource?: GridRulerTickSource;
   readonly yTickSource?: GridRulerTickSource;
   readonly guides?: readonly GridGuide[];

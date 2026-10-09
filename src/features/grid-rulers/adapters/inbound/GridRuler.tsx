@@ -20,7 +20,7 @@ function GridRulerInner({
   viewport,
 }: GridRulerProps) {
   const { theme } = useZoraTheme();
-  const marks = resolveGridRulerMarks(viewport, axis, tickSource, formatLabel);
+  const marks = resolveGridRulerMarks(viewport, axis, tickSource, formatLabel, direction);
   const horizontal = axis === 'x';
   const size = horizontal ? viewport.width : viewport.height;
   const label = accessibilityLabel ?? `${horizontal ? 'Horizontal' : 'Vertical'} ruler`;
@@ -44,7 +44,7 @@ function GridRulerInner({
       testID={testID}
     >
       {marks.map((mark, index) => {
-        const coordinate = direction === 'rtl' && horizontal ? size - mark.position : mark.position;
+        const coordinate = mark.position;
         const tickStyle = horizontal
           ? {
               height: mark.level === 'major' ? thickness : thickness / 2,
@@ -63,6 +63,7 @@ function GridRulerInner({
             <View
               importantForAccessibility="no-hide-descendants"
               style={[styles.tick, { backgroundColor: theme.semantics.neutral.divider }, tickStyle]}
+              testID={testID === undefined ? undefined : `${testID}-tick-${index}`}
             />
             {mark.label !== undefined ? (
               <Text
@@ -73,6 +74,7 @@ function GridRulerInner({
                   { color: theme.semantics.neutral.textMuted },
                   horizontal ? { left: coordinate + 3, top: 2 } : { left: 3, top: coordinate + 2 },
                 ]}
+                testID={testID === undefined ? undefined : `${testID}-label-${index}`}
               >
                 {mark.label}
               </Text>

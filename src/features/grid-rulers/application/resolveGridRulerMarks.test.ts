@@ -69,4 +69,22 @@ describe('resolveGridRulerMarks', () => {
       )[0],
     ).toEqual({ label: 'bar 40', level: 'major', position: 0 });
   });
+
+  test('projects horizontal marks consistently in RTL and evaluates each formatter once', () => {
+    let formatterCalls = 0;
+
+    const marks = resolveGridRulerMarks(
+      viewport,
+      'x',
+      { kind: 'ticks', specification: { mode: 'fixed', step: 20 } },
+      (tick) => {
+        formatterCalls += 1;
+        return `tick ${tick.position}`;
+      },
+      'rtl',
+    );
+
+    expect(marks.map((mark) => mark.position)).toEqual([300, 260, 220, 180, 140, 100, 60, 20]);
+    expect(formatterCalls).toBe(marks.length);
+  });
 });

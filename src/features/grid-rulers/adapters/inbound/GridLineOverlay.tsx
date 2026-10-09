@@ -4,11 +4,13 @@ import { StyleSheet, View } from 'react-native';
 import type { GridLineOverlayProps } from '../../../../types/grid-rulers';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
+import { projectGridRulerPosition } from '../../application/projectGridRulerPosition';
 import { resolveGridRulerMarks } from '../../application/resolveGridRulerMarks';
 
 /*** Renders visible world-grid lines and explicit guides without owning viewport interaction. */
 function GridLineOverlayInner({
   accessibilityLabel = 'Grid guides',
+  direction = 'ltr',
   guides = [],
   testID,
   viewport,
@@ -16,13 +18,16 @@ function GridLineOverlayInner({
   yTickSource,
 }: GridLineOverlayProps) {
   const { theme } = useZoraTheme();
-  const xMarks = xTickSource ? resolveGridRulerMarks(viewport, 'x', xTickSource) : [];
+  const xMarks = xTickSource
+    ? resolveGridRulerMarks(viewport, 'x', xTickSource, undefined, direction)
+    : [];
   const yMarks = yTickSource ? resolveGridRulerMarks(viewport, 'y', yTickSource) : [];
+  const visibleGuides = resolveVisibleGridGuides(guides, viewport, direction);
 
   return (
     <View
-      accessibilityLabel={accessibilityLabel}
-      accessible
+      accessible={false}
+      importantForAccessibility="no"
       pointerEvents="none"
       style={[styles.overlay, { height: viewport.height, width: viewport.width }]}
       testID={testID}
@@ -39,6 +44,7 @@ function GridLineOverlayInner({
               opacity: mark.level === 'major' ? 0.5 : 0.25,
             },
           ]}
+          testID={testID === undefined ? undefined : `${testID}-x-line-${index}`}
         />
       ))}
       {yMarks.map((mark, index) => (
@@ -53,24 +59,28 @@ function GridLineOverlayInner({
               top: mark.position,
             },
           ]}
+          testID={testID === undefined ? undefined : `${testID}-y-line-${index}`}
         />
       ))}
-      {guides.map((guide) => (
+      {visibleGuides.map(({ guide, position }) => (
         <View
           key={guide.id}
-          accessibilityLabel={guide.label ?? `Guide ${guide.id}`}
+          accessibilityLabel={createGuideAccessibilityLabel(accessibilityLabel, guide)}
+          accessibilityRole="text"
+          accessible
           style={[
             guide.axis === 'x' ? styles.vertical : styles.horizontal,
             guide.axis === 'x'
               ? {
                   backgroundColor: theme.colors.primary,
-                  left: (guide.position - viewport.offsetX) * viewport.pixelsPerUnitX,
+                  left: position,
                 }
               : {
                   backgroundColor: theme.colors.primary,
-                  top: (guide.position - viewport.offsetY) * viewport.pixelsPerUnitY,
+                  top: position,
                 },
           ]}
+          testID={testID === undefined ? undefined : `${testID}-guide-${guide.id}`}
         />
       ))}
     </View>
@@ -82,6 +92,32 @@ const styles = StyleSheet.create({
   overlay: { overflow: 'hidden', position: 'absolute' },
   vertical: { bottom: 0, position: 'absolute', top: 0, width: 1 },
 });
+
+/*** Selects finite guides whose shared world-to-visual projection falls inside the viewport. */
+function resolveVisibleGridGuides(
+  guides: NonNullable<GridLineOverlayProps['guides']>,
+  viewport: GridLineOverlayProps['viewport'],
+  direction: NonNullable<GridLineOverlayProps['direction']>,
+) {
+  return guides.flatMap((guide) => {
+    if (!Number.isFinite(guide.position)) return [];
+
+    const position = projectGridRulerPosition(viewport, guide.axis, guide.position, direction);
+    const size = guide.axis === 'x' ? viewport.width : viewport.height;
+
+    return Number.isFinite(position) && position >= 0 && position <= size
+      ? [{ guide, position }]
+      : [];
+  });
+}
+
+/*** Gives each visible guide an independent screen-reader identity with its stable world position. */
+function createGuideAccessibilityLabel(
+  overlayLabel: string,
+  guide: NonNullable<GridLineOverlayProps['guides']>[number],
+): string {
+  return `${overlayLabel}: ${guide.label ?? `Guide ${guide.id}`} at ${guide.position}`;
+}
 
 /*** A reusable passive world-space grid and guide overlay. */
 export const GridLineOverlay = withZoraThemeScope(GridLineOverlayInner);
