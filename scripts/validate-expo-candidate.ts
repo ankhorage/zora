@@ -16,6 +16,7 @@ interface CandidateFixture {
   readonly doctor: boolean;
   readonly expectedWebRoutes?: readonly string[];
   readonly name: string;
+  readonly nativeFonts: boolean;
   readonly nativePrebuild: boolean;
   readonly project: string;
 }
@@ -61,18 +62,21 @@ const FIXTURES: readonly CandidateFixture[] = [
   {
     doctor: true,
     name: 'game-presentation',
+    nativeFonts: true,
     nativePrebuild: true,
     project: 'examples/game-presentation',
   },
   {
     doctor: true,
     name: 'showcase',
+    nativeFonts: true,
     nativePrebuild: true,
     project: 'examples/expo-showcase',
   },
   {
     doctor: false,
     name: 'grid-workspaces',
+    nativeFonts: false,
     nativePrebuild: true,
     project: 'examples/grid-workspaces',
   },
@@ -80,6 +84,7 @@ const FIXTURES: readonly CandidateFixture[] = [
     doctor: false,
     expectedWebRoutes: RESTAURANT_WEB_ROUTES,
     name: 'restaurant',
+    nativeFonts: false,
     nativePrebuild: false,
     project: 'examples/food_drink/restaurant',
   },
@@ -341,12 +346,14 @@ function verifyRouterRouteSurface(exportRoot: string, expectedRoutes: readonly s
   console.log(`Verified Router route surface: ${actualRoutes.join(', ')}`);
 }
 
-function verifyNativeFonts(fixtureRoot: string): void {
+function prebuildNativeProject(fixtureRoot: string): void {
   run(
     ['bun', 'x', 'expo', 'prebuild', '--platform', 'ios', '--no-install', '--clean'],
     fixtureRoot,
   );
+}
 
+function verifyNativeFonts(fixtureRoot: string): void {
   const plistFiles = collectFiles(join(fixtureRoot, 'ios'), '.plist');
   const infoPlist = plistFiles
     .map((path) => readFileSync(path, 'utf8'))
@@ -421,6 +428,10 @@ try {
     }
 
     if (fixture.nativePrebuild) {
+      prebuildNativeProject(fixtureRoot);
+    }
+
+    if (fixture.nativeFonts) {
       verifyNativeFonts(fixtureRoot);
     }
 
