@@ -1,9 +1,11 @@
 import { readFileSync } from 'node:fs';
 
-import { isCapability } from '@ankhorage/contracts/capabilities';
+import { isCapability, isCapabilityId } from '@ankhorage/capability';
+import type { Capability } from '@ankhorage/contracts/capability';
 import { isRecord } from '@ankhorage/utility/object';
 import { expect, test } from 'bun:test';
 
+import { ZORA_COMPONENT_META } from '../features/registry';
 import { CAPABILITIES } from './index';
 
 const packageJson: unknown = JSON.parse(
@@ -13,9 +15,64 @@ const packageCapabilities =
   isRecord(packageJson) && isRecord(packageJson.ankh) ? packageJson.ankh.capabilities : undefined;
 
 test('publishes valid, uniquely identified canonical ZORA capabilities', () => {
-  expect(CAPABILITIES).toHaveLength(2);
   expect(CAPABILITIES.every(isCapability)).toBe(true);
   expect(new Set(CAPABILITIES.map((capability) => capability.id)).size).toBe(CAPABILITIES.length);
+});
+
+test('projects each direct-manifest event metadata entry into one canonical event capability', () => {
+  const metadataEvents = Object.values(ZORA_COMPONENT_META)
+    .filter((component) => component.directManifestNode)
+    .flatMap((component) => Object.values(component.events ?? {}));
+  const eventCapabilities = CAPABILITIES.filter((capability) => capability.access.includes('emit'));
+
+  expect(eventCapabilities).toHaveLength(
+    new Set(metadataEvents.map((event) => event.eventType)).size,
+  );
+  const eventCapabilitiesById = new Map<Capability['id'], Capability>(
+    eventCapabilities.map((capability) => [capability.id, capability]),
+  );
+
+  for (const event of metadataEvents) {
+    if (!isCapabilityId(event.eventType)) throw new Error(`Invalid event id: ${event.eventType}`);
+    const capability = eventCapabilitiesById.get(event.eventType);
+    expect(capability?.owner).toBe('@ankhorage/zora');
+    expect(capability?.access).toEqual(['emit']);
+    expect(capability?.binding).toEqual({ kind: 'event', bindableAs: ['source'] });
+    expect(capability?.label).toBe(event.label);
+    expect(capability?.description).toBe(event.description);
+  }
+});
+
+test('projects event payload metadata into matching output schemas', () => {
+  const eventCapabilities = new Map<Capability['id'], Capability>(
+    CAPABILITIES.filter((capability) => capability.access.includes('emit')).map((capability) => [
+      capability.id,
+      capability,
+    ]),
+  );
+
+  for (const component of Object.values(ZORA_COMPONENT_META)) {
+    if (!component.directManifestNode) continue;
+    for (const event of Object.values(component.events ?? {})) {
+      if (!isCapabilityId(event.eventType)) throw new Error(`Invalid event id: ${event.eventType}`);
+      const capability = eventCapabilities.get(event.eventType);
+      const schema = capability?.output?.schema;
+      expect(schema?.type).toBe('object');
+
+      for (const field of event.payloadFields ?? []) {
+        if (field.path.includes('.')) continue;
+        const fieldSchema = Object.entries(schema?.properties ?? {}).find(
+          ([fieldName]) => fieldName === field.path,
+        )?.[1];
+        expect(fieldSchema?.type).toBe(
+          field.type === 'record' ? 'object' : field.type === 'unknown' ? undefined : field.type,
+        );
+        expect(fieldSchema?.additionalProperties).toBe(field.type === 'record' ? true : undefined);
+        expect(fieldSchema?.title).toBe(field.label);
+        expect(fieldSchema?.description).toBe(field.description);
+      }
+    }
+  }
 });
 
 test('keeps Ankh package metadata identical to the canonical catalog', () => {
@@ -37,18 +94,10 @@ test('exports the catalog from the public capabilities subpath', async () => {
 });
 
 test('preserves the executable action semantics of ZORA provider capabilities', () => {
-  expect(CAPABILITIES).toEqual([
-    expect.objectContaining({
-      id: 'zora.create',
-      owner: '@ankhorage/zora',
-      access: ['invoke'],
-      binding: { kind: 'action', bindableAs: ['target'] },
-    }),
-    expect.objectContaining({
-      id: 'zora.sync',
-      owner: '@ankhorage/zora',
-      access: ['invoke'],
-      binding: { kind: 'action', bindableAs: ['target'] },
-    }),
-  ]);
+  const actions = CAPABILITIES.filter((capability) => capability.access.includes('invoke'));
+  expect(actions.map((capability) => capability.id)).toEqual(['zora.create', 'zora.sync']);
+  expect(actions.every((capability) => capability.binding.kind === 'action')).toBe(true);
+  expect(actions.every((capability) => capability.binding.bindableAs.includes('target'))).toBe(
+    true,
+  );
 });
