@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.6.2
+
+### Patch Changes
+
+- 0b1832d: Bundle the public capability entrypoint's local metadata closure so packed Node ESM consumers can import it without source-resolution assumptions.
+
 ## 25.6.1
 
 ### Patch Changes
