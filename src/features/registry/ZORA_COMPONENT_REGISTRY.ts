@@ -47,8 +47,8 @@ import {
   GameOverlay,
 } from '../game/public';
 import { Gradient } from '../gradient/public';
-import { GridLineOverlay, GridRuler } from '../grid-rulers/public';
 import { GridInteractions } from '../grid-interactions/public';
+import { GridLineOverlay, GridRuler } from '../grid-rulers/public';
 import { GridView, TileGrid } from '../grid-view/public';
 import { Hero } from '../hero/public';
 import { Icon } from '../icon/public';

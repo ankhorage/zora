@@ -53,8 +53,8 @@ import { gameMeasurementProbeMeta } from '../game/meta/gameMeasurementProbeMeta'
 import { gameMeta } from '../game/meta/gameMeta';
 import { gameOverlayMeta } from '../game/meta/gameOverlayMeta';
 import { gradientMeta } from '../gradient/gradientMeta';
-import { gridLineOverlayMeta, gridRulerMeta } from '../grid-rulers/meta';
 import { gridInteractionsMeta } from '../grid-interactions/meta';
+import { gridLineOverlayMeta, gridRulerMeta } from '../grid-rulers/meta';
 import { gridViewMeta, tileGridMeta } from '../grid-view/meta';
 import { heroMeta } from '../hero/heroMeta';
 import { iconMeta } from '../icon/iconMeta';

@@ -25,10 +25,18 @@ export function GridInteractions({
     createGridInteractionsController(controllerProps),
   );
   const surfaceRef = React.useRef<View>(null);
-  const surfaceOriginRef = React.useRef({ x: 0, y: 0 });
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
-  const pointer = (event: Parameters<typeof resolveGridInteractionPointer>[0]) =>
-    resolveGridInteractionPointer(event, surfaceOriginRef.current);
+  const withPointer = (
+    event: Parameters<typeof resolveGridInteractionPointer>[0],
+    handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void,
+  ) => {
+    const surface = surfaceRef.current;
+    if (!surface) return;
+    const snapshot = { nativeEvent: { ...event.nativeEvent } };
+    measureSurfaceOrigin(surface, (origin) => {
+      handlePointer(resolveGridInteractionPointer(snapshot, origin));
+    });
+  };
   const enabled = interactionPolicy !== 'passive';
 
   return (
@@ -38,14 +46,11 @@ export function GridInteractions({
       accessibilityRole="adjustable"
       ref={surfaceRef}
       testID={testID}
-      onLayout={() => {
-        surfaceRef.current?.measureInWindow((x, y) => {
-          surfaceOriginRef.current = { x, y };
-        });
-      }}
-      onResponderGrant={(event) => controller.begin(pointer(event), resizeHandle)}
-      onResponderMove={(event) => controller.move(pointer(event))}
-      onResponderRelease={(event) => controller.end(pointer(event))}
+      onResponderGrant={(event) =>
+        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle))
+      }
+      onResponderMove={(event) => withPointer(event, controller.move)}
+      onResponderRelease={(event) => withPointer(event, controller.end)}
       onResponderTerminate={() => controller.cancel()}
       onStartShouldSetResponder={() => enabled}
     >
@@ -59,4 +64,22 @@ export function GridInteractions({
       </GridInteractionsKeyboardProxy>
     </View>
   );
+}
+
+/*** Measures the root surface for every responder event so page coordinates cannot become stale. */
+function measureSurfaceOrigin(
+  surface: View,
+  onOrigin: (origin: { readonly x: number; readonly y: number }) => void,
+) {
+  const element = surface as unknown as { readonly getBoundingClientRect?: () => DOMRect };
+  const rect = element.getBoundingClientRect?.();
+  if (rect) {
+    onOrigin({ x: rect.left, y: rect.top });
+    return;
+  }
+  if (typeof surface.measureInWindow === 'function') {
+    surface.measureInWindow((x, y) => onOrigin({ x, y }));
+    return;
+  }
+  onOrigin({ x: 0, y: 0 });
 }

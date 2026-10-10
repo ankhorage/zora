@@ -85,6 +85,7 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
     );
     const passiveKey = new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowLeft' });
     await dispatch(keyboard, passiveKey);
+    expect(keyboard.getAttribute('tabindex')).toBe('-1');
 
     expect(firstIntents).toEqual([]);
     expect(secondIntents).toEqual([
@@ -94,7 +95,6 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
     expect(resize.defaultPrevented).toBe(true);
     expect(acceleratedMove.defaultPrevented).toBe(true);
     expect(passiveKey.defaultPrevented).toBe(false);
-    expect(keyboard.getAttribute('tabindex')).toBe('-1');
   } finally {
     await act(() => Promise.resolve().then(() => root.unmount()));
     host.remove();
