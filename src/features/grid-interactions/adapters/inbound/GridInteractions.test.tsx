@@ -8,6 +8,7 @@ import { createRoot } from 'react-dom/client';
 
 import type { GridInteractionIntent } from '../../../../types/grid-interactions';
 import type { GridInteractions as GridInteractionsComponent } from './GridInteractions';
+import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy.web';
 
 const webDistRoot = join(import.meta.dir, '../../../../../web-dist');
 
@@ -104,7 +105,7 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
   }
 });
 
-test('bridges a held Space key into web responder drag intent and clears it after release or blur', async () => {
+test('bridges a held Space key into web responder pan and clears it for the following marquee drag', async () => {
   const browser = new Window();
   const restore = installBrowserGlobals(browser);
   const host = document.createElement('div');
@@ -148,16 +149,60 @@ test('bridges a held Space key into web responder drag intent and clears it afte
       new browser.KeyboardEvent('keyup', { bubbles: true, code: 'Space', key: ' ' }),
     );
     await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    expect(intents.map((intent) => intent.type)).toEqual(['pan', 'marquee']);
+  } finally {
+    await act(() => Promise.resolve().then(() => root.unmount()));
+    host.remove();
+    browser.close();
+    restore();
+  }
+});
+
+test('clears the web Space modifier on blur, disable, and unmount', async () => {
+  const browser = new Window();
+  const restore = installBrowserGlobals(browser);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const root = createRoot(host);
+  const spaceKeyChanges: boolean[] = [];
+  const onSpaceKeyChange = (spaceKey: boolean) => spaceKeyChanges.push(spaceKey);
+
+  try {
+    await renderGridInteractions(
+      root,
+      <GridInteractionsKeyboardProxy
+        enabled
+        onKeyDown={() => false}
+        onSpaceKeyChange={onSpaceKeyChange}
+      >
+        <span>nested target</span>
+      </GridInteractionsKeyboardProxy>,
+    );
+    const keyboard = host.querySelector<HTMLElement>(
+      '[aria-label="Grid interaction keyboard controls"]',
+    );
+    if (!keyboard) throw new Error('Missing keyboard interaction proxy');
+
     await dispatch(
       keyboard,
       new browser.KeyboardEvent('keydown', { bubbles: true, code: 'Space', key: ' ' }),
     );
     await dispatch(keyboard, new browser.FocusEvent('focusout', { bubbles: true }));
-    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    await renderGridInteractions(
+      root,
+      <GridInteractionsKeyboardProxy
+        enabled={false}
+        onKeyDown={() => false}
+        onSpaceKeyChange={onSpaceKeyChange}
+      >
+        <span>nested target</span>
+      </GridInteractionsKeyboardProxy>,
+    );
 
-    expect(intents.map((intent) => intent.type)).toEqual(['pan', 'marquee']);
+    expect(spaceKeyChanges).toEqual([true, false, false]);
   } finally {
     await act(() => Promise.resolve().then(() => root.unmount()));
+    expect(spaceKeyChanges.at(-1)).toBe(false);
     host.remove();
     browser.close();
     restore();
@@ -203,38 +248,42 @@ function dispatch(target: HTMLElement, event: Event) {
   return act(() => Promise.resolve().then(() => target.dispatchEvent(event)));
 }
 
-/*** Runs one browser mouse drag through the RNW responder boundary. */
+/*** Runs one browser touch drag through the RNW responder boundary. */
 async function drag(
   browser: Window,
   target: HTMLElement,
   start: { readonly x: number; readonly y: number },
   end: { readonly x: number; readonly y: number },
 ) {
-  await dispatch(
+  await dispatch(target, createTouchEvent(browser, 'touchstart', target, start, [start]));
+  await dispatch(target, createTouchEvent(browser, 'touchmove', target, end, [end]));
+  await dispatch(target, createTouchEvent(browser, 'touchend', target, end, []));
+}
+
+/*** Creates a browser touch event consumed by the RNW responder implementation. */
+function createTouchEvent(
+  browser: Window,
+  type: 'touchend' | 'touchmove' | 'touchstart',
+  target: HTMLElement,
+  changed: { readonly x: number; readonly y: number },
+  touches: readonly { readonly x: number; readonly y: number }[],
+) {
+  const event = new browser.Event(type, { bubbles: true });
+  Object.defineProperties(event, {
+    changedTouches: { value: [createTouch(target, changed)] },
+    touches: { value: touches.map((touch) => createTouch(target, touch)) },
+  });
+  return event;
+}
+
+/*** Creates one RNW-compatible touch point with page and client coordinates. */
+function createTouch(target: HTMLElement, point: { readonly x: number; readonly y: number }) {
+  return {
+    clientX: point.x,
+    clientY: point.y,
+    identifier: 1,
+    pageX: point.x,
+    pageY: point.y,
     target,
-    new browser.MouseEvent('mousedown', {
-      bubbles: true,
-      button: 0,
-      clientX: start.x,
-      clientY: start.y,
-    }),
-  );
-  await dispatch(
-    target,
-    new browser.MouseEvent('mousemove', {
-      bubbles: true,
-      button: 0,
-      clientX: end.x,
-      clientY: end.y,
-    }),
-  );
-  await dispatch(
-    target,
-    new browser.MouseEvent('mouseup', {
-      bubbles: true,
-      button: 0,
-      clientX: end.x,
-      clientY: end.y,
-    }),
-  );
+  };
 }
