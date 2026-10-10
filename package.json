@@ -116,7 +116,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist web-dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json && bun scripts/build-web-components.ts",
+    "build": "rm -rf dist web-dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json && bun scripts/build-capabilities.ts && bun scripts/build-web-components.ts",
     "changeset": "ankhorage-changeset",
     "changeset:status": "ankhorage-changeset status --since=origin/main",
     "docs": "paradox",
