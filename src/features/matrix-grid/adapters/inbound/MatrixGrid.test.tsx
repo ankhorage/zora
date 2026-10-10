@@ -209,7 +209,10 @@ test('proposes an uncontrolled horizontal pan in world units while retaining ind
       const viewport = host.querySelector('[data-testid="uncontrolled-matrix"]');
       if (!viewport) throw new Error('Missing MatrixGrid viewport.');
       viewport.scrollLeft = 40;
-      void act(() => viewport.dispatchEvent(new browser.Event('scroll', { bubbles: true })));
+      await act(async () => {
+        viewport.dispatchEvent(new browser.Event('scroll', { bubbles: true }));
+        await new Promise<void>((resolve) => browser.setTimeout(resolve, 0));
+      });
       expect(proposals).toEqual([
         {
           height: 96,
