@@ -206,11 +206,13 @@ test('proposes an uncontrolled horizontal pan in world units while retaining ind
           </ZoraProvider>,
         ),
       );
-      const viewport = host.querySelector('[data-testid="uncontrolled-matrix"]');
-      if (!viewport) throw new Error('Missing MatrixGrid viewport.');
-      viewport.scrollLeft = 40;
+      const horizontalScroll = host.querySelector(
+        '[data-testid="uncontrolled-matrix-horizontal-scroll"]',
+      );
+      if (!horizontalScroll) throw new Error('Missing MatrixGrid horizontal scroll viewport.');
+      horizontalScroll.scrollLeft = 40;
       await act(async () => {
-        viewport.dispatchEvent(new browser.Event('scroll', { bubbles: true }));
+        horizontalScroll.dispatchEvent(new browser.Event('scroll', { bubbles: true }));
         await new Promise<void>((resolve) => browser.setTimeout(resolve, 200));
       });
       expect(proposals).toEqual([
