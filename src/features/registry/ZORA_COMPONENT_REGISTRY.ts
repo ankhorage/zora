@@ -77,6 +77,7 @@ import {
 } from '../tabletop/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { ThemeModeToggle } from '../theme/adapters/inbound/ThemeModeToggle';
+import { TimeGrid } from '../time-grid/public';
 import { TimePicker } from '../time-picker/public';
 import { Timeline } from '../timeline/public';
 import { Toast } from '../toast/public';
@@ -200,6 +201,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   GridRuler,
   GridView,
   TileGrid,
+  TimeGrid,
   MediaExplorer,
   Hero,
   List,

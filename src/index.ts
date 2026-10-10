@@ -484,6 +484,8 @@ export {
 } from './features/theme/colorModel';
 export * from './features/theme/public';
 export * from './features/theme/runtime';
+export type { TimeGridInterval, TimeGridLane, TimeGridProps } from './features/time-grid/public';
+export { resolveTimeGridVisibleIntervals, TimeGrid } from './features/time-grid/public';
 export {
   TimePicker,
   type TimePickerProps,

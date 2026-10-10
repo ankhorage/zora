@@ -99,6 +99,7 @@ import { tabMeta } from '../tabs/tabMeta';
 import { tabPanelMeta } from '../tabs/tabPanelMeta';
 import { tabsMeta } from '../tabs/tabsMeta';
 import { themeModeToggleMeta } from '../theme/ThemeModeToggle.meta';
+import { timeGridMeta } from '../time-grid/meta';
 import { timePickerMeta } from '../time-picker/timePickerMeta';
 import { timelineMeta } from '../timeline/meta';
 import { toastMeta } from '../toast/toastMeta';
@@ -204,6 +205,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   GridRuler: gridRulerMeta,
   GridView: gridViewMeta,
   TileGrid: tileGridMeta,
+  TimeGrid: timeGridMeta,
   Hero: heroMeta,
   List: listMeta,
   ListItem: listItemMeta,
