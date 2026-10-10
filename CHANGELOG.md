@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.6.1
+
+### Patch Changes
+
+- 3f573b9: Make the published capability catalog's registry projection import Node ESM-safe in packed consumers.
+
 ## 25.6.0
 
 ### Minor Changes
