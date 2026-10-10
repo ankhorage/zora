@@ -55,6 +55,7 @@ import { Image } from '../image/public';
 import { KeyboardAvoidingView } from '../keyboard-avoiding-view/public';
 import { AppShell, Divider, Grid, Screen, ScrollView, View } from '../layout/public';
 import { FlatList, List, ListItem, ListSection, SectionList } from '../list/public';
+import { MatrixGrid } from '../matrix-grid/public';
 import { MissingElement } from '../missing-element/public';
 import { Pagination } from '../pagination/public';
 import { PaletteItem } from '../palette-item/public';
@@ -202,6 +203,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   GridView,
   TileGrid,
   TimeGrid,
+  MatrixGrid,
   MediaExplorer,
   Hero,
   List,

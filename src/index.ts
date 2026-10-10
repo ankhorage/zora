@@ -314,6 +314,8 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { List, ListItem, ListSection } from './features/list/public';
+export type { MatrixGridProps } from './features/matrix-grid/public';
+export { MatrixGrid } from './features/matrix-grid/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
 export { Pagination, type PaginationProps } from './features/pagination/public';
 export type { PaletteItemProps } from './features/palette-item/public';
