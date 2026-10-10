@@ -33,7 +33,7 @@ export function SpatialGrid({
     () => new Map(orderedItems.map((item) => [item.id, item])),
     [orderedItems],
   );
-  const inactive = disabled || readOnly || interactionPolicy === 'passive';
+  const interactionBlocked = disabled || interactionPolicy === 'passive';
 
   return (
     <NativeView style={{ height, overflow: 'hidden', width }} testID={testID}>
@@ -54,7 +54,8 @@ export function SpatialGrid({
             item,
             item.id === selectedItemId,
             item.id === focusedItemId,
-            inactive,
+            interactionBlocked,
+            readOnly,
             onSelectionChange,
             onActivation,
             onFocusChange,
@@ -75,33 +76,37 @@ function renderSpatialGridItem(
   item: SpatialGridItem,
   selected: boolean,
   focused: boolean,
-  inactive: boolean,
+  interactionBlocked: boolean,
+  readOnly: boolean,
   onSelectionChange: SpatialGridProps['onSelectionChange'],
   onActivation: SpatialGridProps['onActivation'],
   onFocusChange: SpatialGridProps['onFocusChange'],
   renderItem: SpatialGridProps['renderItem'],
   testID: string | undefined,
 ) {
-  const itemInactive = inactive || item.disabled === true;
+  const interactionDisabled = interactionBlocked || item.disabled === true;
+  const editingDisabled = interactionDisabled || readOnly;
   return (
     <NativePressable
-      accessibilityLabel={item.accessibilityLabel}
+      accessibilityLabel={item.accessibilityLabel ?? `Spatial grid item ${item.id}`}
       accessibilityRole="button"
-      accessibilityState={{ disabled: itemInactive, selected }}
-      disabled={itemInactive}
+      accessibilityState={{ disabled: editingDisabled, selected }}
+      disabled={interactionDisabled}
       style={{ height: '100%', width: '100%' }}
       testID={testID === undefined ? undefined : `${testID}-item-${item.id}`}
-      onFocus={() => onFocusChange?.(item.id)}
+      onFocus={() => {
+        if (!interactionDisabled) onFocusChange?.(item.id);
+      }}
       onLongPress={() => {
-        if (!itemInactive) onActivation?.(item.id);
+        if (!editingDisabled) onActivation?.(item.id);
       }}
       onPress={() => {
-        if (itemInactive) return;
+        if (editingDisabled) return;
         onSelectionChange?.(item.id);
         onActivation?.(item.id);
       }}
     >
-      {renderItem(item, { disabled: itemInactive, focused, selected })}
+      {renderItem(item, { disabled: editingDisabled, focused, selected })}
     </NativePressable>
   );
 }

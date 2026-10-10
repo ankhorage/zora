@@ -7,7 +7,7 @@ import type { ZoraBaseProps } from './base';
 export interface SpatialGridItem extends GridRectItem {
   /** Higher values are painted and hit-tested above lower values; equal values preserve input order. */
   readonly zIndex?: number;
-  /** Accessible name for the item when its custom content has no own label. */
+  /** Accessible name for the item; defaults to a stable ID-derived board-item name. */
   readonly accessibilityLabel?: string;
   /** Prevents selection and activation for this item while keeping it visible. */
   readonly disabled?: boolean;
@@ -33,6 +33,7 @@ export interface SpatialGridProps extends ZoraBaseProps {
   readonly focusedItemId?: string;
   readonly revealPaddingPixels?: number;
   readonly disabled?: boolean;
+  /** Prevents selection and activation while retaining focus and viewport navigation. */
   readonly readOnly?: boolean;
   readonly onSelectionChange?: (id: string) => void;
   readonly onActivation?: (id: string) => void;
