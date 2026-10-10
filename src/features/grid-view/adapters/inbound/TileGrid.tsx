@@ -1,3 +1,4 @@
+import type { GridViewport } from '@ankhorage/grid-view';
 import React from 'react';
 import { View as NativeView } from 'react-native';
 
@@ -28,8 +29,11 @@ export function TileGrid({
   testID,
 }: TileGridProps) {
   const [measuredWidth, setMeasuredWidth] = React.useState(0);
+  const [uncontrolledPixelsPerUnitX, setUncontrolledPixelsPerUnitX] = React.useState(
+    () => defaultViewport?.pixelsPerUnitX ?? zoom,
+  );
   const resolvedWidth = width ?? measuredWidth;
-  const pixelsPerUnitX = viewport?.pixelsPerUnitX ?? defaultViewport?.pixelsPerUnitX ?? zoom;
+  const pixelsPerUnitX = viewport?.pixelsPerUnitX ?? uncontrolledPixelsPerUnitX;
   const layout = React.useMemo(
     () => layoutTileGrid(items, resolvedWidth, tileSize, gap, pixelsPerUnitX),
     [gap, items, pixelsPerUnitX, resolvedWidth, tileSize],
@@ -39,6 +43,14 @@ export function TileGrid({
   React.useEffect(() => {
     if (resolvedWidth > 0) onColumnsChange?.(layout.columns);
   }, [layout.columns, onColumnsChange, resolvedWidth]);
+
+  const handleViewportChange = React.useCallback(
+    (nextViewport: GridViewport) => {
+      if (viewport === undefined) setUncontrolledPixelsPerUnitX(nextViewport.pixelsPerUnitX);
+      onViewportChange?.(nextViewport);
+    },
+    [onViewportChange, viewport],
+  );
 
   return (
     <NativeView
@@ -56,7 +68,7 @@ export function TileGrid({
           interactionPolicy={interactionPolicy}
           items={layout.items}
           onVisibleItemIdsChange={onVisibleItemIdsChange}
-          onViewportChange={onViewportChange}
+          onViewportChange={handleViewportChange}
           overscanPixels={overscanPixels}
           renderItem={(item) => {
             const source = itemLookup.get(item.id);

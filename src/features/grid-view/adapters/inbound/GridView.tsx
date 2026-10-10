@@ -32,6 +32,7 @@ type FocusRevealProposal = Readonly<{
   sourceViewport: GridViewport;
   viewport: GridViewport;
 }>;
+type PinchTouch = Readonly<{ pageX: number; pageY: number }>;
 
 /*** Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. */
 export function GridView({
@@ -62,6 +63,7 @@ export function GridView({
   const gridRef = React.useRef<React.ComponentRef<typeof NativeView>>(null);
   const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
+  const pinchMeasurementRef = React.useRef(0);
   const viewportOriginRef = React.useRef<ViewportOrigin>({ x: 0, y: 0 });
   const focusRevealProposalRef = React.useRef<FocusRevealProposal | undefined>(undefined);
   const [isPinching, setIsPinching] = React.useState(false);
@@ -121,6 +123,19 @@ export function GridView({
       viewportOriginRef.current = { x, y };
     });
   }, []);
+
+  const measurePinchGesture = React.useCallback(
+    (touches: readonly PinchTouch[], onMeasured: (pinch: PinchGesture | undefined) => void) => {
+      const measurement = pinchMeasurementRef.current + 1;
+      pinchMeasurementRef.current = measurement;
+      gridRef.current?.measureInWindow((x, y) => {
+        if (measurement !== pinchMeasurementRef.current) return;
+        viewportOriginRef.current = { x, y };
+        onMeasured(getPinchGesture(touches, width, height, { x, y }));
+      });
+    },
+    [height, width],
+  );
 
   React.useLayoutEffect(() => {
     refreshViewportOrigin();
@@ -201,28 +216,19 @@ export function GridView({
       }}
       onTouchMove={(event) => {
         if (!interactive) return;
-        refreshViewportOrigin();
-        const pinch = getPinchGesture(
-          event.nativeEvent.touches,
-          width,
-          height,
-          viewportOriginRef.current,
-        );
-        const previous = pinchGestureRef.current;
-        pinchGestureRef.current = pinch;
-        setIsPinching(pinch !== undefined);
-        if (!pinch || !previous) return;
-        zoomAt(pinch.focalPoint, pinch.distance / previous.distance);
+        measurePinchGesture([...event.nativeEvent.touches], (pinch) => {
+          const previous = pinchGestureRef.current;
+          pinchGestureRef.current = pinch;
+          setIsPinching(pinch !== undefined);
+          if (!pinch || !previous) return;
+          zoomAt(pinch.focalPoint, pinch.distance / previous.distance);
+        });
       }}
       onTouchStart={(event) => {
-        refreshViewportOrigin();
-        pinchGestureRef.current = getPinchGesture(
-          event.nativeEvent.touches,
-          width,
-          height,
-          viewportOriginRef.current,
-        );
-        setIsPinching(pinchGestureRef.current !== undefined);
+        measurePinchGesture([...event.nativeEvent.touches], (pinch) => {
+          pinchGestureRef.current = pinch;
+          setIsPinching(pinch !== undefined);
+        });
       }}
       style={{ height, overflow: 'hidden', width }}
       testID={testID}
