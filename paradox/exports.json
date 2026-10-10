@@ -6883,7 +6883,7 @@
     "modulePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
     "sourceLocation": {
       "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-      "line": 35,
+      "line": 43,
       "column": 1
     },
     "exportPaths": [

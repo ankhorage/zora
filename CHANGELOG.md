@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.1
+
+### Patch Changes
+
+- 7a83559: Keep controlled GridInteractions move, resize, and pan gestures anchored to their start state.
+
 ## 25.8.0
 
 ### Minor Changes

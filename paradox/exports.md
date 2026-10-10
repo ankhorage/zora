@@ -1546,7 +1546,7 @@ piece colors as the built-in board.
 
 Kind: `function`
 Module: `src/features/grid-interactions/application/createGridInteractionsController.ts`
-Source: `src/features/grid-interactions/application/createGridInteractionsController.ts:35:1`
+Source: `src/features/grid-interactions/application/createGridInteractionsController.ts:43:1`
 
 Create a platform-neutral controlled interaction controller using grid-view geometry only.
 

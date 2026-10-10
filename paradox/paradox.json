@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.0",
+      "value": "v25.8.1",
       "color": "cb3837"
     },
     {
@@ -14928,7 +14928,7 @@
       "modulePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 35,
+        "line": 43,
         "column": 1
       },
       "exportPaths": [
@@ -66506,7 +66506,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 35,
+        "line": 43,
         "column": 1
       }
     },
@@ -66517,7 +66517,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 41,
+        "line": 49,
         "column": 9
       }
     },
@@ -66528,7 +66528,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 45,
+        "line": 53,
         "column": 9
       }
     },
@@ -66539,7 +66539,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 118,
+        "line": 132,
         "column": 1
       }
     },
@@ -66550,7 +66550,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 123,
+        "line": 137,
         "column": 1
       }
     },
@@ -66561,7 +66561,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 166,
+        "line": 179,
+        "column": 1
+      }
+    },
+    {
+      "name": "viewportForState",
+      "description": "Keep pointer coordinates in the original gesture coordinate space across controlled updates.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
+        "line": 211,
         "column": 1
       }
     },
@@ -66572,7 +66583,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 199,
+        "line": 216,
         "column": 1
       }
     },
@@ -66583,7 +66594,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 209,
+        "line": 226,
         "column": 1
       }
     },
@@ -66594,7 +66605,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 219,
+        "line": 236,
         "column": 1
       }
     },
@@ -66605,7 +66616,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "line": 228,
+        "line": 245,
         "column": 1
       }
     },
@@ -79713,6 +79724,12 @@
       },
       {
         "fromSymbol": "move",
+        "toSymbol": "viewportForState",
+        "callExpression": "viewportForState",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
+      },
+      {
+        "fromSymbol": "move",
         "toSymbol": "emitPreview",
         "callExpression": "emitPreview",
         "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
@@ -79727,6 +79744,12 @@
         "fromSymbol": "end",
         "toSymbol": "point",
         "callExpression": "point",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
+      },
+      {
+        "fromSymbol": "end",
+        "toSymbol": "viewportForState",
+        "callExpression": "viewportForState",
         "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
       },
       {
